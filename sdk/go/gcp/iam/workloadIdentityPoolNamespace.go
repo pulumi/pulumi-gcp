@@ -143,8 +143,6 @@ type WorkloadIdentityPoolNamespace struct {
 	// * end with an alphanumeric character
 	//
 	// The prefix `gcp-` will be reserved for future uses.
-	//
-	// ***
 	WorkloadIdentityPoolNamespaceId pulumi.StringOutput `pulumi:"workloadIdentityPoolNamespaceId"`
 }
 
@@ -218,8 +216,6 @@ type workloadIdentityPoolNamespaceState struct {
 	// * end with an alphanumeric character
 	//
 	// The prefix `gcp-` will be reserved for future uses.
-	//
-	// ***
 	WorkloadIdentityPoolNamespaceId *string `pulumi:"workloadIdentityPoolNamespaceId"`
 }
 
@@ -258,8 +254,6 @@ type WorkloadIdentityPoolNamespaceState struct {
 	// * end with an alphanumeric character
 	//
 	// The prefix `gcp-` will be reserved for future uses.
-	//
-	// ***
 	WorkloadIdentityPoolNamespaceId pulumi.StringPtrInput
 }
 
@@ -288,8 +282,6 @@ type workloadIdentityPoolNamespaceArgs struct {
 	// * end with an alphanumeric character
 	//
 	// The prefix `gcp-` will be reserved for future uses.
-	//
-	// ***
 	WorkloadIdentityPoolNamespaceId string `pulumi:"workloadIdentityPoolNamespaceId"`
 }
 
@@ -315,8 +307,6 @@ type WorkloadIdentityPoolNamespaceArgs struct {
 	// * end with an alphanumeric character
 	//
 	// The prefix `gcp-` will be reserved for future uses.
-	//
-	// ***
 	WorkloadIdentityPoolNamespaceId pulumi.StringInput
 }
 
@@ -464,8 +454,6 @@ func (o WorkloadIdentityPoolNamespaceOutput) WorkloadIdentityPoolId() pulumi.Str
 // * end with an alphanumeric character
 //
 // The prefix `gcp-` will be reserved for future uses.
-//
-// ***
 func (o WorkloadIdentityPoolNamespaceOutput) WorkloadIdentityPoolNamespaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkloadIdentityPoolNamespace) pulumi.StringOutput { return v.WorkloadIdentityPoolNamespaceId }).(pulumi.StringOutput)
 }

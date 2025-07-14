@@ -78,9 +78,6 @@ export class KeyRingImportJob extends pulumi.CustomResource {
     public /*out*/ readonly expireTime!: pulumi.Output<string>;
     /**
      * It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
-     *
-     *
-     * - - -
      */
     public readonly importJobId!: pulumi.Output<string>;
     /**
@@ -182,9 +179,6 @@ export interface KeyRingImportJobState {
     expireTime?: pulumi.Input<string>;
     /**
      * It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
-     *
-     *
-     * - - -
      */
     importJobId?: pulumi.Input<string>;
     /**
@@ -224,9 +218,6 @@ export interface KeyRingImportJobState {
 export interface KeyRingImportJobArgs {
     /**
      * It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
-     *
-     *
-     * - - -
      */
     importJobId: pulumi.Input<string>;
     /**

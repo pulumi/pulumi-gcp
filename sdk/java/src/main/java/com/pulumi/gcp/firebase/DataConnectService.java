@@ -377,8 +377,6 @@ public class DataConnectService extends com.pulumi.resources.CustomResource {
      * Required. The ID to use for the service, which will become the final component of the
      * service&#39;s resource name.
      * 
-     * ***
-     * 
      */
     @Export(name="serviceId", refs={String.class}, tree="[0]")
     private Output<String> serviceId;
@@ -386,8 +384,6 @@ public class DataConnectService extends com.pulumi.resources.CustomResource {
     /**
      * @return Required. The ID to use for the service, which will become the final component of the
      * service&#39;s resource name.
-     * 
-     * ***
      * 
      */
     public Output<String> serviceId() {

@@ -95,16 +95,12 @@ public class CodeRepositoryIndex extends com.pulumi.resources.CustomResource {
     /**
      * Required. Id of the Code Repository Index.
      * 
-     * ***
-     * 
      */
     @Export(name="codeRepositoryIndexId", refs={String.class}, tree="[0]")
     private Output<String> codeRepositoryIndexId;
 
     /**
      * @return Required. Id of the Code Repository Index.
-     * 
-     * ***
      * 
      */
     public Output<String> codeRepositoryIndexId() {

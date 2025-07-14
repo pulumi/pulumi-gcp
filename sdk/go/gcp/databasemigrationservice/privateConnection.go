@@ -101,8 +101,9 @@ type PrivateConnection struct {
 	// The PrivateConnection error in case of failure.
 	// Structure is documented below.
 	Errors PrivateConnectionErrorArrayOutput `pulumi:"errors"`
-	// Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
-	// refer to the field 'effective_labels' for all of the labels present on the resource.
+	// Labels.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the location this private connection is located in.
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -110,7 +111,9 @@ type PrivateConnection struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The private connectivity identifier.
 	PrivateConnectionId pulumi.StringOutput `pulumi:"privateConnectionId"`
-	Project             pulumi.StringOutput `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
@@ -175,8 +178,9 @@ type privateConnectionState struct {
 	// The PrivateConnection error in case of failure.
 	// Structure is documented below.
 	Errors []PrivateConnectionError `pulumi:"errors"`
-	// Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
-	// refer to the field 'effective_labels' for all of the labels present on the resource.
+	// Labels.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the location this private connection is located in.
 	Location *string `pulumi:"location"`
@@ -184,7 +188,9 @@ type privateConnectionState struct {
 	Name *string `pulumi:"name"`
 	// The private connectivity identifier.
 	PrivateConnectionId *string `pulumi:"privateConnectionId"`
-	Project             *string `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
@@ -206,8 +212,9 @@ type PrivateConnectionState struct {
 	// The PrivateConnection error in case of failure.
 	// Structure is documented below.
 	Errors PrivateConnectionErrorArrayInput
-	// Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
-	// refer to the field 'effective_labels' for all of the labels present on the resource.
+	// Labels.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The name of the location this private connection is located in.
 	Location pulumi.StringPtrInput
@@ -215,7 +222,9 @@ type PrivateConnectionState struct {
 	Name pulumi.StringPtrInput
 	// The private connectivity identifier.
 	PrivateConnectionId pulumi.StringPtrInput
-	Project             pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
@@ -236,14 +245,17 @@ type privateConnectionArgs struct {
 	CreateWithoutValidation *bool `pulumi:"createWithoutValidation"`
 	// Display name.
 	DisplayName *string `pulumi:"displayName"`
-	// Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
-	// refer to the field 'effective_labels' for all of the labels present on the resource.
+	// Labels.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the location this private connection is located in.
 	Location string `pulumi:"location"`
 	// The private connectivity identifier.
-	PrivateConnectionId string  `pulumi:"privateConnectionId"`
-	Project             *string `pulumi:"project"`
+	PrivateConnectionId string `pulumi:"privateConnectionId"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// The VPC Peering configuration is used to create VPC peering
 	// between databasemigrationservice and the consumer's VPC.
 	// Structure is documented below.
@@ -256,14 +268,17 @@ type PrivateConnectionArgs struct {
 	CreateWithoutValidation pulumi.BoolPtrInput
 	// Display name.
 	DisplayName pulumi.StringPtrInput
-	// Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
-	// refer to the field 'effective_labels' for all of the labels present on the resource.
+	// Labels.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The name of the location this private connection is located in.
 	Location pulumi.StringInput
 	// The private connectivity identifier.
 	PrivateConnectionId pulumi.StringInput
-	Project             pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// The VPC Peering configuration is used to create VPC peering
 	// between databasemigrationservice and the consumer's VPC.
 	// Structure is documented below.
@@ -378,8 +393,9 @@ func (o PrivateConnectionOutput) Errors() PrivateConnectionErrorArrayOutput {
 	return o.ApplyT(func(v *PrivateConnection) PrivateConnectionErrorArrayOutput { return v.Errors }).(PrivateConnectionErrorArrayOutput)
 }
 
-// Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
-// refer to the field 'effective_labels' for all of the labels present on the resource.
+// Labels.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o PrivateConnectionOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *PrivateConnection) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -399,6 +415,8 @@ func (o PrivateConnectionOutput) PrivateConnectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateConnection) pulumi.StringOutput { return v.PrivateConnectionId }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o PrivateConnectionOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateConnection) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

@@ -100,9 +100,6 @@ namespace Pulumi.Gcp.SecurityPosture
 
         /// <summary>
         /// ID of the posture deployment.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("postureDeploymentId")]
         public Output<string> PostureDeploymentId { get; private set; } = null!;
@@ -214,9 +211,6 @@ namespace Pulumi.Gcp.SecurityPosture
 
         /// <summary>
         /// ID of the posture deployment.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("postureDeploymentId", required: true)]
         public Input<string> PostureDeploymentId { get; set; } = null!;
@@ -314,9 +308,6 @@ namespace Pulumi.Gcp.SecurityPosture
 
         /// <summary>
         /// ID of the posture deployment.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("postureDeploymentId")]
         public Input<string>? PostureDeploymentId { get; set; }

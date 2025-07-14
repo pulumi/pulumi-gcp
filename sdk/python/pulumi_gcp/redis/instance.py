@@ -48,9 +48,6 @@ class InstanceArgs:
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[builtins.int] memory_size_gb: Redis memory size in GiB.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] alternative_location_id: Only applicable to STANDARD_HA tier which protects the instance
                against zonal failures by provisioning it across two zones.
                If provided, it must be a different zone from the one provided in
@@ -171,9 +168,6 @@ class InstanceArgs:
     def memory_size_gb(self) -> pulumi.Input[builtins.int]:
         """
         Redis memory size in GiB.
-
-
-        - - -
         """
         return pulumi.get(self, "memory_size_gb")
 
@@ -580,9 +574,6 @@ class _InstanceState:
                Structure is documented below.
         :param pulumi.Input[builtins.str] maintenance_version: The self service update maintenance version.
         :param pulumi.Input[builtins.int] memory_size_gb: Redis memory size in GiB.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The ID of the instance or a fully qualified identifier for the instance.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceNodeArgs']]] nodes: Output only. Info per node.
                Structure is documented below.
@@ -953,9 +944,6 @@ class _InstanceState:
     def memory_size_gb(self) -> Optional[pulumi.Input[builtins.int]]:
         """
         Redis memory size in GiB.
-
-
-        - - -
         """
         return pulumi.get(self, "memory_size_gb")
 
@@ -1506,9 +1494,6 @@ class Instance(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[builtins.str] maintenance_version: The self service update maintenance version.
         :param pulumi.Input[builtins.int] memory_size_gb: Redis memory size in GiB.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The ID of the instance or a fully qualified identifier for the instance.
         :param pulumi.Input[Union['InstancePersistenceConfigArgs', 'InstancePersistenceConfigArgsDict']] persistence_config: Persistence configuration for an instance.
                Structure is documented below.
@@ -1961,9 +1946,6 @@ class Instance(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[builtins.str] maintenance_version: The self service update maintenance version.
         :param pulumi.Input[builtins.int] memory_size_gb: Redis memory size in GiB.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The ID of the instance or a fully qualified identifier for the instance.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceNodeArgs', 'InstanceNodeArgsDict']]]] nodes: Output only. Info per node.
                Structure is documented below.
@@ -2234,9 +2216,6 @@ class Instance(pulumi.CustomResource):
     def memory_size_gb(self) -> pulumi.Output[builtins.int]:
         """
         Redis memory size in GiB.
-
-
-        - - -
         """
         return pulumi.get(self, "memory_size_gb")
 

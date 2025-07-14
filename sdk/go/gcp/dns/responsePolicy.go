@@ -162,8 +162,6 @@ type ResponsePolicy struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The user assigned name for this Response Policy, such as `myresponsepolicy`.
-	//
-	// ***
 	ResponsePolicyName pulumi.StringOutput `pulumi:"responsePolicyName"`
 }
 
@@ -212,8 +210,6 @@ type responsePolicyState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The user assigned name for this Response Policy, such as `myresponsepolicy`.
-	//
-	// ***
 	ResponsePolicyName *string `pulumi:"responsePolicyName"`
 }
 
@@ -230,8 +226,6 @@ type ResponsePolicyState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The user assigned name for this Response Policy, such as `myresponsepolicy`.
-	//
-	// ***
 	ResponsePolicyName pulumi.StringPtrInput
 }
 
@@ -252,8 +246,6 @@ type responsePolicyArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The user assigned name for this Response Policy, such as `myresponsepolicy`.
-	//
-	// ***
 	ResponsePolicyName string `pulumi:"responsePolicyName"`
 }
 
@@ -271,8 +263,6 @@ type ResponsePolicyArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The user assigned name for this Response Policy, such as `myresponsepolicy`.
-	//
-	// ***
 	ResponsePolicyName pulumi.StringInput
 }
 
@@ -387,8 +377,6 @@ func (o ResponsePolicyOutput) Project() pulumi.StringOutput {
 }
 
 // The user assigned name for this Response Policy, such as `myresponsepolicy`.
-//
-// ***
 func (o ResponsePolicyOutput) ResponsePolicyName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResponsePolicy) pulumi.StringOutput { return v.ResponsePolicyName }).(pulumi.StringOutput)
 }

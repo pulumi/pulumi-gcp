@@ -156,14 +156,16 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:memcache/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
     /**
-     * The full name of the GCE network to connect the instance to. If not provided, &#39;default&#39; will be used.
+     * The full name of the GCE network to connect the instance to.  If not provided,
+     * &#39;default&#39; will be used.
      * 
      */
     @Export(name="authorizedNetwork", refs={String.class}, tree="[0]")
     private Output<String> authorizedNetwork;
 
     /**
-     * @return The full name of the GCE network to connect the instance to. If not provided, &#39;default&#39; will be used.
+     * @return The full name of the GCE network to connect the instance to.  If not provided,
+     * &#39;default&#39; will be used.
      * 
      */
     public Output<String> authorizedNetwork() {
@@ -226,18 +228,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.effectiveLabels;
     }
     /**
-     * Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-     * labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the
-     * resource.
+     * Resource labels to represent user-provided metadata.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-     * labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the
-     * resource.
+     * @return Resource labels to represent user-provided metadata.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -245,6 +249,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * Maintenance policy for an instance.
+     * Structure is documented below.
      * 
      */
     @Export(name="maintenancePolicy", refs={InstanceMaintenancePolicy.class}, tree="[0]")
@@ -252,6 +257,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Maintenance policy for an instance.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<InstanceMaintenancePolicy>> maintenancePolicy() {
@@ -305,6 +311,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * User-specified parameters for this memcache instance.
+     * Structure is documented below.
      * 
      */
     @Export(name="memcacheParameters", refs={InstanceMemcacheParameters.class}, tree="[0]")
@@ -312,24 +319,29 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return User-specified parameters for this memcache instance.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<InstanceMemcacheParameters>> memcacheParameters() {
         return Codegen.optional(this.memcacheParameters);
     }
     /**
-     * The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest
-     * supported major version is MEMCACHE_1_5. The minor version will be automatically determined by our system based on the
-     * latest supported minor version. Default value: &#34;MEMCACHE_1_5&#34; Possible values: [&#34;MEMCACHE_1_5&#34;, &#34;MEMCACHE_1_6_15&#34;]
+     * The major version of Memcached software. If not provided, latest supported version will be used.
+     * Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
+     * determined by our system based on the latest supported minor version.
+     * Default value is `MEMCACHE_1_5`.
+     * Possible values are: `MEMCACHE_1_5`, `MEMCACHE_1_6_15`.
      * 
      */
     @Export(name="memcacheVersion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> memcacheVersion;
 
     /**
-     * @return The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest
-     * supported major version is MEMCACHE_1_5. The minor version will be automatically determined by our system based on the
-     * latest supported minor version. Default value: &#34;MEMCACHE_1_5&#34; Possible values: [&#34;MEMCACHE_1_5&#34;, &#34;MEMCACHE_1_6_15&#34;]
+     * @return The major version of Memcached software. If not provided, latest supported version will be used.
+     * Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
+     * determined by our system based on the latest supported minor version.
+     * Default value is `MEMCACHE_1_5`.
+     * Possible values are: `MEMCACHE_1_5`, `MEMCACHE_1_6_15`.
      * 
      */
     public Output<Optional<String>> memcacheVersion() {
@@ -379,9 +391,19 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<Integer> nodeCount() {
         return this.nodeCount;
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }
@@ -416,30 +438,34 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.region;
     }
     /**
-     * Contains the name of allocated IP address ranges associated with the private service access connection for example,
-     * &#34;test-default&#34; associated with IP range 10.0.0.0/29.
+     * Contains the name of allocated IP address ranges associated with
+     * the private service access connection for example, &#34;test-default&#34;
+     * associated with IP range 10.0.0.0/29.
      * 
      */
     @Export(name="reservedIpRangeIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> reservedIpRangeIds;
 
     /**
-     * @return Contains the name of allocated IP address ranges associated with the private service access connection for example,
-     * &#34;test-default&#34; associated with IP range 10.0.0.0/29.
+     * @return Contains the name of allocated IP address ranges associated with
+     * the private service access connection for example, &#34;test-default&#34;
+     * associated with IP range 10.0.0.0/29.
      * 
      */
     public Output<Optional<List<String>>> reservedIpRangeIds() {
         return Codegen.optional(this.reservedIpRangeIds);
     }
     /**
-     * Zones where memcache nodes should be provisioned. If not provided, all zones will be used.
+     * Zones where memcache nodes should be provisioned.  If not
+     * provided, all zones will be used.
      * 
      */
     @Export(name="zones", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> zones;
 
     /**
-     * @return Zones where memcache nodes should be provisioned. If not provided, all zones will be used.
+     * @return Zones where memcache nodes should be provisioned.  If not
+     * provided, all zones will be used.
      * 
      */
     public Output<List<String>> zones() {

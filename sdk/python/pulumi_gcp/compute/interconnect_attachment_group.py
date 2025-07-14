@@ -33,17 +33,23 @@ class InterconnectAttachmentGroupArgs:
         :param pulumi.Input['InterconnectAttachmentGroupIntentArgs'] intent: The user's intent for this group. This is the only required field besides
                the name that must be specified on group creation.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupAttachmentArgs']]] attachments: (Output)
-               URLs of any particular Attachments to explain this
-               blocker in more detail.
+        :param pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupAttachmentArgs']]] attachments: Attachments in the AttachmentGroup. Keys are arbitrary user-specified
+               strings. Users are encouraged, but not required, to use their preferred
+               format for resource links as keys.
+               Note that there are add-members and remove-members methods in gcloud.
+               The size of this map is limited by an "Attachments per group" quota.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[builtins.str] interconnect_group: The URL of an InterconnectGroup that groups these Attachments' Interconnects. Customers do not need to set this unless
-               directed by Google Support.
+        :param pulumi.Input[builtins.str] interconnect_group: The URL of an InterconnectGroup that groups these Attachments'
+               Interconnects. Customers do not need to set this unless directed by
+               Google Support.
         :param pulumi.Input[builtins.str] name: Name of the resource. Provided by the client when the resource is created. The name must be
                1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?` which means the first
                character must be a lowercase letter, and all following characters must be a dash,
                lowercase letter, or digit, except the last character, which cannot be a dash.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "intent", intent)
         if attachments is not None:
@@ -75,9 +81,12 @@ class InterconnectAttachmentGroupArgs:
     @pulumi.getter
     def attachments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupAttachmentArgs']]]]:
         """
-        (Output)
-        URLs of any particular Attachments to explain this
-        blocker in more detail.
+        Attachments in the AttachmentGroup. Keys are arbitrary user-specified
+        strings. Users are encouraged, but not required, to use their preferred
+        format for resource links as keys.
+        Note that there are add-members and remove-members methods in gcloud.
+        The size of this map is limited by an "Attachments per group" quota.
+        Structure is documented below.
         """
         return pulumi.get(self, "attachments")
 
@@ -101,8 +110,9 @@ class InterconnectAttachmentGroupArgs:
     @pulumi.getter(name="interconnectGroup")
     def interconnect_group(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The URL of an InterconnectGroup that groups these Attachments' Interconnects. Customers do not need to set this unless
-        directed by Google Support.
+        The URL of an InterconnectGroup that groups these Attachments'
+        Interconnects. Customers do not need to set this unless directed by
+        Google Support.
         """
         return pulumi.get(self, "interconnect_group")
 
@@ -129,6 +139,10 @@ class InterconnectAttachmentGroupArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -150,9 +164,12 @@ class _InterconnectAttachmentGroupState:
                  project: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering InterconnectAttachmentGroup resources.
-        :param pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupAttachmentArgs']]] attachments: (Output)
-               URLs of any particular Attachments to explain this
-               blocker in more detail.
+        :param pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupAttachmentArgs']]] attachments: Attachments in the AttachmentGroup. Keys are arbitrary user-specified
+               strings. Users are encouraged, but not required, to use their preferred
+               format for resource links as keys.
+               Note that there are add-members and remove-members methods in gcloud.
+               The size of this map is limited by an "Attachments per group" quota.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupConfiguredArgs']]] configureds: The redundancy this group is configured to support. The way a
                user queries what SLA their Attachment gets is by looking at this field of
                the Attachment's AttachmentGroup.
@@ -162,8 +179,9 @@ class _InterconnectAttachmentGroupState:
         :param pulumi.Input['InterconnectAttachmentGroupIntentArgs'] intent: The user's intent for this group. This is the only required field besides
                the name that must be specified on group creation.
                Structure is documented below.
-        :param pulumi.Input[builtins.str] interconnect_group: The URL of an InterconnectGroup that groups these Attachments' Interconnects. Customers do not need to set this unless
-               directed by Google Support.
+        :param pulumi.Input[builtins.str] interconnect_group: The URL of an InterconnectGroup that groups these Attachments'
+               Interconnects. Customers do not need to set this unless directed by
+               Google Support.
         :param pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupLogicalStructureArgs']]] logical_structures: An analysis of the logical layout of Attachments in this
                group. Every Attachment in the group is shown once in this structure.
                Structure is documented below.
@@ -172,6 +190,8 @@ class _InterconnectAttachmentGroupState:
                long and match the regular expression `a-z?` which means the first
                character must be a lowercase letter, and all following characters must be a dash,
                lowercase letter, or digit, except the last character, which cannot be a dash.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         if attachments is not None:
             pulumi.set(__self__, "attachments", attachments)
@@ -196,9 +216,12 @@ class _InterconnectAttachmentGroupState:
     @pulumi.getter
     def attachments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupAttachmentArgs']]]]:
         """
-        (Output)
-        URLs of any particular Attachments to explain this
-        blocker in more detail.
+        Attachments in the AttachmentGroup. Keys are arbitrary user-specified
+        strings. Users are encouraged, but not required, to use their preferred
+        format for resource links as keys.
+        Note that there are add-members and remove-members methods in gcloud.
+        The size of this map is limited by an "Attachments per group" quota.
+        Structure is documented below.
         """
         return pulumi.get(self, "attachments")
 
@@ -263,8 +286,9 @@ class _InterconnectAttachmentGroupState:
     @pulumi.getter(name="interconnectGroup")
     def interconnect_group(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The URL of an InterconnectGroup that groups these Attachments' Interconnects. Customers do not need to set this unless
-        directed by Google Support.
+        The URL of an InterconnectGroup that groups these Attachments'
+        Interconnects. Customers do not need to set this unless directed by
+        Google Support.
         """
         return pulumi.get(self, "interconnect_group")
 
@@ -305,6 +329,10 @@ class _InterconnectAttachmentGroupState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -376,20 +404,26 @@ class InterconnectAttachmentGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InterconnectAttachmentGroupAttachmentArgs', 'InterconnectAttachmentGroupAttachmentArgsDict']]]] attachments: (Output)
-               URLs of any particular Attachments to explain this
-               blocker in more detail.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InterconnectAttachmentGroupAttachmentArgs', 'InterconnectAttachmentGroupAttachmentArgsDict']]]] attachments: Attachments in the AttachmentGroup. Keys are arbitrary user-specified
+               strings. Users are encouraged, but not required, to use their preferred
+               format for resource links as keys.
+               Note that there are add-members and remove-members methods in gcloud.
+               The size of this map is limited by an "Attachments per group" quota.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Union['InterconnectAttachmentGroupIntentArgs', 'InterconnectAttachmentGroupIntentArgsDict']] intent: The user's intent for this group. This is the only required field besides
                the name that must be specified on group creation.
                Structure is documented below.
-        :param pulumi.Input[builtins.str] interconnect_group: The URL of an InterconnectGroup that groups these Attachments' Interconnects. Customers do not need to set this unless
-               directed by Google Support.
+        :param pulumi.Input[builtins.str] interconnect_group: The URL of an InterconnectGroup that groups these Attachments'
+               Interconnects. Customers do not need to set this unless directed by
+               Google Support.
         :param pulumi.Input[builtins.str] name: Name of the resource. Provided by the client when the resource is created. The name must be
                1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?` which means the first
                character must be a lowercase letter, and all following characters must be a dash,
                lowercase letter, or digit, except the last character, which cannot be a dash.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         ...
     @overload
@@ -513,9 +547,12 @@ class InterconnectAttachmentGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InterconnectAttachmentGroupAttachmentArgs', 'InterconnectAttachmentGroupAttachmentArgsDict']]]] attachments: (Output)
-               URLs of any particular Attachments to explain this
-               blocker in more detail.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InterconnectAttachmentGroupAttachmentArgs', 'InterconnectAttachmentGroupAttachmentArgsDict']]]] attachments: Attachments in the AttachmentGroup. Keys are arbitrary user-specified
+               strings. Users are encouraged, but not required, to use their preferred
+               format for resource links as keys.
+               Note that there are add-members and remove-members methods in gcloud.
+               The size of this map is limited by an "Attachments per group" quota.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InterconnectAttachmentGroupConfiguredArgs', 'InterconnectAttachmentGroupConfiguredArgsDict']]]] configureds: The redundancy this group is configured to support. The way a
                user queries what SLA their Attachment gets is by looking at this field of
                the Attachment's AttachmentGroup.
@@ -525,8 +562,9 @@ class InterconnectAttachmentGroup(pulumi.CustomResource):
         :param pulumi.Input[Union['InterconnectAttachmentGroupIntentArgs', 'InterconnectAttachmentGroupIntentArgsDict']] intent: The user's intent for this group. This is the only required field besides
                the name that must be specified on group creation.
                Structure is documented below.
-        :param pulumi.Input[builtins.str] interconnect_group: The URL of an InterconnectGroup that groups these Attachments' Interconnects. Customers do not need to set this unless
-               directed by Google Support.
+        :param pulumi.Input[builtins.str] interconnect_group: The URL of an InterconnectGroup that groups these Attachments'
+               Interconnects. Customers do not need to set this unless directed by
+               Google Support.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InterconnectAttachmentGroupLogicalStructureArgs', 'InterconnectAttachmentGroupLogicalStructureArgsDict']]]] logical_structures: An analysis of the logical layout of Attachments in this
                group. Every Attachment in the group is shown once in this structure.
                Structure is documented below.
@@ -535,6 +573,8 @@ class InterconnectAttachmentGroup(pulumi.CustomResource):
                long and match the regular expression `a-z?` which means the first
                character must be a lowercase letter, and all following characters must be a dash,
                lowercase letter, or digit, except the last character, which cannot be a dash.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -555,9 +595,12 @@ class InterconnectAttachmentGroup(pulumi.CustomResource):
     @pulumi.getter
     def attachments(self) -> pulumi.Output[Optional[Sequence['outputs.InterconnectAttachmentGroupAttachment']]]:
         """
-        (Output)
-        URLs of any particular Attachments to explain this
-        blocker in more detail.
+        Attachments in the AttachmentGroup. Keys are arbitrary user-specified
+        strings. Users are encouraged, but not required, to use their preferred
+        format for resource links as keys.
+        Note that there are add-members and remove-members methods in gcloud.
+        The size of this map is limited by an "Attachments per group" quota.
+        Structure is documented below.
         """
         return pulumi.get(self, "attachments")
 
@@ -602,8 +645,9 @@ class InterconnectAttachmentGroup(pulumi.CustomResource):
     @pulumi.getter(name="interconnectGroup")
     def interconnect_group(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The URL of an InterconnectGroup that groups these Attachments' Interconnects. Customers do not need to set this unless
-        directed by Google Support.
+        The URL of an InterconnectGroup that groups these Attachments'
+        Interconnects. Customers do not need to set this unless directed by
+        Google Support.
         """
         return pulumi.get(self, "interconnect_group")
 
@@ -632,5 +676,9 @@ class InterconnectAttachmentGroup(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 

@@ -288,9 +288,6 @@ namespace Pulumi.Gcp.Diagflow
 
         /// <summary>
         /// High level description of the Tool and its usage.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
@@ -393,9 +390,6 @@ namespace Pulumi.Gcp.Diagflow
 
         /// <summary>
         /// High level description of the Tool and its usage.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
@@ -447,9 +441,6 @@ namespace Pulumi.Gcp.Diagflow
 
         /// <summary>
         /// High level description of the Tool and its usage.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

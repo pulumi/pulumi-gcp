@@ -175,9 +175,6 @@ export class Entry extends pulumi.CustomResource {
     public readonly entryGroup!: pulumi.Output<string>;
     /**
      * The id of the entry to create.
-     *
-     *
-     * - - -
      */
     public readonly entryId!: pulumi.Output<string>;
     /**
@@ -317,9 +314,6 @@ export interface EntryState {
     entryGroup?: pulumi.Input<string>;
     /**
      * The id of the entry to create.
-     *
-     *
-     * - - -
      */
     entryId?: pulumi.Input<string>;
     /**
@@ -394,9 +388,6 @@ export interface EntryArgs {
     entryGroup: pulumi.Input<string>;
     /**
      * The id of the entry to create.
-     *
-     *
-     * - - -
      */
     entryId: pulumi.Input<string>;
     /**

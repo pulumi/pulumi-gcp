@@ -84,8 +84,6 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
      * If auto-generating Id server-side, remove this field and
      * connection_id from the method_signature of Create RPC
      * 
-     * ***
-     * 
      */
     @Import(name="connectionId")
     private @Nullable Output<String> connectionId;
@@ -94,8 +92,6 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
      * @return Required. Id of the requesting object
      * If auto-generating Id server-side, remove this field and
      * connection_id from the method_signature of Create RPC
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> connectionId() {
@@ -555,8 +551,6 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
          * If auto-generating Id server-side, remove this field and
          * connection_id from the method_signature of Create RPC
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -569,8 +563,6 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
          * @param connectionId Required. Id of the requesting object
          * If auto-generating Id server-side, remove this field and
          * connection_id from the method_signature of Create RPC
-         * 
-         * ***
          * 
          * @return builder
          * 

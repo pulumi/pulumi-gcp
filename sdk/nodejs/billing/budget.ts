@@ -282,8 +282,10 @@ export class Budget extends pulumi.CustomResource {
     }
 
     /**
-     * Defines notifications that are sent on every update to the billing account's spend, regardless of the thresholds defined
+     * Defines notifications that are sent on every update to the
+     * billing account's spend, regardless of the thresholds defined
      * using threshold rules.
+     * Structure is documented below.
      */
     public readonly allUpdatesRule!: pulumi.Output<outputs.billing.BudgetAllUpdatesRule | undefined>;
     /**
@@ -296,7 +298,9 @@ export class Budget extends pulumi.CustomResource {
      */
     public readonly billingAccount!: pulumi.Output<string>;
     /**
-     * Filters that define which resources are used to compute the actual spend against the budget.
+     * Filters that define which resources are used to compute the actual
+     * spend against the budget.
+     * Structure is documented below.
      */
     public readonly budgetFilter!: pulumi.Output<outputs.billing.BudgetBudgetFilter>;
     /**
@@ -310,13 +314,16 @@ export class Budget extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * The ownership scope of the budget. The ownership scope and users' IAM permissions determine who has full access to the
-     * budget's data. Possible values: ["OWNERSHIP_SCOPE_UNSPECIFIED", "ALL_USERS", "BILLING_ACCOUNT"]
+     * The ownership scope of the budget. The ownership scope and users'
+     * IAM permissions determine who has full access to the budget's data.
+     * Possible values are: `OWNERSHIP_SCOPE_UNSPECIFIED`, `ALL_USERS`, `BILLING_ACCOUNT`.
      */
     public readonly ownershipScope!: pulumi.Output<string | undefined>;
     /**
-     * Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of
-     * the budget.
+     * Rules that trigger alerts (notifications of thresholds being
+     * crossed) when spend exceeds the specified percentages of the
+     * budget.
+     * Structure is documented below.
      */
     public readonly thresholdRules!: pulumi.Output<outputs.billing.BudgetThresholdRule[] | undefined>;
 
@@ -368,8 +375,10 @@ export class Budget extends pulumi.CustomResource {
  */
 export interface BudgetState {
     /**
-     * Defines notifications that are sent on every update to the billing account's spend, regardless of the thresholds defined
+     * Defines notifications that are sent on every update to the
+     * billing account's spend, regardless of the thresholds defined
      * using threshold rules.
+     * Structure is documented below.
      */
     allUpdatesRule?: pulumi.Input<inputs.billing.BudgetAllUpdatesRule>;
     /**
@@ -382,7 +391,9 @@ export interface BudgetState {
      */
     billingAccount?: pulumi.Input<string>;
     /**
-     * Filters that define which resources are used to compute the actual spend against the budget.
+     * Filters that define which resources are used to compute the actual
+     * spend against the budget.
+     * Structure is documented below.
      */
     budgetFilter?: pulumi.Input<inputs.billing.BudgetBudgetFilter>;
     /**
@@ -396,13 +407,16 @@ export interface BudgetState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The ownership scope of the budget. The ownership scope and users' IAM permissions determine who has full access to the
-     * budget's data. Possible values: ["OWNERSHIP_SCOPE_UNSPECIFIED", "ALL_USERS", "BILLING_ACCOUNT"]
+     * The ownership scope of the budget. The ownership scope and users'
+     * IAM permissions determine who has full access to the budget's data.
+     * Possible values are: `OWNERSHIP_SCOPE_UNSPECIFIED`, `ALL_USERS`, `BILLING_ACCOUNT`.
      */
     ownershipScope?: pulumi.Input<string>;
     /**
-     * Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of
-     * the budget.
+     * Rules that trigger alerts (notifications of thresholds being
+     * crossed) when spend exceeds the specified percentages of the
+     * budget.
+     * Structure is documented below.
      */
     thresholdRules?: pulumi.Input<pulumi.Input<inputs.billing.BudgetThresholdRule>[]>;
 }
@@ -412,8 +426,10 @@ export interface BudgetState {
  */
 export interface BudgetArgs {
     /**
-     * Defines notifications that are sent on every update to the billing account's spend, regardless of the thresholds defined
+     * Defines notifications that are sent on every update to the
+     * billing account's spend, regardless of the thresholds defined
      * using threshold rules.
+     * Structure is documented below.
      */
     allUpdatesRule?: pulumi.Input<inputs.billing.BudgetAllUpdatesRule>;
     /**
@@ -426,7 +442,9 @@ export interface BudgetArgs {
      */
     billingAccount: pulumi.Input<string>;
     /**
-     * Filters that define which resources are used to compute the actual spend against the budget.
+     * Filters that define which resources are used to compute the actual
+     * spend against the budget.
+     * Structure is documented below.
      */
     budgetFilter?: pulumi.Input<inputs.billing.BudgetBudgetFilter>;
     /**
@@ -434,13 +452,16 @@ export interface BudgetArgs {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * The ownership scope of the budget. The ownership scope and users' IAM permissions determine who has full access to the
-     * budget's data. Possible values: ["OWNERSHIP_SCOPE_UNSPECIFIED", "ALL_USERS", "BILLING_ACCOUNT"]
+     * The ownership scope of the budget. The ownership scope and users'
+     * IAM permissions determine who has full access to the budget's data.
+     * Possible values are: `OWNERSHIP_SCOPE_UNSPECIFIED`, `ALL_USERS`, `BILLING_ACCOUNT`.
      */
     ownershipScope?: pulumi.Input<string>;
     /**
-     * Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of
-     * the budget.
+     * Rules that trigger alerts (notifications of thresholds being
+     * crossed) when spend exceeds the specified percentages of the
+     * budget.
+     * Structure is documented below.
      */
     thresholdRules?: pulumi.Input<pulumi.Input<inputs.billing.BudgetThresholdRule>[]>;
 }

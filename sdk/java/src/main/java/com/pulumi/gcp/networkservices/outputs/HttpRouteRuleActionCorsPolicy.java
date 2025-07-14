@@ -41,8 +41,6 @@ public final class HttpRouteRuleActionCorsPolicy {
     /**
      * @return If true, the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
      * 
-     * ***
-     * 
      */
     private @Nullable Boolean disabled;
     /**
@@ -94,8 +92,6 @@ public final class HttpRouteRuleActionCorsPolicy {
     }
     /**
      * @return If true, the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
-     * 
-     * ***
      * 
      */
     public Optional<Boolean> disabled() {

@@ -31,9 +31,6 @@ class AiFeatureGroupFeatureArgs:
         The set of arguments for constructing a AiFeatureGroupFeature resource.
         :param pulumi.Input[builtins.str] feature_group: The name of the Feature Group.
         :param pulumi.Input[builtins.str] region: The region for the resource. It should be the same as the feature group's region.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] description: The description of the FeatureGroup.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: The labels with user-defined metadata to organize your FeatureGroup.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -73,9 +70,6 @@ class AiFeatureGroupFeatureArgs:
     def region(self) -> pulumi.Input[builtins.str]:
         """
         The region for the resource. It should be the same as the feature group's region.
-
-
-        - - -
         """
         return pulumi.get(self, "region")
 
@@ -176,9 +170,6 @@ class _AiFeatureGroupFeatureState:
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[builtins.str] region: The region for the resource. It should be the same as the feature group's region.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] update_time: The timestamp of when the FeatureGroup was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[builtins.str] version_column_name: The name of the BigQuery Table/View column hosting data for this version. If no value is provided, will use featureId.
         """
@@ -310,9 +301,6 @@ class _AiFeatureGroupFeatureState:
     def region(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The region for the resource. It should be the same as the feature group's region.
-
-
-        - - -
         """
         return pulumi.get(self, "region")
 
@@ -472,9 +460,6 @@ class AiFeatureGroupFeature(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] region: The region for the resource. It should be the same as the feature group's region.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] version_column_name: The name of the BigQuery Table/View column hosting data for this version. If no value is provided, will use featureId.
         """
         ...
@@ -674,9 +659,6 @@ class AiFeatureGroupFeature(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[builtins.str] region: The region for the resource. It should be the same as the feature group's region.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] update_time: The timestamp of when the FeatureGroup was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[builtins.str] version_column_name: The name of the BigQuery Table/View column hosting data for this version. If no value is provided, will use featureId.
         """
@@ -770,9 +752,6 @@ class AiFeatureGroupFeature(pulumi.CustomResource):
     def region(self) -> pulumi.Output[builtins.str]:
         """
         The region for the resource. It should be the same as the feature group's region.
-
-
-        - - -
         """
         return pulumi.get(self, "region")
 

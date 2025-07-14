@@ -3413,8 +3413,6 @@ if not MYPY:
         root_path: NotRequired[pulumi.Input[builtins.str]]
         """
         The root path inside the Cloud Storage bucket.
-
-        - - -
         """
 elif False:
     StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -3433,8 +3431,6 @@ class StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs:
         :param pulumi.Input[builtins.str] file_format: The file format.
         :param pulumi.Input[builtins.str] table_format: The table format.
         :param pulumi.Input[builtins.str] root_path: The root path inside the Cloud Storage bucket.
-               
-               - - -
         """
         pulumi.set(__self__, "bucket", bucket)
         pulumi.set(__self__, "connection_name", connection_name)
@@ -3496,8 +3492,6 @@ class StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs:
     def root_path(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The root path inside the Cloud Storage bucket.
-
-        - - -
         """
         return pulumi.get(self, "root_path")
 

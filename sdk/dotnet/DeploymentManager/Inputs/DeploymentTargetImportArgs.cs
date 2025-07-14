@@ -21,8 +21,6 @@ namespace Pulumi.Gcp.DeploymentManager.Inputs
         /// <summary>
         /// The name of the template to import, as declared in the YAML
         /// configuration.
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

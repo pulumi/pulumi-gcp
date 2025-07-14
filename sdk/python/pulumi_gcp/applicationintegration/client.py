@@ -30,9 +30,6 @@ class ClientArgs:
         """
         The set of arguments for constructing a Client resource.
         :param pulumi.Input[builtins.str] location: Location in which client needs to be provisioned.
-               
-               
-               - - -
         :param pulumi.Input['ClientCloudKmsConfigArgs'] cloud_kms_config: Cloud KMS config for AuthModule to encrypt/decrypt credentials.
                Structure is documented below.
         :param pulumi.Input[builtins.bool] create_sample_integrations: Indicates if sample integrations should be created along with provisioning.
@@ -61,9 +58,6 @@ class ClientArgs:
     def location(self) -> pulumi.Input[builtins.str]:
         """
         Location in which client needs to be provisioned.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -140,9 +134,6 @@ class _ClientState:
                Structure is documented below.
         :param pulumi.Input[builtins.bool] create_sample_integrations: Indicates if sample integrations should be created along with provisioning.
         :param pulumi.Input[builtins.str] location: Location in which client needs to be provisioned.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] run_as_service_account: (Optional, Deprecated)
@@ -194,9 +185,6 @@ class _ClientState:
     def location(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Location in which client needs to be provisioned.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -321,9 +309,6 @@ class Client(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[builtins.bool] create_sample_integrations: Indicates if sample integrations should be created along with provisioning.
         :param pulumi.Input[builtins.str] location: Location in which client needs to be provisioned.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] run_as_service_account: (Optional, Deprecated)
@@ -468,9 +453,6 @@ class Client(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[builtins.bool] create_sample_integrations: Indicates if sample integrations should be created along with provisioning.
         :param pulumi.Input[builtins.str] location: Location in which client needs to be provisioned.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] run_as_service_account: (Optional, Deprecated)
@@ -511,9 +493,6 @@ class Client(pulumi.CustomResource):
     def location(self) -> pulumi.Output[builtins.str]:
         """
         Location in which client needs to be provisioned.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

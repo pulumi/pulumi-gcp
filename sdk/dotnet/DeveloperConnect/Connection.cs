@@ -556,9 +556,6 @@ namespace Pulumi.Gcp.DeveloperConnect
         /// Required. Id of the requesting object
         /// If auto-generating Id server-side, remove this field and
         /// connection_id from the method_signature of Create RPC
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("connectionId")]
         public Output<string> ConnectionId { get; private set; } = null!;
@@ -782,9 +779,6 @@ namespace Pulumi.Gcp.DeveloperConnect
         /// Required. Id of the requesting object
         /// If auto-generating Id server-side, remove this field and
         /// connection_id from the method_signature of Create RPC
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("connectionId", required: true)]
         public Input<string> ConnectionId { get; set; } = null!;
@@ -908,9 +902,6 @@ namespace Pulumi.Gcp.DeveloperConnect
         /// Required. Id of the requesting object
         /// If auto-generating Id server-side, remove this field and
         /// connection_id from the method_signature of Create RPC
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("connectionId")]
         public Input<string>? ConnectionId { get; set; }

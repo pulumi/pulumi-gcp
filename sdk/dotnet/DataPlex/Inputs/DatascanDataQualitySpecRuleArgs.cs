@@ -96,6 +96,12 @@ namespace Pulumi.Gcp.DataPlex.Inputs
         public Input<Inputs.DatascanDataQualitySpecRuleStatisticRangeExpectationArgs>? StatisticRangeExpectation { get; set; }
 
         /// <summary>
+        /// Whether the Rule is active or suspended. Default = false.
+        /// </summary>
+        [Input("suspended")]
+        public Input<bool>? Suspended { get; set; }
+
+        /// <summary>
         /// Table rule which evaluates whether the provided expression is true.
         /// Structure is documented below.
         /// </summary>

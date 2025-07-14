@@ -1025,6 +1025,14 @@ Object.defineProperty(exports, "mlEngineCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const modelArmorCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "modelArmorCustomEndpoint", {
+    get() {
+        return __config.get("modelArmorCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const monitoringCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "monitoringCustomEndpoint", {
     get() {

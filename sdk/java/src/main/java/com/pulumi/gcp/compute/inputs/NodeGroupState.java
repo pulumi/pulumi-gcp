@@ -156,16 +156,12 @@ public final class NodeGroupState extends com.pulumi.resources.ResourceArgs {
     /**
      * The URL of the node template to which this node group belongs.
      * 
-     * ***
-     * 
      */
     @Import(name="nodeTemplate")
     private @Nullable Output<String> nodeTemplate;
 
     /**
      * @return The URL of the node template to which this node group belongs.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> nodeTemplate() {
@@ -473,8 +469,6 @@ public final class NodeGroupState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param nodeTemplate The URL of the node template to which this node group belongs.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -485,8 +479,6 @@ public final class NodeGroupState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param nodeTemplate The URL of the node template to which this node group belongs.
-         * 
-         * ***
          * 
          * @return builder
          * 

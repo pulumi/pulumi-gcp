@@ -12,6 +12,10 @@ namespace Pulumi.Gcp.GkeOnPrem
     /// <summary>
     /// A Google Bare Metal Admin Cluster.
     /// 
+    /// To get more information about BareMetalAdminCluster, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/kubernetes-engine/distributed-cloud/reference/on-prem-api/rest/v1/projects.locations.bareMetalAdminClusters)
+    /// 
     /// ## Example Usage
     /// 
     /// ### Gkeonprem Bare Metal Admin Cluster Basic
@@ -406,9 +410,6 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// The location of the resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -618,9 +619,6 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// The location of the resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -821,9 +819,6 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// The location of the resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

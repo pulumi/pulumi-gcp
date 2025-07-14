@@ -159,6 +159,10 @@ export class RouterRoutePolicy extends pulumi.CustomResource {
      * Name of the route policy. This policy's name, which must be a resource ID segment and unique within all policies owned by the Router
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * Region where the router and NAT reside.
@@ -174,8 +178,8 @@ export class RouterRoutePolicy extends pulumi.CustomResource {
      */
     public readonly terms!: pulumi.Output<outputs.compute.RouterRoutePolicyTerm[]>;
     /**
-     * This is policy's type, which is one of IMPORT or EXPORT Possible values: ["ROUTE_POLICY_TYPE_IMPORT",
-     * "ROUTE_POLICY_TYPE_EXPORT"]
+     * This is policy's type, which is one of IMPORT or EXPORT
+     * Possible values are: `ROUTE_POLICY_TYPE_IMPORT`, `ROUTE_POLICY_TYPE_EXPORT`.
      */
     public readonly type!: pulumi.Output<string | undefined>;
 
@@ -233,6 +237,10 @@ export interface RouterRoutePolicyState {
      * Name of the route policy. This policy's name, which must be a resource ID segment and unique within all policies owned by the Router
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * Region where the router and NAT reside.
@@ -248,8 +256,8 @@ export interface RouterRoutePolicyState {
      */
     terms?: pulumi.Input<pulumi.Input<inputs.compute.RouterRoutePolicyTerm>[]>;
     /**
-     * This is policy's type, which is one of IMPORT or EXPORT Possible values: ["ROUTE_POLICY_TYPE_IMPORT",
-     * "ROUTE_POLICY_TYPE_EXPORT"]
+     * This is policy's type, which is one of IMPORT or EXPORT
+     * Possible values are: `ROUTE_POLICY_TYPE_IMPORT`, `ROUTE_POLICY_TYPE_EXPORT`.
      */
     type?: pulumi.Input<string>;
 }
@@ -262,6 +270,10 @@ export interface RouterRoutePolicyArgs {
      * Name of the route policy. This policy's name, which must be a resource ID segment and unique within all policies owned by the Router
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * Region where the router and NAT reside.
@@ -277,8 +289,8 @@ export interface RouterRoutePolicyArgs {
      */
     terms: pulumi.Input<pulumi.Input<inputs.compute.RouterRoutePolicyTerm>[]>;
     /**
-     * This is policy's type, which is one of IMPORT or EXPORT Possible values: ["ROUTE_POLICY_TYPE_IMPORT",
-     * "ROUTE_POLICY_TYPE_EXPORT"]
+     * This is policy's type, which is one of IMPORT or EXPORT
+     * Possible values are: `ROUTE_POLICY_TYPE_IMPORT`, `ROUTE_POLICY_TYPE_EXPORT`.
      */
     type?: pulumi.Input<string>;
 }

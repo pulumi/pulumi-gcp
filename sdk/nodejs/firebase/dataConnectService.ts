@@ -192,9 +192,6 @@ export class DataConnectService extends pulumi.CustomResource {
     /**
      * Required. The ID to use for the service, which will become the final component of the
      * service's resource name.
-     *
-     *
-     * - - -
      */
     public readonly serviceId!: pulumi.Output<string>;
     /**
@@ -344,9 +341,6 @@ export interface DataConnectServiceState {
     /**
      * Required. The ID to use for the service, which will become the final component of the
      * service's resource name.
-     *
-     *
-     * - - -
      */
     serviceId?: pulumi.Input<string>;
     /**
@@ -399,9 +393,6 @@ export interface DataConnectServiceArgs {
     /**
      * Required. The ID to use for the service, which will become the final component of the
      * service's resource name.
-     *
-     *
-     * - - -
      */
     serviceId: pulumi.Input<string>;
 }

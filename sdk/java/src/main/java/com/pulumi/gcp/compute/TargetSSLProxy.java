@@ -130,16 +130,12 @@ public class TargetSSLProxy extends com.pulumi.resources.CustomResource {
     /**
      * A reference to the BackendService resource.
      * 
-     * ***
-     * 
      */
     @Export(name="backendService", refs={String.class}, tree="[0]")
     private Output<String> backendService;
 
     /**
      * @return A reference to the BackendService resource.
-     * 
-     * ***
      * 
      */
     public Output<String> backendService() {

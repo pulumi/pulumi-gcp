@@ -41,8 +41,6 @@ namespace Pulumi.Gcp.CloudQuota.Inputs
         /// <summary>
         /// (Output)
         /// The origin of the quota preference request.
-        /// 
-        /// - - -
         /// </summary>
         [Input("requestOrigin")]
         public Input<string>? RequestOrigin { get; set; }

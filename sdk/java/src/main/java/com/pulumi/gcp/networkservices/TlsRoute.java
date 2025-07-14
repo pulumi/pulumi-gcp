@@ -298,36 +298,34 @@ public class TlsRoute extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests
-     * served by the gateway. Each gateway reference should match the pattern:
-     * projects/*&#47;locations/global/gateways/&lt;gateway_name&gt;
+     * Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
+     * Each gateway reference should match the pattern: projects/*&#47;locations/global/gateways/&lt;gateway_name&gt;
      * 
      */
     @Export(name="gateways", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> gateways;
 
     /**
-     * @return Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests
-     * served by the gateway. Each gateway reference should match the pattern:
-     * projects/*&#47;locations/global/gateways/&lt;gateway_name&gt;
+     * @return Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
+     * Each gateway reference should match the pattern: projects/*&#47;locations/global/gateways/&lt;gateway_name&gt;
      * 
      */
     public Output<Optional<List<String>>> gateways() {
         return Codegen.optional(this.gateways);
     }
     /**
-     * Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served
-     * by the mesh. Each mesh reference should match the pattern: projects/*&#47;locations/global/meshes/&lt;mesh_name&gt; The attached
-     * Mesh should be of a type SIDECAR
+     * Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
+     * Each mesh reference should match the pattern: projects/*&#47;locations/global/meshes/&lt;mesh_name&gt;
+     * The attached Mesh should be of a type SIDECAR
      * 
      */
     @Export(name="meshes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> meshes;
 
     /**
-     * @return Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served
-     * by the mesh. Each mesh reference should match the pattern: projects/*&#47;locations/global/meshes/&lt;mesh_name&gt; The attached
-     * Mesh should be of a type SIDECAR
+     * @return Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
+     * Each mesh reference should match the pattern: projects/*&#47;locations/global/meshes/&lt;mesh_name&gt;
+     * The attached Mesh should be of a type SIDECAR
      * 
      */
     public Output<Optional<List<String>>> meshes() {
@@ -347,9 +345,19 @@ public class TlsRoute extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }

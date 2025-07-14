@@ -171,8 +171,6 @@ type AiFeatureGroupFeature struct {
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The region for the resource. It should be the same as the feature group's region.
-	//
-	// ***
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The timestamp of when the FeatureGroup was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -242,8 +240,6 @@ type aiFeatureGroupFeatureState struct {
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The region for the resource. It should be the same as the feature group's region.
-	//
-	// ***
 	Region *string `pulumi:"region"`
 	// The timestamp of when the FeatureGroup was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -273,8 +269,6 @@ type AiFeatureGroupFeatureState struct {
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The region for the resource. It should be the same as the feature group's region.
-	//
-	// ***
 	Region pulumi.StringPtrInput
 	// The timestamp of when the FeatureGroup was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringPtrInput
@@ -301,8 +295,6 @@ type aiFeatureGroupFeatureArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The region for the resource. It should be the same as the feature group's region.
-	//
-	// ***
 	Region string `pulumi:"region"`
 	// The name of the BigQuery Table/View column hosting data for this version. If no value is provided, will use featureId.
 	VersionColumnName *string `pulumi:"versionColumnName"`
@@ -324,8 +316,6 @@ type AiFeatureGroupFeatureArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The region for the resource. It should be the same as the feature group's region.
-	//
-	// ***
 	Region pulumi.StringInput
 	// The name of the BigQuery Table/View column hosting data for this version. If no value is provided, will use featureId.
 	VersionColumnName pulumi.StringPtrInput
@@ -463,8 +453,6 @@ func (o AiFeatureGroupFeatureOutput) PulumiLabels() pulumi.StringMapOutput {
 }
 
 // The region for the resource. It should be the same as the feature group's region.
-//
-// ***
 func (o AiFeatureGroupFeatureOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiFeatureGroupFeature) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

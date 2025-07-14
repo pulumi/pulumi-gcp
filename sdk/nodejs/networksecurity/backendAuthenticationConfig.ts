@@ -195,9 +195,6 @@ export class BackendAuthenticationConfig extends pulumi.CustomResource {
     public readonly location!: pulumi.Output<string | undefined>;
     /**
      * Name of the BackendAuthenticationConfig resource.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -308,9 +305,6 @@ export interface BackendAuthenticationConfigState {
     location?: pulumi.Input<string>;
     /**
      * Name of the BackendAuthenticationConfig resource.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -367,9 +361,6 @@ export interface BackendAuthenticationConfigArgs {
     location?: pulumi.Input<string>;
     /**
      * Name of the BackendAuthenticationConfig resource.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

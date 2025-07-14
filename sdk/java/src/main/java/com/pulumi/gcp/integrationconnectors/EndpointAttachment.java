@@ -201,16 +201,12 @@ public class EndpointAttachment extends com.pulumi.resources.CustomResource {
     /**
      * Name of Endpoint Attachment needs to be created.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return Name of Endpoint Attachment needs to be created.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

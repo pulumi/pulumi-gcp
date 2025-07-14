@@ -141,9 +141,6 @@ export class RegionalParameterVersion extends pulumi.CustomResource {
     public readonly parameterData!: pulumi.Output<string>;
     /**
      * Version ID of the Regional Parameter Version Resource. This must be unique within the Regional Parameter.
-     *
-     *
-     * - - -
      */
     public readonly parameterVersionId!: pulumi.Output<string>;
     /**
@@ -238,9 +235,6 @@ export interface RegionalParameterVersionState {
     parameterData?: pulumi.Input<string>;
     /**
      * Version ID of the Regional Parameter Version Resource. This must be unique within the Regional Parameter.
-     *
-     *
-     * - - -
      */
     parameterVersionId?: pulumi.Input<string>;
     /**
@@ -268,9 +262,6 @@ export interface RegionalParameterVersionArgs {
     parameterData: pulumi.Input<string>;
     /**
      * Version ID of the Regional Parameter Version Resource. This must be unique within the Regional Parameter.
-     *
-     *
-     * - - -
      */
     parameterVersionId: pulumi.Input<string>;
 }

@@ -98,9 +98,6 @@ export class FirewallPolicy extends pulumi.CustomResource {
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * The parent of the firewall policy.
-     *
-     *
-     * - - -
      */
     public readonly parent!: pulumi.Output<string>;
     /**
@@ -195,9 +192,6 @@ export interface FirewallPolicyState {
     name?: pulumi.Input<string>;
     /**
      * The parent of the firewall policy.
-     *
-     *
-     * - - -
      */
     parent?: pulumi.Input<string>;
     /**
@@ -230,9 +224,6 @@ export interface FirewallPolicyArgs {
     description?: pulumi.Input<string>;
     /**
      * The parent of the firewall policy.
-     *
-     *
-     * - - -
      */
     parent: pulumi.Input<string>;
     /**

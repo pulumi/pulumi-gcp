@@ -119,9 +119,6 @@ export class TargetSite extends pulumi.CustomResource {
 
     /**
      * The unique id of the data store.
-     *
-     *
-     * - - -
      */
     public readonly dataStoreId!: pulumi.Output<string>;
     /**
@@ -255,9 +252,6 @@ export class TargetSite extends pulumi.CustomResource {
 export interface TargetSiteState {
     /**
      * The unique id of the data store.
-     *
-     *
-     * - - -
      */
     dataStoreId?: pulumi.Input<string>;
     /**
@@ -334,9 +328,6 @@ export interface TargetSiteState {
 export interface TargetSiteArgs {
     /**
      * The unique id of the data store.
-     *
-     *
-     * - - -
      */
     dataStoreId: pulumi.Input<string>;
     /**

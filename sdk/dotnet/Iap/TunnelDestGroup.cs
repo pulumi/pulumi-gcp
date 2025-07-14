@@ -103,9 +103,6 @@ namespace Pulumi.Gcp.Iap
 
         /// <summary>
         /// Unique tunnel destination group name.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("groupName")]
         public Output<string> GroupName { get; private set; } = null!;
@@ -201,9 +198,6 @@ namespace Pulumi.Gcp.Iap
 
         /// <summary>
         /// Unique tunnel destination group name.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("groupName", required: true)]
         public Input<string> GroupName { get; set; } = null!;
@@ -255,9 +249,6 @@ namespace Pulumi.Gcp.Iap
 
         /// <summary>
         /// Unique tunnel destination group name.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("groupName")]
         public Input<string>? GroupName { get; set; }

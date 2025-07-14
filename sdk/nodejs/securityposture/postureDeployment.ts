@@ -102,9 +102,6 @@ export class PostureDeployment extends pulumi.CustomResource {
     public readonly parent!: pulumi.Output<string>;
     /**
      * ID of the posture deployment.
-     *
-     *
-     * - - -
      */
     public readonly postureDeploymentId!: pulumi.Output<string>;
     /**
@@ -257,9 +254,6 @@ export interface PostureDeploymentState {
     parent?: pulumi.Input<string>;
     /**
      * ID of the posture deployment.
-     *
-     *
-     * - - -
      */
     postureDeploymentId?: pulumi.Input<string>;
     /**
@@ -311,9 +305,6 @@ export interface PostureDeploymentArgs {
     parent: pulumi.Input<string>;
     /**
      * ID of the posture deployment.
-     *
-     *
-     * - - -
      */
     postureDeploymentId: pulumi.Input<string>;
     /**

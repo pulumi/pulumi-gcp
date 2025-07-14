@@ -43,8 +43,6 @@ type ConnectivityTestDestination struct {
 	// 2. When you are using Shared VPC and the IP address that you provide is
 	//    from the service project. In this case, the network that the IP address
 	//    resides in is defined in the host project.
-	//
-	// ***
 	ProjectId *string `pulumi:"projectId"`
 	// A Redis Cluster URI.
 	RedisCluster *string `pulumi:"redisCluster"`
@@ -93,8 +91,6 @@ type ConnectivityTestDestinationArgs struct {
 	// 2. When you are using Shared VPC and the IP address that you provide is
 	//    from the service project. In this case, the network that the IP address
 	//    resides in is defined in the host project.
-	//
-	// ***
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 	// A Redis Cluster URI.
 	RedisCluster pulumi.StringPtrInput `pulumi:"redisCluster"`
@@ -232,8 +228,6 @@ func (o ConnectivityTestDestinationOutput) Port() pulumi.IntPtrOutput {
 //  2. When you are using Shared VPC and the IP address that you provide is
 //     from the service project. In this case, the network that the IP address
 //     resides in is defined in the host project.
-//
-// ***
 func (o ConnectivityTestDestinationOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectivityTestDestination) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
@@ -365,8 +359,6 @@ func (o ConnectivityTestDestinationPtrOutput) Port() pulumi.IntPtrOutput {
 //  2. When you are using Shared VPC and the IP address that you provide is
 //     from the service project. In this case, the network that the IP address
 //     resides in is defined in the host project.
-//
-// ***
 func (o ConnectivityTestDestinationPtrOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectivityTestDestination) *string {
 		if v == nil {
@@ -1186,6 +1178,594 @@ func (o ConnectivityTestSourceCloudRunRevisionPtrOutput) Uri() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetConnectivityTestRunReachabilityDetail struct {
+	// (Output)
+	// Status of the connectivity test: RESULT_UNSPECIFIED, REACHABLE, UNREACHABLE, AMBIGUOUS or UNDETERMINED.
+	Result string `pulumi:"result"`
+	// (Output)
+	// List of connectivity test traces.
+	// Structure is documented below.
+	Traces []GetConnectivityTestRunReachabilityDetailTrace `pulumi:"traces"`
+	// (Output)
+	// Time when reachability details were determined. An RFC3339 timestamp in UTC time.
+	// This in the format of yyyy-MM-ddTHH:mm:ss.SSSZ.
+	VerifyTime string `pulumi:"verifyTime"`
+}
+
+// GetConnectivityTestRunReachabilityDetailInput is an input type that accepts GetConnectivityTestRunReachabilityDetailArgs and GetConnectivityTestRunReachabilityDetailOutput values.
+// You can construct a concrete instance of `GetConnectivityTestRunReachabilityDetailInput` via:
+//
+//	GetConnectivityTestRunReachabilityDetailArgs{...}
+type GetConnectivityTestRunReachabilityDetailInput interface {
+	pulumi.Input
+
+	ToGetConnectivityTestRunReachabilityDetailOutput() GetConnectivityTestRunReachabilityDetailOutput
+	ToGetConnectivityTestRunReachabilityDetailOutputWithContext(context.Context) GetConnectivityTestRunReachabilityDetailOutput
+}
+
+type GetConnectivityTestRunReachabilityDetailArgs struct {
+	// (Output)
+	// Status of the connectivity test: RESULT_UNSPECIFIED, REACHABLE, UNREACHABLE, AMBIGUOUS or UNDETERMINED.
+	Result pulumi.StringInput `pulumi:"result"`
+	// (Output)
+	// List of connectivity test traces.
+	// Structure is documented below.
+	Traces GetConnectivityTestRunReachabilityDetailTraceArrayInput `pulumi:"traces"`
+	// (Output)
+	// Time when reachability details were determined. An RFC3339 timestamp in UTC time.
+	// This in the format of yyyy-MM-ddTHH:mm:ss.SSSZ.
+	VerifyTime pulumi.StringInput `pulumi:"verifyTime"`
+}
+
+func (GetConnectivityTestRunReachabilityDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectivityTestRunReachabilityDetail)(nil)).Elem()
+}
+
+func (i GetConnectivityTestRunReachabilityDetailArgs) ToGetConnectivityTestRunReachabilityDetailOutput() GetConnectivityTestRunReachabilityDetailOutput {
+	return i.ToGetConnectivityTestRunReachabilityDetailOutputWithContext(context.Background())
+}
+
+func (i GetConnectivityTestRunReachabilityDetailArgs) ToGetConnectivityTestRunReachabilityDetailOutputWithContext(ctx context.Context) GetConnectivityTestRunReachabilityDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectivityTestRunReachabilityDetailOutput)
+}
+
+// GetConnectivityTestRunReachabilityDetailArrayInput is an input type that accepts GetConnectivityTestRunReachabilityDetailArray and GetConnectivityTestRunReachabilityDetailArrayOutput values.
+// You can construct a concrete instance of `GetConnectivityTestRunReachabilityDetailArrayInput` via:
+//
+//	GetConnectivityTestRunReachabilityDetailArray{ GetConnectivityTestRunReachabilityDetailArgs{...} }
+type GetConnectivityTestRunReachabilityDetailArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectivityTestRunReachabilityDetailArrayOutput() GetConnectivityTestRunReachabilityDetailArrayOutput
+	ToGetConnectivityTestRunReachabilityDetailArrayOutputWithContext(context.Context) GetConnectivityTestRunReachabilityDetailArrayOutput
+}
+
+type GetConnectivityTestRunReachabilityDetailArray []GetConnectivityTestRunReachabilityDetailInput
+
+func (GetConnectivityTestRunReachabilityDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectivityTestRunReachabilityDetail)(nil)).Elem()
+}
+
+func (i GetConnectivityTestRunReachabilityDetailArray) ToGetConnectivityTestRunReachabilityDetailArrayOutput() GetConnectivityTestRunReachabilityDetailArrayOutput {
+	return i.ToGetConnectivityTestRunReachabilityDetailArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectivityTestRunReachabilityDetailArray) ToGetConnectivityTestRunReachabilityDetailArrayOutputWithContext(ctx context.Context) GetConnectivityTestRunReachabilityDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectivityTestRunReachabilityDetailArrayOutput)
+}
+
+type GetConnectivityTestRunReachabilityDetailOutput struct{ *pulumi.OutputState }
+
+func (GetConnectivityTestRunReachabilityDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectivityTestRunReachabilityDetail)(nil)).Elem()
+}
+
+func (o GetConnectivityTestRunReachabilityDetailOutput) ToGetConnectivityTestRunReachabilityDetailOutput() GetConnectivityTestRunReachabilityDetailOutput {
+	return o
+}
+
+func (o GetConnectivityTestRunReachabilityDetailOutput) ToGetConnectivityTestRunReachabilityDetailOutputWithContext(ctx context.Context) GetConnectivityTestRunReachabilityDetailOutput {
+	return o
+}
+
+// (Output)
+// Status of the connectivity test: RESULT_UNSPECIFIED, REACHABLE, UNREACHABLE, AMBIGUOUS or UNDETERMINED.
+func (o GetConnectivityTestRunReachabilityDetailOutput) Result() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityTestRunReachabilityDetail) string { return v.Result }).(pulumi.StringOutput)
+}
+
+// (Output)
+// List of connectivity test traces.
+// Structure is documented below.
+func (o GetConnectivityTestRunReachabilityDetailOutput) Traces() GetConnectivityTestRunReachabilityDetailTraceArrayOutput {
+	return o.ApplyT(func(v GetConnectivityTestRunReachabilityDetail) []GetConnectivityTestRunReachabilityDetailTrace {
+		return v.Traces
+	}).(GetConnectivityTestRunReachabilityDetailTraceArrayOutput)
+}
+
+// (Output)
+// Time when reachability details were determined. An RFC3339 timestamp in UTC time.
+// This in the format of yyyy-MM-ddTHH:mm:ss.SSSZ.
+func (o GetConnectivityTestRunReachabilityDetailOutput) VerifyTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityTestRunReachabilityDetail) string { return v.VerifyTime }).(pulumi.StringOutput)
+}
+
+type GetConnectivityTestRunReachabilityDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectivityTestRunReachabilityDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectivityTestRunReachabilityDetail)(nil)).Elem()
+}
+
+func (o GetConnectivityTestRunReachabilityDetailArrayOutput) ToGetConnectivityTestRunReachabilityDetailArrayOutput() GetConnectivityTestRunReachabilityDetailArrayOutput {
+	return o
+}
+
+func (o GetConnectivityTestRunReachabilityDetailArrayOutput) ToGetConnectivityTestRunReachabilityDetailArrayOutputWithContext(ctx context.Context) GetConnectivityTestRunReachabilityDetailArrayOutput {
+	return o
+}
+
+func (o GetConnectivityTestRunReachabilityDetailArrayOutput) Index(i pulumi.IntInput) GetConnectivityTestRunReachabilityDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectivityTestRunReachabilityDetail {
+		return vs[0].([]GetConnectivityTestRunReachabilityDetail)[vs[1].(int)]
+	}).(GetConnectivityTestRunReachabilityDetailOutput)
+}
+
+type GetConnectivityTestRunReachabilityDetailTrace struct {
+	// (Output)
+	// Derived from the source and destination endpoints definition specified by user request, and validated by the data plane model.
+	// Structure is documented below.
+	EndpointInfos []GetConnectivityTestRunReachabilityDetailTraceEndpointInfo `pulumi:"endpointInfos"`
+	// (Output)
+	// ID of the trace.
+	ForwardTraceId int `pulumi:"forwardTraceId"`
+	// (Output)
+	// A trace of a test contains multiple steps from the initial state to the final state (delivered, dropped, forwarded, or aborted).
+	// Structure is documented below.
+	Steps []GetConnectivityTestRunReachabilityDetailTraceStep `pulumi:"steps"`
+}
+
+// GetConnectivityTestRunReachabilityDetailTraceInput is an input type that accepts GetConnectivityTestRunReachabilityDetailTraceArgs and GetConnectivityTestRunReachabilityDetailTraceOutput values.
+// You can construct a concrete instance of `GetConnectivityTestRunReachabilityDetailTraceInput` via:
+//
+//	GetConnectivityTestRunReachabilityDetailTraceArgs{...}
+type GetConnectivityTestRunReachabilityDetailTraceInput interface {
+	pulumi.Input
+
+	ToGetConnectivityTestRunReachabilityDetailTraceOutput() GetConnectivityTestRunReachabilityDetailTraceOutput
+	ToGetConnectivityTestRunReachabilityDetailTraceOutputWithContext(context.Context) GetConnectivityTestRunReachabilityDetailTraceOutput
+}
+
+type GetConnectivityTestRunReachabilityDetailTraceArgs struct {
+	// (Output)
+	// Derived from the source and destination endpoints definition specified by user request, and validated by the data plane model.
+	// Structure is documented below.
+	EndpointInfos GetConnectivityTestRunReachabilityDetailTraceEndpointInfoArrayInput `pulumi:"endpointInfos"`
+	// (Output)
+	// ID of the trace.
+	ForwardTraceId pulumi.IntInput `pulumi:"forwardTraceId"`
+	// (Output)
+	// A trace of a test contains multiple steps from the initial state to the final state (delivered, dropped, forwarded, or aborted).
+	// Structure is documented below.
+	Steps GetConnectivityTestRunReachabilityDetailTraceStepArrayInput `pulumi:"steps"`
+}
+
+func (GetConnectivityTestRunReachabilityDetailTraceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectivityTestRunReachabilityDetailTrace)(nil)).Elem()
+}
+
+func (i GetConnectivityTestRunReachabilityDetailTraceArgs) ToGetConnectivityTestRunReachabilityDetailTraceOutput() GetConnectivityTestRunReachabilityDetailTraceOutput {
+	return i.ToGetConnectivityTestRunReachabilityDetailTraceOutputWithContext(context.Background())
+}
+
+func (i GetConnectivityTestRunReachabilityDetailTraceArgs) ToGetConnectivityTestRunReachabilityDetailTraceOutputWithContext(ctx context.Context) GetConnectivityTestRunReachabilityDetailTraceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectivityTestRunReachabilityDetailTraceOutput)
+}
+
+// GetConnectivityTestRunReachabilityDetailTraceArrayInput is an input type that accepts GetConnectivityTestRunReachabilityDetailTraceArray and GetConnectivityTestRunReachabilityDetailTraceArrayOutput values.
+// You can construct a concrete instance of `GetConnectivityTestRunReachabilityDetailTraceArrayInput` via:
+//
+//	GetConnectivityTestRunReachabilityDetailTraceArray{ GetConnectivityTestRunReachabilityDetailTraceArgs{...} }
+type GetConnectivityTestRunReachabilityDetailTraceArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectivityTestRunReachabilityDetailTraceArrayOutput() GetConnectivityTestRunReachabilityDetailTraceArrayOutput
+	ToGetConnectivityTestRunReachabilityDetailTraceArrayOutputWithContext(context.Context) GetConnectivityTestRunReachabilityDetailTraceArrayOutput
+}
+
+type GetConnectivityTestRunReachabilityDetailTraceArray []GetConnectivityTestRunReachabilityDetailTraceInput
+
+func (GetConnectivityTestRunReachabilityDetailTraceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectivityTestRunReachabilityDetailTrace)(nil)).Elem()
+}
+
+func (i GetConnectivityTestRunReachabilityDetailTraceArray) ToGetConnectivityTestRunReachabilityDetailTraceArrayOutput() GetConnectivityTestRunReachabilityDetailTraceArrayOutput {
+	return i.ToGetConnectivityTestRunReachabilityDetailTraceArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectivityTestRunReachabilityDetailTraceArray) ToGetConnectivityTestRunReachabilityDetailTraceArrayOutputWithContext(ctx context.Context) GetConnectivityTestRunReachabilityDetailTraceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectivityTestRunReachabilityDetailTraceArrayOutput)
+}
+
+type GetConnectivityTestRunReachabilityDetailTraceOutput struct{ *pulumi.OutputState }
+
+func (GetConnectivityTestRunReachabilityDetailTraceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectivityTestRunReachabilityDetailTrace)(nil)).Elem()
+}
+
+func (o GetConnectivityTestRunReachabilityDetailTraceOutput) ToGetConnectivityTestRunReachabilityDetailTraceOutput() GetConnectivityTestRunReachabilityDetailTraceOutput {
+	return o
+}
+
+func (o GetConnectivityTestRunReachabilityDetailTraceOutput) ToGetConnectivityTestRunReachabilityDetailTraceOutputWithContext(ctx context.Context) GetConnectivityTestRunReachabilityDetailTraceOutput {
+	return o
+}
+
+// (Output)
+// Derived from the source and destination endpoints definition specified by user request, and validated by the data plane model.
+// Structure is documented below.
+func (o GetConnectivityTestRunReachabilityDetailTraceOutput) EndpointInfos() GetConnectivityTestRunReachabilityDetailTraceEndpointInfoArrayOutput {
+	return o.ApplyT(func(v GetConnectivityTestRunReachabilityDetailTrace) []GetConnectivityTestRunReachabilityDetailTraceEndpointInfo {
+		return v.EndpointInfos
+	}).(GetConnectivityTestRunReachabilityDetailTraceEndpointInfoArrayOutput)
+}
+
+// (Output)
+// ID of the trace.
+func (o GetConnectivityTestRunReachabilityDetailTraceOutput) ForwardTraceId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectivityTestRunReachabilityDetailTrace) int { return v.ForwardTraceId }).(pulumi.IntOutput)
+}
+
+// (Output)
+// A trace of a test contains multiple steps from the initial state to the final state (delivered, dropped, forwarded, or aborted).
+// Structure is documented below.
+func (o GetConnectivityTestRunReachabilityDetailTraceOutput) Steps() GetConnectivityTestRunReachabilityDetailTraceStepArrayOutput {
+	return o.ApplyT(func(v GetConnectivityTestRunReachabilityDetailTrace) []GetConnectivityTestRunReachabilityDetailTraceStep {
+		return v.Steps
+	}).(GetConnectivityTestRunReachabilityDetailTraceStepArrayOutput)
+}
+
+type GetConnectivityTestRunReachabilityDetailTraceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectivityTestRunReachabilityDetailTraceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectivityTestRunReachabilityDetailTrace)(nil)).Elem()
+}
+
+func (o GetConnectivityTestRunReachabilityDetailTraceArrayOutput) ToGetConnectivityTestRunReachabilityDetailTraceArrayOutput() GetConnectivityTestRunReachabilityDetailTraceArrayOutput {
+	return o
+}
+
+func (o GetConnectivityTestRunReachabilityDetailTraceArrayOutput) ToGetConnectivityTestRunReachabilityDetailTraceArrayOutputWithContext(ctx context.Context) GetConnectivityTestRunReachabilityDetailTraceArrayOutput {
+	return o
+}
+
+func (o GetConnectivityTestRunReachabilityDetailTraceArrayOutput) Index(i pulumi.IntInput) GetConnectivityTestRunReachabilityDetailTraceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectivityTestRunReachabilityDetailTrace {
+		return vs[0].([]GetConnectivityTestRunReachabilityDetailTrace)[vs[1].(int)]
+	}).(GetConnectivityTestRunReachabilityDetailTraceOutput)
+}
+
+type GetConnectivityTestRunReachabilityDetailTraceEndpointInfo struct {
+	// (Output)
+	// Destination IP address.
+	DestinationIp string `pulumi:"destinationIp"`
+	// (Output)
+	// URI of the network where this packet is sent to.
+	DestinationNetworkUri string `pulumi:"destinationNetworkUri"`
+	// (Output)
+	// Destination port. Only valid when protocol is TCP or UDP.
+	DestinationPort int `pulumi:"destinationPort"`
+	// (Output)
+	// IP protocol in string format, for example: "TCP", "UDP", "ICMP".
+	Protocol string `pulumi:"protocol"`
+	// (Output)
+	// URI of the source telemetry agent this packet originates from.
+	SourceAgentUri string `pulumi:"sourceAgentUri"`
+	// (Output)
+	// Source IP address.
+	SourceIp string `pulumi:"sourceIp"`
+	// (Output)
+	// URI of the network where this packet originates from.
+	SourceNetworkUri string `pulumi:"sourceNetworkUri"`
+	// (Output)
+	// Source port. Only valid when protocol is TCP or UDP.
+	SourcePort int `pulumi:"sourcePort"`
+}
+
+// GetConnectivityTestRunReachabilityDetailTraceEndpointInfoInput is an input type that accepts GetConnectivityTestRunReachabilityDetailTraceEndpointInfoArgs and GetConnectivityTestRunReachabilityDetailTraceEndpointInfoOutput values.
+// You can construct a concrete instance of `GetConnectivityTestRunReachabilityDetailTraceEndpointInfoInput` via:
+//
+//	GetConnectivityTestRunReachabilityDetailTraceEndpointInfoArgs{...}
+type GetConnectivityTestRunReachabilityDetailTraceEndpointInfoInput interface {
+	pulumi.Input
+
+	ToGetConnectivityTestRunReachabilityDetailTraceEndpointInfoOutput() GetConnectivityTestRunReachabilityDetailTraceEndpointInfoOutput
+	ToGetConnectivityTestRunReachabilityDetailTraceEndpointInfoOutputWithContext(context.Context) GetConnectivityTestRunReachabilityDetailTraceEndpointInfoOutput
+}
+
+type GetConnectivityTestRunReachabilityDetailTraceEndpointInfoArgs struct {
+	// (Output)
+	// Destination IP address.
+	DestinationIp pulumi.StringInput `pulumi:"destinationIp"`
+	// (Output)
+	// URI of the network where this packet is sent to.
+	DestinationNetworkUri pulumi.StringInput `pulumi:"destinationNetworkUri"`
+	// (Output)
+	// Destination port. Only valid when protocol is TCP or UDP.
+	DestinationPort pulumi.IntInput `pulumi:"destinationPort"`
+	// (Output)
+	// IP protocol in string format, for example: "TCP", "UDP", "ICMP".
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// (Output)
+	// URI of the source telemetry agent this packet originates from.
+	SourceAgentUri pulumi.StringInput `pulumi:"sourceAgentUri"`
+	// (Output)
+	// Source IP address.
+	SourceIp pulumi.StringInput `pulumi:"sourceIp"`
+	// (Output)
+	// URI of the network where this packet originates from.
+	SourceNetworkUri pulumi.StringInput `pulumi:"sourceNetworkUri"`
+	// (Output)
+	// Source port. Only valid when protocol is TCP or UDP.
+	SourcePort pulumi.IntInput `pulumi:"sourcePort"`
+}
+
+func (GetConnectivityTestRunReachabilityDetailTraceEndpointInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectivityTestRunReachabilityDetailTraceEndpointInfo)(nil)).Elem()
+}
+
+func (i GetConnectivityTestRunReachabilityDetailTraceEndpointInfoArgs) ToGetConnectivityTestRunReachabilityDetailTraceEndpointInfoOutput() GetConnectivityTestRunReachabilityDetailTraceEndpointInfoOutput {
+	return i.ToGetConnectivityTestRunReachabilityDetailTraceEndpointInfoOutputWithContext(context.Background())
+}
+
+func (i GetConnectivityTestRunReachabilityDetailTraceEndpointInfoArgs) ToGetConnectivityTestRunReachabilityDetailTraceEndpointInfoOutputWithContext(ctx context.Context) GetConnectivityTestRunReachabilityDetailTraceEndpointInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectivityTestRunReachabilityDetailTraceEndpointInfoOutput)
+}
+
+// GetConnectivityTestRunReachabilityDetailTraceEndpointInfoArrayInput is an input type that accepts GetConnectivityTestRunReachabilityDetailTraceEndpointInfoArray and GetConnectivityTestRunReachabilityDetailTraceEndpointInfoArrayOutput values.
+// You can construct a concrete instance of `GetConnectivityTestRunReachabilityDetailTraceEndpointInfoArrayInput` via:
+//
+//	GetConnectivityTestRunReachabilityDetailTraceEndpointInfoArray{ GetConnectivityTestRunReachabilityDetailTraceEndpointInfoArgs{...} }
+type GetConnectivityTestRunReachabilityDetailTraceEndpointInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectivityTestRunReachabilityDetailTraceEndpointInfoArrayOutput() GetConnectivityTestRunReachabilityDetailTraceEndpointInfoArrayOutput
+	ToGetConnectivityTestRunReachabilityDetailTraceEndpointInfoArrayOutputWithContext(context.Context) GetConnectivityTestRunReachabilityDetailTraceEndpointInfoArrayOutput
+}
+
+type GetConnectivityTestRunReachabilityDetailTraceEndpointInfoArray []GetConnectivityTestRunReachabilityDetailTraceEndpointInfoInput
+
+func (GetConnectivityTestRunReachabilityDetailTraceEndpointInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectivityTestRunReachabilityDetailTraceEndpointInfo)(nil)).Elem()
+}
+
+func (i GetConnectivityTestRunReachabilityDetailTraceEndpointInfoArray) ToGetConnectivityTestRunReachabilityDetailTraceEndpointInfoArrayOutput() GetConnectivityTestRunReachabilityDetailTraceEndpointInfoArrayOutput {
+	return i.ToGetConnectivityTestRunReachabilityDetailTraceEndpointInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectivityTestRunReachabilityDetailTraceEndpointInfoArray) ToGetConnectivityTestRunReachabilityDetailTraceEndpointInfoArrayOutputWithContext(ctx context.Context) GetConnectivityTestRunReachabilityDetailTraceEndpointInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectivityTestRunReachabilityDetailTraceEndpointInfoArrayOutput)
+}
+
+type GetConnectivityTestRunReachabilityDetailTraceEndpointInfoOutput struct{ *pulumi.OutputState }
+
+func (GetConnectivityTestRunReachabilityDetailTraceEndpointInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectivityTestRunReachabilityDetailTraceEndpointInfo)(nil)).Elem()
+}
+
+func (o GetConnectivityTestRunReachabilityDetailTraceEndpointInfoOutput) ToGetConnectivityTestRunReachabilityDetailTraceEndpointInfoOutput() GetConnectivityTestRunReachabilityDetailTraceEndpointInfoOutput {
+	return o
+}
+
+func (o GetConnectivityTestRunReachabilityDetailTraceEndpointInfoOutput) ToGetConnectivityTestRunReachabilityDetailTraceEndpointInfoOutputWithContext(ctx context.Context) GetConnectivityTestRunReachabilityDetailTraceEndpointInfoOutput {
+	return o
+}
+
+// (Output)
+// Destination IP address.
+func (o GetConnectivityTestRunReachabilityDetailTraceEndpointInfoOutput) DestinationIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityTestRunReachabilityDetailTraceEndpointInfo) string { return v.DestinationIp }).(pulumi.StringOutput)
+}
+
+// (Output)
+// URI of the network where this packet is sent to.
+func (o GetConnectivityTestRunReachabilityDetailTraceEndpointInfoOutput) DestinationNetworkUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityTestRunReachabilityDetailTraceEndpointInfo) string {
+		return v.DestinationNetworkUri
+	}).(pulumi.StringOutput)
+}
+
+// (Output)
+// Destination port. Only valid when protocol is TCP or UDP.
+func (o GetConnectivityTestRunReachabilityDetailTraceEndpointInfoOutput) DestinationPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectivityTestRunReachabilityDetailTraceEndpointInfo) int { return v.DestinationPort }).(pulumi.IntOutput)
+}
+
+// (Output)
+// IP protocol in string format, for example: "TCP", "UDP", "ICMP".
+func (o GetConnectivityTestRunReachabilityDetailTraceEndpointInfoOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityTestRunReachabilityDetailTraceEndpointInfo) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// (Output)
+// URI of the source telemetry agent this packet originates from.
+func (o GetConnectivityTestRunReachabilityDetailTraceEndpointInfoOutput) SourceAgentUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityTestRunReachabilityDetailTraceEndpointInfo) string { return v.SourceAgentUri }).(pulumi.StringOutput)
+}
+
+// (Output)
+// Source IP address.
+func (o GetConnectivityTestRunReachabilityDetailTraceEndpointInfoOutput) SourceIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityTestRunReachabilityDetailTraceEndpointInfo) string { return v.SourceIp }).(pulumi.StringOutput)
+}
+
+// (Output)
+// URI of the network where this packet originates from.
+func (o GetConnectivityTestRunReachabilityDetailTraceEndpointInfoOutput) SourceNetworkUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityTestRunReachabilityDetailTraceEndpointInfo) string { return v.SourceNetworkUri }).(pulumi.StringOutput)
+}
+
+// (Output)
+// Source port. Only valid when protocol is TCP or UDP.
+func (o GetConnectivityTestRunReachabilityDetailTraceEndpointInfoOutput) SourcePort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectivityTestRunReachabilityDetailTraceEndpointInfo) int { return v.SourcePort }).(pulumi.IntOutput)
+}
+
+type GetConnectivityTestRunReachabilityDetailTraceEndpointInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectivityTestRunReachabilityDetailTraceEndpointInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectivityTestRunReachabilityDetailTraceEndpointInfo)(nil)).Elem()
+}
+
+func (o GetConnectivityTestRunReachabilityDetailTraceEndpointInfoArrayOutput) ToGetConnectivityTestRunReachabilityDetailTraceEndpointInfoArrayOutput() GetConnectivityTestRunReachabilityDetailTraceEndpointInfoArrayOutput {
+	return o
+}
+
+func (o GetConnectivityTestRunReachabilityDetailTraceEndpointInfoArrayOutput) ToGetConnectivityTestRunReachabilityDetailTraceEndpointInfoArrayOutputWithContext(ctx context.Context) GetConnectivityTestRunReachabilityDetailTraceEndpointInfoArrayOutput {
+	return o
+}
+
+func (o GetConnectivityTestRunReachabilityDetailTraceEndpointInfoArrayOutput) Index(i pulumi.IntInput) GetConnectivityTestRunReachabilityDetailTraceEndpointInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectivityTestRunReachabilityDetailTraceEndpointInfo {
+		return vs[0].([]GetConnectivityTestRunReachabilityDetailTraceEndpointInfo)[vs[1].(int)]
+	}).(GetConnectivityTestRunReachabilityDetailTraceEndpointInfoOutput)
+}
+
+type GetConnectivityTestRunReachabilityDetailTraceStep struct {
+	// (Output)
+	// If this step leads to the final state Drop.
+	CausesDrop bool `pulumi:"causesDrop"`
+	// (Output)
+	// Description of the connectivity test step.
+	Description string `pulumi:"description"`
+	// (Output)
+	// Project ID of the connectivity test step.
+	ProjectId string `pulumi:"projectId"`
+	// (Output)
+	// State of the connectivity test step.
+	State string `pulumi:"state"`
+}
+
+// GetConnectivityTestRunReachabilityDetailTraceStepInput is an input type that accepts GetConnectivityTestRunReachabilityDetailTraceStepArgs and GetConnectivityTestRunReachabilityDetailTraceStepOutput values.
+// You can construct a concrete instance of `GetConnectivityTestRunReachabilityDetailTraceStepInput` via:
+//
+//	GetConnectivityTestRunReachabilityDetailTraceStepArgs{...}
+type GetConnectivityTestRunReachabilityDetailTraceStepInput interface {
+	pulumi.Input
+
+	ToGetConnectivityTestRunReachabilityDetailTraceStepOutput() GetConnectivityTestRunReachabilityDetailTraceStepOutput
+	ToGetConnectivityTestRunReachabilityDetailTraceStepOutputWithContext(context.Context) GetConnectivityTestRunReachabilityDetailTraceStepOutput
+}
+
+type GetConnectivityTestRunReachabilityDetailTraceStepArgs struct {
+	// (Output)
+	// If this step leads to the final state Drop.
+	CausesDrop pulumi.BoolInput `pulumi:"causesDrop"`
+	// (Output)
+	// Description of the connectivity test step.
+	Description pulumi.StringInput `pulumi:"description"`
+	// (Output)
+	// Project ID of the connectivity test step.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// (Output)
+	// State of the connectivity test step.
+	State pulumi.StringInput `pulumi:"state"`
+}
+
+func (GetConnectivityTestRunReachabilityDetailTraceStepArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectivityTestRunReachabilityDetailTraceStep)(nil)).Elem()
+}
+
+func (i GetConnectivityTestRunReachabilityDetailTraceStepArgs) ToGetConnectivityTestRunReachabilityDetailTraceStepOutput() GetConnectivityTestRunReachabilityDetailTraceStepOutput {
+	return i.ToGetConnectivityTestRunReachabilityDetailTraceStepOutputWithContext(context.Background())
+}
+
+func (i GetConnectivityTestRunReachabilityDetailTraceStepArgs) ToGetConnectivityTestRunReachabilityDetailTraceStepOutputWithContext(ctx context.Context) GetConnectivityTestRunReachabilityDetailTraceStepOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectivityTestRunReachabilityDetailTraceStepOutput)
+}
+
+// GetConnectivityTestRunReachabilityDetailTraceStepArrayInput is an input type that accepts GetConnectivityTestRunReachabilityDetailTraceStepArray and GetConnectivityTestRunReachabilityDetailTraceStepArrayOutput values.
+// You can construct a concrete instance of `GetConnectivityTestRunReachabilityDetailTraceStepArrayInput` via:
+//
+//	GetConnectivityTestRunReachabilityDetailTraceStepArray{ GetConnectivityTestRunReachabilityDetailTraceStepArgs{...} }
+type GetConnectivityTestRunReachabilityDetailTraceStepArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectivityTestRunReachabilityDetailTraceStepArrayOutput() GetConnectivityTestRunReachabilityDetailTraceStepArrayOutput
+	ToGetConnectivityTestRunReachabilityDetailTraceStepArrayOutputWithContext(context.Context) GetConnectivityTestRunReachabilityDetailTraceStepArrayOutput
+}
+
+type GetConnectivityTestRunReachabilityDetailTraceStepArray []GetConnectivityTestRunReachabilityDetailTraceStepInput
+
+func (GetConnectivityTestRunReachabilityDetailTraceStepArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectivityTestRunReachabilityDetailTraceStep)(nil)).Elem()
+}
+
+func (i GetConnectivityTestRunReachabilityDetailTraceStepArray) ToGetConnectivityTestRunReachabilityDetailTraceStepArrayOutput() GetConnectivityTestRunReachabilityDetailTraceStepArrayOutput {
+	return i.ToGetConnectivityTestRunReachabilityDetailTraceStepArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectivityTestRunReachabilityDetailTraceStepArray) ToGetConnectivityTestRunReachabilityDetailTraceStepArrayOutputWithContext(ctx context.Context) GetConnectivityTestRunReachabilityDetailTraceStepArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectivityTestRunReachabilityDetailTraceStepArrayOutput)
+}
+
+type GetConnectivityTestRunReachabilityDetailTraceStepOutput struct{ *pulumi.OutputState }
+
+func (GetConnectivityTestRunReachabilityDetailTraceStepOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectivityTestRunReachabilityDetailTraceStep)(nil)).Elem()
+}
+
+func (o GetConnectivityTestRunReachabilityDetailTraceStepOutput) ToGetConnectivityTestRunReachabilityDetailTraceStepOutput() GetConnectivityTestRunReachabilityDetailTraceStepOutput {
+	return o
+}
+
+func (o GetConnectivityTestRunReachabilityDetailTraceStepOutput) ToGetConnectivityTestRunReachabilityDetailTraceStepOutputWithContext(ctx context.Context) GetConnectivityTestRunReachabilityDetailTraceStepOutput {
+	return o
+}
+
+// (Output)
+// If this step leads to the final state Drop.
+func (o GetConnectivityTestRunReachabilityDetailTraceStepOutput) CausesDrop() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectivityTestRunReachabilityDetailTraceStep) bool { return v.CausesDrop }).(pulumi.BoolOutput)
+}
+
+// (Output)
+// Description of the connectivity test step.
+func (o GetConnectivityTestRunReachabilityDetailTraceStepOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityTestRunReachabilityDetailTraceStep) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// (Output)
+// Project ID of the connectivity test step.
+func (o GetConnectivityTestRunReachabilityDetailTraceStepOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityTestRunReachabilityDetailTraceStep) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// (Output)
+// State of the connectivity test step.
+func (o GetConnectivityTestRunReachabilityDetailTraceStepOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityTestRunReachabilityDetailTraceStep) string { return v.State }).(pulumi.StringOutput)
+}
+
+type GetConnectivityTestRunReachabilityDetailTraceStepArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectivityTestRunReachabilityDetailTraceStepArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectivityTestRunReachabilityDetailTraceStep)(nil)).Elem()
+}
+
+func (o GetConnectivityTestRunReachabilityDetailTraceStepArrayOutput) ToGetConnectivityTestRunReachabilityDetailTraceStepArrayOutput() GetConnectivityTestRunReachabilityDetailTraceStepArrayOutput {
+	return o
+}
+
+func (o GetConnectivityTestRunReachabilityDetailTraceStepArrayOutput) ToGetConnectivityTestRunReachabilityDetailTraceStepArrayOutputWithContext(ctx context.Context) GetConnectivityTestRunReachabilityDetailTraceStepArrayOutput {
+	return o
+}
+
+func (o GetConnectivityTestRunReachabilityDetailTraceStepArrayOutput) Index(i pulumi.IntInput) GetConnectivityTestRunReachabilityDetailTraceStepOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectivityTestRunReachabilityDetailTraceStep {
+		return vs[0].([]GetConnectivityTestRunReachabilityDetailTraceStep)[vs[1].(int)]
+	}).(GetConnectivityTestRunReachabilityDetailTraceStepOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectivityTestDestinationInput)(nil)).Elem(), ConnectivityTestDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectivityTestDestinationPtrInput)(nil)).Elem(), ConnectivityTestDestinationArgs{})
@@ -1197,6 +1777,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectivityTestSourceCloudFunctionPtrInput)(nil)).Elem(), ConnectivityTestSourceCloudFunctionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectivityTestSourceCloudRunRevisionInput)(nil)).Elem(), ConnectivityTestSourceCloudRunRevisionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectivityTestSourceCloudRunRevisionPtrInput)(nil)).Elem(), ConnectivityTestSourceCloudRunRevisionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectivityTestRunReachabilityDetailInput)(nil)).Elem(), GetConnectivityTestRunReachabilityDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectivityTestRunReachabilityDetailArrayInput)(nil)).Elem(), GetConnectivityTestRunReachabilityDetailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectivityTestRunReachabilityDetailTraceInput)(nil)).Elem(), GetConnectivityTestRunReachabilityDetailTraceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectivityTestRunReachabilityDetailTraceArrayInput)(nil)).Elem(), GetConnectivityTestRunReachabilityDetailTraceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectivityTestRunReachabilityDetailTraceEndpointInfoInput)(nil)).Elem(), GetConnectivityTestRunReachabilityDetailTraceEndpointInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectivityTestRunReachabilityDetailTraceEndpointInfoArrayInput)(nil)).Elem(), GetConnectivityTestRunReachabilityDetailTraceEndpointInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectivityTestRunReachabilityDetailTraceStepInput)(nil)).Elem(), GetConnectivityTestRunReachabilityDetailTraceStepArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectivityTestRunReachabilityDetailTraceStepArrayInput)(nil)).Elem(), GetConnectivityTestRunReachabilityDetailTraceStepArray{})
 	pulumi.RegisterOutputType(ConnectivityTestDestinationOutput{})
 	pulumi.RegisterOutputType(ConnectivityTestDestinationPtrOutput{})
 	pulumi.RegisterOutputType(ConnectivityTestSourceOutput{})
@@ -1207,4 +1795,12 @@ func init() {
 	pulumi.RegisterOutputType(ConnectivityTestSourceCloudFunctionPtrOutput{})
 	pulumi.RegisterOutputType(ConnectivityTestSourceCloudRunRevisionOutput{})
 	pulumi.RegisterOutputType(ConnectivityTestSourceCloudRunRevisionPtrOutput{})
+	pulumi.RegisterOutputType(GetConnectivityTestRunReachabilityDetailOutput{})
+	pulumi.RegisterOutputType(GetConnectivityTestRunReachabilityDetailArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectivityTestRunReachabilityDetailTraceOutput{})
+	pulumi.RegisterOutputType(GetConnectivityTestRunReachabilityDetailTraceArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectivityTestRunReachabilityDetailTraceEndpointInfoOutput{})
+	pulumi.RegisterOutputType(GetConnectivityTestRunReachabilityDetailTraceEndpointInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectivityTestRunReachabilityDetailTraceStepOutput{})
+	pulumi.RegisterOutputType(GetConnectivityTestRunReachabilityDetailTraceStepArrayOutput{})
 }

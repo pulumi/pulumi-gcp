@@ -3260,8 +3260,6 @@ func (o JobTemplateTemplateContainerVolumeMountArrayOutput) Index(i pulumi.IntIn
 
 type JobTemplateTemplateNodeSelector struct {
 	// The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/jobs/gpu for configuring GPU.
-	//
-	// ***
 	Accelerator string `pulumi:"accelerator"`
 }
 
@@ -3278,8 +3276,6 @@ type JobTemplateTemplateNodeSelectorInput interface {
 
 type JobTemplateTemplateNodeSelectorArgs struct {
 	// The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/jobs/gpu for configuring GPU.
-	//
-	// ***
 	Accelerator pulumi.StringInput `pulumi:"accelerator"`
 }
 
@@ -3361,8 +3357,6 @@ func (o JobTemplateTemplateNodeSelectorOutput) ToJobTemplateTemplateNodeSelector
 }
 
 // The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/jobs/gpu for configuring GPU.
-//
-// ***
 func (o JobTemplateTemplateNodeSelectorOutput) Accelerator() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTemplateTemplateNodeSelector) string { return v.Accelerator }).(pulumi.StringOutput)
 }
@@ -3392,8 +3386,6 @@ func (o JobTemplateTemplateNodeSelectorPtrOutput) Elem() JobTemplateTemplateNode
 }
 
 // The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/jobs/gpu for configuring GPU.
-//
-// ***
 func (o JobTemplateTemplateNodeSelectorPtrOutput) Accelerator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTemplateTemplateNodeSelector) *string {
 		if v == nil {
@@ -9611,8 +9603,6 @@ func (o ServiceTemplateContainerVolumeMountArrayOutput) Index(i pulumi.IntInput)
 
 type ServiceTemplateNodeSelector struct {
 	// The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/services/gpu for configuring GPU.
-	//
-	// ***
 	Accelerator string `pulumi:"accelerator"`
 }
 
@@ -9629,8 +9619,6 @@ type ServiceTemplateNodeSelectorInput interface {
 
 type ServiceTemplateNodeSelectorArgs struct {
 	// The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/services/gpu for configuring GPU.
-	//
-	// ***
 	Accelerator pulumi.StringInput `pulumi:"accelerator"`
 }
 
@@ -9712,8 +9700,6 @@ func (o ServiceTemplateNodeSelectorOutput) ToServiceTemplateNodeSelectorPtrOutpu
 }
 
 // The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/services/gpu for configuring GPU.
-//
-// ***
 func (o ServiceTemplateNodeSelectorOutput) Accelerator() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceTemplateNodeSelector) string { return v.Accelerator }).(pulumi.StringOutput)
 }
@@ -9743,8 +9729,6 @@ func (o ServiceTemplateNodeSelectorPtrOutput) Elem() ServiceTemplateNodeSelector
 }
 
 // The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/services/gpu for configuring GPU.
-//
-// ***
 func (o ServiceTemplateNodeSelectorPtrOutput) Accelerator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateNodeSelector) *string {
 		if v == nil {
@@ -14295,8 +14279,6 @@ func (o WorkerPoolTemplateContainerVolumeMountArrayOutput) Index(i pulumi.IntInp
 
 type WorkerPoolTemplateNodeSelector struct {
 	// The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/services/gpu for configuring GPU.
-	//
-	// ***
 	Accelerator string `pulumi:"accelerator"`
 }
 
@@ -14313,8 +14295,6 @@ type WorkerPoolTemplateNodeSelectorInput interface {
 
 type WorkerPoolTemplateNodeSelectorArgs struct {
 	// The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/services/gpu for configuring GPU.
-	//
-	// ***
 	Accelerator pulumi.StringInput `pulumi:"accelerator"`
 }
 
@@ -14396,8 +14376,6 @@ func (o WorkerPoolTemplateNodeSelectorOutput) ToWorkerPoolTemplateNodeSelectorPt
 }
 
 // The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/services/gpu for configuring GPU.
-//
-// ***
 func (o WorkerPoolTemplateNodeSelectorOutput) Accelerator() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkerPoolTemplateNodeSelector) string { return v.Accelerator }).(pulumi.StringOutput)
 }
@@ -14427,8 +14405,6 @@ func (o WorkerPoolTemplateNodeSelectorPtrOutput) Elem() WorkerPoolTemplateNodeSe
 }
 
 // The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/services/gpu for configuring GPU.
-//
-// ***
 func (o WorkerPoolTemplateNodeSelectorPtrOutput) Accelerator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkerPoolTemplateNodeSelector) *string {
 		if v == nil {

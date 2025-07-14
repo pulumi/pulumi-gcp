@@ -89,8 +89,6 @@ type LoggingSetting struct {
 	// Whether to log prompts and responses.
 	LogPromptsAndResponses pulumi.BoolPtrOutput `pulumi:"logPromptsAndResponses"`
 	// Id of the Logging Setting.
-	//
-	// ***
 	LoggingSettingId pulumi.StringOutput `pulumi:"loggingSettingId"`
 	// Identifier. Name of the resource.
 	// Format:projects/{project}/locations/{location}/loggingsettings/{loggingsetting}
@@ -161,8 +159,6 @@ type loggingSettingState struct {
 	// Whether to log prompts and responses.
 	LogPromptsAndResponses *bool `pulumi:"logPromptsAndResponses"`
 	// Id of the Logging Setting.
-	//
-	// ***
 	LoggingSettingId *string `pulumi:"loggingSettingId"`
 	// Identifier. Name of the resource.
 	// Format:projects/{project}/locations/{location}/loggingsettings/{loggingsetting}
@@ -193,8 +189,6 @@ type LoggingSettingState struct {
 	// Whether to log prompts and responses.
 	LogPromptsAndResponses pulumi.BoolPtrInput
 	// Id of the Logging Setting.
-	//
-	// ***
 	LoggingSettingId pulumi.StringPtrInput
 	// Identifier. Name of the resource.
 	// Format:projects/{project}/locations/{location}/loggingsettings/{loggingsetting}
@@ -225,8 +219,6 @@ type loggingSettingArgs struct {
 	// Whether to log prompts and responses.
 	LogPromptsAndResponses *bool `pulumi:"logPromptsAndResponses"`
 	// Id of the Logging Setting.
-	//
-	// ***
 	LoggingSettingId string `pulumi:"loggingSettingId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -246,8 +238,6 @@ type LoggingSettingArgs struct {
 	// Whether to log prompts and responses.
 	LogPromptsAndResponses pulumi.BoolPtrInput
 	// Id of the Logging Setting.
-	//
-	// ***
 	LoggingSettingId pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -374,8 +364,6 @@ func (o LoggingSettingOutput) LogPromptsAndResponses() pulumi.BoolPtrOutput {
 }
 
 // Id of the Logging Setting.
-//
-// ***
 func (o LoggingSettingOutput) LoggingSettingId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoggingSetting) pulumi.StringOutput { return v.LoggingSettingId }).(pulumi.StringOutput)
 }

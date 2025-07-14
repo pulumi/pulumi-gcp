@@ -259,9 +259,6 @@ export class ServicePerimeter extends pulumi.CustomResource {
      * Resource name for the ServicePerimeter. The shortName component must
      * begin with a letter and only include alphanumeric and '_'.
      * Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -388,9 +385,6 @@ export interface ServicePerimeterState {
      * Resource name for the ServicePerimeter. The shortName component must
      * begin with a letter and only include alphanumeric and '_'.
      * Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -467,9 +461,6 @@ export interface ServicePerimeterArgs {
      * Resource name for the ServicePerimeter. The shortName component must
      * begin with a letter and only include alphanumeric and '_'.
      * Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

@@ -137,8 +137,6 @@ type TargetSite struct {
 	pulumi.CustomResourceState
 
 	// The unique id of the data store.
-	//
-	// ***
 	DataStoreId pulumi.StringOutput `pulumi:"dataStoreId"`
 	// If set to false, a uriPattern is generated to include all pages whose
 	// address contains the provided_uri_pattern. If set to true, an uriPattern
@@ -222,8 +220,6 @@ func GetTargetSite(ctx *pulumi.Context,
 // Input properties used for looking up and filtering TargetSite resources.
 type targetSiteState struct {
 	// The unique id of the data store.
-	//
-	// ***
 	DataStoreId *string `pulumi:"dataStoreId"`
 	// If set to false, a uriPattern is generated to include all pages whose
 	// address contains the provided_uri_pattern. If set to true, an uriPattern
@@ -269,8 +265,6 @@ type targetSiteState struct {
 
 type TargetSiteState struct {
 	// The unique id of the data store.
-	//
-	// ***
 	DataStoreId pulumi.StringPtrInput
 	// If set to false, a uriPattern is generated to include all pages whose
 	// address contains the provided_uri_pattern. If set to true, an uriPattern
@@ -320,8 +314,6 @@ func (TargetSiteState) ElementType() reflect.Type {
 
 type targetSiteArgs struct {
 	// The unique id of the data store.
-	//
-	// ***
 	DataStoreId string `pulumi:"dataStoreId"`
 	// If set to false, a uriPattern is generated to include all pages whose
 	// address contains the provided_uri_pattern. If set to true, an uriPattern
@@ -347,8 +339,6 @@ type targetSiteArgs struct {
 // The set of arguments for constructing a TargetSite resource.
 type TargetSiteArgs struct {
 	// The unique id of the data store.
-	//
-	// ***
 	DataStoreId pulumi.StringInput
 	// If set to false, a uriPattern is generated to include all pages whose
 	// address contains the provided_uri_pattern. If set to true, an uriPattern
@@ -459,8 +449,6 @@ func (o TargetSiteOutput) ToTargetSiteOutputWithContext(ctx context.Context) Tar
 }
 
 // The unique id of the data store.
-//
-// ***
 func (o TargetSiteOutput) DataStoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TargetSite) pulumi.StringOutput { return v.DataStoreId }).(pulumi.StringOutput)
 }

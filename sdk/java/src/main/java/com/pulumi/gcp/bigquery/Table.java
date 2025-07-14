@@ -389,6 +389,22 @@ public class Table extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.friendlyName);
     }
     /**
+     * A list of fields which should be ignored for each column in schema.
+     * **NOTE:** Right now only `dataPolicies` field is supported. We might support others in the future.
+     * 
+     */
+    @Export(name="ignoreSchemaChanges", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> ignoreSchemaChanges;
+
+    /**
+     * @return A list of fields which should be ignored for each column in schema.
+     * **NOTE:** Right now only `dataPolicies` field is supported. We might support others in the future.
+     * 
+     */
+    public Output<Optional<List<String>>> ignoreSchemaChanges() {
+        return Codegen.optional(this.ignoreSchemaChanges);
+    }
+    /**
      * A mapping of labels to assign to the resource.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.

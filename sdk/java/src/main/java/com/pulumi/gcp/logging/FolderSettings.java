@@ -126,16 +126,12 @@ public class FolderSettings extends com.pulumi.resources.CustomResource {
     /**
      * The folder for which to retrieve settings.
      * 
-     * ***
-     * 
      */
     @Export(name="folder", refs={String.class}, tree="[0]")
     private Output<String> folder;
 
     /**
      * @return The folder for which to retrieve settings.
-     * 
-     * ***
      * 
      */
     public Output<String> folder() {

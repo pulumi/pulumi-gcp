@@ -2057,8 +2057,6 @@ class PrivateConnectionVpcPeeringConfig(dict):
                  vpc_name: builtins.str):
         """
         :param builtins.str subnet: A free subnet for peering. (CIDR of /29)
-               
-               - - -
         :param builtins.str vpc_name: Fully qualified name of the VPC that Database Migration Service will peer to.
                Format: projects/{project}/global/{networks}/{name}
         """
@@ -2070,8 +2068,6 @@ class PrivateConnectionVpcPeeringConfig(dict):
     def subnet(self) -> builtins.str:
         """
         A free subnet for peering. (CIDR of /29)
-
-        - - -
         """
         return pulumi.get(self, "subnet")
 

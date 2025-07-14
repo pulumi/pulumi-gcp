@@ -155,9 +155,6 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// Short name of the Mesh resource to be created.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -277,9 +274,6 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// Short name of the Mesh resource to be created.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -359,9 +353,6 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// Short name of the Mesh resource to be created.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

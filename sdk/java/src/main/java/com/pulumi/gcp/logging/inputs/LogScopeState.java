@@ -94,16 +94,12 @@ public final class LogScopeState extends com.pulumi.resources.ResourceArgs {
     /**
      * Names of one or more parent resources : *  \`projects/[PROJECT_ID]\` May alternatively be one or more views : * \`projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]\` A log scope can include a maximum of 50 projects and a maximum of 100 resources in total.
      * 
-     * ***
-     * 
      */
     @Import(name="resourceNames")
     private @Nullable Output<List<String>> resourceNames;
 
     /**
      * @return Names of one or more parent resources : *  \`projects/[PROJECT_ID]\` May alternatively be one or more views : * \`projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]\` A log scope can include a maximum of 50 projects and a maximum of 100 resources in total.
-     * 
-     * ***
      * 
      */
     public Optional<Output<List<String>>> resourceNames() {
@@ -263,8 +259,6 @@ public final class LogScopeState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param resourceNames Names of one or more parent resources : *  \`projects/[PROJECT_ID]\` May alternatively be one or more views : * \`projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]\` A log scope can include a maximum of 50 projects and a maximum of 100 resources in total.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -276,8 +270,6 @@ public final class LogScopeState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param resourceNames Names of one or more parent resources : *  \`projects/[PROJECT_ID]\` May alternatively be one or more views : * \`projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]\` A log scope can include a maximum of 50 projects and a maximum of 100 resources in total.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -287,8 +279,6 @@ public final class LogScopeState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param resourceNames Names of one or more parent resources : *  \`projects/[PROJECT_ID]\` May alternatively be one or more views : * \`projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]\` A log scope can include a maximum of 50 projects and a maximum of 100 resources in total.
-         * 
-         * ***
          * 
          * @return builder
          * 

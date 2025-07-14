@@ -126,8 +126,6 @@ type AuthzExtension struct {
 	// Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
 	LoadBalancingScheme pulumi.StringOutput `pulumi:"loadBalancingScheme"`
 	// The location of the resource.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The metadata provided here is included as part of the metadataContext (of type google.protobuf.Struct) in the ProcessingRequest message sent to the extension server. The metadata is available under the namespace com.google.authz_extension.<resourceName>. The following variables are supported in the metadata Struct:
 	// {forwarding_rule_id} - substituted with the forwarding rule's fully qualified resource name.
@@ -228,8 +226,6 @@ type authzExtensionState struct {
 	// Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// The location of the resource.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// The metadata provided here is included as part of the metadataContext (of type google.protobuf.Struct) in the ProcessingRequest message sent to the extension server. The metadata is available under the namespace com.google.authz_extension.<resourceName>. The following variables are supported in the metadata Struct:
 	// {forwarding_rule_id} - substituted with the forwarding rule's fully qualified resource name.
@@ -281,8 +277,6 @@ type AuthzExtensionState struct {
 	// Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrInput
 	// The location of the resource.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// The metadata provided here is included as part of the metadataContext (of type google.protobuf.Struct) in the ProcessingRequest message sent to the extension server. The metadata is available under the namespace com.google.authz_extension.<resourceName>. The following variables are supported in the metadata Struct:
 	// {forwarding_rule_id} - substituted with the forwarding rule's fully qualified resource name.
@@ -334,8 +328,6 @@ type authzExtensionArgs struct {
 	// Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
 	LoadBalancingScheme string `pulumi:"loadBalancingScheme"`
 	// The location of the resource.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// The metadata provided here is included as part of the metadataContext (of type google.protobuf.Struct) in the ProcessingRequest message sent to the extension server. The metadata is available under the namespace com.google.authz_extension.<resourceName>. The following variables are supported in the metadata Struct:
 	// {forwarding_rule_id} - substituted with the forwarding rule's fully qualified resource name.
@@ -379,8 +371,6 @@ type AuthzExtensionArgs struct {
 	// Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
 	LoadBalancingScheme pulumi.StringInput
 	// The location of the resource.
-	//
-	// ***
 	Location pulumi.StringInput
 	// The metadata provided here is included as part of the metadataContext (of type google.protobuf.Struct) in the ProcessingRequest message sent to the extension server. The metadata is available under the namespace com.google.authz_extension.<resourceName>. The following variables are supported in the metadata Struct:
 	// {forwarding_rule_id} - substituted with the forwarding rule's fully qualified resource name.
@@ -537,8 +527,6 @@ func (o AuthzExtensionOutput) LoadBalancingScheme() pulumi.StringOutput {
 }
 
 // The location of the resource.
-//
-// ***
 func (o AuthzExtensionOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthzExtension) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

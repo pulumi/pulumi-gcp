@@ -76,16 +76,12 @@ public final class CxGenerativeSettingsArgs extends com.pulumi.resources.Resourc
     /**
      * Language for this settings.
      * 
-     * ***
-     * 
      */
     @Import(name="languageCode", required=true)
     private Output<String> languageCode;
 
     /**
      * @return Language for this settings.
-     * 
-     * ***
      * 
      */
     public Output<String> languageCode() {
@@ -229,8 +225,6 @@ public final class CxGenerativeSettingsArgs extends com.pulumi.resources.Resourc
         /**
          * @param languageCode Language for this settings.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -241,8 +235,6 @@ public final class CxGenerativeSettingsArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param languageCode Language for this settings.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -386,16 +386,12 @@ public class RegionNetworkEndpoint extends com.pulumi.resources.CustomResource {
     /**
      * The network endpoint group this endpoint is part of.
      * 
-     * ***
-     * 
      */
     @Export(name="regionNetworkEndpointGroup", refs={String.class}, tree="[0]")
     private Output<String> regionNetworkEndpointGroup;
 
     /**
      * @return The network endpoint group this endpoint is part of.
-     * 
-     * ***
      * 
      */
     public Output<String> regionNetworkEndpointGroup() {

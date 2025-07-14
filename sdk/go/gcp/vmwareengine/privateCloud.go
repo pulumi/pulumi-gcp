@@ -173,8 +173,7 @@ import (
 type PrivateCloud struct {
 	pulumi.CustomResourceState
 
-	// The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0
-	// starts the deletion request immediately. If no value is set, a default value is set at the API Level.
+	// The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
 	DeletionDelayHours pulumi.IntPtrOutput `pulumi:"deletionDelayHours"`
 	// User-provided description for this private cloud.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -193,16 +192,17 @@ type PrivateCloud struct {
 	NetworkConfig PrivateCloudNetworkConfigOutput `pulumi:"networkConfig"`
 	// Details about a NSX Manager appliance.
 	// Structure is documented below.
-	Nsxes   PrivateCloudNsxArrayOutput `pulumi:"nsxes"`
-	Project pulumi.StringOutput        `pulumi:"project"`
-	// While set true, deletionDelayHours value will be sent in the request even for zero value of the field. This field is
-	// only useful for setting 0 value to the deletionDelayHours field. It can be used both alone and together with
-	// deletion_delay_hours.
+	Nsxes PrivateCloudNsxArrayOutput `pulumi:"nsxes"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringOutput `pulumi:"project"`
+	// While set true, deletionDelayHours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletionDelayHours field. It can be used both alone and together with deletion_delay_hours.
 	SendDeletionDelayHoursIfZero pulumi.BoolPtrOutput `pulumi:"sendDeletionDelayHoursIfZero"`
 	// State of the appliance.
 	// Possible values are: `ACTIVE`, `CREATING`.
 	State pulumi.StringOutput `pulumi:"state"`
-	// Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
+	// Initial type of the private cloud.
+	// Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 	// System-generated unique identifier for the resource.
 	Uid pulumi.StringOutput `pulumi:"uid"`
@@ -250,8 +250,7 @@ func GetPrivateCloud(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PrivateCloud resources.
 type privateCloudState struct {
-	// The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0
-	// starts the deletion request immediately. If no value is set, a default value is set at the API Level.
+	// The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
 	DeletionDelayHours *int `pulumi:"deletionDelayHours"`
 	// User-provided description for this private cloud.
 	Description *string `pulumi:"description"`
@@ -270,16 +269,17 @@ type privateCloudState struct {
 	NetworkConfig *PrivateCloudNetworkConfig `pulumi:"networkConfig"`
 	// Details about a NSX Manager appliance.
 	// Structure is documented below.
-	Nsxes   []PrivateCloudNsx `pulumi:"nsxes"`
-	Project *string           `pulumi:"project"`
-	// While set true, deletionDelayHours value will be sent in the request even for zero value of the field. This field is
-	// only useful for setting 0 value to the deletionDelayHours field. It can be used both alone and together with
-	// deletion_delay_hours.
+	Nsxes []PrivateCloudNsx `pulumi:"nsxes"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
+	// While set true, deletionDelayHours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletionDelayHours field. It can be used both alone and together with deletion_delay_hours.
 	SendDeletionDelayHoursIfZero *bool `pulumi:"sendDeletionDelayHoursIfZero"`
 	// State of the appliance.
 	// Possible values are: `ACTIVE`, `CREATING`.
 	State *string `pulumi:"state"`
-	// Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
+	// Initial type of the private cloud.
+	// Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
 	Type *string `pulumi:"type"`
 	// System-generated unique identifier for the resource.
 	Uid *string `pulumi:"uid"`
@@ -289,8 +289,7 @@ type privateCloudState struct {
 }
 
 type PrivateCloudState struct {
-	// The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0
-	// starts the deletion request immediately. If no value is set, a default value is set at the API Level.
+	// The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
 	DeletionDelayHours pulumi.IntPtrInput
 	// User-provided description for this private cloud.
 	Description pulumi.StringPtrInput
@@ -309,16 +308,17 @@ type PrivateCloudState struct {
 	NetworkConfig PrivateCloudNetworkConfigPtrInput
 	// Details about a NSX Manager appliance.
 	// Structure is documented below.
-	Nsxes   PrivateCloudNsxArrayInput
+	Nsxes PrivateCloudNsxArrayInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// While set true, deletionDelayHours value will be sent in the request even for zero value of the field. This field is
-	// only useful for setting 0 value to the deletionDelayHours field. It can be used both alone and together with
-	// deletion_delay_hours.
+	// While set true, deletionDelayHours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletionDelayHours field. It can be used both alone and together with deletion_delay_hours.
 	SendDeletionDelayHoursIfZero pulumi.BoolPtrInput
 	// State of the appliance.
 	// Possible values are: `ACTIVE`, `CREATING`.
 	State pulumi.StringPtrInput
-	// Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
+	// Initial type of the private cloud.
+	// Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
 	Type pulumi.StringPtrInput
 	// System-generated unique identifier for the resource.
 	Uid pulumi.StringPtrInput
@@ -332,8 +332,7 @@ func (PrivateCloudState) ElementType() reflect.Type {
 }
 
 type privateCloudArgs struct {
-	// The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0
-	// starts the deletion request immediately. If no value is set, a default value is set at the API Level.
+	// The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
 	DeletionDelayHours *int `pulumi:"deletionDelayHours"`
 	// User-provided description for this private cloud.
 	Description *string `pulumi:"description"`
@@ -347,19 +346,19 @@ type privateCloudArgs struct {
 	// Network configuration in the consumer project with which the peering has to be done.
 	// Structure is documented below.
 	NetworkConfig PrivateCloudNetworkConfig `pulumi:"networkConfig"`
-	Project       *string                   `pulumi:"project"`
-	// While set true, deletionDelayHours value will be sent in the request even for zero value of the field. This field is
-	// only useful for setting 0 value to the deletionDelayHours field. It can be used both alone and together with
-	// deletion_delay_hours.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
+	// While set true, deletionDelayHours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletionDelayHours field. It can be used both alone and together with deletion_delay_hours.
 	SendDeletionDelayHoursIfZero *bool `pulumi:"sendDeletionDelayHoursIfZero"`
-	// Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
+	// Initial type of the private cloud.
+	// Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
 	Type *string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a PrivateCloud resource.
 type PrivateCloudArgs struct {
-	// The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0
-	// starts the deletion request immediately. If no value is set, a default value is set at the API Level.
+	// The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
 	DeletionDelayHours pulumi.IntPtrInput
 	// User-provided description for this private cloud.
 	Description pulumi.StringPtrInput
@@ -373,12 +372,13 @@ type PrivateCloudArgs struct {
 	// Network configuration in the consumer project with which the peering has to be done.
 	// Structure is documented below.
 	NetworkConfig PrivateCloudNetworkConfigInput
-	Project       pulumi.StringPtrInput
-	// While set true, deletionDelayHours value will be sent in the request even for zero value of the field. This field is
-	// only useful for setting 0 value to the deletionDelayHours field. It can be used both alone and together with
-	// deletion_delay_hours.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
+	// While set true, deletionDelayHours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletionDelayHours field. It can be used both alone and together with deletion_delay_hours.
 	SendDeletionDelayHoursIfZero pulumi.BoolPtrInput
-	// Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
+	// Initial type of the private cloud.
+	// Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
 	Type pulumi.StringPtrInput
 }
 
@@ -469,8 +469,7 @@ func (o PrivateCloudOutput) ToPrivateCloudOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0
-// starts the deletion request immediately. If no value is set, a default value is set at the API Level.
+// The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
 func (o PrivateCloudOutput) DeletionDelayHours() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PrivateCloud) pulumi.IntPtrOutput { return v.DeletionDelayHours }).(pulumi.IntPtrOutput)
 }
@@ -514,13 +513,13 @@ func (o PrivateCloudOutput) Nsxes() PrivateCloudNsxArrayOutput {
 	return o.ApplyT(func(v *PrivateCloud) PrivateCloudNsxArrayOutput { return v.Nsxes }).(PrivateCloudNsxArrayOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o PrivateCloudOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateCloud) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// While set true, deletionDelayHours value will be sent in the request even for zero value of the field. This field is
-// only useful for setting 0 value to the deletionDelayHours field. It can be used both alone and together with
-// deletion_delay_hours.
+// While set true, deletionDelayHours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletionDelayHours field. It can be used both alone and together with deletion_delay_hours.
 func (o PrivateCloudOutput) SendDeletionDelayHoursIfZero() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PrivateCloud) pulumi.BoolPtrOutput { return v.SendDeletionDelayHoursIfZero }).(pulumi.BoolPtrOutput)
 }
@@ -531,7 +530,8 @@ func (o PrivateCloudOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateCloud) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
+// Initial type of the private cloud.
+// Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
 func (o PrivateCloudOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrivateCloud) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

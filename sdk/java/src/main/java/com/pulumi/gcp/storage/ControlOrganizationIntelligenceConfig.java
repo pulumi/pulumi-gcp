@@ -142,16 +142,12 @@ public class ControlOrganizationIntelligenceConfig extends com.pulumi.resources.
     /**
      * Identifier of the GCP Organization. For GCP org, this field should be organization number.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return Identifier of the GCP Organization. For GCP org, this field should be organization number.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

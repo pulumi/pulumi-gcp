@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
     {
         /// <summary>
         /// The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/jobs/gpu for configuring GPU.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string Accelerator;
 

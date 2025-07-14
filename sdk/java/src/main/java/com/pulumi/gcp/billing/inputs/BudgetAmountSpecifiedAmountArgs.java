@@ -40,8 +40,6 @@ public final class BudgetAmountSpecifiedAmountArgs extends com.pulumi.resources.
      * zero. For example $-1.75 is represented as units=-1 and
      * nanos=-750,000,000.
      * 
-     * ***
-     * 
      */
     @Import(name="nanos")
     private @Nullable Output<Integer> nanos;
@@ -54,8 +52,6 @@ public final class BudgetAmountSpecifiedAmountArgs extends com.pulumi.resources.
      * negative. If units is negative, nanos must be negative or
      * zero. For example $-1.75 is represented as units=-1 and
      * nanos=-750,000,000.
-     * 
-     * ***
      * 
      */
     public Optional<Output<Integer>> nanos() {
@@ -135,8 +131,6 @@ public final class BudgetAmountSpecifiedAmountArgs extends com.pulumi.resources.
          * zero. For example $-1.75 is represented as units=-1 and
          * nanos=-750,000,000.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -153,8 +147,6 @@ public final class BudgetAmountSpecifiedAmountArgs extends com.pulumi.resources.
          * negative. If units is negative, nanos must be negative or
          * zero. For example $-1.75 is represented as units=-1 and
          * nanos=-750,000,000.
-         * 
-         * ***
          * 
          * @return builder
          * 

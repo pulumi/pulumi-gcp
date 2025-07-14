@@ -14,13 +14,13 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FutureReservationStatusLastKnownGoodStateFutureReservationSpecs {
     /**
-     * @return The previous share settings of the Future Reservation.
+     * @return Settings for sharing the future reservation
      * Structure is documented below.
      * 
      */
     private @Nullable FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettings shareSettings;
     /**
-     * @return The previous instance related properties of the Future Reservation.
+     * @return Future Reservation configuration to indicate instance properties and total count.
      * Structure is documented below.
      * 
      */
@@ -34,7 +34,7 @@ public final class FutureReservationStatusLastKnownGoodStateFutureReservationSpe
 
     private FutureReservationStatusLastKnownGoodStateFutureReservationSpecs() {}
     /**
-     * @return The previous share settings of the Future Reservation.
+     * @return Settings for sharing the future reservation
      * Structure is documented below.
      * 
      */
@@ -42,7 +42,7 @@ public final class FutureReservationStatusLastKnownGoodStateFutureReservationSpe
         return Optional.ofNullable(this.shareSettings);
     }
     /**
-     * @return The previous instance related properties of the Future Reservation.
+     * @return Future Reservation configuration to indicate instance properties and total count.
      * Structure is documented below.
      * 
      */

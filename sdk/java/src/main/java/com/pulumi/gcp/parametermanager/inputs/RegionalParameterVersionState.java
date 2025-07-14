@@ -130,16 +130,12 @@ public final class RegionalParameterVersionState extends com.pulumi.resources.Re
     /**
      * Version ID of the Regional Parameter Version Resource. This must be unique within the Regional Parameter.
      * 
-     * ***
-     * 
      */
     @Import(name="parameterVersionId")
     private @Nullable Output<String> parameterVersionId;
 
     /**
      * @return Version ID of the Regional Parameter Version Resource. This must be unique within the Regional Parameter.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> parameterVersionId() {
@@ -349,8 +345,6 @@ public final class RegionalParameterVersionState extends com.pulumi.resources.Re
         /**
          * @param parameterVersionId Version ID of the Regional Parameter Version Resource. This must be unique within the Regional Parameter.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -361,8 +355,6 @@ public final class RegionalParameterVersionState extends com.pulumi.resources.Re
 
         /**
          * @param parameterVersionId Version ID of the Regional Parameter Version Resource. This must be unique within the Regional Parameter.
-         * 
-         * ***
          * 
          * @return builder
          * 

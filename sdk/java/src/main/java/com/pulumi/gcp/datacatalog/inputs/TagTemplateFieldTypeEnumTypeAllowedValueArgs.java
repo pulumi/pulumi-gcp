@@ -15,14 +15,14 @@ public final class TagTemplateFieldTypeEnumTypeAllowedValueArgs extends com.pulu
     public static final TagTemplateFieldTypeEnumTypeAllowedValueArgs Empty = new TagTemplateFieldTypeEnumTypeAllowedValueArgs();
 
     /**
-     * The display name for this template.
+     * The display name of the enum value.
      * 
      */
     @Import(name="displayName", required=true)
     private Output<String> displayName;
 
     /**
-     * @return The display name for this template.
+     * @return The display name of the enum value.
      * 
      */
     public Output<String> displayName() {
@@ -54,7 +54,7 @@ public final class TagTemplateFieldTypeEnumTypeAllowedValueArgs extends com.pulu
         }
 
         /**
-         * @param displayName The display name for this template.
+         * @param displayName The display name of the enum value.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class TagTemplateFieldTypeEnumTypeAllowedValueArgs extends com.pulu
         }
 
         /**
-         * @param displayName The display name for this template.
+         * @param displayName The display name of the enum value.
          * 
          * @return builder
          * 

@@ -31,9 +31,6 @@ class CapacityCommitmentArgs:
         """
         The set of arguments for constructing a CapacityCommitment resource.
         :param pulumi.Input[builtins.str] plan: Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
-               
-               
-               - - -
         :param pulumi.Input[builtins.int] slot_count: Number of slots in this commitment.
         :param pulumi.Input[builtins.str] capacity_commitment_id: The optional capacity commitment ID. Capacity commitment name will be generated automatically if this field is
                empty. This field must only contain lower case alphanumeric characters or dashes. The first and last character
@@ -67,9 +64,6 @@ class CapacityCommitmentArgs:
     def plan(self) -> pulumi.Input[builtins.str]:
         """
         Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
-
-
-        - - -
         """
         return pulumi.get(self, "plan")
 
@@ -196,9 +190,6 @@ class _CapacityCommitmentState:
                Examples: US, EU, asia-northeast1. The default value is US.
         :param pulumi.Input[builtins.str] name: The resource name of the capacity commitment, e.g., projects/myproject/locations/US/capacityCommitments/123
         :param pulumi.Input[builtins.str] plan: Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] renewal_plan: The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for some commitment plans.
@@ -323,9 +314,6 @@ class _CapacityCommitmentState:
     def plan(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
-
-
-        - - -
         """
         return pulumi.get(self, "plan")
 
@@ -460,9 +448,6 @@ class CapacityCommitment(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] location: The geographic location where the transfer config should reside.
                Examples: US, EU, asia-northeast1. The default value is US.
         :param pulumi.Input[builtins.str] plan: Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] renewal_plan: The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for some commitment plans.
@@ -614,9 +599,6 @@ class CapacityCommitment(pulumi.CustomResource):
                Examples: US, EU, asia-northeast1. The default value is US.
         :param pulumi.Input[builtins.str] name: The resource name of the capacity commitment, e.g., projects/myproject/locations/US/capacityCommitments/123
         :param pulumi.Input[builtins.str] plan: Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] renewal_plan: The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for some commitment plans.
@@ -706,9 +688,6 @@ class CapacityCommitment(pulumi.CustomResource):
     def plan(self) -> pulumi.Output[builtins.str]:
         """
         Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
-
-
-        - - -
         """
         return pulumi.get(self, "plan")
 

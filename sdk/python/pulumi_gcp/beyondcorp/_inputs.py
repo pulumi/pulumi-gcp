@@ -71,8 +71,6 @@ if not MYPY:
         port: pulumi.Input[builtins.int]
         """
         Port of the remote application endpoint.
-
-        - - -
         """
 elif False:
     AppConnectionApplicationEndpointArgsDict: TypeAlias = Mapping[str, Any]
@@ -85,8 +83,6 @@ class AppConnectionApplicationEndpointArgs:
         """
         :param pulumi.Input[builtins.str] host: Hostname or IP address of the remote application endpoint.
         :param pulumi.Input[builtins.int] port: Port of the remote application endpoint.
-               
-               - - -
         """
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "port", port)
@@ -108,8 +104,6 @@ class AppConnectionApplicationEndpointArgs:
     def port(self) -> pulumi.Input[builtins.int]:
         """
         Port of the remote application endpoint.
-
-        - - -
         """
         return pulumi.get(self, "port")
 
@@ -260,8 +254,6 @@ if not MYPY:
         email: pulumi.Input[builtins.str]
         """
         Email address of the service account.
-
-        - - -
         """
 elif False:
     AppConnectorPrincipalInfoServiceAccountArgsDict: TypeAlias = Mapping[str, Any]
@@ -272,8 +264,6 @@ class AppConnectorPrincipalInfoServiceAccountArgs:
                  email: pulumi.Input[builtins.str]):
         """
         :param pulumi.Input[builtins.str] email: Email address of the service account.
-               
-               - - -
         """
         pulumi.set(__self__, "email", email)
 
@@ -282,8 +272,6 @@ class AppConnectorPrincipalInfoServiceAccountArgs:
     def email(self) -> pulumi.Input[builtins.str]:
         """
         Email address of the service account.
-
-        - - -
         """
         return pulumi.get(self, "email")
 
@@ -353,8 +341,6 @@ if not MYPY:
         ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.int]]]]
         """
         Optional. Ports of the application.
-
-        - - -
         """
 elif False:
     ApplicationEndpointMatcherArgsDict: TypeAlias = Mapping[str, Any]
@@ -367,8 +353,6 @@ class ApplicationEndpointMatcherArgs:
         """
         :param pulumi.Input[builtins.str] hostname: Required. Hostname of the application.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.int]]] ports: Optional. Ports of the application.
-               
-               - - -
         """
         pulumi.set(__self__, "hostname", hostname)
         if ports is not None:
@@ -391,8 +375,6 @@ class ApplicationEndpointMatcherArgs:
     def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.int]]]]:
         """
         Optional. Ports of the application.
-
-        - - -
         """
         return pulumi.get(self, "ports")
 
@@ -659,8 +641,6 @@ if not MYPY:
         ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.int]]]]
         """
         Optional. Ports of the application.
-
-        - - -
         """
 elif False:
     SecurityGatewayApplicationEndpointMatcherArgsDict: TypeAlias = Mapping[str, Any]
@@ -673,8 +653,6 @@ class SecurityGatewayApplicationEndpointMatcherArgs:
         """
         :param pulumi.Input[builtins.str] hostname: Required. Hostname of the application.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.int]]] ports: Optional. Ports of the application.
-               
-               - - -
         """
         pulumi.set(__self__, "hostname", hostname)
         if ports is not None:
@@ -697,8 +675,6 @@ class SecurityGatewayApplicationEndpointMatcherArgs:
     def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.int]]]]:
         """
         Optional. Ports of the application.
-
-        - - -
         """
         return pulumi.get(self, "ports")
 

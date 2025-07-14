@@ -430,9 +430,6 @@ namespace Pulumi.Gcp.Dataproc
 
         /// <summary>
         /// The id of the application
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("sparkApplicationId")]
         public Output<string> SparkApplicationId { get; private set; } = null!;
@@ -645,9 +642,6 @@ namespace Pulumi.Gcp.Dataproc
 
         /// <summary>
         /// The id of the application
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("sparkApplicationId", required: true)]
         public Input<string> SparkApplicationId { get; set; } = null!;
@@ -856,9 +850,6 @@ namespace Pulumi.Gcp.Dataproc
 
         /// <summary>
         /// The id of the application
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("sparkApplicationId")]
         public Input<string>? SparkApplicationId { get; set; }

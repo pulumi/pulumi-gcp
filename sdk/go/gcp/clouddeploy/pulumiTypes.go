@@ -1173,8 +1173,6 @@ func (o AutomationRuleRepairRolloutRuleRepairPhaseRollbackPtrOutput) DisableRoll
 
 type AutomationRuleTimedPromoteReleaseRule struct {
 	// Optional. The starting phase of the rollout created by this rule. Default to the first phase.
-	//
-	// ***
 	DestinationPhase *string `pulumi:"destinationPhase"`
 	// Optional. The ID of the stage in the pipeline to which this Release is deploying. If unspecified, default it to the next stage in the promotion flow. The value of this field could be one of the following:
 	// - The last segment of a target name
@@ -1201,8 +1199,6 @@ type AutomationRuleTimedPromoteReleaseRuleInput interface {
 
 type AutomationRuleTimedPromoteReleaseRuleArgs struct {
 	// Optional. The starting phase of the rollout created by this rule. Default to the first phase.
-	//
-	// ***
 	DestinationPhase pulumi.StringPtrInput `pulumi:"destinationPhase"`
 	// Optional. The ID of the stage in the pipeline to which this Release is deploying. If unspecified, default it to the next stage in the promotion flow. The value of this field could be one of the following:
 	// - The last segment of a target name
@@ -1294,8 +1290,6 @@ func (o AutomationRuleTimedPromoteReleaseRuleOutput) ToAutomationRuleTimedPromot
 }
 
 // Optional. The starting phase of the rollout created by this rule. Default to the first phase.
-//
-// ***
 func (o AutomationRuleTimedPromoteReleaseRuleOutput) DestinationPhase() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AutomationRuleTimedPromoteReleaseRule) *string { return v.DestinationPhase }).(pulumi.StringPtrOutput)
 }
@@ -1347,8 +1341,6 @@ func (o AutomationRuleTimedPromoteReleaseRulePtrOutput) Elem() AutomationRuleTim
 }
 
 // Optional. The starting phase of the rollout created by this rule. Default to the first phase.
-//
-// ***
 func (o AutomationRuleTimedPromoteReleaseRulePtrOutput) DestinationPhase() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AutomationRuleTimedPromoteReleaseRule) *string {
 		if v == nil {
@@ -7653,8 +7645,6 @@ type DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTime struct {
 	// Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.
 	Minutes *int `pulumi:"minutes"`
 	// Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
-	//
-	// ***
 	Nanos *int `pulumi:"nanos"`
 	// Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds.
 	Seconds *int `pulumi:"seconds"`
@@ -7677,8 +7667,6 @@ type DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeArgs struc
 	// Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.
 	Minutes pulumi.IntPtrInput `pulumi:"minutes"`
 	// Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
-	//
-	// ***
 	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
 	// Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds.
 	Seconds pulumi.IntPtrInput `pulumi:"seconds"`
@@ -7721,8 +7709,6 @@ func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeOutput)
 }
 
 // Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
-//
-// ***
 func (o DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeOutput) Nanos() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTime) *int { return v.Nanos }).(pulumi.IntPtrOutput)
 }
@@ -8015,8 +8001,6 @@ type DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime struct {
 	// Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.
 	Minutes *int `pulumi:"minutes"`
 	// Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
-	//
-	// ***
 	Nanos *int `pulumi:"nanos"`
 	// Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds.
 	Seconds *int `pulumi:"seconds"`
@@ -8039,8 +8023,6 @@ type DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeArgs struct
 	// Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.
 	Minutes pulumi.IntPtrInput `pulumi:"minutes"`
 	// Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
-	//
-	// ***
 	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
 	// Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds.
 	Seconds pulumi.IntPtrInput `pulumi:"seconds"`
@@ -8134,8 +8116,6 @@ func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeOutput) 
 }
 
 // Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
-//
-// ***
 func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeOutput) Nanos() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime) *int { return v.Nanos }).(pulumi.IntPtrOutput)
 }
@@ -8190,8 +8170,6 @@ func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrOutpu
 }
 
 // Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
-//
-// ***
 func (o DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimePtrOutput) Nanos() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime) *int {
 		if v == nil {

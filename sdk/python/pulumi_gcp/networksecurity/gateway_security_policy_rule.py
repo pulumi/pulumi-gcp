@@ -37,9 +37,6 @@ class GatewaySecurityPolicyRuleArgs:
                Possible values are: `BASIC_PROFILE_UNSPECIFIED`, `ALLOW`, `DENY`.
         :param pulumi.Input[builtins.bool] enabled: Whether the rule is enforced.
         :param pulumi.Input[builtins.str] gateway_security_policy: The name of the gatewat security policy this rule belongs to.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: The location of the gateway security policy.
         :param pulumi.Input[builtins.int] priority: Priority of the rule. Lower number corresponds to higher precedence.
         :param pulumi.Input[builtins.str] session_matcher: CEL expression for matching on session criteria.
@@ -99,9 +96,6 @@ class GatewaySecurityPolicyRuleArgs:
     def gateway_security_policy(self) -> pulumi.Input[builtins.str]:
         """
         The name of the gatewat security policy this rule belongs to.
-
-
-        - - -
         """
         return pulumi.get(self, "gateway_security_policy")
 
@@ -237,9 +231,6 @@ class _GatewaySecurityPolicyRuleState:
         :param pulumi.Input[builtins.str] description: Free-text description of the resource.
         :param pulumi.Input[builtins.bool] enabled: Whether the rule is enforced.
         :param pulumi.Input[builtins.str] gateway_security_policy: The name of the gatewat security policy this rule belongs to.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: The location of the gateway security policy.
         :param pulumi.Input[builtins.str] name: Name of the resource. ame is the full resource name so projects/{project}/locations/{location}/gatewaySecurityPolicies/{gateway_security_policy}/rules/{rule}
                rule should match the pattern: (^a-z?$).
@@ -351,9 +342,6 @@ class _GatewaySecurityPolicyRuleState:
     def gateway_security_policy(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The name of the gatewat security policy this rule belongs to.
-
-
-        - - -
         """
         return pulumi.get(self, "gateway_security_policy")
 
@@ -566,9 +554,6 @@ class GatewaySecurityPolicyRule(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] description: Free-text description of the resource.
         :param pulumi.Input[builtins.bool] enabled: Whether the rule is enforced.
         :param pulumi.Input[builtins.str] gateway_security_policy: The name of the gatewat security policy this rule belongs to.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: The location of the gateway security policy.
         :param pulumi.Input[builtins.str] name: Name of the resource. ame is the full resource name so projects/{project}/locations/{location}/gatewaySecurityPolicies/{gateway_security_policy}/rules/{rule}
                rule should match the pattern: (^a-z?$).
@@ -763,9 +748,6 @@ class GatewaySecurityPolicyRule(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] description: Free-text description of the resource.
         :param pulumi.Input[builtins.bool] enabled: Whether the rule is enforced.
         :param pulumi.Input[builtins.str] gateway_security_policy: The name of the gatewat security policy this rule belongs to.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: The location of the gateway security policy.
         :param pulumi.Input[builtins.str] name: Name of the resource. ame is the full resource name so projects/{project}/locations/{location}/gatewaySecurityPolicies/{gateway_security_policy}/rules/{rule}
                rule should match the pattern: (^a-z?$).
@@ -848,9 +830,6 @@ class GatewaySecurityPolicyRule(pulumi.CustomResource):
     def gateway_security_policy(self) -> pulumi.Output[builtins.str]:
         """
         The name of the gatewat security policy this rule belongs to.
-
-
-        - - -
         """
         return pulumi.get(self, "gateway_security_policy")
 

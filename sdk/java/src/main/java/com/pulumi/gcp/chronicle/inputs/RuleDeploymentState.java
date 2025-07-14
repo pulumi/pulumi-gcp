@@ -246,16 +246,12 @@ public final class RuleDeploymentState extends com.pulumi.resources.ResourceArgs
     /**
      * The Rule ID of the rule.
      * 
-     * ***
-     * 
      */
     @Import(name="rule")
     private @Nullable Output<String> rule;
 
     /**
      * @return The Rule ID of the rule.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> rule() {
@@ -649,8 +645,6 @@ public final class RuleDeploymentState extends com.pulumi.resources.ResourceArgs
         /**
          * @param rule The Rule ID of the rule.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -661,8 +655,6 @@ public final class RuleDeploymentState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param rule The Rule ID of the rule.
-         * 
-         * ***
          * 
          * @return builder
          * 

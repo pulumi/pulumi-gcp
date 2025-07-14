@@ -156,8 +156,6 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * Resource name of the repository, of the form `{{repo}}`.
      * The repo name may contain slashes. eg, `name/with/slash`
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -165,8 +163,6 @@ public class Repository extends com.pulumi.resources.CustomResource {
     /**
      * @return Resource name of the repository, of the form `{{repo}}`.
      * The repo name may contain slashes. eg, `name/with/slash`
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

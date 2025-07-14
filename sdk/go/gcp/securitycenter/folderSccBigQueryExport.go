@@ -103,8 +103,6 @@ type FolderSccBigQueryExport struct {
 	pulumi.CustomResourceState
 
 	// This must be unique within the organization.
-	//
-	// ***
 	BigQueryExportId pulumi.StringOutput `pulumi:"bigQueryExportId"`
 	// The time at which the BigQuery export was created.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -199,8 +197,6 @@ func GetFolderSccBigQueryExport(ctx *pulumi.Context,
 // Input properties used for looking up and filtering FolderSccBigQueryExport resources.
 type folderSccBigQueryExportState struct {
 	// This must be unique within the organization.
-	//
-	// ***
 	BigQueryExportId *string `pulumi:"bigQueryExportId"`
 	// The time at which the BigQuery export was created.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -251,8 +247,6 @@ type folderSccBigQueryExportState struct {
 
 type FolderSccBigQueryExportState struct {
 	// This must be unique within the organization.
-	//
-	// ***
 	BigQueryExportId pulumi.StringPtrInput
 	// The time at which the BigQuery export was created.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -307,8 +301,6 @@ func (FolderSccBigQueryExportState) ElementType() reflect.Type {
 
 type folderSccBigQueryExportArgs struct {
 	// This must be unique within the organization.
-	//
-	// ***
 	BigQueryExportId string `pulumi:"bigQueryExportId"`
 	// The dataset to write findings' updates to.
 	// Its format is "projects/[projectId]/datasets/[bigqueryDatasetId]".
@@ -344,8 +336,6 @@ type folderSccBigQueryExportArgs struct {
 // The set of arguments for constructing a FolderSccBigQueryExport resource.
 type FolderSccBigQueryExportArgs struct {
 	// This must be unique within the organization.
-	//
-	// ***
 	BigQueryExportId pulumi.StringInput
 	// The dataset to write findings' updates to.
 	// Its format is "projects/[projectId]/datasets/[bigqueryDatasetId]".
@@ -466,8 +456,6 @@ func (o FolderSccBigQueryExportOutput) ToFolderSccBigQueryExportOutputWithContex
 }
 
 // This must be unique within the organization.
-//
-// ***
 func (o FolderSccBigQueryExportOutput) BigQueryExportId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FolderSccBigQueryExport) pulumi.StringOutput { return v.BigQueryExportId }).(pulumi.StringOutput)
 }

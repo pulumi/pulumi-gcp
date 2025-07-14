@@ -18,8 +18,6 @@ public final class MetastoreFederationBackendMetastoreArgs extends com.pulumi.re
      * The type of the backend metastore.
      * Possible values are: `METASTORE_TYPE_UNSPECIFIED`, `DATAPROC_METASTORE`, `BIGQUERY`.
      * 
-     * ***
-     * 
      */
     @Import(name="metastoreType", required=true)
     private Output<String> metastoreType;
@@ -27,8 +25,6 @@ public final class MetastoreFederationBackendMetastoreArgs extends com.pulumi.re
     /**
      * @return The type of the backend metastore.
      * Possible values are: `METASTORE_TYPE_UNSPECIFIED`, `DATAPROC_METASTORE`, `BIGQUERY`.
-     * 
-     * ***
      * 
      */
     public Output<String> metastoreType() {
@@ -95,8 +91,6 @@ public final class MetastoreFederationBackendMetastoreArgs extends com.pulumi.re
          * @param metastoreType The type of the backend metastore.
          * Possible values are: `METASTORE_TYPE_UNSPECIFIED`, `DATAPROC_METASTORE`, `BIGQUERY`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -108,8 +102,6 @@ public final class MetastoreFederationBackendMetastoreArgs extends com.pulumi.re
         /**
          * @param metastoreType The type of the backend metastore.
          * Possible values are: `METASTORE_TYPE_UNSPECIFIED`, `DATAPROC_METASTORE`, `BIGQUERY`.
-         * 
-         * ***
          * 
          * @return builder
          * 

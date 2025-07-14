@@ -29,9 +29,6 @@ class ReleaseChannelSettingArgs:
         The set of arguments for constructing a ReleaseChannelSetting resource.
         :param pulumi.Input[builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[builtins.str] release_channel_setting_id: Id of the Release Channel Setting.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -68,9 +65,6 @@ class ReleaseChannelSettingArgs:
     def release_channel_setting_id(self) -> pulumi.Input[builtins.str]:
         """
         Id of the Release Channel Setting.
-
-
-        - - -
         """
         return pulumi.get(self, "release_channel_setting_id")
 
@@ -153,9 +147,6 @@ class _ReleaseChannelSettingState:
                STABLE
                EXPERIMENTAL
         :param pulumi.Input[builtins.str] release_channel_setting_id: Id of the Release Channel Setting.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] update_time: Update time stamp.
         """
         if create_time is not None:
@@ -288,9 +279,6 @@ class _ReleaseChannelSettingState:
     def release_channel_setting_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Id of the Release Channel Setting.
-
-
-        - - -
         """
         return pulumi.get(self, "release_channel_setting_id")
 
@@ -380,9 +368,6 @@ class ReleaseChannelSetting(pulumi.CustomResource):
                STABLE
                EXPERIMENTAL
         :param pulumi.Input[builtins.str] release_channel_setting_id: Id of the Release Channel Setting.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -523,9 +508,6 @@ class ReleaseChannelSetting(pulumi.CustomResource):
                STABLE
                EXPERIMENTAL
         :param pulumi.Input[builtins.str] release_channel_setting_id: Id of the Release Channel Setting.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] update_time: Update time stamp.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -621,9 +603,6 @@ class ReleaseChannelSetting(pulumi.CustomResource):
     def release_channel_setting_id(self) -> pulumi.Output[builtins.str]:
         """
         Id of the Release Channel Setting.
-
-
-        - - -
         """
         return pulumi.get(self, "release_channel_setting_id")
 

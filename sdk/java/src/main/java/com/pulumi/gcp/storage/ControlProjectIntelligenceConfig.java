@@ -136,16 +136,12 @@ public class ControlProjectIntelligenceConfig extends com.pulumi.resources.Custo
     /**
      * Identifier of the GCP project. For GCP project, this field can be project name or project number.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return Identifier of the GCP project. For GCP project, this field can be project name or project number.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

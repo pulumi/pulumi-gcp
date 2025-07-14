@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.Eventarc.Outputs
     {
         /// <summary>
         /// Required. Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
-        /// 
-        /// - - -
         /// </summary>
         public readonly string NetworkAttachment;
 

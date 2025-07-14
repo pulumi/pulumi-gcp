@@ -46,8 +46,6 @@ namespace Pulumi.Gcp.CloudDomains.Outputs
         /// <summary>
         /// The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
         /// it might contain "care of" information.
-        /// 
-        /// - - -
         /// </summary>
         public readonly ImmutableArray<string> Recipients;
         /// <summary>

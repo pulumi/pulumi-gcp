@@ -222,8 +222,6 @@ type Membership struct {
 	// The default value is `global`.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The client-provided identifier of the membership.
-	//
-	// ***
 	MembershipId pulumi.StringOutput `pulumi:"membershipId"`
 	// The unique identifier of the membership.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -298,8 +296,6 @@ type membershipState struct {
 	// The default value is `global`.
 	Location *string `pulumi:"location"`
 	// The client-provided identifier of the membership.
-	//
-	// ***
 	MembershipId *string `pulumi:"membershipId"`
 	// The unique identifier of the membership.
 	Name *string `pulumi:"name"`
@@ -337,8 +333,6 @@ type MembershipState struct {
 	// The default value is `global`.
 	Location pulumi.StringPtrInput
 	// The client-provided identifier of the membership.
-	//
-	// ***
 	MembershipId pulumi.StringPtrInput
 	// The unique identifier of the membership.
 	Name pulumi.StringPtrInput
@@ -378,8 +372,6 @@ type membershipArgs struct {
 	// The default value is `global`.
 	Location *string `pulumi:"location"`
 	// The client-provided identifier of the membership.
-	//
-	// ***
 	MembershipId string `pulumi:"membershipId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -411,8 +403,6 @@ type MembershipArgs struct {
 	// The default value is `global`.
 	Location pulumi.StringPtrInput
 	// The client-provided identifier of the membership.
-	//
-	// ***
 	MembershipId pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -549,8 +539,6 @@ func (o MembershipOutput) Location() pulumi.StringPtrOutput {
 }
 
 // The client-provided identifier of the membership.
-//
-// ***
 func (o MembershipOutput) MembershipId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Membership) pulumi.StringOutput { return v.MembershipId }).(pulumi.StringOutput)
 }

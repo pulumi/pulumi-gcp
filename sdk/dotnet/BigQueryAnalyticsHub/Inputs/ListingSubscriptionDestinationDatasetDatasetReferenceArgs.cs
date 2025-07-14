@@ -20,8 +20,6 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub.Inputs
 
         /// <summary>
         /// The ID of the project containing this dataset.
-        /// 
-        /// - - -
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;

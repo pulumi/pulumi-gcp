@@ -203,14 +203,16 @@ public class Application extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * Optional. An arbitrary user-provided name for the Application resource. Cannot exceed 64 characters.
+     * Optional. An arbitrary user-provided name for the Application resource.
+     * Cannot exceed 64 characters.
      * 
      */
     @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> displayName;
 
     /**
-     * @return Optional. An arbitrary user-provided name for the Application resource. Cannot exceed 64 characters.
+     * @return Optional. An arbitrary user-provided name for the Application resource.
+     * Cannot exceed 64 characters.
      * 
      */
     public Output<Optional<String>> displayName() {
@@ -266,9 +268,19 @@ public class Application extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }
@@ -302,6 +314,7 @@ public class Application extends com.pulumi.resources.CustomResource {
     }
     /**
      * Optional. List of which upstream resource(s) to forward traffic to.
+     * Structure is documented below.
      * 
      */
     @Export(name="upstreams", refs={List.class,ApplicationUpstream.class}, tree="[0,1]")
@@ -309,6 +322,7 @@ public class Application extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Optional. List of which upstream resource(s) to forward traffic to.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<List<ApplicationUpstream>>> upstreams() {

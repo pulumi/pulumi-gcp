@@ -34,9 +34,6 @@ class HaVpnGatewayArgs:
         """
         The set of arguments for constructing a HaVpnGateway resource.
         :param pulumi.Input[builtins.str] network: The network this VPN gateway is accepting traffic for.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
         :param pulumi.Input[builtins.str] gateway_ip_version: The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
                Default value is `IPV4`.
@@ -86,9 +83,6 @@ class HaVpnGatewayArgs:
     def network(self) -> pulumi.Input[builtins.str]:
         """
         The network this VPN gateway is accepting traffic for.
-
-
-        - - -
         """
         return pulumi.get(self, "network")
 
@@ -251,9 +245,6 @@ class _HaVpnGatewayState:
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
         :param pulumi.Input[builtins.str] network: The network this VPN gateway is accepting traffic for.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -387,9 +378,6 @@ class _HaVpnGatewayState:
     def network(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The network this VPN gateway is accepting traffic for.
-
-
-        - - -
         """
         return pulumi.get(self, "network")
 
@@ -646,9 +634,6 @@ class HaVpnGateway(pulumi.CustomResource):
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
         :param pulumi.Input[builtins.str] network: The network this VPN gateway is accepting traffic for.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] region: The region this gateway should sit in.
@@ -903,9 +888,6 @@ class HaVpnGateway(pulumi.CustomResource):
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
         :param pulumi.Input[builtins.str] network: The network this VPN gateway is accepting traffic for.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -1007,9 +989,6 @@ class HaVpnGateway(pulumi.CustomResource):
     def network(self) -> pulumi.Output[builtins.str]:
         """
         The network this VPN gateway is accepting traffic for.
-
-
-        - - -
         """
         return pulumi.get(self, "network")
 

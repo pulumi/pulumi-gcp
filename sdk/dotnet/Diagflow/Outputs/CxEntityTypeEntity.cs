@@ -16,8 +16,6 @@ namespace Pulumi.Gcp.Diagflow.Outputs
         /// <summary>
         /// A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym could be green onions.
         /// For KIND_LIST entity types: This collection must contain exactly one synonym equal to value.
-        /// 
-        /// - - -
         /// </summary>
         public readonly ImmutableArray<string> Synonyms;
         /// <summary>

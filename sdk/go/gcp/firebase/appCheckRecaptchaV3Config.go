@@ -99,8 +99,6 @@ type AppCheckRecaptchaV3Config struct {
 
 	// The ID of an
 	// [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id).
-	//
-	// ***
 	AppId pulumi.StringOutput `pulumi:"appId"`
 	// The relative resource name of the reCAPTCHA V3 configuration object
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -164,8 +162,6 @@ func GetAppCheckRecaptchaV3Config(ctx *pulumi.Context,
 type appCheckRecaptchaV3ConfigState struct {
 	// The ID of an
 	// [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id).
-	//
-	// ***
 	AppId *string `pulumi:"appId"`
 	// The relative resource name of the reCAPTCHA V3 configuration object
 	Name *string `pulumi:"name"`
@@ -187,8 +183,6 @@ type appCheckRecaptchaV3ConfigState struct {
 type AppCheckRecaptchaV3ConfigState struct {
 	// The ID of an
 	// [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id).
-	//
-	// ***
 	AppId pulumi.StringPtrInput
 	// The relative resource name of the reCAPTCHA V3 configuration object
 	Name pulumi.StringPtrInput
@@ -214,8 +208,6 @@ func (AppCheckRecaptchaV3ConfigState) ElementType() reflect.Type {
 type appCheckRecaptchaV3ConfigArgs struct {
 	// The ID of an
 	// [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id).
-	//
-	// ***
 	AppId string `pulumi:"appId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -234,8 +226,6 @@ type appCheckRecaptchaV3ConfigArgs struct {
 type AppCheckRecaptchaV3ConfigArgs struct {
 	// The ID of an
 	// [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id).
-	//
-	// ***
 	AppId pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -339,8 +329,6 @@ func (o AppCheckRecaptchaV3ConfigOutput) ToAppCheckRecaptchaV3ConfigOutputWithCo
 
 // The ID of an
 // [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id).
-//
-// ***
 func (o AppCheckRecaptchaV3ConfigOutput) AppId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppCheckRecaptchaV3Config) pulumi.StringOutput { return v.AppId }).(pulumi.StringOutput)
 }

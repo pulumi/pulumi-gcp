@@ -33,8 +33,7 @@ class FirewallPolicyWithRulesArgs:
         :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyWithRulesRuleArgs']]] rules: A list of firewall policy rules.
                Structure is documented below.
         :param pulumi.Input[builtins.str] short_name: A textual name of the security policy.
-        :param pulumi.Input[builtins.str] description: (Output)
-               A description of the rule.
+        :param pulumi.Input[builtins.str] description: An optional description of this resource.
         """
         pulumi.set(__self__, "parent", parent)
         pulumi.set(__self__, "rules", rules)
@@ -84,8 +83,7 @@ class FirewallPolicyWithRulesArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        (Output)
-        A description of the rule.
+        An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
@@ -111,8 +109,7 @@ class _FirewallPolicyWithRulesState:
         """
         Input properties used for looking up and filtering FirewallPolicyWithRules resources.
         :param pulumi.Input[builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
-        :param pulumi.Input[builtins.str] description: (Output)
-               A description of the rule.
+        :param pulumi.Input[builtins.str] description: An optional description of this resource.
         :param pulumi.Input[builtins.str] fingerprint: Fingerprint of the resource. This field is used internally during updates of this resource.
         :param pulumi.Input[builtins.str] parent: The parent of this FirewallPolicy in the Cloud Resource Hierarchy.
                Format: organizations/{organization_id} or folders/{folder_id}
@@ -165,8 +162,7 @@ class _FirewallPolicyWithRulesState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        (Output)
-        A description of the rule.
+        An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
@@ -434,8 +430,7 @@ class FirewallPolicyWithRules(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] description: (Output)
-               A description of the rule.
+        :param pulumi.Input[builtins.str] description: An optional description of this resource.
         :param pulumi.Input[builtins.str] parent: The parent of this FirewallPolicy in the Cloud Resource Hierarchy.
                Format: organizations/{organization_id} or folders/{folder_id}
         :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallPolicyWithRulesRuleArgs', 'FirewallPolicyWithRulesRuleArgsDict']]]] rules: A list of firewall policy rules.
@@ -657,8 +652,7 @@ class FirewallPolicyWithRules(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
-        :param pulumi.Input[builtins.str] description: (Output)
-               A description of the rule.
+        :param pulumi.Input[builtins.str] description: An optional description of this resource.
         :param pulumi.Input[builtins.str] fingerprint: Fingerprint of the resource. This field is used internally during updates of this resource.
         :param pulumi.Input[builtins.str] parent: The parent of this FirewallPolicy in the Cloud Resource Hierarchy.
                Format: organizations/{organization_id} or folders/{folder_id}
@@ -701,8 +695,7 @@ class FirewallPolicyWithRules(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        (Output)
-        A description of the rule.
+        An optional description of this resource.
         """
         return pulumi.get(self, "description")
 

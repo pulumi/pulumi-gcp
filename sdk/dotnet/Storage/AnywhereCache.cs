@@ -98,9 +98,6 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// A reference to Bucket resource
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("bucket")]
         public Output<string> Bucket { get; private set; } = null!;
@@ -197,9 +194,6 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// A reference to Bucket resource
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("bucket", required: true)]
         public Input<string> Bucket { get; set; } = null!;
@@ -240,9 +234,6 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// A reference to Bucket resource
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("bucket")]
         public Input<string>? Bucket { get; set; }

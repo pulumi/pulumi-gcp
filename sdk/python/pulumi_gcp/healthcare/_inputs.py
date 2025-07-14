@@ -1884,8 +1884,6 @@ if not MYPY:
         data_project_ids: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]
         """
         Project IDs for data projects hosted in a workspace.
-
-        - - -
         """
 elif False:
     WorkspaceSettingsArgsDict: TypeAlias = Mapping[str, Any]
@@ -1896,8 +1894,6 @@ class WorkspaceSettingsArgs:
                  data_project_ids: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]):
         """
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] data_project_ids: Project IDs for data projects hosted in a workspace.
-               
-               - - -
         """
         pulumi.set(__self__, "data_project_ids", data_project_ids)
 
@@ -1906,8 +1902,6 @@ class WorkspaceSettingsArgs:
     def data_project_ids(self) -> pulumi.Input[Sequence[pulumi.Input[builtins.str]]]:
         """
         Project IDs for data projects hosted in a workspace.
-
-        - - -
         """
         return pulumi.get(self, "data_project_ids")
 

@@ -480,8 +480,6 @@ class SecretReplicationAutoCustomerManagedEncryption(dict):
                  kms_key_name: builtins.str):
         """
         :param builtins.str kms_key_name: Describes the Cloud KMS encryption key that will be used to protect destination secret.
-               
-               - - -
         """
         pulumi.set(__self__, "kms_key_name", kms_key_name)
 
@@ -490,8 +488,6 @@ class SecretReplicationAutoCustomerManagedEncryption(dict):
     def kms_key_name(self) -> builtins.str:
         """
         Describes the Cloud KMS encryption key that will be used to protect destination secret.
-
-        - - -
         """
         return pulumi.get(self, "kms_key_name")
 
@@ -588,8 +584,6 @@ class SecretReplicationUserManagedReplicaCustomerManagedEncryption(dict):
                  kms_key_name: builtins.str):
         """
         :param builtins.str kms_key_name: Describes the Cloud KMS encryption key that will be used to protect destination secret.
-               
-               - - -
         """
         pulumi.set(__self__, "kms_key_name", kms_key_name)
 
@@ -598,8 +592,6 @@ class SecretReplicationUserManagedReplicaCustomerManagedEncryption(dict):
     def kms_key_name(self) -> builtins.str:
         """
         Describes the Cloud KMS encryption key that will be used to protect destination secret.
-
-        - - -
         """
         return pulumi.get(self, "kms_key_name")
 
@@ -1235,6 +1227,7 @@ class GetSecretsSecretResult(dict):
     def __init__(__self__, *,
                  annotations: Mapping[str, builtins.str],
                  create_time: builtins.str,
+                 deletion_protection: builtins.bool,
                  effective_annotations: Mapping[str, builtins.str],
                  effective_labels: Mapping[str, builtins.str],
                  expire_time: builtins.str,
@@ -1273,6 +1266,7 @@ class GetSecretsSecretResult(dict):
         """
         pulumi.set(__self__, "annotations", annotations)
         pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "deletion_protection", deletion_protection)
         pulumi.set(__self__, "effective_annotations", effective_annotations)
         pulumi.set(__self__, "effective_labels", effective_labels)
         pulumi.set(__self__, "expire_time", expire_time)
@@ -1303,6 +1297,11 @@ class GetSecretsSecretResult(dict):
         The time at which the Secret was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> builtins.bool:
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter(name="effectiveAnnotations")

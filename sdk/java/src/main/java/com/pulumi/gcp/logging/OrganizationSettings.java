@@ -174,16 +174,12 @@ public class OrganizationSettings extends com.pulumi.resources.CustomResource {
     /**
      * The organization for which to retrieve or configure settings.
      * 
-     * ***
-     * 
      */
     @Export(name="organization", refs={String.class}, tree="[0]")
     private Output<String> organization;
 
     /**
      * @return The organization for which to retrieve or configure settings.
-     * 
-     * ***
      * 
      */
     public Output<String> organization() {

@@ -210,16 +210,14 @@ public class FirewallPolicyWithRules extends com.pulumi.resources.CustomResource
         return this.creationTimestamp;
     }
     /**
-     * (Output)
-     * A description of the rule.
+     * An optional description of this resource.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return (Output)
-     * A description of the rule.
+     * @return An optional description of this resource.
      * 
      */
     public Output<Optional<String>> description() {

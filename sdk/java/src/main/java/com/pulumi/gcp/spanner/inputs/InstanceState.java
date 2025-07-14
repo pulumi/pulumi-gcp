@@ -76,8 +76,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * The descriptive name for this instance as it appears in UIs. Must be
      * unique per project and between 4 and 30 characters in length.
      * 
-     * ***
-     * 
      */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
@@ -85,8 +83,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The descriptive name for this instance as it appears in UIs. Must be
      * unique per project and between 4 and 30 characters in length.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> displayName() {
@@ -379,8 +375,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @param displayName The descriptive name for this instance as it appears in UIs. Must be
          * unique per project and between 4 and 30 characters in length.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -392,8 +386,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param displayName The descriptive name for this instance as it appears in UIs. Must be
          * unique per project and between 4 and 30 characters in length.
-         * 
-         * ***
          * 
          * @return builder
          * 

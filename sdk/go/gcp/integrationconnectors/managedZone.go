@@ -167,8 +167,6 @@ type ManagedZone struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Name of Managed Zone needs to be created.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -242,8 +240,6 @@ type managedZoneState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Name of Managed Zone needs to be created.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -274,8 +270,6 @@ type ManagedZoneState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Name of Managed Zone needs to be created.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -306,8 +300,6 @@ type managedZoneArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Name of Managed Zone needs to be created.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -330,8 +322,6 @@ type ManagedZoneArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Name of Managed Zone needs to be created.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -458,8 +448,6 @@ func (o ManagedZoneOutput) Labels() pulumi.StringMapOutput {
 }
 
 // Name of Managed Zone needs to be created.
-//
-// ***
 func (o ManagedZoneOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedZone) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

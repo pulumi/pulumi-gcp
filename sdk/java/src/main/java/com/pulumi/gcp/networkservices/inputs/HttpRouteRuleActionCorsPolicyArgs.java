@@ -95,16 +95,12 @@ public final class HttpRouteRuleActionCorsPolicyArgs extends com.pulumi.resource
     /**
      * If true, the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
      * 
-     * ***
-     * 
      */
     @Import(name="disabled")
     private @Nullable Output<Boolean> disabled;
 
     /**
      * @return If true, the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
-     * 
-     * ***
      * 
      */
     public Optional<Output<Boolean>> disabled() {
@@ -320,8 +316,6 @@ public final class HttpRouteRuleActionCorsPolicyArgs extends com.pulumi.resource
         /**
          * @param disabled If true, the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -332,8 +326,6 @@ public final class HttpRouteRuleActionCorsPolicyArgs extends com.pulumi.resource
 
         /**
          * @param disabled If true, the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
-         * 
-         * ***
          * 
          * @return builder
          * 

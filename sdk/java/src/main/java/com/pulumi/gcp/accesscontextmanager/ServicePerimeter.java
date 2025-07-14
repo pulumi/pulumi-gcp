@@ -360,8 +360,6 @@ public class ServicePerimeter extends com.pulumi.resources.CustomResource {
      * begin with a letter and only include alphanumeric and &#39;_&#39;.
      * Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -370,8 +368,6 @@ public class ServicePerimeter extends com.pulumi.resources.CustomResource {
      * @return Resource name for the ServicePerimeter. The short_name component must
      * begin with a letter and only include alphanumeric and &#39;_&#39;.
      * Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

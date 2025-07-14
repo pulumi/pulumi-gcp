@@ -161,9 +161,6 @@ namespace Pulumi.Gcp.Eventarc
         /// <summary>
         /// The user-provided ID to be assigned to the GoogleApiSource. It should match
         /// the format `^a-z?$`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("googleApiSourceId")]
         public Output<string> GoogleApiSourceId { get; private set; } = null!;
@@ -315,9 +312,6 @@ namespace Pulumi.Gcp.Eventarc
         /// <summary>
         /// The user-provided ID to be assigned to the GoogleApiSource. It should match
         /// the format `^a-z?$`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("googleApiSourceId", required: true)]
         public Input<string> GoogleApiSourceId { get; set; } = null!;
@@ -443,9 +437,6 @@ namespace Pulumi.Gcp.Eventarc
         /// <summary>
         /// The user-provided ID to be assigned to the GoogleApiSource. It should match
         /// the format `^a-z?$`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("googleApiSourceId")]
         public Input<string>? GoogleApiSourceId { get; set; }

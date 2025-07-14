@@ -92,9 +92,6 @@ export class FirewallPolicyAssociation extends pulumi.CustomResource {
      * firewall policy with the flag to override the existing attachmentTarget's policy association.
      * **Note** Due to potential risks with this operation it is *highly* recommended to use the `createBeforeDestroy` life cycle option
      * on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
-     *
-     *
-     * - - -
      */
     public readonly firewallPolicy!: pulumi.Output<string>;
     /**
@@ -155,9 +152,6 @@ export interface FirewallPolicyAssociationState {
      * firewall policy with the flag to override the existing attachmentTarget's policy association.
      * **Note** Due to potential risks with this operation it is *highly* recommended to use the `createBeforeDestroy` life cycle option
      * on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
-     *
-     *
-     * - - -
      */
     firewallPolicy?: pulumi.Input<string>;
     /**
@@ -184,9 +178,6 @@ export interface FirewallPolicyAssociationArgs {
      * firewall policy with the flag to override the existing attachmentTarget's policy association.
      * **Note** Due to potential risks with this operation it is *highly* recommended to use the `createBeforeDestroy` life cycle option
      * on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
-     *
-     *
-     * - - -
      */
     firewallPolicy: pulumi.Input<string>;
     /**

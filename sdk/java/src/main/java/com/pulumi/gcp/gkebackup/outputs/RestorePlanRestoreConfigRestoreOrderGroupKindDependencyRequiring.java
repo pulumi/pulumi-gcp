@@ -22,8 +22,6 @@ public final class RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequir
      * @return Kind of a Kubernetes resource, e.g.
      * &#34;CustomResourceDefinition&#34;, &#34;StorageClass&#34;, etc.
      * 
-     * ***
-     * 
      */
     private @Nullable String resourceKind;
 
@@ -40,8 +38,6 @@ public final class RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequir
     /**
      * @return Kind of a Kubernetes resource, e.g.
      * &#34;CustomResourceDefinition&#34;, &#34;StorageClass&#34;, etc.
-     * 
-     * ***
      * 
      */
     public Optional<String> resourceKind() {

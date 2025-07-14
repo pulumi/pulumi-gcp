@@ -259,8 +259,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> CreationTimestamp { get; private set; } = null!;
 
         /// <summary>
-        /// (Output)
-        /// A description of the rule.
+        /// An optional description of this resource.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -289,9 +288,10 @@ namespace Pulumi.Gcp.Compute
         public Output<string> NetworkFirewallPolicyId { get; private set; } = null!;
 
         /// <summary>
-        /// Policy type is used to determine which resources (networks) the policy can be associated with. A policy can be
-        /// associated with a network only if the network has the matching policyType in its network profile. Different policy types
-        /// may support some of the Firewall Rules features. Possible values: ["VPC_POLICY", "RDMA_ROCE_POLICY"]
+        /// Policy type is used to determine which resources (networks) the policy can be associated with.
+        /// A policy can be associated with a network only if the network has the matching policyType in its network profile.
+        /// Different policy types may support some of the Firewall Rules features.
+        /// Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`.
         /// </summary>
         [Output("policyType")]
         public Output<string> PolicyType { get; private set; } = null!;
@@ -303,6 +303,10 @@ namespace Pulumi.Gcp.Compute
         [Output("predefinedRules")]
         public Output<ImmutableArray<Outputs.RegionNetworkFirewallPolicyWithRulesPredefinedRule>> PredefinedRules { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -384,8 +388,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class RegionNetworkFirewallPolicyWithRulesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Output)
-        /// A description of the rule.
+        /// An optional description of this resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -402,13 +405,18 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Policy type is used to determine which resources (networks) the policy can be associated with. A policy can be
-        /// associated with a network only if the network has the matching policyType in its network profile. Different policy types
-        /// may support some of the Firewall Rules features. Possible values: ["VPC_POLICY", "RDMA_ROCE_POLICY"]
+        /// Policy type is used to determine which resources (networks) the policy can be associated with.
+        /// A policy can be associated with a network only if the network has the matching policyType in its network profile.
+        /// Different policy types may support some of the Firewall Rules features.
+        /// Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`.
         /// </summary>
         [Input("policyType")]
         public Input<string>? PolicyType { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -446,8 +454,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? CreationTimestamp { get; set; }
 
         /// <summary>
-        /// (Output)
-        /// A description of the rule.
+        /// An optional description of this resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -476,9 +483,10 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? NetworkFirewallPolicyId { get; set; }
 
         /// <summary>
-        /// Policy type is used to determine which resources (networks) the policy can be associated with. A policy can be
-        /// associated with a network only if the network has the matching policyType in its network profile. Different policy types
-        /// may support some of the Firewall Rules features. Possible values: ["VPC_POLICY", "RDMA_ROCE_POLICY"]
+        /// Policy type is used to determine which resources (networks) the policy can be associated with.
+        /// A policy can be associated with a network only if the network has the matching policyType in its network profile.
+        /// Different policy types may support some of the Firewall Rules features.
+        /// Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`.
         /// </summary>
         [Input("policyType")]
         public Input<string>? PolicyType { get; set; }
@@ -496,6 +504,10 @@ namespace Pulumi.Gcp.Compute
             set => _predefinedRules = value;
         }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

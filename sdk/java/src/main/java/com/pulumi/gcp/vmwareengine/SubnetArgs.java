@@ -35,8 +35,6 @@ public final class SubnetArgs extends com.pulumi.resources.ResourceArgs {
      * The ID of the subnet. For userDefined subnets, this name should be in the format of &#34;service-n&#34;,
      * where n ranges from 1 to 5.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
@@ -44,8 +42,6 @@ public final class SubnetArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The ID of the subnet. For userDefined subnets, this name should be in the format of &#34;service-n&#34;,
      * where n ranges from 1 to 5.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -122,8 +118,6 @@ public final class SubnetArgs extends com.pulumi.resources.ResourceArgs {
          * @param name The ID of the subnet. For userDefined subnets, this name should be in the format of &#34;service-n&#34;,
          * where n ranges from 1 to 5.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -135,8 +129,6 @@ public final class SubnetArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name The ID of the subnet. For userDefined subnets, this name should be in the format of &#34;service-n&#34;,
          * where n ranges from 1 to 5.
-         * 
-         * ***
          * 
          * @return builder
          * 

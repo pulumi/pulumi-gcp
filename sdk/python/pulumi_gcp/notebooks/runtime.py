@@ -32,9 +32,6 @@ class RuntimeArgs:
         """
         The set of arguments for constructing a Runtime resource.
         :param pulumi.Input[builtins.str] location: A reference to the zone where the machine resides.
-               
-               
-               - - -
         :param pulumi.Input['RuntimeAccessConfigArgs'] access_config: The config settings for accessing runtime.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: The labels to associate with this runtime. Label **keys** must
@@ -73,9 +70,6 @@ class RuntimeArgs:
     def location(self) -> pulumi.Input[builtins.str]:
         """
         A reference to the zone where the machine resides.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -201,9 +195,6 @@ class _RuntimeState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: A reference to the zone where the machine resides.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['RuntimeMetricArgs']]] metrics: Contains Runtime daemon metrics such as Service status and JupyterLab
                status
                Structure is documented below.
@@ -307,9 +298,6 @@ class _RuntimeState:
     def location(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         A reference to the zone where the machine resides.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -635,9 +623,6 @@ class Runtime(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: A reference to the zone where the machine resides.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The name specified for the Notebook runtime.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -943,9 +928,6 @@ class Runtime(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: A reference to the zone where the machine resides.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[Union['RuntimeMetricArgs', 'RuntimeMetricArgsDict']]]] metrics: Contains Runtime daemon metrics such as Service status and JupyterLab
                status
                Structure is documented below.
@@ -1026,9 +1008,6 @@ class Runtime(pulumi.CustomResource):
     def location(self) -> pulumi.Output[builtins.str]:
         """
         A reference to the zone where the machine resides.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

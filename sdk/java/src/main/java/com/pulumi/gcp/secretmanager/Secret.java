@@ -13,6 +13,7 @@ import com.pulumi.gcp.secretmanager.inputs.SecretState;
 import com.pulumi.gcp.secretmanager.outputs.SecretReplication;
 import com.pulumi.gcp.secretmanager.outputs.SecretRotation;
 import com.pulumi.gcp.secretmanager.outputs.SecretTopic;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -71,6 +72,7 @@ import javax.annotation.Nullable;
  *                             .build())
  *                     .build())
  *                 .build())
+ *             .deletionProtection(false)
  *             .build());
  * 
  *     }
@@ -256,28 +258,38 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:secretmanager/secret:Secret")
 public class Secret extends com.pulumi.resources.CustomResource {
     /**
-     * Custom metadata about the secret. Annotations are distinct from various forms of labels. Annotations exist to allow
-     * client tools to store their own state information without requiring a database. Annotation keys must be between 1 and 63
-     * characters long, have a UTF-8 encoding of maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]),
-     * and may have dashes (-), underscores (_), dots (.), and alphanumerics in between these symbols. The total size of
-     * annotation keys and values must be less than 16KiB. An object containing a list of &#34;key&#34;: value pairs. Example: {
-     * &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }. **Note**: This field is non-authoritative, and will only manage the
-     * annotations present in your configuration. Please refer to the field &#39;effective_annotations&#39; for all of the annotations
-     * present on the resource.
+     * Custom metadata about the secret.
+     * Annotations are distinct from various forms of labels. Annotations exist to allow
+     * client tools to store their own state information without requiring a database.
+     * Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+     * maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and
+     * may have dashes (-), underscores (_), dots (.), and alphanumerics in between these
+     * symbols.
+     * The total size of annotation keys and values must be less than 16KiB.
+     * An object containing a list of &#34;key&#34;: value pairs. Example:
+     * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> annotations;
 
     /**
-     * @return Custom metadata about the secret. Annotations are distinct from various forms of labels. Annotations exist to allow
-     * client tools to store their own state information without requiring a database. Annotation keys must be between 1 and 63
-     * characters long, have a UTF-8 encoding of maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]),
-     * and may have dashes (-), underscores (_), dots (.), and alphanumerics in between these symbols. The total size of
-     * annotation keys and values must be less than 16KiB. An object containing a list of &#34;key&#34;: value pairs. Example: {
-     * &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }. **Note**: This field is non-authoritative, and will only manage the
-     * annotations present in your configuration. Please refer to the field &#39;effective_annotations&#39; for all of the annotations
-     * present on the resource.
+     * @return Custom metadata about the secret.
+     * Annotations are distinct from various forms of labels. Annotations exist to allow
+     * client tools to store their own state information without requiring a database.
+     * Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+     * maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and
+     * may have dashes (-), underscores (_), dots (.), and alphanumerics in between these
+     * symbols.
+     * The total size of annotation keys and values must be less than 16KiB.
+     * An object containing a list of &#34;key&#34;: value pairs. Example:
+     * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> annotations() {
@@ -296,6 +308,12 @@ public class Secret extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> deletionProtection;
+
+    public Output<Optional<Boolean>> deletionProtection() {
+        return Codegen.optional(this.deletionProtection);
     }
     @Export(name="effectiveAnnotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> effectiveAnnotations;
@@ -318,46 +336,52 @@ public class Secret extends com.pulumi.resources.CustomResource {
         return this.effectiveLabels;
     }
     /**
-     * Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent
-     * on input. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
-     * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;. Only one of &#39;expire_time&#39; or &#39;ttl&#39; can be
-     * provided.
+     * Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * Only one of `expire_time` or `ttl` can be provided.
      * 
      */
     @Export(name="expireTime", refs={String.class}, tree="[0]")
     private Output<String> expireTime;
 
     /**
-     * @return Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent
-     * on input. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
-     * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;. Only one of &#39;expire_time&#39; or &#39;ttl&#39; can be
-     * provided.
+     * @return Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * Only one of `expire_time` or `ttl` can be provided.
      * 
      */
     public Output<String> expireTime() {
         return this.expireTime;
     }
     /**
-     * The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
-     * maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
-     * Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to
-     * the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be assigned to a given
-     * resource. An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34;
-     * }. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
-     * refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+     * The labels assigned to this Secret.
+     * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+     * and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+     * Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+     * and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+     * No more than 64 labels can be assigned to a given resource.
+     * An object containing a list of &#34;key&#34;: value pairs. Example:
+     * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
-     * maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
-     * Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to
-     * the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be assigned to a given
-     * resource. An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34;
-     * }. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
-     * refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+     * @return The labels assigned to this Secret.
+     * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+     * and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+     * Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+     * and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+     * No more than 64 labels can be assigned to a given resource.
+     * An object containing a list of &#34;key&#34;: value pairs. Example:
+     * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -379,9 +403,19 @@ public class Secret extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }
@@ -420,16 +454,16 @@ public class Secret extends com.pulumi.resources.CustomResource {
         return this.replication;
     }
     /**
-     * The rotation time and period for a Secret. At &#39;next_rotation_time&#39;, Secret Manager will send a Pub/Sub notification to
-     * the topics configured on the Secret. &#39;topics&#39; must be set to configure rotation.
+     * The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
+     * Structure is documented below.
      * 
      */
     @Export(name="rotation", refs={SecretRotation.class}, tree="[0]")
     private Output</* @Nullable */ SecretRotation> rotation;
 
     /**
-     * @return The rotation time and period for a Secret. At &#39;next_rotation_time&#39;, Secret Manager will send a Pub/Sub notification to
-     * the topics configured on the Secret. &#39;topics&#39; must be set to configure rotation.
+     * @return The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<SecretRotation>> rotation() {
@@ -450,70 +484,82 @@ public class Secret extends com.pulumi.resources.CustomResource {
         return this.secretId;
     }
     /**
-     * A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret
-     * or its versions.
+     * A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
+     * Structure is documented below.
      * 
      */
     @Export(name="topics", refs={List.class,SecretTopic.class}, tree="[0,1]")
     private Output</* @Nullable */ List<SecretTopic>> topics;
 
     /**
-     * @return A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret
-     * or its versions.
+     * @return A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<List<SecretTopic>>> topics() {
         return Codegen.optional(this.topics);
     }
     /**
-     * The TTL for the Secret. A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
-     * Only one of &#39;ttl&#39; or &#39;expire_time&#39; can be provided.
+     * The TTL for the Secret.
+     * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * Only one of `ttl` or `expire_time` can be provided.
      * 
      */
     @Export(name="ttl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ttl;
 
     /**
-     * @return The TTL for the Secret. A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
-     * Only one of &#39;ttl&#39; or &#39;expire_time&#39; can be provided.
+     * @return The TTL for the Secret.
+     * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * Only one of `ttl` or `expire_time` can be provided.
      * 
      */
     public Output<Optional<String>> ttl() {
         return Codegen.optional(this.ttl);
     }
     /**
-     * Mapping from version alias to version name. A version alias is a string with a maximum length of 63 characters and can
-     * contain uppercase and lowercase letters, numerals, and the hyphen (-) and underscore (&#39;_&#39;) characters. An alias string
-     * must start with a letter and cannot be the string &#39;latest&#39; or &#39;NEW&#39;. No more than 50 aliases can be assigned to a given
-     * secret. An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * Mapping from version alias to version name.
+     * A version alias is a string with a maximum length of 63 characters and can contain
+     * uppercase and lowercase letters, numerals, and the hyphen (-) and underscore (&#39;_&#39;)
+     * characters. An alias string must start with a letter and cannot be the string
+     * &#39;latest&#39; or &#39;NEW&#39;. No more than 50 aliases can be assigned to a given secret.
+     * An object containing a list of &#34;key&#34;: value pairs. Example:
+     * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      */
     @Export(name="versionAliases", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> versionAliases;
 
     /**
-     * @return Mapping from version alias to version name. A version alias is a string with a maximum length of 63 characters and can
-     * contain uppercase and lowercase letters, numerals, and the hyphen (-) and underscore (&#39;_&#39;) characters. An alias string
-     * must start with a letter and cannot be the string &#39;latest&#39; or &#39;NEW&#39;. No more than 50 aliases can be assigned to a given
-     * secret. An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * @return Mapping from version alias to version name.
+     * A version alias is a string with a maximum length of 63 characters and can contain
+     * uppercase and lowercase letters, numerals, and the hyphen (-) and underscore (&#39;_&#39;)
+     * characters. An alias string must start with a letter and cannot be the string
+     * &#39;latest&#39; or &#39;NEW&#39;. No more than 50 aliases can be assigned to a given secret.
+     * An object containing a list of &#34;key&#34;: value pairs. Example:
+     * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      */
     public Output<Optional<Map<String,String>>> versionAliases() {
         return Codegen.optional(this.versionAliases);
     }
     /**
-     * Secret Version TTL after destruction request. This is a part of the delayed delete feature on Secret Version. For secret
-     * with versionDestroyTtl&gt;0, version destruction doesn&#39;t happen immediately on calling destroy instead the version goes to
-     * a disabled state and the actual destruction happens after this TTL expires.
+     * Secret Version TTL after destruction request.
+     * This is a part of the delayed delete feature on Secret Version.
+     * For secret with versionDestroyTtl&gt;0, version destruction doesn&#39;t happen immediately
+     * on calling destroy instead the version goes to a disabled state and
+     * the actual destruction happens after this TTL expires.
      * 
      */
     @Export(name="versionDestroyTtl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> versionDestroyTtl;
 
     /**
-     * @return Secret Version TTL after destruction request. This is a part of the delayed delete feature on Secret Version. For secret
-     * with versionDestroyTtl&gt;0, version destruction doesn&#39;t happen immediately on calling destroy instead the version goes to
-     * a disabled state and the actual destruction happens after this TTL expires.
+     * @return Secret Version TTL after destruction request.
+     * This is a part of the delayed delete feature on Secret Version.
+     * For secret with versionDestroyTtl&gt;0, version destruction doesn&#39;t happen immediately
+     * on calling destroy instead the version goes to a disabled state and
+     * the actual destruction happens after this TTL expires.
      * 
      */
     public Output<Optional<String>> versionDestroyTtl() {

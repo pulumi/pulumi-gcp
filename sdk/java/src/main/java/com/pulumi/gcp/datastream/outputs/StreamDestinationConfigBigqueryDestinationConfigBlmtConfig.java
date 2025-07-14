@@ -30,8 +30,6 @@ public final class StreamDestinationConfigBigqueryDestinationConfigBlmtConfig {
     /**
      * @return The root path inside the Cloud Storage bucket.
      * 
-     * ***
-     * 
      */
     private @Nullable String rootPath;
     /**
@@ -64,8 +62,6 @@ public final class StreamDestinationConfigBigqueryDestinationConfigBlmtConfig {
     }
     /**
      * @return The root path inside the Cloud Storage bucket.
-     * 
-     * ***
      * 
      */
     public Optional<String> rootPath() {

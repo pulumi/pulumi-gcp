@@ -387,8 +387,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * * Must end with a number or a letter.
      * * Must be unique within the customer project/ location
      * 
-     * ***
-     * 
      */
     @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
@@ -400,8 +398,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * * Must be between 1-63 characters.
      * * Must end with a number or a letter.
      * * Must be unique within the customer project/ location
-     * 
-     * ***
      * 
      */
     public Output<String> instanceId() {

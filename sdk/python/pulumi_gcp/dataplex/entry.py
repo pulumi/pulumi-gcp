@@ -34,9 +34,6 @@ class EntryArgs:
         """
         The set of arguments for constructing a Entry resource.
         :param pulumi.Input[builtins.str] entry_type: The relative resource name of the entry type that was used to create this entry, in the format projects/{project_number}/locations/{locationId}/entryTypes/{entryTypeId}.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['EntryAspectArgs']]] aspects: The aspects that are attached to the entry.
                Structure is documented below.
         :param pulumi.Input[builtins.str] entry_group_id: The entry group id of the entry group the entry will be created in.
@@ -73,9 +70,6 @@ class EntryArgs:
     def entry_type(self) -> pulumi.Input[builtins.str]:
         """
         The relative resource name of the entry type that was used to create this entry, in the format projects/{project_number}/locations/{locationId}/entryTypes/{entryTypeId}.
-
-
-        - - -
         """
         return pulumi.get(self, "entry_type")
 
@@ -209,9 +203,6 @@ class _EntryState:
         :param pulumi.Input['EntryEntrySourceArgs'] entry_source: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[builtins.str] entry_type: The relative resource name of the entry type that was used to create this entry, in the format projects/{project_number}/locations/{locationId}/entryTypes/{entryTypeId}.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] fully_qualified_name: A name for the entry that can be referenced by an external system. For more information, see https://cloud.google.com/dataplex/docs/fully-qualified-names.
                The maximum size of the field is 4000 characters.
         :param pulumi.Input[builtins.str] location: The location where entry will be created.
@@ -313,9 +304,6 @@ class _EntryState:
     def entry_type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The relative resource name of the entry type that was used to create this entry, in the format projects/{project_number}/locations/{locationId}/entryTypes/{entryTypeId}.
-
-
-        - - -
         """
         return pulumi.get(self, "entry_type")
 
@@ -613,9 +601,6 @@ class Entry(pulumi.CustomResource):
         :param pulumi.Input[Union['EntryEntrySourceArgs', 'EntryEntrySourceArgsDict']] entry_source: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[builtins.str] entry_type: The relative resource name of the entry type that was used to create this entry, in the format projects/{project_number}/locations/{locationId}/entryTypes/{entryTypeId}.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] fully_qualified_name: A name for the entry that can be referenced by an external system. For more information, see https://cloud.google.com/dataplex/docs/fully-qualified-names.
                The maximum size of the field is 4000 characters.
         :param pulumi.Input[builtins.str] location: The location where entry will be created.
@@ -903,9 +888,6 @@ class Entry(pulumi.CustomResource):
         :param pulumi.Input[Union['EntryEntrySourceArgs', 'EntryEntrySourceArgsDict']] entry_source: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[builtins.str] entry_type: The relative resource name of the entry type that was used to create this entry, in the format projects/{project_number}/locations/{locationId}/entryTypes/{entryTypeId}.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] fully_qualified_name: A name for the entry that can be referenced by an external system. For more information, see https://cloud.google.com/dataplex/docs/fully-qualified-names.
                The maximum size of the field is 4000 characters.
         :param pulumi.Input[builtins.str] location: The location where entry will be created.
@@ -980,9 +962,6 @@ class Entry(pulumi.CustomResource):
     def entry_type(self) -> pulumi.Output[builtins.str]:
         """
         The relative resource name of the entry type that was used to create this entry, in the format projects/{project_number}/locations/{locationId}/entryTypes/{entryTypeId}.
-
-
-        - - -
         """
         return pulumi.get(self, "entry_type")
 

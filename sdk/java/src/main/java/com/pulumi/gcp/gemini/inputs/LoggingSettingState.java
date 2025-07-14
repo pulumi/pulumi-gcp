@@ -114,16 +114,12 @@ public final class LoggingSettingState extends com.pulumi.resources.ResourceArgs
     /**
      * Id of the Logging Setting.
      * 
-     * ***
-     * 
      */
     @Import(name="loggingSettingId")
     private @Nullable Output<String> loggingSettingId;
 
     /**
      * @return Id of the Logging Setting.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> loggingSettingId() {
@@ -363,8 +359,6 @@ public final class LoggingSettingState extends com.pulumi.resources.ResourceArgs
         /**
          * @param loggingSettingId Id of the Logging Setting.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -375,8 +369,6 @@ public final class LoggingSettingState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param loggingSettingId Id of the Logging Setting.
-         * 
-         * ***
          * 
          * @return builder
          * 

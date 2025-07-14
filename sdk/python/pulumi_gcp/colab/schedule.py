@@ -41,18 +41,13 @@ class ScheduleArgs:
         :param pulumi.Input[builtins.str] display_name: Required. The display name of the Schedule.
         :param pulumi.Input[builtins.str] location: The location for the resource: https://cloud.google.com/colab/docs/locations
         :param pulumi.Input[builtins.str] max_concurrent_run_count: Maximum number of runs that can be started concurrently for this Schedule. This is the limit for starting the scheduled requests and not the execution of the notebook execution jobs created by the requests.
-        :param pulumi.Input[builtins.bool] allow_queueing: Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be
-               queued instead of skipped. Default to false.
-        :param pulumi.Input[builtins.str] desired_state: Desired state of the Colab Schedule. Set this field to 'ACTIVE' to start/resume the schedule, and 'PAUSED' to pause the
-               schedule.
-        :param pulumi.Input[builtins.str] end_time: Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either end_time is
-               reached or when scheduled_run_count >= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt)
-               format.
-        :param pulumi.Input[builtins.str] max_run_count: Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount >=
-               maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is
-               paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
-        :param pulumi.Input[builtins.str] start_time: The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC
-               3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
+        :param pulumi.Input[builtins.bool] allow_queueing: Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
+        :param pulumi.Input[builtins.str] desired_state: Desired state of the Colab Schedule. Set this field to `ACTIVE` to start/resume the schedule, and `PAUSED` to pause the schedule.
+        :param pulumi.Input[builtins.str] end_time: Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either end_time is reached or when scheduled_run_count >= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
+        :param pulumi.Input[builtins.str] max_run_count: Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount >= maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[builtins.str] start_time: The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
         """
         pulumi.set(__self__, "create_notebook_execution_job_request", create_notebook_execution_job_request)
         pulumi.set(__self__, "cron", cron)
@@ -137,8 +132,7 @@ class ScheduleArgs:
     @pulumi.getter(name="allowQueueing")
     def allow_queueing(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be
-        queued instead of skipped. Default to false.
+        Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
         """
         return pulumi.get(self, "allow_queueing")
 
@@ -150,8 +144,7 @@ class ScheduleArgs:
     @pulumi.getter(name="desiredState")
     def desired_state(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Desired state of the Colab Schedule. Set this field to 'ACTIVE' to start/resume the schedule, and 'PAUSED' to pause the
-        schedule.
+        Desired state of the Colab Schedule. Set this field to `ACTIVE` to start/resume the schedule, and `PAUSED` to pause the schedule.
         """
         return pulumi.get(self, "desired_state")
 
@@ -163,9 +156,7 @@ class ScheduleArgs:
     @pulumi.getter(name="endTime")
     def end_time(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either end_time is
-        reached or when scheduled_run_count >= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt)
-        format.
+        Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either end_time is reached or when scheduled_run_count >= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
         """
         return pulumi.get(self, "end_time")
 
@@ -177,9 +168,7 @@ class ScheduleArgs:
     @pulumi.getter(name="maxRunCount")
     def max_run_count(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount >=
-        maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is
-        paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
+        Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount >= maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
         """
         return pulumi.get(self, "max_run_count")
 
@@ -190,6 +179,10 @@ class ScheduleArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -200,8 +193,7 @@ class ScheduleArgs:
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC
-        3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
+        The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
         """
         return pulumi.get(self, "start_time")
 
@@ -228,25 +220,20 @@ class _ScheduleState:
                  state: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering Schedule resources.
-        :param pulumi.Input[builtins.bool] allow_queueing: Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be
-               queued instead of skipped. Default to false.
+        :param pulumi.Input[builtins.bool] allow_queueing: Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
         :param pulumi.Input['ScheduleCreateNotebookExecutionJobRequestArgs'] create_notebook_execution_job_request: Request for google_colab_notebook_execution.
                Structure is documented below.
         :param pulumi.Input[builtins.str] cron: Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
-        :param pulumi.Input[builtins.str] desired_state: Desired state of the Colab Schedule. Set this field to 'ACTIVE' to start/resume the schedule, and 'PAUSED' to pause the
-               schedule.
+        :param pulumi.Input[builtins.str] desired_state: Desired state of the Colab Schedule. Set this field to `ACTIVE` to start/resume the schedule, and `PAUSED` to pause the schedule.
         :param pulumi.Input[builtins.str] display_name: Required. The display name of the Schedule.
-        :param pulumi.Input[builtins.str] end_time: Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either end_time is
-               reached or when scheduled_run_count >= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt)
-               format.
+        :param pulumi.Input[builtins.str] end_time: Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either end_time is reached or when scheduled_run_count >= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
         :param pulumi.Input[builtins.str] location: The location for the resource: https://cloud.google.com/colab/docs/locations
         :param pulumi.Input[builtins.str] max_concurrent_run_count: Maximum number of runs that can be started concurrently for this Schedule. This is the limit for starting the scheduled requests and not the execution of the notebook execution jobs created by the requests.
-        :param pulumi.Input[builtins.str] max_run_count: Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount >=
-               maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is
-               paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
+        :param pulumi.Input[builtins.str] max_run_count: Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount >= maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
         :param pulumi.Input[builtins.str] name: The resource name of the Schedule
-        :param pulumi.Input[builtins.str] start_time: The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC
-               3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[builtins.str] start_time: The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
         :param pulumi.Input[builtins.str] state: Output only. The state of the schedule.
         """
         if allow_queueing is not None:
@@ -280,8 +267,7 @@ class _ScheduleState:
     @pulumi.getter(name="allowQueueing")
     def allow_queueing(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be
-        queued instead of skipped. Default to false.
+        Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
         """
         return pulumi.get(self, "allow_queueing")
 
@@ -318,8 +304,7 @@ class _ScheduleState:
     @pulumi.getter(name="desiredState")
     def desired_state(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Desired state of the Colab Schedule. Set this field to 'ACTIVE' to start/resume the schedule, and 'PAUSED' to pause the
-        schedule.
+        Desired state of the Colab Schedule. Set this field to `ACTIVE` to start/resume the schedule, and `PAUSED` to pause the schedule.
         """
         return pulumi.get(self, "desired_state")
 
@@ -343,9 +328,7 @@ class _ScheduleState:
     @pulumi.getter(name="endTime")
     def end_time(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either end_time is
-        reached or when scheduled_run_count >= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt)
-        format.
+        Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either end_time is reached or when scheduled_run_count >= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
         """
         return pulumi.get(self, "end_time")
 
@@ -381,9 +364,7 @@ class _ScheduleState:
     @pulumi.getter(name="maxRunCount")
     def max_run_count(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount >=
-        maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is
-        paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
+        Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount >= maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
         """
         return pulumi.get(self, "max_run_count")
 
@@ -406,6 +387,10 @@ class _ScheduleState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -416,8 +401,7 @@ class _ScheduleState:
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC
-        3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
+        The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
         """
         return pulumi.get(self, "start_time")
 
@@ -757,24 +741,19 @@ class Schedule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.bool] allow_queueing: Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be
-               queued instead of skipped. Default to false.
+        :param pulumi.Input[builtins.bool] allow_queueing: Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
         :param pulumi.Input[Union['ScheduleCreateNotebookExecutionJobRequestArgs', 'ScheduleCreateNotebookExecutionJobRequestArgsDict']] create_notebook_execution_job_request: Request for google_colab_notebook_execution.
                Structure is documented below.
         :param pulumi.Input[builtins.str] cron: Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
-        :param pulumi.Input[builtins.str] desired_state: Desired state of the Colab Schedule. Set this field to 'ACTIVE' to start/resume the schedule, and 'PAUSED' to pause the
-               schedule.
+        :param pulumi.Input[builtins.str] desired_state: Desired state of the Colab Schedule. Set this field to `ACTIVE` to start/resume the schedule, and `PAUSED` to pause the schedule.
         :param pulumi.Input[builtins.str] display_name: Required. The display name of the Schedule.
-        :param pulumi.Input[builtins.str] end_time: Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either end_time is
-               reached or when scheduled_run_count >= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt)
-               format.
+        :param pulumi.Input[builtins.str] end_time: Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either end_time is reached or when scheduled_run_count >= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
         :param pulumi.Input[builtins.str] location: The location for the resource: https://cloud.google.com/colab/docs/locations
         :param pulumi.Input[builtins.str] max_concurrent_run_count: Maximum number of runs that can be started concurrently for this Schedule. This is the limit for starting the scheduled requests and not the execution of the notebook execution jobs created by the requests.
-        :param pulumi.Input[builtins.str] max_run_count: Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount >=
-               maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is
-               paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
-        :param pulumi.Input[builtins.str] start_time: The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC
-               3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
+        :param pulumi.Input[builtins.str] max_run_count: Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount >= maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[builtins.str] start_time: The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
         """
         ...
     @overload
@@ -1169,25 +1148,20 @@ class Schedule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.bool] allow_queueing: Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be
-               queued instead of skipped. Default to false.
+        :param pulumi.Input[builtins.bool] allow_queueing: Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
         :param pulumi.Input[Union['ScheduleCreateNotebookExecutionJobRequestArgs', 'ScheduleCreateNotebookExecutionJobRequestArgsDict']] create_notebook_execution_job_request: Request for google_colab_notebook_execution.
                Structure is documented below.
         :param pulumi.Input[builtins.str] cron: Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
-        :param pulumi.Input[builtins.str] desired_state: Desired state of the Colab Schedule. Set this field to 'ACTIVE' to start/resume the schedule, and 'PAUSED' to pause the
-               schedule.
+        :param pulumi.Input[builtins.str] desired_state: Desired state of the Colab Schedule. Set this field to `ACTIVE` to start/resume the schedule, and `PAUSED` to pause the schedule.
         :param pulumi.Input[builtins.str] display_name: Required. The display name of the Schedule.
-        :param pulumi.Input[builtins.str] end_time: Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either end_time is
-               reached or when scheduled_run_count >= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt)
-               format.
+        :param pulumi.Input[builtins.str] end_time: Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either end_time is reached or when scheduled_run_count >= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
         :param pulumi.Input[builtins.str] location: The location for the resource: https://cloud.google.com/colab/docs/locations
         :param pulumi.Input[builtins.str] max_concurrent_run_count: Maximum number of runs that can be started concurrently for this Schedule. This is the limit for starting the scheduled requests and not the execution of the notebook execution jobs created by the requests.
-        :param pulumi.Input[builtins.str] max_run_count: Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount >=
-               maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is
-               paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
+        :param pulumi.Input[builtins.str] max_run_count: Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount >= maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
         :param pulumi.Input[builtins.str] name: The resource name of the Schedule
-        :param pulumi.Input[builtins.str] start_time: The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC
-               3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[builtins.str] start_time: The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
         :param pulumi.Input[builtins.str] state: Output only. The state of the schedule.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1213,8 +1187,7 @@ class Schedule(pulumi.CustomResource):
     @pulumi.getter(name="allowQueueing")
     def allow_queueing(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
-        Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be
-        queued instead of skipped. Default to false.
+        Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
         """
         return pulumi.get(self, "allow_queueing")
 
@@ -1239,8 +1212,7 @@ class Schedule(pulumi.CustomResource):
     @pulumi.getter(name="desiredState")
     def desired_state(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Desired state of the Colab Schedule. Set this field to 'ACTIVE' to start/resume the schedule, and 'PAUSED' to pause the
-        schedule.
+        Desired state of the Colab Schedule. Set this field to `ACTIVE` to start/resume the schedule, and `PAUSED` to pause the schedule.
         """
         return pulumi.get(self, "desired_state")
 
@@ -1256,9 +1228,7 @@ class Schedule(pulumi.CustomResource):
     @pulumi.getter(name="endTime")
     def end_time(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either end_time is
-        reached or when scheduled_run_count >= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt)
-        format.
+        Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either end_time is reached or when scheduled_run_count >= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
         """
         return pulumi.get(self, "end_time")
 
@@ -1282,9 +1252,7 @@ class Schedule(pulumi.CustomResource):
     @pulumi.getter(name="maxRunCount")
     def max_run_count(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount >=
-        maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is
-        paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
+        Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount >= maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
         """
         return pulumi.get(self, "max_run_count")
 
@@ -1299,14 +1267,17 @@ class Schedule(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="startTime")
     def start_time(self) -> pulumi.Output[builtins.str]:
         """
-        The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC
-        3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
+        The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
         """
         return pulumi.get(self, "start_time")
 

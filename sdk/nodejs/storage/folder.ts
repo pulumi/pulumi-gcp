@@ -106,9 +106,6 @@ export class Folder extends pulumi.CustomResource {
     /**
      * The name of the folder expressed as a path. Must include
      * trailing '/'. For example, `example_dir/example_dir2/`, `example@#/`, `a-b/d-f/`.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -181,9 +178,6 @@ export interface FolderState {
     /**
      * The name of the folder expressed as a path. Must include
      * trailing '/'. For example, `example_dir/example_dir2/`, `example@#/`, `a-b/d-f/`.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -211,9 +205,6 @@ export interface FolderArgs {
     /**
      * The name of the folder expressed as a path. Must include
      * trailing '/'. For example, `example_dir/example_dir2/`, `example@#/`, `a-b/d-f/`.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
 }

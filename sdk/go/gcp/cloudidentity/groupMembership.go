@@ -160,10 +160,12 @@ type GroupMembership struct {
 	// The name of the Group to create this membership in.
 	Group pulumi.StringOutput `pulumi:"group"`
 	// EntityKey of the member.
+	// Structure is documented below.
 	MemberKey GroupMembershipMemberKeyOutput `pulumi:"memberKey"`
 	// The resource name of the Membership, of the form groups/{group_id}/memberships/{membership_id}.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// EntityKey of the member.
+	// Structure is documented below.
 	PreferredMemberKey GroupMembershipPreferredMemberKeyOutput `pulumi:"preferredMemberKey"`
 	// The MembershipRoles that apply to the Membership.
 	// Must not contain duplicate MembershipRoles with the same name.
@@ -218,10 +220,12 @@ type groupMembershipState struct {
 	// The name of the Group to create this membership in.
 	Group *string `pulumi:"group"`
 	// EntityKey of the member.
+	// Structure is documented below.
 	MemberKey *GroupMembershipMemberKey `pulumi:"memberKey"`
 	// The resource name of the Membership, of the form groups/{group_id}/memberships/{membership_id}.
 	Name *string `pulumi:"name"`
 	// EntityKey of the member.
+	// Structure is documented below.
 	PreferredMemberKey *GroupMembershipPreferredMemberKey `pulumi:"preferredMemberKey"`
 	// The MembershipRoles that apply to the Membership.
 	// Must not contain duplicate MembershipRoles with the same name.
@@ -241,10 +245,12 @@ type GroupMembershipState struct {
 	// The name of the Group to create this membership in.
 	Group pulumi.StringPtrInput
 	// EntityKey of the member.
+	// Structure is documented below.
 	MemberKey GroupMembershipMemberKeyPtrInput
 	// The resource name of the Membership, of the form groups/{group_id}/memberships/{membership_id}.
 	Name pulumi.StringPtrInput
 	// EntityKey of the member.
+	// Structure is documented below.
 	PreferredMemberKey GroupMembershipPreferredMemberKeyPtrInput
 	// The MembershipRoles that apply to the Membership.
 	// Must not contain duplicate MembershipRoles with the same name.
@@ -266,8 +272,10 @@ type groupMembershipArgs struct {
 	// The name of the Group to create this membership in.
 	Group string `pulumi:"group"`
 	// EntityKey of the member.
+	// Structure is documented below.
 	MemberKey *GroupMembershipMemberKey `pulumi:"memberKey"`
 	// EntityKey of the member.
+	// Structure is documented below.
 	PreferredMemberKey *GroupMembershipPreferredMemberKey `pulumi:"preferredMemberKey"`
 	// The MembershipRoles that apply to the Membership.
 	// Must not contain duplicate MembershipRoles with the same name.
@@ -282,8 +290,10 @@ type GroupMembershipArgs struct {
 	// The name of the Group to create this membership in.
 	Group pulumi.StringInput
 	// EntityKey of the member.
+	// Structure is documented below.
 	MemberKey GroupMembershipMemberKeyPtrInput
 	// EntityKey of the member.
+	// Structure is documented below.
 	PreferredMemberKey GroupMembershipPreferredMemberKeyPtrInput
 	// The MembershipRoles that apply to the Membership.
 	// Must not contain duplicate MembershipRoles with the same name.
@@ -394,6 +404,7 @@ func (o GroupMembershipOutput) Group() pulumi.StringOutput {
 }
 
 // EntityKey of the member.
+// Structure is documented below.
 func (o GroupMembershipOutput) MemberKey() GroupMembershipMemberKeyOutput {
 	return o.ApplyT(func(v *GroupMembership) GroupMembershipMemberKeyOutput { return v.MemberKey }).(GroupMembershipMemberKeyOutput)
 }
@@ -404,6 +415,7 @@ func (o GroupMembershipOutput) Name() pulumi.StringOutput {
 }
 
 // EntityKey of the member.
+// Structure is documented below.
 func (o GroupMembershipOutput) PreferredMemberKey() GroupMembershipPreferredMemberKeyOutput {
 	return o.ApplyT(func(v *GroupMembership) GroupMembershipPreferredMemberKeyOutput { return v.PreferredMemberKey }).(GroupMembershipPreferredMemberKeyOutput)
 }

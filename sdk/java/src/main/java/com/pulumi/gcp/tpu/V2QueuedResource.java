@@ -174,16 +174,12 @@ public class V2QueuedResource extends com.pulumi.resources.CustomResource {
     /**
      * The immutable name of the Queued Resource.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return The immutable name of the Queued Resource.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

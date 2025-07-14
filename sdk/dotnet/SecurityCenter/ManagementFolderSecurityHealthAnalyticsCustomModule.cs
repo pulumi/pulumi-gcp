@@ -188,9 +188,6 @@ namespace Pulumi.Gcp.SecurityCenter
 
         /// <summary>
         /// Numerical ID of the parent folder.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("folder")]
         public Output<string> Folder { get; private set; } = null!;
@@ -294,9 +291,6 @@ namespace Pulumi.Gcp.SecurityCenter
 
         /// <summary>
         /// Numerical ID of the parent folder.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("folder", required: true)]
         public Input<string> Folder { get; set; } = null!;
@@ -349,9 +343,6 @@ namespace Pulumi.Gcp.SecurityCenter
 
         /// <summary>
         /// Numerical ID of the parent folder.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("folder")]
         public Input<string>? Folder { get; set; }

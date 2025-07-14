@@ -169,8 +169,6 @@ type ManagementOrganizationSecurityHealthAnalyticsCustomModule struct {
 	// The id {securityHealthAnalyticsCustomModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Numerical ID of the parent organization.
-	//
-	// ***
 	Organization pulumi.StringOutput `pulumi:"organization"`
 	// The time at which the custom module was last updated.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
@@ -235,8 +233,6 @@ type managementOrganizationSecurityHealthAnalyticsCustomModuleState struct {
 	// The id {securityHealthAnalyticsCustomModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
 	Name *string `pulumi:"name"`
 	// Numerical ID of the parent organization.
-	//
-	// ***
 	Organization *string `pulumi:"organization"`
 	// The time at which the custom module was last updated.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
@@ -269,8 +265,6 @@ type ManagementOrganizationSecurityHealthAnalyticsCustomModuleState struct {
 	// The id {securityHealthAnalyticsCustomModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
 	Name pulumi.StringPtrInput
 	// Numerical ID of the parent organization.
-	//
-	// ***
 	Organization pulumi.StringPtrInput
 	// The time at which the custom module was last updated.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
@@ -298,8 +292,6 @@ type managementOrganizationSecurityHealthAnalyticsCustomModuleArgs struct {
 	// Location ID of the parent organization. If not provided, 'global' will be used as the default location.
 	Location *string `pulumi:"location"`
 	// Numerical ID of the parent organization.
-	//
-	// ***
 	Organization string `pulumi:"organization"`
 }
 
@@ -320,8 +312,6 @@ type ManagementOrganizationSecurityHealthAnalyticsCustomModuleArgs struct {
 	// Location ID of the parent organization. If not provided, 'global' will be used as the default location.
 	Location pulumi.StringPtrInput
 	// Numerical ID of the parent organization.
-	//
-	// ***
 	Organization pulumi.StringInput
 }
 
@@ -469,8 +459,6 @@ func (o ManagementOrganizationSecurityHealthAnalyticsCustomModuleOutput) Name() 
 }
 
 // Numerical ID of the parent organization.
-//
-// ***
 func (o ManagementOrganizationSecurityHealthAnalyticsCustomModuleOutput) Organization() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagementOrganizationSecurityHealthAnalyticsCustomModule) pulumi.StringOutput {
 		return v.Organization

@@ -113,9 +113,6 @@ export class Kmsconfig extends pulumi.CustomResource {
     public readonly location!: pulumi.Output<string>;
     /**
      * Name of the CMEK policy.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -216,9 +213,6 @@ export interface KmsconfigState {
     location?: pulumi.Input<string>;
     /**
      * Name of the CMEK policy.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -262,9 +256,6 @@ export interface KmsconfigArgs {
     location: pulumi.Input<string>;
     /**
      * Name of the CMEK policy.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

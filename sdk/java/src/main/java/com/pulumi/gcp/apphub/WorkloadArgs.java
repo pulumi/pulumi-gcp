@@ -129,16 +129,12 @@ public final class WorkloadArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The Workload identifier.
      * 
-     * ***
-     * 
      */
     @Import(name="workloadId", required=true)
     private Output<String> workloadId;
 
     /**
      * @return The Workload identifier.
-     * 
-     * ***
      * 
      */
     public Output<String> workloadId() {
@@ -330,8 +326,6 @@ public final class WorkloadArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param workloadId The Workload identifier.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -342,8 +336,6 @@ public final class WorkloadArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param workloadId The Workload identifier.
-         * 
-         * ***
          * 
          * @return builder
          * 

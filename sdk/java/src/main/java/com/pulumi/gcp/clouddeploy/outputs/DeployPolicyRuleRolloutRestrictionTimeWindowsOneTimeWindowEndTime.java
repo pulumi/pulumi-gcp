@@ -24,8 +24,6 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEnd
     /**
      * @return Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
      * 
-     * ***
-     * 
      */
     private @Nullable Integer nanos;
     /**
@@ -51,8 +49,6 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEnd
     }
     /**
      * @return Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
-     * 
-     * ***
      * 
      */
     public Optional<Integer> nanos() {

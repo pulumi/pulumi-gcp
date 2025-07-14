@@ -57,9 +57,6 @@ namespace Pulumi.Gcp.EssentialContacts
     {
         /// <summary>
         /// The processor to set the version on.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("processor")]
         public Output<string> Processor { get; private set; } = null!;
@@ -119,9 +116,6 @@ namespace Pulumi.Gcp.EssentialContacts
     {
         /// <summary>
         /// The processor to set the version on.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("processor", required: true)]
         public Input<string> Processor { get; set; } = null!;
@@ -143,9 +137,6 @@ namespace Pulumi.Gcp.EssentialContacts
     {
         /// <summary>
         /// The processor to set the version on.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("processor")]
         public Input<string>? Processor { get; set; }

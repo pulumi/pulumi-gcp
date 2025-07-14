@@ -58,16 +58,12 @@ public final class IntentState extends com.pulumi.resources.ResourceArgs {
     /**
      * The name of this intent to be displayed on the console.
      * 
-     * ***
-     * 
      */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
 
     /**
      * @return The name of this intent to be displayed on the console.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> displayName() {
@@ -393,8 +389,6 @@ public final class IntentState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param displayName The name of this intent to be displayed on the console.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -405,8 +399,6 @@ public final class IntentState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param displayName The name of this intent to be displayed on the console.
-         * 
-         * ***
          * 
          * @return builder
          * 

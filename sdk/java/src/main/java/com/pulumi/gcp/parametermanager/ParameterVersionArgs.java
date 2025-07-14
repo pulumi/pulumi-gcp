@@ -67,16 +67,12 @@ public final class ParameterVersionArgs extends com.pulumi.resources.ResourceArg
     /**
      * Version ID of the Parameter Version Resource. This must be unique within the Parameter.
      * 
-     * ***
-     * 
      */
     @Import(name="parameterVersionId", required=true)
     private Output<String> parameterVersionId;
 
     /**
      * @return Version ID of the Parameter Version Resource. This must be unique within the Parameter.
-     * 
-     * ***
      * 
      */
     public Output<String> parameterVersionId() {
@@ -178,8 +174,6 @@ public final class ParameterVersionArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param parameterVersionId Version ID of the Parameter Version Resource. This must be unique within the Parameter.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -190,8 +184,6 @@ public final class ParameterVersionArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param parameterVersionId Version ID of the Parameter Version Resource. This must be unique within the Parameter.
-         * 
-         * ***
          * 
          * @return builder
          * 

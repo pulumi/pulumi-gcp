@@ -130,9 +130,6 @@ namespace Pulumi.Gcp.Apigee
     {
         /// <summary>
         /// Resource ID of the security monitoring condition.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("conditionId")]
         public Output<string> ConditionId { get; private set; } = null!;
@@ -241,9 +238,6 @@ namespace Pulumi.Gcp.Apigee
     {
         /// <summary>
         /// Resource ID of the security monitoring condition.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("conditionId", required: true)]
         public Input<string> ConditionId { get; set; } = null!;
@@ -283,9 +277,6 @@ namespace Pulumi.Gcp.Apigee
     {
         /// <summary>
         /// Resource ID of the security monitoring condition.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("conditionId")]
         public Input<string>? ConditionId { get; set; }

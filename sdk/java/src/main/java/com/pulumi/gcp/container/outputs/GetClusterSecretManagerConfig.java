@@ -5,7 +5,9 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.container.outputs.GetClusterSecretManagerConfigRotationConfig;
 import java.lang.Boolean;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
@@ -15,6 +17,11 @@ public final class GetClusterSecretManagerConfig {
      * 
      */
     private Boolean enabled;
+    /**
+     * @return Configuration for Secret Manager auto rotation.
+     * 
+     */
+    private List<GetClusterSecretManagerConfigRotationConfig> rotationConfigs;
 
     private GetClusterSecretManagerConfig() {}
     /**
@@ -23,6 +30,13 @@ public final class GetClusterSecretManagerConfig {
      */
     public Boolean enabled() {
         return this.enabled;
+    }
+    /**
+     * @return Configuration for Secret Manager auto rotation.
+     * 
+     */
+    public List<GetClusterSecretManagerConfigRotationConfig> rotationConfigs() {
+        return this.rotationConfigs;
     }
 
     public static Builder builder() {
@@ -35,10 +49,12 @@ public final class GetClusterSecretManagerConfig {
     @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
+        private List<GetClusterSecretManagerConfigRotationConfig> rotationConfigs;
         public Builder() {}
         public Builder(GetClusterSecretManagerConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
+    	      this.rotationConfigs = defaults.rotationConfigs;
         }
 
         @CustomType.Setter
@@ -49,9 +65,21 @@ public final class GetClusterSecretManagerConfig {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
+        public Builder rotationConfigs(List<GetClusterSecretManagerConfigRotationConfig> rotationConfigs) {
+            if (rotationConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterSecretManagerConfig", "rotationConfigs");
+            }
+            this.rotationConfigs = rotationConfigs;
+            return this;
+        }
+        public Builder rotationConfigs(GetClusterSecretManagerConfigRotationConfig... rotationConfigs) {
+            return rotationConfigs(List.of(rotationConfigs));
+        }
         public GetClusterSecretManagerConfig build() {
             final var _resultValue = new GetClusterSecretManagerConfig();
             _resultValue.enabled = enabled;
+            _resultValue.rotationConfigs = rotationConfigs;
             return _resultValue;
         }
     }

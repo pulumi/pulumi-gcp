@@ -13,7 +13,8 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMapArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Required) The identifier for this object. Format specified above.
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;

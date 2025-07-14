@@ -87,16 +87,12 @@ public final class MembershipBindingState extends com.pulumi.resources.ResourceA
     /**
      * Location of the membership
      * 
-     * ***
-     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
      * @return Location of the membership
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> location() {
@@ -376,8 +372,6 @@ public final class MembershipBindingState extends com.pulumi.resources.ResourceA
         /**
          * @param location Location of the membership
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -388,8 +382,6 @@ public final class MembershipBindingState extends com.pulumi.resources.ResourceA
 
         /**
          * @param location Location of the membership
-         * 
-         * ***
          * 
          * @return builder
          * 

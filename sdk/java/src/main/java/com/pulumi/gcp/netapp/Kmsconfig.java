@@ -189,16 +189,12 @@ public class Kmsconfig extends com.pulumi.resources.CustomResource {
     /**
      * Name of the CMEK policy.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return Name of the CMEK policy.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

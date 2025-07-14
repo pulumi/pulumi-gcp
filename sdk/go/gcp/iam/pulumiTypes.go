@@ -313,8 +313,6 @@ type AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition struct {
 	Expression string `pulumi:"expression"`
 	// String indicating the location of the expression for error reporting,
 	// e.g. a file name and a position in the file.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// Title for the expression, i.e. a short string describing its purpose.
 	// This can be used e.g. in UIs which allow to enter the expression.
@@ -340,8 +338,6 @@ type AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs struct 
 	Expression pulumi.StringInput `pulumi:"expression"`
 	// String indicating the location of the expression for error reporting,
 	// e.g. a file name and a position in the file.
-	//
-	// ***
 	Location pulumi.StringPtrInput `pulumi:"location"`
 	// Title for the expression, i.e. a short string describing its purpose.
 	// This can be used e.g. in UIs which allow to enter the expression.
@@ -438,8 +434,6 @@ func (o AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionOutput) E
 
 // String indicating the location of the expression for error reporting,
 // e.g. a file name and a position in the file.
-//
-// ***
 func (o AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
@@ -497,8 +491,6 @@ func (o AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutput
 
 // String indicating the location of the expression for error reporting,
 // e.g. a file name and a position in the file.
-//
-// ***
 func (o AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition) *string {
 		if v == nil {
@@ -869,8 +861,6 @@ type DenyPolicyRuleDenyRuleDenialCondition struct {
 	Expression string `pulumi:"expression"`
 	// String indicating the location of the expression for error reporting,
 	// e.g. a file name and a position in the file.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// Title for the expression, i.e. a short string describing its purpose.
 	// This can be used e.g. in UIs which allow to enter the expression.
@@ -896,8 +886,6 @@ type DenyPolicyRuleDenyRuleDenialConditionArgs struct {
 	Expression pulumi.StringInput `pulumi:"expression"`
 	// String indicating the location of the expression for error reporting,
 	// e.g. a file name and a position in the file.
-	//
-	// ***
 	Location pulumi.StringPtrInput `pulumi:"location"`
 	// Title for the expression, i.e. a short string describing its purpose.
 	// This can be used e.g. in UIs which allow to enter the expression.
@@ -994,8 +982,6 @@ func (o DenyPolicyRuleDenyRuleDenialConditionOutput) Expression() pulumi.StringO
 
 // String indicating the location of the expression for error reporting,
 // e.g. a file name and a position in the file.
-//
-// ***
 func (o DenyPolicyRuleDenyRuleDenialConditionOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DenyPolicyRuleDenyRuleDenialCondition) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
@@ -1053,8 +1039,6 @@ func (o DenyPolicyRuleDenyRuleDenialConditionPtrOutput) Expression() pulumi.Stri
 
 // String indicating the location of the expression for error reporting,
 // e.g. a file name and a position in the file.
-//
-// ***
 func (o DenyPolicyRuleDenyRuleDenialConditionPtrOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DenyPolicyRuleDenyRuleDenialCondition) *string {
 		if v == nil {
@@ -1274,8 +1258,6 @@ type FoldersPolicyBindingTarget struct {
 	// Examples for each one of the following supported principal set types:
 	// * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
 	//   It must be parent by the policy binding's parent (the folder).
-	//
-	// ***
 	PrincipalSet *string `pulumi:"principalSet"`
 }
 
@@ -1295,8 +1277,6 @@ type FoldersPolicyBindingTargetArgs struct {
 	// Examples for each one of the following supported principal set types:
 	// * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
 	//   It must be parent by the policy binding's parent (the folder).
-	//
-	// ***
 	PrincipalSet pulumi.StringPtrInput `pulumi:"principalSet"`
 }
 
@@ -1381,8 +1361,6 @@ func (o FoldersPolicyBindingTargetOutput) ToFoldersPolicyBindingTargetPtrOutputW
 // Examples for each one of the following supported principal set types:
 //   - Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
 //     It must be parent by the policy binding's parent (the folder).
-//
-// ***
 func (o FoldersPolicyBindingTargetOutput) PrincipalSet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FoldersPolicyBindingTarget) *string { return v.PrincipalSet }).(pulumi.StringPtrOutput)
 }
@@ -1415,8 +1393,6 @@ func (o FoldersPolicyBindingTargetPtrOutput) Elem() FoldersPolicyBindingTargetOu
 // Examples for each one of the following supported principal set types:
 //   - Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
 //     It must be parent by the policy binding's parent (the folder).
-//
-// ***
 func (o FoldersPolicyBindingTargetPtrOutput) PrincipalSet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FoldersPolicyBindingTarget) *string {
 		if v == nil {
@@ -1627,8 +1603,6 @@ type OrganizationsPolicyBindingTarget struct {
 	// * Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID`
 	// * Workspace Identity: `//iam.googleapis.com/locations/global/workspace/WORKSPACE_ID`
 	//   It must be parent by the policy binding's parent (the organization).
-	//
-	// ***
 	PrincipalSet *string `pulumi:"principalSet"`
 }
 
@@ -1650,8 +1624,6 @@ type OrganizationsPolicyBindingTargetArgs struct {
 	// * Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID`
 	// * Workspace Identity: `//iam.googleapis.com/locations/global/workspace/WORKSPACE_ID`
 	//   It must be parent by the policy binding's parent (the organization).
-	//
-	// ***
 	PrincipalSet pulumi.StringPtrInput `pulumi:"principalSet"`
 }
 
@@ -1738,8 +1710,6 @@ func (o OrganizationsPolicyBindingTargetOutput) ToOrganizationsPolicyBindingTarg
 //   - Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID`
 //   - Workspace Identity: `//iam.googleapis.com/locations/global/workspace/WORKSPACE_ID`
 //     It must be parent by the policy binding's parent (the organization).
-//
-// ***
 func (o OrganizationsPolicyBindingTargetOutput) PrincipalSet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OrganizationsPolicyBindingTarget) *string { return v.PrincipalSet }).(pulumi.StringPtrOutput)
 }
@@ -1774,8 +1744,6 @@ func (o OrganizationsPolicyBindingTargetPtrOutput) Elem() OrganizationsPolicyBin
 //   - Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID`
 //   - Workspace Identity: `//iam.googleapis.com/locations/global/workspace/WORKSPACE_ID`
 //     It must be parent by the policy binding's parent (the organization).
-//
-// ***
 func (o OrganizationsPolicyBindingTargetPtrOutput) PrincipalSet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OrganizationsPolicyBindingTarget) *string {
 		if v == nil {
@@ -2300,8 +2268,6 @@ type ProjectsPolicyBindingTarget struct {
 	// * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
 	// * Workload Identity Pool: `//iam.googleapis.com/projects/PROJECT_NUMBER/locations/LOCATION/workloadIdentityPools/WORKLOAD_POOL_ID`
 	//   It must be parent by the policy binding's parent (the project).
-	//
-	// ***
 	PrincipalSet *string `pulumi:"principalSet"`
 }
 
@@ -2324,8 +2290,6 @@ type ProjectsPolicyBindingTargetArgs struct {
 	// * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
 	// * Workload Identity Pool: `//iam.googleapis.com/projects/PROJECT_NUMBER/locations/LOCATION/workloadIdentityPools/WORKLOAD_POOL_ID`
 	//   It must be parent by the policy binding's parent (the project).
-	//
-	// ***
 	PrincipalSet pulumi.StringPtrInput `pulumi:"principalSet"`
 }
 
@@ -2413,8 +2377,6 @@ func (o ProjectsPolicyBindingTargetOutput) ToProjectsPolicyBindingTargetPtrOutpu
 //   - `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
 //   - Workload Identity Pool: `//iam.googleapis.com/projects/PROJECT_NUMBER/locations/LOCATION/workloadIdentityPools/WORKLOAD_POOL_ID`
 //     It must be parent by the policy binding's parent (the project).
-//
-// ***
 func (o ProjectsPolicyBindingTargetOutput) PrincipalSet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectsPolicyBindingTarget) *string { return v.PrincipalSet }).(pulumi.StringPtrOutput)
 }
@@ -2450,8 +2412,6 @@ func (o ProjectsPolicyBindingTargetPtrOutput) Elem() ProjectsPolicyBindingTarget
 //   - `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
 //   - Workload Identity Pool: `//iam.googleapis.com/projects/PROJECT_NUMBER/locations/LOCATION/workloadIdentityPools/WORKLOAD_POOL_ID`
 //     It must be parent by the policy binding's parent (the project).
-//
-// ***
 func (o ProjectsPolicyBindingTargetPtrOutput) PrincipalSet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectsPolicyBindingTarget) *string {
 		if v == nil {
@@ -3453,8 +3413,6 @@ type WorkforcePoolProviderKeyKeyData struct {
 	Key *string `pulumi:"key"`
 	// The specifications for the key.
 	// Possible values are: `RSA_2048`, `RSA_3072`, `RSA_4096`.
-	//
-	// ***
 	KeySpec string `pulumi:"keySpec"`
 	// (Output)
 	// Latest timestamp when this key is valid. Attempts to use this key after this time will fail.
@@ -3492,8 +3450,6 @@ type WorkforcePoolProviderKeyKeyDataArgs struct {
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// The specifications for the key.
 	// Possible values are: `RSA_2048`, `RSA_3072`, `RSA_4096`.
-	//
-	// ***
 	KeySpec pulumi.StringInput `pulumi:"keySpec"`
 	// (Output)
 	// Latest timestamp when this key is valid. Attempts to use this key after this time will fail.
@@ -3602,8 +3558,6 @@ func (o WorkforcePoolProviderKeyKeyDataOutput) Key() pulumi.StringPtrOutput {
 
 // The specifications for the key.
 // Possible values are: `RSA_2048`, `RSA_3072`, `RSA_4096`.
-//
-// ***
 func (o WorkforcePoolProviderKeyKeyDataOutput) KeySpec() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkforcePoolProviderKeyKeyData) string { return v.KeySpec }).(pulumi.StringOutput)
 }
@@ -3676,8 +3630,6 @@ func (o WorkforcePoolProviderKeyKeyDataPtrOutput) Key() pulumi.StringPtrOutput {
 
 // The specifications for the key.
 // Possible values are: `RSA_2048`, `RSA_3072`, `RSA_4096`.
-//
-// ***
 func (o WorkforcePoolProviderKeyKeyDataPtrOutput) KeySpec() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkforcePoolProviderKeyKeyData) *string {
 		if v == nil {

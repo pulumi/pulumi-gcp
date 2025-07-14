@@ -38,8 +38,6 @@ public final class InterceptDeploymentGroupArgs extends com.pulumi.resources.Res
      * The ID to use for the new deployment group, which will become the final
      * component of the deployment group&#39;s resource name.
      * 
-     * ***
-     * 
      */
     @Import(name="interceptDeploymentGroupId", required=true)
     private Output<String> interceptDeploymentGroupId;
@@ -47,8 +45,6 @@ public final class InterceptDeploymentGroupArgs extends com.pulumi.resources.Res
     /**
      * @return The ID to use for the new deployment group, which will become the final
      * component of the deployment group&#39;s resource name.
-     * 
-     * ***
      * 
      */
     public Output<String> interceptDeploymentGroupId() {
@@ -181,8 +177,6 @@ public final class InterceptDeploymentGroupArgs extends com.pulumi.resources.Res
          * @param interceptDeploymentGroupId The ID to use for the new deployment group, which will become the final
          * component of the deployment group&#39;s resource name.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -194,8 +188,6 @@ public final class InterceptDeploymentGroupArgs extends com.pulumi.resources.Res
         /**
          * @param interceptDeploymentGroupId The ID to use for the new deployment group, which will become the final
          * component of the deployment group&#39;s resource name.
-         * 
-         * ***
          * 
          * @return builder
          * 

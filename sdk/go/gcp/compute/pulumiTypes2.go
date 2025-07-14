@@ -13,6 +13,321 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetResourcePolicyInstanceSchedulePolicyVmStartSchedule struct {
+	// Specifies the frequency for the operation, using the unix-cron format.
+	Schedule string `pulumi:"schedule"`
+}
+
+// GetResourcePolicyInstanceSchedulePolicyVmStartScheduleInput is an input type that accepts GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs and GetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput values.
+// You can construct a concrete instance of `GetResourcePolicyInstanceSchedulePolicyVmStartScheduleInput` via:
+//
+//	GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs{...}
+type GetResourcePolicyInstanceSchedulePolicyVmStartScheduleInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput() GetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput
+	ToGetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutputWithContext(context.Context) GetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput
+}
+
+type GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs struct {
+	// Specifies the frequency for the operation, using the unix-cron format.
+	Schedule pulumi.StringInput `pulumi:"schedule"`
+}
+
+func (GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicyInstanceSchedulePolicyVmStartSchedule)(nil)).Elem()
+}
+
+func (i GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs) ToGetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput() GetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput {
+	return i.ToGetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs) ToGetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutputWithContext(ctx context.Context) GetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput)
+}
+
+// GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayInput is an input type that accepts GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArray and GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutput values.
+// You can construct a concrete instance of `GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayInput` via:
+//
+//	GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArray{ GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs{...} }
+type GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutput() GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutput
+	ToGetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutputWithContext(context.Context) GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutput
+}
+
+type GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArray []GetResourcePolicyInstanceSchedulePolicyVmStartScheduleInput
+
+func (GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicyInstanceSchedulePolicyVmStartSchedule)(nil)).Elem()
+}
+
+func (i GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArray) ToGetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutput() GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutput {
+	return i.ToGetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArray) ToGetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutputWithContext(ctx context.Context) GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutput)
+}
+
+type GetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicyInstanceSchedulePolicyVmStartSchedule)(nil)).Elem()
+}
+
+func (o GetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput) ToGetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput() GetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput {
+	return o
+}
+
+func (o GetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput) ToGetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutputWithContext(ctx context.Context) GetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput {
+	return o
+}
+
+// Specifies the frequency for the operation, using the unix-cron format.
+func (o GetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput) Schedule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourcePolicyInstanceSchedulePolicyVmStartSchedule) string { return v.Schedule }).(pulumi.StringOutput)
+}
+
+type GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicyInstanceSchedulePolicyVmStartSchedule)(nil)).Elem()
+}
+
+func (o GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutput) ToGetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutput() GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutput) ToGetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutputWithContext(ctx context.Context) GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutput) Index(i pulumi.IntInput) GetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourcePolicyInstanceSchedulePolicyVmStartSchedule {
+		return vs[0].([]GetResourcePolicyInstanceSchedulePolicyVmStartSchedule)[vs[1].(int)]
+	}).(GetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput)
+}
+
+type GetResourcePolicyInstanceSchedulePolicyVmStopSchedule struct {
+	// Specifies the frequency for the operation, using the unix-cron format.
+	Schedule string `pulumi:"schedule"`
+}
+
+// GetResourcePolicyInstanceSchedulePolicyVmStopScheduleInput is an input type that accepts GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs and GetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput values.
+// You can construct a concrete instance of `GetResourcePolicyInstanceSchedulePolicyVmStopScheduleInput` via:
+//
+//	GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs{...}
+type GetResourcePolicyInstanceSchedulePolicyVmStopScheduleInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput() GetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput
+	ToGetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutputWithContext(context.Context) GetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput
+}
+
+type GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs struct {
+	// Specifies the frequency for the operation, using the unix-cron format.
+	Schedule pulumi.StringInput `pulumi:"schedule"`
+}
+
+func (GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicyInstanceSchedulePolicyVmStopSchedule)(nil)).Elem()
+}
+
+func (i GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs) ToGetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput() GetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput {
+	return i.ToGetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs) ToGetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutputWithContext(ctx context.Context) GetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput)
+}
+
+// GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayInput is an input type that accepts GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArray and GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutput values.
+// You can construct a concrete instance of `GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayInput` via:
+//
+//	GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArray{ GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs{...} }
+type GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutput() GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutput
+	ToGetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutputWithContext(context.Context) GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutput
+}
+
+type GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArray []GetResourcePolicyInstanceSchedulePolicyVmStopScheduleInput
+
+func (GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicyInstanceSchedulePolicyVmStopSchedule)(nil)).Elem()
+}
+
+func (i GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArray) ToGetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutput() GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutput {
+	return i.ToGetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArray) ToGetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutputWithContext(ctx context.Context) GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutput)
+}
+
+type GetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicyInstanceSchedulePolicyVmStopSchedule)(nil)).Elem()
+}
+
+func (o GetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput) ToGetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput() GetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput {
+	return o
+}
+
+func (o GetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput) ToGetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutputWithContext(ctx context.Context) GetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput {
+	return o
+}
+
+// Specifies the frequency for the operation, using the unix-cron format.
+func (o GetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput) Schedule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourcePolicyInstanceSchedulePolicyVmStopSchedule) string { return v.Schedule }).(pulumi.StringOutput)
+}
+
+type GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicyInstanceSchedulePolicyVmStopSchedule)(nil)).Elem()
+}
+
+func (o GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutput) ToGetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutput() GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutput) ToGetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutputWithContext(ctx context.Context) GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutput) Index(i pulumi.IntInput) GetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourcePolicyInstanceSchedulePolicyVmStopSchedule {
+		return vs[0].([]GetResourcePolicyInstanceSchedulePolicyVmStopSchedule)[vs[1].(int)]
+	}).(GetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicy struct {
+	// Retention policy applied to snapshots created by this resource policy.
+	RetentionPolicies []GetResourcePolicySnapshotSchedulePolicyRetentionPolicy `pulumi:"retentionPolicies"`
+	// Contains one of an 'hourlySchedule', 'dailySchedule', or 'weeklySchedule'.
+	Schedules []GetResourcePolicySnapshotSchedulePolicySchedule `pulumi:"schedules"`
+	// Properties with which the snapshots are created, such as labels.
+	SnapshotProperties []GetResourcePolicySnapshotSchedulePolicySnapshotProperty `pulumi:"snapshotProperties"`
+}
+
+// GetResourcePolicySnapshotSchedulePolicyInput is an input type that accepts GetResourcePolicySnapshotSchedulePolicyArgs and GetResourcePolicySnapshotSchedulePolicyOutput values.
+// You can construct a concrete instance of `GetResourcePolicySnapshotSchedulePolicyInput` via:
+//
+//	GetResourcePolicySnapshotSchedulePolicyArgs{...}
+type GetResourcePolicySnapshotSchedulePolicyInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicySnapshotSchedulePolicyOutput() GetResourcePolicySnapshotSchedulePolicyOutput
+	ToGetResourcePolicySnapshotSchedulePolicyOutputWithContext(context.Context) GetResourcePolicySnapshotSchedulePolicyOutput
+}
+
+type GetResourcePolicySnapshotSchedulePolicyArgs struct {
+	// Retention policy applied to snapshots created by this resource policy.
+	RetentionPolicies GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayInput `pulumi:"retentionPolicies"`
+	// Contains one of an 'hourlySchedule', 'dailySchedule', or 'weeklySchedule'.
+	Schedules GetResourcePolicySnapshotSchedulePolicyScheduleArrayInput `pulumi:"schedules"`
+	// Properties with which the snapshots are created, such as labels.
+	SnapshotProperties GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayInput `pulumi:"snapshotProperties"`
+}
+
+func (GetResourcePolicySnapshotSchedulePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicy)(nil)).Elem()
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyArgs) ToGetResourcePolicySnapshotSchedulePolicyOutput() GetResourcePolicySnapshotSchedulePolicyOutput {
+	return i.ToGetResourcePolicySnapshotSchedulePolicyOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyArgs) ToGetResourcePolicySnapshotSchedulePolicyOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicySnapshotSchedulePolicyOutput)
+}
+
+// GetResourcePolicySnapshotSchedulePolicyArrayInput is an input type that accepts GetResourcePolicySnapshotSchedulePolicyArray and GetResourcePolicySnapshotSchedulePolicyArrayOutput values.
+// You can construct a concrete instance of `GetResourcePolicySnapshotSchedulePolicyArrayInput` via:
+//
+//	GetResourcePolicySnapshotSchedulePolicyArray{ GetResourcePolicySnapshotSchedulePolicyArgs{...} }
+type GetResourcePolicySnapshotSchedulePolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicySnapshotSchedulePolicyArrayOutput() GetResourcePolicySnapshotSchedulePolicyArrayOutput
+	ToGetResourcePolicySnapshotSchedulePolicyArrayOutputWithContext(context.Context) GetResourcePolicySnapshotSchedulePolicyArrayOutput
+}
+
+type GetResourcePolicySnapshotSchedulePolicyArray []GetResourcePolicySnapshotSchedulePolicyInput
+
+func (GetResourcePolicySnapshotSchedulePolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicySnapshotSchedulePolicy)(nil)).Elem()
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyArray) ToGetResourcePolicySnapshotSchedulePolicyArrayOutput() GetResourcePolicySnapshotSchedulePolicyArrayOutput {
+	return i.ToGetResourcePolicySnapshotSchedulePolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyArray) ToGetResourcePolicySnapshotSchedulePolicyArrayOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicySnapshotSchedulePolicyArrayOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicyOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicySnapshotSchedulePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicy)(nil)).Elem()
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyOutput) ToGetResourcePolicySnapshotSchedulePolicyOutput() GetResourcePolicySnapshotSchedulePolicyOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyOutput) ToGetResourcePolicySnapshotSchedulePolicyOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyOutput {
+	return o
+}
+
+// Retention policy applied to snapshots created by this resource policy.
+func (o GetResourcePolicySnapshotSchedulePolicyOutput) RetentionPolicies() GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutput {
+	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicy) []GetResourcePolicySnapshotSchedulePolicyRetentionPolicy {
+		return v.RetentionPolicies
+	}).(GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutput)
+}
+
+// Contains one of an 'hourlySchedule', 'dailySchedule', or 'weeklySchedule'.
+func (o GetResourcePolicySnapshotSchedulePolicyOutput) Schedules() GetResourcePolicySnapshotSchedulePolicyScheduleArrayOutput {
+	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicy) []GetResourcePolicySnapshotSchedulePolicySchedule {
+		return v.Schedules
+	}).(GetResourcePolicySnapshotSchedulePolicyScheduleArrayOutput)
+}
+
+// Properties with which the snapshots are created, such as labels.
+func (o GetResourcePolicySnapshotSchedulePolicyOutput) SnapshotProperties() GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutput {
+	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicy) []GetResourcePolicySnapshotSchedulePolicySnapshotProperty {
+		return v.SnapshotProperties
+	}).(GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicySnapshotSchedulePolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicySnapshotSchedulePolicy)(nil)).Elem()
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyArrayOutput) ToGetResourcePolicySnapshotSchedulePolicyArrayOutput() GetResourcePolicySnapshotSchedulePolicyArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyArrayOutput) ToGetResourcePolicySnapshotSchedulePolicyArrayOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyArrayOutput) Index(i pulumi.IntInput) GetResourcePolicySnapshotSchedulePolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourcePolicySnapshotSchedulePolicy {
+		return vs[0].([]GetResourcePolicySnapshotSchedulePolicy)[vs[1].(int)]
+	}).(GetResourcePolicySnapshotSchedulePolicyOutput)
+}
+
 type GetResourcePolicySnapshotSchedulePolicyRetentionPolicy struct {
 	// Maximum age of the snapshot that is allowed to be kept.
 	MaxRetentionDays int `pulumi:"maxRetentionDays"`
@@ -2084,6 +2399,8 @@ type GetRouterStatusBestRoute struct {
 	NextHopPeering string `pulumi:"nextHopPeering"`
 	// URL to a VpnTunnel that should handle matching packets.
 	NextHopVpnTunnel string `pulumi:"nextHopVpnTunnel"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	Params []GetRouterStatusBestRouteParam `pulumi:"params"`
 	// The priority of this route. Priority is used to break ties in cases
 	// where there is more than one matching route of equal prefix length.
 	//
@@ -2188,6 +2505,8 @@ type GetRouterStatusBestRouteArgs struct {
 	NextHopPeering pulumi.StringInput `pulumi:"nextHopPeering"`
 	// URL to a VpnTunnel that should handle matching packets.
 	NextHopVpnTunnel pulumi.StringInput `pulumi:"nextHopVpnTunnel"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	Params GetRouterStatusBestRouteParamArrayInput `pulumi:"params"`
 	// The priority of this route. Priority is used to break ties in cases
 	// where there is more than one matching route of equal prefix length.
 	//
@@ -2385,6 +2704,11 @@ func (o GetRouterStatusBestRouteOutput) NextHopVpnTunnel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.NextHopVpnTunnel }).(pulumi.StringOutput)
 }
 
+// Additional params passed with the request, but not persisted as part of resource payload
+func (o GetRouterStatusBestRouteOutput) Params() GetRouterStatusBestRouteParamArrayOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoute) []GetRouterStatusBestRouteParam { return v.Params }).(GetRouterStatusBestRouteParamArrayOutput)
+}
+
 // The priority of this route. Priority is used to break ties in cases
 // where there is more than one matching route of equal prefix length.
 //
@@ -2568,6 +2892,118 @@ func (o GetRouterStatusBestRouteAsPathArrayOutput) Index(i pulumi.IntInput) GetR
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouterStatusBestRouteAsPath {
 		return vs[0].([]GetRouterStatusBestRouteAsPath)[vs[1].(int)]
 	}).(GetRouterStatusBestRouteAsPathOutput)
+}
+
+type GetRouterStatusBestRouteParam struct {
+	// Resource manager tags to be bound to the route. Tag keys and values have the
+	// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+	// and values are in the format tagValues/456. The field is ignored when empty.
+	// The field is immutable and causes resource replacement when mutated. This field is only
+	// set at create time and modifying this field after creation will trigger recreation.
+	// To apply tags to an existing resource, see the tags.TagBinding resource.
+	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
+}
+
+// GetRouterStatusBestRouteParamInput is an input type that accepts GetRouterStatusBestRouteParamArgs and GetRouterStatusBestRouteParamOutput values.
+// You can construct a concrete instance of `GetRouterStatusBestRouteParamInput` via:
+//
+//	GetRouterStatusBestRouteParamArgs{...}
+type GetRouterStatusBestRouteParamInput interface {
+	pulumi.Input
+
+	ToGetRouterStatusBestRouteParamOutput() GetRouterStatusBestRouteParamOutput
+	ToGetRouterStatusBestRouteParamOutputWithContext(context.Context) GetRouterStatusBestRouteParamOutput
+}
+
+type GetRouterStatusBestRouteParamArgs struct {
+	// Resource manager tags to be bound to the route. Tag keys and values have the
+	// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+	// and values are in the format tagValues/456. The field is ignored when empty.
+	// The field is immutable and causes resource replacement when mutated. This field is only
+	// set at create time and modifying this field after creation will trigger recreation.
+	// To apply tags to an existing resource, see the tags.TagBinding resource.
+	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
+}
+
+func (GetRouterStatusBestRouteParamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterStatusBestRouteParam)(nil)).Elem()
+}
+
+func (i GetRouterStatusBestRouteParamArgs) ToGetRouterStatusBestRouteParamOutput() GetRouterStatusBestRouteParamOutput {
+	return i.ToGetRouterStatusBestRouteParamOutputWithContext(context.Background())
+}
+
+func (i GetRouterStatusBestRouteParamArgs) ToGetRouterStatusBestRouteParamOutputWithContext(ctx context.Context) GetRouterStatusBestRouteParamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterStatusBestRouteParamOutput)
+}
+
+// GetRouterStatusBestRouteParamArrayInput is an input type that accepts GetRouterStatusBestRouteParamArray and GetRouterStatusBestRouteParamArrayOutput values.
+// You can construct a concrete instance of `GetRouterStatusBestRouteParamArrayInput` via:
+//
+//	GetRouterStatusBestRouteParamArray{ GetRouterStatusBestRouteParamArgs{...} }
+type GetRouterStatusBestRouteParamArrayInput interface {
+	pulumi.Input
+
+	ToGetRouterStatusBestRouteParamArrayOutput() GetRouterStatusBestRouteParamArrayOutput
+	ToGetRouterStatusBestRouteParamArrayOutputWithContext(context.Context) GetRouterStatusBestRouteParamArrayOutput
+}
+
+type GetRouterStatusBestRouteParamArray []GetRouterStatusBestRouteParamInput
+
+func (GetRouterStatusBestRouteParamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterStatusBestRouteParam)(nil)).Elem()
+}
+
+func (i GetRouterStatusBestRouteParamArray) ToGetRouterStatusBestRouteParamArrayOutput() GetRouterStatusBestRouteParamArrayOutput {
+	return i.ToGetRouterStatusBestRouteParamArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouterStatusBestRouteParamArray) ToGetRouterStatusBestRouteParamArrayOutputWithContext(ctx context.Context) GetRouterStatusBestRouteParamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterStatusBestRouteParamArrayOutput)
+}
+
+type GetRouterStatusBestRouteParamOutput struct{ *pulumi.OutputState }
+
+func (GetRouterStatusBestRouteParamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterStatusBestRouteParam)(nil)).Elem()
+}
+
+func (o GetRouterStatusBestRouteParamOutput) ToGetRouterStatusBestRouteParamOutput() GetRouterStatusBestRouteParamOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRouteParamOutput) ToGetRouterStatusBestRouteParamOutputWithContext(ctx context.Context) GetRouterStatusBestRouteParamOutput {
+	return o
+}
+
+// Resource manager tags to be bound to the route. Tag keys and values have the
+// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+// and values are in the format tagValues/456. The field is ignored when empty.
+// The field is immutable and causes resource replacement when mutated. This field is only
+// set at create time and modifying this field after creation will trigger recreation.
+// To apply tags to an existing resource, see the tags.TagBinding resource.
+func (o GetRouterStatusBestRouteParamOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRouteParam) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
+}
+
+type GetRouterStatusBestRouteParamArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouterStatusBestRouteParamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterStatusBestRouteParam)(nil)).Elem()
+}
+
+func (o GetRouterStatusBestRouteParamArrayOutput) ToGetRouterStatusBestRouteParamArrayOutput() GetRouterStatusBestRouteParamArrayOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRouteParamArrayOutput) ToGetRouterStatusBestRouteParamArrayOutputWithContext(ctx context.Context) GetRouterStatusBestRouteParamArrayOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRouteParamArrayOutput) Index(i pulumi.IntInput) GetRouterStatusBestRouteParamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouterStatusBestRouteParam {
+		return vs[0].([]GetRouterStatusBestRouteParam)[vs[1].(int)]
+	}).(GetRouterStatusBestRouteParamOutput)
 }
 
 type GetRouterStatusBestRouteWarning struct {
@@ -2862,6 +3298,8 @@ type GetRouterStatusBestRoutesForRouter struct {
 	NextHopPeering string `pulumi:"nextHopPeering"`
 	// URL to a VpnTunnel that should handle matching packets.
 	NextHopVpnTunnel string `pulumi:"nextHopVpnTunnel"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	Params []GetRouterStatusBestRoutesForRouterParam `pulumi:"params"`
 	// The priority of this route. Priority is used to break ties in cases
 	// where there is more than one matching route of equal prefix length.
 	//
@@ -2966,6 +3404,8 @@ type GetRouterStatusBestRoutesForRouterArgs struct {
 	NextHopPeering pulumi.StringInput `pulumi:"nextHopPeering"`
 	// URL to a VpnTunnel that should handle matching packets.
 	NextHopVpnTunnel pulumi.StringInput `pulumi:"nextHopVpnTunnel"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	Params GetRouterStatusBestRoutesForRouterParamArrayInput `pulumi:"params"`
 	// The priority of this route. Priority is used to break ties in cases
 	// where there is more than one matching route of equal prefix length.
 	//
@@ -3165,6 +3605,11 @@ func (o GetRouterStatusBestRoutesForRouterOutput) NextHopVpnTunnel() pulumi.Stri
 	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.NextHopVpnTunnel }).(pulumi.StringOutput)
 }
 
+// Additional params passed with the request, but not persisted as part of resource payload
+func (o GetRouterStatusBestRoutesForRouterOutput) Params() GetRouterStatusBestRoutesForRouterParamArrayOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) []GetRouterStatusBestRoutesForRouterParam { return v.Params }).(GetRouterStatusBestRoutesForRouterParamArrayOutput)
+}
+
 // The priority of this route. Priority is used to break ties in cases
 // where there is more than one matching route of equal prefix length.
 //
@@ -3350,6 +3795,118 @@ func (o GetRouterStatusBestRoutesForRouterAsPathArrayOutput) Index(i pulumi.IntI
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouterStatusBestRoutesForRouterAsPath {
 		return vs[0].([]GetRouterStatusBestRoutesForRouterAsPath)[vs[1].(int)]
 	}).(GetRouterStatusBestRoutesForRouterAsPathOutput)
+}
+
+type GetRouterStatusBestRoutesForRouterParam struct {
+	// Resource manager tags to be bound to the route. Tag keys and values have the
+	// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+	// and values are in the format tagValues/456. The field is ignored when empty.
+	// The field is immutable and causes resource replacement when mutated. This field is only
+	// set at create time and modifying this field after creation will trigger recreation.
+	// To apply tags to an existing resource, see the tags.TagBinding resource.
+	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
+}
+
+// GetRouterStatusBestRoutesForRouterParamInput is an input type that accepts GetRouterStatusBestRoutesForRouterParamArgs and GetRouterStatusBestRoutesForRouterParamOutput values.
+// You can construct a concrete instance of `GetRouterStatusBestRoutesForRouterParamInput` via:
+//
+//	GetRouterStatusBestRoutesForRouterParamArgs{...}
+type GetRouterStatusBestRoutesForRouterParamInput interface {
+	pulumi.Input
+
+	ToGetRouterStatusBestRoutesForRouterParamOutput() GetRouterStatusBestRoutesForRouterParamOutput
+	ToGetRouterStatusBestRoutesForRouterParamOutputWithContext(context.Context) GetRouterStatusBestRoutesForRouterParamOutput
+}
+
+type GetRouterStatusBestRoutesForRouterParamArgs struct {
+	// Resource manager tags to be bound to the route. Tag keys and values have the
+	// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+	// and values are in the format tagValues/456. The field is ignored when empty.
+	// The field is immutable and causes resource replacement when mutated. This field is only
+	// set at create time and modifying this field after creation will trigger recreation.
+	// To apply tags to an existing resource, see the tags.TagBinding resource.
+	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
+}
+
+func (GetRouterStatusBestRoutesForRouterParamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterStatusBestRoutesForRouterParam)(nil)).Elem()
+}
+
+func (i GetRouterStatusBestRoutesForRouterParamArgs) ToGetRouterStatusBestRoutesForRouterParamOutput() GetRouterStatusBestRoutesForRouterParamOutput {
+	return i.ToGetRouterStatusBestRoutesForRouterParamOutputWithContext(context.Background())
+}
+
+func (i GetRouterStatusBestRoutesForRouterParamArgs) ToGetRouterStatusBestRoutesForRouterParamOutputWithContext(ctx context.Context) GetRouterStatusBestRoutesForRouterParamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterStatusBestRoutesForRouterParamOutput)
+}
+
+// GetRouterStatusBestRoutesForRouterParamArrayInput is an input type that accepts GetRouterStatusBestRoutesForRouterParamArray and GetRouterStatusBestRoutesForRouterParamArrayOutput values.
+// You can construct a concrete instance of `GetRouterStatusBestRoutesForRouterParamArrayInput` via:
+//
+//	GetRouterStatusBestRoutesForRouterParamArray{ GetRouterStatusBestRoutesForRouterParamArgs{...} }
+type GetRouterStatusBestRoutesForRouterParamArrayInput interface {
+	pulumi.Input
+
+	ToGetRouterStatusBestRoutesForRouterParamArrayOutput() GetRouterStatusBestRoutesForRouterParamArrayOutput
+	ToGetRouterStatusBestRoutesForRouterParamArrayOutputWithContext(context.Context) GetRouterStatusBestRoutesForRouterParamArrayOutput
+}
+
+type GetRouterStatusBestRoutesForRouterParamArray []GetRouterStatusBestRoutesForRouterParamInput
+
+func (GetRouterStatusBestRoutesForRouterParamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterStatusBestRoutesForRouterParam)(nil)).Elem()
+}
+
+func (i GetRouterStatusBestRoutesForRouterParamArray) ToGetRouterStatusBestRoutesForRouterParamArrayOutput() GetRouterStatusBestRoutesForRouterParamArrayOutput {
+	return i.ToGetRouterStatusBestRoutesForRouterParamArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouterStatusBestRoutesForRouterParamArray) ToGetRouterStatusBestRoutesForRouterParamArrayOutputWithContext(ctx context.Context) GetRouterStatusBestRoutesForRouterParamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterStatusBestRoutesForRouterParamArrayOutput)
+}
+
+type GetRouterStatusBestRoutesForRouterParamOutput struct{ *pulumi.OutputState }
+
+func (GetRouterStatusBestRoutesForRouterParamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterStatusBestRoutesForRouterParam)(nil)).Elem()
+}
+
+func (o GetRouterStatusBestRoutesForRouterParamOutput) ToGetRouterStatusBestRoutesForRouterParamOutput() GetRouterStatusBestRoutesForRouterParamOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRoutesForRouterParamOutput) ToGetRouterStatusBestRoutesForRouterParamOutputWithContext(ctx context.Context) GetRouterStatusBestRoutesForRouterParamOutput {
+	return o
+}
+
+// Resource manager tags to be bound to the route. Tag keys and values have the
+// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+// and values are in the format tagValues/456. The field is ignored when empty.
+// The field is immutable and causes resource replacement when mutated. This field is only
+// set at create time and modifying this field after creation will trigger recreation.
+// To apply tags to an existing resource, see the tags.TagBinding resource.
+func (o GetRouterStatusBestRoutesForRouterParamOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouterParam) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
+}
+
+type GetRouterStatusBestRoutesForRouterParamArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouterStatusBestRoutesForRouterParamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterStatusBestRoutesForRouterParam)(nil)).Elem()
+}
+
+func (o GetRouterStatusBestRoutesForRouterParamArrayOutput) ToGetRouterStatusBestRoutesForRouterParamArrayOutput() GetRouterStatusBestRoutesForRouterParamArrayOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRoutesForRouterParamArrayOutput) ToGetRouterStatusBestRoutesForRouterParamArrayOutputWithContext(ctx context.Context) GetRouterStatusBestRoutesForRouterParamArrayOutput {
+	return o
+}
+
+func (o GetRouterStatusBestRoutesForRouterParamArrayOutput) Index(i pulumi.IntInput) GetRouterStatusBestRoutesForRouterParamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouterStatusBestRoutesForRouterParam {
+		return vs[0].([]GetRouterStatusBestRoutesForRouterParam)[vs[1].(int)]
+	}).(GetRouterStatusBestRoutesForRouterParamOutput)
 }
 
 type GetRouterStatusBestRoutesForRouterWarning struct {
@@ -7519,6 +8076,12 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicyInstanceSchedulePolicyVmStartScheduleInput)(nil)).Elem(), GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayInput)(nil)).Elem(), GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicyInstanceSchedulePolicyVmStopScheduleInput)(nil)).Elem(), GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayInput)(nil)).Elem(), GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicyInput)(nil)).Elem(), GetResourcePolicySnapshotSchedulePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicyArrayInput)(nil)).Elem(), GetResourcePolicySnapshotSchedulePolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicyRetentionPolicyInput)(nil)).Elem(), GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayInput)(nil)).Elem(), GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicyScheduleInput)(nil)).Elem(), GetResourcePolicySnapshotSchedulePolicyScheduleArgs{})
@@ -7555,6 +8118,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRouteArrayInput)(nil)).Elem(), GetRouterStatusBestRouteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRouteAsPathInput)(nil)).Elem(), GetRouterStatusBestRouteAsPathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRouteAsPathArrayInput)(nil)).Elem(), GetRouterStatusBestRouteAsPathArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRouteParamInput)(nil)).Elem(), GetRouterStatusBestRouteParamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRouteParamArrayInput)(nil)).Elem(), GetRouterStatusBestRouteParamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRouteWarningInput)(nil)).Elem(), GetRouterStatusBestRouteWarningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRouteWarningArrayInput)(nil)).Elem(), GetRouterStatusBestRouteWarningArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRouteWarningDataInput)(nil)).Elem(), GetRouterStatusBestRouteWarningDataArgs{})
@@ -7563,6 +8128,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRoutesForRouterArrayInput)(nil)).Elem(), GetRouterStatusBestRoutesForRouterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRoutesForRouterAsPathInput)(nil)).Elem(), GetRouterStatusBestRoutesForRouterAsPathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRoutesForRouterAsPathArrayInput)(nil)).Elem(), GetRouterStatusBestRoutesForRouterAsPathArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRoutesForRouterParamInput)(nil)).Elem(), GetRouterStatusBestRoutesForRouterParamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRoutesForRouterParamArrayInput)(nil)).Elem(), GetRouterStatusBestRoutesForRouterParamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRoutesForRouterWarningInput)(nil)).Elem(), GetRouterStatusBestRoutesForRouterWarningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRoutesForRouterWarningArrayInput)(nil)).Elem(), GetRouterStatusBestRoutesForRouterWarningArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRoutesForRouterWarningDataInput)(nil)).Elem(), GetRouterStatusBestRoutesForRouterWarningDataArgs{})
@@ -7633,6 +8200,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(GetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicySnapshotSchedulePolicyOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicySnapshotSchedulePolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput{})
 	pulumi.RegisterOutputType(GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetResourcePolicySnapshotSchedulePolicyScheduleOutput{})
@@ -7669,6 +8242,8 @@ func init() {
 	pulumi.RegisterOutputType(GetRouterStatusBestRouteArrayOutput{})
 	pulumi.RegisterOutputType(GetRouterStatusBestRouteAsPathOutput{})
 	pulumi.RegisterOutputType(GetRouterStatusBestRouteAsPathArrayOutput{})
+	pulumi.RegisterOutputType(GetRouterStatusBestRouteParamOutput{})
+	pulumi.RegisterOutputType(GetRouterStatusBestRouteParamArrayOutput{})
 	pulumi.RegisterOutputType(GetRouterStatusBestRouteWarningOutput{})
 	pulumi.RegisterOutputType(GetRouterStatusBestRouteWarningArrayOutput{})
 	pulumi.RegisterOutputType(GetRouterStatusBestRouteWarningDataOutput{})
@@ -7677,6 +8252,8 @@ func init() {
 	pulumi.RegisterOutputType(GetRouterStatusBestRoutesForRouterArrayOutput{})
 	pulumi.RegisterOutputType(GetRouterStatusBestRoutesForRouterAsPathOutput{})
 	pulumi.RegisterOutputType(GetRouterStatusBestRoutesForRouterAsPathArrayOutput{})
+	pulumi.RegisterOutputType(GetRouterStatusBestRoutesForRouterParamOutput{})
+	pulumi.RegisterOutputType(GetRouterStatusBestRoutesForRouterParamArrayOutput{})
 	pulumi.RegisterOutputType(GetRouterStatusBestRoutesForRouterWarningOutput{})
 	pulumi.RegisterOutputType(GetRouterStatusBestRoutesForRouterWarningArrayOutput{})
 	pulumi.RegisterOutputType(GetRouterStatusBestRoutesForRouterWarningDataOutput{})

@@ -7,6 +7,7 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .connectivity_test import *
+from .get_connectivity_test_run import *
 from .vpc_flow_logs_config import *
 from ._inputs import *
 from . import outputs

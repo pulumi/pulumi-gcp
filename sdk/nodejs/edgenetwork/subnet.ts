@@ -190,9 +190,6 @@ export class Subnet extends pulumi.CustomResource {
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
      * A unique ID that identifies this subnet.
-     *
-     *
-     * - - -
      */
     public readonly subnetId!: pulumi.Output<string>;
     /**
@@ -340,9 +337,6 @@ export interface SubnetState {
     state?: pulumi.Input<string>;
     /**
      * A unique ID that identifies this subnet.
-     *
-     *
-     * - - -
      */
     subnetId?: pulumi.Input<string>;
     /**
@@ -400,9 +394,6 @@ export interface SubnetArgs {
     project?: pulumi.Input<string>;
     /**
      * A unique ID that identifies this subnet.
-     *
-     *
-     * - - -
      */
     subnetId: pulumi.Input<string>;
     /**

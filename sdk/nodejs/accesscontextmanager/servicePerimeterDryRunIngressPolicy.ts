@@ -82,9 +82,6 @@ export class ServicePerimeterDryRunIngressPolicy extends pulumi.CustomResource {
     public readonly ingressTo!: pulumi.Output<outputs.accesscontextmanager.ServicePerimeterDryRunIngressPolicyIngressTo | undefined>;
     /**
      * The name of the Service Perimeter to add this resource to.
-     *
-     *
-     * - - -
      */
     public readonly perimeter!: pulumi.Output<string>;
     /**
@@ -154,9 +151,6 @@ export interface ServicePerimeterDryRunIngressPolicyState {
     ingressTo?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterDryRunIngressPolicyIngressTo>;
     /**
      * The name of the Service Perimeter to add this resource to.
-     *
-     *
-     * - - -
      */
     perimeter?: pulumi.Input<string>;
     /**
@@ -183,9 +177,6 @@ export interface ServicePerimeterDryRunIngressPolicyArgs {
     ingressTo?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterDryRunIngressPolicyIngressTo>;
     /**
      * The name of the Service Perimeter to add this resource to.
-     *
-     *
-     * - - -
      */
     perimeter: pulumi.Input<string>;
     /**

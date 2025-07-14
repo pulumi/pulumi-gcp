@@ -712,8 +712,6 @@ if not MYPY:
         client_secret: pulumi.Input[builtins.str]
         """
         The client secret for the Oauth config.
-
-        - - -
         """
 elif False:
     InstanceOauthConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -726,8 +724,6 @@ class InstanceOauthConfigArgs:
         """
         :param pulumi.Input[builtins.str] client_id: The client ID for the Oauth config.
         :param pulumi.Input[builtins.str] client_secret: The client secret for the Oauth config.
-               
-               - - -
         """
         pulumi.set(__self__, "client_id", client_id)
         pulumi.set(__self__, "client_secret", client_secret)
@@ -749,8 +745,6 @@ class InstanceOauthConfigArgs:
     def client_secret(self) -> pulumi.Input[builtins.str]:
         """
         The client secret for the Oauth config.
-
-        - - -
         """
         return pulumi.get(self, "client_secret")
 

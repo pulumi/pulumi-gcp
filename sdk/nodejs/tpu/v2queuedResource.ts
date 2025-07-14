@@ -133,9 +133,6 @@ export class V2QueuedResource extends pulumi.CustomResource {
 
     /**
      * The immutable name of the Queued Resource.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -188,9 +185,6 @@ export class V2QueuedResource extends pulumi.CustomResource {
 export interface V2QueuedResourceState {
     /**
      * The immutable name of the Queued Resource.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -215,9 +209,6 @@ export interface V2QueuedResourceState {
 export interface V2QueuedResourceArgs {
     /**
      * The immutable name of the Queued Resource.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

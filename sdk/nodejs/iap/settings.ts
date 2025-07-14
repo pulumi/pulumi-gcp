@@ -157,9 +157,6 @@ export class Settings extends pulumi.CustomResource {
      * * projects/{project_id}/iap_web/appengine-{app_id}
      * * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}
      * * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}/version/{version_id}
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
 
@@ -217,9 +214,6 @@ export interface SettingsState {
      * * projects/{project_id}/iap_web/appengine-{app_id}
      * * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}
      * * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}/version/{version_id}
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
 }
@@ -251,9 +245,6 @@ export interface SettingsArgs {
      * * projects/{project_id}/iap_web/appengine-{app_id}
      * * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}
      * * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}/version/{version_id}
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
 }

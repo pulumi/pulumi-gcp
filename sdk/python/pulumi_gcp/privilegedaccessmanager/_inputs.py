@@ -516,8 +516,6 @@ if not MYPY:
         unstructured: NotRequired[pulumi.Input['EntitlementRequesterJustificationConfigUnstructuredArgsDict']]
         """
         The requester has to provide a justification in the form of free flowing text.
-
-        - - -
         """
 elif False:
     EntitlementRequesterJustificationConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -530,8 +528,6 @@ class EntitlementRequesterJustificationConfigArgs:
         """
         :param pulumi.Input['EntitlementRequesterJustificationConfigNotMandatoryArgs'] not_mandatory: The justification is not mandatory but can be provided in any of the supported formats.
         :param pulumi.Input['EntitlementRequesterJustificationConfigUnstructuredArgs'] unstructured: The requester has to provide a justification in the form of free flowing text.
-               
-               - - -
         """
         if not_mandatory is not None:
             pulumi.set(__self__, "not_mandatory", not_mandatory)
@@ -555,8 +551,6 @@ class EntitlementRequesterJustificationConfigArgs:
     def unstructured(self) -> Optional[pulumi.Input['EntitlementRequesterJustificationConfigUnstructuredArgs']]:
         """
         The requester has to provide a justification in the form of free flowing text.
-
-        - - -
         """
         return pulumi.get(self, "unstructured")
 

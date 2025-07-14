@@ -51,8 +51,6 @@ namespace Pulumi.Gcp.Firebase.Outputs
         /// with actual values. These strings include: ${param:FOO},
         /// ${function:myFunc.url},
         /// ${function:myFunc.name}, and ${function:myFunc.location}
-        /// 
-        /// - - -
         /// </summary>
         public readonly string? PopulatedPostinstallContent;
         /// <summary>

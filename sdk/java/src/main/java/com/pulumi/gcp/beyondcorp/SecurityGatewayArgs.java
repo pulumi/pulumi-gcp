@@ -106,8 +106,6 @@ public final class SecurityGatewayArgs extends com.pulumi.resources.ResourceArgs
      * * Must contain between 4-63 characters from `/a-z-/`.
      * * Must end with a number or letter.
      * 
-     * ***
-     * 
      */
     @Import(name="securityGatewayId", required=true)
     private Output<String> securityGatewayId;
@@ -117,8 +115,6 @@ public final class SecurityGatewayArgs extends com.pulumi.resources.ResourceArgs
      * * Must start with a letter.
      * * Must contain between 4-63 characters from `/a-z-/`.
      * * Must end with a number or letter.
-     * 
-     * ***
      * 
      */
     public Output<String> securityGatewayId() {
@@ -277,8 +273,6 @@ public final class SecurityGatewayArgs extends com.pulumi.resources.ResourceArgs
          * * Must contain between 4-63 characters from `/a-z-/`.
          * * Must end with a number or letter.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -292,8 +286,6 @@ public final class SecurityGatewayArgs extends com.pulumi.resources.ResourceArgs
          * * Must start with a letter.
          * * Must contain between 4-63 characters from `/a-z-/`.
          * * Must end with a number or letter.
-         * 
-         * ***
          * 
          * @return builder
          * 

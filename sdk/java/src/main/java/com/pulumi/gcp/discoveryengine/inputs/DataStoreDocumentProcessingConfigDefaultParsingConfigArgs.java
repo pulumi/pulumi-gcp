@@ -34,6 +34,7 @@ public final class DataStoreDocumentProcessingConfigDefaultParsingConfigArgs ext
 
     /**
      * Configurations applied to layout parser.
+     * Structure is documented below.
      * 
      */
     @Import(name="layoutParsingConfig")
@@ -41,6 +42,7 @@ public final class DataStoreDocumentProcessingConfigDefaultParsingConfigArgs ext
 
     /**
      * @return Configurations applied to layout parser.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigArgs>> layoutParsingConfig() {
@@ -113,6 +115,7 @@ public final class DataStoreDocumentProcessingConfigDefaultParsingConfigArgs ext
 
         /**
          * @param layoutParsingConfig Configurations applied to layout parser.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -124,6 +127,7 @@ public final class DataStoreDocumentProcessingConfigDefaultParsingConfigArgs ext
 
         /**
          * @param layoutParsingConfig Configurations applied to layout parser.
+         * Structure is documented below.
          * 
          * @return builder
          * 

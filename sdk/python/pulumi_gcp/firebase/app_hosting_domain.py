@@ -32,9 +32,6 @@ class AppHostingDomainArgs:
         :param pulumi.Input[builtins.str] backend: The ID of the Backend that this Domain is associated with
         :param pulumi.Input[builtins.str] domain_id: Id of the domain to create.
                Must be a valid domain name, such as "foo.com"
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: The location of the Backend that this Domain is associated with
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -68,9 +65,6 @@ class AppHostingDomainArgs:
         """
         Id of the domain to create.
         Must be a valid domain name, such as "foo.com"
-
-
-        - - -
         """
         return pulumi.get(self, "domain_id")
 
@@ -143,9 +137,6 @@ class _AppHostingDomainState:
         :param pulumi.Input[builtins.str] delete_time: Time at which the domain was deleted.
         :param pulumi.Input[builtins.str] domain_id: Id of the domain to create.
                Must be a valid domain name, such as "foo.com"
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] etag: Server-computed checksum based on other values; may be sent
                on update or delete to ensure operation is done on expected resource.
         :param pulumi.Input[builtins.str] location: The location of the Backend that this Domain is associated with
@@ -243,9 +234,6 @@ class _AppHostingDomainState:
         """
         Id of the domain to create.
         Must be a valid domain name, such as "foo.com"
-
-
-        - - -
         """
         return pulumi.get(self, "domain_id")
 
@@ -457,9 +445,6 @@ class AppHostingDomain(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] backend: The ID of the Backend that this Domain is associated with
         :param pulumi.Input[builtins.str] domain_id: Id of the domain to create.
                Must be a valid domain name, such as "foo.com"
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: The location of the Backend that this Domain is associated with
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -642,9 +627,6 @@ class AppHostingDomain(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] delete_time: Time at which the domain was deleted.
         :param pulumi.Input[builtins.str] domain_id: Id of the domain to create.
                Must be a valid domain name, such as "foo.com"
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] etag: Server-computed checksum based on other values; may be sent
                on update or delete to ensure operation is done on expected resource.
         :param pulumi.Input[builtins.str] location: The location of the Backend that this Domain is associated with
@@ -718,9 +700,6 @@ class AppHostingDomain(pulumi.CustomResource):
         """
         Id of the domain to create.
         Must be a valid domain name, such as "foo.com"
-
-
-        - - -
         """
         return pulumi.get(self, "domain_id")
 

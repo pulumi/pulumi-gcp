@@ -121,8 +121,6 @@ public class Taxonomy extends com.pulumi.resources.CustomResource {
      * and spaces; not start or end with spaces; and be at most 200 bytes
      * long when encoded in UTF-8.
      * 
-     * ***
-     * 
      */
     @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
@@ -133,8 +131,6 @@ public class Taxonomy extends com.pulumi.resources.CustomResource {
      * It must: contain only unicode letters, numbers, underscores, dashes
      * and spaces; not start or end with spaces; and be at most 200 bytes
      * long when encoded in UTF-8.
-     * 
-     * ***
      * 
      */
     public Output<String> displayName() {

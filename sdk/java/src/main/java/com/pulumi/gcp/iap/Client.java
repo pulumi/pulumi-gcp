@@ -15,18 +15,6 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * Contains the data that describes an Identity Aware Proxy owned client.
- * 
- * &gt; **Note:** Only internal org clients can be created via declarative tools. External clients must be
- * manually created via the GCP console. This restriction is due to the existing APIs and not lack of support
- * in this tool.
- * 
- * To get more information about Client, see:
- * 
- * * [API documentation](https://cloud.google.com/iap/docs/reference/rest/v1/projects.brands.identityAwareProxyClients)
- * * How-to Guides
- *     * [Setting up IAP Client](https://cloud.google.com/iap/docs/authentication-howto)
- * 
  * ## Example Usage
  * 
  * ### Iap Client
@@ -115,8 +103,6 @@ public class Client extends com.pulumi.resources.CustomResource {
      * is attached to. The format is
      * `projects/{project_number}/brands/{brand_id}`.
      * 
-     * ***
-     * 
      */
     @Export(name="brand", refs={String.class}, tree="[0]")
     private Output<String> brand;
@@ -125,8 +111,6 @@ public class Client extends com.pulumi.resources.CustomResource {
      * @return Identifier of the brand to which this client
      * is attached to. The format is
      * `projects/{project_number}/brands/{brand_id}`.
-     * 
-     * ***
      * 
      */
     public Output<String> brand() {

@@ -241,6 +241,10 @@ type BackendBucket struct {
 	EdgeSecurityPolicy pulumi.StringPtrOutput `pulumi:"edgeSecurityPolicy"`
 	// If true, enable Cloud CDN for this BackendBucket.
 	EnableCdn pulumi.BoolPtrOutput `pulumi:"enableCdn"`
+	// The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
+	// If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+	// Possible values are: `INTERNAL_MANAGED`.
+	LoadBalancingScheme pulumi.StringPtrOutput `pulumi:"loadBalancingScheme"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -248,8 +252,6 @@ type BackendBucket struct {
 	// the first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the
 	// last character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -310,6 +312,10 @@ type backendBucketState struct {
 	EdgeSecurityPolicy *string `pulumi:"edgeSecurityPolicy"`
 	// If true, enable Cloud CDN for this BackendBucket.
 	EnableCdn *bool `pulumi:"enableCdn"`
+	// The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
+	// If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+	// Possible values are: `INTERNAL_MANAGED`.
+	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -317,8 +323,6 @@ type backendBucketState struct {
 	// the first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the
 	// last character, which cannot be a dash.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -347,6 +351,10 @@ type BackendBucketState struct {
 	EdgeSecurityPolicy pulumi.StringPtrInput
 	// If true, enable Cloud CDN for this BackendBucket.
 	EnableCdn pulumi.BoolPtrInput
+	// The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
+	// If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+	// Possible values are: `INTERNAL_MANAGED`.
+	LoadBalancingScheme pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -354,8 +362,6 @@ type BackendBucketState struct {
 	// the first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the
 	// last character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -386,6 +392,10 @@ type backendBucketArgs struct {
 	EdgeSecurityPolicy *string `pulumi:"edgeSecurityPolicy"`
 	// If true, enable Cloud CDN for this BackendBucket.
 	EnableCdn *bool `pulumi:"enableCdn"`
+	// The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
+	// If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+	// Possible values are: `INTERNAL_MANAGED`.
+	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -393,8 +403,6 @@ type backendBucketArgs struct {
 	// the first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the
 	// last character, which cannot be a dash.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -420,6 +428,10 @@ type BackendBucketArgs struct {
 	EdgeSecurityPolicy pulumi.StringPtrInput
 	// If true, enable Cloud CDN for this BackendBucket.
 	EnableCdn pulumi.BoolPtrInput
+	// The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
+	// If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+	// Possible values are: `INTERNAL_MANAGED`.
+	LoadBalancingScheme pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -427,8 +439,6 @@ type BackendBucketArgs struct {
 	// the first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the
 	// last character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -565,6 +575,13 @@ func (o BackendBucketOutput) EnableCdn() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BackendBucket) pulumi.BoolPtrOutput { return v.EnableCdn }).(pulumi.BoolPtrOutput)
 }
 
+// The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
+// If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+// Possible values are: `INTERNAL_MANAGED`.
+func (o BackendBucketOutput) LoadBalancingScheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackendBucket) pulumi.StringPtrOutput { return v.LoadBalancingScheme }).(pulumi.StringPtrOutput)
+}
+
 // Name of the resource. Provided by the client when the resource is
 // created. The name must be 1-63 characters long, and comply with
 // RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -572,8 +589,6 @@ func (o BackendBucketOutput) EnableCdn() pulumi.BoolPtrOutput {
 // the first character must be a lowercase letter, and all following
 // characters must be a dash, lowercase letter, or digit, except the
 // last character, which cannot be a dash.
-//
-// ***
 func (o BackendBucketOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackendBucket) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

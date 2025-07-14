@@ -84,9 +84,6 @@ export class SQuotaAdjusterSettings extends pulumi.CustomResource {
     public /*out*/ readonly inheritedFrom!: pulumi.Output<string>;
     /**
      * The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
-     *
-     *
-     * - - -
      */
     public readonly parent!: pulumi.Output<string>;
 
@@ -155,9 +152,6 @@ export interface SQuotaAdjusterSettingsState {
     inheritedFrom?: pulumi.Input<string>;
     /**
      * The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
-     *
-     *
-     * - - -
      */
     parent?: pulumi.Input<string>;
 }
@@ -173,9 +167,6 @@ export interface SQuotaAdjusterSettingsArgs {
     enablement: pulumi.Input<string>;
     /**
      * The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
-     *
-     *
-     * - - -
      */
     parent?: pulumi.Input<string>;
 }

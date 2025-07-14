@@ -35,8 +35,11 @@ class RepositoryGroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input['RepositoryGroupRepositoryArgs']]] repositories: Required. List of repositories to group.
                Structure is documented below.
         :param pulumi.Input[builtins.str] repository_group_id: Required. Id of the Repository Group.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present
-               in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Labels as key value pairs.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "code_repository_index", code_repository_index)
         pulumi.set(__self__, "location", location)
@@ -100,8 +103,9 @@ class RepositoryGroupArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Optional. Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present
-        in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        Optional. Labels as key value pairs.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -112,6 +116,10 @@ class RepositoryGroupArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -138,10 +146,13 @@ class _RepositoryGroupState:
         :param pulumi.Input[builtins.str] code_repository_index: Required. Id of the Code Repository Index.
         :param pulumi.Input[builtins.str] create_time: Output only. Create time stamp.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present
-               in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Labels as key value pairs.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location of the Code Repository Index, for example `us-central1`.
         :param pulumi.Input[builtins.str] name: Immutable. Identifier. Name of Repository Group.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input['RepositoryGroupRepositoryArgs']]] repositories: Required. List of repositories to group.
@@ -212,8 +223,9 @@ class _RepositoryGroupState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Optional. Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present
-        in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        Optional. Labels as key value pairs.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -248,6 +260,10 @@ class _RepositoryGroupState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -373,9 +389,12 @@ class RepositoryGroup(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] code_repository_index: Required. Id of the Code Repository Index.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present
-               in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Labels as key value pairs.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location of the Code Repository Index, for example `us-central1`.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RepositoryGroupRepositoryArgs', 'RepositoryGroupRepositoryArgsDict']]]] repositories: Required. List of repositories to group.
                Structure is documented below.
         :param pulumi.Input[builtins.str] repository_group_id: Required. Id of the Repository Group.
@@ -520,10 +539,13 @@ class RepositoryGroup(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] code_repository_index: Required. Id of the Code Repository Index.
         :param pulumi.Input[builtins.str] create_time: Output only. Create time stamp.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present
-               in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Labels as key value pairs.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location of the Code Repository Index, for example `us-central1`.
         :param pulumi.Input[builtins.str] name: Immutable. Identifier. Name of Repository Group.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RepositoryGroupRepositoryArgs', 'RepositoryGroupRepositoryArgsDict']]]] repositories: Required. List of repositories to group.
@@ -576,8 +598,9 @@ class RepositoryGroup(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
         """
-        Optional. Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present
-        in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        Optional. Labels as key value pairs.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -600,6 +623,10 @@ class RepositoryGroup(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property

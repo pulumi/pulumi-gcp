@@ -98,18 +98,24 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:compute/interconnectAttachmentGroup:InterconnectAttachmentGroup")
 public class InterconnectAttachmentGroup extends com.pulumi.resources.CustomResource {
     /**
-     * (Output)
-     * URLs of any particular Attachments to explain this
-     * blocker in more detail.
+     * Attachments in the AttachmentGroup. Keys are arbitrary user-specified
+     * strings. Users are encouraged, but not required, to use their preferred
+     * format for resource links as keys.
+     * Note that there are add-members and remove-members methods in gcloud.
+     * The size of this map is limited by an &#34;Attachments per group&#34; quota.
+     * Structure is documented below.
      * 
      */
     @Export(name="attachments", refs={List.class,InterconnectAttachmentGroupAttachment.class}, tree="[0,1]")
     private Output</* @Nullable */ List<InterconnectAttachmentGroupAttachment>> attachments;
 
     /**
-     * @return (Output)
-     * URLs of any particular Attachments to explain this
-     * blocker in more detail.
+     * @return Attachments in the AttachmentGroup. Keys are arbitrary user-specified
+     * strings. Users are encouraged, but not required, to use their preferred
+     * format for resource links as keys.
+     * Note that there are add-members and remove-members methods in gcloud.
+     * The size of this map is limited by an &#34;Attachments per group&#34; quota.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<List<InterconnectAttachmentGroupAttachment>>> attachments() {
@@ -182,16 +188,18 @@ public class InterconnectAttachmentGroup extends com.pulumi.resources.CustomReso
         return this.intent;
     }
     /**
-     * The URL of an InterconnectGroup that groups these Attachments&#39; Interconnects. Customers do not need to set this unless
-     * directed by Google Support.
+     * The URL of an InterconnectGroup that groups these Attachments&#39;
+     * Interconnects. Customers do not need to set this unless directed by
+     * Google Support.
      * 
      */
     @Export(name="interconnectGroup", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> interconnectGroup;
 
     /**
-     * @return The URL of an InterconnectGroup that groups these Attachments&#39; Interconnects. Customers do not need to set this unless
-     * directed by Google Support.
+     * @return The URL of an InterconnectGroup that groups these Attachments&#39;
+     * Interconnects. Customers do not need to set this unless directed by
+     * Google Support.
      * 
      */
     public Output<Optional<String>> interconnectGroup() {
@@ -237,9 +245,19 @@ public class InterconnectAttachmentGroup extends com.pulumi.resources.CustomReso
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }

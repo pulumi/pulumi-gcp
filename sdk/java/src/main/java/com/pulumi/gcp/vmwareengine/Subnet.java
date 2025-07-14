@@ -190,8 +190,6 @@ public class Subnet extends com.pulumi.resources.CustomResource {
      * The ID of the subnet. For userDefined subnets, this name should be in the format of &#34;service-n&#34;,
      * where n ranges from 1 to 5.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -199,8 +197,6 @@ public class Subnet extends com.pulumi.resources.CustomResource {
     /**
      * @return The ID of the subnet. For userDefined subnets, this name should be in the format of &#34;service-n&#34;,
      * where n ranges from 1 to 5.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

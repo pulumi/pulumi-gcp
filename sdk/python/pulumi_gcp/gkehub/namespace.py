@@ -32,9 +32,6 @@ class NamespaceArgs:
         The set of arguments for constructing a Namespace resource.
         :param pulumi.Input[builtins.str] scope: The name of the Scope instance.
         :param pulumi.Input[builtins.str] scope_id: Id of the scope
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] scope_namespace_id: The client-provided identifier of the namespace.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels for this Namespace.
                
@@ -75,9 +72,6 @@ class NamespaceArgs:
     def scope_id(self) -> pulumi.Input[builtins.str]:
         """
         Id of the scope
-
-
-        - - -
         """
         return pulumi.get(self, "scope_id")
 
@@ -180,9 +174,6 @@ class _NamespaceState:
                and default labels configured on the provider.
         :param pulumi.Input[builtins.str] scope: The name of the Scope instance.
         :param pulumi.Input[builtins.str] scope_id: Id of the scope
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] scope_namespace_id: The client-provided identifier of the namespace.
         :param pulumi.Input[Sequence[pulumi.Input['NamespaceStateArgs']]] states: State of the namespace resource.
                Structure is documented below.
@@ -340,9 +331,6 @@ class _NamespaceState:
     def scope_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Id of the scope
-
-
-        - - -
         """
         return pulumi.get(self, "scope_id")
 
@@ -487,9 +475,6 @@ class Namespace(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] scope: The name of the Scope instance.
         :param pulumi.Input[builtins.str] scope_id: Id of the scope
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] scope_namespace_id: The client-provided identifier of the namespace.
         """
         ...
@@ -659,9 +644,6 @@ class Namespace(pulumi.CustomResource):
                and default labels configured on the provider.
         :param pulumi.Input[builtins.str] scope: The name of the Scope instance.
         :param pulumi.Input[builtins.str] scope_id: Id of the scope
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] scope_namespace_id: The client-provided identifier of the namespace.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NamespaceStateArgs', 'NamespaceStateArgsDict']]]] states: State of the namespace resource.
                Structure is documented below.
@@ -774,9 +756,6 @@ class Namespace(pulumi.CustomResource):
     def scope_id(self) -> pulumi.Output[builtins.str]:
         """
         Id of the scope
-
-
-        - - -
         """
         return pulumi.get(self, "scope_id")
 

@@ -225,16 +225,12 @@ public class Workload extends com.pulumi.resources.CustomResource {
     /**
      * The Workload identifier.
      * 
-     * ***
-     * 
      */
     @Export(name="workloadId", refs={String.class}, tree="[0]")
     private Output<String> workloadId;
 
     /**
      * @return The Workload identifier.
-     * 
-     * ***
      * 
      */
     public Output<String> workloadId() {

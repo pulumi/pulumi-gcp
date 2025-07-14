@@ -267,8 +267,6 @@ type AccountConnector struct {
 	// component of the AccountConnector's resource name. Its format should adhere
 	// to https://google.aip.dev/122#resource-id-segments Names must be unique
 	// per-project per-location.
-	//
-	// ***
 	AccountConnectorId pulumi.StringOutput `pulumi:"accountConnectorId"`
 	// Optional. Allows users to store small amounts of arbitrary data.
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -348,8 +346,6 @@ type accountConnectorState struct {
 	// component of the AccountConnector's resource name. Its format should adhere
 	// to https://google.aip.dev/122#resource-id-segments Names must be unique
 	// per-project per-location.
-	//
-	// ***
 	AccountConnectorId *string `pulumi:"accountConnectorId"`
 	// Optional. Allows users to store small amounts of arbitrary data.
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -389,8 +385,6 @@ type AccountConnectorState struct {
 	// component of the AccountConnector's resource name. Its format should adhere
 	// to https://google.aip.dev/122#resource-id-segments Names must be unique
 	// per-project per-location.
-	//
-	// ***
 	AccountConnectorId pulumi.StringPtrInput
 	// Optional. Allows users to store small amounts of arbitrary data.
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -434,8 +428,6 @@ type accountConnectorArgs struct {
 	// component of the AccountConnector's resource name. Its format should adhere
 	// to https://google.aip.dev/122#resource-id-segments Names must be unique
 	// per-project per-location.
-	//
-	// ***
 	AccountConnectorId string `pulumi:"accountConnectorId"`
 	// Optional. Allows users to store small amounts of arbitrary data.
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -461,8 +453,6 @@ type AccountConnectorArgs struct {
 	// component of the AccountConnector's resource name. Its format should adhere
 	// to https://google.aip.dev/122#resource-id-segments Names must be unique
 	// per-project per-location.
-	//
-	// ***
 	AccountConnectorId pulumi.StringInput
 	// Optional. Allows users to store small amounts of arbitrary data.
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -573,8 +563,6 @@ func (o AccountConnectorOutput) ToAccountConnectorOutputWithContext(ctx context.
 // component of the AccountConnector's resource name. Its format should adhere
 // to https://google.aip.dev/122#resource-id-segments Names must be unique
 // per-project per-location.
-//
-// ***
 func (o AccountConnectorOutput) AccountConnectorId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccountConnector) pulumi.StringOutput { return v.AccountConnectorId }).(pulumi.StringOutput)
 }

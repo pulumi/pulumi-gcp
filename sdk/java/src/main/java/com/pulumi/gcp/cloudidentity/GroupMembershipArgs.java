@@ -53,6 +53,7 @@ public final class GroupMembershipArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * EntityKey of the member.
+     * Structure is documented below.
      * 
      */
     @Import(name="memberKey")
@@ -60,6 +61,7 @@ public final class GroupMembershipArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return EntityKey of the member.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<GroupMembershipMemberKeyArgs>> memberKey() {
@@ -68,6 +70,7 @@ public final class GroupMembershipArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * EntityKey of the member.
+     * Structure is documented below.
      * 
      */
     @Import(name="preferredMemberKey")
@@ -75,6 +78,7 @@ public final class GroupMembershipArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return EntityKey of the member.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<GroupMembershipPreferredMemberKeyArgs>> preferredMemberKey() {
@@ -172,6 +176,7 @@ public final class GroupMembershipArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param memberKey EntityKey of the member.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -183,6 +188,7 @@ public final class GroupMembershipArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param memberKey EntityKey of the member.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -193,6 +199,7 @@ public final class GroupMembershipArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param preferredMemberKey EntityKey of the member.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -204,6 +211,7 @@ public final class GroupMembershipArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param preferredMemberKey EntityKey of the member.
+         * Structure is documented below.
          * 
          * @return builder
          * 

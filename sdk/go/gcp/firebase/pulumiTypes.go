@@ -733,7 +733,8 @@ type AppHostingBuildSourceCodebase struct {
 	// (Output)
 	// The time the change was made.
 	CommitTime *string `pulumi:"commitTime"`
-	// Human-readable name. 63 character limit.
+	// (Output)
+	// The 'name' field in a Git user's git.config. Required by Git.
 	DisplayName *string `pulumi:"displayName"`
 	// (Output)
 	// The full SHA-1 hash of a Git commit, if available.
@@ -774,7 +775,8 @@ type AppHostingBuildSourceCodebaseArgs struct {
 	// (Output)
 	// The time the change was made.
 	CommitTime pulumi.StringPtrInput `pulumi:"commitTime"`
-	// Human-readable name. 63 character limit.
+	// (Output)
+	// The 'name' field in a Git user's git.config. Required by Git.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// (Output)
 	// The full SHA-1 hash of a Git commit, if available.
@@ -895,7 +897,8 @@ func (o AppHostingBuildSourceCodebaseOutput) CommitTime() pulumi.StringPtrOutput
 	return o.ApplyT(func(v AppHostingBuildSourceCodebase) *string { return v.CommitTime }).(pulumi.StringPtrOutput)
 }
 
-// Human-readable name. 63 character limit.
+// (Output)
+// The 'name' field in a Git user's git.config. Required by Git.
 func (o AppHostingBuildSourceCodebaseOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppHostingBuildSourceCodebase) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
@@ -995,7 +998,8 @@ func (o AppHostingBuildSourceCodebasePtrOutput) CommitTime() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Human-readable name. 63 character limit.
+// (Output)
+// The 'name' field in a Git user's git.config. Required by Git.
 func (o AppHostingBuildSourceCodebasePtrOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppHostingBuildSourceCodebase) *string {
 		if v == nil {
@@ -1030,7 +1034,7 @@ func (o AppHostingBuildSourceCodebasePtrOutput) Uri() pulumi.StringPtrOutput {
 }
 
 type AppHostingBuildSourceCodebaseAuthor struct {
-	// The 'name' field in a Git user's git.config. Required by Git.
+	// Human-readable name. 63 character limit.
 	DisplayName *string `pulumi:"displayName"`
 	// The 'email' field in a Git user's git.config, if available.
 	Email *string `pulumi:"email"`
@@ -1051,7 +1055,7 @@ type AppHostingBuildSourceCodebaseAuthorInput interface {
 }
 
 type AppHostingBuildSourceCodebaseAuthorArgs struct {
-	// The 'name' field in a Git user's git.config. Required by Git.
+	// Human-readable name. 63 character limit.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// The 'email' field in a Git user's git.config, if available.
 	Email pulumi.StringPtrInput `pulumi:"email"`
@@ -1111,7 +1115,7 @@ func (o AppHostingBuildSourceCodebaseAuthorOutput) ToAppHostingBuildSourceCodeba
 	return o
 }
 
-// The 'name' field in a Git user's git.config. Required by Git.
+// Human-readable name. 63 character limit.
 func (o AppHostingBuildSourceCodebaseAuthorOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppHostingBuildSourceCodebaseAuthor) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
@@ -3742,8 +3746,6 @@ type ExtensionsInstanceConfig struct {
 	// with actual values. These strings include: ${param:FOO},
 	// ${function:myFunc.url},
 	// ${function:myFunc.name}, and ${function:myFunc.location}
-	//
-	// ***
 	PopulatedPostinstallContent *string `pulumi:"populatedPostinstallContent"`
 	// Params whose values are only available at deployment time.
 	// Unlike other params, these will not be set as environment variables on
@@ -3787,8 +3789,6 @@ type ExtensionsInstanceConfigArgs struct {
 	// with actual values. These strings include: ${param:FOO},
 	// ${function:myFunc.url},
 	// ${function:myFunc.name}, and ${function:myFunc.location}
-	//
-	// ***
 	PopulatedPostinstallContent pulumi.StringPtrInput `pulumi:"populatedPostinstallContent"`
 	// Params whose values are only available at deployment time.
 	// Unlike other params, these will not be set as environment variables on
@@ -3918,8 +3918,6 @@ func (o ExtensionsInstanceConfigOutput) Params() pulumi.StringMapOutput {
 // with actual values. These strings include: ${param:FOO},
 // ${function:myFunc.url},
 // ${function:myFunc.name}, and ${function:myFunc.location}
-//
-// ***
 func (o ExtensionsInstanceConfigOutput) PopulatedPostinstallContent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExtensionsInstanceConfig) *string { return v.PopulatedPostinstallContent }).(pulumi.StringPtrOutput)
 }
@@ -4035,8 +4033,6 @@ func (o ExtensionsInstanceConfigPtrOutput) Params() pulumi.StringMapOutput {
 // with actual values. These strings include: ${param:FOO},
 // ${function:myFunc.url},
 // ${function:myFunc.name}, and ${function:myFunc.location}
-//
-// ***
 func (o ExtensionsInstanceConfigPtrOutput) PopulatedPostinstallContent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExtensionsInstanceConfig) *string {
 		if v == nil {

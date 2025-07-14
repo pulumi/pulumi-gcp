@@ -277,16 +277,17 @@ type TlsRoute struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests
-	// served by the gateway. Each gateway reference should match the pattern:
-	// projects/*/locations/global/gateways/<gateway_name>
+	// Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
+	// Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
 	Gateways pulumi.StringArrayOutput `pulumi:"gateways"`
-	// Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served
-	// by the mesh. Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name> The attached
-	// Mesh should be of a type SIDECAR
+	// Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
+	// Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
+	// The attached Mesh should be of a type SIDECAR
 	Meshes pulumi.StringArrayOutput `pulumi:"meshes"`
 	// Name of the TlsRoute resource.
-	Name    pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Rules that define how traffic is routed and handled.
 	// Structure is documented below.
@@ -334,16 +335,17 @@ type tlsRouteState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// A free-text description of the resource. Max length 1024 characters.
 	Description *string `pulumi:"description"`
-	// Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests
-	// served by the gateway. Each gateway reference should match the pattern:
-	// projects/*/locations/global/gateways/<gateway_name>
+	// Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
+	// Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
 	Gateways []string `pulumi:"gateways"`
-	// Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served
-	// by the mesh. Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name> The attached
-	// Mesh should be of a type SIDECAR
+	// Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
+	// Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
+	// The attached Mesh should be of a type SIDECAR
 	Meshes []string `pulumi:"meshes"`
 	// Name of the TlsRoute resource.
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Rules that define how traffic is routed and handled.
 	// Structure is documented below.
@@ -359,16 +361,17 @@ type TlsRouteState struct {
 	CreateTime pulumi.StringPtrInput
 	// A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrInput
-	// Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests
-	// served by the gateway. Each gateway reference should match the pattern:
-	// projects/*/locations/global/gateways/<gateway_name>
+	// Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
+	// Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
 	Gateways pulumi.StringArrayInput
-	// Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served
-	// by the mesh. Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name> The attached
-	// Mesh should be of a type SIDECAR
+	// Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
+	// Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
+	// The attached Mesh should be of a type SIDECAR
 	Meshes pulumi.StringArrayInput
 	// Name of the TlsRoute resource.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Rules that define how traffic is routed and handled.
 	// Structure is documented below.
@@ -386,16 +389,17 @@ func (TlsRouteState) ElementType() reflect.Type {
 type tlsRouteArgs struct {
 	// A free-text description of the resource. Max length 1024 characters.
 	Description *string `pulumi:"description"`
-	// Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests
-	// served by the gateway. Each gateway reference should match the pattern:
-	// projects/*/locations/global/gateways/<gateway_name>
+	// Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
+	// Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
 	Gateways []string `pulumi:"gateways"`
-	// Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served
-	// by the mesh. Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name> The attached
-	// Mesh should be of a type SIDECAR
+	// Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
+	// Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
+	// The attached Mesh should be of a type SIDECAR
 	Meshes []string `pulumi:"meshes"`
 	// Name of the TlsRoute resource.
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Rules that define how traffic is routed and handled.
 	// Structure is documented below.
@@ -406,16 +410,17 @@ type tlsRouteArgs struct {
 type TlsRouteArgs struct {
 	// A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrInput
-	// Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests
-	// served by the gateway. Each gateway reference should match the pattern:
-	// projects/*/locations/global/gateways/<gateway_name>
+	// Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
+	// Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
 	Gateways pulumi.StringArrayInput
-	// Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served
-	// by the mesh. Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name> The attached
-	// Mesh should be of a type SIDECAR
+	// Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
+	// Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
+	// The attached Mesh should be of a type SIDECAR
 	Meshes pulumi.StringArrayInput
 	// Name of the TlsRoute resource.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Rules that define how traffic is routed and handled.
 	// Structure is documented below.
@@ -519,16 +524,15 @@ func (o TlsRouteOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TlsRoute) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests
-// served by the gateway. Each gateway reference should match the pattern:
-// projects/*/locations/global/gateways/<gateway_name>
+// Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
+// Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
 func (o TlsRouteOutput) Gateways() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TlsRoute) pulumi.StringArrayOutput { return v.Gateways }).(pulumi.StringArrayOutput)
 }
 
-// Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served
-// by the mesh. Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name> The attached
-// Mesh should be of a type SIDECAR
+// Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
+// Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
+// The attached Mesh should be of a type SIDECAR
 func (o TlsRouteOutput) Meshes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TlsRoute) pulumi.StringArrayOutput { return v.Meshes }).(pulumi.StringArrayOutput)
 }
@@ -538,6 +542,8 @@ func (o TlsRouteOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TlsRoute) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o TlsRouteOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *TlsRoute) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

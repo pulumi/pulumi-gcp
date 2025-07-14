@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.GkeOnPrem.Inputs
         /// <summary>
         /// Specifies the nodes operating system (default: LINUX).
         /// Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
-        /// 
-        /// - - -
         /// </summary>
         [Input("effect")]
         public Input<string>? Effect { get; set; }

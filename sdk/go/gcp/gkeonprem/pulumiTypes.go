@@ -6212,7 +6212,7 @@ type BareMetalClusterLoadBalancerBgpLbConfigAddressPool struct {
 	// This avoids buggy consumer devices mistakenly dropping IPv4 traffic for those special IP addresses.
 	AvoidBuggyIps *bool `pulumi:"avoidBuggyIps"`
 	// If true, prevent IP addresses from being automatically assigned.
-	ManualAssign *string `pulumi:"manualAssign"`
+	ManualAssign *bool `pulumi:"manualAssign"`
 	// The name of the address pool.
 	Pool string `pulumi:"pool"`
 }
@@ -6235,7 +6235,7 @@ type BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArgs struct {
 	// This avoids buggy consumer devices mistakenly dropping IPv4 traffic for those special IP addresses.
 	AvoidBuggyIps pulumi.BoolPtrInput `pulumi:"avoidBuggyIps"`
 	// If true, prevent IP addresses from being automatically assigned.
-	ManualAssign pulumi.StringPtrInput `pulumi:"manualAssign"`
+	ManualAssign pulumi.BoolPtrInput `pulumi:"manualAssign"`
 	// The name of the address pool.
 	Pool pulumi.StringInput `pulumi:"pool"`
 }
@@ -6303,8 +6303,8 @@ func (o BareMetalClusterLoadBalancerBgpLbConfigAddressPoolOutput) AvoidBuggyIps(
 }
 
 // If true, prevent IP addresses from being automatically assigned.
-func (o BareMetalClusterLoadBalancerBgpLbConfigAddressPoolOutput) ManualAssign() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BareMetalClusterLoadBalancerBgpLbConfigAddressPool) *string { return v.ManualAssign }).(pulumi.StringPtrOutput)
+func (o BareMetalClusterLoadBalancerBgpLbConfigAddressPoolOutput) ManualAssign() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BareMetalClusterLoadBalancerBgpLbConfigAddressPool) *bool { return v.ManualAssign }).(pulumi.BoolPtrOutput)
 }
 
 // The name of the address pool.
@@ -11027,8 +11027,6 @@ type BareMetalClusterStorageLvpNodeMountsConfig struct {
 	// The host machine path.
 	Path string `pulumi:"path"`
 	// The StorageClass name that PVs will be created with.
-	//
-	// ***
 	StorageClass string `pulumi:"storageClass"`
 }
 
@@ -11047,8 +11045,6 @@ type BareMetalClusterStorageLvpNodeMountsConfigArgs struct {
 	// The host machine path.
 	Path pulumi.StringInput `pulumi:"path"`
 	// The StorageClass name that PVs will be created with.
-	//
-	// ***
 	StorageClass pulumi.StringInput `pulumi:"storageClass"`
 }
 
@@ -11135,8 +11131,6 @@ func (o BareMetalClusterStorageLvpNodeMountsConfigOutput) Path() pulumi.StringOu
 }
 
 // The StorageClass name that PVs will be created with.
-//
-// ***
 func (o BareMetalClusterStorageLvpNodeMountsConfigOutput) StorageClass() pulumi.StringOutput {
 	return o.ApplyT(func(v BareMetalClusterStorageLvpNodeMountsConfig) string { return v.StorageClass }).(pulumi.StringOutput)
 }
@@ -11176,8 +11170,6 @@ func (o BareMetalClusterStorageLvpNodeMountsConfigPtrOutput) Path() pulumi.Strin
 }
 
 // The StorageClass name that PVs will be created with.
-//
-// ***
 func (o BareMetalClusterStorageLvpNodeMountsConfigPtrOutput) StorageClass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BareMetalClusterStorageLvpNodeMountsConfig) *string {
 		if v == nil {
@@ -11882,8 +11874,7 @@ type BareMetalClusterValidationCheckStatusResult struct {
 	// (Output)
 	// The category of the validation.
 	Category *string `pulumi:"category"`
-	// (Output)
-	// The description of the validation check.
+	// A human readable description of this Bare Metal User Cluster.
 	Description *string `pulumi:"description"`
 	// (Output)
 	// Detailed failure information, which might be unformatted.
@@ -11911,8 +11902,7 @@ type BareMetalClusterValidationCheckStatusResultArgs struct {
 	// (Output)
 	// The category of the validation.
 	Category pulumi.StringPtrInput `pulumi:"category"`
-	// (Output)
-	// The description of the validation check.
+	// A human readable description of this Bare Metal User Cluster.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// (Output)
 	// Detailed failure information, which might be unformatted.
@@ -11982,8 +11972,7 @@ func (o BareMetalClusterValidationCheckStatusResultOutput) Category() pulumi.Str
 	return o.ApplyT(func(v BareMetalClusterValidationCheckStatusResult) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
 
-// (Output)
-// The description of the validation check.
+// A human readable description of this Bare Metal User Cluster.
 func (o BareMetalClusterValidationCheckStatusResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BareMetalClusterValidationCheckStatusResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -12405,8 +12394,6 @@ func (o BareMetalNodePoolNodePoolConfigNodeConfigArrayOutput) Index(i pulumi.Int
 type BareMetalNodePoolNodePoolConfigTaint struct {
 	// Specifies the nodes operating system (default: LINUX).
 	// Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
-	//
-	// ***
 	Effect *string `pulumi:"effect"`
 	// Key associated with the effect.
 	Key *string `pulumi:"key"`
@@ -12428,8 +12415,6 @@ type BareMetalNodePoolNodePoolConfigTaintInput interface {
 type BareMetalNodePoolNodePoolConfigTaintArgs struct {
 	// Specifies the nodes operating system (default: LINUX).
 	// Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
-	//
-	// ***
 	Effect pulumi.StringPtrInput `pulumi:"effect"`
 	// Key associated with the effect.
 	Key pulumi.StringPtrInput `pulumi:"key"`
@@ -12490,8 +12475,6 @@ func (o BareMetalNodePoolNodePoolConfigTaintOutput) ToBareMetalNodePoolNodePoolC
 
 // Specifies the nodes operating system (default: LINUX).
 // Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
-//
-// ***
 func (o BareMetalNodePoolNodePoolConfigTaintOutput) Effect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BareMetalNodePoolNodePoolConfigTaint) *string { return v.Effect }).(pulumi.StringPtrOutput)
 }
@@ -17344,8 +17327,7 @@ type VMwareClusterValidationCheckStatusResult struct {
 	// (Output)
 	// The category of the validation.
 	Category *string `pulumi:"category"`
-	// (Output)
-	// The description of the validation check.
+	// A human readable description of this VMware User Cluster.
 	Description *string `pulumi:"description"`
 	// (Output)
 	// Detailed failure information, which might be unformatted.
@@ -17373,8 +17355,7 @@ type VMwareClusterValidationCheckStatusResultArgs struct {
 	// (Output)
 	// The category of the validation.
 	Category pulumi.StringPtrInput `pulumi:"category"`
-	// (Output)
-	// The description of the validation check.
+	// A human readable description of this VMware User Cluster.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// (Output)
 	// Detailed failure information, which might be unformatted.
@@ -17444,8 +17425,7 @@ func (o VMwareClusterValidationCheckStatusResultOutput) Category() pulumi.String
 	return o.ApplyT(func(v VMwareClusterValidationCheckStatusResult) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
 
-// (Output)
-// The description of the validation check.
+// A human readable description of this VMware User Cluster.
 func (o VMwareClusterValidationCheckStatusResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VMwareClusterValidationCheckStatusResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -18407,8 +18387,6 @@ type VMwareNodePoolConfigVsphereConfigTag struct {
 	// The Vsphere tag category.
 	Category *string `pulumi:"category"`
 	// The Vsphere tag name.
-	//
-	// ***
 	Tag *string `pulumi:"tag"`
 }
 
@@ -18427,8 +18405,6 @@ type VMwareNodePoolConfigVsphereConfigTagArgs struct {
 	// The Vsphere tag category.
 	Category pulumi.StringPtrInput `pulumi:"category"`
 	// The Vsphere tag name.
-	//
-	// ***
 	Tag pulumi.StringPtrInput `pulumi:"tag"`
 }
 
@@ -18489,8 +18465,6 @@ func (o VMwareNodePoolConfigVsphereConfigTagOutput) Category() pulumi.StringPtrO
 }
 
 // The Vsphere tag name.
-//
-// ***
 func (o VMwareNodePoolConfigVsphereConfigTagOutput) Tag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VMwareNodePoolConfigVsphereConfigTag) *string { return v.Tag }).(pulumi.StringPtrOutput)
 }
@@ -21725,8 +21699,6 @@ func (o VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPt
 
 type VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIp struct {
 	// Hostname of the machine. VM's name will be used if this field is empty.
-	//
-	// ***
 	Hostname *string `pulumi:"hostname"`
 	// IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
 	Ip string `pulumi:"ip"`
@@ -21745,8 +21717,6 @@ type VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpInp
 
 type VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArgs struct {
 	// Hostname of the machine. VM's name will be used if this field is empty.
-	//
-	// ***
 	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
 	// IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
 	Ip pulumi.StringInput `pulumi:"ip"`
@@ -21804,8 +21774,6 @@ func (o VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIp
 }
 
 // Hostname of the machine. VM's name will be used if this field is empty.
-//
-// ***
 func (o VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpOutput) Hostname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIp) *string {
 		return v.Hostname
@@ -22277,8 +22245,6 @@ func (o VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArrayOutput) Index(i
 
 type VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIp struct {
 	// Hostname of the machine. VM's name will be used if this field is empty.
-	//
-	// ***
 	Hostname *string `pulumi:"hostname"`
 	// IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
 	Ip string `pulumi:"ip"`
@@ -22297,8 +22263,6 @@ type VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpInput interface {
 
 type VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArgs struct {
 	// Hostname of the machine. VM's name will be used if this field is empty.
-	//
-	// ***
 	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
 	// IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
 	Ip pulumi.StringInput `pulumi:"ip"`
@@ -22356,8 +22320,6 @@ func (o VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpOutput) ToVmwareAd
 }
 
 // Hostname of the machine. VM's name will be used if this field is empty.
-//
-// ***
 func (o VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpOutput) Hostname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIp) *string { return v.Hostname }).(pulumi.StringPtrOutput)
 }

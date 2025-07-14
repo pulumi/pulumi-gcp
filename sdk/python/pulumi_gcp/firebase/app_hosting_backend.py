@@ -40,9 +40,6 @@ class AppHostingBackendArgs:
                associated with the backend.
         :param pulumi.Input[builtins.str] backend_id: Id of the backend. Also used as the service ID for Cloud Run, and as part
                of the default domain name.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: The canonical IDs of a Google Cloud location such as "us-east1".
         :param pulumi.Input[builtins.str] service_account: The name of the service account used for Cloud Build and Cloud Run.
                Should have the role roles/firebaseapphosting.computeRunner
@@ -107,9 +104,6 @@ class AppHostingBackendArgs:
         """
         Id of the backend. Also used as the service ID for Cloud Run, and as part
         of the default domain name.
-
-
-        - - -
         """
         return pulumi.get(self, "backend_id")
 
@@ -279,9 +273,6 @@ class _AppHostingBackendState:
                associated with the backend.
         :param pulumi.Input[builtins.str] backend_id: Id of the backend. Also used as the service ID for Cloud Run, and as part
                of the default domain name.
-               
-               
-               - - -
         :param pulumi.Input['AppHostingBackendCodebaseArgs'] codebase: The connection to an external source repository to watch for event-driven
                updates to the backend.
                Structure is documented below.
@@ -399,9 +390,6 @@ class _AppHostingBackendState:
         """
         Id of the backend. Also used as the service ID for Cloud Run, and as part
         of the default domain name.
-
-
-        - - -
         """
         return pulumi.get(self, "backend_id")
 
@@ -837,9 +825,6 @@ class AppHostingBackend(pulumi.CustomResource):
                associated with the backend.
         :param pulumi.Input[builtins.str] backend_id: Id of the backend. Also used as the service ID for Cloud Run, and as part
                of the default domain name.
-               
-               
-               - - -
         :param pulumi.Input[Union['AppHostingBackendCodebaseArgs', 'AppHostingBackendCodebaseArgsDict']] codebase: The connection to an external source repository to watch for event-driven
                updates to the backend.
                Structure is documented below.
@@ -1140,9 +1125,6 @@ class AppHostingBackend(pulumi.CustomResource):
                associated with the backend.
         :param pulumi.Input[builtins.str] backend_id: Id of the backend. Also used as the service ID for Cloud Run, and as part
                of the default domain name.
-               
-               
-               - - -
         :param pulumi.Input[Union['AppHostingBackendCodebaseArgs', 'AppHostingBackendCodebaseArgsDict']] codebase: The connection to an external source repository to watch for event-driven
                updates to the backend.
                Structure is documented below.
@@ -1235,9 +1217,6 @@ class AppHostingBackend(pulumi.CustomResource):
         """
         Id of the backend. Also used as the service ID for Cloud Run, and as part
         of the default domain name.
-
-
-        - - -
         """
         return pulumi.get(self, "backend_id")
 

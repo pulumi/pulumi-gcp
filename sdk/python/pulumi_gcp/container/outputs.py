@@ -104,6 +104,7 @@ __all__ = [
     'ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig',
     'ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig',
     'ClusterAddonsConfigStatefulHaConfig',
+    'ClusterAnonymousAuthenticationConfig',
     'ClusterAuthenticatorGroupsConfig',
     'ClusterBinaryAuthorization',
     'ClusterClusterAutoscaling',
@@ -247,6 +248,7 @@ __all__ = [
     'ClusterResourceUsageExportConfig',
     'ClusterResourceUsageExportConfigBigqueryDestination',
     'ClusterSecretManagerConfig',
+    'ClusterSecretManagerConfigRotationConfig',
     'ClusterSecurityPostureConfig',
     'ClusterServiceExternalIpsConfig',
     'ClusterTpuConfig',
@@ -314,6 +316,7 @@ __all__ = [
     'GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigResult',
     'GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigResult',
     'GetClusterAddonsConfigStatefulHaConfigResult',
+    'GetClusterAnonymousAuthenticationConfigResult',
     'GetClusterAuthenticatorGroupsConfigResult',
     'GetClusterBinaryAuthorizationResult',
     'GetClusterClusterAutoscalingResult',
@@ -457,6 +460,7 @@ __all__ = [
     'GetClusterResourceUsageExportConfigResult',
     'GetClusterResourceUsageExportConfigBigqueryDestinationResult',
     'GetClusterSecretManagerConfigResult',
+    'GetClusterSecretManagerConfigRotationConfigResult',
     'GetClusterSecurityPostureConfigResult',
     'GetClusterServiceExternalIpsConfigResult',
     'GetClusterTpuConfigResult',
@@ -595,8 +599,7 @@ class AttachedClusterFleet(dict):
                  project: builtins.str,
                  membership: Optional[builtins.str] = None):
         """
-        :param builtins.str project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
+        :param builtins.str project: The number of the Fleet host project where this cluster will be registered.
         :param builtins.str membership: (Output)
                The name of the managed Hub Membership resource associated to this
                cluster. Membership names are formatted as
@@ -610,8 +613,7 @@ class AttachedClusterFleet(dict):
     @pulumi.getter
     def project(self) -> builtins.str:
         """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
+        The number of the Fleet host project where this cluster will be registered.
         """
         return pulumi.get(self, "project")
 
@@ -4553,6 +4555,24 @@ class ClusterAddonsConfigStatefulHaConfig(dict):
     @pulumi.getter
     def enabled(self) -> builtins.bool:
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class ClusterAnonymousAuthenticationConfig(dict):
+    def __init__(__self__, *,
+                 mode: builtins.str):
+        """
+        :param builtins.str mode: Sets or removes authentication restrictions. Available options include `LIMITED` and `ENABLED`.
+        """
+        pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> builtins.str:
+        """
+        Sets or removes authentication restrictions. Available options include `LIMITED` and `ENABLED`.
+        """
+        return pulumi.get(self, "mode")
 
 
 @pulumi.output_type
@@ -13502,12 +13522,33 @@ class ClusterResourceUsageExportConfigBigqueryDestination(dict):
 
 @pulumi.output_type
 class ClusterSecretManagerConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rotationConfig":
+            suggest = "rotation_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterSecretManagerConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterSecretManagerConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterSecretManagerConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 enabled: builtins.bool):
+                 enabled: builtins.bool,
+                 rotation_config: Optional['outputs.ClusterSecretManagerConfigRotationConfig'] = None):
         """
         :param builtins.bool enabled: Enable the Secret Manager add-on for this cluster.
+        :param 'ClusterSecretManagerConfigRotationConfigArgs' rotation_config: config for secret manager auto rotation. Structure is docuemented below
         """
         pulumi.set(__self__, "enabled", enabled)
+        if rotation_config is not None:
+            pulumi.set(__self__, "rotation_config", rotation_config)
 
     @property
     @pulumi.getter
@@ -13516,6 +13557,61 @@ class ClusterSecretManagerConfig(dict):
         Enable the Secret Manager add-on for this cluster.
         """
         return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="rotationConfig")
+    def rotation_config(self) -> Optional['outputs.ClusterSecretManagerConfigRotationConfig']:
+        """
+        config for secret manager auto rotation. Structure is docuemented below
+        """
+        return pulumi.get(self, "rotation_config")
+
+
+@pulumi.output_type
+class ClusterSecretManagerConfigRotationConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rotationInterval":
+            suggest = "rotation_interval"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterSecretManagerConfigRotationConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterSecretManagerConfigRotationConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterSecretManagerConfigRotationConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: builtins.bool,
+                 rotation_interval: Optional[builtins.str] = None):
+        """
+        :param builtins.bool enabled: Enable the roation in Secret Manager add-on for this cluster.
+        :param builtins.str rotation_interval: The interval between two consecutive rotations. Default rotation interval is 2 minutes.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if rotation_interval is not None:
+            pulumi.set(__self__, "rotation_interval", rotation_interval)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> builtins.bool:
+        """
+        Enable the roation in Secret Manager add-on for this cluster.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="rotationInterval")
+    def rotation_interval(self) -> Optional[builtins.str]:
+        """
+        The interval between two consecutive rotations. Default rotation interval is 2 minutes.
+        """
+        return pulumi.get(self, "rotation_interval")
 
 
 @pulumi.output_type
@@ -17017,6 +17113,30 @@ class GetClusterAddonsConfigStatefulHaConfigResult(dict):
     @pulumi.getter
     def enabled(self) -> builtins.bool:
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetClusterAnonymousAuthenticationConfigResult(dict):
+    def __init__(__self__, *,
+                 mode: builtins.str):
+        """
+        :param builtins.str mode: Setting this to LIMITED will restrict authentication of anonymous users to health check endpoints only.
+                Accepted values are:
+               * ENABLED: Authentication of anonymous users is enabled for all endpoints.
+               * LIMITED: Anonymous access is only allowed for health check endpoints.
+        """
+        pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> builtins.str:
+        """
+        Setting this to LIMITED will restrict authentication of anonymous users to health check endpoints only.
+         Accepted values are:
+        * ENABLED: Authentication of anonymous users is enabled for all endpoints.
+        * LIMITED: Anonymous access is only allowed for health check endpoints.
+        """
+        return pulumi.get(self, "mode")
 
 
 @pulumi.output_type
@@ -22623,11 +22743,14 @@ class GetClusterResourceUsageExportConfigBigqueryDestinationResult(dict):
 @pulumi.output_type
 class GetClusterSecretManagerConfigResult(dict):
     def __init__(__self__, *,
-                 enabled: builtins.bool):
+                 enabled: builtins.bool,
+                 rotation_configs: Sequence['outputs.GetClusterSecretManagerConfigRotationConfigResult']):
         """
         :param builtins.bool enabled: Enable the Secret manager csi component.
+        :param Sequence['GetClusterSecretManagerConfigRotationConfigArgs'] rotation_configs: Configuration for Secret Manager auto rotation.
         """
         pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "rotation_configs", rotation_configs)
 
     @property
     @pulumi.getter
@@ -22636,6 +22759,43 @@ class GetClusterSecretManagerConfigResult(dict):
         Enable the Secret manager csi component.
         """
         return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="rotationConfigs")
+    def rotation_configs(self) -> Sequence['outputs.GetClusterSecretManagerConfigRotationConfigResult']:
+        """
+        Configuration for Secret Manager auto rotation.
+        """
+        return pulumi.get(self, "rotation_configs")
+
+
+@pulumi.output_type
+class GetClusterSecretManagerConfigRotationConfigResult(dict):
+    def __init__(__self__, *,
+                 enabled: builtins.bool,
+                 rotation_interval: builtins.str):
+        """
+        :param builtins.bool enabled: Enable the Secret manager auto rotation.
+        :param builtins.str rotation_interval: The interval between two consecutive rotations. Default rotation interval is 2 minutes
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "rotation_interval", rotation_interval)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> builtins.bool:
+        """
+        Enable the Secret manager auto rotation.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="rotationInterval")
+    def rotation_interval(self) -> builtins.str:
+        """
+        The interval between two consecutive rotations. Default rotation interval is 2 minutes
+        """
+        return pulumi.get(self, "rotation_interval")
 
 
 @pulumi.output_type

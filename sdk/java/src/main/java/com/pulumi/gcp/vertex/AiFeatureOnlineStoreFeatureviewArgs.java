@@ -126,16 +126,12 @@ public final class AiFeatureOnlineStoreFeatureviewArgs extends com.pulumi.resour
     /**
      * The region for the resource. It should be the same as the featureonlinestore region.
      * 
-     * ***
-     * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
      * @return The region for the resource. It should be the same as the featureonlinestore region.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> region() {
@@ -349,8 +345,6 @@ public final class AiFeatureOnlineStoreFeatureviewArgs extends com.pulumi.resour
         /**
          * @param region The region for the resource. It should be the same as the featureonlinestore region.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -361,8 +355,6 @@ public final class AiFeatureOnlineStoreFeatureviewArgs extends com.pulumi.resour
 
         /**
          * @param region The region for the resource. It should be the same as the featureonlinestore region.
-         * 
-         * ***
          * 
          * @return builder
          * 

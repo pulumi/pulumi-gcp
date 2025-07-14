@@ -315,8 +315,6 @@ type Route struct {
 	// last character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The network that this route applies to.
-	//
-	// ***
 	Network pulumi.StringOutput `pulumi:"network"`
 	// URL to a gateway that should handle matching packets.
 	// Currently, you can only specify the internet gateway, using a full or
@@ -368,6 +366,9 @@ type Route struct {
 	NextHopPeering pulumi.StringOutput `pulumi:"nextHopPeering"`
 	// URL to a VpnTunnel that should handle matching packets.
 	NextHopVpnTunnel pulumi.StringPtrOutput `pulumi:"nextHopVpnTunnel"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params RouteParamsPtrOutput `pulumi:"params"`
 	// The priority of this route. Priority is used to break ties in cases
 	// where there is more than one matching route of equal prefix length.
 	// In the case of two routes with equal prefix length, the one with the
@@ -451,8 +452,6 @@ type routeState struct {
 	// last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// The network that this route applies to.
-	//
-	// ***
 	Network *string `pulumi:"network"`
 	// URL to a gateway that should handle matching packets.
 	// Currently, you can only specify the internet gateway, using a full or
@@ -504,6 +503,9 @@ type routeState struct {
 	NextHopPeering *string `pulumi:"nextHopPeering"`
 	// URL to a VpnTunnel that should handle matching packets.
 	NextHopVpnTunnel *string `pulumi:"nextHopVpnTunnel"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params *RouteParams `pulumi:"params"`
 	// The priority of this route. Priority is used to break ties in cases
 	// where there is more than one matching route of equal prefix length.
 	// In the case of two routes with equal prefix length, the one with the
@@ -552,8 +554,6 @@ type RouteState struct {
 	// last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// The network that this route applies to.
-	//
-	// ***
 	Network pulumi.StringPtrInput
 	// URL to a gateway that should handle matching packets.
 	// Currently, you can only specify the internet gateway, using a full or
@@ -605,6 +605,9 @@ type RouteState struct {
 	NextHopPeering pulumi.StringPtrInput
 	// URL to a VpnTunnel that should handle matching packets.
 	NextHopVpnTunnel pulumi.StringPtrInput
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params RouteParamsPtrInput
 	// The priority of this route. Priority is used to break ties in cases
 	// where there is more than one matching route of equal prefix length.
 	// In the case of two routes with equal prefix length, the one with the
@@ -653,8 +656,6 @@ type routeArgs struct {
 	// last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// The network that this route applies to.
-	//
-	// ***
 	Network string `pulumi:"network"`
 	// URL to a gateway that should handle matching packets.
 	// Currently, you can only specify the internet gateway, using a full or
@@ -694,6 +695,9 @@ type routeArgs struct {
 	NextHopIp *string `pulumi:"nextHopIp"`
 	// URL to a VpnTunnel that should handle matching packets.
 	NextHopVpnTunnel *string `pulumi:"nextHopVpnTunnel"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params *RouteParams `pulumi:"params"`
 	// The priority of this route. Priority is used to break ties in cases
 	// where there is more than one matching route of equal prefix length.
 	// In the case of two routes with equal prefix length, the one with the
@@ -724,8 +728,6 @@ type RouteArgs struct {
 	// last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// The network that this route applies to.
-	//
-	// ***
 	Network pulumi.StringInput
 	// URL to a gateway that should handle matching packets.
 	// Currently, you can only specify the internet gateway, using a full or
@@ -765,6 +767,9 @@ type RouteArgs struct {
 	NextHopIp pulumi.StringPtrInput
 	// URL to a VpnTunnel that should handle matching packets.
 	NextHopVpnTunnel pulumi.StringPtrInput
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params RouteParamsPtrInput
 	// The priority of this route. Priority is used to break ties in cases
 	// where there is more than one matching route of equal prefix length.
 	// In the case of two routes with equal prefix length, the one with the
@@ -899,8 +904,6 @@ func (o RouteOutput) Name() pulumi.StringOutput {
 }
 
 // The network that this route applies to.
-//
-// ***
 func (o RouteOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v *Route) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
 }
@@ -989,6 +992,12 @@ func (o RouteOutput) NextHopPeering() pulumi.StringOutput {
 // URL to a VpnTunnel that should handle matching packets.
 func (o RouteOutput) NextHopVpnTunnel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Route) pulumi.StringPtrOutput { return v.NextHopVpnTunnel }).(pulumi.StringPtrOutput)
+}
+
+// Additional params passed with the request, but not persisted as part of resource payload
+// Structure is documented below.
+func (o RouteOutput) Params() RouteParamsPtrOutput {
+	return o.ApplyT(func(v *Route) RouteParamsPtrOutput { return v.Params }).(RouteParamsPtrOutput)
 }
 
 // The priority of this route. Priority is used to break ties in cases

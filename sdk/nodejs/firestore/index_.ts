@@ -263,8 +263,9 @@ export class Index extends pulumi.CustomResource {
     }
 
     /**
-     * The API scope at which a query is run. Default value: "ANY_API" Possible values: ["ANY_API", "DATASTORE_MODE_API",
-     * "MONGODB_COMPATIBLE_API"]
+     * The API scope at which a query is run.
+     * Default value is `ANY_API`.
+     * Possible values are: `ANY_API`, `DATASTORE_MODE_API`, `MONGODB_COMPATIBLE_API`.
      */
     public readonly apiScope!: pulumi.Output<string | undefined>;
     /**
@@ -272,11 +273,12 @@ export class Index extends pulumi.CustomResource {
      */
     public readonly collection!: pulumi.Output<string>;
     /**
-     * The Firestore database id. Defaults to '"(default)"'.
+     * The Firestore database id. Defaults to `"(default)"`.
      */
     public readonly database!: pulumi.Output<string | undefined>;
     /**
-     * The density configuration for this index. Possible values: ["SPARSE_ALL", "SPARSE_ANY", "DENSE"]
+     * The density configuration for this index.
+     * Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
      */
     public readonly density!: pulumi.Output<string>;
     /**
@@ -290,10 +292,7 @@ export class Index extends pulumi.CustomResource {
      */
     public readonly fields!: pulumi.Output<outputs.firestore.IndexField[]>;
     /**
-     * Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the
-     * paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at
-     * most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations
-     * will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
+     * Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
      */
     public readonly multikey!: pulumi.Output<boolean | undefined>;
     /**
@@ -301,10 +300,15 @@ export class Index extends pulumi.CustomResource {
      * `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}`
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The scope at which a query is run. Default value: "COLLECTION" Possible values: ["COLLECTION", "COLLECTION_GROUP",
-     * "COLLECTION_RECURSIVE"]
+     * The scope at which a query is run.
+     * Default value is `COLLECTION`.
+     * Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
      */
     public readonly queryScope!: pulumi.Output<string | undefined>;
 
@@ -358,8 +362,9 @@ export class Index extends pulumi.CustomResource {
  */
 export interface IndexState {
     /**
-     * The API scope at which a query is run. Default value: "ANY_API" Possible values: ["ANY_API", "DATASTORE_MODE_API",
-     * "MONGODB_COMPATIBLE_API"]
+     * The API scope at which a query is run.
+     * Default value is `ANY_API`.
+     * Possible values are: `ANY_API`, `DATASTORE_MODE_API`, `MONGODB_COMPATIBLE_API`.
      */
     apiScope?: pulumi.Input<string>;
     /**
@@ -367,11 +372,12 @@ export interface IndexState {
      */
     collection?: pulumi.Input<string>;
     /**
-     * The Firestore database id. Defaults to '"(default)"'.
+     * The Firestore database id. Defaults to `"(default)"`.
      */
     database?: pulumi.Input<string>;
     /**
-     * The density configuration for this index. Possible values: ["SPARSE_ALL", "SPARSE_ANY", "DENSE"]
+     * The density configuration for this index.
+     * Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
      */
     density?: pulumi.Input<string>;
     /**
@@ -385,10 +391,7 @@ export interface IndexState {
      */
     fields?: pulumi.Input<pulumi.Input<inputs.firestore.IndexField>[]>;
     /**
-     * Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the
-     * paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at
-     * most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations
-     * will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
+     * Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
      */
     multikey?: pulumi.Input<boolean>;
     /**
@@ -396,10 +399,15 @@ export interface IndexState {
      * `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}`
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
-     * The scope at which a query is run. Default value: "COLLECTION" Possible values: ["COLLECTION", "COLLECTION_GROUP",
-     * "COLLECTION_RECURSIVE"]
+     * The scope at which a query is run.
+     * Default value is `COLLECTION`.
+     * Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
      */
     queryScope?: pulumi.Input<string>;
 }
@@ -409,8 +417,9 @@ export interface IndexState {
  */
 export interface IndexArgs {
     /**
-     * The API scope at which a query is run. Default value: "ANY_API" Possible values: ["ANY_API", "DATASTORE_MODE_API",
-     * "MONGODB_COMPATIBLE_API"]
+     * The API scope at which a query is run.
+     * Default value is `ANY_API`.
+     * Possible values are: `ANY_API`, `DATASTORE_MODE_API`, `MONGODB_COMPATIBLE_API`.
      */
     apiScope?: pulumi.Input<string>;
     /**
@@ -418,11 +427,12 @@ export interface IndexArgs {
      */
     collection: pulumi.Input<string>;
     /**
-     * The Firestore database id. Defaults to '"(default)"'.
+     * The Firestore database id. Defaults to `"(default)"`.
      */
     database?: pulumi.Input<string>;
     /**
-     * The density configuration for this index. Possible values: ["SPARSE_ALL", "SPARSE_ANY", "DENSE"]
+     * The density configuration for this index.
+     * Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
      */
     density?: pulumi.Input<string>;
     /**
@@ -436,16 +446,18 @@ export interface IndexArgs {
      */
     fields: pulumi.Input<pulumi.Input<inputs.firestore.IndexField>[]>;
     /**
-     * Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the
-     * paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at
-     * most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations
-     * will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
+     * Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
      */
     multikey?: pulumi.Input<boolean>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
-     * The scope at which a query is run. Default value: "COLLECTION" Possible values: ["COLLECTION", "COLLECTION_GROUP",
-     * "COLLECTION_RECURSIVE"]
+     * The scope at which a query is run.
+     * Default value is `COLLECTION`.
+     * Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
      */
     queryScope?: pulumi.Input<string>;
 }

@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class TagTemplateFieldTypeEnumTypeAllowedValue {
     /**
-     * @return The display name for this template.
+     * @return The display name of the enum value.
      * 
      */
     private String displayName;
 
     private TagTemplateFieldTypeEnumTypeAllowedValue() {}
     /**
-     * @return The display name for this template.
+     * @return The display name of the enum value.
      * 
      */
     public String displayName() {

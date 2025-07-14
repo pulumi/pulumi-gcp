@@ -29,9 +29,6 @@ class DataSharingWithGoogleSettingArgs:
         """
         The set of arguments for constructing a DataSharingWithGoogleSetting resource.
         :param pulumi.Input[builtins.str] data_sharing_with_google_setting_id: Id of the Data Sharing With Google Setting.
-               
-               
-               - - -
         :param pulumi.Input[builtins.bool] enable_data_sharing: Whether data sharing should be enabled in GA products.
         :param pulumi.Input[builtins.bool] enable_preview_data_sharing: Whether data sharing should be enabled in Preview products.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels as key value pairs.
@@ -58,9 +55,6 @@ class DataSharingWithGoogleSettingArgs:
     def data_sharing_with_google_setting_id(self) -> pulumi.Input[builtins.str]:
         """
         Id of the Data Sharing With Google Setting.
-
-
-        - - -
         """
         return pulumi.get(self, "data_sharing_with_google_setting_id")
 
@@ -150,9 +144,6 @@ class _DataSharingWithGoogleSettingState:
         Input properties used for looking up and filtering DataSharingWithGoogleSetting resources.
         :param pulumi.Input[builtins.str] create_time: Create time stamp.
         :param pulumi.Input[builtins.str] data_sharing_with_google_setting_id: Id of the Data Sharing With Google Setting.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[builtins.bool] enable_data_sharing: Whether data sharing should be enabled in GA products.
         :param pulumi.Input[builtins.bool] enable_preview_data_sharing: Whether data sharing should be enabled in Preview products.
@@ -208,9 +199,6 @@ class _DataSharingWithGoogleSettingState:
     def data_sharing_with_google_setting_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Id of the Data Sharing With Google Setting.
-
-
-        - - -
         """
         return pulumi.get(self, "data_sharing_with_google_setting_id")
 
@@ -393,9 +381,6 @@ class DataSharingWithGoogleSetting(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] data_sharing_with_google_setting_id: Id of the Data Sharing With Google Setting.
-               
-               
-               - - -
         :param pulumi.Input[builtins.bool] enable_data_sharing: Whether data sharing should be enabled in GA products.
         :param pulumi.Input[builtins.bool] enable_preview_data_sharing: Whether data sharing should be enabled in Preview products.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels as key value pairs.
@@ -531,9 +516,6 @@ class DataSharingWithGoogleSetting(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] create_time: Create time stamp.
         :param pulumi.Input[builtins.str] data_sharing_with_google_setting_id: Id of the Data Sharing With Google Setting.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[builtins.bool] enable_data_sharing: Whether data sharing should be enabled in GA products.
         :param pulumi.Input[builtins.bool] enable_preview_data_sharing: Whether data sharing should be enabled in Preview products.
@@ -579,9 +561,6 @@ class DataSharingWithGoogleSetting(pulumi.CustomResource):
     def data_sharing_with_google_setting_id(self) -> pulumi.Output[builtins.str]:
         """
         Id of the Data Sharing With Google Setting.
-
-
-        - - -
         """
         return pulumi.get(self, "data_sharing_with_google_setting_id")
 

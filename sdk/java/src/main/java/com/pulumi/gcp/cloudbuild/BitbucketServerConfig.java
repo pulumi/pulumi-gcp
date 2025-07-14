@@ -286,6 +286,7 @@ public class BitbucketServerConfig extends com.pulumi.resources.CustomResource {
     }
     /**
      * Connected Bitbucket Server repositories for this config.
+     * Structure is documented below.
      * 
      */
     @Export(name="connectedRepositories", refs={List.class,BitbucketServerConfigConnectedRepository.class}, tree="[0,1]")
@@ -293,6 +294,7 @@ public class BitbucketServerConfig extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Connected Bitbucket Server repositories for this config.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<List<BitbucketServerConfigConnectedRepository>>> connectedRepositories() {
@@ -343,30 +345,38 @@ public class BitbucketServerConfig extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private
-     * service connection. This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by
-     * public internet. If this field is left empty, no network peering will occur and calls to the Bitbucket Server instance
-     * will be made over the public internet. Must be in the format projects/{project}/global/networks/{network}, where
-     * {project} is a project number or id and {network} is the name of a VPC network in the project.
+     * The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection.
+     * This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty,
+     * no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format
+     * projects/{project}/global/networks/{network}, where {project} is a project number or id and {network} is the name of a VPC network in the project.
      * 
      */
     @Export(name="peeredNetwork", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> peeredNetwork;
 
     /**
-     * @return The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private
-     * service connection. This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by
-     * public internet. If this field is left empty, no network peering will occur and calls to the Bitbucket Server instance
-     * will be made over the public internet. Must be in the format projects/{project}/global/networks/{network}, where
-     * {project} is a project number or id and {network} is the name of a VPC network in the project.
+     * @return The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection.
+     * This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty,
+     * no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format
+     * projects/{project}/global/networks/{network}, where {project} is a project number or id and {network} is the name of a VPC network in the project.
      * 
      */
     public Output<Optional<String>> peeredNetwork() {
         return Codegen.optional(this.peeredNetwork);
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }
@@ -387,16 +397,14 @@ public class BitbucketServerConfig extends com.pulumi.resources.CustomResource {
         return this.secrets;
     }
     /**
-     * SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of
-     * .pem, .cer, or .crt.
+     * SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
      * 
      */
     @Export(name="sslCa", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sslCa;
 
     /**
-     * @return SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of
-     * .pem, .cer, or .crt.
+     * @return SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
      * 
      */
     public Output<Optional<String>> sslCa() {

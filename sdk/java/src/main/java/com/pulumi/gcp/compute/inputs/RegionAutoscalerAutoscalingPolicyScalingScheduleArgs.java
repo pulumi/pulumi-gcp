@@ -19,14 +19,14 @@ public final class RegionAutoscalerAutoscalingPolicyScalingScheduleArgs extends 
     public static final RegionAutoscalerAutoscalingPolicyScalingScheduleArgs Empty = new RegionAutoscalerAutoscalingPolicyScalingScheduleArgs();
 
     /**
-     * An optional description of this resource.
+     * A description of a scaling schedule.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return An optional description of this resource.
+     * @return A description of a scaling schedule.
      * 
      */
     public Optional<Output<String>> description() {
@@ -154,7 +154,7 @@ public final class RegionAutoscalerAutoscalingPolicyScalingScheduleArgs extends 
         }
 
         /**
-         * @param description An optional description of this resource.
+         * @param description A description of a scaling schedule.
          * 
          * @return builder
          * 
@@ -165,7 +165,7 @@ public final class RegionAutoscalerAutoscalingPolicyScalingScheduleArgs extends 
         }
 
         /**
-         * @param description An optional description of this resource.
+         * @param description A description of a scaling schedule.
          * 
          * @return builder
          * 

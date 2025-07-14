@@ -49,6 +49,34 @@ namespace Pulumi.Gcp.DiscoveryEngine
     /// 
     /// });
     /// ```
+    /// ### Discoveryengine Datastore Kms Key Name
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var kmsKeyName = new Gcp.DiscoveryEngine.DataStore("kms_key_name", new()
+    ///     {
+    ///         Location = "us",
+    ///         DataStoreId = "data-store-id",
+    ///         DisplayName = "tf-test-structured-datastore",
+    ///         IndustryVertical = "GENERIC",
+    ///         ContentConfig = "NO_CONTENT",
+    ///         SolutionTypes = new[]
+    ///         {
+    ///             "SOLUTION_TYPE_SEARCH",
+    ///         },
+    ///         KmsKeyName = "kms-key",
+    ///         CreateAdvancedSiteSearch = false,
+    ///         SkipDefaultSchemaCreation = false,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Discoveryengine Datastore Document Processing Config
     /// 
     /// ```csharp
@@ -183,9 +211,6 @@ namespace Pulumi.Gcp.DiscoveryEngine
 
         /// <summary>
         /// The unique id of the data store.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("dataStoreId")]
         public Output<string> DataStoreId { get; private set; } = null!;
@@ -216,6 +241,17 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// </summary>
         [Output("industryVertical")]
         public Output<string> IndustryVertical { get; private set; } = null!;
+
+        /// <summary>
+        /// KMS key resource name which will be used to encrypt resources:
+        /// `/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`
+        /// The KMS key to be used to protect this DataStore at creation time. Must be
+        /// set for requests that need to comply with CMEK Org Policy protections.
+        /// If this field is set and processed successfully, the DataStore will be
+        /// protected by the KMS key, as indicated in the cmek_config field.
+        /// </summary>
+        [Output("kmsKeyName")]
+        public Output<string?> KmsKeyName { get; private set; } = null!;
 
         /// <summary>
         /// The geographic location where the data store should reside. The value can
@@ -329,9 +365,6 @@ namespace Pulumi.Gcp.DiscoveryEngine
 
         /// <summary>
         /// The unique id of the data store.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("dataStoreId", required: true)]
         public Input<string> DataStoreId { get; set; } = null!;
@@ -356,6 +389,17 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// </summary>
         [Input("industryVertical", required: true)]
         public Input<string> IndustryVertical { get; set; } = null!;
+
+        /// <summary>
+        /// KMS key resource name which will be used to encrypt resources:
+        /// `/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`
+        /// The KMS key to be used to protect this DataStore at creation time. Must be
+        /// set for requests that need to comply with CMEK Org Policy protections.
+        /// If this field is set and processed successfully, the DataStore will be
+        /// protected by the KMS key, as indicated in the cmek_config field.
+        /// </summary>
+        [Input("kmsKeyName")]
+        public Input<string>? KmsKeyName { get; set; }
 
         /// <summary>
         /// The geographic location where the data store should reside. The value can
@@ -434,9 +478,6 @@ namespace Pulumi.Gcp.DiscoveryEngine
 
         /// <summary>
         /// The unique id of the data store.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("dataStoreId")]
         public Input<string>? DataStoreId { get; set; }
@@ -467,6 +508,17 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// </summary>
         [Input("industryVertical")]
         public Input<string>? IndustryVertical { get; set; }
+
+        /// <summary>
+        /// KMS key resource name which will be used to encrypt resources:
+        /// `/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`
+        /// The KMS key to be used to protect this DataStore at creation time. Must be
+        /// set for requests that need to comply with CMEK Org Policy protections.
+        /// If this field is set and processed successfully, the DataStore will be
+        /// protected by the KMS key, as indicated in the cmek_config field.
+        /// </summary>
+        [Input("kmsKeyName")]
+        public Input<string>? KmsKeyName { get; set; }
 
         /// <summary>
         /// The geographic location where the data store should reside. The value can

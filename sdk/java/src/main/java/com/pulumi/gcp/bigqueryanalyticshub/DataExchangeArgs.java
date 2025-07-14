@@ -51,16 +51,12 @@ public final class DataExchangeArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
      * 
-     * ***
-     * 
      */
     @Import(name="displayName", required=true)
     private Output<String> displayName;
 
     /**
      * @return Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
-     * 
-     * ***
      * 
      */
     public Output<String> displayName() {
@@ -256,8 +252,6 @@ public final class DataExchangeArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param displayName Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -268,8 +262,6 @@ public final class DataExchangeArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param displayName Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -118,9 +118,6 @@ export class Subnet extends pulumi.CustomResource {
     /**
      * The ID of the subnet. For userDefined subnets, this name should be in the format of "service-n",
      * where n ranges from 1 to 5.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -240,9 +237,6 @@ export interface SubnetState {
     /**
      * The ID of the subnet. For userDefined subnets, this name should be in the format of "service-n",
      * where n ranges from 1 to 5.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -291,9 +285,6 @@ export interface SubnetArgs {
     /**
      * The ID of the subnet. For userDefined subnets, this name should be in the format of "service-n",
      * where n ranges from 1 to 5.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

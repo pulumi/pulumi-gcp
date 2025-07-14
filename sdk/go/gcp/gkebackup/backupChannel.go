@@ -109,8 +109,6 @@ type BackupChannel struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The region of the Backup Channel.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The full name of the BackupChannel Resource.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -191,8 +189,6 @@ type backupChannelState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The region of the Backup Channel.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// The full name of the BackupChannel Resource.
 	Name *string `pulumi:"name"`
@@ -233,8 +229,6 @@ type BackupChannelState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The region of the Backup Channel.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// The full name of the BackupChannel Resource.
 	Name pulumi.StringPtrInput
@@ -267,8 +261,6 @@ type backupChannelArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The region of the Backup Channel.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// The full name of the BackupChannel Resource.
 	Name *string `pulumi:"name"`
@@ -293,8 +285,6 @@ type BackupChannelArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The region of the Backup Channel.
-	//
-	// ***
 	Location pulumi.StringInput
 	// The full name of the BackupChannel Resource.
 	Name pulumi.StringPtrInput
@@ -434,8 +424,6 @@ func (o BackupChannelOutput) Labels() pulumi.StringMapOutput {
 }
 
 // The region of the Backup Channel.
-//
-// ***
 func (o BackupChannelOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupChannel) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

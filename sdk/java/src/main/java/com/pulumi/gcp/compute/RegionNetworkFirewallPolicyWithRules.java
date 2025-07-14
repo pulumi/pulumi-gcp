@@ -254,16 +254,14 @@ public class RegionNetworkFirewallPolicyWithRules extends com.pulumi.resources.C
         return this.creationTimestamp;
     }
     /**
-     * (Output)
-     * A description of the rule.
+     * An optional description of this resource.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return (Output)
-     * A description of the rule.
+     * @return An optional description of this resource.
      * 
      */
     public Output<Optional<String>> description() {
@@ -322,18 +320,20 @@ public class RegionNetworkFirewallPolicyWithRules extends com.pulumi.resources.C
         return this.networkFirewallPolicyId;
     }
     /**
-     * Policy type is used to determine which resources (networks) the policy can be associated with. A policy can be
-     * associated with a network only if the network has the matching policyType in its network profile. Different policy types
-     * may support some of the Firewall Rules features. Possible values: [&#34;VPC_POLICY&#34;, &#34;RDMA_ROCE_POLICY&#34;]
+     * Policy type is used to determine which resources (networks) the policy can be associated with.
+     * A policy can be associated with a network only if the network has the matching policyType in its network profile.
+     * Different policy types may support some of the Firewall Rules features.
+     * Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`.
      * 
      */
     @Export(name="policyType", refs={String.class}, tree="[0]")
     private Output<String> policyType;
 
     /**
-     * @return Policy type is used to determine which resources (networks) the policy can be associated with. A policy can be
-     * associated with a network only if the network has the matching policyType in its network profile. Different policy types
-     * may support some of the Firewall Rules features. Possible values: [&#34;VPC_POLICY&#34;, &#34;RDMA_ROCE_POLICY&#34;]
+     * @return Policy type is used to determine which resources (networks) the policy can be associated with.
+     * A policy can be associated with a network only if the network has the matching policyType in its network profile.
+     * Different policy types may support some of the Firewall Rules features.
+     * Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`.
      * 
      */
     public Output<String> policyType() {
@@ -355,9 +355,19 @@ public class RegionNetworkFirewallPolicyWithRules extends com.pulumi.resources.C
     public Output<List<RegionNetworkFirewallPolicyWithRulesPredefinedRule>> predefinedRules() {
         return this.predefinedRules;
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }

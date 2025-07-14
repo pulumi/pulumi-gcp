@@ -190,8 +190,6 @@ public class TargetServer extends com.pulumi.resources.CustomResource {
      * The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}`.
      * 
-     * ***
-     * 
      */
     @Export(name="envId", refs={String.class}, tree="[0]")
     private Output<String> envId;
@@ -199,8 +197,6 @@ public class TargetServer extends com.pulumi.resources.CustomResource {
     /**
      * @return The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-     * 
-     * ***
      * 
      */
     public Output<String> envId() {

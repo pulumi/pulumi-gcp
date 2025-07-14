@@ -21,8 +21,6 @@ namespace Pulumi.Gcp.Apigee.Inputs
         /// <summary>
         /// The weight of the assessment.
         /// Possible values are: `MINOR`, `MODERATE`, `MAJOR`.
-        /// 
-        /// - - -
         /// </summary>
         [Input("weight", required: true)]
         public Input<string> Weight { get; set; } = null!;

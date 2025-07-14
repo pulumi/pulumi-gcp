@@ -365,9 +365,6 @@ export class Instance extends pulumi.CustomResource {
     public readonly maintenanceVersion!: pulumi.Output<string>;
     /**
      * Redis memory size in GiB.
-     *
-     *
-     * - - -
      */
     public readonly memorySizeGb!: pulumi.Output<number>;
     /**
@@ -687,9 +684,6 @@ export interface InstanceState {
     maintenanceVersion?: pulumi.Input<string>;
     /**
      * Redis memory size in GiB.
-     *
-     *
-     * - - -
      */
     memorySizeGb?: pulumi.Input<number>;
     /**
@@ -871,9 +865,6 @@ export interface InstanceArgs {
     maintenanceVersion?: pulumi.Input<string>;
     /**
      * Redis memory size in GiB.
-     *
-     *
-     * - - -
      */
     memorySizeGb: pulumi.Input<number>;
     /**

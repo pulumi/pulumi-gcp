@@ -34,9 +34,6 @@ class NetworkArgs:
                Possible values are: `LEGACY`, `STANDARD`.
         :param pulumi.Input[builtins.str] description: User-provided description for this VMware Engine network.
         :param pulumi.Input[builtins.str] name: The ID of the VMwareEngineNetwork.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -91,9 +88,6 @@ class NetworkArgs:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The ID of the VMwareEngineNetwork.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -131,9 +125,6 @@ class _NetworkState:
         :param pulumi.Input[builtins.str] description: User-provided description for this VMware Engine network.
         :param pulumi.Input[builtins.str] location: The location where the VMwareEngineNetwork should reside.
         :param pulumi.Input[builtins.str] name: The ID of the VMwareEngineNetwork.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] state: State of the VMware Engine network.
@@ -190,9 +181,6 @@ class _NetworkState:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The ID of the VMwareEngineNetwork.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -356,9 +344,6 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] description: User-provided description for this VMware Engine network.
         :param pulumi.Input[builtins.str] location: The location where the VMwareEngineNetwork should reside.
         :param pulumi.Input[builtins.str] name: The ID of the VMwareEngineNetwork.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] type: VMware Engine network type.
@@ -513,9 +498,6 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] description: User-provided description for this VMware Engine network.
         :param pulumi.Input[builtins.str] location: The location where the VMwareEngineNetwork should reside.
         :param pulumi.Input[builtins.str] name: The ID of the VMwareEngineNetwork.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] state: State of the VMware Engine network.
@@ -561,9 +543,6 @@ class Network(pulumi.CustomResource):
     def name(self) -> pulumi.Output[builtins.str]:
         """
         The ID of the VMwareEngineNetwork.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

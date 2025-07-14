@@ -157,9 +157,6 @@ export class CxSecuritySettings extends pulumi.CustomResource {
     public readonly deidentifyTemplate!: pulumi.Output<string | undefined>;
     /**
      * The human-readable name of the security settings, unique within the location.
-     *
-     *
-     * - - -
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -291,9 +288,6 @@ export interface CxSecuritySettingsState {
     deidentifyTemplate?: pulumi.Input<string>;
     /**
      * The human-readable name of the security settings, unique within the location.
-     *
-     *
-     * - - -
      */
     displayName?: pulumi.Input<string>;
     /**
@@ -373,9 +367,6 @@ export interface CxSecuritySettingsArgs {
     deidentifyTemplate?: pulumi.Input<string>;
     /**
      * The human-readable name of the security settings, unique within the location.
-     *
-     *
-     * - - -
      */
     displayName: pulumi.Input<string>;
     /**

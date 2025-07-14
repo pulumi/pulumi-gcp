@@ -34,9 +34,6 @@ class PrincipalAccessBoundaryPolicyArgs:
         :param pulumi.Input[builtins.str] organization: The parent organization of the principal access boundary policy.
         :param pulumi.Input[builtins.str] principal_access_boundary_policy_id: The ID to use to create the principal access boundary policy.
                This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, hyphens, or dots. Pattern, /a-z{2,62}/.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: User defined annotations. See https://google.aip.dev/148#annotations
                for more details such as format and size limitations
                
@@ -86,9 +83,6 @@ class PrincipalAccessBoundaryPolicyArgs:
         """
         The ID to use to create the principal access boundary policy.
         This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, hyphens, or dots. Pattern, /a-z{2,62}/.
-
-
-        - - -
         """
         return pulumi.get(self, "principal_access_boundary_policy_id")
 
@@ -171,9 +165,6 @@ class _PrincipalAccessBoundaryPolicyState:
         :param pulumi.Input[builtins.str] organization: The parent organization of the principal access boundary policy.
         :param pulumi.Input[builtins.str] principal_access_boundary_policy_id: The ID to use to create the principal access boundary policy.
                This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, hyphens, or dots. Pattern, /a-z{2,62}/.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] uid: Output only. The globally unique ID of the principal access boundary policy.
         :param pulumi.Input[builtins.str] update_time: Output only. The time when the principal access boundary policy was most recently updated.
         """
@@ -319,9 +310,6 @@ class _PrincipalAccessBoundaryPolicyState:
         """
         The ID to use to create the principal access boundary policy.
         This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, hyphens, or dots. Pattern, /a-z{2,62}/.
-
-
-        - - -
         """
         return pulumi.get(self, "principal_access_boundary_policy_id")
 
@@ -441,9 +429,6 @@ class PrincipalAccessBoundaryPolicy(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] organization: The parent organization of the principal access boundary policy.
         :param pulumi.Input[builtins.str] principal_access_boundary_policy_id: The ID to use to create the principal access boundary policy.
                This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, hyphens, or dots. Pattern, /a-z{2,62}/.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -604,9 +589,6 @@ class PrincipalAccessBoundaryPolicy(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] organization: The parent organization of the principal access boundary policy.
         :param pulumi.Input[builtins.str] principal_access_boundary_policy_id: The ID to use to create the principal access boundary policy.
                This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, hyphens, or dots. Pattern, /a-z{2,62}/.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] uid: Output only. The globally unique ID of the principal access boundary policy.
         :param pulumi.Input[builtins.str] update_time: Output only. The time when the principal access boundary policy was most recently updated.
         """
@@ -709,9 +691,6 @@ class PrincipalAccessBoundaryPolicy(pulumi.CustomResource):
         """
         The ID to use to create the principal access boundary policy.
         This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, hyphens, or dots. Pattern, /a-z{2,62}/.
-
-
-        - - -
         """
         return pulumi.get(self, "principal_access_boundary_policy_id")
 

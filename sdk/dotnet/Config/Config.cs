@@ -921,6 +921,13 @@ namespace Pulumi.Gcp
             set => _mlEngineCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _modelArmorCustomEndpoint = new __Value<string?>(() => __config.Get("modelArmorCustomEndpoint"));
+        public static string? ModelArmorCustomEndpoint
+        {
+            get => _modelArmorCustomEndpoint.Get();
+            set => _modelArmorCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _monitoringCustomEndpoint = new __Value<string?>(() => __config.Get("monitoringCustomEndpoint"));
         public static string? MonitoringCustomEndpoint
         {

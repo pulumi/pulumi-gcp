@@ -103,16 +103,12 @@ public final class SchemaState extends com.pulumi.resources.ResourceArgs {
     /**
      * The unique id of the schema.
      * 
-     * ***
-     * 
      */
     @Import(name="schemaId")
     private @Nullable Output<String> schemaId;
 
     /**
      * @return The unique id of the schema.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> schemaId() {
@@ -266,8 +262,6 @@ public final class SchemaState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param schemaId The unique id of the schema.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -278,8 +272,6 @@ public final class SchemaState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param schemaId The unique id of the schema.
-         * 
-         * ***
          * 
          * @return builder
          * 

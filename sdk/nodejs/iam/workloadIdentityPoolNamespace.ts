@@ -143,9 +143,6 @@ export class WorkloadIdentityPoolNamespace extends pulumi.CustomResource {
      * * end with an alphanumeric character
      *
      * The prefix `gcp-` will be reserved for future uses.
-     *
-     *
-     * - - -
      */
     public readonly workloadIdentityPoolNamespaceId!: pulumi.Output<string>;
 
@@ -245,9 +242,6 @@ export interface WorkloadIdentityPoolNamespaceState {
      * * end with an alphanumeric character
      *
      * The prefix `gcp-` will be reserved for future uses.
-     *
-     *
-     * - - -
      */
     workloadIdentityPoolNamespaceId?: pulumi.Input<string>;
 }
@@ -285,9 +279,6 @@ export interface WorkloadIdentityPoolNamespaceArgs {
      * * end with an alphanumeric character
      *
      * The prefix `gcp-` will be reserved for future uses.
-     *
-     *
-     * - - -
      */
     workloadIdentityPoolNamespaceId: pulumi.Input<string>;
 }

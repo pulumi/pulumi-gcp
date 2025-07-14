@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.container.ClusterArgs;
 import com.pulumi.gcp.container.inputs.ClusterState;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfig;
+import com.pulumi.gcp.container.outputs.ClusterAnonymousAuthenticationConfig;
 import com.pulumi.gcp.container.outputs.ClusterAuthenticatorGroupsConfig;
 import com.pulumi.gcp.container.outputs.ClusterBinaryAuthorization;
 import com.pulumi.gcp.container.outputs.ClusterClusterAutoscaling;
@@ -310,6 +311,24 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> allowNetAdmin() {
         return Codegen.optional(this.allowNetAdmin);
+    }
+    /**
+     * Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
+     * 
+     * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
+     * 
+     */
+    @Export(name="anonymousAuthenticationConfig", refs={ClusterAnonymousAuthenticationConfig.class}, tree="[0]")
+    private Output<ClusterAnonymousAuthenticationConfig> anonymousAuthenticationConfig;
+
+    /**
+     * @return Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
+     * 
+     * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
+     * 
+     */
+    public Output<ClusterAnonymousAuthenticationConfig> anonymousAuthenticationConfig() {
+        return this.anonymousAuthenticationConfig;
     }
     /**
      * Configuration for the
@@ -768,16 +787,12 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
-     * 
      */
     @Export(name="enterpriseConfig", refs={ClusterEnterpriseConfig.class}, tree="[0]")
     private Output<ClusterEnterpriseConfig> enterpriseConfig;
 
     /**
      * @return Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
-     * 
-     * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
      * 
      */
     public Output<ClusterEnterpriseConfig> enterpriseConfig() {

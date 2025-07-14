@@ -43,9 +43,6 @@ class StoragePoolArgs:
                following are valid values:
                * `https://www.googleapis.com/compute/v1/projects/{project_id}/zones/{zone}/storagePoolTypes/hyperdisk-balanced`
                * `hyperdisk-throughput`
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] capacity_provisioning_type: Provisioning type of the byte capacity of the pool.
                Possible values are: `STANDARD`, `ADVANCED`.
         :param pulumi.Input[builtins.str] description: A description of this resource. Provide this property when you create the resource.
@@ -118,9 +115,6 @@ class StoragePoolArgs:
         following are valid values:
         * `https://www.googleapis.com/compute/v1/projects/{project_id}/zones/{zone}/storagePoolTypes/hyperdisk-balanced`
         * `hyperdisk-throughput`
-
-
-        - - -
         """
         return pulumi.get(self, "storage_pool_type")
 
@@ -285,9 +279,6 @@ class _StoragePoolState:
                following are valid values:
                * `https://www.googleapis.com/compute/v1/projects/{project_id}/zones/{zone}/storagePoolTypes/hyperdisk-balanced`
                * `hyperdisk-throughput`
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] zone: A reference to the zone where the storage pool resides.
         """
         if capacity_provisioning_type is not None:
@@ -511,9 +502,6 @@ class _StoragePoolState:
         following are valid values:
         * `https://www.googleapis.com/compute/v1/projects/{project_id}/zones/{zone}/storagePoolTypes/hyperdisk-balanced`
         * `hyperdisk-throughput`
-
-
-        - - -
         """
         return pulumi.get(self, "storage_pool_type")
 
@@ -658,9 +646,6 @@ class StoragePool(pulumi.CustomResource):
                following are valid values:
                * `https://www.googleapis.com/compute/v1/projects/{project_id}/zones/{zone}/storagePoolTypes/hyperdisk-balanced`
                * `hyperdisk-throughput`
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] zone: A reference to the zone where the storage pool resides.
         """
         ...
@@ -871,9 +856,6 @@ class StoragePool(pulumi.CustomResource):
                following are valid values:
                * `https://www.googleapis.com/compute/v1/projects/{project_id}/zones/{zone}/storagePoolTypes/hyperdisk-balanced`
                * `hyperdisk-throughput`
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] zone: A reference to the zone where the storage pool resides.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1030,9 +1012,6 @@ class StoragePool(pulumi.CustomResource):
         following are valid values:
         * `https://www.googleapis.com/compute/v1/projects/{project_id}/zones/{zone}/storagePoolTypes/hyperdisk-balanced`
         * `hyperdisk-throughput`
-
-
-        - - -
         """
         return pulumi.get(self, "storage_pool_type")
 

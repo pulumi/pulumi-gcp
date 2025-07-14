@@ -695,8 +695,6 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
      * *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
      *    For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
      * 
-     * ***
-     * 
      */
     @Import(name="target")
     private @Nullable Output<String> target;
@@ -712,8 +710,6 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
      * *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
      * *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
      *    For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> target() {
@@ -1640,8 +1636,6 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
          * *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
          *    For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -1661,8 +1655,6 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
          * *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
          * *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
          *    For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
-         * 
-         * ***
          * 
          * @return builder
          * 

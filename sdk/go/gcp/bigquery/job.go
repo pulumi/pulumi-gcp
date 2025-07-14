@@ -668,11 +668,13 @@ type Job struct {
 	pulumi.CustomResourceState
 
 	// Copies a table.
+	// Structure is documented below.
 	Copy JobCopyPtrOutput `pulumi:"copy"`
 	// (Output)
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Configures an extract job.
+	// Structure is documented below.
 	Extract JobExtractPtrOutput `pulumi:"extract"`
 	// The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
 	JobId pulumi.StringOutput `pulumi:"jobId"`
@@ -681,20 +683,25 @@ type Job struct {
 	// (Output)
 	// The type of the job.
 	JobType pulumi.StringOutput `pulumi:"jobType"`
-	// The labels associated with this job. You can use these to organize and group your jobs. **Note**: This field is
-	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-	// 'effective_labels' for all of the labels present on the resource.
+	// The labels associated with this job. You can use these to organize and group your jobs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Configures a load job.
+	// Structure is documented below.
 	Load JobLoadPtrOutput `pulumi:"load"`
-	// Specifies where the error occurred, if present.
+	// The geographic location of the job. The default value is US.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
-	Project  pulumi.StringOutput    `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringOutput `pulumi:"project"`
 	// (Output)
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Configures a query job.
+	// Structure is documented below.
 	Query JobQueryPtrOutput `pulumi:"query"`
 	// The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
 	// Structure is documented below.
@@ -742,11 +749,13 @@ func GetJob(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Job resources.
 type jobState struct {
 	// Copies a table.
+	// Structure is documented below.
 	Copy *JobCopy `pulumi:"copy"`
 	// (Output)
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Configures an extract job.
+	// Structure is documented below.
 	Extract *JobExtract `pulumi:"extract"`
 	// The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
 	JobId *string `pulumi:"jobId"`
@@ -755,20 +764,25 @@ type jobState struct {
 	// (Output)
 	// The type of the job.
 	JobType *string `pulumi:"jobType"`
-	// The labels associated with this job. You can use these to organize and group your jobs. **Note**: This field is
-	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-	// 'effective_labels' for all of the labels present on the resource.
+	// The labels associated with this job. You can use these to organize and group your jobs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Configures a load job.
+	// Structure is documented below.
 	Load *JobLoad `pulumi:"load"`
-	// Specifies where the error occurred, if present.
+	// The geographic location of the job. The default value is US.
 	Location *string `pulumi:"location"`
-	Project  *string `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// (Output)
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Configures a query job.
+	// Structure is documented below.
 	Query *JobQuery `pulumi:"query"`
 	// The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
 	// Structure is documented below.
@@ -779,11 +793,13 @@ type jobState struct {
 
 type JobState struct {
 	// Copies a table.
+	// Structure is documented below.
 	Copy JobCopyPtrInput
 	// (Output)
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// Configures an extract job.
+	// Structure is documented below.
 	Extract JobExtractPtrInput
 	// The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
 	JobId pulumi.StringPtrInput
@@ -792,20 +808,25 @@ type JobState struct {
 	// (Output)
 	// The type of the job.
 	JobType pulumi.StringPtrInput
-	// The labels associated with this job. You can use these to organize and group your jobs. **Note**: This field is
-	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-	// 'effective_labels' for all of the labels present on the resource.
+	// The labels associated with this job. You can use these to organize and group your jobs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Configures a load job.
+	// Structure is documented below.
 	Load JobLoadPtrInput
-	// Specifies where the error occurred, if present.
+	// The geographic location of the job. The default value is US.
 	Location pulumi.StringPtrInput
-	Project  pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// (Output)
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Configures a query job.
+	// Structure is documented below.
 	Query JobQueryPtrInput
 	// The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
 	// Structure is documented below.
@@ -820,46 +841,60 @@ func (JobState) ElementType() reflect.Type {
 
 type jobArgs struct {
 	// Copies a table.
+	// Structure is documented below.
 	Copy *JobCopy `pulumi:"copy"`
 	// Configures an extract job.
+	// Structure is documented below.
 	Extract *JobExtract `pulumi:"extract"`
 	// The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
 	JobId string `pulumi:"jobId"`
 	// Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
 	JobTimeoutMs *string `pulumi:"jobTimeoutMs"`
-	// The labels associated with this job. You can use these to organize and group your jobs. **Note**: This field is
-	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-	// 'effective_labels' for all of the labels present on the resource.
+	// The labels associated with this job. You can use these to organize and group your jobs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Configures a load job.
+	// Structure is documented below.
 	Load *JobLoad `pulumi:"load"`
-	// Specifies where the error occurred, if present.
+	// The geographic location of the job. The default value is US.
 	Location *string `pulumi:"location"`
-	Project  *string `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// Configures a query job.
+	// Structure is documented below.
 	Query *JobQuery `pulumi:"query"`
 }
 
 // The set of arguments for constructing a Job resource.
 type JobArgs struct {
 	// Copies a table.
+	// Structure is documented below.
 	Copy JobCopyPtrInput
 	// Configures an extract job.
+	// Structure is documented below.
 	Extract JobExtractPtrInput
 	// The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
 	JobId pulumi.StringInput
 	// Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
 	JobTimeoutMs pulumi.StringPtrInput
-	// The labels associated with this job. You can use these to organize and group your jobs. **Note**: This field is
-	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-	// 'effective_labels' for all of the labels present on the resource.
+	// The labels associated with this job. You can use these to organize and group your jobs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Configures a load job.
+	// Structure is documented below.
 	Load JobLoadPtrInput
-	// Specifies where the error occurred, if present.
+	// The geographic location of the job. The default value is US.
 	Location pulumi.StringPtrInput
-	Project  pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// Configures a query job.
+	// Structure is documented below.
 	Query JobQueryPtrInput
 }
 
@@ -951,6 +986,7 @@ func (o JobOutput) ToJobOutputWithContext(ctx context.Context) JobOutput {
 }
 
 // Copies a table.
+// Structure is documented below.
 func (o JobOutput) Copy() JobCopyPtrOutput {
 	return o.ApplyT(func(v *Job) JobCopyPtrOutput { return v.Copy }).(JobCopyPtrOutput)
 }
@@ -962,6 +998,7 @@ func (o JobOutput) EffectiveLabels() pulumi.StringMapOutput {
 }
 
 // Configures an extract job.
+// Structure is documented below.
 func (o JobOutput) Extract() JobExtractPtrOutput {
 	return o.ApplyT(func(v *Job) JobExtractPtrOutput { return v.Extract }).(JobExtractPtrOutput)
 }
@@ -982,23 +1019,27 @@ func (o JobOutput) JobType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.JobType }).(pulumi.StringOutput)
 }
 
-// The labels associated with this job. You can use these to organize and group your jobs. **Note**: This field is
-// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-// 'effective_labels' for all of the labels present on the resource.
+// The labels associated with this job. You can use these to organize and group your jobs.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o JobOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // Configures a load job.
+// Structure is documented below.
 func (o JobOutput) Load() JobLoadPtrOutput {
 	return o.ApplyT(func(v *Job) JobLoadPtrOutput { return v.Load }).(JobLoadPtrOutput)
 }
 
-// Specifies where the error occurred, if present.
+// The geographic location of the job. The default value is US.
 func (o JobOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o JobOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -1011,6 +1052,7 @@ func (o JobOutput) PulumiLabels() pulumi.StringMapOutput {
 }
 
 // Configures a query job.
+// Structure is documented below.
 func (o JobOutput) Query() JobQueryPtrOutput {
 	return o.ApplyT(func(v *Job) JobQueryPtrOutput { return v.Query }).(JobQueryPtrOutput)
 }

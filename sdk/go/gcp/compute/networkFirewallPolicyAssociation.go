@@ -93,8 +93,6 @@ type NetworkFirewallPolicyAssociation struct {
 	// The target that the firewall policy is attached to.
 	AttachmentTarget pulumi.StringOutput `pulumi:"attachmentTarget"`
 	// The firewall policy of the resource.
-	//
-	// ***
 	FirewallPolicy pulumi.StringOutput `pulumi:"firewallPolicy"`
 	// The name for an association.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -144,8 +142,6 @@ type networkFirewallPolicyAssociationState struct {
 	// The target that the firewall policy is attached to.
 	AttachmentTarget *string `pulumi:"attachmentTarget"`
 	// The firewall policy of the resource.
-	//
-	// ***
 	FirewallPolicy *string `pulumi:"firewallPolicy"`
 	// The name for an association.
 	Name *string `pulumi:"name"`
@@ -160,8 +156,6 @@ type NetworkFirewallPolicyAssociationState struct {
 	// The target that the firewall policy is attached to.
 	AttachmentTarget pulumi.StringPtrInput
 	// The firewall policy of the resource.
-	//
-	// ***
 	FirewallPolicy pulumi.StringPtrInput
 	// The name for an association.
 	Name pulumi.StringPtrInput
@@ -180,8 +174,6 @@ type networkFirewallPolicyAssociationArgs struct {
 	// The target that the firewall policy is attached to.
 	AttachmentTarget string `pulumi:"attachmentTarget"`
 	// The firewall policy of the resource.
-	//
-	// ***
 	FirewallPolicy string `pulumi:"firewallPolicy"`
 	// The name for an association.
 	Name *string `pulumi:"name"`
@@ -195,8 +187,6 @@ type NetworkFirewallPolicyAssociationArgs struct {
 	// The target that the firewall policy is attached to.
 	AttachmentTarget pulumi.StringInput
 	// The firewall policy of the resource.
-	//
-	// ***
 	FirewallPolicy pulumi.StringInput
 	// The name for an association.
 	Name pulumi.StringPtrInput
@@ -298,8 +288,6 @@ func (o NetworkFirewallPolicyAssociationOutput) AttachmentTarget() pulumi.String
 }
 
 // The firewall policy of the resource.
-//
-// ***
 func (o NetworkFirewallPolicyAssociationOutput) FirewallPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkFirewallPolicyAssociation) pulumi.StringOutput { return v.FirewallPolicy }).(pulumi.StringOutput)
 }

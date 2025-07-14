@@ -81,6 +81,7 @@ type PluginInstance struct {
 	// Structure is documented below.
 	Actions PluginInstanceActionArrayOutput `pulumi:"actions"`
 	// AuthConfig represents the authentication information.
+	// Structure is documented below.
 	AuthConfig PluginInstanceAuthConfigPtrOutput `pulumi:"authConfig"`
 	// Timestamp indicating when the plugin instance was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -109,7 +110,9 @@ type PluginInstance struct {
 	//   This value should be 4-63 characters, and valid characters
 	//   are /a-z[0-9]-_/.
 	PluginInstanceId pulumi.StringOutput `pulumi:"pluginInstanceId"`
-	Project          pulumi.StringOutput `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The current state of the plugin instance (e.g., enabled, disabled,
 	// provisioning).
 	// Possible values:
@@ -171,6 +174,7 @@ type pluginInstanceState struct {
 	// Structure is documented below.
 	Actions []PluginInstanceAction `pulumi:"actions"`
 	// AuthConfig represents the authentication information.
+	// Structure is documented below.
 	AuthConfig *PluginInstanceAuthConfig `pulumi:"authConfig"`
 	// Timestamp indicating when the plugin instance was created.
 	CreateTime *string `pulumi:"createTime"`
@@ -199,7 +203,9 @@ type pluginInstanceState struct {
 	//   This value should be 4-63 characters, and valid characters
 	//   are /a-z[0-9]-_/.
 	PluginInstanceId *string `pulumi:"pluginInstanceId"`
-	Project          *string `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// The current state of the plugin instance (e.g., enabled, disabled,
 	// provisioning).
 	// Possible values:
@@ -220,6 +226,7 @@ type PluginInstanceState struct {
 	// Structure is documented below.
 	Actions PluginInstanceActionArrayInput
 	// AuthConfig represents the authentication information.
+	// Structure is documented below.
 	AuthConfig PluginInstanceAuthConfigPtrInput
 	// Timestamp indicating when the plugin instance was created.
 	CreateTime pulumi.StringPtrInput
@@ -248,7 +255,9 @@ type PluginInstanceState struct {
 	//   This value should be 4-63 characters, and valid characters
 	//   are /a-z[0-9]-_/.
 	PluginInstanceId pulumi.StringPtrInput
-	Project          pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// The current state of the plugin instance (e.g., enabled, disabled,
 	// provisioning).
 	// Possible values:
@@ -273,6 +282,7 @@ type pluginInstanceArgs struct {
 	// Structure is documented below.
 	Actions []PluginInstanceAction `pulumi:"actions"`
 	// AuthConfig represents the authentication information.
+	// Structure is documented below.
 	AuthConfig *PluginInstanceAuthConfig `pulumi:"authConfig"`
 	// The display name for this plugin instance. Max length is 255 characters.
 	Disable *bool `pulumi:"disable"`
@@ -290,8 +300,10 @@ type pluginInstanceArgs struct {
 	// * If not provided, a system generated id will be used.
 	//   This value should be 4-63 characters, and valid characters
 	//   are /a-z[0-9]-_/.
-	PluginInstanceId string  `pulumi:"pluginInstanceId"`
-	Project          *string `pulumi:"project"`
+	PluginInstanceId string `pulumi:"pluginInstanceId"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a PluginInstance resource.
@@ -300,6 +312,7 @@ type PluginInstanceArgs struct {
 	// Structure is documented below.
 	Actions PluginInstanceActionArrayInput
 	// AuthConfig represents the authentication information.
+	// Structure is documented below.
 	AuthConfig PluginInstanceAuthConfigPtrInput
 	// The display name for this plugin instance. Max length is 255 characters.
 	Disable pulumi.BoolPtrInput
@@ -318,7 +331,9 @@ type PluginInstanceArgs struct {
 	//   This value should be 4-63 characters, and valid characters
 	//   are /a-z[0-9]-_/.
 	PluginInstanceId pulumi.StringInput
-	Project          pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 }
 
 func (PluginInstanceArgs) ElementType() reflect.Type {
@@ -415,6 +430,7 @@ func (o PluginInstanceOutput) Actions() PluginInstanceActionArrayOutput {
 }
 
 // AuthConfig represents the authentication information.
+// Structure is documented below.
 func (o PluginInstanceOutput) AuthConfig() PluginInstanceAuthConfigPtrOutput {
 	return o.ApplyT(func(v *PluginInstance) PluginInstanceAuthConfigPtrOutput { return v.AuthConfig }).(PluginInstanceAuthConfigPtrOutput)
 }
@@ -470,6 +486,8 @@ func (o PluginInstanceOutput) PluginInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PluginInstance) pulumi.StringOutput { return v.PluginInstanceId }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o PluginInstanceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *PluginInstance) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

@@ -283,16 +283,12 @@ public class NetworkPeeringRoutesConfig extends com.pulumi.resources.CustomResou
     /**
      * The name of the primary network for the peering.
      * 
-     * ***
-     * 
      */
     @Export(name="network", refs={String.class}, tree="[0]")
     private Output<String> network;
 
     /**
      * @return The name of the primary network for the peering.
-     * 
-     * ***
      * 
      */
     public Output<String> network() {

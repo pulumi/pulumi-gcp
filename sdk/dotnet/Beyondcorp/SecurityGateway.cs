@@ -128,9 +128,6 @@ namespace Pulumi.Gcp.Beyondcorp
         /// * Must start with a letter.
         /// * Must contain between 4-63 characters from `/a-z-/`.
         /// * Must end with a number or letter.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("securityGatewayId")]
         public Output<string> SecurityGatewayId { get; private set; } = null!;
@@ -243,9 +240,6 @@ namespace Pulumi.Gcp.Beyondcorp
         /// * Must start with a letter.
         /// * Must contain between 4-63 characters from `/a-z-/`.
         /// * Must end with a number or letter.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("securityGatewayId", required: true)]
         public Input<string> SecurityGatewayId { get; set; } = null!;
@@ -331,9 +325,6 @@ namespace Pulumi.Gcp.Beyondcorp
         /// * Must start with a letter.
         /// * Must contain between 4-63 characters from `/a-z-/`.
         /// * Must end with a number or letter.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("securityGatewayId")]
         public Input<string>? SecurityGatewayId { get; set; }

@@ -38,24 +38,16 @@ class DeployPolicyArgs:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['DeployPolicySelectorArgs']]] selectors: Required. Selected resources to which the policy will be applied. At least one selector is required. If one selector matches the resource the policy applies. For example, if there are two selectors and the action being attempted matches one of them, the policy will apply to that action.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations
-               must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an
-               optional prefix and name, separated by a slash ('/'). * The name segment is required and must be 63 characters or less,
-               beginning and ending with an alphanumeric character ('[a-z0-9A-Z]') with dashes ('-'), underscores ('_'), dots ('.'),
-               and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS
-               labels separated by dots('.'), not longer than 253 characters in total, followed by a slash ('/'). See
-               https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more
-               details. **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-               Please refer to the field 'effective_annotations' for all of the annotations present on the resource.
-        :param pulumi.Input[builtins.str] description: Optional. Description of the 'DeployPolicy'. Max length is 255 characters.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the
-               following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and
-               dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a
-               lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values
-               are additionally constrained to be <= 63 characters. **Note**: This field is non-authoritative, and will only manage the
-               labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-               resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (`/`). * The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character (`[a-z0-9A-Z]`) with dashes (`-`), underscores (`_`), dots (`.`), and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots(`.`), not longer than 253 characters in total, followed by a slash (`/`). See https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more details.
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[builtins.str] description: Optional. Description of the `DeployPolicy`. Max length is 255 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 63 characters.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] name: Name of the `DeployPolicy`.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.bool] suspended: Optional. When suspended, the policy will not prevent actions from occurring, even if the action violates the policy.
         """
         pulumi.set(__self__, "location", location)
@@ -116,15 +108,9 @@ class DeployPolicyArgs:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations
-        must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an
-        optional prefix and name, separated by a slash ('/'). * The name segment is required and must be 63 characters or less,
-        beginning and ending with an alphanumeric character ('[a-z0-9A-Z]') with dashes ('-'), underscores ('_'), dots ('.'),
-        and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS
-        labels separated by dots('.'), not longer than 253 characters in total, followed by a slash ('/'). See
-        https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more
-        details. **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        Please refer to the field 'effective_annotations' for all of the annotations present on the resource.
+        Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (`/`). * The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character (`[a-z0-9A-Z]`) with dashes (`-`), underscores (`_`), dots (`.`), and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots(`.`), not longer than 253 characters in total, followed by a slash (`/`). See https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more details.
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -136,7 +122,7 @@ class DeployPolicyArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Optional. Description of the 'DeployPolicy'. Max length is 255 characters.
+        Optional. Description of the `DeployPolicy`. Max length is 255 characters.
         """
         return pulumi.get(self, "description")
 
@@ -148,13 +134,9 @@ class DeployPolicyArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the
-        following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and
-        dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a
-        lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values
-        are additionally constrained to be <= 63 characters. **Note**: This field is non-authoritative, and will only manage the
-        labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-        resource.
+        Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 63 characters.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -177,6 +159,10 @@ class DeployPolicyArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -217,28 +203,20 @@ class _DeployPolicyState:
                  update_time: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering DeployPolicy resources.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations
-               must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an
-               optional prefix and name, separated by a slash ('/'). * The name segment is required and must be 63 characters or less,
-               beginning and ending with an alphanumeric character ('[a-z0-9A-Z]') with dashes ('-'), underscores ('_'), dots ('.'),
-               and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS
-               labels separated by dots('.'), not longer than 253 characters in total, followed by a slash ('/'). See
-               https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more
-               details. **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-               Please refer to the field 'effective_annotations' for all of the annotations present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (`/`). * The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character (`[a-z0-9A-Z]`) with dashes (`-`), underscores (`_`), dots (`.`), and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots(`.`), not longer than 253 characters in total, followed by a slash (`/`). See https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more details.
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[builtins.str] create_time: Output only. Time at which the DeployPolicy was created.
-        :param pulumi.Input[builtins.str] description: Optional. Description of the 'DeployPolicy'. Max length is 255 characters.
+        :param pulumi.Input[builtins.str] description: Optional. Description of the `DeployPolicy`. Max length is 255 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[builtins.str] etag: Optional. The weak etag of the `DeployPolicy` resource. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the
-               following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and
-               dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a
-               lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values
-               are additionally constrained to be <= 63 characters. **Note**: This field is non-authoritative, and will only manage the
-               labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-               resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 63 characters.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location for the resource
         :param pulumi.Input[builtins.str] name: Name of the `DeployPolicy`.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input['DeployPolicyRuleArgs']]] rules: Required. Rules to apply. At least one rule must be present.
@@ -286,15 +264,9 @@ class _DeployPolicyState:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations
-        must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an
-        optional prefix and name, separated by a slash ('/'). * The name segment is required and must be 63 characters or less,
-        beginning and ending with an alphanumeric character ('[a-z0-9A-Z]') with dashes ('-'), underscores ('_'), dots ('.'),
-        and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS
-        labels separated by dots('.'), not longer than 253 characters in total, followed by a slash ('/'). See
-        https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more
-        details. **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        Please refer to the field 'effective_annotations' for all of the annotations present on the resource.
+        Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (`/`). * The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character (`[a-z0-9A-Z]`) with dashes (`-`), underscores (`_`), dots (`.`), and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots(`.`), not longer than 253 characters in total, followed by a slash (`/`). See https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more details.
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -318,7 +290,7 @@ class _DeployPolicyState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Optional. Description of the 'DeployPolicy'. Max length is 255 characters.
+        Optional. Description of the `DeployPolicy`. Max length is 255 characters.
         """
         return pulumi.get(self, "description")
 
@@ -363,13 +335,9 @@ class _DeployPolicyState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the
-        following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and
-        dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a
-        lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values
-        are additionally constrained to be <= 63 characters. **Note**: This field is non-authoritative, and will only manage the
-        labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-        resource.
+        Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 63 characters.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -404,6 +372,10 @@ class _DeployPolicyState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -684,25 +656,17 @@ class DeployPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations
-               must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an
-               optional prefix and name, separated by a slash ('/'). * The name segment is required and must be 63 characters or less,
-               beginning and ending with an alphanumeric character ('[a-z0-9A-Z]') with dashes ('-'), underscores ('_'), dots ('.'),
-               and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS
-               labels separated by dots('.'), not longer than 253 characters in total, followed by a slash ('/'). See
-               https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more
-               details. **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-               Please refer to the field 'effective_annotations' for all of the annotations present on the resource.
-        :param pulumi.Input[builtins.str] description: Optional. Description of the 'DeployPolicy'. Max length is 255 characters.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the
-               following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and
-               dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a
-               lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values
-               are additionally constrained to be <= 63 characters. **Note**: This field is non-authoritative, and will only manage the
-               labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-               resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (`/`). * The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character (`[a-z0-9A-Z]`) with dashes (`-`), underscores (`_`), dots (`.`), and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots(`.`), not longer than 253 characters in total, followed by a slash (`/`). See https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more details.
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[builtins.str] description: Optional. Description of the `DeployPolicy`. Max length is 255 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 63 characters.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location for the resource
         :param pulumi.Input[builtins.str] name: Name of the `DeployPolicy`.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DeployPolicyRuleArgs', 'DeployPolicyRuleArgsDict']]]] rules: Required. Rules to apply. At least one rule must be present.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DeployPolicySelectorArgs', 'DeployPolicySelectorArgsDict']]]] selectors: Required. Selected resources to which the policy will be applied. At least one selector is required. If one selector matches the resource the policy applies. For example, if there are two selectors and the action being attempted matches one of them, the policy will apply to that action.
@@ -985,28 +949,20 @@ class DeployPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations
-               must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an
-               optional prefix and name, separated by a slash ('/'). * The name segment is required and must be 63 characters or less,
-               beginning and ending with an alphanumeric character ('[a-z0-9A-Z]') with dashes ('-'), underscores ('_'), dots ('.'),
-               and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS
-               labels separated by dots('.'), not longer than 253 characters in total, followed by a slash ('/'). See
-               https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more
-               details. **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-               Please refer to the field 'effective_annotations' for all of the annotations present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (`/`). * The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character (`[a-z0-9A-Z]`) with dashes (`-`), underscores (`_`), dots (`.`), and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots(`.`), not longer than 253 characters in total, followed by a slash (`/`). See https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more details.
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[builtins.str] create_time: Output only. Time at which the DeployPolicy was created.
-        :param pulumi.Input[builtins.str] description: Optional. Description of the 'DeployPolicy'. Max length is 255 characters.
+        :param pulumi.Input[builtins.str] description: Optional. Description of the `DeployPolicy`. Max length is 255 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[builtins.str] etag: Optional. The weak etag of the `DeployPolicy` resource. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the
-               following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and
-               dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a
-               lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values
-               are additionally constrained to be <= 63 characters. **Note**: This field is non-authoritative, and will only manage the
-               labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-               resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 63 characters.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location for the resource
         :param pulumi.Input[builtins.str] name: Name of the `DeployPolicy`.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DeployPolicyRuleArgs', 'DeployPolicyRuleArgsDict']]]] rules: Required. Rules to apply. At least one rule must be present.
@@ -1043,15 +999,9 @@ class DeployPolicy(pulumi.CustomResource):
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
         """
-        Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations
-        must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an
-        optional prefix and name, separated by a slash ('/'). * The name segment is required and must be 63 characters or less,
-        beginning and ending with an alphanumeric character ('[a-z0-9A-Z]') with dashes ('-'), underscores ('_'), dots ('.'),
-        and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS
-        labels separated by dots('.'), not longer than 253 characters in total, followed by a slash ('/'). See
-        https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more
-        details. **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        Please refer to the field 'effective_annotations' for all of the annotations present on the resource.
+        Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (`/`). * The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character (`[a-z0-9A-Z]`) with dashes (`-`), underscores (`_`), dots (`.`), and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots(`.`), not longer than 253 characters in total, followed by a slash (`/`). See https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more details.
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -1067,7 +1017,7 @@ class DeployPolicy(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Optional. Description of the 'DeployPolicy'. Max length is 255 characters.
+        Optional. Description of the `DeployPolicy`. Max length is 255 characters.
         """
         return pulumi.get(self, "description")
 
@@ -1096,13 +1046,9 @@ class DeployPolicy(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
         """
-        Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the
-        following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and
-        dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a
-        lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values
-        are additionally constrained to be <= 63 characters. **Note**: This field is non-authoritative, and will only manage the
-        labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-        resource.
+        Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 63 characters.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1125,6 +1071,10 @@ class DeployPolicy(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property

@@ -113,8 +113,6 @@ public class FirewallRule extends com.pulumi.resources.CustomResource {
      * The action to take if this rule matches.
      * Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.
      * 
-     * ***
-     * 
      */
     @Export(name="action", refs={String.class}, tree="[0]")
     private Output<String> action;
@@ -122,8 +120,6 @@ public class FirewallRule extends com.pulumi.resources.CustomResource {
     /**
      * @return The action to take if this rule matches.
      * Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.
-     * 
-     * ***
      * 
      */
     public Output<String> action() {

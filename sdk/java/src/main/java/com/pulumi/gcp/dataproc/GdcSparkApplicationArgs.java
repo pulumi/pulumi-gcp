@@ -219,16 +219,12 @@ public final class GdcSparkApplicationArgs extends com.pulumi.resources.Resource
     /**
      * The id of the application
      * 
-     * ***
-     * 
      */
     @Import(name="sparkApplicationId", required=true)
     private Output<String> sparkApplicationId;
 
     /**
      * @return The id of the application
-     * 
-     * ***
      * 
      */
     public Output<String> sparkApplicationId() {
@@ -602,8 +598,6 @@ public final class GdcSparkApplicationArgs extends com.pulumi.resources.Resource
         /**
          * @param sparkApplicationId The id of the application
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -614,8 +608,6 @@ public final class GdcSparkApplicationArgs extends com.pulumi.resources.Resource
 
         /**
          * @param sparkApplicationId The id of the application
-         * 
-         * ***
          * 
          * @return builder
          * 

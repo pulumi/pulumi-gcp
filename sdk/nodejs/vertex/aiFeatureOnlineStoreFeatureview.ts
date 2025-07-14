@@ -498,9 +498,6 @@ export class AiFeatureOnlineStoreFeatureview extends pulumi.CustomResource {
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The region for the resource. It should be the same as the featureonlinestore region.
-     *
-     *
-     * - - -
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -619,9 +616,6 @@ export interface AiFeatureOnlineStoreFeatureviewState {
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The region for the resource. It should be the same as the featureonlinestore region.
-     *
-     *
-     * - - -
      */
     region?: pulumi.Input<string>;
     /**
@@ -676,9 +670,6 @@ export interface AiFeatureOnlineStoreFeatureviewArgs {
     project?: pulumi.Input<string>;
     /**
      * The region for the resource. It should be the same as the featureonlinestore region.
-     *
-     *
-     * - - -
      */
     region?: pulumi.Input<string>;
     /**

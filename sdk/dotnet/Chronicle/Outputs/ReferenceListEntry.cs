@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.Chronicle.Outputs
     {
         /// <summary>
         /// Required. The value of the entry. Maximum length is 512 characters.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string Value;
 

@@ -48,16 +48,12 @@ public final class CapabilityArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Capability Value.
      * 
-     * ***
-     * 
      */
     @Import(name="value", required=true)
     private Output<Boolean> value;
 
     /**
      * @return Capability Value.
-     * 
-     * ***
      * 
      */
     public Output<Boolean> value() {
@@ -135,8 +131,6 @@ public final class CapabilityArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param value Capability Value.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -147,8 +141,6 @@ public final class CapabilityArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param value Capability Value.
-         * 
-         * ***
          * 
          * @return builder
          * 

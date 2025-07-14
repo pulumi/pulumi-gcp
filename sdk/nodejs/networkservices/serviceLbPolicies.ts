@@ -137,9 +137,6 @@ export class ServiceLbPolicies extends pulumi.CustomResource {
     public readonly loadBalancingAlgorithm!: pulumi.Output<string | undefined>;
     /**
      * The location of the service lb policy.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -250,9 +247,6 @@ export interface ServiceLbPoliciesState {
     loadBalancingAlgorithm?: pulumi.Input<string>;
     /**
      * The location of the service lb policy.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -306,9 +300,6 @@ export interface ServiceLbPoliciesArgs {
     loadBalancingAlgorithm?: pulumi.Input<string>;
     /**
      * The location of the service lb policy.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

@@ -205,8 +205,6 @@ public class FirewallEndpoint extends com.pulumi.resources.CustomResource {
      * The name of the parent this firewall endpoint belongs to.
      * Format: organizations/{organization_id}.
      * 
-     * ***
-     * 
      */
     @Export(name="parent", refs={String.class}, tree="[0]")
     private Output<String> parent;
@@ -214,8 +212,6 @@ public class FirewallEndpoint extends com.pulumi.resources.CustomResource {
     /**
      * @return The name of the parent this firewall endpoint belongs to.
      * Format: organizations/{organization_id}.
-     * 
-     * ***
      * 
      */
     public Output<String> parent() {

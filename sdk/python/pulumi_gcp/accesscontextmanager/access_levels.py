@@ -28,9 +28,6 @@ class AccessLevelsArgs:
         The set of arguments for constructing a AccessLevels resource.
         :param pulumi.Input[builtins.str] parent: The AccessPolicy this AccessLevel lives in.
                Format: accessPolicies/{policy_id}
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelArgs']]] access_levels: The desired Access Levels that should replace all existing Access Levels in the Access Policy.
                Structure is documented below.
         """
@@ -44,9 +41,6 @@ class AccessLevelsArgs:
         """
         The AccessPolicy this AccessLevel lives in.
         Format: accessPolicies/{policy_id}
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 
@@ -79,9 +73,6 @@ class _AccessLevelsState:
                Structure is documented below.
         :param pulumi.Input[builtins.str] parent: The AccessPolicy this AccessLevel lives in.
                Format: accessPolicies/{policy_id}
-               
-               
-               - - -
         """
         if access_levels is not None:
             pulumi.set(__self__, "access_levels", access_levels)
@@ -107,9 +98,6 @@ class _AccessLevelsState:
         """
         The AccessPolicy this AccessLevel lives in.
         Format: accessPolicies/{policy_id}
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 
@@ -207,9 +195,6 @@ class AccessLevels(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[builtins.str] parent: The AccessPolicy this AccessLevel lives in.
                Format: accessPolicies/{policy_id}
-               
-               
-               - - -
         """
         ...
     @overload
@@ -344,9 +329,6 @@ class AccessLevels(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[builtins.str] parent: The AccessPolicy this AccessLevel lives in.
                Format: accessPolicies/{policy_id}
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -371,9 +353,6 @@ class AccessLevels(pulumi.CustomResource):
         """
         The AccessPolicy this AccessLevel lives in.
         Format: accessPolicies/{policy_id}
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 

@@ -253,8 +253,6 @@ class RegistrationContactSettingsAdminContactPostalAddress(dict):
                they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
         :param Sequence[builtins.str] recipients: The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
                it might contain "care of" information.
-               
-               - - -
         """
         pulumi.set(__self__, "region_code", region_code)
         if address_lines is not None:
@@ -336,8 +334,6 @@ class RegistrationContactSettingsAdminContactPostalAddress(dict):
         """
         The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
         it might contain "care of" information.
-
-        - - -
         """
         return pulumi.get(self, "recipients")
 
@@ -471,8 +467,6 @@ class RegistrationContactSettingsRegistrantContactPostalAddress(dict):
                they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
         :param Sequence[builtins.str] recipients: The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
                it might contain "care of" information.
-               
-               - - -
         """
         pulumi.set(__self__, "region_code", region_code)
         if address_lines is not None:
@@ -554,8 +548,6 @@ class RegistrationContactSettingsRegistrantContactPostalAddress(dict):
         """
         The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
         it might contain "care of" information.
-
-        - - -
         """
         return pulumi.get(self, "recipients")
 
@@ -689,8 +681,6 @@ class RegistrationContactSettingsTechnicalContactPostalAddress(dict):
                they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
         :param Sequence[builtins.str] recipients: The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
                it might contain "care of" information.
-               
-               - - -
         """
         pulumi.set(__self__, "region_code", region_code)
         if address_lines is not None:
@@ -772,8 +762,6 @@ class RegistrationContactSettingsTechnicalContactPostalAddress(dict):
         """
         The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
         it might contain "care of" information.
-
-        - - -
         """
         return pulumi.get(self, "recipients")
 

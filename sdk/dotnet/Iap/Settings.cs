@@ -178,9 +178,6 @@ namespace Pulumi.Gcp.Iap
         /// * projects/{project_id}/iap_web/appengine-{app_id}
         /// * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}
         /// * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}/version/{version_id}
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -258,9 +255,6 @@ namespace Pulumi.Gcp.Iap
         /// * projects/{project_id}/iap_web/appengine-{app_id}
         /// * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}
         /// * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}/version/{version_id}
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -300,9 +294,6 @@ namespace Pulumi.Gcp.Iap
         /// * projects/{project_id}/iap_web/appengine-{app_id}
         /// * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}
         /// * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}/version/{version_id}
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -24,8 +24,6 @@ public final class AttestorAttestationAuthorityNotePublicKeyPkixPublicKey {
      * publicKeyPem (i.e. this algorithm must match that of the
      * public key).
      * 
-     * ***
-     * 
      */
     private @Nullable String signatureAlgorithm;
 
@@ -44,8 +42,6 @@ public final class AttestorAttestationAuthorityNotePublicKeyPkixPublicKey {
      * match the structure and any object identifiers encoded in
      * publicKeyPem (i.e. this algorithm must match that of the
      * public key).
-     * 
-     * ***
      * 
      */
     public Optional<String> signatureAlgorithm() {

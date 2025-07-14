@@ -200,8 +200,6 @@ public class VpcServiceControls extends com.pulumi.resources.CustomResource {
      * producer&#39;s organization. For Google services that support this
      * functionality, this value is `servicenetworking.googleapis.com`.
      * 
-     * ***
-     * 
      */
     @Export(name="service", refs={String.class}, tree="[0]")
     private Output<String> service;
@@ -210,8 +208,6 @@ public class VpcServiceControls extends com.pulumi.resources.CustomResource {
      * @return The service that is managing peering connectivity for a service
      * producer&#39;s organization. For Google services that support this
      * functionality, this value is `servicenetworking.googleapis.com`.
-     * 
-     * ***
      * 
      */
     public Output<String> service() {

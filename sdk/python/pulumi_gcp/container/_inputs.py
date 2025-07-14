@@ -190,6 +190,8 @@ __all__ = [
     'ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgsDict',
     'ClusterAddonsConfigStatefulHaConfigArgs',
     'ClusterAddonsConfigStatefulHaConfigArgsDict',
+    'ClusterAnonymousAuthenticationConfigArgs',
+    'ClusterAnonymousAuthenticationConfigArgsDict',
     'ClusterAuthenticatorGroupsConfigArgs',
     'ClusterAuthenticatorGroupsConfigArgsDict',
     'ClusterBinaryAuthorizationArgs',
@@ -476,6 +478,8 @@ __all__ = [
     'ClusterResourceUsageExportConfigBigqueryDestinationArgsDict',
     'ClusterSecretManagerConfigArgs',
     'ClusterSecretManagerConfigArgsDict',
+    'ClusterSecretManagerConfigRotationConfigArgs',
+    'ClusterSecretManagerConfigRotationConfigArgsDict',
     'ClusterSecurityPostureConfigArgs',
     'ClusterSecurityPostureConfigArgsDict',
     'ClusterServiceExternalIpsConfigArgs',
@@ -725,8 +729,7 @@ if not MYPY:
     class AttachedClusterFleetArgsDict(TypedDict):
         project: pulumi.Input[builtins.str]
         """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
+        The number of the Fleet host project where this cluster will be registered.
         """
         membership: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -744,8 +747,7 @@ class AttachedClusterFleetArgs:
                  project: pulumi.Input[builtins.str],
                  membership: Optional[pulumi.Input[builtins.str]] = None):
         """
-        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
+        :param pulumi.Input[builtins.str] project: The number of the Fleet host project where this cluster will be registered.
         :param pulumi.Input[builtins.str] membership: (Output)
                The name of the managed Hub Membership resource associated to this
                cluster. Membership names are formatted as
@@ -759,8 +761,7 @@ class AttachedClusterFleetArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[builtins.str]:
         """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
+        The number of the Fleet host project where this cluster will be registered.
         """
         return pulumi.get(self, "project")
 
@@ -5545,6 +5546,37 @@ class ClusterAddonsConfigStatefulHaConfigArgs:
     @enabled.setter
     def enabled(self, value: pulumi.Input[builtins.bool]):
         pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
+    class ClusterAnonymousAuthenticationConfigArgsDict(TypedDict):
+        mode: pulumi.Input[builtins.str]
+        """
+        Sets or removes authentication restrictions. Available options include `LIMITED` and `ENABLED`.
+        """
+elif False:
+    ClusterAnonymousAuthenticationConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterAnonymousAuthenticationConfigArgs:
+    def __init__(__self__, *,
+                 mode: pulumi.Input[builtins.str]):
+        """
+        :param pulumi.Input[builtins.str] mode: Sets or removes authentication restrictions. Available options include `LIMITED` and `ENABLED`.
+        """
+        pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> pulumi.Input[builtins.str]:
+        """
+        Sets or removes authentication restrictions. Available options include `LIMITED` and `ENABLED`.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "mode", value)
 
 
 if not MYPY:
@@ -16752,17 +16784,25 @@ if not MYPY:
         """
         Enable the Secret Manager add-on for this cluster.
         """
+        rotation_config: NotRequired[pulumi.Input['ClusterSecretManagerConfigRotationConfigArgsDict']]
+        """
+        config for secret manager auto rotation. Structure is docuemented below
+        """
 elif False:
     ClusterSecretManagerConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterSecretManagerConfigArgs:
     def __init__(__self__, *,
-                 enabled: pulumi.Input[builtins.bool]):
+                 enabled: pulumi.Input[builtins.bool],
+                 rotation_config: Optional[pulumi.Input['ClusterSecretManagerConfigRotationConfigArgs']] = None):
         """
         :param pulumi.Input[builtins.bool] enabled: Enable the Secret Manager add-on for this cluster.
+        :param pulumi.Input['ClusterSecretManagerConfigRotationConfigArgs'] rotation_config: config for secret manager auto rotation. Structure is docuemented below
         """
         pulumi.set(__self__, "enabled", enabled)
+        if rotation_config is not None:
+            pulumi.set(__self__, "rotation_config", rotation_config)
 
     @property
     @pulumi.getter
@@ -16775,6 +16815,69 @@ class ClusterSecretManagerConfigArgs:
     @enabled.setter
     def enabled(self, value: pulumi.Input[builtins.bool]):
         pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="rotationConfig")
+    def rotation_config(self) -> Optional[pulumi.Input['ClusterSecretManagerConfigRotationConfigArgs']]:
+        """
+        config for secret manager auto rotation. Structure is docuemented below
+        """
+        return pulumi.get(self, "rotation_config")
+
+    @rotation_config.setter
+    def rotation_config(self, value: Optional[pulumi.Input['ClusterSecretManagerConfigRotationConfigArgs']]):
+        pulumi.set(self, "rotation_config", value)
+
+
+if not MYPY:
+    class ClusterSecretManagerConfigRotationConfigArgsDict(TypedDict):
+        enabled: pulumi.Input[builtins.bool]
+        """
+        Enable the roation in Secret Manager add-on for this cluster.
+        """
+        rotation_interval: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The interval between two consecutive rotations. Default rotation interval is 2 minutes.
+        """
+elif False:
+    ClusterSecretManagerConfigRotationConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterSecretManagerConfigRotationConfigArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[builtins.bool],
+                 rotation_interval: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.bool] enabled: Enable the roation in Secret Manager add-on for this cluster.
+        :param pulumi.Input[builtins.str] rotation_interval: The interval between two consecutive rotations. Default rotation interval is 2 minutes.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if rotation_interval is not None:
+            pulumi.set(__self__, "rotation_interval", rotation_interval)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[builtins.bool]:
+        """
+        Enable the roation in Secret Manager add-on for this cluster.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[builtins.bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="rotationInterval")
+    def rotation_interval(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The interval between two consecutive rotations. Default rotation interval is 2 minutes.
+        """
+        return pulumi.get(self, "rotation_interval")
+
+    @rotation_interval.setter
+    def rotation_interval(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "rotation_interval", value)
 
 
 if not MYPY:

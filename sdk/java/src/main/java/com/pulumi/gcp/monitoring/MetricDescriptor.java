@@ -363,8 +363,6 @@ public class MetricDescriptor extends com.pulumi.resources.CustomResource {
      * Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
      * Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
      * 
-     * ***
-     * 
      */
     @Export(name="valueType", refs={String.class}, tree="[0]")
     private Output<String> valueType;
@@ -372,8 +370,6 @@ public class MetricDescriptor extends com.pulumi.resources.CustomResource {
     /**
      * @return Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
      * Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
-     * 
-     * ***
      * 
      */
     public Output<String> valueType() {

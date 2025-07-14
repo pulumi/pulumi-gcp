@@ -179,16 +179,17 @@ type AutonomousDatabase struct {
 	// contain a maximum of 30 alphanumeric characters.
 	Database           pulumi.StringOutput  `pulumi:"database"`
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
-	// The display name for the Autonomous Database. The name does not have to be unique within your project.
+	// The display name for the Autonomous Database. The name does not have to
+	// be unique within your project.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The ID of the subscription entitlement associated with the Autonomous
 	// Database.
 	EntitlementId pulumi.StringOutput `pulumi:"entitlementId"`
-	// The labels or tags associated with the Autonomous Database. **Note**: This field is non-authoritative, and will only
-	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-	// present on the resource.
+	// The labels or tags associated with the Autonomous Database.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/AutonomousDatabaseBackup`.
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -198,6 +199,8 @@ type AutonomousDatabase struct {
 	// The name of the VPC network used by the Autonomous Database.
 	// Format: projects/{project}/global/networks/{network}
 	Network pulumi.StringOutput `pulumi:"network"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The properties of an Autonomous Database.
 	// Structure is documented below.
@@ -276,16 +279,17 @@ type autonomousDatabaseState struct {
 	// contain a maximum of 30 alphanumeric characters.
 	Database           *string `pulumi:"database"`
 	DeletionProtection *bool   `pulumi:"deletionProtection"`
-	// The display name for the Autonomous Database. The name does not have to be unique within your project.
+	// The display name for the Autonomous Database. The name does not have to
+	// be unique within your project.
 	DisplayName *string `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The ID of the subscription entitlement associated with the Autonomous
 	// Database.
 	EntitlementId *string `pulumi:"entitlementId"`
-	// The labels or tags associated with the Autonomous Database. **Note**: This field is non-authoritative, and will only
-	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-	// present on the resource.
+	// The labels or tags associated with the Autonomous Database.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/AutonomousDatabaseBackup`.
 	Location *string `pulumi:"location"`
@@ -295,6 +299,8 @@ type autonomousDatabaseState struct {
 	// The name of the VPC network used by the Autonomous Database.
 	// Format: projects/{project}/global/networks/{network}
 	Network *string `pulumi:"network"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The properties of an Autonomous Database.
 	// Structure is documented below.
@@ -321,16 +327,17 @@ type AutonomousDatabaseState struct {
 	// contain a maximum of 30 alphanumeric characters.
 	Database           pulumi.StringPtrInput
 	DeletionProtection pulumi.BoolPtrInput
-	// The display name for the Autonomous Database. The name does not have to be unique within your project.
+	// The display name for the Autonomous Database. The name does not have to
+	// be unique within your project.
 	DisplayName pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// The ID of the subscription entitlement associated with the Autonomous
 	// Database.
 	EntitlementId pulumi.StringPtrInput
-	// The labels or tags associated with the Autonomous Database. **Note**: This field is non-authoritative, and will only
-	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-	// present on the resource.
+	// The labels or tags associated with the Autonomous Database.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/AutonomousDatabaseBackup`.
 	Location pulumi.StringPtrInput
@@ -340,6 +347,8 @@ type AutonomousDatabaseState struct {
 	// The name of the VPC network used by the Autonomous Database.
 	// Format: projects/{project}/global/networks/{network}
 	Network pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The properties of an Autonomous Database.
 	// Structure is documented below.
@@ -368,17 +377,20 @@ type autonomousDatabaseArgs struct {
 	// contain a maximum of 30 alphanumeric characters.
 	Database           string `pulumi:"database"`
 	DeletionProtection *bool  `pulumi:"deletionProtection"`
-	// The display name for the Autonomous Database. The name does not have to be unique within your project.
+	// The display name for the Autonomous Database. The name does not have to
+	// be unique within your project.
 	DisplayName *string `pulumi:"displayName"`
-	// The labels or tags associated with the Autonomous Database. **Note**: This field is non-authoritative, and will only
-	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-	// present on the resource.
+	// The labels or tags associated with the Autonomous Database.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/AutonomousDatabaseBackup`.
 	Location string `pulumi:"location"`
 	// The name of the VPC network used by the Autonomous Database.
 	// Format: projects/{project}/global/networks/{network}
-	Network string  `pulumi:"network"`
+	Network string `pulumi:"network"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The properties of an Autonomous Database.
 	// Structure is documented below.
@@ -401,17 +413,20 @@ type AutonomousDatabaseArgs struct {
 	// contain a maximum of 30 alphanumeric characters.
 	Database           pulumi.StringInput
 	DeletionProtection pulumi.BoolPtrInput
-	// The display name for the Autonomous Database. The name does not have to be unique within your project.
+	// The display name for the Autonomous Database. The name does not have to
+	// be unique within your project.
 	DisplayName pulumi.StringPtrInput
-	// The labels or tags associated with the Autonomous Database. **Note**: This field is non-authoritative, and will only
-	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-	// present on the resource.
+	// The labels or tags associated with the Autonomous Database.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/AutonomousDatabaseBackup`.
 	Location pulumi.StringInput
 	// The name of the VPC network used by the Autonomous Database.
 	// Format: projects/{project}/global/networks/{network}
 	Network pulumi.StringInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The properties of an Autonomous Database.
 	// Structure is documented below.
@@ -539,7 +554,8 @@ func (o AutonomousDatabaseOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AutonomousDatabase) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
 
-// The display name for the Autonomous Database. The name does not have to be unique within your project.
+// The display name for the Autonomous Database. The name does not have to
+// be unique within your project.
 func (o AutonomousDatabaseOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AutonomousDatabase) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
@@ -555,9 +571,9 @@ func (o AutonomousDatabaseOutput) EntitlementId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AutonomousDatabase) pulumi.StringOutput { return v.EntitlementId }).(pulumi.StringOutput)
 }
 
-// The labels or tags associated with the Autonomous Database. **Note**: This field is non-authoritative, and will only
-// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-// present on the resource.
+// The labels or tags associated with the Autonomous Database.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o AutonomousDatabaseOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AutonomousDatabase) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -579,6 +595,8 @@ func (o AutonomousDatabaseOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v *AutonomousDatabase) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o AutonomousDatabaseOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *AutonomousDatabase) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

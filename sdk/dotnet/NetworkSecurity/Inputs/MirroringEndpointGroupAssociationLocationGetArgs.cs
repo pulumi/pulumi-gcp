@@ -14,9 +14,6 @@ namespace Pulumi.Gcp.NetworkSecurity.Inputs
     {
         /// <summary>
         /// The cloud location of the association, currently restricted to `global`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

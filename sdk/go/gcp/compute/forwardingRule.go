@@ -1375,8 +1375,6 @@ type ForwardingRule struct {
 	// For Private Service Connect forwarding rules that forward traffic to Google
 	// APIs, the forwarding rule name must be a 1-20 characters string with
 	// lowercase letters and numbers and must start with a letter.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// This field is not used for external load balancing.
 	// For Internal TCP/UDP Load Balancing, this field identifies the network that
@@ -1666,8 +1664,6 @@ type forwardingRuleState struct {
 	// For Private Service Connect forwarding rules that forward traffic to Google
 	// APIs, the forwarding rule name must be a 1-20 characters string with
 	// lowercase letters and numbers and must start with a letter.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// This field is not used for external load balancing.
 	// For Internal TCP/UDP Load Balancing, this field identifies the network that
@@ -1923,8 +1919,6 @@ type ForwardingRuleState struct {
 	// For Private Service Connect forwarding rules that forward traffic to Google
 	// APIs, the forwarding rule name must be a 1-20 characters string with
 	// lowercase letters and numbers and must start with a letter.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// This field is not used for external load balancing.
 	// For Internal TCP/UDP Load Balancing, this field identifies the network that
@@ -2173,8 +2167,6 @@ type forwardingRuleArgs struct {
 	// For Private Service Connect forwarding rules that forward traffic to Google
 	// APIs, the forwarding rule name must be a 1-20 characters string with
 	// lowercase letters and numbers and must start with a letter.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// This field is not used for external load balancing.
 	// For Internal TCP/UDP Load Balancing, this field identifies the network that
@@ -2408,8 +2400,6 @@ type ForwardingRuleArgs struct {
 	// For Private Service Connect forwarding rules that forward traffic to Google
 	// APIs, the forwarding rule name must be a 1-20 characters string with
 	// lowercase letters and numbers and must start with a letter.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// This field is not used for external load balancing.
 	// For Internal TCP/UDP Load Balancing, this field identifies the network that
@@ -2790,8 +2780,6 @@ func (o ForwardingRuleOutput) LoadBalancingScheme() pulumi.StringPtrOutput {
 // For Private Service Connect forwarding rules that forward traffic to Google
 // APIs, the forwarding rule name must be a 1-20 characters string with
 // lowercase letters and numbers and must start with a letter.
-//
-// ***
 func (o ForwardingRuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

@@ -1316,8 +1316,6 @@ func (o DeveloperAttributeArrayOutput) Index(i pulumi.IntInput) DeveloperAttribu
 
 type DnsZonePeeringConfig struct {
 	// The name of the producer VPC network.
-	//
-	// ***
 	TargetNetworkId string `pulumi:"targetNetworkId"`
 	// The ID of the project that contains the producer VPC network.
 	TargetProjectId string `pulumi:"targetProjectId"`
@@ -1336,8 +1334,6 @@ type DnsZonePeeringConfigInput interface {
 
 type DnsZonePeeringConfigArgs struct {
 	// The name of the producer VPC network.
-	//
-	// ***
 	TargetNetworkId pulumi.StringInput `pulumi:"targetNetworkId"`
 	// The ID of the project that contains the producer VPC network.
 	TargetProjectId pulumi.StringInput `pulumi:"targetProjectId"`
@@ -1421,8 +1417,6 @@ func (o DnsZonePeeringConfigOutput) ToDnsZonePeeringConfigPtrOutputWithContext(c
 }
 
 // The name of the producer VPC network.
-//
-// ***
 func (o DnsZonePeeringConfigOutput) TargetNetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v DnsZonePeeringConfig) string { return v.TargetNetworkId }).(pulumi.StringOutput)
 }
@@ -1457,8 +1451,6 @@ func (o DnsZonePeeringConfigPtrOutput) Elem() DnsZonePeeringConfigOutput {
 }
 
 // The name of the producer VPC network.
-//
-// ***
 func (o DnsZonePeeringConfigPtrOutput) TargetNetworkId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DnsZonePeeringConfig) *string {
 		if v == nil {
@@ -3579,8 +3571,6 @@ type KeystoresAliasesSelfSignedCertSubject struct {
 	// Two-letter country code. Example, IN for India, US for United States of America.
 	CountryCode *string `pulumi:"countryCode"`
 	// Email address. Max 255 characters.
-	//
-	// ***
 	Email *string `pulumi:"email"`
 	// City or town name. Maximum length is 128 characters.
 	Locality *string `pulumi:"locality"`
@@ -3609,8 +3599,6 @@ type KeystoresAliasesSelfSignedCertSubjectArgs struct {
 	// Two-letter country code. Example, IN for India, US for United States of America.
 	CountryCode pulumi.StringPtrInput `pulumi:"countryCode"`
 	// Email address. Max 255 characters.
-	//
-	// ***
 	Email pulumi.StringPtrInput `pulumi:"email"`
 	// City or town name. Maximum length is 128 characters.
 	Locality pulumi.StringPtrInput `pulumi:"locality"`
@@ -3710,8 +3698,6 @@ func (o KeystoresAliasesSelfSignedCertSubjectOutput) CountryCode() pulumi.String
 }
 
 // Email address. Max 255 characters.
-//
-// ***
 func (o KeystoresAliasesSelfSignedCertSubjectOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeystoresAliasesSelfSignedCertSubject) *string { return v.Email }).(pulumi.StringPtrOutput)
 }
@@ -3781,8 +3767,6 @@ func (o KeystoresAliasesSelfSignedCertSubjectPtrOutput) CountryCode() pulumi.Str
 }
 
 // Email address. Max 255 characters.
-//
-// ***
 func (o KeystoresAliasesSelfSignedCertSubjectPtrOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KeystoresAliasesSelfSignedCertSubject) *string {
 		if v == nil {
@@ -4341,8 +4325,6 @@ type SecurityProfileV2ProfileAssessmentConfig struct {
 	Assessment string `pulumi:"assessment"`
 	// The weight of the assessment.
 	// Possible values are: `MINOR`, `MODERATE`, `MAJOR`.
-	//
-	// ***
 	Weight string `pulumi:"weight"`
 }
 
@@ -4362,8 +4344,6 @@ type SecurityProfileV2ProfileAssessmentConfigArgs struct {
 	Assessment pulumi.StringInput `pulumi:"assessment"`
 	// The weight of the assessment.
 	// Possible values are: `MINOR`, `MODERATE`, `MAJOR`.
-	//
-	// ***
 	Weight pulumi.StringInput `pulumi:"weight"`
 }
 
@@ -4425,8 +4405,6 @@ func (o SecurityProfileV2ProfileAssessmentConfigOutput) Assessment() pulumi.Stri
 
 // The weight of the assessment.
 // Possible values are: `MINOR`, `MODERATE`, `MAJOR`.
-//
-// ***
 func (o SecurityProfileV2ProfileAssessmentConfigOutput) Weight() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityProfileV2ProfileAssessmentConfig) string { return v.Weight }).(pulumi.StringOutput)
 }

@@ -12,6 +12,14 @@ namespace Pulumi.Gcp.Kms
     public static class GetKeyHandles
     {
         /// <summary>
+        /// Provides access to Google Cloud Platform KMS KeyHandle. A key handle is a Cloud KMS resource that helps you safely span the separation of duties to create new Cloud KMS keys for CMEK using Autokey.
+        /// 
+        /// For more information see
+        /// [the official documentation](https://cloud.google.com/kms/docs/resource-hierarchy#key_handles)
+        /// and
+        /// [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyHandles/list).
+        /// 
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -36,6 +44,14 @@ namespace Pulumi.Gcp.Kms
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKeyHandlesResult>("gcp:kms/getKeyHandles:getKeyHandles", args ?? new GetKeyHandlesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Provides access to Google Cloud Platform KMS KeyHandle. A key handle is a Cloud KMS resource that helps you safely span the separation of duties to create new Cloud KMS keys for CMEK using Autokey.
+        /// 
+        /// For more information see
+        /// [the official documentation](https://cloud.google.com/kms/docs/resource-hierarchy#key_handles)
+        /// and
+        /// [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyHandles/list).
+        /// 
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -60,6 +76,14 @@ namespace Pulumi.Gcp.Kms
             => global::Pulumi.Deployment.Instance.Invoke<GetKeyHandlesResult>("gcp:kms/getKeyHandles:getKeyHandles", args ?? new GetKeyHandlesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Provides access to Google Cloud Platform KMS KeyHandle. A key handle is a Cloud KMS resource that helps you safely span the separation of duties to create new Cloud KMS keys for CMEK using Autokey.
+        /// 
+        /// For more information see
+        /// [the official documentation](https://cloud.google.com/kms/docs/resource-hierarchy#key_handles)
+        /// and
+        /// [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyHandles/list).
+        /// 
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

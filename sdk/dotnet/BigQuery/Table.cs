@@ -227,6 +227,13 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string?> FriendlyName { get; private set; } = null!;
 
         /// <summary>
+        /// A list of fields which should be ignored for each column in schema.
+        /// **NOTE:** Right now only `dataPolicies` field is supported. We might support others in the future.
+        /// </summary>
+        [Output("ignoreSchemaChanges")]
+        public Output<ImmutableArray<string>> IgnoreSchemaChanges { get; private set; } = null!;
+
+        /// <summary>
         /// A mapping of labels to assign to the resource.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -520,6 +527,19 @@ namespace Pulumi.Gcp.BigQuery
         [Input("friendlyName")]
         public Input<string>? FriendlyName { get; set; }
 
+        [Input("ignoreSchemaChanges")]
+        private InputList<string>? _ignoreSchemaChanges;
+
+        /// <summary>
+        /// A list of fields which should be ignored for each column in schema.
+        /// **NOTE:** Right now only `dataPolicies` field is supported. We might support others in the future.
+        /// </summary>
+        public InputList<string> IgnoreSchemaChanges
+        {
+            get => _ignoreSchemaChanges ?? (_ignoreSchemaChanges = new InputList<string>());
+            set => _ignoreSchemaChanges = value;
+        }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -778,6 +798,19 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("friendlyName")]
         public Input<string>? FriendlyName { get; set; }
+
+        [Input("ignoreSchemaChanges")]
+        private InputList<string>? _ignoreSchemaChanges;
+
+        /// <summary>
+        /// A list of fields which should be ignored for each column in schema.
+        /// **NOTE:** Right now only `dataPolicies` field is supported. We might support others in the future.
+        /// </summary>
+        public InputList<string> IgnoreSchemaChanges
+        {
+            get => _ignoreSchemaChanges ?? (_ignoreSchemaChanges = new InputList<string>());
+            set => _ignoreSchemaChanges = value;
+        }
 
         [Input("labels")]
         private InputMap<string>? _labels;

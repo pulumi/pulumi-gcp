@@ -277,9 +277,6 @@ namespace Pulumi.Gcp.Compute
         /// name is given, the zone will default to the given zone or
         /// the provider-default zone and the project will default to the
         /// provider-level project.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("instance")]
         public Output<string> Instance { get; private set; } = null!;
@@ -395,9 +392,6 @@ namespace Pulumi.Gcp.Compute
         /// name is given, the zone will default to the given zone or
         /// the provider-default zone and the project will default to the
         /// provider-level project.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("instance", required: true)]
         public Input<string> Instance { get; set; } = null!;
@@ -475,9 +469,6 @@ namespace Pulumi.Gcp.Compute
         /// name is given, the zone will default to the given zone or
         /// the provider-default zone and the project will default to the
         /// provider-level project.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("instance")]
         public Input<string>? Instance { get; set; }

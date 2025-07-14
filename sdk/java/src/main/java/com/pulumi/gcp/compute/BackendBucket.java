@@ -380,6 +380,24 @@ public class BackendBucket extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enableCdn);
     }
     /**
+     * The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
+     * If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+     * Possible values are: `INTERNAL_MANAGED`.
+     * 
+     */
+    @Export(name="loadBalancingScheme", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> loadBalancingScheme;
+
+    /**
+     * @return The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
+     * If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+     * Possible values are: `INTERNAL_MANAGED`.
+     * 
+     */
+    public Output<Optional<String>> loadBalancingScheme() {
+        return Codegen.optional(this.loadBalancingScheme);
+    }
+    /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
      * RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -387,8 +405,6 @@ public class BackendBucket extends com.pulumi.resources.CustomResource {
      * the first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the
      * last character, which cannot be a dash.
-     * 
-     * ***
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
@@ -402,8 +418,6 @@ public class BackendBucket extends com.pulumi.resources.CustomResource {
      * the first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the
      * last character, which cannot be a dash.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

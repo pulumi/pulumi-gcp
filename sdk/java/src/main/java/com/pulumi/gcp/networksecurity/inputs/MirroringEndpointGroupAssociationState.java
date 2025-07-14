@@ -74,16 +74,12 @@ public final class MirroringEndpointGroupAssociationState extends com.pulumi.res
     /**
      * The cloud location of the association, currently restricted to `global`.
      * 
-     * ***
-     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
      * @return The cloud location of the association, currently restricted to `global`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> location() {
@@ -423,8 +419,6 @@ public final class MirroringEndpointGroupAssociationState extends com.pulumi.res
         /**
          * @param location The cloud location of the association, currently restricted to `global`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -435,8 +429,6 @@ public final class MirroringEndpointGroupAssociationState extends com.pulumi.res
 
         /**
          * @param location The cloud location of the association, currently restricted to `global`.
-         * 
-         * ***
          * 
          * @return builder
          * 

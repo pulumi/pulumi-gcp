@@ -20,8 +20,6 @@ namespace Pulumi.Gcp.Iam.Outputs
         /// * Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID`
         /// * Workspace Identity: `//iam.googleapis.com/locations/global/workspace/WORKSPACE_ID`
         /// It must be parent by the policy binding's parent (the organization).
-        /// 
-        /// - - -
         /// </summary>
         public readonly string? PrincipalSet;
 

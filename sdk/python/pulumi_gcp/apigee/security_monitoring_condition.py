@@ -30,9 +30,6 @@ class SecurityMonitoringConditionArgs:
         """
         The set of arguments for constructing a SecurityMonitoringCondition resource.
         :param pulumi.Input[builtins.str] condition_id: Resource ID of the security monitoring condition.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] org_id: The Apigee Organization associated with the Apigee Security Monitoring Condition,
                in the format `organizations/{{org_name}}`.
         :param pulumi.Input[builtins.str] profile: ID of security profile of the security monitoring condition.
@@ -51,9 +48,6 @@ class SecurityMonitoringConditionArgs:
     def condition_id(self) -> pulumi.Input[builtins.str]:
         """
         Resource ID of the security monitoring condition.
-
-
-        - - -
         """
         return pulumi.get(self, "condition_id")
 
@@ -127,9 +121,6 @@ class _SecurityMonitoringConditionState:
         """
         Input properties used for looking up and filtering SecurityMonitoringCondition resources.
         :param pulumi.Input[builtins.str] condition_id: Resource ID of the security monitoring condition.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] create_time: The timestamp at which this profile was created.
         :param pulumi.Input['SecurityMonitoringConditionIncludeAllResourcesArgs'] include_all_resources: A nested object resource.
         :param pulumi.Input[builtins.str] name: Name of the security monitoring condition resource,
@@ -168,9 +159,6 @@ class _SecurityMonitoringConditionState:
     def condition_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Resource ID of the security monitoring condition.
-
-
-        - - -
         """
         return pulumi.get(self, "condition_id")
 
@@ -377,9 +365,6 @@ class SecurityMonitoringCondition(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] condition_id: Resource ID of the security monitoring condition.
-               
-               
-               - - -
         :param pulumi.Input[Union['SecurityMonitoringConditionIncludeAllResourcesArgs', 'SecurityMonitoringConditionIncludeAllResourcesArgsDict']] include_all_resources: A nested object resource.
         :param pulumi.Input[builtins.str] org_id: The Apigee Organization associated with the Apigee Security Monitoring Condition,
                in the format `organizations/{{org_name}}`.
@@ -540,9 +525,6 @@ class SecurityMonitoringCondition(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] condition_id: Resource ID of the security monitoring condition.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] create_time: The timestamp at which this profile was created.
         :param pulumi.Input[Union['SecurityMonitoringConditionIncludeAllResourcesArgs', 'SecurityMonitoringConditionIncludeAllResourcesArgsDict']] include_all_resources: A nested object resource.
         :param pulumi.Input[builtins.str] name: Name of the security monitoring condition resource,
@@ -576,9 +558,6 @@ class SecurityMonitoringCondition(pulumi.CustomResource):
     def condition_id(self) -> pulumi.Output[builtins.str]:
         """
         Resource ID of the security monitoring condition.
-
-
-        - - -
         """
         return pulumi.get(self, "condition_id")
 

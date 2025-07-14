@@ -256,16 +256,12 @@ public class PublicDelegatedPrefix extends com.pulumi.resources.CustomResource {
     /**
      * The IP address range, in CIDR format, represented by this public delegated prefix.
      * 
-     * ***
-     * 
      */
     @Export(name="ipCidrRange", refs={String.class}, tree="[0]")
     private Output<String> ipCidrRange;
 
     /**
      * @return The IP address range, in CIDR format, represented by this public delegated prefix.
-     * 
-     * ***
      * 
      */
     public Output<String> ipCidrRange() {

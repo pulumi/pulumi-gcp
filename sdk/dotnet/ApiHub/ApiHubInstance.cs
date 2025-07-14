@@ -97,9 +97,11 @@ namespace Pulumi.Gcp.ApiHub
     public partial class ApiHubInstance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Optional. Identifier to assign to the Api Hub instance. Must be unique within scope of the parent resource. If the field
-        /// is not provided, system generated id will be used. This value should be 4-40 characters, and valid characters are
-        /// '/a-z[0-9]-_/'.
+        /// Optional. Identifier to assign to the Api Hub instance. Must be unique within
+        /// scope of the parent resource. If the field is not provided,
+        /// system generated id will be used.
+        /// This value should be 4-40 characters, and valid characters
+        /// are `/a-z[0-9]-_/`.
         /// </summary>
         [Output("apiHubInstanceId")]
         public Output<string?> ApiHubInstanceId { get; private set; } = null!;
@@ -130,10 +132,11 @@ namespace Pulumi.Gcp.ApiHub
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Instance labels to represent user-provided metadata. Refer to cloud documentation on labels for more details.
-        /// https://cloud.google.com/compute/docs/labeling-resources **Note**: This field is non-authoritative, and will only manage
-        /// the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
-        /// the resource.
+        /// Optional. Instance labels to represent user-provided metadata.
+        /// Refer to cloud documentation on labels for more details.
+        /// https://cloud.google.com/compute/docs/labeling-resources
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -151,6 +154,10 @@ namespace Pulumi.Gcp.ApiHub
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -240,9 +247,11 @@ namespace Pulumi.Gcp.ApiHub
     public sealed class ApiHubInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. Identifier to assign to the Api Hub instance. Must be unique within scope of the parent resource. If the field
-        /// is not provided, system generated id will be used. This value should be 4-40 characters, and valid characters are
-        /// '/a-z[0-9]-_/'.
+        /// Optional. Identifier to assign to the Api Hub instance. Must be unique within
+        /// scope of the parent resource. If the field is not provided,
+        /// system generated id will be used.
+        /// This value should be 4-40 characters, and valid characters
+        /// are `/a-z[0-9]-_/`.
         /// </summary>
         [Input("apiHubInstanceId")]
         public Input<string>? ApiHubInstanceId { get; set; }
@@ -264,10 +273,11 @@ namespace Pulumi.Gcp.ApiHub
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Optional. Instance labels to represent user-provided metadata. Refer to cloud documentation on labels for more details.
-        /// https://cloud.google.com/compute/docs/labeling-resources **Note**: This field is non-authoritative, and will only manage
-        /// the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
-        /// the resource.
+        /// Optional. Instance labels to represent user-provided metadata.
+        /// Refer to cloud documentation on labels for more details.
+        /// https://cloud.google.com/compute/docs/labeling-resources
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -281,6 +291,10 @@ namespace Pulumi.Gcp.ApiHub
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -293,9 +307,11 @@ namespace Pulumi.Gcp.ApiHub
     public sealed class ApiHubInstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. Identifier to assign to the Api Hub instance. Must be unique within scope of the parent resource. If the field
-        /// is not provided, system generated id will be used. This value should be 4-40 characters, and valid characters are
-        /// '/a-z[0-9]-_/'.
+        /// Optional. Identifier to assign to the Api Hub instance. Must be unique within
+        /// scope of the parent resource. If the field is not provided,
+        /// system generated id will be used.
+        /// This value should be 4-40 characters, and valid characters
+        /// are `/a-z[0-9]-_/`.
         /// </summary>
         [Input("apiHubInstanceId")]
         public Input<string>? ApiHubInstanceId { get; set; }
@@ -339,10 +355,11 @@ namespace Pulumi.Gcp.ApiHub
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Optional. Instance labels to represent user-provided metadata. Refer to cloud documentation on labels for more details.
-        /// https://cloud.google.com/compute/docs/labeling-resources **Note**: This field is non-authoritative, and will only manage
-        /// the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
-        /// the resource.
+        /// Optional. Instance labels to represent user-provided metadata.
+        /// Refer to cloud documentation on labels for more details.
+        /// https://cloud.google.com/compute/docs/labeling-resources
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -363,6 +380,10 @@ namespace Pulumi.Gcp.ApiHub
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

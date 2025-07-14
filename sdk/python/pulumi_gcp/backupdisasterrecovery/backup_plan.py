@@ -38,7 +38,9 @@ class BackupPlanArgs:
         :param pulumi.Input[builtins.str] location: The location for the backup plan
         :param pulumi.Input[builtins.str] resource_type: The resource type to which the `BackupPlan` will be applied.
                Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", and "storage.googleapis.com/Bucket".
-        :param pulumi.Input[builtins.str] description: The description allows for additional details about 'BackupPlan' and its use cases to be provided.
+        :param pulumi.Input[builtins.str] description: The description allows for additional details about `BackupPlan` and its use cases to be provided.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "backup_plan_id", backup_plan_id)
         pulumi.set(__self__, "backup_rules", backup_rules)
@@ -116,7 +118,7 @@ class BackupPlanArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The description allows for additional details about 'BackupPlan' and its use cases to be provided.
+        The description allows for additional details about `BackupPlan` and its use cases to be provided.
         """
         return pulumi.get(self, "description")
 
@@ -127,6 +129,10 @@ class BackupPlanArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -157,9 +163,11 @@ class _BackupPlanState:
         :param pulumi.Input[builtins.str] backup_vault: Backup vault where the backups gets stored using this Backup plan.
         :param pulumi.Input[builtins.str] backup_vault_service_account: The Google Cloud Platform Service Account to be used by the BackupVault for taking backups.
         :param pulumi.Input[builtins.str] create_time: When the `BackupPlan` was created.
-        :param pulumi.Input[builtins.str] description: The description allows for additional details about 'BackupPlan' and its use cases to be provided.
+        :param pulumi.Input[builtins.str] description: The description allows for additional details about `BackupPlan` and its use cases to be provided.
         :param pulumi.Input[builtins.str] location: The location for the backup plan
         :param pulumi.Input[builtins.str] name: The name of backup plan resource created
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] resource_type: The resource type to which the `BackupPlan` will be applied.
                Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", and "storage.googleapis.com/Bucket".
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] supported_resource_types: The list of all resource types to which the 'BackupPlan' can be applied.
@@ -255,7 +263,7 @@ class _BackupPlanState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The description allows for additional details about 'BackupPlan' and its use cases to be provided.
+        The description allows for additional details about `BackupPlan` and its use cases to be provided.
         """
         return pulumi.get(self, "description")
 
@@ -290,6 +298,10 @@ class _BackupPlanState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -448,8 +460,10 @@ class BackupPlan(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['BackupPlanBackupRuleArgs', 'BackupPlanBackupRuleArgsDict']]]] backup_rules: The backup rules for this `BackupPlan`. There must be at least one `BackupRule` message.
                Structure is documented below.
         :param pulumi.Input[builtins.str] backup_vault: Backup vault where the backups gets stored using this Backup plan.
-        :param pulumi.Input[builtins.str] description: The description allows for additional details about 'BackupPlan' and its use cases to be provided.
+        :param pulumi.Input[builtins.str] description: The description allows for additional details about `BackupPlan` and its use cases to be provided.
         :param pulumi.Input[builtins.str] location: The location for the backup plan
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] resource_type: The resource type to which the `BackupPlan` will be applied.
                Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", and "storage.googleapis.com/Bucket".
         """
@@ -641,9 +655,11 @@ class BackupPlan(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] backup_vault: Backup vault where the backups gets stored using this Backup plan.
         :param pulumi.Input[builtins.str] backup_vault_service_account: The Google Cloud Platform Service Account to be used by the BackupVault for taking backups.
         :param pulumi.Input[builtins.str] create_time: When the `BackupPlan` was created.
-        :param pulumi.Input[builtins.str] description: The description allows for additional details about 'BackupPlan' and its use cases to be provided.
+        :param pulumi.Input[builtins.str] description: The description allows for additional details about `BackupPlan` and its use cases to be provided.
         :param pulumi.Input[builtins.str] location: The location for the backup plan
         :param pulumi.Input[builtins.str] name: The name of backup plan resource created
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] resource_type: The resource type to which the `BackupPlan` will be applied.
                Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", and "storage.googleapis.com/Bucket".
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] supported_resource_types: The list of all resource types to which the 'BackupPlan' can be applied.
@@ -712,7 +728,7 @@ class BackupPlan(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The description allows for additional details about 'BackupPlan' and its use cases to be provided.
+        The description allows for additional details about `BackupPlan` and its use cases to be provided.
         """
         return pulumi.get(self, "description")
 
@@ -735,6 +751,10 @@ class BackupPlan(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property

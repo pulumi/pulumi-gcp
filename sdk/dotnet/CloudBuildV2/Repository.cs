@@ -262,9 +262,6 @@ namespace Pulumi.Gcp.CloudBuildV2
 
         /// <summary>
         /// The connection for the resource
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("parentConnection")]
         public Output<string> ParentConnection { get; private set; } = null!;
@@ -362,9 +359,6 @@ namespace Pulumi.Gcp.CloudBuildV2
 
         /// <summary>
         /// The connection for the resource
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("parentConnection", required: true)]
         public Input<string> ParentConnection { get; set; } = null!;
@@ -438,9 +432,6 @@ namespace Pulumi.Gcp.CloudBuildV2
 
         /// <summary>
         /// The connection for the resource
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("parentConnection")]
         public Input<string>? ParentConnection { get; set; }

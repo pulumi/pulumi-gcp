@@ -392,9 +392,6 @@ export class Connection extends pulumi.CustomResource {
      * Required. Id of the requesting object
      * If auto-generating Id server-side, remove this field and
      * connectionId from the methodSignature of Create RPC
-     *
-     *
-     * - - -
      */
     public readonly connectionId!: pulumi.Output<string>;
     /**
@@ -595,9 +592,6 @@ export interface ConnectionState {
      * Required. Id of the requesting object
      * If auto-generating Id server-side, remove this field and
      * connectionId from the methodSignature of Create RPC
-     *
-     *
-     * - - -
      */
     connectionId?: pulumi.Input<string>;
     /**
@@ -722,9 +716,6 @@ export interface ConnectionArgs {
      * Required. Id of the requesting object
      * If auto-generating Id server-side, remove this field and
      * connectionId from the methodSignature of Create RPC
-     *
-     *
-     * - - -
      */
     connectionId: pulumi.Input<string>;
     /**

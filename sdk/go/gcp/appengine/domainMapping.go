@@ -78,8 +78,6 @@ type DomainMapping struct {
 	pulumi.CustomResourceState
 
 	// Relative name of the domain serving the application. Example: example.com.
-	//
-	// ***
 	DomainName pulumi.StringOutput `pulumi:"domainName"`
 	// Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -134,8 +132,6 @@ func GetDomainMapping(ctx *pulumi.Context,
 // Input properties used for looking up and filtering DomainMapping resources.
 type domainMappingState struct {
 	// Relative name of the domain serving the application. Example: example.com.
-	//
-	// ***
 	DomainName *string `pulumi:"domainName"`
 	// Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
 	Name *string `pulumi:"name"`
@@ -158,8 +154,6 @@ type domainMappingState struct {
 
 type DomainMappingState struct {
 	// Relative name of the domain serving the application. Example: example.com.
-	//
-	// ***
 	DomainName pulumi.StringPtrInput
 	// Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
 	Name pulumi.StringPtrInput
@@ -186,8 +180,6 @@ func (DomainMappingState) ElementType() reflect.Type {
 
 type domainMappingArgs struct {
 	// Relative name of the domain serving the application. Example: example.com.
-	//
-	// ***
 	DomainName string `pulumi:"domainName"`
 	// Whether the domain creation should override any existing mappings for this domain.
 	// By default, overrides are rejected.
@@ -205,8 +197,6 @@ type domainMappingArgs struct {
 // The set of arguments for constructing a DomainMapping resource.
 type DomainMappingArgs struct {
 	// Relative name of the domain serving the application. Example: example.com.
-	//
-	// ***
 	DomainName pulumi.StringInput
 	// Whether the domain creation should override any existing mappings for this domain.
 	// By default, overrides are rejected.
@@ -309,8 +299,6 @@ func (o DomainMappingOutput) ToDomainMappingOutputWithContext(ctx context.Contex
 }
 
 // Relative name of the domain serving the application. Example: example.com.
-//
-// ***
 func (o DomainMappingOutput) DomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v *DomainMapping) pulumi.StringOutput { return v.DomainName }).(pulumi.StringOutput)
 }

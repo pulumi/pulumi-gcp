@@ -19,8 +19,6 @@ public final class PluginInstanceActionCurationConfigCustomCurationArgs extends 
      * curation resource in the format:
      * `projects/{project}/locations/{location}/curations/{curation}`
      * 
-     * ***
-     * 
      */
     @Import(name="curation", required=true)
     private Output<String> curation;
@@ -29,8 +27,6 @@ public final class PluginInstanceActionCurationConfigCustomCurationArgs extends 
      * @return The unique name of the curation resource. This will be the name of the
      * curation resource in the format:
      * `projects/{project}/locations/{location}/curations/{curation}`
-     * 
-     * ***
      * 
      */
     public Output<String> curation() {
@@ -66,8 +62,6 @@ public final class PluginInstanceActionCurationConfigCustomCurationArgs extends 
          * curation resource in the format:
          * `projects/{project}/locations/{location}/curations/{curation}`
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -80,8 +74,6 @@ public final class PluginInstanceActionCurationConfigCustomCurationArgs extends 
          * @param curation The unique name of the curation resource. This will be the name of the
          * curation resource in the format:
          * `projects/{project}/locations/{location}/curations/{curation}`
-         * 
-         * ***
          * 
          * @return builder
          * 

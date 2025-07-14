@@ -170,8 +170,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      * Unique name of the resource in this scope including project and location using the form:
      * projects/{projectId}/locations/{locationId}/clusters/{clusterId}
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
@@ -179,8 +177,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Unique name of the resource in this scope including project and location using the form:
      * projects/{projectId}/locations/{locationId}/clusters/{clusterId}
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -595,8 +591,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          * @param name Unique name of the resource in this scope including project and location using the form:
          * projects/{projectId}/locations/{locationId}/clusters/{clusterId}
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -608,8 +602,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name Unique name of the resource in this scope including project and location using the form:
          * projects/{projectId}/locations/{locationId}/clusters/{clusterId}
-         * 
-         * ***
          * 
          * @return builder
          * 

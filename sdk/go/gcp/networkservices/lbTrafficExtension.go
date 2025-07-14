@@ -62,20 +62,21 @@ type LbTrafficExtension struct {
 	// A list of references to the forwarding rules to which this service extension is attached to.
 	// At least one forwarding rule is required. There can be only one LBTrafficExtension resource per forwarding rule.
 	ForwardingRules pulumi.StringArrayOutput `pulumi:"forwardingRules"`
-	// Set of labels associated with the LbTrafficExtension resource. **Note**: This field is non-authoritative, and will only
-	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-	// present on the resource.
+	// Set of labels associated with the LbTrafficExtension resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. For
-	// more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
-	// [Supported application load
-	// balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs). Possible values:
-	// ["INTERNAL_MANAGED", "EXTERNAL_MANAGED"]
+	// All backend services and forwarding rules referenced by this extension must share the same load balancing scheme.
+	// For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
+	// [Supported application load balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs).
+	// Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrOutput `pulumi:"loadBalancingScheme"`
 	// The location of the traffic extension
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Name of the LbTrafficExtension resource in the following format: projects/{project}/locations/{location}/lbTrafficExtensions/{lbTrafficExtension}.
-	Name    pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -140,20 +141,21 @@ type lbTrafficExtensionState struct {
 	// A list of references to the forwarding rules to which this service extension is attached to.
 	// At least one forwarding rule is required. There can be only one LBTrafficExtension resource per forwarding rule.
 	ForwardingRules []string `pulumi:"forwardingRules"`
-	// Set of labels associated with the LbTrafficExtension resource. **Note**: This field is non-authoritative, and will only
-	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-	// present on the resource.
+	// Set of labels associated with the LbTrafficExtension resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. For
-	// more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
-	// [Supported application load
-	// balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs). Possible values:
-	// ["INTERNAL_MANAGED", "EXTERNAL_MANAGED"]
+	// All backend services and forwarding rules referenced by this extension must share the same load balancing scheme.
+	// For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
+	// [Supported application load balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs).
+	// Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// The location of the traffic extension
 	Location *string `pulumi:"location"`
 	// Name of the LbTrafficExtension resource in the following format: projects/{project}/locations/{location}/lbTrafficExtensions/{lbTrafficExtension}.
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -175,20 +177,21 @@ type LbTrafficExtensionState struct {
 	// A list of references to the forwarding rules to which this service extension is attached to.
 	// At least one forwarding rule is required. There can be only one LBTrafficExtension resource per forwarding rule.
 	ForwardingRules pulumi.StringArrayInput
-	// Set of labels associated with the LbTrafficExtension resource. **Note**: This field is non-authoritative, and will only
-	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-	// present on the resource.
+	// Set of labels associated with the LbTrafficExtension resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. For
-	// more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
-	// [Supported application load
-	// balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs). Possible values:
-	// ["INTERNAL_MANAGED", "EXTERNAL_MANAGED"]
+	// All backend services and forwarding rules referenced by this extension must share the same load balancing scheme.
+	// For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
+	// [Supported application load balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs).
+	// Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrInput
 	// The location of the traffic extension
 	Location pulumi.StringPtrInput
 	// Name of the LbTrafficExtension resource in the following format: projects/{project}/locations/{location}/lbTrafficExtensions/{lbTrafficExtension}.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -212,20 +215,21 @@ type lbTrafficExtensionArgs struct {
 	// A list of references to the forwarding rules to which this service extension is attached to.
 	// At least one forwarding rule is required. There can be only one LBTrafficExtension resource per forwarding rule.
 	ForwardingRules []string `pulumi:"forwardingRules"`
-	// Set of labels associated with the LbTrafficExtension resource. **Note**: This field is non-authoritative, and will only
-	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-	// present on the resource.
+	// Set of labels associated with the LbTrafficExtension resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. For
-	// more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
-	// [Supported application load
-	// balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs). Possible values:
-	// ["INTERNAL_MANAGED", "EXTERNAL_MANAGED"]
+	// All backend services and forwarding rules referenced by this extension must share the same load balancing scheme.
+	// For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
+	// [Supported application load balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs).
+	// Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// The location of the traffic extension
 	Location string `pulumi:"location"`
 	// Name of the LbTrafficExtension resource in the following format: projects/{project}/locations/{location}/lbTrafficExtensions/{lbTrafficExtension}.
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 }
 
@@ -243,20 +247,21 @@ type LbTrafficExtensionArgs struct {
 	// A list of references to the forwarding rules to which this service extension is attached to.
 	// At least one forwarding rule is required. There can be only one LBTrafficExtension resource per forwarding rule.
 	ForwardingRules pulumi.StringArrayInput
-	// Set of labels associated with the LbTrafficExtension resource. **Note**: This field is non-authoritative, and will only
-	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-	// present on the resource.
+	// Set of labels associated with the LbTrafficExtension resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. For
-	// more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
-	// [Supported application load
-	// balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs). Possible values:
-	// ["INTERNAL_MANAGED", "EXTERNAL_MANAGED"]
+	// All backend services and forwarding rules referenced by this extension must share the same load balancing scheme.
+	// For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
+	// [Supported application load balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs).
+	// Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrInput
 	// The location of the traffic extension
 	Location pulumi.StringInput
 	// Name of the LbTrafficExtension resource in the following format: projects/{project}/locations/{location}/lbTrafficExtensions/{lbTrafficExtension}.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 }
 
@@ -373,18 +378,17 @@ func (o LbTrafficExtensionOutput) ForwardingRules() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *LbTrafficExtension) pulumi.StringArrayOutput { return v.ForwardingRules }).(pulumi.StringArrayOutput)
 }
 
-// Set of labels associated with the LbTrafficExtension resource. **Note**: This field is non-authoritative, and will only
-// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-// present on the resource.
+// Set of labels associated with the LbTrafficExtension resource.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o LbTrafficExtensionOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *LbTrafficExtension) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. For
-// more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
-// [Supported application load
-// balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs). Possible values:
-// ["INTERNAL_MANAGED", "EXTERNAL_MANAGED"]
+// All backend services and forwarding rules referenced by this extension must share the same load balancing scheme.
+// For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
+// [Supported application load balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs).
+// Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
 func (o LbTrafficExtensionOutput) LoadBalancingScheme() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LbTrafficExtension) pulumi.StringPtrOutput { return v.LoadBalancingScheme }).(pulumi.StringPtrOutput)
 }
@@ -399,6 +403,8 @@ func (o LbTrafficExtensionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *LbTrafficExtension) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o LbTrafficExtensionOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *LbTrafficExtension) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

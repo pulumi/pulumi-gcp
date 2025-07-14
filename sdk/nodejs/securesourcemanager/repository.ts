@@ -147,9 +147,6 @@ export class Repository extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * The ID for the Repository.
-     *
-     *
-     * - - -
      */
     public readonly repositoryId!: pulumi.Output<string>;
     /**
@@ -254,9 +251,6 @@ export interface RepositoryState {
     project?: pulumi.Input<string>;
     /**
      * The ID for the Repository.
-     *
-     *
-     * - - -
      */
     repositoryId?: pulumi.Input<string>;
     /**
@@ -302,9 +296,6 @@ export interface RepositoryArgs {
     project?: pulumi.Input<string>;
     /**
      * The ID for the Repository.
-     *
-     *
-     * - - -
      */
     repositoryId: pulumi.Input<string>;
 }

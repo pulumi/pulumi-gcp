@@ -104,9 +104,6 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// The filter used to determine which monitored resources
         /// belong to this group.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("filter")]
         public Output<string> Filter { get; private set; } = null!;
@@ -197,9 +194,6 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// The filter used to determine which monitored resources
         /// belong to this group.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("filter", required: true)]
         public Input<string> Filter { get; set; } = null!;
@@ -245,9 +239,6 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// The filter used to determine which monitored resources
         /// belong to this group.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("filter")]
         public Input<string>? Filter { get; set; }

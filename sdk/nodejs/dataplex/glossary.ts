@@ -111,9 +111,6 @@ export class Glossary extends pulumi.CustomResource {
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The glossary id for creation.
-     *
-     *
-     * - - -
      */
     public readonly glossaryId!: pulumi.Output<string>;
     /**
@@ -237,9 +234,6 @@ export interface GlossaryState {
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The glossary id for creation.
-     *
-     *
-     * - - -
      */
     glossaryId?: pulumi.Input<string>;
     /**
@@ -295,9 +289,6 @@ export interface GlossaryArgs {
     displayName?: pulumi.Input<string>;
     /**
      * The glossary id for creation.
-     *
-     *
-     * - - -
      */
     glossaryId: pulumi.Input<string>;
     /**

@@ -181,6 +181,9 @@ type Table struct {
 	ExternalDataConfiguration TableExternalDataConfigurationPtrOutput `pulumi:"externalDataConfiguration"`
 	// A descriptive name for the table.
 	FriendlyName pulumi.StringPtrOutput `pulumi:"friendlyName"`
+	// A list of fields which should be ignored for each column in schema.
+	// **NOTE:** Right now only `dataPolicies` field is supported. We might support others in the future.
+	IgnoreSchemaChanges pulumi.StringArrayOutput `pulumi:"ignoreSchemaChanges"`
 	// A mapping of labels to assign to the resource.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -351,6 +354,9 @@ type tableState struct {
 	ExternalDataConfiguration *TableExternalDataConfiguration `pulumi:"externalDataConfiguration"`
 	// A descriptive name for the table.
 	FriendlyName *string `pulumi:"friendlyName"`
+	// A list of fields which should be ignored for each column in schema.
+	// **NOTE:** Right now only `dataPolicies` field is supported. We might support others in the future.
+	IgnoreSchemaChanges []string `pulumi:"ignoreSchemaChanges"`
 	// A mapping of labels to assign to the resource.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -481,6 +487,9 @@ type TableState struct {
 	ExternalDataConfiguration TableExternalDataConfigurationPtrInput
 	// A descriptive name for the table.
 	FriendlyName pulumi.StringPtrInput
+	// A list of fields which should be ignored for each column in schema.
+	// **NOTE:** Right now only `dataPolicies` field is supported. We might support others in the future.
+	IgnoreSchemaChanges pulumi.StringArrayInput
 	// A mapping of labels to assign to the resource.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -593,6 +602,9 @@ type tableArgs struct {
 	ExternalDataConfiguration *TableExternalDataConfiguration `pulumi:"externalDataConfiguration"`
 	// A descriptive name for the table.
 	FriendlyName *string `pulumi:"friendlyName"`
+	// A list of fields which should be ignored for each column in schema.
+	// **NOTE:** Right now only `dataPolicies` field is supported. We might support others in the future.
+	IgnoreSchemaChanges []string `pulumi:"ignoreSchemaChanges"`
 	// A mapping of labels to assign to the resource.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -686,6 +698,9 @@ type TableArgs struct {
 	ExternalDataConfiguration TableExternalDataConfigurationPtrInput
 	// A descriptive name for the table.
 	FriendlyName pulumi.StringPtrInput
+	// A list of fields which should be ignored for each column in schema.
+	// **NOTE:** Right now only `dataPolicies` field is supported. We might support others in the future.
+	IgnoreSchemaChanges pulumi.StringArrayInput
 	// A mapping of labels to assign to the resource.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -923,6 +938,12 @@ func (o TableOutput) ExternalDataConfiguration() TableExternalDataConfigurationP
 // A descriptive name for the table.
 func (o TableOutput) FriendlyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringPtrOutput { return v.FriendlyName }).(pulumi.StringPtrOutput)
+}
+
+// A list of fields which should be ignored for each column in schema.
+// **NOTE:** Right now only `dataPolicies` field is supported. We might support others in the future.
+func (o TableOutput) IgnoreSchemaChanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Table) pulumi.StringArrayOutput { return v.IgnoreSchemaChanges }).(pulumi.StringArrayOutput)
 }
 
 // A mapping of labels to assign to the resource.

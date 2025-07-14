@@ -416,9 +416,6 @@ export class Feature extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location for the resource
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -538,9 +535,6 @@ export interface FeatureState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location for the resource
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -597,9 +591,6 @@ export interface FeatureArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location for the resource
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

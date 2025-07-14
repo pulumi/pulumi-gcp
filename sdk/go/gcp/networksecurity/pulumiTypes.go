@@ -5220,8 +5220,6 @@ type AuthzPolicyTarget struct {
 	// Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
 	LoadBalancingScheme string `pulumi:"loadBalancingScheme"`
 	// A list of references to the Forwarding Rules on which this policy will be applied.
-	//
-	// ***
 	Resources []string `pulumi:"resources"`
 }
 
@@ -5242,8 +5240,6 @@ type AuthzPolicyTargetArgs struct {
 	// Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
 	LoadBalancingScheme pulumi.StringInput `pulumi:"loadBalancingScheme"`
 	// A list of references to the Forwarding Rules on which this policy will be applied.
-	//
-	// ***
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
 }
 
@@ -5332,8 +5328,6 @@ func (o AuthzPolicyTargetOutput) LoadBalancingScheme() pulumi.StringOutput {
 }
 
 // A list of references to the Forwarding Rules on which this policy will be applied.
-//
-// ***
 func (o AuthzPolicyTargetOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AuthzPolicyTarget) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
@@ -5375,8 +5369,6 @@ func (o AuthzPolicyTargetPtrOutput) LoadBalancingScheme() pulumi.StringPtrOutput
 }
 
 // A list of references to the Forwarding Rules on which this policy will be applied.
-//
-// ***
 func (o AuthzPolicyTargetPtrOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AuthzPolicyTarget) []string {
 		if v == nil {
@@ -6595,8 +6587,6 @@ func (o InterceptEndpointGroupAssociationTypeArrayOutput) Index(i pulumi.IntInpu
 
 type InterceptEndpointGroupAssociationLocation struct {
 	// The cloud location of the association, currently restricted to `global`.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// (Output)
 	// The current state of the association in this location.
@@ -6620,8 +6610,6 @@ type InterceptEndpointGroupAssociationLocationInput interface {
 
 type InterceptEndpointGroupAssociationLocationArgs struct {
 	// The cloud location of the association, currently restricted to `global`.
-	//
-	// ***
 	Location pulumi.StringPtrInput `pulumi:"location"`
 	// (Output)
 	// The current state of the association in this location.
@@ -6684,8 +6672,6 @@ func (o InterceptEndpointGroupAssociationLocationOutput) ToInterceptEndpointGrou
 }
 
 // The cloud location of the association, currently restricted to `global`.
-//
-// ***
 func (o InterceptEndpointGroupAssociationLocationOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InterceptEndpointGroupAssociationLocation) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
@@ -6722,8 +6708,6 @@ func (o InterceptEndpointGroupAssociationLocationArrayOutput) Index(i pulumi.Int
 
 type InterceptEndpointGroupAssociationLocationsDetail struct {
 	// The cloud location of the association, currently restricted to `global`.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// (Output)
 	// The current state of the association in this location.
@@ -6747,8 +6731,6 @@ type InterceptEndpointGroupAssociationLocationsDetailInput interface {
 
 type InterceptEndpointGroupAssociationLocationsDetailArgs struct {
 	// The cloud location of the association, currently restricted to `global`.
-	//
-	// ***
 	Location pulumi.StringPtrInput `pulumi:"location"`
 	// (Output)
 	// The current state of the association in this location.
@@ -6811,8 +6793,6 @@ func (o InterceptEndpointGroupAssociationLocationsDetailOutput) ToInterceptEndpo
 }
 
 // The cloud location of the association, currently restricted to `global`.
-//
-// ***
 func (o InterceptEndpointGroupAssociationLocationsDetailOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InterceptEndpointGroupAssociationLocationsDetail) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
@@ -7468,8 +7448,6 @@ func (o MirroringEndpointGroupAssociationTypeArrayOutput) Index(i pulumi.IntInpu
 
 type MirroringEndpointGroupAssociationLocation struct {
 	// The cloud location of the association, currently restricted to `global`.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// (Output)
 	// The current state of the association in this location.
@@ -7493,8 +7471,6 @@ type MirroringEndpointGroupAssociationLocationInput interface {
 
 type MirroringEndpointGroupAssociationLocationArgs struct {
 	// The cloud location of the association, currently restricted to `global`.
-	//
-	// ***
 	Location pulumi.StringPtrInput `pulumi:"location"`
 	// (Output)
 	// The current state of the association in this location.
@@ -7557,8 +7533,6 @@ func (o MirroringEndpointGroupAssociationLocationOutput) ToMirroringEndpointGrou
 }
 
 // The cloud location of the association, currently restricted to `global`.
-//
-// ***
 func (o MirroringEndpointGroupAssociationLocationOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MirroringEndpointGroupAssociationLocation) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
@@ -7595,8 +7569,6 @@ func (o MirroringEndpointGroupAssociationLocationArrayOutput) Index(i pulumi.Int
 
 type MirroringEndpointGroupAssociationLocationsDetail struct {
 	// The cloud location of the association, currently restricted to `global`.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// (Output)
 	// The current state of the association in this location.
@@ -7620,8 +7592,6 @@ type MirroringEndpointGroupAssociationLocationsDetailInput interface {
 
 type MirroringEndpointGroupAssociationLocationsDetailArgs struct {
 	// The cloud location of the association, currently restricted to `global`.
-	//
-	// ***
 	Location pulumi.StringPtrInput `pulumi:"location"`
 	// (Output)
 	// The current state of the association in this location.
@@ -7684,8 +7654,6 @@ func (o MirroringEndpointGroupAssociationLocationsDetailOutput) ToMirroringEndpo
 }
 
 // The cloud location of the association, currently restricted to `global`.
-//
-// ***
 func (o MirroringEndpointGroupAssociationLocationsDetailOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MirroringEndpointGroupAssociationLocationsDetail) *string { return v.Location }).(pulumi.StringPtrOutput)
 }

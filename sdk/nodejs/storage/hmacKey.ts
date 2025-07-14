@@ -97,9 +97,6 @@ export class HmacKey extends pulumi.CustomResource {
     public /*out*/ readonly secret!: pulumi.Output<string>;
     /**
      * The email address of the key's associated service account.
-     *
-     *
-     * - - -
      */
     public readonly serviceAccountEmail!: pulumi.Output<string>;
     /**
@@ -177,9 +174,6 @@ export interface HmacKeyState {
     secret?: pulumi.Input<string>;
     /**
      * The email address of the key's associated service account.
-     *
-     *
-     * - - -
      */
     serviceAccountEmail?: pulumi.Input<string>;
     /**
@@ -209,9 +203,6 @@ export interface HmacKeyArgs {
     project?: pulumi.Input<string>;
     /**
      * The email address of the key's associated service account.
-     *
-     *
-     * - - -
      */
     serviceAccountEmail: pulumi.Input<string>;
     /**

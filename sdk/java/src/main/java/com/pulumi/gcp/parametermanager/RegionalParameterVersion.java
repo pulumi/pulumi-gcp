@@ -289,16 +289,12 @@ public class RegionalParameterVersion extends com.pulumi.resources.CustomResourc
     /**
      * Version ID of the Regional Parameter Version Resource. This must be unique within the Regional Parameter.
      * 
-     * ***
-     * 
      */
     @Export(name="parameterVersionId", refs={String.class}, tree="[0]")
     private Output<String> parameterVersionId;
 
     /**
      * @return Version ID of the Regional Parameter Version Resource. This must be unique within the Regional Parameter.
-     * 
-     * ***
      * 
      */
     public Output<String> parameterVersionId() {

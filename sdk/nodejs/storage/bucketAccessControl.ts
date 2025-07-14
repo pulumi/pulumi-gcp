@@ -115,9 +115,6 @@ export class BucketAccessControl extends pulumi.CustomResource {
      * group-example@googlegroups.com.
      * To refer to all members of the Google Apps for Business domain
      * example.com, the entity would be domain-example.com.
-     *
-     *
-     * - - -
      */
     public readonly entity!: pulumi.Output<string>;
     /**
@@ -195,9 +192,6 @@ export interface BucketAccessControlState {
      * group-example@googlegroups.com.
      * To refer to all members of the Google Apps for Business domain
      * example.com, the entity would be domain-example.com.
-     *
-     *
-     * - - -
      */
     entity?: pulumi.Input<string>;
     /**
@@ -231,9 +225,6 @@ export interface BucketAccessControlArgs {
      * group-example@googlegroups.com.
      * To refer to all members of the Google Apps for Business domain
      * example.com, the entity would be domain-example.com.
-     *
-     *
-     * - - -
      */
     entity: pulumi.Input<string>;
     /**

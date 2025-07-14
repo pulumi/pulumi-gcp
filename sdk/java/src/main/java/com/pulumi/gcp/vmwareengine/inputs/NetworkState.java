@@ -50,16 +50,12 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
     /**
      * The ID of the VMwareEngineNetwork.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return The ID of the VMwareEngineNetwork.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -225,8 +221,6 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name The ID of the VMwareEngineNetwork.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -237,8 +231,6 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name The ID of the VMwareEngineNetwork.
-         * 
-         * ***
          * 
          * @return builder
          * 

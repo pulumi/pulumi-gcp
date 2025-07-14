@@ -134,16 +134,12 @@ public class AnywhereCache extends com.pulumi.resources.CustomResource {
     /**
      * A reference to Bucket resource
      * 
-     * ***
-     * 
      */
     @Export(name="bucket", refs={String.class}, tree="[0]")
     private Output<String> bucket;
 
     /**
      * @return A reference to Bucket resource
-     * 
-     * ***
      * 
      */
     public Output<String> bucket() {

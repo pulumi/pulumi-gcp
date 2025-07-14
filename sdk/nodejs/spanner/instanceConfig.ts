@@ -71,9 +71,9 @@ export class InstanceConfig extends pulumi.CustomResource {
     }
 
     /**
-     * Base configuration name, e.g. nam3, based on which this configuration is created. Only set for user managed
-     * configurations. baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this
-     * configuration.
+     * Base configuration name, e.g. nam3, based on which this configuration is created.
+     * Only set for user managed configurations.
+     * baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this configuration.
      */
     public readonly baseConfig!: pulumi.Output<string>;
     /**
@@ -89,16 +89,22 @@ export class InstanceConfig extends pulumi.CustomResource {
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
-     * to the field 'effective_labels' for all of the labels present on the resource.
+     * An object containing a list of "key": value pairs.
+     * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * A unique identifier for the instance configuration. Values are of the form
-     * projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
+     * A unique identifier for the instance configuration. Values are of the
+     * form projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
@@ -163,9 +169,9 @@ export class InstanceConfig extends pulumi.CustomResource {
  */
 export interface InstanceConfigState {
     /**
-     * Base configuration name, e.g. nam3, based on which this configuration is created. Only set for user managed
-     * configurations. baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this
-     * configuration.
+     * Base configuration name, e.g. nam3, based on which this configuration is created.
+     * Only set for user managed configurations.
+     * baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this configuration.
      */
     baseConfig?: pulumi.Input<string>;
     /**
@@ -181,16 +187,22 @@ export interface InstanceConfigState {
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
-     * to the field 'effective_labels' for all of the labels present on the resource.
+     * An object containing a list of "key": value pairs.
+     * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * A unique identifier for the instance configuration. Values are of the form
-     * projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
+     * A unique identifier for the instance configuration. Values are of the
+     * form projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
@@ -209,9 +221,9 @@ export interface InstanceConfigState {
  */
 export interface InstanceConfigArgs {
     /**
-     * Base configuration name, e.g. nam3, based on which this configuration is created. Only set for user managed
-     * configurations. baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this
-     * configuration.
+     * Base configuration name, e.g. nam3, based on which this configuration is created.
+     * Only set for user managed configurations.
+     * baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this configuration.
      */
     baseConfig?: pulumi.Input<string>;
     /**
@@ -219,16 +231,22 @@ export interface InstanceConfigArgs {
      */
     displayName: pulumi.Input<string>;
     /**
-     * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
-     * to the field 'effective_labels' for all of the labels present on the resource.
+     * An object containing a list of "key": value pairs.
+     * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * A unique identifier for the instance configuration. Values are of the form
-     * projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
+     * A unique identifier for the instance configuration. Values are of the
+     * form projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * The geographic placement of nodes in this instance configuration and their replication properties.

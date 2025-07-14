@@ -6,6 +6,7 @@ package com.pulumi.gcp.container;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterAnonymousAuthenticationConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterAuthenticatorGroupsConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterBinaryAuthorizationArgs;
 import com.pulumi.gcp.container.inputs.ClusterClusterAutoscalingArgs;
@@ -98,6 +99,25 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> allowNetAdmin() {
         return Optional.ofNullable(this.allowNetAdmin);
+    }
+
+    /**
+     * Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
+     * 
+     * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
+     * 
+     */
+    @Import(name="anonymousAuthenticationConfig")
+    private @Nullable Output<ClusterAnonymousAuthenticationConfigArgs> anonymousAuthenticationConfig;
+
+    /**
+     * @return Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
+     * 
+     * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
+     * 
+     */
+    public Optional<Output<ClusterAnonymousAuthenticationConfigArgs>> anonymousAuthenticationConfig() {
+        return Optional.ofNullable(this.anonymousAuthenticationConfig);
     }
 
     /**
@@ -556,16 +576,12 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
-     * 
      */
     @Import(name="enterpriseConfig")
     private @Nullable Output<ClusterEnterpriseConfigArgs> enterpriseConfig;
 
     /**
      * @return Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
-     * 
-     * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
      * 
      */
     public Optional<Output<ClusterEnterpriseConfigArgs>> enterpriseConfig() {
@@ -1513,6 +1529,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     private ClusterArgs(ClusterArgs $) {
         this.addonsConfig = $.addonsConfig;
         this.allowNetAdmin = $.allowNetAdmin;
+        this.anonymousAuthenticationConfig = $.anonymousAuthenticationConfig;
         this.authenticatorGroupsConfig = $.authenticatorGroupsConfig;
         this.binaryAuthorization = $.binaryAuthorization;
         this.clusterAutoscaling = $.clusterAutoscaling;
@@ -1655,6 +1672,31 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder allowNetAdmin(Boolean allowNetAdmin) {
             return allowNetAdmin(Output.of(allowNetAdmin));
+        }
+
+        /**
+         * @param anonymousAuthenticationConfig Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
+         * 
+         * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
+         * 
+         * @return builder
+         * 
+         */
+        public Builder anonymousAuthenticationConfig(@Nullable Output<ClusterAnonymousAuthenticationConfigArgs> anonymousAuthenticationConfig) {
+            $.anonymousAuthenticationConfig = anonymousAuthenticationConfig;
+            return this;
+        }
+
+        /**
+         * @param anonymousAuthenticationConfig Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
+         * 
+         * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
+         * 
+         * @return builder
+         * 
+         */
+        public Builder anonymousAuthenticationConfig(ClusterAnonymousAuthenticationConfigArgs anonymousAuthenticationConfig) {
+            return anonymousAuthenticationConfig(Output.of(anonymousAuthenticationConfig));
         }
 
         /**
@@ -2271,8 +2313,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param enterpriseConfig Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
          * 
-         * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
-         * 
          * @return builder
          * 
          */
@@ -2283,8 +2323,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param enterpriseConfig Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
-         * 
-         * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
          * 
          * @return builder
          * 

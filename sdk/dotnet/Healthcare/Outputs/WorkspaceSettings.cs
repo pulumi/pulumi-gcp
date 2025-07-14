@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.Healthcare.Outputs
     {
         /// <summary>
         /// Project IDs for data projects hosted in a workspace.
-        /// 
-        /// - - -
         /// </summary>
         public readonly ImmutableArray<string> DataProjectIds;
 

@@ -41,16 +41,12 @@ public final class CxToolArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * High level description of the Tool and its usage.
      * 
-     * ***
-     * 
      */
     @Import(name="description", required=true)
     private Output<String> description;
 
     /**
      * @return High level description of the Tool and its usage.
-     * 
-     * ***
      * 
      */
     public Output<String> description() {
@@ -184,8 +180,6 @@ public final class CxToolArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param description High level description of the Tool and its usage.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -196,8 +190,6 @@ public final class CxToolArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param description High level description of the Tool and its usage.
-         * 
-         * ***
          * 
          * @return builder
          * 

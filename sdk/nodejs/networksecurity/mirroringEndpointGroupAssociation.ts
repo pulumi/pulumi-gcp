@@ -127,9 +127,6 @@ export class MirroringEndpointGroupAssociation extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The cloud location of the association, currently restricted to `global`.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -287,9 +284,6 @@ export interface MirroringEndpointGroupAssociationState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The cloud location of the association, currently restricted to `global`.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -377,9 +371,6 @@ export interface MirroringEndpointGroupAssociationArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The cloud location of the association, currently restricted to `global`.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.Apigee.Outputs
     {
         /// <summary>
         /// The name of the producer VPC network.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string TargetNetworkId;
         /// <summary>

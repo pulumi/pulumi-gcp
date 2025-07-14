@@ -144,16 +144,12 @@ public class LiteSubscription extends com.pulumi.resources.CustomResource {
     /**
      * Name of the subscription.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return Name of the subscription.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

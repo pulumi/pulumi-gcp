@@ -173,10 +173,9 @@ export class ConnectCluster extends pulumi.CustomResource {
      */
     public readonly kafkaCluster!: pulumi.Output<string>;
     /**
-     * List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-),
-     * underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase
-     * characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
-     * configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+     * List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -187,6 +186,10 @@ export class ConnectCluster extends pulumi.CustomResource {
      * The name of the connect cluster. Structured like: `projects/PROJECT_ID/locations/LOCATION/connectClusters/CONNECT_CLUSTER_ID`.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
@@ -297,10 +300,9 @@ export interface ConnectClusterState {
      */
     kafkaCluster?: pulumi.Input<string>;
     /**
-     * List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-),
-     * underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase
-     * characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
-     * configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+     * List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -311,6 +313,10 @@ export interface ConnectClusterState {
      * The name of the connect cluster. Structured like: `projects/PROJECT_ID/locations/LOCATION/connectClusters/CONNECT_CLUSTER_ID`.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
@@ -350,15 +356,18 @@ export interface ConnectClusterArgs {
      */
     kafkaCluster: pulumi.Input<string>;
     /**
-     * List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-),
-     * underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase
-     * characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
-     * configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+     * List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * ID of the location of the Kafka Connect resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
      */
     location: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
 }

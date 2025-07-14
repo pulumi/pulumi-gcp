@@ -150,9 +150,6 @@ export class InterceptDeployment extends pulumi.CustomResource {
     /**
      * The ID to use for the new deployment, which will become the final
      * component of the deployment's resource name.
-     *
-     *
-     * - - -
      */
     public readonly interceptDeploymentId!: pulumi.Output<string>;
     /**
@@ -302,9 +299,6 @@ export interface InterceptDeploymentState {
     /**
      * The ID to use for the new deployment, which will become the final
      * component of the deployment's resource name.
-     *
-     *
-     * - - -
      */
     interceptDeploymentId?: pulumi.Input<string>;
     /**
@@ -383,9 +377,6 @@ export interface InterceptDeploymentArgs {
     /**
      * The ID to use for the new deployment, which will become the final
      * component of the deployment's resource name.
-     *
-     *
-     * - - -
      */
     interceptDeploymentId: pulumi.Input<string>;
     /**

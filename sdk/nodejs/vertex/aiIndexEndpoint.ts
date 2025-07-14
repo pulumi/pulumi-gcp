@@ -152,9 +152,6 @@ export class AiIndexEndpoint extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-     *
-     *
-     * - - -
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -284,9 +281,6 @@ export interface AiIndexEndpointState {
     description?: pulumi.Input<string>;
     /**
      * The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-     *
-     *
-     * - - -
      */
     displayName?: pulumi.Input<string>;
     /**
@@ -357,9 +351,6 @@ export interface AiIndexEndpointArgs {
     description?: pulumi.Input<string>;
     /**
      * The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-     *
-     *
-     * - - -
      */
     displayName: pulumi.Input<string>;
     /**

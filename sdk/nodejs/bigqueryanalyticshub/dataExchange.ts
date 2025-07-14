@@ -129,9 +129,6 @@ export class DataExchange extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
-     *
-     *
-     * - - -
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -243,9 +240,6 @@ export interface DataExchangeState {
     description?: pulumi.Input<string>;
     /**
      * Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
-     *
-     *
-     * - - -
      */
     displayName?: pulumi.Input<string>;
     /**
@@ -304,9 +298,6 @@ export interface DataExchangeArgs {
     description?: pulumi.Input<string>;
     /**
      * Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
-     *
-     *
-     * - - -
      */
     displayName: pulumi.Input<string>;
     /**

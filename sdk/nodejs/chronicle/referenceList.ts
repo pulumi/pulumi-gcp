@@ -118,6 +118,10 @@ export class ReferenceList extends pulumi.CustomResource {
      * projects/{project}/locations/{location}/instances/{instance}/referenceLists/{reference_list}
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * Required. The ID to use for the reference list. This is also the display name for
@@ -255,6 +259,10 @@ export interface ReferenceListState {
      * projects/{project}/locations/{location}/instances/{instance}/referenceLists/{reference_list}
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * Required. The ID to use for the reference list. This is also the display name for
@@ -318,6 +326,10 @@ export interface ReferenceListArgs {
      * The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
      */
     location: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * Required. The ID to use for the reference list. This is also the display name for

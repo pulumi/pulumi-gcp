@@ -35,16 +35,14 @@ public final class NetworkFirewallPolicyWithRulesState extends com.pulumi.resour
     }
 
     /**
-     * (Output)
-     * A description of the rule.
+     * An optional description of this resource.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return (Output)
-     * A description of the rule.
+     * @return An optional description of this resource.
      * 
      */
     public Optional<Output<String>> description() {
@@ -107,18 +105,20 @@ public final class NetworkFirewallPolicyWithRulesState extends com.pulumi.resour
     }
 
     /**
-     * Policy type is used to determine which resources (networks) the policy can be associated with. A policy can be
-     * associated with a network only if the network has the matching policyType in its network profile. Different policy types
-     * may support some of the Firewall Rules features. Possible values: [&#34;VPC_POLICY&#34;]
+     * Policy type is used to determine which resources (networks) the policy can be associated with.
+     * A policy can be associated with a network only if the network has the matching policyType in its network profile.
+     * Different policy types may support some of the Firewall Rules features.
+     * Possible values are: `VPC_POLICY`.
      * 
      */
     @Import(name="policyType")
     private @Nullable Output<String> policyType;
 
     /**
-     * @return Policy type is used to determine which resources (networks) the policy can be associated with. A policy can be
-     * associated with a network only if the network has the matching policyType in its network profile. Different policy types
-     * may support some of the Firewall Rules features. Possible values: [&#34;VPC_POLICY&#34;]
+     * @return Policy type is used to determine which resources (networks) the policy can be associated with.
+     * A policy can be associated with a network only if the network has the matching policyType in its network profile.
+     * Different policy types may support some of the Firewall Rules features.
+     * Possible values are: `VPC_POLICY`.
      * 
      */
     public Optional<Output<String>> policyType() {
@@ -142,9 +142,19 @@ public final class NetworkFirewallPolicyWithRulesState extends com.pulumi.resour
         return Optional.ofNullable(this.predefinedRules);
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -268,8 +278,7 @@ public final class NetworkFirewallPolicyWithRulesState extends com.pulumi.resour
         }
 
         /**
-         * @param description (Output)
-         * A description of the rule.
+         * @param description An optional description of this resource.
          * 
          * @return builder
          * 
@@ -280,8 +289,7 @@ public final class NetworkFirewallPolicyWithRulesState extends com.pulumi.resour
         }
 
         /**
-         * @param description (Output)
-         * A description of the rule.
+         * @param description An optional description of this resource.
          * 
          * @return builder
          * 
@@ -364,9 +372,10 @@ public final class NetworkFirewallPolicyWithRulesState extends com.pulumi.resour
         }
 
         /**
-         * @param policyType Policy type is used to determine which resources (networks) the policy can be associated with. A policy can be
-         * associated with a network only if the network has the matching policyType in its network profile. Different policy types
-         * may support some of the Firewall Rules features. Possible values: [&#34;VPC_POLICY&#34;]
+         * @param policyType Policy type is used to determine which resources (networks) the policy can be associated with.
+         * A policy can be associated with a network only if the network has the matching policyType in its network profile.
+         * Different policy types may support some of the Firewall Rules features.
+         * Possible values are: `VPC_POLICY`.
          * 
          * @return builder
          * 
@@ -377,9 +386,10 @@ public final class NetworkFirewallPolicyWithRulesState extends com.pulumi.resour
         }
 
         /**
-         * @param policyType Policy type is used to determine which resources (networks) the policy can be associated with. A policy can be
-         * associated with a network only if the network has the matching policyType in its network profile. Different policy types
-         * may support some of the Firewall Rules features. Possible values: [&#34;VPC_POLICY&#34;]
+         * @param policyType Policy type is used to determine which resources (networks) the policy can be associated with.
+         * A policy can be associated with a network only if the network has the matching policyType in its network profile.
+         * Different policy types may support some of the Firewall Rules features.
+         * Possible values are: `VPC_POLICY`.
          * 
          * @return builder
          * 
@@ -422,11 +432,25 @@ public final class NetworkFirewallPolicyWithRulesState extends com.pulumi.resour
             return predefinedRules(List.of(predefinedRules));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

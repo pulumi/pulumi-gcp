@@ -75,8 +75,6 @@ type NetworkFirewallPolicy struct {
 	// Fingerprint of the resource. This field is used internally during updates of this resource.
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
 	// User-provided name of the Network firewall policy. The name should be unique in the project in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The unique identifier for the resource. This identifier is defined by the server.
 	NetworkFirewallPolicyId pulumi.StringOutput `pulumi:"networkFirewallPolicyId"`
@@ -133,8 +131,6 @@ type networkFirewallPolicyState struct {
 	// Fingerprint of the resource. This field is used internally during updates of this resource.
 	Fingerprint *string `pulumi:"fingerprint"`
 	// User-provided name of the Network firewall policy. The name should be unique in the project in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The unique identifier for the resource. This identifier is defined by the server.
 	NetworkFirewallPolicyId *string `pulumi:"networkFirewallPolicyId"`
@@ -162,8 +158,6 @@ type NetworkFirewallPolicyState struct {
 	// Fingerprint of the resource. This field is used internally during updates of this resource.
 	Fingerprint pulumi.StringPtrInput
 	// User-provided name of the Network firewall policy. The name should be unique in the project in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The unique identifier for the resource. This identifier is defined by the server.
 	NetworkFirewallPolicyId pulumi.StringPtrInput
@@ -191,8 +185,6 @@ type networkFirewallPolicyArgs struct {
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
 	// User-provided name of the Network firewall policy. The name should be unique in the project in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// Policy type is used to determine which resources (networks) the policy can be associated with.
 	// A policy can be associated with a network only if the network has the matching policyType in its network profile.
@@ -209,8 +201,6 @@ type NetworkFirewallPolicyArgs struct {
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
 	// User-provided name of the Network firewall policy. The name should be unique in the project in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// Policy type is used to determine which resources (networks) the policy can be associated with.
 	// A policy can be associated with a network only if the network has the matching policyType in its network profile.
@@ -325,8 +315,6 @@ func (o NetworkFirewallPolicyOutput) Fingerprint() pulumi.StringOutput {
 }
 
 // User-provided name of the Network firewall policy. The name should be unique in the project in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-//
-// ***
 func (o NetworkFirewallPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkFirewallPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

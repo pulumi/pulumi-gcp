@@ -14,8 +14,6 @@ namespace Pulumi.Gcp.Compute.Inputs
     {
         /// <summary>
         /// Span of time that's a fraction of a second at nanosecond resolution.
-        /// 
-        /// - - -
         /// </summary>
         [Input("nanos")]
         public Input<int>? Nanos { get; set; }

@@ -23,16 +23,12 @@ public final class BackupScheduleArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * The database to create the backup schedule on.
      * 
-     * ***
-     * 
      */
     @Import(name="database", required=true)
     private Output<String> database;
 
     /**
      * @return The database to create the backup schedule on.
-     * 
-     * ***
      * 
      */
     public Output<String> database() {
@@ -206,8 +202,6 @@ public final class BackupScheduleArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param database The database to create the backup schedule on.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -218,8 +212,6 @@ public final class BackupScheduleArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param database The database to create the backup schedule on.
-         * 
-         * ***
          * 
          * @return builder
          * 

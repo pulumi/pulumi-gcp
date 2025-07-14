@@ -70,16 +70,12 @@ public final class InstanceSettingsState extends com.pulumi.resources.ResourceAr
     /**
      * A reference to the zone where the machine resides.
      * 
-     * ***
-     * 
      */
     @Import(name="zone")
     private @Nullable Output<String> zone;
 
     /**
      * @return A reference to the zone where the machine resides.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> zone() {
@@ -185,8 +181,6 @@ public final class InstanceSettingsState extends com.pulumi.resources.ResourceAr
         /**
          * @param zone A reference to the zone where the machine resides.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -197,8 +191,6 @@ public final class InstanceSettingsState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param zone A reference to the zone where the machine resides.
-         * 
-         * ***
          * 
          * @return builder
          * 

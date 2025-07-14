@@ -138,9 +138,6 @@ namespace Pulumi.Gcp.ManagedKafka
 
         /// <summary>
         /// The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("topicId")]
         public Output<string> TopicId { get; private set; } = null!;
@@ -236,9 +233,6 @@ namespace Pulumi.Gcp.ManagedKafka
 
         /// <summary>
         /// The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("topicId", required: true)]
         public Input<string> TopicId { get; set; } = null!;
@@ -302,9 +296,6 @@ namespace Pulumi.Gcp.ManagedKafka
 
         /// <summary>
         /// The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("topicId")]
         public Input<string>? TopicId { get; set; }

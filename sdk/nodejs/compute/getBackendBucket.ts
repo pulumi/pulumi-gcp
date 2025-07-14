@@ -61,6 +61,7 @@ export interface GetBackendBucketResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly loadBalancingScheme: string;
     readonly name: string;
     readonly project?: string;
     readonly selfLink: string;

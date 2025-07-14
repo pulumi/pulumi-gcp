@@ -31,9 +31,6 @@ class BlockchainNodesArgs:
         """
         The set of arguments for constructing a BlockchainNodes resource.
         :param pulumi.Input[builtins.str] blockchain_node_id: ID of the requesting object.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: Location of Blockchain Node being created.
         :param pulumi.Input[builtins.str] blockchain_type: User-provided key-value pairs
                Possible values are: `ETHEREUM`.
@@ -62,9 +59,6 @@ class BlockchainNodesArgs:
     def blockchain_node_id(self) -> pulumi.Input[builtins.str]:
         """
         ID of the requesting object.
-
-
-        - - -
         """
         return pulumi.get(self, "blockchain_node_id")
 
@@ -157,9 +151,6 @@ class _BlockchainNodesState:
         """
         Input properties used for looking up and filtering BlockchainNodes resources.
         :param pulumi.Input[builtins.str] blockchain_node_id: ID of the requesting object.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] blockchain_type: User-provided key-value pairs
                Possible values are: `ETHEREUM`.
         :param pulumi.Input[Sequence[pulumi.Input['BlockchainNodesConnectionInfoArgs']]] connection_infos: The connection information through which to interact with a blockchain node.
@@ -210,9 +201,6 @@ class _BlockchainNodesState:
     def blockchain_node_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         ID of the requesting object.
-
-
-        - - -
         """
         return pulumi.get(self, "blockchain_node_id")
 
@@ -472,9 +460,6 @@ class BlockchainNodes(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] blockchain_node_id: ID of the requesting object.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] blockchain_type: User-provided key-value pairs
                Possible values are: `ETHEREUM`.
         :param pulumi.Input[Union['BlockchainNodesEthereumDetailsArgs', 'BlockchainNodesEthereumDetailsArgsDict']] ethereum_details: User-provided key-value pairs
@@ -666,9 +651,6 @@ class BlockchainNodes(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] blockchain_node_id: ID of the requesting object.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] blockchain_type: User-provided key-value pairs
                Possible values are: `ETHEREUM`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['BlockchainNodesConnectionInfoArgs', 'BlockchainNodesConnectionInfoArgsDict']]]] connection_infos: The connection information through which to interact with a blockchain node.
@@ -712,9 +694,6 @@ class BlockchainNodes(pulumi.CustomResource):
     def blockchain_node_id(self) -> pulumi.Output[builtins.str]:
         """
         ID of the requesting object.
-
-
-        - - -
         """
         return pulumi.get(self, "blockchain_node_id")
 

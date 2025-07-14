@@ -97,9 +97,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Required cross site network to which wire group belongs.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("crossSiteNetwork")]
         public Output<string> CrossSiteNetwork { get; private set; } = null!;
@@ -216,9 +213,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Required cross site network to which wire group belongs.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("crossSiteNetwork", required: true)]
         public Input<string> CrossSiteNetwork { get; set; } = null!;
@@ -295,9 +289,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Required cross site network to which wire group belongs.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("crossSiteNetwork")]
         public Input<string>? CrossSiteNetwork { get; set; }

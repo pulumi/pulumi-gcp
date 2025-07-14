@@ -184,8 +184,6 @@ type StoragePool struct {
 	// following are valid values:
 	// * `https://www.googleapis.com/compute/v1/projects/{project_id}/zones/{zone}/storagePoolTypes/hyperdisk-balanced`
 	// * `hyperdisk-throughput`
-	//
-	// ***
 	StoragePoolType pulumi.StringOutput `pulumi:"storagePoolType"`
 	// A reference to the zone where the storage pool resides.
 	Zone pulumi.StringOutput `pulumi:"zone"`
@@ -276,8 +274,6 @@ type storagePoolState struct {
 	// following are valid values:
 	// * `https://www.googleapis.com/compute/v1/projects/{project_id}/zones/{zone}/storagePoolTypes/hyperdisk-balanced`
 	// * `hyperdisk-throughput`
-	//
-	// ***
 	StoragePoolType *string `pulumi:"storagePoolType"`
 	// A reference to the zone where the storage pool resides.
 	Zone *string `pulumi:"zone"`
@@ -330,8 +326,6 @@ type StoragePoolState struct {
 	// following are valid values:
 	// * `https://www.googleapis.com/compute/v1/projects/{project_id}/zones/{zone}/storagePoolTypes/hyperdisk-balanced`
 	// * `hyperdisk-throughput`
-	//
-	// ***
 	StoragePoolType pulumi.StringPtrInput
 	// A reference to the zone where the storage pool resides.
 	Zone pulumi.StringPtrInput
@@ -375,8 +369,6 @@ type storagePoolArgs struct {
 	// following are valid values:
 	// * `https://www.googleapis.com/compute/v1/projects/{project_id}/zones/{zone}/storagePoolTypes/hyperdisk-balanced`
 	// * `hyperdisk-throughput`
-	//
-	// ***
 	StoragePoolType string `pulumi:"storagePoolType"`
 	// A reference to the zone where the storage pool resides.
 	Zone *string `pulumi:"zone"`
@@ -417,8 +409,6 @@ type StoragePoolArgs struct {
 	// following are valid values:
 	// * `https://www.googleapis.com/compute/v1/projects/{project_id}/zones/{zone}/storagePoolTypes/hyperdisk-balanced`
 	// * `hyperdisk-throughput`
-	//
-	// ***
 	StoragePoolType pulumi.StringInput
 	// A reference to the zone where the storage pool resides.
 	Zone pulumi.StringPtrInput
@@ -599,8 +589,6 @@ func (o StoragePoolOutput) Statuses() StoragePoolStatusArrayOutput {
 // following are valid values:
 // * `https://www.googleapis.com/compute/v1/projects/{project_id}/zones/{zone}/storagePoolTypes/hyperdisk-balanced`
 // * `hyperdisk-throughput`
-//
-// ***
 func (o StoragePoolOutput) StoragePoolType() pulumi.StringOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.StoragePoolType }).(pulumi.StringOutput)
 }

@@ -31,9 +31,6 @@ class FirewallPolicyAssociationArgs:
                firewall policy with the flag to override the existing attachmentTarget's policy association.
                **Note** Due to potential risks with this operation it is *highly* recommended to use the `create_before_destroy` life cycle option
                on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The name for an association.
         """
         pulumi.set(__self__, "attachment_target", attachment_target)
@@ -62,9 +59,6 @@ class FirewallPolicyAssociationArgs:
         firewall policy with the flag to override the existing attachmentTarget's policy association.
         **Note** Due to potential risks with this operation it is *highly* recommended to use the `create_before_destroy` life cycle option
         on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
-
-
-        - - -
         """
         return pulumi.get(self, "firewall_policy")
 
@@ -100,9 +94,6 @@ class _FirewallPolicyAssociationState:
                firewall policy with the flag to override the existing attachmentTarget's policy association.
                **Note** Due to potential risks with this operation it is *highly* recommended to use the `create_before_destroy` life cycle option
                on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The name for an association.
         :param pulumi.Input[builtins.str] short_name: The short name of the firewall policy of the association.
         """
@@ -136,9 +127,6 @@ class _FirewallPolicyAssociationState:
         firewall policy with the flag to override the existing attachmentTarget's policy association.
         **Note** Due to potential risks with this operation it is *highly* recommended to use the `create_before_destroy` life cycle option
         on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
-
-
-        - - -
         """
         return pulumi.get(self, "firewall_policy")
 
@@ -236,9 +224,6 @@ class FirewallPolicyAssociation(pulumi.CustomResource):
                firewall policy with the flag to override the existing attachmentTarget's policy association.
                **Note** Due to potential risks with this operation it is *highly* recommended to use the `create_before_destroy` life cycle option
                on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The name for an association.
         """
         ...
@@ -356,9 +341,6 @@ class FirewallPolicyAssociation(pulumi.CustomResource):
                firewall policy with the flag to override the existing attachmentTarget's policy association.
                **Note** Due to potential risks with this operation it is *highly* recommended to use the `create_before_destroy` life cycle option
                on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The name for an association.
         :param pulumi.Input[builtins.str] short_name: The short name of the firewall policy of the association.
         """
@@ -389,9 +371,6 @@ class FirewallPolicyAssociation(pulumi.CustomResource):
         firewall policy with the flag to override the existing attachmentTarget's policy association.
         **Note** Due to potential risks with this operation it is *highly* recommended to use the `create_before_destroy` life cycle option
         on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
-
-
-        - - -
         """
         return pulumi.get(self, "firewall_policy")
 

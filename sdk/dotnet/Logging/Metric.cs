@@ -239,9 +239,6 @@ namespace Pulumi.Gcp.Logging
         /// <summary>
         /// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
         /// is used to match log entries.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("filter")]
         public Output<string> Filter { get; private set; } = null!;
@@ -371,9 +368,6 @@ namespace Pulumi.Gcp.Logging
         /// <summary>
         /// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
         /// is used to match log entries.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("filter", required: true)]
         public Input<string> Filter { get; set; } = null!;
@@ -471,9 +465,6 @@ namespace Pulumi.Gcp.Logging
         /// <summary>
         /// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
         /// is used to match log entries.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("filter")]
         public Input<string>? Filter { get; set; }

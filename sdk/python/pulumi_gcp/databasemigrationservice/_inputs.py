@@ -2705,8 +2705,6 @@ if not MYPY:
         subnet: pulumi.Input[builtins.str]
         """
         A free subnet for peering. (CIDR of /29)
-
-        - - -
         """
         vpc_name: pulumi.Input[builtins.str]
         """
@@ -2723,8 +2721,6 @@ class PrivateConnectionVpcPeeringConfigArgs:
                  vpc_name: pulumi.Input[builtins.str]):
         """
         :param pulumi.Input[builtins.str] subnet: A free subnet for peering. (CIDR of /29)
-               
-               - - -
         :param pulumi.Input[builtins.str] vpc_name: Fully qualified name of the VPC that Database Migration Service will peer to.
                Format: projects/{project}/global/{networks}/{name}
         """
@@ -2736,8 +2732,6 @@ class PrivateConnectionVpcPeeringConfigArgs:
     def subnet(self) -> pulumi.Input[builtins.str]:
         """
         A free subnet for peering. (CIDR of /29)
-
-        - - -
         """
         return pulumi.get(self, "subnet")
 

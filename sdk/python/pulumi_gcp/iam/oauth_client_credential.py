@@ -33,9 +33,6 @@ class OauthClientCredentialArgs:
                final component of the resource name. This value should be 4-32 characters,
                and may contain the characters [a-z0-9-]. The prefix `gcp-` is
                reserved for use by Google, and may not be specified.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] oauthclient: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[builtins.bool] disabled: Whether the OauthClientCredential is disabled. You cannot use a
                disabled OauthClientCredential.
@@ -74,9 +71,6 @@ class OauthClientCredentialArgs:
         final component of the resource name. This value should be 4-32 characters,
         and may contain the characters [a-z0-9-]. The prefix `gcp-` is
         reserved for use by Google, and may not be specified.
-
-
-        - - -
         """
         return pulumi.get(self, "oauth_client_credential_id")
 
@@ -167,9 +161,6 @@ class _OauthClientCredentialState:
                final component of the resource name. This value should be 4-32 characters,
                and may contain the characters [a-z0-9-]. The prefix `gcp-` is
                reserved for use by Google, and may not be specified.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] oauthclient: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -268,9 +259,6 @@ class _OauthClientCredentialState:
         final component of the resource name. This value should be 4-32 characters,
         and may contain the characters [a-z0-9-]. The prefix `gcp-` is
         reserved for use by Google, and may not be specified.
-
-
-        - - -
         """
         return pulumi.get(self, "oauth_client_credential_id")
 
@@ -386,9 +374,6 @@ class OauthClientCredential(pulumi.CustomResource):
                final component of the resource name. This value should be 4-32 characters,
                and may contain the characters [a-z0-9-]. The prefix `gcp-` is
                reserved for use by Google, and may not be specified.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] oauthclient: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -546,9 +531,6 @@ class OauthClientCredential(pulumi.CustomResource):
                final component of the resource name. This value should be 4-32 characters,
                and may contain the characters [a-z0-9-]. The prefix `gcp-` is
                reserved for use by Google, and may not be specified.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] oauthclient: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -624,9 +606,6 @@ class OauthClientCredential(pulumi.CustomResource):
         final component of the resource name. This value should be 4-32 characters,
         and may contain the characters [a-z0-9-]. The prefix `gcp-` is
         reserved for use by Google, and may not be specified.
-
-
-        - - -
         """
         return pulumi.get(self, "oauth_client_credential_id")
 

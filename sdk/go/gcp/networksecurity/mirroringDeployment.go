@@ -169,8 +169,6 @@ type MirroringDeployment struct {
 	MirroringDeploymentGroup pulumi.StringOutput `pulumi:"mirroringDeploymentGroup"`
 	// The ID to use for the new deployment, which will become the final
 	// component of the deployment's resource name.
-	//
-	// ***
 	MirroringDeploymentId pulumi.StringOutput `pulumi:"mirroringDeploymentId"`
 	// The resource name of this deployment, for example:
 	// `projects/123456789/locations/us-central1-a/mirroringDeployments/my-dep`.
@@ -273,8 +271,6 @@ type mirroringDeploymentState struct {
 	MirroringDeploymentGroup *string `pulumi:"mirroringDeploymentGroup"`
 	// The ID to use for the new deployment, which will become the final
 	// component of the deployment's resource name.
-	//
-	// ***
 	MirroringDeploymentId *string `pulumi:"mirroringDeploymentId"`
 	// The resource name of this deployment, for example:
 	// `projects/123456789/locations/us-central1-a/mirroringDeployments/my-dep`.
@@ -331,8 +327,6 @@ type MirroringDeploymentState struct {
 	MirroringDeploymentGroup pulumi.StringPtrInput
 	// The ID to use for the new deployment, which will become the final
 	// component of the deployment's resource name.
-	//
-	// ***
 	MirroringDeploymentId pulumi.StringPtrInput
 	// The resource name of this deployment, for example:
 	// `projects/123456789/locations/us-central1-a/mirroringDeployments/my-dep`.
@@ -388,8 +382,6 @@ type mirroringDeploymentArgs struct {
 	MirroringDeploymentGroup string `pulumi:"mirroringDeploymentGroup"`
 	// The ID to use for the new deployment, which will become the final
 	// component of the deployment's resource name.
-	//
-	// ***
 	MirroringDeploymentId string `pulumi:"mirroringDeploymentId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -417,8 +409,6 @@ type MirroringDeploymentArgs struct {
 	MirroringDeploymentGroup pulumi.StringInput
 	// The ID to use for the new deployment, which will become the final
 	// component of the deployment's resource name.
-	//
-	// ***
 	MirroringDeploymentId pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -557,8 +547,6 @@ func (o MirroringDeploymentOutput) MirroringDeploymentGroup() pulumi.StringOutpu
 
 // The ID to use for the new deployment, which will become the final
 // component of the deployment's resource name.
-//
-// ***
 func (o MirroringDeploymentOutput) MirroringDeploymentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MirroringDeployment) pulumi.StringOutput { return v.MirroringDeploymentId }).(pulumi.StringOutput)
 }

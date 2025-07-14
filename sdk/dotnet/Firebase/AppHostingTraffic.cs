@@ -253,9 +253,6 @@ namespace Pulumi.Gcp.Firebase
     {
         /// <summary>
         /// Id of the backend that this Traffic config applies to
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("backend")]
         public Output<string> Backend { get; private set; } = null!;
@@ -384,9 +381,6 @@ namespace Pulumi.Gcp.Firebase
     {
         /// <summary>
         /// Id of the backend that this Traffic config applies to
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("backend", required: true)]
         public Input<string> Backend { get; set; } = null!;
@@ -430,9 +424,6 @@ namespace Pulumi.Gcp.Firebase
     {
         /// <summary>
         /// Id of the backend that this Traffic config applies to
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("backend")]
         public Input<string>? Backend { get; set; }

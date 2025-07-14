@@ -59,8 +59,6 @@ public final class RowAccessPolicyState extends com.pulumi.resources.ResourceArg
      * nullable_field is not NULL
      * numeric_field BETWEEN 1.0 AND 5.0
      * 
-     * ***
-     * 
      */
     @Import(name="filterPredicate")
     private @Nullable Output<String> filterPredicate;
@@ -75,8 +73,6 @@ public final class RowAccessPolicyState extends com.pulumi.resources.ResourceArg
      * date_field = CAST(&#39;2019-9-27&#39; as DATE)
      * nullable_field is not NULL
      * numeric_field BETWEEN 1.0 AND 5.0
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> filterPredicate() {
@@ -292,8 +288,6 @@ public final class RowAccessPolicyState extends com.pulumi.resources.ResourceArg
          * nullable_field is not NULL
          * numeric_field BETWEEN 1.0 AND 5.0
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -312,8 +306,6 @@ public final class RowAccessPolicyState extends com.pulumi.resources.ResourceArg
          * date_field = CAST(&#39;2019-9-27&#39; as DATE)
          * nullable_field is not NULL
          * numeric_field BETWEEN 1.0 AND 5.0
-         * 
-         * ***
          * 
          * @return builder
          * 

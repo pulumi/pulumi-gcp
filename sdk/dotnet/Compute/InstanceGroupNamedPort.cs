@@ -116,9 +116,6 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The name of the instance group.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("group")]
         public Output<string> Group { get; private set; } = null!;
@@ -197,9 +194,6 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The name of the instance group.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("group", required: true)]
         public Input<string> Group { get; set; } = null!;
@@ -240,9 +234,6 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The name of the instance group.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("group")]
         public Input<string>? Group { get; set; }

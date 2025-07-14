@@ -30,9 +30,6 @@ class ParameterVersionArgs:
         :param pulumi.Input[builtins.str] parameter_data: The Parameter data.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[builtins.str] parameter_version_id: Version ID of the Parameter Version Resource. This must be unique within the Parameter.
-               
-               
-               - - -
         :param pulumi.Input[builtins.bool] disabled: The current state of Parameter Version. This field is only applicable for updating Parameter Version.
         """
         pulumi.set(__self__, "parameter", parameter)
@@ -71,9 +68,6 @@ class ParameterVersionArgs:
     def parameter_version_id(self) -> pulumi.Input[builtins.str]:
         """
         Version ID of the Parameter Version Resource. This must be unique within the Parameter.
-
-
-        - - -
         """
         return pulumi.get(self, "parameter_version_id")
 
@@ -117,9 +111,6 @@ class _ParameterVersionState:
         :param pulumi.Input[builtins.str] parameter_data: The Parameter data.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[builtins.str] parameter_version_id: Version ID of the Parameter Version Resource. This must be unique within the Parameter.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] update_time: The time at which the Parameter Version was updated.
         """
         if create_time is not None:
@@ -219,9 +210,6 @@ class _ParameterVersionState:
     def parameter_version_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Version ID of the Parameter Version Resource. This must be unique within the Parameter.
-
-
-        - - -
         """
         return pulumi.get(self, "parameter_version_id")
 
@@ -326,9 +314,6 @@ class ParameterVersion(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] parameter_data: The Parameter data.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[builtins.str] parameter_version_id: Version ID of the Parameter Version Resource. This must be unique within the Parameter.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -481,9 +466,6 @@ class ParameterVersion(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] parameter_data: The Parameter data.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[builtins.str] parameter_version_id: Version ID of the Parameter Version Resource. This must be unique within the Parameter.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] update_time: The time at which the Parameter Version was updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -556,9 +538,6 @@ class ParameterVersion(pulumi.CustomResource):
     def parameter_version_id(self) -> pulumi.Output[builtins.str]:
         """
         Version ID of the Parameter Version Resource. This must be unique within the Parameter.
-
-
-        - - -
         """
         return pulumi.get(self, "parameter_version_id")
 

@@ -169,9 +169,6 @@ export class ManagementOrganizationSecurityHealthAnalyticsCustomModule extends p
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * Numerical ID of the parent organization.
-     *
-     *
-     * - - -
      */
     public readonly organization!: pulumi.Output<string>;
     /**
@@ -266,9 +263,6 @@ export interface ManagementOrganizationSecurityHealthAnalyticsCustomModuleState 
     name?: pulumi.Input<string>;
     /**
      * Numerical ID of the parent organization.
-     *
-     *
-     * - - -
      */
     organization?: pulumi.Input<string>;
     /**
@@ -307,9 +301,6 @@ export interface ManagementOrganizationSecurityHealthAnalyticsCustomModuleArgs {
     location?: pulumi.Input<string>;
     /**
      * Numerical ID of the parent organization.
-     *
-     *
-     * - - -
      */
     organization: pulumi.Input<string>;
 }

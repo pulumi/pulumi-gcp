@@ -402,8 +402,7 @@ namespace Pulumi.Gcp.Colab
     public partial class Schedule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be
-        /// queued instead of skipped. Default to false.
+        /// Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
         /// </summary>
         [Output("allowQueueing")]
         public Output<bool?> AllowQueueing { get; private set; } = null!;
@@ -422,8 +421,7 @@ namespace Pulumi.Gcp.Colab
         public Output<string> Cron { get; private set; } = null!;
 
         /// <summary>
-        /// Desired state of the Colab Schedule. Set this field to 'ACTIVE' to start/resume the schedule, and 'PAUSED' to pause the
-        /// schedule.
+        /// Desired state of the Colab Schedule. Set this field to `ACTIVE` to start/resume the schedule, and `PAUSED` to pause the schedule.
         /// </summary>
         [Output("desiredState")]
         public Output<string?> DesiredState { get; private set; } = null!;
@@ -435,9 +433,7 @@ namespace Pulumi.Gcp.Colab
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either end_time is
-        /// reached or when scheduled_run_count &gt;= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt)
-        /// format.
+        /// Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either end_time is reached or when scheduled_run_count &gt;= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
         /// </summary>
         [Output("endTime")]
         public Output<string?> EndTime { get; private set; } = null!;
@@ -455,9 +451,7 @@ namespace Pulumi.Gcp.Colab
         public Output<string> MaxConcurrentRunCount { get; private set; } = null!;
 
         /// <summary>
-        /// Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount &gt;=
-        /// maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is
-        /// paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
+        /// Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount &gt;= maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
         /// </summary>
         [Output("maxRunCount")]
         public Output<string?> MaxRunCount { get; private set; } = null!;
@@ -468,12 +462,15 @@ namespace Pulumi.Gcp.Colab
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC
-        /// 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
+        /// The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
         /// </summary>
         [Output("startTime")]
         public Output<string> StartTime { get; private set; } = null!;
@@ -531,8 +528,7 @@ namespace Pulumi.Gcp.Colab
     public sealed class ScheduleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be
-        /// queued instead of skipped. Default to false.
+        /// Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
         /// </summary>
         [Input("allowQueueing")]
         public Input<bool>? AllowQueueing { get; set; }
@@ -551,8 +547,7 @@ namespace Pulumi.Gcp.Colab
         public Input<string> Cron { get; set; } = null!;
 
         /// <summary>
-        /// Desired state of the Colab Schedule. Set this field to 'ACTIVE' to start/resume the schedule, and 'PAUSED' to pause the
-        /// schedule.
+        /// Desired state of the Colab Schedule. Set this field to `ACTIVE` to start/resume the schedule, and `PAUSED` to pause the schedule.
         /// </summary>
         [Input("desiredState")]
         public Input<string>? DesiredState { get; set; }
@@ -564,9 +559,7 @@ namespace Pulumi.Gcp.Colab
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
-        /// Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either end_time is
-        /// reached or when scheduled_run_count &gt;= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt)
-        /// format.
+        /// Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either end_time is reached or when scheduled_run_count &gt;= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
         /// </summary>
         [Input("endTime")]
         public Input<string>? EndTime { get; set; }
@@ -584,19 +577,20 @@ namespace Pulumi.Gcp.Colab
         public Input<string> MaxConcurrentRunCount { get; set; } = null!;
 
         /// <summary>
-        /// Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount &gt;=
-        /// maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is
-        /// paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
+        /// Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount &gt;= maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
         /// </summary>
         [Input("maxRunCount")]
         public Input<string>? MaxRunCount { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC
-        /// 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
+        /// The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
         /// </summary>
         [Input("startTime")]
         public Input<string>? StartTime { get; set; }
@@ -610,8 +604,7 @@ namespace Pulumi.Gcp.Colab
     public sealed class ScheduleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be
-        /// queued instead of skipped. Default to false.
+        /// Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
         /// </summary>
         [Input("allowQueueing")]
         public Input<bool>? AllowQueueing { get; set; }
@@ -630,8 +623,7 @@ namespace Pulumi.Gcp.Colab
         public Input<string>? Cron { get; set; }
 
         /// <summary>
-        /// Desired state of the Colab Schedule. Set this field to 'ACTIVE' to start/resume the schedule, and 'PAUSED' to pause the
-        /// schedule.
+        /// Desired state of the Colab Schedule. Set this field to `ACTIVE` to start/resume the schedule, and `PAUSED` to pause the schedule.
         /// </summary>
         [Input("desiredState")]
         public Input<string>? DesiredState { get; set; }
@@ -643,9 +635,7 @@ namespace Pulumi.Gcp.Colab
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either end_time is
-        /// reached or when scheduled_run_count &gt;= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt)
-        /// format.
+        /// Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either end_time is reached or when scheduled_run_count &gt;= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
         /// </summary>
         [Input("endTime")]
         public Input<string>? EndTime { get; set; }
@@ -663,9 +653,7 @@ namespace Pulumi.Gcp.Colab
         public Input<string>? MaxConcurrentRunCount { get; set; }
 
         /// <summary>
-        /// Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount &gt;=
-        /// maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is
-        /// paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
+        /// Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount &gt;= maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
         /// </summary>
         [Input("maxRunCount")]
         public Input<string>? MaxRunCount { get; set; }
@@ -676,12 +664,15 @@ namespace Pulumi.Gcp.Colab
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC
-        /// 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
+        /// The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
         /// </summary>
         [Input("startTime")]
         public Input<string>? StartTime { get; set; }

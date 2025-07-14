@@ -192,16 +192,12 @@ public final class InstantSnapshotState extends com.pulumi.resources.ResourceArg
     /**
      * A reference to the disk used to create this instant snapshot.
      * 
-     * ***
-     * 
      */
     @Import(name="sourceDisk")
     private @Nullable Output<String> sourceDisk;
 
     /**
      * @return A reference to the disk used to create this instant snapshot.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> sourceDisk() {
@@ -509,8 +505,6 @@ public final class InstantSnapshotState extends com.pulumi.resources.ResourceArg
         /**
          * @param sourceDisk A reference to the disk used to create this instant snapshot.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -521,8 +515,6 @@ public final class InstantSnapshotState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param sourceDisk A reference to the disk used to create this instant snapshot.
-         * 
-         * ***
          * 
          * @return builder
          * 

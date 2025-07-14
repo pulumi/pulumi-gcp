@@ -33,9 +33,6 @@ class RuleDeploymentArgs:
         :param pulumi.Input[builtins.str] instance: The unique identifier for the Chronicle instance, which is the same as the customer ID.
         :param pulumi.Input[builtins.str] location: The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
         :param pulumi.Input[builtins.str] rule: The Rule ID of the rule.
-               
-               
-               - - -
         :param pulumi.Input[builtins.bool] alerting: Whether detections resulting from this deployment should be considered
                alerts.
         :param pulumi.Input[builtins.bool] archived: The archive state of the rule deployment.
@@ -97,9 +94,6 @@ class RuleDeploymentArgs:
     def rule(self) -> pulumi.Input[builtins.str]:
         """
         The Rule ID of the rule.
-
-
-        - - -
         """
         return pulumi.get(self, "rule")
 
@@ -235,9 +229,6 @@ class _RuleDeploymentState:
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] rule: The Rule ID of the rule.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] run_frequency: The run frequency of the rule deployment.
                Possible values:
                LIVE
@@ -445,9 +436,6 @@ class _RuleDeploymentState:
     def rule(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The Rule ID of the rule.
-
-
-        - - -
         """
         return pulumi.get(self, "rule")
 
@@ -539,9 +527,6 @@ class RuleDeployment(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] rule: The Rule ID of the rule.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] run_frequency: The run frequency of the rule deployment.
                Possible values:
                LIVE
@@ -708,9 +693,6 @@ class RuleDeployment(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] rule: The Rule ID of the rule.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] run_frequency: The run frequency of the rule deployment.
                Possible values:
                LIVE
@@ -861,9 +843,6 @@ class RuleDeployment(pulumi.CustomResource):
     def rule(self) -> pulumi.Output[builtins.str]:
         """
         The Rule ID of the rule.
-
-
-        - - -
         """
         return pulumi.get(self, "rule")
 

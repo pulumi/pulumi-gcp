@@ -125,13 +125,15 @@ namespace Pulumi.Gcp.PrivilegedAccessManager
     {
         /// <summary>
         /// AdditionalNotificationTargets includes email addresses to be notified.
+        /// Structure is documented below.
         /// </summary>
         [Output("additionalNotificationTargets")]
         public Output<Outputs.EntitlementAdditionalNotificationTargets?> AdditionalNotificationTargets { get; private set; } = null!;
 
         /// <summary>
-        /// The approvals needed before access will be granted to a requester. No approvals will be needed if this field is null.
-        /// Different types of approval workflows that can be used to gate privileged access granting.
+        /// The approvals needed before access will be granted to a requester.
+        /// No approvals will be needed if this field is null. Different types of approval workflows that can be used to gate privileged access granting.
+        /// Structure is documented below.
         /// </summary>
         [Output("approvalWorkflow")]
         public Output<Outputs.EntitlementApprovalWorkflow?> ApprovalWorkflow { get; private set; } = null!;
@@ -266,13 +268,15 @@ namespace Pulumi.Gcp.PrivilegedAccessManager
     {
         /// <summary>
         /// AdditionalNotificationTargets includes email addresses to be notified.
+        /// Structure is documented below.
         /// </summary>
         [Input("additionalNotificationTargets")]
         public Input<Inputs.EntitlementAdditionalNotificationTargetsArgs>? AdditionalNotificationTargets { get; set; }
 
         /// <summary>
-        /// The approvals needed before access will be granted to a requester. No approvals will be needed if this field is null.
-        /// Different types of approval workflows that can be used to gate privileged access granting.
+        /// The approvals needed before access will be granted to a requester.
+        /// No approvals will be needed if this field is null. Different types of approval workflows that can be used to gate privileged access granting.
+        /// Structure is documented below.
         /// </summary>
         [Input("approvalWorkflow")]
         public Input<Inputs.EntitlementApprovalWorkflowArgs>? ApprovalWorkflow { get; set; }
@@ -342,13 +346,15 @@ namespace Pulumi.Gcp.PrivilegedAccessManager
     {
         /// <summary>
         /// AdditionalNotificationTargets includes email addresses to be notified.
+        /// Structure is documented below.
         /// </summary>
         [Input("additionalNotificationTargets")]
         public Input<Inputs.EntitlementAdditionalNotificationTargetsGetArgs>? AdditionalNotificationTargets { get; set; }
 
         /// <summary>
-        /// The approvals needed before access will be granted to a requester. No approvals will be needed if this field is null.
-        /// Different types of approval workflows that can be used to gate privileged access granting.
+        /// The approvals needed before access will be granted to a requester.
+        /// No approvals will be needed if this field is null. Different types of approval workflows that can be used to gate privileged access granting.
+        /// Structure is documented below.
         /// </summary>
         [Input("approvalWorkflow")]
         public Input<Inputs.EntitlementApprovalWorkflowGetArgs>? ApprovalWorkflow { get; set; }

@@ -31,9 +31,6 @@ class GlossaryTermArgs:
         """
         The set of arguments for constructing a GlossaryTerm resource.
         :param pulumi.Input[builtins.str] location: The location where the glossary term should reside.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] parent: The immediate parent of the GlossaryTerm in the resource-hierarchy. It can either be a Glossary or a Term. Format: projects/{projectId}/locations/{locationId}/glossaries/{glossaryId} OR projects/{projectId}/locations/{locationId}/glossaries/{glossaryId}/terms/{termId}
         :param pulumi.Input[builtins.str] description: The user-mutable description of the GlossaryTerm.
         :param pulumi.Input[builtins.str] display_name: User friendly display name of the GlossaryTerm. This is user-mutable. This will be same as the termId, if not specified.
@@ -66,9 +63,6 @@ class GlossaryTermArgs:
     def location(self) -> pulumi.Input[builtins.str]:
         """
         The location where the glossary term should reside.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -194,9 +188,6 @@ class _GlossaryTermState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location where the glossary term should reside.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The resource name of the GlossaryTerm. Format: projects/{projectId}/locations/{locationId}/glossaries/{glossaryId}/categories/{termId}
         :param pulumi.Input[builtins.str] parent: The immediate parent of the GlossaryTerm in the resource-hierarchy. It can either be a Glossary or a Term. Format: projects/{projectId}/locations/{locationId}/glossaries/{glossaryId} OR projects/{projectId}/locations/{locationId}/glossaries/{glossaryId}/terms/{termId}
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -316,9 +307,6 @@ class _GlossaryTermState:
     def location(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The location where the glossary term should reside.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -511,9 +499,6 @@ class GlossaryTerm(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location where the glossary term should reside.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] parent: The immediate parent of the GlossaryTerm in the resource-hierarchy. It can either be a Glossary or a Term. Format: projects/{projectId}/locations/{locationId}/glossaries/{glossaryId} OR projects/{projectId}/locations/{locationId}/glossaries/{glossaryId}/terms/{termId}
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -691,9 +676,6 @@ class GlossaryTerm(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location where the glossary term should reside.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The resource name of the GlossaryTerm. Format: projects/{projectId}/locations/{locationId}/glossaries/{glossaryId}/categories/{termId}
         :param pulumi.Input[builtins.str] parent: The immediate parent of the GlossaryTerm in the resource-hierarchy. It can either be a Glossary or a Term. Format: projects/{projectId}/locations/{locationId}/glossaries/{glossaryId} OR projects/{projectId}/locations/{locationId}/glossaries/{glossaryId}/terms/{termId}
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -780,9 +762,6 @@ class GlossaryTerm(pulumi.CustomResource):
     def location(self) -> pulumi.Output[builtins.str]:
         """
         The location where the glossary term should reside.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

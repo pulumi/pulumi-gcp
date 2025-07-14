@@ -240,9 +240,6 @@ namespace Pulumi.Gcp.ApiHub
         /// `projects/{project}/locations/{location}/plugins/{plugin}`,
         /// its length is limited to 1000 characters and valid characters are
         /// /a-z[0-9]-_/.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("pluginId")]
         public Output<string> PluginId { get; private set; } = null!;
@@ -394,9 +391,6 @@ namespace Pulumi.Gcp.ApiHub
         /// `projects/{project}/locations/{location}/plugins/{plugin}`,
         /// its length is limited to 1000 characters and valid characters are
         /// /a-z[0-9]-_/.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("pluginId", required: true)]
         public Input<string> PluginId { get; set; } = null!;
@@ -516,9 +510,6 @@ namespace Pulumi.Gcp.ApiHub
         /// `projects/{project}/locations/{location}/plugins/{plugin}`,
         /// its length is limited to 1000 characters and valid characters are
         /// /a-z[0-9]-_/.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("pluginId")]
         public Input<string>? PluginId { get; set; }

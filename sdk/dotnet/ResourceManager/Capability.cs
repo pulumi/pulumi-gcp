@@ -92,9 +92,6 @@ namespace Pulumi.Gcp.ResourceManager
 
         /// <summary>
         /// Capability Value.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("value")]
         public Output<bool> Value { get; private set; } = null!;
@@ -159,9 +156,6 @@ namespace Pulumi.Gcp.ResourceManager
 
         /// <summary>
         /// Capability Value.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("value", required: true)]
         public Input<bool> Value { get; set; } = null!;
@@ -188,9 +182,6 @@ namespace Pulumi.Gcp.ResourceManager
 
         /// <summary>
         /// Capability Value.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("value")]
         public Input<bool>? Value { get; set; }

@@ -105,9 +105,14 @@ export class V2ProjectNotificationConfig extends pulumi.CustomResource {
      * `projects/{{projectId}}/locations/{{location}}/notificationConfigs/{{config_id}}`.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The Pub/Sub topic to send notifications to. Its format is "projects/[projectId]/topics/[topic]".
+     * The Pub/Sub topic to send notifications to. Its format is
+     * "projects/[projectId]/topics/[topic]".
      */
     public readonly pubsubTopic!: pulumi.Output<string | undefined>;
     /**
@@ -185,9 +190,14 @@ export interface V2ProjectNotificationConfigState {
      * `projects/{{projectId}}/locations/{{location}}/notificationConfigs/{{config_id}}`.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
-     * The Pub/Sub topic to send notifications to. Its format is "projects/[projectId]/topics/[topic]".
+     * The Pub/Sub topic to send notifications to. Its format is
+     * "projects/[projectId]/topics/[topic]".
      */
     pubsubTopic?: pulumi.Input<string>;
     /**
@@ -218,9 +228,14 @@ export interface V2ProjectNotificationConfigArgs {
      * Location ID of the parent organization. Only global is supported at the moment.
      */
     location?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
-     * The Pub/Sub topic to send notifications to. Its format is "projects/[projectId]/topics/[topic]".
+     * The Pub/Sub topic to send notifications to. Its format is
+     * "projects/[projectId]/topics/[topic]".
      */
     pubsubTopic?: pulumi.Input<string>;
     /**

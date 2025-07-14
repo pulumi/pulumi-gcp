@@ -33,16 +33,12 @@ public final class NetworkFirewallPolicyAssociationState extends com.pulumi.reso
     /**
      * The firewall policy of the resource.
      * 
-     * ***
-     * 
      */
     @Import(name="firewallPolicy")
     private @Nullable Output<String> firewallPolicy;
 
     /**
      * @return The firewall policy of the resource.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> firewallPolicy() {
@@ -148,8 +144,6 @@ public final class NetworkFirewallPolicyAssociationState extends com.pulumi.reso
         /**
          * @param firewallPolicy The firewall policy of the resource.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -160,8 +154,6 @@ public final class NetworkFirewallPolicyAssociationState extends com.pulumi.reso
 
         /**
          * @param firewallPolicy The firewall policy of the resource.
-         * 
-         * ***
          * 
          * @return builder
          * 

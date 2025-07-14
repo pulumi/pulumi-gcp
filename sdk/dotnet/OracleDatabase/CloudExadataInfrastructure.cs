@@ -147,9 +147,6 @@ namespace Pulumi.Gcp.OracleDatabase
         /// to (^a-z?$) and must be a maximum of 63
         /// characters in length. The value must start with a letter and end with
         /// a letter or a number.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("cloudExadataInfrastructureId")]
         public Output<string> CloudExadataInfrastructureId { get; private set; } = null!;
@@ -286,9 +283,6 @@ namespace Pulumi.Gcp.OracleDatabase
         /// to (^a-z?$) and must be a maximum of 63
         /// characters in length. The value must start with a letter and end with
         /// a letter or a number.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("cloudExadataInfrastructureId", required: true)]
         public Input<string> CloudExadataInfrastructureId { get; set; } = null!;
@@ -355,9 +349,6 @@ namespace Pulumi.Gcp.OracleDatabase
         /// to (^a-z?$) and must be a maximum of 63
         /// characters in length. The value must start with a letter and end with
         /// a letter or a number.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("cloudExadataInfrastructureId")]
         public Input<string>? CloudExadataInfrastructureId { get; set; }

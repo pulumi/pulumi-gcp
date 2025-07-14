@@ -98,8 +98,6 @@ type Namespace struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The Resource ID must be 1-63 characters long, including digits,
 	// lowercase letters or the hyphen character.
-	//
-	// ***
 	NamespaceId pulumi.StringOutput `pulumi:"namespaceId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -168,8 +166,6 @@ type namespaceState struct {
 	Name *string `pulumi:"name"`
 	// The Resource ID must be 1-63 characters long, including digits,
 	// lowercase letters or the hyphen character.
-	//
-	// ***
 	NamespaceId *string `pulumi:"namespaceId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -198,8 +194,6 @@ type NamespaceState struct {
 	Name pulumi.StringPtrInput
 	// The Resource ID must be 1-63 characters long, including digits,
 	// lowercase letters or the hyphen character.
-	//
-	// ***
 	NamespaceId pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -227,8 +221,6 @@ type namespaceArgs struct {
 	Location string `pulumi:"location"`
 	// The Resource ID must be 1-63 characters long, including digits,
 	// lowercase letters or the hyphen character.
-	//
-	// ***
 	NamespaceId string `pulumi:"namespaceId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -250,8 +242,6 @@ type NamespaceArgs struct {
 	Location pulumi.StringInput
 	// The Resource ID must be 1-63 characters long, including digits,
 	// lowercase letters or the hyphen character.
-	//
-	// ***
 	NamespaceId pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -375,8 +365,6 @@ func (o NamespaceOutput) Name() pulumi.StringOutput {
 
 // The Resource ID must be 1-63 characters long, including digits,
 // lowercase letters or the hyphen character.
-//
-// ***
 func (o NamespaceOutput) NamespaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.NamespaceId }).(pulumi.StringOutput)
 }

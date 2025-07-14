@@ -467,8 +467,6 @@ namespace Pulumi.Gcp.Dns
         /// <summary>
         /// User assigned name for this resource.
         /// Must be unique within the project.
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -644,8 +642,6 @@ namespace Pulumi.Gcp.Dns
         /// <summary>
         /// User assigned name for this resource.
         /// Must be unique within the project.
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -794,8 +790,6 @@ namespace Pulumi.Gcp.Dns
         /// <summary>
         /// User assigned name for this resource.
         /// Must be unique within the project.
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

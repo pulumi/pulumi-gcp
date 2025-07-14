@@ -13,7 +13,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMap {
     /**
-     * @return (Required) The identifier for this object. Format specified above.
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     private String project;
@@ -25,7 +26,8 @@ public final class FutureReservationStatusLastKnownGoodStateFutureReservationSpe
 
     private FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMap() {}
     /**
-     * @return (Required) The identifier for this object. Format specified above.
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     public String project() {

@@ -51,16 +51,12 @@ public final class ControlOrganizationIntelligenceConfigArgs extends com.pulumi.
     /**
      * Identifier of the GCP Organization. For GCP org, this field should be organization number.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return Identifier of the GCP Organization. For GCP org, this field should be organization number.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -140,8 +136,6 @@ public final class ControlOrganizationIntelligenceConfigArgs extends com.pulumi.
         /**
          * @param name Identifier of the GCP Organization. For GCP org, this field should be organization number.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -152,8 +146,6 @@ public final class ControlOrganizationIntelligenceConfigArgs extends com.pulumi.
 
         /**
          * @param name Identifier of the GCP Organization. For GCP org, this field should be organization number.
-         * 
-         * ***
          * 
          * @return builder
          * 

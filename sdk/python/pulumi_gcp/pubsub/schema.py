@@ -34,9 +34,6 @@ class SchemaArgs:
                error indicating that the limit has been reached require manually
                [deleting old revisions](https://cloud.google.com/pubsub/docs/delete-schema-revision).
         :param pulumi.Input[builtins.str] name: The ID to use for the schema, which will become the final component of the schema's resource name.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] type: The type of the schema definition
@@ -75,9 +72,6 @@ class SchemaArgs:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The ID to use for the schema, which will become the final component of the schema's resource name.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -130,9 +124,6 @@ class _SchemaState:
                error indicating that the limit has been reached require manually
                [deleting old revisions](https://cloud.google.com/pubsub/docs/delete-schema-revision).
         :param pulumi.Input[builtins.str] name: The ID to use for the schema, which will become the final component of the schema's resource name.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] type: The type of the schema definition
@@ -171,9 +162,6 @@ class _SchemaState:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The ID to use for the schema, which will become the final component of the schema's resource name.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -316,9 +304,6 @@ class Schema(pulumi.CustomResource):
                error indicating that the limit has been reached require manually
                [deleting old revisions](https://cloud.google.com/pubsub/docs/delete-schema-revision).
         :param pulumi.Input[builtins.str] name: The ID to use for the schema, which will become the final component of the schema's resource name.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] type: The type of the schema definition
@@ -478,9 +463,6 @@ class Schema(pulumi.CustomResource):
                error indicating that the limit has been reached require manually
                [deleting old revisions](https://cloud.google.com/pubsub/docs/delete-schema-revision).
         :param pulumi.Input[builtins.str] name: The ID to use for the schema, which will become the final component of the schema's resource name.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] type: The type of the schema definition
@@ -516,9 +498,6 @@ class Schema(pulumi.CustomResource):
     def name(self) -> pulumi.Output[builtins.str]:
         """
         The ID to use for the schema, which will become the final component of the schema's resource name.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

@@ -107,9 +107,6 @@ export class LinkedDataset extends pulumi.CustomResource {
     public readonly bigqueryDatasets!: pulumi.Output<outputs.logging.LinkedDatasetBigqueryDataset[]>;
     /**
      * The bucket to which the linked dataset is attached.
-     *
-     *
-     * - - -
      */
     public readonly bucket!: pulumi.Output<string>;
     /**
@@ -202,9 +199,6 @@ export interface LinkedDatasetState {
     bigqueryDatasets?: pulumi.Input<pulumi.Input<inputs.logging.LinkedDatasetBigqueryDataset>[]>;
     /**
      * The bucket to which the linked dataset is attached.
-     *
-     *
-     * - - -
      */
     bucket?: pulumi.Input<string>;
     /**
@@ -253,9 +247,6 @@ export interface LinkedDatasetArgs {
     bigqueryDatasets?: pulumi.Input<pulumi.Input<inputs.logging.LinkedDatasetBigqueryDataset>[]>;
     /**
      * The bucket to which the linked dataset is attached.
-     *
-     *
-     * - - -
      */
     bucket: pulumi.Input<string>;
     /**

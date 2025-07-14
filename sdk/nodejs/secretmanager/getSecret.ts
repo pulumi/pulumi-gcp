@@ -48,6 +48,7 @@ export interface GetSecretArgs {
 export interface GetSecretResult {
     readonly annotations: {[key: string]: string};
     readonly createTime: string;
+    readonly deletionProtection: boolean;
     readonly effectiveAnnotations: {[key: string]: string};
     readonly effectiveLabels: {[key: string]: string};
     readonly expireTime: string;

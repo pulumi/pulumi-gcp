@@ -149,14 +149,19 @@ type ScopeRbacRoleBinding struct {
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
-	// Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
-	// other automatically. group is the group, as seen by the kubernetes cluster.
+	// Principal that is be authorized in the cluster (at least of one the oneof
+	// is required). Updating one will unset the other automatically.
+	// group is the group, as seen by the kubernetes cluster.
 	Group pulumi.StringPtrOutput `pulumi:"group"`
-	// Labels for this ScopeRBACRoleBinding. **Note**: This field is non-authoritative, and will only manage the labels present
-	// in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+	// Labels for this ScopeRBACRoleBinding.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The resource name for the RBAC Role Binding
-	Name    pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -175,9 +180,10 @@ type ScopeRbacRoleBinding struct {
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// Time the RBAC Role Binding was updated in UTC.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
-	// other automatically. user is the name of the user as seen by the kubernetes cluster, example "alice" or
-	// "alice@domain.tld"
+	// Principal that is be authorized in the cluster (at least of one the oneof
+	// is required). Updating one will unset the other automatically.
+	// user is the name of the user as seen by the kubernetes cluster, example
+	// "alice" or "alice@domain.tld"
 	User pulumi.StringPtrOutput `pulumi:"user"`
 }
 
@@ -231,14 +237,19 @@ type scopeRbacRoleBindingState struct {
 	DeleteTime *string `pulumi:"deleteTime"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
-	// Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
-	// other automatically. group is the group, as seen by the kubernetes cluster.
+	// Principal that is be authorized in the cluster (at least of one the oneof
+	// is required). Updating one will unset the other automatically.
+	// group is the group, as seen by the kubernetes cluster.
 	Group *string `pulumi:"group"`
-	// Labels for this ScopeRBACRoleBinding. **Note**: This field is non-authoritative, and will only manage the labels present
-	// in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+	// Labels for this ScopeRBACRoleBinding.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The resource name for the RBAC Role Binding
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -257,9 +268,10 @@ type scopeRbacRoleBindingState struct {
 	Uid *string `pulumi:"uid"`
 	// Time the RBAC Role Binding was updated in UTC.
 	UpdateTime *string `pulumi:"updateTime"`
-	// Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
-	// other automatically. user is the name of the user as seen by the kubernetes cluster, example "alice" or
-	// "alice@domain.tld"
+	// Principal that is be authorized in the cluster (at least of one the oneof
+	// is required). Updating one will unset the other automatically.
+	// user is the name of the user as seen by the kubernetes cluster, example
+	// "alice" or "alice@domain.tld"
 	User *string `pulumi:"user"`
 }
 
@@ -270,14 +282,19 @@ type ScopeRbacRoleBindingState struct {
 	DeleteTime pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
-	// Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
-	// other automatically. group is the group, as seen by the kubernetes cluster.
+	// Principal that is be authorized in the cluster (at least of one the oneof
+	// is required). Updating one will unset the other automatically.
+	// group is the group, as seen by the kubernetes cluster.
 	Group pulumi.StringPtrInput
-	// Labels for this ScopeRBACRoleBinding. **Note**: This field is non-authoritative, and will only manage the labels present
-	// in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+	// Labels for this ScopeRBACRoleBinding.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The resource name for the RBAC Role Binding
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -296,9 +313,10 @@ type ScopeRbacRoleBindingState struct {
 	Uid pulumi.StringPtrInput
 	// Time the RBAC Role Binding was updated in UTC.
 	UpdateTime pulumi.StringPtrInput
-	// Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
-	// other automatically. user is the name of the user as seen by the kubernetes cluster, example "alice" or
-	// "alice@domain.tld"
+	// Principal that is be authorized in the cluster (at least of one the oneof
+	// is required). Updating one will unset the other automatically.
+	// user is the name of the user as seen by the kubernetes cluster, example
+	// "alice" or "alice@domain.tld"
 	User pulumi.StringPtrInput
 }
 
@@ -307,13 +325,18 @@ func (ScopeRbacRoleBindingState) ElementType() reflect.Type {
 }
 
 type scopeRbacRoleBindingArgs struct {
-	// Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
-	// other automatically. group is the group, as seen by the kubernetes cluster.
+	// Principal that is be authorized in the cluster (at least of one the oneof
+	// is required). Updating one will unset the other automatically.
+	// group is the group, as seen by the kubernetes cluster.
 	Group *string `pulumi:"group"`
-	// Labels for this ScopeRBACRoleBinding. **Note**: This field is non-authoritative, and will only manage the labels present
-	// in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
-	Labels  map[string]string `pulumi:"labels"`
-	Project *string           `pulumi:"project"`
+	// Labels for this ScopeRBACRoleBinding.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels map[string]string `pulumi:"labels"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// Role to bind to the principal.
 	// Structure is documented below.
 	Role ScopeRbacRoleBindingRole `pulumi:"role"`
@@ -321,20 +344,26 @@ type scopeRbacRoleBindingArgs struct {
 	ScopeId string `pulumi:"scopeId"`
 	// The client-provided identifier of the RBAC Role Binding.
 	ScopeRbacRoleBindingId string `pulumi:"scopeRbacRoleBindingId"`
-	// Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
-	// other automatically. user is the name of the user as seen by the kubernetes cluster, example "alice" or
-	// "alice@domain.tld"
+	// Principal that is be authorized in the cluster (at least of one the oneof
+	// is required). Updating one will unset the other automatically.
+	// user is the name of the user as seen by the kubernetes cluster, example
+	// "alice" or "alice@domain.tld"
 	User *string `pulumi:"user"`
 }
 
 // The set of arguments for constructing a ScopeRbacRoleBinding resource.
 type ScopeRbacRoleBindingArgs struct {
-	// Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
-	// other automatically. group is the group, as seen by the kubernetes cluster.
+	// Principal that is be authorized in the cluster (at least of one the oneof
+	// is required). Updating one will unset the other automatically.
+	// group is the group, as seen by the kubernetes cluster.
 	Group pulumi.StringPtrInput
-	// Labels for this ScopeRBACRoleBinding. **Note**: This field is non-authoritative, and will only manage the labels present
-	// in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
-	Labels  pulumi.StringMapInput
+	// Labels for this ScopeRBACRoleBinding.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels pulumi.StringMapInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Role to bind to the principal.
 	// Structure is documented below.
@@ -343,9 +372,10 @@ type ScopeRbacRoleBindingArgs struct {
 	ScopeId pulumi.StringInput
 	// The client-provided identifier of the RBAC Role Binding.
 	ScopeRbacRoleBindingId pulumi.StringInput
-	// Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
-	// other automatically. user is the name of the user as seen by the kubernetes cluster, example "alice" or
-	// "alice@domain.tld"
+	// Principal that is be authorized in the cluster (at least of one the oneof
+	// is required). Updating one will unset the other automatically.
+	// user is the name of the user as seen by the kubernetes cluster, example
+	// "alice" or "alice@domain.tld"
 	User pulumi.StringPtrInput
 }
 
@@ -451,14 +481,17 @@ func (o ScopeRbacRoleBindingOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ScopeRbacRoleBinding) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
-// Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
-// other automatically. group is the group, as seen by the kubernetes cluster.
+// Principal that is be authorized in the cluster (at least of one the oneof
+// is required). Updating one will unset the other automatically.
+// group is the group, as seen by the kubernetes cluster.
 func (o ScopeRbacRoleBindingOutput) Group() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScopeRbacRoleBinding) pulumi.StringPtrOutput { return v.Group }).(pulumi.StringPtrOutput)
 }
 
-// Labels for this ScopeRBACRoleBinding. **Note**: This field is non-authoritative, and will only manage the labels present
-// in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+// Labels for this ScopeRBACRoleBinding.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o ScopeRbacRoleBindingOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ScopeRbacRoleBinding) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -468,6 +501,8 @@ func (o ScopeRbacRoleBindingOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ScopeRbacRoleBinding) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o ScopeRbacRoleBindingOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ScopeRbacRoleBinding) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -510,9 +545,10 @@ func (o ScopeRbacRoleBindingOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ScopeRbacRoleBinding) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
-// Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
-// other automatically. user is the name of the user as seen by the kubernetes cluster, example "alice" or
-// "alice@domain.tld"
+// Principal that is be authorized in the cluster (at least of one the oneof
+// is required). Updating one will unset the other automatically.
+// user is the name of the user as seen by the kubernetes cluster, example
+// "alice" or "alice@domain.tld"
 func (o ScopeRbacRoleBindingOutput) User() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScopeRbacRoleBinding) pulumi.StringPtrOutput { return v.User }).(pulumi.StringPtrOutput)
 }

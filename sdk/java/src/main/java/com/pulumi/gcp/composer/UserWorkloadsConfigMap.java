@@ -129,16 +129,12 @@ public class UserWorkloadsConfigMap extends com.pulumi.resources.CustomResource 
     /**
      * Environment where the Kubernetes ConfigMap will be stored and used.
      * 
-     * ***
-     * 
      */
     @Export(name="environment", refs={String.class}, tree="[0]")
     private Output<String> environment;
 
     /**
      * @return Environment where the Kubernetes ConfigMap will be stored and used.
-     * 
-     * ***
      * 
      */
     public Output<String> environment() {

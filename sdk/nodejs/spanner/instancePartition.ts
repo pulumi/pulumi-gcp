@@ -102,9 +102,6 @@ export class InstancePartition extends pulumi.CustomResource {
     public readonly displayName!: pulumi.Output<string>;
     /**
      * The instance to create the instance partition in.
-     *
-     *
-     * - - -
      */
     public readonly instance!: pulumi.Output<string>;
     /**
@@ -199,9 +196,6 @@ export interface InstancePartitionState {
     displayName?: pulumi.Input<string>;
     /**
      * The instance to create the instance partition in.
-     *
-     *
-     * - - -
      */
     instance?: pulumi.Input<string>;
     /**
@@ -251,9 +245,6 @@ export interface InstancePartitionArgs {
     displayName: pulumi.Input<string>;
     /**
      * The instance to create the instance partition in.
-     *
-     *
-     * - - -
      */
     instance: pulumi.Input<string>;
     /**

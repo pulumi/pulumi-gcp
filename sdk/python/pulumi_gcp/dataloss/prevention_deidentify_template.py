@@ -38,8 +38,9 @@ class PreventionDeidentifyTemplateArgs:
                * `organizations/{{organization_id}}/locations/{{location}}`
         :param pulumi.Input[builtins.str] description: A description of the template.
         :param pulumi.Input[builtins.str] display_name: User set display name of the template.
-        :param pulumi.Input[builtins.str] template_id: The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
-               expression: [a-zA-Z\\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+        :param pulumi.Input[builtins.str] template_id: The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+               that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is
+               100 characters. Can be empty to allow the system to generate one.
         """
         pulumi.set(__self__, "deidentify_config", deidentify_config)
         pulumi.set(__self__, "parent", parent)
@@ -107,8 +108,9 @@ class PreventionDeidentifyTemplateArgs:
     @pulumi.getter(name="templateId")
     def template_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
-        expression: [a-zA-Z\\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+        The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+        that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is
+        100 characters. Can be empty to allow the system to generate one.
         """
         return pulumi.get(self, "template_id")
 
@@ -141,8 +143,9 @@ class _PreventionDeidentifyTemplateState:
                * `projects/{{project}}/locations/{{location}}`
                * `organizations/{{organization_id}}`
                * `organizations/{{organization_id}}/locations/{{location}}`
-        :param pulumi.Input[builtins.str] template_id: The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
-               expression: [a-zA-Z\\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+        :param pulumi.Input[builtins.str] template_id: The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+               that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is
+               100 characters. Can be empty to allow the system to generate one.
         :param pulumi.Input[builtins.str] update_time: The last update timestamp of an deidentifyTemplate. Set by the server.
         """
         if create_time is not None:
@@ -243,8 +246,9 @@ class _PreventionDeidentifyTemplateState:
     @pulumi.getter(name="templateId")
     def template_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
-        expression: [a-zA-Z\\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+        The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+        that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is
+        100 characters. Can be empty to allow the system to generate one.
         """
         return pulumi.get(self, "template_id")
 
@@ -452,8 +456,9 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
                * `projects/{{project}}/locations/{{location}}`
                * `organizations/{{organization_id}}`
                * `organizations/{{organization_id}}/locations/{{location}}`
-        :param pulumi.Input[builtins.str] template_id: The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
-               expression: [a-zA-Z\\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+        :param pulumi.Input[builtins.str] template_id: The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+               that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is
+               100 characters. Can be empty to allow the system to generate one.
         """
         ...
     @overload
@@ -702,8 +707,9 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
                * `projects/{{project}}/locations/{{location}}`
                * `organizations/{{organization_id}}`
                * `organizations/{{organization_id}}/locations/{{location}}`
-        :param pulumi.Input[builtins.str] template_id: The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
-               expression: [a-zA-Z\\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+        :param pulumi.Input[builtins.str] template_id: The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+               that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is
+               100 characters. Can be empty to allow the system to generate one.
         :param pulumi.Input[builtins.str] update_time: The last update timestamp of an deidentifyTemplate. Set by the server.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -777,8 +783,9 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
     @pulumi.getter(name="templateId")
     def template_id(self) -> pulumi.Output[builtins.str]:
         """
-        The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
-        expression: [a-zA-Z\\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+        The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+        that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is
+        100 characters. Can be empty to allow the system to generate one.
         """
         return pulumi.get(self, "template_id")
 

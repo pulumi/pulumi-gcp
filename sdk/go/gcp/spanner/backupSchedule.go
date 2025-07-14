@@ -176,8 +176,6 @@ type BackupSchedule struct {
 	pulumi.CustomResourceState
 
 	// The database to create the backup schedule on.
-	//
-	// ***
 	Database pulumi.StringOutput `pulumi:"database"`
 	// Configuration for the encryption of the backup schedule.
 	// Structure is documented below.
@@ -243,8 +241,6 @@ func GetBackupSchedule(ctx *pulumi.Context,
 // Input properties used for looking up and filtering BackupSchedule resources.
 type backupScheduleState struct {
 	// The database to create the backup schedule on.
-	//
-	// ***
 	Database *string `pulumi:"database"`
 	// Configuration for the encryption of the backup schedule.
 	// Structure is documented below.
@@ -272,8 +268,6 @@ type backupScheduleState struct {
 
 type BackupScheduleState struct {
 	// The database to create the backup schedule on.
-	//
-	// ***
 	Database pulumi.StringPtrInput
 	// Configuration for the encryption of the backup schedule.
 	// Structure is documented below.
@@ -305,8 +299,6 @@ func (BackupScheduleState) ElementType() reflect.Type {
 
 type backupScheduleArgs struct {
 	// The database to create the backup schedule on.
-	//
-	// ***
 	Database string `pulumi:"database"`
 	// Configuration for the encryption of the backup schedule.
 	// Structure is documented below.
@@ -335,8 +327,6 @@ type backupScheduleArgs struct {
 // The set of arguments for constructing a BackupSchedule resource.
 type BackupScheduleArgs struct {
 	// The database to create the backup schedule on.
-	//
-	// ***
 	Database pulumi.StringInput
 	// Configuration for the encryption of the backup schedule.
 	// Structure is documented below.
@@ -450,8 +440,6 @@ func (o BackupScheduleOutput) ToBackupScheduleOutputWithContext(ctx context.Cont
 }
 
 // The database to create the backup schedule on.
-//
-// ***
 func (o BackupScheduleOutput) Database() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupSchedule) pulumi.StringOutput { return v.Database }).(pulumi.StringOutput)
 }

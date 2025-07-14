@@ -166,9 +166,6 @@ export class Cluster extends pulumi.CustomResource {
     public /*out*/ readonly management!: pulumi.Output<boolean>;
     /**
      * The ID of the Cluster.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -246,9 +243,6 @@ export interface ClusterState {
     management?: pulumi.Input<boolean>;
     /**
      * The ID of the Cluster.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -284,9 +278,6 @@ export interface ClusterArgs {
     autoscalingSettings?: pulumi.Input<inputs.vmwareengine.ClusterAutoscalingSettings>;
     /**
      * The ID of the Cluster.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

@@ -40,16 +40,18 @@ class IndexArgs:
                composite index is not directional, the `__name__` will be ordered
                `"ASCENDING"` (unless explicitly specified otherwise).
                Structure is documented below.
-        :param pulumi.Input[builtins.str] api_scope: The API scope at which a query is run. Default value: "ANY_API" Possible values: ["ANY_API", "DATASTORE_MODE_API",
-               "MONGODB_COMPATIBLE_API"]
-        :param pulumi.Input[builtins.str] database: The Firestore database id. Defaults to '"(default)"'.
-        :param pulumi.Input[builtins.str] density: The density configuration for this index. Possible values: ["SPARSE_ALL", "SPARSE_ANY", "DENSE"]
-        :param pulumi.Input[builtins.bool] multikey: Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the
-               paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at
-               most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations
-               will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
-        :param pulumi.Input[builtins.str] query_scope: The scope at which a query is run. Default value: "COLLECTION" Possible values: ["COLLECTION", "COLLECTION_GROUP",
-               "COLLECTION_RECURSIVE"]
+        :param pulumi.Input[builtins.str] api_scope: The API scope at which a query is run.
+               Default value is `ANY_API`.
+               Possible values are: `ANY_API`, `DATASTORE_MODE_API`, `MONGODB_COMPATIBLE_API`.
+        :param pulumi.Input[builtins.str] database: The Firestore database id. Defaults to `"(default)"`.
+        :param pulumi.Input[builtins.str] density: The density configuration for this index.
+               Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
+        :param pulumi.Input[builtins.bool] multikey: Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[builtins.str] query_scope: The scope at which a query is run.
+               Default value is `COLLECTION`.
+               Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
         """
         pulumi.set(__self__, "collection", collection)
         pulumi.set(__self__, "fields", fields)
@@ -100,8 +102,9 @@ class IndexArgs:
     @pulumi.getter(name="apiScope")
     def api_scope(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The API scope at which a query is run. Default value: "ANY_API" Possible values: ["ANY_API", "DATASTORE_MODE_API",
-        "MONGODB_COMPATIBLE_API"]
+        The API scope at which a query is run.
+        Default value is `ANY_API`.
+        Possible values are: `ANY_API`, `DATASTORE_MODE_API`, `MONGODB_COMPATIBLE_API`.
         """
         return pulumi.get(self, "api_scope")
 
@@ -113,7 +116,7 @@ class IndexArgs:
     @pulumi.getter
     def database(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The Firestore database id. Defaults to '"(default)"'.
+        The Firestore database id. Defaults to `"(default)"`.
         """
         return pulumi.get(self, "database")
 
@@ -125,7 +128,8 @@ class IndexArgs:
     @pulumi.getter
     def density(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The density configuration for this index. Possible values: ["SPARSE_ALL", "SPARSE_ANY", "DENSE"]
+        The density configuration for this index.
+        Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
         """
         return pulumi.get(self, "density")
 
@@ -137,10 +141,7 @@ class IndexArgs:
     @pulumi.getter
     def multikey(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the
-        paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at
-        most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations
-        will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
+        Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
         """
         return pulumi.get(self, "multikey")
 
@@ -151,6 +152,10 @@ class IndexArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -161,8 +166,9 @@ class IndexArgs:
     @pulumi.getter(name="queryScope")
     def query_scope(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The scope at which a query is run. Default value: "COLLECTION" Possible values: ["COLLECTION", "COLLECTION_GROUP",
-        "COLLECTION_RECURSIVE"]
+        The scope at which a query is run.
+        Default value is `COLLECTION`.
+        Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
         """
         return pulumi.get(self, "query_scope")
 
@@ -185,11 +191,13 @@ class _IndexState:
                  query_scope: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering Index resources.
-        :param pulumi.Input[builtins.str] api_scope: The API scope at which a query is run. Default value: "ANY_API" Possible values: ["ANY_API", "DATASTORE_MODE_API",
-               "MONGODB_COMPATIBLE_API"]
+        :param pulumi.Input[builtins.str] api_scope: The API scope at which a query is run.
+               Default value is `ANY_API`.
+               Possible values are: `ANY_API`, `DATASTORE_MODE_API`, `MONGODB_COMPATIBLE_API`.
         :param pulumi.Input[builtins.str] collection: The collection being indexed.
-        :param pulumi.Input[builtins.str] database: The Firestore database id. Defaults to '"(default)"'.
-        :param pulumi.Input[builtins.str] density: The density configuration for this index. Possible values: ["SPARSE_ALL", "SPARSE_ANY", "DENSE"]
+        :param pulumi.Input[builtins.str] database: The Firestore database id. Defaults to `"(default)"`.
+        :param pulumi.Input[builtins.str] density: The density configuration for this index.
+               Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
         :param pulumi.Input[Sequence[pulumi.Input['IndexFieldArgs']]] fields: The fields supported by this index. The last non-stored field entry is
                always for the field path `__name__`. If, on creation, `__name__` was not
                specified as the last field, it will be added automatically with the same
@@ -197,14 +205,14 @@ class _IndexState:
                composite index is not directional, the `__name__` will be ordered
                `"ASCENDING"` (unless explicitly specified otherwise).
                Structure is documented below.
-        :param pulumi.Input[builtins.bool] multikey: Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the
-               paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at
-               most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations
-               will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
+        :param pulumi.Input[builtins.bool] multikey: Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
         :param pulumi.Input[builtins.str] name: A server defined name for this index. Format:
                `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}`
-        :param pulumi.Input[builtins.str] query_scope: The scope at which a query is run. Default value: "COLLECTION" Possible values: ["COLLECTION", "COLLECTION_GROUP",
-               "COLLECTION_RECURSIVE"]
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[builtins.str] query_scope: The scope at which a query is run.
+               Default value is `COLLECTION`.
+               Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
         """
         if api_scope is not None:
             pulumi.set(__self__, "api_scope", api_scope)
@@ -229,8 +237,9 @@ class _IndexState:
     @pulumi.getter(name="apiScope")
     def api_scope(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The API scope at which a query is run. Default value: "ANY_API" Possible values: ["ANY_API", "DATASTORE_MODE_API",
-        "MONGODB_COMPATIBLE_API"]
+        The API scope at which a query is run.
+        Default value is `ANY_API`.
+        Possible values are: `ANY_API`, `DATASTORE_MODE_API`, `MONGODB_COMPATIBLE_API`.
         """
         return pulumi.get(self, "api_scope")
 
@@ -254,7 +263,7 @@ class _IndexState:
     @pulumi.getter
     def database(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The Firestore database id. Defaults to '"(default)"'.
+        The Firestore database id. Defaults to `"(default)"`.
         """
         return pulumi.get(self, "database")
 
@@ -266,7 +275,8 @@ class _IndexState:
     @pulumi.getter
     def density(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The density configuration for this index. Possible values: ["SPARSE_ALL", "SPARSE_ANY", "DENSE"]
+        The density configuration for this index.
+        Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
         """
         return pulumi.get(self, "density")
 
@@ -296,10 +306,7 @@ class _IndexState:
     @pulumi.getter
     def multikey(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the
-        paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at
-        most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations
-        will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
+        Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
         """
         return pulumi.get(self, "multikey")
 
@@ -323,6 +330,10 @@ class _IndexState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -333,8 +344,9 @@ class _IndexState:
     @pulumi.getter(name="queryScope")
     def query_scope(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The scope at which a query is run. Default value: "COLLECTION" Possible values: ["COLLECTION", "COLLECTION_GROUP",
-        "COLLECTION_RECURSIVE"]
+        The scope at which a query is run.
+        Default value is `COLLECTION`.
+        Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
         """
         return pulumi.get(self, "query_scope")
 
@@ -576,11 +588,13 @@ class Index(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] api_scope: The API scope at which a query is run. Default value: "ANY_API" Possible values: ["ANY_API", "DATASTORE_MODE_API",
-               "MONGODB_COMPATIBLE_API"]
+        :param pulumi.Input[builtins.str] api_scope: The API scope at which a query is run.
+               Default value is `ANY_API`.
+               Possible values are: `ANY_API`, `DATASTORE_MODE_API`, `MONGODB_COMPATIBLE_API`.
         :param pulumi.Input[builtins.str] collection: The collection being indexed.
-        :param pulumi.Input[builtins.str] database: The Firestore database id. Defaults to '"(default)"'.
-        :param pulumi.Input[builtins.str] density: The density configuration for this index. Possible values: ["SPARSE_ALL", "SPARSE_ANY", "DENSE"]
+        :param pulumi.Input[builtins.str] database: The Firestore database id. Defaults to `"(default)"`.
+        :param pulumi.Input[builtins.str] density: The density configuration for this index.
+               Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['IndexFieldArgs', 'IndexFieldArgsDict']]]] fields: The fields supported by this index. The last non-stored field entry is
                always for the field path `__name__`. If, on creation, `__name__` was not
                specified as the last field, it will be added automatically with the same
@@ -588,12 +602,12 @@ class Index(pulumi.CustomResource):
                composite index is not directional, the `__name__` will be ordered
                `"ASCENDING"` (unless explicitly specified otherwise).
                Structure is documented below.
-        :param pulumi.Input[builtins.bool] multikey: Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the
-               paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at
-               most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations
-               will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
-        :param pulumi.Input[builtins.str] query_scope: The scope at which a query is run. Default value: "COLLECTION" Possible values: ["COLLECTION", "COLLECTION_GROUP",
-               "COLLECTION_RECURSIVE"]
+        :param pulumi.Input[builtins.bool] multikey: Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[builtins.str] query_scope: The scope at which a query is run.
+               Default value is `COLLECTION`.
+               Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
         """
         ...
     @overload
@@ -888,11 +902,13 @@ class Index(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] api_scope: The API scope at which a query is run. Default value: "ANY_API" Possible values: ["ANY_API", "DATASTORE_MODE_API",
-               "MONGODB_COMPATIBLE_API"]
+        :param pulumi.Input[builtins.str] api_scope: The API scope at which a query is run.
+               Default value is `ANY_API`.
+               Possible values are: `ANY_API`, `DATASTORE_MODE_API`, `MONGODB_COMPATIBLE_API`.
         :param pulumi.Input[builtins.str] collection: The collection being indexed.
-        :param pulumi.Input[builtins.str] database: The Firestore database id. Defaults to '"(default)"'.
-        :param pulumi.Input[builtins.str] density: The density configuration for this index. Possible values: ["SPARSE_ALL", "SPARSE_ANY", "DENSE"]
+        :param pulumi.Input[builtins.str] database: The Firestore database id. Defaults to `"(default)"`.
+        :param pulumi.Input[builtins.str] density: The density configuration for this index.
+               Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['IndexFieldArgs', 'IndexFieldArgsDict']]]] fields: The fields supported by this index. The last non-stored field entry is
                always for the field path `__name__`. If, on creation, `__name__` was not
                specified as the last field, it will be added automatically with the same
@@ -900,14 +916,14 @@ class Index(pulumi.CustomResource):
                composite index is not directional, the `__name__` will be ordered
                `"ASCENDING"` (unless explicitly specified otherwise).
                Structure is documented below.
-        :param pulumi.Input[builtins.bool] multikey: Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the
-               paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at
-               most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations
-               will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
+        :param pulumi.Input[builtins.bool] multikey: Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
         :param pulumi.Input[builtins.str] name: A server defined name for this index. Format:
                `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}`
-        :param pulumi.Input[builtins.str] query_scope: The scope at which a query is run. Default value: "COLLECTION" Possible values: ["COLLECTION", "COLLECTION_GROUP",
-               "COLLECTION_RECURSIVE"]
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[builtins.str] query_scope: The scope at which a query is run.
+               Default value is `COLLECTION`.
+               Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -928,8 +944,9 @@ class Index(pulumi.CustomResource):
     @pulumi.getter(name="apiScope")
     def api_scope(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The API scope at which a query is run. Default value: "ANY_API" Possible values: ["ANY_API", "DATASTORE_MODE_API",
-        "MONGODB_COMPATIBLE_API"]
+        The API scope at which a query is run.
+        Default value is `ANY_API`.
+        Possible values are: `ANY_API`, `DATASTORE_MODE_API`, `MONGODB_COMPATIBLE_API`.
         """
         return pulumi.get(self, "api_scope")
 
@@ -945,7 +962,7 @@ class Index(pulumi.CustomResource):
     @pulumi.getter
     def database(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The Firestore database id. Defaults to '"(default)"'.
+        The Firestore database id. Defaults to `"(default)"`.
         """
         return pulumi.get(self, "database")
 
@@ -953,7 +970,8 @@ class Index(pulumi.CustomResource):
     @pulumi.getter
     def density(self) -> pulumi.Output[builtins.str]:
         """
-        The density configuration for this index. Possible values: ["SPARSE_ALL", "SPARSE_ANY", "DENSE"]
+        The density configuration for this index.
+        Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
         """
         return pulumi.get(self, "density")
 
@@ -975,10 +993,7 @@ class Index(pulumi.CustomResource):
     @pulumi.getter
     def multikey(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
-        Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the
-        paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at
-        most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations
-        will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
+        Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
         """
         return pulumi.get(self, "multikey")
 
@@ -994,14 +1009,19 @@ class Index(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="queryScope")
     def query_scope(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The scope at which a query is run. Default value: "COLLECTION" Possible values: ["COLLECTION", "COLLECTION_GROUP",
-        "COLLECTION_RECURSIVE"]
+        The scope at which a query is run.
+        Default value is `COLLECTION`.
+        Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
         """
         return pulumi.get(self, "query_scope")
 

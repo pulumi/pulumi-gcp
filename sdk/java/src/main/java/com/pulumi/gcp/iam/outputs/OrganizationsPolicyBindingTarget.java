@@ -19,8 +19,6 @@ public final class OrganizationsPolicyBindingTarget {
      * * Workspace Identity: `//iam.googleapis.com/locations/global/workspace/WORKSPACE_ID`
      *   It must be parent by the policy binding&#39;s parent (the organization).
      * 
-     * ***
-     * 
      */
     private @Nullable String principalSet;
 
@@ -32,8 +30,6 @@ public final class OrganizationsPolicyBindingTarget {
      * * Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID`
      * * Workspace Identity: `//iam.googleapis.com/locations/global/workspace/WORKSPACE_ID`
      *   It must be parent by the policy binding&#39;s parent (the organization).
-     * 
-     * ***
      * 
      */
     public Optional<String> principalSet() {

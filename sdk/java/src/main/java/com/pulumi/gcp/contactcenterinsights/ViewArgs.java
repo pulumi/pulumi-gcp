@@ -34,16 +34,12 @@ public final class ViewArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Location of the resource.
      * 
-     * ***
-     * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
      * @return Location of the resource.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {
@@ -137,8 +133,6 @@ public final class ViewArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param location Location of the resource.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -149,8 +143,6 @@ public final class ViewArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location Location of the resource.
-         * 
-         * ***
          * 
          * @return builder
          * 

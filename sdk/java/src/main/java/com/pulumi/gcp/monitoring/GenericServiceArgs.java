@@ -75,8 +75,6 @@ public final class GenericServiceArgs extends com.pulumi.resources.ResourceArgs 
      * An optional service ID to use. If not given, the server will generate a
      * service ID.
      * 
-     * ***
-     * 
      */
     @Import(name="serviceId", required=true)
     private Output<String> serviceId;
@@ -84,8 +82,6 @@ public final class GenericServiceArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * @return An optional service ID to use. If not given, the server will generate a
      * service ID.
-     * 
-     * ***
      * 
      */
     public Output<String> serviceId() {
@@ -220,8 +216,6 @@ public final class GenericServiceArgs extends com.pulumi.resources.ResourceArgs 
          * @param serviceId An optional service ID to use. If not given, the server will generate a
          * service ID.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -233,8 +227,6 @@ public final class GenericServiceArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param serviceId An optional service ID to use. If not given, the server will generate a
          * service ID.
-         * 
-         * ***
          * 
          * @return builder
          * 

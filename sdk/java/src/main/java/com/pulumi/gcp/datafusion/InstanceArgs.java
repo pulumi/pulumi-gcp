@@ -323,8 +323,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      *   pipelines at low cost.
      *   Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
      * 
-     * ***
-     * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
@@ -341,8 +339,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      *   with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
      *   pipelines at low cost.
      *   Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
-     * 
-     * ***
      * 
      */
     public Output<String> type() {
@@ -837,8 +833,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          *   pipelines at low cost.
          *   Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -859,8 +853,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          *   with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
          *   pipelines at low cost.
          *   Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -138,16 +138,12 @@ public class CxVersion extends com.pulumi.resources.CustomResource {
     /**
      * The human-readable name of the version. Limit of 64 characters.
      * 
-     * ***
-     * 
      */
     @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
      * @return The human-readable name of the version. Limit of 64 characters.
-     * 
-     * ***
      * 
      */
     public Output<String> displayName() {

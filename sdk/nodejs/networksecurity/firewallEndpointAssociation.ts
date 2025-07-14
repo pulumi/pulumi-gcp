@@ -92,9 +92,6 @@ export class FirewallEndpointAssociation extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location (zone) of the firewall endpoint association.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -229,9 +226,6 @@ export interface FirewallEndpointAssociationState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location (zone) of the firewall endpoint association.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -297,9 +291,6 @@ export interface FirewallEndpointAssociationArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location (zone) of the firewall endpoint association.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

@@ -55,13 +55,13 @@ public final class BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArgs extend
      * 
      */
     @Import(name="manualAssign")
-    private @Nullable Output<String> manualAssign;
+    private @Nullable Output<Boolean> manualAssign;
 
     /**
      * @return If true, prevent IP addresses from being automatically assigned.
      * 
      */
-    public Optional<Output<String>> manualAssign() {
+    public Optional<Output<Boolean>> manualAssign() {
         return Optional.ofNullable(this.manualAssign);
     }
 
@@ -167,7 +167,7 @@ public final class BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArgs extend
          * @return builder
          * 
          */
-        public Builder manualAssign(@Nullable Output<String> manualAssign) {
+        public Builder manualAssign(@Nullable Output<Boolean> manualAssign) {
             $.manualAssign = manualAssign;
             return this;
         }
@@ -178,7 +178,7 @@ public final class BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArgs extend
          * @return builder
          * 
          */
-        public Builder manualAssign(String manualAssign) {
+        public Builder manualAssign(Boolean manualAssign) {
             return manualAssign(Output.of(manualAssign));
         }
 

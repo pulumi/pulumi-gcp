@@ -27,9 +27,6 @@ class ProjectInfoArgs:
         :param pulumi.Input[builtins.str] billing_account: The ID of the billing account associated with the project, if
                any. Set to empty string to disable billing for the project.
                For example, `"012345-567890-ABCDEF"` or `""`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -44,9 +41,6 @@ class ProjectInfoArgs:
         The ID of the billing account associated with the project, if
         any. Set to empty string to disable billing for the project.
         For example, `"012345-567890-ABCDEF"` or `""`.
-
-
-        - - -
         """
         return pulumi.get(self, "billing_account")
 
@@ -78,9 +72,6 @@ class _ProjectInfoState:
         :param pulumi.Input[builtins.str] billing_account: The ID of the billing account associated with the project, if
                any. Set to empty string to disable billing for the project.
                For example, `"012345-567890-ABCDEF"` or `""`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -96,9 +87,6 @@ class _ProjectInfoState:
         The ID of the billing account associated with the project, if
         any. Set to empty string to disable billing for the project.
         For example, `"012345-567890-ABCDEF"` or `""`.
-
-
-        - - -
         """
         return pulumi.get(self, "billing_account")
 
@@ -179,9 +167,6 @@ class ProjectInfo(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] billing_account: The ID of the billing account associated with the project, if
                any. Set to empty string to disable billing for the project.
                For example, `"012345-567890-ABCDEF"` or `""`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -288,9 +273,6 @@ class ProjectInfo(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] billing_account: The ID of the billing account associated with the project, if
                any. Set to empty string to disable billing for the project.
                For example, `"012345-567890-ABCDEF"` or `""`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -309,9 +291,6 @@ class ProjectInfo(pulumi.CustomResource):
         The ID of the billing account associated with the project, if
         any. Set to empty string to disable billing for the project.
         For example, `"012345-567890-ABCDEF"` or `""`.
-
-
-        - - -
         """
         return pulumi.get(self, "billing_account")
 

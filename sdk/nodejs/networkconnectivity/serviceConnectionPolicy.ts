@@ -128,9 +128,6 @@ export class ServiceConnectionPolicy extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location of the ServiceConnectionPolicy.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -266,9 +263,6 @@ export interface ServiceConnectionPolicyState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location of the ServiceConnectionPolicy.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -327,9 +321,6 @@ export interface ServiceConnectionPolicyArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location of the ServiceConnectionPolicy.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

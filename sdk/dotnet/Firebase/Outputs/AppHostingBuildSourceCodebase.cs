@@ -42,7 +42,8 @@ namespace Pulumi.Gcp.Firebase.Outputs
         /// </summary>
         public readonly string? CommitTime;
         /// <summary>
-        /// Human-readable name. 63 character limit.
+        /// (Output)
+        /// The 'name' field in a Git user's git.config. Required by Git.
         /// </summary>
         public readonly string? DisplayName;
         /// <summary>

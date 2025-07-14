@@ -155,9 +155,6 @@ export class RegionalEndpoint extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location of the RegionalEndpoint.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -292,9 +289,6 @@ export interface RegionalEndpointState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location of the RegionalEndpoint.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -360,9 +354,6 @@ export interface RegionalEndpointArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location of the RegionalEndpoint.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

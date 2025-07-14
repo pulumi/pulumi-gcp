@@ -225,16 +225,12 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
     /**
      * The resource name of the filestore instance.
      * 
-     * ***
-     * 
      */
     @Export(name="instance", refs={String.class}, tree="[0]")
     private Output<String> instance;
 
     /**
      * @return The resource name of the filestore instance.
-     * 
-     * ***
      * 
      */
     public Output<String> instance() {

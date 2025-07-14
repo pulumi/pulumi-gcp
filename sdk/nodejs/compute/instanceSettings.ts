@@ -102,9 +102,6 @@ export class InstanceSettings extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * A reference to the zone where the machine resides.
-     *
-     *
-     * - - -
      */
     public readonly zone!: pulumi.Output<string>;
 
@@ -161,9 +158,6 @@ export interface InstanceSettingsState {
     project?: pulumi.Input<string>;
     /**
      * A reference to the zone where the machine resides.
-     *
-     *
-     * - - -
      */
     zone?: pulumi.Input<string>;
 }
@@ -184,9 +178,6 @@ export interface InstanceSettingsArgs {
     project?: pulumi.Input<string>;
     /**
      * A reference to the zone where the machine resides.
-     *
-     *
-     * - - -
      */
     zone: pulumi.Input<string>;
 }

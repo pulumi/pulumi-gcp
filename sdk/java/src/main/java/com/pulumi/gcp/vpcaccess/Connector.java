@@ -263,16 +263,12 @@ public class Connector extends com.pulumi.resources.CustomResource {
     /**
      * The name of the resource (Max 25 characters).
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return The name of the resource (Max 25 characters).
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

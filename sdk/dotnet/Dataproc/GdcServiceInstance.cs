@@ -171,9 +171,6 @@ namespace Pulumi.Gcp.Dataproc
 
         /// <summary>
         /// Id of the service instance.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("serviceInstanceId")]
         public Output<string> ServiceInstanceId { get; private set; } = null!;
@@ -316,9 +313,6 @@ namespace Pulumi.Gcp.Dataproc
 
         /// <summary>
         /// Id of the service instance.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("serviceInstanceId", required: true)]
         public Input<string> ServiceInstanceId { get; set; } = null!;
@@ -457,9 +451,6 @@ namespace Pulumi.Gcp.Dataproc
 
         /// <summary>
         /// Id of the service instance.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("serviceInstanceId")]
         public Input<string>? ServiceInstanceId { get; set; }

@@ -24,8 +24,7 @@ public final class RegionNetworkFirewallPolicyWithRulesPredefinedRule {
      */
     private @Nullable String action;
     /**
-     * @return (Output)
-     * A description of the rule.
+     * @return An optional description of this resource.
      * 
      */
     private @Nullable String description;
@@ -126,8 +125,7 @@ public final class RegionNetworkFirewallPolicyWithRulesPredefinedRule {
         return Optional.ofNullable(this.action);
     }
     /**
-     * @return (Output)
-     * A description of the rule.
+     * @return An optional description of this resource.
      * 
      */
     public Optional<String> description() {

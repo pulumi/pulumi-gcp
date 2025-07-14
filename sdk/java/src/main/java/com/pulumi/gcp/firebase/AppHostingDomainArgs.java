@@ -36,8 +36,6 @@ public final class AppHostingDomainArgs extends com.pulumi.resources.ResourceArg
      * Id of the domain to create.
      * Must be a valid domain name, such as &#34;foo.com&#34;
      * 
-     * ***
-     * 
      */
     @Import(name="domainId", required=true)
     private Output<String> domainId;
@@ -45,8 +43,6 @@ public final class AppHostingDomainArgs extends com.pulumi.resources.ResourceArg
     /**
      * @return Id of the domain to create.
      * Must be a valid domain name, such as &#34;foo.com&#34;
-     * 
-     * ***
      * 
      */
     public Output<String> domainId() {
@@ -157,8 +153,6 @@ public final class AppHostingDomainArgs extends com.pulumi.resources.ResourceArg
          * @param domainId Id of the domain to create.
          * Must be a valid domain name, such as &#34;foo.com&#34;
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -170,8 +164,6 @@ public final class AppHostingDomainArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param domainId Id of the domain to create.
          * Must be a valid domain name, such as &#34;foo.com&#34;
-         * 
-         * ***
          * 
          * @return builder
          * 

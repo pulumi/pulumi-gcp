@@ -142,8 +142,6 @@ type CustomConstraint struct {
 	// Immutable. The name of the custom constraint. This is unique within the organization.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
-	//
-	// ***
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// Immutable. The fully qualified name of the Google Cloud REST resource containing the object and field you want to restrict. For example, `container.googleapis.com/NodePool`.
 	ResourceTypes pulumi.StringArrayOutput `pulumi:"resourceTypes"`
@@ -210,8 +208,6 @@ type customConstraintState struct {
 	// Immutable. The name of the custom constraint. This is unique within the organization.
 	Name *string `pulumi:"name"`
 	// The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
-	//
-	// ***
 	Parent *string `pulumi:"parent"`
 	// Immutable. The fully qualified name of the Google Cloud REST resource containing the object and field you want to restrict. For example, `container.googleapis.com/NodePool`.
 	ResourceTypes []string `pulumi:"resourceTypes"`
@@ -234,8 +230,6 @@ type CustomConstraintState struct {
 	// Immutable. The name of the custom constraint. This is unique within the organization.
 	Name pulumi.StringPtrInput
 	// The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
-	//
-	// ***
 	Parent pulumi.StringPtrInput
 	// Immutable. The fully qualified name of the Google Cloud REST resource containing the object and field you want to restrict. For example, `container.googleapis.com/NodePool`.
 	ResourceTypes pulumi.StringArrayInput
@@ -262,8 +256,6 @@ type customConstraintArgs struct {
 	// Immutable. The name of the custom constraint. This is unique within the organization.
 	Name *string `pulumi:"name"`
 	// The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
-	//
-	// ***
 	Parent string `pulumi:"parent"`
 	// Immutable. The fully qualified name of the Google Cloud REST resource containing the object and field you want to restrict. For example, `container.googleapis.com/NodePool`.
 	ResourceTypes []string `pulumi:"resourceTypes"`
@@ -285,8 +277,6 @@ type CustomConstraintArgs struct {
 	// Immutable. The name of the custom constraint. This is unique within the organization.
 	Name pulumi.StringPtrInput
 	// The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
-	//
-	// ***
 	Parent pulumi.StringInput
 	// Immutable. The fully qualified name of the Google Cloud REST resource containing the object and field you want to restrict. For example, `container.googleapis.com/NodePool`.
 	ResourceTypes pulumi.StringArrayInput
@@ -411,8 +401,6 @@ func (o CustomConstraintOutput) Name() pulumi.StringOutput {
 }
 
 // The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
-//
-// ***
 func (o CustomConstraintOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomConstraint) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }

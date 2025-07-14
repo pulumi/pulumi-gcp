@@ -669,8 +669,6 @@ if not MYPY:
         enum_value: NotRequired[pulumi.Input[builtins.str]]
         """
         Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.
-
-        - - -
         """
         order: NotRequired[pulumi.Input[builtins.int]]
         """
@@ -708,8 +706,6 @@ class TagFieldArgs:
                The display name of this field
         :param pulumi.Input[builtins.float] double_value: Holds the value for a tag field with double type.
         :param pulumi.Input[builtins.str] enum_value: Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.
-               
-               - - -
         :param pulumi.Input[builtins.int] order: (Output)
                The order of this field with respect to other fields in this tag. For example, a higher value can indicate
                a more important field. The value can be negative. Multiple fields can have the same order, and field orders
@@ -787,8 +783,6 @@ class TagFieldArgs:
     def enum_value(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.
-
-        - - -
         """
         return pulumi.get(self, "enum_value")
 
@@ -1112,7 +1106,7 @@ if not MYPY:
     class TagTemplateFieldTypeEnumTypeAllowedValueArgsDict(TypedDict):
         display_name: pulumi.Input[builtins.str]
         """
-        The display name for this template.
+        The display name of the enum value.
         """
 elif False:
     TagTemplateFieldTypeEnumTypeAllowedValueArgsDict: TypeAlias = Mapping[str, Any]
@@ -1122,7 +1116,7 @@ class TagTemplateFieldTypeEnumTypeAllowedValueArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[builtins.str]):
         """
-        :param pulumi.Input[builtins.str] display_name: The display name for this template.
+        :param pulumi.Input[builtins.str] display_name: The display name of the enum value.
         """
         pulumi.set(__self__, "display_name", display_name)
 
@@ -1130,7 +1124,7 @@ class TagTemplateFieldTypeEnumTypeAllowedValueArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Input[builtins.str]:
         """
-        The display name for this template.
+        The display name of the enum value.
         """
         return pulumi.get(self, "display_name")
 

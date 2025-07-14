@@ -34,9 +34,11 @@ class RouterRoutePolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input['RouterRoutePolicyTermArgs']]] terms: List of terms (the order in the list is not important, they are evaluated in order of priority).
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: Name of the route policy. This policy's name, which must be a resource ID segment and unique within all policies owned by the Router
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] region: Region where the router and NAT reside.
-        :param pulumi.Input[builtins.str] type: This is policy's type, which is one of IMPORT or EXPORT Possible values: ["ROUTE_POLICY_TYPE_IMPORT",
-               "ROUTE_POLICY_TYPE_EXPORT"]
+        :param pulumi.Input[builtins.str] type: This is policy's type, which is one of IMPORT or EXPORT
+               Possible values are: `ROUTE_POLICY_TYPE_IMPORT`, `ROUTE_POLICY_TYPE_EXPORT`.
         """
         pulumi.set(__self__, "router", router)
         pulumi.set(__self__, "terms", terms)
@@ -89,6 +91,10 @@ class RouterRoutePolicyArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -111,8 +117,8 @@ class RouterRoutePolicyArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        This is policy's type, which is one of IMPORT or EXPORT Possible values: ["ROUTE_POLICY_TYPE_IMPORT",
-        "ROUTE_POLICY_TYPE_EXPORT"]
+        This is policy's type, which is one of IMPORT or EXPORT
+        Possible values are: `ROUTE_POLICY_TYPE_IMPORT`, `ROUTE_POLICY_TYPE_EXPORT`.
         """
         return pulumi.get(self, "type")
 
@@ -136,12 +142,14 @@ class _RouterRoutePolicyState:
         :param pulumi.Input[builtins.str] fingerprint: The fingerprint used for optimistic locking of this resource.  Used
                internally during updates.
         :param pulumi.Input[builtins.str] name: Name of the route policy. This policy's name, which must be a resource ID segment and unique within all policies owned by the Router
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] region: Region where the router and NAT reside.
         :param pulumi.Input[builtins.str] router: The name of the Cloud Router in which this route policy will be configured.
         :param pulumi.Input[Sequence[pulumi.Input['RouterRoutePolicyTermArgs']]] terms: List of terms (the order in the list is not important, they are evaluated in order of priority).
                Structure is documented below.
-        :param pulumi.Input[builtins.str] type: This is policy's type, which is one of IMPORT or EXPORT Possible values: ["ROUTE_POLICY_TYPE_IMPORT",
-               "ROUTE_POLICY_TYPE_EXPORT"]
+        :param pulumi.Input[builtins.str] type: This is policy's type, which is one of IMPORT or EXPORT
+               Possible values are: `ROUTE_POLICY_TYPE_IMPORT`, `ROUTE_POLICY_TYPE_EXPORT`.
         """
         if fingerprint is not None:
             pulumi.set(__self__, "fingerprint", fingerprint)
@@ -186,6 +194,10 @@ class _RouterRoutePolicyState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -233,8 +245,8 @@ class _RouterRoutePolicyState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        This is policy's type, which is one of IMPORT or EXPORT Possible values: ["ROUTE_POLICY_TYPE_IMPORT",
-        "ROUTE_POLICY_TYPE_EXPORT"]
+        This is policy's type, which is one of IMPORT or EXPORT
+        Possible values are: `ROUTE_POLICY_TYPE_IMPORT`, `ROUTE_POLICY_TYPE_EXPORT`.
         """
         return pulumi.get(self, "type")
 
@@ -367,12 +379,14 @@ class RouterRoutePolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] name: Name of the route policy. This policy's name, which must be a resource ID segment and unique within all policies owned by the Router
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] region: Region where the router and NAT reside.
         :param pulumi.Input[builtins.str] router: The name of the Cloud Router in which this route policy will be configured.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RouterRoutePolicyTermArgs', 'RouterRoutePolicyTermArgsDict']]]] terms: List of terms (the order in the list is not important, they are evaluated in order of priority).
                Structure is documented below.
-        :param pulumi.Input[builtins.str] type: This is policy's type, which is one of IMPORT or EXPORT Possible values: ["ROUTE_POLICY_TYPE_IMPORT",
-               "ROUTE_POLICY_TYPE_EXPORT"]
+        :param pulumi.Input[builtins.str] type: This is policy's type, which is one of IMPORT or EXPORT
+               Possible values are: `ROUTE_POLICY_TYPE_IMPORT`, `ROUTE_POLICY_TYPE_EXPORT`.
         """
         ...
     @overload
@@ -556,12 +570,14 @@ class RouterRoutePolicy(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] fingerprint: The fingerprint used for optimistic locking of this resource.  Used
                internally during updates.
         :param pulumi.Input[builtins.str] name: Name of the route policy. This policy's name, which must be a resource ID segment and unique within all policies owned by the Router
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] region: Region where the router and NAT reside.
         :param pulumi.Input[builtins.str] router: The name of the Cloud Router in which this route policy will be configured.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RouterRoutePolicyTermArgs', 'RouterRoutePolicyTermArgsDict']]]] terms: List of terms (the order in the list is not important, they are evaluated in order of priority).
                Structure is documented below.
-        :param pulumi.Input[builtins.str] type: This is policy's type, which is one of IMPORT or EXPORT Possible values: ["ROUTE_POLICY_TYPE_IMPORT",
-               "ROUTE_POLICY_TYPE_EXPORT"]
+        :param pulumi.Input[builtins.str] type: This is policy's type, which is one of IMPORT or EXPORT
+               Possible values are: `ROUTE_POLICY_TYPE_IMPORT`, `ROUTE_POLICY_TYPE_EXPORT`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -596,6 +612,10 @@ class RouterRoutePolicy(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property
@@ -627,8 +647,8 @@ class RouterRoutePolicy(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        This is policy's type, which is one of IMPORT or EXPORT Possible values: ["ROUTE_POLICY_TYPE_IMPORT",
-        "ROUTE_POLICY_TYPE_EXPORT"]
+        This is policy's type, which is one of IMPORT or EXPORT
+        Possible values are: `ROUTE_POLICY_TYPE_IMPORT`, `ROUTE_POLICY_TYPE_EXPORT`.
         """
         return pulumi.get(self, "type")
 

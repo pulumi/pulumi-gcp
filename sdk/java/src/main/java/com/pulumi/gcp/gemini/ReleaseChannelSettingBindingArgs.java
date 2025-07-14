@@ -103,16 +103,12 @@ public final class ReleaseChannelSettingBindingArgs extends com.pulumi.resources
     /**
      * Id of the setting binding.
      * 
-     * ***
-     * 
      */
     @Import(name="settingBindingId", required=true)
     private Output<String> settingBindingId;
 
     /**
      * @return Id of the setting binding.
-     * 
-     * ***
      * 
      */
     public Output<String> settingBindingId() {
@@ -280,8 +276,6 @@ public final class ReleaseChannelSettingBindingArgs extends com.pulumi.resources
         /**
          * @param settingBindingId Id of the setting binding.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -292,8 +286,6 @@ public final class ReleaseChannelSettingBindingArgs extends com.pulumi.resources
 
         /**
          * @param settingBindingId Id of the setting binding.
-         * 
-         * ***
          * 
          * @return builder
          * 

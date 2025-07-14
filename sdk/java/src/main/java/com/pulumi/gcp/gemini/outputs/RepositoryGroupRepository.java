@@ -14,8 +14,6 @@ public final class RepositoryGroupRepository {
      * @return Required. The Git branch pattern used for indexing in RE2 syntax.
      * See https://github.com/google/re2/wiki/syntax for syntax.
      * 
-     * ***
-     * 
      */
     private String branchPattern;
     /**
@@ -29,8 +27,6 @@ public final class RepositoryGroupRepository {
     /**
      * @return Required. The Git branch pattern used for indexing in RE2 syntax.
      * See https://github.com/google/re2/wiki/syntax for syntax.
-     * 
-     * ***
      * 
      */
     public String branchPattern() {

@@ -199,8 +199,6 @@ type AppHostingDefaultDomain struct {
 	// Whether the domain is disabled. Defaults to false.
 	Disabled pulumi.BoolOutput `pulumi:"disabled"`
 	// Id of the domain. For default domain, it should be {{backend}}--{{project_id}}.{{location}}.hosted.app
-	//
-	// ***
 	DomainId pulumi.StringOutput `pulumi:"domainId"`
 	// Server-computed checksum based on other values; may be sent
 	// on update or delete to ensure operation is done on expected resource.
@@ -265,8 +263,6 @@ type appHostingDefaultDomainState struct {
 	// Whether the domain is disabled. Defaults to false.
 	Disabled *bool `pulumi:"disabled"`
 	// Id of the domain. For default domain, it should be {{backend}}--{{project_id}}.{{location}}.hosted.app
-	//
-	// ***
 	DomainId *string `pulumi:"domainId"`
 	// Server-computed checksum based on other values; may be sent
 	// on update or delete to ensure operation is done on expected resource.
@@ -293,8 +289,6 @@ type AppHostingDefaultDomainState struct {
 	// Whether the domain is disabled. Defaults to false.
 	Disabled pulumi.BoolPtrInput
 	// Id of the domain. For default domain, it should be {{backend}}--{{project_id}}.{{location}}.hosted.app
-	//
-	// ***
 	DomainId pulumi.StringPtrInput
 	// Server-computed checksum based on other values; may be sent
 	// on update or delete to ensure operation is done on expected resource.
@@ -323,8 +317,6 @@ type appHostingDefaultDomainArgs struct {
 	// Whether the domain is disabled. Defaults to false.
 	Disabled *bool `pulumi:"disabled"`
 	// Id of the domain. For default domain, it should be {{backend}}--{{project_id}}.{{location}}.hosted.app
-	//
-	// ***
 	DomainId string `pulumi:"domainId"`
 	// The location of the Backend that this Domain is associated with
 	Location string `pulumi:"location"`
@@ -340,8 +332,6 @@ type AppHostingDefaultDomainArgs struct {
 	// Whether the domain is disabled. Defaults to false.
 	Disabled pulumi.BoolPtrInput
 	// Id of the domain. For default domain, it should be {{backend}}--{{project_id}}.{{location}}.hosted.app
-	//
-	// ***
 	DomainId pulumi.StringInput
 	// The location of the Backend that this Domain is associated with
 	Location pulumi.StringInput
@@ -453,8 +443,6 @@ func (o AppHostingDefaultDomainOutput) Disabled() pulumi.BoolOutput {
 }
 
 // Id of the domain. For default domain, it should be {{backend}}--{{project_id}}.{{location}}.hosted.app
-//
-// ***
 func (o AppHostingDefaultDomainOutput) DomainId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppHostingDefaultDomain) pulumi.StringOutput { return v.DomainId }).(pulumi.StringOutput)
 }

@@ -267,8 +267,6 @@ type Instance struct {
 	// The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
 	GceZone pulumi.StringPtrOutput `pulumi:"gceZone"`
 	// The ID of the alloydb instance.
-	//
-	// ***
 	InstanceId   pulumi.StringOutput `pulumi:"instanceId"`
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
 	// The IP address for the Instance. This is the connection endpoint for an end-user application.
@@ -402,8 +400,6 @@ type instanceState struct {
 	// The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
 	GceZone *string `pulumi:"gceZone"`
 	// The ID of the alloydb instance.
-	//
-	// ***
 	InstanceId   *string `pulumi:"instanceId"`
 	InstanceType *string `pulumi:"instanceType"`
 	// The IP address for the Instance. This is the connection endpoint for an end-user application.
@@ -494,8 +490,6 @@ type InstanceState struct {
 	// The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
 	GceZone pulumi.StringPtrInput
 	// The ID of the alloydb instance.
-	//
-	// ***
 	InstanceId   pulumi.StringPtrInput
 	InstanceType pulumi.StringPtrInput
 	// The IP address for the Instance. This is the connection endpoint for an end-user application.
@@ -585,8 +579,6 @@ type instanceArgs struct {
 	// The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
 	GceZone *string `pulumi:"gceZone"`
 	// The ID of the alloydb instance.
-	//
-	// ***
 	InstanceId   string `pulumi:"instanceId"`
 	InstanceType string `pulumi:"instanceType"`
 	// User-defined labels for the alloydb instance.
@@ -650,8 +642,6 @@ type InstanceArgs struct {
 	// The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
 	GceZone pulumi.StringPtrInput
 	// The ID of the alloydb instance.
-	//
-	// ***
 	InstanceId   pulumi.StringInput
 	InstanceType pulumi.StringInput
 	// User-defined labels for the alloydb instance.
@@ -838,8 +828,6 @@ func (o InstanceOutput) GceZone() pulumi.StringPtrOutput {
 }
 
 // The ID of the alloydb instance.
-//
-// ***
 func (o InstanceOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }

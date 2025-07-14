@@ -32,9 +32,6 @@ class GatewayArgs:
                When changing api configs please ensure the new config is a new resource and the
                lifecycle rule `create_before_destroy` is set.
         :param pulumi.Input[builtins.str] gateway_id: Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] display_name: A user-visible name for the API.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user-provided metadata.
                
@@ -74,9 +71,6 @@ class GatewayArgs:
     def gateway_id(self) -> pulumi.Input[builtins.str]:
         """
         Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
-
-
-        - - -
         """
         return pulumi.get(self, "gateway_id")
 
@@ -159,9 +153,6 @@ class _GatewayState:
         :param pulumi.Input[builtins.str] display_name: A user-visible name for the API.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[builtins.str] gateway_id: Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user-provided metadata.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -249,9 +240,6 @@ class _GatewayState:
     def gateway_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
-
-
-        - - -
         """
         return pulumi.get(self, "gateway_id")
 
@@ -386,9 +374,6 @@ class Gateway(pulumi.CustomResource):
                lifecycle rule `create_before_destroy` is set.
         :param pulumi.Input[builtins.str] display_name: A user-visible name for the API.
         :param pulumi.Input[builtins.str] gateway_id: Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user-provided metadata.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -524,9 +509,6 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] display_name: A user-visible name for the API.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[builtins.str] gateway_id: Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user-provided metadata.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -593,9 +575,6 @@ class Gateway(pulumi.CustomResource):
     def gateway_id(self) -> pulumi.Output[builtins.str]:
         """
         Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
-
-
-        - - -
         """
         return pulumi.get(self, "gateway_id")
 

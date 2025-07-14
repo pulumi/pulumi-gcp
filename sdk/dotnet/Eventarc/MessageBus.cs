@@ -168,9 +168,6 @@ namespace Pulumi.Gcp.Eventarc
         /// <summary>
         /// Required. The user-provided ID to be assigned to the MessageBus. It should match the
         /// format `^a-z?$`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("messageBusId")]
         public Output<string> MessageBusId { get; private set; } = null!;
@@ -320,9 +317,6 @@ namespace Pulumi.Gcp.Eventarc
         /// <summary>
         /// Required. The user-provided ID to be assigned to the MessageBus. It should match the
         /// format `^a-z?$`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("messageBusId", required: true)]
         public Input<string> MessageBusId { get; set; } = null!;
@@ -440,9 +434,6 @@ namespace Pulumi.Gcp.Eventarc
         /// <summary>
         /// Required. The user-provided ID to be assigned to the MessageBus. It should match the
         /// format `^a-z?$`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("messageBusId")]
         public Input<string>? MessageBusId { get; set; }

@@ -64,16 +64,12 @@ public final class AppHostingDefaultDomainState extends com.pulumi.resources.Res
     /**
      * Id of the domain. For default domain, it should be {{backend}}--{{project_id}}.{{location}}.hosted.app
      * 
-     * ***
-     * 
      */
     @Import(name="domainId")
     private @Nullable Output<String> domainId;
 
     /**
      * @return Id of the domain. For default domain, it should be {{backend}}--{{project_id}}.{{location}}.hosted.app
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> domainId() {
@@ -275,8 +271,6 @@ public final class AppHostingDefaultDomainState extends com.pulumi.resources.Res
         /**
          * @param domainId Id of the domain. For default domain, it should be {{backend}}--{{project_id}}.{{location}}.hosted.app
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -287,8 +281,6 @@ public final class AppHostingDefaultDomainState extends com.pulumi.resources.Res
 
         /**
          * @param domainId Id of the domain. For default domain, it should be {{backend}}--{{project_id}}.{{location}}.hosted.app
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -236,8 +236,9 @@ type PreventionDeidentifyTemplate struct {
 	// * `organizations/{{organization_id}}`
 	// * `organizations/{{organization_id}}/locations/{{location}}`
 	Parent pulumi.StringOutput `pulumi:"parent"`
-	// The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
-	// expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+	// The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+	// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
+	// 100 characters. Can be empty to allow the system to generate one.
 	TemplateId pulumi.StringOutput `pulumi:"templateId"`
 	// The last update timestamp of an deidentifyTemplate. Set by the server.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -296,8 +297,9 @@ type preventionDeidentifyTemplateState struct {
 	// * `organizations/{{organization_id}}`
 	// * `organizations/{{organization_id}}/locations/{{location}}`
 	Parent *string `pulumi:"parent"`
-	// The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
-	// expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+	// The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+	// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
+	// 100 characters. Can be empty to allow the system to generate one.
 	TemplateId *string `pulumi:"templateId"`
 	// The last update timestamp of an deidentifyTemplate. Set by the server.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -321,8 +323,9 @@ type PreventionDeidentifyTemplateState struct {
 	// * `organizations/{{organization_id}}`
 	// * `organizations/{{organization_id}}/locations/{{location}}`
 	Parent pulumi.StringPtrInput
-	// The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
-	// expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+	// The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+	// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
+	// 100 characters. Can be empty to allow the system to generate one.
 	TemplateId pulumi.StringPtrInput
 	// The last update timestamp of an deidentifyTemplate. Set by the server.
 	UpdateTime pulumi.StringPtrInput
@@ -346,8 +349,9 @@ type preventionDeidentifyTemplateArgs struct {
 	// * `organizations/{{organization_id}}`
 	// * `organizations/{{organization_id}}/locations/{{location}}`
 	Parent string `pulumi:"parent"`
-	// The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
-	// expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+	// The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+	// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
+	// 100 characters. Can be empty to allow the system to generate one.
 	TemplateId *string `pulumi:"templateId"`
 }
 
@@ -366,8 +370,9 @@ type PreventionDeidentifyTemplateArgs struct {
 	// * `organizations/{{organization_id}}`
 	// * `organizations/{{organization_id}}/locations/{{location}}`
 	Parent pulumi.StringInput
-	// The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
-	// expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+	// The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+	// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
+	// 100 characters. Can be empty to allow the system to generate one.
 	TemplateId pulumi.StringPtrInput
 }
 
@@ -495,8 +500,9 @@ func (o PreventionDeidentifyTemplateOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplate) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }
 
-// The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
-// expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+// The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
+// 100 characters. Can be empty to allow the system to generate one.
 func (o PreventionDeidentifyTemplateOutput) TemplateId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplate) pulumi.StringOutput { return v.TemplateId }).(pulumi.StringOutput)
 }

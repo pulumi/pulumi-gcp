@@ -95,9 +95,6 @@ export class DataAccessLabel extends pulumi.CustomResource {
      * display name and the final component of the label's resource name. The
      * maximum number of characters should be 63. Regex pattern is as per AIP:
      * https://google.aip.dev/122#resource-id-segments
-     *
-     *
-     * - - -
      */
     public readonly dataAccessLabelId!: pulumi.Output<string>;
     /**
@@ -214,9 +211,6 @@ export interface DataAccessLabelState {
      * display name and the final component of the label's resource name. The
      * maximum number of characters should be 63. Regex pattern is as per AIP:
      * https://google.aip.dev/122#resource-id-segments
-     *
-     *
-     * - - -
      */
     dataAccessLabelId?: pulumi.Input<string>;
     /**
@@ -269,9 +263,6 @@ export interface DataAccessLabelArgs {
      * display name and the final component of the label's resource name. The
      * maximum number of characters should be 63. Regex pattern is as per AIP:
      * https://google.aip.dev/122#resource-id-segments
-     *
-     *
-     * - - -
      */
     dataAccessLabelId: pulumi.Input<string>;
     /**

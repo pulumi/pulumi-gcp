@@ -13,16 +13,12 @@ public final class StandardAppVersionEntrypoint {
     /**
      * @return The format should be a shell command that can be fed to bash -c.
      * 
-     * ***
-     * 
      */
     private String shell;
 
     private StandardAppVersionEntrypoint() {}
     /**
      * @return The format should be a shell command that can be fed to bash -c.
-     * 
-     * ***
      * 
      */
     public String shell() {

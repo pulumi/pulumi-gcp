@@ -754,8 +754,6 @@ if not MYPY:
         os_architecture: NotRequired[pulumi.Input[builtins.str]]
         """
         Targets VM instances with OS Inventory enabled and having the following OS architecture.
-
-        - - -
         """
         os_short_name: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -776,8 +774,6 @@ class GuestPoliciesAssignmentOsTypeArgs:
                  os_version: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.str] os_architecture: Targets VM instances with OS Inventory enabled and having the following OS architecture.
-               
-               - - -
         :param pulumi.Input[builtins.str] os_short_name: Targets VM instances with OS Inventory enabled and having the following OS short name, for example "debian" or "windows".
         :param pulumi.Input[builtins.str] os_version: Targets VM instances with OS Inventory enabled and having the following following OS version.
         """
@@ -793,8 +789,6 @@ class GuestPoliciesAssignmentOsTypeArgs:
     def os_architecture(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Targets VM instances with OS Inventory enabled and having the following OS architecture.
-
-        - - -
         """
         return pulumi.get(self, "os_architecture")
 
@@ -6886,8 +6880,6 @@ if not MYPY:
         labels: pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]
         """
         Compute Engine instance labels that must be present for a VM instance to be targeted by this filter
-
-        - - -
         """
 elif False:
     PatchDeploymentInstanceFilterGroupLabelArgsDict: TypeAlias = Mapping[str, Any]
@@ -6898,8 +6890,6 @@ class PatchDeploymentInstanceFilterGroupLabelArgs:
                  labels: pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Compute Engine instance labels that must be present for a VM instance to be targeted by this filter
-               
-               - - -
         """
         pulumi.set(__self__, "labels", labels)
 
@@ -6908,8 +6898,6 @@ class PatchDeploymentInstanceFilterGroupLabelArgs:
     def labels(self) -> pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]:
         """
         Compute Engine instance labels that must be present for a VM instance to be targeted by this filter
-
-        - - -
         """
         return pulumi.get(self, "labels")
 
@@ -9180,8 +9168,7 @@ if not MYPY:
         """
         description: NotRequired[pulumi.Input[builtins.str]]
         """
-        OS policy assignment description.
-        Length of the description is limited to 1024 characters.
+        Freeform text describing the purpose of the resource.
         """
         etag: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -9257,8 +9244,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
                For a given OS policy assignment, there is only one revision with a value
                of 'true' for this field.
         :param pulumi.Input[builtins.bool] deleted: Indicates that this revision deletes the OS policy assignment.
-        :param pulumi.Input[builtins.str] description: OS policy assignment description.
-               Length of the description is limited to 1024 characters.
+        :param pulumi.Input[builtins.str] description: Freeform text describing the purpose of the resource.
         :param pulumi.Input[builtins.str] etag: This checksum is computed by the server based on the value of other
                fields, and may be sent on update and delete requests to ensure the
                client has an up-to-date value before proceeding.
@@ -9376,8 +9362,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        OS policy assignment description.
-        Length of the description is limited to 1024 characters.
+        Freeform text describing the purpose of the resource.
         """
         return pulumi.get(self, "description")
 
@@ -13223,8 +13208,6 @@ if not MYPY:
         """
         Specifies the relative value defined as a percentage, which will be
         multiplied by a reference value.
-
-        - - -
         """
 elif False:
     V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetArgsDict: TypeAlias = Mapping[str, Any]
@@ -13238,8 +13221,6 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         :param pulumi.Input[builtins.int] fixed: Specifies a fixed value.
         :param pulumi.Input[builtins.int] percent: Specifies the relative value defined as a percentage, which will be
                multiplied by a reference value.
-               
-               - - -
         """
         if fixed is not None:
             pulumi.set(__self__, "fixed", fixed)
@@ -13264,8 +13245,6 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         """
         Specifies the relative value defined as a percentage, which will be
         multiplied by a reference value.
-
-        - - -
         """
         return pulumi.get(self, "percent")
 
@@ -13583,14 +13562,13 @@ if not MYPY:
         """
         state: NotRequired[pulumi.Input[builtins.str]]
         """
-        (Output)
-        State of the iteration.
-        Possible values:
-        PROCESSING
-        COMPLETED
-        FAILED
-        CANCELLED
-        UNKNOWN
+        State of the orchestrator. Can be updated to change orchestrator behaviour.
+        Allowed values:
+        - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+        - `STOPPED` - orchestrator won't make any changes.
+        Note: There might be more states added in the future. We use string here
+        instead of an enum, to avoid the need of propagating new states to all the
+        client code.
         """
 elif False:
     V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArgsDict: TypeAlias = Mapping[str, Any]
@@ -13629,14 +13607,13 @@ class V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArgs:
                detailed information about a particular orchestration iteration.
         :param pulumi.Input[builtins.str] start_time: (Output)
                Start time of the wave iteration.
-        :param pulumi.Input[builtins.str] state: (Output)
-               State of the iteration.
-               Possible values:
-               PROCESSING
-               COMPLETED
-               FAILED
-               CANCELLED
-               UNKNOWN
+        :param pulumi.Input[builtins.str] state: State of the orchestrator. Can be updated to change orchestrator behaviour.
+               Allowed values:
+               - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+               - `STOPPED` - orchestrator won't make any changes.
+               Note: There might be more states added in the future. We use string here
+               instead of an enum, to avoid the need of propagating new states to all the
+               client code.
         """
         if errors is not None:
             pulumi.set(__self__, "errors", errors)
@@ -13758,14 +13735,13 @@ class V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArgs:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        (Output)
-        State of the iteration.
-        Possible values:
-        PROCESSING
-        COMPLETED
-        FAILED
-        CANCELLED
-        UNKNOWN
+        State of the orchestrator. Can be updated to change orchestrator behaviour.
+        Allowed values:
+        - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+        - `STOPPED` - orchestrator won't make any changes.
+        Note: There might be more states added in the future. We use string here
+        instead of an enum, to avoid the need of propagating new states to all the
+        client code.
         """
         return pulumi.get(self, "state")
 
@@ -13969,14 +13945,13 @@ if not MYPY:
         """
         state: NotRequired[pulumi.Input[builtins.str]]
         """
-        (Output)
-        State of the iteration.
-        Possible values:
-        PROCESSING
-        COMPLETED
-        FAILED
-        CANCELLED
-        UNKNOWN
+        State of the orchestrator. Can be updated to change orchestrator behaviour.
+        Allowed values:
+        - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+        - `STOPPED` - orchestrator won't make any changes.
+        Note: There might be more states added in the future. We use string here
+        instead of an enum, to avoid the need of propagating new states to all the
+        client code.
         """
 elif False:
     V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArgsDict: TypeAlias = Mapping[str, Any]
@@ -14015,14 +13990,13 @@ class V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArgs:
                detailed information about a particular orchestration iteration.
         :param pulumi.Input[builtins.str] start_time: (Output)
                Start time of the wave iteration.
-        :param pulumi.Input[builtins.str] state: (Output)
-               State of the iteration.
-               Possible values:
-               PROCESSING
-               COMPLETED
-               FAILED
-               CANCELLED
-               UNKNOWN
+        :param pulumi.Input[builtins.str] state: State of the orchestrator. Can be updated to change orchestrator behaviour.
+               Allowed values:
+               - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+               - `STOPPED` - orchestrator won't make any changes.
+               Note: There might be more states added in the future. We use string here
+               instead of an enum, to avoid the need of propagating new states to all the
+               client code.
         """
         if errors is not None:
             pulumi.set(__self__, "errors", errors)
@@ -14144,14 +14118,13 @@ class V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArgs:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        (Output)
-        State of the iteration.
-        Possible values:
-        PROCESSING
-        COMPLETED
-        FAILED
-        CANCELLED
-        UNKNOWN
+        State of the orchestrator. Can be updated to change orchestrator behaviour.
+        Allowed values:
+        - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+        - `STOPPED` - orchestrator won't make any changes.
+        Note: There might be more states added in the future. We use string here
+        instead of an enum, to avoid the need of propagating new states to all the
+        client code.
         """
         return pulumi.get(self, "state")
 
@@ -14464,8 +14437,7 @@ if not MYPY:
         """
         description: NotRequired[pulumi.Input[builtins.str]]
         """
-        OS policy assignment description.
-        Length of the description is limited to 1024 characters.
+        Optional. Freeform text describing the purpose of the resource.
         """
         etag: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -14542,8 +14514,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
                For a given OS policy assignment, there is only one revision with a value
                of 'true' for this field.
         :param pulumi.Input[builtins.bool] deleted: Output only. Indicates that this revision deletes the OS policy assignment.
-        :param pulumi.Input[builtins.str] description: OS policy assignment description.
-               Length of the description is limited to 1024 characters.
+        :param pulumi.Input[builtins.str] description: Optional. Freeform text describing the purpose of the resource.
         :param pulumi.Input[builtins.str] etag: Output only. This checksum is computed by the server based on the value of other
                fields, and may be sent on update and delete requests to ensure the
                client has an up-to-date value before proceeding.
@@ -14662,8 +14633,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        OS policy assignment description.
-        Length of the description is limited to 1024 characters.
+        Optional. Freeform text describing the purpose of the resource.
         """
         return pulumi.get(self, "description")
 
@@ -18573,8 +18543,6 @@ if not MYPY:
         """
         Specifies the relative value defined as a percentage, which will be
         multiplied by a reference value.
-
-        - - -
         """
 elif False:
     V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetArgsDict: TypeAlias = Mapping[str, Any]
@@ -18588,8 +18556,6 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         :param pulumi.Input[builtins.int] fixed: Specifies a fixed value.
         :param pulumi.Input[builtins.int] percent: Specifies the relative value defined as a percentage, which will be
                multiplied by a reference value.
-               
-               - - -
         """
         if fixed is not None:
             pulumi.set(__self__, "fixed", fixed)
@@ -18614,8 +18580,6 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         """
         Specifies the relative value defined as a percentage, which will be
         multiplied by a reference value.
-
-        - - -
         """
         return pulumi.get(self, "percent")
 
@@ -18929,15 +18893,13 @@ if not MYPY:
         """
         state: NotRequired[pulumi.Input[builtins.str]]
         """
-        (Output)
-        Output only. State of the iteration.
-        Possible values:
-        STATE_UNSPECIFIED
-        PROCESSING
-        COMPLETED
-        FAILED
-        CANCELLED
-        UNKNOWN
+        Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+        Allowed values:
+        - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+        - `STOPPED` - orchestrator won't make any changes.
+        Note: There might be more states added in the future. We use string here
+        instead of an enum, to avoid the need of propagating new states to all the
+        client code.
         """
 elif False:
     V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateArgsDict: TypeAlias = Mapping[str, Any]
@@ -18975,15 +18937,13 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationState
                detailed information about a particular orchestration iteration.
         :param pulumi.Input[builtins.str] start_time: (Output)
                Output only. Start time of the wave iteration.
-        :param pulumi.Input[builtins.str] state: (Output)
-               Output only. State of the iteration.
-               Possible values:
-               STATE_UNSPECIFIED
-               PROCESSING
-               COMPLETED
-               FAILED
-               CANCELLED
-               UNKNOWN
+        :param pulumi.Input[builtins.str] state: Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+               Allowed values:
+               - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+               - `STOPPED` - orchestrator won't make any changes.
+               Note: There might be more states added in the future. We use string here
+               instead of an enum, to avoid the need of propagating new states to all the
+               client code.
         """
         if error is not None:
             pulumi.set(__self__, "error", error)
@@ -19104,15 +19064,13 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationState
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        (Output)
-        Output only. State of the iteration.
-        Possible values:
-        STATE_UNSPECIFIED
-        PROCESSING
-        COMPLETED
-        FAILED
-        CANCELLED
-        UNKNOWN
+        Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+        Allowed values:
+        - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+        - `STOPPED` - orchestrator won't make any changes.
+        Note: There might be more states added in the future. We use string here
+        instead of an enum, to avoid the need of propagating new states to all the
+        client code.
         """
         return pulumi.get(self, "state")
 
@@ -19303,15 +19261,13 @@ if not MYPY:
         """
         state: NotRequired[pulumi.Input[builtins.str]]
         """
-        (Output)
-        Output only. State of the iteration.
-        Possible values:
-        STATE_UNSPECIFIED
-        PROCESSING
-        COMPLETED
-        FAILED
-        CANCELLED
-        UNKNOWN
+        Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+        Allowed values:
+        - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+        - `STOPPED` - orchestrator won't make any changes.
+        Note: There might be more states added in the future. We use string here
+        instead of an enum, to avoid the need of propagating new states to all the
+        client code.
         """
 elif False:
     V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateArgsDict: TypeAlias = Mapping[str, Any]
@@ -19349,15 +19305,13 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStat
                detailed information about a particular orchestration iteration.
         :param pulumi.Input[builtins.str] start_time: (Output)
                Output only. Start time of the wave iteration.
-        :param pulumi.Input[builtins.str] state: (Output)
-               Output only. State of the iteration.
-               Possible values:
-               STATE_UNSPECIFIED
-               PROCESSING
-               COMPLETED
-               FAILED
-               CANCELLED
-               UNKNOWN
+        :param pulumi.Input[builtins.str] state: Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+               Allowed values:
+               - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+               - `STOPPED` - orchestrator won't make any changes.
+               Note: There might be more states added in the future. We use string here
+               instead of an enum, to avoid the need of propagating new states to all the
+               client code.
         """
         if error is not None:
             pulumi.set(__self__, "error", error)
@@ -19478,15 +19432,13 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStat
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        (Output)
-        Output only. State of the iteration.
-        Possible values:
-        STATE_UNSPECIFIED
-        PROCESSING
-        COMPLETED
-        FAILED
-        CANCELLED
-        UNKNOWN
+        Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+        Allowed values:
+        - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+        - `STOPPED` - orchestrator won't make any changes.
+        Note: There might be more states added in the future. We use string here
+        instead of an enum, to avoid the need of propagating new states to all the
+        client code.
         """
         return pulumi.get(self, "state")
 
@@ -19787,8 +19739,7 @@ if not MYPY:
         """
         description: NotRequired[pulumi.Input[builtins.str]]
         """
-        OS policy assignment description.
-        Length of the description is limited to 1024 characters.
+        Optional. Freeform text describing the purpose of the resource.
         """
         name: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -19858,8 +19809,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadArgs:
                For a given OS policy assignment, there is only one revision with a value
                of 'true' for this field.
         :param pulumi.Input[builtins.bool] deleted: Output only. Indicates that this revision deletes the OS policy assignment.
-        :param pulumi.Input[builtins.str] description: OS policy assignment description.
-               Length of the description is limited to 1024 characters.
+        :param pulumi.Input[builtins.str] description: Optional. Freeform text describing the purpose of the resource.
         :param pulumi.Input[builtins.str] name: Immutable. Identifier. In form of
                * `organizations/{organization_id}/locations/global/policyOrchestrators/{orchestrator_id}`
                * `folders/{folder_id}/locations/global/policyOrchestrators/{orchestrator_id}`
@@ -19973,8 +19923,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        OS policy assignment description.
-        Length of the description is limited to 1024 characters.
+        Optional. Freeform text describing the purpose of the resource.
         """
         return pulumi.get(self, "description")
 
@@ -23870,8 +23819,6 @@ if not MYPY:
         """
         Specifies the relative value defined as a percentage, which will be
         multiplied by a reference value.
-
-        - - -
         """
 elif False:
     V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetArgsDict: TypeAlias = Mapping[str, Any]
@@ -23885,8 +23832,6 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadRollout
         :param pulumi.Input[builtins.int] fixed: Specifies a fixed value.
         :param pulumi.Input[builtins.int] percent: Specifies the relative value defined as a percentage, which will be
                multiplied by a reference value.
-               
-               - - -
         """
         if fixed is not None:
             pulumi.set(__self__, "fixed", fixed)
@@ -23911,8 +23856,6 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadRollout
         """
         Specifies the relative value defined as a percentage, which will be
         multiplied by a reference value.
-
-        - - -
         """
         return pulumi.get(self, "percent")
 
@@ -24226,15 +24169,13 @@ if not MYPY:
         """
         state: NotRequired[pulumi.Input[builtins.str]]
         """
-        (Output)
-        Output only. State of the iteration.
-        Possible values:
-        STATE_UNSPECIFIED
-        PROCESSING
-        COMPLETED
-        FAILED
-        CANCELLED
-        UNKNOWN
+        Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+        Allowed values:
+        - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+        - `STOPPED` - orchestrator won't make any changes.
+        Note: There might be more states added in the future. We use string here
+        instead of an enum, to avoid the need of propagating new states to all the
+        client code.
         """
 elif False:
     V2PolicyOrchestratorOrchestrationStateCurrentIterationStateArgsDict: TypeAlias = Mapping[str, Any]
@@ -24272,15 +24213,13 @@ class V2PolicyOrchestratorOrchestrationStateCurrentIterationStateArgs:
                detailed information about a particular orchestration iteration.
         :param pulumi.Input[builtins.str] start_time: (Output)
                Output only. Start time of the wave iteration.
-        :param pulumi.Input[builtins.str] state: (Output)
-               Output only. State of the iteration.
-               Possible values:
-               STATE_UNSPECIFIED
-               PROCESSING
-               COMPLETED
-               FAILED
-               CANCELLED
-               UNKNOWN
+        :param pulumi.Input[builtins.str] state: Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+               Allowed values:
+               - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+               - `STOPPED` - orchestrator won't make any changes.
+               Note: There might be more states added in the future. We use string here
+               instead of an enum, to avoid the need of propagating new states to all the
+               client code.
         """
         if error is not None:
             pulumi.set(__self__, "error", error)
@@ -24401,15 +24340,13 @@ class V2PolicyOrchestratorOrchestrationStateCurrentIterationStateArgs:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        (Output)
-        Output only. State of the iteration.
-        Possible values:
-        STATE_UNSPECIFIED
-        PROCESSING
-        COMPLETED
-        FAILED
-        CANCELLED
-        UNKNOWN
+        Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+        Allowed values:
+        - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+        - `STOPPED` - orchestrator won't make any changes.
+        Note: There might be more states added in the future. We use string here
+        instead of an enum, to avoid the need of propagating new states to all the
+        client code.
         """
         return pulumi.get(self, "state")
 
@@ -24600,15 +24537,13 @@ if not MYPY:
         """
         state: NotRequired[pulumi.Input[builtins.str]]
         """
-        (Output)
-        Output only. State of the iteration.
-        Possible values:
-        STATE_UNSPECIFIED
-        PROCESSING
-        COMPLETED
-        FAILED
-        CANCELLED
-        UNKNOWN
+        Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+        Allowed values:
+        - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+        - `STOPPED` - orchestrator won't make any changes.
+        Note: There might be more states added in the future. We use string here
+        instead of an enum, to avoid the need of propagating new states to all the
+        client code.
         """
 elif False:
     V2PolicyOrchestratorOrchestrationStatePreviousIterationStateArgsDict: TypeAlias = Mapping[str, Any]
@@ -24646,15 +24581,13 @@ class V2PolicyOrchestratorOrchestrationStatePreviousIterationStateArgs:
                detailed information about a particular orchestration iteration.
         :param pulumi.Input[builtins.str] start_time: (Output)
                Output only. Start time of the wave iteration.
-        :param pulumi.Input[builtins.str] state: (Output)
-               Output only. State of the iteration.
-               Possible values:
-               STATE_UNSPECIFIED
-               PROCESSING
-               COMPLETED
-               FAILED
-               CANCELLED
-               UNKNOWN
+        :param pulumi.Input[builtins.str] state: Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+               Allowed values:
+               - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+               - `STOPPED` - orchestrator won't make any changes.
+               Note: There might be more states added in the future. We use string here
+               instead of an enum, to avoid the need of propagating new states to all the
+               client code.
         """
         if error is not None:
             pulumi.set(__self__, "error", error)
@@ -24775,15 +24708,13 @@ class V2PolicyOrchestratorOrchestrationStatePreviousIterationStateArgs:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        (Output)
-        Output only. State of the iteration.
-        Possible values:
-        STATE_UNSPECIFIED
-        PROCESSING
-        COMPLETED
-        FAILED
-        CANCELLED
-        UNKNOWN
+        Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+        Allowed values:
+        - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+        - `STOPPED` - orchestrator won't make any changes.
+        Note: There might be more states added in the future. We use string here
+        instead of an enum, to avoid the need of propagating new states to all the
+        client code.
         """
         return pulumi.get(self, "state")
 

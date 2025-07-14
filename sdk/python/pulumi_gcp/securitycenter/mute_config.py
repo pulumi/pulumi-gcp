@@ -37,9 +37,6 @@ class MuteConfigArgs:
         :param pulumi.Input[builtins.str] parent: Resource name of the new mute configs's parent. Its format is
                "organizations/[organization_id]", "folders/[folder_id]", or
                "projects/[project_id]".
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] description: A description of the mute config.
         :param pulumi.Input[builtins.str] expiry_time: Optional. The expiry of the mute config. Only applicable for dynamic configs.
                If the expiry is set, when the config expires, it is removed from all findings.
@@ -94,9 +91,6 @@ class MuteConfigArgs:
         Resource name of the new mute configs's parent. Its format is
         "organizations/[organization_id]", "folders/[folder_id]", or
         "projects/[project_id]".
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 
@@ -184,9 +178,6 @@ class _MuteConfigState:
         :param pulumi.Input[builtins.str] parent: Resource name of the new mute configs's parent. Its format is
                "organizations/[organization_id]", "folders/[folder_id]", or
                "projects/[project_id]".
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] type: The type of the mute config, which determines what type of mute state the config affects.
                Default value is `DYNAMIC`.
                Possible values are: `MUTE_CONFIG_TYPE_UNSPECIFIED`, `STATIC`, `DYNAMIC`.
@@ -319,9 +310,6 @@ class _MuteConfigState:
         Resource name of the new mute configs's parent. Its format is
         "organizations/[organization_id]", "folders/[folder_id]", or
         "projects/[project_id]".
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 
@@ -426,9 +414,6 @@ class MuteConfig(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] parent: Resource name of the new mute configs's parent. Its format is
                "organizations/[organization_id]", "folders/[folder_id]", or
                "projects/[project_id]".
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] type: The type of the mute config, which determines what type of mute state the config affects.
                Default value is `DYNAMIC`.
                Possible values are: `MUTE_CONFIG_TYPE_UNSPECIFIED`, `STATIC`, `DYNAMIC`.
@@ -574,9 +559,6 @@ class MuteConfig(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] parent: Resource name of the new mute configs's parent. Its format is
                "organizations/[organization_id]", "folders/[folder_id]", or
                "projects/[project_id]".
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] type: The type of the mute config, which determines what type of mute state the config affects.
                Default value is `DYNAMIC`.
                Possible values are: `MUTE_CONFIG_TYPE_UNSPECIFIED`, `STATIC`, `DYNAMIC`.
@@ -676,9 +658,6 @@ class MuteConfig(pulumi.CustomResource):
         Resource name of the new mute configs's parent. Its format is
         "organizations/[organization_id]", "folders/[folder_id]", or
         "projects/[project_id]".
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 

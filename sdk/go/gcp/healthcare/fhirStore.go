@@ -241,8 +241,6 @@ type FhirStore struct {
 	ComplexDataTypeReferenceParsing pulumi.StringOutput `pulumi:"complexDataTypeReferenceParsing"`
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
-	//
-	// ***
 	Dataset pulumi.StringOutput `pulumi:"dataset"`
 	// If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
 	// If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
@@ -369,8 +367,6 @@ type fhirStoreState struct {
 	ComplexDataTypeReferenceParsing *string `pulumi:"complexDataTypeReferenceParsing"`
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
-	//
-	// ***
 	Dataset *string `pulumi:"dataset"`
 	// If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
 	// If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
@@ -460,8 +456,6 @@ type FhirStoreState struct {
 	ComplexDataTypeReferenceParsing pulumi.StringPtrInput
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
-	//
-	// ***
 	Dataset pulumi.StringPtrInput
 	// If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
 	// If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
@@ -555,8 +549,6 @@ type fhirStoreArgs struct {
 	ComplexDataTypeReferenceParsing *string `pulumi:"complexDataTypeReferenceParsing"`
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
-	//
-	// ***
 	Dataset string `pulumi:"dataset"`
 	// If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
 	// If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
@@ -640,8 +632,6 @@ type FhirStoreArgs struct {
 	ComplexDataTypeReferenceParsing pulumi.StringPtrInput
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
-	//
-	// ***
 	Dataset pulumi.StringInput
 	// If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
 	// If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
@@ -813,8 +803,6 @@ func (o FhirStoreOutput) ComplexDataTypeReferenceParsing() pulumi.StringOutput {
 
 // Identifies the dataset addressed by this request. Must be in the format
 // 'projects/{project}/locations/{location}/datasets/{dataset}'
-//
-// ***
 func (o FhirStoreOutput) Dataset() pulumi.StringOutput {
 	return o.ApplyT(func(v *FhirStore) pulumi.StringOutput { return v.Dataset }).(pulumi.StringOutput)
 }

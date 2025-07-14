@@ -1086,8 +1086,6 @@ type Repository struct {
 	RemoteRepositoryConfig RepositoryRemoteRepositoryConfigPtrOutput `pulumi:"remoteRepositoryConfig"`
 	// The last part of the repository name, for example:
 	// "repo1"
-	//
-	// ***
 	RepositoryId pulumi.StringOutput `pulumi:"repositoryId"`
 	// The time when the repository was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -1207,8 +1205,6 @@ type repositoryState struct {
 	RemoteRepositoryConfig *RepositoryRemoteRepositoryConfig `pulumi:"remoteRepositoryConfig"`
 	// The last part of the repository name, for example:
 	// "repo1"
-	//
-	// ***
 	RepositoryId *string `pulumi:"repositoryId"`
 	// The time when the repository was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -1288,8 +1284,6 @@ type RepositoryState struct {
 	RemoteRepositoryConfig RepositoryRemoteRepositoryConfigPtrInput
 	// The last part of the repository name, for example:
 	// "repo1"
-	//
-	// ***
 	RepositoryId pulumi.StringPtrInput
 	// The time when the repository was last updated.
 	UpdateTime pulumi.StringPtrInput
@@ -1363,8 +1357,6 @@ type repositoryArgs struct {
 	RemoteRepositoryConfig *RepositoryRemoteRepositoryConfig `pulumi:"remoteRepositoryConfig"`
 	// The last part of the repository name, for example:
 	// "repo1"
-	//
-	// ***
 	RepositoryId string `pulumi:"repositoryId"`
 	// Configuration specific for a Virtual Repository.
 	// Structure is documented below.
@@ -1433,8 +1425,6 @@ type RepositoryArgs struct {
 	RemoteRepositoryConfig RepositoryRemoteRepositoryConfigPtrInput
 	// The last part of the repository name, for example:
 	// "repo1"
-	//
-	// ***
 	RepositoryId pulumi.StringInput
 	// Configuration specific for a Virtual Repository.
 	// Structure is documented below.
@@ -1646,8 +1636,6 @@ func (o RepositoryOutput) RemoteRepositoryConfig() RepositoryRemoteRepositoryCon
 
 // The last part of the repository name, for example:
 // "repo1"
-//
-// ***
 func (o RepositoryOutput) RepositoryId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.RepositoryId }).(pulumi.StringOutput)
 }

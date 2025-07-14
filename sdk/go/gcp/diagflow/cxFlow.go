@@ -718,8 +718,6 @@ type CxFlow struct {
 	// The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The human-readable name of the flow.
-	//
-	// ***
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// A flow's event handlers serve two purposes:
 	// They are responsible for handling events (e.g. no match, webhook errors) in the flow.
@@ -807,8 +805,6 @@ type cxFlowState struct {
 	// The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description *string `pulumi:"description"`
 	// The human-readable name of the flow.
-	//
-	// ***
 	DisplayName *string `pulumi:"displayName"`
 	// A flow's event handlers serve two purposes:
 	// They are responsible for handling events (e.g. no match, webhook errors) in the flow.
@@ -864,8 +860,6 @@ type CxFlowState struct {
 	// The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description pulumi.StringPtrInput
 	// The human-readable name of the flow.
-	//
-	// ***
 	DisplayName pulumi.StringPtrInput
 	// A flow's event handlers serve two purposes:
 	// They are responsible for handling events (e.g. no match, webhook errors) in the flow.
@@ -925,8 +919,6 @@ type cxFlowArgs struct {
 	// The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description *string `pulumi:"description"`
 	// The human-readable name of the flow.
-	//
-	// ***
 	DisplayName string `pulumi:"displayName"`
 	// A flow's event handlers serve two purposes:
 	// They are responsible for handling events (e.g. no match, webhook errors) in the flow.
@@ -980,8 +972,6 @@ type CxFlowArgs struct {
 	// The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description pulumi.StringPtrInput
 	// The human-readable name of the flow.
-	//
-	// ***
 	DisplayName pulumi.StringInput
 	// A flow's event handlers serve two purposes:
 	// They are responsible for handling events (e.g. no match, webhook errors) in the flow.
@@ -1126,8 +1116,6 @@ func (o CxFlowOutput) Description() pulumi.StringPtrOutput {
 }
 
 // The human-readable name of the flow.
-//
-// ***
 func (o CxFlowOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *CxFlow) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }

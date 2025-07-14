@@ -253,7 +253,9 @@ namespace Pulumi.Gcp.Filestore
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Directory Services configuration. Should only be set if protocol is "NFS_V4_1".
+        /// Directory Services configuration.
+        /// Should only be set if protocol is "NFS_V4_1".
+        /// Structure is documented below.
         /// </summary>
         [Output("directoryServices")]
         public Output<Outputs.InstanceDirectoryServices?> DirectoryServices { get; private set; } = null!;
@@ -287,8 +289,9 @@ namespace Pulumi.Gcp.Filestore
         public Output<Outputs.InstanceFileShares> FileShares { get; private set; } = null!;
 
         /// <summary>
-        /// Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
-        /// instance only, indicating the active as the peer_instance
+        /// Replication configuration, once set, this cannot be updated.
+        /// Additionally this should be specified on the replica instance only, indicating the active as the peer_instance
+        /// Structure is documented below.
         /// </summary>
         [Output("initialReplication")]
         public Output<Outputs.InstanceInitialReplication?> InitialReplication { get; private set; } = null!;
@@ -300,9 +303,10 @@ namespace Pulumi.Gcp.Filestore
         public Output<string?> KmsKeyName { get; private set; } = null!;
 
         /// <summary>
-        /// Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-        /// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-        /// resource.
+        /// Resource labels to represent user-provided metadata.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -328,18 +332,27 @@ namespace Pulumi.Gcp.Filestore
         public Output<ImmutableArray<Outputs.InstanceNetwork>> Networks { get; private set; } = null!;
 
         /// <summary>
-        /// Performance configuration for the instance. If not provided, the default performance settings will be used.
+        /// Performance configuration for the instance. If not provided,
+        /// the default performance settings will be used.
+        /// Structure is documented below.
         /// </summary>
         [Output("performanceConfig")]
         public Output<Outputs.InstancePerformanceConfig?> PerformanceConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
-        /// protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
-        /// "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
+        /// Either NFSv3, for using NFS version 3 as file sharing protocol,
+        /// or NFSv4.1, for using NFS version 4.1 as file sharing protocol.
+        /// NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE.
+        /// The default is NFSv3.
+        /// Default value is `NFS_V3`.
+        /// Possible values are: `NFS_V3`, `NFS_V4_1`.
         /// </summary>
         [Output("protocol")]
         public Output<string?> Protocol { get; private set; } = null!;
@@ -352,11 +365,15 @@ namespace Pulumi.Gcp.Filestore
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
-        /// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags.
-        /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when
-        /// empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and
-        /// modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the
-        /// 'google_tags_tag_value' resource.
+        /// A map of resource manager tags. Resource manager tag keys
+        /// and values have the same definition as resource manager
+        /// tags. Keys must be in the format tagKeys/{tag_key_id},
+        /// and values are in the format tagValues/456. The field is
+        /// ignored when empty. The field is immutable and causes
+        /// resource replacement when mutated. This field is only set
+        /// at create time and modifying this field after creation
+        /// will trigger recreation. To apply tags to an existing
+        /// resource, see the `gcp.tags.TagValue` resource.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
@@ -369,7 +386,10 @@ namespace Pulumi.Gcp.Filestore
         public Output<string> Tier { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// The name of the Filestore zone of the instance.
+        /// 
+        /// &gt; **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
         /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
@@ -444,7 +464,9 @@ namespace Pulumi.Gcp.Filestore
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Directory Services configuration. Should only be set if protocol is "NFS_V4_1".
+        /// Directory Services configuration.
+        /// Should only be set if protocol is "NFS_V4_1".
+        /// Structure is documented below.
         /// </summary>
         [Input("directoryServices")]
         public Input<Inputs.InstanceDirectoryServicesArgs>? DirectoryServices { get; set; }
@@ -458,8 +480,9 @@ namespace Pulumi.Gcp.Filestore
         public Input<Inputs.InstanceFileSharesArgs> FileShares { get; set; } = null!;
 
         /// <summary>
-        /// Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
-        /// instance only, indicating the active as the peer_instance
+        /// Replication configuration, once set, this cannot be updated.
+        /// Additionally this should be specified on the replica instance only, indicating the active as the peer_instance
+        /// Structure is documented below.
         /// </summary>
         [Input("initialReplication")]
         public Input<Inputs.InstanceInitialReplicationArgs>? InitialReplication { get; set; }
@@ -474,9 +497,10 @@ namespace Pulumi.Gcp.Filestore
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-        /// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-        /// resource.
+        /// Resource labels to represent user-provided metadata.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -511,18 +535,27 @@ namespace Pulumi.Gcp.Filestore
         }
 
         /// <summary>
-        /// Performance configuration for the instance. If not provided, the default performance settings will be used.
+        /// Performance configuration for the instance. If not provided,
+        /// the default performance settings will be used.
+        /// Structure is documented below.
         /// </summary>
         [Input("performanceConfig")]
         public Input<Inputs.InstancePerformanceConfigArgs>? PerformanceConfig { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
-        /// protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
-        /// "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
+        /// Either NFSv3, for using NFS version 3 as file sharing protocol,
+        /// or NFSv4.1, for using NFS version 4.1 as file sharing protocol.
+        /// NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE.
+        /// The default is NFSv3.
+        /// Default value is `NFS_V3`.
+        /// Possible values are: `NFS_V3`, `NFS_V4_1`.
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
@@ -531,11 +564,15 @@ namespace Pulumi.Gcp.Filestore
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags.
-        /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when
-        /// empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and
-        /// modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the
-        /// 'google_tags_tag_value' resource.
+        /// A map of resource manager tags. Resource manager tag keys
+        /// and values have the same definition as resource manager
+        /// tags. Keys must be in the format tagKeys/{tag_key_id},
+        /// and values are in the format tagValues/456. The field is
+        /// ignored when empty. The field is immutable and causes
+        /// resource replacement when mutated. This field is only set
+        /// at create time and modifying this field after creation
+        /// will trigger recreation. To apply tags to an existing
+        /// resource, see the `gcp.tags.TagValue` resource.
         /// </summary>
         public InputMap<string> Tags
         {
@@ -551,7 +588,10 @@ namespace Pulumi.Gcp.Filestore
         public Input<string> Tier { get; set; } = null!;
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// The name of the Filestore zone of the instance.
+        /// 
+        /// &gt; **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
@@ -589,7 +629,9 @@ namespace Pulumi.Gcp.Filestore
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Directory Services configuration. Should only be set if protocol is "NFS_V4_1".
+        /// Directory Services configuration.
+        /// Should only be set if protocol is "NFS_V4_1".
+        /// Structure is documented below.
         /// </summary>
         [Input("directoryServices")]
         public Input<Inputs.InstanceDirectoryServicesGetArgs>? DirectoryServices { get; set; }
@@ -639,8 +681,9 @@ namespace Pulumi.Gcp.Filestore
         public Input<Inputs.InstanceFileSharesGetArgs>? FileShares { get; set; }
 
         /// <summary>
-        /// Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
-        /// instance only, indicating the active as the peer_instance
+        /// Replication configuration, once set, this cannot be updated.
+        /// Additionally this should be specified on the replica instance only, indicating the active as the peer_instance
+        /// Structure is documented below.
         /// </summary>
         [Input("initialReplication")]
         public Input<Inputs.InstanceInitialReplicationGetArgs>? InitialReplication { get; set; }
@@ -655,9 +698,10 @@ namespace Pulumi.Gcp.Filestore
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-        /// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-        /// resource.
+        /// Resource labels to represent user-provided metadata.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -692,18 +736,27 @@ namespace Pulumi.Gcp.Filestore
         }
 
         /// <summary>
-        /// Performance configuration for the instance. If not provided, the default performance settings will be used.
+        /// Performance configuration for the instance. If not provided,
+        /// the default performance settings will be used.
+        /// Structure is documented below.
         /// </summary>
         [Input("performanceConfig")]
         public Input<Inputs.InstancePerformanceConfigGetArgs>? PerformanceConfig { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
-        /// protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
-        /// "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
+        /// Either NFSv3, for using NFS version 3 as file sharing protocol,
+        /// or NFSv4.1, for using NFS version 4.1 as file sharing protocol.
+        /// NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE.
+        /// The default is NFSv3.
+        /// Default value is `NFS_V3`.
+        /// Possible values are: `NFS_V3`, `NFS_V4_1`.
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
@@ -729,11 +782,15 @@ namespace Pulumi.Gcp.Filestore
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags.
-        /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when
-        /// empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and
-        /// modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the
-        /// 'google_tags_tag_value' resource.
+        /// A map of resource manager tags. Resource manager tag keys
+        /// and values have the same definition as resource manager
+        /// tags. Keys must be in the format tagKeys/{tag_key_id},
+        /// and values are in the format tagValues/456. The field is
+        /// ignored when empty. The field is immutable and causes
+        /// resource replacement when mutated. This field is only set
+        /// at create time and modifying this field after creation
+        /// will trigger recreation. To apply tags to an existing
+        /// resource, see the `gcp.tags.TagValue` resource.
         /// </summary>
         public InputMap<string> Tags
         {
@@ -749,7 +806,10 @@ namespace Pulumi.Gcp.Filestore
         public Input<string>? Tier { get; set; }
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// The name of the Filestore zone of the instance.
+        /// 
+        /// &gt; **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

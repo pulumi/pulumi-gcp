@@ -212,8 +212,6 @@ public class Settings extends com.pulumi.resources.CustomResource {
      * * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}
      * * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}/version/{version_id}
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -231,8 +229,6 @@ public class Settings extends com.pulumi.resources.CustomResource {
      * * projects/{project_id}/iap_web/appengine-{app_id}
      * * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}
      * * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}/version/{version_id}
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

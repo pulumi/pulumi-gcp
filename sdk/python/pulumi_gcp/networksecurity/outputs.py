@@ -2142,8 +2142,6 @@ class AuthzPolicyTarget(dict):
                For more information, refer to [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
                Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
         :param Sequence[builtins.str] resources: A list of references to the Forwarding Rules on which this policy will be applied.
-               
-               - - -
         """
         pulumi.set(__self__, "load_balancing_scheme", load_balancing_scheme)
         if resources is not None:
@@ -2164,8 +2162,6 @@ class AuthzPolicyTarget(dict):
     def resources(self) -> Optional[Sequence[builtins.str]]:
         """
         A list of references to the Forwarding Rules on which this policy will be applied.
-
-        - - -
         """
         return pulumi.get(self, "resources")
 
@@ -2556,9 +2552,6 @@ class InterceptEndpointGroupAssociationLocation(dict):
                  state: Optional[builtins.str] = None):
         """
         :param builtins.str location: The cloud location of the association, currently restricted to `global`.
-               
-               
-               - - -
         :param builtins.str state: (Output)
                The current state of the association in this location.
                Possible values:
@@ -2576,9 +2569,6 @@ class InterceptEndpointGroupAssociationLocation(dict):
     def location(self) -> Optional[builtins.str]:
         """
         The cloud location of the association, currently restricted to `global`.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -2603,9 +2593,6 @@ class InterceptEndpointGroupAssociationLocationsDetail(dict):
                  state: Optional[builtins.str] = None):
         """
         :param builtins.str location: The cloud location of the association, currently restricted to `global`.
-               
-               
-               - - -
         :param builtins.str state: (Output)
                The current state of the association in this location.
                Possible values:
@@ -2623,9 +2610,6 @@ class InterceptEndpointGroupAssociationLocationsDetail(dict):
     def location(self) -> Optional[builtins.str]:
         """
         The cloud location of the association, currently restricted to `global`.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -2863,9 +2847,6 @@ class MirroringEndpointGroupAssociationLocation(dict):
                  state: Optional[builtins.str] = None):
         """
         :param builtins.str location: The cloud location of the association, currently restricted to `global`.
-               
-               
-               - - -
         :param builtins.str state: (Output)
                The current state of the association in this location.
                Possible values:
@@ -2883,9 +2864,6 @@ class MirroringEndpointGroupAssociationLocation(dict):
     def location(self) -> Optional[builtins.str]:
         """
         The cloud location of the association, currently restricted to `global`.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -2910,9 +2888,6 @@ class MirroringEndpointGroupAssociationLocationsDetail(dict):
                  state: Optional[builtins.str] = None):
         """
         :param builtins.str location: The cloud location of the association, currently restricted to `global`.
-               
-               
-               - - -
         :param builtins.str state: (Output)
                The current state of the association in this location.
                Possible values:
@@ -2930,9 +2905,6 @@ class MirroringEndpointGroupAssociationLocationsDetail(dict):
     def location(self) -> Optional[builtins.str]:
         """
         The cloud location of the association, currently restricted to `global`.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

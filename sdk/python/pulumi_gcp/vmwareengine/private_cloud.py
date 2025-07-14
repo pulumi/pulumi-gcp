@@ -38,14 +38,14 @@ class PrivateCloudArgs:
                Structure is documented below.
         :param pulumi.Input['PrivateCloudNetworkConfigArgs'] network_config: Network configuration in the consumer project with which the peering has to be done.
                Structure is documented below.
-        :param pulumi.Input[builtins.int] deletion_delay_hours: The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0
-               starts the deletion request immediately. If no value is set, a default value is set at the API Level.
+        :param pulumi.Input[builtins.int] deletion_delay_hours: The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
         :param pulumi.Input[builtins.str] description: User-provided description for this private cloud.
         :param pulumi.Input[builtins.str] name: The ID of the PrivateCloud.
-        :param pulumi.Input[builtins.bool] send_deletion_delay_hours_if_zero: While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is
-               only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with
-               deletion_delay_hours.
-        :param pulumi.Input[builtins.str] type: Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[builtins.bool] send_deletion_delay_hours_if_zero: While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with deletion_delay_hours.
+        :param pulumi.Input[builtins.str] type: Initial type of the private cloud.
+               Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "management_cluster", management_cluster)
@@ -105,8 +105,7 @@ class PrivateCloudArgs:
     @pulumi.getter(name="deletionDelayHours")
     def deletion_delay_hours(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0
-        starts the deletion request immediately. If no value is set, a default value is set at the API Level.
+        The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
         """
         return pulumi.get(self, "deletion_delay_hours")
 
@@ -141,6 +140,10 @@ class PrivateCloudArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -151,9 +154,7 @@ class PrivateCloudArgs:
     @pulumi.getter(name="sendDeletionDelayHoursIfZero")
     def send_deletion_delay_hours_if_zero(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is
-        only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with
-        deletion_delay_hours.
+        While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with deletion_delay_hours.
         """
         return pulumi.get(self, "send_deletion_delay_hours_if_zero")
 
@@ -165,7 +166,8 @@ class PrivateCloudArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
+        Initial type of the private cloud.
+        Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
         """
         return pulumi.get(self, "type")
 
@@ -193,8 +195,7 @@ class _PrivateCloudState:
                  vcenters: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateCloudVcenterArgs']]]] = None):
         """
         Input properties used for looking up and filtering PrivateCloud resources.
-        :param pulumi.Input[builtins.int] deletion_delay_hours: The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0
-               starts the deletion request immediately. If no value is set, a default value is set at the API Level.
+        :param pulumi.Input[builtins.int] deletion_delay_hours: The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
         :param pulumi.Input[builtins.str] description: User-provided description for this private cloud.
         :param pulumi.Input[Sequence[pulumi.Input['PrivateCloudHcxArgs']]] hcxes: Details about a HCX Cloud Manager appliance.
                Structure is documented below.
@@ -206,12 +207,13 @@ class _PrivateCloudState:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['PrivateCloudNsxArgs']]] nsxes: Details about a NSX Manager appliance.
                Structure is documented below.
-        :param pulumi.Input[builtins.bool] send_deletion_delay_hours_if_zero: While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is
-               only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with
-               deletion_delay_hours.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[builtins.bool] send_deletion_delay_hours_if_zero: While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with deletion_delay_hours.
         :param pulumi.Input[builtins.str] state: State of the appliance.
                Possible values are: `ACTIVE`, `CREATING`.
-        :param pulumi.Input[builtins.str] type: Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
+        :param pulumi.Input[builtins.str] type: Initial type of the private cloud.
+               Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
         :param pulumi.Input[builtins.str] uid: System-generated unique identifier for the resource.
         :param pulumi.Input[Sequence[pulumi.Input['PrivateCloudVcenterArgs']]] vcenters: Details about a vCenter Server management appliance.
                Structure is documented below.
@@ -249,8 +251,7 @@ class _PrivateCloudState:
     @pulumi.getter(name="deletionDelayHours")
     def deletion_delay_hours(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0
-        starts the deletion request immediately. If no value is set, a default value is set at the API Level.
+        The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
         """
         return pulumi.get(self, "deletion_delay_hours")
 
@@ -349,6 +350,10 @@ class _PrivateCloudState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -359,9 +364,7 @@ class _PrivateCloudState:
     @pulumi.getter(name="sendDeletionDelayHoursIfZero")
     def send_deletion_delay_hours_if_zero(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is
-        only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with
-        deletion_delay_hours.
+        While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with deletion_delay_hours.
         """
         return pulumi.get(self, "send_deletion_delay_hours_if_zero")
 
@@ -386,7 +389,8 @@ class _PrivateCloudState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
+        Initial type of the private cloud.
+        Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
         """
         return pulumi.get(self, "type")
 
@@ -552,8 +556,7 @@ class PrivateCloud(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.int] deletion_delay_hours: The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0
-               starts the deletion request immediately. If no value is set, a default value is set at the API Level.
+        :param pulumi.Input[builtins.int] deletion_delay_hours: The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
         :param pulumi.Input[builtins.str] description: User-provided description for this private cloud.
         :param pulumi.Input[builtins.str] location: The location where the PrivateCloud should reside.
         :param pulumi.Input[Union['PrivateCloudManagementClusterArgs', 'PrivateCloudManagementClusterArgsDict']] management_cluster: The management cluster for this private cloud. This used for creating and managing the default cluster.
@@ -561,10 +564,11 @@ class PrivateCloud(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] name: The ID of the PrivateCloud.
         :param pulumi.Input[Union['PrivateCloudNetworkConfigArgs', 'PrivateCloudNetworkConfigArgsDict']] network_config: Network configuration in the consumer project with which the peering has to be done.
                Structure is documented below.
-        :param pulumi.Input[builtins.bool] send_deletion_delay_hours_if_zero: While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is
-               only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with
-               deletion_delay_hours.
-        :param pulumi.Input[builtins.str] type: Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[builtins.bool] send_deletion_delay_hours_if_zero: While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with deletion_delay_hours.
+        :param pulumi.Input[builtins.str] type: Initial type of the private cloud.
+               Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
         """
         ...
     @overload
@@ -770,8 +774,7 @@ class PrivateCloud(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.int] deletion_delay_hours: The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0
-               starts the deletion request immediately. If no value is set, a default value is set at the API Level.
+        :param pulumi.Input[builtins.int] deletion_delay_hours: The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
         :param pulumi.Input[builtins.str] description: User-provided description for this private cloud.
         :param pulumi.Input[Sequence[pulumi.Input[Union['PrivateCloudHcxArgs', 'PrivateCloudHcxArgsDict']]]] hcxes: Details about a HCX Cloud Manager appliance.
                Structure is documented below.
@@ -783,12 +786,13 @@ class PrivateCloud(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['PrivateCloudNsxArgs', 'PrivateCloudNsxArgsDict']]]] nsxes: Details about a NSX Manager appliance.
                Structure is documented below.
-        :param pulumi.Input[builtins.bool] send_deletion_delay_hours_if_zero: While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is
-               only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with
-               deletion_delay_hours.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[builtins.bool] send_deletion_delay_hours_if_zero: While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with deletion_delay_hours.
         :param pulumi.Input[builtins.str] state: State of the appliance.
                Possible values are: `ACTIVE`, `CREATING`.
-        :param pulumi.Input[builtins.str] type: Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
+        :param pulumi.Input[builtins.str] type: Initial type of the private cloud.
+               Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
         :param pulumi.Input[builtins.str] uid: System-generated unique identifier for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['PrivateCloudVcenterArgs', 'PrivateCloudVcenterArgsDict']]]] vcenters: Details about a vCenter Server management appliance.
                Structure is documented below.
@@ -817,8 +821,7 @@ class PrivateCloud(pulumi.CustomResource):
     @pulumi.getter(name="deletionDelayHours")
     def deletion_delay_hours(self) -> pulumi.Output[Optional[builtins.int]]:
         """
-        The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0
-        starts the deletion request immediately. If no value is set, a default value is set at the API Level.
+        The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
         """
         return pulumi.get(self, "deletion_delay_hours")
 
@@ -885,15 +888,17 @@ class PrivateCloud(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="sendDeletionDelayHoursIfZero")
     def send_deletion_delay_hours_if_zero(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
-        While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is
-        only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with
-        deletion_delay_hours.
+        While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with deletion_delay_hours.
         """
         return pulumi.get(self, "send_deletion_delay_hours_if_zero")
 
@@ -910,7 +915,8 @@ class PrivateCloud(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
+        Initial type of the private cloud.
+        Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
         """
         return pulumi.get(self, "type")
 

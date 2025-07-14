@@ -19,16 +19,12 @@ public final class AclAclEntryArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The host. Must be set to &#34;*&#34; for Managed Service for Apache Kafka.
      * 
-     * ***
-     * 
      */
     @Import(name="host")
     private @Nullable Output<String> host;
 
     /**
      * @return The host. Must be set to &#34;*&#34; for Managed Service for Apache Kafka.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> host() {
@@ -116,8 +112,6 @@ public final class AclAclEntryArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param host The host. Must be set to &#34;*&#34; for Managed Service for Apache Kafka.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -128,8 +122,6 @@ public final class AclAclEntryArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param host The host. Must be set to &#34;*&#34; for Managed Service for Apache Kafka.
-         * 
-         * ***
          * 
          * @return builder
          * 

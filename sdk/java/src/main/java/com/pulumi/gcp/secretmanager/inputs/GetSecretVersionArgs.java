@@ -18,7 +18,24 @@ public final class GetSecretVersionArgs extends com.pulumi.resources.InvokeArgs 
     public static final GetSecretVersionArgs Empty = new GetSecretVersionArgs();
 
     /**
-     * If set to &#39;true&#39;, the secret data is
+     * If set to `false`, the `secret_data`
+     * will not be fetched. Default is `true`.
+     * 
+     */
+    @Import(name="fetchSecretData")
+    private @Nullable Output<Boolean> fetchSecretData;
+
+    /**
+     * @return If set to `false`, the `secret_data`
+     * will not be fetched. Default is `true`.
+     * 
+     */
+    public Optional<Output<Boolean>> fetchSecretData() {
+        return Optional.ofNullable(this.fetchSecretData);
+    }
+
+    /**
+     * If set to `true`, the secret data is
      * expected to be base64-encoded string.
      * 
      */
@@ -26,7 +43,7 @@ public final class GetSecretVersionArgs extends com.pulumi.resources.InvokeArgs 
     private @Nullable Output<Boolean> isSecretDataBase64;
 
     /**
-     * @return If set to &#39;true&#39;, the secret data is
+     * @return If set to `true`, the secret data is
      * expected to be base64-encoded string.
      * 
      */
@@ -86,6 +103,7 @@ public final class GetSecretVersionArgs extends com.pulumi.resources.InvokeArgs 
     private GetSecretVersionArgs() {}
 
     private GetSecretVersionArgs(GetSecretVersionArgs $) {
+        this.fetchSecretData = $.fetchSecretData;
         this.isSecretDataBase64 = $.isSecretDataBase64;
         this.project = $.project;
         this.secret = $.secret;
@@ -111,7 +129,30 @@ public final class GetSecretVersionArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param isSecretDataBase64 If set to &#39;true&#39;, the secret data is
+         * @param fetchSecretData If set to `false`, the `secret_data`
+         * will not be fetched. Default is `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fetchSecretData(@Nullable Output<Boolean> fetchSecretData) {
+            $.fetchSecretData = fetchSecretData;
+            return this;
+        }
+
+        /**
+         * @param fetchSecretData If set to `false`, the `secret_data`
+         * will not be fetched. Default is `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fetchSecretData(Boolean fetchSecretData) {
+            return fetchSecretData(Output.of(fetchSecretData));
+        }
+
+        /**
+         * @param isSecretDataBase64 If set to `true`, the secret data is
          * expected to be base64-encoded string.
          * 
          * @return builder
@@ -123,7 +164,7 @@ public final class GetSecretVersionArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param isSecretDataBase64 If set to &#39;true&#39;, the secret data is
+         * @param isSecretDataBase64 If set to `true`, the secret data is
          * expected to be base64-encoded string.
          * 
          * @return builder

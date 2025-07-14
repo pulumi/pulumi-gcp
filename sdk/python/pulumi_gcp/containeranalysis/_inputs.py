@@ -95,8 +95,6 @@ if not MYPY:
         """
         The human readable name of this Attestation Authority, for
         example "qa".
-
-        - - -
         """
 elif False:
     NoteAttestationAuthorityHintArgsDict: TypeAlias = Mapping[str, Any]
@@ -108,8 +106,6 @@ class NoteAttestationAuthorityHintArgs:
         """
         :param pulumi.Input[builtins.str] human_readable_name: The human readable name of this Attestation Authority, for
                example "qa".
-               
-               - - -
         """
         pulumi.set(__self__, "human_readable_name", human_readable_name)
 
@@ -119,8 +115,6 @@ class NoteAttestationAuthorityHintArgs:
         """
         The human readable name of this Attestation Authority, for
         example "qa".
-
-        - - -
         """
         return pulumi.get(self, "human_readable_name")
 
@@ -356,8 +350,6 @@ if not MYPY:
         * `openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA`
         * RFC6920 digest-named SubjectPublicKeyInfo (digest of the DER serialization):
         * "ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU"
-
-        - - -
         """
         signature: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -388,8 +380,6 @@ class OccurenceAttestationSignatureArgs:
                * `openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA`
                * RFC6920 digest-named SubjectPublicKeyInfo (digest of the DER serialization):
                * "ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU"
-               
-               - - -
         :param pulumi.Input[builtins.str] signature: The content of the signature, an opaque bytestring.
                The payload that this signature verifies MUST be
                unambiguously provided with the Signature during
@@ -416,8 +406,6 @@ class OccurenceAttestationSignatureArgs:
         * `openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA`
         * RFC6920 digest-named SubjectPublicKeyInfo (digest of the DER serialization):
         * "ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU"
-
-        - - -
         """
         return pulumi.get(self, "public_key_id")
 

@@ -135,16 +135,12 @@ public final class BackupChannelState extends com.pulumi.resources.ResourceArgs 
     /**
      * The region of the Backup Channel.
      * 
-     * ***
-     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
      * @return The region of the Backup Channel.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> location() {
@@ -404,8 +400,6 @@ public final class BackupChannelState extends com.pulumi.resources.ResourceArgs 
         /**
          * @param location The region of the Backup Channel.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -416,8 +410,6 @@ public final class BackupChannelState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param location The region of the Backup Channel.
-         * 
-         * ***
          * 
          * @return builder
          * 

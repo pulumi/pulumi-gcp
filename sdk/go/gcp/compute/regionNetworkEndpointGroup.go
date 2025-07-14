@@ -595,8 +595,6 @@ type RegionNetworkEndpointGroup struct {
 	// a Google API or a PSC Producer Service Attachment.
 	PscTargetService pulumi.StringPtrOutput `pulumi:"pscTargetService"`
 	// A reference to the region where the regional NEGs reside.
-	//
-	// ***
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -684,8 +682,6 @@ type regionNetworkEndpointGroupState struct {
 	// a Google API or a PSC Producer Service Attachment.
 	PscTargetService *string `pulumi:"pscTargetService"`
 	// A reference to the region where the regional NEGs reside.
-	//
-	// ***
 	Region *string `pulumi:"region"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -741,8 +737,6 @@ type RegionNetworkEndpointGroupState struct {
 	// a Google API or a PSC Producer Service Attachment.
 	PscTargetService pulumi.StringPtrInput
 	// A reference to the region where the regional NEGs reside.
-	//
-	// ***
 	Region pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
@@ -802,8 +796,6 @@ type regionNetworkEndpointGroupArgs struct {
 	// a Google API or a PSC Producer Service Attachment.
 	PscTargetService *string `pulumi:"pscTargetService"`
 	// A reference to the region where the regional NEGs reside.
-	//
-	// ***
 	Region string `pulumi:"region"`
 	// This field is only used for SERVERLESS NEGs.
 	// Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
@@ -858,8 +850,6 @@ type RegionNetworkEndpointGroupArgs struct {
 	// a Google API or a PSC Producer Service Attachment.
 	PscTargetService pulumi.StringPtrInput
 	// A reference to the region where the regional NEGs reside.
-	//
-	// ***
 	Region pulumi.StringInput
 	// This field is only used for SERVERLESS NEGs.
 	// Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
@@ -1031,8 +1021,6 @@ func (o RegionNetworkEndpointGroupOutput) PscTargetService() pulumi.StringPtrOut
 }
 
 // A reference to the region where the regional NEGs reside.
-//
-// ***
 func (o RegionNetworkEndpointGroupOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionNetworkEndpointGroup) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

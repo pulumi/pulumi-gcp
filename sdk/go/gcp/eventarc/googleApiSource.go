@@ -144,8 +144,6 @@ type GoogleApiSource struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The user-provided ID to be assigned to the GoogleApiSource. It should match
 	// the format `^a-z?$`.
-	//
-	// ***
 	GoogleApiSourceId pulumi.StringOutput `pulumi:"googleApiSourceId"`
 	// Resource labels.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -243,8 +241,6 @@ type googleApiSourceState struct {
 	Etag *string `pulumi:"etag"`
 	// The user-provided ID to be assigned to the GoogleApiSource. It should match
 	// the format `^a-z?$`.
-	//
-	// ***
 	GoogleApiSourceId *string `pulumi:"googleApiSourceId"`
 	// Resource labels.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -299,8 +295,6 @@ type GoogleApiSourceState struct {
 	Etag pulumi.StringPtrInput
 	// The user-provided ID to be assigned to the GoogleApiSource. It should match
 	// the format `^a-z?$`.
-	//
-	// ***
 	GoogleApiSourceId pulumi.StringPtrInput
 	// Resource labels.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -350,8 +344,6 @@ type googleApiSourceArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// The user-provided ID to be assigned to the GoogleApiSource. It should match
 	// the format `^a-z?$`.
-	//
-	// ***
 	GoogleApiSourceId string `pulumi:"googleApiSourceId"`
 	// Resource labels.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -387,8 +379,6 @@ type GoogleApiSourceArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// The user-provided ID to be assigned to the GoogleApiSource. It should match
 	// the format `^a-z?$`.
-	//
-	// ***
 	GoogleApiSourceId pulumi.StringInput
 	// Resource labels.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -542,8 +532,6 @@ func (o GoogleApiSourceOutput) Etag() pulumi.StringOutput {
 
 // The user-provided ID to be assigned to the GoogleApiSource. It should match
 // the format `^a-z?$`.
-//
-// ***
 func (o GoogleApiSourceOutput) GoogleApiSourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GoogleApiSource) pulumi.StringOutput { return v.GoogleApiSourceId }).(pulumi.StringOutput)
 }

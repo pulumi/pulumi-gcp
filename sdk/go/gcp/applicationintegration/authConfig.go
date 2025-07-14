@@ -120,8 +120,6 @@ type AuthConfig struct {
 	// The last modifier's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
 	LastModifierEmail pulumi.StringOutput `pulumi:"lastModifierEmail"`
 	// Location in which client needs to be provisioned.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Resource name of the auth config.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -210,8 +208,6 @@ type authConfigState struct {
 	// The last modifier's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
 	LastModifierEmail *string `pulumi:"lastModifierEmail"`
 	// Location in which client needs to be provisioned.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// Resource name of the auth config.
 	Name *string `pulumi:"name"`
@@ -265,8 +261,6 @@ type AuthConfigState struct {
 	// The last modifier's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
 	LastModifierEmail pulumi.StringPtrInput
 	// Location in which client needs to be provisioned.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// Resource name of the auth config.
 	Name pulumi.StringPtrInput
@@ -310,8 +304,6 @@ type authConfigArgs struct {
 	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
 	ExpiryNotificationDurations []string `pulumi:"expiryNotificationDurations"`
 	// Location in which client needs to be provisioned.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// User provided expiry time to override. For the example of Salesforce, username/password credentials can be valid for 6 months depending on the instance settings.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -340,8 +332,6 @@ type AuthConfigArgs struct {
 	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
 	ExpiryNotificationDurations pulumi.StringArrayInput
 	// Location in which client needs to be provisioned.
-	//
-	// ***
 	Location pulumi.StringInput
 	// User provided expiry time to override. For the example of Salesforce, username/password credentials can be valid for 6 months depending on the instance settings.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -502,8 +492,6 @@ func (o AuthConfigOutput) LastModifierEmail() pulumi.StringOutput {
 }
 
 // Location in which client needs to be provisioned.
-//
-// ***
 func (o AuthConfigOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthConfig) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

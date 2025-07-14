@@ -143,9 +143,6 @@ export class MirroringEndpointGroup extends pulumi.CustomResource {
     /**
      * The ID to use for the endpoint group, which will become the final component
      * of the endpoint group's resource name.
-     *
-     *
-     * - - -
      */
     public readonly mirroringEndpointGroupId!: pulumi.Output<string>;
     /**
@@ -297,9 +294,6 @@ export interface MirroringEndpointGroupState {
     /**
      * The ID to use for the endpoint group, which will become the final component
      * of the endpoint group's resource name.
-     *
-     *
-     * - - -
      */
     mirroringEndpointGroupId?: pulumi.Input<string>;
     /**
@@ -370,9 +364,6 @@ export interface MirroringEndpointGroupArgs {
     /**
      * The ID to use for the endpoint group, which will become the final component
      * of the endpoint group's resource name.
-     *
-     *
-     * - - -
      */
     mirroringEndpointGroupId: pulumi.Input<string>;
     /**

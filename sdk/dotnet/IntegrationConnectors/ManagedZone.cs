@@ -181,9 +181,6 @@ namespace Pulumi.Gcp.IntegrationConnectors
 
         /// <summary>
         /// Name of Managed Zone needs to be created.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -300,9 +297,6 @@ namespace Pulumi.Gcp.IntegrationConnectors
 
         /// <summary>
         /// Name of Managed Zone needs to be created.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -385,9 +379,6 @@ namespace Pulumi.Gcp.IntegrationConnectors
 
         /// <summary>
         /// Name of Managed Zone needs to be created.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

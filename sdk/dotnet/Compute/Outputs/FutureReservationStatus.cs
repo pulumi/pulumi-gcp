@@ -41,7 +41,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? ProcurementStatus;
         /// <summary>
-        /// The previous instance related properties of the Future Reservation.
+        /// Future Reservation configuration to indicate instance properties and total count.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.FutureReservationStatusSpecificSkuProperties? SpecificSkuProperties;

@@ -107,9 +107,6 @@ export class TargetSSLProxy extends pulumi.CustomResource {
 
     /**
      * A reference to the BackendService resource.
-     *
-     *
-     * - - -
      */
     public readonly backendService!: pulumi.Output<string>;
     /**
@@ -221,9 +218,6 @@ export class TargetSSLProxy extends pulumi.CustomResource {
 export interface TargetSSLProxyState {
     /**
      * A reference to the BackendService resource.
-     *
-     *
-     * - - -
      */
     backendService?: pulumi.Input<string>;
     /**
@@ -290,9 +284,6 @@ export interface TargetSSLProxyState {
 export interface TargetSSLProxyArgs {
     /**
      * A reference to the BackendService resource.
-     *
-     *
-     * - - -
      */
     backendService: pulumi.Input<string>;
     /**

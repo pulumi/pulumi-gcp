@@ -20,18 +20,18 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
     public static final InstanceConfigArgs Empty = new InstanceConfigArgs();
 
     /**
-     * Base configuration name, e.g. nam3, based on which this configuration is created. Only set for user managed
-     * configurations. baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this
-     * configuration.
+     * Base configuration name, e.g. nam3, based on which this configuration is created.
+     * Only set for user managed configurations.
+     * baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this configuration.
      * 
      */
     @Import(name="baseConfig")
     private @Nullable Output<String> baseConfig;
 
     /**
-     * @return Base configuration name, e.g. nam3, based on which this configuration is created. Only set for user managed
-     * configurations. baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this
-     * configuration.
+     * @return Base configuration name, e.g. nam3, based on which this configuration is created.
+     * Only set for user managed configurations.
+     * baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this configuration.
      * 
      */
     public Optional<Output<String>> baseConfig() {
@@ -54,18 +54,22 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
-     * to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+     * An object containing a list of &#34;key&#34;: value pairs.
+     * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
-     * to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+     * @return An object containing a list of &#34;key&#34;: value pairs.
+     * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -73,25 +77,35 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * A unique identifier for the instance configuration. Values are of the form
-     * projects/&lt;project&gt;/instanceConfigs/[a-z][-a-z0-9]*
+     * A unique identifier for the instance configuration. Values are of the
+     * form projects/&lt;project&gt;/instanceConfigs/[a-z][-a-z0-9]*
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return A unique identifier for the instance configuration. Values are of the form
-     * projects/&lt;project&gt;/instanceConfigs/[a-z][-a-z0-9]*
+     * @return A unique identifier for the instance configuration. Values are of the
+     * form projects/&lt;project&gt;/instanceConfigs/[a-z][-a-z0-9]*
      * 
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -143,9 +157,9 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param baseConfig Base configuration name, e.g. nam3, based on which this configuration is created. Only set for user managed
-         * configurations. baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this
-         * configuration.
+         * @param baseConfig Base configuration name, e.g. nam3, based on which this configuration is created.
+         * Only set for user managed configurations.
+         * baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this configuration.
          * 
          * @return builder
          * 
@@ -156,9 +170,9 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param baseConfig Base configuration name, e.g. nam3, based on which this configuration is created. Only set for user managed
-         * configurations. baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this
-         * configuration.
+         * @param baseConfig Base configuration name, e.g. nam3, based on which this configuration is created.
+         * Only set for user managed configurations.
+         * baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this configuration.
          * 
          * @return builder
          * 
@@ -189,9 +203,11 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param labels An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
-         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
-         * to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+         * @param labels An object containing a list of &#34;key&#34;: value pairs.
+         * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -202,9 +218,11 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param labels An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
-         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
-         * to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+         * @param labels An object containing a list of &#34;key&#34;: value pairs.
+         * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -214,8 +232,8 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name A unique identifier for the instance configuration. Values are of the form
-         * projects/&lt;project&gt;/instanceConfigs/[a-z][-a-z0-9]*
+         * @param name A unique identifier for the instance configuration. Values are of the
+         * form projects/&lt;project&gt;/instanceConfigs/[a-z][-a-z0-9]*
          * 
          * @return builder
          * 
@@ -226,8 +244,8 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name A unique identifier for the instance configuration. Values are of the form
-         * projects/&lt;project&gt;/instanceConfigs/[a-z][-a-z0-9]*
+         * @param name A unique identifier for the instance configuration. Values are of the
+         * form projects/&lt;project&gt;/instanceConfigs/[a-z][-a-z0-9]*
          * 
          * @return builder
          * 
@@ -236,11 +254,25 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
             return name(Output.of(name));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

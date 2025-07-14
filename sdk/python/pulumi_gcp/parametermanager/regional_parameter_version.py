@@ -30,9 +30,6 @@ class RegionalParameterVersionArgs:
         :param pulumi.Input[builtins.str] parameter_data: The Regional Parameter data.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[builtins.str] parameter_version_id: Version ID of the Regional Parameter Version Resource. This must be unique within the Regional Parameter.
-               
-               
-               - - -
         :param pulumi.Input[builtins.bool] disabled: The current state of Regional Parameter Version. This field is only applicable for updating Regional Parameter Version.
         """
         pulumi.set(__self__, "parameter", parameter)
@@ -71,9 +68,6 @@ class RegionalParameterVersionArgs:
     def parameter_version_id(self) -> pulumi.Input[builtins.str]:
         """
         Version ID of the Regional Parameter Version Resource. This must be unique within the Regional Parameter.
-
-
-        - - -
         """
         return pulumi.get(self, "parameter_version_id")
 
@@ -119,9 +113,6 @@ class _RegionalParameterVersionState:
         :param pulumi.Input[builtins.str] parameter_data: The Regional Parameter data.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[builtins.str] parameter_version_id: Version ID of the Regional Parameter Version Resource. This must be unique within the Regional Parameter.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] update_time: The time at which the Regional Parameter Version was updated.
         """
         if create_time is not None:
@@ -235,9 +226,6 @@ class _RegionalParameterVersionState:
     def parameter_version_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Version ID of the Regional Parameter Version Resource. This must be unique within the Regional Parameter.
-
-
-        - - -
         """
         return pulumi.get(self, "parameter_version_id")
 
@@ -347,9 +335,6 @@ class RegionalParameterVersion(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] parameter_data: The Regional Parameter data.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[builtins.str] parameter_version_id: Version ID of the Regional Parameter Version Resource. This must be unique within the Regional Parameter.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -510,9 +495,6 @@ class RegionalParameterVersion(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] parameter_data: The Regional Parameter data.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[builtins.str] parameter_version_id: Version ID of the Regional Parameter Version Resource. This must be unique within the Regional Parameter.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] update_time: The time at which the Regional Parameter Version was updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -594,9 +576,6 @@ class RegionalParameterVersion(pulumi.CustomResource):
     def parameter_version_id(self) -> pulumi.Output[builtins.str]:
         """
         Version ID of the Regional Parameter Version Resource. This must be unique within the Regional Parameter.
-
-
-        - - -
         """
         return pulumi.get(self, "parameter_version_id")
 

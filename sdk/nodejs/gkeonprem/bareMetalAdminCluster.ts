@@ -9,6 +9,10 @@ import * as utilities from "../utilities";
 /**
  * A Google Bare Metal Admin Cluster.
  *
+ * To get more information about BareMetalAdminCluster, see:
+ *
+ * * [API documentation](https://cloud.google.com/kubernetes-engine/distributed-cloud/reference/on-prem-api/rest/v1/projects.locations.bareMetalAdminClusters)
+ *
  * ## Example Usage
  *
  * ### Gkeonprem Bare Metal Admin Cluster Basic
@@ -317,9 +321,6 @@ export class BareMetalAdminCluster extends pulumi.CustomResource {
     public /*out*/ readonly localName!: pulumi.Output<string>;
     /**
      * The location of the resource.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -564,9 +565,6 @@ export interface BareMetalAdminClusterState {
     localName?: pulumi.Input<string>;
     /**
      * The location of the resource.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -686,9 +684,6 @@ export interface BareMetalAdminClusterArgs {
     loadBalancer?: pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterLoadBalancer>;
     /**
      * The location of the resource.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

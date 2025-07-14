@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AppHostingBuildSourceCodebaseAuthor {
     /**
-     * @return The &#39;name&#39; field in a Git user&#39;s git.config. Required by Git.
+     * @return Human-readable name. 63 character limit.
      * 
      */
     private @Nullable String displayName;
@@ -30,7 +30,7 @@ public final class AppHostingBuildSourceCodebaseAuthor {
 
     private AppHostingBuildSourceCodebaseAuthor() {}
     /**
-     * @return The &#39;name&#39; field in a Git user&#39;s git.config. Required by Git.
+     * @return Human-readable name. 63 character limit.
      * 
      */
     public Optional<String> displayName() {

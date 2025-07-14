@@ -101,6 +101,7 @@ type LookupNetworkPeeringResult struct {
 	StackType                      string `pulumi:"stackType"`
 	State                          string `pulumi:"state"`
 	StateDetails                   string `pulumi:"stateDetails"`
+	UpdateStrategy                 string `pulumi:"updateStrategy"`
 }
 
 func LookupNetworkPeeringOutput(ctx *pulumi.Context, args LookupNetworkPeeringOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkPeeringResultOutput {
@@ -182,6 +183,10 @@ func (o LookupNetworkPeeringResultOutput) State() pulumi.StringOutput {
 
 func (o LookupNetworkPeeringResultOutput) StateDetails() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkPeeringResult) string { return v.StateDetails }).(pulumi.StringOutput)
+}
+
+func (o LookupNetworkPeeringResultOutput) UpdateStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkPeeringResult) string { return v.UpdateStrategy }).(pulumi.StringOutput)
 }
 
 func init() {

@@ -70,16 +70,12 @@ public final class ClusterUserCreatedConnectionsArgs extends com.pulumi.resource
     /**
      * The name of the region of the Redis cluster these endpoints should be added to.
      * 
-     * ***
-     * 
      */
     @Import(name="region", required=true)
     private Output<String> region;
 
     /**
      * @return The name of the region of the Redis cluster these endpoints should be added to.
-     * 
-     * ***
      * 
      */
     public Output<String> region() {
@@ -194,8 +190,6 @@ public final class ClusterUserCreatedConnectionsArgs extends com.pulumi.resource
         /**
          * @param region The name of the region of the Redis cluster these endpoints should be added to.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -206,8 +200,6 @@ public final class ClusterUserCreatedConnectionsArgs extends com.pulumi.resource
 
         /**
          * @param region The name of the region of the Redis cluster these endpoints should be added to.
-         * 
-         * ***
          * 
          * @return builder
          * 

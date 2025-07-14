@@ -247,8 +247,6 @@ if not MYPY:
         """
         String indicating the location of the expression for error reporting,
         e.g. a file name and a position in the file.
-
-        - - -
         """
         title: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -271,8 +269,6 @@ class AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs:
                e.g. when hovered over it in a UI.
         :param pulumi.Input[builtins.str] location: String indicating the location of the expression for error reporting,
                e.g. a file name and a position in the file.
-               
-               - - -
         :param pulumi.Input[builtins.str] title: Title for the expression, i.e. a short string describing its purpose.
                This can be used e.g. in UIs which allow to enter the expression.
         """
@@ -315,8 +311,6 @@ class AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs:
         """
         String indicating the location of the expression for error reporting,
         e.g. a file name and a position in the file.
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -535,8 +529,6 @@ if not MYPY:
         """
         String indicating the location of the expression for error reporting,
         e.g. a file name and a position in the file.
-
-        - - -
         """
         title: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -559,8 +551,6 @@ class DenyPolicyRuleDenyRuleDenialConditionArgs:
                e.g. when hovered over it in a UI.
         :param pulumi.Input[builtins.str] location: String indicating the location of the expression for error reporting,
                e.g. a file name and a position in the file.
-               
-               - - -
         :param pulumi.Input[builtins.str] title: Title for the expression, i.e. a short string describing its purpose.
                This can be used e.g. in UIs which allow to enter the expression.
         """
@@ -603,8 +593,6 @@ class DenyPolicyRuleDenyRuleDenialConditionArgs:
         """
         String indicating the location of the expression for error reporting,
         e.g. a file name and a position in the file.
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -726,8 +714,6 @@ if not MYPY:
         Examples for each one of the following supported principal set types:
         * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
         It must be parent by the policy binding's parent (the folder).
-
-        - - -
         """
 elif False:
     FoldersPolicyBindingTargetArgsDict: TypeAlias = Mapping[str, Any]
@@ -741,8 +727,6 @@ class FoldersPolicyBindingTargetArgs:
                Examples for each one of the following supported principal set types:
                * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
                It must be parent by the policy binding's parent (the folder).
-               
-               - - -
         """
         if principal_set is not None:
             pulumi.set(__self__, "principal_set", principal_set)
@@ -755,8 +739,6 @@ class FoldersPolicyBindingTargetArgs:
         Examples for each one of the following supported principal set types:
         * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
         It must be parent by the policy binding's parent (the folder).
-
-        - - -
         """
         return pulumi.get(self, "principal_set")
 
@@ -867,8 +849,6 @@ if not MYPY:
         * Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID`
         * Workspace Identity: `//iam.googleapis.com/locations/global/workspace/WORKSPACE_ID`
         It must be parent by the policy binding's parent (the organization).
-
-        - - -
         """
 elif False:
     OrganizationsPolicyBindingTargetArgsDict: TypeAlias = Mapping[str, Any]
@@ -884,8 +864,6 @@ class OrganizationsPolicyBindingTargetArgs:
                * Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID`
                * Workspace Identity: `//iam.googleapis.com/locations/global/workspace/WORKSPACE_ID`
                It must be parent by the policy binding's parent (the organization).
-               
-               - - -
         """
         if principal_set is not None:
             pulumi.set(__self__, "principal_set", principal_set)
@@ -900,8 +878,6 @@ class OrganizationsPolicyBindingTargetArgs:
         * Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID`
         * Workspace Identity: `//iam.googleapis.com/locations/global/workspace/WORKSPACE_ID`
         It must be parent by the policy binding's parent (the organization).
-
-        - - -
         """
         return pulumi.get(self, "principal_set")
 
@@ -1170,8 +1146,6 @@ if not MYPY:
         * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
         * Workload Identity Pool: `//iam.googleapis.com/projects/PROJECT_NUMBER/locations/LOCATION/workloadIdentityPools/WORKLOAD_POOL_ID`
         It must be parent by the policy binding's parent (the project).
-
-        - - -
         """
 elif False:
     ProjectsPolicyBindingTargetArgsDict: TypeAlias = Mapping[str, Any]
@@ -1188,8 +1162,6 @@ class ProjectsPolicyBindingTargetArgs:
                * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
                * Workload Identity Pool: `//iam.googleapis.com/projects/PROJECT_NUMBER/locations/LOCATION/workloadIdentityPools/WORKLOAD_POOL_ID`
                It must be parent by the policy binding's parent (the project).
-               
-               - - -
         """
         if principal_set is not None:
             pulumi.set(__self__, "principal_set", principal_set)
@@ -1205,8 +1177,6 @@ class ProjectsPolicyBindingTargetArgs:
         * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
         * Workload Identity Pool: `//iam.googleapis.com/projects/PROJECT_NUMBER/locations/LOCATION/workloadIdentityPools/WORKLOAD_POOL_ID`
         It must be parent by the policy binding's parent (the project).
-
-        - - -
         """
         return pulumi.get(self, "principal_set")
 
@@ -1588,8 +1558,6 @@ if not MYPY:
         """
         The specifications for the key.
         Possible values are: `RSA_2048`, `RSA_3072`, `RSA_4096`.
-
-        - - -
         """
         format: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -1633,8 +1601,6 @@ class WorkforcePoolProviderKeyKeyDataArgs:
         """
         :param pulumi.Input[builtins.str] key_spec: The specifications for the key.
                Possible values are: `RSA_2048`, `RSA_3072`, `RSA_4096`.
-               
-               - - -
         :param pulumi.Input[builtins.str] format: (Output)
                The format of the key.
         :param pulumi.Input[builtins.str] key: (Output)
@@ -1668,8 +1634,6 @@ class WorkforcePoolProviderKeyKeyDataArgs:
         """
         The specifications for the key.
         Possible values are: `RSA_2048`, `RSA_3072`, `RSA_4096`.
-
-        - - -
         """
         return pulumi.get(self, "key_spec")
 

@@ -76,6 +76,8 @@ import (
 type SnapshotSettings struct {
 	pulumi.CustomResourceState
 
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Policy of which storage location is going to be resolved, and additional data
 	// that particularizes how the policy is going to be carried out
@@ -116,6 +118,8 @@ func GetSnapshotSettings(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SnapshotSettings resources.
 type snapshotSettingsState struct {
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Policy of which storage location is going to be resolved, and additional data
 	// that particularizes how the policy is going to be carried out
@@ -124,6 +128,8 @@ type snapshotSettingsState struct {
 }
 
 type SnapshotSettingsState struct {
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Policy of which storage location is going to be resolved, and additional data
 	// that particularizes how the policy is going to be carried out
@@ -136,6 +142,8 @@ func (SnapshotSettingsState) ElementType() reflect.Type {
 }
 
 type snapshotSettingsArgs struct {
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Policy of which storage location is going to be resolved, and additional data
 	// that particularizes how the policy is going to be carried out
@@ -145,6 +153,8 @@ type snapshotSettingsArgs struct {
 
 // The set of arguments for constructing a SnapshotSettings resource.
 type SnapshotSettingsArgs struct {
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Policy of which storage location is going to be resolved, and additional data
 	// that particularizes how the policy is going to be carried out
@@ -239,6 +249,8 @@ func (o SnapshotSettingsOutput) ToSnapshotSettingsOutputWithContext(ctx context.
 	return o
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o SnapshotSettingsOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *SnapshotSettings) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

@@ -278,8 +278,6 @@ type NatAddress struct {
 	Activate pulumi.BoolPtrOutput `pulumi:"activate"`
 	// The Apigee instance associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
-	//
-	// ***
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// The allocated NAT IP address.
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
@@ -326,8 +324,6 @@ type natAddressState struct {
 	Activate *bool `pulumi:"activate"`
 	// The Apigee instance associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
-	//
-	// ***
 	InstanceId *string `pulumi:"instanceId"`
 	// The allocated NAT IP address.
 	IpAddress *string `pulumi:"ipAddress"`
@@ -342,8 +338,6 @@ type NatAddressState struct {
 	Activate pulumi.BoolPtrInput
 	// The Apigee instance associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
-	//
-	// ***
 	InstanceId pulumi.StringPtrInput
 	// The allocated NAT IP address.
 	IpAddress pulumi.StringPtrInput
@@ -362,8 +356,6 @@ type natAddressArgs struct {
 	Activate *bool `pulumi:"activate"`
 	// The Apigee instance associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
-	//
-	// ***
 	InstanceId string `pulumi:"instanceId"`
 	// Resource ID of the NAT address.
 	Name *string `pulumi:"name"`
@@ -375,8 +367,6 @@ type NatAddressArgs struct {
 	Activate pulumi.BoolPtrInput
 	// The Apigee instance associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
-	//
-	// ***
 	InstanceId pulumi.StringInput
 	// Resource ID of the NAT address.
 	Name pulumi.StringPtrInput
@@ -476,8 +466,6 @@ func (o NatAddressOutput) Activate() pulumi.BoolPtrOutput {
 
 // The Apigee instance associated with the Apigee environment,
 // in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
-//
-// ***
 func (o NatAddressOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NatAddress) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }

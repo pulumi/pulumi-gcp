@@ -125,29 +125,30 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:cloudasset/organizationFeed:OrganizationFeed")
 public class OrganizationFeed extends com.pulumi.resources.CustomResource {
     /**
-     * A list of the full names of the assets to receive updates. You must specify either or both of assetNames and assetTypes.
-     * Only asset updates matching specified assetNames and assetTypes are exported to the feed. For example:
-     * //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1. See
-     * https://cloud.google.com/apis/design/resourceNames#fullResourceName for more info.
+     * A list of the full names of the assets to receive updates. You must specify either or both of
+     * assetNames and assetTypes. Only asset updates matching specified assetNames and assetTypes are
+     * exported to the feed. For example: //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1.
+     * See https://cloud.google.com/apis/design/resourceNames#fullResourceName for more info.
      * 
      */
     @Export(name="assetNames", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> assetNames;
 
     /**
-     * @return A list of the full names of the assets to receive updates. You must specify either or both of assetNames and assetTypes.
-     * Only asset updates matching specified assetNames and assetTypes are exported to the feed. For example:
-     * //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1. See
-     * https://cloud.google.com/apis/design/resourceNames#fullResourceName for more info.
+     * @return A list of the full names of the assets to receive updates. You must specify either or both of
+     * assetNames and assetTypes. Only asset updates matching specified assetNames and assetTypes are
+     * exported to the feed. For example: //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1.
+     * See https://cloud.google.com/apis/design/resourceNames#fullResourceName for more info.
      * 
      */
     public Output<Optional<List<String>>> assetNames() {
         return Codegen.optional(this.assetNames);
     }
     /**
-     * A list of types of the assets to receive updates. You must specify either or both of assetNames and assetTypes. Only
-     * asset updates matching specified assetNames and assetTypes are exported to the feed. For example:
-     * &#34;compute.googleapis.com/Disk&#34; See https://cloud.google.com/asset-inventory/docs/supported-asset-types for a list of all
+     * A list of types of the assets to receive updates. You must specify either or both of assetNames
+     * and assetTypes. Only asset updates matching specified assetNames and assetTypes are exported to
+     * the feed. For example: &#34;compute.googleapis.com/Disk&#34;
+     * See https://cloud.google.com/asset-inventory/docs/supported-asset-types for a list of all
      * supported asset types.
      * 
      */
@@ -155,9 +156,10 @@ public class OrganizationFeed extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ List<String>> assetTypes;
 
     /**
-     * @return A list of types of the assets to receive updates. You must specify either or both of assetNames and assetTypes. Only
-     * asset updates matching specified assetNames and assetTypes are exported to the feed. For example:
-     * &#34;compute.googleapis.com/Disk&#34; See https://cloud.google.com/asset-inventory/docs/supported-asset-types for a list of all
+     * @return A list of types of the assets to receive updates. You must specify either or both of assetNames
+     * and assetTypes. Only asset updates matching specified assetNames and assetTypes are exported to
+     * the feed. For example: &#34;compute.googleapis.com/Disk&#34;
+     * See https://cloud.google.com/asset-inventory/docs/supported-asset-types for a list of all
      * supported asset types.
      * 
      */
@@ -183,36 +185,40 @@ public class OrganizationFeed extends com.pulumi.resources.CustomResource {
         return this.billingProject;
     }
     /**
-     * A condition which determines whether an asset update should be published. If specified, an asset will be returned only
-     * when the expression evaluates to true. When set, expression field must be a valid CEL expression on a TemporalAsset with
-     * name temporal_asset. Example: a Feed with expression &#34;temporal_asset.deleted == true&#34; will only publish Asset deletions.
-     * Other fields of condition are optional.
+     * A condition which determines whether an asset update should be published. If specified, an asset
+     * will be returned only when the expression evaluates to true. When set, expression field
+     * must be a valid CEL expression on a TemporalAsset with name temporal_asset. Example: a Feed with
+     * expression &#34;temporal_asset.deleted == true&#34; will only publish Asset deletions. Other fields of
+     * condition are optional.
+     * Structure is documented below.
      * 
      */
     @Export(name="condition", refs={OrganizationFeedCondition.class}, tree="[0]")
     private Output</* @Nullable */ OrganizationFeedCondition> condition;
 
     /**
-     * @return A condition which determines whether an asset update should be published. If specified, an asset will be returned only
-     * when the expression evaluates to true. When set, expression field must be a valid CEL expression on a TemporalAsset with
-     * name temporal_asset. Example: a Feed with expression &#34;temporal_asset.deleted == true&#34; will only publish Asset deletions.
-     * Other fields of condition are optional.
+     * @return A condition which determines whether an asset update should be published. If specified, an asset
+     * will be returned only when the expression evaluates to true. When set, expression field
+     * must be a valid CEL expression on a TemporalAsset with name temporal_asset. Example: a Feed with
+     * expression &#34;temporal_asset.deleted == true&#34; will only publish Asset deletions. Other fields of
+     * condition are optional.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<OrganizationFeedCondition>> condition() {
         return Codegen.optional(this.condition);
     }
     /**
-     * Asset content type. If not specified, no content but the asset name and type will be returned. Possible values:
-     * [&#34;CONTENT_TYPE_UNSPECIFIED&#34;, &#34;RESOURCE&#34;, &#34;IAM_POLICY&#34;, &#34;ORG_POLICY&#34;, &#34;OS_INVENTORY&#34;, &#34;ACCESS_POLICY&#34;]
+     * Asset content type. If not specified, no content but the asset name and type will be returned.
+     * Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
      * 
      */
     @Export(name="contentType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contentType;
 
     /**
-     * @return Asset content type. If not specified, no content but the asset name and type will be returned. Possible values:
-     * [&#34;CONTENT_TYPE_UNSPECIFIED&#34;, &#34;RESOURCE&#34;, &#34;IAM_POLICY&#34;, &#34;ORG_POLICY&#34;, &#34;OS_INVENTORY&#34;, &#34;ACCESS_POLICY&#34;]
+     * @return Asset content type. If not specified, no content but the asset name and type will be returned.
+     * Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
      * 
      */
     public Output<Optional<String>> contentType() {

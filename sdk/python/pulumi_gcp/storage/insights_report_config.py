@@ -33,9 +33,6 @@ class InsightsReportConfigArgs:
         The set of arguments for constructing a InsightsReportConfig resource.
         :param pulumi.Input[builtins.str] location: The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
                must be in the same location.
-               
-               
-               - - -
         :param pulumi.Input['InsightsReportConfigCsvOptionsArgs'] csv_options: Options for configuring the format of the inventory report CSV file.
                Structure is documented below.
         :param pulumi.Input[builtins.str] display_name: The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
@@ -67,9 +64,6 @@ class InsightsReportConfigArgs:
         """
         The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
         must be in the same location.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -174,9 +168,6 @@ class _InsightsReportConfigState:
                Structure is documented below.
         :param pulumi.Input[builtins.str] location: The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
                must be in the same location.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The UUID of the inventory report configuration.
         :param pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsArgs'] object_metadata_report_options: Options for including metadata in an inventory report.
                Structure is documented below.
@@ -245,9 +236,6 @@ class _InsightsReportConfigState:
         """
         The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
         must be in the same location.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -418,9 +406,6 @@ class InsightsReportConfig(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[builtins.str] location: The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
                must be in the same location.
-               
-               
-               - - -
         :param pulumi.Input[Union['InsightsReportConfigObjectMetadataReportOptionsArgs', 'InsightsReportConfigObjectMetadataReportOptionsArgsDict']] object_metadata_report_options: Options for including metadata in an inventory report.
                Structure is documented below.
         :param pulumi.Input[Union['InsightsReportConfigParquetOptionsArgs', 'InsightsReportConfigParquetOptionsArgsDict']] parquet_options: An option for outputting inventory reports as parquet files.
@@ -595,9 +580,6 @@ class InsightsReportConfig(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[builtins.str] location: The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
                must be in the same location.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The UUID of the inventory report configuration.
         :param pulumi.Input[Union['InsightsReportConfigObjectMetadataReportOptionsArgs', 'InsightsReportConfigObjectMetadataReportOptionsArgsDict']] object_metadata_report_options: Options for including metadata in an inventory report.
                Structure is documented below.
@@ -651,9 +633,6 @@ class InsightsReportConfig(pulumi.CustomResource):
         """
         The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
         must be in the same location.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

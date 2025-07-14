@@ -83,8 +83,6 @@ type GeminiGcpEnablementSetting struct {
 	// Whether customer data sharing should be enabled.
 	EnableCustomerDataSharing pulumi.BoolPtrOutput `pulumi:"enableCustomerDataSharing"`
 	// Id of the Gemini Gcp Enablement setting.
-	//
-	// ***
 	GeminiGcpEnablementSettingId pulumi.StringOutput `pulumi:"geminiGcpEnablementSettingId"`
 	// Labels as key value pairs.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -155,8 +153,6 @@ type geminiGcpEnablementSettingState struct {
 	// Whether customer data sharing should be enabled.
 	EnableCustomerDataSharing *bool `pulumi:"enableCustomerDataSharing"`
 	// Id of the Gemini Gcp Enablement setting.
-	//
-	// ***
 	GeminiGcpEnablementSettingId *string `pulumi:"geminiGcpEnablementSettingId"`
 	// Labels as key value pairs.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -187,8 +183,6 @@ type GeminiGcpEnablementSettingState struct {
 	// Whether customer data sharing should be enabled.
 	EnableCustomerDataSharing pulumi.BoolPtrInput
 	// Id of the Gemini Gcp Enablement setting.
-	//
-	// ***
 	GeminiGcpEnablementSettingId pulumi.StringPtrInput
 	// Labels as key value pairs.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -219,8 +213,6 @@ type geminiGcpEnablementSettingArgs struct {
 	// Whether customer data sharing should be enabled.
 	EnableCustomerDataSharing *bool `pulumi:"enableCustomerDataSharing"`
 	// Id of the Gemini Gcp Enablement setting.
-	//
-	// ***
 	GeminiGcpEnablementSettingId string `pulumi:"geminiGcpEnablementSettingId"`
 	// Labels as key value pairs.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -240,8 +232,6 @@ type GeminiGcpEnablementSettingArgs struct {
 	// Whether customer data sharing should be enabled.
 	EnableCustomerDataSharing pulumi.BoolPtrInput
 	// Id of the Gemini Gcp Enablement setting.
-	//
-	// ***
 	GeminiGcpEnablementSettingId pulumi.StringInput
 	// Labels as key value pairs.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -362,8 +352,6 @@ func (o GeminiGcpEnablementSettingOutput) EnableCustomerDataSharing() pulumi.Boo
 }
 
 // Id of the Gemini Gcp Enablement setting.
-//
-// ***
 func (o GeminiGcpEnablementSettingOutput) GeminiGcpEnablementSettingId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GeminiGcpEnablementSetting) pulumi.StringOutput { return v.GeminiGcpEnablementSettingId }).(pulumi.StringOutput)
 }

@@ -23,6 +23,7 @@ public final class EntitlementState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * AdditionalNotificationTargets includes email addresses to be notified.
+     * Structure is documented below.
      * 
      */
     @Import(name="additionalNotificationTargets")
@@ -30,6 +31,7 @@ public final class EntitlementState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return AdditionalNotificationTargets includes email addresses to be notified.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<EntitlementAdditionalNotificationTargetsArgs>> additionalNotificationTargets() {
@@ -37,16 +39,18 @@ public final class EntitlementState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The approvals needed before access will be granted to a requester. No approvals will be needed if this field is null.
-     * Different types of approval workflows that can be used to gate privileged access granting.
+     * The approvals needed before access will be granted to a requester.
+     * No approvals will be needed if this field is null. Different types of approval workflows that can be used to gate privileged access granting.
+     * Structure is documented below.
      * 
      */
     @Import(name="approvalWorkflow")
     private @Nullable Output<EntitlementApprovalWorkflowArgs> approvalWorkflow;
 
     /**
-     * @return The approvals needed before access will be granted to a requester. No approvals will be needed if this field is null.
-     * Different types of approval workflows that can be used to gate privileged access granting.
+     * @return The approvals needed before access will be granted to a requester.
+     * No approvals will be needed if this field is null. Different types of approval workflows that can be used to gate privileged access granting.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<EntitlementApprovalWorkflowArgs>> approvalWorkflow() {
@@ -292,6 +296,7 @@ public final class EntitlementState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param additionalNotificationTargets AdditionalNotificationTargets includes email addresses to be notified.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -303,6 +308,7 @@ public final class EntitlementState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param additionalNotificationTargets AdditionalNotificationTargets includes email addresses to be notified.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -312,8 +318,9 @@ public final class EntitlementState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param approvalWorkflow The approvals needed before access will be granted to a requester. No approvals will be needed if this field is null.
-         * Different types of approval workflows that can be used to gate privileged access granting.
+         * @param approvalWorkflow The approvals needed before access will be granted to a requester.
+         * No approvals will be needed if this field is null. Different types of approval workflows that can be used to gate privileged access granting.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -324,8 +331,9 @@ public final class EntitlementState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param approvalWorkflow The approvals needed before access will be granted to a requester. No approvals will be needed if this field is null.
-         * Different types of approval workflows that can be used to gate privileged access granting.
+         * @param approvalWorkflow The approvals needed before access will be granted to a requester.
+         * No approvals will be needed if this field is null. Different types of approval workflows that can be used to gate privileged access granting.
+         * Structure is documented below.
          * 
          * @return builder
          * 

@@ -92,9 +92,12 @@ type InterconnectGroup struct {
 	// the name that must be specified on group creation.
 	// Structure is documented below.
 	Intent InterconnectGroupIntentOutput `pulumi:"intent"`
-	// (Output)
-	// Interconnects used to explain this blocker in more
-	// detail.
+	// Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
+	// strings. Users are encouraged, but not required, to use their preferred
+	// format for resource links as keys.
+	// Note that there are add-members and remove-members methods in gcloud.
+	// The size of this map is limited by an "Interconnects per group" quota.
+	// Structure is documented below.
 	Interconnects InterconnectGroupInterconnectArrayOutput `pulumi:"interconnects"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be
 	// 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -106,7 +109,9 @@ type InterconnectGroup struct {
 	// group. Every Interconnect in the group is shown once in this structure.
 	// Structure is documented below.
 	PhysicalStructures InterconnectGroupPhysicalStructureArrayOutput `pulumi:"physicalStructures"`
-	Project            pulumi.StringOutput                           `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringOutput `pulumi:"project"`
 }
 
 // NewInterconnectGroup registers a new resource with the given unique name, arguments, and options.
@@ -156,9 +161,12 @@ type interconnectGroupState struct {
 	// the name that must be specified on group creation.
 	// Structure is documented below.
 	Intent *InterconnectGroupIntent `pulumi:"intent"`
-	// (Output)
-	// Interconnects used to explain this blocker in more
-	// detail.
+	// Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
+	// strings. Users are encouraged, but not required, to use their preferred
+	// format for resource links as keys.
+	// Note that there are add-members and remove-members methods in gcloud.
+	// The size of this map is limited by an "Interconnects per group" quota.
+	// Structure is documented below.
 	Interconnects []InterconnectGroupInterconnect `pulumi:"interconnects"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be
 	// 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -170,7 +178,9 @@ type interconnectGroupState struct {
 	// group. Every Interconnect in the group is shown once in this structure.
 	// Structure is documented below.
 	PhysicalStructures []InterconnectGroupPhysicalStructure `pulumi:"physicalStructures"`
-	Project            *string                              `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 }
 
 type InterconnectGroupState struct {
@@ -188,9 +198,12 @@ type InterconnectGroupState struct {
 	// the name that must be specified on group creation.
 	// Structure is documented below.
 	Intent InterconnectGroupIntentPtrInput
-	// (Output)
-	// Interconnects used to explain this blocker in more
-	// detail.
+	// Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
+	// strings. Users are encouraged, but not required, to use their preferred
+	// format for resource links as keys.
+	// Note that there are add-members and remove-members methods in gcloud.
+	// The size of this map is limited by an "Interconnects per group" quota.
+	// Structure is documented below.
 	Interconnects InterconnectGroupInterconnectArrayInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be
 	// 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -202,7 +215,9 @@ type InterconnectGroupState struct {
 	// group. Every Interconnect in the group is shown once in this structure.
 	// Structure is documented below.
 	PhysicalStructures InterconnectGroupPhysicalStructureArrayInput
-	Project            pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 }
 
 func (InterconnectGroupState) ElementType() reflect.Type {
@@ -216,16 +231,21 @@ type interconnectGroupArgs struct {
 	// the name that must be specified on group creation.
 	// Structure is documented below.
 	Intent InterconnectGroupIntent `pulumi:"intent"`
-	// (Output)
-	// Interconnects used to explain this blocker in more
-	// detail.
+	// Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
+	// strings. Users are encouraged, but not required, to use their preferred
+	// format for resource links as keys.
+	// Note that there are add-members and remove-members methods in gcloud.
+	// The size of this map is limited by an "Interconnects per group" quota.
+	// Structure is documented below.
 	Interconnects []InterconnectGroupInterconnect `pulumi:"interconnects"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be
 	// 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
 	// long and match the regular expression `a-z?` which means the first
 	// character must be a lowercase letter, and all following characters must be a dash,
 	// lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 }
 
@@ -237,16 +257,21 @@ type InterconnectGroupArgs struct {
 	// the name that must be specified on group creation.
 	// Structure is documented below.
 	Intent InterconnectGroupIntentInput
-	// (Output)
-	// Interconnects used to explain this blocker in more
-	// detail.
+	// Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
+	// strings. Users are encouraged, but not required, to use their preferred
+	// format for resource links as keys.
+	// Note that there are add-members and remove-members methods in gcloud.
+	// The size of this map is limited by an "Interconnects per group" quota.
+	// Structure is documented below.
 	Interconnects InterconnectGroupInterconnectArrayInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be
 	// 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
 	// long and match the regular expression `a-z?` which means the first
 	// character must be a lowercase letter, and all following characters must be a dash,
 	// lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 }
 
@@ -363,9 +388,12 @@ func (o InterconnectGroupOutput) Intent() InterconnectGroupIntentOutput {
 	return o.ApplyT(func(v *InterconnectGroup) InterconnectGroupIntentOutput { return v.Intent }).(InterconnectGroupIntentOutput)
 }
 
-// (Output)
-// Interconnects used to explain this blocker in more
-// detail.
+// Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
+// strings. Users are encouraged, but not required, to use their preferred
+// format for resource links as keys.
+// Note that there are add-members and remove-members methods in gcloud.
+// The size of this map is limited by an "Interconnects per group" quota.
+// Structure is documented below.
 func (o InterconnectGroupOutput) Interconnects() InterconnectGroupInterconnectArrayOutput {
 	return o.ApplyT(func(v *InterconnectGroup) InterconnectGroupInterconnectArrayOutput { return v.Interconnects }).(InterconnectGroupInterconnectArrayOutput)
 }
@@ -386,6 +414,8 @@ func (o InterconnectGroupOutput) PhysicalStructures() InterconnectGroupPhysicalS
 	return o.ApplyT(func(v *InterconnectGroup) InterconnectGroupPhysicalStructureArrayOutput { return v.PhysicalStructures }).(InterconnectGroupPhysicalStructureArrayOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o InterconnectGroupOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterconnectGroup) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

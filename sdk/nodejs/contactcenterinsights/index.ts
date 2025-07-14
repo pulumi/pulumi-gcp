@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { AnalysisRuleArgs, AnalysisRuleState } from "./analysisRule";
+export type AnalysisRule = import("./analysisRule").AnalysisRule;
+export const AnalysisRule: typeof import("./analysisRule").AnalysisRule = null as any;
+utilities.lazyLoad(exports, ["AnalysisRule"], () => require("./analysisRule"));
+
 export { ViewArgs, ViewState } from "./view";
 export type View = import("./view").View;
 export const View: typeof import("./view").View = null as any;
@@ -15,6 +20,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:contactcenterinsights/analysisRule:AnalysisRule":
+                return new AnalysisRule(name, <any>undefined, { urn })
             case "gcp:contactcenterinsights/view:View":
                 return new View(name, <any>undefined, { urn })
             default:
@@ -22,4 +29,5 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "contactcenterinsights/analysisRule", _module)
 pulumi.runtime.registerResourceModule("gcp", "contactcenterinsights/view", _module)

@@ -110,8 +110,6 @@ class GroupGroupKey(dict):
                If specified, the EntityKey represents an external-identity-mapped group.
                The namespace must correspond to an identity source created in Admin Console
                and must be in the form of `identitysources/{identity_source_id}`.
-               
-               - - -
         """
         pulumi.set(__self__, "id", id)
         if namespace is not None:
@@ -140,8 +138,6 @@ class GroupGroupKey(dict):
         If specified, the EntityKey represents an external-identity-mapped group.
         The namespace must correspond to an identity source created in Admin Console
         and must be in the form of `identitysources/{identity_source_id}`.
-
-        - - -
         """
         return pulumi.get(self, "namespace")
 
@@ -325,8 +321,6 @@ class GroupMembershipRoleExpiryDetail(dict):
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
                resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-               
-               - - -
         """
         pulumi.set(__self__, "expire_time", expire_time)
 
@@ -338,8 +332,6 @@ class GroupMembershipRoleExpiryDetail(dict):
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
         resolution and up to nine fractional digits.
         Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-
-        - - -
         """
         return pulumi.get(self, "expire_time")
 

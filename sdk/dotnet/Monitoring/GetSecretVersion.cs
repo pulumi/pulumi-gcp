@@ -89,7 +89,14 @@ namespace Pulumi.Gcp.Monitoring
     public sealed class GetSecretVersionArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// If set to 'true', the secret data is
+        /// If set to `false`, the `secret_data` 
+        /// will not be fetched. Default is `true`.
+        /// </summary>
+        [Input("fetchSecretData")]
+        public bool? FetchSecretData { get; set; }
+
+        /// <summary>
+        /// If set to `true`, the secret data is
         /// expected to be base64-encoded string.
         /// </summary>
         [Input("isSecretDataBase64")]
@@ -124,7 +131,14 @@ namespace Pulumi.Gcp.Monitoring
     public sealed class GetSecretVersionInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// If set to 'true', the secret data is
+        /// If set to `false`, the `secret_data` 
+        /// will not be fetched. Default is `true`.
+        /// </summary>
+        [Input("fetchSecretData")]
+        public Input<bool>? FetchSecretData { get; set; }
+
+        /// <summary>
+        /// If set to `true`, the secret data is
         /// expected to be base64-encoded string.
         /// </summary>
         [Input("isSecretDataBase64")]
@@ -172,6 +186,7 @@ namespace Pulumi.Gcp.Monitoring
         /// True if the current state of the SecretVersion is enabled.
         /// </summary>
         public readonly bool Enabled;
+        public readonly bool? FetchSecretData;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -198,6 +213,8 @@ namespace Pulumi.Gcp.Monitoring
 
             bool enabled,
 
+            bool? fetchSecretData,
+
             string id,
 
             bool? isSecretDataBase64,
@@ -215,6 +232,7 @@ namespace Pulumi.Gcp.Monitoring
             CreateTime = createTime;
             DestroyTime = destroyTime;
             Enabled = enabled;
+            FetchSecretData = fetchSecretData;
             Id = id;
             IsSecretDataBase64 = isSecretDataBase64;
             Name = name;

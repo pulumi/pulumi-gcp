@@ -452,16 +452,12 @@ public class Runtime extends com.pulumi.resources.CustomResource {
     /**
      * A reference to the zone where the machine resides.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return A reference to the zone where the machine resides.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

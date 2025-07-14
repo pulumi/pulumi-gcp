@@ -158,8 +158,6 @@ type PreferenceSet struct {
 	// Output only. Name of the preference set.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Required. User specified ID for the preference set. It will become the last component of the preference set name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression `a-z?`.
-	//
-	// ***
 	PreferenceSetId pulumi.StringOutput `pulumi:"preferenceSetId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -218,8 +216,6 @@ type preferenceSetState struct {
 	// Output only. Name of the preference set.
 	Name *string `pulumi:"name"`
 	// Required. User specified ID for the preference set. It will become the last component of the preference set name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression `a-z?`.
-	//
-	// ***
 	PreferenceSetId *string `pulumi:"preferenceSetId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -243,8 +239,6 @@ type PreferenceSetState struct {
 	// Output only. Name of the preference set.
 	Name pulumi.StringPtrInput
 	// Required. User specified ID for the preference set. It will become the last component of the preference set name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression `a-z?`.
-	//
-	// ***
 	PreferenceSetId pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -268,8 +262,6 @@ type preferenceSetArgs struct {
 	// Part of `parent`. See documentation of `projectsId`.
 	Location string `pulumi:"location"`
 	// Required. User specified ID for the preference set. It will become the last component of the preference set name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression `a-z?`.
-	//
-	// ***
 	PreferenceSetId string `pulumi:"preferenceSetId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -288,8 +280,6 @@ type PreferenceSetArgs struct {
 	// Part of `parent`. See documentation of `projectsId`.
 	Location pulumi.StringInput
 	// Required. User specified ID for the preference set. It will become the last component of the preference set name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression `a-z?`.
-	//
-	// ***
 	PreferenceSetId pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -412,8 +402,6 @@ func (o PreferenceSetOutput) Name() pulumi.StringOutput {
 }
 
 // Required. User specified ID for the preference set. It will become the last component of the preference set name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression `a-z?`.
-//
-// ***
 func (o PreferenceSetOutput) PreferenceSetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PreferenceSet) pulumi.StringOutput { return v.PreferenceSetId }).(pulumi.StringOutput)
 }

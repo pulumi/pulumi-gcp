@@ -48,8 +48,6 @@ public final class BucketAccessControlArgs extends com.pulumi.resources.Resource
      * To refer to all members of the Google Apps for Business domain
      * example.com, the entity would be domain-example.com.
      * 
-     * ***
-     * 
      */
     @Import(name="entity", required=true)
     private Output<String> entity;
@@ -70,8 +68,6 @@ public final class BucketAccessControlArgs extends com.pulumi.resources.Resource
      * group-example{@literal @}googlegroups.com.
      * To refer to all members of the Google Apps for Business domain
      * example.com, the entity would be domain-example.com.
-     * 
-     * ***
      * 
      */
     public Output<String> entity() {
@@ -159,8 +155,6 @@ public final class BucketAccessControlArgs extends com.pulumi.resources.Resource
          * To refer to all members of the Google Apps for Business domain
          * example.com, the entity would be domain-example.com.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -185,8 +179,6 @@ public final class BucketAccessControlArgs extends com.pulumi.resources.Resource
          * group-example{@literal @}googlegroups.com.
          * To refer to all members of the Google Apps for Business domain
          * example.com, the entity would be domain-example.com.
-         * 
-         * ***
          * 
          * @return builder
          * 

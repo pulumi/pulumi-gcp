@@ -71,16 +71,12 @@ public final class VpnConnectionArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Google Cloud Platform location.
      * 
-     * ***
-     * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
      * @return Google Cloud Platform location.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {
@@ -286,8 +282,6 @@ public final class VpnConnectionArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param location Google Cloud Platform location.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -298,8 +292,6 @@ public final class VpnConnectionArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location Google Cloud Platform location.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -178,16 +178,12 @@ public class RepositoryReleaseConfig extends com.pulumi.resources.CustomResource
     /**
      * Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
      * 
-     * ***
-     * 
      */
     @Export(name="gitCommitish", refs={String.class}, tree="[0]")
     private Output<String> gitCommitish;
 
     /**
      * @return Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
-     * 
-     * ***
      * 
      */
     public Output<String> gitCommitish() {

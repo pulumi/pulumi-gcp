@@ -334,8 +334,6 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
      * The last part of the repository name, for example:
      * &#34;repo1&#34;
      * 
-     * ***
-     * 
      */
     @Import(name="repositoryId")
     private @Nullable Output<String> repositoryId;
@@ -343,8 +341,6 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The last part of the repository name, for example:
      * &#34;repo1&#34;
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> repositoryId() {
@@ -863,8 +859,6 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
          * @param repositoryId The last part of the repository name, for example:
          * &#34;repo1&#34;
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -876,8 +870,6 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param repositoryId The last part of the repository name, for example:
          * &#34;repo1&#34;
-         * 
-         * ***
          * 
          * @return builder
          * 

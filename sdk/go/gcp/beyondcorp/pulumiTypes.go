@@ -17,8 +17,6 @@ type AppConnectionApplicationEndpoint struct {
 	// Hostname or IP address of the remote application endpoint.
 	Host string `pulumi:"host"`
 	// Port of the remote application endpoint.
-	//
-	// ***
 	Port int `pulumi:"port"`
 }
 
@@ -37,8 +35,6 @@ type AppConnectionApplicationEndpointArgs struct {
 	// Hostname or IP address of the remote application endpoint.
 	Host pulumi.StringInput `pulumi:"host"`
 	// Port of the remote application endpoint.
-	//
-	// ***
 	Port pulumi.IntInput `pulumi:"port"`
 }
 
@@ -125,8 +121,6 @@ func (o AppConnectionApplicationEndpointOutput) Host() pulumi.StringOutput {
 }
 
 // Port of the remote application endpoint.
-//
-// ***
 func (o AppConnectionApplicationEndpointOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v AppConnectionApplicationEndpoint) int { return v.Port }).(pulumi.IntOutput)
 }
@@ -166,8 +160,6 @@ func (o AppConnectionApplicationEndpointPtrOutput) Host() pulumi.StringPtrOutput
 }
 
 // Port of the remote application endpoint.
-//
-// ***
 func (o AppConnectionApplicationEndpointPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AppConnectionApplicationEndpoint) *int {
 		if v == nil {
@@ -530,8 +522,6 @@ func (o AppConnectorPrincipalInfoPtrOutput) ServiceAccount() AppConnectorPrincip
 
 type AppConnectorPrincipalInfoServiceAccount struct {
 	// Email address of the service account.
-	//
-	// ***
 	Email string `pulumi:"email"`
 }
 
@@ -548,8 +538,6 @@ type AppConnectorPrincipalInfoServiceAccountInput interface {
 
 type AppConnectorPrincipalInfoServiceAccountArgs struct {
 	// Email address of the service account.
-	//
-	// ***
 	Email pulumi.StringInput `pulumi:"email"`
 }
 
@@ -631,8 +619,6 @@ func (o AppConnectorPrincipalInfoServiceAccountOutput) ToAppConnectorPrincipalIn
 }
 
 // Email address of the service account.
-//
-// ***
 func (o AppConnectorPrincipalInfoServiceAccountOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v AppConnectorPrincipalInfoServiceAccount) string { return v.Email }).(pulumi.StringOutput)
 }
@@ -662,8 +648,6 @@ func (o AppConnectorPrincipalInfoServiceAccountPtrOutput) Elem() AppConnectorPri
 }
 
 // Email address of the service account.
-//
-// ***
 func (o AppConnectorPrincipalInfoServiceAccountPtrOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppConnectorPrincipalInfoServiceAccount) *string {
 		if v == nil {
@@ -783,8 +767,6 @@ type ApplicationEndpointMatcher struct {
 	// Required. Hostname of the application.
 	Hostname string `pulumi:"hostname"`
 	// Optional. Ports of the application.
-	//
-	// ***
 	Ports []int `pulumi:"ports"`
 }
 
@@ -803,8 +785,6 @@ type ApplicationEndpointMatcherArgs struct {
 	// Required. Hostname of the application.
 	Hostname pulumi.StringInput `pulumi:"hostname"`
 	// Optional. Ports of the application.
-	//
-	// ***
 	Ports pulumi.IntArrayInput `pulumi:"ports"`
 }
 
@@ -865,8 +845,6 @@ func (o ApplicationEndpointMatcherOutput) Hostname() pulumi.StringOutput {
 }
 
 // Optional. Ports of the application.
-//
-// ***
 func (o ApplicationEndpointMatcherOutput) Ports() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v ApplicationEndpointMatcher) []int { return v.Ports }).(pulumi.IntArrayOutput)
 }
@@ -1627,8 +1605,6 @@ type SecurityGatewayApplicationEndpointMatcher struct {
 	// Required. Hostname of the application.
 	Hostname string `pulumi:"hostname"`
 	// Optional. Ports of the application.
-	//
-	// ***
 	Ports []int `pulumi:"ports"`
 }
 
@@ -1647,8 +1623,6 @@ type SecurityGatewayApplicationEndpointMatcherArgs struct {
 	// Required. Hostname of the application.
 	Hostname pulumi.StringInput `pulumi:"hostname"`
 	// Optional. Ports of the application.
-	//
-	// ***
 	Ports pulumi.IntArrayInput `pulumi:"ports"`
 }
 
@@ -1709,8 +1683,6 @@ func (o SecurityGatewayApplicationEndpointMatcherOutput) Hostname() pulumi.Strin
 }
 
 // Optional. Ports of the application.
-//
-// ***
 func (o SecurityGatewayApplicationEndpointMatcherOutput) Ports() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v SecurityGatewayApplicationEndpointMatcher) []int { return v.Ports }).(pulumi.IntArrayOutput)
 }

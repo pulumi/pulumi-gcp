@@ -173,18 +173,18 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:projects/accessApprovalSettings:AccessApprovalSettings")
 public class AccessApprovalSettings extends com.pulumi.resources.CustomResource {
     /**
-     * The asymmetric crypto key version to use for signing approval requests. Empty active_key_version indicates that a
-     * Google-managed key should be used for signing. This property will be ignored if set by an ancestor of the resource, and
-     * new non-empty values may not be set.
+     * The asymmetric crypto key version to use for signing approval requests.
+     * Empty active_key_version indicates that a Google-managed key should be used for signing.
+     * This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
      * 
      */
     @Export(name="activeKeyVersion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> activeKeyVersion;
 
     /**
-     * @return The asymmetric crypto key version to use for signing approval requests. Empty active_key_version indicates that a
-     * Google-managed key should be used for signing. This property will be ignored if set by an ancestor of the resource, and
-     * new non-empty values may not be set.
+     * @return The asymmetric crypto key version to use for signing approval requests.
+     * Empty active_key_version indicates that a Google-managed key should be used for signing.
+     * This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
      * 
      */
     public Output<Optional<String>> activeKeyVersion() {
@@ -275,25 +275,28 @@ public class AccessApprovalSettings extends com.pulumi.resources.CustomResource 
         return this.name;
     }
     /**
-     * A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
-     * a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
-     * addresses are allowed.
+     * A list of email addresses to which notifications relating to approval requests should be sent.
+     * Notifications relating to a resource will be sent to all emails in the settings of ancestor
+     * resources of that resource. A maximum of 50 email addresses are allowed.
      * 
      */
     @Export(name="notificationEmails", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> notificationEmails;
 
     /**
-     * @return A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
-     * a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
-     * addresses are allowed.
+     * @return A list of email addresses to which notifications relating to approval requests should be sent.
+     * Notifications relating to a resource will be sent to all emails in the settings of ancestor
+     * resources of that resource. A maximum of 50 email addresses are allowed.
      * 
      */
     public Output<List<String>> notificationEmails() {
         return this.notificationEmails;
     }
     /**
+     * (Optional, Deprecated)
      * Project id.
+     * 
+     * &gt; **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
      * 
      * @deprecated
      * `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
@@ -304,7 +307,10 @@ public class AccessApprovalSettings extends com.pulumi.resources.CustomResource 
     private Output</* @Nullable */ String> project;
 
     /**
-     * @return Project id.
+     * @return (Optional, Deprecated)
+     * Project id.
+     * 
+     * &gt; **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
      * 
      */
     public Output<Optional<String>> project() {

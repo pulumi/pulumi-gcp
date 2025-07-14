@@ -405,8 +405,6 @@ type Database struct {
 	// See https://cloud.google.com/datastore/docs/firestore-or-datastore
 	// for information about how to choose.
 	// Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-	//
-	// ***
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Output only. The system-generated UUID4 for this Database.
 	Uid pulumi.StringOutput `pulumi:"uid"`
@@ -511,8 +509,6 @@ type databaseState struct {
 	// See https://cloud.google.com/datastore/docs/firestore-or-datastore
 	// for information about how to choose.
 	// Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-	//
-	// ***
 	Type *string `pulumi:"type"`
 	// Output only. The system-generated UUID4 for this Database.
 	Uid *string `pulumi:"uid"`
@@ -582,8 +578,6 @@ type DatabaseState struct {
 	// See https://cloud.google.com/datastore/docs/firestore-or-datastore
 	// for information about how to choose.
 	// Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-	//
-	// ***
 	Type pulumi.StringPtrInput
 	// Output only. The system-generated UUID4 for this Database.
 	Uid pulumi.StringPtrInput
@@ -642,8 +636,6 @@ type databaseArgs struct {
 	// See https://cloud.google.com/datastore/docs/firestore-or-datastore
 	// for information about how to choose.
 	// Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-	//
-	// ***
 	Type string `pulumi:"type"`
 }
 
@@ -690,8 +682,6 @@ type DatabaseArgs struct {
 	// See https://cloud.google.com/datastore/docs/firestore-or-datastore
 	// for information about how to choose.
 	// Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-	//
-	// ***
 	Type pulumi.StringInput
 }
 
@@ -880,8 +870,6 @@ func (o DatabaseOutput) Project() pulumi.StringOutput {
 // See https://cloud.google.com/datastore/docs/firestore-or-datastore
 // for information about how to choose.
 // Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-//
-// ***
 func (o DatabaseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

@@ -31,9 +31,6 @@ class FirewallEndpointArgs:
         :param pulumi.Input[builtins.str] location: The location (zone) of the firewall endpoint.
         :param pulumi.Input[builtins.str] parent: The name of the parent this firewall endpoint belongs to.
                Format: organizations/{organization_id}.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: A map of key/value label pairs to assign to the resource.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -78,9 +75,6 @@ class FirewallEndpointArgs:
         """
         The name of the parent this firewall endpoint belongs to.
         Format: organizations/{organization_id}.
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 
@@ -149,9 +143,6 @@ class _FirewallEndpointState:
         :param pulumi.Input[builtins.str] name: The name of the firewall endpoint resource.
         :param pulumi.Input[builtins.str] parent: The name of the parent this firewall endpoint belongs to.
                Format: organizations/{organization_id}.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[builtins.bool] reconciling: Whether reconciling is in progress, recommended per https://google.aip.dev/128.
@@ -282,9 +273,6 @@ class _FirewallEndpointState:
         """
         The name of the parent this firewall endpoint belongs to.
         Format: organizations/{organization_id}.
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 
@@ -425,9 +413,6 @@ class FirewallEndpoint(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] name: The name of the firewall endpoint resource.
         :param pulumi.Input[builtins.str] parent: The name of the parent this firewall endpoint belongs to.
                Format: organizations/{organization_id}.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -578,9 +563,6 @@ class FirewallEndpoint(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] name: The name of the firewall endpoint resource.
         :param pulumi.Input[builtins.str] parent: The name of the parent this firewall endpoint belongs to.
                Format: organizations/{organization_id}.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[builtins.bool] reconciling: Whether reconciling is in progress, recommended per https://google.aip.dev/128.
@@ -675,9 +657,6 @@ class FirewallEndpoint(pulumi.CustomResource):
         """
         The name of the parent this firewall endpoint belongs to.
         Format: organizations/{organization_id}.
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 

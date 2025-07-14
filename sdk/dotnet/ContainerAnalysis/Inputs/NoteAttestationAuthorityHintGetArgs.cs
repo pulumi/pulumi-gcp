@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.ContainerAnalysis.Inputs
         /// <summary>
         /// The human readable name of this Attestation Authority, for
         /// example "qa".
-        /// 
-        /// - - -
         /// </summary>
         [Input("humanReadableName", required: true)]
         public Input<string> HumanReadableName { get; set; } = null!;

@@ -158,8 +158,6 @@ type AppHostingDomain struct {
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
 	// Id of the domain to create.
 	// Must be a valid domain name, such as "foo.com"
-	//
-	// ***
 	DomainId pulumi.StringOutput `pulumi:"domainId"`
 	// Server-computed checksum based on other values; may be sent
 	// on update or delete to ensure operation is done on expected resource.
@@ -235,8 +233,6 @@ type appHostingDomainState struct {
 	DeleteTime *string `pulumi:"deleteTime"`
 	// Id of the domain to create.
 	// Must be a valid domain name, such as "foo.com"
-	//
-	// ***
 	DomainId *string `pulumi:"domainId"`
 	// Server-computed checksum based on other values; may be sent
 	// on update or delete to ensure operation is done on expected resource.
@@ -274,8 +270,6 @@ type AppHostingDomainState struct {
 	DeleteTime pulumi.StringPtrInput
 	// Id of the domain to create.
 	// Must be a valid domain name, such as "foo.com"
-	//
-	// ***
 	DomainId pulumi.StringPtrInput
 	// Server-computed checksum based on other values; may be sent
 	// on update or delete to ensure operation is done on expected resource.
@@ -310,8 +304,6 @@ type appHostingDomainArgs struct {
 	Backend string `pulumi:"backend"`
 	// Id of the domain to create.
 	// Must be a valid domain name, such as "foo.com"
-	//
-	// ***
 	DomainId string `pulumi:"domainId"`
 	// The location of the Backend that this Domain is associated with
 	Location string `pulumi:"location"`
@@ -330,8 +322,6 @@ type AppHostingDomainArgs struct {
 	Backend pulumi.StringInput
 	// Id of the domain to create.
 	// Must be a valid domain name, such as "foo.com"
-	//
-	// ***
 	DomainId pulumi.StringInput
 	// The location of the Backend that this Domain is associated with
 	Location pulumi.StringInput
@@ -454,8 +444,6 @@ func (o AppHostingDomainOutput) DeleteTime() pulumi.StringOutput {
 
 // Id of the domain to create.
 // Must be a valid domain name, such as "foo.com"
-//
-// ***
 func (o AppHostingDomainOutput) DomainId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppHostingDomain) pulumi.StringOutput { return v.DomainId }).(pulumi.StringOutput)
 }

@@ -415,9 +415,9 @@ namespace Pulumi.Gcp.Eventarc
     public partial class Pipeline : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// User-defined annotations. See https://google.aip.dev/128#annotations. **Note**: This field is non-authoritative, and
-        /// will only manage the annotations present in your configuration. Please refer to the field 'effective_annotations' for
-        /// all of the annotations present on the resource.
+        /// User-defined annotations. See https://google.aip.dev/128#annotations.
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
@@ -432,8 +432,9 @@ namespace Pulumi.Gcp.Eventarc
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt the event data. If not set, an internal
-        /// Google-owned key will be used to encrypt messages. It must match the pattern
+        /// Resource name of a KMS crypto key (managed by the user) used to
+        /// encrypt/decrypt the event data. If not set, an internal Google-owned key
+        /// will be used to encrypt messages. It must match the pattern
         /// "projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}".
         /// </summary>
         [Output("cryptoKeyName")]
@@ -472,15 +473,17 @@ namespace Pulumi.Gcp.Eventarc
 
         /// <summary>
         /// Represents the format of message data.
+        /// Structure is documented below.
         /// </summary>
         [Output("inputPayloadFormat")]
         public Output<Outputs.PipelineInputPayloadFormat?> InputPayloadFormat { get; private set; } = null!;
 
         /// <summary>
-        /// User labels attached to the Pipeline that can be used to group resources. An object containing a list of "key": value
-        /// pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will
-        /// only manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-        /// present on the resource.
+        /// User labels attached to the Pipeline that can be used to group
+        /// resources. An object containing a list of "key": value pairs. Example: {
+        /// "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -492,14 +495,17 @@ namespace Pulumi.Gcp.Eventarc
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration for Platform Telemetry logging for Eventarc Advanced resources.
+        /// The configuration for Platform Telemetry logging for Eventarc Advanced
+        /// resources.
+        /// Structure is documented below.
         /// </summary>
         [Output("loggingConfig")]
         public Output<Outputs.PipelineLoggingConfig> LoggingConfig { get; private set; } = null!;
 
         /// <summary>
-        /// List of mediation operations to be performed on the message. Currently, only one Transformation operation is allowed in
-        /// each Pipeline.
+        /// List of mediation operations to be performed on the message. Currently,
+        /// only one Transformation operation is allowed in each Pipeline.
+        /// Structure is documented below.
         /// </summary>
         [Output("mediations")]
         public Output<ImmutableArray<Outputs.PipelineMediation>> Mediations { get; private set; } = null!;
@@ -519,6 +525,10 @@ namespace Pulumi.Gcp.Eventarc
         [Output("pipelineId")]
         public Output<string> PipelineId { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -530,11 +540,15 @@ namespace Pulumi.Gcp.Eventarc
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
-        /// The retry policy configuration for the Pipeline. The pipeline exponentially backs off in case the destination is non
-        /// responsive or returns a retryable error code. The default semantics are as follows: The backoff starts with a 5 second
-        /// delay and doubles the delay after each failed attempt (10 seconds, 20 seconds, 40 seconds, etc.). The delay is capped at
-        /// 60 seconds by default. Please note that if you set the min_retry_delay and max_retry_delay fields to the same value this
-        /// will make the duration between retries constant.
+        /// The retry policy configuration for the Pipeline. The pipeline
+        /// exponentially backs off in case the destination is non responsive or
+        /// returns a retryable error code. The default semantics are as follows:
+        /// The backoff starts with a 5 second delay and doubles the
+        /// delay after each failed attempt (10 seconds, 20 seconds, 40 seconds, etc.).
+        /// The delay is capped at 60 seconds by default.
+        /// Please note that if you set the min_retry_delay and max_retry_delay fields
+        /// to the same value this will make the duration between retries constant.
+        /// Structure is documented below.
         /// </summary>
         [Output("retryPolicy")]
         public Output<Outputs.PipelineRetryPolicy> RetryPolicy { get; private set; } = null!;
@@ -611,9 +625,9 @@ namespace Pulumi.Gcp.Eventarc
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// User-defined annotations. See https://google.aip.dev/128#annotations. **Note**: This field is non-authoritative, and
-        /// will only manage the annotations present in your configuration. Please refer to the field 'effective_annotations' for
-        /// all of the annotations present on the resource.
+        /// User-defined annotations. See https://google.aip.dev/128#annotations.
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -622,8 +636,9 @@ namespace Pulumi.Gcp.Eventarc
         }
 
         /// <summary>
-        /// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt the event data. If not set, an internal
-        /// Google-owned key will be used to encrypt messages. It must match the pattern
+        /// Resource name of a KMS crypto key (managed by the user) used to
+        /// encrypt/decrypt the event data. If not set, an internal Google-owned key
+        /// will be used to encrypt messages. It must match the pattern
         /// "projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}".
         /// </summary>
         [Input("cryptoKeyName")]
@@ -651,6 +666,7 @@ namespace Pulumi.Gcp.Eventarc
 
         /// <summary>
         /// Represents the format of message data.
+        /// Structure is documented below.
         /// </summary>
         [Input("inputPayloadFormat")]
         public Input<Inputs.PipelineInputPayloadFormatArgs>? InputPayloadFormat { get; set; }
@@ -659,10 +675,11 @@ namespace Pulumi.Gcp.Eventarc
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// User labels attached to the Pipeline that can be used to group resources. An object containing a list of "key": value
-        /// pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will
-        /// only manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-        /// present on the resource.
+        /// User labels attached to the Pipeline that can be used to group
+        /// resources. An object containing a list of "key": value pairs. Example: {
+        /// "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -677,7 +694,9 @@ namespace Pulumi.Gcp.Eventarc
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// The configuration for Platform Telemetry logging for Eventarc Advanced resources.
+        /// The configuration for Platform Telemetry logging for Eventarc Advanced
+        /// resources.
+        /// Structure is documented below.
         /// </summary>
         [Input("loggingConfig")]
         public Input<Inputs.PipelineLoggingConfigArgs>? LoggingConfig { get; set; }
@@ -686,8 +705,9 @@ namespace Pulumi.Gcp.Eventarc
         private InputList<Inputs.PipelineMediationArgs>? _mediations;
 
         /// <summary>
-        /// List of mediation operations to be performed on the message. Currently, only one Transformation operation is allowed in
-        /// each Pipeline.
+        /// List of mediation operations to be performed on the message. Currently,
+        /// only one Transformation operation is allowed in each Pipeline.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.PipelineMediationArgs> Mediations
         {
@@ -702,15 +722,23 @@ namespace Pulumi.Gcp.Eventarc
         [Input("pipelineId", required: true)]
         public Input<string> PipelineId { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The retry policy configuration for the Pipeline. The pipeline exponentially backs off in case the destination is non
-        /// responsive or returns a retryable error code. The default semantics are as follows: The backoff starts with a 5 second
-        /// delay and doubles the delay after each failed attempt (10 seconds, 20 seconds, 40 seconds, etc.). The delay is capped at
-        /// 60 seconds by default. Please note that if you set the min_retry_delay and max_retry_delay fields to the same value this
-        /// will make the duration between retries constant.
+        /// The retry policy configuration for the Pipeline. The pipeline
+        /// exponentially backs off in case the destination is non responsive or
+        /// returns a retryable error code. The default semantics are as follows:
+        /// The backoff starts with a 5 second delay and doubles the
+        /// delay after each failed attempt (10 seconds, 20 seconds, 40 seconds, etc.).
+        /// The delay is capped at 60 seconds by default.
+        /// Please note that if you set the min_retry_delay and max_retry_delay fields
+        /// to the same value this will make the duration between retries constant.
+        /// Structure is documented below.
         /// </summary>
         [Input("retryPolicy")]
         public Input<Inputs.PipelineRetryPolicyArgs>? RetryPolicy { get; set; }
@@ -727,9 +755,9 @@ namespace Pulumi.Gcp.Eventarc
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// User-defined annotations. See https://google.aip.dev/128#annotations. **Note**: This field is non-authoritative, and
-        /// will only manage the annotations present in your configuration. Please refer to the field 'effective_annotations' for
-        /// all of the annotations present on the resource.
+        /// User-defined annotations. See https://google.aip.dev/128#annotations.
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -747,8 +775,9 @@ namespace Pulumi.Gcp.Eventarc
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt the event data. If not set, an internal
-        /// Google-owned key will be used to encrypt messages. It must match the pattern
+        /// Resource name of a KMS crypto key (managed by the user) used to
+        /// encrypt/decrypt the event data. If not set, an internal Google-owned key
+        /// will be used to encrypt messages. It must match the pattern
         /// "projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}".
         /// </summary>
         [Input("cryptoKeyName")]
@@ -808,6 +837,7 @@ namespace Pulumi.Gcp.Eventarc
 
         /// <summary>
         /// Represents the format of message data.
+        /// Structure is documented below.
         /// </summary>
         [Input("inputPayloadFormat")]
         public Input<Inputs.PipelineInputPayloadFormatGetArgs>? InputPayloadFormat { get; set; }
@@ -816,10 +846,11 @@ namespace Pulumi.Gcp.Eventarc
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// User labels attached to the Pipeline that can be used to group resources. An object containing a list of "key": value
-        /// pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will
-        /// only manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-        /// present on the resource.
+        /// User labels attached to the Pipeline that can be used to group
+        /// resources. An object containing a list of "key": value pairs. Example: {
+        /// "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -834,7 +865,9 @@ namespace Pulumi.Gcp.Eventarc
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The configuration for Platform Telemetry logging for Eventarc Advanced resources.
+        /// The configuration for Platform Telemetry logging for Eventarc Advanced
+        /// resources.
+        /// Structure is documented below.
         /// </summary>
         [Input("loggingConfig")]
         public Input<Inputs.PipelineLoggingConfigGetArgs>? LoggingConfig { get; set; }
@@ -843,8 +876,9 @@ namespace Pulumi.Gcp.Eventarc
         private InputList<Inputs.PipelineMediationGetArgs>? _mediations;
 
         /// <summary>
-        /// List of mediation operations to be performed on the message. Currently, only one Transformation operation is allowed in
-        /// each Pipeline.
+        /// List of mediation operations to be performed on the message. Currently,
+        /// only one Transformation operation is allowed in each Pipeline.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.PipelineMediationGetArgs> Mediations
         {
@@ -867,6 +901,10 @@ namespace Pulumi.Gcp.Eventarc
         [Input("pipelineId")]
         public Input<string>? PipelineId { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -888,11 +926,15 @@ namespace Pulumi.Gcp.Eventarc
         }
 
         /// <summary>
-        /// The retry policy configuration for the Pipeline. The pipeline exponentially backs off in case the destination is non
-        /// responsive or returns a retryable error code. The default semantics are as follows: The backoff starts with a 5 second
-        /// delay and doubles the delay after each failed attempt (10 seconds, 20 seconds, 40 seconds, etc.). The delay is capped at
-        /// 60 seconds by default. Please note that if you set the min_retry_delay and max_retry_delay fields to the same value this
-        /// will make the duration between retries constant.
+        /// The retry policy configuration for the Pipeline. The pipeline
+        /// exponentially backs off in case the destination is non responsive or
+        /// returns a retryable error code. The default semantics are as follows:
+        /// The backoff starts with a 5 second delay and doubles the
+        /// delay after each failed attempt (10 seconds, 20 seconds, 40 seconds, etc.).
+        /// The delay is capped at 60 seconds by default.
+        /// Please note that if you set the min_retry_delay and max_retry_delay fields
+        /// to the same value this will make the duration between retries constant.
+        /// Structure is documented below.
         /// </summary>
         [Input("retryPolicy")]
         public Input<Inputs.PipelineRetryPolicyGetArgs>? RetryPolicy { get; set; }

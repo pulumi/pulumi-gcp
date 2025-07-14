@@ -147,16 +147,12 @@ public class GeminiGcpEnablementSetting extends com.pulumi.resources.CustomResou
     /**
      * Id of the Gemini Gcp Enablement setting.
      * 
-     * ***
-     * 
      */
     @Export(name="geminiGcpEnablementSettingId", refs={String.class}, tree="[0]")
     private Output<String> geminiGcpEnablementSettingId;
 
     /**
      * @return Id of the Gemini Gcp Enablement setting.
-     * 
-     * ***
      * 
      */
     public Output<String> geminiGcpEnablementSettingId() {

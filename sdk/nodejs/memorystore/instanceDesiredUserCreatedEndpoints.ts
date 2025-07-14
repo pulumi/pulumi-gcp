@@ -336,9 +336,6 @@ export class InstanceDesiredUserCreatedEndpoints extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * The name of the region of the Memorystore instance these endpoints should be added to.
-     *
-     *
-     * - - -
      */
     public readonly region!: pulumi.Output<string>;
 
@@ -394,9 +391,6 @@ export interface InstanceDesiredUserCreatedEndpointsState {
     project?: pulumi.Input<string>;
     /**
      * The name of the region of the Memorystore instance these endpoints should be added to.
-     *
-     *
-     * - - -
      */
     region?: pulumi.Input<string>;
 }
@@ -421,9 +415,6 @@ export interface InstanceDesiredUserCreatedEndpointsArgs {
     project?: pulumi.Input<string>;
     /**
      * The name of the region of the Memorystore instance these endpoints should be added to.
-     *
-     *
-     * - - -
      */
     region: pulumi.Input<string>;
 }

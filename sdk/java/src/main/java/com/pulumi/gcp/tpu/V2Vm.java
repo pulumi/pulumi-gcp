@@ -535,16 +535,12 @@ public class V2Vm extends com.pulumi.resources.CustomResource {
     /**
      * Runtime version for the TPU.
      * 
-     * ***
-     * 
      */
     @Export(name="runtimeVersion", refs={String.class}, tree="[0]")
     private Output<String> runtimeVersion;
 
     /**
      * @return Runtime version for the TPU.
-     * 
-     * ***
      * 
      */
     public Output<String> runtimeVersion() {

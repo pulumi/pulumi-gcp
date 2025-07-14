@@ -45,9 +45,6 @@ class RepositoryArgs:
                [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
         :param pulumi.Input[builtins.str] repository_id: The last part of the repository name, for example:
                "repo1"
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['RepositoryCleanupPolicyArgs']]] cleanup_policies: Cleanup policies for this repository. Cleanup policies indicate when
                certain package versions can be automatically deleted.
                Map keys are policy IDs supplied by users during policy creation. They must
@@ -142,9 +139,6 @@ class RepositoryArgs:
         """
         The last part of the repository name, for example:
         "repo1"
-
-
-        - - -
         """
         return pulumi.get(self, "repository_id")
 
@@ -415,9 +409,6 @@ class _RepositoryState:
                Structure is documented below.
         :param pulumi.Input[builtins.str] repository_id: The last part of the repository name, for example:
                "repo1"
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] update_time: The time when the repository was last updated.
         :param pulumi.Input['RepositoryVirtualRepositoryConfigArgs'] virtual_repository_config: Configuration specific for a Virtual Repository.
                Structure is documented below.
@@ -696,9 +687,6 @@ class _RepositoryState:
         """
         The last part of the repository name, for example:
         "repo1"
-
-
-        - - -
         """
         return pulumi.get(self, "repository_id")
 
@@ -1381,9 +1369,6 @@ class Repository(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[builtins.str] repository_id: The last part of the repository name, for example:
                "repo1"
-               
-               
-               - - -
         :param pulumi.Input[Union['RepositoryVirtualRepositoryConfigArgs', 'RepositoryVirtualRepositoryConfigArgsDict']] virtual_repository_config: Configuration specific for a Virtual Repository.
                Structure is documented below.
         :param pulumi.Input[Union['RepositoryVulnerabilityScanningConfigArgs', 'RepositoryVulnerabilityScanningConfigArgsDict']] vulnerability_scanning_config: Configuration for vulnerability scanning of artifacts stored in this repository.
@@ -2115,9 +2100,6 @@ class Repository(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[builtins.str] repository_id: The last part of the repository name, for example:
                "repo1"
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] update_time: The time when the repository was last updated.
         :param pulumi.Input[Union['RepositoryVirtualRepositoryConfigArgs', 'RepositoryVirtualRepositoryConfigArgsDict']] virtual_repository_config: Configuration specific for a Virtual Repository.
                Structure is documented below.
@@ -2317,9 +2299,6 @@ class Repository(pulumi.CustomResource):
         """
         The last part of the repository name, for example:
         "repo1"
-
-
-        - - -
         """
         return pulumi.get(self, "repository_id")
 

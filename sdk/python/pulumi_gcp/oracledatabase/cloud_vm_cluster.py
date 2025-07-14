@@ -41,9 +41,6 @@ class CloudVmClusterArgs:
                to (^a-z?$) and must be a maximum of 63
                characters in length. The value must start with a letter and end with
                a letter or a number.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] exadata_infrastructure: The name of the Exadata Infrastructure resource on which VM cluster
                resource is created, in the following format:
                projects/{project}/locations/{region}/cloudExadataInfrastuctures/{cloud_extradata_infrastructure}
@@ -108,9 +105,6 @@ class CloudVmClusterArgs:
         to (^a-z?$) and must be a maximum of 63
         characters in length. The value must start with a letter and end with
         a letter or a number.
-
-
-        - - -
         """
         return pulumi.get(self, "cloud_vm_cluster_id")
 
@@ -246,9 +240,6 @@ class _CloudVmClusterState:
                to (^a-z?$) and must be a maximum of 63
                characters in length. The value must start with a letter and end with
                a letter or a number.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] create_time: The date and time that the VM cluster was created.
         :param pulumi.Input[builtins.str] display_name: User friendly name for this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -337,9 +328,6 @@ class _CloudVmClusterState:
         to (^a-z?$) and must be a maximum of 63
         characters in length. The value must start with a letter and end with
         a letter or a number.
-
-
-        - - -
         """
         return pulumi.get(self, "cloud_vm_cluster_id")
 
@@ -674,9 +662,6 @@ class CloudVmCluster(pulumi.CustomResource):
                to (^a-z?$) and must be a maximum of 63
                characters in length. The value must start with a letter and end with
                a letter or a number.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] display_name: User friendly name for this resource.
         :param pulumi.Input[builtins.str] exadata_infrastructure: The name of the Exadata Infrastructure resource on which VM cluster
                resource is created, in the following format:
@@ -939,9 +924,6 @@ class CloudVmCluster(pulumi.CustomResource):
                to (^a-z?$) and must be a maximum of 63
                characters in length. The value must start with a letter and end with
                a letter or a number.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] create_time: The date and time that the VM cluster was created.
         :param pulumi.Input[builtins.str] display_name: User friendly name for this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -1011,9 +993,6 @@ class CloudVmCluster(pulumi.CustomResource):
         to (^a-z?$) and must be a maximum of 63
         characters in length. The value must start with a letter and end with
         a letter or a number.
-
-
-        - - -
         """
         return pulumi.get(self, "cloud_vm_cluster_id")
 

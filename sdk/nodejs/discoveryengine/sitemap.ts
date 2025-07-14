@@ -83,9 +83,6 @@ export class Sitemap extends pulumi.CustomResource {
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * The unique id of the data store.
-     *
-     *
-     * - - -
      */
     public readonly dataStoreId!: pulumi.Output<string>;
     /**
@@ -165,9 +162,6 @@ export interface SitemapState {
     createTime?: pulumi.Input<string>;
     /**
      * The unique id of the data store.
-     *
-     *
-     * - - -
      */
     dataStoreId?: pulumi.Input<string>;
     /**
@@ -203,9 +197,6 @@ export interface SitemapState {
 export interface SitemapArgs {
     /**
      * The unique id of the data store.
-     *
-     *
-     * - - -
      */
     dataStoreId: pulumi.Input<string>;
     /**

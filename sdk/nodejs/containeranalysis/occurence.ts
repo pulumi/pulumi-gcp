@@ -102,6 +102,10 @@ export class Occurence extends pulumi.CustomResource {
      * filter in list requests.
      */
     public readonly noteName!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * A description of actions that can be taken to remedy the note.
@@ -202,6 +206,10 @@ export interface OccurenceState {
      * filter in list requests.
      */
     noteName?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * A description of actions that can be taken to remedy the note.
@@ -241,6 +249,10 @@ export interface OccurenceArgs {
      * filter in list requests.
      */
     noteName: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * A description of actions that can be taken to remedy the note.

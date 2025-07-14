@@ -14,16 +14,12 @@ public final class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustom
     /**
      * @return The resource types to run the detector on.
      * 
-     * ***
-     * 
      */
     private List<String> resourceTypes;
 
     private PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigResourceSelector() {}
     /**
      * @return The resource types to run the detector on.
-     * 
-     * ***
      * 
      */
     public List<String> resourceTypes() {

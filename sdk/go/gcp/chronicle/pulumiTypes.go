@@ -655,8 +655,6 @@ func (o DataAccessScopeDeniedDataAccessLabelIngestionLabelPtrOutput) IngestionLa
 
 type ReferenceListEntry struct {
 	// Required. The value of the entry. Maximum length is 512 characters.
-	//
-	// ***
 	Value string `pulumi:"value"`
 }
 
@@ -673,8 +671,6 @@ type ReferenceListEntryInput interface {
 
 type ReferenceListEntryArgs struct {
 	// Required. The value of the entry. Maximum length is 512 characters.
-	//
-	// ***
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -730,8 +726,6 @@ func (o ReferenceListEntryOutput) ToReferenceListEntryOutputWithContext(ctx cont
 }
 
 // Required. The value of the entry. Maximum length is 512 characters.
-//
-// ***
 func (o ReferenceListEntryOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v ReferenceListEntry) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -1034,8 +1028,6 @@ func (o RetrohuntExecutionIntervalArrayOutput) Index(i pulumi.IntInput) Retrohun
 
 type RetrohuntProcessInterval struct {
 	// Exclusive end of the interval.
-	//
-	// ***
 	EndTime string `pulumi:"endTime"`
 	// Inclusive start of the interval.
 	StartTime string `pulumi:"startTime"`
@@ -1054,8 +1046,6 @@ type RetrohuntProcessIntervalInput interface {
 
 type RetrohuntProcessIntervalArgs struct {
 	// Exclusive end of the interval.
-	//
-	// ***
 	EndTime pulumi.StringInput `pulumi:"endTime"`
 	// Inclusive start of the interval.
 	StartTime pulumi.StringInput `pulumi:"startTime"`
@@ -1139,8 +1129,6 @@ func (o RetrohuntProcessIntervalOutput) ToRetrohuntProcessIntervalPtrOutputWithC
 }
 
 // Exclusive end of the interval.
-//
-// ***
 func (o RetrohuntProcessIntervalOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v RetrohuntProcessInterval) string { return v.EndTime }).(pulumi.StringOutput)
 }
@@ -1175,8 +1163,6 @@ func (o RetrohuntProcessIntervalPtrOutput) Elem() RetrohuntProcessIntervalOutput
 }
 
 // Exclusive end of the interval.
-//
-// ***
 func (o RetrohuntProcessIntervalPtrOutput) EndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RetrohuntProcessInterval) *string {
 		if v == nil {
@@ -1771,8 +1757,6 @@ func (o WatchlistEntityCountArrayOutput) Index(i pulumi.IntInput) WatchlistEntit
 
 type WatchlistEntityPopulationMechanism struct {
 	// Entities are added manually.
-	//
-	// ***
 	Manual *WatchlistEntityPopulationMechanismManual `pulumi:"manual"`
 }
 
@@ -1789,8 +1773,6 @@ type WatchlistEntityPopulationMechanismInput interface {
 
 type WatchlistEntityPopulationMechanismArgs struct {
 	// Entities are added manually.
-	//
-	// ***
 	Manual WatchlistEntityPopulationMechanismManualPtrInput `pulumi:"manual"`
 }
 
@@ -1872,8 +1854,6 @@ func (o WatchlistEntityPopulationMechanismOutput) ToWatchlistEntityPopulationMec
 }
 
 // Entities are added manually.
-//
-// ***
 func (o WatchlistEntityPopulationMechanismOutput) Manual() WatchlistEntityPopulationMechanismManualPtrOutput {
 	return o.ApplyT(func(v WatchlistEntityPopulationMechanism) *WatchlistEntityPopulationMechanismManual { return v.Manual }).(WatchlistEntityPopulationMechanismManualPtrOutput)
 }
@@ -1903,8 +1883,6 @@ func (o WatchlistEntityPopulationMechanismPtrOutput) Elem() WatchlistEntityPopul
 }
 
 // Entities are added manually.
-//
-// ***
 func (o WatchlistEntityPopulationMechanismPtrOutput) Manual() WatchlistEntityPopulationMechanismManualPtrOutput {
 	return o.ApplyT(func(v *WatchlistEntityPopulationMechanism) *WatchlistEntityPopulationMechanismManual {
 		if v == nil {

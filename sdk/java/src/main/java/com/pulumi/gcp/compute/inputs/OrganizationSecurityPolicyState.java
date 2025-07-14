@@ -66,8 +66,6 @@ public final class OrganizationSecurityPolicyState extends com.pulumi.resources.
      * The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
      * Format: organizations/{organization_id} or folders/{folder_id}
      * 
-     * ***
-     * 
      */
     @Import(name="parent")
     private @Nullable Output<String> parent;
@@ -75,8 +73,6 @@ public final class OrganizationSecurityPolicyState extends com.pulumi.resources.
     /**
      * @return The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
      * Format: organizations/{organization_id} or folders/{folder_id}
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> parent() {
@@ -219,8 +215,6 @@ public final class OrganizationSecurityPolicyState extends com.pulumi.resources.
          * @param parent The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
          * Format: organizations/{organization_id} or folders/{folder_id}
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -232,8 +226,6 @@ public final class OrganizationSecurityPolicyState extends com.pulumi.resources.
         /**
          * @param parent The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
          * Format: organizations/{organization_id} or folders/{folder_id}
-         * 
-         * ***
          * 
          * @return builder
          * 

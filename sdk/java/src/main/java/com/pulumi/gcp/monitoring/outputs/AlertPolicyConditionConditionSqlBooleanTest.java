@@ -14,8 +14,6 @@ public final class AlertPolicyConditionConditionSqlBooleanTest {
      * @return The name of the column containing the boolean value. If the value in a row is
      * NULL, that row is ignored.
      * 
-     * ***
-     * 
      */
     private String column;
 
@@ -23,8 +21,6 @@ public final class AlertPolicyConditionConditionSqlBooleanTest {
     /**
      * @return The name of the column containing the boolean value. If the value in a row is
      * NULL, that row is ignored.
-     * 
-     * ***
      * 
      */
     public String column() {

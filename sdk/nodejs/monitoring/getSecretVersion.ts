@@ -23,6 +23,7 @@ export function getSecretVersion(args: GetSecretVersionArgs, opts?: pulumi.Invok
     pulumi.log.warn("getSecretVersion is deprecated: gcp.monitoring.getSecretVersion has been deprecated in favor of gcp.secretmanager.getSecretVersion")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:monitoring/getSecretVersion:getSecretVersion", {
+        "fetchSecretData": args.fetchSecretData,
         "isSecretDataBase64": args.isSecretDataBase64,
         "project": args.project,
         "secret": args.secret,
@@ -35,7 +36,12 @@ export function getSecretVersion(args: GetSecretVersionArgs, opts?: pulumi.Invok
  */
 export interface GetSecretVersionArgs {
     /**
-     * If set to 'true', the secret data is
+     * If set to `false`, the `secretData` 
+     * will not be fetched. Default is `true`.
+     */
+    fetchSecretData?: boolean;
+    /**
+     * If set to `true`, the secret data is
      * expected to be base64-encoded string.
      */
     isSecretDataBase64?: boolean;
@@ -71,6 +77,7 @@ export interface GetSecretVersionResult {
      * True if the current state of the SecretVersion is enabled.
      */
     readonly enabled: boolean;
+    readonly fetchSecretData?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -108,6 +115,7 @@ export function getSecretVersionOutput(args: GetSecretVersionOutputArgs, opts?: 
     pulumi.log.warn("getSecretVersion is deprecated: gcp.monitoring.getSecretVersion has been deprecated in favor of gcp.secretmanager.getSecretVersion")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:monitoring/getSecretVersion:getSecretVersion", {
+        "fetchSecretData": args.fetchSecretData,
         "isSecretDataBase64": args.isSecretDataBase64,
         "project": args.project,
         "secret": args.secret,
@@ -120,7 +128,12 @@ export function getSecretVersionOutput(args: GetSecretVersionOutputArgs, opts?: 
  */
 export interface GetSecretVersionOutputArgs {
     /**
-     * If set to 'true', the secret data is
+     * If set to `false`, the `secretData` 
+     * will not be fetched. Default is `true`.
+     */
+    fetchSecretData?: pulumi.Input<boolean>;
+    /**
+     * If set to `true`, the secret data is
      * expected to be base64-encoded string.
      */
     isSecretDataBase64?: pulumi.Input<boolean>;

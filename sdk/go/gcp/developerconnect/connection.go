@@ -616,8 +616,6 @@ type Connection struct {
 	// Required. Id of the requesting object
 	// If auto-generating Id server-side, remove this field and
 	// connectionId from the methodSignature of Create RPC
-	//
-	// ***
 	ConnectionId pulumi.StringOutput `pulumi:"connectionId"`
 	// Output only. [Output only] Create timestamp
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -733,8 +731,6 @@ type connectionState struct {
 	// Required. Id of the requesting object
 	// If auto-generating Id server-side, remove this field and
 	// connectionId from the methodSignature of Create RPC
-	//
-	// ***
 	ConnectionId *string `pulumi:"connectionId"`
 	// Output only. [Output only] Create timestamp
 	CreateTime *string `pulumi:"createTime"`
@@ -810,8 +806,6 @@ type ConnectionState struct {
 	// Required. Id of the requesting object
 	// If auto-generating Id server-side, remove this field and
 	// connectionId from the methodSignature of Create RPC
-	//
-	// ***
 	ConnectionId pulumi.StringPtrInput
 	// Output only. [Output only] Create timestamp
 	CreateTime pulumi.StringPtrInput
@@ -891,8 +885,6 @@ type connectionArgs struct {
 	// Required. Id of the requesting object
 	// If auto-generating Id server-side, remove this field and
 	// connectionId from the methodSignature of Create RPC
-	//
-	// ***
 	ConnectionId string `pulumi:"connectionId"`
 	// The crypto key configuration. This field is used by the Customer-managed
 	// encryption keys (CMEK) feature.
@@ -944,8 +936,6 @@ type ConnectionArgs struct {
 	// Required. Id of the requesting object
 	// If auto-generating Id server-side, remove this field and
 	// connectionId from the methodSignature of Create RPC
-	//
-	// ***
 	ConnectionId pulumi.StringInput
 	// The crypto key configuration. This field is used by the Customer-managed
 	// encryption keys (CMEK) feature.
@@ -1091,8 +1081,6 @@ func (o ConnectionOutput) BitbucketDataCenterConfig() ConnectionBitbucketDataCen
 // Required. Id of the requesting object
 // If auto-generating Id server-side, remove this field and
 // connectionId from the methodSignature of Create RPC
-//
-// ***
 func (o ConnectionOutput) ConnectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.ConnectionId }).(pulumi.StringOutput)
 }

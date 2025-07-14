@@ -73,6 +73,7 @@ export interface GetTableResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly ignoreSchemaChanges: string[];
     readonly labels: {[key: string]: string};
     readonly lastModifiedTime: number;
     readonly location: string;

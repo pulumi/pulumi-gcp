@@ -99,6 +99,7 @@ import * as memcache from "./memcache";
 import * as memorystore from "./memorystore";
 import * as migrationcenter from "./migrationcenter";
 import * as ml from "./ml";
+import * as modelarmor from "./modelarmor";
 import * as monitoring from "./monitoring";
 import * as netapp from "./netapp";
 import * as networkconnectivity from "./networkconnectivity";
@@ -233,6 +234,7 @@ export {
     memorystore,
     migrationcenter,
     ml,
+    modelarmor,
     monitoring,
     netapp,
     networkconnectivity,

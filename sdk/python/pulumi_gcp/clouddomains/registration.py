@@ -43,11 +43,15 @@ class RegistrationArgs:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] contact_notices: The list of contact notices that the caller acknowledges. Possible value is PUBLIC_CONTACT_DATA_ACKNOWLEDGEMENT
         :param pulumi.Input['RegistrationDnsSettingsArgs'] dns_settings: Settings controlling the DNS configuration of the Registration.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] domain_notices: The list of domain notices that you acknowledge. Possible value is HSTS_PRELOADED
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Set of labels associated with the Registration. **Note**: This field is non-authoritative, and will only manage the
-               labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-               resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Set of labels associated with the Registration.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input['RegistrationManagementSettingsArgs'] management_settings: Settings for management of the Registration, including renewal, billing, and transfer
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "contact_settings", contact_settings)
         pulumi.set(__self__, "domain_name", domain_name)
@@ -134,6 +138,7 @@ class RegistrationArgs:
     def dns_settings(self) -> Optional[pulumi.Input['RegistrationDnsSettingsArgs']]:
         """
         Settings controlling the DNS configuration of the Registration.
+        Structure is documented below.
         """
         return pulumi.get(self, "dns_settings")
 
@@ -157,9 +162,9 @@ class RegistrationArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Set of labels associated with the Registration. **Note**: This field is non-authoritative, and will only manage the
-        labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-        resource.
+        Set of labels associated with the Registration.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -172,6 +177,7 @@ class RegistrationArgs:
     def management_settings(self) -> Optional[pulumi.Input['RegistrationManagementSettingsArgs']]:
         """
         Settings for management of the Registration, including renewal, billing, and transfer
+        Structure is documented below.
         """
         return pulumi.get(self, "management_settings")
 
@@ -182,6 +188,10 @@ class RegistrationArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -218,17 +228,21 @@ class _RegistrationState:
                Structure is documented below.
         :param pulumi.Input[builtins.str] create_time: Output only. Time at which the automation was created.
         :param pulumi.Input['RegistrationDnsSettingsArgs'] dns_settings: Settings controlling the DNS configuration of the Registration.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] domain_name: Required. The domain name. Unicode domain names must be expressed in Punycode format.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] domain_notices: The list of domain notices that you acknowledge. Possible value is HSTS_PRELOADED
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[builtins.str] expire_time: Output only. Time at which the automation was updated.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] issues: Output only. The set of issues with the Registration that require attention.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Set of labels associated with the Registration. **Note**: This field is non-authoritative, and will only manage the
-               labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-               resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Set of labels associated with the Registration.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location for the resource
         :param pulumi.Input['RegistrationManagementSettingsArgs'] management_settings: Settings for management of the Registration, including renewal, billing, and transfer
+               Structure is documented below.
         :param pulumi.Input[builtins.str] name: Output only. Name of the Registration resource, in the format projects/*/locations/*/registrations/<domain_name>.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[builtins.str] register_failure_reason: Output only. The reason the domain registration failed. Only set for domains in REGISTRATION_FAILED state.
@@ -319,6 +333,7 @@ class _RegistrationState:
     def dns_settings(self) -> Optional[pulumi.Input['RegistrationDnsSettingsArgs']]:
         """
         Settings controlling the DNS configuration of the Registration.
+        Structure is documented below.
         """
         return pulumi.get(self, "dns_settings")
 
@@ -390,9 +405,9 @@ class _RegistrationState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Set of labels associated with the Registration. **Note**: This field is non-authoritative, and will only manage the
-        labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-        resource.
+        Set of labels associated with the Registration.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -417,6 +432,7 @@ class _RegistrationState:
     def management_settings(self) -> Optional[pulumi.Input['RegistrationManagementSettingsArgs']]:
         """
         Settings for management of the Registration, including renewal, billing, and transfer
+        Structure is documented below.
         """
         return pulumi.get(self, "management_settings")
 
@@ -439,6 +455,10 @@ class _RegistrationState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -626,13 +646,17 @@ class Registration(pulumi.CustomResource):
         :param pulumi.Input[Union['RegistrationContactSettingsArgs', 'RegistrationContactSettingsArgsDict']] contact_settings: Required. Settings for contact information linked to the Registration.
                Structure is documented below.
         :param pulumi.Input[Union['RegistrationDnsSettingsArgs', 'RegistrationDnsSettingsArgsDict']] dns_settings: Settings controlling the DNS configuration of the Registration.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] domain_name: Required. The domain name. Unicode domain names must be expressed in Punycode format.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] domain_notices: The list of domain notices that you acknowledge. Possible value is HSTS_PRELOADED
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Set of labels associated with the Registration. **Note**: This field is non-authoritative, and will only manage the
-               labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-               resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Set of labels associated with the Registration.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location for the resource
         :param pulumi.Input[Union['RegistrationManagementSettingsArgs', 'RegistrationManagementSettingsArgsDict']] management_settings: Settings for management of the Registration, including renewal, billing, and transfer
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Union['RegistrationYearlyPriceArgs', 'RegistrationYearlyPriceArgsDict']] yearly_price: Required. Yearly price to register or renew the domain. The value that should be put here can be obtained from
                registrations.retrieveRegisterParameters or registrations.searchDomains calls.
                Structure is documented below.
@@ -841,17 +865,21 @@ class Registration(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[builtins.str] create_time: Output only. Time at which the automation was created.
         :param pulumi.Input[Union['RegistrationDnsSettingsArgs', 'RegistrationDnsSettingsArgsDict']] dns_settings: Settings controlling the DNS configuration of the Registration.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] domain_name: Required. The domain name. Unicode domain names must be expressed in Punycode format.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] domain_notices: The list of domain notices that you acknowledge. Possible value is HSTS_PRELOADED
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[builtins.str] expire_time: Output only. Time at which the automation was updated.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] issues: Output only. The set of issues with the Registration that require attention.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Set of labels associated with the Registration. **Note**: This field is non-authoritative, and will only manage the
-               labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-               resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Set of labels associated with the Registration.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location for the resource
         :param pulumi.Input[Union['RegistrationManagementSettingsArgs', 'RegistrationManagementSettingsArgsDict']] management_settings: Settings for management of the Registration, including renewal, billing, and transfer
+               Structure is documented below.
         :param pulumi.Input[builtins.str] name: Output only. Name of the Registration resource, in the format projects/*/locations/*/registrations/<domain_name>.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[builtins.str] register_failure_reason: Output only. The reason the domain registration failed. Only set for domains in REGISTRATION_FAILED state.
@@ -916,6 +944,7 @@ class Registration(pulumi.CustomResource):
     def dns_settings(self) -> pulumi.Output[Optional['outputs.RegistrationDnsSettings']]:
         """
         Settings controlling the DNS configuration of the Registration.
+        Structure is documented below.
         """
         return pulumi.get(self, "dns_settings")
 
@@ -963,9 +992,9 @@ class Registration(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
         """
-        Set of labels associated with the Registration. **Note**: This field is non-authoritative, and will only manage the
-        labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-        resource.
+        Set of labels associated with the Registration.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -982,6 +1011,7 @@ class Registration(pulumi.CustomResource):
     def management_settings(self) -> pulumi.Output['outputs.RegistrationManagementSettings']:
         """
         Settings for management of the Registration, including renewal, billing, and transfer
+        Structure is documented below.
         """
         return pulumi.get(self, "management_settings")
 
@@ -996,6 +1026,10 @@ class Registration(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property

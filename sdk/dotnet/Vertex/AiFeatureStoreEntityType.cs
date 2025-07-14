@@ -182,9 +182,6 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("featurestore")]
         public Output<string> Featurestore { get; private set; } = null!;
@@ -296,9 +293,6 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("featurestore", required: true)]
         public Input<string> Featurestore { get; set; } = null!;
@@ -382,9 +376,6 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("featurestore")]
         public Input<string>? Featurestore { get; set; }

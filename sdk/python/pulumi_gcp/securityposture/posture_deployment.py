@@ -32,9 +32,6 @@ class PostureDeploymentArgs:
         :param pulumi.Input[builtins.str] location: The location of the resource, eg. global`.
         :param pulumi.Input[builtins.str] parent: The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
         :param pulumi.Input[builtins.str] posture_deployment_id: ID of the posture deployment.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] posture_id: Relative name of the posture which needs to be deployed. It should be in the format:
                organizations/{organization_id}/locations/{location}/postures/{posture_id}
         :param pulumi.Input[builtins.str] posture_revision_id: Revision_id the posture which needs to be deployed.
@@ -82,9 +79,6 @@ class PostureDeploymentArgs:
     def posture_deployment_id(self) -> pulumi.Input[builtins.str]:
         """
         ID of the posture deployment.
-
-
-        - - -
         """
         return pulumi.get(self, "posture_deployment_id")
 
@@ -183,9 +177,6 @@ class _PostureDeploymentState:
         :param pulumi.Input[builtins.str] name: Name of the posture deployment instance.
         :param pulumi.Input[builtins.str] parent: The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
         :param pulumi.Input[builtins.str] posture_deployment_id: ID of the posture deployment.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] posture_id: Relative name of the posture which needs to be deployed. It should be in the format:
                organizations/{organization_id}/locations/{location}/postures/{posture_id}
         :param pulumi.Input[builtins.str] posture_revision_id: Revision_id the posture which needs to be deployed.
@@ -351,9 +342,6 @@ class _PostureDeploymentState:
     def posture_deployment_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         ID of the posture deployment.
-
-
-        - - -
         """
         return pulumi.get(self, "posture_deployment_id")
 
@@ -484,9 +472,6 @@ class PostureDeployment(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] location: The location of the resource, eg. global`.
         :param pulumi.Input[builtins.str] parent: The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
         :param pulumi.Input[builtins.str] posture_deployment_id: ID of the posture deployment.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] posture_id: Relative name of the posture which needs to be deployed. It should be in the format:
                organizations/{organization_id}/locations/{location}/postures/{posture_id}
         :param pulumi.Input[builtins.str] posture_revision_id: Revision_id the posture which needs to be deployed.
@@ -635,9 +620,6 @@ class PostureDeployment(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] name: Name of the posture deployment instance.
         :param pulumi.Input[builtins.str] parent: The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
         :param pulumi.Input[builtins.str] posture_deployment_id: ID of the posture deployment.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] posture_id: Relative name of the posture which needs to be deployed. It should be in the format:
                organizations/{organization_id}/locations/{location}/postures/{posture_id}
         :param pulumi.Input[builtins.str] posture_revision_id: Revision_id the posture which needs to be deployed.
@@ -756,9 +738,6 @@ class PostureDeployment(pulumi.CustomResource):
     def posture_deployment_id(self) -> pulumi.Output[builtins.str]:
         """
         ID of the posture deployment.
-
-
-        - - -
         """
         return pulumi.get(self, "posture_deployment_id")
 

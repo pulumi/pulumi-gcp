@@ -268,9 +268,6 @@ export class Organization extends pulumi.CustomResource {
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * The project ID associated with the Apigee organization.
-     *
-     *
-     * - - -
      */
     public readonly projectId!: pulumi.Output<string>;
     /**
@@ -430,9 +427,6 @@ export interface OrganizationState {
     name?: pulumi.Input<string>;
     /**
      * The project ID associated with the Apigee organization.
-     *
-     *
-     * - - -
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -520,9 +514,6 @@ export interface OrganizationArgs {
     displayName?: pulumi.Input<string>;
     /**
      * The project ID associated with the Apigee organization.
-     *
-     *
-     * - - -
      */
     projectId: pulumi.Input<string>;
     /**

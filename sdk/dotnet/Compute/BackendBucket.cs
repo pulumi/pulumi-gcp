@@ -238,6 +238,14 @@ namespace Pulumi.Gcp.Compute
         public Output<bool?> EnableCdn { get; private set; } = null!;
 
         /// <summary>
+        /// The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
+        /// If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+        /// Possible values are: `INTERNAL_MANAGED`.
+        /// </summary>
+        [Output("loadBalancingScheme")]
+        public Output<string?> LoadBalancingScheme { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the resource. Provided by the client when the resource is
         /// created. The name must be 1-63 characters long, and comply with
         /// RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -245,9 +253,6 @@ namespace Pulumi.Gcp.Compute
         /// the first character must be a lowercase letter, and all following
         /// characters must be a dash, lowercase letter, or digit, except the
         /// last character, which cannot be a dash.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -363,6 +368,14 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? EnableCdn { get; set; }
 
         /// <summary>
+        /// The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
+        /// If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+        /// Possible values are: `INTERNAL_MANAGED`.
+        /// </summary>
+        [Input("loadBalancingScheme")]
+        public Input<string>? LoadBalancingScheme { get; set; }
+
+        /// <summary>
         /// Name of the resource. Provided by the client when the resource is
         /// created. The name must be 1-63 characters long, and comply with
         /// RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -370,9 +383,6 @@ namespace Pulumi.Gcp.Compute
         /// the first character must be a lowercase letter, and all following
         /// characters must be a dash, lowercase letter, or digit, except the
         /// last character, which cannot be a dash.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -450,6 +460,14 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? EnableCdn { get; set; }
 
         /// <summary>
+        /// The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
+        /// If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+        /// Possible values are: `INTERNAL_MANAGED`.
+        /// </summary>
+        [Input("loadBalancingScheme")]
+        public Input<string>? LoadBalancingScheme { get; set; }
+
+        /// <summary>
         /// Name of the resource. Provided by the client when the resource is
         /// created. The name must be 1-63 characters long, and comply with
         /// RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -457,9 +475,6 @@ namespace Pulumi.Gcp.Compute
         /// the first character must be a lowercase letter, and all following
         /// characters must be a dash, lowercase letter, or digit, except the
         /// last character, which cannot be a dash.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

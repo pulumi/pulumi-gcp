@@ -206,16 +206,12 @@ public final class SecurityPolicyRuleArgs extends com.pulumi.resources.ResourceA
     /**
      * The name of the security policy this rule belongs to.
      * 
-     * ***
-     * 
      */
     @Import(name="securityPolicy", required=true)
     private Output<String> securityPolicy;
 
     /**
      * @return The name of the security policy this rule belongs to.
-     * 
-     * ***
      * 
      */
     public Output<String> securityPolicy() {
@@ -499,8 +495,6 @@ public final class SecurityPolicyRuleArgs extends com.pulumi.resources.ResourceA
         /**
          * @param securityPolicy The name of the security policy this rule belongs to.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -511,8 +505,6 @@ public final class SecurityPolicyRuleArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param securityPolicy The name of the security policy this rule belongs to.
-         * 
-         * ***
          * 
          * @return builder
          * 

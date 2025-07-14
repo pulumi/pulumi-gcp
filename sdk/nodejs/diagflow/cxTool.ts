@@ -245,9 +245,6 @@ export class CxTool extends pulumi.CustomResource {
     public readonly dataStoreSpec!: pulumi.Output<outputs.diagflow.CxToolDataStoreSpec | undefined>;
     /**
      * High level description of the Tool and its usage.
-     *
-     *
-     * - - -
      */
     public readonly description!: pulumi.Output<string>;
     /**
@@ -336,9 +333,6 @@ export interface CxToolState {
     dataStoreSpec?: pulumi.Input<inputs.diagflow.CxToolDataStoreSpec>;
     /**
      * High level description of the Tool and its usage.
-     *
-     *
-     * - - -
      */
     description?: pulumi.Input<string>;
     /**
@@ -385,9 +379,6 @@ export interface CxToolArgs {
     dataStoreSpec?: pulumi.Input<inputs.diagflow.CxToolDataStoreSpec>;
     /**
      * High level description of the Tool and its usage.
-     *
-     *
-     * - - -
      */
     description: pulumi.Input<string>;
     /**

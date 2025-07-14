@@ -19,16 +19,12 @@ public final class V2ProjectSccBigQueryExportArgs extends com.pulumi.resources.R
     /**
      * This must be unique within the organization.
      * 
-     * ***
-     * 
      */
     @Import(name="bigQueryExportId", required=true)
     private Output<String> bigQueryExportId;
 
     /**
      * @return This must be unique within the organization.
-     * 
-     * ***
      * 
      */
     public Output<String> bigQueryExportId() {
@@ -184,8 +180,6 @@ public final class V2ProjectSccBigQueryExportArgs extends com.pulumi.resources.R
         /**
          * @param bigQueryExportId This must be unique within the organization.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -196,8 +190,6 @@ public final class V2ProjectSccBigQueryExportArgs extends com.pulumi.resources.R
 
         /**
          * @param bigQueryExportId This must be unique within the organization.
-         * 
-         * ***
          * 
          * @return builder
          * 

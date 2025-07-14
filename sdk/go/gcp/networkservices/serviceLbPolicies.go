@@ -139,8 +139,6 @@ type ServiceLbPolicies struct {
 	// Possible values are: `SPRAY_TO_REGION`, `SPRAY_TO_WORLD`, `WATERFALL_BY_REGION`, `WATERFALL_BY_ZONE`.
 	LoadBalancingAlgorithm pulumi.StringPtrOutput `pulumi:"loadBalancingAlgorithm"`
 	// The location of the service lb policy.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Name of the ServiceLbPolicy resource. It matches pattern `projects/{project}/locations/{location}/serviceLbPolicies/{service_lb_policy_name}`.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -212,8 +210,6 @@ type serviceLbPoliciesState struct {
 	// Possible values are: `SPRAY_TO_REGION`, `SPRAY_TO_WORLD`, `WATERFALL_BY_REGION`, `WATERFALL_BY_ZONE`.
 	LoadBalancingAlgorithm *string `pulumi:"loadBalancingAlgorithm"`
 	// The location of the service lb policy.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// Name of the ServiceLbPolicy resource. It matches pattern `projects/{project}/locations/{location}/serviceLbPolicies/{service_lb_policy_name}`.
 	Name *string `pulumi:"name"`
@@ -248,8 +244,6 @@ type ServiceLbPoliciesState struct {
 	// Possible values are: `SPRAY_TO_REGION`, `SPRAY_TO_WORLD`, `WATERFALL_BY_REGION`, `WATERFALL_BY_ZONE`.
 	LoadBalancingAlgorithm pulumi.StringPtrInput
 	// The location of the service lb policy.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// Name of the ServiceLbPolicy resource. It matches pattern `projects/{project}/locations/{location}/serviceLbPolicies/{service_lb_policy_name}`.
 	Name pulumi.StringPtrInput
@@ -284,8 +278,6 @@ type serviceLbPoliciesArgs struct {
 	// Possible values are: `SPRAY_TO_REGION`, `SPRAY_TO_WORLD`, `WATERFALL_BY_REGION`, `WATERFALL_BY_ZONE`.
 	LoadBalancingAlgorithm *string `pulumi:"loadBalancingAlgorithm"`
 	// The location of the service lb policy.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// Name of the ServiceLbPolicy resource. It matches pattern `projects/{project}/locations/{location}/serviceLbPolicies/{service_lb_policy_name}`.
 	Name *string `pulumi:"name"`
@@ -312,8 +304,6 @@ type ServiceLbPoliciesArgs struct {
 	// Possible values are: `SPRAY_TO_REGION`, `SPRAY_TO_WORLD`, `WATERFALL_BY_REGION`, `WATERFALL_BY_ZONE`.
 	LoadBalancingAlgorithm pulumi.StringPtrInput
 	// The location of the service lb policy.
-	//
-	// ***
 	Location pulumi.StringInput
 	// Name of the ServiceLbPolicy resource. It matches pattern `projects/{project}/locations/{location}/serviceLbPolicies/{service_lb_policy_name}`.
 	Name pulumi.StringPtrInput
@@ -450,8 +440,6 @@ func (o ServiceLbPoliciesOutput) LoadBalancingAlgorithm() pulumi.StringPtrOutput
 }
 
 // The location of the service lb policy.
-//
-// ***
 func (o ServiceLbPoliciesOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceLbPolicies) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

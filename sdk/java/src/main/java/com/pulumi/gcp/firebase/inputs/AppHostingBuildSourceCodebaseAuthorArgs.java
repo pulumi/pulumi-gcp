@@ -16,14 +16,14 @@ public final class AppHostingBuildSourceCodebaseAuthorArgs extends com.pulumi.re
     public static final AppHostingBuildSourceCodebaseAuthorArgs Empty = new AppHostingBuildSourceCodebaseAuthorArgs();
 
     /**
-     * The &#39;name&#39; field in a Git user&#39;s git.config. Required by Git.
+     * Human-readable name. 63 character limit.
      * 
      */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
 
     /**
-     * @return The &#39;name&#39; field in a Git user&#39;s git.config. Required by Git.
+     * @return Human-readable name. 63 character limit.
      * 
      */
     public Optional<Output<String>> displayName() {
@@ -89,7 +89,7 @@ public final class AppHostingBuildSourceCodebaseAuthorArgs extends com.pulumi.re
         }
 
         /**
-         * @param displayName The &#39;name&#39; field in a Git user&#39;s git.config. Required by Git.
+         * @param displayName Human-readable name. 63 character limit.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class AppHostingBuildSourceCodebaseAuthorArgs extends com.pulumi.re
         }
 
         /**
-         * @param displayName The &#39;name&#39; field in a Git user&#39;s git.config. Required by Git.
+         * @param displayName Human-readable name. 63 character limit.
          * 
          * @return builder
          * 

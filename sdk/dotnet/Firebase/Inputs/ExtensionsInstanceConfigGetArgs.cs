@@ -76,8 +76,6 @@ namespace Pulumi.Gcp.Firebase.Inputs
         /// with actual values. These strings include: ${param:FOO},
         /// ${function:myFunc.url},
         /// ${function:myFunc.name}, and ${function:myFunc.location}
-        /// 
-        /// - - -
         /// </summary>
         [Input("populatedPostinstallContent")]
         public Input<string>? PopulatedPostinstallContent { get; set; }

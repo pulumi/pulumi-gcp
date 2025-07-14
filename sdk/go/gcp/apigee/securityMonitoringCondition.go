@@ -138,8 +138,6 @@ type SecurityMonitoringCondition struct {
 	pulumi.CustomResourceState
 
 	// Resource ID of the security monitoring condition.
-	//
-	// ***
 	ConditionId pulumi.StringOutput `pulumi:"conditionId"`
 	// The timestamp at which this profile was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -206,8 +204,6 @@ func GetSecurityMonitoringCondition(ctx *pulumi.Context,
 // Input properties used for looking up and filtering SecurityMonitoringCondition resources.
 type securityMonitoringConditionState struct {
 	// Resource ID of the security monitoring condition.
-	//
-	// ***
 	ConditionId *string `pulumi:"conditionId"`
 	// The timestamp at which this profile was created.
 	CreateTime *string `pulumi:"createTime"`
@@ -233,8 +229,6 @@ type securityMonitoringConditionState struct {
 
 type SecurityMonitoringConditionState struct {
 	// Resource ID of the security monitoring condition.
-	//
-	// ***
 	ConditionId pulumi.StringPtrInput
 	// The timestamp at which this profile was created.
 	CreateTime pulumi.StringPtrInput
@@ -264,8 +258,6 @@ func (SecurityMonitoringConditionState) ElementType() reflect.Type {
 
 type securityMonitoringConditionArgs struct {
 	// Resource ID of the security monitoring condition.
-	//
-	// ***
 	ConditionId string `pulumi:"conditionId"`
 	// A nested object resource.
 	IncludeAllResources *SecurityMonitoringConditionIncludeAllResources `pulumi:"includeAllResources"`
@@ -281,8 +273,6 @@ type securityMonitoringConditionArgs struct {
 // The set of arguments for constructing a SecurityMonitoringCondition resource.
 type SecurityMonitoringConditionArgs struct {
 	// Resource ID of the security monitoring condition.
-	//
-	// ***
 	ConditionId pulumi.StringInput
 	// A nested object resource.
 	IncludeAllResources SecurityMonitoringConditionIncludeAllResourcesPtrInput
@@ -383,8 +373,6 @@ func (o SecurityMonitoringConditionOutput) ToSecurityMonitoringConditionOutputWi
 }
 
 // Resource ID of the security monitoring condition.
-//
-// ***
 func (o SecurityMonitoringConditionOutput) ConditionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityMonitoringCondition) pulumi.StringOutput { return v.ConditionId }).(pulumi.StringOutput)
 }

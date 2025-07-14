@@ -146,16 +146,12 @@ public final class MigrationJobArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The ID of the migration job.
      * 
-     * ***
-     * 
      */
     @Import(name="migrationJobId", required=true)
     private Output<String> migrationJobId;
 
     /**
      * @return The ID of the migration job.
-     * 
-     * ***
      * 
      */
     public Output<String> migrationJobId() {
@@ -487,8 +483,6 @@ public final class MigrationJobArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param migrationJobId The ID of the migration job.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -499,8 +493,6 @@ public final class MigrationJobArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param migrationJobId The ID of the migration job.
-         * 
-         * ***
          * 
          * @return builder
          * 

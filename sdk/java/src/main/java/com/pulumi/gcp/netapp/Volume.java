@@ -429,16 +429,12 @@ public class Volume extends com.pulumi.resources.CustomResource {
     /**
      * The name of the volume. Needs to be unique per location.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return The name of the volume. Needs to be unique per location.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

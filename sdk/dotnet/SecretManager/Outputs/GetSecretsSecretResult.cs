@@ -21,6 +21,7 @@ namespace Pulumi.Gcp.SecretManager.Outputs
         /// The time at which the Secret was created.
         /// </summary>
         public readonly string CreateTime;
+        public readonly bool DeletionProtection;
         public readonly ImmutableDictionary<string, string> EffectiveAnnotations;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         /// <summary>
@@ -84,6 +85,8 @@ namespace Pulumi.Gcp.SecretManager.Outputs
 
             string createTime,
 
+            bool deletionProtection,
+
             ImmutableDictionary<string, string> effectiveAnnotations,
 
             ImmutableDictionary<string, string> effectiveLabels,
@@ -114,6 +117,7 @@ namespace Pulumi.Gcp.SecretManager.Outputs
         {
             Annotations = annotations;
             CreateTime = createTime;
+            DeletionProtection = deletionProtection;
             EffectiveAnnotations = effectiveAnnotations;
             EffectiveLabels = effectiveLabels;
             ExpireTime = expireTime;

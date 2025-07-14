@@ -27,9 +27,6 @@ class DiskResourcePolicyAttachmentArgs:
         """
         The set of arguments for constructing a DiskResourcePolicyAttachment resource.
         :param pulumi.Input[builtins.str] disk: The name of the disk in which the resource policies are attached to.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The resource policy to be attached to the disk for scheduling snapshot
                creation. Do not specify the self link.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -49,9 +46,6 @@ class DiskResourcePolicyAttachmentArgs:
     def disk(self) -> pulumi.Input[builtins.str]:
         """
         The name of the disk in which the resource policies are attached to.
-
-
-        - - -
         """
         return pulumi.get(self, "disk")
 
@@ -108,9 +102,6 @@ class _DiskResourcePolicyAttachmentState:
         """
         Input properties used for looking up and filtering DiskResourcePolicyAttachment resources.
         :param pulumi.Input[builtins.str] disk: The name of the disk in which the resource policies are attached to.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The resource policy to be attached to the disk for scheduling snapshot
                creation. Do not specify the self link.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -131,9 +122,6 @@ class _DiskResourcePolicyAttachmentState:
     def disk(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The name of the disk in which the resource policies are attached to.
-
-
-        - - -
         """
         return pulumi.get(self, "disk")
 
@@ -263,9 +251,6 @@ class DiskResourcePolicyAttachment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] disk: The name of the disk in which the resource policies are attached to.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The resource policy to be attached to the disk for scheduling snapshot
                creation. Do not specify the self link.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -403,9 +388,6 @@ class DiskResourcePolicyAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] disk: The name of the disk in which the resource policies are attached to.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The resource policy to be attached to the disk for scheduling snapshot
                creation. Do not specify the self link.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -427,9 +409,6 @@ class DiskResourcePolicyAttachment(pulumi.CustomResource):
     def disk(self) -> pulumi.Output[builtins.str]:
         """
         The name of the disk in which the resource policies are attached to.
-
-
-        - - -
         """
         return pulumi.get(self, "disk")
 

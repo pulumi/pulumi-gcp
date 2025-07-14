@@ -101,8 +101,6 @@ type OrganizationSettings struct {
 	// The resource name of the settings.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The organization for which to retrieve or configure settings.
-	//
-	// ***
 	Organization pulumi.StringOutput `pulumi:"organization"`
 	// The storage location that Cloud Logging will use to create new resources when a location is needed but not explicitly provided.
 	StorageLocation pulumi.StringOutput `pulumi:"storageLocation"`
@@ -152,8 +150,6 @@ type organizationSettingsState struct {
 	// The resource name of the settings.
 	Name *string `pulumi:"name"`
 	// The organization for which to retrieve or configure settings.
-	//
-	// ***
 	Organization *string `pulumi:"organization"`
 	// The storage location that Cloud Logging will use to create new resources when a location is needed but not explicitly provided.
 	StorageLocation *string `pulumi:"storageLocation"`
@@ -171,8 +167,6 @@ type OrganizationSettingsState struct {
 	// The resource name of the settings.
 	Name pulumi.StringPtrInput
 	// The organization for which to retrieve or configure settings.
-	//
-	// ***
 	Organization pulumi.StringPtrInput
 	// The storage location that Cloud Logging will use to create new resources when a location is needed but not explicitly provided.
 	StorageLocation pulumi.StringPtrInput
@@ -188,8 +182,6 @@ type organizationSettingsArgs struct {
 	// The resource name for the configured Cloud KMS key.
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// The organization for which to retrieve or configure settings.
-	//
-	// ***
 	Organization string `pulumi:"organization"`
 	// The storage location that Cloud Logging will use to create new resources when a location is needed but not explicitly provided.
 	StorageLocation *string `pulumi:"storageLocation"`
@@ -202,8 +194,6 @@ type OrganizationSettingsArgs struct {
 	// The resource name for the configured Cloud KMS key.
 	KmsKeyName pulumi.StringPtrInput
 	// The organization for which to retrieve or configure settings.
-	//
-	// ***
 	Organization pulumi.StringInput
 	// The storage location that Cloud Logging will use to create new resources when a location is needed but not explicitly provided.
 	StorageLocation pulumi.StringPtrInput
@@ -322,8 +312,6 @@ func (o OrganizationSettingsOutput) Name() pulumi.StringOutput {
 }
 
 // The organization for which to retrieve or configure settings.
-//
-// ***
 func (o OrganizationSettingsOutput) Organization() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationSettings) pulumi.StringOutput { return v.Organization }).(pulumi.StringOutput)
 }

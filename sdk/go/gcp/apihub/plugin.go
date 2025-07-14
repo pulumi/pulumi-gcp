@@ -188,8 +188,6 @@ type Plugin struct {
 	//   `projects/{project}/locations/{location}/plugins/{plugin}`,
 	//   its length is limited to 1000 characters and valid characters are
 	//   /a-z[0-9]-_/.
-	//
-	// ***
 	PluginId pulumi.StringOutput `pulumi:"pluginId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -294,8 +292,6 @@ type pluginState struct {
 	//   `projects/{project}/locations/{location}/plugins/{plugin}`,
 	//   its length is limited to 1000 characters and valid characters are
 	//   /a-z[0-9]-_/.
-	//
-	// ***
 	PluginId *string `pulumi:"pluginId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -362,8 +358,6 @@ type PluginState struct {
 	//   `projects/{project}/locations/{location}/plugins/{plugin}`,
 	//   its length is limited to 1000 characters and valid characters are
 	//   /a-z[0-9]-_/.
-	//
-	// ***
 	PluginId pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -422,8 +416,6 @@ type pluginArgs struct {
 	//   `projects/{project}/locations/{location}/plugins/{plugin}`,
 	//   its length is limited to 1000 characters and valid characters are
 	//   /a-z[0-9]-_/.
-	//
-	// ***
 	PluginId string `pulumi:"pluginId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -469,8 +461,6 @@ type PluginArgs struct {
 	//   `projects/{project}/locations/{location}/plugins/{plugin}`,
 	//   its length is limited to 1000 characters and valid characters are
 	//   /a-z[0-9]-_/.
-	//
-	// ***
 	PluginId pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -646,8 +636,6 @@ func (o PluginOutput) PluginCategory() pulumi.StringPtrOutput {
 //     `projects/{project}/locations/{location}/plugins/{plugin}`,
 //     its length is limited to 1000 characters and valid characters are
 //     /a-z[0-9]-_/.
-//
-// ***
 func (o PluginOutput) PluginId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Plugin) pulumi.StringOutput { return v.PluginId }).(pulumi.StringOutput)
 }

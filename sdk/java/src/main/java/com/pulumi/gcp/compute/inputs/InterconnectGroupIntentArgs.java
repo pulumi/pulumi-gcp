@@ -20,8 +20,6 @@ public final class InterconnectGroupIntentArgs extends com.pulumi.resources.Reso
      * of the Interconnect product SLAs.
      * Possible values are: `PRODUCTION_NON_CRITICAL`, `PRODUCTION_CRITICAL`, `NO_SLA`, `AVAILABILITY_SLA_UNSPECIFIED`.
      * 
-     * ***
-     * 
      */
     @Import(name="topologyCapability")
     private @Nullable Output<String> topologyCapability;
@@ -30,8 +28,6 @@ public final class InterconnectGroupIntentArgs extends com.pulumi.resources.Reso
      * @return The reliability the user intends this group to be capable of, in terms
      * of the Interconnect product SLAs.
      * Possible values are: `PRODUCTION_NON_CRITICAL`, `PRODUCTION_CRITICAL`, `NO_SLA`, `AVAILABILITY_SLA_UNSPECIFIED`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> topologyCapability() {
@@ -67,8 +63,6 @@ public final class InterconnectGroupIntentArgs extends com.pulumi.resources.Reso
          * of the Interconnect product SLAs.
          * Possible values are: `PRODUCTION_NON_CRITICAL`, `PRODUCTION_CRITICAL`, `NO_SLA`, `AVAILABILITY_SLA_UNSPECIFIED`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -81,8 +75,6 @@ public final class InterconnectGroupIntentArgs extends com.pulumi.resources.Reso
          * @param topologyCapability The reliability the user intends this group to be capable of, in terms
          * of the Interconnect product SLAs.
          * Possible values are: `PRODUCTION_NON_CRITICAL`, `PRODUCTION_CRITICAL`, `NO_SLA`, `AVAILABILITY_SLA_UNSPECIFIED`.
-         * 
-         * ***
          * 
          * @return builder
          * 

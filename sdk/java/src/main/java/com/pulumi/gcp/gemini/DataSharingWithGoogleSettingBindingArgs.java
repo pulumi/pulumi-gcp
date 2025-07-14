@@ -101,16 +101,12 @@ public final class DataSharingWithGoogleSettingBindingArgs extends com.pulumi.re
     /**
      * Required. Id of the setting binding.
      * 
-     * ***
-     * 
      */
     @Import(name="settingBindingId", required=true)
     private Output<String> settingBindingId;
 
     /**
      * @return Required. Id of the setting binding.
-     * 
-     * ***
      * 
      */
     public Output<String> settingBindingId() {
@@ -276,8 +272,6 @@ public final class DataSharingWithGoogleSettingBindingArgs extends com.pulumi.re
         /**
          * @param settingBindingId Required. Id of the setting binding.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -288,8 +282,6 @@ public final class DataSharingWithGoogleSettingBindingArgs extends com.pulumi.re
 
         /**
          * @param settingBindingId Required. Id of the setting binding.
-         * 
-         * ***
          * 
          * @return builder
          * 

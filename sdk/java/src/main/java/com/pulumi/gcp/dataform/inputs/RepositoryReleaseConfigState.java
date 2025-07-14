@@ -53,16 +53,12 @@ public final class RepositoryReleaseConfigState extends com.pulumi.resources.Res
     /**
      * Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
      * 
-     * ***
-     * 
      */
     @Import(name="gitCommitish")
     private @Nullable Output<String> gitCommitish;
 
     /**
      * @return Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> gitCommitish() {
@@ -242,8 +238,6 @@ public final class RepositoryReleaseConfigState extends com.pulumi.resources.Res
         /**
          * @param gitCommitish Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -254,8 +248,6 @@ public final class RepositoryReleaseConfigState extends com.pulumi.resources.Res
 
         /**
          * @param gitCommitish Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -445,8 +445,7 @@ type AttachedClusterFleet struct {
 	// cluster. Membership names are formatted as
 	// projects/<project-number>/locations/global/membership/<cluster-id>.
 	Membership *string `pulumi:"membership"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	// The number of the Fleet host project where this cluster will be registered.
 	Project string `pulumi:"project"`
 }
 
@@ -467,8 +466,7 @@ type AttachedClusterFleetArgs struct {
 	// cluster. Membership names are formatted as
 	// projects/<project-number>/locations/global/membership/<cluster-id>.
 	Membership pulumi.StringPtrInput `pulumi:"membership"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	// The number of the Fleet host project where this cluster will be registered.
 	Project pulumi.StringInput `pulumi:"project"`
 }
 
@@ -557,8 +555,7 @@ func (o AttachedClusterFleetOutput) Membership() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AttachedClusterFleet) *string { return v.Membership }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the project in which the resource belongs.
-// If it is not provided, the provider project is used.
+// The number of the Fleet host project where this cluster will be registered.
 func (o AttachedClusterFleetOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v AttachedClusterFleet) string { return v.Project }).(pulumi.StringOutput)
 }
@@ -600,8 +597,7 @@ func (o AttachedClusterFleetPtrOutput) Membership() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The ID of the project in which the resource belongs.
-// If it is not provided, the provider project is used.
+// The number of the Fleet host project where this cluster will be registered.
 func (o AttachedClusterFleetPtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AttachedClusterFleet) *string {
 		if v == nil {
@@ -13706,6 +13702,143 @@ func (o ClusterAddonsConfigStatefulHaConfigPtrOutput) Enabled() pulumi.BoolPtrOu
 		}
 		return &v.Enabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+type ClusterAnonymousAuthenticationConfig struct {
+	// Sets or removes authentication restrictions. Available options include `LIMITED` and `ENABLED`.
+	Mode string `pulumi:"mode"`
+}
+
+// ClusterAnonymousAuthenticationConfigInput is an input type that accepts ClusterAnonymousAuthenticationConfigArgs and ClusterAnonymousAuthenticationConfigOutput values.
+// You can construct a concrete instance of `ClusterAnonymousAuthenticationConfigInput` via:
+//
+//	ClusterAnonymousAuthenticationConfigArgs{...}
+type ClusterAnonymousAuthenticationConfigInput interface {
+	pulumi.Input
+
+	ToClusterAnonymousAuthenticationConfigOutput() ClusterAnonymousAuthenticationConfigOutput
+	ToClusterAnonymousAuthenticationConfigOutputWithContext(context.Context) ClusterAnonymousAuthenticationConfigOutput
+}
+
+type ClusterAnonymousAuthenticationConfigArgs struct {
+	// Sets or removes authentication restrictions. Available options include `LIMITED` and `ENABLED`.
+	Mode pulumi.StringInput `pulumi:"mode"`
+}
+
+func (ClusterAnonymousAuthenticationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAnonymousAuthenticationConfig)(nil)).Elem()
+}
+
+func (i ClusterAnonymousAuthenticationConfigArgs) ToClusterAnonymousAuthenticationConfigOutput() ClusterAnonymousAuthenticationConfigOutput {
+	return i.ToClusterAnonymousAuthenticationConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterAnonymousAuthenticationConfigArgs) ToClusterAnonymousAuthenticationConfigOutputWithContext(ctx context.Context) ClusterAnonymousAuthenticationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAnonymousAuthenticationConfigOutput)
+}
+
+func (i ClusterAnonymousAuthenticationConfigArgs) ToClusterAnonymousAuthenticationConfigPtrOutput() ClusterAnonymousAuthenticationConfigPtrOutput {
+	return i.ToClusterAnonymousAuthenticationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterAnonymousAuthenticationConfigArgs) ToClusterAnonymousAuthenticationConfigPtrOutputWithContext(ctx context.Context) ClusterAnonymousAuthenticationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAnonymousAuthenticationConfigOutput).ToClusterAnonymousAuthenticationConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterAnonymousAuthenticationConfigPtrInput is an input type that accepts ClusterAnonymousAuthenticationConfigArgs, ClusterAnonymousAuthenticationConfigPtr and ClusterAnonymousAuthenticationConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterAnonymousAuthenticationConfigPtrInput` via:
+//
+//	        ClusterAnonymousAuthenticationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterAnonymousAuthenticationConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterAnonymousAuthenticationConfigPtrOutput() ClusterAnonymousAuthenticationConfigPtrOutput
+	ToClusterAnonymousAuthenticationConfigPtrOutputWithContext(context.Context) ClusterAnonymousAuthenticationConfigPtrOutput
+}
+
+type clusterAnonymousAuthenticationConfigPtrType ClusterAnonymousAuthenticationConfigArgs
+
+func ClusterAnonymousAuthenticationConfigPtr(v *ClusterAnonymousAuthenticationConfigArgs) ClusterAnonymousAuthenticationConfigPtrInput {
+	return (*clusterAnonymousAuthenticationConfigPtrType)(v)
+}
+
+func (*clusterAnonymousAuthenticationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAnonymousAuthenticationConfig)(nil)).Elem()
+}
+
+func (i *clusterAnonymousAuthenticationConfigPtrType) ToClusterAnonymousAuthenticationConfigPtrOutput() ClusterAnonymousAuthenticationConfigPtrOutput {
+	return i.ToClusterAnonymousAuthenticationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterAnonymousAuthenticationConfigPtrType) ToClusterAnonymousAuthenticationConfigPtrOutputWithContext(ctx context.Context) ClusterAnonymousAuthenticationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAnonymousAuthenticationConfigPtrOutput)
+}
+
+type ClusterAnonymousAuthenticationConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterAnonymousAuthenticationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAnonymousAuthenticationConfig)(nil)).Elem()
+}
+
+func (o ClusterAnonymousAuthenticationConfigOutput) ToClusterAnonymousAuthenticationConfigOutput() ClusterAnonymousAuthenticationConfigOutput {
+	return o
+}
+
+func (o ClusterAnonymousAuthenticationConfigOutput) ToClusterAnonymousAuthenticationConfigOutputWithContext(ctx context.Context) ClusterAnonymousAuthenticationConfigOutput {
+	return o
+}
+
+func (o ClusterAnonymousAuthenticationConfigOutput) ToClusterAnonymousAuthenticationConfigPtrOutput() ClusterAnonymousAuthenticationConfigPtrOutput {
+	return o.ToClusterAnonymousAuthenticationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterAnonymousAuthenticationConfigOutput) ToClusterAnonymousAuthenticationConfigPtrOutputWithContext(ctx context.Context) ClusterAnonymousAuthenticationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterAnonymousAuthenticationConfig) *ClusterAnonymousAuthenticationConfig {
+		return &v
+	}).(ClusterAnonymousAuthenticationConfigPtrOutput)
+}
+
+// Sets or removes authentication restrictions. Available options include `LIMITED` and `ENABLED`.
+func (o ClusterAnonymousAuthenticationConfigOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterAnonymousAuthenticationConfig) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+type ClusterAnonymousAuthenticationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterAnonymousAuthenticationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAnonymousAuthenticationConfig)(nil)).Elem()
+}
+
+func (o ClusterAnonymousAuthenticationConfigPtrOutput) ToClusterAnonymousAuthenticationConfigPtrOutput() ClusterAnonymousAuthenticationConfigPtrOutput {
+	return o
+}
+
+func (o ClusterAnonymousAuthenticationConfigPtrOutput) ToClusterAnonymousAuthenticationConfigPtrOutputWithContext(ctx context.Context) ClusterAnonymousAuthenticationConfigPtrOutput {
+	return o
+}
+
+func (o ClusterAnonymousAuthenticationConfigPtrOutput) Elem() ClusterAnonymousAuthenticationConfigOutput {
+	return o.ApplyT(func(v *ClusterAnonymousAuthenticationConfig) ClusterAnonymousAuthenticationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterAnonymousAuthenticationConfig
+		return ret
+	}).(ClusterAnonymousAuthenticationConfigOutput)
+}
+
+// Sets or removes authentication restrictions. Available options include `LIMITED` and `ENABLED`.
+func (o ClusterAnonymousAuthenticationConfigPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterAnonymousAuthenticationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Mode
+	}).(pulumi.StringPtrOutput)
 }
 
 type ClusterAuthenticatorGroupsConfig struct {
@@ -38423,6 +38556,8 @@ func (o ClusterResourceUsageExportConfigBigqueryDestinationPtrOutput) DatasetId(
 type ClusterSecretManagerConfig struct {
 	// Enable the Secret Manager add-on for this cluster.
 	Enabled bool `pulumi:"enabled"`
+	// config for secret manager auto rotation. Structure is docuemented below
+	RotationConfig *ClusterSecretManagerConfigRotationConfig `pulumi:"rotationConfig"`
 }
 
 // ClusterSecretManagerConfigInput is an input type that accepts ClusterSecretManagerConfigArgs and ClusterSecretManagerConfigOutput values.
@@ -38439,6 +38574,8 @@ type ClusterSecretManagerConfigInput interface {
 type ClusterSecretManagerConfigArgs struct {
 	// Enable the Secret Manager add-on for this cluster.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// config for secret manager auto rotation. Structure is docuemented below
+	RotationConfig ClusterSecretManagerConfigRotationConfigPtrInput `pulumi:"rotationConfig"`
 }
 
 func (ClusterSecretManagerConfigArgs) ElementType() reflect.Type {
@@ -38523,6 +38660,11 @@ func (o ClusterSecretManagerConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterSecretManagerConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// config for secret manager auto rotation. Structure is docuemented below
+func (o ClusterSecretManagerConfigOutput) RotationConfig() ClusterSecretManagerConfigRotationConfigPtrOutput {
+	return o.ApplyT(func(v ClusterSecretManagerConfig) *ClusterSecretManagerConfigRotationConfig { return v.RotationConfig }).(ClusterSecretManagerConfigRotationConfigPtrOutput)
+}
+
 type ClusterSecretManagerConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterSecretManagerConfigPtrOutput) ElementType() reflect.Type {
@@ -38555,6 +38697,172 @@ func (o ClusterSecretManagerConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 		}
 		return &v.Enabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+// config for secret manager auto rotation. Structure is docuemented below
+func (o ClusterSecretManagerConfigPtrOutput) RotationConfig() ClusterSecretManagerConfigRotationConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterSecretManagerConfig) *ClusterSecretManagerConfigRotationConfig {
+		if v == nil {
+			return nil
+		}
+		return v.RotationConfig
+	}).(ClusterSecretManagerConfigRotationConfigPtrOutput)
+}
+
+type ClusterSecretManagerConfigRotationConfig struct {
+	// Enable the roation in Secret Manager add-on for this cluster.
+	Enabled bool `pulumi:"enabled"`
+	// The interval between two consecutive rotations. Default rotation interval is 2 minutes.
+	RotationInterval *string `pulumi:"rotationInterval"`
+}
+
+// ClusterSecretManagerConfigRotationConfigInput is an input type that accepts ClusterSecretManagerConfigRotationConfigArgs and ClusterSecretManagerConfigRotationConfigOutput values.
+// You can construct a concrete instance of `ClusterSecretManagerConfigRotationConfigInput` via:
+//
+//	ClusterSecretManagerConfigRotationConfigArgs{...}
+type ClusterSecretManagerConfigRotationConfigInput interface {
+	pulumi.Input
+
+	ToClusterSecretManagerConfigRotationConfigOutput() ClusterSecretManagerConfigRotationConfigOutput
+	ToClusterSecretManagerConfigRotationConfigOutputWithContext(context.Context) ClusterSecretManagerConfigRotationConfigOutput
+}
+
+type ClusterSecretManagerConfigRotationConfigArgs struct {
+	// Enable the roation in Secret Manager add-on for this cluster.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The interval between two consecutive rotations. Default rotation interval is 2 minutes.
+	RotationInterval pulumi.StringPtrInput `pulumi:"rotationInterval"`
+}
+
+func (ClusterSecretManagerConfigRotationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterSecretManagerConfigRotationConfig)(nil)).Elem()
+}
+
+func (i ClusterSecretManagerConfigRotationConfigArgs) ToClusterSecretManagerConfigRotationConfigOutput() ClusterSecretManagerConfigRotationConfigOutput {
+	return i.ToClusterSecretManagerConfigRotationConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterSecretManagerConfigRotationConfigArgs) ToClusterSecretManagerConfigRotationConfigOutputWithContext(ctx context.Context) ClusterSecretManagerConfigRotationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterSecretManagerConfigRotationConfigOutput)
+}
+
+func (i ClusterSecretManagerConfigRotationConfigArgs) ToClusterSecretManagerConfigRotationConfigPtrOutput() ClusterSecretManagerConfigRotationConfigPtrOutput {
+	return i.ToClusterSecretManagerConfigRotationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterSecretManagerConfigRotationConfigArgs) ToClusterSecretManagerConfigRotationConfigPtrOutputWithContext(ctx context.Context) ClusterSecretManagerConfigRotationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterSecretManagerConfigRotationConfigOutput).ToClusterSecretManagerConfigRotationConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterSecretManagerConfigRotationConfigPtrInput is an input type that accepts ClusterSecretManagerConfigRotationConfigArgs, ClusterSecretManagerConfigRotationConfigPtr and ClusterSecretManagerConfigRotationConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterSecretManagerConfigRotationConfigPtrInput` via:
+//
+//	        ClusterSecretManagerConfigRotationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterSecretManagerConfigRotationConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterSecretManagerConfigRotationConfigPtrOutput() ClusterSecretManagerConfigRotationConfigPtrOutput
+	ToClusterSecretManagerConfigRotationConfigPtrOutputWithContext(context.Context) ClusterSecretManagerConfigRotationConfigPtrOutput
+}
+
+type clusterSecretManagerConfigRotationConfigPtrType ClusterSecretManagerConfigRotationConfigArgs
+
+func ClusterSecretManagerConfigRotationConfigPtr(v *ClusterSecretManagerConfigRotationConfigArgs) ClusterSecretManagerConfigRotationConfigPtrInput {
+	return (*clusterSecretManagerConfigRotationConfigPtrType)(v)
+}
+
+func (*clusterSecretManagerConfigRotationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterSecretManagerConfigRotationConfig)(nil)).Elem()
+}
+
+func (i *clusterSecretManagerConfigRotationConfigPtrType) ToClusterSecretManagerConfigRotationConfigPtrOutput() ClusterSecretManagerConfigRotationConfigPtrOutput {
+	return i.ToClusterSecretManagerConfigRotationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterSecretManagerConfigRotationConfigPtrType) ToClusterSecretManagerConfigRotationConfigPtrOutputWithContext(ctx context.Context) ClusterSecretManagerConfigRotationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterSecretManagerConfigRotationConfigPtrOutput)
+}
+
+type ClusterSecretManagerConfigRotationConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterSecretManagerConfigRotationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterSecretManagerConfigRotationConfig)(nil)).Elem()
+}
+
+func (o ClusterSecretManagerConfigRotationConfigOutput) ToClusterSecretManagerConfigRotationConfigOutput() ClusterSecretManagerConfigRotationConfigOutput {
+	return o
+}
+
+func (o ClusterSecretManagerConfigRotationConfigOutput) ToClusterSecretManagerConfigRotationConfigOutputWithContext(ctx context.Context) ClusterSecretManagerConfigRotationConfigOutput {
+	return o
+}
+
+func (o ClusterSecretManagerConfigRotationConfigOutput) ToClusterSecretManagerConfigRotationConfigPtrOutput() ClusterSecretManagerConfigRotationConfigPtrOutput {
+	return o.ToClusterSecretManagerConfigRotationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterSecretManagerConfigRotationConfigOutput) ToClusterSecretManagerConfigRotationConfigPtrOutputWithContext(ctx context.Context) ClusterSecretManagerConfigRotationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterSecretManagerConfigRotationConfig) *ClusterSecretManagerConfigRotationConfig {
+		return &v
+	}).(ClusterSecretManagerConfigRotationConfigPtrOutput)
+}
+
+// Enable the roation in Secret Manager add-on for this cluster.
+func (o ClusterSecretManagerConfigRotationConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterSecretManagerConfigRotationConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The interval between two consecutive rotations. Default rotation interval is 2 minutes.
+func (o ClusterSecretManagerConfigRotationConfigOutput) RotationInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterSecretManagerConfigRotationConfig) *string { return v.RotationInterval }).(pulumi.StringPtrOutput)
+}
+
+type ClusterSecretManagerConfigRotationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterSecretManagerConfigRotationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterSecretManagerConfigRotationConfig)(nil)).Elem()
+}
+
+func (o ClusterSecretManagerConfigRotationConfigPtrOutput) ToClusterSecretManagerConfigRotationConfigPtrOutput() ClusterSecretManagerConfigRotationConfigPtrOutput {
+	return o
+}
+
+func (o ClusterSecretManagerConfigRotationConfigPtrOutput) ToClusterSecretManagerConfigRotationConfigPtrOutputWithContext(ctx context.Context) ClusterSecretManagerConfigRotationConfigPtrOutput {
+	return o
+}
+
+func (o ClusterSecretManagerConfigRotationConfigPtrOutput) Elem() ClusterSecretManagerConfigRotationConfigOutput {
+	return o.ApplyT(func(v *ClusterSecretManagerConfigRotationConfig) ClusterSecretManagerConfigRotationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterSecretManagerConfigRotationConfig
+		return ret
+	}).(ClusterSecretManagerConfigRotationConfigOutput)
+}
+
+// Enable the roation in Secret Manager add-on for this cluster.
+func (o ClusterSecretManagerConfigRotationConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterSecretManagerConfigRotationConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The interval between two consecutive rotations. Default rotation interval is 2 minutes.
+func (o ClusterSecretManagerConfigRotationConfigPtrOutput) RotationInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterSecretManagerConfigRotationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RotationInterval
+	}).(pulumi.StringPtrOutput)
 }
 
 type ClusterSecurityPostureConfig struct {
@@ -48878,6 +49186,114 @@ func (o GetClusterAddonsConfigStatefulHaConfigArrayOutput) Index(i pulumi.IntInp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAddonsConfigStatefulHaConfig {
 		return vs[0].([]GetClusterAddonsConfigStatefulHaConfig)[vs[1].(int)]
 	}).(GetClusterAddonsConfigStatefulHaConfigOutput)
+}
+
+type GetClusterAnonymousAuthenticationConfig struct {
+	// Setting this to LIMITED will restrict authentication of anonymous users to health check endpoints only.
+	//  Accepted values are:
+	// * ENABLED: Authentication of anonymous users is enabled for all endpoints.
+	// * LIMITED: Anonymous access is only allowed for health check endpoints.
+	Mode string `pulumi:"mode"`
+}
+
+// GetClusterAnonymousAuthenticationConfigInput is an input type that accepts GetClusterAnonymousAuthenticationConfigArgs and GetClusterAnonymousAuthenticationConfigOutput values.
+// You can construct a concrete instance of `GetClusterAnonymousAuthenticationConfigInput` via:
+//
+//	GetClusterAnonymousAuthenticationConfigArgs{...}
+type GetClusterAnonymousAuthenticationConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterAnonymousAuthenticationConfigOutput() GetClusterAnonymousAuthenticationConfigOutput
+	ToGetClusterAnonymousAuthenticationConfigOutputWithContext(context.Context) GetClusterAnonymousAuthenticationConfigOutput
+}
+
+type GetClusterAnonymousAuthenticationConfigArgs struct {
+	// Setting this to LIMITED will restrict authentication of anonymous users to health check endpoints only.
+	//  Accepted values are:
+	// * ENABLED: Authentication of anonymous users is enabled for all endpoints.
+	// * LIMITED: Anonymous access is only allowed for health check endpoints.
+	Mode pulumi.StringInput `pulumi:"mode"`
+}
+
+func (GetClusterAnonymousAuthenticationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAnonymousAuthenticationConfig)(nil)).Elem()
+}
+
+func (i GetClusterAnonymousAuthenticationConfigArgs) ToGetClusterAnonymousAuthenticationConfigOutput() GetClusterAnonymousAuthenticationConfigOutput {
+	return i.ToGetClusterAnonymousAuthenticationConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterAnonymousAuthenticationConfigArgs) ToGetClusterAnonymousAuthenticationConfigOutputWithContext(ctx context.Context) GetClusterAnonymousAuthenticationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAnonymousAuthenticationConfigOutput)
+}
+
+// GetClusterAnonymousAuthenticationConfigArrayInput is an input type that accepts GetClusterAnonymousAuthenticationConfigArray and GetClusterAnonymousAuthenticationConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterAnonymousAuthenticationConfigArrayInput` via:
+//
+//	GetClusterAnonymousAuthenticationConfigArray{ GetClusterAnonymousAuthenticationConfigArgs{...} }
+type GetClusterAnonymousAuthenticationConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterAnonymousAuthenticationConfigArrayOutput() GetClusterAnonymousAuthenticationConfigArrayOutput
+	ToGetClusterAnonymousAuthenticationConfigArrayOutputWithContext(context.Context) GetClusterAnonymousAuthenticationConfigArrayOutput
+}
+
+type GetClusterAnonymousAuthenticationConfigArray []GetClusterAnonymousAuthenticationConfigInput
+
+func (GetClusterAnonymousAuthenticationConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAnonymousAuthenticationConfig)(nil)).Elem()
+}
+
+func (i GetClusterAnonymousAuthenticationConfigArray) ToGetClusterAnonymousAuthenticationConfigArrayOutput() GetClusterAnonymousAuthenticationConfigArrayOutput {
+	return i.ToGetClusterAnonymousAuthenticationConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterAnonymousAuthenticationConfigArray) ToGetClusterAnonymousAuthenticationConfigArrayOutputWithContext(ctx context.Context) GetClusterAnonymousAuthenticationConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAnonymousAuthenticationConfigArrayOutput)
+}
+
+type GetClusterAnonymousAuthenticationConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAnonymousAuthenticationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAnonymousAuthenticationConfig)(nil)).Elem()
+}
+
+func (o GetClusterAnonymousAuthenticationConfigOutput) ToGetClusterAnonymousAuthenticationConfigOutput() GetClusterAnonymousAuthenticationConfigOutput {
+	return o
+}
+
+func (o GetClusterAnonymousAuthenticationConfigOutput) ToGetClusterAnonymousAuthenticationConfigOutputWithContext(ctx context.Context) GetClusterAnonymousAuthenticationConfigOutput {
+	return o
+}
+
+// Setting this to LIMITED will restrict authentication of anonymous users to health check endpoints only.
+//
+//	Accepted values are:
+//
+// * ENABLED: Authentication of anonymous users is enabled for all endpoints.
+// * LIMITED: Anonymous access is only allowed for health check endpoints.
+func (o GetClusterAnonymousAuthenticationConfigOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterAnonymousAuthenticationConfig) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+type GetClusterAnonymousAuthenticationConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAnonymousAuthenticationConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAnonymousAuthenticationConfig)(nil)).Elem()
+}
+
+func (o GetClusterAnonymousAuthenticationConfigArrayOutput) ToGetClusterAnonymousAuthenticationConfigArrayOutput() GetClusterAnonymousAuthenticationConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterAnonymousAuthenticationConfigArrayOutput) ToGetClusterAnonymousAuthenticationConfigArrayOutputWithContext(ctx context.Context) GetClusterAnonymousAuthenticationConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterAnonymousAuthenticationConfigArrayOutput) Index(i pulumi.IntInput) GetClusterAnonymousAuthenticationConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAnonymousAuthenticationConfig {
+		return vs[0].([]GetClusterAnonymousAuthenticationConfig)[vs[1].(int)]
+	}).(GetClusterAnonymousAuthenticationConfigOutput)
 }
 
 type GetClusterAuthenticatorGroupsConfig struct {
@@ -65380,6 +65796,8 @@ func (o GetClusterResourceUsageExportConfigBigqueryDestinationArrayOutput) Index
 type GetClusterSecretManagerConfig struct {
 	// Enable the Secret manager csi component.
 	Enabled bool `pulumi:"enabled"`
+	// Configuration for Secret Manager auto rotation.
+	RotationConfigs []GetClusterSecretManagerConfigRotationConfig `pulumi:"rotationConfigs"`
 }
 
 // GetClusterSecretManagerConfigInput is an input type that accepts GetClusterSecretManagerConfigArgs and GetClusterSecretManagerConfigOutput values.
@@ -65396,6 +65814,8 @@ type GetClusterSecretManagerConfigInput interface {
 type GetClusterSecretManagerConfigArgs struct {
 	// Enable the Secret manager csi component.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Configuration for Secret Manager auto rotation.
+	RotationConfigs GetClusterSecretManagerConfigRotationConfigArrayInput `pulumi:"rotationConfigs"`
 }
 
 func (GetClusterSecretManagerConfigArgs) ElementType() reflect.Type {
@@ -65454,6 +65874,13 @@ func (o GetClusterSecretManagerConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClusterSecretManagerConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// Configuration for Secret Manager auto rotation.
+func (o GetClusterSecretManagerConfigOutput) RotationConfigs() GetClusterSecretManagerConfigRotationConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterSecretManagerConfig) []GetClusterSecretManagerConfigRotationConfig {
+		return v.RotationConfigs
+	}).(GetClusterSecretManagerConfigRotationConfigArrayOutput)
+}
+
 type GetClusterSecretManagerConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClusterSecretManagerConfigArrayOutput) ElementType() reflect.Type {
@@ -65472,6 +65899,112 @@ func (o GetClusterSecretManagerConfigArrayOutput) Index(i pulumi.IntInput) GetCl
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterSecretManagerConfig {
 		return vs[0].([]GetClusterSecretManagerConfig)[vs[1].(int)]
 	}).(GetClusterSecretManagerConfigOutput)
+}
+
+type GetClusterSecretManagerConfigRotationConfig struct {
+	// Enable the Secret manager auto rotation.
+	Enabled bool `pulumi:"enabled"`
+	// The interval between two consecutive rotations. Default rotation interval is 2 minutes
+	RotationInterval string `pulumi:"rotationInterval"`
+}
+
+// GetClusterSecretManagerConfigRotationConfigInput is an input type that accepts GetClusterSecretManagerConfigRotationConfigArgs and GetClusterSecretManagerConfigRotationConfigOutput values.
+// You can construct a concrete instance of `GetClusterSecretManagerConfigRotationConfigInput` via:
+//
+//	GetClusterSecretManagerConfigRotationConfigArgs{...}
+type GetClusterSecretManagerConfigRotationConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterSecretManagerConfigRotationConfigOutput() GetClusterSecretManagerConfigRotationConfigOutput
+	ToGetClusterSecretManagerConfigRotationConfigOutputWithContext(context.Context) GetClusterSecretManagerConfigRotationConfigOutput
+}
+
+type GetClusterSecretManagerConfigRotationConfigArgs struct {
+	// Enable the Secret manager auto rotation.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The interval between two consecutive rotations. Default rotation interval is 2 minutes
+	RotationInterval pulumi.StringInput `pulumi:"rotationInterval"`
+}
+
+func (GetClusterSecretManagerConfigRotationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterSecretManagerConfigRotationConfig)(nil)).Elem()
+}
+
+func (i GetClusterSecretManagerConfigRotationConfigArgs) ToGetClusterSecretManagerConfigRotationConfigOutput() GetClusterSecretManagerConfigRotationConfigOutput {
+	return i.ToGetClusterSecretManagerConfigRotationConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterSecretManagerConfigRotationConfigArgs) ToGetClusterSecretManagerConfigRotationConfigOutputWithContext(ctx context.Context) GetClusterSecretManagerConfigRotationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterSecretManagerConfigRotationConfigOutput)
+}
+
+// GetClusterSecretManagerConfigRotationConfigArrayInput is an input type that accepts GetClusterSecretManagerConfigRotationConfigArray and GetClusterSecretManagerConfigRotationConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterSecretManagerConfigRotationConfigArrayInput` via:
+//
+//	GetClusterSecretManagerConfigRotationConfigArray{ GetClusterSecretManagerConfigRotationConfigArgs{...} }
+type GetClusterSecretManagerConfigRotationConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterSecretManagerConfigRotationConfigArrayOutput() GetClusterSecretManagerConfigRotationConfigArrayOutput
+	ToGetClusterSecretManagerConfigRotationConfigArrayOutputWithContext(context.Context) GetClusterSecretManagerConfigRotationConfigArrayOutput
+}
+
+type GetClusterSecretManagerConfigRotationConfigArray []GetClusterSecretManagerConfigRotationConfigInput
+
+func (GetClusterSecretManagerConfigRotationConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterSecretManagerConfigRotationConfig)(nil)).Elem()
+}
+
+func (i GetClusterSecretManagerConfigRotationConfigArray) ToGetClusterSecretManagerConfigRotationConfigArrayOutput() GetClusterSecretManagerConfigRotationConfigArrayOutput {
+	return i.ToGetClusterSecretManagerConfigRotationConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterSecretManagerConfigRotationConfigArray) ToGetClusterSecretManagerConfigRotationConfigArrayOutputWithContext(ctx context.Context) GetClusterSecretManagerConfigRotationConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterSecretManagerConfigRotationConfigArrayOutput)
+}
+
+type GetClusterSecretManagerConfigRotationConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterSecretManagerConfigRotationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterSecretManagerConfigRotationConfig)(nil)).Elem()
+}
+
+func (o GetClusterSecretManagerConfigRotationConfigOutput) ToGetClusterSecretManagerConfigRotationConfigOutput() GetClusterSecretManagerConfigRotationConfigOutput {
+	return o
+}
+
+func (o GetClusterSecretManagerConfigRotationConfigOutput) ToGetClusterSecretManagerConfigRotationConfigOutputWithContext(ctx context.Context) GetClusterSecretManagerConfigRotationConfigOutput {
+	return o
+}
+
+// Enable the Secret manager auto rotation.
+func (o GetClusterSecretManagerConfigRotationConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterSecretManagerConfigRotationConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The interval between two consecutive rotations. Default rotation interval is 2 minutes
+func (o GetClusterSecretManagerConfigRotationConfigOutput) RotationInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterSecretManagerConfigRotationConfig) string { return v.RotationInterval }).(pulumi.StringOutput)
+}
+
+type GetClusterSecretManagerConfigRotationConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterSecretManagerConfigRotationConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterSecretManagerConfigRotationConfig)(nil)).Elem()
+}
+
+func (o GetClusterSecretManagerConfigRotationConfigArrayOutput) ToGetClusterSecretManagerConfigRotationConfigArrayOutput() GetClusterSecretManagerConfigRotationConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterSecretManagerConfigRotationConfigArrayOutput) ToGetClusterSecretManagerConfigRotationConfigArrayOutputWithContext(ctx context.Context) GetClusterSecretManagerConfigRotationConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterSecretManagerConfigRotationConfigArrayOutput) Index(i pulumi.IntInput) GetClusterSecretManagerConfigRotationConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterSecretManagerConfigRotationConfig {
+		return vs[0].([]GetClusterSecretManagerConfigRotationConfig)[vs[1].(int)]
+	}).(GetClusterSecretManagerConfigRotationConfigOutput)
 }
 
 type GetClusterSecurityPostureConfig struct {
@@ -66418,6 +66951,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrInput)(nil)).Elem(), ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigStatefulHaConfigInput)(nil)).Elem(), ClusterAddonsConfigStatefulHaConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigStatefulHaConfigPtrInput)(nil)).Elem(), ClusterAddonsConfigStatefulHaConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAnonymousAuthenticationConfigInput)(nil)).Elem(), ClusterAnonymousAuthenticationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAnonymousAuthenticationConfigPtrInput)(nil)).Elem(), ClusterAnonymousAuthenticationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAuthenticatorGroupsConfigInput)(nil)).Elem(), ClusterAuthenticatorGroupsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAuthenticatorGroupsConfigPtrInput)(nil)).Elem(), ClusterAuthenticatorGroupsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterBinaryAuthorizationInput)(nil)).Elem(), ClusterBinaryAuthorizationArgs{})
@@ -66701,6 +67236,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterResourceUsageExportConfigBigqueryDestinationPtrInput)(nil)).Elem(), ClusterResourceUsageExportConfigBigqueryDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterSecretManagerConfigInput)(nil)).Elem(), ClusterSecretManagerConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterSecretManagerConfigPtrInput)(nil)).Elem(), ClusterSecretManagerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterSecretManagerConfigRotationConfigInput)(nil)).Elem(), ClusterSecretManagerConfigRotationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterSecretManagerConfigRotationConfigPtrInput)(nil)).Elem(), ClusterSecretManagerConfigRotationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterSecurityPostureConfigInput)(nil)).Elem(), ClusterSecurityPostureConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterSecurityPostureConfigPtrInput)(nil)).Elem(), ClusterSecurityPostureConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterServiceExternalIpsConfigInput)(nil)).Elem(), ClusterServiceExternalIpsConfigArgs{})
@@ -66834,6 +67371,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArrayInput)(nil)).Elem(), GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigStatefulHaConfigInput)(nil)).Elem(), GetClusterAddonsConfigStatefulHaConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigStatefulHaConfigArrayInput)(nil)).Elem(), GetClusterAddonsConfigStatefulHaConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAnonymousAuthenticationConfigInput)(nil)).Elem(), GetClusterAnonymousAuthenticationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAnonymousAuthenticationConfigArrayInput)(nil)).Elem(), GetClusterAnonymousAuthenticationConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAuthenticatorGroupsConfigInput)(nil)).Elem(), GetClusterAuthenticatorGroupsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAuthenticatorGroupsConfigArrayInput)(nil)).Elem(), GetClusterAuthenticatorGroupsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterBinaryAuthorizationInput)(nil)).Elem(), GetClusterBinaryAuthorizationArgs{})
@@ -67120,6 +67659,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterResourceUsageExportConfigBigqueryDestinationArrayInput)(nil)).Elem(), GetClusterResourceUsageExportConfigBigqueryDestinationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterSecretManagerConfigInput)(nil)).Elem(), GetClusterSecretManagerConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterSecretManagerConfigArrayInput)(nil)).Elem(), GetClusterSecretManagerConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterSecretManagerConfigRotationConfigInput)(nil)).Elem(), GetClusterSecretManagerConfigRotationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterSecretManagerConfigRotationConfigArrayInput)(nil)).Elem(), GetClusterSecretManagerConfigRotationConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterSecurityPostureConfigInput)(nil)).Elem(), GetClusterSecurityPostureConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterSecurityPostureConfigArrayInput)(nil)).Elem(), GetClusterSecurityPostureConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterServiceExternalIpsConfigInput)(nil)).Elem(), GetClusterServiceExternalIpsConfigArgs{})
@@ -67308,6 +67849,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigStatefulHaConfigOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigStatefulHaConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterAnonymousAuthenticationConfigOutput{})
+	pulumi.RegisterOutputType(ClusterAnonymousAuthenticationConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAuthenticatorGroupsConfigOutput{})
 	pulumi.RegisterOutputType(ClusterAuthenticatorGroupsConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterBinaryAuthorizationOutput{})
@@ -67591,6 +68134,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterResourceUsageExportConfigBigqueryDestinationPtrOutput{})
 	pulumi.RegisterOutputType(ClusterSecretManagerConfigOutput{})
 	pulumi.RegisterOutputType(ClusterSecretManagerConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterSecretManagerConfigRotationConfigOutput{})
+	pulumi.RegisterOutputType(ClusterSecretManagerConfigRotationConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterSecurityPostureConfigOutput{})
 	pulumi.RegisterOutputType(ClusterSecurityPostureConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterServiceExternalIpsConfigOutput{})
@@ -67724,6 +68269,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigStatefulHaConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigStatefulHaConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterAnonymousAuthenticationConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterAnonymousAuthenticationConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAuthenticatorGroupsConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterAuthenticatorGroupsConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterBinaryAuthorizationOutput{})
@@ -68010,6 +68557,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterResourceUsageExportConfigBigqueryDestinationArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterSecretManagerConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterSecretManagerConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterSecretManagerConfigRotationConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterSecretManagerConfigRotationConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterSecurityPostureConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterSecurityPostureConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterServiceExternalIpsConfigOutput{})

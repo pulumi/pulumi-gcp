@@ -87,24 +87,39 @@ namespace Pulumi.Gcp.Iam
     public partial class OrganizationsPolicyBinding : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size
-        /// limitations **Note**: This field is non-authoritative, and will only manage the annotations present in your
-        /// configuration. Please refer to the field 'effective_annotations' for all of the annotations present on the resource.
+        /// Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
 
         /// <summary>
-        /// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The
-        /// syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: \"Summary
-        /// size limit\" description: \"Determines if a summary is less than 100 chars\" expression: \"document.summary.size() &lt;
-        /// 100\" Example (Equality): title: \"Requestor is owner\" description: \"Determines if requestor is the document owner\"
-        /// expression: \"document.owner == request.auth.claims.email\" Example (Logic): title: \"Public documents\" description:
-        /// \"Determine whether the document should be publicly visible\" expression: \"document.type != 'private' &amp;&amp; document.type
-        /// != 'internal'\" Example (Data Manipulation): title: \"Notification string\" description: \"Create a notification string
-        /// with a timestamp.\" expression: \"'New message received at ' + string(document.create_time)\" The exact variables and
-        /// functions that may be referenced within an expression are determined by the service that evaluates it. See the service
-        /// documentation for additional information.
+        /// Represents a textual expression in the Common Expression Language
+        /// (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of
+        /// CEL are documented at https://github.com/google/cel-spec.
+        /// Example (Comparison):
+        /// title: \"Summary size limit\"
+        /// description: \"Determines if a summary is less than 100 chars\"
+        /// expression: \"document.summary.size() &lt; 100\"
+        /// Example
+        /// (Equality):
+        /// title: \"Requestor is owner\"
+        /// description: \"Determines if requestor is the document owner\"
+        /// expression: \"document.owner == request.auth.claims.email\"  Example
+        /// (Logic):
+        /// title: \"Public documents\"
+        /// description: \"Determine whether the document should be publicly visible\"
+        /// expression: \"document.type != 'private' &amp;&amp; document.type != 'internal'\"
+        /// Example (Data Manipulation):
+        /// title: \"Notification string\"
+        /// description: \"Create a notification string with a timestamp.\"
+        /// expression: \"'New message received at ' + string(document.create_time)\"
+        /// The exact variables and functions that may be referenced within an expression are
+        /// determined by the service that evaluates it. See the service documentation for
+        /// additional information.
+        /// Structure is documented below.
         /// </summary>
         [Output("condition")]
         public Output<Outputs.OrganizationsPolicyBindingCondition?> Condition { get; private set; } = null!;
@@ -161,9 +176,9 @@ namespace Pulumi.Gcp.Iam
         public Output<string> PolicyBindingId { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. The kind of the policy to attach in this binding. This field must be one of the following: - Left empty (will
-        /// be automatically set to the policy kind) - The input policy kind Possible values: POLICY_KIND_UNSPECIFIED
-        /// PRINCIPAL_ACCESS_BOUNDARY ACCESS
+        /// Immutable. The kind of the policy to attach in this binding. This
+        /// field must be one of the following:  - Left empty (will be automatically set
+        /// to the policy kind) - The input policy kind   Possible values:  POLICY_KIND_UNSPECIFIED PRINCIPAL_ACCESS_BOUNDARY ACCESS
         /// </summary>
         [Output("policyKind")]
         public Output<string?> PolicyKind { get; private set; } = null!;
@@ -243,9 +258,10 @@ namespace Pulumi.Gcp.Iam
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size
-        /// limitations **Note**: This field is non-authoritative, and will only manage the annotations present in your
-        /// configuration. Please refer to the field 'effective_annotations' for all of the annotations present on the resource.
+        /// Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -254,16 +270,30 @@ namespace Pulumi.Gcp.Iam
         }
 
         /// <summary>
-        /// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The
-        /// syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: \"Summary
-        /// size limit\" description: \"Determines if a summary is less than 100 chars\" expression: \"document.summary.size() &lt;
-        /// 100\" Example (Equality): title: \"Requestor is owner\" description: \"Determines if requestor is the document owner\"
-        /// expression: \"document.owner == request.auth.claims.email\" Example (Logic): title: \"Public documents\" description:
-        /// \"Determine whether the document should be publicly visible\" expression: \"document.type != 'private' &amp;&amp; document.type
-        /// != 'internal'\" Example (Data Manipulation): title: \"Notification string\" description: \"Create a notification string
-        /// with a timestamp.\" expression: \"'New message received at ' + string(document.create_time)\" The exact variables and
-        /// functions that may be referenced within an expression are determined by the service that evaluates it. See the service
-        /// documentation for additional information.
+        /// Represents a textual expression in the Common Expression Language
+        /// (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of
+        /// CEL are documented at https://github.com/google/cel-spec.
+        /// Example (Comparison):
+        /// title: \"Summary size limit\"
+        /// description: \"Determines if a summary is less than 100 chars\"
+        /// expression: \"document.summary.size() &lt; 100\"
+        /// Example
+        /// (Equality):
+        /// title: \"Requestor is owner\"
+        /// description: \"Determines if requestor is the document owner\"
+        /// expression: \"document.owner == request.auth.claims.email\"  Example
+        /// (Logic):
+        /// title: \"Public documents\"
+        /// description: \"Determine whether the document should be publicly visible\"
+        /// expression: \"document.type != 'private' &amp;&amp; document.type != 'internal'\"
+        /// Example (Data Manipulation):
+        /// title: \"Notification string\"
+        /// description: \"Create a notification string with a timestamp.\"
+        /// expression: \"'New message received at ' + string(document.create_time)\"
+        /// The exact variables and functions that may be referenced within an expression are
+        /// determined by the service that evaluates it. See the service documentation for
+        /// additional information.
+        /// Structure is documented below.
         /// </summary>
         [Input("condition")]
         public Input<Inputs.OrganizationsPolicyBindingConditionArgs>? Condition { get; set; }
@@ -299,9 +329,9 @@ namespace Pulumi.Gcp.Iam
         public Input<string> PolicyBindingId { get; set; } = null!;
 
         /// <summary>
-        /// Immutable. The kind of the policy to attach in this binding. This field must be one of the following: - Left empty (will
-        /// be automatically set to the policy kind) - The input policy kind Possible values: POLICY_KIND_UNSPECIFIED
-        /// PRINCIPAL_ACCESS_BOUNDARY ACCESS
+        /// Immutable. The kind of the policy to attach in this binding. This
+        /// field must be one of the following:  - Left empty (will be automatically set
+        /// to the policy kind) - The input policy kind   Possible values:  POLICY_KIND_UNSPECIFIED PRINCIPAL_ACCESS_BOUNDARY ACCESS
         /// </summary>
         [Input("policyKind")]
         public Input<string>? PolicyKind { get; set; }
@@ -325,9 +355,10 @@ namespace Pulumi.Gcp.Iam
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size
-        /// limitations **Note**: This field is non-authoritative, and will only manage the annotations present in your
-        /// configuration. Please refer to the field 'effective_annotations' for all of the annotations present on the resource.
+        /// Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -336,16 +367,30 @@ namespace Pulumi.Gcp.Iam
         }
 
         /// <summary>
-        /// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The
-        /// syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: \"Summary
-        /// size limit\" description: \"Determines if a summary is less than 100 chars\" expression: \"document.summary.size() &lt;
-        /// 100\" Example (Equality): title: \"Requestor is owner\" description: \"Determines if requestor is the document owner\"
-        /// expression: \"document.owner == request.auth.claims.email\" Example (Logic): title: \"Public documents\" description:
-        /// \"Determine whether the document should be publicly visible\" expression: \"document.type != 'private' &amp;&amp; document.type
-        /// != 'internal'\" Example (Data Manipulation): title: \"Notification string\" description: \"Create a notification string
-        /// with a timestamp.\" expression: \"'New message received at ' + string(document.create_time)\" The exact variables and
-        /// functions that may be referenced within an expression are determined by the service that evaluates it. See the service
-        /// documentation for additional information.
+        /// Represents a textual expression in the Common Expression Language
+        /// (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of
+        /// CEL are documented at https://github.com/google/cel-spec.
+        /// Example (Comparison):
+        /// title: \"Summary size limit\"
+        /// description: \"Determines if a summary is less than 100 chars\"
+        /// expression: \"document.summary.size() &lt; 100\"
+        /// Example
+        /// (Equality):
+        /// title: \"Requestor is owner\"
+        /// description: \"Determines if requestor is the document owner\"
+        /// expression: \"document.owner == request.auth.claims.email\"  Example
+        /// (Logic):
+        /// title: \"Public documents\"
+        /// description: \"Determine whether the document should be publicly visible\"
+        /// expression: \"document.type != 'private' &amp;&amp; document.type != 'internal'\"
+        /// Example (Data Manipulation):
+        /// title: \"Notification string\"
+        /// description: \"Create a notification string with a timestamp.\"
+        /// expression: \"'New message received at ' + string(document.create_time)\"
+        /// The exact variables and functions that may be referenced within an expression are
+        /// determined by the service that evaluates it. See the service documentation for
+        /// additional information.
+        /// Structure is documented below.
         /// </summary>
         [Input("condition")]
         public Input<Inputs.OrganizationsPolicyBindingConditionGetArgs>? Condition { get; set; }
@@ -407,9 +452,9 @@ namespace Pulumi.Gcp.Iam
         public Input<string>? PolicyBindingId { get; set; }
 
         /// <summary>
-        /// Immutable. The kind of the policy to attach in this binding. This field must be one of the following: - Left empty (will
-        /// be automatically set to the policy kind) - The input policy kind Possible values: POLICY_KIND_UNSPECIFIED
-        /// PRINCIPAL_ACCESS_BOUNDARY ACCESS
+        /// Immutable. The kind of the policy to attach in this binding. This
+        /// field must be one of the following:  - Left empty (will be automatically set
+        /// to the policy kind) - The input policy kind   Possible values:  POLICY_KIND_UNSPECIFIED PRINCIPAL_ACCESS_BOUNDARY ACCESS
         /// </summary>
         [Input("policyKind")]
         public Input<string>? PolicyKind { get; set; }

@@ -31,9 +31,6 @@ class CxGenerativeSettingsArgs:
         """
         The set of arguments for constructing a CxGenerativeSettings resource.
         :param pulumi.Input[builtins.str] language_code: Language for this settings.
-               
-               
-               - - -
         :param pulumi.Input['CxGenerativeSettingsFallbackSettingsArgs'] fallback_settings: Settings for Generative Fallback.
                Structure is documented below.
         :param pulumi.Input['CxGenerativeSettingsGenerativeSafetySettingsArgs'] generative_safety_settings: Settings for Generative Safety.
@@ -63,9 +60,6 @@ class CxGenerativeSettingsArgs:
     def language_code(self) -> pulumi.Input[builtins.str]:
         """
         Language for this settings.
-
-
-        - - -
         """
         return pulumi.get(self, "language_code")
 
@@ -160,9 +154,6 @@ class _CxGenerativeSettingsState:
         :param pulumi.Input['CxGenerativeSettingsKnowledgeConnectorSettingsArgs'] knowledge_connector_settings: Settings for knowledge connector.
                Structure is documented below.
         :param pulumi.Input[builtins.str] language_code: Language for this settings.
-               
-               
-               - - -
         :param pulumi.Input['CxGenerativeSettingsLlmModelSettingsArgs'] llm_model_settings: LLM model settings.
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: The unique identifier of the generativeSettings.
@@ -230,9 +221,6 @@ class _CxGenerativeSettingsState:
     def language_code(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Language for this settings.
-
-
-        - - -
         """
         return pulumi.get(self, "language_code")
 
@@ -376,9 +364,6 @@ class CxGenerativeSettings(pulumi.CustomResource):
         :param pulumi.Input[Union['CxGenerativeSettingsKnowledgeConnectorSettingsArgs', 'CxGenerativeSettingsKnowledgeConnectorSettingsArgsDict']] knowledge_connector_settings: Settings for knowledge connector.
                Structure is documented below.
         :param pulumi.Input[builtins.str] language_code: Language for this settings.
-               
-               
-               - - -
         :param pulumi.Input[Union['CxGenerativeSettingsLlmModelSettingsArgs', 'CxGenerativeSettingsLlmModelSettingsArgsDict']] llm_model_settings: LLM model settings.
                Structure is documented below.
         :param pulumi.Input[builtins.str] parent: The agent to create a flow for.
@@ -534,9 +519,6 @@ class CxGenerativeSettings(pulumi.CustomResource):
         :param pulumi.Input[Union['CxGenerativeSettingsKnowledgeConnectorSettingsArgs', 'CxGenerativeSettingsKnowledgeConnectorSettingsArgsDict']] knowledge_connector_settings: Settings for knowledge connector.
                Structure is documented below.
         :param pulumi.Input[builtins.str] language_code: Language for this settings.
-               
-               
-               - - -
         :param pulumi.Input[Union['CxGenerativeSettingsLlmModelSettingsArgs', 'CxGenerativeSettingsLlmModelSettingsArgsDict']] llm_model_settings: LLM model settings.
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: The unique identifier of the generativeSettings.
@@ -590,9 +572,6 @@ class CxGenerativeSettings(pulumi.CustomResource):
     def language_code(self) -> pulumi.Output[builtins.str]:
         """
         Language for this settings.
-
-
-        - - -
         """
         return pulumi.get(self, "language_code")
 

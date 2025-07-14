@@ -115,9 +115,6 @@ export class BackupVault extends pulumi.CustomResource {
     public readonly backupMinimumEnforcedRetentionDuration!: pulumi.Output<string>;
     /**
      * Required. ID of the requesting object.
-     *
-     *
-     * - - -
      */
     public readonly backupVaultId!: pulumi.Output<string>;
     /**
@@ -341,9 +338,6 @@ export interface BackupVaultState {
     backupMinimumEnforcedRetentionDuration?: pulumi.Input<string>;
     /**
      * Required. ID of the requesting object.
-     *
-     *
-     * - - -
      */
     backupVaultId?: pulumi.Input<string>;
     /**
@@ -478,9 +472,6 @@ export interface BackupVaultArgs {
     backupMinimumEnforcedRetentionDuration: pulumi.Input<string>;
     /**
      * Required. ID of the requesting object.
-     *
-     *
-     * - - -
      */
     backupVaultId: pulumi.Input<string>;
     /**

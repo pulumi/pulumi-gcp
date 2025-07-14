@@ -35,9 +35,6 @@ class BackupPlanAssociationArgs:
                - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
                - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
         :param pulumi.Input[builtins.str] backup_plan_association_id: The id of backupplan association
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: The location for the backupplan association
         :param pulumi.Input[builtins.str] resource: The resource for which BPA needs to be created
         :param pulumi.Input[builtins.str] resource_type: The resource type of workload on which backupplan is applied.
@@ -73,9 +70,6 @@ class BackupPlanAssociationArgs:
     def backup_plan_association_id(self) -> pulumi.Input[builtins.str]:
         """
         The id of backupplan association
-
-
-        - - -
         """
         return pulumi.get(self, "backup_plan_association_id")
 
@@ -156,9 +150,6 @@ class _BackupPlanAssociationState:
                - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
                - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
         :param pulumi.Input[builtins.str] backup_plan_association_id: The id of backupplan association
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] create_time: The time when the instance was created
         :param pulumi.Input[builtins.str] data_source: Resource name of data source which will be used as storage location for backups taken
         :param pulumi.Input[builtins.str] last_successful_backup_consistency_time: The point in time when the last successful backup was captured from the source
@@ -218,9 +209,6 @@ class _BackupPlanAssociationState:
     def backup_plan_association_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The id of backupplan association
-
-
-        - - -
         """
         return pulumi.get(self, "backup_plan_association_id")
 
@@ -470,9 +458,6 @@ class BackupPlanAssociation(pulumi.CustomResource):
                - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
                - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
         :param pulumi.Input[builtins.str] backup_plan_association_id: The id of backupplan association
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: The location for the backupplan association
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -670,9 +655,6 @@ class BackupPlanAssociation(pulumi.CustomResource):
                - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
                - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
         :param pulumi.Input[builtins.str] backup_plan_association_id: The id of backupplan association
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] create_time: The time when the instance was created
         :param pulumi.Input[builtins.str] data_source: Resource name of data source which will be used as storage location for backups taken
         :param pulumi.Input[builtins.str] last_successful_backup_consistency_time: The point in time when the last successful backup was captured from the source
@@ -721,9 +703,6 @@ class BackupPlanAssociation(pulumi.CustomResource):
     def backup_plan_association_id(self) -> pulumi.Output[builtins.str]:
         """
         The id of backupplan association
-
-
-        - - -
         """
         return pulumi.get(self, "backup_plan_association_id")
 

@@ -23,8 +23,6 @@ public final class OrganizationsPolicyBindingTargetArgs extends com.pulumi.resou
      * * Workspace Identity: `//iam.googleapis.com/locations/global/workspace/WORKSPACE_ID`
      *   It must be parent by the policy binding&#39;s parent (the organization).
      * 
-     * ***
-     * 
      */
     @Import(name="principalSet")
     private @Nullable Output<String> principalSet;
@@ -36,8 +34,6 @@ public final class OrganizationsPolicyBindingTargetArgs extends com.pulumi.resou
      * * Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID`
      * * Workspace Identity: `//iam.googleapis.com/locations/global/workspace/WORKSPACE_ID`
      *   It must be parent by the policy binding&#39;s parent (the organization).
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> principalSet() {
@@ -76,8 +72,6 @@ public final class OrganizationsPolicyBindingTargetArgs extends com.pulumi.resou
          * * Workspace Identity: `//iam.googleapis.com/locations/global/workspace/WORKSPACE_ID`
          *   It must be parent by the policy binding&#39;s parent (the organization).
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -93,8 +87,6 @@ public final class OrganizationsPolicyBindingTargetArgs extends com.pulumi.resou
          * * Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID`
          * * Workspace Identity: `//iam.googleapis.com/locations/global/workspace/WORKSPACE_ID`
          *   It must be parent by the policy binding&#39;s parent (the organization).
-         * 
-         * ***
          * 
          * @return builder
          * 

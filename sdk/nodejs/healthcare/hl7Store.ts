@@ -209,9 +209,6 @@ export class Hl7Store extends pulumi.CustomResource {
     /**
      * Identifies the dataset addressed by this request. Must be in the format
      * 'projects/{project}/locations/{location}/datasets/{dataset}'
-     *
-     *
-     * - - -
      */
     public readonly dataset!: pulumi.Output<string>;
     /**
@@ -326,9 +323,6 @@ export interface Hl7StoreState {
     /**
      * Identifies the dataset addressed by this request. Must be in the format
      * 'projects/{project}/locations/{location}/datasets/{dataset}'
-     *
-     *
-     * - - -
      */
     dataset?: pulumi.Input<string>;
     /**
@@ -398,9 +392,6 @@ export interface Hl7StoreArgs {
     /**
      * Identifies the dataset addressed by this request. Must be in the format
      * 'projects/{project}/locations/{location}/datasets/{dataset}'
-     *
-     *
-     * - - -
      */
     dataset: pulumi.Input<string>;
     /**

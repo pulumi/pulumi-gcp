@@ -70,10 +70,11 @@ type LookupBackendBucketResult struct {
 	EdgeSecurityPolicy    string                      `pulumi:"edgeSecurityPolicy"`
 	EnableCdn             bool                        `pulumi:"enableCdn"`
 	// The provider-assigned unique ID for this managed resource.
-	Id       string  `pulumi:"id"`
-	Name     string  `pulumi:"name"`
-	Project  *string `pulumi:"project"`
-	SelfLink string  `pulumi:"selfLink"`
+	Id                  string  `pulumi:"id"`
+	LoadBalancingScheme string  `pulumi:"loadBalancingScheme"`
+	Name                string  `pulumi:"name"`
+	Project             *string `pulumi:"project"`
+	SelfLink            string  `pulumi:"selfLink"`
 }
 
 func LookupBackendBucketOutput(ctx *pulumi.Context, args LookupBackendBucketOutputArgs, opts ...pulumi.InvokeOption) LookupBackendBucketResultOutput {
@@ -150,6 +151,10 @@ func (o LookupBackendBucketResultOutput) EnableCdn() pulumi.BoolOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o LookupBackendBucketResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackendBucketResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupBackendBucketResultOutput) LoadBalancingScheme() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackendBucketResult) string { return v.LoadBalancingScheme }).(pulumi.StringOutput)
 }
 
 func (o LookupBackendBucketResultOutput) Name() pulumi.StringOutput {

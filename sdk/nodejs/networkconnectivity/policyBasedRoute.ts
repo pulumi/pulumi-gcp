@@ -142,6 +142,7 @@ export class PolicyBasedRoute extends pulumi.CustomResource {
     public readonly filter!: pulumi.Output<outputs.networkconnectivity.PolicyBasedRouteFilter>;
     /**
      * The interconnect attachments that this policy-based route applies to.
+     * Structure is documented below.
      */
     public readonly interconnectAttachment!: pulumi.Output<outputs.networkconnectivity.PolicyBasedRouteInterconnectAttachment | undefined>;
     /**
@@ -149,8 +150,10 @@ export class PolicyBasedRoute extends pulumi.CustomResource {
      */
     public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
-     * User-defined labels. **Note**: This field is non-authoritative, and will only manage the labels present in your
-     * configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+     * User-defined labels.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -166,15 +169,18 @@ export class PolicyBasedRoute extends pulumi.CustomResource {
      */
     public readonly nextHopIlbIp!: pulumi.Output<string | undefined>;
     /**
-     * Other routes that will be referenced to determine the next hop of the packet. Possible values: ["DEFAULT_ROUTING"]
+     * Other routes that will be referenced to determine the next hop of the packet.
+     * Possible values are: `DEFAULT_ROUTING`.
      */
     public readonly nextHopOtherRoutes!: pulumi.Output<string | undefined>;
     /**
-     * The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching
-     * policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered
-     * priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
+     * The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
      */
     public readonly priority!: pulumi.Output<number | undefined>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
@@ -187,6 +193,7 @@ export class PolicyBasedRoute extends pulumi.CustomResource {
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
      * VM instances to which this policy-based route applies to.
+     * Structure is documented below.
      */
     public readonly virtualMachine!: pulumi.Output<outputs.networkconnectivity.PolicyBasedRouteVirtualMachine | undefined>;
     /**
@@ -281,6 +288,7 @@ export interface PolicyBasedRouteState {
     filter?: pulumi.Input<inputs.networkconnectivity.PolicyBasedRouteFilter>;
     /**
      * The interconnect attachments that this policy-based route applies to.
+     * Structure is documented below.
      */
     interconnectAttachment?: pulumi.Input<inputs.networkconnectivity.PolicyBasedRouteInterconnectAttachment>;
     /**
@@ -288,8 +296,10 @@ export interface PolicyBasedRouteState {
      */
     kind?: pulumi.Input<string>;
     /**
-     * User-defined labels. **Note**: This field is non-authoritative, and will only manage the labels present in your
-     * configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+     * User-defined labels.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -305,15 +315,18 @@ export interface PolicyBasedRouteState {
      */
     nextHopIlbIp?: pulumi.Input<string>;
     /**
-     * Other routes that will be referenced to determine the next hop of the packet. Possible values: ["DEFAULT_ROUTING"]
+     * Other routes that will be referenced to determine the next hop of the packet.
+     * Possible values are: `DEFAULT_ROUTING`.
      */
     nextHopOtherRoutes?: pulumi.Input<string>;
     /**
-     * The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching
-     * policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered
-     * priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
+     * The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
      */
     priority?: pulumi.Input<number>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
@@ -326,6 +339,7 @@ export interface PolicyBasedRouteState {
     updateTime?: pulumi.Input<string>;
     /**
      * VM instances to which this policy-based route applies to.
+     * Structure is documented below.
      */
     virtualMachine?: pulumi.Input<inputs.networkconnectivity.PolicyBasedRouteVirtualMachine>;
     /**
@@ -350,11 +364,14 @@ export interface PolicyBasedRouteArgs {
     filter: pulumi.Input<inputs.networkconnectivity.PolicyBasedRouteFilter>;
     /**
      * The interconnect attachments that this policy-based route applies to.
+     * Structure is documented below.
      */
     interconnectAttachment?: pulumi.Input<inputs.networkconnectivity.PolicyBasedRouteInterconnectAttachment>;
     /**
-     * User-defined labels. **Note**: This field is non-authoritative, and will only manage the labels present in your
-     * configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+     * User-defined labels.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -370,18 +387,22 @@ export interface PolicyBasedRouteArgs {
      */
     nextHopIlbIp?: pulumi.Input<string>;
     /**
-     * Other routes that will be referenced to determine the next hop of the packet. Possible values: ["DEFAULT_ROUTING"]
+     * Other routes that will be referenced to determine the next hop of the packet.
+     * Possible values are: `DEFAULT_ROUTING`.
      */
     nextHopOtherRoutes?: pulumi.Input<string>;
     /**
-     * The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching
-     * policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered
-     * priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
+     * The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
      */
     priority?: pulumi.Input<number>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * VM instances to which this policy-based route applies to.
+     * Structure is documented below.
      */
     virtualMachine?: pulumi.Input<inputs.networkconnectivity.PolicyBasedRouteVirtualMachine>;
 }

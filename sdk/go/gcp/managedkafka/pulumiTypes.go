@@ -15,8 +15,6 @@ var _ = internal.GetEnvOrDefault
 
 type AclAclEntry struct {
 	// The host. Must be set to "*" for Managed Service for Apache Kafka.
-	//
-	// ***
 	Host *string `pulumi:"host"`
 	// The operation type. Allowed values are (case insensitive): ALL, READ,
 	// WRITE, CREATE, DELETE, ALTER, DESCRIBE, CLUSTER_ACTION, DESCRIBE_CONFIGS,
@@ -42,8 +40,6 @@ type AclAclEntryInput interface {
 
 type AclAclEntryArgs struct {
 	// The host. Must be set to "*" for Managed Service for Apache Kafka.
-	//
-	// ***
 	Host pulumi.StringPtrInput `pulumi:"host"`
 	// The operation type. Allowed values are (case insensitive): ALL, READ,
 	// WRITE, CREATE, DELETE, ALTER, DESCRIBE, CLUSTER_ACTION, DESCRIBE_CONFIGS,
@@ -108,8 +104,6 @@ func (o AclAclEntryOutput) ToAclAclEntryOutputWithContext(ctx context.Context) A
 }
 
 // The host. Must be set to "*" for Managed Service for Apache Kafka.
-//
-// ***
 func (o AclAclEntryOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AclAclEntry) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
@@ -154,8 +148,6 @@ func (o AclAclEntryArrayOutput) Index(i pulumi.IntInput) AclAclEntryOutput {
 
 type ClusterCapacityConfig struct {
 	// The memory to provision for the cluster in bytes. The value must be between 1 GiB and 8 GiB per vCPU. Ex. 1024Mi, 4Gi.
-	//
-	// ***
 	MemoryBytes string `pulumi:"memoryBytes"`
 	// The number of vCPUs to provision for the cluster. The minimum is 3.
 	VcpuCount string `pulumi:"vcpuCount"`
@@ -174,8 +166,6 @@ type ClusterCapacityConfigInput interface {
 
 type ClusterCapacityConfigArgs struct {
 	// The memory to provision for the cluster in bytes. The value must be between 1 GiB and 8 GiB per vCPU. Ex. 1024Mi, 4Gi.
-	//
-	// ***
 	MemoryBytes pulumi.StringInput `pulumi:"memoryBytes"`
 	// The number of vCPUs to provision for the cluster. The minimum is 3.
 	VcpuCount pulumi.StringInput `pulumi:"vcpuCount"`
@@ -259,8 +249,6 @@ func (o ClusterCapacityConfigOutput) ToClusterCapacityConfigPtrOutputWithContext
 }
 
 // The memory to provision for the cluster in bytes. The value must be between 1 GiB and 8 GiB per vCPU. Ex. 1024Mi, 4Gi.
-//
-// ***
 func (o ClusterCapacityConfigOutput) MemoryBytes() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterCapacityConfig) string { return v.MemoryBytes }).(pulumi.StringOutput)
 }
@@ -295,8 +283,6 @@ func (o ClusterCapacityConfigPtrOutput) Elem() ClusterCapacityConfigOutput {
 }
 
 // The memory to provision for the cluster in bytes. The value must be between 1 GiB and 8 GiB per vCPU. Ex. 1024Mi, 4Gi.
-//
-// ***
 func (o ClusterCapacityConfigPtrOutput) MemoryBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterCapacityConfig) *string {
 		if v == nil {
@@ -1297,8 +1283,6 @@ type ConnectClusterGcpConfigAccessConfigNetworkConfig struct {
 	// Additional subnets may be specified. They may be in another region, but must be in the same VPC network. The Connect workers can communicate with network endpoints in either the primary or additional subnets.
 	AdditionalSubnets []string `pulumi:"additionalSubnets"`
 	// Additional DNS domain names from the subnet's network to be made visible to the Connect Cluster. When using MirrorMaker2, it's necessary to add the bootstrap address's dns domain name of the target cluster to make it visible to the connector. For example: my-kafka-cluster.us-central1.managedkafka.my-project.cloud.goog
-	//
-	// ***
 	DnsDomainNames []string `pulumi:"dnsDomainNames"`
 	// VPC subnet to make available to the Kafka Connect cluster. Structured like: projects/{project}/regions/{region}/subnetworks/{subnet_id}. It is used to create a Private Service Connect (PSC) interface for the Kafka Connect workers. It must be located in the same region as the Kafka Connect cluster. The CIDR range of the subnet must be within the IPv4 address ranges for private networks, as specified in RFC 1918. The primary subnet CIDR range must have a minimum size of /22 (1024 addresses).
 	PrimarySubnet string `pulumi:"primarySubnet"`
@@ -1319,8 +1303,6 @@ type ConnectClusterGcpConfigAccessConfigNetworkConfigArgs struct {
 	// Additional subnets may be specified. They may be in another region, but must be in the same VPC network. The Connect workers can communicate with network endpoints in either the primary or additional subnets.
 	AdditionalSubnets pulumi.StringArrayInput `pulumi:"additionalSubnets"`
 	// Additional DNS domain names from the subnet's network to be made visible to the Connect Cluster. When using MirrorMaker2, it's necessary to add the bootstrap address's dns domain name of the target cluster to make it visible to the connector. For example: my-kafka-cluster.us-central1.managedkafka.my-project.cloud.goog
-	//
-	// ***
 	DnsDomainNames pulumi.StringArrayInput `pulumi:"dnsDomainNames"`
 	// VPC subnet to make available to the Kafka Connect cluster. Structured like: projects/{project}/regions/{region}/subnetworks/{subnet_id}. It is used to create a Private Service Connect (PSC) interface for the Kafka Connect workers. It must be located in the same region as the Kafka Connect cluster. The CIDR range of the subnet must be within the IPv4 address ranges for private networks, as specified in RFC 1918. The primary subnet CIDR range must have a minimum size of /22 (1024 addresses).
 	PrimarySubnet pulumi.StringInput `pulumi:"primarySubnet"`
@@ -1383,8 +1365,6 @@ func (o ConnectClusterGcpConfigAccessConfigNetworkConfigOutput) AdditionalSubnet
 }
 
 // Additional DNS domain names from the subnet's network to be made visible to the Connect Cluster. When using MirrorMaker2, it's necessary to add the bootstrap address's dns domain name of the target cluster to make it visible to the connector. For example: my-kafka-cluster.us-central1.managedkafka.my-project.cloud.goog
-//
-// ***
 func (o ConnectClusterGcpConfigAccessConfigNetworkConfigOutput) DnsDomainNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConnectClusterGcpConfigAccessConfigNetworkConfig) []string { return v.DnsDomainNames }).(pulumi.StringArrayOutput)
 }

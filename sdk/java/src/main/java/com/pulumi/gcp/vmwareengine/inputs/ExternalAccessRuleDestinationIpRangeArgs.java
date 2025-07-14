@@ -18,16 +18,12 @@ public final class ExternalAccessRuleDestinationIpRangeArgs extends com.pulumi.r
     /**
      * The name of an `ExternalAddress` resource.
      * 
-     * ***
-     * 
      */
     @Import(name="externalAddress")
     private @Nullable Output<String> externalAddress;
 
     /**
      * @return The name of an `ExternalAddress` resource.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> externalAddress() {
@@ -77,8 +73,6 @@ public final class ExternalAccessRuleDestinationIpRangeArgs extends com.pulumi.r
         /**
          * @param externalAddress The name of an `ExternalAddress` resource.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -89,8 +83,6 @@ public final class ExternalAccessRuleDestinationIpRangeArgs extends com.pulumi.r
 
         /**
          * @param externalAddress The name of an `ExternalAddress` resource.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -110,9 +110,6 @@ namespace Pulumi.Gcp.Tags
         /// <summary>
         /// Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
         /// The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\), and forward slashes (/).
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("shortName")]
         public Output<string> ShortName { get; private set; } = null!;
@@ -206,9 +203,6 @@ namespace Pulumi.Gcp.Tags
         /// <summary>
         /// Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
         /// The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\), and forward slashes (/).
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("shortName", required: true)]
         public Input<string> ShortName { get; set; } = null!;
@@ -276,9 +270,6 @@ namespace Pulumi.Gcp.Tags
         /// <summary>
         /// Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
         /// The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\), and forward slashes (/).
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("shortName")]
         public Input<string>? ShortName { get; set; }

@@ -47,18 +47,21 @@ class V2PolicyOrchestratorArgs:
                * Must end with a number or a letter.
                * Must be unique within the parent.
         :param pulumi.Input[builtins.str] description: Optional. Freeform text describing the purpose of the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
-               in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
-        :param pulumi.Input['V2PolicyOrchestratorOrchestrationScopeArgs'] orchestration_scope: Defines a set of selectors which drive which resources are in scope of policy orchestration.
-        :param pulumi.Input[builtins.str] state: (Output)
-               Output only. State of the iteration.
-               Possible values:
-               STATE_UNSPECIFIED
-               PROCESSING
-               COMPLETED
-               FAILED
-               CANCELLED
-               UNKNOWN
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Labels as key value pairs
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input['V2PolicyOrchestratorOrchestrationScopeArgs'] orchestration_scope: Defines a set of selectors which drive which resources are in scope of policy
+               orchestration.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[builtins.str] state: Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+               Allowed values:
+               - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+               - `STOPPED` - orchestrator won't make any changes.
+               Note: There might be more states added in the future. We use string here
+               instead of an enum, to avoid the need of propagating new states to all the
+               client code.
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "orchestrated_resource", orchestrated_resource)
@@ -137,8 +140,9 @@ class V2PolicyOrchestratorArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
-        in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        Optional. Labels as key value pairs
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -150,7 +154,9 @@ class V2PolicyOrchestratorArgs:
     @pulumi.getter(name="orchestrationScope")
     def orchestration_scope(self) -> Optional[pulumi.Input['V2PolicyOrchestratorOrchestrationScopeArgs']]:
         """
-        Defines a set of selectors which drive which resources are in scope of policy orchestration.
+        Defines a set of selectors which drive which resources are in scope of policy
+        orchestration.
+        Structure is documented below.
         """
         return pulumi.get(self, "orchestration_scope")
 
@@ -161,6 +167,10 @@ class V2PolicyOrchestratorArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -171,15 +181,13 @@ class V2PolicyOrchestratorArgs:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        (Output)
-        Output only. State of the iteration.
-        Possible values:
-        STATE_UNSPECIFIED
-        PROCESSING
-        COMPLETED
-        FAILED
-        CANCELLED
-        UNKNOWN
+        Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+        Allowed values:
+        - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+        - `STOPPED` - orchestrator won't make any changes.
+        Note: There might be more states added in the future. We use string here
+        instead of an enum, to avoid the need of propagating new states to all the
+        client code.
         """
         return pulumi.get(self, "state")
 
@@ -216,15 +224,18 @@ class _V2PolicyOrchestratorState:
         :param pulumi.Input[builtins.str] create_time: Output only. Timestamp when the policy orchestrator resource was created.
         :param pulumi.Input[builtins.str] description: Optional. Freeform text describing the purpose of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
-               in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Labels as key value pairs
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] name: Immutable. Identifier. In form of
                * `organizations/{organization_id}/locations/global/policyOrchestrators/{orchestrator_id}`
                * `folders/{folder_id}/locations/global/policyOrchestrators/{orchestrator_id}`
                * `projects/{project_id_or_number}/locations/global/policyOrchestrators/{orchestrator_id}`
         :param pulumi.Input['V2PolicyOrchestratorOrchestratedResourceArgs'] orchestrated_resource: Represents a resource that is being orchestrated by the policy orchestrator.
                Structure is documented below.
-        :param pulumi.Input['V2PolicyOrchestratorOrchestrationScopeArgs'] orchestration_scope: Defines a set of selectors which drive which resources are in scope of policy orchestration.
+        :param pulumi.Input['V2PolicyOrchestratorOrchestrationScopeArgs'] orchestration_scope: Defines a set of selectors which drive which resources are in scope of policy
+               orchestration.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestrationStateArgs']]] orchestration_states: Describes the state of the orchestration process.
                Structure is documented below.
         :param pulumi.Input[builtins.str] policy_orchestrator_id: Required. The logical identifier of the policy orchestrator, with the following
@@ -234,19 +245,19 @@ class _V2PolicyOrchestratorState:
                * Must be between 1-63 characters.
                * Must end with a number or a letter.
                * Must be unique within the parent.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[builtins.bool] reconciling: Output only. Set to true, if the there are ongoing changes being applied by the
                orchestrator.
-        :param pulumi.Input[builtins.str] state: (Output)
-               Output only. State of the iteration.
-               Possible values:
-               STATE_UNSPECIFIED
-               PROCESSING
-               COMPLETED
-               FAILED
-               CANCELLED
-               UNKNOWN
+        :param pulumi.Input[builtins.str] state: Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+               Allowed values:
+               - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+               - `STOPPED` - orchestrator won't make any changes.
+               Note: There might be more states added in the future. We use string here
+               instead of an enum, to avoid the need of propagating new states to all the
+               client code.
         :param pulumi.Input[builtins.str] update_time: Output only. Timestamp when the policy orchestrator resource was last modified.
         """
         if action is not None:
@@ -336,8 +347,9 @@ class _V2PolicyOrchestratorState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
-        in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        Optional. Labels as key value pairs
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -377,7 +389,9 @@ class _V2PolicyOrchestratorState:
     @pulumi.getter(name="orchestrationScope")
     def orchestration_scope(self) -> Optional[pulumi.Input['V2PolicyOrchestratorOrchestrationScopeArgs']]:
         """
-        Defines a set of selectors which drive which resources are in scope of policy orchestration.
+        Defines a set of selectors which drive which resources are in scope of policy
+        orchestration.
+        Structure is documented below.
         """
         return pulumi.get(self, "orchestration_scope")
 
@@ -419,6 +433,10 @@ class _V2PolicyOrchestratorState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -455,15 +473,13 @@ class _V2PolicyOrchestratorState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        (Output)
-        Output only. State of the iteration.
-        Possible values:
-        STATE_UNSPECIFIED
-        PROCESSING
-        COMPLETED
-        FAILED
-        CANCELLED
-        UNKNOWN
+        Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+        Allowed values:
+        - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+        - `STOPPED` - orchestrator won't make any changes.
+        Note: There might be more states added in the future. We use string here
+        instead of an enum, to avoid the need of propagating new states to all the
+        client code.
         """
         return pulumi.get(self, "state")
 
@@ -583,11 +599,14 @@ class V2PolicyOrchestrator(pulumi.CustomResource):
                - `UPSERT` - Orchestrator will create or update target resources.
                - `DELETE` - Orchestrator will delete target resources, if they exist
         :param pulumi.Input[builtins.str] description: Optional. Freeform text describing the purpose of the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
-               in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Labels as key value pairs
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[Union['V2PolicyOrchestratorOrchestratedResourceArgs', 'V2PolicyOrchestratorOrchestratedResourceArgsDict']] orchestrated_resource: Represents a resource that is being orchestrated by the policy orchestrator.
                Structure is documented below.
-        :param pulumi.Input[Union['V2PolicyOrchestratorOrchestrationScopeArgs', 'V2PolicyOrchestratorOrchestrationScopeArgsDict']] orchestration_scope: Defines a set of selectors which drive which resources are in scope of policy orchestration.
+        :param pulumi.Input[Union['V2PolicyOrchestratorOrchestrationScopeArgs', 'V2PolicyOrchestratorOrchestrationScopeArgsDict']] orchestration_scope: Defines a set of selectors which drive which resources are in scope of policy
+               orchestration.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] policy_orchestrator_id: Required. The logical identifier of the policy orchestrator, with the following
                restrictions:
                * Must contain only lowercase letters, numbers, and hyphens.
@@ -595,15 +614,15 @@ class V2PolicyOrchestrator(pulumi.CustomResource):
                * Must be between 1-63 characters.
                * Must end with a number or a letter.
                * Must be unique within the parent.
-        :param pulumi.Input[builtins.str] state: (Output)
-               Output only. State of the iteration.
-               Possible values:
-               STATE_UNSPECIFIED
-               PROCESSING
-               COMPLETED
-               FAILED
-               CANCELLED
-               UNKNOWN
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[builtins.str] state: Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+               Allowed values:
+               - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+               - `STOPPED` - orchestrator won't make any changes.
+               Note: There might be more states added in the future. We use string here
+               instead of an enum, to avoid the need of propagating new states to all the
+               client code.
         """
         ...
     @overload
@@ -782,15 +801,18 @@ class V2PolicyOrchestrator(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] create_time: Output only. Timestamp when the policy orchestrator resource was created.
         :param pulumi.Input[builtins.str] description: Optional. Freeform text describing the purpose of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
-               in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Labels as key value pairs
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] name: Immutable. Identifier. In form of
                * `organizations/{organization_id}/locations/global/policyOrchestrators/{orchestrator_id}`
                * `folders/{folder_id}/locations/global/policyOrchestrators/{orchestrator_id}`
                * `projects/{project_id_or_number}/locations/global/policyOrchestrators/{orchestrator_id}`
         :param pulumi.Input[Union['V2PolicyOrchestratorOrchestratedResourceArgs', 'V2PolicyOrchestratorOrchestratedResourceArgsDict']] orchestrated_resource: Represents a resource that is being orchestrated by the policy orchestrator.
                Structure is documented below.
-        :param pulumi.Input[Union['V2PolicyOrchestratorOrchestrationScopeArgs', 'V2PolicyOrchestratorOrchestrationScopeArgsDict']] orchestration_scope: Defines a set of selectors which drive which resources are in scope of policy orchestration.
+        :param pulumi.Input[Union['V2PolicyOrchestratorOrchestrationScopeArgs', 'V2PolicyOrchestratorOrchestrationScopeArgsDict']] orchestration_scope: Defines a set of selectors which drive which resources are in scope of policy
+               orchestration.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['V2PolicyOrchestratorOrchestrationStateArgs', 'V2PolicyOrchestratorOrchestrationStateArgsDict']]]] orchestration_states: Describes the state of the orchestration process.
                Structure is documented below.
         :param pulumi.Input[builtins.str] policy_orchestrator_id: Required. The logical identifier of the policy orchestrator, with the following
@@ -800,19 +822,19 @@ class V2PolicyOrchestrator(pulumi.CustomResource):
                * Must be between 1-63 characters.
                * Must end with a number or a letter.
                * Must be unique within the parent.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[builtins.bool] reconciling: Output only. Set to true, if the there are ongoing changes being applied by the
                orchestrator.
-        :param pulumi.Input[builtins.str] state: (Output)
-               Output only. State of the iteration.
-               Possible values:
-               STATE_UNSPECIFIED
-               PROCESSING
-               COMPLETED
-               FAILED
-               CANCELLED
-               UNKNOWN
+        :param pulumi.Input[builtins.str] state: Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+               Allowed values:
+               - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+               - `STOPPED` - orchestrator won't make any changes.
+               Note: There might be more states added in the future. We use string here
+               instead of an enum, to avoid the need of propagating new states to all the
+               client code.
         :param pulumi.Input[builtins.str] update_time: Output only. Timestamp when the policy orchestrator resource was last modified.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -876,8 +898,9 @@ class V2PolicyOrchestrator(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
         """
-        Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
-        in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        Optional. Labels as key value pairs
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -905,7 +928,9 @@ class V2PolicyOrchestrator(pulumi.CustomResource):
     @pulumi.getter(name="orchestrationScope")
     def orchestration_scope(self) -> pulumi.Output[Optional['outputs.V2PolicyOrchestratorOrchestrationScope']]:
         """
-        Defines a set of selectors which drive which resources are in scope of policy orchestration.
+        Defines a set of selectors which drive which resources are in scope of policy
+        orchestration.
+        Structure is documented below.
         """
         return pulumi.get(self, "orchestration_scope")
 
@@ -935,6 +960,10 @@ class V2PolicyOrchestrator(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property
@@ -959,15 +988,13 @@ class V2PolicyOrchestrator(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        (Output)
-        Output only. State of the iteration.
-        Possible values:
-        STATE_UNSPECIFIED
-        PROCESSING
-        COMPLETED
-        FAILED
-        CANCELLED
-        UNKNOWN
+        Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+        Allowed values:
+        - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+        - `STOPPED` - orchestrator won't make any changes.
+        Note: There might be more states added in the future. We use string here
+        instead of an enum, to avoid the need of propagating new states to all the
+        client code.
         """
         return pulumi.get(self, "state")
 

@@ -157,6 +157,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
 
         /// <summary>
         /// The interconnect attachments that this policy-based route applies to.
+        /// Structure is documented below.
         /// </summary>
         [Output("interconnectAttachment")]
         public Output<Outputs.PolicyBasedRouteInterconnectAttachment?> InterconnectAttachment { get; private set; } = null!;
@@ -168,8 +169,10 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Output<string> Kind { get; private set; } = null!;
 
         /// <summary>
-        /// User-defined labels. **Note**: This field is non-authoritative, and will only manage the labels present in your
-        /// configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        /// User-defined labels.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -193,19 +196,22 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Output<string?> NextHopIlbIp { get; private set; } = null!;
 
         /// <summary>
-        /// Other routes that will be referenced to determine the next hop of the packet. Possible values: ["DEFAULT_ROUTING"]
+        /// Other routes that will be referenced to determine the next hop of the packet.
+        /// Possible values are: `DEFAULT_ROUTING`.
         /// </summary>
         [Output("nextHopOtherRoutes")]
         public Output<string?> NextHopOtherRoutes { get; private set; } = null!;
 
         /// <summary>
-        /// The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching
-        /// policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered
-        /// priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
+        /// The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
         /// </summary>
         [Output("priority")]
         public Output<int?> Priority { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -224,6 +230,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
 
         /// <summary>
         /// VM instances to which this policy-based route applies to.
+        /// Structure is documented below.
         /// </summary>
         [Output("virtualMachine")]
         public Output<Outputs.PolicyBasedRouteVirtualMachine?> VirtualMachine { get; private set; } = null!;
@@ -301,6 +308,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
 
         /// <summary>
         /// The interconnect attachments that this policy-based route applies to.
+        /// Structure is documented below.
         /// </summary>
         [Input("interconnectAttachment")]
         public Input<Inputs.PolicyBasedRouteInterconnectAttachmentArgs>? InterconnectAttachment { get; set; }
@@ -309,8 +317,10 @@ namespace Pulumi.Gcp.NetworkConnectivity
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// User-defined labels. **Note**: This field is non-authoritative, and will only manage the labels present in your
-        /// configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        /// User-defined labels.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -337,24 +347,28 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Input<string>? NextHopIlbIp { get; set; }
 
         /// <summary>
-        /// Other routes that will be referenced to determine the next hop of the packet. Possible values: ["DEFAULT_ROUTING"]
+        /// Other routes that will be referenced to determine the next hop of the packet.
+        /// Possible values are: `DEFAULT_ROUTING`.
         /// </summary>
         [Input("nextHopOtherRoutes")]
         public Input<string>? NextHopOtherRoutes { get; set; }
 
         /// <summary>
-        /// The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching
-        /// policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered
-        /// priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
+        /// The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
         /// VM instances to which this policy-based route applies to.
+        /// Structure is documented below.
         /// </summary>
         [Input("virtualMachine")]
         public Input<Inputs.PolicyBasedRouteVirtualMachineArgs>? VirtualMachine { get; set; }
@@ -404,6 +418,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
 
         /// <summary>
         /// The interconnect attachments that this policy-based route applies to.
+        /// Structure is documented below.
         /// </summary>
         [Input("interconnectAttachment")]
         public Input<Inputs.PolicyBasedRouteInterconnectAttachmentGetArgs>? InterconnectAttachment { get; set; }
@@ -418,8 +433,10 @@ namespace Pulumi.Gcp.NetworkConnectivity
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// User-defined labels. **Note**: This field is non-authoritative, and will only manage the labels present in your
-        /// configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        /// User-defined labels.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -446,19 +463,22 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Input<string>? NextHopIlbIp { get; set; }
 
         /// <summary>
-        /// Other routes that will be referenced to determine the next hop of the packet. Possible values: ["DEFAULT_ROUTING"]
+        /// Other routes that will be referenced to determine the next hop of the packet.
+        /// Possible values are: `DEFAULT_ROUTING`.
         /// </summary>
         [Input("nextHopOtherRoutes")]
         public Input<string>? NextHopOtherRoutes { get; set; }
 
         /// <summary>
-        /// The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching
-        /// policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered
-        /// priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
+        /// The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -487,6 +507,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
 
         /// <summary>
         /// VM instances to which this policy-based route applies to.
+        /// Structure is documented below.
         /// </summary>
         [Input("virtualMachine")]
         public Input<Inputs.PolicyBasedRouteVirtualMachineGetArgs>? VirtualMachine { get; set; }

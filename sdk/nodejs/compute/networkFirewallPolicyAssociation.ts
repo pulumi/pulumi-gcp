@@ -94,9 +94,6 @@ export class NetworkFirewallPolicyAssociation extends pulumi.CustomResource {
     public readonly attachmentTarget!: pulumi.Output<string>;
     /**
      * The firewall policy of the resource.
-     *
-     *
-     * - - -
      */
     public readonly firewallPolicy!: pulumi.Output<string>;
     /**
@@ -160,9 +157,6 @@ export interface NetworkFirewallPolicyAssociationState {
     attachmentTarget?: pulumi.Input<string>;
     /**
      * The firewall policy of the resource.
-     *
-     *
-     * - - -
      */
     firewallPolicy?: pulumi.Input<string>;
     /**
@@ -190,9 +184,6 @@ export interface NetworkFirewallPolicyAssociationArgs {
     attachmentTarget: pulumi.Input<string>;
     /**
      * The firewall policy of the resource.
-     *
-     *
-     * - - -
      */
     firewallPolicy: pulumi.Input<string>;
     /**

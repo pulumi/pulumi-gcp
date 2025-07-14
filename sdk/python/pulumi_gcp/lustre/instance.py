@@ -42,9 +42,6 @@ class InstanceArgs:
                * Must start with a letter.
                * Must be between 1-63 characters.
                * Must end with a number or a letter.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[builtins.str] network: The full name of the VPC network to which the instance is connected.
                Must be in the format
@@ -111,9 +108,6 @@ class InstanceArgs:
         * Must start with a letter.
         * Must be between 1-63 characters.
         * Must end with a number or a letter.
-
-
-        - - -
         """
         return pulumi.get(self, "instance_id")
 
@@ -250,9 +244,6 @@ class _InstanceState:
                * Must start with a letter.
                * Must be between 1-63 characters.
                * Must end with a number or a letter.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -399,9 +390,6 @@ class _InstanceState:
         * Must start with a letter.
         * Must be between 1-63 characters.
         * Must end with a number or a letter.
-
-
-        - - -
         """
         return pulumi.get(self, "instance_id")
 
@@ -640,9 +628,6 @@ class Instance(pulumi.CustomResource):
                * Must start with a letter.
                * Must be between 1-63 characters.
                * Must end with a number or a letter.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -838,9 +823,6 @@ class Instance(pulumi.CustomResource):
                * Must start with a letter.
                * Must be between 1-63 characters.
                * Must end with a number or a letter.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -951,9 +933,6 @@ class Instance(pulumi.CustomResource):
         * Must start with a letter.
         * Must be between 1-63 characters.
         * Must end with a number or a letter.
-
-
-        - - -
         """
         return pulumi.get(self, "instance_id")
 

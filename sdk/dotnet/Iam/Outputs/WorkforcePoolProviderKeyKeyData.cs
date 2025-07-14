@@ -26,8 +26,6 @@ namespace Pulumi.Gcp.Iam.Outputs
         /// <summary>
         /// The specifications for the key.
         /// Possible values are: `RSA_2048`, `RSA_3072`, `RSA_4096`.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string KeySpec;
         /// <summary>

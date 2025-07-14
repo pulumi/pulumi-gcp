@@ -150,8 +150,6 @@ public class TransferAgentPool extends com.pulumi.resources.CustomResource {
      * * One or more numerals or lowercase ASCII characters.
      *   As expressed by the regular expression: ^(?!goog)a-z?$.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -165,8 +163,6 @@ public class TransferAgentPool extends com.pulumi.resources.CustomResource {
      * * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
      * * One or more numerals or lowercase ASCII characters.
      *   As expressed by the regular expression: ^(?!goog)a-z?$.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

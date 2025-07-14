@@ -15,8 +15,6 @@ public final class PluginInstanceActionCurationConfigCustomCuration {
      * curation resource in the format:
      * `projects/{project}/locations/{location}/curations/{curation}`
      * 
-     * ***
-     * 
      */
     private String curation;
 
@@ -25,8 +23,6 @@ public final class PluginInstanceActionCurationConfigCustomCuration {
      * @return The unique name of the curation resource. This will be the name of the
      * curation resource in the format:
      * `projects/{project}/locations/{location}/curations/{curation}`
-     * 
-     * ***
      * 
      */
     public String curation() {

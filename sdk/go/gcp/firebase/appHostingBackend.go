@@ -284,8 +284,6 @@ type AppHostingBackend struct {
 	AppId pulumi.StringOutput `pulumi:"appId"`
 	// Id of the backend. Also used as the service ID for Cloud Run, and as part
 	// of the default domain name.
-	//
-	// ***
 	BackendId pulumi.StringOutput `pulumi:"backendId"`
 	// The connection to an external source repository to watch for event-driven
 	// updates to the backend.
@@ -405,8 +403,6 @@ type appHostingBackendState struct {
 	AppId *string `pulumi:"appId"`
 	// Id of the backend. Also used as the service ID for Cloud Run, and as part
 	// of the default domain name.
-	//
-	// ***
 	BackendId *string `pulumi:"backendId"`
 	// The connection to an external source repository to watch for event-driven
 	// updates to the backend.
@@ -477,8 +473,6 @@ type AppHostingBackendState struct {
 	AppId pulumi.StringPtrInput
 	// Id of the backend. Also used as the service ID for Cloud Run, and as part
 	// of the default domain name.
-	//
-	// ***
 	BackendId pulumi.StringPtrInput
 	// The connection to an external source repository to watch for event-driven
 	// updates to the backend.
@@ -553,8 +547,6 @@ type appHostingBackendArgs struct {
 	AppId string `pulumi:"appId"`
 	// Id of the backend. Also used as the service ID for Cloud Run, and as part
 	// of the default domain name.
-	//
-	// ***
 	BackendId string `pulumi:"backendId"`
 	// The connection to an external source repository to watch for event-driven
 	// updates to the backend.
@@ -600,8 +592,6 @@ type AppHostingBackendArgs struct {
 	AppId pulumi.StringInput
 	// Id of the backend. Also used as the service ID for Cloud Run, and as part
 	// of the default domain name.
-	//
-	// ***
 	BackendId pulumi.StringInput
 	// The connection to an external source repository to watch for event-driven
 	// updates to the backend.
@@ -738,8 +728,6 @@ func (o AppHostingBackendOutput) AppId() pulumi.StringOutput {
 
 // Id of the backend. Also used as the service ID for Cloud Run, and as part
 // of the default domain name.
-//
-// ***
 func (o AppHostingBackendOutput) BackendId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppHostingBackend) pulumi.StringOutput { return v.BackendId }).(pulumi.StringOutput)
 }

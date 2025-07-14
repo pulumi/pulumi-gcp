@@ -131,9 +131,6 @@ export class LoggingSettingBinding extends pulumi.CustomResource {
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Id of the setting binding.
-     *
-     *
-     * - - -
      */
     public readonly settingBindingId!: pulumi.Output<string>;
     /**
@@ -249,9 +246,6 @@ export interface LoggingSettingBindingState {
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Id of the setting binding.
-     *
-     *
-     * - - -
      */
     settingBindingId?: pulumi.Input<string>;
     /**
@@ -294,9 +288,6 @@ export interface LoggingSettingBindingArgs {
     project?: pulumi.Input<string>;
     /**
      * Id of the setting binding.
-     *
-     *
-     * - - -
      */
     settingBindingId: pulumi.Input<string>;
     /**

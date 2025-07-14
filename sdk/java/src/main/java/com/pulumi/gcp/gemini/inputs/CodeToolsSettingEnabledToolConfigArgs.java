@@ -32,16 +32,12 @@ public final class CodeToolsSettingEnabledToolConfigArgs extends com.pulumi.reso
     /**
      * Value of the configuration item.
      * 
-     * ***
-     * 
      */
     @Import(name="value", required=true)
     private Output<String> value;
 
     /**
      * @return Value of the configuration item.
-     * 
-     * ***
      * 
      */
     public Output<String> value() {
@@ -97,8 +93,6 @@ public final class CodeToolsSettingEnabledToolConfigArgs extends com.pulumi.reso
         /**
          * @param value Value of the configuration item.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -109,8 +103,6 @@ public final class CodeToolsSettingEnabledToolConfigArgs extends com.pulumi.reso
 
         /**
          * @param value Value of the configuration item.
-         * 
-         * ***
          * 
          * @return builder
          * 

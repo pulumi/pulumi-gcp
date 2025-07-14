@@ -95,9 +95,6 @@ namespace Pulumi.Gcp.Spanner
 
         /// <summary>
         /// The instance to create the instance partition in.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("instance")]
         public Output<string> Instance { get; private set; } = null!;
@@ -203,9 +200,6 @@ namespace Pulumi.Gcp.Spanner
 
         /// <summary>
         /// The instance to create the instance partition in.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("instance", required: true)]
         public Input<string> Instance { get; set; } = null!;
@@ -264,9 +258,6 @@ namespace Pulumi.Gcp.Spanner
 
         /// <summary>
         /// The instance to create the instance partition in.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("instance")]
         public Input<string>? Instance { get; set; }

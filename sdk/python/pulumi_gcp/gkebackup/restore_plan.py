@@ -39,10 +39,15 @@ class RestorePlanArgs:
         :param pulumi.Input['RestorePlanRestoreConfigArgs'] restore_config: Defines the configuration of Restores created via this RestorePlan.
                Structure is documented below.
         :param pulumi.Input[builtins.str] description: User specified descriptive string for this RestorePlan.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Description: A set of custom labels supplied by the user. A list of key->value pairs. Example: { "name": "wrench",
-               "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the labels present in
-               your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Description: A set of custom labels supplied by the user.
+               A list of key->value pairs.
+               Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] name: The full name of the BackupPlan Resource.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "backup_plan", backup_plan)
         pulumi.set(__self__, "cluster", cluster)
@@ -123,9 +128,12 @@ class RestorePlanArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Description: A set of custom labels supplied by the user. A list of key->value pairs. Example: { "name": "wrench",
-        "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the labels present in
-        your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        Description: A set of custom labels supplied by the user.
+        A list of key->value pairs.
+        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -148,6 +156,10 @@ class RestorePlanArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -178,11 +190,16 @@ class _RestorePlanState:
         :param pulumi.Input[builtins.str] cluster: The source cluster from which Restores will be created via this RestorePlan.
         :param pulumi.Input[builtins.str] description: User specified descriptive string for this RestorePlan.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Description: A set of custom labels supplied by the user. A list of key->value pairs. Example: { "name": "wrench",
-               "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the labels present in
-               your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Description: A set of custom labels supplied by the user.
+               A list of key->value pairs.
+               Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The region of the Restore Plan.
         :param pulumi.Input[builtins.str] name: The full name of the BackupPlan Resource.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input['RestorePlanRestoreConfigArgs'] restore_config: Defines the configuration of Restores created via this RestorePlan.
@@ -271,9 +288,12 @@ class _RestorePlanState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Description: A set of custom labels supplied by the user. A list of key->value pairs. Example: { "name": "wrench",
-        "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the labels present in
-        your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        Description: A set of custom labels supplied by the user.
+        A list of key->value pairs.
+        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -308,6 +328,10 @@ class _RestorePlanState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -933,11 +957,16 @@ class RestorePlan(pulumi.CustomResource):
                as the source for Restores created via this RestorePlan.
         :param pulumi.Input[builtins.str] cluster: The source cluster from which Restores will be created via this RestorePlan.
         :param pulumi.Input[builtins.str] description: User specified descriptive string for this RestorePlan.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Description: A set of custom labels supplied by the user. A list of key->value pairs. Example: { "name": "wrench",
-               "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the labels present in
-               your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Description: A set of custom labels supplied by the user.
+               A list of key->value pairs.
+               Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The region of the Restore Plan.
         :param pulumi.Input[builtins.str] name: The full name of the BackupPlan Resource.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Union['RestorePlanRestoreConfigArgs', 'RestorePlanRestoreConfigArgsDict']] restore_config: Defines the configuration of Restores created via this RestorePlan.
                Structure is documented below.
         """
@@ -1572,11 +1601,16 @@ class RestorePlan(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] cluster: The source cluster from which Restores will be created via this RestorePlan.
         :param pulumi.Input[builtins.str] description: User specified descriptive string for this RestorePlan.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Description: A set of custom labels supplied by the user. A list of key->value pairs. Example: { "name": "wrench",
-               "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the labels present in
-               your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Description: A set of custom labels supplied by the user.
+               A list of key->value pairs.
+               Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The region of the Restore Plan.
         :param pulumi.Input[builtins.str] name: The full name of the BackupPlan Resource.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[Union['RestorePlanRestoreConfigArgs', 'RestorePlanRestoreConfigArgsDict']] restore_config: Defines the configuration of Restores created via this RestorePlan.
@@ -1641,9 +1675,12 @@ class RestorePlan(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
         """
-        Description: A set of custom labels supplied by the user. A list of key->value pairs. Example: { "name": "wrench",
-        "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the labels present in
-        your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        Description: A set of custom labels supplied by the user.
+        A list of key->value pairs.
+        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1666,6 +1703,10 @@ class RestorePlan(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property

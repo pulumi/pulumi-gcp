@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.RouteArgs;
 import com.pulumi.gcp.compute.inputs.RouteState;
 import com.pulumi.gcp.compute.outputs.RouteAsPath;
+import com.pulumi.gcp.compute.outputs.RouteParams;
 import com.pulumi.gcp.compute.outputs.RouteWarning;
 import java.lang.Integer;
 import java.lang.String;
@@ -417,16 +418,12 @@ public class Route extends com.pulumi.resources.CustomResource {
     /**
      * The network that this route applies to.
      * 
-     * ***
-     * 
      */
     @Export(name="network", refs={String.class}, tree="[0]")
     private Output<String> network;
 
     /**
      * @return The network that this route applies to.
-     * 
-     * ***
      * 
      */
     public Output<String> network() {
@@ -651,6 +648,22 @@ public class Route extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> nextHopVpnTunnel() {
         return Codegen.optional(this.nextHopVpnTunnel);
+    }
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="params", refs={RouteParams.class}, tree="[0]")
+    private Output</* @Nullable */ RouteParams> params;
+
+    /**
+     * @return Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<RouteParams>> params() {
+        return Codegen.optional(this.params);
     }
     /**
      * The priority of this route. Priority is used to break ties in cases

@@ -197,9 +197,6 @@ export class CxTestCase extends pulumi.CustomResource {
     public /*out*/ readonly creationTime!: pulumi.Output<string>;
     /**
      * The human-readable name of the test case, unique within the agent. Limit of 200 characters.
-     *
-     *
-     * - - -
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -289,9 +286,6 @@ export interface CxTestCaseState {
     creationTime?: pulumi.Input<string>;
     /**
      * The human-readable name of the test case, unique within the agent. Limit of 200 characters.
-     *
-     *
-     * - - -
      */
     displayName?: pulumi.Input<string>;
     /**
@@ -336,9 +330,6 @@ export interface CxTestCaseState {
 export interface CxTestCaseArgs {
     /**
      * The human-readable name of the test case, unique within the agent. Limit of 200 characters.
-     *
-     *
-     * - - -
      */
     displayName: pulumi.Input<string>;
     /**

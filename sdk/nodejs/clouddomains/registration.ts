@@ -144,6 +144,7 @@ export class Registration extends pulumi.CustomResource {
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * Settings controlling the DNS configuration of the Registration.
+     * Structure is documented below.
      */
     public readonly dnsSettings!: pulumi.Output<outputs.clouddomains.RegistrationDnsSettings | undefined>;
     /**
@@ -167,9 +168,9 @@ export class Registration extends pulumi.CustomResource {
      */
     public /*out*/ readonly issues!: pulumi.Output<string[]>;
     /**
-     * Set of labels associated with the Registration. **Note**: This field is non-authoritative, and will only manage the
-     * labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-     * resource.
+     * Set of labels associated with the Registration.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -178,12 +179,17 @@ export class Registration extends pulumi.CustomResource {
     public readonly location!: pulumi.Output<string>;
     /**
      * Settings for management of the Registration, including renewal, billing, and transfer
+     * Structure is documented below.
      */
     public readonly managementSettings!: pulumi.Output<outputs.clouddomains.RegistrationManagementSettings>;
     /**
      * Output only. Name of the Registration resource, in the format projects/*&#47;locations/*&#47;registrations/<domain_name>.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
@@ -301,6 +307,7 @@ export interface RegistrationState {
     createTime?: pulumi.Input<string>;
     /**
      * Settings controlling the DNS configuration of the Registration.
+     * Structure is documented below.
      */
     dnsSettings?: pulumi.Input<inputs.clouddomains.RegistrationDnsSettings>;
     /**
@@ -324,9 +331,9 @@ export interface RegistrationState {
      */
     issues?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Set of labels associated with the Registration. **Note**: This field is non-authoritative, and will only manage the
-     * labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-     * resource.
+     * Set of labels associated with the Registration.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -335,12 +342,17 @@ export interface RegistrationState {
     location?: pulumi.Input<string>;
     /**
      * Settings for management of the Registration, including renewal, billing, and transfer
+     * Structure is documented below.
      */
     managementSettings?: pulumi.Input<inputs.clouddomains.RegistrationManagementSettings>;
     /**
      * Output only. Name of the Registration resource, in the format projects/*&#47;locations/*&#47;registrations/<domain_name>.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
@@ -382,6 +394,7 @@ export interface RegistrationArgs {
     contactSettings: pulumi.Input<inputs.clouddomains.RegistrationContactSettings>;
     /**
      * Settings controlling the DNS configuration of the Registration.
+     * Structure is documented below.
      */
     dnsSettings?: pulumi.Input<inputs.clouddomains.RegistrationDnsSettings>;
     /**
@@ -393,9 +406,9 @@ export interface RegistrationArgs {
      */
     domainNotices?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Set of labels associated with the Registration. **Note**: This field is non-authoritative, and will only manage the
-     * labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-     * resource.
+     * Set of labels associated with the Registration.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -404,8 +417,13 @@ export interface RegistrationArgs {
     location: pulumi.Input<string>;
     /**
      * Settings for management of the Registration, including renewal, billing, and transfer
+     * Structure is documented below.
      */
     managementSettings?: pulumi.Input<inputs.clouddomains.RegistrationManagementSettings>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * Required. Yearly price to register or renew the domain. The value that should be put here can be obtained from

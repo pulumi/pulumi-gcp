@@ -265,7 +265,8 @@ type ConnectivityTest struct {
 
 	// Whether the analysis should skip firewall checking. Default value is false.
 	BypassFirewallChecks pulumi.BoolPtrOutput `pulumi:"bypassFirewallChecks"`
-	// The user-supplied description of the Connectivity Test. Maximum of 512 characters.
+	// The user-supplied description of the Connectivity Test.
+	// Maximum of 512 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Required. Destination specification of the Connectivity Test.
 	// You can use a combination of destination IP address, URI of a supported
@@ -277,22 +278,27 @@ type ConnectivityTest struct {
 	Destination ConnectivityTestDestinationOutput `pulumi:"destination"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
-	// Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-	// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-	// resource.
+	// Resource labels to represent user-provided metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Unique name for the connectivity test.
-	Name    pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// IP Protocol of the test. When not provided, "TCP" is assumed.
 	Protocol pulumi.StringPtrOutput `pulumi:"protocol"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
-	// Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross
-	// project boundaries.
+	// Other projects that may be relevant for reachability analysis.
+	// This is applicable to scenarios where a test can cross project
+	// boundaries.
 	RelatedProjects pulumi.StringArrayOutput `pulumi:"relatedProjects"`
-	// Whether run analysis for the return path from destination to source. Default value is false.
+	// Whether run analysis for the return path from destination to source.
+	// Default value is false.
 	RoundTrip pulumi.BoolPtrOutput `pulumi:"roundTrip"`
 	// Required. Source specification of the Connectivity Test.
 	// You can use a combination of source IP address, URI of a supported
@@ -347,7 +353,8 @@ func GetConnectivityTest(ctx *pulumi.Context,
 type connectivityTestState struct {
 	// Whether the analysis should skip firewall checking. Default value is false.
 	BypassFirewallChecks *bool `pulumi:"bypassFirewallChecks"`
-	// The user-supplied description of the Connectivity Test. Maximum of 512 characters.
+	// The user-supplied description of the Connectivity Test.
+	// Maximum of 512 characters.
 	Description *string `pulumi:"description"`
 	// Required. Destination specification of the Connectivity Test.
 	// You can use a combination of destination IP address, URI of a supported
@@ -359,22 +366,27 @@ type connectivityTestState struct {
 	Destination *ConnectivityTestDestination `pulumi:"destination"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
-	// Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-	// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-	// resource.
+	// Resource labels to represent user-provided metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Unique name for the connectivity test.
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// IP Protocol of the test. When not provided, "TCP" is assumed.
 	Protocol *string `pulumi:"protocol"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
-	// Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross
-	// project boundaries.
+	// Other projects that may be relevant for reachability analysis.
+	// This is applicable to scenarios where a test can cross project
+	// boundaries.
 	RelatedProjects []string `pulumi:"relatedProjects"`
-	// Whether run analysis for the return path from destination to source. Default value is false.
+	// Whether run analysis for the return path from destination to source.
+	// Default value is false.
 	RoundTrip *bool `pulumi:"roundTrip"`
 	// Required. Source specification of the Connectivity Test.
 	// You can use a combination of source IP address, URI of a supported
@@ -389,7 +401,8 @@ type connectivityTestState struct {
 type ConnectivityTestState struct {
 	// Whether the analysis should skip firewall checking. Default value is false.
 	BypassFirewallChecks pulumi.BoolPtrInput
-	// The user-supplied description of the Connectivity Test. Maximum of 512 characters.
+	// The user-supplied description of the Connectivity Test.
+	// Maximum of 512 characters.
 	Description pulumi.StringPtrInput
 	// Required. Destination specification of the Connectivity Test.
 	// You can use a combination of destination IP address, URI of a supported
@@ -401,22 +414,27 @@ type ConnectivityTestState struct {
 	Destination ConnectivityTestDestinationPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
-	// Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-	// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-	// resource.
+	// Resource labels to represent user-provided metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Unique name for the connectivity test.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// IP Protocol of the test. When not provided, "TCP" is assumed.
 	Protocol pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
-	// Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross
-	// project boundaries.
+	// Other projects that may be relevant for reachability analysis.
+	// This is applicable to scenarios where a test can cross project
+	// boundaries.
 	RelatedProjects pulumi.StringArrayInput
-	// Whether run analysis for the return path from destination to source. Default value is false.
+	// Whether run analysis for the return path from destination to source.
+	// Default value is false.
 	RoundTrip pulumi.BoolPtrInput
 	// Required. Source specification of the Connectivity Test.
 	// You can use a combination of source IP address, URI of a supported
@@ -435,7 +453,8 @@ func (ConnectivityTestState) ElementType() reflect.Type {
 type connectivityTestArgs struct {
 	// Whether the analysis should skip firewall checking. Default value is false.
 	BypassFirewallChecks *bool `pulumi:"bypassFirewallChecks"`
-	// The user-supplied description of the Connectivity Test. Maximum of 512 characters.
+	// The user-supplied description of the Connectivity Test.
+	// Maximum of 512 characters.
 	Description *string `pulumi:"description"`
 	// Required. Destination specification of the Connectivity Test.
 	// You can use a combination of destination IP address, URI of a supported
@@ -445,19 +464,24 @@ type connectivityTestArgs struct {
 	// destination that you don't intend to test.
 	// Structure is documented below.
 	Destination ConnectivityTestDestination `pulumi:"destination"`
-	// Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-	// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-	// resource.
+	// Resource labels to represent user-provided metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Unique name for the connectivity test.
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// IP Protocol of the test. When not provided, "TCP" is assumed.
 	Protocol *string `pulumi:"protocol"`
-	// Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross
-	// project boundaries.
+	// Other projects that may be relevant for reachability analysis.
+	// This is applicable to scenarios where a test can cross project
+	// boundaries.
 	RelatedProjects []string `pulumi:"relatedProjects"`
-	// Whether run analysis for the return path from destination to source. Default value is false.
+	// Whether run analysis for the return path from destination to source.
+	// Default value is false.
 	RoundTrip *bool `pulumi:"roundTrip"`
 	// Required. Source specification of the Connectivity Test.
 	// You can use a combination of source IP address, URI of a supported
@@ -473,7 +497,8 @@ type connectivityTestArgs struct {
 type ConnectivityTestArgs struct {
 	// Whether the analysis should skip firewall checking. Default value is false.
 	BypassFirewallChecks pulumi.BoolPtrInput
-	// The user-supplied description of the Connectivity Test. Maximum of 512 characters.
+	// The user-supplied description of the Connectivity Test.
+	// Maximum of 512 characters.
 	Description pulumi.StringPtrInput
 	// Required. Destination specification of the Connectivity Test.
 	// You can use a combination of destination IP address, URI of a supported
@@ -483,19 +508,24 @@ type ConnectivityTestArgs struct {
 	// destination that you don't intend to test.
 	// Structure is documented below.
 	Destination ConnectivityTestDestinationInput
-	// Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-	// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-	// resource.
+	// Resource labels to represent user-provided metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Unique name for the connectivity test.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// IP Protocol of the test. When not provided, "TCP" is assumed.
 	Protocol pulumi.StringPtrInput
-	// Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross
-	// project boundaries.
+	// Other projects that may be relevant for reachability analysis.
+	// This is applicable to scenarios where a test can cross project
+	// boundaries.
 	RelatedProjects pulumi.StringArrayInput
-	// Whether run analysis for the return path from destination to source. Default value is false.
+	// Whether run analysis for the return path from destination to source.
+	// Default value is false.
 	RoundTrip pulumi.BoolPtrInput
 	// Required. Source specification of the Connectivity Test.
 	// You can use a combination of source IP address, URI of a supported
@@ -599,7 +629,8 @@ func (o ConnectivityTestOutput) BypassFirewallChecks() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConnectivityTest) pulumi.BoolPtrOutput { return v.BypassFirewallChecks }).(pulumi.BoolPtrOutput)
 }
 
-// The user-supplied description of the Connectivity Test. Maximum of 512 characters.
+// The user-supplied description of the Connectivity Test.
+// Maximum of 512 characters.
 func (o ConnectivityTestOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectivityTest) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -620,9 +651,10 @@ func (o ConnectivityTestOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ConnectivityTest) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
-// Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-// resource.
+// Resource labels to represent user-provided metadata.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o ConnectivityTestOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ConnectivityTest) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -632,6 +664,8 @@ func (o ConnectivityTestOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectivityTest) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o ConnectivityTestOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectivityTest) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -647,13 +681,15 @@ func (o ConnectivityTestOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ConnectivityTest) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
-// Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross
-// project boundaries.
+// Other projects that may be relevant for reachability analysis.
+// This is applicable to scenarios where a test can cross project
+// boundaries.
 func (o ConnectivityTestOutput) RelatedProjects() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConnectivityTest) pulumi.StringArrayOutput { return v.RelatedProjects }).(pulumi.StringArrayOutput)
 }
 
-// Whether run analysis for the return path from destination to source. Default value is false.
+// Whether run analysis for the return path from destination to source.
+// Default value is false.
 func (o ConnectivityTestOutput) RoundTrip() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConnectivityTest) pulumi.BoolPtrOutput { return v.RoundTrip }).(pulumi.BoolPtrOutput)
 }

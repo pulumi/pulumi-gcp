@@ -6,8 +6,11 @@ package com.pulumi.gcp.container.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.container.inputs.ClusterSecretManagerConfigRotationConfigArgs;
 import java.lang.Boolean;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ClusterSecretManagerConfigArgs extends com.pulumi.resources.ResourceArgs {
@@ -29,10 +32,26 @@ public final class ClusterSecretManagerConfigArgs extends com.pulumi.resources.R
         return this.enabled;
     }
 
+    /**
+     * config for secret manager auto rotation. Structure is docuemented below
+     * 
+     */
+    @Import(name="rotationConfig")
+    private @Nullable Output<ClusterSecretManagerConfigRotationConfigArgs> rotationConfig;
+
+    /**
+     * @return config for secret manager auto rotation. Structure is docuemented below
+     * 
+     */
+    public Optional<Output<ClusterSecretManagerConfigRotationConfigArgs>> rotationConfig() {
+        return Optional.ofNullable(this.rotationConfig);
+    }
+
     private ClusterSecretManagerConfigArgs() {}
 
     private ClusterSecretManagerConfigArgs(ClusterSecretManagerConfigArgs $) {
         this.enabled = $.enabled;
+        this.rotationConfig = $.rotationConfig;
     }
 
     public static Builder builder() {
@@ -72,6 +91,27 @@ public final class ClusterSecretManagerConfigArgs extends com.pulumi.resources.R
          */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
+        }
+
+        /**
+         * @param rotationConfig config for secret manager auto rotation. Structure is docuemented below
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rotationConfig(@Nullable Output<ClusterSecretManagerConfigRotationConfigArgs> rotationConfig) {
+            $.rotationConfig = rotationConfig;
+            return this;
+        }
+
+        /**
+         * @param rotationConfig config for secret manager auto rotation. Structure is docuemented below
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rotationConfig(ClusterSecretManagerConfigRotationConfigArgs rotationConfig) {
+            return rotationConfig(Output.of(rotationConfig));
         }
 
         public ClusterSecretManagerConfigArgs build() {

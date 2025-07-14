@@ -229,8 +229,6 @@ type RegionalSecretVersion struct {
 	// `projects/{{project}}/locations/{{location}}/secrets/{{secret_id}}/versions/{{version}}`
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Secret Manager regional secret resource.
-	//
-	// ***
 	Secret pulumi.StringOutput `pulumi:"secret"`
 	// The secret data. Must be no larger than 64KiB.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -306,8 +304,6 @@ type regionalSecretVersionState struct {
 	// `projects/{{project}}/locations/{{location}}/secrets/{{secret_id}}/versions/{{version}}`
 	Name *string `pulumi:"name"`
 	// Secret Manager regional secret resource.
-	//
-	// ***
 	Secret *string `pulumi:"secret"`
 	// The secret data. Must be no larger than 64KiB.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -341,8 +337,6 @@ type RegionalSecretVersionState struct {
 	// `projects/{{project}}/locations/{{location}}/secrets/{{secret_id}}/versions/{{version}}`
 	Name pulumi.StringPtrInput
 	// Secret Manager regional secret resource.
-	//
-	// ***
 	Secret pulumi.StringPtrInput
 	// The secret data. Must be no larger than 64KiB.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -368,8 +362,6 @@ type regionalSecretVersionArgs struct {
 	// If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
 	IsSecretDataBase64 *bool `pulumi:"isSecretDataBase64"`
 	// Secret Manager regional secret resource.
-	//
-	// ***
 	Secret string `pulumi:"secret"`
 	// The secret data. Must be no larger than 64KiB.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -390,8 +382,6 @@ type RegionalSecretVersionArgs struct {
 	// If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
 	IsSecretDataBase64 pulumi.BoolPtrInput
 	// Secret Manager regional secret resource.
-	//
-	// ***
 	Secret pulumi.StringInput
 	// The secret data. Must be no larger than 64KiB.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -535,8 +525,6 @@ func (o RegionalSecretVersionOutput) Name() pulumi.StringOutput {
 }
 
 // Secret Manager regional secret resource.
-//
-// ***
 func (o RegionalSecretVersionOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionalSecretVersion) pulumi.StringOutput { return v.Secret }).(pulumi.StringOutput)
 }

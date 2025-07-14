@@ -719,8 +719,6 @@ if not MYPY:
         destination_phase: NotRequired[pulumi.Input[builtins.str]]
         """
         Optional. The starting phase of the rollout created by this rule. Default to the first phase.
-
-        - - -
         """
         destination_target_id: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -744,8 +742,6 @@ class AutomationRuleTimedPromoteReleaseRuleArgs:
         :param pulumi.Input[builtins.str] schedule: Required. Schedule in crontab format. e.g. `0 9 * * 1` for every Monday at 9am.
         :param pulumi.Input[builtins.str] time_zone: Required. The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
         :param pulumi.Input[builtins.str] destination_phase: Optional. The starting phase of the rollout created by this rule. Default to the first phase.
-               
-               - - -
         :param pulumi.Input[builtins.str] destination_target_id: Optional. The ID of the stage in the pipeline to which this Release is deploying. If unspecified, default it to the next stage in the promotion flow. The value of this field could be one of the following:
                - The last segment of a target name
                - "@next", the next target in the promotion sequence"
@@ -799,8 +795,6 @@ class AutomationRuleTimedPromoteReleaseRuleArgs:
     def destination_phase(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Optional. The starting phase of the rollout created by this rule. Default to the first phase.
-
-        - - -
         """
         return pulumi.get(self, "destination_phase")
 
@@ -3411,8 +3405,6 @@ if not MYPY:
         nanos: NotRequired[pulumi.Input[builtins.int]]
         """
         Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
-
-        - - -
         """
         seconds: NotRequired[pulumi.Input[builtins.int]]
         """
@@ -3432,8 +3424,6 @@ class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeArgs:
         :param pulumi.Input[builtins.int] hours: Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
         :param pulumi.Input[builtins.int] minutes: Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.
         :param pulumi.Input[builtins.int] nanos: Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
-               
-               - - -
         :param pulumi.Input[builtins.int] seconds: Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds.
         """
         if hours is not None:
@@ -3474,8 +3464,6 @@ class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeArgs:
     def nanos(self) -> Optional[pulumi.Input[builtins.int]]:
         """
         Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
-
-        - - -
         """
         return pulumi.get(self, "nanos")
 
@@ -3754,8 +3742,6 @@ if not MYPY:
         nanos: NotRequired[pulumi.Input[builtins.int]]
         """
         Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
-
-        - - -
         """
         seconds: NotRequired[pulumi.Input[builtins.int]]
         """
@@ -3775,8 +3761,6 @@ class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeArgs:
         :param pulumi.Input[builtins.int] hours: Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
         :param pulumi.Input[builtins.int] minutes: Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.
         :param pulumi.Input[builtins.int] nanos: Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
-               
-               - - -
         :param pulumi.Input[builtins.int] seconds: Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds.
         """
         if hours is not None:
@@ -3817,8 +3801,6 @@ class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeArgs:
     def nanos(self) -> Optional[pulumi.Input[builtins.int]]:
         """
         Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
-
-        - - -
         """
         return pulumi.get(self, "nanos")
 

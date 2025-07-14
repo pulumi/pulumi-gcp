@@ -18,16 +18,12 @@ public final class LogViewState extends com.pulumi.resources.ResourceArgs {
     /**
      * The bucket of the resource
      * 
-     * ***
-     * 
      */
     @Import(name="bucket")
     private @Nullable Output<String> bucket;
 
     /**
      * @return The bucket of the resource
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> bucket() {
@@ -173,8 +169,6 @@ public final class LogViewState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param bucket The bucket of the resource
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -185,8 +179,6 @@ public final class LogViewState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param bucket The bucket of the resource
-         * 
-         * ***
          * 
          * @return builder
          * 

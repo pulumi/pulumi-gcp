@@ -66,9 +66,6 @@ namespace Pulumi.Gcp.AccessContextManager
 
         /// <summary>
         /// The name of the Service Perimeter to add this resource to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("perimeter")]
         public Output<string> Perimeter { get; private set; } = null!;
@@ -142,9 +139,6 @@ namespace Pulumi.Gcp.AccessContextManager
 
         /// <summary>
         /// The name of the Service Perimeter to add this resource to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("perimeter", required: true)]
         public Input<string> Perimeter { get; set; } = null!;
@@ -192,9 +186,6 @@ namespace Pulumi.Gcp.AccessContextManager
 
         /// <summary>
         /// The name of the Service Perimeter to add this resource to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("perimeter")]
         public Input<string>? Perimeter { get; set; }

@@ -81,8 +81,6 @@ type NetworkEdgeSecurityService struct {
 	// An up-to-date fingerprint must be provided in order to update the NetworkEdgeSecurityService, otherwise the request will fail with error 412 conditionNotMet.
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
 	// Name of the resource. Provided by the client when the resource is created.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -137,8 +135,6 @@ type networkEdgeSecurityServiceState struct {
 	// An up-to-date fingerprint must be provided in order to update the NetworkEdgeSecurityService, otherwise the request will fail with error 412 conditionNotMet.
 	Fingerprint *string `pulumi:"fingerprint"`
 	// Name of the resource. Provided by the client when the resource is created.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -164,8 +160,6 @@ type NetworkEdgeSecurityServiceState struct {
 	// An up-to-date fingerprint must be provided in order to update the NetworkEdgeSecurityService, otherwise the request will fail with error 412 conditionNotMet.
 	Fingerprint pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is created.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -190,8 +184,6 @@ type networkEdgeSecurityServiceArgs struct {
 	// Free-text description of the resource.
 	Description *string `pulumi:"description"`
 	// Name of the resource. Provided by the client when the resource is created.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -207,8 +199,6 @@ type NetworkEdgeSecurityServiceArgs struct {
 	// Free-text description of the resource.
 	Description pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is created.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -323,8 +313,6 @@ func (o NetworkEdgeSecurityServiceOutput) Fingerprint() pulumi.StringOutput {
 }
 
 // Name of the resource. Provided by the client when the resource is created.
-//
-// ***
 func (o NetworkEdgeSecurityServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkEdgeSecurityService) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

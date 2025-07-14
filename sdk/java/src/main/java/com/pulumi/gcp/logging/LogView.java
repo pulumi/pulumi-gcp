@@ -90,16 +90,12 @@ public class LogView extends com.pulumi.resources.CustomResource {
     /**
      * The bucket of the resource
      * 
-     * ***
-     * 
      */
     @Export(name="bucket", refs={String.class}, tree="[0]")
     private Output<String> bucket;
 
     /**
      * @return The bucket of the resource
-     * 
-     * ***
      * 
      */
     public Output<String> bucket() {

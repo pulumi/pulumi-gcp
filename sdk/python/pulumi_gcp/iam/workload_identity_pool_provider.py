@@ -42,9 +42,6 @@ class WorkloadIdentityPoolProviderArgs:
         :param pulumi.Input[builtins.str] workload_identity_pool_provider_id: The ID for the provider, which becomes the final component of the resource name. This
                value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
                `gcp-` is reserved for use by Google, and may not be specified.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] attribute_condition: [A Common Expression Language](https://opensource.google/projects/cel) expression, in
                plain text, to restrict what otherwise valid authentication credentials issued by the
                provider should not be accepted.
@@ -161,9 +158,6 @@ class WorkloadIdentityPoolProviderArgs:
         The ID for the provider, which becomes the final component of the resource name. This
         value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
         `gcp-` is reserved for use by Google, and may not be specified.
-
-
-        - - -
         """
         return pulumi.get(self, "workload_identity_pool_provider_id")
 
@@ -455,9 +449,6 @@ class _WorkloadIdentityPoolProviderState:
         :param pulumi.Input[builtins.str] workload_identity_pool_provider_id: The ID for the provider, which becomes the final component of the resource name. This
                value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
                `gcp-` is reserved for use by Google, and may not be specified.
-               
-               
-               - - -
         :param pulumi.Input['WorkloadIdentityPoolProviderX509Args'] x509: An X.509-type identity provider represents a CA. It is trusted to assert a
                client identity if the client has a certificate that chains up to this CA.
                Structure is documented below.
@@ -710,9 +701,6 @@ class _WorkloadIdentityPoolProviderState:
         The ID for the provider, which becomes the final component of the resource name. This
         value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
         `gcp-` is reserved for use by Google, and may not be specified.
-
-
-        - - -
         """
         return pulumi.get(self, "workload_identity_pool_provider_id")
 
@@ -1104,9 +1092,6 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] workload_identity_pool_provider_id: The ID for the provider, which becomes the final component of the resource name. This
                value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
                `gcp-` is reserved for use by Google, and may not be specified.
-               
-               
-               - - -
         :param pulumi.Input[Union['WorkloadIdentityPoolProviderX509Args', 'WorkloadIdentityPoolProviderX509ArgsDict']] x509: An X.509-type identity provider represents a CA. It is trusted to assert a
                client identity if the client has a certificate that chains up to this CA.
                Structure is documented below.
@@ -1559,9 +1544,6 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] workload_identity_pool_provider_id: The ID for the provider, which becomes the final component of the resource name. This
                value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
                `gcp-` is reserved for use by Google, and may not be specified.
-               
-               
-               - - -
         :param pulumi.Input[Union['WorkloadIdentityPoolProviderX509Args', 'WorkloadIdentityPoolProviderX509ArgsDict']] x509: An X.509-type identity provider represents a CA. It is trusted to assert a
                client identity if the client has a certificate that chains up to this CA.
                Structure is documented below.
@@ -1757,9 +1739,6 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
         The ID for the provider, which becomes the final component of the resource name. This
         value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
         `gcp-` is reserved for use by Google, and may not be specified.
-
-
-        - - -
         """
         return pulumi.get(self, "workload_identity_pool_provider_id")
 

@@ -125,6 +125,7 @@ const (
 	gcpMemcache                 = "Memcache"                 // Memcache resources
 	gcpMemorystore              = "MemoryStore"              // Memory Store
 	gcpMigrationCenter          = "MigrationCenter"          // Migration Center
+	gcpModelArmor               = "ModelArmor"               // Model Armor
 	gcpMonitoring               = "Monitoring"               // Monitoring resources
 	gcpNetapp                   = "Netapp"                   // Netapp
 	gcpNetworkConnectivity      = "NetworkConnectivity"      // Network Connectivity resources
@@ -261,6 +262,7 @@ var moduleMapping = map[string]string{
 	"memorystore":                gcpMemorystore,
 	"migration_center":           gcpMigrationCenter,
 	"ml":                         gcpMachingLearning,
+	"model_armor":                gcpModelArmor,
 	"monitoring":                 gcpMonitoring,
 	"netapp":                     gcpNetapp,
 	"network_connectivity":       gcpNetworkConnectivity,

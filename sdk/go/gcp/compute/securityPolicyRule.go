@@ -256,8 +256,6 @@ type SecurityPolicyRule struct {
 	// Structure is documented below.
 	RedirectOptions SecurityPolicyRuleRedirectOptionsPtrOutput `pulumi:"redirectOptions"`
 	// The name of the security policy this rule belongs to.
-	//
-	// ***
 	SecurityPolicy pulumi.StringOutput `pulumi:"securityPolicy"`
 }
 
@@ -336,8 +334,6 @@ type securityPolicyRuleState struct {
 	// Structure is documented below.
 	RedirectOptions *SecurityPolicyRuleRedirectOptions `pulumi:"redirectOptions"`
 	// The name of the security policy this rule belongs to.
-	//
-	// ***
 	SecurityPolicy *string `pulumi:"securityPolicy"`
 }
 
@@ -378,8 +374,6 @@ type SecurityPolicyRuleState struct {
 	// Structure is documented below.
 	RedirectOptions SecurityPolicyRuleRedirectOptionsPtrInput
 	// The name of the security policy this rule belongs to.
-	//
-	// ***
 	SecurityPolicy pulumi.StringPtrInput
 }
 
@@ -424,8 +418,6 @@ type securityPolicyRuleArgs struct {
 	// Structure is documented below.
 	RedirectOptions *SecurityPolicyRuleRedirectOptions `pulumi:"redirectOptions"`
 	// The name of the security policy this rule belongs to.
-	//
-	// ***
 	SecurityPolicy string `pulumi:"securityPolicy"`
 }
 
@@ -467,8 +459,6 @@ type SecurityPolicyRuleArgs struct {
 	// Structure is documented below.
 	RedirectOptions SecurityPolicyRuleRedirectOptionsPtrInput
 	// The name of the security policy this rule belongs to.
-	//
-	// ***
 	SecurityPolicy pulumi.StringInput
 }
 
@@ -627,8 +617,6 @@ func (o SecurityPolicyRuleOutput) RedirectOptions() SecurityPolicyRuleRedirectOp
 }
 
 // The name of the security policy this rule belongs to.
-//
-// ***
 func (o SecurityPolicyRuleOutput) SecurityPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityPolicyRule) pulumi.StringOutput { return v.SecurityPolicy }).(pulumi.StringOutput)
 }

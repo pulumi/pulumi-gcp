@@ -168,8 +168,6 @@ public class ManagedFolder extends com.pulumi.resources.CustomResource {
      * The name of the managed folder expressed as a path. Must include
      * trailing &#39;/&#39;. For example, `example_dir/example_dir2/`.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -177,8 +175,6 @@ public class ManagedFolder extends com.pulumi.resources.CustomResource {
     /**
      * @return The name of the managed folder expressed as a path. Must include
      * trailing &#39;/&#39;. For example, `example_dir/example_dir2/`.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

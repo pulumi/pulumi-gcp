@@ -247,9 +247,6 @@ export class CaPool extends pulumi.CustomResource {
     /**
      * Location of the CaPool. A full list of valid locations can be found by
      * running `gcloud privateca locations list`.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -349,9 +346,6 @@ export interface CaPoolState {
     /**
      * Location of the CaPool. A full list of valid locations can be found by
      * running `gcloud privateca locations list`.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -401,9 +395,6 @@ export interface CaPoolArgs {
     /**
      * Location of the CaPool. A full list of valid locations can be found by
      * running `gcloud privateca locations list`.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

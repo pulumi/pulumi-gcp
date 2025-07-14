@@ -185,6 +185,10 @@ namespace Pulumi.Gcp.Compute
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -208,8 +212,8 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<Outputs.RouterRoutePolicyTerm>> Terms { get; private set; } = null!;
 
         /// <summary>
-        /// This is policy's type, which is one of IMPORT or EXPORT Possible values: ["ROUTE_POLICY_TYPE_IMPORT",
-        /// "ROUTE_POLICY_TYPE_EXPORT"]
+        /// This is policy's type, which is one of IMPORT or EXPORT
+        /// Possible values are: `ROUTE_POLICY_TYPE_IMPORT`, `ROUTE_POLICY_TYPE_EXPORT`.
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -266,6 +270,10 @@ namespace Pulumi.Gcp.Compute
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -295,8 +303,8 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// This is policy's type, which is one of IMPORT or EXPORT Possible values: ["ROUTE_POLICY_TYPE_IMPORT",
-        /// "ROUTE_POLICY_TYPE_EXPORT"]
+        /// This is policy's type, which is one of IMPORT or EXPORT
+        /// Possible values are: `ROUTE_POLICY_TYPE_IMPORT`, `ROUTE_POLICY_TYPE_EXPORT`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -322,6 +330,10 @@ namespace Pulumi.Gcp.Compute
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -351,8 +363,8 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// This is policy's type, which is one of IMPORT or EXPORT Possible values: ["ROUTE_POLICY_TYPE_IMPORT",
-        /// "ROUTE_POLICY_TYPE_EXPORT"]
+        /// This is policy's type, which is one of IMPORT or EXPORT
+        /// Possible values are: `ROUTE_POLICY_TYPE_IMPORT`, `ROUTE_POLICY_TYPE_EXPORT`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

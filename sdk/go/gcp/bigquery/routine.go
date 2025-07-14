@@ -488,8 +488,6 @@ type Routine struct {
 	DatasetId pulumi.StringOutput `pulumi:"datasetId"`
 	// The body of the routine. For functions, this is the expression in the AS clause.
 	// If language=SQL, it is the substring inside (but excluding) the parentheses.
-	//
-	// ***
 	DefinitionBody pulumi.StringOutput `pulumi:"definitionBody"`
 	// The description of the routine if defined.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -594,8 +592,6 @@ type routineState struct {
 	DatasetId *string `pulumi:"datasetId"`
 	// The body of the routine. For functions, this is the expression in the AS clause.
 	// If language=SQL, it is the substring inside (but excluding) the parentheses.
-	//
-	// ***
 	DefinitionBody *string `pulumi:"definitionBody"`
 	// The description of the routine if defined.
 	Description *string `pulumi:"description"`
@@ -659,8 +655,6 @@ type RoutineState struct {
 	DatasetId pulumi.StringPtrInput
 	// The body of the routine. For functions, this is the expression in the AS clause.
 	// If language=SQL, it is the substring inside (but excluding) the parentheses.
-	//
-	// ***
 	DefinitionBody pulumi.StringPtrInput
 	// The description of the routine if defined.
 	Description pulumi.StringPtrInput
@@ -725,8 +719,6 @@ type routineArgs struct {
 	DatasetId string `pulumi:"datasetId"`
 	// The body of the routine. For functions, this is the expression in the AS clause.
 	// If language=SQL, it is the substring inside (but excluding) the parentheses.
-	//
-	// ***
 	DefinitionBody string `pulumi:"definitionBody"`
 	// The description of the routine if defined.
 	Description *string `pulumi:"description"`
@@ -785,8 +777,6 @@ type RoutineArgs struct {
 	DatasetId pulumi.StringInput
 	// The body of the routine. For functions, this is the expression in the AS clause.
 	// If language=SQL, it is the substring inside (but excluding) the parentheses.
-	//
-	// ***
 	DefinitionBody pulumi.StringInput
 	// The description of the routine if defined.
 	Description pulumi.StringPtrInput
@@ -945,8 +935,6 @@ func (o RoutineOutput) DatasetId() pulumi.StringOutput {
 
 // The body of the routine. For functions, this is the expression in the AS clause.
 // If language=SQL, it is the substring inside (but excluding) the parentheses.
-//
-// ***
 func (o RoutineOutput) DefinitionBody() pulumi.StringOutput {
 	return o.ApplyT(func(v *Routine) pulumi.StringOutput { return v.DefinitionBody }).(pulumi.StringOutput)
 }

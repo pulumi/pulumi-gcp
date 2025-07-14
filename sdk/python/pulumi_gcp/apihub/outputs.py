@@ -91,8 +91,6 @@ class ApiHubInstanceConfig(dict):
                GMEK
                CMEK
         :param builtins.str vertex_location: Optional. The name of the Vertex AI location where the data store is stored.
-               
-               - - -
         """
         if cmek_key_name is not None:
             pulumi.set(__self__, "cmek_key_name", cmek_key_name)
@@ -143,8 +141,6 @@ class ApiHubInstanceConfig(dict):
     def vertex_location(self) -> Optional[builtins.str]:
         """
         Optional. The name of the Vertex AI location where the data store is stored.
-
-        - - -
         """
         return pulumi.get(self, "vertex_location")
 
@@ -218,8 +214,6 @@ class CurationEndpointApplicationIntegrationEndpointDetails(dict):
                `https://integrations.googleapis.com/v1/{name=projects/*/locations/*/integrations/*}:execute`
                or
                `https://{location}-integrations.googleapis.com/v1/{name=projects/*/locations/*/integrations/*}:execute`
-               
-               - - -
         """
         pulumi.set(__self__, "trigger_id", trigger_id)
         pulumi.set(__self__, "uri", uri)
@@ -242,8 +236,6 @@ class CurationEndpointApplicationIntegrationEndpointDetails(dict):
         `https://integrations.googleapis.com/v1/{name=projects/*/locations/*/integrations/*}:execute`
         or
         `https://{location}-integrations.googleapis.com/v1/{name=projects/*/locations/*/integrations/*}:execute`
-
-        - - -
         """
         return pulumi.get(self, "uri")
 
@@ -1071,8 +1063,6 @@ class PluginInstanceActionCurationConfigCustomCuration(dict):
         :param builtins.str curation: The unique name of the curation resource. This will be the name of the
                curation resource in the format:
                `projects/{project}/locations/{location}/curations/{curation}`
-               
-               - - -
         """
         pulumi.set(__self__, "curation", curation)
 
@@ -1083,8 +1073,6 @@ class PluginInstanceActionCurationConfigCustomCuration(dict):
         The unique name of the curation resource. This will be the name of the
         curation resource in the format:
         `projects/{project}/locations/{location}/curations/{curation}`
-
-        - - -
         """
         return pulumi.get(self, "curation")
 

@@ -21,8 +21,6 @@ namespace Pulumi.Gcp.NetworkSecurity.Outputs
         public readonly string LoadBalancingScheme;
         /// <summary>
         /// A list of references to the Forwarding Rules on which this policy will be applied.
-        /// 
-        /// - - -
         /// </summary>
         public readonly ImmutableArray<string> Resources;
 

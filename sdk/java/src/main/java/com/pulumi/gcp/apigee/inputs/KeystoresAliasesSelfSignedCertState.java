@@ -165,6 +165,7 @@ public final class KeystoresAliasesSelfSignedCertState extends com.pulumi.resour
 
     /**
      * List of alternative host names. Maximum length is 255 characters for each value.
+     * Structure is documented below.
      * 
      */
     @Import(name="subjectAlternativeDnsNames")
@@ -172,6 +173,7 @@ public final class KeystoresAliasesSelfSignedCertState extends com.pulumi.resour
 
     /**
      * @return List of alternative host names. Maximum length is 255 characters for each value.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs>> subjectAlternativeDnsNames() {
@@ -437,6 +439,7 @@ public final class KeystoresAliasesSelfSignedCertState extends com.pulumi.resour
 
         /**
          * @param subjectAlternativeDnsNames List of alternative host names. Maximum length is 255 characters for each value.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -448,6 +451,7 @@ public final class KeystoresAliasesSelfSignedCertState extends com.pulumi.resour
 
         /**
          * @param subjectAlternativeDnsNames List of alternative host names. Maximum length is 255 characters for each value.
+         * Structure is documented below.
          * 
          * @return builder
          * 

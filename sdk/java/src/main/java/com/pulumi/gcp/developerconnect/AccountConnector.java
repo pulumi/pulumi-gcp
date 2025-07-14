@@ -336,8 +336,6 @@ public class AccountConnector extends com.pulumi.resources.CustomResource {
      * to https://google.aip.dev/122#resource-id-segments Names must be unique
      * per-project per-location.
      * 
-     * ***
-     * 
      */
     @Export(name="accountConnectorId", refs={String.class}, tree="[0]")
     private Output<String> accountConnectorId;
@@ -347,8 +345,6 @@ public class AccountConnector extends com.pulumi.resources.CustomResource {
      * component of the AccountConnector&#39;s resource name. Its format should adhere
      * to https://google.aip.dev/122#resource-id-segments Names must be unique
      * per-project per-location.
-     * 
-     * ***
      * 
      */
     public Output<String> accountConnectorId() {

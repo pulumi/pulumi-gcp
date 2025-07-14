@@ -14,8 +14,6 @@ namespace Pulumi.Gcp.Apigee.Inputs
     {
         /// <summary>
         /// The name of the producer VPC network.
-        /// 
-        /// - - -
         /// </summary>
         [Input("targetNetworkId", required: true)]
         public Input<string> TargetNetworkId { get; set; } = null!;

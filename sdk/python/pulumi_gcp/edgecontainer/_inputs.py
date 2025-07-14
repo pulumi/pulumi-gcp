@@ -113,8 +113,6 @@ if not MYPY:
         username: pulumi.Input[builtins.str]
         """
         An active Google username.
-
-        - - -
         """
 elif False:
     ClusterAuthorizationAdminUsersArgsDict: TypeAlias = Mapping[str, Any]
@@ -125,8 +123,6 @@ class ClusterAuthorizationAdminUsersArgs:
                  username: pulumi.Input[builtins.str]):
         """
         :param pulumi.Input[builtins.str] username: An active Google username.
-               
-               - - -
         """
         pulumi.set(__self__, "username", username)
 
@@ -135,8 +131,6 @@ class ClusterAuthorizationAdminUsersArgs:
     def username(self) -> pulumi.Input[builtins.str]:
         """
         An active Google username.
-
-        - - -
         """
         return pulumi.get(self, "username")
 
@@ -642,8 +636,7 @@ if not MYPY:
         """
         target_version: NotRequired[pulumi.Input[builtins.str]]
         """
-        (Output)
-        The target version of the cluster.
+        The target cluster version. For example: "1.5.0".
         """
         type: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -694,8 +687,7 @@ class ClusterMaintenanceEventArgs:
                The time when the maintenance event started.
         :param pulumi.Input[builtins.str] state: (Output)
                Indicates the maintenance event state.
-        :param pulumi.Input[builtins.str] target_version: (Output)
-               The target version of the cluster.
+        :param pulumi.Input[builtins.str] target_version: The target cluster version. For example: "1.5.0".
         :param pulumi.Input[builtins.str] type: (Output)
                Indicates the maintenance event type.
         :param pulumi.Input[builtins.str] update_time: (Output)
@@ -811,8 +803,7 @@ class ClusterMaintenanceEventArgs:
     @pulumi.getter(name="targetVersion")
     def target_version(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        (Output)
-        The target version of the cluster.
+        The target cluster version. For example: "1.5.0".
         """
         return pulumi.get(self, "target_version")
 

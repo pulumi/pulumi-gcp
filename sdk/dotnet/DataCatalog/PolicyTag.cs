@@ -156,9 +156,6 @@ namespace Pulumi.Gcp.DataCatalog
 
         /// <summary>
         /// Taxonomy the policy tag is associated with
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("taxonomy")]
         public Output<string> Taxonomy { get; private set; } = null!;
@@ -236,9 +233,6 @@ namespace Pulumi.Gcp.DataCatalog
 
         /// <summary>
         /// Taxonomy the policy tag is associated with
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("taxonomy", required: true)]
         public Input<string> Taxonomy { get; set; } = null!;
@@ -297,9 +291,6 @@ namespace Pulumi.Gcp.DataCatalog
 
         /// <summary>
         /// Taxonomy the policy tag is associated with
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("taxonomy")]
         public Input<string>? Taxonomy { get; set; }

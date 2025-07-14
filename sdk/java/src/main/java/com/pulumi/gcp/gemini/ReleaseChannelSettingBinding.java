@@ -240,16 +240,12 @@ public class ReleaseChannelSettingBinding extends com.pulumi.resources.CustomRes
     /**
      * Id of the setting binding.
      * 
-     * ***
-     * 
      */
     @Export(name="settingBindingId", refs={String.class}, tree="[0]")
     private Output<String> settingBindingId;
 
     /**
      * @return Id of the setting binding.
-     * 
-     * ***
      * 
      */
     public Output<String> settingBindingId() {

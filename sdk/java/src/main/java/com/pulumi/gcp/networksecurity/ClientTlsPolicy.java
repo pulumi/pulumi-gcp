@@ -239,16 +239,12 @@ public class ClientTlsPolicy extends com.pulumi.resources.CustomResource {
     /**
      * Name of the ClientTlsPolicy resource.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return Name of the ClientTlsPolicy resource.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

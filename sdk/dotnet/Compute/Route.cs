@@ -303,9 +303,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The network that this route applies to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
@@ -407,6 +404,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("nextHopVpnTunnel")]
         public Output<string?> NextHopVpnTunnel { get; private set; } = null!;
+
+        /// <summary>
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// Structure is documented below.
+        /// </summary>
+        [Output("params")]
+        public Output<Outputs.RouteParams?> Params { get; private set; } = null!;
 
         /// <summary>
         /// The priority of this route. Priority is used to break ties in cases
@@ -536,9 +540,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The network that this route applies to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("network", required: true)]
         public Input<string> Network { get; set; } = null!;
@@ -604,6 +605,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("nextHopVpnTunnel")]
         public Input<string>? NextHopVpnTunnel { get; set; }
+
+        /// <summary>
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// Structure is documented below.
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.RouteParamsArgs>? Params { get; set; }
 
         /// <summary>
         /// The priority of this route. Priority is used to break ties in cases
@@ -688,9 +696,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The network that this route applies to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
@@ -792,6 +797,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("nextHopVpnTunnel")]
         public Input<string>? NextHopVpnTunnel { get; set; }
+
+        /// <summary>
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// Structure is documented below.
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.RouteParamsGetArgs>? Params { get; set; }
 
         /// <summary>
         /// The priority of this route. Priority is used to break ties in cases

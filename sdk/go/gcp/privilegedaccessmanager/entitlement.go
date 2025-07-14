@@ -115,9 +115,11 @@ type Entitlement struct {
 	pulumi.CustomResourceState
 
 	// AdditionalNotificationTargets includes email addresses to be notified.
+	// Structure is documented below.
 	AdditionalNotificationTargets EntitlementAdditionalNotificationTargetsPtrOutput `pulumi:"additionalNotificationTargets"`
-	// The approvals needed before access will be granted to a requester. No approvals will be needed if this field is null.
-	// Different types of approval workflows that can be used to gate privileged access granting.
+	// The approvals needed before access will be granted to a requester.
+	// No approvals will be needed if this field is null. Different types of approval workflows that can be used to gate privileged access granting.
+	// Structure is documented below.
 	ApprovalWorkflow EntitlementApprovalWorkflowPtrOutput `pulumi:"approvalWorkflow"`
 	// Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
@@ -207,9 +209,11 @@ func GetEntitlement(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Entitlement resources.
 type entitlementState struct {
 	// AdditionalNotificationTargets includes email addresses to be notified.
+	// Structure is documented below.
 	AdditionalNotificationTargets *EntitlementAdditionalNotificationTargets `pulumi:"additionalNotificationTargets"`
-	// The approvals needed before access will be granted to a requester. No approvals will be needed if this field is null.
-	// Different types of approval workflows that can be used to gate privileged access granting.
+	// The approvals needed before access will be granted to a requester.
+	// No approvals will be needed if this field is null. Different types of approval workflows that can be used to gate privileged access granting.
+	// Structure is documented below.
 	ApprovalWorkflow *EntitlementApprovalWorkflow `pulumi:"approvalWorkflow"`
 	// Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
@@ -249,9 +253,11 @@ type entitlementState struct {
 
 type EntitlementState struct {
 	// AdditionalNotificationTargets includes email addresses to be notified.
+	// Structure is documented below.
 	AdditionalNotificationTargets EntitlementAdditionalNotificationTargetsPtrInput
-	// The approvals needed before access will be granted to a requester. No approvals will be needed if this field is null.
-	// Different types of approval workflows that can be used to gate privileged access granting.
+	// The approvals needed before access will be granted to a requester.
+	// No approvals will be needed if this field is null. Different types of approval workflows that can be used to gate privileged access granting.
+	// Structure is documented below.
 	ApprovalWorkflow EntitlementApprovalWorkflowPtrInput
 	// Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
@@ -295,9 +301,11 @@ func (EntitlementState) ElementType() reflect.Type {
 
 type entitlementArgs struct {
 	// AdditionalNotificationTargets includes email addresses to be notified.
+	// Structure is documented below.
 	AdditionalNotificationTargets *EntitlementAdditionalNotificationTargets `pulumi:"additionalNotificationTargets"`
-	// The approvals needed before access will be granted to a requester. No approvals will be needed if this field is null.
-	// Different types of approval workflows that can be used to gate privileged access granting.
+	// The approvals needed before access will be granted to a requester.
+	// No approvals will be needed if this field is null. Different types of approval workflows that can be used to gate privileged access granting.
+	// Structure is documented below.
 	ApprovalWorkflow *EntitlementApprovalWorkflow `pulumi:"approvalWorkflow"`
 	// Who can create Grants using Entitlement. This list should contain at most one entry
 	// Structure is documented below.
@@ -325,9 +333,11 @@ type entitlementArgs struct {
 // The set of arguments for constructing a Entitlement resource.
 type EntitlementArgs struct {
 	// AdditionalNotificationTargets includes email addresses to be notified.
+	// Structure is documented below.
 	AdditionalNotificationTargets EntitlementAdditionalNotificationTargetsPtrInput
-	// The approvals needed before access will be granted to a requester. No approvals will be needed if this field is null.
-	// Different types of approval workflows that can be used to gate privileged access granting.
+	// The approvals needed before access will be granted to a requester.
+	// No approvals will be needed if this field is null. Different types of approval workflows that can be used to gate privileged access granting.
+	// Structure is documented below.
 	ApprovalWorkflow EntitlementApprovalWorkflowPtrInput
 	// Who can create Grants using Entitlement. This list should contain at most one entry
 	// Structure is documented below.
@@ -440,14 +450,16 @@ func (o EntitlementOutput) ToEntitlementOutputWithContext(ctx context.Context) E
 }
 
 // AdditionalNotificationTargets includes email addresses to be notified.
+// Structure is documented below.
 func (o EntitlementOutput) AdditionalNotificationTargets() EntitlementAdditionalNotificationTargetsPtrOutput {
 	return o.ApplyT(func(v *Entitlement) EntitlementAdditionalNotificationTargetsPtrOutput {
 		return v.AdditionalNotificationTargets
 	}).(EntitlementAdditionalNotificationTargetsPtrOutput)
 }
 
-// The approvals needed before access will be granted to a requester. No approvals will be needed if this field is null.
-// Different types of approval workflows that can be used to gate privileged access granting.
+// The approvals needed before access will be granted to a requester.
+// No approvals will be needed if this field is null. Different types of approval workflows that can be used to gate privileged access granting.
+// Structure is documented below.
 func (o EntitlementOutput) ApprovalWorkflow() EntitlementApprovalWorkflowPtrOutput {
 	return o.ApplyT(func(v *Entitlement) EntitlementApprovalWorkflowPtrOutput { return v.ApprovalWorkflow }).(EntitlementApprovalWorkflowPtrOutput)
 }

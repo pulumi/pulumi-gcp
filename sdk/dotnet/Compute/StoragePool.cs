@@ -215,9 +215,6 @@ namespace Pulumi.Gcp.Compute
         /// following are valid values:
         /// * `https://www.googleapis.com/compute/v1/projects/{project_id}/zones/{zone}/storagePoolTypes/hyperdisk-balanced`
         /// * `hyperdisk-throughput`
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("storagePoolType")]
         public Output<string> StoragePoolType { get; private set; } = null!;
@@ -342,9 +339,6 @@ namespace Pulumi.Gcp.Compute
         /// following are valid values:
         /// * `https://www.googleapis.com/compute/v1/projects/{project_id}/zones/{zone}/storagePoolTypes/hyperdisk-balanced`
         /// * `hyperdisk-throughput`
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("storagePoolType", required: true)]
         public Input<string> StoragePoolType { get; set; } = null!;
@@ -476,9 +470,6 @@ namespace Pulumi.Gcp.Compute
         /// following are valid values:
         /// * `https://www.googleapis.com/compute/v1/projects/{project_id}/zones/{zone}/storagePoolTypes/hyperdisk-balanced`
         /// * `hyperdisk-throughput`
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("storagePoolType")]
         public Input<string>? StoragePoolType { get; set; }

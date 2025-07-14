@@ -303,9 +303,6 @@ export class TlsInspectionPolicy extends pulumi.CustomResource {
     public readonly minTlsVersion!: pulumi.Output<string | undefined>;
     /**
      * Short name of the TlsInspectionPolicy resource to be created.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -412,9 +409,6 @@ export interface TlsInspectionPolicyState {
     minTlsVersion?: pulumi.Input<string>;
     /**
      * Short name of the TlsInspectionPolicy resource to be created.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -470,9 +464,6 @@ export interface TlsInspectionPolicyArgs {
     minTlsVersion?: pulumi.Input<string>;
     /**
      * Short name of the TlsInspectionPolicy resource to be created.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

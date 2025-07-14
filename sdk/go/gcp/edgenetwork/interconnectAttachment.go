@@ -117,8 +117,6 @@ type InterconnectAttachment struct {
 	// The ID of the underlying interconnect that this attachment's traffic will traverse through.
 	Interconnect pulumi.StringOutput `pulumi:"interconnect"`
 	// A unique ID that identifies this interconnect attachment.
-	//
-	// ***
 	InterconnectAttachmentId pulumi.StringOutput `pulumi:"interconnectAttachmentId"`
 	// Labels associated with this resource.
 	//
@@ -215,8 +213,6 @@ type interconnectAttachmentState struct {
 	// The ID of the underlying interconnect that this attachment's traffic will traverse through.
 	Interconnect *string `pulumi:"interconnect"`
 	// A unique ID that identifies this interconnect attachment.
-	//
-	// ***
 	InterconnectAttachmentId *string `pulumi:"interconnectAttachmentId"`
 	// Labels associated with this resource.
 	//
@@ -261,8 +257,6 @@ type InterconnectAttachmentState struct {
 	// The ID of the underlying interconnect that this attachment's traffic will traverse through.
 	Interconnect pulumi.StringPtrInput
 	// A unique ID that identifies this interconnect attachment.
-	//
-	// ***
 	InterconnectAttachmentId pulumi.StringPtrInput
 	// Labels associated with this resource.
 	//
@@ -305,8 +299,6 @@ type interconnectAttachmentArgs struct {
 	// The ID of the underlying interconnect that this attachment's traffic will traverse through.
 	Interconnect string `pulumi:"interconnect"`
 	// A unique ID that identifies this interconnect attachment.
-	//
-	// ***
 	InterconnectAttachmentId string `pulumi:"interconnectAttachmentId"`
 	// Labels associated with this resource.
 	//
@@ -336,8 +328,6 @@ type InterconnectAttachmentArgs struct {
 	// The ID of the underlying interconnect that this attachment's traffic will traverse through.
 	Interconnect pulumi.StringInput
 	// A unique ID that identifies this interconnect attachment.
-	//
-	// ***
 	InterconnectAttachmentId pulumi.StringInput
 	// Labels associated with this resource.
 	//
@@ -470,8 +460,6 @@ func (o InterconnectAttachmentOutput) Interconnect() pulumi.StringOutput {
 }
 
 // A unique ID that identifies this interconnect attachment.
-//
-// ***
 func (o InterconnectAttachmentOutput) InterconnectAttachmentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringOutput { return v.InterconnectAttachmentId }).(pulumi.StringOutput)
 }

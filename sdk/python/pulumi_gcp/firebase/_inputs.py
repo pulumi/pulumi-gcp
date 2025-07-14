@@ -456,7 +456,8 @@ if not MYPY:
         """
         display_name: NotRequired[pulumi.Input[builtins.str]]
         """
-        Human-readable name. 63 character limit.
+        (Output)
+        The 'name' field in a Git user's git.config. Required by Git.
         """
         hash: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -498,7 +499,8 @@ class AppHostingBuildSourceCodebaseArgs:
                The message of a codebase change.
         :param pulumi.Input[builtins.str] commit_time: (Output)
                The time the change was made.
-        :param pulumi.Input[builtins.str] display_name: Human-readable name. 63 character limit.
+        :param pulumi.Input[builtins.str] display_name: (Output)
+               The 'name' field in a Git user's git.config. Required by Git.
         :param pulumi.Input[builtins.str] hash: (Output)
                The full SHA-1 hash of a Git commit, if available.
         :param pulumi.Input[builtins.str] uri: (Output)
@@ -595,7 +597,8 @@ class AppHostingBuildSourceCodebaseArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Human-readable name. 63 character limit.
+        (Output)
+        The 'name' field in a Git user's git.config. Required by Git.
         """
         return pulumi.get(self, "display_name")
 
@@ -636,7 +639,7 @@ if not MYPY:
     class AppHostingBuildSourceCodebaseAuthorArgsDict(TypedDict):
         display_name: NotRequired[pulumi.Input[builtins.str]]
         """
-        The 'name' field in a Git user's git.config. Required by Git.
+        Human-readable name. 63 character limit.
         """
         email: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -657,7 +660,7 @@ class AppHostingBuildSourceCodebaseAuthorArgs:
                  email: Optional[pulumi.Input[builtins.str]] = None,
                  image_uri: Optional[pulumi.Input[builtins.str]] = None):
         """
-        :param pulumi.Input[builtins.str] display_name: The 'name' field in a Git user's git.config. Required by Git.
+        :param pulumi.Input[builtins.str] display_name: Human-readable name. 63 character limit.
         :param pulumi.Input[builtins.str] email: The 'email' field in a Git user's git.config, if available.
         :param pulumi.Input[builtins.str] image_uri: The URI of an image file associated with the user's account in an
                external source control provider, if available.
@@ -673,7 +676,7 @@ class AppHostingBuildSourceCodebaseAuthorArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The 'name' field in a Git user's git.config. Required by Git.
+        Human-readable name. 63 character limit.
         """
         return pulumi.get(self, "display_name")
 
@@ -2274,8 +2277,6 @@ if not MYPY:
         with actual values. These strings include: ${param:FOO},
         ${function:myFunc.url},
         ${function:myFunc.name}, and ${function:myFunc.location}
-
-        - - -
         """
         system_params: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]
         """
@@ -2316,8 +2317,6 @@ class ExtensionsInstanceConfigArgs:
                with actual values. These strings include: ${param:FOO},
                ${function:myFunc.url},
                ${function:myFunc.name}, and ${function:myFunc.location}
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] system_params: Params whose values are only available at deployment time.
                Unlike other params, these will not be set as environment variables on
                functions. See a full list of system parameters at
@@ -2437,8 +2436,6 @@ class ExtensionsInstanceConfigArgs:
         with actual values. These strings include: ${param:FOO},
         ${function:myFunc.url},
         ${function:myFunc.name}, and ${function:myFunc.location}
-
-        - - -
         """
         return pulumi.get(self, "populated_postinstall_content")
 

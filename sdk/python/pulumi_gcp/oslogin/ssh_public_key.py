@@ -28,9 +28,6 @@ class SshPublicKeyArgs:
         The set of arguments for constructing a SshPublicKey resource.
         :param pulumi.Input[builtins.str] key: Public key text in SSH format, defined by RFC4253 section 6.6.
         :param pulumi.Input[builtins.str] user: The user email.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] expiration_time_usec: An expiration time in microseconds since epoch.
         :param pulumi.Input[builtins.str] project: The project ID of the Google Cloud Platform project.
         """
@@ -58,9 +55,6 @@ class SshPublicKeyArgs:
     def user(self) -> pulumi.Input[builtins.str]:
         """
         The user email.
-
-
-        - - -
         """
         return pulumi.get(self, "user")
 
@@ -108,9 +102,6 @@ class _SshPublicKeyState:
         :param pulumi.Input[builtins.str] key: Public key text in SSH format, defined by RFC4253 section 6.6.
         :param pulumi.Input[builtins.str] project: The project ID of the Google Cloud Platform project.
         :param pulumi.Input[builtins.str] user: The user email.
-               
-               
-               - - -
         """
         if expiration_time_usec is not None:
             pulumi.set(__self__, "expiration_time_usec", expiration_time_usec)
@@ -176,9 +167,6 @@ class _SshPublicKeyState:
     def user(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The user email.
-
-
-        - - -
         """
         return pulumi.get(self, "user")
 
@@ -246,9 +234,6 @@ class SshPublicKey(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] key: Public key text in SSH format, defined by RFC4253 section 6.6.
         :param pulumi.Input[builtins.str] project: The project ID of the Google Cloud Platform project.
         :param pulumi.Input[builtins.str] user: The user email.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -362,9 +347,6 @@ class SshPublicKey(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] key: Public key text in SSH format, defined by RFC4253 section 6.6.
         :param pulumi.Input[builtins.str] project: The project ID of the Google Cloud Platform project.
         :param pulumi.Input[builtins.str] user: The user email.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -414,9 +396,6 @@ class SshPublicKey(pulumi.CustomResource):
     def user(self) -> pulumi.Output[builtins.str]:
         """
         The user email.
-
-
-        - - -
         """
         return pulumi.get(self, "user")
 

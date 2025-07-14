@@ -92,8 +92,6 @@ type FirewallPolicyAssociation struct {
 	// firewall policy with the flag to override the existing attachmentTarget's policy association.
 	// **Note** Due to potential risks with this operation it is *highly* recommended to use the `createBeforeDestroy` life cycle option
 	// on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
-	//
-	// ***
 	FirewallPolicy pulumi.StringOutput `pulumi:"firewallPolicy"`
 	// The name for an association.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -144,8 +142,6 @@ type firewallPolicyAssociationState struct {
 	// firewall policy with the flag to override the existing attachmentTarget's policy association.
 	// **Note** Due to potential risks with this operation it is *highly* recommended to use the `createBeforeDestroy` life cycle option
 	// on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
-	//
-	// ***
 	FirewallPolicy *string `pulumi:"firewallPolicy"`
 	// The name for an association.
 	Name *string `pulumi:"name"`
@@ -161,8 +157,6 @@ type FirewallPolicyAssociationState struct {
 	// firewall policy with the flag to override the existing attachmentTarget's policy association.
 	// **Note** Due to potential risks with this operation it is *highly* recommended to use the `createBeforeDestroy` life cycle option
 	// on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
-	//
-	// ***
 	FirewallPolicy pulumi.StringPtrInput
 	// The name for an association.
 	Name pulumi.StringPtrInput
@@ -182,8 +176,6 @@ type firewallPolicyAssociationArgs struct {
 	// firewall policy with the flag to override the existing attachmentTarget's policy association.
 	// **Note** Due to potential risks with this operation it is *highly* recommended to use the `createBeforeDestroy` life cycle option
 	// on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
-	//
-	// ***
 	FirewallPolicy string `pulumi:"firewallPolicy"`
 	// The name for an association.
 	Name *string `pulumi:"name"`
@@ -198,8 +190,6 @@ type FirewallPolicyAssociationArgs struct {
 	// firewall policy with the flag to override the existing attachmentTarget's policy association.
 	// **Note** Due to potential risks with this operation it is *highly* recommended to use the `createBeforeDestroy` life cycle option
 	// on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
-	//
-	// ***
 	FirewallPolicy pulumi.StringInput
 	// The name for an association.
 	Name pulumi.StringPtrInput
@@ -302,8 +292,6 @@ func (o FirewallPolicyAssociationOutput) AttachmentTarget() pulumi.StringOutput 
 // firewall policy with the flag to override the existing attachmentTarget's policy association.
 // **Note** Due to potential risks with this operation it is *highly* recommended to use the `createBeforeDestroy` life cycle option
 // on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
-//
-// ***
 func (o FirewallPolicyAssociationOutput) FirewallPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallPolicyAssociation) pulumi.StringOutput { return v.FirewallPolicy }).(pulumi.StringOutput)
 }

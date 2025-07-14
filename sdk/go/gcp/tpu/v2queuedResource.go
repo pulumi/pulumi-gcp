@@ -151,8 +151,6 @@ type V2QueuedResource struct {
 	pulumi.CustomResourceState
 
 	// The immutable name of the Queued Resource.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -195,8 +193,6 @@ func GetV2QueuedResource(ctx *pulumi.Context,
 // Input properties used for looking up and filtering V2QueuedResource resources.
 type v2queuedResourceState struct {
 	// The immutable name of the Queued Resource.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -210,8 +206,6 @@ type v2queuedResourceState struct {
 
 type V2QueuedResourceState struct {
 	// The immutable name of the Queued Resource.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -229,8 +223,6 @@ func (V2QueuedResourceState) ElementType() reflect.Type {
 
 type v2queuedResourceArgs struct {
 	// The immutable name of the Queued Resource.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -245,8 +237,6 @@ type v2queuedResourceArgs struct {
 // The set of arguments for constructing a V2QueuedResource resource.
 type V2QueuedResourceArgs struct {
 	// The immutable name of the Queued Resource.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -346,8 +336,6 @@ func (o V2QueuedResourceOutput) ToV2QueuedResourceOutputWithContext(ctx context.
 }
 
 // The immutable name of the Queued Resource.
-//
-// ***
 func (o V2QueuedResourceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *V2QueuedResource) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

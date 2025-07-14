@@ -29,9 +29,6 @@ class InstantSnapshotArgs:
         """
         The set of arguments for constructing a InstantSnapshot resource.
         :param pulumi.Input[builtins.str] source_disk: A reference to the disk used to create this instant snapshot.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels to apply to this InstantSnapshot.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -64,9 +61,6 @@ class InstantSnapshotArgs:
     def source_disk(self) -> pulumi.Input[builtins.str]:
         """
         A reference to the disk used to create this instant snapshot.
-
-
-        - - -
         """
         return pulumi.get(self, "source_disk")
 
@@ -184,9 +178,6 @@ class _InstantSnapshotState:
                and default labels configured on the provider.
         :param pulumi.Input[builtins.str] self_link: The URI of the created resource.
         :param pulumi.Input[builtins.str] source_disk: A reference to the disk used to create this instant snapshot.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] source_disk_id: The ID value of the disk used to create this InstantSnapshot.
         :param pulumi.Input[builtins.str] zone: A reference to the zone where the disk is located.
         """
@@ -353,9 +344,6 @@ class _InstantSnapshotState:
     def source_disk(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         A reference to the disk used to create this instant snapshot.
-
-
-        - - -
         """
         return pulumi.get(self, "source_disk")
 
@@ -480,9 +468,6 @@ class InstantSnapshot(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] source_disk: A reference to the disk used to create this instant snapshot.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] zone: A reference to the zone where the disk is located.
         """
         ...
@@ -653,9 +638,6 @@ class InstantSnapshot(pulumi.CustomResource):
                and default labels configured on the provider.
         :param pulumi.Input[builtins.str] self_link: The URI of the created resource.
         :param pulumi.Input[builtins.str] source_disk: A reference to the disk used to create this instant snapshot.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] source_disk_id: The ID value of the disk used to create this InstantSnapshot.
         :param pulumi.Input[builtins.str] zone: A reference to the zone where the disk is located.
         """
@@ -774,9 +756,6 @@ class InstantSnapshot(pulumi.CustomResource):
     def source_disk(self) -> pulumi.Output[builtins.str]:
         """
         A reference to the disk used to create this instant snapshot.
-
-
-        - - -
         """
         return pulumi.get(self, "source_disk")
 

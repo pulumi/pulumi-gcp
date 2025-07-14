@@ -132,9 +132,6 @@ namespace Pulumi.Gcp.Diagflow
 
         /// <summary>
         /// Language for this settings.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("languageCode")]
         public Output<string> LanguageCode { get; private set; } = null!;
@@ -230,9 +227,6 @@ namespace Pulumi.Gcp.Diagflow
 
         /// <summary>
         /// Language for this settings.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("languageCode", required: true)]
         public Input<string> LanguageCode { get; set; } = null!;
@@ -283,9 +277,6 @@ namespace Pulumi.Gcp.Diagflow
 
         /// <summary>
         /// Language for this settings.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("languageCode")]
         public Input<string>? LanguageCode { get; set; }

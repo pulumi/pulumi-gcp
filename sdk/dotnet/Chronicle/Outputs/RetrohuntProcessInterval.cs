@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.Chronicle.Outputs
     {
         /// <summary>
         /// Exclusive end of the interval.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string EndTime;
         /// <summary>

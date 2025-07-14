@@ -38,16 +38,12 @@ public final class ControlPlaneAccessArgs extends com.pulumi.resources.ResourceA
     /**
      * Name of the Apigee organization.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return Name of the Apigee organization.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -141,8 +137,6 @@ public final class ControlPlaneAccessArgs extends com.pulumi.resources.ResourceA
         /**
          * @param name Name of the Apigee organization.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -153,8 +147,6 @@ public final class ControlPlaneAccessArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param name Name of the Apigee organization.
-         * 
-         * ***
          * 
          * @return builder
          * 

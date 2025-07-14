@@ -230,6 +230,21 @@ public final class DatascanDataQualitySpecRuleArgs extends com.pulumi.resources.
     }
 
     /**
+     * Whether the Rule is active or suspended. Default = false.
+     * 
+     */
+    @Import(name="suspended")
+    private @Nullable Output<Boolean> suspended;
+
+    /**
+     * @return Whether the Rule is active or suspended. Default = false.
+     * 
+     */
+    public Optional<Output<Boolean>> suspended() {
+        return Optional.ofNullable(this.suspended);
+    }
+
+    /**
      * Table rule which evaluates whether the provided expression is true.
      * Structure is documented below.
      * 
@@ -291,6 +306,7 @@ public final class DatascanDataQualitySpecRuleArgs extends com.pulumi.resources.
         this.setExpectation = $.setExpectation;
         this.sqlAssertion = $.sqlAssertion;
         this.statisticRangeExpectation = $.statisticRangeExpectation;
+        this.suspended = $.suspended;
         this.tableConditionExpectation = $.tableConditionExpectation;
         this.threshold = $.threshold;
         this.uniquenessExpectation = $.uniquenessExpectation;
@@ -586,6 +602,27 @@ public final class DatascanDataQualitySpecRuleArgs extends com.pulumi.resources.
          */
         public Builder statisticRangeExpectation(DatascanDataQualitySpecRuleStatisticRangeExpectationArgs statisticRangeExpectation) {
             return statisticRangeExpectation(Output.of(statisticRangeExpectation));
+        }
+
+        /**
+         * @param suspended Whether the Rule is active or suspended. Default = false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder suspended(@Nullable Output<Boolean> suspended) {
+            $.suspended = suspended;
+            return this;
+        }
+
+        /**
+         * @param suspended Whether the Rule is active or suspended. Default = false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder suspended(Boolean suspended) {
+            return suspended(Output.of(suspended));
         }
 
         /**

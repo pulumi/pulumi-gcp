@@ -191,9 +191,6 @@ export class SecurityProfileGroup extends pulumi.CustomResource {
     public readonly location!: pulumi.Output<string | undefined>;
     /**
      * The name of the security profile group resource.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -308,9 +305,6 @@ export interface SecurityProfileGroupState {
     location?: pulumi.Input<string>;
     /**
      * The name of the security profile group resource.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -363,9 +357,6 @@ export interface SecurityProfileGroupArgs {
     location?: pulumi.Input<string>;
     /**
      * The name of the security profile group resource.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

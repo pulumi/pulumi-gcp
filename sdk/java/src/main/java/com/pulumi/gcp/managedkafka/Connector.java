@@ -262,16 +262,12 @@ public class Connector extends com.pulumi.resources.CustomResource {
     /**
      * The ID to use for the connector, which will become the final component of the connector&#39;s name. This value is structured like: `my-connector-id`.
      * 
-     * ***
-     * 
      */
     @Export(name="connectorId", refs={String.class}, tree="[0]")
     private Output<String> connectorId;
 
     /**
      * @return The ID to use for the connector, which will become the final component of the connector&#39;s name. This value is structured like: `my-connector-id`.
-     * 
-     * ***
      * 
      */
     public Output<String> connectorId() {

@@ -30,6 +30,8 @@ class EncryptionSpecArgs:
         :param pulumi.Input['EncryptionSpecEncryptionSpecArgs'] encryption_spec: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[builtins.str] location: The location in which the encryptionSpec is to be initialized.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "encryption_spec", encryption_spec)
         pulumi.set(__self__, "location", location)
@@ -64,6 +66,10 @@ class EncryptionSpecArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -82,6 +88,8 @@ class _EncryptionSpecState:
         :param pulumi.Input['EncryptionSpecEncryptionSpecArgs'] encryption_spec: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[builtins.str] location: The location in which the encryptionSpec is to be initialized.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         if encryption_spec is not None:
             pulumi.set(__self__, "encryption_spec", encryption_spec)
@@ -118,6 +126,10 @@ class _EncryptionSpecState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -212,6 +224,8 @@ class EncryptionSpec(pulumi.CustomResource):
         :param pulumi.Input[Union['EncryptionSpecEncryptionSpecArgs', 'EncryptionSpecEncryptionSpecArgsDict']] encryption_spec: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[builtins.str] location: The location in which the encryptionSpec is to be initialized.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         ...
     @overload
@@ -348,6 +362,8 @@ class EncryptionSpec(pulumi.CustomResource):
         :param pulumi.Input[Union['EncryptionSpecEncryptionSpecArgs', 'EncryptionSpecEncryptionSpecArgsDict']] encryption_spec: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[builtins.str] location: The location in which the encryptionSpec is to be initialized.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -378,5 +394,9 @@ class EncryptionSpec(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 

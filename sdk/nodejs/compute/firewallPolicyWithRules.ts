@@ -179,8 +179,7 @@ export class FirewallPolicyWithRules extends pulumi.CustomResource {
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
-     * (Output)
-     * A description of the rule.
+     * An optional description of this resource.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -284,8 +283,7 @@ export interface FirewallPolicyWithRulesState {
      */
     creationTimestamp?: pulumi.Input<string>;
     /**
-     * (Output)
-     * A description of the rule.
+     * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
     /**
@@ -334,8 +332,7 @@ export interface FirewallPolicyWithRulesState {
  */
 export interface FirewallPolicyWithRulesArgs {
     /**
-     * (Output)
-     * A description of the rule.
+     * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
     /**

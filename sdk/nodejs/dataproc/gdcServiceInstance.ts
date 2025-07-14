@@ -158,9 +158,6 @@ export class GdcServiceInstance extends pulumi.CustomResource {
     public readonly serviceAccount!: pulumi.Output<string | undefined>;
     /**
      * Id of the service instance.
-     *
-     *
-     * - - -
      */
     public readonly serviceInstanceId!: pulumi.Output<string>;
     /**
@@ -332,9 +329,6 @@ export interface GdcServiceInstanceState {
     serviceAccount?: pulumi.Input<string>;
     /**
      * Id of the service instance.
-     *
-     *
-     * - - -
      */
     serviceInstanceId?: pulumi.Input<string>;
     /**
@@ -402,9 +396,6 @@ export interface GdcServiceInstanceArgs {
     serviceAccount?: pulumi.Input<string>;
     /**
      * Id of the service instance.
-     *
-     *
-     * - - -
      */
     serviceInstanceId: pulumi.Input<string>;
     /**

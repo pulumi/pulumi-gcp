@@ -85,16 +85,12 @@ public final class ResponsePolicyRuleState extends com.pulumi.resources.Resource
     /**
      * Identifies the response policy addressed by this request.
      * 
-     * ***
-     * 
      */
     @Import(name="responsePolicy")
     private @Nullable Output<String> responsePolicy;
 
     /**
      * @return Identifies the response policy addressed by this request.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> responsePolicy() {
@@ -238,8 +234,6 @@ public final class ResponsePolicyRuleState extends com.pulumi.resources.Resource
         /**
          * @param responsePolicy Identifies the response policy addressed by this request.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -250,8 +244,6 @@ public final class ResponsePolicyRuleState extends com.pulumi.resources.Resource
 
         /**
          * @param responsePolicy Identifies the response policy addressed by this request.
-         * 
-         * ***
          * 
          * @return builder
          * 

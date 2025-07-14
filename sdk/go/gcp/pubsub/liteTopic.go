@@ -107,8 +107,6 @@ type LiteTopic struct {
 	pulumi.CustomResourceState
 
 	// Name of the topic.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The settings for this topic's partitions.
 	// Structure is documented below.
@@ -159,8 +157,6 @@ func GetLiteTopic(ctx *pulumi.Context,
 // Input properties used for looking up and filtering LiteTopic resources.
 type liteTopicState struct {
 	// Name of the topic.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The settings for this topic's partitions.
 	// Structure is documented below.
@@ -182,8 +178,6 @@ type liteTopicState struct {
 
 type LiteTopicState struct {
 	// Name of the topic.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The settings for this topic's partitions.
 	// Structure is documented below.
@@ -209,8 +203,6 @@ func (LiteTopicState) ElementType() reflect.Type {
 
 type liteTopicArgs struct {
 	// Name of the topic.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The settings for this topic's partitions.
 	// Structure is documented below.
@@ -233,8 +225,6 @@ type liteTopicArgs struct {
 // The set of arguments for constructing a LiteTopic resource.
 type LiteTopicArgs struct {
 	// Name of the topic.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The settings for this topic's partitions.
 	// Structure is documented below.
@@ -342,8 +332,6 @@ func (o LiteTopicOutput) ToLiteTopicOutputWithContext(ctx context.Context) LiteT
 }
 
 // Name of the topic.
-//
-// ***
 func (o LiteTopicOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *LiteTopic) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

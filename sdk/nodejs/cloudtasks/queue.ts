@@ -214,9 +214,6 @@ export class Queue extends pulumi.CustomResource {
     public readonly httpTarget!: pulumi.Output<outputs.cloudtasks.QueueHttpTarget | undefined>;
     /**
      * The location of the queue
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -307,9 +304,6 @@ export interface QueueState {
     httpTarget?: pulumi.Input<inputs.cloudtasks.QueueHttpTarget>;
     /**
      * The location of the queue
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -361,9 +355,6 @@ export interface QueueArgs {
     httpTarget?: pulumi.Input<inputs.cloudtasks.QueueHttpTarget>;
     /**
      * The location of the queue
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

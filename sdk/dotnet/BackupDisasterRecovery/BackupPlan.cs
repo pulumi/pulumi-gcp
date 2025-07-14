@@ -172,7 +172,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The description allows for additional details about 'BackupPlan' and its use cases to be provided.
+        /// The description allows for additional details about `BackupPlan` and its use cases to be provided.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -189,6 +189,10 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -283,7 +287,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         public Input<string> BackupVault { get; set; } = null!;
 
         /// <summary>
-        /// The description allows for additional details about 'BackupPlan' and its use cases to be provided.
+        /// The description allows for additional details about `BackupPlan` and its use cases to be provided.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -294,6 +298,10 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -350,7 +358,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The description allows for additional details about 'BackupPlan' and its use cases to be provided.
+        /// The description allows for additional details about `BackupPlan` and its use cases to be provided.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -367,6 +375,10 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

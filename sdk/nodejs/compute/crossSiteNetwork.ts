@@ -82,9 +82,6 @@ export class CrossSiteNetwork extends pulumi.CustomResource {
      * long and match the regular expression `a-z?` which means the first
      * character must be a lowercase letter, and all following characters must be a dash,
      * lowercase letter, or digit, except the last character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -134,9 +131,6 @@ export interface CrossSiteNetworkState {
      * long and match the regular expression `a-z?` which means the first
      * character must be a lowercase letter, and all following characters must be a dash,
      * lowercase letter, or digit, except the last character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -160,9 +154,6 @@ export interface CrossSiteNetworkArgs {
      * long and match the regular expression `a-z?` which means the first
      * character must be a lowercase letter, and all following characters must be a dash,
      * lowercase letter, or digit, except the last character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

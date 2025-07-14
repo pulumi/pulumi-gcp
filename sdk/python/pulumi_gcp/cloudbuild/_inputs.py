@@ -158,8 +158,6 @@ if not MYPY:
         """
         Immutable. The resource name for the webhook secret's secret version. Once this field has been set, it cannot be changed.
         Changing this field will result in deleting/ recreating the resource.
-
-        - - -
         """
 elif False:
     BitbucketServerConfigSecretsArgsDict: TypeAlias = Mapping[str, Any]
@@ -175,8 +173,6 @@ class BitbucketServerConfigSecretsArgs:
         :param pulumi.Input[builtins.str] read_access_token_version_name: The resource name for the read access token's secret version.
         :param pulumi.Input[builtins.str] webhook_secret_version_name: Immutable. The resource name for the webhook secret's secret version. Once this field has been set, it cannot be changed.
                Changing this field will result in deleting/ recreating the resource.
-               
-               - - -
         """
         pulumi.set(__self__, "admin_access_token_version_name", admin_access_token_version_name)
         pulumi.set(__self__, "read_access_token_version_name", read_access_token_version_name)
@@ -212,8 +208,6 @@ class BitbucketServerConfigSecretsArgs:
         """
         Immutable. The resource name for the webhook secret's secret version. Once this field has been set, it cannot be changed.
         Changing this field will result in deleting/ recreating the resource.
-
-        - - -
         """
         return pulumi.get(self, "webhook_secret_version_name")
 

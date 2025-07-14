@@ -31,9 +31,6 @@ class RepositoryArgs:
         :param pulumi.Input[builtins.bool] create_ignore_already_exists: If set to true, skip repository creation if a repository with the same name already exists.
         :param pulumi.Input[builtins.str] name: Resource name of the repository, of the form `{{repo}}`.
                The repo name may contain slashes. eg, `name/with/slash`
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input['RepositoryPubsubConfigArgs']]] pubsub_configs: How this repository publishes a change in the repository through Cloud Pub/Sub.
@@ -67,9 +64,6 @@ class RepositoryArgs:
         """
         Resource name of the repository, of the form `{{repo}}`.
         The repo name may contain slashes. eg, `name/with/slash`
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -119,9 +113,6 @@ class _RepositoryState:
         :param pulumi.Input[builtins.bool] create_ignore_already_exists: If set to true, skip repository creation if a repository with the same name already exists.
         :param pulumi.Input[builtins.str] name: Resource name of the repository, of the form `{{repo}}`.
                The repo name may contain slashes. eg, `name/with/slash`
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input['RepositoryPubsubConfigArgs']]] pubsub_configs: How this repository publishes a change in the repository through Cloud Pub/Sub.
@@ -161,9 +152,6 @@ class _RepositoryState:
         """
         Resource name of the repository, of the form `{{repo}}`.
         The repo name may contain slashes. eg, `name/with/slash`
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -295,9 +283,6 @@ class Repository(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] create_ignore_already_exists: If set to true, skip repository creation if a repository with the same name already exists.
         :param pulumi.Input[builtins.str] name: Resource name of the repository, of the form `{{repo}}`.
                The repo name may contain slashes. eg, `name/with/slash`
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RepositoryPubsubConfigArgs', 'RepositoryPubsubConfigArgsDict']]]] pubsub_configs: How this repository publishes a change in the repository through Cloud Pub/Sub.
@@ -426,9 +411,6 @@ class Repository(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] create_ignore_already_exists: If set to true, skip repository creation if a repository with the same name already exists.
         :param pulumi.Input[builtins.str] name: Resource name of the repository, of the form `{{repo}}`.
                The repo name may contain slashes. eg, `name/with/slash`
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RepositoryPubsubConfigArgs', 'RepositoryPubsubConfigArgsDict']]]] pubsub_configs: How this repository publishes a change in the repository through Cloud Pub/Sub.
@@ -463,9 +445,6 @@ class Repository(pulumi.CustomResource):
         """
         Resource name of the repository, of the form `{{repo}}`.
         The repo name may contain slashes. eg, `name/with/slash`
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

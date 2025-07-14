@@ -141,16 +141,12 @@ public class InstanceGroupNamedPort extends com.pulumi.resources.CustomResource 
     /**
      * The name of the instance group.
      * 
-     * ***
-     * 
      */
     @Export(name="group", refs={String.class}, tree="[0]")
     private Output<String> group;
 
     /**
      * @return The name of the instance group.
-     * 
-     * ***
      * 
      */
     public Output<String> group() {

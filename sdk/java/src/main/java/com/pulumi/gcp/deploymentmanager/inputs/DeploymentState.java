@@ -20,20 +20,26 @@ public final class DeploymentState extends com.pulumi.resources.ResourceArgs {
     public static final DeploymentState Empty = new DeploymentState();
 
     /**
-     * Set the policy to use for creating new resources. Only used on create and update. Valid values are &#39;CREATE_OR_ACQUIRE&#39;
-     * (default) or &#39;ACQUIRE&#39;. If set to &#39;ACQUIRE&#39; and resources do not already exist, the deployment will fail. Note that
-     * updating this field does not actually affect the deployment, just how it is updated. Default value: &#34;CREATE_OR_ACQUIRE&#34;
-     * Possible values: [&#34;ACQUIRE&#34;, &#34;CREATE_OR_ACQUIRE&#34;]
+     * Set the policy to use for creating new resources. Only used on
+     * create and update. Valid values are `CREATE_OR_ACQUIRE` (default) or
+     * `ACQUIRE`. If set to `ACQUIRE` and resources do not already exist,
+     * the deployment will fail. Note that updating this field does not
+     * actually affect the deployment, just how it is updated.
+     * Default value is `CREATE_OR_ACQUIRE`.
+     * Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
      * 
      */
     @Import(name="createPolicy")
     private @Nullable Output<String> createPolicy;
 
     /**
-     * @return Set the policy to use for creating new resources. Only used on create and update. Valid values are &#39;CREATE_OR_ACQUIRE&#39;
-     * (default) or &#39;ACQUIRE&#39;. If set to &#39;ACQUIRE&#39; and resources do not already exist, the deployment will fail. Note that
-     * updating this field does not actually affect the deployment, just how it is updated. Default value: &#34;CREATE_OR_ACQUIRE&#34;
-     * Possible values: [&#34;ACQUIRE&#34;, &#34;CREATE_OR_ACQUIRE&#34;]
+     * @return Set the policy to use for creating new resources. Only used on
+     * create and update. Valid values are `CREATE_OR_ACQUIRE` (default) or
+     * `ACQUIRE`. If set to `ACQUIRE` and resources do not already exist,
+     * the deployment will fail. Note that updating this field does not
+     * actually affect the deployment, just how it is updated.
+     * Default value is `CREATE_OR_ACQUIRE`.
+     * Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
      * 
      */
     public Optional<Output<String>> createPolicy() {
@@ -41,20 +47,28 @@ public final class DeploymentState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Set the policy to use for deleting new resources on update/delete. Valid values are &#39;DELETE&#39; (default) or &#39;ABANDON&#39;. If
-     * &#39;DELETE&#39;, resource is deleted after removal from Deployment Manager. If &#39;ABANDON&#39;, the resource is only removed from
-     * Deployment Manager and is not actually deleted. Note that updating this field does not actually change the deployment,
-     * just how it is updated. Default value: &#34;DELETE&#34; Possible values: [&#34;ABANDON&#34;, &#34;DELETE&#34;]
+     * Set the policy to use for deleting new resources on update/delete.
+     * Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
+     * resource is deleted after removal from Deployment Manager. If
+     * `ABANDON`, the resource is only removed from Deployment Manager
+     * and is not actually deleted. Note that updating this field does not
+     * actually change the deployment, just how it is updated.
+     * Default value is `DELETE`.
+     * Possible values are: `ABANDON`, `DELETE`.
      * 
      */
     @Import(name="deletePolicy")
     private @Nullable Output<String> deletePolicy;
 
     /**
-     * @return Set the policy to use for deleting new resources on update/delete. Valid values are &#39;DELETE&#39; (default) or &#39;ABANDON&#39;. If
-     * &#39;DELETE&#39;, resource is deleted after removal from Deployment Manager. If &#39;ABANDON&#39;, the resource is only removed from
-     * Deployment Manager and is not actually deleted. Note that updating this field does not actually change the deployment,
-     * just how it is updated. Default value: &#34;DELETE&#34; Possible values: [&#34;ABANDON&#34;, &#34;DELETE&#34;]
+     * @return Set the policy to use for deleting new resources on update/delete.
+     * Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
+     * resource is deleted after removal from Deployment Manager. If
+     * `ABANDON`, the resource is only removed from Deployment Manager
+     * and is not actually deleted. Note that updating this field does not
+     * actually change the deployment, just how it is updated.
+     * Default value is `DELETE`.
+     * Possible values are: `ABANDON`, `DELETE`.
      * 
      */
     public Optional<Output<String>> deletePolicy() {
@@ -93,6 +107,7 @@ public final class DeploymentState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Key-value pairs to apply to this labels.
+     * Structure is documented below.
      * 
      */
     @Import(name="labels")
@@ -100,6 +115,7 @@ public final class DeploymentState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Key-value pairs to apply to this labels.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<DeploymentLabelArgs>>> labels() {
@@ -138,16 +154,48 @@ public final class DeploymentState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * If set to true, a deployment is created with &#34;shell&#34; resources
+     * that are not actually instantiated. This allows you to preview a
+     * deployment. It can be updated to false to actually deploy
+     * with real resources.
+     * ~&gt;**NOTE:** Deployment Manager does not allow update
+     * of a deployment in preview (unless updating to preview=false). Thus,
+     * the provider will force-recreate deployments if either preview is updated
+     * to true or if other fields are updated while preview is true.
+     * 
+     */
     @Import(name="preview")
     private @Nullable Output<Boolean> preview;
 
+    /**
+     * @return If set to true, a deployment is created with &#34;shell&#34; resources
+     * that are not actually instantiated. This allows you to preview a
+     * deployment. It can be updated to false to actually deploy
+     * with real resources.
+     * ~&gt;**NOTE:** Deployment Manager does not allow update
+     * of a deployment in preview (unless updating to preview=false). Thus,
+     * the provider will force-recreate deployments if either preview is updated
+     * to true or if other fields are updated while preview is true.
+     * 
+     */
     public Optional<Output<Boolean>> preview() {
         return Optional.ofNullable(this.preview);
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -221,10 +269,13 @@ public final class DeploymentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createPolicy Set the policy to use for creating new resources. Only used on create and update. Valid values are &#39;CREATE_OR_ACQUIRE&#39;
-         * (default) or &#39;ACQUIRE&#39;. If set to &#39;ACQUIRE&#39; and resources do not already exist, the deployment will fail. Note that
-         * updating this field does not actually affect the deployment, just how it is updated. Default value: &#34;CREATE_OR_ACQUIRE&#34;
-         * Possible values: [&#34;ACQUIRE&#34;, &#34;CREATE_OR_ACQUIRE&#34;]
+         * @param createPolicy Set the policy to use for creating new resources. Only used on
+         * create and update. Valid values are `CREATE_OR_ACQUIRE` (default) or
+         * `ACQUIRE`. If set to `ACQUIRE` and resources do not already exist,
+         * the deployment will fail. Note that updating this field does not
+         * actually affect the deployment, just how it is updated.
+         * Default value is `CREATE_OR_ACQUIRE`.
+         * Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
          * 
          * @return builder
          * 
@@ -235,10 +286,13 @@ public final class DeploymentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createPolicy Set the policy to use for creating new resources. Only used on create and update. Valid values are &#39;CREATE_OR_ACQUIRE&#39;
-         * (default) or &#39;ACQUIRE&#39;. If set to &#39;ACQUIRE&#39; and resources do not already exist, the deployment will fail. Note that
-         * updating this field does not actually affect the deployment, just how it is updated. Default value: &#34;CREATE_OR_ACQUIRE&#34;
-         * Possible values: [&#34;ACQUIRE&#34;, &#34;CREATE_OR_ACQUIRE&#34;]
+         * @param createPolicy Set the policy to use for creating new resources. Only used on
+         * create and update. Valid values are `CREATE_OR_ACQUIRE` (default) or
+         * `ACQUIRE`. If set to `ACQUIRE` and resources do not already exist,
+         * the deployment will fail. Note that updating this field does not
+         * actually affect the deployment, just how it is updated.
+         * Default value is `CREATE_OR_ACQUIRE`.
+         * Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
          * 
          * @return builder
          * 
@@ -248,10 +302,14 @@ public final class DeploymentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletePolicy Set the policy to use for deleting new resources on update/delete. Valid values are &#39;DELETE&#39; (default) or &#39;ABANDON&#39;. If
-         * &#39;DELETE&#39;, resource is deleted after removal from Deployment Manager. If &#39;ABANDON&#39;, the resource is only removed from
-         * Deployment Manager and is not actually deleted. Note that updating this field does not actually change the deployment,
-         * just how it is updated. Default value: &#34;DELETE&#34; Possible values: [&#34;ABANDON&#34;, &#34;DELETE&#34;]
+         * @param deletePolicy Set the policy to use for deleting new resources on update/delete.
+         * Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
+         * resource is deleted after removal from Deployment Manager. If
+         * `ABANDON`, the resource is only removed from Deployment Manager
+         * and is not actually deleted. Note that updating this field does not
+         * actually change the deployment, just how it is updated.
+         * Default value is `DELETE`.
+         * Possible values are: `ABANDON`, `DELETE`.
          * 
          * @return builder
          * 
@@ -262,10 +320,14 @@ public final class DeploymentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletePolicy Set the policy to use for deleting new resources on update/delete. Valid values are &#39;DELETE&#39; (default) or &#39;ABANDON&#39;. If
-         * &#39;DELETE&#39;, resource is deleted after removal from Deployment Manager. If &#39;ABANDON&#39;, the resource is only removed from
-         * Deployment Manager and is not actually deleted. Note that updating this field does not actually change the deployment,
-         * just how it is updated. Default value: &#34;DELETE&#34; Possible values: [&#34;ABANDON&#34;, &#34;DELETE&#34;]
+         * @param deletePolicy Set the policy to use for deleting new resources on update/delete.
+         * Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
+         * resource is deleted after removal from Deployment Manager. If
+         * `ABANDON`, the resource is only removed from Deployment Manager
+         * and is not actually deleted. Note that updating this field does not
+         * actually change the deployment, just how it is updated.
+         * Default value is `DELETE`.
+         * Possible values are: `ABANDON`, `DELETE`.
          * 
          * @return builder
          * 
@@ -318,6 +380,7 @@ public final class DeploymentState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels Key-value pairs to apply to this labels.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -329,6 +392,7 @@ public final class DeploymentState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels Key-value pairs to apply to this labels.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -339,6 +403,7 @@ public final class DeploymentState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels Key-value pairs to apply to this labels.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -391,20 +456,60 @@ public final class DeploymentState extends com.pulumi.resources.ResourceArgs {
             return name(Output.of(name));
         }
 
+        /**
+         * @param preview If set to true, a deployment is created with &#34;shell&#34; resources
+         * that are not actually instantiated. This allows you to preview a
+         * deployment. It can be updated to false to actually deploy
+         * with real resources.
+         * ~&gt;**NOTE:** Deployment Manager does not allow update
+         * of a deployment in preview (unless updating to preview=false). Thus,
+         * the provider will force-recreate deployments if either preview is updated
+         * to true or if other fields are updated while preview is true.
+         * 
+         * @return builder
+         * 
+         */
         public Builder preview(@Nullable Output<Boolean> preview) {
             $.preview = preview;
             return this;
         }
 
+        /**
+         * @param preview If set to true, a deployment is created with &#34;shell&#34; resources
+         * that are not actually instantiated. This allows you to preview a
+         * deployment. It can be updated to false to actually deploy
+         * with real resources.
+         * ~&gt;**NOTE:** Deployment Manager does not allow update
+         * of a deployment in preview (unless updating to preview=false). Thus,
+         * the provider will force-recreate deployments if either preview is updated
+         * to true or if other fields are updated while preview is true.
+         * 
+         * @return builder
+         * 
+         */
         public Builder preview(Boolean preview) {
             return preview(Output.of(preview));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

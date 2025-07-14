@@ -39,9 +39,6 @@ class WorkloadIdentityPoolNamespaceArgs:
                * end with an alphanumeric character
                
                The prefix `gcp-` will be reserved for future uses.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] description: A description of the namespace. Cannot exceed 256 characters.
         :param pulumi.Input[builtins.bool] disabled: Whether the namespace is disabled. If disabled, credentials may no longer be issued for
                identities within this namespace, however existing credentials will still be accepted until
@@ -83,9 +80,6 @@ class WorkloadIdentityPoolNamespaceArgs:
         * end with an alphanumeric character
 
         The prefix `gcp-` will be reserved for future uses.
-
-
-        - - -
         """
         return pulumi.get(self, "workload_identity_pool_namespace_id")
 
@@ -173,9 +167,6 @@ class _WorkloadIdentityPoolNamespaceState:
                * end with an alphanumeric character
                
                The prefix `gcp-` will be reserved for future uses.
-               
-               
-               - - -
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -302,9 +293,6 @@ class _WorkloadIdentityPoolNamespaceState:
         * end with an alphanumeric character
 
         The prefix `gcp-` will be reserved for future uses.
-
-
-        - - -
         """
         return pulumi.get(self, "workload_identity_pool_namespace_id")
 
@@ -399,9 +387,6 @@ class WorkloadIdentityPoolNamespace(pulumi.CustomResource):
                * end with an alphanumeric character
                
                The prefix `gcp-` will be reserved for future uses.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -558,9 +543,6 @@ class WorkloadIdentityPoolNamespace(pulumi.CustomResource):
                * end with an alphanumeric character
                
                The prefix `gcp-` will be reserved for future uses.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -656,9 +638,6 @@ class WorkloadIdentityPoolNamespace(pulumi.CustomResource):
         * end with an alphanumeric character
 
         The prefix `gcp-` will be reserved for future uses.
-
-
-        - - -
         """
         return pulumi.get(self, "workload_identity_pool_namespace_id")
 

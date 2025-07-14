@@ -339,8 +339,6 @@ public class AppHostingBackend extends com.pulumi.resources.CustomResource {
      * Id of the backend. Also used as the service ID for Cloud Run, and as part
      * of the default domain name.
      * 
-     * ***
-     * 
      */
     @Export(name="backendId", refs={String.class}, tree="[0]")
     private Output<String> backendId;
@@ -348,8 +346,6 @@ public class AppHostingBackend extends com.pulumi.resources.CustomResource {
     /**
      * @return Id of the backend. Also used as the service ID for Cloud Run, and as part
      * of the default domain name.
-     * 
-     * ***
      * 
      */
     public Output<String> backendId() {

@@ -84,16 +84,12 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
     /**
      * A unique ID that identifies this interconnect attachment.
      * 
-     * ***
-     * 
      */
     @Import(name="interconnectAttachmentId")
     private @Nullable Output<String> interconnectAttachmentId;
 
     /**
      * @return A unique ID that identifies this interconnect attachment.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> interconnectAttachmentId() {
@@ -397,8 +393,6 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
         /**
          * @param interconnectAttachmentId A unique ID that identifies this interconnect attachment.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -409,8 +403,6 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
 
         /**
          * @param interconnectAttachmentId A unique ID that identifies this interconnect attachment.
-         * 
-         * ***
          * 
          * @return builder
          * 

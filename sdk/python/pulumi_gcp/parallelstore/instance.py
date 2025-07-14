@@ -40,9 +40,6 @@ class InstanceArgs:
                * Must be between 1-63 characters.
                * Must end with a number or a letter.
                * Must be unique within the customer project/ location
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: Part of `parent`. See documentation of `projectsId`.
         :param pulumi.Input[builtins.str] deployment_type: Parallelstore Instance deployment type.
                Possible values:
@@ -138,9 +135,6 @@ class InstanceArgs:
         * Must be between 1-63 characters.
         * Must end with a number or a letter.
         * Must be unique within the customer project/ location
-
-
-        - - -
         """
         return pulumi.get(self, "instance_id")
 
@@ -363,9 +357,6 @@ class _InstanceState:
                * Must be between 1-63 characters.
                * Must end with a number or a letter.
                * Must be unique within the customer project/ location
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Cloud Labels are a flexible and lightweight mechanism for
                organizing cloud resources into groups that reflect a customer's organizational
                needs and deployment strategies. Cloud Labels can be used to filter collections
@@ -603,9 +594,6 @@ class _InstanceState:
         * Must be between 1-63 characters.
         * Must end with a number or a letter.
         * Must be unique within the customer project/ location
-
-
-        - - -
         """
         return pulumi.get(self, "instance_id")
 
@@ -907,9 +895,6 @@ class Instance(pulumi.CustomResource):
                * Must be between 1-63 characters.
                * Must end with a number or a letter.
                * Must be unique within the customer project/ location
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Cloud Labels are a flexible and lightweight mechanism for
                organizing cloud resources into groups that reflect a customer's organizational
                needs and deployment strategies. Cloud Labels can be used to filter collections
@@ -1187,9 +1172,6 @@ class Instance(pulumi.CustomResource):
                * Must be between 1-63 characters.
                * Must end with a number or a letter.
                * Must be unique within the customer project/ location
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Cloud Labels are a flexible and lightweight mechanism for
                organizing cloud resources into groups that reflect a customer's organizational
                needs and deployment strategies. Cloud Labels can be used to filter collections
@@ -1372,9 +1354,6 @@ class Instance(pulumi.CustomResource):
         * Must be between 1-63 characters.
         * Must end with a number or a letter.
         * Must be unique within the customer project/ location
-
-
-        - - -
         """
         return pulumi.get(self, "instance_id")
 

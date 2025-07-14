@@ -186,7 +186,8 @@ namespace Pulumi.Gcp.OracleDatabase
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
-        /// The display name for the Autonomous Database. The name does not have to be unique within your project.
+        /// The display name for the Autonomous Database. The name does not have to
+        /// be unique within your project.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -205,9 +206,9 @@ namespace Pulumi.Gcp.OracleDatabase
         public Output<string> EntitlementId { get; private set; } = null!;
 
         /// <summary>
-        /// The labels or tags associated with the Autonomous Database. **Note**: This field is non-authoritative, and will only
-        /// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-        /// present on the resource.
+        /// The labels or tags associated with the Autonomous Database.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -232,6 +233,10 @@ namespace Pulumi.Gcp.OracleDatabase
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -333,7 +338,8 @@ namespace Pulumi.Gcp.OracleDatabase
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// The display name for the Autonomous Database. The name does not have to be unique within your project.
+        /// The display name for the Autonomous Database. The name does not have to
+        /// be unique within your project.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
@@ -342,9 +348,9 @@ namespace Pulumi.Gcp.OracleDatabase
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// The labels or tags associated with the Autonomous Database. **Note**: This field is non-authoritative, and will only
-        /// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-        /// present on the resource.
+        /// The labels or tags associated with the Autonomous Database.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -365,6 +371,10 @@ namespace Pulumi.Gcp.OracleDatabase
         [Input("network", required: true)]
         public Input<string> Network { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -422,7 +432,8 @@ namespace Pulumi.Gcp.OracleDatabase
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// The display name for the Autonomous Database. The name does not have to be unique within your project.
+        /// The display name for the Autonomous Database. The name does not have to
+        /// be unique within your project.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
@@ -454,9 +465,9 @@ namespace Pulumi.Gcp.OracleDatabase
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// The labels or tags associated with the Autonomous Database. **Note**: This field is non-authoritative, and will only
-        /// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-        /// present on the resource.
+        /// The labels or tags associated with the Autonomous Database.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -484,6 +495,10 @@ namespace Pulumi.Gcp.OracleDatabase
         [Input("network")]
         public Input<string>? Network { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

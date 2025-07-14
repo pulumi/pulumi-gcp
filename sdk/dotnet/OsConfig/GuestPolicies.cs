@@ -313,24 +313,31 @@ namespace Pulumi.Gcp.OsConfig
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// A list of package repositories to configure on the VM instance. This is done before any other configs are applied so
-        /// they can use these repos. Package repositories are only configured if the corresponding package manager(s) are
-        /// available.
+        /// A list of package repositories to configure on the VM instance.
+        /// This is done before any other configs are applied so they can use these repos.
+        /// Package repositories are only configured if the corresponding package manager(s) are available.
+        /// Structure is documented below.
         /// </summary>
         [Output("packageRepositories")]
         public Output<ImmutableArray<Outputs.GuestPoliciesPackageRepository>> PackageRepositories { get; private set; } = null!;
 
         /// <summary>
         /// The software packages to be managed by this policy.
+        /// Structure is documented below.
         /// </summary>
         [Output("packages")]
         public Output<ImmutableArray<Outputs.GuestPoliciesPackage>> Packages { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// A list of Recipes to install on the VM instance.
+        /// Structure is documented below.
         /// </summary>
         [Output("recipes")]
         public Output<ImmutableArray<Outputs.GuestPoliciesRecipe>> Recipes { get; private set; } = null!;
@@ -428,9 +435,10 @@ namespace Pulumi.Gcp.OsConfig
         private InputList<Inputs.GuestPoliciesPackageRepositoryArgs>? _packageRepositories;
 
         /// <summary>
-        /// A list of package repositories to configure on the VM instance. This is done before any other configs are applied so
-        /// they can use these repos. Package repositories are only configured if the corresponding package manager(s) are
-        /// available.
+        /// A list of package repositories to configure on the VM instance.
+        /// This is done before any other configs are applied so they can use these repos.
+        /// Package repositories are only configured if the corresponding package manager(s) are available.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.GuestPoliciesPackageRepositoryArgs> PackageRepositories
         {
@@ -443,6 +451,7 @@ namespace Pulumi.Gcp.OsConfig
 
         /// <summary>
         /// The software packages to be managed by this policy.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.GuestPoliciesPackageArgs> Packages
         {
@@ -450,6 +459,10 @@ namespace Pulumi.Gcp.OsConfig
             set => _packages = value;
         }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -458,6 +471,7 @@ namespace Pulumi.Gcp.OsConfig
 
         /// <summary>
         /// A list of Recipes to install on the VM instance.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.GuestPoliciesRecipeArgs> Recipes
         {
@@ -526,9 +540,10 @@ namespace Pulumi.Gcp.OsConfig
         private InputList<Inputs.GuestPoliciesPackageRepositoryGetArgs>? _packageRepositories;
 
         /// <summary>
-        /// A list of package repositories to configure on the VM instance. This is done before any other configs are applied so
-        /// they can use these repos. Package repositories are only configured if the corresponding package manager(s) are
-        /// available.
+        /// A list of package repositories to configure on the VM instance.
+        /// This is done before any other configs are applied so they can use these repos.
+        /// Package repositories are only configured if the corresponding package manager(s) are available.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.GuestPoliciesPackageRepositoryGetArgs> PackageRepositories
         {
@@ -541,6 +556,7 @@ namespace Pulumi.Gcp.OsConfig
 
         /// <summary>
         /// The software packages to be managed by this policy.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.GuestPoliciesPackageGetArgs> Packages
         {
@@ -548,6 +564,10 @@ namespace Pulumi.Gcp.OsConfig
             set => _packages = value;
         }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -556,6 +576,7 @@ namespace Pulumi.Gcp.OsConfig
 
         /// <summary>
         /// A list of Recipes to install on the VM instance.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.GuestPoliciesRecipeGetArgs> Recipes
         {

@@ -67,8 +67,6 @@ public final class ConnectivityTestDestination {
      *    from the service project. In this case, the network that the IP address
      *    resides in is defined in the host project.
      * 
-     * ***
-     * 
      */
     private @Nullable String projectId;
     /**
@@ -153,8 +151,6 @@ public final class ConnectivityTestDestination {
      * 2. When you are using Shared VPC and the IP address that you provide is
      *    from the service project. In this case, the network that the IP address
      *    resides in is defined in the host project.
-     * 
-     * ***
      * 
      */
     public Optional<String> projectId() {

@@ -96,9 +96,6 @@ export class GeminiGcpEnablementSetting extends pulumi.CustomResource {
     public readonly enableCustomerDataSharing!: pulumi.Output<boolean | undefined>;
     /**
      * Id of the Gemini Gcp Enablement setting.
-     *
-     *
-     * - - -
      */
     public readonly geminiGcpEnablementSettingId!: pulumi.Output<string>;
     /**
@@ -204,9 +201,6 @@ export interface GeminiGcpEnablementSettingState {
     enableCustomerDataSharing?: pulumi.Input<boolean>;
     /**
      * Id of the Gemini Gcp Enablement setting.
-     *
-     *
-     * - - -
      */
     geminiGcpEnablementSettingId?: pulumi.Input<string>;
     /**
@@ -254,9 +248,6 @@ export interface GeminiGcpEnablementSettingArgs {
     enableCustomerDataSharing?: pulumi.Input<boolean>;
     /**
      * Id of the Gemini Gcp Enablement setting.
-     *
-     *
-     * - - -
      */
     geminiGcpEnablementSettingId: pulumi.Input<string>;
     /**

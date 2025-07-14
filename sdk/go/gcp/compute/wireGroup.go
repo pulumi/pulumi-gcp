@@ -95,8 +95,6 @@ type WireGroup struct {
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// Required cross site network to which wire group belongs.
-	//
-	// ***
 	CrossSiteNetwork pulumi.StringOutput `pulumi:"crossSiteNetwork"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -164,8 +162,6 @@ type wireGroupState struct {
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// Required cross site network to which wire group belongs.
-	//
-	// ***
 	CrossSiteNetwork *string `pulumi:"crossSiteNetwork"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
@@ -201,8 +197,6 @@ type WireGroupState struct {
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// Required cross site network to which wire group belongs.
-	//
-	// ***
 	CrossSiteNetwork pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
@@ -240,8 +234,6 @@ type wireGroupArgs struct {
 	// Indicates whether the wire group is administratively enabled.
 	AdminEnabled *bool `pulumi:"adminEnabled"`
 	// Required cross site network to which wire group belongs.
-	//
-	// ***
 	CrossSiteNetwork string `pulumi:"crossSiteNetwork"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
@@ -270,8 +262,6 @@ type WireGroupArgs struct {
 	// Indicates whether the wire group is administratively enabled.
 	AdminEnabled pulumi.BoolPtrInput
 	// Required cross site network to which wire group belongs.
-	//
-	// ***
 	CrossSiteNetwork pulumi.StringInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
@@ -393,8 +383,6 @@ func (o WireGroupOutput) CreationTimestamp() pulumi.StringOutput {
 }
 
 // Required cross site network to which wire group belongs.
-//
-// ***
 func (o WireGroupOutput) CrossSiteNetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v *WireGroup) pulumi.StringOutput { return v.CrossSiteNetwork }).(pulumi.StringOutput)
 }

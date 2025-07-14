@@ -125,8 +125,6 @@ type AccessPolicy struct {
 	// Format: 'folders/{{folder_id}}' or 'projects/{{project_number}}'
 	Scopes pulumi.StringPtrOutput `pulumi:"scopes"`
 	// Human readable title. Does not affect behavior.
-	//
-	// ***
 	Title pulumi.StringOutput `pulumi:"title"`
 	// Time the AccessPolicy was updated in UTC.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -179,8 +177,6 @@ type accessPolicyState struct {
 	// Format: 'folders/{{folder_id}}' or 'projects/{{project_number}}'
 	Scopes *string `pulumi:"scopes"`
 	// Human readable title. Does not affect behavior.
-	//
-	// ***
 	Title *string `pulumi:"title"`
 	// Time the AccessPolicy was updated in UTC.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -198,8 +194,6 @@ type AccessPolicyState struct {
 	// Format: 'folders/{{folder_id}}' or 'projects/{{project_number}}'
 	Scopes pulumi.StringPtrInput
 	// Human readable title. Does not affect behavior.
-	//
-	// ***
 	Title pulumi.StringPtrInput
 	// Time the AccessPolicy was updated in UTC.
 	UpdateTime pulumi.StringPtrInput
@@ -217,8 +211,6 @@ type accessPolicyArgs struct {
 	// Format: 'folders/{{folder_id}}' or 'projects/{{project_number}}'
 	Scopes *string `pulumi:"scopes"`
 	// Human readable title. Does not affect behavior.
-	//
-	// ***
 	Title string `pulumi:"title"`
 }
 
@@ -231,8 +223,6 @@ type AccessPolicyArgs struct {
 	// Format: 'folders/{{folder_id}}' or 'projects/{{project_number}}'
 	Scopes pulumi.StringPtrInput
 	// Human readable title. Does not affect behavior.
-	//
-	// ***
 	Title pulumi.StringInput
 }
 
@@ -346,8 +336,6 @@ func (o AccessPolicyOutput) Scopes() pulumi.StringPtrOutput {
 }
 
 // Human readable title. Does not affect behavior.
-//
-// ***
 func (o AccessPolicyOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessPolicy) pulumi.StringOutput { return v.Title }).(pulumi.StringOutput)
 }

@@ -1211,8 +1211,6 @@ type EntitlementRequesterJustificationConfig struct {
 	// The justification is not mandatory but can be provided in any of the supported formats.
 	NotMandatory *EntitlementRequesterJustificationConfigNotMandatory `pulumi:"notMandatory"`
 	// The requester has to provide a justification in the form of free flowing text.
-	//
-	// ***
 	Unstructured *EntitlementRequesterJustificationConfigUnstructured `pulumi:"unstructured"`
 }
 
@@ -1231,8 +1229,6 @@ type EntitlementRequesterJustificationConfigArgs struct {
 	// The justification is not mandatory but can be provided in any of the supported formats.
 	NotMandatory EntitlementRequesterJustificationConfigNotMandatoryPtrInput `pulumi:"notMandatory"`
 	// The requester has to provide a justification in the form of free flowing text.
-	//
-	// ***
 	Unstructured EntitlementRequesterJustificationConfigUnstructuredPtrInput `pulumi:"unstructured"`
 }
 
@@ -1321,8 +1317,6 @@ func (o EntitlementRequesterJustificationConfigOutput) NotMandatory() Entitlemen
 }
 
 // The requester has to provide a justification in the form of free flowing text.
-//
-// ***
 func (o EntitlementRequesterJustificationConfigOutput) Unstructured() EntitlementRequesterJustificationConfigUnstructuredPtrOutput {
 	return o.ApplyT(func(v EntitlementRequesterJustificationConfig) *EntitlementRequesterJustificationConfigUnstructured {
 		return v.Unstructured
@@ -1364,8 +1358,6 @@ func (o EntitlementRequesterJustificationConfigPtrOutput) NotMandatory() Entitle
 }
 
 // The requester has to provide a justification in the form of free flowing text.
-//
-// ***
 func (o EntitlementRequesterJustificationConfigPtrOutput) Unstructured() EntitlementRequesterJustificationConfigUnstructuredPtrOutput {
 	return o.ApplyT(func(v *EntitlementRequesterJustificationConfig) *EntitlementRequesterJustificationConfigUnstructured {
 		if v == nil {

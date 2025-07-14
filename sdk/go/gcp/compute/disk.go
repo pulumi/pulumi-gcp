@@ -269,8 +269,6 @@ type Disk struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Additional params passed with the request, but not persisted as part of resource payload
 	// Structure is documented below.
@@ -513,8 +511,6 @@ type diskState struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// Additional params passed with the request, but not persisted as part of resource payload
 	// Structure is documented below.
@@ -723,8 +719,6 @@ type DiskState struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// Additional params passed with the request, but not persisted as part of resource payload
 	// Structure is documented below.
@@ -924,8 +918,6 @@ type diskArgs struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// Additional params passed with the request, but not persisted as part of resource payload
 	// Structure is documented below.
@@ -1091,8 +1083,6 @@ type DiskArgs struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// Additional params passed with the request, but not persisted as part of resource payload
 	// Structure is documented below.
@@ -1416,8 +1406,6 @@ func (o DiskOutput) MultiWriter() pulumi.BoolPtrOutput {
 // first character must be a lowercase letter, and all following
 // characters must be a dash, lowercase letter, or digit, except the last
 // character, which cannot be a dash.
-//
-// ***
 func (o DiskOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

@@ -373,8 +373,6 @@ func (o GuestPoliciesAssignmentGroupLabelArrayOutput) Index(i pulumi.IntInput) G
 
 type GuestPoliciesAssignmentOsType struct {
 	// Targets VM instances with OS Inventory enabled and having the following OS architecture.
-	//
-	// ***
 	OsArchitecture *string `pulumi:"osArchitecture"`
 	// Targets VM instances with OS Inventory enabled and having the following OS short name, for example "debian" or "windows".
 	OsShortName *string `pulumi:"osShortName"`
@@ -395,8 +393,6 @@ type GuestPoliciesAssignmentOsTypeInput interface {
 
 type GuestPoliciesAssignmentOsTypeArgs struct {
 	// Targets VM instances with OS Inventory enabled and having the following OS architecture.
-	//
-	// ***
 	OsArchitecture pulumi.StringPtrInput `pulumi:"osArchitecture"`
 	// Targets VM instances with OS Inventory enabled and having the following OS short name, for example "debian" or "windows".
 	OsShortName pulumi.StringPtrInput `pulumi:"osShortName"`
@@ -456,8 +452,6 @@ func (o GuestPoliciesAssignmentOsTypeOutput) ToGuestPoliciesAssignmentOsTypeOutp
 }
 
 // Targets VM instances with OS Inventory enabled and having the following OS architecture.
-//
-// ***
 func (o GuestPoliciesAssignmentOsTypeOutput) OsArchitecture() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestPoliciesAssignmentOsType) *string { return v.OsArchitecture }).(pulumi.StringPtrOutput)
 }
@@ -13400,8 +13394,6 @@ func (o PatchDeploymentInstanceFilterPtrOutput) Zones() pulumi.StringArrayOutput
 
 type PatchDeploymentInstanceFilterGroupLabel struct {
 	// Compute Engine instance labels that must be present for a VM instance to be targeted by this filter
-	//
-	// ***
 	Labels map[string]string `pulumi:"labels"`
 }
 
@@ -13418,8 +13410,6 @@ type PatchDeploymentInstanceFilterGroupLabelInput interface {
 
 type PatchDeploymentInstanceFilterGroupLabelArgs struct {
 	// Compute Engine instance labels that must be present for a VM instance to be targeted by this filter
-	//
-	// ***
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 }
 
@@ -13475,8 +13465,6 @@ func (o PatchDeploymentInstanceFilterGroupLabelOutput) ToPatchDeploymentInstance
 }
 
 // Compute Engine instance labels that must be present for a VM instance to be targeted by this filter
-//
-// ***
 func (o PatchDeploymentInstanceFilterGroupLabelOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v PatchDeploymentInstanceFilterGroupLabel) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -18537,8 +18525,7 @@ type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payloa
 	Baseline *bool `pulumi:"baseline"`
 	// Indicates that this revision deletes the OS policy assignment.
 	Deleted *bool `pulumi:"deleted"`
-	// OS policy assignment description.
-	// Length of the description is limited to 1024 characters.
+	// Freeform text describing the purpose of the resource.
 	Description *string `pulumi:"description"`
 	// This checksum is computed by the server based on the value of other
 	// fields, and may be sent on update and delete requests to ensure the
@@ -18599,8 +18586,7 @@ type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payloa
 	Baseline pulumi.BoolPtrInput `pulumi:"baseline"`
 	// Indicates that this revision deletes the OS policy assignment.
 	Deleted pulumi.BoolPtrInput `pulumi:"deleted"`
-	// OS policy assignment description.
-	// Length of the description is limited to 1024 characters.
+	// Freeform text describing the purpose of the resource.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// This checksum is computed by the server based on the value of other
 	// fields, and may be sent on update and delete requests to ensure the
@@ -18736,8 +18722,7 @@ func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Pay
 	}).(pulumi.BoolPtrOutput)
 }
 
-// OS policy assignment description.
-// Length of the description is limited to 1024 characters.
+// Freeform text describing the purpose of the resource.
 func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload) *string {
 		return v.Description
@@ -18879,8 +18864,7 @@ func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Pay
 	}).(pulumi.BoolPtrOutput)
 }
 
-// OS policy assignment description.
-// Length of the description is limited to 1024 characters.
+// Freeform text describing the purpose of the resource.
 func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload) *string {
 		if v == nil {
@@ -27331,8 +27315,6 @@ type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payloa
 	Fixed *int `pulumi:"fixed"`
 	// Specifies the relative value defined as a percentage, which will be
 	// multiplied by a reference value.
-	//
-	// ***
 	Percent *int `pulumi:"percent"`
 }
 
@@ -27352,8 +27334,6 @@ type V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payloa
 	Fixed pulumi.IntPtrInput `pulumi:"fixed"`
 	// Specifies the relative value defined as a percentage, which will be
 	// multiplied by a reference value.
-	//
-	// ***
 	Percent pulumi.IntPtrInput `pulumi:"percent"`
 }
 
@@ -27443,8 +27423,6 @@ func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Pay
 
 // Specifies the relative value defined as a percentage, which will be
 // multiplied by a reference value.
-//
-// ***
 func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetOutput) Percent() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudget) *int {
 		return v.Percent
@@ -27487,8 +27465,6 @@ func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Pay
 
 // Specifies the relative value defined as a percentage, which will be
 // multiplied by a reference value.
-//
-// ***
 func (o V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrOutput) Percent() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudget) *int {
 		if v == nil {
@@ -28236,14 +28212,13 @@ type V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationState struct
 	// (Output)
 	// Start time of the wave iteration.
 	StartTime *string `pulumi:"startTime"`
-	// (Output)
-	// State of the iteration.
-	// Possible values:
-	// PROCESSING
-	// COMPLETED
-	// FAILED
-	// CANCELLED
-	// UNKNOWN
+	// State of the orchestrator. Can be updated to change orchestrator behaviour.
+	// Allowed values:
+	// - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+	// - `STOPPED` - orchestrator won't make any changes.
+	//   Note: There might be more states added in the future. We use string here
+	//   instead of an enum, to avoid the need of propagating new states to all the
+	//   client code.
 	State *string `pulumi:"state"`
 }
 
@@ -28288,14 +28263,13 @@ type V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArgs st
 	// (Output)
 	// Start time of the wave iteration.
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
-	// (Output)
-	// State of the iteration.
-	// Possible values:
-	// PROCESSING
-	// COMPLETED
-	// FAILED
-	// CANCELLED
-	// UNKNOWN
+	// State of the orchestrator. Can be updated to change orchestrator behaviour.
+	// Allowed values:
+	// - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+	// - `STOPPED` - orchestrator won't make any changes.
+	//   Note: There might be more states added in the future. We use string here
+	//   instead of an enum, to avoid the need of propagating new states to all the
+	//   client code.
 	State pulumi.StringPtrInput `pulumi:"state"`
 }
 
@@ -28414,14 +28388,13 @@ func (o V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Output)
-// State of the iteration.
-// Possible values:
-// PROCESSING
-// COMPLETED
-// FAILED
-// CANCELLED
-// UNKNOWN
+// State of the orchestrator. Can be updated to change orchestrator behaviour.
+// Allowed values:
+//   - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+//   - `STOPPED` - orchestrator won't make any changes.
+//     Note: There might be more states added in the future. We use string here
+//     instead of an enum, to avoid the need of propagating new states to all the
+//     client code.
 func (o V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationState) *string { return v.State }).(pulumi.StringPtrOutput)
 }
@@ -28729,14 +28702,13 @@ type V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationState struc
 	// (Output)
 	// Start time of the wave iteration.
 	StartTime *string `pulumi:"startTime"`
-	// (Output)
-	// State of the iteration.
-	// Possible values:
-	// PROCESSING
-	// COMPLETED
-	// FAILED
-	// CANCELLED
-	// UNKNOWN
+	// State of the orchestrator. Can be updated to change orchestrator behaviour.
+	// Allowed values:
+	// - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+	// - `STOPPED` - orchestrator won't make any changes.
+	//   Note: There might be more states added in the future. We use string here
+	//   instead of an enum, to avoid the need of propagating new states to all the
+	//   client code.
 	State *string `pulumi:"state"`
 }
 
@@ -28781,14 +28753,13 @@ type V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArgs s
 	// (Output)
 	// Start time of the wave iteration.
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
-	// (Output)
-	// State of the iteration.
-	// Possible values:
-	// PROCESSING
-	// COMPLETED
-	// FAILED
-	// CANCELLED
-	// UNKNOWN
+	// State of the orchestrator. Can be updated to change orchestrator behaviour.
+	// Allowed values:
+	// - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+	// - `STOPPED` - orchestrator won't make any changes.
+	//   Note: There might be more states added in the future. We use string here
+	//   instead of an enum, to avoid the need of propagating new states to all the
+	//   client code.
 	State pulumi.StringPtrInput `pulumi:"state"`
 }
 
@@ -28907,14 +28878,13 @@ func (o V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Output)
-// State of the iteration.
-// Possible values:
-// PROCESSING
-// COMPLETED
-// FAILED
-// CANCELLED
-// UNKNOWN
+// State of the orchestrator. Can be updated to change orchestrator behaviour.
+// Allowed values:
+//   - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+//   - `STOPPED` - orchestrator won't make any changes.
+//     Note: There might be more states added in the future. We use string here
+//     instead of an enum, to avoid the need of propagating new states to all the
+//     client code.
 func (o V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationState) *string { return v.State }).(pulumi.StringPtrOutput)
 }
@@ -29451,8 +29421,7 @@ type V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1
 	Baseline *bool `pulumi:"baseline"`
 	// Output only. Indicates that this revision deletes the OS policy assignment.
 	Deleted *bool `pulumi:"deleted"`
-	// OS policy assignment description.
-	// Length of the description is limited to 1024 characters.
+	// Optional. Freeform text describing the purpose of the resource.
 	Description *string `pulumi:"description"`
 	// Output only. This checksum is computed by the server based on the value of other
 	// fields, and may be sent on update and delete requests to ensure the
@@ -29514,8 +29483,7 @@ type V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1
 	Baseline pulumi.BoolPtrInput `pulumi:"baseline"`
 	// Output only. Indicates that this revision deletes the OS policy assignment.
 	Deleted pulumi.BoolPtrInput `pulumi:"deleted"`
-	// OS policy assignment description.
-	// Length of the description is limited to 1024 characters.
+	// Optional. Freeform text describing the purpose of the resource.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Output only. This checksum is computed by the server based on the value of other
 	// fields, and may be sent on update and delete requests to ensure the
@@ -29652,8 +29620,7 @@ func (o V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmen
 	}).(pulumi.BoolPtrOutput)
 }
 
-// OS policy assignment description.
-// Length of the description is limited to 1024 characters.
+// Optional. Freeform text describing the purpose of the resource.
 func (o V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1Payload) *string {
 		return v.Description
@@ -29796,8 +29763,7 @@ func (o V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmen
 	}).(pulumi.BoolPtrOutput)
 }
 
-// OS policy assignment description.
-// Length of the description is limited to 1024 characters.
+// Optional. Freeform text describing the purpose of the resource.
 func (o V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1Payload) *string {
 		if v == nil {
@@ -38330,8 +38296,6 @@ type V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1
 	Fixed *int `pulumi:"fixed"`
 	// Specifies the relative value defined as a percentage, which will be
 	// multiplied by a reference value.
-	//
-	// ***
 	Percent *int `pulumi:"percent"`
 }
 
@@ -38351,8 +38315,6 @@ type V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1
 	Fixed pulumi.IntPtrInput `pulumi:"fixed"`
 	// Specifies the relative value defined as a percentage, which will be
 	// multiplied by a reference value.
-	//
-	// ***
 	Percent pulumi.IntPtrInput `pulumi:"percent"`
 }
 
@@ -38442,8 +38404,6 @@ func (o V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmen
 
 // Specifies the relative value defined as a percentage, which will be
 // multiplied by a reference value.
-//
-// ***
 func (o V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetOutput) Percent() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudget) *int {
 		return v.Percent
@@ -38486,8 +38446,6 @@ func (o V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmen
 
 // Specifies the relative value defined as a percentage, which will be
 // multiplied by a reference value.
-//
-// ***
 func (o V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrOutput) Percent() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudget) *int {
 		if v == nil {
@@ -39231,15 +39189,13 @@ type V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationState 
 	// (Output)
 	// Output only. Start time of the wave iteration.
 	StartTime *string `pulumi:"startTime"`
-	// (Output)
-	// Output only. State of the iteration.
-	// Possible values:
-	// STATE_UNSPECIFIED
-	// PROCESSING
-	// COMPLETED
-	// FAILED
-	// CANCELLED
-	// UNKNOWN
+	// Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+	// Allowed values:
+	// - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+	// - `STOPPED` - orchestrator won't make any changes.
+	//   Note: There might be more states added in the future. We use string here
+	//   instead of an enum, to avoid the need of propagating new states to all the
+	//   client code.
 	State *string `pulumi:"state"`
 }
 
@@ -39283,15 +39239,13 @@ type V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateA
 	// (Output)
 	// Output only. Start time of the wave iteration.
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
-	// (Output)
-	// Output only. State of the iteration.
-	// Possible values:
-	// STATE_UNSPECIFIED
-	// PROCESSING
-	// COMPLETED
-	// FAILED
-	// CANCELLED
-	// UNKNOWN
+	// Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+	// Allowed values:
+	// - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+	// - `STOPPED` - orchestrator won't make any changes.
+	//   Note: There might be more states added in the future. We use string here
+	//   instead of an enum, to avoid the need of propagating new states to all the
+	//   client code.
 	State pulumi.StringPtrInput `pulumi:"state"`
 }
 
@@ -39409,15 +39363,13 @@ func (o V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationSta
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Output)
-// Output only. State of the iteration.
-// Possible values:
-// STATE_UNSPECIFIED
-// PROCESSING
-// COMPLETED
-// FAILED
-// CANCELLED
-// UNKNOWN
+// Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+// Allowed values:
+//   - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+//   - `STOPPED` - orchestrator won't make any changes.
+//     Note: There might be more states added in the future. We use string here
+//     instead of an enum, to avoid the need of propagating new states to all the
+//     client code.
 func (o V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationState) *string {
 		return v.State
@@ -39780,15 +39732,13 @@ type V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationState
 	// (Output)
 	// Output only. Start time of the wave iteration.
 	StartTime *string `pulumi:"startTime"`
-	// (Output)
-	// Output only. State of the iteration.
-	// Possible values:
-	// STATE_UNSPECIFIED
-	// PROCESSING
-	// COMPLETED
-	// FAILED
-	// CANCELLED
-	// UNKNOWN
+	// Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+	// Allowed values:
+	// - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+	// - `STOPPED` - orchestrator won't make any changes.
+	//   Note: There might be more states added in the future. We use string here
+	//   instead of an enum, to avoid the need of propagating new states to all the
+	//   client code.
 	State *string `pulumi:"state"`
 }
 
@@ -39832,15 +39782,13 @@ type V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationState
 	// (Output)
 	// Output only. Start time of the wave iteration.
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
-	// (Output)
-	// Output only. State of the iteration.
-	// Possible values:
-	// STATE_UNSPECIFIED
-	// PROCESSING
-	// COMPLETED
-	// FAILED
-	// CANCELLED
-	// UNKNOWN
+	// Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+	// Allowed values:
+	// - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+	// - `STOPPED` - orchestrator won't make any changes.
+	//   Note: There might be more states added in the future. We use string here
+	//   instead of an enum, to avoid the need of propagating new states to all the
+	//   client code.
 	State pulumi.StringPtrInput `pulumi:"state"`
 }
 
@@ -39984,15 +39932,13 @@ func (o V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationSt
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Output)
-// Output only. State of the iteration.
-// Possible values:
-// STATE_UNSPECIFIED
-// PROCESSING
-// COMPLETED
-// FAILED
-// CANCELLED
-// UNKNOWN
+// Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+// Allowed values:
+//   - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+//   - `STOPPED` - orchestrator won't make any changes.
+//     Note: There might be more states added in the future. We use string here
+//     instead of an enum, to avoid the need of propagating new states to all the
+//     client code.
 func (o V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationState) *string {
 		return v.State
@@ -40107,15 +40053,13 @@ func (o V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationSt
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Output)
-// Output only. State of the iteration.
-// Possible values:
-// STATE_UNSPECIFIED
-// PROCESSING
-// COMPLETED
-// FAILED
-// CANCELLED
-// UNKNOWN
+// Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+// Allowed values:
+//   - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+//   - `STOPPED` - orchestrator won't make any changes.
+//     Note: There might be more states added in the future. We use string here
+//     instead of an enum, to avoid the need of propagating new states to all the
+//     client code.
 func (o V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStatePtrOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationState) *string {
 		if v == nil {
@@ -40691,8 +40635,7 @@ type V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1Payload struct 
 	Baseline *bool `pulumi:"baseline"`
 	// Output only. Indicates that this revision deletes the OS policy assignment.
 	Deleted *bool `pulumi:"deleted"`
-	// OS policy assignment description.
-	// Length of the description is limited to 1024 characters.
+	// Optional. Freeform text describing the purpose of the resource.
 	Description *string `pulumi:"description"`
 	// Filters to select target VMs for an assignment.
 	//
@@ -40750,8 +40693,7 @@ type V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadArgs str
 	Baseline pulumi.BoolPtrInput `pulumi:"baseline"`
 	// Output only. Indicates that this revision deletes the OS policy assignment.
 	Deleted pulumi.BoolPtrInput `pulumi:"deleted"`
-	// OS policy assignment description.
-	// Length of the description is limited to 1024 characters.
+	// Optional. Freeform text describing the purpose of the resource.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Filters to select target VMs for an assignment.
 	//
@@ -40880,8 +40822,7 @@ func (o V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOutpu
 	return o.ApplyT(func(v V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1Payload) *bool { return v.Deleted }).(pulumi.BoolPtrOutput)
 }
 
-// OS policy assignment description.
-// Length of the description is limited to 1024 characters.
+// Optional. Freeform text describing the purpose of the resource.
 func (o V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1Payload) *string {
 		return v.Description
@@ -41011,8 +40952,7 @@ func (o V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// OS policy assignment description.
-// Length of the description is limited to 1024 characters.
+// Optional. Freeform text describing the purpose of the resource.
 func (o V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1Payload) *string {
 		if v == nil {
@@ -49533,8 +49473,6 @@ type V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutD
 	Fixed *int `pulumi:"fixed"`
 	// Specifies the relative value defined as a percentage, which will be
 	// multiplied by a reference value.
-	//
-	// ***
 	Percent *int `pulumi:"percent"`
 }
 
@@ -49554,8 +49492,6 @@ type V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutD
 	Fixed pulumi.IntPtrInput `pulumi:"fixed"`
 	// Specifies the relative value defined as a percentage, which will be
 	// multiplied by a reference value.
-	//
-	// ***
 	Percent pulumi.IntPtrInput `pulumi:"percent"`
 }
 
@@ -49645,8 +49581,6 @@ func (o V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadRollo
 
 // Specifies the relative value defined as a percentage, which will be
 // multiplied by a reference value.
-//
-// ***
 func (o V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetOutput) Percent() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudget) *int {
 		return v.Percent
@@ -49689,8 +49623,6 @@ func (o V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadRollo
 
 // Specifies the relative value defined as a percentage, which will be
 // multiplied by a reference value.
-//
-// ***
 func (o V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudgetPtrOutput) Percent() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudget) *int {
 		if v == nil {
@@ -50434,15 +50366,13 @@ type V2PolicyOrchestratorOrchestrationStateCurrentIterationState struct {
 	// (Output)
 	// Output only. Start time of the wave iteration.
 	StartTime *string `pulumi:"startTime"`
-	// (Output)
-	// Output only. State of the iteration.
-	// Possible values:
-	// STATE_UNSPECIFIED
-	// PROCESSING
-	// COMPLETED
-	// FAILED
-	// CANCELLED
-	// UNKNOWN
+	// Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+	// Allowed values:
+	// - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+	// - `STOPPED` - orchestrator won't make any changes.
+	//   Note: There might be more states added in the future. We use string here
+	//   instead of an enum, to avoid the need of propagating new states to all the
+	//   client code.
 	State *string `pulumi:"state"`
 }
 
@@ -50486,15 +50416,13 @@ type V2PolicyOrchestratorOrchestrationStateCurrentIterationStateArgs struct {
 	// (Output)
 	// Output only. Start time of the wave iteration.
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
-	// (Output)
-	// Output only. State of the iteration.
-	// Possible values:
-	// STATE_UNSPECIFIED
-	// PROCESSING
-	// COMPLETED
-	// FAILED
-	// CANCELLED
-	// UNKNOWN
+	// Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+	// Allowed values:
+	// - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+	// - `STOPPED` - orchestrator won't make any changes.
+	//   Note: There might be more states added in the future. We use string here
+	//   instead of an enum, to avoid the need of propagating new states to all the
+	//   client code.
 	State pulumi.StringPtrInput `pulumi:"state"`
 }
 
@@ -50600,15 +50528,13 @@ func (o V2PolicyOrchestratorOrchestrationStateCurrentIterationStateOutput) Start
 	return o.ApplyT(func(v V2PolicyOrchestratorOrchestrationStateCurrentIterationState) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
 
-// (Output)
-// Output only. State of the iteration.
-// Possible values:
-// STATE_UNSPECIFIED
-// PROCESSING
-// COMPLETED
-// FAILED
-// CANCELLED
-// UNKNOWN
+// Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+// Allowed values:
+//   - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+//   - `STOPPED` - orchestrator won't make any changes.
+//     Note: There might be more states added in the future. We use string here
+//     instead of an enum, to avoid the need of propagating new states to all the
+//     client code.
 func (o V2PolicyOrchestratorOrchestrationStateCurrentIterationStateOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V2PolicyOrchestratorOrchestrationStateCurrentIterationState) *string { return v.State }).(pulumi.StringPtrOutput)
 }
@@ -50963,15 +50889,13 @@ type V2PolicyOrchestratorOrchestrationStatePreviousIterationState struct {
 	// (Output)
 	// Output only. Start time of the wave iteration.
 	StartTime *string `pulumi:"startTime"`
-	// (Output)
-	// Output only. State of the iteration.
-	// Possible values:
-	// STATE_UNSPECIFIED
-	// PROCESSING
-	// COMPLETED
-	// FAILED
-	// CANCELLED
-	// UNKNOWN
+	// Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+	// Allowed values:
+	// - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+	// - `STOPPED` - orchestrator won't make any changes.
+	//   Note: There might be more states added in the future. We use string here
+	//   instead of an enum, to avoid the need of propagating new states to all the
+	//   client code.
 	State *string `pulumi:"state"`
 }
 
@@ -51015,15 +50939,13 @@ type V2PolicyOrchestratorOrchestrationStatePreviousIterationStateArgs struct {
 	// (Output)
 	// Output only. Start time of the wave iteration.
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
-	// (Output)
-	// Output only. State of the iteration.
-	// Possible values:
-	// STATE_UNSPECIFIED
-	// PROCESSING
-	// COMPLETED
-	// FAILED
-	// CANCELLED
-	// UNKNOWN
+	// Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+	// Allowed values:
+	// - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+	// - `STOPPED` - orchestrator won't make any changes.
+	//   Note: There might be more states added in the future. We use string here
+	//   instead of an enum, to avoid the need of propagating new states to all the
+	//   client code.
 	State pulumi.StringPtrInput `pulumi:"state"`
 }
 
@@ -51157,15 +51079,13 @@ func (o V2PolicyOrchestratorOrchestrationStatePreviousIterationStateOutput) Star
 	return o.ApplyT(func(v V2PolicyOrchestratorOrchestrationStatePreviousIterationState) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
 
-// (Output)
-// Output only. State of the iteration.
-// Possible values:
-// STATE_UNSPECIFIED
-// PROCESSING
-// COMPLETED
-// FAILED
-// CANCELLED
-// UNKNOWN
+// Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+// Allowed values:
+//   - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+//   - `STOPPED` - orchestrator won't make any changes.
+//     Note: There might be more states added in the future. We use string here
+//     instead of an enum, to avoid the need of propagating new states to all the
+//     client code.
 func (o V2PolicyOrchestratorOrchestrationStatePreviousIterationStateOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V2PolicyOrchestratorOrchestrationStatePreviousIterationState) *string { return v.State }).(pulumi.StringPtrOutput)
 }
@@ -51278,15 +51198,13 @@ func (o V2PolicyOrchestratorOrchestrationStatePreviousIterationStatePtrOutput) S
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Output)
-// Output only. State of the iteration.
-// Possible values:
-// STATE_UNSPECIFIED
-// PROCESSING
-// COMPLETED
-// FAILED
-// CANCELLED
-// UNKNOWN
+// Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+// Allowed values:
+//   - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+//   - `STOPPED` - orchestrator won't make any changes.
+//     Note: There might be more states added in the future. We use string here
+//     instead of an enum, to avoid the need of propagating new states to all the
+//     client code.
 func (o V2PolicyOrchestratorOrchestrationStatePreviousIterationStatePtrOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *V2PolicyOrchestratorOrchestrationStatePreviousIterationState) *string {
 		if v == nil {

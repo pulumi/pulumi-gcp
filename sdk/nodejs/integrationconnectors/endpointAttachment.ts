@@ -117,9 +117,6 @@ export class EndpointAttachment extends pulumi.CustomResource {
     public readonly location!: pulumi.Output<string>;
     /**
      * Name of Endpoint Attachment needs to be created.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -231,9 +228,6 @@ export interface EndpointAttachmentState {
     location?: pulumi.Input<string>;
     /**
      * Name of Endpoint Attachment needs to be created.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -281,9 +275,6 @@ export interface EndpointAttachmentArgs {
     location: pulumi.Input<string>;
     /**
      * Name of Endpoint Attachment needs to be created.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

@@ -130,9 +130,6 @@ export class Enrollment extends pulumi.CustomResource {
     /**
      * The user-provided ID to be assigned to the Enrollment. It should match the
      * format `^a-z?$`.
-     *
-     *
-     * - - -
      */
     public readonly enrollmentId!: pulumi.Output<string>;
     /**
@@ -290,9 +287,6 @@ export interface EnrollmentState {
     /**
      * The user-provided ID to be assigned to the Enrollment. It should match the
      * format `^a-z?$`.
-     *
-     *
-     * - - -
      */
     enrollmentId?: pulumi.Input<string>;
     /**
@@ -370,9 +364,6 @@ export interface EnrollmentArgs {
     /**
      * The user-provided ID to be assigned to the Enrollment. It should match the
      * format `^a-z?$`.
-     *
-     *
-     * - - -
      */
     enrollmentId: pulumi.Input<string>;
     /**

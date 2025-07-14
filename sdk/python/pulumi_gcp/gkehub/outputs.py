@@ -3731,8 +3731,6 @@ class MembershipRbacRoleBindingRole(dict):
         """
         :param builtins.str predefined_role: PredefinedRole is an ENUM representation of the default Kubernetes Roles
                Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`, `ANTHOS_SUPPORT`.
-               
-               - - -
         """
         pulumi.set(__self__, "predefined_role", predefined_role)
 
@@ -3742,8 +3740,6 @@ class MembershipRbacRoleBindingRole(dict):
         """
         PredefinedRole is an ENUM representation of the default Kubernetes Roles
         Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`, `ANTHOS_SUPPORT`.
-
-        - - -
         """
         return pulumi.get(self, "predefined_role")
 
@@ -3870,8 +3866,6 @@ class ScopeRbacRoleBindingRole(dict):
                  predefined_role: Optional[builtins.str] = None):
         """
         :param builtins.str custom_role: CustomRole is the custom Kubernetes ClusterRole to be used. The custom role format must be allowlisted in the rbacrolebindingactuation feature and RFC 1123 compliant.
-               
-               - - -
         :param builtins.str predefined_role: PredefinedRole is an ENUM representation of the default Kubernetes Roles
                Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
         """
@@ -3885,8 +3879,6 @@ class ScopeRbacRoleBindingRole(dict):
     def custom_role(self) -> Optional[builtins.str]:
         """
         CustomRole is the custom Kubernetes ClusterRole to be used. The custom role format must be allowlisted in the rbacrolebindingactuation feature and RFC 1123 compliant.
-
-        - - -
         """
         return pulumi.get(self, "custom_role")
 

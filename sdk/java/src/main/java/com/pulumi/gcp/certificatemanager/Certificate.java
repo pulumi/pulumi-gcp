@@ -696,8 +696,6 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
      * and all following characters must be a dash, underscore, letter or digit.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -706,8 +704,6 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * @return A user-defined name of the certificate. Certificate names must be unique
      * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
      * and all following characters must be a dash, underscore, letter or digit.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

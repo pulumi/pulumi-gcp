@@ -20,8 +20,6 @@ public final class ProjectCloudArmorTierArgs extends com.pulumi.resources.Resour
      * Managed protection tier to be set.
      * Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`, `CA_ENTERPRISE_ANNUAL`.
      * 
-     * ***
-     * 
      */
     @Import(name="cloudArmorTier", required=true)
     private Output<String> cloudArmorTier;
@@ -29,8 +27,6 @@ public final class ProjectCloudArmorTierArgs extends com.pulumi.resources.Resour
     /**
      * @return Managed protection tier to be set.
      * Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`, `CA_ENTERPRISE_ANNUAL`.
-     * 
-     * ***
      * 
      */
     public Output<String> cloudArmorTier() {
@@ -83,8 +79,6 @@ public final class ProjectCloudArmorTierArgs extends com.pulumi.resources.Resour
          * @param cloudArmorTier Managed protection tier to be set.
          * Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`, `CA_ENTERPRISE_ANNUAL`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -96,8 +90,6 @@ public final class ProjectCloudArmorTierArgs extends com.pulumi.resources.Resour
         /**
          * @param cloudArmorTier Managed protection tier to be set.
          * Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`, `CA_ENTERPRISE_ANNUAL`.
-         * 
-         * ***
          * 
          * @return builder
          * 

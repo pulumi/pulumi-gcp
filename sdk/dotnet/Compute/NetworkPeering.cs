@@ -136,6 +136,12 @@ namespace Pulumi.Gcp.Compute
         [Output("stateDetails")]
         public Output<string> StateDetails { get; private set; } = null!;
 
+        /// <summary>
+        /// The update strategy determines the semantics for updates and deletes to the peering connection configuration. The default value is INDEPENDENT. Possible values: ["INDEPENDENT", "CONSENSUS"]
+        /// </summary>
+        [Output("updateStrategy")]
+        public Output<string?> UpdateStrategy { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a NetworkPeering resource with the given unique name, arguments, and options.
@@ -231,6 +237,12 @@ namespace Pulumi.Gcp.Compute
         [Input("stackType")]
         public Input<string>? StackType { get; set; }
 
+        /// <summary>
+        /// The update strategy determines the semantics for updates and deletes to the peering connection configuration. The default value is INDEPENDENT. Possible values: ["INDEPENDENT", "CONSENSUS"]
+        /// </summary>
+        [Input("updateStrategy")]
+        public Input<string>? UpdateStrategy { get; set; }
+
         public NetworkPeeringArgs()
         {
         }
@@ -300,6 +312,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("stateDetails")]
         public Input<string>? StateDetails { get; set; }
+
+        /// <summary>
+        /// The update strategy determines the semantics for updates and deletes to the peering connection configuration. The default value is INDEPENDENT. Possible values: ["INDEPENDENT", "CONSENSUS"]
+        /// </summary>
+        [Input("updateStrategy")]
+        public Input<string>? UpdateStrategy { get; set; }
 
         public NetworkPeeringState()
         {

@@ -172,6 +172,7 @@ namespace Pulumi.Gcp.BigQuery
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly ImmutableArray<string> IgnoreSchemaChanges;
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly int LastModifiedTime;
         public readonly string Location;
@@ -225,6 +226,8 @@ namespace Pulumi.Gcp.BigQuery
             string friendlyName,
 
             string id,
+
+            ImmutableArray<string> ignoreSchemaChanges,
 
             ImmutableDictionary<string, string> labels,
 
@@ -286,6 +289,7 @@ namespace Pulumi.Gcp.BigQuery
             ExternalDataConfigurations = externalDataConfigurations;
             FriendlyName = friendlyName;
             Id = id;
+            IgnoreSchemaChanges = ignoreSchemaChanges;
             Labels = labels;
             LastModifiedTime = lastModifiedTime;
             Location = location;

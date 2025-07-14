@@ -166,9 +166,6 @@ namespace Pulumi.Gcp.Iam
         /// <summary>
         /// The ID to use to create the principal access boundary policy.
         /// This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, hyphens, or dots. Pattern, /a-z{2,62}/.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("principalAccessBoundaryPolicyId")]
         public Output<string> PrincipalAccessBoundaryPolicyId { get; private set; } = null!;
@@ -275,9 +272,6 @@ namespace Pulumi.Gcp.Iam
         /// <summary>
         /// The ID to use to create the principal access boundary policy.
         /// This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, hyphens, or dots. Pattern, /a-z{2,62}/.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("principalAccessBoundaryPolicyId", required: true)]
         public Input<string> PrincipalAccessBoundaryPolicyId { get; set; } = null!;
@@ -361,9 +355,6 @@ namespace Pulumi.Gcp.Iam
         /// <summary>
         /// The ID to use to create the principal access boundary policy.
         /// This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, hyphens, or dots. Pattern, /a-z{2,62}/.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("principalAccessBoundaryPolicyId")]
         public Input<string>? PrincipalAccessBoundaryPolicyId { get; set; }

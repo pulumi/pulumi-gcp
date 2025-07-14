@@ -16,8 +16,6 @@ namespace Pulumi.Gcp.ContainerAnalysis.Outputs
         /// <summary>
         /// The human readable name of this Attestation Authority, for
         /// example "qa".
-        /// 
-        /// - - -
         /// </summary>
         public readonly string HumanReadableName;
 

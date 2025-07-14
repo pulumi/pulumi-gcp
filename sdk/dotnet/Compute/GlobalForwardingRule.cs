@@ -940,9 +940,6 @@ namespace Pulumi.Gcp.Compute
         /// *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
         /// *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
         /// For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("target")]
         public Output<string> Target { get; private set; } = null!;
@@ -1267,9 +1264,6 @@ namespace Pulumi.Gcp.Compute
         /// *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
         /// *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
         /// For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("target", required: true)]
         public Input<string> Target { get; set; } = null!;
@@ -1621,9 +1615,6 @@ namespace Pulumi.Gcp.Compute
         /// *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
         /// *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
         /// For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("target")]
         public Input<string>? Target { get; set; }

@@ -143,8 +143,6 @@ public final class AppGroupState extends com.pulumi.resources.ResourceArgs {
      * The Apigee Organization associated with the Apigee app group,
      * in the format `organizations/{{org_name}}`.
      * 
-     * ***
-     * 
      */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
@@ -152,8 +150,6 @@ public final class AppGroupState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The Apigee Organization associated with the Apigee app group,
      * in the format `organizations/{{org_name}}`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> orgId() {
@@ -411,8 +407,6 @@ public final class AppGroupState extends com.pulumi.resources.ResourceArgs {
          * @param orgId The Apigee Organization associated with the Apigee app group,
          * in the format `organizations/{{org_name}}`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -424,8 +418,6 @@ public final class AppGroupState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param orgId The Apigee Organization associated with the Apigee app group,
          * in the format `organizations/{{org_name}}`.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -36,9 +36,6 @@ class WorkloadArgs:
         :param pulumi.Input[builtins.str] discovered_workload: Immutable. The resource name of the original discovered workload.
         :param pulumi.Input[builtins.str] location: Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
         :param pulumi.Input[builtins.str] workload_id: The Workload identifier.
-               
-               
-               - - -
         :param pulumi.Input['WorkloadAttributesArgs'] attributes: Consumer provided attributes.
                Structure is documented below.
         :param pulumi.Input[builtins.str] description: User-defined description of a Workload.
@@ -100,9 +97,6 @@ class WorkloadArgs:
     def workload_id(self) -> pulumi.Input[builtins.str]:
         """
         The Workload identifier.
-
-
-        - - -
         """
         return pulumi.get(self, "workload_id")
 
@@ -196,9 +190,6 @@ class _WorkloadState:
         :param pulumi.Input[builtins.str] uid: Output only. A universally unique identifier (UUID) for the `Workload` in the UUID4 format.
         :param pulumi.Input[builtins.str] update_time: Output only. Update time.
         :param pulumi.Input[builtins.str] workload_id: The Workload identifier.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['WorkloadWorkloadPropertyArgs']]] workload_properties: Properties of an underlying compute resource represented by the Workload.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['WorkloadWorkloadReferenceArgs']]] workload_references: Reference of an underlying compute resource represented by the Workload.
@@ -386,9 +377,6 @@ class _WorkloadState:
     def workload_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The Workload identifier.
-
-
-        - - -
         """
         return pulumi.get(self, "workload_id")
 
@@ -479,9 +467,6 @@ class Workload(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] workload_id: The Workload identifier.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -620,9 +605,6 @@ class Workload(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] uid: Output only. A universally unique identifier (UUID) for the `Workload` in the UUID4 format.
         :param pulumi.Input[builtins.str] update_time: Output only. Update time.
         :param pulumi.Input[builtins.str] workload_id: The Workload identifier.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkloadWorkloadPropertyArgs', 'WorkloadWorkloadPropertyArgsDict']]]] workload_properties: Properties of an underlying compute resource represented by the Workload.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkloadWorkloadReferenceArgs', 'WorkloadWorkloadReferenceArgsDict']]]] workload_references: Reference of an underlying compute resource represented by the Workload.
@@ -752,9 +734,6 @@ class Workload(pulumi.CustomResource):
     def workload_id(self) -> pulumi.Output[builtins.str]:
         """
         The Workload identifier.
-
-
-        - - -
         """
         return pulumi.get(self, "workload_id")
 

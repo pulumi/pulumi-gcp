@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Firebase.Inputs
     public sealed class AppHostingBuildSourceCodebaseAuthorGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The 'name' field in a Git user's git.config. Required by Git.
+        /// Human-readable name. 63 character limit.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }

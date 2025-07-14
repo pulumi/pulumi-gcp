@@ -45,9 +45,6 @@ class WorkstationConfigArgs:
         """
         The set of arguments for constructing a WorkstationConfig resource.
         :param pulumi.Input[builtins.str] location: The location where the workstation cluster config should reside.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] workstation_cluster_id: The ID of the parent workstation cluster.
         :param pulumi.Input[builtins.str] workstation_config_id: The ID to be assigned to the workstation cluster config.
         :param pulumi.Input[Sequence[pulumi.Input['WorkstationConfigAllowedPortArgs']]] allowed_ports: A list of port ranges specifying single ports or ranges of ports that are externally accessible in the workstation. Allowed ports must be one of 22, 80, or within range 1024-65535. If not specified defaults to ports 22, 80, and ports 1024-65535.
@@ -129,9 +126,6 @@ class WorkstationConfigArgs:
     def location(self) -> pulumi.Input[builtins.str]:
         """
         The location where the workstation cluster config should reside.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -452,9 +446,6 @@ class _WorkstationConfigState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location where the workstation cluster config should reside.
-               
-               
-               - - -
         :param pulumi.Input[builtins.int] max_usable_workstations: Maximum number of workstations under this configuration a user can have workstations.workstation.use permission on. Only enforced on CreateWorkstation API calls on the user issuing the API request.
         :param pulumi.Input[builtins.str] name: Full name of this resource.
         :param pulumi.Input[Sequence[pulumi.Input['WorkstationConfigPersistentDirectoryArgs']]] persistent_directories: Directories to persist across workstation sessions.
@@ -753,9 +744,6 @@ class _WorkstationConfigState:
     def location(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The location where the workstation cluster config should reside.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -1424,9 +1412,6 @@ class WorkstationConfig(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location where the workstation cluster config should reside.
-               
-               
-               - - -
         :param pulumi.Input[builtins.int] max_usable_workstations: Maximum number of workstations under this configuration a user can have workstations.workstation.use permission on. Only enforced on CreateWorkstation API calls on the user issuing the API request.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkstationConfigPersistentDirectoryArgs', 'WorkstationConfigPersistentDirectoryArgsDict']]]] persistent_directories: Directories to persist across workstation sessions.
                Structure is documented below.
@@ -2074,9 +2059,6 @@ class WorkstationConfig(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location where the workstation cluster config should reside.
-               
-               
-               - - -
         :param pulumi.Input[builtins.int] max_usable_workstations: Maximum number of workstations under this configuration a user can have workstations.workstation.use permission on. Only enforced on CreateWorkstation API calls on the user issuing the API request.
         :param pulumi.Input[builtins.str] name: Full name of this resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkstationConfigPersistentDirectoryArgs', 'WorkstationConfigPersistentDirectoryArgsDict']]]] persistent_directories: Directories to persist across workstation sessions.
@@ -2283,9 +2265,6 @@ class WorkstationConfig(pulumi.CustomResource):
     def location(self) -> pulumi.Output[builtins.str]:
         """
         The location where the workstation cluster config should reside.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

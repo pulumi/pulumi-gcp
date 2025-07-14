@@ -48,16 +48,12 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEnd
     /**
      * Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
      * 
-     * ***
-     * 
      */
     @Import(name="nanos")
     private @Nullable Output<Integer> nanos;
 
     /**
      * @return Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
-     * 
-     * ***
      * 
      */
     public Optional<Output<Integer>> nanos() {
@@ -151,8 +147,6 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEnd
         /**
          * @param nanos Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -163,8 +157,6 @@ public final class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEnd
 
         /**
          * @param nanos Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
-         * 
-         * ***
          * 
          * @return builder
          * 

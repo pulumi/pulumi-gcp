@@ -126,9 +126,6 @@ export class BackupChannel extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The region of the Backup Channel.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -244,9 +241,6 @@ export interface BackupChannelState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The region of the Backup Channel.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -294,9 +288,6 @@ export interface BackupChannelArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The region of the Backup Channel.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

@@ -27,9 +27,6 @@ class OrganizationSettingsArgs:
         """
         The set of arguments for constructing a OrganizationSettings resource.
         :param pulumi.Input[builtins.str] organization: The organization for which to retrieve or configure settings.
-               
-               
-               - - -
         :param pulumi.Input[builtins.bool] disable_default_sink: If set to true, the _Default sink in newly created projects and folders will created in a disabled state. This can be used to automatically disable log storage if there is already an aggregated sink configured in the hierarchy. The _Default sink can be re-enabled manually if needed.
         :param pulumi.Input[builtins.str] kms_key_name: The resource name for the configured Cloud KMS key.
         :param pulumi.Input[builtins.str] storage_location: The storage location that Cloud Logging will use to create new resources when a location is needed but not explicitly provided.
@@ -47,9 +44,6 @@ class OrganizationSettingsArgs:
     def organization(self) -> pulumi.Input[builtins.str]:
         """
         The organization for which to retrieve or configure settings.
-
-
-        - - -
         """
         return pulumi.get(self, "organization")
 
@@ -112,9 +106,6 @@ class _OrganizationSettingsState:
         :param pulumi.Input[builtins.str] logging_service_account_id: The service account for the given container. Sinks use this service account as their writerIdentity if no custom service account is provided.
         :param pulumi.Input[builtins.str] name: The resource name of the settings.
         :param pulumi.Input[builtins.str] organization: The organization for which to retrieve or configure settings.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] storage_location: The storage location that Cloud Logging will use to create new resources when a location is needed but not explicitly provided.
         """
         if disable_default_sink is not None:
@@ -197,9 +188,6 @@ class _OrganizationSettingsState:
     def organization(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The organization for which to retrieve or configure settings.
-
-
-        - - -
         """
         return pulumi.get(self, "organization")
 
@@ -284,9 +272,6 @@ class OrganizationSettings(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] disable_default_sink: If set to true, the _Default sink in newly created projects and folders will created in a disabled state. This can be used to automatically disable log storage if there is already an aggregated sink configured in the hierarchy. The _Default sink can be re-enabled manually if needed.
         :param pulumi.Input[builtins.str] kms_key_name: The resource name for the configured Cloud KMS key.
         :param pulumi.Input[builtins.str] organization: The organization for which to retrieve or configure settings.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] storage_location: The storage location that Cloud Logging will use to create new resources when a location is needed but not explicitly provided.
         """
         ...
@@ -410,9 +395,6 @@ class OrganizationSettings(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] logging_service_account_id: The service account for the given container. Sinks use this service account as their writerIdentity if no custom service account is provided.
         :param pulumi.Input[builtins.str] name: The resource name of the settings.
         :param pulumi.Input[builtins.str] organization: The organization for which to retrieve or configure settings.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] storage_location: The storage location that Cloud Logging will use to create new resources when a location is needed but not explicitly provided.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -473,9 +455,6 @@ class OrganizationSettings(pulumi.CustomResource):
     def organization(self) -> pulumi.Output[builtins.str]:
         """
         The organization for which to retrieve or configure settings.
-
-
-        - - -
         """
         return pulumi.get(self, "organization")
 

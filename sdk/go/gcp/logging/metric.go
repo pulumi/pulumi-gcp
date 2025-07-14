@@ -251,8 +251,6 @@ type Metric struct {
 	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
 	// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
 	// is used to match log entries.
-	//
-	// ***
 	Filter pulumi.StringOutput `pulumi:"filter"`
 	// A map from a label key string to an extractor expression which is used to extract data from a log
 	// entry field and assign as the label value. Each label key specified in the LabelDescriptor must
@@ -331,8 +329,6 @@ type metricState struct {
 	Disabled *bool `pulumi:"disabled"`
 	// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
 	// is used to match log entries.
-	//
-	// ***
 	Filter *string `pulumi:"filter"`
 	// A map from a label key string to an extractor expression which is used to extract data from a log
 	// entry field and assign as the label value. Each label key specified in the LabelDescriptor must
@@ -379,8 +375,6 @@ type MetricState struct {
 	Disabled pulumi.BoolPtrInput
 	// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
 	// is used to match log entries.
-	//
-	// ***
 	Filter pulumi.StringPtrInput
 	// A map from a label key string to an extractor expression which is used to extract data from a log
 	// entry field and assign as the label value. Each label key specified in the LabelDescriptor must
@@ -431,8 +425,6 @@ type metricArgs struct {
 	Disabled *bool `pulumi:"disabled"`
 	// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
 	// is used to match log entries.
-	//
-	// ***
 	Filter string `pulumi:"filter"`
 	// A map from a label key string to an extractor expression which is used to extract data from a log
 	// entry field and assign as the label value. Each label key specified in the LabelDescriptor must
@@ -480,8 +472,6 @@ type MetricArgs struct {
 	Disabled pulumi.BoolPtrInput
 	// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
 	// is used to match log entries.
-	//
-	// ***
 	Filter pulumi.StringInput
 	// A map from a label key string to an extractor expression which is used to extract data from a log
 	// entry field and assign as the label value. Each label key specified in the LabelDescriptor must
@@ -626,8 +616,6 @@ func (o MetricOutput) Disabled() pulumi.BoolPtrOutput {
 
 // An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
 // is used to match log entries.
-//
-// ***
 func (o MetricOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v *Metric) pulumi.StringOutput { return v.Filter }).(pulumi.StringOutput)
 }

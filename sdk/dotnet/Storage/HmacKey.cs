@@ -96,9 +96,6 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// The email address of the key's associated service account.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("serviceAccountEmail")]
         public Output<string> ServiceAccountEmail { get; private set; } = null!;
@@ -182,9 +179,6 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// The email address of the key's associated service account.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("serviceAccountEmail", required: true)]
         public Input<string> ServiceAccountEmail { get; set; } = null!;
@@ -237,9 +231,6 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// The email address of the key's associated service account.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("serviceAccountEmail")]
         public Input<string>? ServiceAccountEmail { get; set; }

@@ -78,9 +78,6 @@ export class Api extends pulumi.CustomResource {
 
     /**
      * Identifier to assign to the API. Must be unique within scope of the parent resource(project)
-     *
-     *
-     * - - -
      */
     public readonly apiId!: pulumi.Output<string>;
     /**
@@ -172,9 +169,6 @@ export class Api extends pulumi.CustomResource {
 export interface ApiState {
     /**
      * Identifier to assign to the API. Must be unique within scope of the parent resource(project)
-     *
-     *
-     * - - -
      */
     apiId?: pulumi.Input<string>;
     /**
@@ -223,9 +217,6 @@ export interface ApiState {
 export interface ApiArgs {
     /**
      * Identifier to assign to the API. Must be unique within scope of the parent resource(project)
-     *
-     *
-     * - - -
      */
     apiId: pulumi.Input<string>;
     /**

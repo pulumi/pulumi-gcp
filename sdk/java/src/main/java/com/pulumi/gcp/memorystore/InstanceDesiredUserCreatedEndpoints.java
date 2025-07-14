@@ -456,16 +456,12 @@ public class InstanceDesiredUserCreatedEndpoints extends com.pulumi.resources.Cu
     /**
      * The name of the region of the Memorystore instance these endpoints should be added to.
      * 
-     * ***
-     * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
      * @return The name of the region of the Memorystore instance these endpoints should be added to.
-     * 
-     * ***
      * 
      */
     public Output<String> region() {

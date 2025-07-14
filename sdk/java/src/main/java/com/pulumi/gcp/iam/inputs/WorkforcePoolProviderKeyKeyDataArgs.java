@@ -54,8 +54,6 @@ public final class WorkforcePoolProviderKeyKeyDataArgs extends com.pulumi.resour
      * The specifications for the key.
      * Possible values are: `RSA_2048`, `RSA_3072`, `RSA_4096`.
      * 
-     * ***
-     * 
      */
     @Import(name="keySpec", required=true)
     private Output<String> keySpec;
@@ -63,8 +61,6 @@ public final class WorkforcePoolProviderKeyKeyDataArgs extends com.pulumi.resour
     /**
      * @return The specifications for the key.
      * Possible values are: `RSA_2048`, `RSA_3072`, `RSA_4096`.
-     * 
-     * ***
      * 
      */
     public Output<String> keySpec() {
@@ -199,8 +195,6 @@ public final class WorkforcePoolProviderKeyKeyDataArgs extends com.pulumi.resour
          * @param keySpec The specifications for the key.
          * Possible values are: `RSA_2048`, `RSA_3072`, `RSA_4096`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -212,8 +206,6 @@ public final class WorkforcePoolProviderKeyKeyDataArgs extends com.pulumi.resour
         /**
          * @param keySpec The specifications for the key.
          * Possible values are: `RSA_2048`, `RSA_3072`, `RSA_4096`.
-         * 
-         * ***
          * 
          * @return builder
          * 

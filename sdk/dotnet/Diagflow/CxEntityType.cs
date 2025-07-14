@@ -107,9 +107,10 @@ namespace Pulumi.Gcp.Diagflow
     public partial class CxEntityType : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Represents kinds of entities. * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity. *
-        /// AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
-        /// Possible values: ["AUTO_EXPANSION_MODE_DEFAULT", "AUTO_EXPANSION_MODE_UNSPECIFIED"]
+        /// Represents kinds of entities.
+        /// * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity.
+        /// * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
+        /// Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
         /// </summary>
         [Output("autoExpansionMode")]
         public Output<string?> AutoExpansionMode { get; private set; } = null!;
@@ -134,9 +135,9 @@ namespace Pulumi.Gcp.Diagflow
         public Output<ImmutableArray<Outputs.CxEntityTypeEntity>> Entities { get; private set; } = null!;
 
         /// <summary>
-        /// Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with
-        /// entry giant(an adjective), you might consider adding giants(a noun) as an exclusion. If the kind of entity type is
-        /// KIND_MAP, then the phrases specified by entities and excluded phrases should be mutually exclusive.
+        /// Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry giant(an adjective), you might consider adding giants(a noun) as an exclusion.
+        /// If the kind of entity type is KIND_MAP, then the phrases specified by entities and excluded phrases should be mutually exclusive.
+        /// Structure is documented below.
         /// </summary>
         [Output("excludedPhrases")]
         public Output<ImmutableArray<Outputs.CxEntityTypeExcludedPhrase>> ExcludedPhrases { get; private set; } = null!;
@@ -152,9 +153,11 @@ namespace Pulumi.Gcp.Diagflow
         public Output<string> Kind { get; private set; } = null!;
 
         /// <summary>
-        /// The language of the following fields in entityType: EntityType.entities.value EntityType.entities.synonyms
-        /// EntityType.excluded_phrases.value If not specified, the agent's default language is used. Many languages are supported.
-        /// Note: languages must be enabled in the agent before they can be used.
+        /// The language of the following fields in entityType:
+        /// EntityType.entities.value
+        /// EntityType.entities.synonyms
+        /// EntityType.excluded_phrases.value
+        /// If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
         /// </summary>
         [Output("languageCode")]
         public Output<string?> LanguageCode { get; private set; } = null!;
@@ -167,14 +170,14 @@ namespace Pulumi.Gcp.Diagflow
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The agent to create a entity type for. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
+        /// The agent to create a entity type for.
+        /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
         /// </summary>
         [Output("parent")]
         public Output<string?> Parent { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and
-        /// intent parameters referring to the entity type will be replaced by parameter name when logging.
+        /// Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and intent parameters referring to the entity type will be replaced by parameter name when logging.
         /// </summary>
         [Output("redact")]
         public Output<bool?> Redact { get; private set; } = null!;
@@ -226,9 +229,10 @@ namespace Pulumi.Gcp.Diagflow
     public sealed class CxEntityTypeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Represents kinds of entities. * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity. *
-        /// AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
-        /// Possible values: ["AUTO_EXPANSION_MODE_DEFAULT", "AUTO_EXPANSION_MODE_UNSPECIFIED"]
+        /// Represents kinds of entities.
+        /// * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity.
+        /// * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
+        /// Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
         /// </summary>
         [Input("autoExpansionMode")]
         public Input<string>? AutoExpansionMode { get; set; }
@@ -262,9 +266,9 @@ namespace Pulumi.Gcp.Diagflow
         private InputList<Inputs.CxEntityTypeExcludedPhraseArgs>? _excludedPhrases;
 
         /// <summary>
-        /// Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with
-        /// entry giant(an adjective), you might consider adding giants(a noun) as an exclusion. If the kind of entity type is
-        /// KIND_MAP, then the phrases specified by entities and excluded phrases should be mutually exclusive.
+        /// Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry giant(an adjective), you might consider adding giants(a noun) as an exclusion.
+        /// If the kind of entity type is KIND_MAP, then the phrases specified by entities and excluded phrases should be mutually exclusive.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.CxEntityTypeExcludedPhraseArgs> ExcludedPhrases
         {
@@ -283,22 +287,24 @@ namespace Pulumi.Gcp.Diagflow
         public Input<string> Kind { get; set; } = null!;
 
         /// <summary>
-        /// The language of the following fields in entityType: EntityType.entities.value EntityType.entities.synonyms
-        /// EntityType.excluded_phrases.value If not specified, the agent's default language is used. Many languages are supported.
-        /// Note: languages must be enabled in the agent before they can be used.
+        /// The language of the following fields in entityType:
+        /// EntityType.entities.value
+        /// EntityType.entities.synonyms
+        /// EntityType.excluded_phrases.value
+        /// If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
         /// </summary>
         [Input("languageCode")]
         public Input<string>? LanguageCode { get; set; }
 
         /// <summary>
-        /// The agent to create a entity type for. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
+        /// The agent to create a entity type for.
+        /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }
 
         /// <summary>
-        /// Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and
-        /// intent parameters referring to the entity type will be replaced by parameter name when logging.
+        /// Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and intent parameters referring to the entity type will be replaced by parameter name when logging.
         /// </summary>
         [Input("redact")]
         public Input<bool>? Redact { get; set; }
@@ -312,9 +318,10 @@ namespace Pulumi.Gcp.Diagflow
     public sealed class CxEntityTypeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Represents kinds of entities. * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity. *
-        /// AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
-        /// Possible values: ["AUTO_EXPANSION_MODE_DEFAULT", "AUTO_EXPANSION_MODE_UNSPECIFIED"]
+        /// Represents kinds of entities.
+        /// * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity.
+        /// * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
+        /// Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
         /// </summary>
         [Input("autoExpansionMode")]
         public Input<string>? AutoExpansionMode { get; set; }
@@ -348,9 +355,9 @@ namespace Pulumi.Gcp.Diagflow
         private InputList<Inputs.CxEntityTypeExcludedPhraseGetArgs>? _excludedPhrases;
 
         /// <summary>
-        /// Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with
-        /// entry giant(an adjective), you might consider adding giants(a noun) as an exclusion. If the kind of entity type is
-        /// KIND_MAP, then the phrases specified by entities and excluded phrases should be mutually exclusive.
+        /// Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry giant(an adjective), you might consider adding giants(a noun) as an exclusion.
+        /// If the kind of entity type is KIND_MAP, then the phrases specified by entities and excluded phrases should be mutually exclusive.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.CxEntityTypeExcludedPhraseGetArgs> ExcludedPhrases
         {
@@ -369,9 +376,11 @@ namespace Pulumi.Gcp.Diagflow
         public Input<string>? Kind { get; set; }
 
         /// <summary>
-        /// The language of the following fields in entityType: EntityType.entities.value EntityType.entities.synonyms
-        /// EntityType.excluded_phrases.value If not specified, the agent's default language is used. Many languages are supported.
-        /// Note: languages must be enabled in the agent before they can be used.
+        /// The language of the following fields in entityType:
+        /// EntityType.entities.value
+        /// EntityType.entities.synonyms
+        /// EntityType.excluded_phrases.value
+        /// If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
         /// </summary>
         [Input("languageCode")]
         public Input<string>? LanguageCode { get; set; }
@@ -384,14 +393,14 @@ namespace Pulumi.Gcp.Diagflow
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The agent to create a entity type for. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
+        /// The agent to create a entity type for.
+        /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }
 
         /// <summary>
-        /// Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and
-        /// intent parameters referring to the entity type will be replaced by parameter name when logging.
+        /// Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and intent parameters referring to the entity type will be replaced by parameter name when logging.
         /// </summary>
         [Input("redact")]
         public Input<bool>? Redact { get; set; }

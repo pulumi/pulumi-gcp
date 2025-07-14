@@ -31,9 +31,6 @@ class GroupArgs:
         """
         The set of arguments for constructing a Group resource.
         :param pulumi.Input[builtins.str] hub: The name of the hub. Hub names must be unique. They use the following form: projects/{projectNumber}/locations/global/hubs/{hubId}
-               
-               
-               - - -
         :param pulumi.Input['GroupAutoAcceptArgs'] auto_accept: Optional. The auto-accept setting for this group.
                Structure is documented below.
         :param pulumi.Input[builtins.str] description: An optional description of the group.
@@ -62,9 +59,6 @@ class GroupArgs:
     def hub(self) -> pulumi.Input[builtins.str]:
         """
         The name of the hub. Hub names must be unique. They use the following form: projects/{projectNumber}/locations/global/hubs/{hubId}
-
-
-        - - -
         """
         return pulumi.get(self, "hub")
 
@@ -162,9 +156,6 @@ class _GroupState:
         :param pulumi.Input[builtins.str] description: An optional description of the group.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[builtins.str] hub: The name of the hub. Hub names must be unique. They use the following form: projects/{projectNumber}/locations/global/hubs/{hubId}
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -260,9 +251,6 @@ class _GroupState:
     def hub(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The name of the hub. Hub names must be unique. They use the following form: projects/{projectNumber}/locations/global/hubs/{hubId}
-
-
-        - - -
         """
         return pulumi.get(self, "hub")
 
@@ -453,9 +441,6 @@ class Group(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[builtins.str] description: An optional description of the group.
         :param pulumi.Input[builtins.str] hub: The name of the hub. Hub names must be unique. They use the following form: projects/{projectNumber}/locations/global/hubs/{hubId}
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -615,9 +600,6 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] description: An optional description of the group.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[builtins.str] hub: The name of the hub. Hub names must be unique. They use the following form: projects/{projectNumber}/locations/global/hubs/{hubId}
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -689,9 +671,6 @@ class Group(pulumi.CustomResource):
     def hub(self) -> pulumi.Output[builtins.str]:
         """
         The name of the hub. Hub names must be unique. They use the following form: projects/{projectNumber}/locations/global/hubs/{hubId}
-
-
-        - - -
         """
         return pulumi.get(self, "hub")
 

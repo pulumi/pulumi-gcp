@@ -401,8 +401,6 @@ type Slo struct {
 	// Must be between 1 to 30 days, inclusive.
 	RollingPeriodDays pulumi.IntPtrOutput `pulumi:"rollingPeriodDays"`
 	// ID of the service to which this SLO belongs.
-	//
-	// ***
 	Service pulumi.StringOutput `pulumi:"service"`
 	// The id to use for this ServiceLevelObjective. If omitted, an id will be generated instead.
 	SloId pulumi.StringOutput `pulumi:"sloId"`
@@ -496,8 +494,6 @@ type sloState struct {
 	// Must be between 1 to 30 days, inclusive.
 	RollingPeriodDays *int `pulumi:"rollingPeriodDays"`
 	// ID of the service to which this SLO belongs.
-	//
-	// ***
 	Service *string `pulumi:"service"`
 	// The id to use for this ServiceLevelObjective. If omitted, an id will be generated instead.
 	SloId *string `pulumi:"sloId"`
@@ -556,8 +552,6 @@ type SloState struct {
 	// Must be between 1 to 30 days, inclusive.
 	RollingPeriodDays pulumi.IntPtrInput
 	// ID of the service to which this SLO belongs.
-	//
-	// ***
 	Service pulumi.StringPtrInput
 	// The id to use for this ServiceLevelObjective. If omitted, an id will be generated instead.
 	SloId pulumi.StringPtrInput
@@ -617,8 +611,6 @@ type sloArgs struct {
 	// Must be between 1 to 30 days, inclusive.
 	RollingPeriodDays *int `pulumi:"rollingPeriodDays"`
 	// ID of the service to which this SLO belongs.
-	//
-	// ***
 	Service string `pulumi:"service"`
 	// The id to use for this ServiceLevelObjective. If omitted, an id will be generated instead.
 	SloId *string `pulumi:"sloId"`
@@ -675,8 +667,6 @@ type SloArgs struct {
 	// Must be between 1 to 30 days, inclusive.
 	RollingPeriodDays pulumi.IntPtrInput
 	// ID of the service to which this SLO belongs.
-	//
-	// ***
 	Service pulumi.StringInput
 	// The id to use for this ServiceLevelObjective. If omitted, an id will be generated instead.
 	SloId pulumi.StringPtrInput
@@ -845,8 +835,6 @@ func (o SloOutput) RollingPeriodDays() pulumi.IntPtrOutput {
 }
 
 // ID of the service to which this SLO belongs.
-//
-// ***
 func (o SloOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v *Slo) pulumi.StringOutput { return v.Service }).(pulumi.StringOutput)
 }

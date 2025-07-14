@@ -103,20 +103,35 @@ import (
 type FoldersPolicyBinding struct {
 	pulumi.CustomResourceState
 
-	// Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size
-	// limitations **Note**: This field is non-authoritative, and will only manage the annotations present in your
-	// configuration. Please refer to the field 'effective_annotations' for all of the annotations present on the resource.
+	// Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
-	// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The
-	// syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: \"Summary
-	// size limit\" description: \"Determines if a summary is less than 100 chars\" expression: \"document.summary.size() <
-	// 100\" Example (Equality): title: \"Requestor is owner\" description: \"Determines if requestor is the document owner\"
-	// expression: \"document.owner == request.auth.claims.email\" Example (Logic): title: \"Public documents\" description:
-	// \"Determine whether the document should be publicly visible\" expression: \"document.type != 'private' && document.type
-	// != 'internal'\" Example (Data Manipulation): title: \"Notification string\" description: \"Create a notification string
-	// with a timestamp.\" expression: \"'New message received at ' + string(document.create_time)\" The exact variables and
-	// functions that may be referenced within an expression are determined by the service that evaluates it. See the service
-	// documentation for additional information.
+	// Represents a textual expression in the Common Expression Language
+	// (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of
+	// CEL are documented at https://github.com/google/cel-spec.
+	// Example (Comparison):
+	// title: \"Summary size limit\"
+	// description: \"Determines if a summary is less than 100 chars\"
+	// expression: \"document.summary.size() < 100\"
+	// Example
+	// (Equality):
+	// title: \"Requestor is owner\"
+	// description: \"Determines if requestor is the document owner\"
+	// expression: \"document.owner == request.auth.claims.email\"  Example
+	// (Logic):
+	// title: \"Public documents\"
+	// description: \"Determine whether the document should be publicly visible\"
+	// expression: \"document.type != 'private' && document.type != 'internal'\"
+	// Example (Data Manipulation):
+	// title: \"Notification string\"
+	// description: \"Create a notification string with a timestamp.\"
+	// expression: \"'New message received at ' + string(document.create_time)\"
+	// The exact variables and functions that may be referenced within an expression are
+	// determined by the service that evaluates it. See the service documentation for
+	// additional information.
+	// Structure is documented below.
 	Condition FoldersPolicyBindingConditionPtrOutput `pulumi:"condition"`
 	// Output only. The time when the policy binding was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -135,9 +150,9 @@ type FoldersPolicyBinding struct {
 	Policy pulumi.StringOutput `pulumi:"policy"`
 	// The Policy Binding ID.
 	PolicyBindingId pulumi.StringOutput `pulumi:"policyBindingId"`
-	// Immutable. The kind of the policy to attach in this binding. This field must be one of the following: - Left empty (will
-	// be automatically set to the policy kind) - The input policy kind Possible values: POLICY_KIND_UNSPECIFIED
-	// PRINCIPAL_ACCESS_BOUNDARY ACCESS
+	// Immutable. The kind of the policy to attach in this binding. This
+	// field must be one of the following:  - Left empty (will be automatically set
+	// to the policy kind) - The input policy kind   Possible values:  POLICY_KIND_UNSPECIFIED PRINCIPAL_ACCESS_BOUNDARY ACCESS
 	PolicyKind pulumi.StringPtrOutput `pulumi:"policyKind"`
 	// Output only. The globally unique ID of the policy to be bound.
 	PolicyUid pulumi.StringOutput `pulumi:"policyUid"`
@@ -195,20 +210,35 @@ func GetFoldersPolicyBinding(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FoldersPolicyBinding resources.
 type foldersPolicyBindingState struct {
-	// Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size
-	// limitations **Note**: This field is non-authoritative, and will only manage the annotations present in your
-	// configuration. Please refer to the field 'effective_annotations' for all of the annotations present on the resource.
+	// Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
-	// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The
-	// syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: \"Summary
-	// size limit\" description: \"Determines if a summary is less than 100 chars\" expression: \"document.summary.size() <
-	// 100\" Example (Equality): title: \"Requestor is owner\" description: \"Determines if requestor is the document owner\"
-	// expression: \"document.owner == request.auth.claims.email\" Example (Logic): title: \"Public documents\" description:
-	// \"Determine whether the document should be publicly visible\" expression: \"document.type != 'private' && document.type
-	// != 'internal'\" Example (Data Manipulation): title: \"Notification string\" description: \"Create a notification string
-	// with a timestamp.\" expression: \"'New message received at ' + string(document.create_time)\" The exact variables and
-	// functions that may be referenced within an expression are determined by the service that evaluates it. See the service
-	// documentation for additional information.
+	// Represents a textual expression in the Common Expression Language
+	// (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of
+	// CEL are documented at https://github.com/google/cel-spec.
+	// Example (Comparison):
+	// title: \"Summary size limit\"
+	// description: \"Determines if a summary is less than 100 chars\"
+	// expression: \"document.summary.size() < 100\"
+	// Example
+	// (Equality):
+	// title: \"Requestor is owner\"
+	// description: \"Determines if requestor is the document owner\"
+	// expression: \"document.owner == request.auth.claims.email\"  Example
+	// (Logic):
+	// title: \"Public documents\"
+	// description: \"Determine whether the document should be publicly visible\"
+	// expression: \"document.type != 'private' && document.type != 'internal'\"
+	// Example (Data Manipulation):
+	// title: \"Notification string\"
+	// description: \"Create a notification string with a timestamp.\"
+	// expression: \"'New message received at ' + string(document.create_time)\"
+	// The exact variables and functions that may be referenced within an expression are
+	// determined by the service that evaluates it. See the service documentation for
+	// additional information.
+	// Structure is documented below.
 	Condition *FoldersPolicyBindingCondition `pulumi:"condition"`
 	// Output only. The time when the policy binding was created.
 	CreateTime *string `pulumi:"createTime"`
@@ -227,9 +257,9 @@ type foldersPolicyBindingState struct {
 	Policy *string `pulumi:"policy"`
 	// The Policy Binding ID.
 	PolicyBindingId *string `pulumi:"policyBindingId"`
-	// Immutable. The kind of the policy to attach in this binding. This field must be one of the following: - Left empty (will
-	// be automatically set to the policy kind) - The input policy kind Possible values: POLICY_KIND_UNSPECIFIED
-	// PRINCIPAL_ACCESS_BOUNDARY ACCESS
+	// Immutable. The kind of the policy to attach in this binding. This
+	// field must be one of the following:  - Left empty (will be automatically set
+	// to the policy kind) - The input policy kind   Possible values:  POLICY_KIND_UNSPECIFIED PRINCIPAL_ACCESS_BOUNDARY ACCESS
 	PolicyKind *string `pulumi:"policyKind"`
 	// Output only. The globally unique ID of the policy to be bound.
 	PolicyUid *string `pulumi:"policyUid"`
@@ -243,20 +273,35 @@ type foldersPolicyBindingState struct {
 }
 
 type FoldersPolicyBindingState struct {
-	// Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size
-	// limitations **Note**: This field is non-authoritative, and will only manage the annotations present in your
-	// configuration. Please refer to the field 'effective_annotations' for all of the annotations present on the resource.
+	// Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
-	// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The
-	// syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: \"Summary
-	// size limit\" description: \"Determines if a summary is less than 100 chars\" expression: \"document.summary.size() <
-	// 100\" Example (Equality): title: \"Requestor is owner\" description: \"Determines if requestor is the document owner\"
-	// expression: \"document.owner == request.auth.claims.email\" Example (Logic): title: \"Public documents\" description:
-	// \"Determine whether the document should be publicly visible\" expression: \"document.type != 'private' && document.type
-	// != 'internal'\" Example (Data Manipulation): title: \"Notification string\" description: \"Create a notification string
-	// with a timestamp.\" expression: \"'New message received at ' + string(document.create_time)\" The exact variables and
-	// functions that may be referenced within an expression are determined by the service that evaluates it. See the service
-	// documentation for additional information.
+	// Represents a textual expression in the Common Expression Language
+	// (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of
+	// CEL are documented at https://github.com/google/cel-spec.
+	// Example (Comparison):
+	// title: \"Summary size limit\"
+	// description: \"Determines if a summary is less than 100 chars\"
+	// expression: \"document.summary.size() < 100\"
+	// Example
+	// (Equality):
+	// title: \"Requestor is owner\"
+	// description: \"Determines if requestor is the document owner\"
+	// expression: \"document.owner == request.auth.claims.email\"  Example
+	// (Logic):
+	// title: \"Public documents\"
+	// description: \"Determine whether the document should be publicly visible\"
+	// expression: \"document.type != 'private' && document.type != 'internal'\"
+	// Example (Data Manipulation):
+	// title: \"Notification string\"
+	// description: \"Create a notification string with a timestamp.\"
+	// expression: \"'New message received at ' + string(document.create_time)\"
+	// The exact variables and functions that may be referenced within an expression are
+	// determined by the service that evaluates it. See the service documentation for
+	// additional information.
+	// Structure is documented below.
 	Condition FoldersPolicyBindingConditionPtrInput
 	// Output only. The time when the policy binding was created.
 	CreateTime pulumi.StringPtrInput
@@ -275,9 +320,9 @@ type FoldersPolicyBindingState struct {
 	Policy pulumi.StringPtrInput
 	// The Policy Binding ID.
 	PolicyBindingId pulumi.StringPtrInput
-	// Immutable. The kind of the policy to attach in this binding. This field must be one of the following: - Left empty (will
-	// be automatically set to the policy kind) - The input policy kind Possible values: POLICY_KIND_UNSPECIFIED
-	// PRINCIPAL_ACCESS_BOUNDARY ACCESS
+	// Immutable. The kind of the policy to attach in this binding. This
+	// field must be one of the following:  - Left empty (will be automatically set
+	// to the policy kind) - The input policy kind   Possible values:  POLICY_KIND_UNSPECIFIED PRINCIPAL_ACCESS_BOUNDARY ACCESS
 	PolicyKind pulumi.StringPtrInput
 	// Output only. The globally unique ID of the policy to be bound.
 	PolicyUid pulumi.StringPtrInput
@@ -295,20 +340,35 @@ func (FoldersPolicyBindingState) ElementType() reflect.Type {
 }
 
 type foldersPolicyBindingArgs struct {
-	// Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size
-	// limitations **Note**: This field is non-authoritative, and will only manage the annotations present in your
-	// configuration. Please refer to the field 'effective_annotations' for all of the annotations present on the resource.
+	// Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
-	// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The
-	// syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: \"Summary
-	// size limit\" description: \"Determines if a summary is less than 100 chars\" expression: \"document.summary.size() <
-	// 100\" Example (Equality): title: \"Requestor is owner\" description: \"Determines if requestor is the document owner\"
-	// expression: \"document.owner == request.auth.claims.email\" Example (Logic): title: \"Public documents\" description:
-	// \"Determine whether the document should be publicly visible\" expression: \"document.type != 'private' && document.type
-	// != 'internal'\" Example (Data Manipulation): title: \"Notification string\" description: \"Create a notification string
-	// with a timestamp.\" expression: \"'New message received at ' + string(document.create_time)\" The exact variables and
-	// functions that may be referenced within an expression are determined by the service that evaluates it. See the service
-	// documentation for additional information.
+	// Represents a textual expression in the Common Expression Language
+	// (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of
+	// CEL are documented at https://github.com/google/cel-spec.
+	// Example (Comparison):
+	// title: \"Summary size limit\"
+	// description: \"Determines if a summary is less than 100 chars\"
+	// expression: \"document.summary.size() < 100\"
+	// Example
+	// (Equality):
+	// title: \"Requestor is owner\"
+	// description: \"Determines if requestor is the document owner\"
+	// expression: \"document.owner == request.auth.claims.email\"  Example
+	// (Logic):
+	// title: \"Public documents\"
+	// description: \"Determine whether the document should be publicly visible\"
+	// expression: \"document.type != 'private' && document.type != 'internal'\"
+	// Example (Data Manipulation):
+	// title: \"Notification string\"
+	// description: \"Create a notification string with a timestamp.\"
+	// expression: \"'New message received at ' + string(document.create_time)\"
+	// The exact variables and functions that may be referenced within an expression are
+	// determined by the service that evaluates it. See the service documentation for
+	// additional information.
+	// Structure is documented below.
 	Condition *FoldersPolicyBindingCondition `pulumi:"condition"`
 	// Optional. The description of the policy binding. Must be less than or equal to 63 characters.
 	DisplayName *string `pulumi:"displayName"`
@@ -320,9 +380,9 @@ type foldersPolicyBindingArgs struct {
 	Policy string `pulumi:"policy"`
 	// The Policy Binding ID.
 	PolicyBindingId string `pulumi:"policyBindingId"`
-	// Immutable. The kind of the policy to attach in this binding. This field must be one of the following: - Left empty (will
-	// be automatically set to the policy kind) - The input policy kind Possible values: POLICY_KIND_UNSPECIFIED
-	// PRINCIPAL_ACCESS_BOUNDARY ACCESS
+	// Immutable. The kind of the policy to attach in this binding. This
+	// field must be one of the following:  - Left empty (will be automatically set
+	// to the policy kind) - The input policy kind   Possible values:  POLICY_KIND_UNSPECIFIED PRINCIPAL_ACCESS_BOUNDARY ACCESS
 	PolicyKind *string `pulumi:"policyKind"`
 	// Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
 	// Structure is documented below.
@@ -331,20 +391,35 @@ type foldersPolicyBindingArgs struct {
 
 // The set of arguments for constructing a FoldersPolicyBinding resource.
 type FoldersPolicyBindingArgs struct {
-	// Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size
-	// limitations **Note**: This field is non-authoritative, and will only manage the annotations present in your
-	// configuration. Please refer to the field 'effective_annotations' for all of the annotations present on the resource.
+	// Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
-	// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The
-	// syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: \"Summary
-	// size limit\" description: \"Determines if a summary is less than 100 chars\" expression: \"document.summary.size() <
-	// 100\" Example (Equality): title: \"Requestor is owner\" description: \"Determines if requestor is the document owner\"
-	// expression: \"document.owner == request.auth.claims.email\" Example (Logic): title: \"Public documents\" description:
-	// \"Determine whether the document should be publicly visible\" expression: \"document.type != 'private' && document.type
-	// != 'internal'\" Example (Data Manipulation): title: \"Notification string\" description: \"Create a notification string
-	// with a timestamp.\" expression: \"'New message received at ' + string(document.create_time)\" The exact variables and
-	// functions that may be referenced within an expression are determined by the service that evaluates it. See the service
-	// documentation for additional information.
+	// Represents a textual expression in the Common Expression Language
+	// (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of
+	// CEL are documented at https://github.com/google/cel-spec.
+	// Example (Comparison):
+	// title: \"Summary size limit\"
+	// description: \"Determines if a summary is less than 100 chars\"
+	// expression: \"document.summary.size() < 100\"
+	// Example
+	// (Equality):
+	// title: \"Requestor is owner\"
+	// description: \"Determines if requestor is the document owner\"
+	// expression: \"document.owner == request.auth.claims.email\"  Example
+	// (Logic):
+	// title: \"Public documents\"
+	// description: \"Determine whether the document should be publicly visible\"
+	// expression: \"document.type != 'private' && document.type != 'internal'\"
+	// Example (Data Manipulation):
+	// title: \"Notification string\"
+	// description: \"Create a notification string with a timestamp.\"
+	// expression: \"'New message received at ' + string(document.create_time)\"
+	// The exact variables and functions that may be referenced within an expression are
+	// determined by the service that evaluates it. See the service documentation for
+	// additional information.
+	// Structure is documented below.
 	Condition FoldersPolicyBindingConditionPtrInput
 	// Optional. The description of the policy binding. Must be less than or equal to 63 characters.
 	DisplayName pulumi.StringPtrInput
@@ -356,9 +431,9 @@ type FoldersPolicyBindingArgs struct {
 	Policy pulumi.StringInput
 	// The Policy Binding ID.
 	PolicyBindingId pulumi.StringInput
-	// Immutable. The kind of the policy to attach in this binding. This field must be one of the following: - Left empty (will
-	// be automatically set to the policy kind) - The input policy kind Possible values: POLICY_KIND_UNSPECIFIED
-	// PRINCIPAL_ACCESS_BOUNDARY ACCESS
+	// Immutable. The kind of the policy to attach in this binding. This
+	// field must be one of the following:  - Left empty (will be automatically set
+	// to the policy kind) - The input policy kind   Possible values:  POLICY_KIND_UNSPECIFIED PRINCIPAL_ACCESS_BOUNDARY ACCESS
 	PolicyKind pulumi.StringPtrInput
 	// Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
 	// Structure is documented below.
@@ -452,23 +527,38 @@ func (o FoldersPolicyBindingOutput) ToFoldersPolicyBindingOutputWithContext(ctx 
 	return o
 }
 
-// Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size
-// limitations **Note**: This field is non-authoritative, and will only manage the annotations present in your
-// configuration. Please refer to the field 'effective_annotations' for all of the annotations present on the resource.
+// Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations
+//
+// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 func (o FoldersPolicyBindingOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *FoldersPolicyBinding) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
-// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The
-// syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: \"Summary
-// size limit\" description: \"Determines if a summary is less than 100 chars\" expression: \"document.summary.size() <
-// 100\" Example (Equality): title: \"Requestor is owner\" description: \"Determines if requestor is the document owner\"
-// expression: \"document.owner == request.auth.claims.email\" Example (Logic): title: \"Public documents\" description:
-// \"Determine whether the document should be publicly visible\" expression: \"document.type != 'private' && document.type
-// != 'internal'\" Example (Data Manipulation): title: \"Notification string\" description: \"Create a notification string
-// with a timestamp.\" expression: \"'New message received at ' + string(document.create_time)\" The exact variables and
-// functions that may be referenced within an expression are determined by the service that evaluates it. See the service
-// documentation for additional information.
+// Represents a textual expression in the Common Expression Language
+// (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of
+// CEL are documented at https://github.com/google/cel-spec.
+// Example (Comparison):
+// title: \"Summary size limit\"
+// description: \"Determines if a summary is less than 100 chars\"
+// expression: \"document.summary.size() < 100\"
+// Example
+// (Equality):
+// title: \"Requestor is owner\"
+// description: \"Determines if requestor is the document owner\"
+// expression: \"document.owner == request.auth.claims.email\"  Example
+// (Logic):
+// title: \"Public documents\"
+// description: \"Determine whether the document should be publicly visible\"
+// expression: \"document.type != 'private' && document.type != 'internal'\"
+// Example (Data Manipulation):
+// title: \"Notification string\"
+// description: \"Create a notification string with a timestamp.\"
+// expression: \"'New message received at ' + string(document.create_time)\"
+// The exact variables and functions that may be referenced within an expression are
+// determined by the service that evaluates it. See the service documentation for
+// additional information.
+// Structure is documented below.
 func (o FoldersPolicyBindingOutput) Condition() FoldersPolicyBindingConditionPtrOutput {
 	return o.ApplyT(func(v *FoldersPolicyBinding) FoldersPolicyBindingConditionPtrOutput { return v.Condition }).(FoldersPolicyBindingConditionPtrOutput)
 }
@@ -517,9 +607,9 @@ func (o FoldersPolicyBindingOutput) PolicyBindingId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FoldersPolicyBinding) pulumi.StringOutput { return v.PolicyBindingId }).(pulumi.StringOutput)
 }
 
-// Immutable. The kind of the policy to attach in this binding. This field must be one of the following: - Left empty (will
-// be automatically set to the policy kind) - The input policy kind Possible values: POLICY_KIND_UNSPECIFIED
-// PRINCIPAL_ACCESS_BOUNDARY ACCESS
+// Immutable. The kind of the policy to attach in this binding. This
+// field must be one of the following:  - Left empty (will be automatically set
+// to the policy kind) - The input policy kind   Possible values:  POLICY_KIND_UNSPECIFIED PRINCIPAL_ACCESS_BOUNDARY ACCESS
 func (o FoldersPolicyBindingOutput) PolicyKind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FoldersPolicyBinding) pulumi.StringPtrOutput { return v.PolicyKind }).(pulumi.StringPtrOutput)
 }

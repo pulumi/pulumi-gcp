@@ -41,8 +41,6 @@ public final class FhirStoreState extends com.pulumi.resources.ResourceArgs {
      * Identifies the dataset addressed by this request. Must be in the format
      * &#39;projects/{project}/locations/{location}/datasets/{dataset}&#39;
      * 
-     * ***
-     * 
      */
     @Import(name="dataset")
     private @Nullable Output<String> dataset;
@@ -50,8 +48,6 @@ public final class FhirStoreState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Identifies the dataset addressed by this request. Must be in the format
      * &#39;projects/{project}/locations/{location}/datasets/{dataset}&#39;
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> dataset() {
@@ -454,8 +450,6 @@ public final class FhirStoreState extends com.pulumi.resources.ResourceArgs {
          * @param dataset Identifies the dataset addressed by this request. Must be in the format
          * &#39;projects/{project}/locations/{location}/datasets/{dataset}&#39;
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -467,8 +461,6 @@ public final class FhirStoreState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param dataset Identifies the dataset addressed by this request. Must be in the format
          * &#39;projects/{project}/locations/{location}/datasets/{dataset}&#39;
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -45,9 +45,6 @@ class RegionDiskArgs:
         """
         The set of arguments for constructing a RegionDisk resource.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] replica_zones: URLs of the zones where the disk should be replicated to.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] access_mode: The access mode of the disk.
                For example:
                * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
@@ -174,9 +171,6 @@ class RegionDiskArgs:
     def replica_zones(self) -> pulumi.Input[Sequence[pulumi.Input[builtins.str]]]:
         """
         URLs of the zones where the disk should be replicated to.
-
-
-        - - -
         """
         return pulumi.get(self, "replica_zones")
 
@@ -568,9 +562,6 @@ class _RegionDiskState:
                and default labels configured on the provider.
         :param pulumi.Input[builtins.str] region: A reference to the region where the disk resides.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] replica_zones: URLs of the zones where the disk should be replicated to.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] self_link: The URI of the created resource.
         :param pulumi.Input[builtins.int] size: Size of the persistent disk, specified in GB. You can specify this
                field when creating a persistent disk using the sourceImage or
@@ -973,9 +964,6 @@ class _RegionDiskState:
     def replica_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
         URLs of the zones where the disk should be replicated to.
-
-
-        - - -
         """
         return pulumi.get(self, "replica_zones")
 
@@ -1360,9 +1348,6 @@ class RegionDisk(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] region: A reference to the region where the disk resides.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] replica_zones: URLs of the zones where the disk should be replicated to.
-               
-               
-               - - -
         :param pulumi.Input[builtins.int] size: Size of the persistent disk, specified in GB. You can specify this
                field when creating a persistent disk using the sourceImage or
                sourceSnapshot parameter, or specify it alone to create an empty
@@ -1742,9 +1727,6 @@ class RegionDisk(pulumi.CustomResource):
                and default labels configured on the provider.
         :param pulumi.Input[builtins.str] region: A reference to the region where the disk resides.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] replica_zones: URLs of the zones where the disk should be replicated to.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] self_link: The URI of the created resource.
         :param pulumi.Input[builtins.int] size: Size of the persistent disk, specified in GB. You can specify this
                field when creating a persistent disk using the sourceImage or
@@ -2034,9 +2016,6 @@ class RegionDisk(pulumi.CustomResource):
     def replica_zones(self) -> pulumi.Output[Sequence[builtins.str]]:
         """
         URLs of the zones where the disk should be replicated to.
-
-
-        - - -
         """
         return pulumi.get(self, "replica_zones")
 

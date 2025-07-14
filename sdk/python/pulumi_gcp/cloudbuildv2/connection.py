@@ -35,9 +35,6 @@ class ConnectionArgs:
         """
         The set of arguments for constructing a Connection resource.
         :param pulumi.Input[builtins.str] location: The location for the resource
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Allows clients to store small amounts of arbitrary data.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -81,9 +78,6 @@ class ConnectionArgs:
     def location(self) -> pulumi.Input[builtins.str]:
         """
         The location for the resource
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -248,9 +242,6 @@ class _ConnectionState:
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionInstallationStateArgs']]] installation_states: Output only. Installation state of the Connection.
                Structure is documented below.
         :param pulumi.Input[builtins.str] location: The location for the resource
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: Immutable. The resource name of the connection.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -432,9 +423,6 @@ class _ConnectionState:
     def location(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The location for the resource
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -665,9 +653,6 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[Union['ConnectionGitlabConfigArgs', 'ConnectionGitlabConfigArgsDict']] gitlab_config: Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
                Structure is documented below.
         :param pulumi.Input[builtins.str] location: The location for the resource
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: Immutable. The resource name of the connection.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -921,9 +906,6 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionInstallationStateArgs', 'ConnectionInstallationStateArgsDict']]]] installation_states: Output only. Installation state of the Connection.
                Structure is documented below.
         :param pulumi.Input[builtins.str] location: The location for the resource
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: Immutable. The resource name of the connection.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1050,9 +1032,6 @@ class Connection(pulumi.CustomResource):
     def location(self) -> pulumi.Output[builtins.str]:
         """
         The location for the resource
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

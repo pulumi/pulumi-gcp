@@ -37,9 +37,6 @@ class InterceptDeploymentArgs:
                See https://google.aip.dev/124.
         :param pulumi.Input[builtins.str] intercept_deployment_id: The ID to use for the new deployment, which will become the final
                component of the deployment's resource name.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: The cloud location of the deployment, e.g. `us-central1-a` or `asia-south1-b`.
         :param pulumi.Input[builtins.str] description: User-provided description of the deployment.
                Used as additional context for the deployment.
@@ -94,9 +91,6 @@ class InterceptDeploymentArgs:
         """
         The ID to use for the new deployment, which will become the final
         component of the deployment's resource name.
-
-
-        - - -
         """
         return pulumi.get(self, "intercept_deployment_id")
 
@@ -189,9 +183,6 @@ class _InterceptDeploymentState:
                See https://google.aip.dev/124.
         :param pulumi.Input[builtins.str] intercept_deployment_id: The ID to use for the new deployment, which will become the final
                component of the deployment's resource name.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels are key/value pairs that help to organize and filter resources.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -320,9 +311,6 @@ class _InterceptDeploymentState:
         """
         The ID to use for the new deployment, which will become the final
         component of the deployment's resource name.
-
-
-        - - -
         """
         return pulumi.get(self, "intercept_deployment_id")
 
@@ -553,9 +541,6 @@ class InterceptDeployment(pulumi.CustomResource):
                See https://google.aip.dev/124.
         :param pulumi.Input[builtins.str] intercept_deployment_id: The ID to use for the new deployment, which will become the final
                component of the deployment's resource name.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels are key/value pairs that help to organize and filter resources.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -750,9 +735,6 @@ class InterceptDeployment(pulumi.CustomResource):
                See https://google.aip.dev/124.
         :param pulumi.Input[builtins.str] intercept_deployment_id: The ID to use for the new deployment, which will become the final
                component of the deployment's resource name.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels are key/value pairs that help to organize and filter resources.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -852,9 +834,6 @@ class InterceptDeployment(pulumi.CustomResource):
         """
         The ID to use for the new deployment, which will become the final
         component of the deployment's resource name.
-
-
-        - - -
         """
         return pulumi.get(self, "intercept_deployment_id")
 

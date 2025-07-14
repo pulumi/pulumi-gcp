@@ -197,6 +197,7 @@ export class KeystoresAliasesSelfSignedCert extends pulumi.CustomResource {
     public readonly subject!: pulumi.Output<outputs.apigee.KeystoresAliasesSelfSignedCertSubject>;
     /**
      * List of alternative host names. Maximum length is 255 characters for each value.
+     * Structure is documented below.
      */
     public readonly subjectAlternativeDnsNames!: pulumi.Output<outputs.apigee.KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames | undefined>;
     /**
@@ -311,6 +312,7 @@ export interface KeystoresAliasesSelfSignedCertState {
     subject?: pulumi.Input<inputs.apigee.KeystoresAliasesSelfSignedCertSubject>;
     /**
      * List of alternative host names. Maximum length is 255 characters for each value.
+     * Structure is documented below.
      */
     subjectAlternativeDnsNames?: pulumi.Input<inputs.apigee.KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames>;
     /**
@@ -360,6 +362,7 @@ export interface KeystoresAliasesSelfSignedCertArgs {
     subject: pulumi.Input<inputs.apigee.KeystoresAliasesSelfSignedCertSubject>;
     /**
      * List of alternative host names. Maximum length is 255 characters for each value.
+     * Structure is documented below.
      */
     subjectAlternativeDnsNames?: pulumi.Input<inputs.apigee.KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames>;
 }

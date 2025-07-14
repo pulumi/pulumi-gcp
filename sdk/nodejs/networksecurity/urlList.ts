@@ -109,9 +109,6 @@ export class UrlList extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The location of the url lists.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -192,9 +189,6 @@ export interface UrlListState {
     description?: pulumi.Input<string>;
     /**
      * The location of the url lists.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -229,9 +223,6 @@ export interface UrlListArgs {
     description?: pulumi.Input<string>;
     /**
      * The location of the url lists.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

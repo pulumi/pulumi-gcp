@@ -1021,6 +1021,7 @@ public class PreventionJobTrigger extends com.pulumi.resources.CustomResource {
     }
     /**
      * Controls what and how to inspect for findings.
+     * Structure is documented below.
      * 
      */
     @Export(name="inspectJob", refs={PreventionJobTriggerInspectJob.class}, tree="[0]")
@@ -1028,6 +1029,7 @@ public class PreventionJobTrigger extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Controls what and how to inspect for findings.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<PreventionJobTriggerInspectJob>> inspectJob() {
@@ -1078,30 +1080,36 @@ public class PreventionJobTrigger extends com.pulumi.resources.CustomResource {
         return this.parent;
     }
     /**
-     * Whether the trigger is currently active. Default value: &#34;HEALTHY&#34; Possible values: [&#34;PAUSED&#34;, &#34;HEALTHY&#34;, &#34;CANCELLED&#34;]
+     * Whether the trigger is currently active.
+     * Default value is `HEALTHY`.
+     * Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> status;
 
     /**
-     * @return Whether the trigger is currently active. Default value: &#34;HEALTHY&#34; Possible values: [&#34;PAUSED&#34;, &#34;HEALTHY&#34;, &#34;CANCELLED&#34;]
+     * @return Whether the trigger is currently active.
+     * Default value is `HEALTHY`.
+     * Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
      * 
      */
     public Output<Optional<String>> status() {
         return Codegen.optional(this.status);
     }
     /**
-     * The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
-     * expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+     * The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
+     * that is, it must match the regular expression: [a-zA-Z\d-_]+.
+     * The maximum length is 100 characters. Can be empty to allow the system to generate one.
      * 
      */
     @Export(name="triggerId", refs={String.class}, tree="[0]")
     private Output<String> triggerId;
 
     /**
-     * @return The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
-     * expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+     * @return The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
+     * that is, it must match the regular expression: [a-zA-Z\d-_]+.
+     * The maximum length is 100 characters. Can be empty to allow the system to generate one.
      * 
      */
     public Output<String> triggerId() {

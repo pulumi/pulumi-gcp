@@ -157,8 +157,6 @@ type ResizeRequest struct {
 	// An optional description of this resize-request.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The reference of the instance group manager this ResizeRequest is a part of.
-	//
-	// ***
 	InstanceGroupManager pulumi.StringOutput `pulumi:"instanceGroupManager"`
 	// The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -220,8 +218,6 @@ type resizeRequestState struct {
 	// An optional description of this resize-request.
 	Description *string `pulumi:"description"`
 	// The reference of the instance group manager this ResizeRequest is a part of.
-	//
-	// ***
 	InstanceGroupManager *string `pulumi:"instanceGroupManager"`
 	// The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
 	Name *string `pulumi:"name"`
@@ -248,8 +244,6 @@ type ResizeRequestState struct {
 	// An optional description of this resize-request.
 	Description pulumi.StringPtrInput
 	// The reference of the instance group manager this ResizeRequest is a part of.
-	//
-	// ***
 	InstanceGroupManager pulumi.StringPtrInput
 	// The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
 	Name pulumi.StringPtrInput
@@ -278,8 +272,6 @@ type resizeRequestArgs struct {
 	// An optional description of this resize-request.
 	Description *string `pulumi:"description"`
 	// The reference of the instance group manager this ResizeRequest is a part of.
-	//
-	// ***
 	InstanceGroupManager string `pulumi:"instanceGroupManager"`
 	// The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
 	Name *string `pulumi:"name"`
@@ -300,8 +292,6 @@ type ResizeRequestArgs struct {
 	// An optional description of this resize-request.
 	Description pulumi.StringPtrInput
 	// The reference of the instance group manager this ResizeRequest is a part of.
-	//
-	// ***
 	InstanceGroupManager pulumi.StringInput
 	// The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
 	Name pulumi.StringPtrInput
@@ -415,8 +405,6 @@ func (o ResizeRequestOutput) Description() pulumi.StringPtrOutput {
 }
 
 // The reference of the instance group manager this ResizeRequest is a part of.
-//
-// ***
 func (o ResizeRequestOutput) InstanceGroupManager() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResizeRequest) pulumi.StringOutput { return v.InstanceGroupManager }).(pulumi.StringOutput)
 }

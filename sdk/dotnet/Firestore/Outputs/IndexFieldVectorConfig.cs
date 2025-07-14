@@ -20,8 +20,6 @@ namespace Pulumi.Gcp.Firestore.Outputs
         public readonly int? Dimension;
         /// <summary>
         /// Indicates the vector index is a flat index.
-        /// 
-        /// - - -
         /// </summary>
         public readonly Outputs.IndexFieldVectorConfigFlat? Flat;
 

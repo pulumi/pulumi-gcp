@@ -187,36 +187,52 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:binaryauthorization/policy:Policy")
 public class Policy extends com.pulumi.resources.CustomResource {
     /**
-     * A whitelist of image patterns to exclude from admission rules. If an image&#39;s name matches a whitelist pattern, the
-     * image&#39;s admission requests will always be permitted regardless of your admission rules.
+     * A whitelist of image patterns to exclude from admission rules. If an
+     * image&#39;s name matches a whitelist pattern, the image&#39;s admission
+     * requests will always be permitted regardless of your admission rules.
+     * Structure is documented below.
      * 
      */
     @Export(name="admissionWhitelistPatterns", refs={List.class,PolicyAdmissionWhitelistPattern.class}, tree="[0,1]")
     private Output</* @Nullable */ List<PolicyAdmissionWhitelistPattern>> admissionWhitelistPatterns;
 
     /**
-     * @return A whitelist of image patterns to exclude from admission rules. If an image&#39;s name matches a whitelist pattern, the
-     * image&#39;s admission requests will always be permitted regardless of your admission rules.
+     * @return A whitelist of image patterns to exclude from admission rules. If an
+     * image&#39;s name matches a whitelist pattern, the image&#39;s admission
+     * requests will always be permitted regardless of your admission rules.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<List<PolicyAdmissionWhitelistPattern>>> admissionWhitelistPatterns() {
         return Codegen.optional(this.admissionWhitelistPatterns);
     }
     /**
-     * Per-cluster admission rules. An admission rule specifies either that all container images used in a pod creation request
-     * must be attested to by one or more attestors, that all pod creations will be allowed, or that all pod creations will be
-     * denied. There can be at most one admission rule per cluster spec. Identifier format: &#39;{{location}}.{{clusterId}}&#39;. A
-     * location is either a compute zone (e.g. &#39;us-central1-a&#39;) or a region (e.g. &#39;us-central1&#39;).
+     * Per-cluster admission rules. An admission rule specifies either that
+     * all container images used in a pod creation request must be attested
+     * to by one or more attestors, that all pod creations will be allowed,
+     * or that all pod creations will be denied. There can be at most one
+     * admission rule per cluster spec.
+     * 
+     * Identifier format: `{{location}}.{{clusterId}}`.
+     * A location is either a compute zone (e.g. `us-central1-a`) or a region
+     * (e.g. `us-central1`).
+     * Structure is documented below.
      * 
      */
     @Export(name="clusterAdmissionRules", refs={List.class,PolicyClusterAdmissionRule.class}, tree="[0,1]")
     private Output</* @Nullable */ List<PolicyClusterAdmissionRule>> clusterAdmissionRules;
 
     /**
-     * @return Per-cluster admission rules. An admission rule specifies either that all container images used in a pod creation request
-     * must be attested to by one or more attestors, that all pod creations will be allowed, or that all pod creations will be
-     * denied. There can be at most one admission rule per cluster spec. Identifier format: &#39;{{location}}.{{clusterId}}&#39;. A
-     * location is either a compute zone (e.g. &#39;us-central1-a&#39;) or a region (e.g. &#39;us-central1&#39;).
+     * @return Per-cluster admission rules. An admission rule specifies either that
+     * all container images used in a pod creation request must be attested
+     * to by one or more attestors, that all pod creations will be allowed,
+     * or that all pod creations will be denied. There can be at most one
+     * admission rule per cluster spec.
+     * 
+     * Identifier format: `{{location}}.{{clusterId}}`.
+     * A location is either a compute zone (e.g. `us-central1-a`) or a region
+     * (e.g. `us-central1`).
+     * Structure is documented below.
      * 
      */
     public Output<Optional<List<PolicyClusterAdmissionRule>>> clusterAdmissionRules() {
@@ -255,24 +271,38 @@ public class Policy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Controls the evaluation of a Google-maintained global admission policy for common system-level images. Images not
-     * covered by the global policy will be subject to the project admission policy. Possible values: [&#34;ENABLE&#34;, &#34;DISABLE&#34;]
+     * Controls the evaluation of a Google-maintained global admission policy
+     * for common system-level images. Images not covered by the global
+     * policy will be subject to the project admission policy.
+     * Possible values are: `ENABLE`, `DISABLE`.
      * 
      */
     @Export(name="globalPolicyEvaluationMode", refs={String.class}, tree="[0]")
     private Output<String> globalPolicyEvaluationMode;
 
     /**
-     * @return Controls the evaluation of a Google-maintained global admission policy for common system-level images. Images not
-     * covered by the global policy will be subject to the project admission policy. Possible values: [&#34;ENABLE&#34;, &#34;DISABLE&#34;]
+     * @return Controls the evaluation of a Google-maintained global admission policy
+     * for common system-level images. Images not covered by the global
+     * policy will be subject to the project admission policy.
+     * Possible values are: `ENABLE`, `DISABLE`.
      * 
      */
     public Output<String> globalPolicyEvaluationMode() {
         return this.globalPolicyEvaluationMode;
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }

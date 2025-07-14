@@ -14,8 +14,6 @@ namespace Pulumi.Gcp.NetworkConnectivity.Inputs
     {
         /// <summary>
         /// The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0".
-        /// 
-        /// - - -
         /// </summary>
         [Input("destRange")]
         public Input<string>? DestRange { get; set; }

@@ -61,6 +61,7 @@ export interface GetClusterArgs {
 export interface GetClusterResult {
     readonly addonsConfigs: outputs.container.GetClusterAddonsConfig[];
     readonly allowNetAdmin: boolean;
+    readonly anonymousAuthenticationConfigs: outputs.container.GetClusterAnonymousAuthenticationConfig[];
     readonly authenticatorGroupsConfigs: outputs.container.GetClusterAuthenticatorGroupsConfig[];
     readonly binaryAuthorizations: outputs.container.GetClusterBinaryAuthorization[];
     readonly clusterAutoscalings: outputs.container.GetClusterClusterAutoscaling[];

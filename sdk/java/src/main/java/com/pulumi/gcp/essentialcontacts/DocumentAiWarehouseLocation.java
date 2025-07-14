@@ -150,16 +150,12 @@ public class DocumentAiWarehouseLocation extends com.pulumi.resources.CustomReso
     /**
      * The location in which the instance is to be provisioned. It takes the form projects/{projectNumber}/locations/{location}.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return The location in which the instance is to be provisioned. It takes the form projects/{projectNumber}/locations/{location}.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

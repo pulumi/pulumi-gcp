@@ -155,9 +155,6 @@ export class ManagedZone extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Name of Managed Zone needs to be created.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -266,9 +263,6 @@ export interface ManagedZoneState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of Managed Zone needs to be created.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -316,9 +310,6 @@ export interface ManagedZoneArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of Managed Zone needs to be created.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

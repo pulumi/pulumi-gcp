@@ -155,9 +155,6 @@ export class OauthClient extends pulumi.CustomResource {
      * letters, digits, or hyphens. It must start with a letter, and cannot have a
      * trailing hyphen. The prefix `gcp-` is reserved for use by Google, and may
      * not be specified.
-     *
-     *
-     * - - -
      */
     public readonly oauthClientId!: pulumi.Output<string>;
     /**
@@ -309,9 +306,6 @@ export interface OauthClientState {
      * letters, digits, or hyphens. It must start with a letter, and cannot have a
      * trailing hyphen. The prefix `gcp-` is reserved for use by Google, and may
      * not be specified.
-     *
-     *
-     * - - -
      */
     oauthClientId?: pulumi.Input<string>;
     /**
@@ -386,9 +380,6 @@ export interface OauthClientArgs {
      * letters, digits, or hyphens. It must start with a letter, and cannot have a
      * trailing hyphen. The prefix `gcp-` is reserved for use by Google, and may
      * not be specified.
-     *
-     *
-     * - - -
      */
     oauthClientId: pulumi.Input<string>;
     /**

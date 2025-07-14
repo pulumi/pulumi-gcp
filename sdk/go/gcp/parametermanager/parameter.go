@@ -188,8 +188,6 @@ type Parameter struct {
 	// `projects/{{project}}/locations/global/parameters/{{parameter_id}}`
 	Name pulumi.StringOutput `pulumi:"name"`
 	// This must be unique within the project.
-	//
-	// ***
 	ParameterId pulumi.StringOutput `pulumi:"parameterId"`
 	// Policy member strings of a Google Cloud resource.
 	// Structure is documented below.
@@ -269,8 +267,6 @@ type parameterState struct {
 	// `projects/{{project}}/locations/global/parameters/{{parameter_id}}`
 	Name *string `pulumi:"name"`
 	// This must be unique within the project.
-	//
-	// ***
 	ParameterId *string `pulumi:"parameterId"`
 	// Policy member strings of a Google Cloud resource.
 	// Structure is documented below.
@@ -313,8 +309,6 @@ type ParameterState struct {
 	// `projects/{{project}}/locations/global/parameters/{{parameter_id}}`
 	Name pulumi.StringPtrInput
 	// This must be unique within the project.
-	//
-	// ***
 	ParameterId pulumi.StringPtrInput
 	// Policy member strings of a Google Cloud resource.
 	// Structure is documented below.
@@ -354,8 +348,6 @@ type parameterArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// This must be unique within the project.
-	//
-	// ***
 	ParameterId string `pulumi:"parameterId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -384,8 +376,6 @@ type ParameterArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// This must be unique within the project.
-	//
-	// ***
 	ParameterId pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -524,8 +514,6 @@ func (o ParameterOutput) Name() pulumi.StringOutput {
 }
 
 // This must be unique within the project.
-//
-// ***
 func (o ParameterOutput) ParameterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Parameter) pulumi.StringOutput { return v.ParameterId }).(pulumi.StringOutput)
 }

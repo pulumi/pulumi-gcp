@@ -400,6 +400,9 @@ func GetMigrationCenterCustomEndpoint(ctx *pulumi.Context) string {
 func GetMlEngineCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:mlEngineCustomEndpoint")
 }
+func GetModelArmorCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:modelArmorCustomEndpoint")
+}
 func GetMonitoringCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:monitoringCustomEndpoint")
 }

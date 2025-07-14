@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.GkeHub.Inputs
         /// <summary>
         /// PredefinedRole is an ENUM representation of the default Kubernetes Roles
         /// Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`, `ANTHOS_SUPPORT`.
-        /// 
-        /// - - -
         /// </summary>
         [Input("predefinedRole", required: true)]
         public Input<string> PredefinedRole { get; set; } = null!;

@@ -948,6 +948,7 @@ namespace Pulumi.Gcp.DataLoss
 
         /// <summary>
         /// Controls what and how to inspect for findings.
+        /// Structure is documented below.
         /// </summary>
         [Output("inspectJob")]
         public Output<Outputs.PreventionJobTriggerInspectJob?> InspectJob { get; private set; } = null!;
@@ -972,14 +973,17 @@ namespace Pulumi.Gcp.DataLoss
         public Output<string> Parent { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the trigger is currently active. Default value: "HEALTHY" Possible values: ["PAUSED", "HEALTHY", "CANCELLED"]
+        /// Whether the trigger is currently active.
+        /// Default value is `HEALTHY`.
+        /// Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
         /// </summary>
         [Output("status")]
         public Output<string?> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
-        /// expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+        /// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
+        /// that is, it must match the regular expression: [a-zA-Z\d-_]+.
+        /// The maximum length is 100 characters. Can be empty to allow the system to generate one.
         /// </summary>
         [Output("triggerId")]
         public Output<string> TriggerId { get; private set; } = null!;
@@ -1057,6 +1061,7 @@ namespace Pulumi.Gcp.DataLoss
 
         /// <summary>
         /// Controls what and how to inspect for findings.
+        /// Structure is documented below.
         /// </summary>
         [Input("inspectJob")]
         public Input<Inputs.PreventionJobTriggerInspectJobArgs>? InspectJob { get; set; }
@@ -1069,14 +1074,17 @@ namespace Pulumi.Gcp.DataLoss
         public Input<string> Parent { get; set; } = null!;
 
         /// <summary>
-        /// Whether the trigger is currently active. Default value: "HEALTHY" Possible values: ["PAUSED", "HEALTHY", "CANCELLED"]
+        /// Whether the trigger is currently active.
+        /// Default value is `HEALTHY`.
+        /// Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
-        /// expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+        /// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
+        /// that is, it must match the regular expression: [a-zA-Z\d-_]+.
+        /// The maximum length is 100 characters. Can be empty to allow the system to generate one.
         /// </summary>
         [Input("triggerId")]
         public Input<string>? TriggerId { get; set; }
@@ -1122,6 +1130,7 @@ namespace Pulumi.Gcp.DataLoss
 
         /// <summary>
         /// Controls what and how to inspect for findings.
+        /// Structure is documented below.
         /// </summary>
         [Input("inspectJob")]
         public Input<Inputs.PreventionJobTriggerInspectJobGetArgs>? InspectJob { get; set; }
@@ -1146,14 +1155,17 @@ namespace Pulumi.Gcp.DataLoss
         public Input<string>? Parent { get; set; }
 
         /// <summary>
-        /// Whether the trigger is currently active. Default value: "HEALTHY" Possible values: ["PAUSED", "HEALTHY", "CANCELLED"]
+        /// Whether the trigger is currently active.
+        /// Default value is `HEALTHY`.
+        /// Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
-        /// expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+        /// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
+        /// that is, it must match the regular expression: [a-zA-Z\d-_]+.
+        /// The maximum length is 100 characters. Can be empty to allow the system to generate one.
         /// </summary>
         [Input("triggerId")]
         public Input<string>? TriggerId { get; set; }

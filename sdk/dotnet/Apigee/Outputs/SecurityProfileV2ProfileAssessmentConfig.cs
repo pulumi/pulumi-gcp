@@ -20,8 +20,6 @@ namespace Pulumi.Gcp.Apigee.Outputs
         /// <summary>
         /// The weight of the assessment.
         /// Possible values are: `MINOR`, `MODERATE`, `MAJOR`.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string Weight;
 

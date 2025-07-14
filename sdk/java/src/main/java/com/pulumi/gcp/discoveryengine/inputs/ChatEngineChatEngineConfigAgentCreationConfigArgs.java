@@ -49,16 +49,12 @@ public final class ChatEngineChatEngineConfigAgentCreationConfigArgs extends com
     /**
      * Agent location for Agent creation, currently supported values: global/us/eu, it needs to be the same region as the Chat Engine.
      * 
-     * ***
-     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
      * @return Agent location for Agent creation, currently supported values: global/us/eu, it needs to be the same region as the Chat Engine.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> location() {
@@ -152,8 +148,6 @@ public final class ChatEngineChatEngineConfigAgentCreationConfigArgs extends com
         /**
          * @param location Agent location for Agent creation, currently supported values: global/us/eu, it needs to be the same region as the Chat Engine.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -164,8 +158,6 @@ public final class ChatEngineChatEngineConfigAgentCreationConfigArgs extends com
 
         /**
          * @param location Agent location for Agent creation, currently supported values: global/us/eu, it needs to be the same region as the Chat Engine.
-         * 
-         * ***
          * 
          * @return builder
          * 

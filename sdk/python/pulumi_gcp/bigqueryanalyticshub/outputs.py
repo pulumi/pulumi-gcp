@@ -598,8 +598,6 @@ class ListingSubscriptionDestinationDatasetDatasetReference(dict):
         """
         :param builtins.str dataset_id: A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
         :param builtins.str project_id: The ID of the project containing this dataset.
-               
-               - - -
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "project_id", project_id)
@@ -617,8 +615,6 @@ class ListingSubscriptionDestinationDatasetDatasetReference(dict):
     def project_id(self) -> builtins.str:
         """
         The ID of the project containing this dataset.
-
-        - - -
         """
         return pulumi.get(self, "project_id")
 

@@ -114,8 +114,6 @@ type InterceptEndpointGroup struct {
 	InterceptDeploymentGroup pulumi.StringOutput `pulumi:"interceptDeploymentGroup"`
 	// The ID to use for the endpoint group, which will become the final component
 	// of the endpoint group's resource name.
-	//
-	// ***
 	InterceptEndpointGroupId pulumi.StringOutput `pulumi:"interceptEndpointGroupId"`
 	// Labels are key/value pairs that help to organize and filter resources.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -215,8 +213,6 @@ type interceptEndpointGroupState struct {
 	InterceptDeploymentGroup *string `pulumi:"interceptDeploymentGroup"`
 	// The ID to use for the endpoint group, which will become the final component
 	// of the endpoint group's resource name.
-	//
-	// ***
 	InterceptEndpointGroupId *string `pulumi:"interceptEndpointGroupId"`
 	// Labels are key/value pairs that help to organize and filter resources.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -273,8 +269,6 @@ type InterceptEndpointGroupState struct {
 	InterceptDeploymentGroup pulumi.StringPtrInput
 	// The ID to use for the endpoint group, which will become the final component
 	// of the endpoint group's resource name.
-	//
-	// ***
 	InterceptEndpointGroupId pulumi.StringPtrInput
 	// Labels are key/value pairs that help to organize and filter resources.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -324,8 +318,6 @@ type interceptEndpointGroupArgs struct {
 	InterceptDeploymentGroup string `pulumi:"interceptDeploymentGroup"`
 	// The ID to use for the endpoint group, which will become the final component
 	// of the endpoint group's resource name.
-	//
-	// ***
 	InterceptEndpointGroupId string `pulumi:"interceptEndpointGroupId"`
 	// Labels are key/value pairs that help to organize and filter resources.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -349,8 +341,6 @@ type InterceptEndpointGroupArgs struct {
 	InterceptDeploymentGroup pulumi.StringInput
 	// The ID to use for the endpoint group, which will become the final component
 	// of the endpoint group's resource name.
-	//
-	// ***
 	InterceptEndpointGroupId pulumi.StringInput
 	// Labels are key/value pairs that help to organize and filter resources.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -492,8 +482,6 @@ func (o InterceptEndpointGroupOutput) InterceptDeploymentGroup() pulumi.StringOu
 
 // The ID to use for the endpoint group, which will become the final component
 // of the endpoint group's resource name.
-//
-// ***
 func (o InterceptEndpointGroupOutput) InterceptEndpointGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterceptEndpointGroup) pulumi.StringOutput { return v.InterceptEndpointGroupId }).(pulumi.StringOutput)
 }

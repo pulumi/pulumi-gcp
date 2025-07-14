@@ -16,8 +16,6 @@ var _ = internal.GetEnvOrDefault
 type WebResourceSite struct {
 	// The site identifier. If the type is set to SITE, the identifier is a URL. If the type is
 	// set to INET_DOMAIN, the identifier is a domain name.
-	//
-	// ***
 	Identifier string `pulumi:"identifier"`
 	// The type of resource to be verified.
 	// Possible values are: `INET_DOMAIN`, `SITE`.
@@ -38,8 +36,6 @@ type WebResourceSiteInput interface {
 type WebResourceSiteArgs struct {
 	// The site identifier. If the type is set to SITE, the identifier is a URL. If the type is
 	// set to INET_DOMAIN, the identifier is a domain name.
-	//
-	// ***
 	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// The type of resource to be verified.
 	// Possible values are: `INET_DOMAIN`, `SITE`.
@@ -125,8 +121,6 @@ func (o WebResourceSiteOutput) ToWebResourceSitePtrOutputWithContext(ctx context
 
 // The site identifier. If the type is set to SITE, the identifier is a URL. If the type is
 // set to INET_DOMAIN, the identifier is a domain name.
-//
-// ***
 func (o WebResourceSiteOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v WebResourceSite) string { return v.Identifier }).(pulumi.StringOutput)
 }
@@ -163,8 +157,6 @@ func (o WebResourceSitePtrOutput) Elem() WebResourceSiteOutput {
 
 // The site identifier. If the type is set to SITE, the identifier is a URL. If the type is
 // set to INET_DOMAIN, the identifier is a domain name.
-//
-// ***
 func (o WebResourceSitePtrOutput) Identifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebResourceSite) *string {
 		if v == nil {

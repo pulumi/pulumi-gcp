@@ -41,9 +41,6 @@ class BareMetalAdminClusterArgs:
         """
         The set of arguments for constructing a BareMetalAdminCluster resource.
         :param pulumi.Input[builtins.str] location: The location of the resource.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Annotations on the Bare Metal Admin Cluster.
                This field has the same restrictions as Kubernetes annotations.
                The total size of all keys and values combined is limited to 256k.
@@ -118,9 +115,6 @@ class BareMetalAdminClusterArgs:
     def location(self) -> pulumi.Input[builtins.str]:
         """
         The location of the resource.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -409,9 +403,6 @@ class _BareMetalAdminClusterState:
                kubectl and should expect to see the local name when viewing admin
                cluster controller logs.
         :param pulumi.Input[builtins.str] location: The location of the resource.
-               
-               
-               - - -
         :param pulumi.Input['BareMetalAdminClusterMaintenanceConfigArgs'] maintenance_config: Specifies the workload node configurations.
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: The bare metal admin cluster name.
@@ -689,9 +680,6 @@ class _BareMetalAdminClusterState:
     def location(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The location of the resource.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -918,6 +906,10 @@ class BareMetalAdminCluster(pulumi.CustomResource):
         """
         A Google Bare Metal Admin Cluster.
 
+        To get more information about BareMetalAdminCluster, see:
+
+        * [API documentation](https://cloud.google.com/kubernetes-engine/distributed-cloud/reference/on-prem-api/rest/v1/projects.locations.bareMetalAdminClusters)
+
         ## Example Usage
 
         ### Gkeonprem Bare Metal Admin Cluster Basic
@@ -1135,9 +1127,6 @@ class BareMetalAdminCluster(pulumi.CustomResource):
         :param pulumi.Input[Union['BareMetalAdminClusterLoadBalancerArgs', 'BareMetalAdminClusterLoadBalancerArgsDict']] load_balancer: Specifies the load balancer configuration.
                Structure is documented below.
         :param pulumi.Input[builtins.str] location: The location of the resource.
-               
-               
-               - - -
         :param pulumi.Input[Union['BareMetalAdminClusterMaintenanceConfigArgs', 'BareMetalAdminClusterMaintenanceConfigArgsDict']] maintenance_config: Specifies the workload node configurations.
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: The bare metal admin cluster name.
@@ -1164,6 +1153,10 @@ class BareMetalAdminCluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A Google Bare Metal Admin Cluster.
+
+        To get more information about BareMetalAdminCluster, see:
+
+        * [API documentation](https://cloud.google.com/kubernetes-engine/distributed-cloud/reference/on-prem-api/rest/v1/projects.locations.bareMetalAdminClusters)
 
         ## Example Usage
 
@@ -1522,9 +1515,6 @@ class BareMetalAdminCluster(pulumi.CustomResource):
                kubectl and should expect to see the local name when viewing admin
                cluster controller logs.
         :param pulumi.Input[builtins.str] location: The location of the resource.
-               
-               
-               - - -
         :param pulumi.Input[Union['BareMetalAdminClusterMaintenanceConfigArgs', 'BareMetalAdminClusterMaintenanceConfigArgsDict']] maintenance_config: Specifies the workload node configurations.
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: The bare metal admin cluster name.
@@ -1726,9 +1716,6 @@ class BareMetalAdminCluster(pulumi.CustomResource):
     def location(self) -> pulumi.Output[builtins.str]:
         """
         The location of the resource.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

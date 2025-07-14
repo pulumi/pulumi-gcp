@@ -43,9 +43,6 @@ class SettingsArgs:
                * projects/{project_id}/iap_web/appengine-{app_id}
                * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}
                * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}/version/{version_id}
-               
-               
-               - - -
         """
         if access_settings is not None:
             pulumi.set(__self__, "access_settings", access_settings)
@@ -96,9 +93,6 @@ class SettingsArgs:
         * projects/{project_id}/iap_web/appengine-{app_id}
         * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}
         * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}/version/{version_id}
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -131,9 +125,6 @@ class _SettingsState:
                * projects/{project_id}/iap_web/appengine-{app_id}
                * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}
                * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}/version/{version_id}
-               
-               
-               - - -
         """
         if access_settings is not None:
             pulumi.set(__self__, "access_settings", access_settings)
@@ -184,9 +175,6 @@ class _SettingsState:
         * projects/{project_id}/iap_web/appengine-{app_id}
         * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}
         * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}/version/{version_id}
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -320,9 +308,6 @@ class Settings(pulumi.CustomResource):
                * projects/{project_id}/iap_web/appengine-{app_id}
                * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}
                * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}/version/{version_id}
-               
-               
-               - - -
         """
         ...
     @overload
@@ -493,9 +478,6 @@ class Settings(pulumi.CustomResource):
                * projects/{project_id}/iap_web/appengine-{app_id}
                * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}
                * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}/version/{version_id}
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -540,9 +522,6 @@ class Settings(pulumi.CustomResource):
         * projects/{project_id}/iap_web/appengine-{app_id}
         * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}
         * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}/version/{version_id}
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

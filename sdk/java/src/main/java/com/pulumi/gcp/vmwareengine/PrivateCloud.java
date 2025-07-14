@@ -203,16 +203,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:vmwareengine/privateCloud:PrivateCloud")
 public class PrivateCloud extends com.pulumi.resources.CustomResource {
     /**
-     * The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0
-     * starts the deletion request immediately. If no value is set, a default value is set at the API Level.
+     * The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
      * 
      */
     @Export(name="deletionDelayHours", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> deletionDelayHours;
 
     /**
-     * @return The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0
-     * starts the deletion request immediately. If no value is set, a default value is set at the API Level.
+     * @return The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
      * 
      */
     public Output<Optional<Integer>> deletionDelayHours() {
@@ -324,25 +322,31 @@ public class PrivateCloud extends com.pulumi.resources.CustomResource {
     public Output<List<PrivateCloudNsx>> nsxes() {
         return this.nsxes;
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is
-     * only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with
-     * deletion_delay_hours.
+     * While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with deletion_delay_hours.
      * 
      */
     @Export(name="sendDeletionDelayHoursIfZero", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> sendDeletionDelayHoursIfZero;
 
     /**
-     * @return While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is
-     * only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with
-     * deletion_delay_hours.
+     * @return While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with deletion_delay_hours.
      * 
      */
     public Output<Optional<Boolean>> sendDeletionDelayHoursIfZero() {
@@ -365,14 +369,16 @@ public class PrivateCloud extends com.pulumi.resources.CustomResource {
         return this.state;
     }
     /**
-     * Initial type of the private cloud. Possible values: [&#34;STANDARD&#34;, &#34;TIME_LIMITED&#34;, &#34;STRETCHED&#34;]
+     * Initial type of the private cloud.
+     * Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
-     * @return Initial type of the private cloud. Possible values: [&#34;STANDARD&#34;, &#34;TIME_LIMITED&#34;, &#34;STRETCHED&#34;]
+     * @return Initial type of the private cloud.
+     * Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
      * 
      */
     public Output<Optional<String>> type() {

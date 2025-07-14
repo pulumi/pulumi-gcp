@@ -106,14 +106,14 @@ import (
 type CxEnvironment struct {
 	pulumi.CustomResourceState
 
-	// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is
-	// rejected.
+	// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The human-readable name of the environment (unique in an agent). Limit of 64 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The name of the environment.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The Agent to create an Environment for. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
+	// The Agent to create an Environment for.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
 	Parent pulumi.StringPtrOutput `pulumi:"parent"`
 	// Update time of this environment. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -158,14 +158,14 @@ func GetCxEnvironment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CxEnvironment resources.
 type cxEnvironmentState struct {
-	// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is
-	// rejected.
+	// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description *string `pulumi:"description"`
 	// The human-readable name of the environment (unique in an agent). Limit of 64 characters.
 	DisplayName *string `pulumi:"displayName"`
 	// The name of the environment.
 	Name *string `pulumi:"name"`
-	// The Agent to create an Environment for. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
+	// The Agent to create an Environment for.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
 	Parent *string `pulumi:"parent"`
 	// Update time of this environment. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	UpdateTime *string `pulumi:"updateTime"`
@@ -175,14 +175,14 @@ type cxEnvironmentState struct {
 }
 
 type CxEnvironmentState struct {
-	// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is
-	// rejected.
+	// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description pulumi.StringPtrInput
 	// The human-readable name of the environment (unique in an agent). Limit of 64 characters.
 	DisplayName pulumi.StringPtrInput
 	// The name of the environment.
 	Name pulumi.StringPtrInput
-	// The Agent to create an Environment for. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
+	// The Agent to create an Environment for.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
 	Parent pulumi.StringPtrInput
 	// Update time of this environment. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	UpdateTime pulumi.StringPtrInput
@@ -196,12 +196,12 @@ func (CxEnvironmentState) ElementType() reflect.Type {
 }
 
 type cxEnvironmentArgs struct {
-	// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is
-	// rejected.
+	// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description *string `pulumi:"description"`
 	// The human-readable name of the environment (unique in an agent). Limit of 64 characters.
 	DisplayName string `pulumi:"displayName"`
-	// The Agent to create an Environment for. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
+	// The Agent to create an Environment for.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
 	Parent *string `pulumi:"parent"`
 	// A list of configurations for flow versions. You should include version configs for all flows that are reachable from [Start Flow][Agent.start_flow] in the agent. Otherwise, an error will be returned.
 	// Structure is documented below.
@@ -210,12 +210,12 @@ type cxEnvironmentArgs struct {
 
 // The set of arguments for constructing a CxEnvironment resource.
 type CxEnvironmentArgs struct {
-	// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is
-	// rejected.
+	// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description pulumi.StringPtrInput
 	// The human-readable name of the environment (unique in an agent). Limit of 64 characters.
 	DisplayName pulumi.StringInput
-	// The Agent to create an Environment for. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
+	// The Agent to create an Environment for.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
 	Parent pulumi.StringPtrInput
 	// A list of configurations for flow versions. You should include version configs for all flows that are reachable from [Start Flow][Agent.start_flow] in the agent. Otherwise, an error will be returned.
 	// Structure is documented below.
@@ -309,8 +309,7 @@ func (o CxEnvironmentOutput) ToCxEnvironmentOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is
-// rejected.
+// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
 func (o CxEnvironmentOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CxEnvironment) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -325,7 +324,8 @@ func (o CxEnvironmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CxEnvironment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The Agent to create an Environment for. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
+// The Agent to create an Environment for.
+// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
 func (o CxEnvironmentOutput) Parent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CxEnvironment) pulumi.StringPtrOutput { return v.Parent }).(pulumi.StringPtrOutput)
 }

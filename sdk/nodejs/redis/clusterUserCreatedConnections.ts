@@ -337,9 +337,6 @@ export class ClusterUserCreatedConnections extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * The name of the region of the Redis cluster these endpoints should be added to.
-     *
-     *
-     * - - -
      */
     public readonly region!: pulumi.Output<string>;
 
@@ -395,9 +392,6 @@ export interface ClusterUserCreatedConnectionsState {
     project?: pulumi.Input<string>;
     /**
      * The name of the region of the Redis cluster these endpoints should be added to.
-     *
-     *
-     * - - -
      */
     region?: pulumi.Input<string>;
 }
@@ -422,9 +416,6 @@ export interface ClusterUserCreatedConnectionsArgs {
     project?: pulumi.Input<string>;
     /**
      * The name of the region of the Redis cluster these endpoints should be added to.
-     *
-     *
-     * - - -
      */
     region: pulumi.Input<string>;
 }

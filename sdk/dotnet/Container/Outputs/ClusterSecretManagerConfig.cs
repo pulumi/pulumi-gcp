@@ -17,11 +17,19 @@ namespace Pulumi.Gcp.Container.Outputs
         /// Enable the Secret Manager add-on for this cluster.
         /// </summary>
         public readonly bool Enabled;
+        /// <summary>
+        /// config for secret manager auto rotation. Structure is docuemented below
+        /// </summary>
+        public readonly Outputs.ClusterSecretManagerConfigRotationConfig? RotationConfig;
 
         [OutputConstructor]
-        private ClusterSecretManagerConfig(bool enabled)
+        private ClusterSecretManagerConfig(
+            bool enabled,
+
+            Outputs.ClusterSecretManagerConfigRotationConfig? rotationConfig)
         {
             Enabled = enabled;
+            RotationConfig = rotationConfig;
         }
     }
 }

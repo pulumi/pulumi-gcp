@@ -368,9 +368,6 @@ namespace Pulumi.Gcp.Firebase
 
         /// <summary>
         /// Required. The ID of the site in which to create this Version.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("siteId")]
         public Output<string> SiteId { get; private set; } = null!;
@@ -436,9 +433,6 @@ namespace Pulumi.Gcp.Firebase
 
         /// <summary>
         /// Required. The ID of the site in which to create this Version.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("siteId", required: true)]
         public Input<string> SiteId { get; set; } = null!;
@@ -467,9 +461,6 @@ namespace Pulumi.Gcp.Firebase
 
         /// <summary>
         /// Required. The ID of the site in which to create this Version.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("siteId")]
         public Input<string>? SiteId { get; set; }

@@ -310,8 +310,6 @@ type InternalRange struct {
 	Overlaps pulumi.StringArrayOutput `pulumi:"overlaps"`
 	// The type of peering set for this internal range.
 	// Possible values are: `FOR_SELF`, `FOR_PEER`, `NOT_SHARED`.
-	//
-	// ***
 	Peering pulumi.StringOutput `pulumi:"peering"`
 	// An alternate to ipCidrRange. Can be set when trying to create a reservation that automatically finds a free range of the given size.
 	// If both ipCidrRange and prefixLength are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
@@ -410,8 +408,6 @@ type internalRangeState struct {
 	Overlaps []string `pulumi:"overlaps"`
 	// The type of peering set for this internal range.
 	// Possible values are: `FOR_SELF`, `FOR_PEER`, `NOT_SHARED`.
-	//
-	// ***
 	Peering *string `pulumi:"peering"`
 	// An alternate to ipCidrRange. Can be set when trying to create a reservation that automatically finds a free range of the given size.
 	// If both ipCidrRange and prefixLength are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
@@ -467,8 +463,6 @@ type InternalRangeState struct {
 	Overlaps pulumi.StringArrayInput
 	// The type of peering set for this internal range.
 	// Possible values are: `FOR_SELF`, `FOR_PEER`, `NOT_SHARED`.
-	//
-	// ***
 	Peering pulumi.StringPtrInput
 	// An alternate to ipCidrRange. Can be set when trying to create a reservation that automatically finds a free range of the given size.
 	// If both ipCidrRange and prefixLength are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
@@ -526,8 +520,6 @@ type internalRangeArgs struct {
 	Overlaps []string `pulumi:"overlaps"`
 	// The type of peering set for this internal range.
 	// Possible values are: `FOR_SELF`, `FOR_PEER`, `NOT_SHARED`.
-	//
-	// ***
 	Peering string `pulumi:"peering"`
 	// An alternate to ipCidrRange. Can be set when trying to create a reservation that automatically finds a free range of the given size.
 	// If both ipCidrRange and prefixLength are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
@@ -575,8 +567,6 @@ type InternalRangeArgs struct {
 	Overlaps pulumi.StringArrayInput
 	// The type of peering set for this internal range.
 	// Possible values are: `FOR_SELF`, `FOR_PEER`, `NOT_SHARED`.
-	//
-	// ***
 	Peering pulumi.StringInput
 	// An alternate to ipCidrRange. Can be set when trying to create a reservation that automatically finds a free range of the given size.
 	// If both ipCidrRange and prefixLength are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
@@ -741,8 +731,6 @@ func (o InternalRangeOutput) Overlaps() pulumi.StringArrayOutput {
 
 // The type of peering set for this internal range.
 // Possible values are: `FOR_SELF`, `FOR_PEER`, `NOT_SHARED`.
-//
-// ***
 func (o InternalRangeOutput) Peering() pulumi.StringOutput {
 	return o.ApplyT(func(v *InternalRange) pulumi.StringOutput { return v.Peering }).(pulumi.StringOutput)
 }

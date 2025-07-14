@@ -27,7 +27,7 @@ class GetNetworkPeeringResult:
     """
     A collection of values returned by getNetworkPeering.
     """
-    def __init__(__self__, export_custom_routes=None, export_subnet_routes_with_public_ip=None, id=None, import_custom_routes=None, import_subnet_routes_with_public_ip=None, name=None, network=None, peer_network=None, stack_type=None, state=None, state_details=None):
+    def __init__(__self__, export_custom_routes=None, export_subnet_routes_with_public_ip=None, id=None, import_custom_routes=None, import_subnet_routes_with_public_ip=None, name=None, network=None, peer_network=None, stack_type=None, state=None, state_details=None, update_strategy=None):
         if export_custom_routes and not isinstance(export_custom_routes, bool):
             raise TypeError("Expected argument 'export_custom_routes' to be a bool")
         pulumi.set(__self__, "export_custom_routes", export_custom_routes)
@@ -61,6 +61,9 @@ class GetNetworkPeeringResult:
         if state_details and not isinstance(state_details, str):
             raise TypeError("Expected argument 'state_details' to be a str")
         pulumi.set(__self__, "state_details", state_details)
+        if update_strategy and not isinstance(update_strategy, str):
+            raise TypeError("Expected argument 'update_strategy' to be a str")
+        pulumi.set(__self__, "update_strategy", update_strategy)
 
     @property
     @pulumi.getter(name="exportCustomRoutes")
@@ -120,6 +123,11 @@ class GetNetworkPeeringResult:
     def state_details(self) -> builtins.str:
         return pulumi.get(self, "state_details")
 
+    @property
+    @pulumi.getter(name="updateStrategy")
+    def update_strategy(self) -> builtins.str:
+        return pulumi.get(self, "update_strategy")
+
 
 class AwaitableGetNetworkPeeringResult(GetNetworkPeeringResult):
     # pylint: disable=using-constant-test
@@ -137,7 +145,8 @@ class AwaitableGetNetworkPeeringResult(GetNetworkPeeringResult):
             peer_network=self.peer_network,
             stack_type=self.stack_type,
             state=self.state,
-            state_details=self.state_details)
+            state_details=self.state_details,
+            update_strategy=self.update_strategy)
 
 
 def get_network_peering(name: Optional[builtins.str] = None,
@@ -194,7 +203,8 @@ def get_network_peering(name: Optional[builtins.str] = None,
         peer_network=pulumi.get(__ret__, 'peer_network'),
         stack_type=pulumi.get(__ret__, 'stack_type'),
         state=pulumi.get(__ret__, 'state'),
-        state_details=pulumi.get(__ret__, 'state_details'))
+        state_details=pulumi.get(__ret__, 'state_details'),
+        update_strategy=pulumi.get(__ret__, 'update_strategy'))
 def get_network_peering_output(name: Optional[pulumi.Input[builtins.str]] = None,
                                network: Optional[pulumi.Input[builtins.str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworkPeeringResult]:
@@ -248,4 +258,5 @@ def get_network_peering_output(name: Optional[pulumi.Input[builtins.str]] = None
         peer_network=pulumi.get(__response__, 'peer_network'),
         stack_type=pulumi.get(__response__, 'stack_type'),
         state=pulumi.get(__response__, 'state'),
-        state_details=pulumi.get(__response__, 'state_details')))
+        state_details=pulumi.get(__response__, 'state_details'),
+        update_strategy=pulumi.get(__response__, 'update_strategy')))

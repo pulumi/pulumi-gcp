@@ -92,8 +92,6 @@ type AnywhereCache struct {
 	// The ID of the Anywhere cache instance.
 	AnywhereCacheId pulumi.StringOutput `pulumi:"anywhereCacheId"`
 	// A reference to Bucket resource
-	//
-	// ***
 	Bucket pulumi.StringOutput `pulumi:"bucket"`
 	// The creation time of the cache instance in RFC 3339 format.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -152,8 +150,6 @@ type anywhereCacheState struct {
 	// The ID of the Anywhere cache instance.
 	AnywhereCacheId *string `pulumi:"anywhereCacheId"`
 	// A reference to Bucket resource
-	//
-	// ***
 	Bucket *string `pulumi:"bucket"`
 	// The creation time of the cache instance in RFC 3339 format.
 	CreateTime *string `pulumi:"createTime"`
@@ -177,8 +173,6 @@ type AnywhereCacheState struct {
 	// The ID of the Anywhere cache instance.
 	AnywhereCacheId pulumi.StringPtrInput
 	// A reference to Bucket resource
-	//
-	// ***
 	Bucket pulumi.StringPtrInput
 	// The creation time of the cache instance in RFC 3339 format.
 	CreateTime pulumi.StringPtrInput
@@ -204,8 +198,6 @@ type anywhereCacheArgs struct {
 	// Possible values are: `admit-on-first-miss`, `admit-on-second-miss`.
 	AdmissionPolicy *string `pulumi:"admissionPolicy"`
 	// A reference to Bucket resource
-	//
-	// ***
 	Bucket string `pulumi:"bucket"`
 	// The TTL of all cache entries in whole seconds. e.g., "7200s". It defaults to `86400s`
 	Ttl *string `pulumi:"ttl"`
@@ -220,8 +212,6 @@ type AnywhereCacheArgs struct {
 	// Possible values are: `admit-on-first-miss`, `admit-on-second-miss`.
 	AdmissionPolicy pulumi.StringPtrInput
 	// A reference to Bucket resource
-	//
-	// ***
 	Bucket pulumi.StringInput
 	// The TTL of all cache entries in whole seconds. e.g., "7200s". It defaults to `86400s`
 	Ttl pulumi.StringPtrInput
@@ -329,8 +319,6 @@ func (o AnywhereCacheOutput) AnywhereCacheId() pulumi.StringOutput {
 }
 
 // A reference to Bucket resource
-//
-// ***
 func (o AnywhereCacheOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v *AnywhereCache) pulumi.StringOutput { return v.Bucket }).(pulumi.StringOutput)
 }

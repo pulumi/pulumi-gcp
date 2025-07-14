@@ -100,16 +100,12 @@ public final class EntryState extends com.pulumi.resources.ResourceArgs {
     /**
      * The relative resource name of the entry type that was used to create this entry, in the format projects/{project_number}/locations/{locationId}/entryTypes/{entryTypeId}.
      * 
-     * ***
-     * 
      */
     @Import(name="entryType")
     private @Nullable Output<String> entryType;
 
     /**
      * @return The relative resource name of the entry type that was used to create this entry, in the format projects/{project_number}/locations/{locationId}/entryTypes/{entryTypeId}.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> entryType() {
@@ -368,8 +364,6 @@ public final class EntryState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param entryType The relative resource name of the entry type that was used to create this entry, in the format projects/{project_number}/locations/{locationId}/entryTypes/{entryTypeId}.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -380,8 +374,6 @@ public final class EntryState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param entryType The relative resource name of the entry type that was used to create this entry, in the format projects/{project_number}/locations/{locationId}/entryTypes/{entryTypeId}.
-         * 
-         * ***
          * 
          * @return builder
          * 

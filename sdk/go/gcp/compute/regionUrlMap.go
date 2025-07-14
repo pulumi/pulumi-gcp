@@ -1235,8 +1235,6 @@ type RegionUrlMap struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The list of named PathMatchers to use against the URL.
 	// Structure is documented below.
@@ -1324,8 +1322,6 @@ type regionUrlMapState struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The list of named PathMatchers to use against the URL.
 	// Structure is documented below.
@@ -1384,8 +1380,6 @@ type RegionUrlMapState struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The list of named PathMatchers to use against the URL.
 	// Structure is documented below.
@@ -1441,8 +1435,6 @@ type regionUrlMapArgs struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The list of named PathMatchers to use against the URL.
 	// Structure is documented below.
@@ -1493,8 +1485,6 @@ type RegionUrlMapArgs struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The list of named PathMatchers to use against the URL.
 	// Structure is documented below.
@@ -1661,8 +1651,6 @@ func (o RegionUrlMapOutput) MapId() pulumi.IntOutput {
 // first character must be a lowercase letter, and all following
 // characters must be a dash, lowercase letter, or digit, except the last
 // character, which cannot be a dash.
-//
-// ***
 func (o RegionUrlMapOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionUrlMap) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

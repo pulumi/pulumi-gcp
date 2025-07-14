@@ -13,8 +13,6 @@ public final class RetrohuntProcessInterval {
     /**
      * @return Exclusive end of the interval.
      * 
-     * ***
-     * 
      */
     private String endTime;
     /**
@@ -26,8 +24,6 @@ public final class RetrohuntProcessInterval {
     private RetrohuntProcessInterval() {}
     /**
      * @return Exclusive end of the interval.
-     * 
-     * ***
      * 
      */
     public String endTime() {

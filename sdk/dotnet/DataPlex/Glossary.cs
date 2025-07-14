@@ -116,9 +116,6 @@ namespace Pulumi.Gcp.DataPlex
 
         /// <summary>
         /// The glossary id for creation.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("glossaryId")]
         public Output<string> GlossaryId { get; private set; } = null!;
@@ -241,9 +238,6 @@ namespace Pulumi.Gcp.DataPlex
 
         /// <summary>
         /// The glossary id for creation.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("glossaryId", required: true)]
         public Input<string> GlossaryId { get; set; } = null!;
@@ -326,9 +320,6 @@ namespace Pulumi.Gcp.DataPlex
 
         /// <summary>
         /// The glossary id for creation.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("glossaryId")]
         public Input<string>? GlossaryId { get; set; }

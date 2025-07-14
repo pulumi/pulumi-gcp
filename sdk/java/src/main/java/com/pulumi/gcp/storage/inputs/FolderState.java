@@ -80,8 +80,6 @@ public final class FolderState extends com.pulumi.resources.ResourceArgs {
      * The name of the folder expressed as a path. Must include
      * trailing &#39;/&#39;. For example, `example_dir/example_dir2/`, `example{@literal @}#/`, `a-b/d-f/`.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
@@ -89,8 +87,6 @@ public final class FolderState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The name of the folder expressed as a path. Must include
      * trailing &#39;/&#39;. For example, `example_dir/example_dir2/`, `example{@literal @}#/`, `a-b/d-f/`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -245,8 +241,6 @@ public final class FolderState extends com.pulumi.resources.ResourceArgs {
          * @param name The name of the folder expressed as a path. Must include
          * trailing &#39;/&#39;. For example, `example_dir/example_dir2/`, `example{@literal @}#/`, `a-b/d-f/`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -258,8 +252,6 @@ public final class FolderState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name The name of the folder expressed as a path. Must include
          * trailing &#39;/&#39;. For example, `example_dir/example_dir2/`, `example{@literal @}#/`, `a-b/d-f/`.
-         * 
-         * ***
          * 
          * @return builder
          * 

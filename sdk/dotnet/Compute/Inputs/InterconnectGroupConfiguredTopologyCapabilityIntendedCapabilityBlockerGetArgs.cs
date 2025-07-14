@@ -56,9 +56,12 @@ namespace Pulumi.Gcp.Compute.Inputs
         private InputList<string>? _interconnects;
 
         /// <summary>
-        /// (Output)
-        /// Interconnects used to explain this blocker in more
-        /// detail.
+        /// Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
+        /// strings. Users are encouraged, but not required, to use their preferred
+        /// format for resource links as keys.
+        /// Note that there are add-members and remove-members methods in gcloud.
+        /// The size of this map is limited by an "Interconnects per group" quota.
+        /// Structure is documented below.
         /// </summary>
         public InputList<string> Interconnects
         {

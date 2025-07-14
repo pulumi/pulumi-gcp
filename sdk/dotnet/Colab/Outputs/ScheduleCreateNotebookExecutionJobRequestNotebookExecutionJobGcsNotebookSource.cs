@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.Colab.Outputs
     {
         /// <summary>
         /// The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string? Generation;
         /// <summary>

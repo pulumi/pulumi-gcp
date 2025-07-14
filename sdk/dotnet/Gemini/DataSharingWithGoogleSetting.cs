@@ -74,9 +74,6 @@ namespace Pulumi.Gcp.Gemini
 
         /// <summary>
         /// Id of the Data Sharing With Google Setting.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("dataSharingWithGoogleSettingId")]
         public Output<string> DataSharingWithGoogleSettingId { get; private set; } = null!;
@@ -193,9 +190,6 @@ namespace Pulumi.Gcp.Gemini
     {
         /// <summary>
         /// Id of the Data Sharing With Google Setting.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("dataSharingWithGoogleSettingId", required: true)]
         public Input<string> DataSharingWithGoogleSettingId { get; set; } = null!;
@@ -255,9 +249,6 @@ namespace Pulumi.Gcp.Gemini
 
         /// <summary>
         /// Id of the Data Sharing With Google Setting.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("dataSharingWithGoogleSettingId")]
         public Input<string>? DataSharingWithGoogleSettingId { get; set; }

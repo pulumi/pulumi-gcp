@@ -32,9 +32,6 @@ class MembershipArgs:
         """
         The set of arguments for constructing a Membership resource.
         :param pulumi.Input[builtins.str] membership_id: The client-provided identifier of the membership.
-               
-               
-               - - -
         :param pulumi.Input['MembershipAuthorityArgs'] authority: Authority encodes how Google will recognize identities from this Membership.
                See the workload identity documentation for more details:
                https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
@@ -75,9 +72,6 @@ class MembershipArgs:
     def membership_id(self) -> pulumi.Input[builtins.str]:
         """
         The client-provided identifier of the membership.
-
-
-        - - -
         """
         return pulumi.get(self, "membership_id")
 
@@ -202,9 +196,6 @@ class _MembershipState:
         :param pulumi.Input[builtins.str] location: Location of the membership.
                The default value is `global`.
         :param pulumi.Input[builtins.str] membership_id: The client-provided identifier of the membership.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The unique identifier of the membership.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -323,9 +314,6 @@ class _MembershipState:
     def membership_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The client-provided identifier of the membership.
-
-
-        - - -
         """
         return pulumi.get(self, "membership_id")
 
@@ -513,9 +501,6 @@ class Membership(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] location: Location of the membership.
                The default value is `global`.
         :param pulumi.Input[builtins.str] membership_id: The client-provided identifier of the membership.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -723,9 +708,6 @@ class Membership(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] location: Location of the membership.
                The default value is `global`.
         :param pulumi.Input[builtins.str] membership_id: The client-provided identifier of the membership.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The unique identifier of the membership.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -812,9 +794,6 @@ class Membership(pulumi.CustomResource):
     def membership_id(self) -> pulumi.Output[builtins.str]:
         """
         The client-provided identifier of the membership.
-
-
-        - - -
         """
         return pulumi.get(self, "membership_id")
 

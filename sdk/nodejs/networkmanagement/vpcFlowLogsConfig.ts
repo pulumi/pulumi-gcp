@@ -326,9 +326,6 @@ export class VpcFlowLogsConfig extends pulumi.CustomResource {
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
      * Required. ID of the `VpcFlowLogsConfig`.
-     *
-     *
-     * - - -
      */
     public readonly vpcFlowLogsConfigId!: pulumi.Output<string>;
     /**
@@ -487,9 +484,6 @@ export interface VpcFlowLogsConfigState {
     updateTime?: pulumi.Input<string>;
     /**
      * Required. ID of the `VpcFlowLogsConfig`.
-     *
-     *
-     * - - -
      */
     vpcFlowLogsConfigId?: pulumi.Input<string>;
     /**
@@ -563,9 +557,6 @@ export interface VpcFlowLogsConfigArgs {
     state?: pulumi.Input<string>;
     /**
      * Required. ID of the `VpcFlowLogsConfig`.
-     *
-     *
-     * - - -
      */
     vpcFlowLogsConfigId: pulumi.Input<string>;
     /**

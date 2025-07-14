@@ -143,8 +143,6 @@ type CryptoKey struct {
 	KeyAccessJustificationsPolicy CryptoKeyKeyAccessJustificationsPolicyOutput `pulumi:"keyAccessJustificationsPolicy"`
 	// The KeyRing that this key belongs to.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
-	//
-	// ***
 	KeyRing pulumi.StringOutput `pulumi:"keyRing"`
 	// Labels with user-defined metadata to apply to this resource.
 	//
@@ -239,8 +237,6 @@ type cryptoKeyState struct {
 	KeyAccessJustificationsPolicy *CryptoKeyKeyAccessJustificationsPolicy `pulumi:"keyAccessJustificationsPolicy"`
 	// The KeyRing that this key belongs to.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
-	//
-	// ***
 	KeyRing *string `pulumi:"keyRing"`
 	// Labels with user-defined metadata to apply to this resource.
 	//
@@ -298,8 +294,6 @@ type CryptoKeyState struct {
 	KeyAccessJustificationsPolicy CryptoKeyKeyAccessJustificationsPolicyPtrInput
 	// The KeyRing that this key belongs to.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
-	//
-	// ***
 	KeyRing pulumi.StringPtrInput
 	// Labels with user-defined metadata to apply to this resource.
 	//
@@ -359,8 +353,6 @@ type cryptoKeyArgs struct {
 	KeyAccessJustificationsPolicy *CryptoKeyKeyAccessJustificationsPolicy `pulumi:"keyAccessJustificationsPolicy"`
 	// The KeyRing that this key belongs to.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
-	//
-	// ***
 	KeyRing string `pulumi:"keyRing"`
 	// Labels with user-defined metadata to apply to this resource.
 	//
@@ -410,8 +402,6 @@ type CryptoKeyArgs struct {
 	KeyAccessJustificationsPolicy CryptoKeyKeyAccessJustificationsPolicyPtrInput
 	// The KeyRing that this key belongs to.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
-	//
-	// ***
 	KeyRing pulumi.StringInput
 	// Labels with user-defined metadata to apply to this resource.
 	//
@@ -565,8 +555,6 @@ func (o CryptoKeyOutput) KeyAccessJustificationsPolicy() CryptoKeyKeyAccessJusti
 
 // The KeyRing that this key belongs to.
 // Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
-//
-// ***
 func (o CryptoKeyOutput) KeyRing() pulumi.StringOutput {
 	return o.ApplyT(func(v *CryptoKey) pulumi.StringOutput { return v.KeyRing }).(pulumi.StringOutput)
 }

@@ -63,15 +63,13 @@ public final class V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentI
      */
     private @Nullable String startTime;
     /**
-     * @return (Output)
-     * Output only. State of the iteration.
-     * Possible values:
-     * STATE_UNSPECIFIED
-     * PROCESSING
-     * COMPLETED
-     * FAILED
-     * CANCELLED
-     * UNKNOWN
+     * @return Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+     * Allowed values:
+     * - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+     * - `STOPPED` - orchestrator won&#39;t make any changes.
+     *   Note: There might be more states added in the future. We use string here
+     *   instead of an enum, to avoid the need of propagating new states to all the
+     *   client code.
      * 
      */
     private @Nullable String state;
@@ -141,15 +139,13 @@ public final class V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentI
         return Optional.ofNullable(this.startTime);
     }
     /**
-     * @return (Output)
-     * Output only. State of the iteration.
-     * Possible values:
-     * STATE_UNSPECIFIED
-     * PROCESSING
-     * COMPLETED
-     * FAILED
-     * CANCELLED
-     * UNKNOWN
+     * @return Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+     * Allowed values:
+     * - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+     * - `STOPPED` - orchestrator won&#39;t make any changes.
+     *   Note: There might be more states added in the future. We use string here
+     *   instead of an enum, to avoid the need of propagating new states to all the
+     *   client code.
      * 
      */
     public Optional<String> state() {

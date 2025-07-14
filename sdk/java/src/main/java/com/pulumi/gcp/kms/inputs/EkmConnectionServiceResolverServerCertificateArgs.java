@@ -160,8 +160,6 @@ public final class EkmConnectionServiceResolverServerCertificateArgs extends com
      * (Output)
      * Output only. The subject Alternative DNS names. Only present if parsed is true.
      * 
-     * ***
-     * 
      */
     @Import(name="subjectAlternativeDnsNames")
     private @Nullable Output<List<String>> subjectAlternativeDnsNames;
@@ -169,8 +167,6 @@ public final class EkmConnectionServiceResolverServerCertificateArgs extends com
     /**
      * @return (Output)
      * Output only. The subject Alternative DNS names. Only present if parsed is true.
-     * 
-     * ***
      * 
      */
     public Optional<Output<List<String>>> subjectAlternativeDnsNames() {
@@ -399,8 +395,6 @@ public final class EkmConnectionServiceResolverServerCertificateArgs extends com
          * @param subjectAlternativeDnsNames (Output)
          * Output only. The subject Alternative DNS names. Only present if parsed is true.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -413,8 +407,6 @@ public final class EkmConnectionServiceResolverServerCertificateArgs extends com
          * @param subjectAlternativeDnsNames (Output)
          * Output only. The subject Alternative DNS names. Only present if parsed is true.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -425,8 +417,6 @@ public final class EkmConnectionServiceResolverServerCertificateArgs extends com
         /**
          * @param subjectAlternativeDnsNames (Output)
          * Output only. The subject Alternative DNS names. Only present if parsed is true.
-         * 
-         * ***
          * 
          * @return builder
          * 

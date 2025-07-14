@@ -114,9 +114,6 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
 
         /// <summary>
         /// Required. ID of the requesting object.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("backupVaultId")]
         public Output<string> BackupVaultId { get; private set; } = null!;
@@ -352,9 +349,6 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
 
         /// <summary>
         /// Required. ID of the requesting object.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("backupVaultId", required: true)]
         public Input<string> BackupVaultId { get; set; } = null!;
@@ -483,9 +477,6 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
 
         /// <summary>
         /// Required. ID of the requesting object.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("backupVaultId")]
         public Input<string>? BackupVaultId { get; set; }

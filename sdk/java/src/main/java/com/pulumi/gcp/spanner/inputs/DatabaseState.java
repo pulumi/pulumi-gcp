@@ -105,16 +105,12 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
     /**
      * The instance to create the database on.
      * 
-     * ***
-     * 
      */
     @Import(name="instance")
     private @Nullable Output<String> instance;
 
     /**
      * @return The instance to create the database on.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> instance() {
@@ -346,8 +342,6 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param instance The instance to create the database on.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -358,8 +352,6 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param instance The instance to create the database on.
-         * 
-         * ***
          * 
          * @return builder
          * 

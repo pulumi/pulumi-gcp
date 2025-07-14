@@ -60,8 +60,6 @@ type ManagementOrganizationEventThreatDetectionCustomModule struct {
 	// Its format is "organizations/{organization}/locations/{location}/eventThreatDetectionCustomModules/{eventThreatDetectionCustomModule}".
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Numerical ID of the parent organization.
-	//
-	// ***
 	Organization pulumi.StringOutput `pulumi:"organization"`
 	// Immutable. Type for the module. e.g. CONFIGURABLE_BAD_IP.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
@@ -120,8 +118,6 @@ type managementOrganizationEventThreatDetectionCustomModuleState struct {
 	// Its format is "organizations/{organization}/locations/{location}/eventThreatDetectionCustomModules/{eventThreatDetectionCustomModule}".
 	Name *string `pulumi:"name"`
 	// Numerical ID of the parent organization.
-	//
-	// ***
 	Organization *string `pulumi:"organization"`
 	// Immutable. Type for the module. e.g. CONFIGURABLE_BAD_IP.
 	Type *string `pulumi:"type"`
@@ -148,8 +144,6 @@ type ManagementOrganizationEventThreatDetectionCustomModuleState struct {
 	// Its format is "organizations/{organization}/locations/{location}/eventThreatDetectionCustomModules/{eventThreatDetectionCustomModule}".
 	Name pulumi.StringPtrInput
 	// Numerical ID of the parent organization.
-	//
-	// ***
 	Organization pulumi.StringPtrInput
 	// Immutable. Type for the module. e.g. CONFIGURABLE_BAD_IP.
 	Type pulumi.StringPtrInput
@@ -175,8 +169,6 @@ type managementOrganizationEventThreatDetectionCustomModuleArgs struct {
 	// Location ID of the parent organization. Only global is supported at the moment.
 	Location *string `pulumi:"location"`
 	// Numerical ID of the parent organization.
-	//
-	// ***
 	Organization string `pulumi:"organization"`
 	// Immutable. Type for the module. e.g. CONFIGURABLE_BAD_IP.
 	Type *string `pulumi:"type"`
@@ -195,8 +187,6 @@ type ManagementOrganizationEventThreatDetectionCustomModuleArgs struct {
 	// Location ID of the parent organization. Only global is supported at the moment.
 	Location pulumi.StringPtrInput
 	// Numerical ID of the parent organization.
-	//
-	// ***
 	Organization pulumi.StringInput
 	// Immutable. Type for the module. e.g. CONFIGURABLE_BAD_IP.
 	Type pulumi.StringPtrInput
@@ -333,8 +323,6 @@ func (o ManagementOrganizationEventThreatDetectionCustomModuleOutput) Name() pul
 }
 
 // Numerical ID of the parent organization.
-//
-// ***
 func (o ManagementOrganizationEventThreatDetectionCustomModuleOutput) Organization() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagementOrganizationEventThreatDetectionCustomModule) pulumi.StringOutput {
 		return v.Organization

@@ -65,18 +65,18 @@ public final class GrpcRouteArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Set of label tags associated with the GrpcRoute resource. **Note**: This field is non-authoritative, and will only
-     * manage the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels
-     * present on the resource.
+     * Set of label tags associated with the GrpcRoute resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Set of label tags associated with the GrpcRoute resource. **Note**: This field is non-authoritative, and will only
-     * manage the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels
-     * present on the resource.
+     * @return Set of label tags associated with the GrpcRoute resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -84,16 +84,14 @@ public final class GrpcRouteArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Location (region) of the GRPCRoute resource to be created. Only the value &#39;global&#39; is currently allowed; defaults to
-     * &#39;global&#39; if omitted.
+     * Location (region) of the GRPCRoute resource to be created. Only the value &#39;global&#39; is currently allowed; defaults to &#39;global&#39; if omitted.
      * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
-     * @return Location (region) of the GRPCRoute resource to be created. Only the value &#39;global&#39; is currently allowed; defaults to
-     * &#39;global&#39; if omitted.
+     * @return Location (region) of the GRPCRoute resource to be created. Only the value &#39;global&#39; is currently allowed; defaults to &#39;global&#39; if omitted.
      * 
      */
     public Optional<Output<String>> location() {
@@ -130,9 +128,19 @@ public final class GrpcRouteArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -270,9 +278,9 @@ public final class GrpcRouteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Set of label tags associated with the GrpcRoute resource. **Note**: This field is non-authoritative, and will only
-         * manage the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels
-         * present on the resource.
+         * @param labels Set of label tags associated with the GrpcRoute resource.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -283,9 +291,9 @@ public final class GrpcRouteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Set of label tags associated with the GrpcRoute resource. **Note**: This field is non-authoritative, and will only
-         * manage the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels
-         * present on the resource.
+         * @param labels Set of label tags associated with the GrpcRoute resource.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -295,8 +303,7 @@ public final class GrpcRouteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location Location (region) of the GRPCRoute resource to be created. Only the value &#39;global&#39; is currently allowed; defaults to
-         * &#39;global&#39; if omitted.
+         * @param location Location (region) of the GRPCRoute resource to be created. Only the value &#39;global&#39; is currently allowed; defaults to &#39;global&#39; if omitted.
          * 
          * @return builder
          * 
@@ -307,8 +314,7 @@ public final class GrpcRouteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location Location (region) of the GRPCRoute resource to be created. Only the value &#39;global&#39; is currently allowed; defaults to
-         * &#39;global&#39; if omitted.
+         * @param location Location (region) of the GRPCRoute resource to be created. Only the value &#39;global&#39; is currently allowed; defaults to &#39;global&#39; if omitted.
          * 
          * @return builder
          * 
@@ -369,11 +375,25 @@ public final class GrpcRouteArgs extends com.pulumi.resources.ResourceArgs {
             return name(Output.of(name));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

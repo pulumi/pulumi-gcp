@@ -28,9 +28,6 @@ class InstanceGroupMembershipArgs:
         The set of arguments for constructing a InstanceGroupMembership resource.
         :param pulumi.Input[builtins.str] instance: An instance being added to the InstanceGroup
         :param pulumi.Input[builtins.str] instance_group: Represents an Instance Group resource name that the instance belongs to.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] zone: A reference to the zone where the instance group resides.
@@ -59,9 +56,6 @@ class InstanceGroupMembershipArgs:
     def instance_group(self) -> pulumi.Input[builtins.str]:
         """
         Represents an Instance Group resource name that the instance belongs to.
-
-
-        - - -
         """
         return pulumi.get(self, "instance_group")
 
@@ -106,9 +100,6 @@ class _InstanceGroupMembershipState:
         Input properties used for looking up and filtering InstanceGroupMembership resources.
         :param pulumi.Input[builtins.str] instance: An instance being added to the InstanceGroup
         :param pulumi.Input[builtins.str] instance_group: Represents an Instance Group resource name that the instance belongs to.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] zone: A reference to the zone where the instance group resides.
@@ -139,9 +130,6 @@ class _InstanceGroupMembershipState:
     def instance_group(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Represents an Instance Group resource name that the instance belongs to.
-
-
-        - - -
         """
         return pulumi.get(self, "instance_group")
 
@@ -266,9 +254,6 @@ class InstanceGroupMembership(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] instance: An instance being added to the InstanceGroup
         :param pulumi.Input[builtins.str] instance_group: Represents an Instance Group resource name that the instance belongs to.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] zone: A reference to the zone where the instance group resides.
@@ -414,9 +399,6 @@ class InstanceGroupMembership(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] instance: An instance being added to the InstanceGroup
         :param pulumi.Input[builtins.str] instance_group: Represents an Instance Group resource name that the instance belongs to.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] zone: A reference to the zone where the instance group resides.
@@ -444,9 +426,6 @@ class InstanceGroupMembership(pulumi.CustomResource):
     def instance_group(self) -> pulumi.Output[builtins.str]:
         """
         Represents an Instance Group resource name that the instance belongs to.
-
-
-        - - -
         """
         return pulumi.get(self, "instance_group")
 

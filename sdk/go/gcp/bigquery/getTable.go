@@ -80,6 +80,7 @@ type LookupTableResult struct {
 	FriendlyName                string                               `pulumi:"friendlyName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                     string                          `pulumi:"id"`
+	IgnoreSchemaChanges    []string                        `pulumi:"ignoreSchemaChanges"`
 	Labels                 map[string]string               `pulumi:"labels"`
 	LastModifiedTime       int                             `pulumi:"lastModifiedTime"`
 	Location               string                          `pulumi:"location"`
@@ -199,6 +200,10 @@ func (o LookupTableResultOutput) FriendlyName() pulumi.StringOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o LookupTableResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTableResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupTableResultOutput) IgnoreSchemaChanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupTableResult) []string { return v.IgnoreSchemaChanges }).(pulumi.StringArrayOutput)
 }
 
 func (o LookupTableResultOutput) Labels() pulumi.StringMapOutput {

@@ -18,16 +18,12 @@ public final class RegionDiskResourcePolicyAttachmentState extends com.pulumi.re
     /**
      * The name of the regional disk in which the resource policies are attached to.
      * 
-     * ***
-     * 
      */
     @Import(name="disk")
     private @Nullable Output<String> disk;
 
     /**
      * @return The name of the regional disk in which the resource policies are attached to.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> disk() {
@@ -113,8 +109,6 @@ public final class RegionDiskResourcePolicyAttachmentState extends com.pulumi.re
         /**
          * @param disk The name of the regional disk in which the resource policies are attached to.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -125,8 +119,6 @@ public final class RegionDiskResourcePolicyAttachmentState extends com.pulumi.re
 
         /**
          * @param disk The name of the regional disk in which the resource policies are attached to.
-         * 
-         * ***
          * 
          * @return builder
          * 

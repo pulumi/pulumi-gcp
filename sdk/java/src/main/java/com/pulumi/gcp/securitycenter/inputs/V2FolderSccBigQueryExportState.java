@@ -20,8 +20,6 @@ public final class V2FolderSccBigQueryExportState extends com.pulumi.resources.R
      * numbers, and hyphens, must start with a letter, must end with either a letter or a number,
      * and must be 63 characters or less.
      * 
-     * ***
-     * 
      */
     @Import(name="bigQueryExportId")
     private @Nullable Output<String> bigQueryExportId;
@@ -30,8 +28,6 @@ public final class V2FolderSccBigQueryExportState extends com.pulumi.resources.R
      * @return This must be unique within the organization.  It must consist of only lowercase letters,
      * numbers, and hyphens, must start with a letter, must end with either a letter or a number,
      * and must be 63 characters or less.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> bigQueryExportId() {
@@ -283,8 +279,6 @@ public final class V2FolderSccBigQueryExportState extends com.pulumi.resources.R
          * numbers, and hyphens, must start with a letter, must end with either a letter or a number,
          * and must be 63 characters or less.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -297,8 +291,6 @@ public final class V2FolderSccBigQueryExportState extends com.pulumi.resources.R
          * @param bigQueryExportId This must be unique within the organization.  It must consist of only lowercase letters,
          * numbers, and hyphens, must start with a letter, must end with either a letter or a number,
          * and must be 63 characters or less.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -133,16 +133,12 @@ public class RegionNetworkFirewallPolicyAssociation extends com.pulumi.resources
     /**
      * The firewall policy of the resource.
      * 
-     * ***
-     * 
      */
     @Export(name="firewallPolicy", refs={String.class}, tree="[0]")
     private Output<String> firewallPolicy;
 
     /**
      * @return The firewall policy of the resource.
-     * 
-     * ***
      * 
      */
     public Output<String> firewallPolicy() {

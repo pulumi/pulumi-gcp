@@ -414,8 +414,6 @@ type Gateway struct {
 	// The default value is `global`.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Name of the Gateway resource.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The relative resource name identifying the VPC network that is using this configuration.
 	// For example: 'projects/*/global/networks/network-1'.
@@ -532,8 +530,6 @@ type gatewayState struct {
 	// The default value is `global`.
 	Location *string `pulumi:"location"`
 	// Name of the Gateway resource.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The relative resource name identifying the VPC network that is using this configuration.
 	// For example: 'projects/*/global/networks/network-1'.
@@ -610,8 +606,6 @@ type GatewayState struct {
 	// The default value is `global`.
 	Location pulumi.StringPtrInput
 	// Name of the Gateway resource.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The relative resource name identifying the VPC network that is using this configuration.
 	// For example: 'projects/*/global/networks/network-1'.
@@ -688,8 +682,6 @@ type gatewayArgs struct {
 	// The default value is `global`.
 	Location *string `pulumi:"location"`
 	// Name of the Gateway resource.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The relative resource name identifying the VPC network that is using this configuration.
 	// For example: 'projects/*/global/networks/network-1'.
@@ -756,8 +748,6 @@ type GatewayArgs struct {
 	// The default value is `global`.
 	Location pulumi.StringPtrInput
 	// Name of the Gateway resource.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The relative resource name identifying the VPC network that is using this configuration.
 	// For example: 'projects/*/global/networks/network-1'.
@@ -946,8 +936,6 @@ func (o GatewayOutput) Location() pulumi.StringPtrOutput {
 }
 
 // Name of the Gateway resource.
-//
-// ***
 func (o GatewayOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

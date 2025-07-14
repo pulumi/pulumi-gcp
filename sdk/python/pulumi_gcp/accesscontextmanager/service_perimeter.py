@@ -40,9 +40,6 @@ class ServicePerimeterArgs:
         :param pulumi.Input[builtins.str] name: Resource name for the ServicePerimeter. The short_name component must
                begin with a letter and only include alphanumeric and '_'.
                Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] perimeter_type: Specifies the type of the Perimeter. There are two types: regular and
                bridge. Regular Service Perimeter contains resources, access levels,
                and restricted services. Every resource can be in at most
@@ -138,9 +135,6 @@ class ServicePerimeterArgs:
         Resource name for the ServicePerimeter. The short_name component must
         begin with a letter and only include alphanumeric and '_'.
         Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -248,9 +242,6 @@ class _ServicePerimeterState:
         :param pulumi.Input[builtins.str] name: Resource name for the ServicePerimeter. The short_name component must
                begin with a letter and only include alphanumeric and '_'.
                Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] parent: The AccessPolicy this ServicePerimeter lives in.
                Format: accessPolicies/{policy_id}
         :param pulumi.Input[builtins.str] perimeter_type: Specifies the type of the Perimeter. There are two types: regular and
@@ -343,9 +334,6 @@ class _ServicePerimeterState:
         Resource name for the ServicePerimeter. The short_name component must
         begin with a letter and only include alphanumeric and '_'.
         Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -694,9 +682,6 @@ class ServicePerimeter(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] name: Resource name for the ServicePerimeter. The short_name component must
                begin with a letter and only include alphanumeric and '_'.
                Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] parent: The AccessPolicy this ServicePerimeter lives in.
                Format: accessPolicies/{policy_id}
         :param pulumi.Input[builtins.str] perimeter_type: Specifies the type of the Perimeter. There are two types: regular and
@@ -1023,9 +1008,6 @@ class ServicePerimeter(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] name: Resource name for the ServicePerimeter. The short_name component must
                begin with a letter and only include alphanumeric and '_'.
                Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] parent: The AccessPolicy this ServicePerimeter lives in.
                Format: accessPolicies/{policy_id}
         :param pulumi.Input[builtins.str] perimeter_type: Specifies the type of the Perimeter. There are two types: regular and
@@ -1105,9 +1087,6 @@ class ServicePerimeter(pulumi.CustomResource):
         Resource name for the ServicePerimeter. The short_name component must
         begin with a letter and only include alphanumeric and '_'.
         Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

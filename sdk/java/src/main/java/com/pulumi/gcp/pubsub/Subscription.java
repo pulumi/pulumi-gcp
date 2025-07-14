@@ -1168,8 +1168,6 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * (as in the id property of a google_pubsub_topic), or just a topic name if
      * the topic is in the same project as the subscription.
      * 
-     * ***
-     * 
      */
     @Export(name="topic", refs={String.class}, tree="[0]")
     private Output<String> topic;
@@ -1178,8 +1176,6 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * @return A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
      * (as in the id property of a google_pubsub_topic), or just a topic name if
      * the topic is in the same project as the subscription.
-     * 
-     * ***
      * 
      */
     public Output<String> topic() {

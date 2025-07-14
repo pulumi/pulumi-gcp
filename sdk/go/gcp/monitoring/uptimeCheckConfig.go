@@ -377,8 +377,6 @@ type UptimeCheckConfig struct {
 	// Structure is documented below.
 	TcpCheck UptimeCheckConfigTcpCheckPtrOutput `pulumi:"tcpCheck"`
 	// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
-	//
-	// ***
 	Timeout pulumi.StringOutput `pulumi:"timeout"`
 	// The id of the uptime check
 	UptimeCheckId pulumi.StringOutput `pulumi:"uptimeCheckId"`
@@ -459,8 +457,6 @@ type uptimeCheckConfigState struct {
 	// Structure is documented below.
 	TcpCheck *UptimeCheckConfigTcpCheck `pulumi:"tcpCheck"`
 	// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
-	//
-	// ***
 	Timeout *string `pulumi:"timeout"`
 	// The id of the uptime check
 	UptimeCheckId *string `pulumi:"uptimeCheckId"`
@@ -506,8 +502,6 @@ type UptimeCheckConfigState struct {
 	// Structure is documented below.
 	TcpCheck UptimeCheckConfigTcpCheckPtrInput
 	// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
-	//
-	// ***
 	Timeout pulumi.StringPtrInput
 	// The id of the uptime check
 	UptimeCheckId pulumi.StringPtrInput
@@ -555,8 +549,6 @@ type uptimeCheckConfigArgs struct {
 	// Structure is documented below.
 	TcpCheck *UptimeCheckConfigTcpCheck `pulumi:"tcpCheck"`
 	// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
-	//
-	// ***
 	Timeout string `pulumi:"timeout"`
 	// User-supplied key/value data to be used for organizing and identifying the `UptimeCheckConfig` objects. The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
 	UserLabels map[string]string `pulumi:"userLabels"`
@@ -599,8 +591,6 @@ type UptimeCheckConfigArgs struct {
 	// Structure is documented below.
 	TcpCheck UptimeCheckConfigTcpCheckPtrInput
 	// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
-	//
-	// ***
 	Timeout pulumi.StringInput
 	// User-supplied key/value data to be used for organizing and identifying the `UptimeCheckConfig` objects. The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
 	UserLabels pulumi.StringMapInput
@@ -769,8 +759,6 @@ func (o UptimeCheckConfigOutput) TcpCheck() UptimeCheckConfigTcpCheckPtrOutput {
 }
 
 // The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
-//
-// ***
 func (o UptimeCheckConfigOutput) Timeout() pulumi.StringOutput {
 	return o.ApplyT(func(v *UptimeCheckConfig) pulumi.StringOutput { return v.Timeout }).(pulumi.StringOutput)
 }

@@ -222,9 +222,6 @@ export class HaVpnGateway extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The network this VPN gateway is accepting traffic for.
-     *
-     *
-     * - - -
      */
     public readonly network!: pulumi.Output<string>;
     /**
@@ -356,9 +353,6 @@ export interface HaVpnGatewayState {
     name?: pulumi.Input<string>;
     /**
      * The network this VPN gateway is accepting traffic for.
-     *
-     *
-     * - - -
      */
     network?: pulumi.Input<string>;
     /**
@@ -427,9 +421,6 @@ export interface HaVpnGatewayArgs {
     name?: pulumi.Input<string>;
     /**
      * The network this VPN gateway is accepting traffic for.
-     *
-     *
-     * - - -
      */
     network: pulumi.Input<string>;
     /**

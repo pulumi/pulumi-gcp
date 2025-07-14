@@ -25,7 +25,8 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// </summary>
         public readonly string? ConsumerGroup;
         /// <summary>
-        /// The display name for the database connection.
+        /// The display name for the Autonomous Database. The name does not have to
+        /// be unique within your project.
         /// </summary>
         public readonly string? DisplayName;
         /// <summary>

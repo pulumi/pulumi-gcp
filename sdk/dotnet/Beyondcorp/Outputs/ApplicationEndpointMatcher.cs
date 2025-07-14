@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.Beyondcorp.Outputs
         public readonly string Hostname;
         /// <summary>
         /// Optional. Ports of the application.
-        /// 
-        /// - - -
         /// </summary>
         public readonly ImmutableArray<int> Ports;
 

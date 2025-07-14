@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         /// <summary>
         /// The name of the column containing the boolean value. If the value in a row is
         /// NULL, that row is ignored.
-        /// 
-        /// - - -
         /// </summary>
         [Input("column", required: true)]
         public Input<string> Column { get; set; } = null!;

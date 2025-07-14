@@ -15,8 +15,6 @@ public final class AutomationRuleTimedPromoteReleaseRule {
     /**
      * @return Optional. The starting phase of the rollout created by this rule. Default to the first phase.
      * 
-     * ***
-     * 
      */
     private @Nullable String destinationPhase;
     /**
@@ -45,8 +43,6 @@ public final class AutomationRuleTimedPromoteReleaseRule {
     private AutomationRuleTimedPromoteReleaseRule() {}
     /**
      * @return Optional. The starting phase of the rollout created by this rule. Default to the first phase.
-     * 
-     * ***
      * 
      */
     public Optional<String> destinationPhase() {

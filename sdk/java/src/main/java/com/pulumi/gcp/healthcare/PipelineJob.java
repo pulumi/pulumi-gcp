@@ -509,16 +509,12 @@ public class PipelineJob extends com.pulumi.resources.CustomResource {
     /**
      * Healthcare Dataset under which the Pipeline Job is to run
      * 
-     * ***
-     * 
      */
     @Export(name="dataset", refs={String.class}, tree="[0]")
     private Output<String> dataset;
 
     /**
      * @return Healthcare Dataset under which the Pipeline Job is to run
-     * 
-     * ***
      * 
      */
     public Output<String> dataset() {

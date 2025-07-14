@@ -18,16 +18,14 @@ public final class CxEnvironmentState extends com.pulumi.resources.ResourceArgs 
     public static final CxEnvironmentState Empty = new CxEnvironmentState();
 
     /**
-     * The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is
-     * rejected.
+     * The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is
-     * rejected.
+     * @return The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
      * 
      */
     public Optional<Output<String>> description() {
@@ -65,14 +63,16 @@ public final class CxEnvironmentState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The Agent to create an Environment for. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
+     * The Agent to create an Environment for.
+     * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
      * 
      */
     @Import(name="parent")
     private @Nullable Output<String> parent;
 
     /**
-     * @return The Agent to create an Environment for. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
+     * @return The Agent to create an Environment for.
+     * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
      * 
      */
     public Optional<Output<String>> parent() {
@@ -141,8 +141,7 @@ public final class CxEnvironmentState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param description The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is
-         * rejected.
+         * @param description The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
          * 
          * @return builder
          * 
@@ -153,8 +152,7 @@ public final class CxEnvironmentState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param description The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is
-         * rejected.
+         * @param description The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
          * 
          * @return builder
          * 
@@ -206,7 +204,8 @@ public final class CxEnvironmentState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param parent The Agent to create an Environment for. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
+         * @param parent The Agent to create an Environment for.
+         * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
          * 
          * @return builder
          * 
@@ -217,7 +216,8 @@ public final class CxEnvironmentState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param parent The Agent to create an Environment for. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
+         * @param parent The Agent to create an Environment for.
+         * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
          * 
          * @return builder
          * 

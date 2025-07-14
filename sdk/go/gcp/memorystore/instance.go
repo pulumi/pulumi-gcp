@@ -549,8 +549,6 @@ type Instance struct {
 	// * Must contain only lowercase letters, digits, and hyphens
 	// * Must not end with a hyphen
 	// * Must be unique within a location
-	//
-	// ***
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// The KMS key used to encrypt the at-rest data of the cluster
 	KmsKey pulumi.StringPtrOutput `pulumi:"kmsKey"`
@@ -569,6 +567,9 @@ type Instance struct {
 	// Managed backup source for the instance.
 	// Structure is documented below.
 	ManagedBackupSource InstanceManagedBackupSourcePtrOutput `pulumi:"managedBackupSource"`
+	// Instance's Certificate Authority. This field will only be populated if instance's transitEncryptionMode is SERVER_AUTHENTICATION
+	// Structure is documented below.
+	ManagedServerCas InstanceManagedServerCaArrayOutput `pulumi:"managedServerCas"`
 	// Optional. cluster or cluster-disabled.
 	// Possible values:
 	// CLUSTER
@@ -728,8 +729,6 @@ type instanceState struct {
 	// * Must contain only lowercase letters, digits, and hyphens
 	// * Must not end with a hyphen
 	// * Must be unique within a location
-	//
-	// ***
 	InstanceId *string `pulumi:"instanceId"`
 	// The KMS key used to encrypt the at-rest data of the cluster
 	KmsKey *string `pulumi:"kmsKey"`
@@ -748,6 +747,9 @@ type instanceState struct {
 	// Managed backup source for the instance.
 	// Structure is documented below.
 	ManagedBackupSource *InstanceManagedBackupSource `pulumi:"managedBackupSource"`
+	// Instance's Certificate Authority. This field will only be populated if instance's transitEncryptionMode is SERVER_AUTHENTICATION
+	// Structure is documented below.
+	ManagedServerCas []InstanceManagedServerCa `pulumi:"managedServerCas"`
 	// Optional. cluster or cluster-disabled.
 	// Possible values:
 	// CLUSTER
@@ -864,8 +866,6 @@ type InstanceState struct {
 	// * Must contain only lowercase letters, digits, and hyphens
 	// * Must not end with a hyphen
 	// * Must be unique within a location
-	//
-	// ***
 	InstanceId pulumi.StringPtrInput
 	// The KMS key used to encrypt the at-rest data of the cluster
 	KmsKey pulumi.StringPtrInput
@@ -884,6 +884,9 @@ type InstanceState struct {
 	// Managed backup source for the instance.
 	// Structure is documented below.
 	ManagedBackupSource InstanceManagedBackupSourcePtrInput
+	// Instance's Certificate Authority. This field will only be populated if instance's transitEncryptionMode is SERVER_AUTHENTICATION
+	// Structure is documented below.
+	ManagedServerCas InstanceManagedServerCaArrayInput
 	// Optional. cluster or cluster-disabled.
 	// Possible values:
 	// CLUSTER
@@ -987,8 +990,6 @@ type instanceArgs struct {
 	// * Must contain only lowercase letters, digits, and hyphens
 	// * Must not end with a hyphen
 	// * Must be unique within a location
-	//
-	// ***
 	InstanceId string `pulumi:"instanceId"`
 	// The KMS key used to encrypt the at-rest data of the cluster
 	KmsKey *string `pulumi:"kmsKey"`
@@ -1072,8 +1073,6 @@ type InstanceArgs struct {
 	// * Must contain only lowercase letters, digits, and hyphens
 	// * Must not end with a hyphen
 	// * Must be unique within a location
-	//
-	// ***
 	InstanceId pulumi.StringInput
 	// The KMS key used to encrypt the at-rest data of the cluster
 	KmsKey pulumi.StringPtrInput
@@ -1303,8 +1302,6 @@ func (o InstanceOutput) GcsSource() InstanceGcsSourcePtrOutput {
 // * Must contain only lowercase letters, digits, and hyphens
 // * Must not end with a hyphen
 // * Must be unique within a location
-//
-// ***
 func (o InstanceOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
@@ -1342,6 +1339,12 @@ func (o InstanceOutput) MaintenanceSchedules() InstanceMaintenanceScheduleArrayO
 // Structure is documented below.
 func (o InstanceOutput) ManagedBackupSource() InstanceManagedBackupSourcePtrOutput {
 	return o.ApplyT(func(v *Instance) InstanceManagedBackupSourcePtrOutput { return v.ManagedBackupSource }).(InstanceManagedBackupSourcePtrOutput)
+}
+
+// Instance's Certificate Authority. This field will only be populated if instance's transitEncryptionMode is SERVER_AUTHENTICATION
+// Structure is documented below.
+func (o InstanceOutput) ManagedServerCas() InstanceManagedServerCaArrayOutput {
+	return o.ApplyT(func(v *Instance) InstanceManagedServerCaArrayOutput { return v.ManagedServerCas }).(InstanceManagedServerCaArrayOutput)
 }
 
 // Optional. cluster or cluster-disabled.

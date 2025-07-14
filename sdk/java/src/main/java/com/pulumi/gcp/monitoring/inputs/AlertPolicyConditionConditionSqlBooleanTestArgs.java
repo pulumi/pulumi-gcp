@@ -18,8 +18,6 @@ public final class AlertPolicyConditionConditionSqlBooleanTestArgs extends com.p
      * The name of the column containing the boolean value. If the value in a row is
      * NULL, that row is ignored.
      * 
-     * ***
-     * 
      */
     @Import(name="column", required=true)
     private Output<String> column;
@@ -27,8 +25,6 @@ public final class AlertPolicyConditionConditionSqlBooleanTestArgs extends com.p
     /**
      * @return The name of the column containing the boolean value. If the value in a row is
      * NULL, that row is ignored.
-     * 
-     * ***
      * 
      */
     public Output<String> column() {
@@ -63,8 +59,6 @@ public final class AlertPolicyConditionConditionSqlBooleanTestArgs extends com.p
          * @param column The name of the column containing the boolean value. If the value in a row is
          * NULL, that row is ignored.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -76,8 +70,6 @@ public final class AlertPolicyConditionConditionSqlBooleanTestArgs extends com.p
         /**
          * @param column The name of the column containing the boolean value. If the value in a row is
          * NULL, that row is ignored.
-         * 
-         * ***
          * 
          * @return builder
          * 

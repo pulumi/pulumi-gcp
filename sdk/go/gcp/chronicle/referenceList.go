@@ -101,7 +101,9 @@ type ReferenceList struct {
 	// Output only. The resource name of the reference list.
 	// Format:
 	// projects/{project}/locations/{location}/instances/{instance}/referenceLists/{reference_list}
-	Name    pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Required. The ID to use for the reference list. This is also the display name for
 	// the reference list. It must satisfy the following requirements:
@@ -194,7 +196,9 @@ type referenceListState struct {
 	// Output only. The resource name of the reference list.
 	// Format:
 	// projects/{project}/locations/{location}/instances/{instance}/referenceLists/{reference_list}
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Required. The ID to use for the reference list. This is also the display name for
 	// the reference list. It must satisfy the following requirements:
@@ -240,7 +244,9 @@ type ReferenceListState struct {
 	// Output only. The resource name of the reference list.
 	// Format:
 	// projects/{project}/locations/{location}/instances/{instance}/referenceLists/{reference_list}
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Required. The ID to use for the reference list. This is also the display name for
 	// the reference list. It must satisfy the following requirements:
@@ -284,8 +290,10 @@ type referenceListArgs struct {
 	// The unique identifier for the Chronicle instance, which is the same as the customer ID.
 	Instance string `pulumi:"instance"`
 	// The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
-	Location string  `pulumi:"location"`
-	Project  *string `pulumi:"project"`
+	Location string `pulumi:"location"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// Required. The ID to use for the reference list. This is also the display name for
 	// the reference list. It must satisfy the following requirements:
 	// - Starts with letter.
@@ -315,7 +323,9 @@ type ReferenceListArgs struct {
 	Instance pulumi.StringInput
 	// The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
 	Location pulumi.StringInput
-	Project  pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// Required. The ID to use for the reference list. This is also the display name for
 	// the reference list. It must satisfy the following requirements:
 	// - Starts with letter.
@@ -454,6 +464,8 @@ func (o ReferenceListOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReferenceList) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o ReferenceListOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReferenceList) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

@@ -166,6 +166,7 @@ export class ChatEngine extends pulumi.CustomResource {
     public readonly collectionId!: pulumi.Output<string>;
     /**
      * Common config spec that specifies the metadata of the engine.
+     * Structure is documented below.
      */
     public readonly commonConfig!: pulumi.Output<outputs.discoveryengine.ChatEngineCommonConfig | undefined>;
     /**
@@ -185,8 +186,9 @@ export class ChatEngine extends pulumi.CustomResource {
      */
     public readonly engineId!: pulumi.Output<string>;
     /**
-     * The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked
-     * to the engine. Default value: "GENERIC" Possible values: ["GENERIC"]
+     * The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked to the engine.
+     * Default value is `GENERIC`.
+     * Possible values are: `GENERIC`.
      */
     public readonly industryVertical!: pulumi.Output<string | undefined>;
     /**
@@ -200,6 +202,10 @@ export class ChatEngine extends pulumi.CustomResource {
      * characters.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * Timestamp the Engine was last updated.
@@ -291,6 +297,7 @@ export interface ChatEngineState {
     collectionId?: pulumi.Input<string>;
     /**
      * Common config spec that specifies the metadata of the engine.
+     * Structure is documented below.
      */
     commonConfig?: pulumi.Input<inputs.discoveryengine.ChatEngineCommonConfig>;
     /**
@@ -310,8 +317,9 @@ export interface ChatEngineState {
      */
     engineId?: pulumi.Input<string>;
     /**
-     * The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked
-     * to the engine. Default value: "GENERIC" Possible values: ["GENERIC"]
+     * The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked to the engine.
+     * Default value is `GENERIC`.
+     * Possible values are: `GENERIC`.
      */
     industryVertical?: pulumi.Input<string>;
     /**
@@ -325,6 +333,10 @@ export interface ChatEngineState {
      * characters.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * Timestamp the Engine was last updated.
@@ -347,6 +359,7 @@ export interface ChatEngineArgs {
     collectionId: pulumi.Input<string>;
     /**
      * Common config spec that specifies the metadata of the engine.
+     * Structure is documented below.
      */
     commonConfig?: pulumi.Input<inputs.discoveryengine.ChatEngineCommonConfig>;
     /**
@@ -362,13 +375,18 @@ export interface ChatEngineArgs {
      */
     engineId: pulumi.Input<string>;
     /**
-     * The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked
-     * to the engine. Default value: "GENERIC" Possible values: ["GENERIC"]
+     * The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked to the engine.
+     * Default value is `GENERIC`.
+     * Possible values are: `GENERIC`.
      */
     industryVertical?: pulumi.Input<string>;
     /**
      * Location.
      */
     location: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
 }

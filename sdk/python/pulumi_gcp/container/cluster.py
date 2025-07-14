@@ -24,6 +24,7 @@ class ClusterArgs:
     def __init__(__self__, *,
                  addons_config: Optional[pulumi.Input['ClusterAddonsConfigArgs']] = None,
                  allow_net_admin: Optional[pulumi.Input[builtins.bool]] = None,
+                 anonymous_authentication_config: Optional[pulumi.Input['ClusterAnonymousAuthenticationConfigArgs']] = None,
                  authenticator_groups_config: Optional[pulumi.Input['ClusterAuthenticatorGroupsConfigArgs']] = None,
                  binary_authorization: Optional[pulumi.Input['ClusterBinaryAuthorizationArgs']] = None,
                  cluster_autoscaling: Optional[pulumi.Input['ClusterClusterAutoscalingArgs']] = None,
@@ -107,6 +108,10 @@ class ClusterArgs:
         :param pulumi.Input[builtins.bool] allow_net_admin: Enable NET_ADMIN for the cluster. Defaults to
                `false`. This field should only be enabled for Autopilot clusters (`enable_autopilot`
                set to `true`).
+        :param pulumi.Input['ClusterAnonymousAuthenticationConfigArgs'] anonymous_authentication_config: Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
+               
+               
+               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input['ClusterAuthenticatorGroupsConfigArgs'] authenticator_groups_config: Configuration for the
                [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
                Structure is documented below.
@@ -162,9 +167,6 @@ class ClusterArgs:
         :param pulumi.Input[builtins.bool] enable_tpu: Whether to enable Cloud TPU resources in this cluster.
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
         :param pulumi.Input['ClusterEnterpriseConfigArgs'] enterprise_config: Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
-               
-               
-               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input['ClusterFleetArgs'] fleet: Fleet configuration for the cluster. Structure is documented below.
         :param pulumi.Input['ClusterGatewayApiConfigArgs'] gateway_api_config: Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
         :param pulumi.Input['ClusterGkeAutoUpgradeConfigArgs'] gke_auto_upgrade_config: Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.
@@ -326,6 +328,8 @@ class ClusterArgs:
             pulumi.set(__self__, "addons_config", addons_config)
         if allow_net_admin is not None:
             pulumi.set(__self__, "allow_net_admin", allow_net_admin)
+        if anonymous_authentication_config is not None:
+            pulumi.set(__self__, "anonymous_authentication_config", anonymous_authentication_config)
         if authenticator_groups_config is not None:
             pulumi.set(__self__, "authenticator_groups_config", authenticator_groups_config)
         if binary_authorization is not None:
@@ -505,6 +509,21 @@ class ClusterArgs:
     @allow_net_admin.setter
     def allow_net_admin(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "allow_net_admin", value)
+
+    @property
+    @pulumi.getter(name="anonymousAuthenticationConfig")
+    def anonymous_authentication_config(self) -> Optional[pulumi.Input['ClusterAnonymousAuthenticationConfigArgs']]:
+        """
+        Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
+
+
+        <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
+        """
+        return pulumi.get(self, "anonymous_authentication_config")
+
+    @anonymous_authentication_config.setter
+    def anonymous_authentication_config(self, value: Optional[pulumi.Input['ClusterAnonymousAuthenticationConfigArgs']]):
+        pulumi.set(self, "anonymous_authentication_config", value)
 
     @property
     @pulumi.getter(name="authenticatorGroupsConfig")
@@ -860,9 +879,6 @@ class ClusterArgs:
     def enterprise_config(self) -> Optional[pulumi.Input['ClusterEnterpriseConfigArgs']]:
         """
         Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
-
-
-        <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         """
         return pulumi.get(self, "enterprise_config")
 
@@ -1560,6 +1576,7 @@ class _ClusterState:
     def __init__(__self__, *,
                  addons_config: Optional[pulumi.Input['ClusterAddonsConfigArgs']] = None,
                  allow_net_admin: Optional[pulumi.Input[builtins.bool]] = None,
+                 anonymous_authentication_config: Optional[pulumi.Input['ClusterAnonymousAuthenticationConfigArgs']] = None,
                  authenticator_groups_config: Optional[pulumi.Input['ClusterAuthenticatorGroupsConfigArgs']] = None,
                  binary_authorization: Optional[pulumi.Input['ClusterBinaryAuthorizationArgs']] = None,
                  cluster_autoscaling: Optional[pulumi.Input['ClusterClusterAutoscalingArgs']] = None,
@@ -1652,6 +1669,10 @@ class _ClusterState:
         :param pulumi.Input[builtins.bool] allow_net_admin: Enable NET_ADMIN for the cluster. Defaults to
                `false`. This field should only be enabled for Autopilot clusters (`enable_autopilot`
                set to `true`).
+        :param pulumi.Input['ClusterAnonymousAuthenticationConfigArgs'] anonymous_authentication_config: Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
+               
+               
+               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input['ClusterAuthenticatorGroupsConfigArgs'] authenticator_groups_config: Configuration for the
                [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
                Structure is documented below.
@@ -1709,9 +1730,6 @@ class _ClusterState:
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
         :param pulumi.Input[builtins.str] endpoint: The IP address of this cluster's Kubernetes master.
         :param pulumi.Input['ClusterEnterpriseConfigArgs'] enterprise_config: Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
-               
-               
-               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input['ClusterFleetArgs'] fleet: Fleet configuration for the cluster. Structure is documented below.
         :param pulumi.Input['ClusterGatewayApiConfigArgs'] gateway_api_config: Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
         :param pulumi.Input['ClusterGkeAutoUpgradeConfigArgs'] gke_auto_upgrade_config: Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.
@@ -1886,6 +1904,8 @@ class _ClusterState:
             pulumi.set(__self__, "addons_config", addons_config)
         if allow_net_admin is not None:
             pulumi.set(__self__, "allow_net_admin", allow_net_admin)
+        if anonymous_authentication_config is not None:
+            pulumi.set(__self__, "anonymous_authentication_config", anonymous_authentication_config)
         if authenticator_groups_config is not None:
             pulumi.set(__self__, "authenticator_groups_config", authenticator_groups_config)
         if binary_authorization is not None:
@@ -2083,6 +2103,21 @@ class _ClusterState:
     @allow_net_admin.setter
     def allow_net_admin(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "allow_net_admin", value)
+
+    @property
+    @pulumi.getter(name="anonymousAuthenticationConfig")
+    def anonymous_authentication_config(self) -> Optional[pulumi.Input['ClusterAnonymousAuthenticationConfigArgs']]:
+        """
+        Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
+
+
+        <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
+        """
+        return pulumi.get(self, "anonymous_authentication_config")
+
+    @anonymous_authentication_config.setter
+    def anonymous_authentication_config(self, value: Optional[pulumi.Input['ClusterAnonymousAuthenticationConfigArgs']]):
+        pulumi.set(self, "anonymous_authentication_config", value)
 
     @property
     @pulumi.getter(name="authenticatorGroupsConfig")
@@ -2462,9 +2497,6 @@ class _ClusterState:
     def enterprise_config(self) -> Optional[pulumi.Input['ClusterEnterpriseConfigArgs']]:
         """
         Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
-
-
-        <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         """
         return pulumi.get(self, "enterprise_config")
 
@@ -3253,6 +3285,7 @@ class Cluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  addons_config: Optional[pulumi.Input[Union['ClusterAddonsConfigArgs', 'ClusterAddonsConfigArgsDict']]] = None,
                  allow_net_admin: Optional[pulumi.Input[builtins.bool]] = None,
+                 anonymous_authentication_config: Optional[pulumi.Input[Union['ClusterAnonymousAuthenticationConfigArgs', 'ClusterAnonymousAuthenticationConfigArgsDict']]] = None,
                  authenticator_groups_config: Optional[pulumi.Input[Union['ClusterAuthenticatorGroupsConfigArgs', 'ClusterAuthenticatorGroupsConfigArgsDict']]] = None,
                  binary_authorization: Optional[pulumi.Input[Union['ClusterBinaryAuthorizationArgs', 'ClusterBinaryAuthorizationArgsDict']]] = None,
                  cluster_autoscaling: Optional[pulumi.Input[Union['ClusterClusterAutoscalingArgs', 'ClusterClusterAutoscalingArgsDict']]] = None,
@@ -3458,6 +3491,10 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] allow_net_admin: Enable NET_ADMIN for the cluster. Defaults to
                `false`. This field should only be enabled for Autopilot clusters (`enable_autopilot`
                set to `true`).
+        :param pulumi.Input[Union['ClusterAnonymousAuthenticationConfigArgs', 'ClusterAnonymousAuthenticationConfigArgsDict']] anonymous_authentication_config: Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
+               
+               
+               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input[Union['ClusterAuthenticatorGroupsConfigArgs', 'ClusterAuthenticatorGroupsConfigArgsDict']] authenticator_groups_config: Configuration for the
                [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
                Structure is documented below.
@@ -3513,9 +3550,6 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] enable_tpu: Whether to enable Cloud TPU resources in this cluster.
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
         :param pulumi.Input[Union['ClusterEnterpriseConfigArgs', 'ClusterEnterpriseConfigArgsDict']] enterprise_config: Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
-               
-               
-               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input[Union['ClusterFleetArgs', 'ClusterFleetArgsDict']] fleet: Fleet configuration for the cluster. Structure is documented below.
         :param pulumi.Input[Union['ClusterGatewayApiConfigArgs', 'ClusterGatewayApiConfigArgsDict']] gateway_api_config: Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
         :param pulumi.Input[Union['ClusterGkeAutoUpgradeConfigArgs', 'ClusterGkeAutoUpgradeConfigArgsDict']] gke_auto_upgrade_config: Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.
@@ -3817,6 +3851,7 @@ class Cluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  addons_config: Optional[pulumi.Input[Union['ClusterAddonsConfigArgs', 'ClusterAddonsConfigArgsDict']]] = None,
                  allow_net_admin: Optional[pulumi.Input[builtins.bool]] = None,
+                 anonymous_authentication_config: Optional[pulumi.Input[Union['ClusterAnonymousAuthenticationConfigArgs', 'ClusterAnonymousAuthenticationConfigArgsDict']]] = None,
                  authenticator_groups_config: Optional[pulumi.Input[Union['ClusterAuthenticatorGroupsConfigArgs', 'ClusterAuthenticatorGroupsConfigArgsDict']]] = None,
                  binary_authorization: Optional[pulumi.Input[Union['ClusterBinaryAuthorizationArgs', 'ClusterBinaryAuthorizationArgsDict']]] = None,
                  cluster_autoscaling: Optional[pulumi.Input[Union['ClusterClusterAutoscalingArgs', 'ClusterClusterAutoscalingArgsDict']]] = None,
@@ -3904,6 +3939,7 @@ class Cluster(pulumi.CustomResource):
 
             __props__.__dict__["addons_config"] = addons_config
             __props__.__dict__["allow_net_admin"] = allow_net_admin
+            __props__.__dict__["anonymous_authentication_config"] = anonymous_authentication_config
             __props__.__dict__["authenticator_groups_config"] = authenticator_groups_config
             __props__.__dict__["binary_authorization"] = binary_authorization
             __props__.__dict__["cluster_autoscaling"] = cluster_autoscaling
@@ -4003,6 +4039,7 @@ class Cluster(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             addons_config: Optional[pulumi.Input[Union['ClusterAddonsConfigArgs', 'ClusterAddonsConfigArgsDict']]] = None,
             allow_net_admin: Optional[pulumi.Input[builtins.bool]] = None,
+            anonymous_authentication_config: Optional[pulumi.Input[Union['ClusterAnonymousAuthenticationConfigArgs', 'ClusterAnonymousAuthenticationConfigArgsDict']]] = None,
             authenticator_groups_config: Optional[pulumi.Input[Union['ClusterAuthenticatorGroupsConfigArgs', 'ClusterAuthenticatorGroupsConfigArgsDict']]] = None,
             binary_authorization: Optional[pulumi.Input[Union['ClusterBinaryAuthorizationArgs', 'ClusterBinaryAuthorizationArgsDict']]] = None,
             cluster_autoscaling: Optional[pulumi.Input[Union['ClusterClusterAutoscalingArgs', 'ClusterClusterAutoscalingArgsDict']]] = None,
@@ -4100,6 +4137,10 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] allow_net_admin: Enable NET_ADMIN for the cluster. Defaults to
                `false`. This field should only be enabled for Autopilot clusters (`enable_autopilot`
                set to `true`).
+        :param pulumi.Input[Union['ClusterAnonymousAuthenticationConfigArgs', 'ClusterAnonymousAuthenticationConfigArgsDict']] anonymous_authentication_config: Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
+               
+               
+               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input[Union['ClusterAuthenticatorGroupsConfigArgs', 'ClusterAuthenticatorGroupsConfigArgsDict']] authenticator_groups_config: Configuration for the
                [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
                Structure is documented below.
@@ -4157,9 +4198,6 @@ class Cluster(pulumi.CustomResource):
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
         :param pulumi.Input[builtins.str] endpoint: The IP address of this cluster's Kubernetes master.
         :param pulumi.Input[Union['ClusterEnterpriseConfigArgs', 'ClusterEnterpriseConfigArgsDict']] enterprise_config: Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
-               
-               
-               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input[Union['ClusterFleetArgs', 'ClusterFleetArgsDict']] fleet: Fleet configuration for the cluster. Structure is documented below.
         :param pulumi.Input[Union['ClusterGatewayApiConfigArgs', 'ClusterGatewayApiConfigArgsDict']] gateway_api_config: Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
         :param pulumi.Input[Union['ClusterGkeAutoUpgradeConfigArgs', 'ClusterGkeAutoUpgradeConfigArgsDict']] gke_auto_upgrade_config: Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.
@@ -4336,6 +4374,7 @@ class Cluster(pulumi.CustomResource):
 
         __props__.__dict__["addons_config"] = addons_config
         __props__.__dict__["allow_net_admin"] = allow_net_admin
+        __props__.__dict__["anonymous_authentication_config"] = anonymous_authentication_config
         __props__.__dict__["authenticator_groups_config"] = authenticator_groups_config
         __props__.__dict__["binary_authorization"] = binary_authorization
         __props__.__dict__["cluster_autoscaling"] = cluster_autoscaling
@@ -4441,6 +4480,17 @@ class Cluster(pulumi.CustomResource):
         set to `true`).
         """
         return pulumi.get(self, "allow_net_admin")
+
+    @property
+    @pulumi.getter(name="anonymousAuthenticationConfig")
+    def anonymous_authentication_config(self) -> pulumi.Output['outputs.ClusterAnonymousAuthenticationConfig']:
+        """
+        Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
+
+
+        <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
+        """
+        return pulumi.get(self, "anonymous_authentication_config")
 
     @property
     @pulumi.getter(name="authenticatorGroupsConfig")
@@ -4704,9 +4754,6 @@ class Cluster(pulumi.CustomResource):
     def enterprise_config(self) -> pulumi.Output['outputs.ClusterEnterpriseConfig']:
         """
         Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
-
-
-        <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         """
         return pulumi.get(self, "enterprise_config")
 

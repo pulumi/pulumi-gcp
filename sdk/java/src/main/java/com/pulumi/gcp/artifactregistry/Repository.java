@@ -1516,8 +1516,6 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * The last part of the repository name, for example:
      * &#34;repo1&#34;
      * 
-     * ***
-     * 
      */
     @Export(name="repositoryId", refs={String.class}, tree="[0]")
     private Output<String> repositoryId;
@@ -1525,8 +1523,6 @@ public class Repository extends com.pulumi.resources.CustomResource {
     /**
      * @return The last part of the repository name, for example:
      * &#34;repo1&#34;
-     * 
-     * ***
      * 
      */
     public Output<String> repositoryId() {

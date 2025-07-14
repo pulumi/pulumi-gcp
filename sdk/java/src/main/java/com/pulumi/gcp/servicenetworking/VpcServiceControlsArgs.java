@@ -69,8 +69,6 @@ public final class VpcServiceControlsArgs extends com.pulumi.resources.ResourceA
      * producer&#39;s organization. For Google services that support this
      * functionality, this value is `servicenetworking.googleapis.com`.
      * 
-     * ***
-     * 
      */
     @Import(name="service", required=true)
     private Output<String> service;
@@ -79,8 +77,6 @@ public final class VpcServiceControlsArgs extends com.pulumi.resources.ResourceA
      * @return The service that is managing peering connectivity for a service
      * producer&#39;s organization. For Google services that support this
      * functionality, this value is `servicenetworking.googleapis.com`.
-     * 
-     * ***
      * 
      */
     public Output<String> service() {
@@ -184,8 +180,6 @@ public final class VpcServiceControlsArgs extends com.pulumi.resources.ResourceA
          * producer&#39;s organization. For Google services that support this
          * functionality, this value is `servicenetworking.googleapis.com`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -198,8 +192,6 @@ public final class VpcServiceControlsArgs extends com.pulumi.resources.ResourceA
          * @param service The service that is managing peering connectivity for a service
          * producer&#39;s organization. For Google services that support this
          * functionality, this value is `servicenetworking.googleapis.com`.
-         * 
-         * ***
          * 
          * @return builder
          * 

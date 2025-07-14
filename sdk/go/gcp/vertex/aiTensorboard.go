@@ -145,8 +145,6 @@ type AiTensorboard struct {
 	// Description of this Tensorboard.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// User provided name of this Tensorboard.
-	//
-	// ***
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -219,8 +217,6 @@ type aiTensorboardState struct {
 	// Description of this Tensorboard.
 	Description *string `pulumi:"description"`
 	// User provided name of this Tensorboard.
-	//
-	// ***
 	DisplayName *string `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -256,8 +252,6 @@ type AiTensorboardState struct {
 	// Description of this Tensorboard.
 	Description pulumi.StringPtrInput
 	// User provided name of this Tensorboard.
-	//
-	// ***
 	DisplayName pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -293,8 +287,6 @@ type aiTensorboardArgs struct {
 	// Description of this Tensorboard.
 	Description *string `pulumi:"description"`
 	// User provided name of this Tensorboard.
-	//
-	// ***
 	DisplayName string `pulumi:"displayName"`
 	// Customer-managed encryption key spec for a Tensorboard. If set, this Tensorboard and all sub-resources of this Tensorboard will be secured by this key.
 	// Structure is documented below.
@@ -316,8 +308,6 @@ type AiTensorboardArgs struct {
 	// Description of this Tensorboard.
 	Description pulumi.StringPtrInput
 	// User provided name of this Tensorboard.
-	//
-	// ***
 	DisplayName pulumi.StringInput
 	// Customer-managed encryption key spec for a Tensorboard. If set, this Tensorboard and all sub-resources of this Tensorboard will be secured by this key.
 	// Structure is documented below.
@@ -437,8 +427,6 @@ func (o AiTensorboardOutput) Description() pulumi.StringPtrOutput {
 }
 
 // User provided name of this Tensorboard.
-//
-// ***
 func (o AiTensorboardOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiTensorboard) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }

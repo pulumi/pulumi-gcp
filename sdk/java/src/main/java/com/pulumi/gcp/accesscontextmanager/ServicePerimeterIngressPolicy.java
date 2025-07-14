@@ -112,16 +112,12 @@ public class ServicePerimeterIngressPolicy extends com.pulumi.resources.CustomRe
     /**
      * The name of the Service Perimeter to add this resource to.
      * 
-     * ***
-     * 
      */
     @Export(name="perimeter", refs={String.class}, tree="[0]")
     private Output<String> perimeter;
 
     /**
      * @return The name of the Service Perimeter to add this resource to.
-     * 
-     * ***
      * 
      */
     public Output<String> perimeter() {

@@ -43,9 +43,12 @@ public final class InterconnectGroupConfiguredTopologyCapabilityIntendedCapabili
      */
     private @Nullable List<String> facilities;
     /**
-     * @return (Output)
-     * Interconnects used to explain this blocker in more
-     * detail.
+     * @return Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
+     * strings. Users are encouraged, but not required, to use their preferred
+     * format for resource links as keys.
+     * Note that there are add-members and remove-members methods in gcloud.
+     * The size of this map is limited by an &#34;Interconnects per group&#34; quota.
+     * Structure is documented below.
      * 
      */
     private @Nullable List<String> interconnects;
@@ -106,9 +109,12 @@ public final class InterconnectGroupConfiguredTopologyCapabilityIntendedCapabili
         return this.facilities == null ? List.of() : this.facilities;
     }
     /**
-     * @return (Output)
-     * Interconnects used to explain this blocker in more
-     * detail.
+     * @return Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
+     * strings. Users are encouraged, but not required, to use their preferred
+     * format for resource links as keys.
+     * Note that there are add-members and remove-members methods in gcloud.
+     * The size of this map is limited by an &#34;Interconnects per group&#34; quota.
+     * Structure is documented below.
      * 
      */
     public List<String> interconnects() {

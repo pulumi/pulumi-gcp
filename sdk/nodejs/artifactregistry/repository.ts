@@ -744,9 +744,6 @@ export class Repository extends pulumi.CustomResource {
     /**
      * The last part of the repository name, for example:
      * "repo1"
-     *
-     *
-     * - - -
      */
     public readonly repositoryId!: pulumi.Output<string>;
     /**
@@ -937,9 +934,6 @@ export interface RepositoryState {
     /**
      * The last part of the repository name, for example:
      * "repo1"
-     *
-     *
-     * - - -
      */
     repositoryId?: pulumi.Input<string>;
     /**
@@ -1044,9 +1038,6 @@ export interface RepositoryArgs {
     /**
      * The last part of the repository name, for example:
      * "repo1"
-     *
-     *
-     * - - -
      */
     repositoryId: pulumi.Input<string>;
     /**

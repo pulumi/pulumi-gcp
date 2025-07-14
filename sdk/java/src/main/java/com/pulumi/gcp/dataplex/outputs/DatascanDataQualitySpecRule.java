@@ -95,6 +95,11 @@ public final class DatascanDataQualitySpecRule {
      */
     private @Nullable DatascanDataQualitySpecRuleStatisticRangeExpectation statisticRangeExpectation;
     /**
+     * @return Whether the Rule is active or suspended. Default = false.
+     * 
+     */
+    private @Nullable Boolean suspended;
+    /**
      * @return Table rule which evaluates whether the provided expression is true.
      * Structure is documented below.
      * 
@@ -208,6 +213,13 @@ public final class DatascanDataQualitySpecRule {
         return Optional.ofNullable(this.statisticRangeExpectation);
     }
     /**
+     * @return Whether the Rule is active or suspended. Default = false.
+     * 
+     */
+    public Optional<Boolean> suspended() {
+        return Optional.ofNullable(this.suspended);
+    }
+    /**
      * @return Table rule which evaluates whether the provided expression is true.
      * Structure is documented below.
      * 
@@ -251,6 +263,7 @@ public final class DatascanDataQualitySpecRule {
         private @Nullable DatascanDataQualitySpecRuleSetExpectation setExpectation;
         private @Nullable DatascanDataQualitySpecRuleSqlAssertion sqlAssertion;
         private @Nullable DatascanDataQualitySpecRuleStatisticRangeExpectation statisticRangeExpectation;
+        private @Nullable Boolean suspended;
         private @Nullable DatascanDataQualitySpecRuleTableConditionExpectation tableConditionExpectation;
         private @Nullable Double threshold;
         private @Nullable DatascanDataQualitySpecRuleUniquenessExpectation uniquenessExpectation;
@@ -269,6 +282,7 @@ public final class DatascanDataQualitySpecRule {
     	      this.setExpectation = defaults.setExpectation;
     	      this.sqlAssertion = defaults.sqlAssertion;
     	      this.statisticRangeExpectation = defaults.statisticRangeExpectation;
+    	      this.suspended = defaults.suspended;
     	      this.tableConditionExpectation = defaults.tableConditionExpectation;
     	      this.threshold = defaults.threshold;
     	      this.uniquenessExpectation = defaults.uniquenessExpectation;
@@ -349,6 +363,12 @@ public final class DatascanDataQualitySpecRule {
             return this;
         }
         @CustomType.Setter
+        public Builder suspended(@Nullable Boolean suspended) {
+
+            this.suspended = suspended;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tableConditionExpectation(@Nullable DatascanDataQualitySpecRuleTableConditionExpectation tableConditionExpectation) {
 
             this.tableConditionExpectation = tableConditionExpectation;
@@ -380,6 +400,7 @@ public final class DatascanDataQualitySpecRule {
             _resultValue.setExpectation = setExpectation;
             _resultValue.sqlAssertion = sqlAssertion;
             _resultValue.statisticRangeExpectation = statisticRangeExpectation;
+            _resultValue.suspended = suspended;
             _resultValue.tableConditionExpectation = tableConditionExpectation;
             _resultValue.threshold = threshold;
             _resultValue.uniquenessExpectation = uniquenessExpectation;

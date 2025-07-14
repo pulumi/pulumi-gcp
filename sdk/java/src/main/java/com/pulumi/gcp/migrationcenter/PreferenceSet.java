@@ -245,16 +245,12 @@ public class PreferenceSet extends com.pulumi.resources.CustomResource {
     /**
      * Required. User specified ID for the preference set. It will become the last component of the preference set name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression `a-z?`.
      * 
-     * ***
-     * 
      */
     @Export(name="preferenceSetId", refs={String.class}, tree="[0]")
     private Output<String> preferenceSetId;
 
     /**
      * @return Required. User specified ID for the preference set. It will become the last component of the preference set name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression `a-z?`.
-     * 
-     * ***
      * 
      */
     public Output<String> preferenceSetId() {

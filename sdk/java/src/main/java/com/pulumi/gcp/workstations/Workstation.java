@@ -250,16 +250,12 @@ public class Workstation extends com.pulumi.resources.CustomResource {
     /**
      * The location where the workstation parent resources reside.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return The location where the workstation parent resources reside.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

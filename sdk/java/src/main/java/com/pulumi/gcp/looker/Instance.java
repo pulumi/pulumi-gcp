@@ -496,6 +496,7 @@ import javax.annotation.Nullable;
 public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * Looker instance Admin settings.
+     * Structure is documented below.
      * 
      */
     @Export(name="adminSettings", refs={InstanceAdminSettings.class}, tree="[0]")
@@ -503,22 +504,25 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Looker instance Admin settings.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<InstanceAdminSettings>> adminSettings() {
         return Codegen.optional(this.adminSettings);
     }
     /**
-     * Network name in the consumer project in the format of: projects/{project}/global/networks/{network} Note that the
-     * consumer network may be in a different GCP project than the consumer project that is hosting the Looker Instance.
+     * Network name in the consumer project in the format of: projects/{project}/global/networks/{network}
+     * Note that the consumer network may be in a different GCP project than the consumer
+     * project that is hosting the Looker Instance.
      * 
      */
     @Export(name="consumerNetwork", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> consumerNetwork;
 
     /**
-     * @return Network name in the consumer project in the format of: projects/{project}/global/networks/{network} Note that the
-     * consumer network may be in a different GCP project than the consumer project that is hosting the Looker Instance.
+     * @return Network name in the consumer project in the format of: projects/{project}/global/networks/{network}
+     * Note that the consumer network may be in a different GCP project than the consumer
+     * project that is hosting the Looker Instance.
      * 
      */
     public Output<Optional<String>> consumerNetwork() {
@@ -542,6 +546,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * Custom domain settings for a Looker instance.
+     * Structure is documented below.
      * 
      */
     @Export(name="customDomain", refs={InstanceCustomDomain.class}, tree="[0]")
@@ -549,14 +554,16 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Custom domain settings for a Looker instance.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<InstanceCustomDomain>> customDomain() {
         return Codegen.optional(this.customDomain);
     }
     /**
-     * Policy to determine if the cluster should be deleted forcefully. If setting deletion_policy = &#34;FORCE&#34;, the Looker
-     * instance will be deleted regardless of its nested resources. If set to &#34;DEFAULT&#34;, Looker instances that still have
+     * Policy to determine if the cluster should be deleted forcefully.
+     * If setting deletion_policy = &#34;FORCE&#34;, the Looker instance will be deleted regardless
+     * of its nested resources. If set to &#34;DEFAULT&#34;, Looker instances that still have
      * nested resources will return an error. Possible values: DEFAULT, FORCE
      * 
      */
@@ -564,8 +571,9 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> deletionPolicy;
 
     /**
-     * @return Policy to determine if the cluster should be deleted forcefully. If setting deletion_policy = &#34;FORCE&#34;, the Looker
-     * instance will be deleted regardless of its nested resources. If set to &#34;DEFAULT&#34;, Looker instances that still have
+     * @return Policy to determine if the cluster should be deleted forcefully.
+     * If setting deletion_policy = &#34;FORCE&#34;, the Looker instance will be deleted regardless
+     * of its nested resources. If set to &#34;DEFAULT&#34;, Looker instances that still have
      * nested resources will return an error. Possible values: DEFAULT, FORCE
      * 
      */
@@ -573,16 +581,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.deletionPolicy);
     }
     /**
-     * Maintenance denial period for this instance. You must allow at least 14 days of maintenance availability between any two
-     * deny maintenance periods.
+     * Maintenance denial period for this instance.
+     * You must allow at least 14 days of maintenance availability
+     * between any two deny maintenance periods.
+     * Structure is documented below.
      * 
      */
     @Export(name="denyMaintenancePeriod", refs={InstanceDenyMaintenancePeriod.class}, tree="[0]")
     private Output</* @Nullable */ InstanceDenyMaintenancePeriod> denyMaintenancePeriod;
 
     /**
-     * @return Maintenance denial period for this instance. You must allow at least 14 days of maintenance availability between any two
-     * deny maintenance periods.
+     * @return Maintenance denial period for this instance.
+     * You must allow at least 14 days of maintenance availability
+     * between any two deny maintenance periods.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<InstanceDenyMaintenancePeriod>> denyMaintenancePeriod() {
@@ -604,6 +616,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * Looker instance encryption settings.
+     * Structure is documented below.
      * 
      */
     @Export(name="encryptionConfig", refs={InstanceEncryptionConfig.class}, tree="[0]")
@@ -611,6 +624,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Looker instance encryption settings.
+     * Structure is documented below.
      * 
      */
     public Output<InstanceEncryptionConfig> encryptionConfig() {
@@ -687,16 +701,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.lookerVersion;
     }
     /**
-     * Maintenance window for an instance. Maintenance of your instance takes place once a month, and will require your
-     * instance to be restarted during updates, which will temporarily disrupt service.
+     * Maintenance window for an instance.
+     * Maintenance of your instance takes place once a month, and will require
+     * your instance to be restarted during updates, which will temporarily
+     * disrupt service.
+     * Structure is documented below.
      * 
      */
     @Export(name="maintenanceWindow", refs={InstanceMaintenanceWindow.class}, tree="[0]")
     private Output</* @Nullable */ InstanceMaintenanceWindow> maintenanceWindow;
 
     /**
-     * @return Maintenance window for an instance. Maintenance of your instance takes place once a month, and will require your
-     * instance to be restarted during updates, which will temporarily disrupt service.
+     * @return Maintenance window for an instance.
+     * Maintenance of your instance takes place once a month, and will require
+     * your instance to be restarted during updates, which will temporarily
+     * disrupt service.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<InstanceMaintenanceWindow>> maintenanceWindow() {
@@ -733,30 +753,34 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.oauthConfig;
     }
     /**
-     * Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of
-     * these values: - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable) - LOOKER_CORE_STANDARD: pay as you go standard
-     * instance (Currently Unavailable) - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance -
-     * LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-     * - LOOKER_CORE_NONPROD_STANDARD_ANNUAL: nonprod subscription standard instance - LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL:
-     *   nonprod subscription enterprise instance - LOOKER_CORE_NONPROD_EMBED_ANNUAL: nonprod subscription embed instance Default
-     *   value: &#34;LOOKER_CORE_TRIAL&#34; Possible values: [&#34;LOOKER_CORE_TRIAL&#34;, &#34;LOOKER_CORE_STANDARD&#34;, &#34;LOOKER_CORE_STANDARD_ANNUAL&#34;,
-     *   &#34;LOOKER_CORE_ENTERPRISE_ANNUAL&#34;, &#34;LOOKER_CORE_EMBED_ANNUAL&#34;, &#34;LOOKER_CORE_NONPROD_STANDARD_ANNUAL&#34;,
-     *   &#34;LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL&#34;, &#34;LOOKER_CORE_NONPROD_EMBED_ANNUAL&#34;]
+     * Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
+     * - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
+     * - LOOKER_CORE_STANDARD: pay as you go standard instance (Currently Unavailable)
+     * - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
+     * - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
+     * - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
+     * - LOOKER_CORE_NONPROD_STANDARD_ANNUAL: nonprod subscription standard instance
+     * - LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL: nonprod subscription enterprise instance
+     * - LOOKER_CORE_NONPROD_EMBED_ANNUAL: nonprod subscription embed instance
+     *   Default value is `LOOKER_CORE_TRIAL`.
+     *   Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`, `LOOKER_CORE_NONPROD_STANDARD_ANNUAL`, `LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL`, `LOOKER_CORE_NONPROD_EMBED_ANNUAL`.
      * 
      */
     @Export(name="platformEdition", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> platformEdition;
 
     /**
-     * @return Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of
-     * these values: - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable) - LOOKER_CORE_STANDARD: pay as you go standard
-     * instance (Currently Unavailable) - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance -
-     * LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-     * - LOOKER_CORE_NONPROD_STANDARD_ANNUAL: nonprod subscription standard instance - LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL:
-     *   nonprod subscription enterprise instance - LOOKER_CORE_NONPROD_EMBED_ANNUAL: nonprod subscription embed instance Default
-     *   value: &#34;LOOKER_CORE_TRIAL&#34; Possible values: [&#34;LOOKER_CORE_TRIAL&#34;, &#34;LOOKER_CORE_STANDARD&#34;, &#34;LOOKER_CORE_STANDARD_ANNUAL&#34;,
-     *   &#34;LOOKER_CORE_ENTERPRISE_ANNUAL&#34;, &#34;LOOKER_CORE_EMBED_ANNUAL&#34;, &#34;LOOKER_CORE_NONPROD_STANDARD_ANNUAL&#34;,
-     *   &#34;LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL&#34;, &#34;LOOKER_CORE_NONPROD_EMBED_ANNUAL&#34;]
+     * @return Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
+     * - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
+     * - LOOKER_CORE_STANDARD: pay as you go standard instance (Currently Unavailable)
+     * - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
+     * - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
+     * - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
+     * - LOOKER_CORE_NONPROD_STANDARD_ANNUAL: nonprod subscription standard instance
+     * - LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL: nonprod subscription enterprise instance
+     * - LOOKER_CORE_NONPROD_EMBED_ANNUAL: nonprod subscription embed instance
+     *   Default value is `LOOKER_CORE_TRIAL`.
+     *   Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`, `LOOKER_CORE_NONPROD_STANDARD_ANNUAL`, `LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL`, `LOOKER_CORE_NONPROD_EMBED_ANNUAL`.
      * 
      */
     public Output<Optional<String>> platformEdition() {
@@ -776,14 +800,25 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> privateIpEnabled() {
         return Codegen.optional(this.privateIpEnabled);
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }
     /**
      * Information for Private Service Connect (PSC) setup for a Looker instance.
+     * Structure is documented below.
      * 
      */
     @Export(name="pscConfig", refs={InstancePscConfig.class}, tree="[0]")
@@ -791,6 +826,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Information for Private Service Connect (PSC) setup for a Looker instance.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<InstancePscConfig>> pscConfig() {
@@ -839,16 +875,16 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.region;
     }
     /**
-     * Name of a reserved IP address range within the consumer network, to be used for private service access connection. User
-     * may or may not specify this in a request.
+     * Name of a reserved IP address range within the consumer network, to be used for
+     * private service access connection. User may or may not specify this in a request.
      * 
      */
     @Export(name="reservedRange", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> reservedRange;
 
     /**
-     * @return Name of a reserved IP address range within the consumer network, to be used for private service access connection. User
-     * may or may not specify this in a request.
+     * @return Name of a reserved IP address range within the consumer network, to be used for
+     * private service access connection. User may or may not specify this in a request.
      * 
      */
     public Output<Optional<String>> reservedRange() {
@@ -871,22 +907,28 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.updateTime;
     }
     /**
-     * Metadata about users for a Looker instance. These settings are only available when platform edition LOOKER_CORE_STANDARD
-     * is set. There are ten Standard and two Developer users included in the cost of the product. You can allocate additional
-     * Standard, Viewer, and Developer users for this instance. It is an optional step and can be modified later. With the
-     * Standard edition of Looker (Google Cloud core), you can provision up to 50 total users, distributed across Viewer,
-     * Standard, and Developer.
+     * Metadata about users for a Looker instance.
+     * These settings are only available when platform edition LOOKER_CORE_STANDARD is set.
+     * There are ten Standard and two Developer users included in the cost of the product.
+     * You can allocate additional Standard, Viewer, and Developer users for this instance.
+     * It is an optional step and can be modified later.
+     * With the Standard edition of Looker (Google Cloud core), you can provision up to 50
+     * total users, distributed across Viewer, Standard, and Developer.
+     * Structure is documented below.
      * 
      */
     @Export(name="userMetadata", refs={InstanceUserMetadata.class}, tree="[0]")
     private Output</* @Nullable */ InstanceUserMetadata> userMetadata;
 
     /**
-     * @return Metadata about users for a Looker instance. These settings are only available when platform edition LOOKER_CORE_STANDARD
-     * is set. There are ten Standard and two Developer users included in the cost of the product. You can allocate additional
-     * Standard, Viewer, and Developer users for this instance. It is an optional step and can be modified later. With the
-     * Standard edition of Looker (Google Cloud core), you can provision up to 50 total users, distributed across Viewer,
-     * Standard, and Developer.
+     * @return Metadata about users for a Looker instance.
+     * These settings are only available when platform edition LOOKER_CORE_STANDARD is set.
+     * There are ten Standard and two Developer users included in the cost of the product.
+     * You can allocate additional Standard, Viewer, and Developer users for this instance.
+     * It is an optional step and can be modified later.
+     * With the Standard edition of Looker (Google Cloud core), you can provision up to 50
+     * total users, distributed across Viewer, Standard, and Developer.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<InstanceUserMetadata>> userMetadata() {

@@ -203,16 +203,12 @@ public class CapacityCommitment extends com.pulumi.resources.CustomResource {
     /**
      * Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
      * 
-     * ***
-     * 
      */
     @Export(name="plan", refs={String.class}, tree="[0]")
     private Output<String> plan;
 
     /**
      * @return Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
-     * 
-     * ***
      * 
      */
     public Output<String> plan() {

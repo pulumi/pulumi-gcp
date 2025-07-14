@@ -165,9 +165,6 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
 
         /// <summary>
         /// The id of backupplan association
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("backupPlanAssociationId")]
         public Output<string> BackupPlanAssociationId { get; private set; } = null!;
@@ -292,9 +289,6 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
 
         /// <summary>
         /// The id of backupplan association
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("backupPlanAssociationId", required: true)]
         public Input<string> BackupPlanAssociationId { get; set; } = null!;
@@ -344,9 +338,6 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
 
         /// <summary>
         /// The id of backupplan association
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("backupPlanAssociationId")]
         public Input<string>? BackupPlanAssociationId { get; set; }

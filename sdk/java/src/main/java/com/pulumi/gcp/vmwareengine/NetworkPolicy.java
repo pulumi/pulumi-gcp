@@ -259,16 +259,12 @@ public class NetworkPolicy extends com.pulumi.resources.CustomResource {
     /**
      * The ID of the Network Policy.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return The ID of the Network Policy.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

@@ -333,9 +333,6 @@ export class NotebookExecution extends pulumi.CustomResource {
     public readonly gcsOutputUri!: pulumi.Output<string>;
     /**
      * The location for the resource: https://cloud.google.com/colab/docs/locations
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -447,9 +444,6 @@ export interface NotebookExecutionState {
     gcsOutputUri?: pulumi.Input<string>;
     /**
      * The location for the resource: https://cloud.google.com/colab/docs/locations
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -508,9 +502,6 @@ export interface NotebookExecutionArgs {
     gcsOutputUri: pulumi.Input<string>;
     /**
      * The location for the resource: https://cloud.google.com/colab/docs/locations
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

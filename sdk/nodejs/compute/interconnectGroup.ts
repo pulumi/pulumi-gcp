@@ -107,9 +107,12 @@ export class InterconnectGroup extends pulumi.CustomResource {
      */
     public readonly intent!: pulumi.Output<outputs.compute.InterconnectGroupIntent>;
     /**
-     * (Output)
-     * Interconnects used to explain this blocker in more
-     * detail.
+     * Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
+     * strings. Users are encouraged, but not required, to use their preferred
+     * format for resource links as keys.
+     * Note that there are add-members and remove-members methods in gcloud.
+     * The size of this map is limited by an "Interconnects per group" quota.
+     * Structure is documented below.
      */
     public readonly interconnects!: pulumi.Output<outputs.compute.InterconnectGroupInterconnect[] | undefined>;
     /**
@@ -126,6 +129,10 @@ export class InterconnectGroup extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public /*out*/ readonly physicalStructures!: pulumi.Output<outputs.compute.InterconnectGroupPhysicalStructure[]>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
 
     /**
@@ -195,9 +202,12 @@ export interface InterconnectGroupState {
      */
     intent?: pulumi.Input<inputs.compute.InterconnectGroupIntent>;
     /**
-     * (Output)
-     * Interconnects used to explain this blocker in more
-     * detail.
+     * Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
+     * strings. Users are encouraged, but not required, to use their preferred
+     * format for resource links as keys.
+     * Note that there are add-members and remove-members methods in gcloud.
+     * The size of this map is limited by an "Interconnects per group" quota.
+     * Structure is documented below.
      */
     interconnects?: pulumi.Input<pulumi.Input<inputs.compute.InterconnectGroupInterconnect>[]>;
     /**
@@ -214,6 +224,10 @@ export interface InterconnectGroupState {
      * Structure is documented below.
      */
     physicalStructures?: pulumi.Input<pulumi.Input<inputs.compute.InterconnectGroupPhysicalStructure>[]>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
 }
 
@@ -232,9 +246,12 @@ export interface InterconnectGroupArgs {
      */
     intent: pulumi.Input<inputs.compute.InterconnectGroupIntent>;
     /**
-     * (Output)
-     * Interconnects used to explain this blocker in more
-     * detail.
+     * Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
+     * strings. Users are encouraged, but not required, to use their preferred
+     * format for resource links as keys.
+     * Note that there are add-members and remove-members methods in gcloud.
+     * The size of this map is limited by an "Interconnects per group" quota.
+     * Structure is documented below.
      */
     interconnects?: pulumi.Input<pulumi.Input<inputs.compute.InterconnectGroupInterconnect>[]>;
     /**
@@ -245,5 +262,9 @@ export interface InterconnectGroupArgs {
      * lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
 }

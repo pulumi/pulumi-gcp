@@ -14,7 +14,8 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMap
     {
         /// <summary>
-        /// (Required) The identifier for this object. Format specified above.
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         public readonly string Project;
         /// <summary>

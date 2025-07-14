@@ -343,16 +343,12 @@ public class Repository extends com.pulumi.resources.CustomResource {
     /**
      * The connection for the resource
      * 
-     * ***
-     * 
      */
     @Export(name="parentConnection", refs={String.class}, tree="[0]")
     private Output<String> parentConnection;
 
     /**
      * @return The connection for the resource
-     * 
-     * ***
      * 
      */
     public Output<String> parentConnection() {

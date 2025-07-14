@@ -157,8 +157,6 @@ type Instance struct {
 	DefaultBackupScheduleType pulumi.StringOutput `pulumi:"defaultBackupScheduleType"`
 	// The descriptive name for this instance as it appears in UIs. Must be
 	// unique per project and between 4 and 30 characters in length.
-	//
-	// ***
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The edition selected for this instance. Different editions provide different capabilities at different price points.
 	// Possible values are: `EDITION_UNSPECIFIED`, `STANDARD`, `ENTERPRISE`, `ENTERPRISE_PLUS`.
@@ -252,8 +250,6 @@ type instanceState struct {
 	DefaultBackupScheduleType *string `pulumi:"defaultBackupScheduleType"`
 	// The descriptive name for this instance as it appears in UIs. Must be
 	// unique per project and between 4 and 30 characters in length.
-	//
-	// ***
 	DisplayName *string `pulumi:"displayName"`
 	// The edition selected for this instance. Different editions provide different capabilities at different price points.
 	// Possible values are: `EDITION_UNSPECIFIED`, `STANDARD`, `ENTERPRISE`, `ENTERPRISE_PLUS`.
@@ -307,8 +303,6 @@ type InstanceState struct {
 	DefaultBackupScheduleType pulumi.StringPtrInput
 	// The descriptive name for this instance as it appears in UIs. Must be
 	// unique per project and between 4 and 30 characters in length.
-	//
-	// ***
 	DisplayName pulumi.StringPtrInput
 	// The edition selected for this instance. Different editions provide different capabilities at different price points.
 	// Possible values are: `EDITION_UNSPECIFIED`, `STANDARD`, `ENTERPRISE`, `ENTERPRISE_PLUS`.
@@ -366,8 +360,6 @@ type instanceArgs struct {
 	DefaultBackupScheduleType *string `pulumi:"defaultBackupScheduleType"`
 	// The descriptive name for this instance as it appears in UIs. Must be
 	// unique per project and between 4 and 30 characters in length.
-	//
-	// ***
 	DisplayName string `pulumi:"displayName"`
 	// The edition selected for this instance. Different editions provide different capabilities at different price points.
 	// Possible values are: `EDITION_UNSPECIFIED`, `STANDARD`, `ENTERPRISE`, `ENTERPRISE_PLUS`.
@@ -415,8 +407,6 @@ type InstanceArgs struct {
 	DefaultBackupScheduleType pulumi.StringPtrInput
 	// The descriptive name for this instance as it appears in UIs. Must be
 	// unique per project and between 4 and 30 characters in length.
-	//
-	// ***
 	DisplayName pulumi.StringInput
 	// The edition selected for this instance. Different editions provide different capabilities at different price points.
 	// Possible values are: `EDITION_UNSPECIFIED`, `STANDARD`, `ENTERPRISE`, `ENTERPRISE_PLUS`.
@@ -558,8 +548,6 @@ func (o InstanceOutput) DefaultBackupScheduleType() pulumi.StringOutput {
 
 // The descriptive name for this instance as it appears in UIs. Must be
 // unique per project and between 4 and 30 characters in length.
-//
-// ***
 func (o InstanceOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }

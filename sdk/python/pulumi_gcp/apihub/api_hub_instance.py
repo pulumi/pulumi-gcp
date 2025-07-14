@@ -33,14 +33,19 @@ class ApiHubInstanceArgs:
         :param pulumi.Input['ApiHubInstanceConfigArgs'] config: Available configurations to provision an ApiHub Instance.
                Structure is documented below.
         :param pulumi.Input[builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[builtins.str] api_hub_instance_id: Optional. Identifier to assign to the Api Hub instance. Must be unique within scope of the parent resource. If the field
-               is not provided, system generated id will be used. This value should be 4-40 characters, and valid characters are
-               '/a-z[0-9]-_/'.
+        :param pulumi.Input[builtins.str] api_hub_instance_id: Optional. Identifier to assign to the Api Hub instance. Must be unique within
+               scope of the parent resource. If the field is not provided,
+               system generated id will be used.
+               This value should be 4-40 characters, and valid characters
+               are `/a-z[0-9]-_/`.
         :param pulumi.Input[builtins.str] description: Optional. Description of the ApiHub instance.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Instance labels to represent user-provided metadata. Refer to cloud documentation on labels for more details.
-               https://cloud.google.com/compute/docs/labeling-resources **Note**: This field is non-authoritative, and will only manage
-               the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
-               the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Instance labels to represent user-provided metadata.
+               Refer to cloud documentation on labels for more details.
+               https://cloud.google.com/compute/docs/labeling-resources
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "config", config)
         pulumi.set(__self__, "location", location)
@@ -82,9 +87,11 @@ class ApiHubInstanceArgs:
     @pulumi.getter(name="apiHubInstanceId")
     def api_hub_instance_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Optional. Identifier to assign to the Api Hub instance. Must be unique within scope of the parent resource. If the field
-        is not provided, system generated id will be used. This value should be 4-40 characters, and valid characters are
-        '/a-z[0-9]-_/'.
+        Optional. Identifier to assign to the Api Hub instance. Must be unique within
+        scope of the parent resource. If the field is not provided,
+        system generated id will be used.
+        This value should be 4-40 characters, and valid characters
+        are `/a-z[0-9]-_/`.
         """
         return pulumi.get(self, "api_hub_instance_id")
 
@@ -108,10 +115,11 @@ class ApiHubInstanceArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Optional. Instance labels to represent user-provided metadata. Refer to cloud documentation on labels for more details.
-        https://cloud.google.com/compute/docs/labeling-resources **Note**: This field is non-authoritative, and will only manage
-        the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
-        the resource.
+        Optional. Instance labels to represent user-provided metadata.
+        Refer to cloud documentation on labels for more details.
+        https://cloud.google.com/compute/docs/labeling-resources
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -122,6 +130,10 @@ class ApiHubInstanceArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -147,21 +159,26 @@ class _ApiHubInstanceState:
                  update_time: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApiHubInstance resources.
-        :param pulumi.Input[builtins.str] api_hub_instance_id: Optional. Identifier to assign to the Api Hub instance. Must be unique within scope of the parent resource. If the field
-               is not provided, system generated id will be used. This value should be 4-40 characters, and valid characters are
-               '/a-z[0-9]-_/'.
+        :param pulumi.Input[builtins.str] api_hub_instance_id: Optional. Identifier to assign to the Api Hub instance. Must be unique within
+               scope of the parent resource. If the field is not provided,
+               system generated id will be used.
+               This value should be 4-40 characters, and valid characters
+               are `/a-z[0-9]-_/`.
         :param pulumi.Input['ApiHubInstanceConfigArgs'] config: Available configurations to provision an ApiHub Instance.
                Structure is documented below.
         :param pulumi.Input[builtins.str] create_time: Output only. Creation timestamp.
         :param pulumi.Input[builtins.str] description: Optional. Description of the ApiHub instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Instance labels to represent user-provided metadata. Refer to cloud documentation on labels for more details.
-               https://cloud.google.com/compute/docs/labeling-resources **Note**: This field is non-authoritative, and will only manage
-               the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
-               the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Instance labels to represent user-provided metadata.
+               Refer to cloud documentation on labels for more details.
+               https://cloud.google.com/compute/docs/labeling-resources
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[builtins.str] name: Identifier. Format:
                `projects/{project}/locations/{location}/apiHubInstances/{apiHubInstance}`.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[builtins.str] state: Output only. The current state of the ApiHub instance.
@@ -208,9 +225,11 @@ class _ApiHubInstanceState:
     @pulumi.getter(name="apiHubInstanceId")
     def api_hub_instance_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Optional. Identifier to assign to the Api Hub instance. Must be unique within scope of the parent resource. If the field
-        is not provided, system generated id will be used. This value should be 4-40 characters, and valid characters are
-        '/a-z[0-9]-_/'.
+        Optional. Identifier to assign to the Api Hub instance. Must be unique within
+        scope of the parent resource. If the field is not provided,
+        system generated id will be used.
+        This value should be 4-40 characters, and valid characters
+        are `/a-z[0-9]-_/`.
         """
         return pulumi.get(self, "api_hub_instance_id")
 
@@ -271,10 +290,11 @@ class _ApiHubInstanceState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Optional. Instance labels to represent user-provided metadata. Refer to cloud documentation on labels for more details.
-        https://cloud.google.com/compute/docs/labeling-resources **Note**: This field is non-authoritative, and will only manage
-        the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
-        the resource.
+        Optional. Instance labels to represent user-provided metadata.
+        Refer to cloud documentation on labels for more details.
+        https://cloud.google.com/compute/docs/labeling-resources
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -310,6 +330,10 @@ class _ApiHubInstanceState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -455,17 +479,22 @@ class ApiHubInstance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] api_hub_instance_id: Optional. Identifier to assign to the Api Hub instance. Must be unique within scope of the parent resource. If the field
-               is not provided, system generated id will be used. This value should be 4-40 characters, and valid characters are
-               '/a-z[0-9]-_/'.
+        :param pulumi.Input[builtins.str] api_hub_instance_id: Optional. Identifier to assign to the Api Hub instance. Must be unique within
+               scope of the parent resource. If the field is not provided,
+               system generated id will be used.
+               This value should be 4-40 characters, and valid characters
+               are `/a-z[0-9]-_/`.
         :param pulumi.Input[Union['ApiHubInstanceConfigArgs', 'ApiHubInstanceConfigArgsDict']] config: Available configurations to provision an ApiHub Instance.
                Structure is documented below.
         :param pulumi.Input[builtins.str] description: Optional. Description of the ApiHub instance.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Instance labels to represent user-provided metadata. Refer to cloud documentation on labels for more details.
-               https://cloud.google.com/compute/docs/labeling-resources **Note**: This field is non-authoritative, and will only manage
-               the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
-               the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Instance labels to represent user-provided metadata.
+               Refer to cloud documentation on labels for more details.
+               https://cloud.google.com/compute/docs/labeling-resources
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         ...
     @overload
@@ -617,21 +646,26 @@ class ApiHubInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] api_hub_instance_id: Optional. Identifier to assign to the Api Hub instance. Must be unique within scope of the parent resource. If the field
-               is not provided, system generated id will be used. This value should be 4-40 characters, and valid characters are
-               '/a-z[0-9]-_/'.
+        :param pulumi.Input[builtins.str] api_hub_instance_id: Optional. Identifier to assign to the Api Hub instance. Must be unique within
+               scope of the parent resource. If the field is not provided,
+               system generated id will be used.
+               This value should be 4-40 characters, and valid characters
+               are `/a-z[0-9]-_/`.
         :param pulumi.Input[Union['ApiHubInstanceConfigArgs', 'ApiHubInstanceConfigArgsDict']] config: Available configurations to provision an ApiHub Instance.
                Structure is documented below.
         :param pulumi.Input[builtins.str] create_time: Output only. Creation timestamp.
         :param pulumi.Input[builtins.str] description: Optional. Description of the ApiHub instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Instance labels to represent user-provided metadata. Refer to cloud documentation on labels for more details.
-               https://cloud.google.com/compute/docs/labeling-resources **Note**: This field is non-authoritative, and will only manage
-               the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
-               the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Instance labels to represent user-provided metadata.
+               Refer to cloud documentation on labels for more details.
+               https://cloud.google.com/compute/docs/labeling-resources
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[builtins.str] name: Identifier. Format:
                `projects/{project}/locations/{location}/apiHubInstances/{apiHubInstance}`.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[builtins.str] state: Output only. The current state of the ApiHub instance.
@@ -670,9 +704,11 @@ class ApiHubInstance(pulumi.CustomResource):
     @pulumi.getter(name="apiHubInstanceId")
     def api_hub_instance_id(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Optional. Identifier to assign to the Api Hub instance. Must be unique within scope of the parent resource. If the field
-        is not provided, system generated id will be used. This value should be 4-40 characters, and valid characters are
-        '/a-z[0-9]-_/'.
+        Optional. Identifier to assign to the Api Hub instance. Must be unique within
+        scope of the parent resource. If the field is not provided,
+        system generated id will be used.
+        This value should be 4-40 characters, and valid characters
+        are `/a-z[0-9]-_/`.
         """
         return pulumi.get(self, "api_hub_instance_id")
 
@@ -713,10 +749,11 @@ class ApiHubInstance(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
         """
-        Optional. Instance labels to represent user-provided metadata. Refer to cloud documentation on labels for more details.
-        https://cloud.google.com/compute/docs/labeling-resources **Note**: This field is non-authoritative, and will only manage
-        the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
-        the resource.
+        Optional. Instance labels to represent user-provided metadata.
+        Refer to cloud documentation on labels for more details.
+        https://cloud.google.com/compute/docs/labeling-resources
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -740,6 +777,10 @@ class ApiHubInstance(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property

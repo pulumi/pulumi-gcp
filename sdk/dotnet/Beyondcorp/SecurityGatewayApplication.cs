@@ -153,7 +153,8 @@ namespace Pulumi.Gcp.Beyondcorp
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. An arbitrary user-provided name for the Application resource. Cannot exceed 64 characters.
+        /// Optional. An arbitrary user-provided name for the Application resource.
+        /// Cannot exceed 64 characters.
         /// </summary>
         [Output("displayName")]
         public Output<string?> DisplayName { get; private set; } = null!;
@@ -181,6 +182,10 @@ namespace Pulumi.Gcp.Beyondcorp
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -198,6 +203,7 @@ namespace Pulumi.Gcp.Beyondcorp
 
         /// <summary>
         /// Optional. List of which upstream resource(s) to forward traffic to.
+        /// Structure is documented below.
         /// </summary>
         [Output("upstreams")]
         public Output<ImmutableArray<Outputs.SecurityGatewayApplicationUpstream>> Upstreams { get; private set; } = null!;
@@ -258,7 +264,8 @@ namespace Pulumi.Gcp.Beyondcorp
         public Input<string> ApplicationId { get; set; } = null!;
 
         /// <summary>
-        /// Optional. An arbitrary user-provided name for the Application resource. Cannot exceed 64 characters.
+        /// Optional. An arbitrary user-provided name for the Application resource.
+        /// Cannot exceed 64 characters.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
@@ -286,6 +293,10 @@ namespace Pulumi.Gcp.Beyondcorp
             set => _endpointMatchers = value;
         }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -300,6 +311,7 @@ namespace Pulumi.Gcp.Beyondcorp
 
         /// <summary>
         /// Optional. List of which upstream resource(s) to forward traffic to.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.SecurityGatewayApplicationUpstreamArgs> Upstreams
         {
@@ -331,7 +343,8 @@ namespace Pulumi.Gcp.Beyondcorp
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Optional. An arbitrary user-provided name for the Application resource. Cannot exceed 64 characters.
+        /// Optional. An arbitrary user-provided name for the Application resource.
+        /// Cannot exceed 64 characters.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
@@ -365,6 +378,10 @@ namespace Pulumi.Gcp.Beyondcorp
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -385,6 +402,7 @@ namespace Pulumi.Gcp.Beyondcorp
 
         /// <summary>
         /// Optional. List of which upstream resource(s) to forward traffic to.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.SecurityGatewayApplicationUpstreamGetArgs> Upstreams
         {

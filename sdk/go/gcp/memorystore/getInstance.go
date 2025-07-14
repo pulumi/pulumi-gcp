@@ -84,6 +84,7 @@ type LookupInstanceResult struct {
 	MaintenancePolicies     []GetInstanceMaintenancePolicy      `pulumi:"maintenancePolicies"`
 	MaintenanceSchedules    []GetInstanceMaintenanceSchedule    `pulumi:"maintenanceSchedules"`
 	ManagedBackupSources    []GetInstanceManagedBackupSource    `pulumi:"managedBackupSources"`
+	ManagedServerCas        []GetInstanceManagedServerCa        `pulumi:"managedServerCas"`
 	Mode                    string                              `pulumi:"mode"`
 	Name                    string                              `pulumi:"name"`
 	NodeConfigs             []GetInstanceNodeConfig             `pulumi:"nodeConfigs"`
@@ -235,6 +236,10 @@ func (o LookupInstanceResultOutput) MaintenanceSchedules() GetInstanceMaintenanc
 
 func (o LookupInstanceResultOutput) ManagedBackupSources() GetInstanceManagedBackupSourceArrayOutput {
 	return o.ApplyT(func(v LookupInstanceResult) []GetInstanceManagedBackupSource { return v.ManagedBackupSources }).(GetInstanceManagedBackupSourceArrayOutput)
+}
+
+func (o LookupInstanceResultOutput) ManagedServerCas() GetInstanceManagedServerCaArrayOutput {
+	return o.ApplyT(func(v LookupInstanceResult) []GetInstanceManagedServerCa { return v.ManagedServerCas }).(GetInstanceManagedServerCaArrayOutput)
 }
 
 func (o LookupInstanceResultOutput) Mode() pulumi.StringOutput {

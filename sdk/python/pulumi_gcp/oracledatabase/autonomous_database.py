@@ -49,10 +49,13 @@ class AutonomousDatabaseArgs:
         :param pulumi.Input['AutonomousDatabasePropertiesArgs'] properties: The properties of an Autonomous Database.
                Structure is documented below.
         :param pulumi.Input[builtins.str] admin_password: The password for the default ADMIN user.
-        :param pulumi.Input[builtins.str] display_name: The display name for the Autonomous Database. The name does not have to be unique within your project.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: The labels or tags associated with the Autonomous Database. **Note**: This field is non-authoritative, and will only
-               manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-               present on the resource.
+        :param pulumi.Input[builtins.str] display_name: The display name for the Autonomous Database. The name does not have to
+               be unique within your project.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: The labels or tags associated with the Autonomous Database.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "autonomous_database_id", autonomous_database_id)
         pulumi.set(__self__, "cidr", cidr)
@@ -175,7 +178,8 @@ class AutonomousDatabaseArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The display name for the Autonomous Database. The name does not have to be unique within your project.
+        The display name for the Autonomous Database. The name does not have to
+        be unique within your project.
         """
         return pulumi.get(self, "display_name")
 
@@ -187,9 +191,9 @@ class AutonomousDatabaseArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        The labels or tags associated with the Autonomous Database. **Note**: This field is non-authoritative, and will only
-        manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-        present on the resource.
+        The labels or tags associated with the Autonomous Database.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -200,6 +204,10 @@ class AutonomousDatabaseArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -238,18 +246,21 @@ class _AutonomousDatabaseState:
         :param pulumi.Input[builtins.str] database: The name of the Autonomous Database. The database name must be unique in
                the project. The name must begin with a letter and can
                contain a maximum of 30 alphanumeric characters.
-        :param pulumi.Input[builtins.str] display_name: The display name for the Autonomous Database. The name does not have to be unique within your project.
+        :param pulumi.Input[builtins.str] display_name: The display name for the Autonomous Database. The name does not have to
+               be unique within your project.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[builtins.str] entitlement_id: The ID of the subscription entitlement associated with the Autonomous
                Database.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: The labels or tags associated with the Autonomous Database. **Note**: This field is non-authoritative, and will only
-               manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-               present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: The labels or tags associated with the Autonomous Database.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/AutonomousDatabaseBackup`.
         :param pulumi.Input[builtins.str] name: Identifier. The name of the Autonomous Database resource in the following format:
                projects/{project}/locations/{region}/autonomousDatabases/{autonomous_database}
         :param pulumi.Input[builtins.str] network: The name of the VPC network used by the Autonomous Database.
                Format: projects/{project}/global/networks/{network}
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input['AutonomousDatabasePropertiesArgs'] properties: The properties of an Autonomous Database.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -366,7 +377,8 @@ class _AutonomousDatabaseState:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The display name for the Autonomous Database. The name does not have to be unique within your project.
+        The display name for the Autonomous Database. The name does not have to
+        be unique within your project.
         """
         return pulumi.get(self, "display_name")
 
@@ -403,9 +415,9 @@ class _AutonomousDatabaseState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        The labels or tags associated with the Autonomous Database. **Note**: This field is non-authoritative, and will only
-        manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-        present on the resource.
+        The labels or tags associated with the Autonomous Database.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -454,6 +466,10 @@ class _AutonomousDatabaseState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -620,13 +636,16 @@ class AutonomousDatabase(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] database: The name of the Autonomous Database. The database name must be unique in
                the project. The name must begin with a letter and can
                contain a maximum of 30 alphanumeric characters.
-        :param pulumi.Input[builtins.str] display_name: The display name for the Autonomous Database. The name does not have to be unique within your project.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: The labels or tags associated with the Autonomous Database. **Note**: This field is non-authoritative, and will only
-               manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-               present on the resource.
+        :param pulumi.Input[builtins.str] display_name: The display name for the Autonomous Database. The name does not have to
+               be unique within your project.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: The labels or tags associated with the Autonomous Database.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/AutonomousDatabaseBackup`.
         :param pulumi.Input[builtins.str] network: The name of the VPC network used by the Autonomous Database.
                Format: projects/{project}/global/networks/{network}
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Union['AutonomousDatabasePropertiesArgs', 'AutonomousDatabasePropertiesArgsDict']] properties: The properties of an Autonomous Database.
                Structure is documented below.
         """
@@ -848,18 +867,21 @@ class AutonomousDatabase(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] database: The name of the Autonomous Database. The database name must be unique in
                the project. The name must begin with a letter and can
                contain a maximum of 30 alphanumeric characters.
-        :param pulumi.Input[builtins.str] display_name: The display name for the Autonomous Database. The name does not have to be unique within your project.
+        :param pulumi.Input[builtins.str] display_name: The display name for the Autonomous Database. The name does not have to
+               be unique within your project.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[builtins.str] entitlement_id: The ID of the subscription entitlement associated with the Autonomous
                Database.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: The labels or tags associated with the Autonomous Database. **Note**: This field is non-authoritative, and will only
-               manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-               present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: The labels or tags associated with the Autonomous Database.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/AutonomousDatabaseBackup`.
         :param pulumi.Input[builtins.str] name: Identifier. The name of the Autonomous Database resource in the following format:
                projects/{project}/locations/{region}/autonomousDatabases/{autonomous_database}
         :param pulumi.Input[builtins.str] network: The name of the VPC network used by the Autonomous Database.
                Format: projects/{project}/global/networks/{network}
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Union['AutonomousDatabasePropertiesArgs', 'AutonomousDatabasePropertiesArgsDict']] properties: The properties of an Autonomous Database.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -941,7 +963,8 @@ class AutonomousDatabase(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[builtins.str]:
         """
-        The display name for the Autonomous Database. The name does not have to be unique within your project.
+        The display name for the Autonomous Database. The name does not have to
+        be unique within your project.
         """
         return pulumi.get(self, "display_name")
 
@@ -966,9 +989,9 @@ class AutonomousDatabase(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
         """
-        The labels or tags associated with the Autonomous Database. **Note**: This field is non-authoritative, and will only
-        manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-        present on the resource.
+        The labels or tags associated with the Autonomous Database.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1001,6 +1024,10 @@ class AutonomousDatabase(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property

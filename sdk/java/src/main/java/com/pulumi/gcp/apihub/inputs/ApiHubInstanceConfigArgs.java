@@ -86,16 +86,12 @@ public final class ApiHubInstanceConfigArgs extends com.pulumi.resources.Resourc
     /**
      * Optional. The name of the Vertex AI location where the data store is stored.
      * 
-     * ***
-     * 
      */
     @Import(name="vertexLocation")
     private @Nullable Output<String> vertexLocation;
 
     /**
      * @return Optional. The name of the Vertex AI location where the data store is stored.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> vertexLocation() {
@@ -217,8 +213,6 @@ public final class ApiHubInstanceConfigArgs extends com.pulumi.resources.Resourc
         /**
          * @param vertexLocation Optional. The name of the Vertex AI location where the data store is stored.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -229,8 +223,6 @@ public final class ApiHubInstanceConfigArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param vertexLocation Optional. The name of the Vertex AI location where the data store is stored.
-         * 
-         * ***
          * 
          * @return builder
          * 

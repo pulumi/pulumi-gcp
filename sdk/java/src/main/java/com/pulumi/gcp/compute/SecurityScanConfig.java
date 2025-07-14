@@ -232,16 +232,12 @@ public class SecurityScanConfig extends com.pulumi.resources.CustomResource {
     /**
      * The starting URLs from which the scanner finds site pages.
      * 
-     * ***
-     * 
      */
     @Export(name="startingUrls", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> startingUrls;
 
     /**
      * @return The starting URLs from which the scanner finds site pages.
-     * 
-     * ***
      * 
      */
     public Output<List<String>> startingUrls() {

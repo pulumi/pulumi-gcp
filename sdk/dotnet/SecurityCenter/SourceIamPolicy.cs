@@ -70,9 +70,6 @@ namespace Pulumi.Gcp.SecurityCenter
         /// <summary>
         /// The organization whose Cloud Security Command Center the Source
         /// lives in.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("organization")]
         public Output<string> Organization { get; private set; } = null!;
@@ -132,9 +129,6 @@ namespace Pulumi.Gcp.SecurityCenter
         /// <summary>
         /// The organization whose Cloud Security Command Center the Source
         /// lives in.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("organization", required: true)]
         public Input<string> Organization { get; set; } = null!;
@@ -159,9 +153,6 @@ namespace Pulumi.Gcp.SecurityCenter
         /// <summary>
         /// The organization whose Cloud Security Command Center the Source
         /// lives in.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("organization")]
         public Input<string>? Organization { get; set; }

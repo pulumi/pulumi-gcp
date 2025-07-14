@@ -146,9 +146,6 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// The name of the gatewat security policy this rule belongs to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("gatewaySecurityPolicy")]
         public Output<string> GatewaySecurityPolicy { get; private set; } = null!;
@@ -279,9 +276,6 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// The name of the gatewat security policy this rule belongs to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("gatewaySecurityPolicy", required: true)]
         public Input<string> GatewaySecurityPolicy { get; set; } = null!;
@@ -368,9 +362,6 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// The name of the gatewat security policy this rule belongs to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("gatewaySecurityPolicy")]
         public Input<string>? GatewaySecurityPolicy { get; set; }

@@ -14,16 +14,12 @@ public final class WatchlistEntityPopulationMechanism {
     /**
      * @return Entities are added manually.
      * 
-     * ***
-     * 
      */
     private @Nullable WatchlistEntityPopulationMechanismManual manual;
 
     private WatchlistEntityPopulationMechanism() {}
     /**
      * @return Entities are added manually.
-     * 
-     * ***
      * 
      */
     public Optional<WatchlistEntityPopulationMechanismManual> manual() {

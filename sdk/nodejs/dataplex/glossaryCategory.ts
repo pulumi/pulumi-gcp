@@ -134,9 +134,6 @@ export class GlossaryCategory extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location where the glossary category should reside.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -260,9 +257,6 @@ export interface GlossaryCategoryState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location where the glossary category should reside.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -322,9 +316,6 @@ export interface GlossaryCategoryArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location where the glossary category should reside.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

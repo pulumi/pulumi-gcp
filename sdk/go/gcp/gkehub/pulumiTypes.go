@@ -10946,8 +10946,6 @@ func (o MembershipIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 type MembershipRbacRoleBindingRole struct {
 	// PredefinedRole is an ENUM representation of the default Kubernetes Roles
 	// Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`, `ANTHOS_SUPPORT`.
-	//
-	// ***
 	PredefinedRole string `pulumi:"predefinedRole"`
 }
 
@@ -10965,8 +10963,6 @@ type MembershipRbacRoleBindingRoleInput interface {
 type MembershipRbacRoleBindingRoleArgs struct {
 	// PredefinedRole is an ENUM representation of the default Kubernetes Roles
 	// Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`, `ANTHOS_SUPPORT`.
-	//
-	// ***
 	PredefinedRole pulumi.StringInput `pulumi:"predefinedRole"`
 }
 
@@ -11049,8 +11045,6 @@ func (o MembershipRbacRoleBindingRoleOutput) ToMembershipRbacRoleBindingRolePtrO
 
 // PredefinedRole is an ENUM representation of the default Kubernetes Roles
 // Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`, `ANTHOS_SUPPORT`.
-//
-// ***
 func (o MembershipRbacRoleBindingRoleOutput) PredefinedRole() pulumi.StringOutput {
 	return o.ApplyT(func(v MembershipRbacRoleBindingRole) string { return v.PredefinedRole }).(pulumi.StringOutput)
 }
@@ -11081,8 +11075,6 @@ func (o MembershipRbacRoleBindingRolePtrOutput) Elem() MembershipRbacRoleBinding
 
 // PredefinedRole is an ENUM representation of the default Kubernetes Roles
 // Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`, `ANTHOS_SUPPORT`.
-//
-// ***
 func (o MembershipRbacRoleBindingRolePtrOutput) PredefinedRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MembershipRbacRoleBindingRole) *string {
 		if v == nil {
@@ -11620,8 +11612,6 @@ func (o ScopeIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 
 type ScopeRbacRoleBindingRole struct {
 	// CustomRole is the custom Kubernetes ClusterRole to be used. The custom role format must be allowlisted in the rbacrolebindingactuation feature and RFC 1123 compliant.
-	//
-	// ***
 	CustomRole *string `pulumi:"customRole"`
 	// PredefinedRole is an ENUM representation of the default Kubernetes Roles
 	// Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
@@ -11641,8 +11631,6 @@ type ScopeRbacRoleBindingRoleInput interface {
 
 type ScopeRbacRoleBindingRoleArgs struct {
 	// CustomRole is the custom Kubernetes ClusterRole to be used. The custom role format must be allowlisted in the rbacrolebindingactuation feature and RFC 1123 compliant.
-	//
-	// ***
 	CustomRole pulumi.StringPtrInput `pulumi:"customRole"`
 	// PredefinedRole is an ENUM representation of the default Kubernetes Roles
 	// Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
@@ -11727,8 +11715,6 @@ func (o ScopeRbacRoleBindingRoleOutput) ToScopeRbacRoleBindingRolePtrOutputWithC
 }
 
 // CustomRole is the custom Kubernetes ClusterRole to be used. The custom role format must be allowlisted in the rbacrolebindingactuation feature and RFC 1123 compliant.
-//
-// ***
 func (o ScopeRbacRoleBindingRoleOutput) CustomRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScopeRbacRoleBindingRole) *string { return v.CustomRole }).(pulumi.StringPtrOutput)
 }
@@ -11764,8 +11750,6 @@ func (o ScopeRbacRoleBindingRolePtrOutput) Elem() ScopeRbacRoleBindingRoleOutput
 }
 
 // CustomRole is the custom Kubernetes ClusterRole to be used. The custom role format must be allowlisted in the rbacrolebindingactuation feature and RFC 1123 compliant.
-//
-// ***
 func (o ScopeRbacRoleBindingRolePtrOutput) CustomRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScopeRbacRoleBindingRole) *string {
 		if v == nil {

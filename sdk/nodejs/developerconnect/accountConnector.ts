@@ -174,9 +174,6 @@ export class AccountConnector extends pulumi.CustomResource {
      * component of the AccountConnector's resource name. Its format should adhere
      * to https://google.aip.dev/122#resource-id-segments Names must be unique
      * per-project per-location.
-     *
-     *
-     * - - -
      */
     public readonly accountConnectorId!: pulumi.Output<string>;
     /**
@@ -297,9 +294,6 @@ export interface AccountConnectorState {
      * component of the AccountConnector's resource name. Its format should adhere
      * to https://google.aip.dev/122#resource-id-segments Names must be unique
      * per-project per-location.
-     *
-     *
-     * - - -
      */
     accountConnectorId?: pulumi.Input<string>;
     /**
@@ -366,9 +360,6 @@ export interface AccountConnectorArgs {
      * component of the AccountConnector's resource name. Its format should adhere
      * to https://google.aip.dev/122#resource-id-segments Names must be unique
      * per-project per-location.
-     *
-     *
-     * - - -
      */
     accountConnectorId: pulumi.Input<string>;
     /**

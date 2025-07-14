@@ -139,8 +139,6 @@ public final class SessionTemplateState extends com.pulumi.resources.ResourceArg
      * The resource name of the session template in the following format:
      * projects/{project}/locations/{location}/sessionTemplates/{template_id}
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
@@ -148,8 +146,6 @@ public final class SessionTemplateState extends com.pulumi.resources.ResourceArg
     /**
      * @return The resource name of the session template in the following format:
      * projects/{project}/locations/{location}/sessionTemplates/{template_id}
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -450,8 +446,6 @@ public final class SessionTemplateState extends com.pulumi.resources.ResourceArg
          * @param name The resource name of the session template in the following format:
          * projects/{project}/locations/{location}/sessionTemplates/{template_id}
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -463,8 +457,6 @@ public final class SessionTemplateState extends com.pulumi.resources.ResourceArg
         /**
          * @param name The resource name of the session template in the following format:
          * projects/{project}/locations/{location}/sessionTemplates/{template_id}
-         * 
-         * ***
          * 
          * @return builder
          * 

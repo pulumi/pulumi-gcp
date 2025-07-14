@@ -14,16 +14,12 @@ public final class WorkspaceSettings {
     /**
      * @return Project IDs for data projects hosted in a workspace.
      * 
-     * ***
-     * 
      */
     private List<String> dataProjectIds;
 
     private WorkspaceSettings() {}
     /**
      * @return Project IDs for data projects hosted in a workspace.
-     * 
-     * ***
      * 
      */
     public List<String> dataProjectIds() {

@@ -187,16 +187,12 @@ public class BackupPlanAssociation extends com.pulumi.resources.CustomResource {
     /**
      * The id of backupplan association
      * 
-     * ***
-     * 
      */
     @Export(name="backupPlanAssociationId", refs={String.class}, tree="[0]")
     private Output<String> backupPlanAssociationId;
 
     /**
      * @return The id of backupplan association
-     * 
-     * ***
      * 
      */
     public Output<String> backupPlanAssociationId() {

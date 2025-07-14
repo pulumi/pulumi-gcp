@@ -402,9 +402,10 @@ namespace Pulumi.Gcp.DataCatalog
     public partial class Tag : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an individual
-        /// column based on that schema. For attaching a tag to a nested column, use '.' to separate the column names. Example:
-        /// 'outer_column.inner_column'
+        /// Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an
+        /// individual column based on that schema.
+        /// For attaching a tag to a nested column, use `.` to separate the column names. Example:
+        /// `outer_column.inner_column`
         /// </summary>
         [Output("column")]
         public Output<string?> Column { get; private set; } = null!;
@@ -427,8 +428,8 @@ namespace Pulumi.Gcp.DataCatalog
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group,
-        /// the tag will be attached to all entries in that group.
+        /// The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
+        /// all entries in that group.
         /// </summary>
         [Output("parent")]
         public Output<string?> Parent { get; private set; } = null!;
@@ -494,9 +495,10 @@ namespace Pulumi.Gcp.DataCatalog
     public sealed class TagArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an individual
-        /// column based on that schema. For attaching a tag to a nested column, use '.' to separate the column names. Example:
-        /// 'outer_column.inner_column'
+        /// Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an
+        /// individual column based on that schema.
+        /// For attaching a tag to a nested column, use `.` to separate the column names. Example:
+        /// `outer_column.inner_column`
         /// </summary>
         [Input("column")]
         public Input<string>? Column { get; set; }
@@ -516,8 +518,8 @@ namespace Pulumi.Gcp.DataCatalog
         }
 
         /// <summary>
-        /// The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group,
-        /// the tag will be attached to all entries in that group.
+        /// The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
+        /// all entries in that group.
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }
@@ -539,9 +541,10 @@ namespace Pulumi.Gcp.DataCatalog
     public sealed class TagState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an individual
-        /// column based on that schema. For attaching a tag to a nested column, use '.' to separate the column names. Example:
-        /// 'outer_column.inner_column'
+        /// Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an
+        /// individual column based on that schema.
+        /// For attaching a tag to a nested column, use `.` to separate the column names. Example:
+        /// `outer_column.inner_column`
         /// </summary>
         [Input("column")]
         public Input<string>? Column { get; set; }
@@ -570,8 +573,8 @@ namespace Pulumi.Gcp.DataCatalog
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group,
-        /// the tag will be attached to all entries in that group.
+        /// The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
+        /// all entries in that group.
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }

@@ -118,9 +118,6 @@ export class Schema extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * The unique id of the schema.
-     *
-     *
-     * - - -
      */
     public readonly schemaId!: pulumi.Output<string>;
 
@@ -197,9 +194,6 @@ export interface SchemaState {
     project?: pulumi.Input<string>;
     /**
      * The unique id of the schema.
-     *
-     *
-     * - - -
      */
     schemaId?: pulumi.Input<string>;
 }
@@ -228,9 +222,6 @@ export interface SchemaArgs {
     project?: pulumi.Input<string>;
     /**
      * The unique id of the schema.
-     *
-     *
-     * - - -
      */
     schemaId: pulumi.Input<string>;
 }

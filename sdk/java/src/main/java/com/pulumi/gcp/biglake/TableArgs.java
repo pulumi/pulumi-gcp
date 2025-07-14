@@ -52,8 +52,6 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
      * Output only. The name of the Table. Format:
      * projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}/databases/{databaseId}/tables/{tableId}
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
@@ -61,8 +59,6 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Output only. The name of the Table. Format:
      * projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}/databases/{databaseId}/tables/{tableId}
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -161,8 +157,6 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
          * @param name Output only. The name of the Table. Format:
          * projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}/databases/{databaseId}/tables/{tableId}
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -174,8 +168,6 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name Output only. The name of the Table. Format:
          * projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}/databases/{databaseId}/tables/{tableId}
-         * 
-         * ***
          * 
          * @return builder
          * 

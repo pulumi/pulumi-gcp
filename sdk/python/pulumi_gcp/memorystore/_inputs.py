@@ -64,6 +64,10 @@ __all__ = [
     'InstanceMaintenanceScheduleArgsDict',
     'InstanceManagedBackupSourceArgs',
     'InstanceManagedBackupSourceArgsDict',
+    'InstanceManagedServerCaArgs',
+    'InstanceManagedServerCaArgsDict',
+    'InstanceManagedServerCaCaCertArgs',
+    'InstanceManagedServerCaCaCertArgsDict',
     'InstanceNodeConfigArgs',
     'InstanceNodeConfigArgsDict',
     'InstancePersistenceConfigArgs',
@@ -1872,6 +1876,79 @@ class InstanceManagedBackupSourceArgs:
     @backup.setter
     def backup(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "backup", value)
+
+
+if not MYPY:
+    class InstanceManagedServerCaArgsDict(TypedDict):
+        ca_certs: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceManagedServerCaCaCertArgsDict']]]]
+        """
+        (Output)
+        The PEM encoded CA certificate chains for managed server authentication
+        Structure is documented below.
+        """
+elif False:
+    InstanceManagedServerCaArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceManagedServerCaArgs:
+    def __init__(__self__, *,
+                 ca_certs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceManagedServerCaCaCertArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceManagedServerCaCaCertArgs']]] ca_certs: (Output)
+               The PEM encoded CA certificate chains for managed server authentication
+               Structure is documented below.
+        """
+        if ca_certs is not None:
+            pulumi.set(__self__, "ca_certs", ca_certs)
+
+    @property
+    @pulumi.getter(name="caCerts")
+    def ca_certs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceManagedServerCaCaCertArgs']]]]:
+        """
+        (Output)
+        The PEM encoded CA certificate chains for managed server authentication
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ca_certs")
+
+    @ca_certs.setter
+    def ca_certs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceManagedServerCaCaCertArgs']]]]):
+        pulumi.set(self, "ca_certs", value)
+
+
+if not MYPY:
+    class InstanceManagedServerCaCaCertArgsDict(TypedDict):
+        certificates: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        (Output)
+        The certificates that form the CA chain, from leaf to root order
+        """
+elif False:
+    InstanceManagedServerCaCaCertArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceManagedServerCaCaCertArgs:
+    def __init__(__self__, *,
+                 certificates: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] certificates: (Output)
+               The certificates that form the CA chain, from leaf to root order
+        """
+        if certificates is not None:
+            pulumi.set(__self__, "certificates", certificates)
+
+    @property
+    @pulumi.getter
+    def certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        (Output)
+        The certificates that form the CA chain, from leaf to root order
+        """
+        return pulumi.get(self, "certificates")
+
+    @certificates.setter
+    def certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "certificates", value)
 
 
 if not MYPY:

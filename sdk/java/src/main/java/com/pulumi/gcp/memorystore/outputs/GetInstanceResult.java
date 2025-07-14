@@ -15,6 +15,7 @@ import com.pulumi.gcp.memorystore.outputs.GetInstanceGcsSource;
 import com.pulumi.gcp.memorystore.outputs.GetInstanceMaintenancePolicy;
 import com.pulumi.gcp.memorystore.outputs.GetInstanceMaintenanceSchedule;
 import com.pulumi.gcp.memorystore.outputs.GetInstanceManagedBackupSource;
+import com.pulumi.gcp.memorystore.outputs.GetInstanceManagedServerCa;
 import com.pulumi.gcp.memorystore.outputs.GetInstanceNodeConfig;
 import com.pulumi.gcp.memorystore.outputs.GetInstancePersistenceConfig;
 import com.pulumi.gcp.memorystore.outputs.GetInstancePscAttachmentDetail;
@@ -58,6 +59,7 @@ public final class GetInstanceResult {
     private List<GetInstanceMaintenancePolicy> maintenancePolicies;
     private List<GetInstanceMaintenanceSchedule> maintenanceSchedules;
     private List<GetInstanceManagedBackupSource> managedBackupSources;
+    private List<GetInstanceManagedServerCa> managedServerCas;
     private String mode;
     private String name;
     private List<GetInstanceNodeConfig> nodeConfigs;
@@ -147,6 +149,9 @@ public final class GetInstanceResult {
     public List<GetInstanceManagedBackupSource> managedBackupSources() {
         return this.managedBackupSources;
     }
+    public List<GetInstanceManagedServerCa> managedServerCas() {
+        return this.managedServerCas;
+    }
     public String mode() {
         return this.mode;
     }
@@ -230,6 +235,7 @@ public final class GetInstanceResult {
         private List<GetInstanceMaintenancePolicy> maintenancePolicies;
         private List<GetInstanceMaintenanceSchedule> maintenanceSchedules;
         private List<GetInstanceManagedBackupSource> managedBackupSources;
+        private List<GetInstanceManagedServerCa> managedServerCas;
         private String mode;
         private String name;
         private List<GetInstanceNodeConfig> nodeConfigs;
@@ -272,6 +278,7 @@ public final class GetInstanceResult {
     	      this.maintenancePolicies = defaults.maintenancePolicies;
     	      this.maintenanceSchedules = defaults.maintenanceSchedules;
     	      this.managedBackupSources = defaults.managedBackupSources;
+    	      this.managedServerCas = defaults.managedServerCas;
     	      this.mode = defaults.mode;
     	      this.name = defaults.name;
     	      this.nodeConfigs = defaults.nodeConfigs;
@@ -496,6 +503,17 @@ public final class GetInstanceResult {
             return managedBackupSources(List.of(managedBackupSources));
         }
         @CustomType.Setter
+        public Builder managedServerCas(List<GetInstanceManagedServerCa> managedServerCas) {
+            if (managedServerCas == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "managedServerCas");
+            }
+            this.managedServerCas = managedServerCas;
+            return this;
+        }
+        public Builder managedServerCas(GetInstanceManagedServerCa... managedServerCas) {
+            return managedServerCas(List.of(managedServerCas));
+        }
+        @CustomType.Setter
         public Builder mode(String mode) {
             if (mode == null) {
               throw new MissingRequiredPropertyException("GetInstanceResult", "mode");
@@ -671,6 +689,7 @@ public final class GetInstanceResult {
             _resultValue.maintenancePolicies = maintenancePolicies;
             _resultValue.maintenanceSchedules = maintenanceSchedules;
             _resultValue.managedBackupSources = managedBackupSources;
+            _resultValue.managedServerCas = managedServerCas;
             _resultValue.mode = mode;
             _resultValue.name = name;
             _resultValue.nodeConfigs = nodeConfigs;

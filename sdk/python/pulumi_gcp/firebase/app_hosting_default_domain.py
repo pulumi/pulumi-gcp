@@ -29,9 +29,6 @@ class AppHostingDefaultDomainArgs:
         The set of arguments for constructing a AppHostingDefaultDomain resource.
         :param pulumi.Input[builtins.str] backend: The ID of the Backend that this Domain is associated with
         :param pulumi.Input[builtins.str] domain_id: Id of the domain. For default domain, it should be {{backend}}--{{project_id}}.{{location}}.hosted.app
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: The location of the Backend that this Domain is associated with
         :param pulumi.Input[builtins.bool] disabled: Whether the domain is disabled. Defaults to false.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -62,9 +59,6 @@ class AppHostingDefaultDomainArgs:
     def domain_id(self) -> pulumi.Input[builtins.str]:
         """
         Id of the domain. For default domain, it should be {{backend}}--{{project_id}}.{{location}}.hosted.app
-
-
-        - - -
         """
         return pulumi.get(self, "domain_id")
 
@@ -129,9 +123,6 @@ class _AppHostingDefaultDomainState:
         :param pulumi.Input[builtins.str] create_time: Time at which the domain was created.
         :param pulumi.Input[builtins.bool] disabled: Whether the domain is disabled. Defaults to false.
         :param pulumi.Input[builtins.str] domain_id: Id of the domain. For default domain, it should be {{backend}}--{{project_id}}.{{location}}.hosted.app
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] etag: Server-computed checksum based on other values; may be sent
                on update or delete to ensure operation is done on expected resource.
         :param pulumi.Input[builtins.str] location: The location of the Backend that this Domain is associated with
@@ -204,9 +195,6 @@ class _AppHostingDefaultDomainState:
     def domain_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Id of the domain. For default domain, it should be {{backend}}--{{project_id}}.{{location}}.hosted.app
-
-
-        - - -
         """
         return pulumi.get(self, "domain_id")
 
@@ -411,9 +399,6 @@ class AppHostingDefaultDomain(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] backend: The ID of the Backend that this Domain is associated with
         :param pulumi.Input[builtins.bool] disabled: Whether the domain is disabled. Defaults to false.
         :param pulumi.Input[builtins.str] domain_id: Id of the domain. For default domain, it should be {{backend}}--{{project_id}}.{{location}}.hosted.app
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: The location of the Backend that this Domain is associated with
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -604,9 +589,6 @@ class AppHostingDefaultDomain(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] create_time: Time at which the domain was created.
         :param pulumi.Input[builtins.bool] disabled: Whether the domain is disabled. Defaults to false.
         :param pulumi.Input[builtins.str] domain_id: Id of the domain. For default domain, it should be {{backend}}--{{project_id}}.{{location}}.hosted.app
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] etag: Server-computed checksum based on other values; may be sent
                on update or delete to ensure operation is done on expected resource.
         :param pulumi.Input[builtins.str] location: The location of the Backend that this Domain is associated with
@@ -662,9 +644,6 @@ class AppHostingDefaultDomain(pulumi.CustomResource):
     def domain_id(self) -> pulumi.Output[builtins.str]:
         """
         Id of the domain. For default domain, it should be {{backend}}--{{project_id}}.{{location}}.hosted.app
-
-
-        - - -
         """
         return pulumi.get(self, "domain_id")
 

@@ -247,8 +247,6 @@ type BackendAuthenticationConfig struct {
 	// The default value is `global`.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Name of the BackendAuthenticationConfig resource.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -320,8 +318,6 @@ type backendAuthenticationConfigState struct {
 	// The default value is `global`.
 	Location *string `pulumi:"location"`
 	// Name of the BackendAuthenticationConfig resource.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -359,8 +355,6 @@ type BackendAuthenticationConfigState struct {
 	// The default value is `global`.
 	Location pulumi.StringPtrInput
 	// Name of the BackendAuthenticationConfig resource.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -398,8 +392,6 @@ type backendAuthenticationConfigArgs struct {
 	// The default value is `global`.
 	Location *string `pulumi:"location"`
 	// Name of the BackendAuthenticationConfig resource.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -429,8 +421,6 @@ type BackendAuthenticationConfigArgs struct {
 	// The default value is `global`.
 	Location pulumi.StringPtrInput
 	// Name of the BackendAuthenticationConfig resource.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -567,8 +557,6 @@ func (o BackendAuthenticationConfigOutput) Location() pulumi.StringPtrOutput {
 }
 
 // Name of the BackendAuthenticationConfig resource.
-//
-// ***
 func (o BackendAuthenticationConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackendAuthenticationConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

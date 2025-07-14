@@ -80,6 +80,7 @@ export interface GetNetworkPeeringResult {
     readonly stackType: string;
     readonly state: string;
     readonly stateDetails: string;
+    readonly updateStrategy: string;
 }
 /**
  * Get information of a specified compute network peering. For more information see

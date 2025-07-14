@@ -188,8 +188,6 @@ type Rule struct {
 	// Populated in BASIC view and FULL view.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The unique identifier for the Chronicle instance, which is the same as the customer ID.
-	//
-	// ***
 	Instance pulumi.StringOutput `pulumi:"instance"`
 	// The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -322,8 +320,6 @@ type ruleState struct {
 	// Populated in BASIC view and FULL view.
 	Etag *string `pulumi:"etag"`
 	// The unique identifier for the Chronicle instance, which is the same as the customer ID.
-	//
-	// ***
 	Instance *string `pulumi:"instance"`
 	// The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
 	Location *string `pulumi:"location"`
@@ -421,8 +417,6 @@ type RuleState struct {
 	// Populated in BASIC view and FULL view.
 	Etag pulumi.StringPtrInput
 	// The unique identifier for the Chronicle instance, which is the same as the customer ID.
-	//
-	// ***
 	Instance pulumi.StringPtrInput
 	// The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
 	Location pulumi.StringPtrInput
@@ -498,8 +492,6 @@ type ruleArgs struct {
 	// Populated in BASIC view and FULL view.
 	Etag *string `pulumi:"etag"`
 	// The unique identifier for the Chronicle instance, which is the same as the customer ID.
-	//
-	// ***
 	Instance string `pulumi:"instance"`
 	// The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
 	Location string `pulumi:"location"`
@@ -538,8 +530,6 @@ type RuleArgs struct {
 	// Populated in BASIC view and FULL view.
 	Etag pulumi.StringPtrInput
 	// The unique identifier for the Chronicle instance, which is the same as the customer ID.
-	//
-	// ***
 	Instance pulumi.StringInput
 	// The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
 	Location pulumi.StringInput
@@ -716,8 +706,6 @@ func (o RuleOutput) Etag() pulumi.StringOutput {
 }
 
 // The unique identifier for the Chronicle instance, which is the same as the customer ID.
-//
-// ***
 func (o RuleOutput) Instance() pulumi.StringOutput {
 	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.Instance }).(pulumi.StringOutput)
 }

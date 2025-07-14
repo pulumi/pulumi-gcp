@@ -600,9 +600,6 @@ namespace Pulumi.Gcp.MemoryStore
         /// * Must contain only lowercase letters, digits, and hyphens
         /// * Must not end with a hyphen
         /// * Must be unique within a location
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
@@ -647,6 +644,13 @@ namespace Pulumi.Gcp.MemoryStore
         /// </summary>
         [Output("managedBackupSource")]
         public Output<Outputs.InstanceManagedBackupSource?> ManagedBackupSource { get; private set; } = null!;
+
+        /// <summary>
+        /// Instance's Certificate Authority. This field will only be populated if instance's transit_encryption_mode is SERVER_AUTHENTICATION
+        /// Structure is documented below.
+        /// </summary>
+        [Output("managedServerCas")]
+        public Output<ImmutableArray<Outputs.InstanceManagedServerCa>> ManagedServerCas { get; private set; } = null!;
 
         /// <summary>
         /// Optional. cluster or cluster-disabled.
@@ -915,9 +919,6 @@ namespace Pulumi.Gcp.MemoryStore
         /// * Must contain only lowercase letters, digits, and hyphens
         /// * Must not end with a hyphen
         /// * Must be unique within a location
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
@@ -1178,9 +1179,6 @@ namespace Pulumi.Gcp.MemoryStore
         /// * Must contain only lowercase letters, digits, and hyphens
         /// * Must not end with a hyphen
         /// * Must be unique within a location
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
@@ -1237,6 +1235,19 @@ namespace Pulumi.Gcp.MemoryStore
         /// </summary>
         [Input("managedBackupSource")]
         public Input<Inputs.InstanceManagedBackupSourceGetArgs>? ManagedBackupSource { get; set; }
+
+        [Input("managedServerCas")]
+        private InputList<Inputs.InstanceManagedServerCaGetArgs>? _managedServerCas;
+
+        /// <summary>
+        /// Instance's Certificate Authority. This field will only be populated if instance's transit_encryption_mode is SERVER_AUTHENTICATION
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.InstanceManagedServerCaGetArgs> ManagedServerCas
+        {
+            get => _managedServerCas ?? (_managedServerCas = new InputList<Inputs.InstanceManagedServerCaGetArgs>());
+            set => _managedServerCas = value;
+        }
 
         /// <summary>
         /// Optional. cluster or cluster-disabled.

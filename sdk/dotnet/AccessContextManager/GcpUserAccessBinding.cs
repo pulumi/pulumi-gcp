@@ -129,9 +129,6 @@ namespace Pulumi.Gcp.AccessContextManager
 
         /// <summary>
         /// Required. ID of the parent organization.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("organizationId")]
         public Output<string> OrganizationId { get; private set; } = null!;
@@ -210,9 +207,6 @@ namespace Pulumi.Gcp.AccessContextManager
 
         /// <summary>
         /// Required. ID of the parent organization.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
@@ -265,9 +259,6 @@ namespace Pulumi.Gcp.AccessContextManager
 
         /// <summary>
         /// Required. ID of the parent organization.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("organizationId")]
         public Input<string>? OrganizationId { get; set; }

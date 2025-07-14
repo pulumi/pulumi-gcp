@@ -121,16 +121,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:diagflow/cxEnvironment:CxEnvironment")
 public class CxEnvironment extends com.pulumi.resources.CustomResource {
     /**
-     * The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is
-     * rejected.
+     * The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is
-     * rejected.
+     * @return The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
      * 
      */
     public Output<Optional<String>> description() {
@@ -165,14 +163,16 @@ public class CxEnvironment extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The Agent to create an Environment for. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
+     * The Agent to create an Environment for.
+     * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
      * 
      */
     @Export(name="parent", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> parent;
 
     /**
-     * @return The Agent to create an Environment for. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
+     * @return The Agent to create an Environment for.
+     * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
      * 
      */
     public Output<Optional<String>> parent() {

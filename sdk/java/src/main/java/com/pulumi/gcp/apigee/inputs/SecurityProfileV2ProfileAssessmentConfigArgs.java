@@ -33,8 +33,6 @@ public final class SecurityProfileV2ProfileAssessmentConfigArgs extends com.pulu
      * The weight of the assessment.
      * Possible values are: `MINOR`, `MODERATE`, `MAJOR`.
      * 
-     * ***
-     * 
      */
     @Import(name="weight", required=true)
     private Output<String> weight;
@@ -42,8 +40,6 @@ public final class SecurityProfileV2ProfileAssessmentConfigArgs extends com.pulu
     /**
      * @return The weight of the assessment.
      * Possible values are: `MINOR`, `MODERATE`, `MAJOR`.
-     * 
-     * ***
      * 
      */
     public Output<String> weight() {
@@ -100,8 +96,6 @@ public final class SecurityProfileV2ProfileAssessmentConfigArgs extends com.pulu
          * @param weight The weight of the assessment.
          * Possible values are: `MINOR`, `MODERATE`, `MAJOR`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -113,8 +107,6 @@ public final class SecurityProfileV2ProfileAssessmentConfigArgs extends com.pulu
         /**
          * @param weight The weight of the assessment.
          * Possible values are: `MINOR`, `MODERATE`, `MAJOR`.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -131,9 +131,6 @@ export class ParameterVersion extends pulumi.CustomResource {
     public readonly parameterData!: pulumi.Output<string>;
     /**
      * Version ID of the Parameter Version Resource. This must be unique within the Parameter.
-     *
-     *
-     * - - -
      */
     public readonly parameterVersionId!: pulumi.Output<string>;
     /**
@@ -222,9 +219,6 @@ export interface ParameterVersionState {
     parameterData?: pulumi.Input<string>;
     /**
      * Version ID of the Parameter Version Resource. This must be unique within the Parameter.
-     *
-     *
-     * - - -
      */
     parameterVersionId?: pulumi.Input<string>;
     /**
@@ -252,9 +246,6 @@ export interface ParameterVersionArgs {
     parameterData: pulumi.Input<string>;
     /**
      * Version ID of the Parameter Version Resource. This must be unique within the Parameter.
-     *
-     *
-     * - - -
      */
     parameterVersionId: pulumi.Input<string>;
 }

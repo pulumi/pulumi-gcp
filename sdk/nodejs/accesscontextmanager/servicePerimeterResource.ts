@@ -103,9 +103,6 @@ export class ServicePerimeterResource extends pulumi.CustomResource {
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
      * The name of the Service Perimeter to add this resource to.
-     *
-     *
-     * - - -
      */
     public readonly perimeterName!: pulumi.Output<string>;
     /**
@@ -164,9 +161,6 @@ export interface ServicePerimeterResourceState {
     etag?: pulumi.Input<string>;
     /**
      * The name of the Service Perimeter to add this resource to.
-     *
-     *
-     * - - -
      */
     perimeterName?: pulumi.Input<string>;
     /**
@@ -183,9 +177,6 @@ export interface ServicePerimeterResourceState {
 export interface ServicePerimeterResourceArgs {
     /**
      * The name of the Service Perimeter to add this resource to.
-     *
-     *
-     * - - -
      */
     perimeterName: pulumi.Input<string>;
     /**

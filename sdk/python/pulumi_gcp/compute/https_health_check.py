@@ -48,9 +48,6 @@ class HttpsHealthCheckArgs:
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[builtins.int] port: The TCP port number for the HTTPS health check request.
                The default value is 443.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -148,9 +145,6 @@ class HttpsHealthCheckArgs:
         the first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the
         last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -259,9 +253,6 @@ class _HttpsHealthCheckState:
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[builtins.int] port: The TCP port number for the HTTPS health check request.
                The default value is 443.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -376,9 +367,6 @@ class _HttpsHealthCheckState:
         the first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the
         last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -555,9 +543,6 @@ class HttpsHealthCheck(pulumi.CustomResource):
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[builtins.int] port: The TCP port number for the HTTPS health check request.
                The default value is 443.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -723,9 +708,6 @@ class HttpsHealthCheck(pulumi.CustomResource):
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[builtins.int] port: The TCP port number for the HTTPS health check request.
                The default value is 443.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -813,9 +795,6 @@ class HttpsHealthCheck(pulumi.CustomResource):
         the first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the
         last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

@@ -156,8 +156,6 @@ type CodeToolsSettingEnabledToolConfig struct {
 	// Key of the configuration item.
 	Key string `pulumi:"key"`
 	// Value of the configuration item.
-	//
-	// ***
 	Value string `pulumi:"value"`
 }
 
@@ -176,8 +174,6 @@ type CodeToolsSettingEnabledToolConfigArgs struct {
 	// Key of the configuration item.
 	Key pulumi.StringInput `pulumi:"key"`
 	// Value of the configuration item.
-	//
-	// ***
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -238,8 +234,6 @@ func (o CodeToolsSettingEnabledToolConfigOutput) Key() pulumi.StringOutput {
 }
 
 // Value of the configuration item.
-//
-// ***
 func (o CodeToolsSettingEnabledToolConfigOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v CodeToolsSettingEnabledToolConfig) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -593,8 +587,6 @@ func (o RepositoryGroupIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutp
 type RepositoryGroupRepository struct {
 	// Required. The Git branch pattern used for indexing in RE2 syntax.
 	// See https://github.com/google/re2/wiki/syntax for syntax.
-	//
-	// ***
 	BranchPattern string `pulumi:"branchPattern"`
 	// Required. The DeveloperConnect repository full resource name, relative resource name
 	// or resource URL to be indexed.
@@ -615,8 +607,6 @@ type RepositoryGroupRepositoryInput interface {
 type RepositoryGroupRepositoryArgs struct {
 	// Required. The Git branch pattern used for indexing in RE2 syntax.
 	// See https://github.com/google/re2/wiki/syntax for syntax.
-	//
-	// ***
 	BranchPattern pulumi.StringInput `pulumi:"branchPattern"`
 	// Required. The DeveloperConnect repository full resource name, relative resource name
 	// or resource URL to be indexed.
@@ -676,8 +666,6 @@ func (o RepositoryGroupRepositoryOutput) ToRepositoryGroupRepositoryOutputWithCo
 
 // Required. The Git branch pattern used for indexing in RE2 syntax.
 // See https://github.com/google/re2/wiki/syntax for syntax.
-//
-// ***
 func (o RepositoryGroupRepositoryOutput) BranchPattern() pulumi.StringOutput {
 	return o.ApplyT(func(v RepositoryGroupRepository) string { return v.BranchPattern }).(pulumi.StringOutput)
 }

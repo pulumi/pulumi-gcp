@@ -117,8 +117,6 @@ public class FirewallPolicyAssociation extends com.pulumi.resources.CustomResour
      * **Note** Due to potential risks with this operation it is *highly* recommended to use the `create_before_destroy` life cycle option
      * on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
      * 
-     * ***
-     * 
      */
     @Export(name="firewallPolicy", refs={String.class}, tree="[0]")
     private Output<String> firewallPolicy;
@@ -129,8 +127,6 @@ public class FirewallPolicyAssociation extends com.pulumi.resources.CustomResour
      * firewall policy with the flag to override the existing attachmentTarget&#39;s policy association.
      * **Note** Due to potential risks with this operation it is *highly* recommended to use the `create_before_destroy` life cycle option
      * on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
-     * 
-     * ***
      * 
      */
     public Output<String> firewallPolicy() {

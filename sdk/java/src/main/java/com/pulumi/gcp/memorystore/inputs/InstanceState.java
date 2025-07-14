@@ -15,6 +15,7 @@ import com.pulumi.gcp.memorystore.inputs.InstanceGcsSourceArgs;
 import com.pulumi.gcp.memorystore.inputs.InstanceMaintenancePolicyArgs;
 import com.pulumi.gcp.memorystore.inputs.InstanceMaintenanceScheduleArgs;
 import com.pulumi.gcp.memorystore.inputs.InstanceManagedBackupSourceArgs;
+import com.pulumi.gcp.memorystore.inputs.InstanceManagedServerCaArgs;
 import com.pulumi.gcp.memorystore.inputs.InstanceNodeConfigArgs;
 import com.pulumi.gcp.memorystore.inputs.InstancePersistenceConfigArgs;
 import com.pulumi.gcp.memorystore.inputs.InstancePscAttachmentDetailArgs;
@@ -291,8 +292,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * * Must not end with a hyphen
      * * Must be unique within a location
      * 
-     * ***
-     * 
      */
     @Import(name="instanceId")
     private @Nullable Output<String> instanceId;
@@ -306,8 +305,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * * Must contain only lowercase letters, digits, and hyphens
      * * Must not end with a hyphen
      * * Must be unique within a location
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> instanceId() {
@@ -412,6 +409,23 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<InstanceManagedBackupSourceArgs>> managedBackupSource() {
         return Optional.ofNullable(this.managedBackupSource);
+    }
+
+    /**
+     * Instance&#39;s Certificate Authority. This field will only be populated if instance&#39;s transit_encryption_mode is SERVER_AUTHENTICATION
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="managedServerCas")
+    private @Nullable Output<List<InstanceManagedServerCaArgs>> managedServerCas;
+
+    /**
+     * @return Instance&#39;s Certificate Authority. This field will only be populated if instance&#39;s transit_encryption_mode is SERVER_AUTHENTICATION
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<InstanceManagedServerCaArgs>>> managedServerCas() {
+        return Optional.ofNullable(this.managedServerCas);
     }
 
     /**
@@ -755,6 +769,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.maintenancePolicy = $.maintenancePolicy;
         this.maintenanceSchedules = $.maintenanceSchedules;
         this.managedBackupSource = $.managedBackupSource;
+        this.managedServerCas = $.managedServerCas;
         this.mode = $.mode;
         this.name = $.name;
         this.nodeConfigs = $.nodeConfigs;
@@ -1184,8 +1199,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * * Must not end with a hyphen
          * * Must be unique within a location
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -1203,8 +1216,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * * Must contain only lowercase letters, digits, and hyphens
          * * Must not end with a hyphen
          * * Must be unique within a location
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -1358,6 +1369,40 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder managedBackupSource(InstanceManagedBackupSourceArgs managedBackupSource) {
             return managedBackupSource(Output.of(managedBackupSource));
+        }
+
+        /**
+         * @param managedServerCas Instance&#39;s Certificate Authority. This field will only be populated if instance&#39;s transit_encryption_mode is SERVER_AUTHENTICATION
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder managedServerCas(@Nullable Output<List<InstanceManagedServerCaArgs>> managedServerCas) {
+            $.managedServerCas = managedServerCas;
+            return this;
+        }
+
+        /**
+         * @param managedServerCas Instance&#39;s Certificate Authority. This field will only be populated if instance&#39;s transit_encryption_mode is SERVER_AUTHENTICATION
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder managedServerCas(List<InstanceManagedServerCaArgs> managedServerCas) {
+            return managedServerCas(Output.of(managedServerCas));
+        }
+
+        /**
+         * @param managedServerCas Instance&#39;s Certificate Authority. This field will only be populated if instance&#39;s transit_encryption_mode is SERVER_AUTHENTICATION
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder managedServerCas(InstanceManagedServerCaArgs... managedServerCas) {
+            return managedServerCas(List.of(managedServerCas));
         }
 
         /**

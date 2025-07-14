@@ -133,9 +133,6 @@ namespace Pulumi.Gcp.Firebase
 
         /// <summary>
         /// The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("bundleId")]
         public Output<string> BundleId { get; private set; } = null!;
@@ -231,9 +228,6 @@ namespace Pulumi.Gcp.Firebase
 
         /// <summary>
         /// The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("bundleId", required: true)]
         public Input<string> BundleId { get; set; } = null!;
@@ -291,9 +285,6 @@ namespace Pulumi.Gcp.Firebase
 
         /// <summary>
         /// The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("bundleId")]
         public Input<string>? BundleId { get; set; }

@@ -104,9 +104,6 @@ export class BackendServiceSignedUrlKey extends pulumi.CustomResource {
 
     /**
      * The backend service this signed URL key belongs.
-     *
-     *
-     * - - -
      */
     public readonly backendService!: pulumi.Output<string>;
     /**
@@ -168,9 +165,6 @@ export class BackendServiceSignedUrlKey extends pulumi.CustomResource {
 export interface BackendServiceSignedUrlKeyState {
     /**
      * The backend service this signed URL key belongs.
-     *
-     *
-     * - - -
      */
     backendService?: pulumi.Input<string>;
     /**
@@ -196,9 +190,6 @@ export interface BackendServiceSignedUrlKeyState {
 export interface BackendServiceSignedUrlKeyArgs {
     /**
      * The backend service this signed URL key belongs.
-     *
-     *
-     * - - -
      */
     backendService: pulumi.Input<string>;
     /**

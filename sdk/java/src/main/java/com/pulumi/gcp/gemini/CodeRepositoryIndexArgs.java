@@ -21,16 +21,12 @@ public final class CodeRepositoryIndexArgs extends com.pulumi.resources.Resource
     /**
      * Required. Id of the Code Repository Index.
      * 
-     * ***
-     * 
      */
     @Import(name="codeRepositoryIndexId", required=true)
     private Output<String> codeRepositoryIndexId;
 
     /**
      * @return Required. Id of the Code Repository Index.
-     * 
-     * ***
      * 
      */
     public Output<String> codeRepositoryIndexId() {
@@ -152,8 +148,6 @@ public final class CodeRepositoryIndexArgs extends com.pulumi.resources.Resource
         /**
          * @param codeRepositoryIndexId Required. Id of the Code Repository Index.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -164,8 +158,6 @@ public final class CodeRepositoryIndexArgs extends com.pulumi.resources.Resource
 
         /**
          * @param codeRepositoryIndexId Required. Id of the Code Repository Index.
-         * 
-         * ***
          * 
          * @return builder
          * 

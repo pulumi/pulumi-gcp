@@ -173,9 +173,6 @@ namespace Pulumi.Gcp.Iam
         /// letters, digits, or hyphens. It must start with a letter, and cannot have a
         /// trailing hyphen. The prefix `gcp-` is reserved for use by Google, and may
         /// not be specified.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("oauthClientId")]
         public Output<string> OauthClientId { get; private set; } = null!;
@@ -330,9 +327,6 @@ namespace Pulumi.Gcp.Iam
         /// letters, digits, or hyphens. It must start with a letter, and cannot have a
         /// trailing hyphen. The prefix `gcp-` is reserved for use by Google, and may
         /// not be specified.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("oauthClientId", required: true)]
         public Input<string> OauthClientId { get; set; } = null!;
@@ -459,9 +453,6 @@ namespace Pulumi.Gcp.Iam
         /// letters, digits, or hyphens. It must start with a letter, and cannot have a
         /// trailing hyphen. The prefix `gcp-` is reserved for use by Google, and may
         /// not be specified.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("oauthClientId")]
         public Input<string>? OauthClientId { get; set; }

@@ -267,8 +267,6 @@ public class WorkloadIdentityPoolNamespace extends com.pulumi.resources.CustomRe
      * 
      * The prefix `gcp-` will be reserved for future uses.
      * 
-     * ***
-     * 
      */
     @Export(name="workloadIdentityPoolNamespaceId", refs={String.class}, tree="[0]")
     private Output<String> workloadIdentityPoolNamespaceId;
@@ -281,8 +279,6 @@ public class WorkloadIdentityPoolNamespace extends com.pulumi.resources.CustomRe
      * * end with an alphanumeric character
      * 
      * The prefix `gcp-` will be reserved for future uses.
-     * 
-     * ***
      * 
      */
     public Output<String> workloadIdentityPoolNamespaceId() {

@@ -99,9 +99,6 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// A reference to the BackendService resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("backendService")]
         public Output<string> BackendService { get; private set; } = null!;
@@ -220,9 +217,6 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// A reference to the BackendService resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("backendService", required: true)]
         public Input<string> BackendService { get; set; } = null!;
@@ -285,9 +279,6 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// A reference to the BackendService resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("backendService")]
         public Input<string>? BackendService { get; set; }

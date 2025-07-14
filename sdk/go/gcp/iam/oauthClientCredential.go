@@ -120,8 +120,6 @@ type OauthClientCredential struct {
 	// final component of the resource name. This value should be 4-32 characters,
 	// and may contain the characters [a-z0-9-]. The prefix `gcp-` is
 	// reserved for use by Google, and may not be specified.
-	//
-	// ***
 	OauthClientCredentialId pulumi.StringOutput `pulumi:"oauthClientCredentialId"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Oauthclient pulumi.StringOutput `pulumi:"oauthclient"`
@@ -196,8 +194,6 @@ type oauthClientCredentialState struct {
 	// final component of the resource name. This value should be 4-32 characters,
 	// and may contain the characters [a-z0-9-]. The prefix `gcp-` is
 	// reserved for use by Google, and may not be specified.
-	//
-	// ***
 	OauthClientCredentialId *string `pulumi:"oauthClientCredentialId"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Oauthclient *string `pulumi:"oauthclient"`
@@ -230,8 +226,6 @@ type OauthClientCredentialState struct {
 	// final component of the resource name. This value should be 4-32 characters,
 	// and may contain the characters [a-z0-9-]. The prefix `gcp-` is
 	// reserved for use by Google, and may not be specified.
-	//
-	// ***
 	OauthClientCredentialId pulumi.StringPtrInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Oauthclient pulumi.StringPtrInput
@@ -257,8 +251,6 @@ type oauthClientCredentialArgs struct {
 	// final component of the resource name. This value should be 4-32 characters,
 	// and may contain the characters [a-z0-9-]. The prefix `gcp-` is
 	// reserved for use by Google, and may not be specified.
-	//
-	// ***
 	OauthClientCredentialId string `pulumi:"oauthClientCredentialId"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Oauthclient string `pulumi:"oauthclient"`
@@ -281,8 +273,6 @@ type OauthClientCredentialArgs struct {
 	// final component of the resource name. This value should be 4-32 characters,
 	// and may contain the characters [a-z0-9-]. The prefix `gcp-` is
 	// reserved for use by Google, and may not be specified.
-	//
-	// ***
 	OauthClientCredentialId pulumi.StringInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Oauthclient pulumi.StringInput
@@ -416,8 +406,6 @@ func (o OauthClientCredentialOutput) Name() pulumi.StringOutput {
 // final component of the resource name. This value should be 4-32 characters,
 // and may contain the characters [a-z0-9-]. The prefix `gcp-` is
 // reserved for use by Google, and may not be specified.
-//
-// ***
 func (o OauthClientCredentialOutput) OauthClientCredentialId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OauthClientCredential) pulumi.StringOutput { return v.OauthClientCredentialId }).(pulumi.StringOutput)
 }

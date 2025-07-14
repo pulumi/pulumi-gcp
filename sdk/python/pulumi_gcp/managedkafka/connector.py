@@ -32,9 +32,6 @@ class ConnectorArgs:
         The set of arguments for constructing a Connector resource.
         :param pulumi.Input[builtins.str] connect_cluster: The connect cluster name.
         :param pulumi.Input[builtins.str] connector_id: The ID to use for the connector, which will become the final component of the connector's name. This value is structured like: `my-connector-id`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: ID of the location of the Kafka Connect resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] configs: Connector config as keys/values. The keys of the map are connector property names, for example: `connector.class`, `tasks.max`, `key.converter`.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -69,9 +66,6 @@ class ConnectorArgs:
     def connector_id(self) -> pulumi.Input[builtins.str]:
         """
         The ID to use for the connector, which will become the final component of the connector's name. This value is structured like: `my-connector-id`.
-
-
-        - - -
         """
         return pulumi.get(self, "connector_id")
 
@@ -146,9 +140,6 @@ class _ConnectorState:
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] configs: Connector config as keys/values. The keys of the map are connector property names, for example: `connector.class`, `tasks.max`, `key.converter`.
         :param pulumi.Input[builtins.str] connect_cluster: The connect cluster name.
         :param pulumi.Input[builtins.str] connector_id: The ID to use for the connector, which will become the final component of the connector's name. This value is structured like: `my-connector-id`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: ID of the location of the Kafka Connect resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
         :param pulumi.Input[builtins.str] name: The name of the connector. The `connector` segment is used when connecting directly to the connect cluster. Structured like: `projects/PROJECT_ID/locations/LOCATION/connectClusters/CONNECT_CLUSTER/connectors/CONNECTOR_ID`.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -203,9 +194,6 @@ class _ConnectorState:
     def connector_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The ID to use for the connector, which will become the final component of the connector's name. This value is structured like: `my-connector-id`.
-
-
-        - - -
         """
         return pulumi.get(self, "connector_id")
 
@@ -433,9 +421,6 @@ class Connector(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] configs: Connector config as keys/values. The keys of the map are connector property names, for example: `connector.class`, `tasks.max`, `key.converter`.
         :param pulumi.Input[builtins.str] connect_cluster: The connect cluster name.
         :param pulumi.Input[builtins.str] connector_id: The ID to use for the connector, which will become the final component of the connector's name. This value is structured like: `my-connector-id`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: ID of the location of the Kafka Connect resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -659,9 +644,6 @@ class Connector(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] configs: Connector config as keys/values. The keys of the map are connector property names, for example: `connector.class`, `tasks.max`, `key.converter`.
         :param pulumi.Input[builtins.str] connect_cluster: The connect cluster name.
         :param pulumi.Input[builtins.str] connector_id: The ID to use for the connector, which will become the final component of the connector's name. This value is structured like: `my-connector-id`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: ID of the location of the Kafka Connect resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
         :param pulumi.Input[builtins.str] name: The name of the connector. The `connector` segment is used when connecting directly to the connect cluster. Structured like: `projects/PROJECT_ID/locations/LOCATION/connectClusters/CONNECT_CLUSTER/connectors/CONNECTOR_ID`.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -705,9 +687,6 @@ class Connector(pulumi.CustomResource):
     def connector_id(self) -> pulumi.Output[builtins.str]:
         """
         The ID to use for the connector, which will become the final component of the connector's name. This value is structured like: `my-connector-id`.
-
-
-        - - -
         """
         return pulumi.get(self, "connector_id")
 

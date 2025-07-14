@@ -32,9 +32,6 @@ class BackupChannelArgs:
                The format is `projects/{project}`.
                {project} can be project number or project id.
         :param pulumi.Input[builtins.str] location: The region of the Backup Channel.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] description: User specified descriptive string for this BackupChannel.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Description: A set of custom labels supplied by the user.
                A list of key->value pairs.
@@ -76,9 +73,6 @@ class BackupChannelArgs:
     def location(self) -> pulumi.Input[builtins.str]:
         """
         The region of the Backup Channel.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -177,9 +171,6 @@ class _BackupChannelState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The region of the Backup Channel.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The full name of the BackupChannel Resource.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -300,9 +291,6 @@ class _BackupChannelState:
     def location(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The region of the Backup Channel.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -441,9 +429,6 @@ class BackupChannel(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The region of the Backup Channel.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The full name of the BackupChannel Resource.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -603,9 +588,6 @@ class BackupChannel(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The region of the Backup Channel.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The full name of the BackupChannel Resource.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -696,9 +678,6 @@ class BackupChannel(pulumi.CustomResource):
     def location(self) -> pulumi.Output[builtins.str]:
         """
         The region of the Backup Channel.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

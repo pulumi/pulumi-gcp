@@ -84,8 +84,6 @@ type Channel struct {
 	// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
 	CryptoKeyName pulumi.StringPtrOutput `pulumi:"cryptoKeyName"`
 	// The location for the resource
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the channel. Must be unique within the location on the project.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -144,8 +142,6 @@ type channelState struct {
 	// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
 	CryptoKeyName *string `pulumi:"cryptoKeyName"`
 	// The location for the resource
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// The resource name of the channel. Must be unique within the location on the project.
 	Name *string `pulumi:"name"`
@@ -172,8 +168,6 @@ type ChannelState struct {
 	// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
 	CryptoKeyName pulumi.StringPtrInput
 	// The location for the resource
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// The resource name of the channel. Must be unique within the location on the project.
 	Name pulumi.StringPtrInput
@@ -200,8 +194,6 @@ type channelArgs struct {
 	// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
 	CryptoKeyName *string `pulumi:"cryptoKeyName"`
 	// The location for the resource
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// The resource name of the channel. Must be unique within the location on the project.
 	Name *string `pulumi:"name"`
@@ -217,8 +209,6 @@ type ChannelArgs struct {
 	// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
 	CryptoKeyName pulumi.StringPtrInput
 	// The location for the resource
-	//
-	// ***
 	Location pulumi.StringInput
 	// The resource name of the channel. Must be unique within the location on the project.
 	Name pulumi.StringPtrInput
@@ -332,8 +322,6 @@ func (o ChannelOutput) CryptoKeyName() pulumi.StringPtrOutput {
 }
 
 // The location for the resource
-//
-// ***
 func (o ChannelOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

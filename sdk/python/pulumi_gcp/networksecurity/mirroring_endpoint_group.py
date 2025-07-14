@@ -36,9 +36,6 @@ class MirroringEndpointGroupArgs:
                See https://google.aip.dev/124.
         :param pulumi.Input[builtins.str] mirroring_endpoint_group_id: The ID to use for the endpoint group, which will become the final component
                of the endpoint group's resource name.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] description: User-provided description of the endpoint group.
                Used as additional context for the endpoint group.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels are key/value pairs that help to organize and filter resources.
@@ -89,9 +86,6 @@ class MirroringEndpointGroupArgs:
         """
         The ID to use for the endpoint group, which will become the final component
         of the endpoint group's resource name.
-
-
-        - - -
         """
         return pulumi.get(self, "mirroring_endpoint_group_id")
 
@@ -179,9 +173,6 @@ class _MirroringEndpointGroupState:
                See https://google.aip.dev/124.
         :param pulumi.Input[builtins.str] mirroring_endpoint_group_id: The ID to use for the endpoint group, which will become the final component
                of the endpoint group's resource name.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: (Output)
                The connected deployment group's resource name, for example:
                `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
@@ -345,9 +336,6 @@ class _MirroringEndpointGroupState:
         """
         The ID to use for the endpoint group, which will become the final component
         of the endpoint group's resource name.
-
-
-        - - -
         """
         return pulumi.get(self, "mirroring_endpoint_group_id")
 
@@ -530,9 +518,6 @@ class MirroringEndpointGroup(pulumi.CustomResource):
                See https://google.aip.dev/124.
         :param pulumi.Input[builtins.str] mirroring_endpoint_group_id: The ID to use for the endpoint group, which will become the final component
                of the endpoint group's resource name.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -708,9 +693,6 @@ class MirroringEndpointGroup(pulumi.CustomResource):
                See https://google.aip.dev/124.
         :param pulumi.Input[builtins.str] mirroring_endpoint_group_id: The ID to use for the endpoint group, which will become the final component
                of the endpoint group's resource name.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: (Output)
                The connected deployment group's resource name, for example:
                `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
@@ -832,9 +814,6 @@ class MirroringEndpointGroup(pulumi.CustomResource):
         """
         The ID to use for the endpoint group, which will become the final component
         of the endpoint group's resource name.
-
-
-        - - -
         """
         return pulumi.get(self, "mirroring_endpoint_group_id")
 

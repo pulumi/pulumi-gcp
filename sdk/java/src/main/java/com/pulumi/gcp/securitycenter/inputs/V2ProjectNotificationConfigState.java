@@ -78,22 +78,34 @@ public final class V2ProjectNotificationConfigState extends com.pulumi.resources
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
 
     /**
-     * The Pub/Sub topic to send notifications to. Its format is &#34;projects/[project_id]/topics/[topic]&#34;.
+     * The Pub/Sub topic to send notifications to. Its format is
+     * &#34;projects/[project_id]/topics/[topic]&#34;.
      * 
      */
     @Import(name="pubsubTopic")
     private @Nullable Output<String> pubsubTopic;
 
     /**
-     * @return The Pub/Sub topic to send notifications to. Its format is &#34;projects/[project_id]/topics/[topic]&#34;.
+     * @return The Pub/Sub topic to send notifications to. Its format is
+     * &#34;projects/[project_id]/topics/[topic]&#34;.
      * 
      */
     public Optional<Output<String>> pubsubTopic() {
@@ -251,17 +263,32 @@ public final class V2ProjectNotificationConfigState extends com.pulumi.resources
             return name(Output.of(name));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
 
         /**
-         * @param pubsubTopic The Pub/Sub topic to send notifications to. Its format is &#34;projects/[project_id]/topics/[topic]&#34;.
+         * @param pubsubTopic The Pub/Sub topic to send notifications to. Its format is
+         * &#34;projects/[project_id]/topics/[topic]&#34;.
          * 
          * @return builder
          * 
@@ -272,7 +299,8 @@ public final class V2ProjectNotificationConfigState extends com.pulumi.resources
         }
 
         /**
-         * @param pubsubTopic The Pub/Sub topic to send notifications to. Its format is &#34;projects/[project_id]/topics/[topic]&#34;.
+         * @param pubsubTopic The Pub/Sub topic to send notifications to. Its format is
+         * &#34;projects/[project_id]/topics/[topic]&#34;.
          * 
          * @return builder
          * 

@@ -50,6 +50,8 @@ class ReferenceListArgs:
                REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING
                REFERENCE_LIST_SYNTAX_TYPE_REGEX
                REFERENCE_LIST_SYNTAX_TYPE_CIDR
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "entries", entries)
@@ -148,6 +150,10 @@ class ReferenceListArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -186,6 +192,8 @@ class _ReferenceListState:
         :param pulumi.Input[builtins.str] name: Output only. The resource name of the reference list.
                Format:
                projects/{project}/locations/{location}/instances/{instance}/referenceLists/{reference_list}
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] reference_list_id: Required. The ID to use for the reference list. This is also the display name for
                the reference list. It must satisfy the following requirements:
                - Starts with letter.
@@ -313,6 +321,10 @@ class _ReferenceListState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -480,6 +492,8 @@ class ReferenceList(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[builtins.str] instance: The unique identifier for the Chronicle instance, which is the same as the customer ID.
         :param pulumi.Input[builtins.str] location: The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] reference_list_id: Required. The ID to use for the reference list. This is also the display name for
                the reference list. It must satisfy the following requirements:
                - Starts with letter.
@@ -648,6 +662,8 @@ class ReferenceList(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] name: Output only. The resource name of the reference list.
                Format:
                projects/{project}/locations/{location}/instances/{instance}/referenceLists/{reference_list}
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] reference_list_id: Required. The ID to use for the reference list. This is also the display name for
                the reference list. It must satisfy the following requirements:
                - Starts with letter.
@@ -743,6 +759,10 @@ class ReferenceList(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property

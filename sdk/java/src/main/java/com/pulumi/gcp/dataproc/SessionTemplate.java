@@ -431,8 +431,6 @@ public class SessionTemplate extends com.pulumi.resources.CustomResource {
      * The resource name of the session template in the following format:
      * projects/{project}/locations/{location}/sessionTemplates/{template_id}
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -440,8 +438,6 @@ public class SessionTemplate extends com.pulumi.resources.CustomResource {
     /**
      * @return The resource name of the session template in the following format:
      * projects/{project}/locations/{location}/sessionTemplates/{template_id}
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

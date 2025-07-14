@@ -141,8 +141,6 @@ type Network struct {
 	// The location where the VMwareEngineNetwork should reside.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The ID of the VMwareEngineNetwork.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -201,8 +199,6 @@ type networkState struct {
 	// The location where the VMwareEngineNetwork should reside.
 	Location *string `pulumi:"location"`
 	// The ID of the VMwareEngineNetwork.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -226,8 +222,6 @@ type NetworkState struct {
 	// The location where the VMwareEngineNetwork should reside.
 	Location pulumi.StringPtrInput
 	// The ID of the VMwareEngineNetwork.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -255,8 +249,6 @@ type networkArgs struct {
 	// The location where the VMwareEngineNetwork should reside.
 	Location string `pulumi:"location"`
 	// The ID of the VMwareEngineNetwork.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -273,8 +265,6 @@ type NetworkArgs struct {
 	// The location where the VMwareEngineNetwork should reside.
 	Location pulumi.StringInput
 	// The ID of the VMwareEngineNetwork.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -382,8 +372,6 @@ func (o NetworkOutput) Location() pulumi.StringOutput {
 }
 
 // The ID of the VMwareEngineNetwork.
-//
-// ***
 func (o NetworkOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

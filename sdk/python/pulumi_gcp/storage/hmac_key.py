@@ -26,9 +26,6 @@ class HmacKeyArgs:
         """
         The set of arguments for constructing a HmacKey resource.
         :param pulumi.Input[builtins.str] service_account_email: The email address of the key's associated service account.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] state: The state of the key. Can be set to one of ACTIVE, INACTIVE.
@@ -46,9 +43,6 @@ class HmacKeyArgs:
     def service_account_email(self) -> pulumi.Input[builtins.str]:
         """
         The email address of the key's associated service account.
-
-
-        - - -
         """
         return pulumi.get(self, "service_account_email")
 
@@ -102,9 +96,6 @@ class _HmacKeyState:
         :param pulumi.Input[builtins.str] secret: HMAC secret key material.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[builtins.str] service_account_email: The email address of the key's associated service account.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] state: The state of the key. Can be set to one of ACTIVE, INACTIVE.
                Default value is `ACTIVE`.
                Possible values are: `ACTIVE`, `INACTIVE`.
@@ -169,9 +160,6 @@ class _HmacKeyState:
     def service_account_email(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The email address of the key's associated service account.
-
-
-        - - -
         """
         return pulumi.get(self, "service_account_email")
 
@@ -282,9 +270,6 @@ class HmacKey(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] service_account_email: The email address of the key's associated service account.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] state: The state of the key. Can be set to one of ACTIVE, INACTIVE.
                Default value is `ACTIVE`.
                Possible values are: `ACTIVE`, `INACTIVE`.
@@ -412,9 +397,6 @@ class HmacKey(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] secret: HMAC secret key material.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[builtins.str] service_account_email: The email address of the key's associated service account.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] state: The state of the key. Can be set to one of ACTIVE, INACTIVE.
                Default value is `ACTIVE`.
                Possible values are: `ACTIVE`, `INACTIVE`.
@@ -465,9 +447,6 @@ class HmacKey(pulumi.CustomResource):
     def service_account_email(self) -> pulumi.Output[builtins.str]:
         """
         The email address of the key's associated service account.
-
-
-        - - -
         """
         return pulumi.get(self, "service_account_email")
 

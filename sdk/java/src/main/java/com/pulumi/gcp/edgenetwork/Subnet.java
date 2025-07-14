@@ -358,16 +358,12 @@ public class Subnet extends com.pulumi.resources.CustomResource {
     /**
      * A unique ID that identifies this subnet.
      * 
-     * ***
-     * 
      */
     @Export(name="subnetId", refs={String.class}, tree="[0]")
     private Output<String> subnetId;
 
     /**
      * @return A unique ID that identifies this subnet.
-     * 
-     * ***
      * 
      */
     public Output<String> subnetId() {

@@ -32,8 +32,7 @@ public final class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1P
      */
     private @Nullable Boolean deleted;
     /**
-     * @return OS policy assignment description.
-     * Length of the description is limited to 1024 characters.
+     * @return Optional. Freeform text describing the purpose of the resource.
      * 
      */
     private @Nullable String description;
@@ -119,8 +118,7 @@ public final class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1P
         return Optional.ofNullable(this.deleted);
     }
     /**
-     * @return OS policy assignment description.
-     * Length of the description is limited to 1024 characters.
+     * @return Optional. Freeform text describing the purpose of the resource.
      * 
      */
     public Optional<String> description() {

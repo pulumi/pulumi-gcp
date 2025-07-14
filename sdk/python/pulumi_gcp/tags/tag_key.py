@@ -30,9 +30,6 @@ class TagKeyArgs:
         :param pulumi.Input[builtins.str] parent: Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id} or projects/{project_id_or_number}.
         :param pulumi.Input[builtins.str] short_name: Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
                The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\\\), and forward slashes (/).
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] description: User-assigned description of the TagKey. Must not exceed 256 characters.
         :param pulumi.Input[builtins.str] purpose: Optional. A purpose cannot be changed once set.
                A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
@@ -67,9 +64,6 @@ class TagKeyArgs:
         """
         Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
         The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\\\), and forward slashes (/).
-
-
-        - - -
         """
         return pulumi.get(self, "short_name")
 
@@ -144,9 +138,6 @@ class _TagKeyState:
                Purpose data corresponds to the policy system that the tag is intended for. For example, the GCE_FIREWALL purpose expects data in the following format: `network = "<project-name>/<vpc-name>"`.
         :param pulumi.Input[builtins.str] short_name: Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
                The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\\\), and forward slashes (/).
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] update_time: Output only. Update time.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
@@ -263,9 +254,6 @@ class _TagKeyState:
         """
         Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
         The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\\\), and forward slashes (/).
-
-
-        - - -
         """
         return pulumi.get(self, "short_name")
 
@@ -351,9 +339,6 @@ class TagKey(pulumi.CustomResource):
                Purpose data corresponds to the policy system that the tag is intended for. For example, the GCE_FIREWALL purpose expects data in the following format: `network = "<project-name>/<vpc-name>"`.
         :param pulumi.Input[builtins.str] short_name: Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
                The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\\\), and forward slashes (/).
-               
-               
-               - - -
         """
         ...
     @overload
@@ -483,9 +468,6 @@ class TagKey(pulumi.CustomResource):
                Purpose data corresponds to the policy system that the tag is intended for. For example, the GCE_FIREWALL purpose expects data in the following format: `network = "<project-name>/<vpc-name>"`.
         :param pulumi.Input[builtins.str] short_name: Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
                The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\\\), and forward slashes (/).
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] update_time: Output only. Update time.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
@@ -570,9 +552,6 @@ class TagKey(pulumi.CustomResource):
         """
         Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
         The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\\\), and forward slashes (/).
-
-
-        - - -
         """
         return pulumi.get(self, "short_name")
 

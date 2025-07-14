@@ -111,9 +111,6 @@ export class Namespace extends pulumi.CustomResource {
     /**
      * The Resource ID must be 1-63 characters long, including digits,
      * lowercase letters or the hyphen character.
-     *
-     *
-     * - - -
      */
     public readonly namespaceId!: pulumi.Output<string>;
     /**
@@ -201,9 +198,6 @@ export interface NamespaceState {
     /**
      * The Resource ID must be 1-63 characters long, including digits,
      * lowercase letters or the hyphen character.
-     *
-     *
-     * - - -
      */
     namespaceId?: pulumi.Input<string>;
     /**
@@ -240,9 +234,6 @@ export interface NamespaceArgs {
     /**
      * The Resource ID must be 1-63 characters long, including digits,
      * lowercase letters or the hyphen character.
-     *
-     *
-     * - - -
      */
     namespaceId: pulumi.Input<string>;
     /**

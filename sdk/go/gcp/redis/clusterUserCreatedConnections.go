@@ -445,8 +445,6 @@ type ClusterUserCreatedConnections struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The name of the region of the Redis cluster these endpoints should be added to.
-	//
-	// ***
 	Region pulumi.StringOutput `pulumi:"region"`
 }
 
@@ -492,8 +490,6 @@ type clusterUserCreatedConnectionsState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The name of the region of the Redis cluster these endpoints should be added to.
-	//
-	// ***
 	Region *string `pulumi:"region"`
 }
 
@@ -507,8 +503,6 @@ type ClusterUserCreatedConnectionsState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The name of the region of the Redis cluster these endpoints should be added to.
-	//
-	// ***
 	Region pulumi.StringPtrInput
 }
 
@@ -526,8 +520,6 @@ type clusterUserCreatedConnectionsArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The name of the region of the Redis cluster these endpoints should be added to.
-	//
-	// ***
 	Region string `pulumi:"region"`
 }
 
@@ -542,8 +534,6 @@ type ClusterUserCreatedConnectionsArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The name of the region of the Redis cluster these endpoints should be added to.
-	//
-	// ***
 	Region pulumi.StringInput
 }
 
@@ -654,8 +644,6 @@ func (o ClusterUserCreatedConnectionsOutput) Project() pulumi.StringOutput {
 }
 
 // The name of the region of the Redis cluster these endpoints should be added to.
-//
-// ***
 func (o ClusterUserCreatedConnectionsOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClusterUserCreatedConnections) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

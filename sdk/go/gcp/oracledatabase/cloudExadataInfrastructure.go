@@ -153,8 +153,6 @@ type CloudExadataInfrastructure struct {
 	// to (^a-z?$) and must be a maximum of 63
 	// characters in length. The value must start with a letter and end with
 	// a letter or a number.
-	//
-	// ***
 	CloudExadataInfrastructureId pulumi.StringOutput `pulumi:"cloudExadataInfrastructureId"`
 	// The date and time that the Exadata Infrastructure was created.
 	CreateTime         pulumi.StringOutput  `pulumi:"createTime"`
@@ -233,8 +231,6 @@ type cloudExadataInfrastructureState struct {
 	// to (^a-z?$) and must be a maximum of 63
 	// characters in length. The value must start with a letter and end with
 	// a letter or a number.
-	//
-	// ***
 	CloudExadataInfrastructureId *string `pulumi:"cloudExadataInfrastructureId"`
 	// The date and time that the Exadata Infrastructure was created.
 	CreateTime         *string `pulumi:"createTime"`
@@ -273,8 +269,6 @@ type CloudExadataInfrastructureState struct {
 	// to (^a-z?$) and must be a maximum of 63
 	// characters in length. The value must start with a letter and end with
 	// a letter or a number.
-	//
-	// ***
 	CloudExadataInfrastructureId pulumi.StringPtrInput
 	// The date and time that the Exadata Infrastructure was created.
 	CreateTime         pulumi.StringPtrInput
@@ -317,8 +311,6 @@ type cloudExadataInfrastructureArgs struct {
 	// to (^a-z?$) and must be a maximum of 63
 	// characters in length. The value must start with a letter and end with
 	// a letter or a number.
-	//
-	// ***
 	CloudExadataInfrastructureId string `pulumi:"cloudExadataInfrastructureId"`
 	DeletionProtection           *bool  `pulumi:"deletionProtection"`
 	// User friendly name for this resource.
@@ -345,8 +337,6 @@ type CloudExadataInfrastructureArgs struct {
 	// to (^a-z?$) and must be a maximum of 63
 	// characters in length. The value must start with a letter and end with
 	// a letter or a number.
-	//
-	// ***
 	CloudExadataInfrastructureId pulumi.StringInput
 	DeletionProtection           pulumi.BoolPtrInput
 	// User friendly name for this resource.
@@ -458,8 +448,6 @@ func (o CloudExadataInfrastructureOutput) ToCloudExadataInfrastructureOutputWith
 // to (^a-z?$) and must be a maximum of 63
 // characters in length. The value must start with a letter and end with
 // a letter or a number.
-//
-// ***
 func (o CloudExadataInfrastructureOutput) CloudExadataInfrastructureId() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudExadataInfrastructure) pulumi.StringOutput { return v.CloudExadataInfrastructureId }).(pulumi.StringOutput)
 }

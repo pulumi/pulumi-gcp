@@ -32,9 +32,6 @@ class AiIndexArgs:
         """
         The set of arguments for constructing a AiIndex resource.
         :param pulumi.Input[builtins.str] display_name: The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] description: The description of the Index.
         :param pulumi.Input[builtins.str] index_update_method: The update method to use with this Index. The value must be the followings. If not set, BATCH_UPDATE will be used by default.
                * BATCH_UPDATE: user can call indexes.patch with files on Cloud Storage of datapoints to update.
@@ -67,9 +64,6 @@ class AiIndexArgs:
     def display_name(self) -> pulumi.Input[builtins.str]:
         """
         The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -182,9 +176,6 @@ class _AiIndexState:
                Structure is documented below.
         :param pulumi.Input[builtins.str] description: The description of the Index.
         :param pulumi.Input[builtins.str] display_name: The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[builtins.str] etag: Used to perform consistent read-modify-write updates.
         :param pulumi.Input[Sequence[pulumi.Input['AiIndexIndexStatArgs']]] index_stats: Stats of the index resource.
@@ -281,9 +272,6 @@ class _AiIndexState:
     def display_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -583,9 +571,6 @@ class AiIndex(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] description: The description of the Index.
         :param pulumi.Input[builtins.str] display_name: The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] index_update_method: The update method to use with this Index. The value must be the followings. If not set, BATCH_UPDATE will be used by default.
                * BATCH_UPDATE: user can call indexes.patch with files on Cloud Storage of datapoints to update.
                * STREAM_UPDATE: user can call indexes.upsertDatapoints/DeleteDatapoints to update the Index and the updates will be applied in corresponding DeployedIndexes in nearly real-time.
@@ -814,9 +799,6 @@ class AiIndex(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[builtins.str] description: The description of the Index.
         :param pulumi.Input[builtins.str] display_name: The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[builtins.str] etag: Used to perform consistent read-modify-write updates.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AiIndexIndexStatArgs', 'AiIndexIndexStatArgsDict']]]] index_stats: Stats of the index resource.
@@ -890,9 +872,6 @@ class AiIndex(pulumi.CustomResource):
     def display_name(self) -> pulumi.Output[builtins.str]:
         """
         The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 

@@ -210,16 +210,12 @@ public class ServiceConnectionPolicy extends com.pulumi.resources.CustomResource
     /**
      * The location of the ServiceConnectionPolicy.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return The location of the ServiceConnectionPolicy.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

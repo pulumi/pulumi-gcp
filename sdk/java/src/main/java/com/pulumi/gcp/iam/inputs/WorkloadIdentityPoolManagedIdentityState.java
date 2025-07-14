@@ -158,8 +158,6 @@ public final class WorkloadIdentityPoolManagedIdentityState extends com.pulumi.r
      * 
      * The prefix `gcp-` will be reserved for future uses.
      * 
-     * ***
-     * 
      */
     @Import(name="workloadIdentityPoolManagedIdentityId")
     private @Nullable Output<String> workloadIdentityPoolManagedIdentityId;
@@ -172,8 +170,6 @@ public final class WorkloadIdentityPoolManagedIdentityState extends com.pulumi.r
      * * end with an alphanumeric character
      * 
      * The prefix `gcp-` will be reserved for future uses.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> workloadIdentityPoolManagedIdentityId() {
@@ -434,8 +430,6 @@ public final class WorkloadIdentityPoolManagedIdentityState extends com.pulumi.r
          * 
          * The prefix `gcp-` will be reserved for future uses.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -452,8 +446,6 @@ public final class WorkloadIdentityPoolManagedIdentityState extends com.pulumi.r
          * * end with an alphanumeric character
          * 
          * The prefix `gcp-` will be reserved for future uses.
-         * 
-         * ***
          * 
          * @return builder
          * 

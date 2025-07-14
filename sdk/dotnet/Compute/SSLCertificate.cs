@@ -111,9 +111,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The write-only private key in PEM format.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("privateKey")]
         public Output<string> PrivateKey { get; private set; } = null!;
@@ -239,9 +236,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The write-only private key in PEM format.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         public Input<string>? PrivateKey
         {
@@ -343,9 +337,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The write-only private key in PEM format.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         public Input<string>? PrivateKey
         {

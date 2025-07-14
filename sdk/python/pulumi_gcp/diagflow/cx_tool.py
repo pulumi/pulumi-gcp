@@ -31,9 +31,6 @@ class CxToolArgs:
         """
         The set of arguments for constructing a CxTool resource.
         :param pulumi.Input[builtins.str] description: High level description of the Tool and its usage.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] display_name: The human-readable name of the tool, unique within the agent.
         :param pulumi.Input['CxToolDataStoreSpecArgs'] data_store_spec: Data store search tool specification.
                This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
@@ -63,9 +60,6 @@ class CxToolArgs:
     def description(self) -> pulumi.Input[builtins.str]:
         """
         High level description of the Tool and its usage.
-
-
-        - - -
         """
         return pulumi.get(self, "description")
 
@@ -158,9 +152,6 @@ class _CxToolState:
                This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
                Structure is documented below.
         :param pulumi.Input[builtins.str] description: High level description of the Tool and its usage.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] display_name: The human-readable name of the tool, unique within the agent.
         :param pulumi.Input['CxToolFunctionSpecArgs'] function_spec: Client side executed function specification.
                This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
@@ -210,9 +201,6 @@ class _CxToolState:
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         High level description of the Tool and its usage.
-
-
-        - - -
         """
         return pulumi.get(self, "description")
 
@@ -510,9 +498,6 @@ class CxTool(pulumi.CustomResource):
                This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
                Structure is documented below.
         :param pulumi.Input[builtins.str] description: High level description of the Tool and its usage.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] display_name: The human-readable name of the tool, unique within the agent.
         :param pulumi.Input[Union['CxToolFunctionSpecArgs', 'CxToolFunctionSpecArgsDict']] function_spec: Client side executed function specification.
                This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
@@ -792,9 +777,6 @@ class CxTool(pulumi.CustomResource):
                This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
                Structure is documented below.
         :param pulumi.Input[builtins.str] description: High level description of the Tool and its usage.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] display_name: The human-readable name of the tool, unique within the agent.
         :param pulumi.Input[Union['CxToolFunctionSpecArgs', 'CxToolFunctionSpecArgsDict']] function_spec: Client side executed function specification.
                This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
@@ -837,9 +819,6 @@ class CxTool(pulumi.CustomResource):
     def description(self) -> pulumi.Output[builtins.str]:
         """
         High level description of the Tool and its usage.
-
-
-        - - -
         """
         return pulumi.get(self, "description")
 

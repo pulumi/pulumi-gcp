@@ -21,8 +21,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? Action { get; set; }
 
         /// <summary>
-        /// (Output)
-        /// A description of the rule.
+        /// An optional description of this resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

@@ -70,16 +70,12 @@ public final class PreventionDiscoveryConfigArgs extends com.pulumi.resources.Re
     /**
      * Location to create the discovery config in.
      * 
-     * ***
-     * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
      * @return Location to create the discovery config in.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {
@@ -276,8 +272,6 @@ public final class PreventionDiscoveryConfigArgs extends com.pulumi.resources.Re
         /**
          * @param location Location to create the discovery config in.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -288,8 +282,6 @@ public final class PreventionDiscoveryConfigArgs extends com.pulumi.resources.Re
 
         /**
          * @param location Location to create the discovery config in.
-         * 
-         * ***
          * 
          * @return builder
          * 

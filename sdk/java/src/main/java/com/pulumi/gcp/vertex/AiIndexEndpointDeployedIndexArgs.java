@@ -163,8 +163,6 @@ public final class AiIndexEndpointDeployedIndexArgs extends com.pulumi.resources
      * Identifies the index endpoint. Must be in the format
      * &#39;projects/{{project}}/locations/{{region}}/indexEndpoints/{{indexEndpoint}}&#39;
      * 
-     * ***
-     * 
      */
     @Import(name="indexEndpoint", required=true)
     private Output<String> indexEndpoint;
@@ -172,8 +170,6 @@ public final class AiIndexEndpointDeployedIndexArgs extends com.pulumi.resources
     /**
      * @return Identifies the index endpoint. Must be in the format
      * &#39;projects/{{project}}/locations/{{region}}/indexEndpoints/{{indexEndpoint}}&#39;
-     * 
-     * ***
      * 
      */
     public Output<String> indexEndpoint() {
@@ -440,8 +436,6 @@ public final class AiIndexEndpointDeployedIndexArgs extends com.pulumi.resources
          * @param indexEndpoint Identifies the index endpoint. Must be in the format
          * &#39;projects/{{project}}/locations/{{region}}/indexEndpoints/{{indexEndpoint}}&#39;
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -453,8 +447,6 @@ public final class AiIndexEndpointDeployedIndexArgs extends com.pulumi.resources
         /**
          * @param indexEndpoint Identifies the index endpoint. Must be in the format
          * &#39;projects/{{project}}/locations/{{region}}/indexEndpoints/{{indexEndpoint}}&#39;
-         * 
-         * ***
          * 
          * @return builder
          * 

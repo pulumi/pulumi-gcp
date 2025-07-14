@@ -81,16 +81,12 @@ public final class ScopeArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The client-provided identifier of the scope.
      * 
-     * ***
-     * 
      */
     @Import(name="scopeId", required=true)
     private Output<String> scopeId;
 
     /**
      * @return The client-provided identifier of the scope.
-     * 
-     * ***
      * 
      */
     public Output<String> scopeId() {
@@ -206,8 +202,6 @@ public final class ScopeArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param scopeId The client-provided identifier of the scope.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -218,8 +212,6 @@ public final class ScopeArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param scopeId The client-provided identifier of the scope.
-         * 
-         * ***
          * 
          * @return builder
          * 

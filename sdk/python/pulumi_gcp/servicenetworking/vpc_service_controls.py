@@ -32,9 +32,6 @@ class VpcServiceControlsArgs:
         :param pulumi.Input[builtins.str] service: The service that is managing peering connectivity for a service
                producer's organization. For Google services that support this
                functionality, this value is `servicenetworking.googleapis.com`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The id of the Google Cloud project containing the consumer network.
         """
         pulumi.set(__self__, "enabled", enabled)
@@ -75,9 +72,6 @@ class VpcServiceControlsArgs:
         The service that is managing peering connectivity for a service
         producer's organization. For Google services that support this
         functionality, this value is `servicenetworking.googleapis.com`.
-
-
-        - - -
         """
         return pulumi.get(self, "service")
 
@@ -114,9 +108,6 @@ class _VpcServiceControlsState:
         :param pulumi.Input[builtins.str] service: The service that is managing peering connectivity for a service
                producer's organization. For Google services that support this
                functionality, this value is `servicenetworking.googleapis.com`.
-               
-               
-               - - -
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -171,9 +162,6 @@ class _VpcServiceControlsState:
         The service that is managing peering connectivity for a service
         producer's organization. For Google services that support this
         functionality, this value is `servicenetworking.googleapis.com`.
-
-
-        - - -
         """
         return pulumi.get(self, "service")
 
@@ -295,9 +283,6 @@ class VpcServiceControls(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] service: The service that is managing peering connectivity for a service
                producer's organization. For Google services that support this
                functionality, this value is `servicenetworking.googleapis.com`.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -464,9 +449,6 @@ class VpcServiceControls(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] service: The service that is managing peering connectivity for a service
                producer's organization. For Google services that support this
                functionality, this value is `servicenetworking.googleapis.com`.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -510,9 +492,6 @@ class VpcServiceControls(pulumi.CustomResource):
         The service that is managing peering connectivity for a service
         producer's organization. For Google services that support this
         functionality, this value is `servicenetworking.googleapis.com`.
-
-
-        - - -
         """
         return pulumi.get(self, "service")
 

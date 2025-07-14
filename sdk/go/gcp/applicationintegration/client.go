@@ -159,8 +159,6 @@ type Client struct {
 	// Indicates if sample integrations should be created along with provisioning.
 	CreateSampleIntegrations pulumi.BoolPtrOutput `pulumi:"createSampleIntegrations"`
 	// Location in which client needs to be provisioned.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -213,8 +211,6 @@ type clientState struct {
 	// Indicates if sample integrations should be created along with provisioning.
 	CreateSampleIntegrations *bool `pulumi:"createSampleIntegrations"`
 	// Location in which client needs to be provisioned.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -235,8 +231,6 @@ type ClientState struct {
 	// Indicates if sample integrations should be created along with provisioning.
 	CreateSampleIntegrations pulumi.BoolPtrInput
 	// Location in which client needs to be provisioned.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -261,8 +255,6 @@ type clientArgs struct {
 	// Indicates if sample integrations should be created along with provisioning.
 	CreateSampleIntegrations *bool `pulumi:"createSampleIntegrations"`
 	// Location in which client needs to be provisioned.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -284,8 +276,6 @@ type ClientArgs struct {
 	// Indicates if sample integrations should be created along with provisioning.
 	CreateSampleIntegrations pulumi.BoolPtrInput
 	// Location in which client needs to be provisioned.
-	//
-	// ***
 	Location pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -398,8 +388,6 @@ func (o ClientOutput) CreateSampleIntegrations() pulumi.BoolPtrOutput {
 }
 
 // Location in which client needs to be provisioned.
-//
-// ***
 func (o ClientOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Client) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

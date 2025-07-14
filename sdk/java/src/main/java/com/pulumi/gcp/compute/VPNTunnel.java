@@ -607,8 +607,6 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
      * gateway and the peer VPN gateway.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
-     * ***
-     * 
      */
     @Export(name="sharedSecret", refs={String.class}, tree="[0]")
     private Output<String> sharedSecret;
@@ -617,8 +615,6 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
      * @return Shared secret used to set the secure session between the Cloud VPN
      * gateway and the peer VPN gateway.
      * **Note**: This property is sensitive and will not be displayed in the plan.
-     * 
-     * ***
      * 
      */
     public Output<String> sharedSecret() {

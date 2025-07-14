@@ -165,8 +165,6 @@ type Table struct {
 	HiveOptions TableHiveOptionsPtrOutput `pulumi:"hiveOptions"`
 	// Output only. The name of the Table. Format:
 	// projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}/databases/{databaseId}/tables/{tableId}
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The database type.
 	// Possible values are: `HIVE`.
@@ -235,8 +233,6 @@ type tableState struct {
 	HiveOptions *TableHiveOptions `pulumi:"hiveOptions"`
 	// Output only. The name of the Table. Format:
 	// projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}/databases/{databaseId}/tables/{tableId}
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The database type.
 	// Possible values are: `HIVE`.
@@ -276,8 +272,6 @@ type TableState struct {
 	HiveOptions TableHiveOptionsPtrInput
 	// Output only. The name of the Table. Format:
 	// projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}/databases/{databaseId}/tables/{tableId}
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The database type.
 	// Possible values are: `HIVE`.
@@ -301,8 +295,6 @@ type tableArgs struct {
 	HiveOptions *TableHiveOptions `pulumi:"hiveOptions"`
 	// Output only. The name of the Table. Format:
 	// projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}/databases/{databaseId}/tables/{tableId}
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The database type.
 	// Possible values are: `HIVE`.
@@ -318,8 +310,6 @@ type TableArgs struct {
 	HiveOptions TableHiveOptionsPtrInput
 	// Output only. The name of the Table. Format:
 	// projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}/databases/{databaseId}/tables/{tableId}
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The database type.
 	// Possible values are: `HIVE`.
@@ -458,8 +448,6 @@ func (o TableOutput) HiveOptions() TableHiveOptionsPtrOutput {
 
 // Output only. The name of the Table. Format:
 // projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}/databases/{databaseId}/tables/{tableId}
-//
-// ***
 func (o TableOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

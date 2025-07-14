@@ -577,8 +577,6 @@ type ConnectionProfile struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the location this connection profile is located in.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// MySQL database profile.
 	// Structure is documented below.
@@ -673,8 +671,6 @@ type connectionProfileState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the location this connection profile is located in.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// MySQL database profile.
 	// Structure is documented below.
@@ -726,8 +722,6 @@ type ConnectionProfileState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The name of the location this connection profile is located in.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// MySQL database profile.
 	// Structure is documented below.
@@ -781,8 +775,6 @@ type connectionProfileArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the location this connection profile is located in.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// MySQL database profile.
 	// Structure is documented below.
@@ -828,8 +820,6 @@ type ConnectionProfileArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The name of the location this connection profile is located in.
-	//
-	// ***
 	Location pulumi.StringInput
 	// MySQL database profile.
 	// Structure is documented below.
@@ -988,8 +978,6 @@ func (o ConnectionProfileOutput) Labels() pulumi.StringMapOutput {
 }
 
 // The name of the location this connection profile is located in.
-//
-// ***
 func (o ConnectionProfileOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

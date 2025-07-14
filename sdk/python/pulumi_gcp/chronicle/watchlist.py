@@ -41,10 +41,17 @@ class WatchlistArgs:
         :param pulumi.Input[builtins.str] instance: The unique identifier for the Chronicle instance, which is the same as the customer ID.
         :param pulumi.Input[builtins.str] location: The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
         :param pulumi.Input[builtins.str] description: Optional. Description of the watchlist.
-        :param pulumi.Input[builtins.float] multiplying_factor: Optional. Weight applied to the risk score for entities in this watchlist. The default is 1.0 if it is not specified.
-        :param pulumi.Input[builtins.str] watchlist_id: Optional. The ID to use for the watchlist, which will become the final component of the watchlist's resource name. This
-               value should be 4-63 characters, and valid characters are /a-z-/.
+        :param pulumi.Input[builtins.float] multiplying_factor: Optional. Weight applied to the risk score for entities
+               in this watchlist.
+               The default is 1.0 if it is not specified.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[builtins.str] watchlist_id: Optional. The ID to use for the watchlist,
+               which will become the final component of the watchlist's resource name.
+               This value should be 4-63 characters, and valid characters
+               are /a-z-/.
         :param pulumi.Input['WatchlistWatchlistUserPreferencesArgs'] watchlist_user_preferences: A collection of user preferences for watchlist UI configuration.
+               Structure is documented below.
         """
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "entity_population_mechanism", entity_population_mechanism)
@@ -128,7 +135,9 @@ class WatchlistArgs:
     @pulumi.getter(name="multiplyingFactor")
     def multiplying_factor(self) -> Optional[pulumi.Input[builtins.float]]:
         """
-        Optional. Weight applied to the risk score for entities in this watchlist. The default is 1.0 if it is not specified.
+        Optional. Weight applied to the risk score for entities
+        in this watchlist.
+        The default is 1.0 if it is not specified.
         """
         return pulumi.get(self, "multiplying_factor")
 
@@ -139,6 +148,10 @@ class WatchlistArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -149,8 +162,10 @@ class WatchlistArgs:
     @pulumi.getter(name="watchlistId")
     def watchlist_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Optional. The ID to use for the watchlist, which will become the final component of the watchlist's resource name. This
-        value should be 4-63 characters, and valid characters are /a-z-/.
+        Optional. The ID to use for the watchlist,
+        which will become the final component of the watchlist's resource name.
+        This value should be 4-63 characters, and valid characters
+        are /a-z-/.
         """
         return pulumi.get(self, "watchlist_id")
 
@@ -163,6 +178,7 @@ class WatchlistArgs:
     def watchlist_user_preferences(self) -> Optional[pulumi.Input['WatchlistWatchlistUserPreferencesArgs']]:
         """
         A collection of user preferences for watchlist UI configuration.
+        Structure is documented below.
         """
         return pulumi.get(self, "watchlist_user_preferences")
 
@@ -200,14 +216,21 @@ class _WatchlistState:
                Structure is documented below.
         :param pulumi.Input[builtins.str] instance: The unique identifier for the Chronicle instance, which is the same as the customer ID.
         :param pulumi.Input[builtins.str] location: The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
-        :param pulumi.Input[builtins.float] multiplying_factor: Optional. Weight applied to the risk score for entities in this watchlist. The default is 1.0 if it is not specified.
+        :param pulumi.Input[builtins.float] multiplying_factor: Optional. Weight applied to the risk score for entities
+               in this watchlist.
+               The default is 1.0 if it is not specified.
         :param pulumi.Input[builtins.str] name: Identifier. Resource name of the watchlist. This unique identifier is generated using values provided for the URL parameters.
                Format:
                projects/{project}/locations/{location}/instances/{instance}/watchlists/{watchlist}
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] update_time: Output only. Time the watchlist was last updated.
-        :param pulumi.Input[builtins.str] watchlist_id: Optional. The ID to use for the watchlist, which will become the final component of the watchlist's resource name. This
-               value should be 4-63 characters, and valid characters are /a-z-/.
+        :param pulumi.Input[builtins.str] watchlist_id: Optional. The ID to use for the watchlist,
+               which will become the final component of the watchlist's resource name.
+               This value should be 4-63 characters, and valid characters
+               are /a-z-/.
         :param pulumi.Input['WatchlistWatchlistUserPreferencesArgs'] watchlist_user_preferences: A collection of user preferences for watchlist UI configuration.
+               Structure is documented below.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -328,7 +351,9 @@ class _WatchlistState:
     @pulumi.getter(name="multiplyingFactor")
     def multiplying_factor(self) -> Optional[pulumi.Input[builtins.float]]:
         """
-        Optional. Weight applied to the risk score for entities in this watchlist. The default is 1.0 if it is not specified.
+        Optional. Weight applied to the risk score for entities
+        in this watchlist.
+        The default is 1.0 if it is not specified.
         """
         return pulumi.get(self, "multiplying_factor")
 
@@ -353,6 +378,10 @@ class _WatchlistState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -375,8 +404,10 @@ class _WatchlistState:
     @pulumi.getter(name="watchlistId")
     def watchlist_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Optional. The ID to use for the watchlist, which will become the final component of the watchlist's resource name. This
-        value should be 4-63 characters, and valid characters are /a-z-/.
+        Optional. The ID to use for the watchlist,
+        which will become the final component of the watchlist's resource name.
+        This value should be 4-63 characters, and valid characters
+        are /a-z-/.
         """
         return pulumi.get(self, "watchlist_id")
 
@@ -389,6 +420,7 @@ class _WatchlistState:
     def watchlist_user_preferences(self) -> Optional[pulumi.Input['WatchlistWatchlistUserPreferencesArgs']]:
         """
         A collection of user preferences for watchlist UI configuration.
+        Structure is documented below.
         """
         return pulumi.get(self, "watchlist_user_preferences")
 
@@ -498,10 +530,17 @@ class Watchlist(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[builtins.str] instance: The unique identifier for the Chronicle instance, which is the same as the customer ID.
         :param pulumi.Input[builtins.str] location: The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
-        :param pulumi.Input[builtins.float] multiplying_factor: Optional. Weight applied to the risk score for entities in this watchlist. The default is 1.0 if it is not specified.
-        :param pulumi.Input[builtins.str] watchlist_id: Optional. The ID to use for the watchlist, which will become the final component of the watchlist's resource name. This
-               value should be 4-63 characters, and valid characters are /a-z-/.
+        :param pulumi.Input[builtins.float] multiplying_factor: Optional. Weight applied to the risk score for entities
+               in this watchlist.
+               The default is 1.0 if it is not specified.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[builtins.str] watchlist_id: Optional. The ID to use for the watchlist,
+               which will become the final component of the watchlist's resource name.
+               This value should be 4-63 characters, and valid characters
+               are /a-z-/.
         :param pulumi.Input[Union['WatchlistWatchlistUserPreferencesArgs', 'WatchlistWatchlistUserPreferencesArgsDict']] watchlist_user_preferences: A collection of user preferences for watchlist UI configuration.
+               Structure is documented below.
         """
         ...
     @overload
@@ -679,14 +718,21 @@ class Watchlist(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[builtins.str] instance: The unique identifier for the Chronicle instance, which is the same as the customer ID.
         :param pulumi.Input[builtins.str] location: The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
-        :param pulumi.Input[builtins.float] multiplying_factor: Optional. Weight applied to the risk score for entities in this watchlist. The default is 1.0 if it is not specified.
+        :param pulumi.Input[builtins.float] multiplying_factor: Optional. Weight applied to the risk score for entities
+               in this watchlist.
+               The default is 1.0 if it is not specified.
         :param pulumi.Input[builtins.str] name: Identifier. Resource name of the watchlist. This unique identifier is generated using values provided for the URL parameters.
                Format:
                projects/{project}/locations/{location}/instances/{instance}/watchlists/{watchlist}
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] update_time: Output only. Time the watchlist was last updated.
-        :param pulumi.Input[builtins.str] watchlist_id: Optional. The ID to use for the watchlist, which will become the final component of the watchlist's resource name. This
-               value should be 4-63 characters, and valid characters are /a-z-/.
+        :param pulumi.Input[builtins.str] watchlist_id: Optional. The ID to use for the watchlist,
+               which will become the final component of the watchlist's resource name.
+               This value should be 4-63 characters, and valid characters
+               are /a-z-/.
         :param pulumi.Input[Union['WatchlistWatchlistUserPreferencesArgs', 'WatchlistWatchlistUserPreferencesArgsDict']] watchlist_user_preferences: A collection of user preferences for watchlist UI configuration.
+               Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -771,7 +817,9 @@ class Watchlist(pulumi.CustomResource):
     @pulumi.getter(name="multiplyingFactor")
     def multiplying_factor(self) -> pulumi.Output[Optional[builtins.float]]:
         """
-        Optional. Weight applied to the risk score for entities in this watchlist. The default is 1.0 if it is not specified.
+        Optional. Weight applied to the risk score for entities
+        in this watchlist.
+        The default is 1.0 if it is not specified.
         """
         return pulumi.get(self, "multiplying_factor")
 
@@ -788,6 +836,10 @@ class Watchlist(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property
@@ -802,8 +854,10 @@ class Watchlist(pulumi.CustomResource):
     @pulumi.getter(name="watchlistId")
     def watchlist_id(self) -> pulumi.Output[builtins.str]:
         """
-        Optional. The ID to use for the watchlist, which will become the final component of the watchlist's resource name. This
-        value should be 4-63 characters, and valid characters are /a-z-/.
+        Optional. The ID to use for the watchlist,
+        which will become the final component of the watchlist's resource name.
+        This value should be 4-63 characters, and valid characters
+        are /a-z-/.
         """
         return pulumi.get(self, "watchlist_id")
 
@@ -812,6 +866,7 @@ class Watchlist(pulumi.CustomResource):
     def watchlist_user_preferences(self) -> pulumi.Output['outputs.WatchlistWatchlistUserPreferences']:
         """
         A collection of user preferences for watchlist UI configuration.
+        Structure is documented below.
         """
         return pulumi.get(self, "watchlist_user_preferences")
 

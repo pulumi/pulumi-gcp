@@ -16,8 +16,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// The reliability the user intends this group to be capable of, in terms
         /// of the Interconnect product SLAs.
         /// Possible values are: `PRODUCTION_NON_CRITICAL`, `PRODUCTION_CRITICAL`, `NO_SLA`, `AVAILABILITY_SLA_UNSPECIFIED`.
-        /// 
-        /// - - -
         /// </summary>
         [Input("topologyCapability")]
         public Input<string>? TopologyCapability { get; set; }

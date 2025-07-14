@@ -150,9 +150,6 @@ export class InstantSnapshot extends pulumi.CustomResource {
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
      * A reference to the disk used to create this instant snapshot.
-     *
-     *
-     * - - -
      */
     public readonly sourceDisk!: pulumi.Output<string>;
     /**
@@ -273,9 +270,6 @@ export interface InstantSnapshotState {
     selfLink?: pulumi.Input<string>;
     /**
      * A reference to the disk used to create this instant snapshot.
-     *
-     *
-     * - - -
      */
     sourceDisk?: pulumi.Input<string>;
     /**
@@ -319,9 +313,6 @@ export interface InstantSnapshotArgs {
     project?: pulumi.Input<string>;
     /**
      * A reference to the disk used to create this instant snapshot.
-     *
-     *
-     * - - -
      */
     sourceDisk: pulumi.Input<string>;
     /**

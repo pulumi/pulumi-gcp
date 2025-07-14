@@ -25,9 +25,6 @@ class AutokeyConfigArgs:
         """
         The set of arguments for constructing a AutokeyConfig resource.
         :param pulumi.Input[builtins.str] folder: The folder for which to retrieve config.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] key_project: The target key project for a given folder where KMS Autokey will provision a
                CryptoKey for any new KeyHandle the Developer creates. Should have the form
                `projects/<project_id_or_number>`.
@@ -41,9 +38,6 @@ class AutokeyConfigArgs:
     def folder(self) -> pulumi.Input[builtins.str]:
         """
         The folder for which to retrieve config.
-
-
-        - - -
         """
         return pulumi.get(self, "folder")
 
@@ -76,9 +70,6 @@ class _AutokeyConfigState:
         Input properties used for looking up and filtering AutokeyConfig resources.
         :param pulumi.Input[builtins.str] etag: The etag of the AutokeyConfig for optimistic concurrency control.
         :param pulumi.Input[builtins.str] folder: The folder for which to retrieve config.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] key_project: The target key project for a given folder where KMS Autokey will provision a
                CryptoKey for any new KeyHandle the Developer creates. Should have the form
                `projects/<project_id_or_number>`.
@@ -107,9 +98,6 @@ class _AutokeyConfigState:
     def folder(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The folder for which to retrieve config.
-
-
-        - - -
         """
         return pulumi.get(self, "folder")
 
@@ -222,9 +210,6 @@ class AutokeyConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] folder: The folder for which to retrieve config.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] key_project: The target key project for a given folder where KMS Autokey will provision a
                CryptoKey for any new KeyHandle the Developer creates. Should have the form
                `projects/<project_id_or_number>`.
@@ -366,9 +351,6 @@ class AutokeyConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] etag: The etag of the AutokeyConfig for optimistic concurrency control.
         :param pulumi.Input[builtins.str] folder: The folder for which to retrieve config.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] key_project: The target key project for a given folder where KMS Autokey will provision a
                CryptoKey for any new KeyHandle the Developer creates. Should have the form
                `projects/<project_id_or_number>`.
@@ -395,9 +377,6 @@ class AutokeyConfig(pulumi.CustomResource):
     def folder(self) -> pulumi.Output[builtins.str]:
         """
         The folder for which to retrieve config.
-
-
-        - - -
         """
         return pulumi.get(self, "folder")
 

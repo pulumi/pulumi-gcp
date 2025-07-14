@@ -10,6 +10,11 @@ export type ConnectivityTest = import("./connectivityTest").ConnectivityTest;
 export const ConnectivityTest: typeof import("./connectivityTest").ConnectivityTest = null as any;
 utilities.lazyLoad(exports, ["ConnectivityTest"], () => require("./connectivityTest"));
 
+export { GetConnectivityTestRunArgs, GetConnectivityTestRunResult, GetConnectivityTestRunOutputArgs } from "./getConnectivityTestRun";
+export const getConnectivityTestRun: typeof import("./getConnectivityTestRun").getConnectivityTestRun = null as any;
+export const getConnectivityTestRunOutput: typeof import("./getConnectivityTestRun").getConnectivityTestRunOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectivityTestRun","getConnectivityTestRunOutput"], () => require("./getConnectivityTestRun"));
+
 export { VpcFlowLogsConfigArgs, VpcFlowLogsConfigState } from "./vpcFlowLogsConfig";
 export type VpcFlowLogsConfig = import("./vpcFlowLogsConfig").VpcFlowLogsConfig;
 export const VpcFlowLogsConfig: typeof import("./vpcFlowLogsConfig").VpcFlowLogsConfig = null as any;

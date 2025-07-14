@@ -206,9 +206,6 @@ export class CustomTargetType extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location of the source.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -334,9 +331,6 @@ export interface CustomTargetTypeState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location of the source.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -390,9 +384,6 @@ export interface CustomTargetTypeArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location of the source.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

@@ -166,16 +166,12 @@ public final class CodeToolsSettingBindingState extends com.pulumi.resources.Res
     /**
      * Id of the setting binding.
      * 
-     * ***
-     * 
      */
     @Import(name="settingBindingId")
     private @Nullable Output<String> settingBindingId;
 
     /**
      * @return Id of the setting binding.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> settingBindingId() {
@@ -451,8 +447,6 @@ public final class CodeToolsSettingBindingState extends com.pulumi.resources.Res
         /**
          * @param settingBindingId Id of the setting binding.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -463,8 +457,6 @@ public final class CodeToolsSettingBindingState extends com.pulumi.resources.Res
 
         /**
          * @param settingBindingId Id of the setting binding.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -24,16 +24,12 @@ public final class AppProfileArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
      * 
-     * ***
-     * 
      */
     @Import(name="appProfileId", required=true)
     private Output<String> appProfileId;
 
     /**
      * @return The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-     * 
-     * ***
      * 
      */
     public Output<String> appProfileId() {
@@ -249,8 +245,6 @@ public final class AppProfileArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param appProfileId The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -261,8 +255,6 @@ public final class AppProfileArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param appProfileId The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-         * 
-         * ***
          * 
          * @return builder
          * 

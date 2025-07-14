@@ -75,16 +75,12 @@ public final class RegionalSecretVersionArgs extends com.pulumi.resources.Resour
     /**
      * Secret Manager regional secret resource.
      * 
-     * ***
-     * 
      */
     @Import(name="secret", required=true)
     private Output<String> secret;
 
     /**
      * @return Secret Manager regional secret resource.
-     * 
-     * ***
      * 
      */
     public Output<String> secret() {
@@ -212,8 +208,6 @@ public final class RegionalSecretVersionArgs extends com.pulumi.resources.Resour
         /**
          * @param secret Secret Manager regional secret resource.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -224,8 +218,6 @@ public final class RegionalSecretVersionArgs extends com.pulumi.resources.Resour
 
         /**
          * @param secret Secret Manager regional secret resource.
-         * 
-         * ***
          * 
          * @return builder
          * 

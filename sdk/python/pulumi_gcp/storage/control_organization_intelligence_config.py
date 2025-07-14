@@ -31,9 +31,6 @@ class ControlOrganizationIntelligenceConfigArgs:
         :param pulumi.Input['ControlOrganizationIntelligenceConfigFilterArgs'] filter: Filter over location and bucket using include or exclude semantics. Resources that match the include or exclude filter are exclusively included or excluded from the Storage Intelligence plan.
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: Identifier of the GCP Organization. For GCP org, this field should be organization number.
-               
-               
-               - - -
         """
         if edition_config is not None:
             pulumi.set(__self__, "edition_config", edition_config)
@@ -72,9 +69,6 @@ class ControlOrganizationIntelligenceConfigArgs:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Identifier of the GCP Organization. For GCP org, this field should be organization number.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -100,9 +94,6 @@ class _ControlOrganizationIntelligenceConfigState:
         :param pulumi.Input['ControlOrganizationIntelligenceConfigFilterArgs'] filter: Filter over location and bucket using include or exclude semantics. Resources that match the include or exclude filter are exclusively included or excluded from the Storage Intelligence plan.
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: Identifier of the GCP Organization. For GCP org, this field should be organization number.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['ControlOrganizationIntelligenceConfigTrialConfigArgs']]] trial_configs: The trial configuration of the Storage Intelligence resource.
                Structure is documented below.
         :param pulumi.Input[builtins.str] update_time: The time at which the Storage Intelligence Config resource is last updated.
@@ -163,9 +154,6 @@ class _ControlOrganizationIntelligenceConfigState:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Identifier of the GCP Organization. For GCP org, this field should be organization number.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -261,9 +249,6 @@ class ControlOrganizationIntelligenceConfig(pulumi.CustomResource):
         :param pulumi.Input[Union['ControlOrganizationIntelligenceConfigFilterArgs', 'ControlOrganizationIntelligenceConfigFilterArgsDict']] filter: Filter over location and bucket using include or exclude semantics. Resources that match the include or exclude filter are exclusively included or excluded from the Storage Intelligence plan.
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: Identifier of the GCP Organization. For GCP org, this field should be organization number.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -379,9 +364,6 @@ class ControlOrganizationIntelligenceConfig(pulumi.CustomResource):
         :param pulumi.Input[Union['ControlOrganizationIntelligenceConfigFilterArgs', 'ControlOrganizationIntelligenceConfigFilterArgsDict']] filter: Filter over location and bucket using include or exclude semantics. Resources that match the include or exclude filter are exclusively included or excluded from the Storage Intelligence plan.
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: Identifier of the GCP Organization. For GCP org, this field should be organization number.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[Union['ControlOrganizationIntelligenceConfigTrialConfigArgs', 'ControlOrganizationIntelligenceConfigTrialConfigArgsDict']]]] trial_configs: The trial configuration of the Storage Intelligence resource.
                Structure is documented below.
         :param pulumi.Input[builtins.str] update_time: The time at which the Storage Intelligence Config resource is last updated.
@@ -429,9 +411,6 @@ class ControlOrganizationIntelligenceConfig(pulumi.CustomResource):
     def name(self) -> pulumi.Output[builtins.str]:
         """
         Identifier of the GCP Organization. For GCP org, this field should be organization number.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

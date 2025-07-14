@@ -37,9 +37,6 @@ class CxSecuritySettingsArgs:
         """
         The set of arguments for constructing a CxSecuritySettings resource.
         :param pulumi.Input[builtins.str] display_name: The human-readable name of the security settings, unique within the location.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: The location these settings are located in. Settings can only be applied to an agent in the same location.
                See [Available Regions](https://cloud.google.com/dialogflow/cx/docs/concept/region#avail) for a list of supported locations.
         :param pulumi.Input['CxSecuritySettingsAudioExportSettingsArgs'] audio_export_settings: Controls audio export settings for post-conversation analytics when ingesting audio to conversations.
@@ -100,9 +97,6 @@ class CxSecuritySettingsArgs:
     def display_name(self) -> pulumi.Input[builtins.str]:
         """
         The human-readable name of the security settings, unique within the location.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -290,9 +284,6 @@ class _CxSecuritySettingsState:
                Note: deidentifyTemplate must be located in the same region as the SecuritySettings.
                Format: projects/<Project ID>/locations/<Location ID>/deidentifyTemplates/<Template ID> OR organizations/<Organization ID>/locations/<Location ID>/deidentifyTemplates/<Template ID>
         :param pulumi.Input[builtins.str] display_name: The human-readable name of the security settings, unique within the location.
-               
-               
-               - - -
         :param pulumi.Input['CxSecuritySettingsInsightsExportSettingsArgs'] insights_export_settings: Controls conversation exporting settings to Insights after conversation is completed.
                If retentionStrategy is set to REMOVE_AFTER_CONVERSATION, Insights export is disabled no matter what you configure here.
                Structure is documented below.
@@ -381,9 +372,6 @@ class _CxSecuritySettingsState:
     def display_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The human-readable name of the security settings, unique within the location.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -659,9 +647,6 @@ class CxSecuritySettings(pulumi.CustomResource):
                Note: deidentifyTemplate must be located in the same region as the SecuritySettings.
                Format: projects/<Project ID>/locations/<Location ID>/deidentifyTemplates/<Template ID> OR organizations/<Organization ID>/locations/<Location ID>/deidentifyTemplates/<Template ID>
         :param pulumi.Input[builtins.str] display_name: The human-readable name of the security settings, unique within the location.
-               
-               
-               - - -
         :param pulumi.Input[Union['CxSecuritySettingsInsightsExportSettingsArgs', 'CxSecuritySettingsInsightsExportSettingsArgsDict']] insights_export_settings: Controls conversation exporting settings to Insights after conversation is completed.
                If retentionStrategy is set to REMOVE_AFTER_CONVERSATION, Insights export is disabled no matter what you configure here.
                Structure is documented below.
@@ -886,9 +871,6 @@ class CxSecuritySettings(pulumi.CustomResource):
                Note: deidentifyTemplate must be located in the same region as the SecuritySettings.
                Format: projects/<Project ID>/locations/<Location ID>/deidentifyTemplates/<Template ID> OR organizations/<Organization ID>/locations/<Location ID>/deidentifyTemplates/<Template ID>
         :param pulumi.Input[builtins.str] display_name: The human-readable name of the security settings, unique within the location.
-               
-               
-               - - -
         :param pulumi.Input[Union['CxSecuritySettingsInsightsExportSettingsArgs', 'CxSecuritySettingsInsightsExportSettingsArgsDict']] insights_export_settings: Controls conversation exporting settings to Insights after conversation is completed.
                If retentionStrategy is set to REMOVE_AFTER_CONVERSATION, Insights export is disabled no matter what you configure here.
                Structure is documented below.
@@ -961,9 +943,6 @@ class CxSecuritySettings(pulumi.CustomResource):
     def display_name(self) -> pulumi.Output[builtins.str]:
         """
         The human-readable name of the security settings, unique within the location.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 

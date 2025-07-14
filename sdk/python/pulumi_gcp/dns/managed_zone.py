@@ -55,8 +55,6 @@ class ManagedZoneArgs:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] name: User assigned name for this resource.
                Must be unique within the project.
-               
-               - - -
         :param pulumi.Input['ManagedZonePeeringConfigArgs'] peering_config: The presence of this field indicates that DNS Peering is enabled for this
                zone. The value of this field contains the network to peer with.
                Structure is documented below.
@@ -203,8 +201,6 @@ class ManagedZoneArgs:
         """
         User assigned name for this resource.
         Must be unique within the project.
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -341,8 +337,6 @@ class _ManagedZoneState:
         :param pulumi.Input[builtins.str] managed_zone_id: Unique identifier for the resource; defined by the server.
         :param pulumi.Input[builtins.str] name: User assigned name for this resource.
                Must be unique within the project.
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] name_servers: Delegate your managed_zone to these virtual name servers;
                defined by the server
         :param pulumi.Input['ManagedZonePeeringConfigArgs'] peering_config: The presence of this field indicates that DNS Peering is enabled for this
@@ -541,8 +535,6 @@ class _ManagedZoneState:
         """
         User assigned name for this resource.
         Must be unique within the project.
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -955,8 +947,6 @@ class ManagedZone(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] name: User assigned name for this resource.
                Must be unique within the project.
-               
-               - - -
         :param pulumi.Input[Union['ManagedZonePeeringConfigArgs', 'ManagedZonePeeringConfigArgsDict']] peering_config: The presence of this field indicates that DNS Peering is enabled for this
                zone. The value of this field contains the network to peer with.
                Structure is documented below.
@@ -1356,8 +1346,6 @@ class ManagedZone(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] managed_zone_id: Unique identifier for the resource; defined by the server.
         :param pulumi.Input[builtins.str] name: User assigned name for this resource.
                Must be unique within the project.
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] name_servers: Delegate your managed_zone to these virtual name servers;
                defined by the server
         :param pulumi.Input[Union['ManagedZonePeeringConfigArgs', 'ManagedZonePeeringConfigArgsDict']] peering_config: The presence of this field indicates that DNS Peering is enabled for this
@@ -1500,8 +1488,6 @@ class ManagedZone(pulumi.CustomResource):
         """
         User assigned name for this resource.
         Must be unique within the project.
-
-        - - -
         """
         return pulumi.get(self, "name")
 

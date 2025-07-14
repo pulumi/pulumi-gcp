@@ -123,16 +123,12 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
     /**
      * The repository&#39;s name.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return The repository&#39;s name.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -412,8 +408,6 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name The repository&#39;s name.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -424,8 +418,6 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name The repository&#39;s name.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -188,8 +188,6 @@ type RepositoryWorkflowConfig struct {
 	// A reference to the region
 	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*/locations/*/repositories/*/releaseConfigs/*.
-	//
-	// ***
 	ReleaseConfig pulumi.StringOutput `pulumi:"releaseConfig"`
 	// A reference to the Dataform repository
 	Repository pulumi.StringPtrOutput `pulumi:"repository"`
@@ -246,8 +244,6 @@ type repositoryWorkflowConfigState struct {
 	// A reference to the region
 	Region *string `pulumi:"region"`
 	// The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*/locations/*/repositories/*/releaseConfigs/*.
-	//
-	// ***
 	ReleaseConfig *string `pulumi:"releaseConfig"`
 	// A reference to the Dataform repository
 	Repository *string `pulumi:"repository"`
@@ -272,8 +268,6 @@ type RepositoryWorkflowConfigState struct {
 	// A reference to the region
 	Region pulumi.StringPtrInput
 	// The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*/locations/*/repositories/*/releaseConfigs/*.
-	//
-	// ***
 	ReleaseConfig pulumi.StringPtrInput
 	// A reference to the Dataform repository
 	Repository pulumi.StringPtrInput
@@ -299,8 +293,6 @@ type repositoryWorkflowConfigArgs struct {
 	// A reference to the region
 	Region *string `pulumi:"region"`
 	// The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*/locations/*/repositories/*/releaseConfigs/*.
-	//
-	// ***
 	ReleaseConfig string `pulumi:"releaseConfig"`
 	// A reference to the Dataform repository
 	Repository *string `pulumi:"repository"`
@@ -323,8 +315,6 @@ type RepositoryWorkflowConfigArgs struct {
 	// A reference to the region
 	Region pulumi.StringPtrInput
 	// The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*/locations/*/repositories/*/releaseConfigs/*.
-	//
-	// ***
 	ReleaseConfig pulumi.StringInput
 	// A reference to the Dataform repository
 	Repository pulumi.StringPtrInput
@@ -457,8 +447,6 @@ func (o RepositoryWorkflowConfigOutput) Region() pulumi.StringPtrOutput {
 }
 
 // The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*/locations/*/repositories/*/releaseConfigs/*.
-//
-// ***
 func (o RepositoryWorkflowConfigOutput) ReleaseConfig() pulumi.StringOutput {
 	return o.ApplyT(func(v *RepositoryWorkflowConfig) pulumi.StringOutput { return v.ReleaseConfig }).(pulumi.StringOutput)
 }

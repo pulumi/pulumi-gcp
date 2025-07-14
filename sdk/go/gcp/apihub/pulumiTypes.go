@@ -32,8 +32,6 @@ type ApiHubInstanceConfig struct {
 	// CMEK
 	EncryptionType *string `pulumi:"encryptionType"`
 	// Optional. The name of the Vertex AI location where the data store is stored.
-	//
-	// ***
 	VertexLocation *string `pulumi:"vertexLocation"`
 }
 
@@ -67,8 +65,6 @@ type ApiHubInstanceConfigArgs struct {
 	// CMEK
 	EncryptionType pulumi.StringPtrInput `pulumi:"encryptionType"`
 	// Optional. The name of the Vertex AI location where the data store is stored.
-	//
-	// ***
 	VertexLocation pulumi.StringPtrInput `pulumi:"vertexLocation"`
 }
 
@@ -176,8 +172,6 @@ func (o ApiHubInstanceConfigOutput) EncryptionType() pulumi.StringPtrOutput {
 }
 
 // Optional. The name of the Vertex AI location where the data store is stored.
-//
-// ***
 func (o ApiHubInstanceConfigOutput) VertexLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiHubInstanceConfig) *string { return v.VertexLocation }).(pulumi.StringPtrOutput)
 }
@@ -248,8 +242,6 @@ func (o ApiHubInstanceConfigPtrOutput) EncryptionType() pulumi.StringPtrOutput {
 }
 
 // Optional. The name of the Vertex AI location where the data store is stored.
-//
-// ***
 func (o ApiHubInstanceConfigPtrOutput) VertexLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiHubInstanceConfig) *string {
 		if v == nil {
@@ -415,8 +407,6 @@ type CurationEndpointApplicationIntegrationEndpointDetails struct {
 	// `https://integrations.googleapis.com/v1/{name=projects/*/locations/*/integrations/*}:execute`
 	// or
 	// `https://{location}-integrations.googleapis.com/v1/{name=projects/*/locations/*/integrations/*}:execute`
-	//
-	// ***
 	Uri string `pulumi:"uri"`
 }
 
@@ -440,8 +430,6 @@ type CurationEndpointApplicationIntegrationEndpointDetailsArgs struct {
 	// `https://integrations.googleapis.com/v1/{name=projects/*/locations/*/integrations/*}:execute`
 	// or
 	// `https://{location}-integrations.googleapis.com/v1/{name=projects/*/locations/*/integrations/*}:execute`
-	//
-	// ***
 	Uri pulumi.StringInput `pulumi:"uri"`
 }
 
@@ -533,8 +521,6 @@ func (o CurationEndpointApplicationIntegrationEndpointDetailsOutput) TriggerId()
 // `https://integrations.googleapis.com/v1/{name=projects/*/locations/*/integrations/*}:execute`
 // or
 // `https://{location}-integrations.googleapis.com/v1/{name=projects/*/locations/*/integrations/*}:execute`
-//
-// ***
 func (o CurationEndpointApplicationIntegrationEndpointDetailsOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v CurationEndpointApplicationIntegrationEndpointDetails) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -579,8 +565,6 @@ func (o CurationEndpointApplicationIntegrationEndpointDetailsPtrOutput) TriggerI
 // `https://integrations.googleapis.com/v1/{name=projects/*/locations/*/integrations/*}:execute`
 // or
 // `https://{location}-integrations.googleapis.com/v1/{name=projects/*/locations/*/integrations/*}:execute`
-//
-// ***
 func (o CurationEndpointApplicationIntegrationEndpointDetailsPtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CurationEndpointApplicationIntegrationEndpointDetails) *string {
 		if v == nil {
@@ -2407,8 +2391,6 @@ type PluginInstanceActionCurationConfigCustomCuration struct {
 	// The unique name of the curation resource. This will be the name of the
 	// curation resource in the format:
 	// `projects/{project}/locations/{location}/curations/{curation}`
-	//
-	// ***
 	Curation string `pulumi:"curation"`
 }
 
@@ -2427,8 +2409,6 @@ type PluginInstanceActionCurationConfigCustomCurationArgs struct {
 	// The unique name of the curation resource. This will be the name of the
 	// curation resource in the format:
 	// `projects/{project}/locations/{location}/curations/{curation}`
-	//
-	// ***
 	Curation pulumi.StringInput `pulumi:"curation"`
 }
 
@@ -2512,8 +2492,6 @@ func (o PluginInstanceActionCurationConfigCustomCurationOutput) ToPluginInstance
 // The unique name of the curation resource. This will be the name of the
 // curation resource in the format:
 // `projects/{project}/locations/{location}/curations/{curation}`
-//
-// ***
 func (o PluginInstanceActionCurationConfigCustomCurationOutput) Curation() pulumi.StringOutput {
 	return o.ApplyT(func(v PluginInstanceActionCurationConfigCustomCuration) string { return v.Curation }).(pulumi.StringOutput)
 }
@@ -2545,8 +2523,6 @@ func (o PluginInstanceActionCurationConfigCustomCurationPtrOutput) Elem() Plugin
 // The unique name of the curation resource. This will be the name of the
 // curation resource in the format:
 // `projects/{project}/locations/{location}/curations/{curation}`
-//
-// ***
 func (o PluginInstanceActionCurationConfigCustomCurationPtrOutput) Curation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PluginInstanceActionCurationConfigCustomCuration) *string {
 		if v == nil {

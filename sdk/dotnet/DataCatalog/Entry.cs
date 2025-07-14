@@ -200,9 +200,6 @@ namespace Pulumi.Gcp.DataCatalog
 
         /// <summary>
         /// The id of the entry to create.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("entryId")]
         public Output<string> EntryId { get; private set; } = null!;
@@ -341,9 +338,6 @@ namespace Pulumi.Gcp.DataCatalog
 
         /// <summary>
         /// The id of the entry to create.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("entryId", required: true)]
         public Input<string> EntryId { get; set; } = null!;
@@ -457,9 +451,6 @@ namespace Pulumi.Gcp.DataCatalog
 
         /// <summary>
         /// The id of the entry to create.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("entryId")]
         public Input<string>? EntryId { get; set; }

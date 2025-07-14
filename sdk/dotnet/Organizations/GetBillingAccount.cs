@@ -181,6 +181,10 @@ namespace Pulumi.Gcp.Organizations
     public sealed class GetBillingAccountResult
     {
         public readonly string? BillingAccount;
+        /// <summary>
+        /// The currency code of the billing account, e.g. `USD`.
+        /// </summary>
+        public readonly string CurrencyCode;
         public readonly string DisplayName;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -202,6 +206,8 @@ namespace Pulumi.Gcp.Organizations
         private GetBillingAccountResult(
             string? billingAccount,
 
+            string currencyCode,
+
             string displayName,
 
             string id,
@@ -215,6 +221,7 @@ namespace Pulumi.Gcp.Organizations
             ImmutableArray<string> projectIds)
         {
             BillingAccount = billingAccount;
+            CurrencyCode = currencyCode;
             DisplayName = displayName;
             Id = id;
             LookupProjects = lookupProjects;

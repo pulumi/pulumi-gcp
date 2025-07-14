@@ -620,8 +620,6 @@ type MetastoreService struct {
 	// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 63 characters.
-	//
-	// ***
 	ServiceId pulumi.StringOutput `pulumi:"serviceId"`
 	// The current state of the metastore service.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -739,8 +737,6 @@ type metastoreServiceState struct {
 	// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 63 characters.
-	//
-	// ***
 	ServiceId *string `pulumi:"serviceId"`
 	// The current state of the metastore service.
 	State *string `pulumi:"state"`
@@ -824,8 +820,6 @@ type MetastoreServiceState struct {
 	// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 63 characters.
-	//
-	// ***
 	ServiceId pulumi.StringPtrInput
 	// The current state of the metastore service.
 	State pulumi.StringPtrInput
@@ -900,8 +894,6 @@ type metastoreServiceArgs struct {
 	// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 63 characters.
-	//
-	// ***
 	ServiceId *string `pulumi:"serviceId"`
 	// The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
 	// Structure is documented below.
@@ -965,8 +957,6 @@ type MetastoreServiceArgs struct {
 	// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 63 characters.
-	//
-	// ***
 	ServiceId pulumi.StringPtrInput
 	// The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
 	// Structure is documented below.
@@ -1191,8 +1181,6 @@ func (o MetastoreServiceOutput) ScheduledBackup() MetastoreServiceScheduledBacku
 // The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 // and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 // 3 and 63 characters.
-//
-// ***
 func (o MetastoreServiceOutput) ServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreService) pulumi.StringOutput { return v.ServiceId }).(pulumi.StringOutput)
 }

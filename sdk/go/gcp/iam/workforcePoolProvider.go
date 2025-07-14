@@ -463,8 +463,6 @@ type WorkforcePoolProvider struct {
 	// The ID for the provider, which becomes the final component of the resource name.
 	// This value must be 4-32 characters, and may contain the characters [a-z0-9-].
 	// The prefix `gcp-` is reserved for use by Google, and may not be specified.
-	//
-	// ***
 	ProviderId pulumi.StringOutput `pulumi:"providerId"`
 	// Represents a SAML identity provider.
 	// Structure is documented below.
@@ -592,8 +590,6 @@ type workforcePoolProviderState struct {
 	// The ID for the provider, which becomes the final component of the resource name.
 	// This value must be 4-32 characters, and may contain the characters [a-z0-9-].
 	// The prefix `gcp-` is reserved for use by Google, and may not be specified.
-	//
-	// ***
 	ProviderId *string `pulumi:"providerId"`
 	// Represents a SAML identity provider.
 	// Structure is documented below.
@@ -683,8 +679,6 @@ type WorkforcePoolProviderState struct {
 	// The ID for the provider, which becomes the final component of the resource name.
 	// This value must be 4-32 characters, and may contain the characters [a-z0-9-].
 	// The prefix `gcp-` is reserved for use by Google, and may not be specified.
-	//
-	// ***
 	ProviderId pulumi.StringPtrInput
 	// Represents a SAML identity provider.
 	// Structure is documented below.
@@ -775,8 +769,6 @@ type workforcePoolProviderArgs struct {
 	// The ID for the provider, which becomes the final component of the resource name.
 	// This value must be 4-32 characters, and may contain the characters [a-z0-9-].
 	// The prefix `gcp-` is reserved for use by Google, and may not be specified.
-	//
-	// ***
 	ProviderId string `pulumi:"providerId"`
 	// Represents a SAML identity provider.
 	// Structure is documented below.
@@ -857,8 +849,6 @@ type WorkforcePoolProviderArgs struct {
 	// The ID for the provider, which becomes the final component of the resource name.
 	// This value must be 4-32 characters, and may contain the characters [a-z0-9-].
 	// The prefix `gcp-` is reserved for use by Google, and may not be specified.
-	//
-	// ***
 	ProviderId pulumi.StringInput
 	// Represents a SAML identity provider.
 	// Structure is documented below.
@@ -1057,8 +1047,6 @@ func (o WorkforcePoolProviderOutput) Oidc() WorkforcePoolProviderOidcPtrOutput {
 // The ID for the provider, which becomes the final component of the resource name.
 // This value must be 4-32 characters, and may contain the characters [a-z0-9-].
 // The prefix `gcp-` is reserved for use by Google, and may not be specified.
-//
-// ***
 func (o WorkforcePoolProviderOutput) ProviderId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkforcePoolProvider) pulumi.StringOutput { return v.ProviderId }).(pulumi.StringOutput)
 }

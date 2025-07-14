@@ -13,14 +13,14 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The previous share settings of the Future Reservation.
+        /// Settings for sharing the future reservation
         /// Structure is documented below.
         /// </summary>
         [Input("shareSettings")]
         public Input<Inputs.FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsArgs>? ShareSettings { get; set; }
 
         /// <summary>
-        /// The previous instance related properties of the Future Reservation.
+        /// Future Reservation configuration to indicate instance properties and total count.
         /// Structure is documented below.
         /// </summary>
         [Input("specificSkuProperties")]

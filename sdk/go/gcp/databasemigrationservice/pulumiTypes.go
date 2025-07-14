@@ -5210,8 +5210,6 @@ func (o PrivateConnectionErrorArrayOutput) Index(i pulumi.IntInput) PrivateConne
 
 type PrivateConnectionVpcPeeringConfig struct {
 	// A free subnet for peering. (CIDR of /29)
-	//
-	// ***
 	Subnet string `pulumi:"subnet"`
 	// Fully qualified name of the VPC that Database Migration Service will peer to.
 	// Format: projects/{project}/global/{networks}/{name}
@@ -5231,8 +5229,6 @@ type PrivateConnectionVpcPeeringConfigInput interface {
 
 type PrivateConnectionVpcPeeringConfigArgs struct {
 	// A free subnet for peering. (CIDR of /29)
-	//
-	// ***
 	Subnet pulumi.StringInput `pulumi:"subnet"`
 	// Fully qualified name of the VPC that Database Migration Service will peer to.
 	// Format: projects/{project}/global/{networks}/{name}
@@ -5317,8 +5313,6 @@ func (o PrivateConnectionVpcPeeringConfigOutput) ToPrivateConnectionVpcPeeringCo
 }
 
 // A free subnet for peering. (CIDR of /29)
-//
-// ***
 func (o PrivateConnectionVpcPeeringConfigOutput) Subnet() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateConnectionVpcPeeringConfig) string { return v.Subnet }).(pulumi.StringOutput)
 }
@@ -5354,8 +5348,6 @@ func (o PrivateConnectionVpcPeeringConfigPtrOutput) Elem() PrivateConnectionVpcP
 }
 
 // A free subnet for peering. (CIDR of /29)
-//
-// ***
 func (o PrivateConnectionVpcPeeringConfigPtrOutput) Subnet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrivateConnectionVpcPeeringConfig) *string {
 		if v == nil {

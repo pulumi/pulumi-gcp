@@ -247,16 +247,12 @@ public class NetworkPeering extends com.pulumi.resources.CustomResource {
     /**
      * The ID of the Network Peering.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return The ID of the Network Peering.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

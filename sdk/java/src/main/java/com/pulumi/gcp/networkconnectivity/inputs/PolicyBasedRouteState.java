@@ -86,6 +86,7 @@ public final class PolicyBasedRouteState extends com.pulumi.resources.ResourceAr
 
     /**
      * The interconnect attachments that this policy-based route applies to.
+     * Structure is documented below.
      * 
      */
     @Import(name="interconnectAttachment")
@@ -93,6 +94,7 @@ public final class PolicyBasedRouteState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return The interconnect attachments that this policy-based route applies to.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<PolicyBasedRouteInterconnectAttachmentArgs>> interconnectAttachment() {
@@ -115,16 +117,20 @@ public final class PolicyBasedRouteState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * User-defined labels. **Note**: This field is non-authoritative, and will only manage the labels present in your
-     * configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+     * User-defined labels.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return User-defined labels. **Note**: This field is non-authoritative, and will only manage the labels present in your
-     * configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+     * @return User-defined labels.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -177,14 +183,16 @@ public final class PolicyBasedRouteState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Other routes that will be referenced to determine the next hop of the packet. Possible values: [&#34;DEFAULT_ROUTING&#34;]
+     * Other routes that will be referenced to determine the next hop of the packet.
+     * Possible values are: `DEFAULT_ROUTING`.
      * 
      */
     @Import(name="nextHopOtherRoutes")
     private @Nullable Output<String> nextHopOtherRoutes;
 
     /**
-     * @return Other routes that will be referenced to determine the next hop of the packet. Possible values: [&#34;DEFAULT_ROUTING&#34;]
+     * @return Other routes that will be referenced to determine the next hop of the packet.
+     * Possible values are: `DEFAULT_ROUTING`.
      * 
      */
     public Optional<Output<String>> nextHopOtherRoutes() {
@@ -192,27 +200,33 @@ public final class PolicyBasedRouteState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching
-     * policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered
-     * priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
+     * The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
      * 
      */
     @Import(name="priority")
     private @Nullable Output<Integer> priority;
 
     /**
-     * @return The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching
-     * policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered
-     * priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
+     * @return The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
      * 
      */
     public Optional<Output<Integer>> priority() {
         return Optional.ofNullable(this.priority);
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -251,6 +265,7 @@ public final class PolicyBasedRouteState extends com.pulumi.resources.ResourceAr
 
     /**
      * VM instances to which this policy-based route applies to.
+     * Structure is documented below.
      * 
      */
     @Import(name="virtualMachine")
@@ -258,6 +273,7 @@ public final class PolicyBasedRouteState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return VM instances to which this policy-based route applies to.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<PolicyBasedRouteVirtualMachineArgs>> virtualMachine() {
@@ -409,6 +425,7 @@ public final class PolicyBasedRouteState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param interconnectAttachment The interconnect attachments that this policy-based route applies to.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -420,6 +437,7 @@ public final class PolicyBasedRouteState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param interconnectAttachment The interconnect attachments that this policy-based route applies to.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -450,8 +468,10 @@ public final class PolicyBasedRouteState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param labels User-defined labels. **Note**: This field is non-authoritative, and will only manage the labels present in your
-         * configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+         * @param labels User-defined labels.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -462,8 +482,10 @@ public final class PolicyBasedRouteState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param labels User-defined labels. **Note**: This field is non-authoritative, and will only manage the labels present in your
-         * configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+         * @param labels User-defined labels.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -536,7 +558,8 @@ public final class PolicyBasedRouteState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param nextHopOtherRoutes Other routes that will be referenced to determine the next hop of the packet. Possible values: [&#34;DEFAULT_ROUTING&#34;]
+         * @param nextHopOtherRoutes Other routes that will be referenced to determine the next hop of the packet.
+         * Possible values are: `DEFAULT_ROUTING`.
          * 
          * @return builder
          * 
@@ -547,7 +570,8 @@ public final class PolicyBasedRouteState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param nextHopOtherRoutes Other routes that will be referenced to determine the next hop of the packet. Possible values: [&#34;DEFAULT_ROUTING&#34;]
+         * @param nextHopOtherRoutes Other routes that will be referenced to determine the next hop of the packet.
+         * Possible values are: `DEFAULT_ROUTING`.
          * 
          * @return builder
          * 
@@ -557,9 +581,7 @@ public final class PolicyBasedRouteState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param priority The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching
-         * policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered
-         * priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
+         * @param priority The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
          * 
          * @return builder
          * 
@@ -570,9 +592,7 @@ public final class PolicyBasedRouteState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param priority The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching
-         * policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered
-         * priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
+         * @param priority The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
          * 
          * @return builder
          * 
@@ -581,11 +601,25 @@ public final class PolicyBasedRouteState extends com.pulumi.resources.ResourceAr
             return priority(Output.of(priority));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
@@ -636,6 +670,7 @@ public final class PolicyBasedRouteState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param virtualMachine VM instances to which this policy-based route applies to.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -647,6 +682,7 @@ public final class PolicyBasedRouteState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param virtualMachine VM instances to which this policy-based route applies to.
+         * Structure is documented below.
          * 
          * @return builder
          * 

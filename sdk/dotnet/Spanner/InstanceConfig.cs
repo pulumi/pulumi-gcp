@@ -49,9 +49,9 @@ namespace Pulumi.Gcp.Spanner
     public partial class InstanceConfig : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Base configuration name, e.g. nam3, based on which this configuration is created. Only set for user managed
-        /// configurations. baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this
-        /// configuration.
+        /// Base configuration name, e.g. nam3, based on which this configuration is created.
+        /// Only set for user managed configurations.
+        /// baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this configuration.
         /// </summary>
         [Output("baseConfig")]
         public Output<string> BaseConfig { get; private set; } = null!;
@@ -75,20 +75,26 @@ namespace Pulumi.Gcp.Spanner
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
-        /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
-        /// to the field 'effective_labels' for all of the labels present on the resource.
+        /// An object containing a list of "key": value pairs.
+        /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// A unique identifier for the instance configuration. Values are of the form
-        /// projects/&lt;project&gt;/instanceConfigs/[a-z][-a-z0-9]*
+        /// A unique identifier for the instance configuration. Values are of the
+        /// form projects/&lt;project&gt;/instanceConfigs/[a-z][-a-z0-9]*
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -158,9 +164,9 @@ namespace Pulumi.Gcp.Spanner
     public sealed class InstanceConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Base configuration name, e.g. nam3, based on which this configuration is created. Only set for user managed
-        /// configurations. baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this
-        /// configuration.
+        /// Base configuration name, e.g. nam3, based on which this configuration is created.
+        /// Only set for user managed configurations.
+        /// baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this configuration.
         /// </summary>
         [Input("baseConfig")]
         public Input<string>? BaseConfig { get; set; }
@@ -175,9 +181,11 @@ namespace Pulumi.Gcp.Spanner
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
-        /// to the field 'effective_labels' for all of the labels present on the resource.
+        /// An object containing a list of "key": value pairs.
+        /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -186,12 +194,16 @@ namespace Pulumi.Gcp.Spanner
         }
 
         /// <summary>
-        /// A unique identifier for the instance configuration. Values are of the form
-        /// projects/&lt;project&gt;/instanceConfigs/[a-z][-a-z0-9]*
+        /// A unique identifier for the instance configuration. Values are of the
+        /// form projects/&lt;project&gt;/instanceConfigs/[a-z][-a-z0-9]*
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -217,9 +229,9 @@ namespace Pulumi.Gcp.Spanner
     public sealed class InstanceConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Base configuration name, e.g. nam3, based on which this configuration is created. Only set for user managed
-        /// configurations. baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this
-        /// configuration.
+        /// Base configuration name, e.g. nam3, based on which this configuration is created.
+        /// Only set for user managed configurations.
+        /// baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this configuration.
         /// </summary>
         [Input("baseConfig")]
         public Input<string>? BaseConfig { get; set; }
@@ -256,9 +268,11 @@ namespace Pulumi.Gcp.Spanner
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
-        /// to the field 'effective_labels' for all of the labels present on the resource.
+        /// An object containing a list of "key": value pairs.
+        /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -267,12 +281,16 @@ namespace Pulumi.Gcp.Spanner
         }
 
         /// <summary>
-        /// A unique identifier for the instance configuration. Values are of the form
-        /// projects/&lt;project&gt;/instanceConfigs/[a-z][-a-z0-9]*
+        /// A unique identifier for the instance configuration. Values are of the
+        /// form projects/&lt;project&gt;/instanceConfigs/[a-z][-a-z0-9]*
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

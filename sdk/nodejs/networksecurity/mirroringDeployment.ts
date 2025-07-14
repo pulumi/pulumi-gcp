@@ -167,9 +167,6 @@ export class MirroringDeployment extends pulumi.CustomResource {
     /**
      * The ID to use for the new deployment, which will become the final
      * component of the deployment's resource name.
-     *
-     *
-     * - - -
      */
     public readonly mirroringDeploymentId!: pulumi.Output<string>;
     /**
@@ -319,9 +316,6 @@ export interface MirroringDeploymentState {
     /**
      * The ID to use for the new deployment, which will become the final
      * component of the deployment's resource name.
-     *
-     *
-     * - - -
      */
     mirroringDeploymentId?: pulumi.Input<string>;
     /**
@@ -400,9 +394,6 @@ export interface MirroringDeploymentArgs {
     /**
      * The ID to use for the new deployment, which will become the final
      * component of the deployment's resource name.
-     *
-     *
-     * - - -
      */
     mirroringDeploymentId: pulumi.Input<string>;
     /**

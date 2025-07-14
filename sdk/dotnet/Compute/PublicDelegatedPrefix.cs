@@ -180,9 +180,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The IP address range, in CIDR format, represented by this public delegated prefix.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("ipCidrRange")]
         public Output<string> IpCidrRange { get; private set; } = null!;
@@ -297,9 +294,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The IP address range, in CIDR format, represented by this public delegated prefix.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("ipCidrRange", required: true)]
         public Input<string> IpCidrRange { get; set; } = null!;
@@ -370,9 +364,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The IP address range, in CIDR format, represented by this public delegated prefix.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("ipCidrRange")]
         public Input<string>? IpCidrRange { get; set; }

@@ -21,8 +21,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         /// <summary>
         /// Specifies the relative value defined as a percentage, which will be
         /// multiplied by a reference value.
-        /// 
-        /// - - -
         /// </summary>
         [Input("percent")]
         public Input<int>? Percent { get; set; }

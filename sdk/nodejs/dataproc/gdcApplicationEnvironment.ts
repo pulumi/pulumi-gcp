@@ -164,9 +164,6 @@ export class GdcApplicationEnvironment extends pulumi.CustomResource {
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The id of the service instance to which this application environment belongs.
-     *
-     *
-     * - - -
      */
     public readonly serviceinstance!: pulumi.Output<string>;
     /**
@@ -301,9 +298,6 @@ export interface GdcApplicationEnvironmentState {
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The id of the service instance to which this application environment belongs.
-     *
-     *
-     * - - -
      */
     serviceinstance?: pulumi.Input<string>;
     /**
@@ -360,9 +354,6 @@ export interface GdcApplicationEnvironmentArgs {
     project?: pulumi.Input<string>;
     /**
      * The id of the service instance to which this application environment belongs.
-     *
-     *
-     * - - -
      */
     serviceinstance: pulumi.Input<string>;
     /**

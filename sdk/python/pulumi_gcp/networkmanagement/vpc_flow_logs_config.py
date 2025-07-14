@@ -39,9 +39,6 @@ class VpcFlowLogsConfigArgs:
                within its parent collection as described in https://google.aip.dev/122. See documentation
                for resource type `networkmanagement.googleapis.com/VpcFlowLogsConfig`.
         :param pulumi.Input[builtins.str] vpc_flow_logs_config_id: Required. ID of the `VpcFlowLogsConfig`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] aggregation_interval: Optional. The aggregation interval for the logs. Default value is
                INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN"
         :param pulumi.Input[builtins.str] description: Optional. The user-supplied description of the VPC Flow Logs configuration. Maximum
@@ -111,9 +108,6 @@ class VpcFlowLogsConfigArgs:
     def vpc_flow_logs_config_id(self) -> pulumi.Input[builtins.str]:
         """
         Required. ID of the `VpcFlowLogsConfig`.
-
-
-        - - -
         """
         return pulumi.get(self, "vpc_flow_logs_config_id")
 
@@ -323,9 +317,6 @@ class _VpcFlowLogsConfigState:
                is ENABLED. When creating a new configuration, it must be enabled.   Possible
         :param pulumi.Input[builtins.str] update_time: Output only. The time the config was updated.
         :param pulumi.Input[builtins.str] vpc_flow_logs_config_id: Required. ID of the `VpcFlowLogsConfig`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] vpn_tunnel: Traffic will be logged from the VPN Tunnel. Format: projects/{project_id}/regions/{region}/vpnTunnels/{name}
         """
         if aggregation_interval is not None:
@@ -578,9 +569,6 @@ class _VpcFlowLogsConfigState:
     def vpc_flow_logs_config_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Required. ID of the `VpcFlowLogsConfig`.
-
-
-        - - -
         """
         return pulumi.get(self, "vpc_flow_logs_config_id")
 
@@ -840,9 +828,6 @@ class VpcFlowLogsConfig(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] state: Optional. The state of the VPC Flow Log configuration. Default value
                is ENABLED. When creating a new configuration, it must be enabled.   Possible
         :param pulumi.Input[builtins.str] vpc_flow_logs_config_id: Required. ID of the `VpcFlowLogsConfig`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] vpn_tunnel: Traffic will be logged from the VPN Tunnel. Format: projects/{project_id}/regions/{region}/vpnTunnels/{name}
         """
         ...
@@ -1170,9 +1155,6 @@ class VpcFlowLogsConfig(pulumi.CustomResource):
                is ENABLED. When creating a new configuration, it must be enabled.   Possible
         :param pulumi.Input[builtins.str] update_time: Output only. The time the config was updated.
         :param pulumi.Input[builtins.str] vpc_flow_logs_config_id: Required. ID of the `VpcFlowLogsConfig`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] vpn_tunnel: Traffic will be logged from the VPN Tunnel. Format: projects/{project_id}/regions/{region}/vpnTunnels/{name}
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1348,9 +1330,6 @@ class VpcFlowLogsConfig(pulumi.CustomResource):
     def vpc_flow_logs_config_id(self) -> pulumi.Output[builtins.str]:
         """
         Required. ID of the `VpcFlowLogsConfig`.
-
-
-        - - -
         """
         return pulumi.get(self, "vpc_flow_logs_config_id")
 

@@ -125,8 +125,6 @@ type GdcServiceInstance struct {
 	// Requested service account to associate with ServiceInstance.
 	ServiceAccount pulumi.StringPtrOutput `pulumi:"serviceAccount"`
 	// Id of the service instance.
-	//
-	// ***
 	ServiceInstanceId pulumi.StringOutput `pulumi:"serviceInstanceId"`
 	// Spark-specific service instance configuration.
 	SparkServiceInstanceConfig GdcServiceInstanceSparkServiceInstanceConfigPtrOutput `pulumi:"sparkServiceInstanceConfig"`
@@ -231,8 +229,6 @@ type gdcServiceInstanceState struct {
 	// Requested service account to associate with ServiceInstance.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Id of the service instance.
-	//
-	// ***
 	ServiceInstanceId *string `pulumi:"serviceInstanceId"`
 	// Spark-specific service instance configuration.
 	SparkServiceInstanceConfig *GdcServiceInstanceSparkServiceInstanceConfig `pulumi:"sparkServiceInstanceConfig"`
@@ -297,8 +293,6 @@ type GdcServiceInstanceState struct {
 	// Requested service account to associate with ServiceInstance.
 	ServiceAccount pulumi.StringPtrInput
 	// Id of the service instance.
-	//
-	// ***
 	ServiceInstanceId pulumi.StringPtrInput
 	// Spark-specific service instance configuration.
 	SparkServiceInstanceConfig GdcServiceInstanceSparkServiceInstanceConfigPtrInput
@@ -343,8 +337,6 @@ type gdcServiceInstanceArgs struct {
 	// Requested service account to associate with ServiceInstance.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Id of the service instance.
-	//
-	// ***
 	ServiceInstanceId string `pulumi:"serviceInstanceId"`
 	// Spark-specific service instance configuration.
 	SparkServiceInstanceConfig *GdcServiceInstanceSparkServiceInstanceConfig `pulumi:"sparkServiceInstanceConfig"`
@@ -369,8 +361,6 @@ type GdcServiceInstanceArgs struct {
 	// Requested service account to associate with ServiceInstance.
 	ServiceAccount pulumi.StringPtrInput
 	// Id of the service instance.
-	//
-	// ***
 	ServiceInstanceId pulumi.StringInput
 	// Spark-specific service instance configuration.
 	SparkServiceInstanceConfig GdcServiceInstanceSparkServiceInstanceConfigPtrInput
@@ -543,8 +533,6 @@ func (o GdcServiceInstanceOutput) ServiceAccount() pulumi.StringPtrOutput {
 }
 
 // Id of the service instance.
-//
-// ***
 func (o GdcServiceInstanceOutput) ServiceInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GdcServiceInstance) pulumi.StringOutput { return v.ServiceInstanceId }).(pulumi.StringOutput)
 }

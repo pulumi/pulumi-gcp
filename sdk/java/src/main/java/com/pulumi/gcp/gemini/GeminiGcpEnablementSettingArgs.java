@@ -51,16 +51,12 @@ public final class GeminiGcpEnablementSettingArgs extends com.pulumi.resources.R
     /**
      * Id of the Gemini Gcp Enablement setting.
      * 
-     * ***
-     * 
      */
     @Import(name="geminiGcpEnablementSettingId", required=true)
     private Output<String> geminiGcpEnablementSettingId;
 
     /**
      * @return Id of the Gemini Gcp Enablement setting.
-     * 
-     * ***
      * 
      */
     public Output<String> geminiGcpEnablementSettingId() {
@@ -192,8 +188,6 @@ public final class GeminiGcpEnablementSettingArgs extends com.pulumi.resources.R
         /**
          * @param geminiGcpEnablementSettingId Id of the Gemini Gcp Enablement setting.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -204,8 +198,6 @@ public final class GeminiGcpEnablementSettingArgs extends com.pulumi.resources.R
 
         /**
          * @param geminiGcpEnablementSettingId Id of the Gemini Gcp Enablement setting.
-         * 
-         * ***
          * 
          * @return builder
          * 

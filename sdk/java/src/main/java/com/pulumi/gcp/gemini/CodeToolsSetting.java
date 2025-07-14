@@ -156,32 +156,32 @@ public class CodeToolsSetting extends com.pulumi.resources.CustomResource {
         return this.enabledTools;
     }
     /**
-     * Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present in your
-     * configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+     * Labels as key value pairs.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present in your
-     * configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+     * @return Labels as key value pairs.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
         return Codegen.optional(this.labels);
     }
     /**
-     * Resource ID segment making up resource &#39;name&#39;. It identifies the resource within its parent collection as described in
-     * https://google.aip.dev/122.
+     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> location;
 
     /**
-     * @return Resource ID segment making up resource &#39;name&#39;. It identifies the resource within its parent collection as described in
-     * https://google.aip.dev/122.
+     * @return Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      * 
      */
     public Output<Optional<String>> location() {
@@ -203,9 +203,19 @@ public class CodeToolsSetting extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }

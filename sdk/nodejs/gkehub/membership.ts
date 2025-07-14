@@ -187,9 +187,6 @@ export class Membership extends pulumi.CustomResource {
     public readonly location!: pulumi.Output<string | undefined>;
     /**
      * The client-provided identifier of the membership.
-     *
-     *
-     * - - -
      */
     public readonly membershipId!: pulumi.Output<string>;
     /**
@@ -295,9 +292,6 @@ export interface MembershipState {
     location?: pulumi.Input<string>;
     /**
      * The client-provided identifier of the membership.
-     *
-     *
-     * - - -
      */
     membershipId?: pulumi.Input<string>;
     /**
@@ -354,9 +348,6 @@ export interface MembershipArgs {
     location?: pulumi.Input<string>;
     /**
      * The client-provided identifier of the membership.
-     *
-     *
-     * - - -
      */
     membershipId: pulumi.Input<string>;
     /**

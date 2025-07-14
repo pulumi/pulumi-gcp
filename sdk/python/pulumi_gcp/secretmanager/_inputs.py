@@ -578,8 +578,6 @@ if not MYPY:
         kms_key_name: pulumi.Input[builtins.str]
         """
         Describes the Cloud KMS encryption key that will be used to protect destination secret.
-
-        - - -
         """
 elif False:
     SecretReplicationAutoCustomerManagedEncryptionArgsDict: TypeAlias = Mapping[str, Any]
@@ -590,8 +588,6 @@ class SecretReplicationAutoCustomerManagedEncryptionArgs:
                  kms_key_name: pulumi.Input[builtins.str]):
         """
         :param pulumi.Input[builtins.str] kms_key_name: Describes the Cloud KMS encryption key that will be used to protect destination secret.
-               
-               - - -
         """
         pulumi.set(__self__, "kms_key_name", kms_key_name)
 
@@ -600,8 +596,6 @@ class SecretReplicationAutoCustomerManagedEncryptionArgs:
     def kms_key_name(self) -> pulumi.Input[builtins.str]:
         """
         Describes the Cloud KMS encryption key that will be used to protect destination secret.
-
-        - - -
         """
         return pulumi.get(self, "kms_key_name")
 
@@ -703,8 +697,6 @@ if not MYPY:
         kms_key_name: pulumi.Input[builtins.str]
         """
         Describes the Cloud KMS encryption key that will be used to protect destination secret.
-
-        - - -
         """
 elif False:
     SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgsDict: TypeAlias = Mapping[str, Any]
@@ -715,8 +707,6 @@ class SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs:
                  kms_key_name: pulumi.Input[builtins.str]):
         """
         :param pulumi.Input[builtins.str] kms_key_name: Describes the Cloud KMS encryption key that will be used to protect destination secret.
-               
-               - - -
         """
         pulumi.set(__self__, "kms_key_name", kms_key_name)
 
@@ -725,8 +715,6 @@ class SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs:
     def kms_key_name(self) -> pulumi.Input[builtins.str]:
         """
         Describes the Cloud KMS encryption key that will be used to protect destination secret.
-
-        - - -
         """
         return pulumi.get(self, "kms_key_name")
 

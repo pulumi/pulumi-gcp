@@ -133,9 +133,6 @@ export class MembershipBinding extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Location of the membership
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -267,9 +264,6 @@ export interface MembershipBindingState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Location of the membership
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -327,9 +321,6 @@ export interface MembershipBindingArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Location of the membership
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

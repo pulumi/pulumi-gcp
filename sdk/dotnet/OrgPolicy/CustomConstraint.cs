@@ -152,9 +152,6 @@ namespace Pulumi.Gcp.OrgPolicy
 
         /// <summary>
         /// The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
@@ -262,9 +259,6 @@ namespace Pulumi.Gcp.OrgPolicy
 
         /// <summary>
         /// The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
@@ -334,9 +328,6 @@ namespace Pulumi.Gcp.OrgPolicy
 
         /// <summary>
         /// The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }

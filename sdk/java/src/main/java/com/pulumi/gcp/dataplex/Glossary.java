@@ -196,16 +196,12 @@ public class Glossary extends com.pulumi.resources.CustomResource {
     /**
      * The glossary id for creation.
      * 
-     * ***
-     * 
      */
     @Export(name="glossaryId", refs={String.class}, tree="[0]")
     private Output<String> glossaryId;
 
     /**
      * @return The glossary id for creation.
-     * 
-     * ***
      * 
      */
     public Output<String> glossaryId() {

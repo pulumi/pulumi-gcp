@@ -174,6 +174,13 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly allowNetAdmin!: pulumi.Output<boolean | undefined>;
     /**
+     * Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
+     *
+     *
+     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+     */
+    public readonly anonymousAuthenticationConfig!: pulumi.Output<outputs.container.ClusterAnonymousAuthenticationConfig>;
+    /**
      * Configuration for the
      * [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
      * Structure is documented below.
@@ -316,9 +323,6 @@ export class Cluster extends pulumi.CustomResource {
     public /*out*/ readonly endpoint!: pulumi.Output<string>;
     /**
      * Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
-     *
-     *
-     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
      */
     public readonly enterpriseConfig!: pulumi.Output<outputs.container.ClusterEnterpriseConfig>;
     /**
@@ -669,6 +673,7 @@ export class Cluster extends pulumi.CustomResource {
             const state = argsOrState as ClusterState | undefined;
             resourceInputs["addonsConfig"] = state ? state.addonsConfig : undefined;
             resourceInputs["allowNetAdmin"] = state ? state.allowNetAdmin : undefined;
+            resourceInputs["anonymousAuthenticationConfig"] = state ? state.anonymousAuthenticationConfig : undefined;
             resourceInputs["authenticatorGroupsConfig"] = state ? state.authenticatorGroupsConfig : undefined;
             resourceInputs["binaryAuthorization"] = state ? state.binaryAuthorization : undefined;
             resourceInputs["clusterAutoscaling"] = state ? state.clusterAutoscaling : undefined;
@@ -758,6 +763,7 @@ export class Cluster extends pulumi.CustomResource {
             const args = argsOrState as ClusterArgs | undefined;
             resourceInputs["addonsConfig"] = args ? args.addonsConfig : undefined;
             resourceInputs["allowNetAdmin"] = args ? args.allowNetAdmin : undefined;
+            resourceInputs["anonymousAuthenticationConfig"] = args ? args.anonymousAuthenticationConfig : undefined;
             resourceInputs["authenticatorGroupsConfig"] = args ? args.authenticatorGroupsConfig : undefined;
             resourceInputs["binaryAuthorization"] = args ? args.binaryAuthorization : undefined;
             resourceInputs["clusterAutoscaling"] = args ? args.clusterAutoscaling : undefined;
@@ -866,6 +872,13 @@ export interface ClusterState {
      * set to `true`).
      */
     allowNetAdmin?: pulumi.Input<boolean>;
+    /**
+     * Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
+     *
+     *
+     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+     */
+    anonymousAuthenticationConfig?: pulumi.Input<inputs.container.ClusterAnonymousAuthenticationConfig>;
     /**
      * Configuration for the
      * [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
@@ -1009,9 +1022,6 @@ export interface ClusterState {
     endpoint?: pulumi.Input<string>;
     /**
      * Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
-     *
-     *
-     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
      */
     enterpriseConfig?: pulumi.Input<inputs.container.ClusterEnterpriseConfig>;
     /**
@@ -1364,6 +1374,13 @@ export interface ClusterArgs {
      */
     allowNetAdmin?: pulumi.Input<boolean>;
     /**
+     * Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
+     *
+     *
+     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+     */
+    anonymousAuthenticationConfig?: pulumi.Input<inputs.container.ClusterAnonymousAuthenticationConfig>;
+    /**
      * Configuration for the
      * [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
      * Structure is documented below.
@@ -1498,9 +1515,6 @@ export interface ClusterArgs {
     enableTpu?: pulumi.Input<boolean>;
     /**
      * Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
-     *
-     *
-     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
      */
     enterpriseConfig?: pulumi.Input<inputs.container.ClusterEnterpriseConfig>;
     /**

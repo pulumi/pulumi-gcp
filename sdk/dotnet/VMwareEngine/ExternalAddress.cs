@@ -128,9 +128,6 @@ namespace Pulumi.Gcp.VMwareEngine
 
         /// <summary>
         /// The ID of the external IP Address.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -223,9 +220,6 @@ namespace Pulumi.Gcp.VMwareEngine
 
         /// <summary>
         /// The ID of the external IP Address.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -274,9 +268,6 @@ namespace Pulumi.Gcp.VMwareEngine
 
         /// <summary>
         /// The ID of the external IP Address.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

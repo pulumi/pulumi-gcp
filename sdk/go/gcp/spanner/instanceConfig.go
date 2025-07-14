@@ -49,9 +49,9 @@ import (
 type InstanceConfig struct {
 	pulumi.CustomResourceState
 
-	// Base configuration name, e.g. nam3, based on which this configuration is created. Only set for user managed
-	// configurations. baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this
-	// configuration.
+	// Base configuration name, e.g. nam3, based on which this configuration is created.
+	// Only set for user managed configurations.
+	// baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this configuration.
 	BaseConfig pulumi.StringOutput `pulumi:"baseConfig"`
 	// Output only. Whether this instance config is a Google or User Managed Configuration.
 	ConfigType pulumi.StringOutput `pulumi:"configType"`
@@ -59,13 +59,17 @@ type InstanceConfig struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
-	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
-	// to the field 'effective_labels' for all of the labels present on the resource.
+	// An object containing a list of "key": value pairs.
+	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// A unique identifier for the instance configuration. Values are of the form
-	// projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
-	Name    pulumi.StringOutput `pulumi:"name"`
+	// A unique identifier for the instance configuration. Values are of the
+	// form projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -116,9 +120,9 @@ func GetInstanceConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InstanceConfig resources.
 type instanceConfigState struct {
-	// Base configuration name, e.g. nam3, based on which this configuration is created. Only set for user managed
-	// configurations. baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this
-	// configuration.
+	// Base configuration name, e.g. nam3, based on which this configuration is created.
+	// Only set for user managed configurations.
+	// baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this configuration.
 	BaseConfig *string `pulumi:"baseConfig"`
 	// Output only. Whether this instance config is a Google or User Managed Configuration.
 	ConfigType *string `pulumi:"configType"`
@@ -126,13 +130,17 @@ type instanceConfigState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
-	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
-	// to the field 'effective_labels' for all of the labels present on the resource.
+	// An object containing a list of "key": value pairs.
+	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// A unique identifier for the instance configuration. Values are of the form
-	// projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
-	Name    *string `pulumi:"name"`
+	// A unique identifier for the instance configuration. Values are of the
+	// form projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -143,9 +151,9 @@ type instanceConfigState struct {
 }
 
 type InstanceConfigState struct {
-	// Base configuration name, e.g. nam3, based on which this configuration is created. Only set for user managed
-	// configurations. baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this
-	// configuration.
+	// Base configuration name, e.g. nam3, based on which this configuration is created.
+	// Only set for user managed configurations.
+	// baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this configuration.
 	BaseConfig pulumi.StringPtrInput
 	// Output only. Whether this instance config is a Google or User Managed Configuration.
 	ConfigType pulumi.StringPtrInput
@@ -153,13 +161,17 @@ type InstanceConfigState struct {
 	DisplayName pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
-	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
-	// to the field 'effective_labels' for all of the labels present on the resource.
+	// An object containing a list of "key": value pairs.
+	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// A unique identifier for the instance configuration. Values are of the form
-	// projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
-	Name    pulumi.StringPtrInput
+	// A unique identifier for the instance configuration. Values are of the
+	// form projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -174,19 +186,23 @@ func (InstanceConfigState) ElementType() reflect.Type {
 }
 
 type instanceConfigArgs struct {
-	// Base configuration name, e.g. nam3, based on which this configuration is created. Only set for user managed
-	// configurations. baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this
-	// configuration.
+	// Base configuration name, e.g. nam3, based on which this configuration is created.
+	// Only set for user managed configurations.
+	// baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this configuration.
 	BaseConfig *string `pulumi:"baseConfig"`
 	// The name of this instance configuration as it appears in UIs.
 	DisplayName string `pulumi:"displayName"`
-	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
-	// to the field 'effective_labels' for all of the labels present on the resource.
+	// An object containing a list of "key": value pairs.
+	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// A unique identifier for the instance configuration. Values are of the form
-	// projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
-	Name    *string `pulumi:"name"`
+	// A unique identifier for the instance configuration. Values are of the
+	// form projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The geographic placement of nodes in this instance configuration and their replication properties.
 	// Structure is documented below.
@@ -195,19 +211,23 @@ type instanceConfigArgs struct {
 
 // The set of arguments for constructing a InstanceConfig resource.
 type InstanceConfigArgs struct {
-	// Base configuration name, e.g. nam3, based on which this configuration is created. Only set for user managed
-	// configurations. baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this
-	// configuration.
+	// Base configuration name, e.g. nam3, based on which this configuration is created.
+	// Only set for user managed configurations.
+	// baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this configuration.
 	BaseConfig pulumi.StringPtrInput
 	// The name of this instance configuration as it appears in UIs.
 	DisplayName pulumi.StringInput
-	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
-	// to the field 'effective_labels' for all of the labels present on the resource.
+	// An object containing a list of "key": value pairs.
+	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// A unique identifier for the instance configuration. Values are of the form
-	// projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
-	Name    pulumi.StringPtrInput
+	// A unique identifier for the instance configuration. Values are of the
+	// form projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The geographic placement of nodes in this instance configuration and their replication properties.
 	// Structure is documented below.
@@ -301,9 +321,9 @@ func (o InstanceConfigOutput) ToInstanceConfigOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Base configuration name, e.g. nam3, based on which this configuration is created. Only set for user managed
-// configurations. baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this
-// configuration.
+// Base configuration name, e.g. nam3, based on which this configuration is created.
+// Only set for user managed configurations.
+// baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this configuration.
 func (o InstanceConfigOutput) BaseConfig() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceConfig) pulumi.StringOutput { return v.BaseConfig }).(pulumi.StringOutput)
 }
@@ -323,19 +343,23 @@ func (o InstanceConfigOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *InstanceConfig) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
-// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
-// to the field 'effective_labels' for all of the labels present on the resource.
+// An object containing a list of "key": value pairs.
+// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o InstanceConfigOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *InstanceConfig) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// A unique identifier for the instance configuration. Values are of the form
-// projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
+// A unique identifier for the instance configuration. Values are of the
+// form projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
 func (o InstanceConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o InstanceConfigOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceConfig) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

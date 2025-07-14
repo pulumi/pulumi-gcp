@@ -123,9 +123,6 @@ namespace Pulumi.Gcp.Gemini
 
         /// <summary>
         /// Id of the Release Channel Setting.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("releaseChannelSettingId")]
         public Output<string> ReleaseChannelSettingId { get; private set; } = null!;
@@ -225,9 +222,6 @@ namespace Pulumi.Gcp.Gemini
 
         /// <summary>
         /// Id of the Release Channel Setting.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("releaseChannelSettingId", required: true)]
         public Input<string> ReleaseChannelSettingId { get; set; } = null!;
@@ -324,9 +318,6 @@ namespace Pulumi.Gcp.Gemini
 
         /// <summary>
         /// Id of the Release Channel Setting.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("releaseChannelSettingId")]
         public Input<string>? ReleaseChannelSettingId { get; set; }

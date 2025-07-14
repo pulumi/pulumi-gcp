@@ -17,16 +17,12 @@ public final class PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPo
     /**
      * The utilization triggering the scale-in operation in percent.
      * 
-     * ***
-     * 
      */
     @Import(name="scaleIn", required=true)
     private Output<Integer> scaleIn;
 
     /**
      * @return The utilization triggering the scale-in operation in percent.
-     * 
-     * ***
      * 
      */
     public Output<Integer> scaleIn() {
@@ -76,8 +72,6 @@ public final class PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPo
         /**
          * @param scaleIn The utilization triggering the scale-in operation in percent.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -88,8 +82,6 @@ public final class PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPo
 
         /**
          * @param scaleIn The utilization triggering the scale-in operation in percent.
-         * 
-         * ***
          * 
          * @return builder
          * 

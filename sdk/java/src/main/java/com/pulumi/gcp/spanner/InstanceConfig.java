@@ -57,18 +57,18 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:spanner/instanceConfig:InstanceConfig")
 public class InstanceConfig extends com.pulumi.resources.CustomResource {
     /**
-     * Base configuration name, e.g. nam3, based on which this configuration is created. Only set for user managed
-     * configurations. baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this
-     * configuration.
+     * Base configuration name, e.g. nam3, based on which this configuration is created.
+     * Only set for user managed configurations.
+     * baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this configuration.
      * 
      */
     @Export(name="baseConfig", refs={String.class}, tree="[0]")
     private Output<String> baseConfig;
 
     /**
-     * @return Base configuration name, e.g. nam3, based on which this configuration is created. Only set for user managed
-     * configurations. baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this
-     * configuration.
+     * @return Base configuration name, e.g. nam3, based on which this configuration is created.
+     * Only set for user managed configurations.
+     * baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this configuration.
      * 
      */
     public Output<String> baseConfig() {
@@ -117,42 +117,56 @@ public class InstanceConfig extends com.pulumi.resources.CustomResource {
         return this.effectiveLabels;
     }
     /**
-     * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
-     * to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+     * An object containing a list of &#34;key&#34;: value pairs.
+     * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
-     * to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+     * @return An object containing a list of &#34;key&#34;: value pairs.
+     * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
         return Codegen.optional(this.labels);
     }
     /**
-     * A unique identifier for the instance configuration. Values are of the form
-     * projects/&lt;project&gt;/instanceConfigs/[a-z][-a-z0-9]*
+     * A unique identifier for the instance configuration. Values are of the
+     * form projects/&lt;project&gt;/instanceConfigs/[a-z][-a-z0-9]*
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return A unique identifier for the instance configuration. Values are of the form
-     * projects/&lt;project&gt;/instanceConfigs/[a-z][-a-z0-9]*
+     * @return A unique identifier for the instance configuration. Values are of the
+     * form projects/&lt;project&gt;/instanceConfigs/[a-z][-a-z0-9]*
      * 
      */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }

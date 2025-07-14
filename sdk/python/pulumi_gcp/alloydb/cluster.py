@@ -48,9 +48,6 @@ class ClusterArgs:
         The set of arguments for constructing a Cluster resource.
         :param pulumi.Input[builtins.str] cluster_id: The ID of the alloydb cluster.
         :param pulumi.Input[builtins.str] location: The location where the alloydb cluster should reside.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
                
@@ -159,9 +156,6 @@ class ClusterArgs:
     def location(self) -> pulumi.Input[builtins.str]:
         """
         The location where the alloydb cluster should reside.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -514,9 +508,6 @@ class _ClusterState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location where the alloydb cluster should reside.
-               
-               
-               - - -
         :param pulumi.Input['ClusterMaintenanceUpdatePolicyArgs'] maintenance_update_policy: MaintenanceUpdatePolicy defines the policy for system updates.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterMigrationSourceArgs']]] migration_sources: Cluster created via DMS migration.
@@ -845,9 +836,6 @@ class _ClusterState:
     def location(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The location where the alloydb cluster should reside.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -1317,9 +1305,6 @@ class Cluster(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location where the alloydb cluster should reside.
-               
-               
-               - - -
         :param pulumi.Input[Union['ClusterMaintenanceUpdatePolicyArgs', 'ClusterMaintenanceUpdatePolicyArgsDict']] maintenance_update_policy: MaintenanceUpdatePolicy defines the policy for system updates.
                Structure is documented below.
         :param pulumi.Input[Union['ClusterNetworkConfigArgs', 'ClusterNetworkConfigArgsDict']] network_config: Metadata related to network configuration.
@@ -1714,9 +1699,6 @@ class Cluster(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location where the alloydb cluster should reside.
-               
-               
-               - - -
         :param pulumi.Input[Union['ClusterMaintenanceUpdatePolicyArgs', 'ClusterMaintenanceUpdatePolicyArgsDict']] maintenance_update_policy: MaintenanceUpdatePolicy defines the policy for system updates.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterMigrationSourceArgs', 'ClusterMigrationSourceArgsDict']]]] migration_sources: Cluster created via DMS migration.
@@ -1948,9 +1930,6 @@ class Cluster(pulumi.CustomResource):
     def location(self) -> pulumi.Output[builtins.str]:
         """
         The location where the alloydb cluster should reside.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

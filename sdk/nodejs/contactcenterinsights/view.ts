@@ -100,9 +100,6 @@ export class View extends pulumi.CustomResource {
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
      * Location of the resource.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -177,9 +174,6 @@ export interface ViewState {
     displayName?: pulumi.Input<string>;
     /**
      * Location of the resource.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -213,9 +207,6 @@ export interface ViewArgs {
     displayName?: pulumi.Input<string>;
     /**
      * Location of the resource.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

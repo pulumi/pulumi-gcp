@@ -33,9 +33,6 @@ class RepositoryWorkflowConfigArgs:
         """
         The set of arguments for constructing a RepositoryWorkflowConfig resource.
         :param pulumi.Input[builtins.str] release_config: The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*/locations/*/repositories/*/releaseConfigs/*.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] cron_schedule: Optional. Optional schedule (in cron format) for automatic creation of compilation results.
         :param pulumi.Input['RepositoryWorkflowConfigInvocationConfigArgs'] invocation_config: Optional. If left unset, a default InvocationConfig will be used.
                Structure is documented below.
@@ -67,9 +64,6 @@ class RepositoryWorkflowConfigArgs:
     def release_config(self) -> pulumi.Input[builtins.str]:
         """
         The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*/locations/*/repositories/*/releaseConfigs/*.
-
-
-        - - -
         """
         return pulumi.get(self, "release_config")
 
@@ -188,9 +182,6 @@ class _RepositoryWorkflowConfigState:
                Structure is documented below.
         :param pulumi.Input[builtins.str] region: A reference to the region
         :param pulumi.Input[builtins.str] release_config: The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*/locations/*/repositories/*/releaseConfigs/*.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] repository: A reference to the Dataform repository
         :param pulumi.Input[builtins.str] time_zone: Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
         """
@@ -293,9 +284,6 @@ class _RepositoryWorkflowConfigState:
     def release_config(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*/locations/*/repositories/*/releaseConfigs/*.
-
-
-        - - -
         """
         return pulumi.get(self, "release_config")
 
@@ -466,9 +454,6 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] region: A reference to the region
         :param pulumi.Input[builtins.str] release_config: The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*/locations/*/repositories/*/releaseConfigs/*.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] repository: A reference to the Dataform repository
         :param pulumi.Input[builtins.str] time_zone: Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
         """
@@ -670,9 +655,6 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[builtins.str] region: A reference to the region
         :param pulumi.Input[builtins.str] release_config: The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*/locations/*/repositories/*/releaseConfigs/*.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] repository: A reference to the Dataform repository
         :param pulumi.Input[builtins.str] time_zone: Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
         """
@@ -747,9 +729,6 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
     def release_config(self) -> pulumi.Output[builtins.str]:
         """
         The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*/locations/*/repositories/*/releaseConfigs/*.
-
-
-        - - -
         """
         return pulumi.get(self, "release_config")
 

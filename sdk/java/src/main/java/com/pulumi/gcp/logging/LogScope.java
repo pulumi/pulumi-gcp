@@ -156,16 +156,12 @@ public class LogScope extends com.pulumi.resources.CustomResource {
     /**
      * Names of one or more parent resources : *  \`projects/[PROJECT_ID]\` May alternatively be one or more views : * \`projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]\` A log scope can include a maximum of 50 projects and a maximum of 100 resources in total.
      * 
-     * ***
-     * 
      */
     @Export(name="resourceNames", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> resourceNames;
 
     /**
      * @return Names of one or more parent resources : *  \`projects/[PROJECT_ID]\` May alternatively be one or more views : * \`projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]\` A log scope can include a maximum of 50 projects and a maximum of 100 resources in total.
-     * 
-     * ***
      * 
      */
     public Output<List<String>> resourceNames() {

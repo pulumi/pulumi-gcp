@@ -145,8 +145,6 @@ type PrincipalAccessBoundaryPolicy struct {
 	Organization pulumi.StringOutput `pulumi:"organization"`
 	// The ID to use to create the principal access boundary policy.
 	// This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, hyphens, or dots. Pattern, /a-z{2,62}/.
-	//
-	// ***
 	PrincipalAccessBoundaryPolicyId pulumi.StringOutput `pulumi:"principalAccessBoundaryPolicyId"`
 	// Output only. The globally unique ID of the principal access boundary policy.
 	Uid pulumi.StringOutput `pulumi:"uid"`
@@ -218,8 +216,6 @@ type principalAccessBoundaryPolicyState struct {
 	Organization *string `pulumi:"organization"`
 	// The ID to use to create the principal access boundary policy.
 	// This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, hyphens, or dots. Pattern, /a-z{2,62}/.
-	//
-	// ***
 	PrincipalAccessBoundaryPolicyId *string `pulumi:"principalAccessBoundaryPolicyId"`
 	// Output only. The globally unique ID of the principal access boundary policy.
 	Uid *string `pulumi:"uid"`
@@ -253,8 +249,6 @@ type PrincipalAccessBoundaryPolicyState struct {
 	Organization pulumi.StringPtrInput
 	// The ID to use to create the principal access boundary policy.
 	// This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, hyphens, or dots. Pattern, /a-z{2,62}/.
-	//
-	// ***
 	PrincipalAccessBoundaryPolicyId pulumi.StringPtrInput
 	// Output only. The globally unique ID of the principal access boundary policy.
 	Uid pulumi.StringPtrInput
@@ -284,8 +278,6 @@ type principalAccessBoundaryPolicyArgs struct {
 	Organization string `pulumi:"organization"`
 	// The ID to use to create the principal access boundary policy.
 	// This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, hyphens, or dots. Pattern, /a-z{2,62}/.
-	//
-	// ***
 	PrincipalAccessBoundaryPolicyId string `pulumi:"principalAccessBoundaryPolicyId"`
 }
 
@@ -308,8 +300,6 @@ type PrincipalAccessBoundaryPolicyArgs struct {
 	Organization pulumi.StringInput
 	// The ID to use to create the principal access boundary policy.
 	// This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, hyphens, or dots. Pattern, /a-z{2,62}/.
-	//
-	// ***
 	PrincipalAccessBoundaryPolicyId pulumi.StringInput
 }
 
@@ -452,8 +442,6 @@ func (o PrincipalAccessBoundaryPolicyOutput) Organization() pulumi.StringOutput 
 
 // The ID to use to create the principal access boundary policy.
 // This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, hyphens, or dots. Pattern, /a-z{2,62}/.
-//
-// ***
 func (o PrincipalAccessBoundaryPolicyOutput) PrincipalAccessBoundaryPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrincipalAccessBoundaryPolicy) pulumi.StringOutput { return v.PrincipalAccessBoundaryPolicyId }).(pulumi.StringOutput)
 }

@@ -13,16 +13,12 @@ public final class JobTemplateTemplateNodeSelector {
     /**
      * @return The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/jobs/gpu for configuring GPU.
      * 
-     * ***
-     * 
      */
     private String accelerator;
 
     private JobTemplateTemplateNodeSelector() {}
     /**
      * @return The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/jobs/gpu for configuring GPU.
-     * 
-     * ***
      * 
      */
     public String accelerator() {

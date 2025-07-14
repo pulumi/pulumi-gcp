@@ -698,16 +698,12 @@ public class CxFlow extends com.pulumi.resources.CustomResource {
     /**
      * The human-readable name of the flow.
      * 
-     * ***
-     * 
      */
     @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
      * @return The human-readable name of the flow.
-     * 
-     * ***
      * 
      */
     public Output<String> displayName() {

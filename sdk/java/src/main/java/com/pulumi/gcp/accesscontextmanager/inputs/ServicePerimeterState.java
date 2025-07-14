@@ -55,8 +55,6 @@ public final class ServicePerimeterState extends com.pulumi.resources.ResourceAr
      * begin with a letter and only include alphanumeric and &#39;_&#39;.
      * Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
@@ -65,8 +63,6 @@ public final class ServicePerimeterState extends com.pulumi.resources.ResourceAr
      * @return Resource name for the ServicePerimeter. The short_name component must
      * begin with a letter and only include alphanumeric and &#39;_&#39;.
      * Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -322,8 +318,6 @@ public final class ServicePerimeterState extends com.pulumi.resources.ResourceAr
          * begin with a letter and only include alphanumeric and &#39;_&#39;.
          * Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -336,8 +330,6 @@ public final class ServicePerimeterState extends com.pulumi.resources.ResourceAr
          * @param name Resource name for the ServicePerimeter. The short_name component must
          * begin with a letter and only include alphanumeric and &#39;_&#39;.
          * Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
-         * 
-         * ***
          * 
          * @return builder
          * 

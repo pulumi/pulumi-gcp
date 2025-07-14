@@ -4088,8 +4088,6 @@ type RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiring struct {
 	ResourceGroup *string `pulumi:"resourceGroup"`
 	// Kind of a Kubernetes resource, e.g.
 	// "CustomResourceDefinition", "StorageClass", etc.
-	//
-	// ***
 	ResourceKind *string `pulumi:"resourceKind"`
 }
 
@@ -4111,8 +4109,6 @@ type RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgs struct
 	ResourceGroup pulumi.StringPtrInput `pulumi:"resourceGroup"`
 	// Kind of a Kubernetes resource, e.g.
 	// "CustomResourceDefinition", "StorageClass", etc.
-	//
-	// ***
 	ResourceKind pulumi.StringPtrInput `pulumi:"resourceKind"`
 }
 
@@ -4153,8 +4149,6 @@ func (o RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringOutput) 
 
 // Kind of a Kubernetes resource, e.g.
 // "CustomResourceDefinition", "StorageClass", etc.
-//
-// ***
 func (o RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringOutput) ResourceKind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiring) *string {
 		return v.ResourceKind

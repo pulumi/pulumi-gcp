@@ -218,8 +218,6 @@ type RuntimeTemplate struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location for the resource: https://cloud.google.com/colab/docs/locations
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// 'The machine configuration of the runtime.'
 	// Structure is documented below.
@@ -309,8 +307,6 @@ type runtimeTemplateState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource: https://cloud.google.com/colab/docs/locations
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// 'The machine configuration of the runtime.'
 	// Structure is documented below.
@@ -360,8 +356,6 @@ type RuntimeTemplateState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location for the resource: https://cloud.google.com/colab/docs/locations
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// 'The machine configuration of the runtime.'
 	// Structure is documented below.
@@ -413,8 +407,6 @@ type runtimeTemplateArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource: https://cloud.google.com/colab/docs/locations
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// 'The machine configuration of the runtime.'
 	// Structure is documented below.
@@ -460,8 +452,6 @@ type RuntimeTemplateArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location for the resource: https://cloud.google.com/colab/docs/locations
-	//
-	// ***
 	Location pulumi.StringInput
 	// 'The machine configuration of the runtime.'
 	// Structure is documented below.
@@ -618,8 +608,6 @@ func (o RuntimeTemplateOutput) Labels() pulumi.StringMapOutput {
 }
 
 // The location for the resource: https://cloud.google.com/colab/docs/locations
-//
-// ***
 func (o RuntimeTemplateOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *RuntimeTemplate) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

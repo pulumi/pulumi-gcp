@@ -102,9 +102,6 @@ export class V2FolderSccBigQueryExport extends pulumi.CustomResource {
      * This must be unique within the organization.  It must consist of only lowercase letters,
      * numbers, and hyphens, must start with a letter, must end with either a letter or a number,
      * and must be 63 characters or less.
-     *
-     *
-     * - - -
      */
     public readonly bigQueryExportId!: pulumi.Output<string>;
     /**
@@ -233,9 +230,6 @@ export interface V2FolderSccBigQueryExportState {
      * This must be unique within the organization.  It must consist of only lowercase letters,
      * numbers, and hyphens, must start with a letter, must end with either a letter or a number,
      * and must be 63 characters or less.
-     *
-     *
-     * - - -
      */
     bigQueryExportId?: pulumi.Input<string>;
     /**
@@ -316,9 +310,6 @@ export interface V2FolderSccBigQueryExportArgs {
      * This must be unique within the organization.  It must consist of only lowercase letters,
      * numbers, and hyphens, must start with a letter, must end with either a letter or a number,
      * and must be 63 characters or less.
-     *
-     *
-     * - - -
      */
     bigQueryExportId: pulumi.Input<string>;
     /**

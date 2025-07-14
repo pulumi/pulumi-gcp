@@ -614,9 +614,12 @@ export class RestorePlan extends pulumi.CustomResource {
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Description: A set of custom labels supplied by the user. A list of key->value pairs. Example: { "name": "wrench",
-     * "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the labels present in
-     * your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+     * Description: A set of custom labels supplied by the user.
+     * A list of key->value pairs.
+     * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -627,6 +630,10 @@ export class RestorePlan extends pulumi.CustomResource {
      * The full name of the BackupPlan Resource.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
@@ -734,9 +741,12 @@ export interface RestorePlanState {
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Description: A set of custom labels supplied by the user. A list of key->value pairs. Example: { "name": "wrench",
-     * "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the labels present in
-     * your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+     * Description: A set of custom labels supplied by the user.
+     * A list of key->value pairs.
+     * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -747,6 +757,10 @@ export interface RestorePlanState {
      * The full name of the BackupPlan Resource.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
@@ -790,9 +804,12 @@ export interface RestorePlanArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Description: A set of custom labels supplied by the user. A list of key->value pairs. Example: { "name": "wrench",
-     * "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the labels present in
-     * your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+     * Description: A set of custom labels supplied by the user.
+     * A list of key->value pairs.
+     * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -803,6 +820,10 @@ export interface RestorePlanArgs {
      * The full name of the BackupPlan Resource.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * Defines the configuration of Restores created via this RestorePlan.

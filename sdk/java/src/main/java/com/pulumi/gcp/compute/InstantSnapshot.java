@@ -277,16 +277,12 @@ public class InstantSnapshot extends com.pulumi.resources.CustomResource {
     /**
      * A reference to the disk used to create this instant snapshot.
      * 
-     * ***
-     * 
      */
     @Export(name="sourceDisk", refs={String.class}, tree="[0]")
     private Output<String> sourceDisk;
 
     /**
      * @return A reference to the disk used to create this instant snapshot.
-     * 
-     * ***
      * 
      */
     public Output<String> sourceDisk() {

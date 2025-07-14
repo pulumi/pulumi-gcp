@@ -5,18 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Contains the data that describes an Identity Aware Proxy owned client.
- *
- * > **Note:** Only internal org clients can be created via declarative tools. External clients must be
- * manually created via the GCP console. This restriction is due to the existing APIs and not lack of support
- * in this tool.
- *
- * To get more information about Client, see:
- *
- * * [API documentation](https://cloud.google.com/iap/docs/reference/rest/v1/projects.brands.identityAwareProxyClients)
- * * How-to Guides
- *     * [Setting up IAP Client](https://cloud.google.com/iap/docs/authentication-howto)
- *
  * ## Example Usage
  *
  * ### Iap Client
@@ -96,9 +84,6 @@ export class Client extends pulumi.CustomResource {
      * Identifier of the brand to which this client
      * is attached to. The format is
      * `projects/{project_number}/brands/{brand_id}`.
-     *
-     *
-     * - - -
      */
     public readonly brand!: pulumi.Output<string>;
     /**
@@ -160,9 +145,6 @@ export interface ClientState {
      * Identifier of the brand to which this client
      * is attached to. The format is
      * `projects/{project_number}/brands/{brand_id}`.
-     *
-     *
-     * - - -
      */
     brand?: pulumi.Input<string>;
     /**
@@ -188,9 +170,6 @@ export interface ClientArgs {
      * Identifier of the brand to which this client
      * is attached to. The format is
      * `projects/{project_number}/brands/{brand_id}`.
-     *
-     *
-     * - - -
      */
     brand: pulumi.Input<string>;
     /**

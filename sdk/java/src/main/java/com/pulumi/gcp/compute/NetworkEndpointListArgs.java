@@ -21,16 +21,12 @@ public final class NetworkEndpointListArgs extends com.pulumi.resources.Resource
     /**
      * The network endpoint group these endpoints are part of.
      * 
-     * ***
-     * 
      */
     @Import(name="networkEndpointGroup", required=true)
     private Output<String> networkEndpointGroup;
 
     /**
      * @return The network endpoint group these endpoints are part of.
-     * 
-     * ***
      * 
      */
     public Output<String> networkEndpointGroup() {
@@ -120,8 +116,6 @@ public final class NetworkEndpointListArgs extends com.pulumi.resources.Resource
         /**
          * @param networkEndpointGroup The network endpoint group these endpoints are part of.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -132,8 +126,6 @@ public final class NetworkEndpointListArgs extends com.pulumi.resources.Resource
 
         /**
          * @param networkEndpointGroup The network endpoint group these endpoints are part of.
-         * 
-         * ***
          * 
          * @return builder
          * 

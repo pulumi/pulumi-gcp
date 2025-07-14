@@ -213,16 +213,12 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The name of the volume. Needs to be unique per location.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return The name of the volume. Needs to be unique per location.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -730,8 +726,6 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name The name of the volume. Needs to be unique per location.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -742,8 +736,6 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name The name of the volume. Needs to be unique per location.
-         * 
-         * ***
          * 
          * @return builder
          * 

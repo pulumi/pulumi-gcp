@@ -81,9 +81,6 @@ namespace Pulumi.Gcp.CloudQuota
 
         /// <summary>
         /// The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
@@ -143,9 +140,6 @@ namespace Pulumi.Gcp.CloudQuota
 
         /// <summary>
         /// The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }
@@ -193,9 +187,6 @@ namespace Pulumi.Gcp.CloudQuota
 
         /// <summary>
         /// The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }

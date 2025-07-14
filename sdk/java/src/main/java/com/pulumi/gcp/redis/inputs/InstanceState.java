@@ -338,16 +338,12 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * Redis memory size in GiB.
      * 
-     * ***
-     * 
      */
     @Import(name="memorySizeGb")
     private @Nullable Output<Integer> memorySizeGb;
 
     /**
      * @return Redis memory size in GiB.
-     * 
-     * ***
      * 
      */
     public Optional<Output<Integer>> memorySizeGb() {
@@ -1202,8 +1198,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param memorySizeGb Redis memory size in GiB.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -1214,8 +1208,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param memorySizeGb Redis memory size in GiB.
-         * 
-         * ***
          * 
          * @return builder
          * 

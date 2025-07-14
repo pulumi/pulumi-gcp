@@ -30,9 +30,6 @@ class ManagementFolderSecurityHealthAnalyticsCustomModuleArgs:
         """
         The set of arguments for constructing a ManagementFolderSecurityHealthAnalyticsCustomModule resource.
         :param pulumi.Input[builtins.str] folder: Numerical ID of the parent folder.
-               
-               
-               - - -
         :param pulumi.Input['ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigArgs'] custom_config: The user specified custom configuration for the module.
                Structure is documented below.
         :param pulumi.Input[builtins.str] display_name: The display name of the Security Health Analytics custom module. This
@@ -59,9 +56,6 @@ class ManagementFolderSecurityHealthAnalyticsCustomModuleArgs:
     def folder(self) -> pulumi.Input[builtins.str]:
         """
         Numerical ID of the parent folder.
-
-
-        - - -
         """
         return pulumi.get(self, "folder")
 
@@ -151,9 +145,6 @@ class _ManagementFolderSecurityHealthAnalyticsCustomModuleState:
         :param pulumi.Input[builtins.str] enablement_state: The enablement state of the custom module.
                Possible values are: `ENABLED`, `DISABLED`.
         :param pulumi.Input[builtins.str] folder: Numerical ID of the parent folder.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] last_editor: The editor that last updated the custom module.
         :param pulumi.Input[builtins.str] location: Location ID of the parent organization. If not provided, 'global' will be used as the default location.
         :param pulumi.Input[builtins.str] name: The resource name of the custom module. Its format is "folders/{folder}/locations/{location}/securityHealthAnalyticsCustomModules/{securityHealthAnalyticsCustomModule}".
@@ -242,9 +233,6 @@ class _ManagementFolderSecurityHealthAnalyticsCustomModuleState:
     def folder(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Numerical ID of the parent folder.
-
-
-        - - -
         """
         return pulumi.get(self, "folder")
 
@@ -430,9 +418,6 @@ class ManagementFolderSecurityHealthAnalyticsCustomModule(pulumi.CustomResource)
         :param pulumi.Input[builtins.str] enablement_state: The enablement state of the custom module.
                Possible values are: `ENABLED`, `DISABLED`.
         :param pulumi.Input[builtins.str] folder: Numerical ID of the parent folder.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: Location ID of the parent organization. If not provided, 'global' will be used as the default location.
         """
         ...
@@ -622,9 +607,6 @@ class ManagementFolderSecurityHealthAnalyticsCustomModule(pulumi.CustomResource)
         :param pulumi.Input[builtins.str] enablement_state: The enablement state of the custom module.
                Possible values are: `ENABLED`, `DISABLED`.
         :param pulumi.Input[builtins.str] folder: Numerical ID of the parent folder.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] last_editor: The editor that last updated the custom module.
         :param pulumi.Input[builtins.str] location: Location ID of the parent organization. If not provided, 'global' will be used as the default location.
         :param pulumi.Input[builtins.str] name: The resource name of the custom module. Its format is "folders/{folder}/locations/{location}/securityHealthAnalyticsCustomModules/{securityHealthAnalyticsCustomModule}".
@@ -693,9 +675,6 @@ class ManagementFolderSecurityHealthAnalyticsCustomModule(pulumi.CustomResource)
     def folder(self) -> pulumi.Output[builtins.str]:
         """
         Numerical ID of the parent folder.
-
-
-        - - -
         """
         return pulumi.get(self, "folder")
 

@@ -144,16 +144,12 @@ public class WireGroup extends com.pulumi.resources.CustomResource {
     /**
      * Required cross site network to which wire group belongs.
      * 
-     * ***
-     * 
      */
     @Export(name="crossSiteNetwork", refs={String.class}, tree="[0]")
     private Output<String> crossSiteNetwork;
 
     /**
      * @return Required cross site network to which wire group belongs.
-     * 
-     * ***
      * 
      */
     public Output<String> crossSiteNetwork() {

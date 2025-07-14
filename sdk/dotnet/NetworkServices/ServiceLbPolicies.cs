@@ -148,9 +148,6 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// The location of the service lb policy.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -275,9 +272,6 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// The location of the service lb policy.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -368,9 +362,6 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// The location of the service lb policy.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

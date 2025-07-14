@@ -160,16 +160,12 @@ public final class RuntimeTemplateState extends com.pulumi.resources.ResourceArg
     /**
      * The location for the resource: https://cloud.google.com/colab/docs/locations
      * 
-     * ***
-     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
      * @return The location for the resource: https://cloud.google.com/colab/docs/locations
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> location() {
@@ -531,8 +527,6 @@ public final class RuntimeTemplateState extends com.pulumi.resources.ResourceArg
         /**
          * @param location The location for the resource: https://cloud.google.com/colab/docs/locations
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -543,8 +537,6 @@ public final class RuntimeTemplateState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param location The location for the resource: https://cloud.google.com/colab/docs/locations
-         * 
-         * ***
          * 
          * @return builder
          * 

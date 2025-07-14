@@ -130,9 +130,6 @@ export class Database extends pulumi.CustomResource {
     public readonly encryptionConfig!: pulumi.Output<outputs.spanner.DatabaseEncryptionConfig | undefined>;
     /**
      * The instance to create the database on.
-     *
-     *
-     * - - -
      */
     public readonly instance!: pulumi.Output<string>;
     /**
@@ -233,9 +230,6 @@ export interface DatabaseState {
     encryptionConfig?: pulumi.Input<inputs.spanner.DatabaseEncryptionConfig>;
     /**
      * The instance to create the database on.
-     *
-     *
-     * - - -
      */
     instance?: pulumi.Input<string>;
     /**
@@ -291,9 +285,6 @@ export interface DatabaseArgs {
     encryptionConfig?: pulumi.Input<inputs.spanner.DatabaseEncryptionConfig>;
     /**
      * The instance to create the database on.
-     *
-     *
-     * - - -
      */
     instance: pulumi.Input<string>;
     /**

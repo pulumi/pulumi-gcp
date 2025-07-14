@@ -78,9 +78,6 @@ namespace Pulumi.Gcp.SecurityCenter
 
         /// <summary>
         /// Numerical ID of the parent organization.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("organization")]
         public Output<string> Organization { get; private set; } = null!;
@@ -167,9 +164,6 @@ namespace Pulumi.Gcp.SecurityCenter
 
         /// <summary>
         /// Numerical ID of the parent organization.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("organization", required: true)]
         public Input<string> Organization { get; set; } = null!;
@@ -223,9 +217,6 @@ namespace Pulumi.Gcp.SecurityCenter
 
         /// <summary>
         /// Numerical ID of the parent organization.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("organization")]
         public Input<string>? Organization { get; set; }

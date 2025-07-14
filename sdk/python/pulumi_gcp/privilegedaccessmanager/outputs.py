@@ -468,8 +468,6 @@ class EntitlementRequesterJustificationConfig(dict):
         """
         :param 'EntitlementRequesterJustificationConfigNotMandatoryArgs' not_mandatory: The justification is not mandatory but can be provided in any of the supported formats.
         :param 'EntitlementRequesterJustificationConfigUnstructuredArgs' unstructured: The requester has to provide a justification in the form of free flowing text.
-               
-               - - -
         """
         if not_mandatory is not None:
             pulumi.set(__self__, "not_mandatory", not_mandatory)
@@ -489,8 +487,6 @@ class EntitlementRequesterJustificationConfig(dict):
     def unstructured(self) -> Optional['outputs.EntitlementRequesterJustificationConfigUnstructured']:
         """
         The requester has to provide a justification in the form of free flowing text.
-
-        - - -
         """
         return pulumi.get(self, "unstructured")
 

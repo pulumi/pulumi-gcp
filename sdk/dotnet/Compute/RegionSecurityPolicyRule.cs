@@ -475,9 +475,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name of the security policy this rule belongs to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("securityPolicy")]
         public Output<string> SecurityPolicy { get; private set; } = null!;
@@ -611,9 +608,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name of the security policy this rule belongs to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("securityPolicy", required: true)]
         public Input<string> SecurityPolicy { get; set; } = null!;
@@ -709,9 +703,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name of the security policy this rule belongs to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("securityPolicy")]
         public Input<string>? SecurityPolicy { get; set; }

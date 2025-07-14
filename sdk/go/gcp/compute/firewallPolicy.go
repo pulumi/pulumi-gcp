@@ -83,8 +83,6 @@ type FirewallPolicy struct {
 	// Name of the resource. It is a numeric ID allocated by GCP which uniquely identifies the Firewall Policy.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The parent of the firewall policy.
-	//
-	// ***
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
 	RuleTupleCount pulumi.IntOutput `pulumi:"ruleTupleCount"`
@@ -145,8 +143,6 @@ type firewallPolicyState struct {
 	// Name of the resource. It is a numeric ID allocated by GCP which uniquely identifies the Firewall Policy.
 	Name *string `pulumi:"name"`
 	// The parent of the firewall policy.
-	//
-	// ***
 	Parent *string `pulumi:"parent"`
 	// Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
 	RuleTupleCount *int `pulumi:"ruleTupleCount"`
@@ -172,8 +168,6 @@ type FirewallPolicyState struct {
 	// Name of the resource. It is a numeric ID allocated by GCP which uniquely identifies the Firewall Policy.
 	Name pulumi.StringPtrInput
 	// The parent of the firewall policy.
-	//
-	// ***
 	Parent pulumi.StringPtrInput
 	// Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
 	RuleTupleCount pulumi.IntPtrInput
@@ -195,8 +189,6 @@ type firewallPolicyArgs struct {
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
 	// The parent of the firewall policy.
-	//
-	// ***
 	Parent string `pulumi:"parent"`
 	// User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created.
 	// This field is not applicable to network firewall policies. This name must be set on creation and cannot be changed. The name must be 1-63 characters long, and comply with RFC1035.
@@ -209,8 +201,6 @@ type FirewallPolicyArgs struct {
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
 	// The parent of the firewall policy.
-	//
-	// ***
 	Parent pulumi.StringInput
 	// User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created.
 	// This field is not applicable to network firewall policies. This name must be set on creation and cannot be changed. The name must be 1-63 characters long, and comply with RFC1035.
@@ -331,8 +321,6 @@ func (o FirewallPolicyOutput) Name() pulumi.StringOutput {
 }
 
 // The parent of the firewall policy.
-//
-// ***
 func (o FirewallPolicyOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallPolicy) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }

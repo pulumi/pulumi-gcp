@@ -48,9 +48,6 @@ class NetworkPolicyArgs:
         :param pulumi.Input['NetworkPolicyInternetAccessArgs'] internet_access: Network service that allows VMware workloads to access the internet.
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: The ID of the Network Policy.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -154,9 +151,6 @@ class NetworkPolicyArgs:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The ID of the Network Policy.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -211,9 +205,6 @@ class _NetworkPolicyState:
                Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
                For example: projects/my-project/locations/us-central1
         :param pulumi.Input[builtins.str] name: The ID of the Network Policy.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] uid: System-generated unique identifier for the resource.
@@ -337,9 +328,6 @@ class _NetworkPolicyState:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The ID of the Network Policy.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -519,9 +507,6 @@ class NetworkPolicy(pulumi.CustomResource):
                Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
                For example: projects/my-project/locations/us-central1
         :param pulumi.Input[builtins.str] name: The ID of the Network Policy.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] vmware_engine_network: The relative resource name of the VMware Engine network. Specify the name in the following form:
@@ -704,9 +689,6 @@ class NetworkPolicy(pulumi.CustomResource):
                Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
                For example: projects/my-project/locations/us-central1
         :param pulumi.Input[builtins.str] name: The ID of the Network Policy.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] uid: System-generated unique identifier for the resource.
@@ -799,9 +781,6 @@ class NetworkPolicy(pulumi.CustomResource):
     def name(self) -> pulumi.Output[builtins.str]:
         """
         The ID of the Network Policy.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

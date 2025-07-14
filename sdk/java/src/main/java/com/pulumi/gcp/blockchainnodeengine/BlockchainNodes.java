@@ -168,16 +168,12 @@ public class BlockchainNodes extends com.pulumi.resources.CustomResource {
     /**
      * ID of the requesting object.
      * 
-     * ***
-     * 
      */
     @Export(name="blockchainNodeId", refs={String.class}, tree="[0]")
     private Output<String> blockchainNodeId;
 
     /**
      * @return ID of the requesting object.
-     * 
-     * ***
      * 
      */
     public Output<String> blockchainNodeId() {

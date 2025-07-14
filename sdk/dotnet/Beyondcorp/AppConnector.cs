@@ -137,9 +137,10 @@ namespace Pulumi.Gcp.Beyondcorp
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Resource labels to represent user provided metadata. **Note**: This field is non-authoritative, and will only manage the
-        /// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-        /// resource.
+        /// Resource labels to represent user provided metadata.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -157,6 +158,10 @@ namespace Pulumi.Gcp.Beyondcorp
         [Output("principalInfo")]
         public Output<Outputs.AppConnectorPrincipalInfo> PrincipalInfo { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -240,9 +245,10 @@ namespace Pulumi.Gcp.Beyondcorp
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Resource labels to represent user provided metadata. **Note**: This field is non-authoritative, and will only manage the
-        /// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-        /// resource.
+        /// Resource labels to represent user provided metadata.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -263,6 +269,10 @@ namespace Pulumi.Gcp.Beyondcorp
         [Input("principalInfo", required: true)]
         public Input<Inputs.AppConnectorPrincipalInfoArgs> PrincipalInfo { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -306,9 +316,10 @@ namespace Pulumi.Gcp.Beyondcorp
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Resource labels to represent user provided metadata. **Note**: This field is non-authoritative, and will only manage the
-        /// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-        /// resource.
+        /// Resource labels to represent user provided metadata.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -329,6 +340,10 @@ namespace Pulumi.Gcp.Beyondcorp
         [Input("principalInfo")]
         public Input<Inputs.AppConnectorPrincipalInfoGetArgs>? PrincipalInfo { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

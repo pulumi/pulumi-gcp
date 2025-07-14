@@ -18,8 +18,6 @@ public final class WebResourceSiteArgs extends com.pulumi.resources.ResourceArgs
      * The site identifier. If the type is set to SITE, the identifier is a URL. If the type is
      * set to INET_DOMAIN, the identifier is a domain name.
      * 
-     * ***
-     * 
      */
     @Import(name="identifier", required=true)
     private Output<String> identifier;
@@ -27,8 +25,6 @@ public final class WebResourceSiteArgs extends com.pulumi.resources.ResourceArgs
     /**
      * @return The site identifier. If the type is set to SITE, the identifier is a URL. If the type is
      * set to INET_DOMAIN, the identifier is a domain name.
-     * 
-     * ***
      * 
      */
     public Output<String> identifier() {
@@ -81,8 +77,6 @@ public final class WebResourceSiteArgs extends com.pulumi.resources.ResourceArgs
          * @param identifier The site identifier. If the type is set to SITE, the identifier is a URL. If the type is
          * set to INET_DOMAIN, the identifier is a domain name.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -94,8 +88,6 @@ public final class WebResourceSiteArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param identifier The site identifier. If the type is set to SITE, the identifier is a URL. If the type is
          * set to INET_DOMAIN, the identifier is a domain name.
-         * 
-         * ***
          * 
          * @return builder
          * 

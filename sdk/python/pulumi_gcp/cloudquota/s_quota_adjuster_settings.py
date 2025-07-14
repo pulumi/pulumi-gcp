@@ -27,9 +27,6 @@ class SQuotaAdjusterSettingsArgs:
         :param pulumi.Input[builtins.str] enablement: Required. The configured value of the enablement at the given resource.
                Possible values are: `ENABLED`, `DISABLED`.
         :param pulumi.Input[builtins.str] parent: The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
-               
-               
-               - - -
         """
         pulumi.set(__self__, "enablement", enablement)
         if parent is not None:
@@ -53,9 +50,6 @@ class SQuotaAdjusterSettingsArgs:
     def parent(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 
@@ -84,9 +78,6 @@ class _SQuotaAdjusterSettingsState:
                The value can be `organizations/{organization_id}`, `folders/{folder_id}`, or can be `default` if no ancestor exists with enablement set.
                The value will be empty when `enablement` is specified on this resource container.
         :param pulumi.Input[builtins.str] parent: The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
-               
-               
-               - - -
         """
         if effective_container is not None:
             pulumi.set(__self__, "effective_container", effective_container)
@@ -169,9 +160,6 @@ class _SQuotaAdjusterSettingsState:
     def parent(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 
@@ -220,9 +208,6 @@ class SQuotaAdjusterSettings(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] enablement: Required. The configured value of the enablement at the given resource.
                Possible values are: `ENABLED`, `DISABLED`.
         :param pulumi.Input[builtins.str] parent: The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
-               
-               
-               - - -
         """
         ...
     @overload
@@ -322,9 +307,6 @@ class SQuotaAdjusterSettings(pulumi.CustomResource):
                The value can be `organizations/{organization_id}`, `folders/{folder_id}`, or can be `default` if no ancestor exists with enablement set.
                The value will be empty when `enablement` is specified on this resource container.
         :param pulumi.Input[builtins.str] parent: The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -386,9 +368,6 @@ class SQuotaAdjusterSettings(pulumi.CustomResource):
     def parent(self) -> pulumi.Output[builtins.str]:
         """
         The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 

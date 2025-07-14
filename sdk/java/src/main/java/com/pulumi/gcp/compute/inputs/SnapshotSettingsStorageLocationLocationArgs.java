@@ -33,8 +33,6 @@ public final class SnapshotSettingsStorageLocationLocationArgs extends com.pulum
      * Name of the location. It should be one of the Cloud Storage buckets.
      * Only one location can be specified. (should match location)
      * 
-     * ***
-     * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
@@ -42,8 +40,6 @@ public final class SnapshotSettingsStorageLocationLocationArgs extends com.pulum
     /**
      * @return Name of the location. It should be one of the Cloud Storage buckets.
      * Only one location can be specified. (should match location)
-     * 
-     * ***
      * 
      */
     public Output<String> name() {
@@ -100,8 +96,6 @@ public final class SnapshotSettingsStorageLocationLocationArgs extends com.pulum
          * @param name Name of the location. It should be one of the Cloud Storage buckets.
          * Only one location can be specified. (should match location)
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -113,8 +107,6 @@ public final class SnapshotSettingsStorageLocationLocationArgs extends com.pulum
         /**
          * @param name Name of the location. It should be one of the Cloud Storage buckets.
          * Only one location can be specified. (should match location)
-         * 
-         * ***
          * 
          * @return builder
          * 

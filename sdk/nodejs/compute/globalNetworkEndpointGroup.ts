@@ -120,9 +120,6 @@ export class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
     /**
      * Type of network endpoints in this network endpoint group.
      * Possible values are: `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
-     *
-     *
-     * - - -
      */
     public readonly networkEndpointType!: pulumi.Output<string>;
     /**
@@ -198,9 +195,6 @@ export interface GlobalNetworkEndpointGroupState {
     /**
      * Type of network endpoints in this network endpoint group.
      * Possible values are: `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
-     *
-     *
-     * - - -
      */
     networkEndpointType?: pulumi.Input<string>;
     /**
@@ -241,9 +235,6 @@ export interface GlobalNetworkEndpointGroupArgs {
     /**
      * Type of network endpoints in this network endpoint group.
      * Possible values are: `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
-     *
-     *
-     * - - -
      */
     networkEndpointType: pulumi.Input<string>;
     /**

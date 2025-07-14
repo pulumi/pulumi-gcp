@@ -99,9 +99,6 @@ export class WireGroup extends pulumi.CustomResource {
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
      * Required cross site network to which wire group belongs.
-     *
-     *
-     * - - -
      */
     public readonly crossSiteNetwork!: pulumi.Output<string>;
     /**
@@ -207,9 +204,6 @@ export interface WireGroupState {
     creationTimestamp?: pulumi.Input<string>;
     /**
      * Required cross site network to which wire group belongs.
-     *
-     *
-     * - - -
      */
     crossSiteNetwork?: pulumi.Input<string>;
     /**
@@ -266,9 +260,6 @@ export interface WireGroupArgs {
     adminEnabled?: pulumi.Input<boolean>;
     /**
      * Required cross site network to which wire group belongs.
-     *
-     *
-     * - - -
      */
     crossSiteNetwork: pulumi.Input<string>;
     /**

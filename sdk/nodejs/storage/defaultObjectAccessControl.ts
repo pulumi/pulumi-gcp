@@ -130,9 +130,6 @@ export class DefaultObjectAccessControl extends pulumi.CustomResource {
     /**
      * The access permission for the entity.
      * Possible values are: `OWNER`, `READER`.
-     *
-     *
-     * - - -
      */
     public readonly role!: pulumi.Output<string>;
 
@@ -232,9 +229,6 @@ export interface DefaultObjectAccessControlState {
     /**
      * The access permission for the entity.
      * Possible values are: `OWNER`, `READER`.
-     *
-     *
-     * - - -
      */
     role?: pulumi.Input<string>;
 }
@@ -266,9 +260,6 @@ export interface DefaultObjectAccessControlArgs {
     /**
      * The access permission for the entity.
      * Possible values are: `OWNER`, `READER`.
-     *
-     *
-     * - - -
      */
     role: pulumi.Input<string>;
 }

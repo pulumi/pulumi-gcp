@@ -48,16 +48,12 @@ public final class ViewState extends com.pulumi.resources.ResourceArgs {
     /**
      * Location of the resource.
      * 
-     * ***
-     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
      * @return Location of the resource.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> location() {
@@ -205,8 +201,6 @@ public final class ViewState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param location Location of the resource.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -217,8 +211,6 @@ public final class ViewState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location Location of the resource.
-         * 
-         * ***
          * 
          * @return builder
          * 

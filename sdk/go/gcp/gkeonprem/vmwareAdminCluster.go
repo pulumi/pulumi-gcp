@@ -311,23 +311,34 @@ type VmwareAdminCluster struct {
 	pulumi.CustomResourceState
 
 	// The VMware admin cluster addon node configuration.
+	// Structure is documented below.
 	AddonNode VmwareAdminClusterAddonNodeOutput `pulumi:"addonNode"`
-	// Annotations on the VMware Admin Cluster. This field has the same restrictions as Kubernetes annotations. The total size
-	// of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// 'effective_annotations' for all of the annotations present on the resource.
+	// Annotations on the VMware Admin Cluster.
+	// This field has the same restrictions as Kubernetes annotations.
+	// The total size of all keys and values combined is limited to 256k.
+	// Key can have 2 segments: prefix (optional) and name (required),
+	// separated by a slash (/).
+	// Prefix must be a DNS subdomain.
+	// Name must be 63 characters or less, begin and end with alphanumerics,
+	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
-	// AAGConfig specifies whether to spread VMware Admin Cluster nodes across at least three physical hosts in the datacenter.
+	// AAGConfig specifies whether to spread VMware Admin Cluster nodes across at
+	// least three physical hosts in the datacenter.
+	// Structure is documented below.
 	AntiAffinityGroups VmwareAdminClusterAntiAffinityGroupsOutput `pulumi:"antiAffinityGroups"`
 	// The VMware admin cluster authorization configuration.
+	// Structure is documented below.
 	Authorization VmwareAdminClusterAuthorizationPtrOutput `pulumi:"authorization"`
 	// Configuration for auto repairing.
+	// Structure is documented below.
 	AutoRepairConfig VmwareAdminClusterAutoRepairConfigOutput `pulumi:"autoRepairConfig"`
 	// The bootstrap cluster this VMware admin cluster belongs to.
 	BootstrapClusterMembership pulumi.StringOutput `pulumi:"bootstrapClusterMembership"`
 	// The VMware admin cluster control plane node configuration.
+	// Structure is documented below.
 	ControlPlaneNode VmwareAdminClusterControlPlaneNodePtrOutput `pulumi:"controlPlaneNode"`
 	// The time the cluster was created, in RFC3339 text format.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -350,6 +361,7 @@ type VmwareAdminCluster struct {
 	// The OS image type for the VMware admin cluster.
 	ImageType pulumi.StringOutput `pulumi:"imageType"`
 	// Specifies the load balancer configuration for VMware admin cluster.
+	// Structure is documented below.
 	LoadBalancer VmwareAdminClusterLoadBalancerPtrOutput `pulumi:"loadBalancer"`
 	// The object name of the VMwareAdminCluster custom resource on the
 	// associated admin cluster. This field is used to support conflicting
@@ -372,10 +384,14 @@ type VmwareAdminCluster struct {
 	// The Anthos clusters on the VMware version for the admin cluster.
 	OnPremVersion pulumi.StringPtrOutput `pulumi:"onPremVersion"`
 	// The VMware platform configuration.
+	// Structure is documented below.
 	PlatformConfig VmwareAdminClusterPlatformConfigPtrOutput `pulumi:"platformConfig"`
 	// Configuration for private registry.
+	// Structure is documented below.
 	PrivateRegistryConfig VmwareAdminClusterPrivateRegistryConfigPtrOutput `pulumi:"privateRegistryConfig"`
-	Project               pulumi.StringOutput                              `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringOutput `pulumi:"project"`
 	// If set, there are currently changes in flight to the VMware admin cluster.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
 	// (Output)
@@ -389,6 +405,7 @@ type VmwareAdminCluster struct {
 	// The time the cluster was last updated, in RFC3339 text format.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Specifies vCenter config for the admin cluster.
+	// Structure is documented below.
 	Vcenter VmwareAdminClusterVcenterPtrOutput `pulumi:"vcenter"`
 }
 
@@ -429,23 +446,34 @@ func GetVmwareAdminCluster(ctx *pulumi.Context,
 // Input properties used for looking up and filtering VmwareAdminCluster resources.
 type vmwareAdminClusterState struct {
 	// The VMware admin cluster addon node configuration.
+	// Structure is documented below.
 	AddonNode *VmwareAdminClusterAddonNode `pulumi:"addonNode"`
-	// Annotations on the VMware Admin Cluster. This field has the same restrictions as Kubernetes annotations. The total size
-	// of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// 'effective_annotations' for all of the annotations present on the resource.
+	// Annotations on the VMware Admin Cluster.
+	// This field has the same restrictions as Kubernetes annotations.
+	// The total size of all keys and values combined is limited to 256k.
+	// Key can have 2 segments: prefix (optional) and name (required),
+	// separated by a slash (/).
+	// Prefix must be a DNS subdomain.
+	// Name must be 63 characters or less, begin and end with alphanumerics,
+	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
-	// AAGConfig specifies whether to spread VMware Admin Cluster nodes across at least three physical hosts in the datacenter.
+	// AAGConfig specifies whether to spread VMware Admin Cluster nodes across at
+	// least three physical hosts in the datacenter.
+	// Structure is documented below.
 	AntiAffinityGroups *VmwareAdminClusterAntiAffinityGroups `pulumi:"antiAffinityGroups"`
 	// The VMware admin cluster authorization configuration.
+	// Structure is documented below.
 	Authorization *VmwareAdminClusterAuthorization `pulumi:"authorization"`
 	// Configuration for auto repairing.
+	// Structure is documented below.
 	AutoRepairConfig *VmwareAdminClusterAutoRepairConfig `pulumi:"autoRepairConfig"`
 	// The bootstrap cluster this VMware admin cluster belongs to.
 	BootstrapClusterMembership *string `pulumi:"bootstrapClusterMembership"`
 	// The VMware admin cluster control plane node configuration.
+	// Structure is documented below.
 	ControlPlaneNode *VmwareAdminClusterControlPlaneNode `pulumi:"controlPlaneNode"`
 	// The time the cluster was created, in RFC3339 text format.
 	CreateTime *string `pulumi:"createTime"`
@@ -468,6 +496,7 @@ type vmwareAdminClusterState struct {
 	// The OS image type for the VMware admin cluster.
 	ImageType *string `pulumi:"imageType"`
 	// Specifies the load balancer configuration for VMware admin cluster.
+	// Structure is documented below.
 	LoadBalancer *VmwareAdminClusterLoadBalancer `pulumi:"loadBalancer"`
 	// The object name of the VMwareAdminCluster custom resource on the
 	// associated admin cluster. This field is used to support conflicting
@@ -490,10 +519,14 @@ type vmwareAdminClusterState struct {
 	// The Anthos clusters on the VMware version for the admin cluster.
 	OnPremVersion *string `pulumi:"onPremVersion"`
 	// The VMware platform configuration.
+	// Structure is documented below.
 	PlatformConfig *VmwareAdminClusterPlatformConfig `pulumi:"platformConfig"`
 	// Configuration for private registry.
+	// Structure is documented below.
 	PrivateRegistryConfig *VmwareAdminClusterPrivateRegistryConfig `pulumi:"privateRegistryConfig"`
-	Project               *string                                  `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// If set, there are currently changes in flight to the VMware admin cluster.
 	Reconciling *bool `pulumi:"reconciling"`
 	// (Output)
@@ -507,28 +540,40 @@ type vmwareAdminClusterState struct {
 	// The time the cluster was last updated, in RFC3339 text format.
 	UpdateTime *string `pulumi:"updateTime"`
 	// Specifies vCenter config for the admin cluster.
+	// Structure is documented below.
 	Vcenter *VmwareAdminClusterVcenter `pulumi:"vcenter"`
 }
 
 type VmwareAdminClusterState struct {
 	// The VMware admin cluster addon node configuration.
+	// Structure is documented below.
 	AddonNode VmwareAdminClusterAddonNodePtrInput
-	// Annotations on the VMware Admin Cluster. This field has the same restrictions as Kubernetes annotations. The total size
-	// of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// 'effective_annotations' for all of the annotations present on the resource.
+	// Annotations on the VMware Admin Cluster.
+	// This field has the same restrictions as Kubernetes annotations.
+	// The total size of all keys and values combined is limited to 256k.
+	// Key can have 2 segments: prefix (optional) and name (required),
+	// separated by a slash (/).
+	// Prefix must be a DNS subdomain.
+	// Name must be 63 characters or less, begin and end with alphanumerics,
+	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
-	// AAGConfig specifies whether to spread VMware Admin Cluster nodes across at least three physical hosts in the datacenter.
+	// AAGConfig specifies whether to spread VMware Admin Cluster nodes across at
+	// least three physical hosts in the datacenter.
+	// Structure is documented below.
 	AntiAffinityGroups VmwareAdminClusterAntiAffinityGroupsPtrInput
 	// The VMware admin cluster authorization configuration.
+	// Structure is documented below.
 	Authorization VmwareAdminClusterAuthorizationPtrInput
 	// Configuration for auto repairing.
+	// Structure is documented below.
 	AutoRepairConfig VmwareAdminClusterAutoRepairConfigPtrInput
 	// The bootstrap cluster this VMware admin cluster belongs to.
 	BootstrapClusterMembership pulumi.StringPtrInput
 	// The VMware admin cluster control plane node configuration.
+	// Structure is documented below.
 	ControlPlaneNode VmwareAdminClusterControlPlaneNodePtrInput
 	// The time the cluster was created, in RFC3339 text format.
 	CreateTime pulumi.StringPtrInput
@@ -551,6 +596,7 @@ type VmwareAdminClusterState struct {
 	// The OS image type for the VMware admin cluster.
 	ImageType pulumi.StringPtrInput
 	// Specifies the load balancer configuration for VMware admin cluster.
+	// Structure is documented below.
 	LoadBalancer VmwareAdminClusterLoadBalancerPtrInput
 	// The object name of the VMwareAdminCluster custom resource on the
 	// associated admin cluster. This field is used to support conflicting
@@ -573,10 +619,14 @@ type VmwareAdminClusterState struct {
 	// The Anthos clusters on the VMware version for the admin cluster.
 	OnPremVersion pulumi.StringPtrInput
 	// The VMware platform configuration.
+	// Structure is documented below.
 	PlatformConfig VmwareAdminClusterPlatformConfigPtrInput
 	// Configuration for private registry.
+	// Structure is documented below.
 	PrivateRegistryConfig VmwareAdminClusterPrivateRegistryConfigPtrInput
-	Project               pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// If set, there are currently changes in flight to the VMware admin cluster.
 	Reconciling pulumi.BoolPtrInput
 	// (Output)
@@ -590,6 +640,7 @@ type VmwareAdminClusterState struct {
 	// The time the cluster was last updated, in RFC3339 text format.
 	UpdateTime pulumi.StringPtrInput
 	// Specifies vCenter config for the admin cluster.
+	// Structure is documented below.
 	Vcenter VmwareAdminClusterVcenterPtrInput
 }
 
@@ -599,29 +650,41 @@ func (VmwareAdminClusterState) ElementType() reflect.Type {
 
 type vmwareAdminClusterArgs struct {
 	// The VMware admin cluster addon node configuration.
+	// Structure is documented below.
 	AddonNode *VmwareAdminClusterAddonNode `pulumi:"addonNode"`
-	// Annotations on the VMware Admin Cluster. This field has the same restrictions as Kubernetes annotations. The total size
-	// of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// 'effective_annotations' for all of the annotations present on the resource.
+	// Annotations on the VMware Admin Cluster.
+	// This field has the same restrictions as Kubernetes annotations.
+	// The total size of all keys and values combined is limited to 256k.
+	// Key can have 2 segments: prefix (optional) and name (required),
+	// separated by a slash (/).
+	// Prefix must be a DNS subdomain.
+	// Name must be 63 characters or less, begin and end with alphanumerics,
+	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
-	// AAGConfig specifies whether to spread VMware Admin Cluster nodes across at least three physical hosts in the datacenter.
+	// AAGConfig specifies whether to spread VMware Admin Cluster nodes across at
+	// least three physical hosts in the datacenter.
+	// Structure is documented below.
 	AntiAffinityGroups *VmwareAdminClusterAntiAffinityGroups `pulumi:"antiAffinityGroups"`
 	// The VMware admin cluster authorization configuration.
+	// Structure is documented below.
 	Authorization *VmwareAdminClusterAuthorization `pulumi:"authorization"`
 	// Configuration for auto repairing.
+	// Structure is documented below.
 	AutoRepairConfig *VmwareAdminClusterAutoRepairConfig `pulumi:"autoRepairConfig"`
 	// The bootstrap cluster this VMware admin cluster belongs to.
 	BootstrapClusterMembership *string `pulumi:"bootstrapClusterMembership"`
 	// The VMware admin cluster control plane node configuration.
+	// Structure is documented below.
 	ControlPlaneNode *VmwareAdminClusterControlPlaneNode `pulumi:"controlPlaneNode"`
 	// A human readable description of this VMware admin cluster.
 	Description *string `pulumi:"description"`
 	// The OS image type for the VMware admin cluster.
 	ImageType *string `pulumi:"imageType"`
 	// Specifies the load balancer configuration for VMware admin cluster.
+	// Structure is documented below.
 	LoadBalancer *VmwareAdminClusterLoadBalancer `pulumi:"loadBalancer"`
 	// The location of the resource.
 	Location string `pulumi:"location"`
@@ -633,40 +696,57 @@ type vmwareAdminClusterArgs struct {
 	// The Anthos clusters on the VMware version for the admin cluster.
 	OnPremVersion *string `pulumi:"onPremVersion"`
 	// The VMware platform configuration.
+	// Structure is documented below.
 	PlatformConfig *VmwareAdminClusterPlatformConfig `pulumi:"platformConfig"`
 	// Configuration for private registry.
+	// Structure is documented below.
 	PrivateRegistryConfig *VmwareAdminClusterPrivateRegistryConfig `pulumi:"privateRegistryConfig"`
-	Project               *string                                  `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// Specifies vCenter config for the admin cluster.
+	// Structure is documented below.
 	Vcenter *VmwareAdminClusterVcenter `pulumi:"vcenter"`
 }
 
 // The set of arguments for constructing a VmwareAdminCluster resource.
 type VmwareAdminClusterArgs struct {
 	// The VMware admin cluster addon node configuration.
+	// Structure is documented below.
 	AddonNode VmwareAdminClusterAddonNodePtrInput
-	// Annotations on the VMware Admin Cluster. This field has the same restrictions as Kubernetes annotations. The total size
-	// of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// 'effective_annotations' for all of the annotations present on the resource.
+	// Annotations on the VMware Admin Cluster.
+	// This field has the same restrictions as Kubernetes annotations.
+	// The total size of all keys and values combined is limited to 256k.
+	// Key can have 2 segments: prefix (optional) and name (required),
+	// separated by a slash (/).
+	// Prefix must be a DNS subdomain.
+	// Name must be 63 characters or less, begin and end with alphanumerics,
+	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
-	// AAGConfig specifies whether to spread VMware Admin Cluster nodes across at least three physical hosts in the datacenter.
+	// AAGConfig specifies whether to spread VMware Admin Cluster nodes across at
+	// least three physical hosts in the datacenter.
+	// Structure is documented below.
 	AntiAffinityGroups VmwareAdminClusterAntiAffinityGroupsPtrInput
 	// The VMware admin cluster authorization configuration.
+	// Structure is documented below.
 	Authorization VmwareAdminClusterAuthorizationPtrInput
 	// Configuration for auto repairing.
+	// Structure is documented below.
 	AutoRepairConfig VmwareAdminClusterAutoRepairConfigPtrInput
 	// The bootstrap cluster this VMware admin cluster belongs to.
 	BootstrapClusterMembership pulumi.StringPtrInput
 	// The VMware admin cluster control plane node configuration.
+	// Structure is documented below.
 	ControlPlaneNode VmwareAdminClusterControlPlaneNodePtrInput
 	// A human readable description of this VMware admin cluster.
 	Description pulumi.StringPtrInput
 	// The OS image type for the VMware admin cluster.
 	ImageType pulumi.StringPtrInput
 	// Specifies the load balancer configuration for VMware admin cluster.
+	// Structure is documented below.
 	LoadBalancer VmwareAdminClusterLoadBalancerPtrInput
 	// The location of the resource.
 	Location pulumi.StringInput
@@ -678,11 +758,16 @@ type VmwareAdminClusterArgs struct {
 	// The Anthos clusters on the VMware version for the admin cluster.
 	OnPremVersion pulumi.StringPtrInput
 	// The VMware platform configuration.
+	// Structure is documented below.
 	PlatformConfig VmwareAdminClusterPlatformConfigPtrInput
 	// Configuration for private registry.
+	// Structure is documented below.
 	PrivateRegistryConfig VmwareAdminClusterPrivateRegistryConfigPtrInput
-	Project               pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// Specifies vCenter config for the admin cluster.
+	// Structure is documented below.
 	Vcenter VmwareAdminClusterVcenterPtrInput
 }
 
@@ -774,31 +859,41 @@ func (o VmwareAdminClusterOutput) ToVmwareAdminClusterOutputWithContext(ctx cont
 }
 
 // The VMware admin cluster addon node configuration.
+// Structure is documented below.
 func (o VmwareAdminClusterOutput) AddonNode() VmwareAdminClusterAddonNodeOutput {
 	return o.ApplyT(func(v *VmwareAdminCluster) VmwareAdminClusterAddonNodeOutput { return v.AddonNode }).(VmwareAdminClusterAddonNodeOutput)
 }
 
-// Annotations on the VMware Admin Cluster. This field has the same restrictions as Kubernetes annotations. The total size
-// of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-// 'effective_annotations' for all of the annotations present on the resource.
+// Annotations on the VMware Admin Cluster.
+// This field has the same restrictions as Kubernetes annotations.
+// The total size of all keys and values combined is limited to 256k.
+// Key can have 2 segments: prefix (optional) and name (required),
+// separated by a slash (/).
+// Prefix must be a DNS subdomain.
+// Name must be 63 characters or less, begin and end with alphanumerics,
+// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+//
+// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 func (o VmwareAdminClusterOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *VmwareAdminCluster) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
-// AAGConfig specifies whether to spread VMware Admin Cluster nodes across at least three physical hosts in the datacenter.
+// AAGConfig specifies whether to spread VMware Admin Cluster nodes across at
+// least three physical hosts in the datacenter.
+// Structure is documented below.
 func (o VmwareAdminClusterOutput) AntiAffinityGroups() VmwareAdminClusterAntiAffinityGroupsOutput {
 	return o.ApplyT(func(v *VmwareAdminCluster) VmwareAdminClusterAntiAffinityGroupsOutput { return v.AntiAffinityGroups }).(VmwareAdminClusterAntiAffinityGroupsOutput)
 }
 
 // The VMware admin cluster authorization configuration.
+// Structure is documented below.
 func (o VmwareAdminClusterOutput) Authorization() VmwareAdminClusterAuthorizationPtrOutput {
 	return o.ApplyT(func(v *VmwareAdminCluster) VmwareAdminClusterAuthorizationPtrOutput { return v.Authorization }).(VmwareAdminClusterAuthorizationPtrOutput)
 }
 
 // Configuration for auto repairing.
+// Structure is documented below.
 func (o VmwareAdminClusterOutput) AutoRepairConfig() VmwareAdminClusterAutoRepairConfigOutput {
 	return o.ApplyT(func(v *VmwareAdminCluster) VmwareAdminClusterAutoRepairConfigOutput { return v.AutoRepairConfig }).(VmwareAdminClusterAutoRepairConfigOutput)
 }
@@ -809,6 +904,7 @@ func (o VmwareAdminClusterOutput) BootstrapClusterMembership() pulumi.StringOutp
 }
 
 // The VMware admin cluster control plane node configuration.
+// Structure is documented below.
 func (o VmwareAdminClusterOutput) ControlPlaneNode() VmwareAdminClusterControlPlaneNodePtrOutput {
 	return o.ApplyT(func(v *VmwareAdminCluster) VmwareAdminClusterControlPlaneNodePtrOutput { return v.ControlPlaneNode }).(VmwareAdminClusterControlPlaneNodePtrOutput)
 }
@@ -858,6 +954,7 @@ func (o VmwareAdminClusterOutput) ImageType() pulumi.StringOutput {
 }
 
 // Specifies the load balancer configuration for VMware admin cluster.
+// Structure is documented below.
 func (o VmwareAdminClusterOutput) LoadBalancer() VmwareAdminClusterLoadBalancerPtrOutput {
 	return o.ApplyT(func(v *VmwareAdminCluster) VmwareAdminClusterLoadBalancerPtrOutput { return v.LoadBalancer }).(VmwareAdminClusterLoadBalancerPtrOutput)
 }
@@ -898,17 +995,21 @@ func (o VmwareAdminClusterOutput) OnPremVersion() pulumi.StringPtrOutput {
 }
 
 // The VMware platform configuration.
+// Structure is documented below.
 func (o VmwareAdminClusterOutput) PlatformConfig() VmwareAdminClusterPlatformConfigPtrOutput {
 	return o.ApplyT(func(v *VmwareAdminCluster) VmwareAdminClusterPlatformConfigPtrOutput { return v.PlatformConfig }).(VmwareAdminClusterPlatformConfigPtrOutput)
 }
 
 // Configuration for private registry.
+// Structure is documented below.
 func (o VmwareAdminClusterOutput) PrivateRegistryConfig() VmwareAdminClusterPrivateRegistryConfigPtrOutput {
 	return o.ApplyT(func(v *VmwareAdminCluster) VmwareAdminClusterPrivateRegistryConfigPtrOutput {
 		return v.PrivateRegistryConfig
 	}).(VmwareAdminClusterPrivateRegistryConfigPtrOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o VmwareAdminClusterOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *VmwareAdminCluster) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -941,6 +1042,7 @@ func (o VmwareAdminClusterOutput) UpdateTime() pulumi.StringOutput {
 }
 
 // Specifies vCenter config for the admin cluster.
+// Structure is documented below.
 func (o VmwareAdminClusterOutput) Vcenter() VmwareAdminClusterVcenterPtrOutput {
 	return o.ApplyT(func(v *VmwareAdminCluster) VmwareAdminClusterVcenterPtrOutput { return v.Vcenter }).(VmwareAdminClusterVcenterPtrOutput)
 }

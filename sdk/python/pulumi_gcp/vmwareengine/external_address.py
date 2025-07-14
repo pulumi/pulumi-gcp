@@ -32,9 +32,6 @@ class ExternalAddressArgs:
                For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
         :param pulumi.Input[builtins.str] description: User-provided description for this resource.
         :param pulumi.Input[builtins.str] name: The ID of the external IP Address.
-               
-               
-               - - -
         """
         pulumi.set(__self__, "internal_ip", internal_ip)
         pulumi.set(__self__, "parent", parent)
@@ -86,9 +83,6 @@ class ExternalAddressArgs:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The ID of the external IP Address.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -118,9 +112,6 @@ class _ExternalAddressState:
         :param pulumi.Input[builtins.str] external_ip: The external IP address of a workload VM.
         :param pulumi.Input[builtins.str] internal_ip: The internal IP address of a workload VM.
         :param pulumi.Input[builtins.str] name: The ID of the external IP Address.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] parent: The resource name of the private cloud to create a new external address in.
                Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
                For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
@@ -204,9 +195,6 @@ class _ExternalAddressState:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The ID of the external IP Address.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -343,9 +331,6 @@ class ExternalAddress(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] description: User-provided description for this resource.
         :param pulumi.Input[builtins.str] internal_ip: The internal IP address of a workload VM.
         :param pulumi.Input[builtins.str] name: The ID of the external IP Address.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] parent: The resource name of the private cloud to create a new external address in.
                Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
                For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
@@ -490,9 +475,6 @@ class ExternalAddress(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] external_ip: The external IP address of a workload VM.
         :param pulumi.Input[builtins.str] internal_ip: The internal IP address of a workload VM.
         :param pulumi.Input[builtins.str] name: The ID of the external IP Address.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] parent: The resource name of the private cloud to create a new external address in.
                Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
                For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
@@ -556,9 +538,6 @@ class ExternalAddress(pulumi.CustomResource):
     def name(self) -> pulumi.Output[builtins.str]:
         """
         The ID of the external IP Address.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

@@ -164,16 +164,12 @@ public final class GeminiGcpEnablementSettingBindingState extends com.pulumi.res
     /**
      * Id of the setting binding.
      * 
-     * ***
-     * 
      */
     @Import(name="settingBindingId")
     private @Nullable Output<String> settingBindingId;
 
     /**
      * @return Id of the setting binding.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> settingBindingId() {
@@ -447,8 +443,6 @@ public final class GeminiGcpEnablementSettingBindingState extends com.pulumi.res
         /**
          * @param settingBindingId Id of the setting binding.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -459,8 +453,6 @@ public final class GeminiGcpEnablementSettingBindingState extends com.pulumi.res
 
         /**
          * @param settingBindingId Id of the setting binding.
-         * 
-         * ***
          * 
          * @return builder
          * 

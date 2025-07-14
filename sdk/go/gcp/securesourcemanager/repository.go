@@ -149,8 +149,6 @@ type Repository struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The ID for the Repository.
-	//
-	// ***
 	RepositoryId pulumi.StringOutput `pulumi:"repositoryId"`
 	// Unique identifier of the repository.
 	Uid pulumi.StringOutput `pulumi:"uid"`
@@ -217,8 +215,6 @@ type repositoryState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The ID for the Repository.
-	//
-	// ***
 	RepositoryId *string `pulumi:"repositoryId"`
 	// Unique identifier of the repository.
 	Uid *string `pulumi:"uid"`
@@ -247,8 +243,6 @@ type RepositoryState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The ID for the Repository.
-	//
-	// ***
 	RepositoryId pulumi.StringPtrInput
 	// Unique identifier of the repository.
 	Uid pulumi.StringPtrInput
@@ -277,8 +271,6 @@ type repositoryArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The ID for the Repository.
-	//
-	// ***
 	RepositoryId string `pulumi:"repositoryId"`
 }
 
@@ -297,8 +289,6 @@ type RepositoryArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The ID for the Repository.
-	//
-	// ***
 	RepositoryId pulumi.StringInput
 }
 
@@ -427,8 +417,6 @@ func (o RepositoryOutput) Project() pulumi.StringOutput {
 }
 
 // The ID for the Repository.
-//
-// ***
 func (o RepositoryOutput) RepositoryId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.RepositoryId }).(pulumi.StringOutput)
 }

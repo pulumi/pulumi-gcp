@@ -315,9 +315,6 @@ export class Slo extends pulumi.CustomResource {
     public readonly rollingPeriodDays!: pulumi.Output<number | undefined>;
     /**
      * ID of the service to which this SLO belongs.
-     *
-     *
-     * - - -
      */
     public readonly service!: pulumi.Output<string>;
     /**
@@ -453,9 +450,6 @@ export interface SloState {
     rollingPeriodDays?: pulumi.Input<number>;
     /**
      * ID of the service to which this SLO belongs.
-     *
-     *
-     * - - -
      */
     service?: pulumi.Input<string>;
     /**
@@ -536,9 +530,6 @@ export interface SloArgs {
     rollingPeriodDays?: pulumi.Input<number>;
     /**
      * ID of the service to which this SLO belongs.
-     *
-     *
-     * - - -
      */
     service: pulumi.Input<string>;
     /**

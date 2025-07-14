@@ -616,6 +616,7 @@ namespace Pulumi.Gcp.BigQuery
     {
         /// <summary>
         /// Copies a table.
+        /// Structure is documented below.
         /// </summary>
         [Output("copy")]
         public Output<Outputs.JobCopy?> Copy { get; private set; } = null!;
@@ -629,6 +630,7 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// Configures an extract job.
+        /// Structure is documented below.
         /// </summary>
         [Output("extract")]
         public Output<Outputs.JobExtract?> Extract { get; private set; } = null!;
@@ -653,25 +655,31 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string> JobType { get; private set; } = null!;
 
         /// <summary>
-        /// The labels associated with this job. You can use these to organize and group your jobs. **Note**: This field is
-        /// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-        /// 'effective_labels' for all of the labels present on the resource.
+        /// The labels associated with this job. You can use these to organize and group your jobs.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
         /// Configures a load job.
+        /// Structure is documented below.
         /// </summary>
         [Output("load")]
         public Output<Outputs.JobLoad?> Load { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies where the error occurred, if present.
+        /// The geographic location of the job. The default value is US.
         /// </summary>
         [Output("location")]
         public Output<string?> Location { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -685,6 +693,7 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// Configures a query job.
+        /// Structure is documented below.
         /// </summary>
         [Output("query")]
         public Output<Outputs.JobQuery?> Query { get; private set; } = null!;
@@ -755,12 +764,14 @@ namespace Pulumi.Gcp.BigQuery
     {
         /// <summary>
         /// Copies a table.
+        /// Structure is documented below.
         /// </summary>
         [Input("copy")]
         public Input<Inputs.JobCopyArgs>? Copy { get; set; }
 
         /// <summary>
         /// Configures an extract job.
+        /// Structure is documented below.
         /// </summary>
         [Input("extract")]
         public Input<Inputs.JobExtractArgs>? Extract { get; set; }
@@ -781,9 +792,10 @@ namespace Pulumi.Gcp.BigQuery
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// The labels associated with this job. You can use these to organize and group your jobs. **Note**: This field is
-        /// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-        /// 'effective_labels' for all of the labels present on the resource.
+        /// The labels associated with this job. You can use these to organize and group your jobs.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -793,21 +805,27 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// Configures a load job.
+        /// Structure is documented below.
         /// </summary>
         [Input("load")]
         public Input<Inputs.JobLoadArgs>? Load { get; set; }
 
         /// <summary>
-        /// Specifies where the error occurred, if present.
+        /// The geographic location of the job. The default value is US.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Configures a query job.
+        /// Structure is documented below.
         /// </summary>
         [Input("query")]
         public Input<Inputs.JobQueryArgs>? Query { get; set; }
@@ -822,6 +840,7 @@ namespace Pulumi.Gcp.BigQuery
     {
         /// <summary>
         /// Copies a table.
+        /// Structure is documented below.
         /// </summary>
         [Input("copy")]
         public Input<Inputs.JobCopyGetArgs>? Copy { get; set; }
@@ -845,6 +864,7 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// Configures an extract job.
+        /// Structure is documented below.
         /// </summary>
         [Input("extract")]
         public Input<Inputs.JobExtractGetArgs>? Extract { get; set; }
@@ -872,9 +892,10 @@ namespace Pulumi.Gcp.BigQuery
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// The labels associated with this job. You can use these to organize and group your jobs. **Note**: This field is
-        /// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-        /// 'effective_labels' for all of the labels present on the resource.
+        /// The labels associated with this job. You can use these to organize and group your jobs.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -884,16 +905,21 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// Configures a load job.
+        /// Structure is documented below.
         /// </summary>
         [Input("load")]
         public Input<Inputs.JobLoadGetArgs>? Load { get; set; }
 
         /// <summary>
-        /// Specifies where the error occurred, if present.
+        /// The geographic location of the job. The default value is US.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -917,6 +943,7 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// Configures a query job.
+        /// Structure is documented below.
         /// </summary>
         [Input("query")]
         public Input<Inputs.JobQueryGetArgs>? Query { get; set; }

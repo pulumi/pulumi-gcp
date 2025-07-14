@@ -190,9 +190,6 @@ export class MetricDescriptor extends pulumi.CustomResource {
     /**
      * Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
      * Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
-     *
-     *
-     * - - -
      */
     public readonly valueType!: pulumi.Output<string>;
 
@@ -322,9 +319,6 @@ export interface MetricDescriptorState {
     /**
      * Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
      * Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
-     *
-     *
-     * - - -
      */
     valueType?: pulumi.Input<string>;
 }
@@ -393,9 +387,6 @@ export interface MetricDescriptorArgs {
     /**
      * Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
      * Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
-     *
-     *
-     * - - -
      */
     valueType: pulumi.Input<string>;
 }

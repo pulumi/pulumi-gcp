@@ -104,9 +104,6 @@ export class ServicePerimeterDryRunResource extends pulumi.CustomResource {
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
      * The name of the Service Perimeter to add this resource to.
-     *
-     *
-     * - - -
      */
     public readonly perimeterName!: pulumi.Output<string>;
     /**
@@ -165,9 +162,6 @@ export interface ServicePerimeterDryRunResourceState {
     etag?: pulumi.Input<string>;
     /**
      * The name of the Service Perimeter to add this resource to.
-     *
-     *
-     * - - -
      */
     perimeterName?: pulumi.Input<string>;
     /**
@@ -184,9 +178,6 @@ export interface ServicePerimeterDryRunResourceState {
 export interface ServicePerimeterDryRunResourceArgs {
     /**
      * The name of the Service Perimeter to add this resource to.
-     *
-     *
-     * - - -
      */
     perimeterName: pulumi.Input<string>;
     /**

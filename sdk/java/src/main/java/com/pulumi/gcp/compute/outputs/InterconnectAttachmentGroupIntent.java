@@ -15,8 +15,6 @@ public final class InterconnectAttachmentGroupIntent {
      * @return Which SLA the user intends this group to support.
      * Possible values are: `PRODUCTION_NON_CRITICAL`, `PRODUCTION_CRITICAL`, `NO_SLA`, `AVAILABILITY_SLA_UNSPECIFIED`.
      * 
-     * ***
-     * 
      */
     private @Nullable String availabilitySla;
 
@@ -24,8 +22,6 @@ public final class InterconnectAttachmentGroupIntent {
     /**
      * @return Which SLA the user intends this group to support.
      * Possible values are: `PRODUCTION_NON_CRITICAL`, `PRODUCTION_CRITICAL`, `NO_SLA`, `AVAILABILITY_SLA_UNSPECIFIED`.
-     * 
-     * ***
      * 
      */
     public Optional<String> availabilitySla() {

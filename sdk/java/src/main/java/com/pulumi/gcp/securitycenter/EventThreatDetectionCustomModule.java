@@ -132,16 +132,12 @@ public class EventThreatDetectionCustomModule extends com.pulumi.resources.Custo
     /**
      * Numerical ID of the parent organization.
      * 
-     * ***
-     * 
      */
     @Export(name="organization", refs={String.class}, tree="[0]")
     private Output<String> organization;
 
     /**
      * @return Numerical ID of the parent organization.
-     * 
-     * ***
      * 
      */
     public Output<String> organization() {

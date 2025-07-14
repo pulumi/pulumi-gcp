@@ -281,16 +281,12 @@ public class HostingRelease extends com.pulumi.resources.CustomResource {
     /**
      * Required. The ID of the site to which the release belongs.
      * 
-     * ***
-     * 
      */
     @Export(name="siteId", refs={String.class}, tree="[0]")
     private Output<String> siteId;
 
     /**
      * @return Required. The ID of the site to which the release belongs.
-     * 
-     * ***
      * 
      */
     public Output<String> siteId() {

@@ -20,16 +20,14 @@ public final class EndpointPolicyArgs extends com.pulumi.resources.ResourceArgs 
     public static final EndpointPolicyArgs Empty = new EndpointPolicyArgs();
 
     /**
-     * This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic
-     * at the matched endpoints.
+     * This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints.
      * 
      */
     @Import(name="authorizationPolicy")
     private @Nullable Output<String> authorizationPolicy;
 
     /**
-     * @return This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic
-     * at the matched endpoints.
+     * @return This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints.
      * 
      */
     public Optional<Output<String>> authorizationPolicy() {
@@ -37,16 +35,14 @@ public final class EndpointPolicyArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from
-     * the proxy to the actual endpoints.
+     * A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from the proxy to the actual endpoints.
      * 
      */
     @Import(name="clientTlsPolicy")
     private @Nullable Output<String> clientTlsPolicy;
 
     /**
-     * @return A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from
-     * the proxy to the actual endpoints.
+     * @return A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from the proxy to the actual endpoints.
      * 
      */
     public Optional<Output<String>> clientTlsPolicy() {
@@ -86,18 +82,18 @@ public final class EndpointPolicyArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Set of label tags associated with the TcpRoute resource. **Note**: This field is non-authoritative, and will only manage
-     * the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on
-     * the resource.
+     * Set of label tags associated with the TcpRoute resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Set of label tags associated with the TcpRoute resource. **Note**: This field is non-authoritative, and will only manage
-     * the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on
-     * the resource.
+     * @return Set of label tags associated with the TcpRoute resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -119,24 +115,32 @@ public final class EndpointPolicyArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
 
     /**
-     * A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be
-     * applied to terminate the inbound traffic at the identified backends.
+     * A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
      * 
      */
     @Import(name="serverTlsPolicy")
     private @Nullable Output<String> serverTlsPolicy;
 
     /**
-     * @return A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be
-     * applied to terminate the inbound traffic at the identified backends.
+     * @return A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
      * 
      */
     public Optional<Output<String>> serverTlsPolicy() {
@@ -145,6 +149,7 @@ public final class EndpointPolicyArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
+     * Structure is documented below.
      * 
      */
     @Import(name="trafficPortSelector")
@@ -152,6 +157,7 @@ public final class EndpointPolicyArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<EndpointPolicyTrafficPortSelectorArgs>> trafficPortSelector() {
@@ -209,8 +215,7 @@ public final class EndpointPolicyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param authorizationPolicy This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic
-         * at the matched endpoints.
+         * @param authorizationPolicy This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints.
          * 
          * @return builder
          * 
@@ -221,8 +226,7 @@ public final class EndpointPolicyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param authorizationPolicy This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic
-         * at the matched endpoints.
+         * @param authorizationPolicy This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints.
          * 
          * @return builder
          * 
@@ -232,8 +236,7 @@ public final class EndpointPolicyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param clientTlsPolicy A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from
-         * the proxy to the actual endpoints.
+         * @param clientTlsPolicy A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from the proxy to the actual endpoints.
          * 
          * @return builder
          * 
@@ -244,8 +247,7 @@ public final class EndpointPolicyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param clientTlsPolicy A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from
-         * the proxy to the actual endpoints.
+         * @param clientTlsPolicy A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from the proxy to the actual endpoints.
          * 
          * @return builder
          * 
@@ -299,9 +301,9 @@ public final class EndpointPolicyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param labels Set of label tags associated with the TcpRoute resource. **Note**: This field is non-authoritative, and will only manage
-         * the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on
-         * the resource.
+         * @param labels Set of label tags associated with the TcpRoute resource.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -312,9 +314,9 @@ public final class EndpointPolicyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param labels Set of label tags associated with the TcpRoute resource. **Note**: This field is non-authoritative, and will only manage
-         * the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on
-         * the resource.
+         * @param labels Set of label tags associated with the TcpRoute resource.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -344,18 +346,31 @@ public final class EndpointPolicyArgs extends com.pulumi.resources.ResourceArgs 
             return name(Output.of(name));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
 
         /**
-         * @param serverTlsPolicy A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be
-         * applied to terminate the inbound traffic at the identified backends.
+         * @param serverTlsPolicy A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
          * 
          * @return builder
          * 
@@ -366,8 +381,7 @@ public final class EndpointPolicyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param serverTlsPolicy A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be
-         * applied to terminate the inbound traffic at the identified backends.
+         * @param serverTlsPolicy A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
          * 
          * @return builder
          * 
@@ -378,6 +392,7 @@ public final class EndpointPolicyArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param trafficPortSelector Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -389,6 +404,7 @@ public final class EndpointPolicyArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param trafficPortSelector Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
+         * Structure is documented below.
          * 
          * @return builder
          * 

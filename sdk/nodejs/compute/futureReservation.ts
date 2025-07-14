@@ -97,20 +97,17 @@ export class FutureReservation extends pulumi.CustomResource {
      */
     public readonly autoCreatedReservationsDeleteTime!: pulumi.Output<string | undefined>;
     /**
-     * Specifies the duration of auto-created reservations. It represents relative time to future reservation startTime when
-     * auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count
-     * of seconds and fractions of seconds at nanosecond resolution.
+     * Specifies the duration of auto-created reservations. It represents relative time to future reservation startTime when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
+     * Structure is documented below.
      */
     public readonly autoCreatedReservationsDuration!: pulumi.Output<outputs.compute.FutureReservationAutoCreatedReservationsDuration | undefined>;
     /**
-     * Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created
-     * reservations will be deleted at Future Reservation's end time (default) or at user's defined timestamp if any of the
-     * [autoCreatedReservationsDeleteTime, autoCreatedReservationsDuration] values is specified. For keeping auto-created
-     * reservation indefinitely, this value should be set to false.
+     * Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created reservations will be deleted at Future Reservation's end time (default) or at user's defined timestamp if any of the [autoCreatedReservationsDeleteTime, autoCreatedReservationsDuration] values is specified. For keeping auto-created reservation indefinitely, this value should be set to false.
      */
     public readonly autoDeleteAutoCreatedReservations!: pulumi.Output<boolean | undefined>;
     /**
      * If not present, then FR will not deliver a new commitment or update an existing commitment.
+     * Structure is documented below.
      */
     public readonly commitmentInfo!: pulumi.Output<outputs.compute.FutureReservationCommitmentInfo | undefined>;
     /**
@@ -118,11 +115,12 @@ export class FutureReservation extends pulumi.CustomResource {
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
-     * Type of the deployment requested as part of future reservation. Possible values: ["DENSE", "FLEXIBLE"]
+     * Type of the deployment requested as part of future reservation.
+     * Possible values are: `DENSE`, `FLEXIBLE`.
      */
     public readonly deploymentType!: pulumi.Output<string | undefined>;
     /**
-     * The description of the FutureReservation before an amendment was requested.
+     * An optional description of this resource.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -136,30 +134,31 @@ export class FutureReservation extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The name prefix of the Future Reservation before an amendment was requested.
+     * Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
      */
     public readonly namePrefix!: pulumi.Output<string | undefined>;
     /**
-     * Planning state before being submitted for evaluation Possible values: ["DRAFT", "SUBMITTED"]
+     * Planning state before being submitted for evaluation
+     * Possible values are: `DRAFT`, `SUBMITTED`.
      */
     public readonly planningStatus!: pulumi.Output<string>;
     /**
-     * (Required) The identifier for this object. Format specified above.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The reservation mode which determines reservation-termination behavior and expected pricing. Possible values:
-     * ["CALENDAR", "DEFAULT"]
+     * The reservation mode which determines reservation-termination behavior and expected pricing.
+     * Possible values are: `CALENDAR`, `DEFAULT`.
      */
     public readonly reservationMode!: pulumi.Output<string | undefined>;
     /**
-     * Name of reservations where the capacity is provisioned at the time of delivery of future reservations. If the
-     * reservation with the given name does not exist already, it is created automatically at the time of Approval with
-     * INACTIVE state till specified start-time. Either provide the reservationName or a namePrefix.
+     * Name of reservations where the capacity is provisioned at the time of delivery of future reservations. If the reservation with the given name does not exist already, it is created automatically at the time of Approval with INACTIVE state till specified start-time. Either provide the reservationName or a namePrefix.
      */
     public readonly reservationName!: pulumi.Output<string | undefined>;
     /**
-     * Maintenance information for this reservation Possible values: ["GROUPED", "INDEPENDENT"]
+     * Maintenance information for this reservation
+     * Possible values are: `GROUPED`, `INDEPENDENT`.
      */
     public readonly schedulingType!: pulumi.Output<string | undefined>;
     /**
@@ -171,17 +170,16 @@ export class FutureReservation extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLinkWithId!: pulumi.Output<string>;
     /**
-     * The previous share settings of the Future Reservation.
+     * Settings for sharing the future reservation
      * Structure is documented below.
      */
     public readonly shareSettings!: pulumi.Output<outputs.compute.FutureReservationShareSettings | undefined>;
     /**
-     * Indicates whether the auto-created reservation can be consumed by VMs with affinity for "any" reservation. If the field
-     * is set, then only VMs that target the reservation by name can consume from the delivered reservation.
+     * Indicates whether the auto-created reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from the delivered reservation.
      */
     public readonly specificReservationRequired!: pulumi.Output<boolean | undefined>;
     /**
-     * The previous instance related properties of the Future Reservation.
+     * Future Reservation configuration to indicate instance properties and total count.
      * Structure is documented below.
      */
     public readonly specificSkuProperties!: pulumi.Output<outputs.compute.FutureReservationSpecificSkuProperties | undefined>;
@@ -277,20 +275,17 @@ export interface FutureReservationState {
      */
     autoCreatedReservationsDeleteTime?: pulumi.Input<string>;
     /**
-     * Specifies the duration of auto-created reservations. It represents relative time to future reservation startTime when
-     * auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count
-     * of seconds and fractions of seconds at nanosecond resolution.
+     * Specifies the duration of auto-created reservations. It represents relative time to future reservation startTime when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
+     * Structure is documented below.
      */
     autoCreatedReservationsDuration?: pulumi.Input<inputs.compute.FutureReservationAutoCreatedReservationsDuration>;
     /**
-     * Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created
-     * reservations will be deleted at Future Reservation's end time (default) or at user's defined timestamp if any of the
-     * [autoCreatedReservationsDeleteTime, autoCreatedReservationsDuration] values is specified. For keeping auto-created
-     * reservation indefinitely, this value should be set to false.
+     * Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created reservations will be deleted at Future Reservation's end time (default) or at user's defined timestamp if any of the [autoCreatedReservationsDeleteTime, autoCreatedReservationsDuration] values is specified. For keeping auto-created reservation indefinitely, this value should be set to false.
      */
     autoDeleteAutoCreatedReservations?: pulumi.Input<boolean>;
     /**
      * If not present, then FR will not deliver a new commitment or update an existing commitment.
+     * Structure is documented below.
      */
     commitmentInfo?: pulumi.Input<inputs.compute.FutureReservationCommitmentInfo>;
     /**
@@ -298,11 +293,12 @@ export interface FutureReservationState {
      */
     creationTimestamp?: pulumi.Input<string>;
     /**
-     * Type of the deployment requested as part of future reservation. Possible values: ["DENSE", "FLEXIBLE"]
+     * Type of the deployment requested as part of future reservation.
+     * Possible values are: `DENSE`, `FLEXIBLE`.
      */
     deploymentType?: pulumi.Input<string>;
     /**
-     * The description of the FutureReservation before an amendment was requested.
+     * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
     /**
@@ -316,30 +312,31 @@ export interface FutureReservationState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The name prefix of the Future Reservation before an amendment was requested.
+     * Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
      */
     namePrefix?: pulumi.Input<string>;
     /**
-     * Planning state before being submitted for evaluation Possible values: ["DRAFT", "SUBMITTED"]
+     * Planning state before being submitted for evaluation
+     * Possible values are: `DRAFT`, `SUBMITTED`.
      */
     planningStatus?: pulumi.Input<string>;
     /**
-     * (Required) The identifier for this object. Format specified above.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**
-     * The reservation mode which determines reservation-termination behavior and expected pricing. Possible values:
-     * ["CALENDAR", "DEFAULT"]
+     * The reservation mode which determines reservation-termination behavior and expected pricing.
+     * Possible values are: `CALENDAR`, `DEFAULT`.
      */
     reservationMode?: pulumi.Input<string>;
     /**
-     * Name of reservations where the capacity is provisioned at the time of delivery of future reservations. If the
-     * reservation with the given name does not exist already, it is created automatically at the time of Approval with
-     * INACTIVE state till specified start-time. Either provide the reservationName or a namePrefix.
+     * Name of reservations where the capacity is provisioned at the time of delivery of future reservations. If the reservation with the given name does not exist already, it is created automatically at the time of Approval with INACTIVE state till specified start-time. Either provide the reservationName or a namePrefix.
      */
     reservationName?: pulumi.Input<string>;
     /**
-     * Maintenance information for this reservation Possible values: ["GROUPED", "INDEPENDENT"]
+     * Maintenance information for this reservation
+     * Possible values are: `GROUPED`, `INDEPENDENT`.
      */
     schedulingType?: pulumi.Input<string>;
     /**
@@ -351,17 +348,16 @@ export interface FutureReservationState {
      */
     selfLinkWithId?: pulumi.Input<string>;
     /**
-     * The previous share settings of the Future Reservation.
+     * Settings for sharing the future reservation
      * Structure is documented below.
      */
     shareSettings?: pulumi.Input<inputs.compute.FutureReservationShareSettings>;
     /**
-     * Indicates whether the auto-created reservation can be consumed by VMs with affinity for "any" reservation. If the field
-     * is set, then only VMs that target the reservation by name can consume from the delivered reservation.
+     * Indicates whether the auto-created reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from the delivered reservation.
      */
     specificReservationRequired?: pulumi.Input<boolean>;
     /**
-     * The previous instance related properties of the Future Reservation.
+     * Future Reservation configuration to indicate instance properties and total count.
      * Structure is documented below.
      */
     specificSkuProperties?: pulumi.Input<inputs.compute.FutureReservationSpecificSkuProperties>;
@@ -390,28 +386,26 @@ export interface FutureReservationArgs {
      */
     autoCreatedReservationsDeleteTime?: pulumi.Input<string>;
     /**
-     * Specifies the duration of auto-created reservations. It represents relative time to future reservation startTime when
-     * auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count
-     * of seconds and fractions of seconds at nanosecond resolution.
+     * Specifies the duration of auto-created reservations. It represents relative time to future reservation startTime when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
+     * Structure is documented below.
      */
     autoCreatedReservationsDuration?: pulumi.Input<inputs.compute.FutureReservationAutoCreatedReservationsDuration>;
     /**
-     * Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created
-     * reservations will be deleted at Future Reservation's end time (default) or at user's defined timestamp if any of the
-     * [autoCreatedReservationsDeleteTime, autoCreatedReservationsDuration] values is specified. For keeping auto-created
-     * reservation indefinitely, this value should be set to false.
+     * Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created reservations will be deleted at Future Reservation's end time (default) or at user's defined timestamp if any of the [autoCreatedReservationsDeleteTime, autoCreatedReservationsDuration] values is specified. For keeping auto-created reservation indefinitely, this value should be set to false.
      */
     autoDeleteAutoCreatedReservations?: pulumi.Input<boolean>;
     /**
      * If not present, then FR will not deliver a new commitment or update an existing commitment.
+     * Structure is documented below.
      */
     commitmentInfo?: pulumi.Input<inputs.compute.FutureReservationCommitmentInfo>;
     /**
-     * Type of the deployment requested as part of future reservation. Possible values: ["DENSE", "FLEXIBLE"]
+     * Type of the deployment requested as part of future reservation.
+     * Possible values are: `DENSE`, `FLEXIBLE`.
      */
     deploymentType?: pulumi.Input<string>;
     /**
-     * The description of the FutureReservation before an amendment was requested.
+     * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
     /**
@@ -425,44 +419,44 @@ export interface FutureReservationArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The name prefix of the Future Reservation before an amendment was requested.
+     * Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
      */
     namePrefix?: pulumi.Input<string>;
     /**
-     * Planning state before being submitted for evaluation Possible values: ["DRAFT", "SUBMITTED"]
+     * Planning state before being submitted for evaluation
+     * Possible values are: `DRAFT`, `SUBMITTED`.
      */
     planningStatus?: pulumi.Input<string>;
     /**
-     * (Required) The identifier for this object. Format specified above.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**
-     * The reservation mode which determines reservation-termination behavior and expected pricing. Possible values:
-     * ["CALENDAR", "DEFAULT"]
+     * The reservation mode which determines reservation-termination behavior and expected pricing.
+     * Possible values are: `CALENDAR`, `DEFAULT`.
      */
     reservationMode?: pulumi.Input<string>;
     /**
-     * Name of reservations where the capacity is provisioned at the time of delivery of future reservations. If the
-     * reservation with the given name does not exist already, it is created automatically at the time of Approval with
-     * INACTIVE state till specified start-time. Either provide the reservationName or a namePrefix.
+     * Name of reservations where the capacity is provisioned at the time of delivery of future reservations. If the reservation with the given name does not exist already, it is created automatically at the time of Approval with INACTIVE state till specified start-time. Either provide the reservationName or a namePrefix.
      */
     reservationName?: pulumi.Input<string>;
     /**
-     * Maintenance information for this reservation Possible values: ["GROUPED", "INDEPENDENT"]
+     * Maintenance information for this reservation
+     * Possible values are: `GROUPED`, `INDEPENDENT`.
      */
     schedulingType?: pulumi.Input<string>;
     /**
-     * The previous share settings of the Future Reservation.
+     * Settings for sharing the future reservation
      * Structure is documented below.
      */
     shareSettings?: pulumi.Input<inputs.compute.FutureReservationShareSettings>;
     /**
-     * Indicates whether the auto-created reservation can be consumed by VMs with affinity for "any" reservation. If the field
-     * is set, then only VMs that target the reservation by name can consume from the delivered reservation.
+     * Indicates whether the auto-created reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from the delivered reservation.
      */
     specificReservationRequired?: pulumi.Input<boolean>;
     /**
-     * The previous instance related properties of the Future Reservation.
+     * Future Reservation configuration to indicate instance properties and total count.
      * Structure is documented below.
      */
     specificSkuProperties?: pulumi.Input<inputs.compute.FutureReservationSpecificSkuProperties>;

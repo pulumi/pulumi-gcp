@@ -74,16 +74,12 @@ public final class AiDatasetArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Points to a YAML file stored on Google Cloud Storage describing additional information about the Dataset. The schema is defined as an OpenAPI 3.0.2 Schema Object. The schema files that can be used here are found in gs://google-cloud-aiplatform/schema/dataset/metadata/.
      * 
-     * ***
-     * 
      */
     @Import(name="metadataSchemaUri", required=true)
     private Output<String> metadataSchemaUri;
 
     /**
      * @return Points to a YAML file stored on Google Cloud Storage describing additional information about the Dataset. The schema is defined as an OpenAPI 3.0.2 Schema Object. The schema files that can be used here are found in gs://google-cloud-aiplatform/schema/dataset/metadata/.
-     * 
-     * ***
      * 
      */
     public Output<String> metadataSchemaUri() {
@@ -225,8 +221,6 @@ public final class AiDatasetArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param metadataSchemaUri Points to a YAML file stored on Google Cloud Storage describing additional information about the Dataset. The schema is defined as an OpenAPI 3.0.2 Schema Object. The schema files that can be used here are found in gs://google-cloud-aiplatform/schema/dataset/metadata/.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -237,8 +231,6 @@ public final class AiDatasetArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param metadataSchemaUri Points to a YAML file stored on Google Cloud Storage describing additional information about the Dataset. The schema is defined as an OpenAPI 3.0.2 Schema Object. The schema files that can be used here are found in gs://google-cloud-aiplatform/schema/dataset/metadata/.
-         * 
-         * ***
          * 
          * @return builder
          * 

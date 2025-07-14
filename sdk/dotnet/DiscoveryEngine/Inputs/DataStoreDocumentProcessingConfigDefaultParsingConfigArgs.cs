@@ -20,6 +20,7 @@ namespace Pulumi.Gcp.DiscoveryEngine.Inputs
 
         /// <summary>
         /// Configurations applied to layout parser.
+        /// Structure is documented below.
         /// </summary>
         [Input("layoutParsingConfig")]
         public Input<Inputs.DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigArgs>? LayoutParsingConfig { get; set; }

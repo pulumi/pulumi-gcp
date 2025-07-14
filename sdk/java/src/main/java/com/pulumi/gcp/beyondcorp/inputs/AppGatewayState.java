@@ -108,16 +108,12 @@ public final class AppGatewayState extends com.pulumi.resources.ResourceArgs {
     /**
      * ID of the AppGateway.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return ID of the AppGateway.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -388,8 +384,6 @@ public final class AppGatewayState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name ID of the AppGateway.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -400,8 +394,6 @@ public final class AppGatewayState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name ID of the AppGateway.
-         * 
-         * ***
          * 
          * @return builder
          * 

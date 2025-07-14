@@ -55,8 +55,6 @@ public final class RegionSecurityPolicyArgs extends com.pulumi.resources.Resourc
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.
      * Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
@@ -64,8 +62,6 @@ public final class RegionSecurityPolicyArgs extends com.pulumi.resources.Resourc
     /**
      * @return Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.
      * Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -248,8 +244,6 @@ public final class RegionSecurityPolicyArgs extends com.pulumi.resources.Resourc
          * @param name Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.
          * Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -261,8 +255,6 @@ public final class RegionSecurityPolicyArgs extends com.pulumi.resources.Resourc
         /**
          * @param name Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.
          * Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-         * 
-         * ***
          * 
          * @return builder
          * 

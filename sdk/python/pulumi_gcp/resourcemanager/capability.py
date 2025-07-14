@@ -28,9 +28,6 @@ class CapabilityArgs:
         :param pulumi.Input[builtins.str] capability_name: Capability name that should be updated on the folder.
         :param pulumi.Input[builtins.str] parent: Folder on which Capability needs to be updated in the format folders/folder_id.
         :param pulumi.Input[builtins.bool] value: Capability Value.
-               
-               
-               - - -
         """
         pulumi.set(__self__, "capability_name", capability_name)
         pulumi.set(__self__, "parent", parent)
@@ -65,9 +62,6 @@ class CapabilityArgs:
     def value(self) -> pulumi.Input[builtins.bool]:
         """
         Capability Value.
-
-
-        - - -
         """
         return pulumi.get(self, "value")
 
@@ -87,9 +81,6 @@ class _CapabilityState:
         :param pulumi.Input[builtins.str] capability_name: Capability name that should be updated on the folder.
         :param pulumi.Input[builtins.str] parent: Folder on which Capability needs to be updated in the format folders/folder_id.
         :param pulumi.Input[builtins.bool] value: Capability Value.
-               
-               
-               - - -
         """
         if capability_name is not None:
             pulumi.set(__self__, "capability_name", capability_name)
@@ -127,9 +118,6 @@ class _CapabilityState:
     def value(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
         Capability Value.
-
-
-        - - -
         """
         return pulumi.get(self, "value")
 
@@ -194,9 +182,6 @@ class Capability(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] capability_name: Capability name that should be updated on the folder.
         :param pulumi.Input[builtins.str] parent: Folder on which Capability needs to be updated in the format folders/folder_id.
         :param pulumi.Input[builtins.bool] value: Capability Value.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -304,9 +289,6 @@ class Capability(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] capability_name: Capability name that should be updated on the folder.
         :param pulumi.Input[builtins.str] parent: Folder on which Capability needs to be updated in the format folders/folder_id.
         :param pulumi.Input[builtins.bool] value: Capability Value.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -338,9 +320,6 @@ class Capability(pulumi.CustomResource):
     def value(self) -> pulumi.Output[builtins.bool]:
         """
         Capability Value.
-
-
-        - - -
         """
         return pulumi.get(self, "value")
 

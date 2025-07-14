@@ -99,8 +99,6 @@ type FirewallEndpoint struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name of the parent this firewall endpoint belongs to.
 	// Format: organizations/{organization_id}.
-	//
-	// ***
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -181,8 +179,6 @@ type firewallEndpointState struct {
 	Name *string `pulumi:"name"`
 	// The name of the parent this firewall endpoint belongs to.
 	// Format: organizations/{organization_id}.
-	//
-	// ***
 	Parent *string `pulumi:"parent"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -220,8 +216,6 @@ type FirewallEndpointState struct {
 	Name pulumi.StringPtrInput
 	// The name of the parent this firewall endpoint belongs to.
 	// Format: organizations/{organization_id}.
-	//
-	// ***
 	Parent pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -254,8 +248,6 @@ type firewallEndpointArgs struct {
 	Name *string `pulumi:"name"`
 	// The name of the parent this firewall endpoint belongs to.
 	// Format: organizations/{organization_id}.
-	//
-	// ***
 	Parent string `pulumi:"parent"`
 }
 
@@ -274,8 +266,6 @@ type FirewallEndpointArgs struct {
 	Name pulumi.StringPtrInput
 	// The name of the parent this firewall endpoint belongs to.
 	// Format: organizations/{organization_id}.
-	//
-	// ***
 	Parent pulumi.StringInput
 }
 
@@ -409,8 +399,6 @@ func (o FirewallEndpointOutput) Name() pulumi.StringOutput {
 
 // The name of the parent this firewall endpoint belongs to.
 // Format: organizations/{organization_id}.
-//
-// ***
 func (o FirewallEndpointOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallEndpoint) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }

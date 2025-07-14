@@ -28,6 +28,7 @@ public final class GetSecretVersionResult {
      * 
      */
     private Boolean enabled;
+    private @Nullable Boolean fetchSecretData;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -70,6 +71,9 @@ public final class GetSecretVersionResult {
      */
     public Boolean enabled() {
         return this.enabled;
+    }
+    public Optional<Boolean> fetchSecretData() {
+        return Optional.ofNullable(this.fetchSecretData);
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -118,6 +122,7 @@ public final class GetSecretVersionResult {
         private String createTime;
         private String destroyTime;
         private Boolean enabled;
+        private @Nullable Boolean fetchSecretData;
         private String id;
         private @Nullable Boolean isSecretDataBase64;
         private String name;
@@ -131,6 +136,7 @@ public final class GetSecretVersionResult {
     	      this.createTime = defaults.createTime;
     	      this.destroyTime = defaults.destroyTime;
     	      this.enabled = defaults.enabled;
+    	      this.fetchSecretData = defaults.fetchSecretData;
     	      this.id = defaults.id;
     	      this.isSecretDataBase64 = defaults.isSecretDataBase64;
     	      this.name = defaults.name;
@@ -162,6 +168,12 @@ public final class GetSecretVersionResult {
               throw new MissingRequiredPropertyException("GetSecretVersionResult", "enabled");
             }
             this.enabled = enabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder fetchSecretData(@Nullable Boolean fetchSecretData) {
+
+            this.fetchSecretData = fetchSecretData;
             return this;
         }
         @CustomType.Setter
@@ -223,6 +235,7 @@ public final class GetSecretVersionResult {
             _resultValue.createTime = createTime;
             _resultValue.destroyTime = destroyTime;
             _resultValue.enabled = enabled;
+            _resultValue.fetchSecretData = fetchSecretData;
             _resultValue.id = id;
             _resultValue.isSecretDataBase64 = isSecretDataBase64;
             _resultValue.name = name;

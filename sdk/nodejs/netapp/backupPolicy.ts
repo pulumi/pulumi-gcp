@@ -131,9 +131,6 @@ export class BackupPolicy extends pulumi.CustomResource {
     public readonly monthlyBackupLimit!: pulumi.Output<number>;
     /**
      * The name of the backup policy. Needs to be unique per location.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -264,9 +261,6 @@ export interface BackupPolicyState {
     monthlyBackupLimit?: pulumi.Input<number>;
     /**
      * The name of the backup policy. Needs to be unique per location.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -323,9 +317,6 @@ export interface BackupPolicyArgs {
     monthlyBackupLimit: pulumi.Input<number>;
     /**
      * The name of the backup policy. Needs to be unique per location.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

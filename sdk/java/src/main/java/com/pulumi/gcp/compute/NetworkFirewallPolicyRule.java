@@ -336,34 +336,38 @@ public class NetworkFirewallPolicyRule extends com.pulumi.resources.CustomResour
         return this.direction;
     }
     /**
-     * Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
-     * traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
+     * Denotes whether the firewall policy rule is disabled.
+     * When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist.
+     * If this is unspecified, the firewall policy rule will be enabled.
      * 
      */
     @Export(name="disabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disabled;
 
     /**
-     * @return Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
-     * traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
+     * @return Denotes whether the firewall policy rule is disabled.
+     * When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist.
+     * If this is unspecified, the firewall policy rule will be enabled.
      * 
      */
     public Output<Optional<Boolean>> disabled() {
         return Codegen.optional(this.disabled);
     }
     /**
-     * Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
-     * export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
-     * &#34;goto_next&#34; rules.
+     * Denotes whether to enable logging for a particular rule.
+     * If logging is enabled, logs will be exported to the configured export destination in Stackdriver.
+     * Logs may be exported to BigQuery or Pub/Sub.
+     * Note: you cannot enable logging on &#34;goto_next&#34; rules.
      * 
      */
     @Export(name="enableLogging", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableLogging;
 
     /**
-     * @return Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
-     * export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
-     * &#34;goto_next&#34; rules.
+     * @return Denotes whether to enable logging for a particular rule.
+     * If logging is enabled, logs will be exported to the configured export destination in Stackdriver.
+     * Logs may be exported to BigQuery or Pub/Sub.
+     * Note: you cannot enable logging on &#34;goto_next&#34; rules.
      * 
      */
     public Output<Optional<Boolean>> enableLogging() {
@@ -431,9 +435,19 @@ public class NetworkFirewallPolicyRule extends com.pulumi.resources.CustomResour
     public Output<Integer> priority() {
         return this.priority;
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }
@@ -466,8 +480,8 @@ public class NetworkFirewallPolicyRule extends com.pulumi.resources.CustomResour
         return this.ruleTupleCount;
     }
     /**
-     * A fully-qualified URL of a SecurityProfile resource instance. Example:
-     * https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+     * A fully-qualified URL of a SecurityProfile resource instance.
+     * Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
      * Must be specified if action = &#39;apply_security_profile_group&#39; and cannot be specified for other actions.
      * 
      */
@@ -475,8 +489,8 @@ public class NetworkFirewallPolicyRule extends com.pulumi.resources.CustomResour
     private Output</* @Nullable */ String> securityProfileGroup;
 
     /**
-     * @return A fully-qualified URL of a SecurityProfile resource instance. Example:
-     * https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+     * @return A fully-qualified URL of a SecurityProfile resource instance.
+     * Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
      * Must be specified if action = &#39;apply_security_profile_group&#39; and cannot be specified for other actions.
      * 
      */
@@ -484,22 +498,20 @@ public class NetworkFirewallPolicyRule extends com.pulumi.resources.CustomResour
         return Codegen.optional(this.securityProfileGroup);
     }
     /**
-     * A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
-     * the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
-     * targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
-     * time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
-     * applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
+     * A list of secure tags that controls which instances the firewall rule applies to.
+     * If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
+     * targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
+     * Structure is documented below.
      * 
      */
     @Export(name="targetSecureTags", refs={List.class,NetworkFirewallPolicyRuleTargetSecureTag.class}, tree="[0,1]")
     private Output</* @Nullable */ List<NetworkFirewallPolicyRuleTargetSecureTag>> targetSecureTags;
 
     /**
-     * @return A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
-     * the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
-     * targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
-     * time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
-     * applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
+     * @return A list of secure tags that controls which instances the firewall rule applies to.
+     * If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
+     * targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<List<NetworkFirewallPolicyRuleTargetSecureTag>>> targetSecureTags() {
@@ -520,16 +532,16 @@ public class NetworkFirewallPolicyRule extends com.pulumi.resources.CustomResour
         return Codegen.optional(this.targetServiceAccounts);
     }
     /**
-     * Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
-     * &#39;apply_security_profile_group&#39; and cannot be set for other actions.
+     * Boolean flag indicating if the traffic should be TLS decrypted.
+     * Can be set only if action = &#39;apply_security_profile_group&#39; and cannot be set for other actions.
      * 
      */
     @Export(name="tlsInspect", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> tlsInspect;
 
     /**
-     * @return Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
-     * &#39;apply_security_profile_group&#39; and cannot be set for other actions.
+     * @return Boolean flag indicating if the traffic should be TLS decrypted.
+     * Can be set only if action = &#39;apply_security_profile_group&#39; and cannot be set for other actions.
      * 
      */
     public Output<Optional<Boolean>> tlsInspect() {

@@ -126,8 +126,6 @@ type ResponsePolicyRule struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Identifies the response policy addressed by this request.
-	//
-	// ***
 	ResponsePolicy pulumi.StringOutput `pulumi:"responsePolicy"`
 	// An identifier for this rule. Must be unique with the ResponsePolicy.
 	RuleName pulumi.StringOutput `pulumi:"ruleName"`
@@ -184,8 +182,6 @@ type responsePolicyRuleState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Identifies the response policy addressed by this request.
-	//
-	// ***
 	ResponsePolicy *string `pulumi:"responsePolicy"`
 	// An identifier for this rule. Must be unique with the ResponsePolicy.
 	RuleName *string `pulumi:"ruleName"`
@@ -204,8 +200,6 @@ type ResponsePolicyRuleState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Identifies the response policy addressed by this request.
-	//
-	// ***
 	ResponsePolicy pulumi.StringPtrInput
 	// An identifier for this rule. Must be unique with the ResponsePolicy.
 	RuleName pulumi.StringPtrInput
@@ -228,8 +222,6 @@ type responsePolicyRuleArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Identifies the response policy addressed by this request.
-	//
-	// ***
 	ResponsePolicy string `pulumi:"responsePolicy"`
 	// An identifier for this rule. Must be unique with the ResponsePolicy.
 	RuleName string `pulumi:"ruleName"`
@@ -249,8 +241,6 @@ type ResponsePolicyRuleArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Identifies the response policy addressed by this request.
-	//
-	// ***
 	ResponsePolicy pulumi.StringInput
 	// An identifier for this rule. Must be unique with the ResponsePolicy.
 	RuleName pulumi.StringInput
@@ -367,8 +357,6 @@ func (o ResponsePolicyRuleOutput) Project() pulumi.StringOutput {
 }
 
 // Identifies the response policy addressed by this request.
-//
-// ***
 func (o ResponsePolicyRuleOutput) ResponsePolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResponsePolicyRule) pulumi.StringOutput { return v.ResponsePolicy }).(pulumi.StringOutput)
 }

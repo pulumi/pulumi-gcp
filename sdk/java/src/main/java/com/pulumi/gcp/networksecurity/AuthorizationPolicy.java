@@ -240,16 +240,12 @@ public class AuthorizationPolicy extends com.pulumi.resources.CustomResource {
     /**
      * Name of the AuthorizationPolicy resource.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return Name of the AuthorizationPolicy resource.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

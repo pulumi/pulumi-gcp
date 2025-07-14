@@ -139,16 +139,12 @@ public final class ParameterState extends com.pulumi.resources.ResourceArgs {
     /**
      * This must be unique within the project.
      * 
-     * ***
-     * 
      */
     @Import(name="parameterId")
     private @Nullable Output<String> parameterId;
 
     /**
      * @return This must be unique within the project.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> parameterId() {
@@ -412,8 +408,6 @@ public final class ParameterState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param parameterId This must be unique within the project.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -424,8 +418,6 @@ public final class ParameterState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param parameterId This must be unique within the project.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -18271,8 +18271,6 @@ func (o MetastoreDatabaseIamMemberConditionPtrOutput) Title() pulumi.StringPtrOu
 type MetastoreFederationBackendMetastore struct {
 	// The type of the backend metastore.
 	// Possible values are: `METASTORE_TYPE_UNSPECIFIED`, `DATAPROC_METASTORE`, `BIGQUERY`.
-	//
-	// ***
 	MetastoreType string `pulumi:"metastoreType"`
 	// The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
 	Name string `pulumi:"name"`
@@ -18294,8 +18292,6 @@ type MetastoreFederationBackendMetastoreInput interface {
 type MetastoreFederationBackendMetastoreArgs struct {
 	// The type of the backend metastore.
 	// Possible values are: `METASTORE_TYPE_UNSPECIFIED`, `DATAPROC_METASTORE`, `BIGQUERY`.
-	//
-	// ***
 	MetastoreType pulumi.StringInput `pulumi:"metastoreType"`
 	// The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
 	Name pulumi.StringInput `pulumi:"name"`
@@ -18356,8 +18352,6 @@ func (o MetastoreFederationBackendMetastoreOutput) ToMetastoreFederationBackendM
 
 // The type of the backend metastore.
 // Possible values are: `METASTORE_TYPE_UNSPECIFIED`, `DATAPROC_METASTORE`, `BIGQUERY`.
-//
-// ***
 func (o MetastoreFederationBackendMetastoreOutput) MetastoreType() pulumi.StringOutput {
 	return o.ApplyT(func(v MetastoreFederationBackendMetastore) string { return v.MetastoreType }).(pulumi.StringOutput)
 }

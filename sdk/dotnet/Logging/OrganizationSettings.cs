@@ -112,9 +112,6 @@ namespace Pulumi.Gcp.Logging
 
         /// <summary>
         /// The organization for which to retrieve or configure settings.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("organization")]
         public Output<string> Organization { get; private set; } = null!;
@@ -185,9 +182,6 @@ namespace Pulumi.Gcp.Logging
 
         /// <summary>
         /// The organization for which to retrieve or configure settings.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("organization", required: true)]
         public Input<string> Organization { get; set; } = null!;
@@ -238,9 +232,6 @@ namespace Pulumi.Gcp.Logging
 
         /// <summary>
         /// The organization for which to retrieve or configure settings.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("organization")]
         public Input<string>? Organization { get; set; }

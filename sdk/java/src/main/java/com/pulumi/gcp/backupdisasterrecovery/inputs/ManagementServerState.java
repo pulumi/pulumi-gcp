@@ -53,16 +53,12 @@ public final class ManagementServerState extends com.pulumi.resources.ResourceAr
     /**
      * The name of management server (management console)
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return The name of management server (management console)
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -225,8 +221,6 @@ public final class ManagementServerState extends com.pulumi.resources.ResourceAr
         /**
          * @param name The name of management server (management console)
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -237,8 +231,6 @@ public final class ManagementServerState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param name The name of management server (management console)
-         * 
-         * ***
          * 
          * @return builder
          * 

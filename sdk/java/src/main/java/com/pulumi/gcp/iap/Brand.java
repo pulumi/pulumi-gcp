@@ -100,16 +100,12 @@ public class Brand extends com.pulumi.resources.CustomResource {
     /**
      * Application name displayed on OAuth consent screen.
      * 
-     * ***
-     * 
      */
     @Export(name="applicationTitle", refs={String.class}, tree="[0]")
     private Output<String> applicationTitle;
 
     /**
      * @return Application name displayed on OAuth consent screen.
-     * 
-     * ***
      * 
      */
     public Output<String> applicationTitle() {

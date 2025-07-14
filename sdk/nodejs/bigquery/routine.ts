@@ -315,9 +315,6 @@ export class Routine extends pulumi.CustomResource {
     /**
      * The body of the routine. For functions, this is the expression in the AS clause.
      * If language=SQL, it is the substring inside (but excluding) the parentheses.
-     *
-     *
-     * - - -
      */
     public readonly definitionBody!: pulumi.Output<string>;
     /**
@@ -488,9 +485,6 @@ export interface RoutineState {
     /**
      * The body of the routine. For functions, this is the expression in the AS clause.
      * If language=SQL, it is the substring inside (but excluding) the parentheses.
-     *
-     *
-     * - - -
      */
     definitionBody?: pulumi.Input<string>;
     /**
@@ -588,9 +582,6 @@ export interface RoutineArgs {
     /**
      * The body of the routine. For functions, this is the expression in the AS clause.
      * If language=SQL, it is the substring inside (but excluding) the parentheses.
-     *
-     *
-     * - - -
      */
     definitionBody: pulumi.Input<string>;
     /**

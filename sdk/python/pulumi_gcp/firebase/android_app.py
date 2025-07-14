@@ -32,9 +32,6 @@ class AndroidAppArgs:
         :param pulumi.Input[builtins.str] display_name: The user-assigned display name of the AndroidApp.
         :param pulumi.Input[builtins.str] package_name: The canonical package name of the Android app as would appear in the Google Play
                Developer Console.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] api_key_id: The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AndroidApp.
                If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AndroidApp.
                This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
@@ -74,9 +71,6 @@ class AndroidAppArgs:
         """
         The canonical package name of the Android app as would appear in the Google Play
         Developer Console.
-
-
-        - - -
         """
         return pulumi.get(self, "package_name")
 
@@ -172,9 +166,6 @@ class _AndroidAppState:
                projects/projectId/androidApps/appId
         :param pulumi.Input[builtins.str] package_name: The canonical package name of the Android app as would appear in the Google Play
                Developer Console.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] sha1_hashes: The SHA1 certificate hashes for the AndroidApp.
@@ -281,9 +272,6 @@ class _AndroidAppState:
         """
         The canonical package name of the Android app as would appear in the Google Play
         Developer Console.
-
-
-        - - -
         """
         return pulumi.get(self, "package_name")
 
@@ -430,9 +418,6 @@ class AndroidApp(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] display_name: The user-assigned display name of the AndroidApp.
         :param pulumi.Input[builtins.str] package_name: The canonical package name of the Android app as would appear in the Google Play
                Developer Console.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] sha1_hashes: The SHA1 certificate hashes for the AndroidApp.
@@ -607,9 +592,6 @@ class AndroidApp(pulumi.CustomResource):
                projects/projectId/androidApps/appId
         :param pulumi.Input[builtins.str] package_name: The canonical package name of the Android app as would appear in the Google Play
                Developer Console.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] sha1_hashes: The SHA1 certificate hashes for the AndroidApp.
@@ -687,9 +669,6 @@ class AndroidApp(pulumi.CustomResource):
         """
         The canonical package name of the Android app as would appear in the Google Play
         Developer Console.
-
-
-        - - -
         """
         return pulumi.get(self, "package_name")
 

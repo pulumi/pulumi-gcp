@@ -1011,9 +1011,6 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// <summary>
         /// The last part of the repository name, for example:
         /// "repo1"
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("repositoryId")]
         public Output<string> RepositoryId { get; private set; } = null!;
@@ -1207,9 +1204,6 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// <summary>
         /// The last part of the repository name, for example:
         /// "repo1"
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("repositoryId", required: true)]
         public Input<string> RepositoryId { get; set; } = null!;
@@ -1400,9 +1394,6 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// <summary>
         /// The last part of the repository name, for example:
         /// "repo1"
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("repositoryId")]
         public Input<string>? RepositoryId { get; set; }

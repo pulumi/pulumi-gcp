@@ -33,10 +33,13 @@ class AppConnectorArgs:
         :param pulumi.Input['AppConnectorPrincipalInfoArgs'] principal_info: Principal information about the Identity of the AppConnector.
                Structure is documented below.
         :param pulumi.Input[builtins.str] display_name: An arbitrary user-provided name for the AppConnector.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user provided metadata. **Note**: This field is non-authoritative, and will only manage the
-               labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-               resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] name: ID of the AppConnector.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] region: The region of the AppConnector.
         """
         pulumi.set(__self__, "principal_info", principal_info)
@@ -80,9 +83,10 @@ class AppConnectorArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Resource labels to represent user provided metadata. **Note**: This field is non-authoritative, and will only manage the
-        labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-        resource.
+        Resource labels to represent user provided metadata.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -105,6 +109,10 @@ class AppConnectorArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -140,12 +148,15 @@ class _AppConnectorState:
         Input properties used for looking up and filtering AppConnector resources.
         :param pulumi.Input[builtins.str] display_name: An arbitrary user-provided name for the AppConnector.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user provided metadata. **Note**: This field is non-authoritative, and will only manage the
-               labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-               resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] name: ID of the AppConnector.
         :param pulumi.Input['AppConnectorPrincipalInfoArgs'] principal_info: Principal information about the Identity of the AppConnector.
                Structure is documented below.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[builtins.str] region: The region of the AppConnector.
@@ -198,9 +209,10 @@ class _AppConnectorState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Resource labels to represent user provided metadata. **Note**: This field is non-authoritative, and will only manage the
-        labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-        resource.
+        Resource labels to represent user provided metadata.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -236,6 +248,10 @@ class _AppConnectorState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -381,12 +397,15 @@ class AppConnector(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] display_name: An arbitrary user-provided name for the AppConnector.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user provided metadata. **Note**: This field is non-authoritative, and will only manage the
-               labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-               resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] name: ID of the AppConnector.
         :param pulumi.Input[Union['AppConnectorPrincipalInfoArgs', 'AppConnectorPrincipalInfoArgsDict']] principal_info: Principal information about the Identity of the AppConnector.
                Structure is documented below.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] region: The region of the AppConnector.
         """
         ...
@@ -551,12 +570,15 @@ class AppConnector(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] display_name: An arbitrary user-provided name for the AppConnector.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user provided metadata. **Note**: This field is non-authoritative, and will only manage the
-               labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-               resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] name: ID of the AppConnector.
         :param pulumi.Input[Union['AppConnectorPrincipalInfoArgs', 'AppConnectorPrincipalInfoArgsDict']] principal_info: Principal information about the Identity of the AppConnector.
                Structure is documented below.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[builtins.str] region: The region of the AppConnector.
@@ -597,9 +619,10 @@ class AppConnector(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
         """
-        Resource labels to represent user provided metadata. **Note**: This field is non-authoritative, and will only manage the
-        labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-        resource.
+        Resource labels to represent user provided metadata.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -623,6 +646,10 @@ class AppConnector(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property

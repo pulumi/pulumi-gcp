@@ -43,9 +43,6 @@ class SessionTemplateArgs:
         :param pulumi.Input[builtins.str] location: The location in which the session template will be created in.
         :param pulumi.Input[builtins.str] name: The resource name of the session template in the following format:
                projects/{project}/locations/{location}/sessionTemplates/{template_id}
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['SessionTemplateRuntimeConfigArgs'] runtime_config: Runtime configuration for the session template.
@@ -128,9 +125,6 @@ class SessionTemplateArgs:
         """
         The resource name of the session template in the following format:
         projects/{project}/locations/{location}/sessionTemplates/{template_id}
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -210,9 +204,6 @@ class _SessionTemplateState:
         :param pulumi.Input[builtins.str] location: The location in which the session template will be created in.
         :param pulumi.Input[builtins.str] name: The resource name of the session template in the following format:
                projects/{project}/locations/{location}/sessionTemplates/{template_id}
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -347,9 +338,6 @@ class _SessionTemplateState:
         """
         The resource name of the session template in the following format:
         projects/{project}/locations/{location}/sessionTemplates/{template_id}
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -639,9 +627,6 @@ class SessionTemplate(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] location: The location in which the session template will be created in.
         :param pulumi.Input[builtins.str] name: The resource name of the session template in the following format:
                projects/{project}/locations/{location}/sessionTemplates/{template_id}
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Union['SessionTemplateRuntimeConfigArgs', 'SessionTemplateRuntimeConfigArgsDict']] runtime_config: Runtime configuration for the session template.
@@ -925,9 +910,6 @@ class SessionTemplate(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] location: The location in which the session template will be created in.
         :param pulumi.Input[builtins.str] name: The resource name of the session template in the following format:
                projects/{project}/locations/{location}/sessionTemplates/{template_id}
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -1025,9 +1007,6 @@ class SessionTemplate(pulumi.CustomResource):
         """
         The resource name of the session template in the following format:
         projects/{project}/locations/{location}/sessionTemplates/{template_id}
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

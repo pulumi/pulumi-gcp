@@ -188,9 +188,6 @@ export class AiFeatureOnlineStore extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -320,9 +317,6 @@ export interface AiFeatureOnlineStoreState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -388,9 +382,6 @@ export interface AiFeatureOnlineStoreArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

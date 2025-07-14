@@ -147,16 +147,12 @@ public final class AiFeatureGroupFeatureState extends com.pulumi.resources.Resou
     /**
      * The region for the resource. It should be the same as the feature group&#39;s region.
      * 
-     * ***
-     * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
      * @return The region for the resource. It should be the same as the feature group&#39;s region.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> region() {
@@ -406,8 +402,6 @@ public final class AiFeatureGroupFeatureState extends com.pulumi.resources.Resou
         /**
          * @param region The region for the resource. It should be the same as the feature group&#39;s region.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -418,8 +412,6 @@ public final class AiFeatureGroupFeatureState extends com.pulumi.resources.Resou
 
         /**
          * @param region The region for the resource. It should be the same as the feature group&#39;s region.
-         * 
-         * ***
          * 
          * @return builder
          * 

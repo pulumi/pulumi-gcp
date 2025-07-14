@@ -66,16 +66,12 @@ public final class GcpUserAccessBindingState extends com.pulumi.resources.Resour
     /**
      * Required. ID of the parent organization.
      * 
-     * ***
-     * 
      */
     @Import(name="organizationId")
     private @Nullable Output<String> organizationId;
 
     /**
      * @return Required. ID of the parent organization.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> organizationId() {
@@ -211,8 +207,6 @@ public final class GcpUserAccessBindingState extends com.pulumi.resources.Resour
         /**
          * @param organizationId Required. ID of the parent organization.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -223,8 +217,6 @@ public final class GcpUserAccessBindingState extends com.pulumi.resources.Resour
 
         /**
          * @param organizationId Required. ID of the parent organization.
-         * 
-         * ***
          * 
          * @return builder
          * 

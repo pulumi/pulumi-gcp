@@ -26,9 +26,6 @@ class FirewallPolicyArgs:
         """
         The set of arguments for constructing a FirewallPolicy resource.
         :param pulumi.Input[builtins.str] parent: The parent of the firewall policy.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] short_name: User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created.
                This field is not applicable to network firewall policies. This name must be set on creation and cannot be changed. The name must be 1-63 characters long, and comply with RFC1035.
                Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -44,9 +41,6 @@ class FirewallPolicyArgs:
     def parent(self) -> pulumi.Input[builtins.str]:
         """
         The parent of the firewall policy.
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 
@@ -102,9 +96,6 @@ class _FirewallPolicyState:
         :param pulumi.Input[builtins.str] firewall_policy_id: The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[builtins.str] name: Name of the resource. It is a numeric ID allocated by GCP which uniquely identifies the Firewall Policy.
         :param pulumi.Input[builtins.str] parent: The parent of the firewall policy.
-               
-               
-               - - -
         :param pulumi.Input[builtins.int] rule_tuple_count: Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
         :param pulumi.Input[builtins.str] self_link: Server-defined URL for the resource.
         :param pulumi.Input[builtins.str] self_link_with_id: Server-defined URL for this resource with the resource id.
@@ -198,9 +189,6 @@ class _FirewallPolicyState:
     def parent(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The parent of the firewall policy.
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 
@@ -316,9 +304,6 @@ class FirewallPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[builtins.str] parent: The parent of the firewall policy.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] short_name: User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created.
                This field is not applicable to network firewall policies. This name must be set on creation and cannot be changed. The name must be 1-63 characters long, and comply with RFC1035.
                Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -446,9 +431,6 @@ class FirewallPolicy(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] firewall_policy_id: The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[builtins.str] name: Name of the resource. It is a numeric ID allocated by GCP which uniquely identifies the Firewall Policy.
         :param pulumi.Input[builtins.str] parent: The parent of the firewall policy.
-               
-               
-               - - -
         :param pulumi.Input[builtins.int] rule_tuple_count: Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
         :param pulumi.Input[builtins.str] self_link: Server-defined URL for the resource.
         :param pulumi.Input[builtins.str] self_link_with_id: Server-defined URL for this resource with the resource id.
@@ -517,9 +499,6 @@ class FirewallPolicy(pulumi.CustomResource):
     def parent(self) -> pulumi.Output[builtins.str]:
         """
         The parent of the firewall policy.
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 

@@ -14,8 +14,6 @@ namespace Pulumi.Gcp.Colab.Inputs
     {
         /// <summary>
         /// The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
-        /// 
-        /// - - -
         /// </summary>
         [Input("generation")]
         public Input<string>? Generation { get; set; }

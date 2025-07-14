@@ -146,9 +146,6 @@ export class AiFeatureStoreEntityTypeFeature extends pulumi.CustomResource {
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
-     *
-     *
-     * - - -
      */
     public readonly entitytype!: pulumi.Output<string>;
     /**
@@ -253,9 +250,6 @@ export interface AiFeatureStoreEntityTypeFeatureState {
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
-     *
-     *
-     * - - -
      */
     entitytype?: pulumi.Input<string>;
     /**
@@ -302,9 +296,6 @@ export interface AiFeatureStoreEntityTypeFeatureArgs {
     description?: pulumi.Input<string>;
     /**
      * The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
-     *
-     *
-     * - - -
      */
     entitytype: pulumi.Input<string>;
     /**

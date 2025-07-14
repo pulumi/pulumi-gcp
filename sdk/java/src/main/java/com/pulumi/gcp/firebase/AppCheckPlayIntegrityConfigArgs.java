@@ -20,8 +20,6 @@ public final class AppCheckPlayIntegrityConfigArgs extends com.pulumi.resources.
      * The ID of an
      * [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id).
      * 
-     * ***
-     * 
      */
     @Import(name="appId", required=true)
     private Output<String> appId;
@@ -29,8 +27,6 @@ public final class AppCheckPlayIntegrityConfigArgs extends com.pulumi.resources.
     /**
      * @return The ID of an
      * [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id).
-     * 
-     * ***
      * 
      */
     public Output<String> appId() {
@@ -103,8 +99,6 @@ public final class AppCheckPlayIntegrityConfigArgs extends com.pulumi.resources.
          * @param appId The ID of an
          * [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id).
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -116,8 +110,6 @@ public final class AppCheckPlayIntegrityConfigArgs extends com.pulumi.resources.
         /**
          * @param appId The ID of an
          * [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id).
-         * 
-         * ***
          * 
          * @return builder
          * 

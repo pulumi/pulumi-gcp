@@ -153,9 +153,6 @@ export class Interconnect extends pulumi.CustomResource {
      * - PARTNER: A partner-managed interconnection shared between customers though a partner.
      * - DEDICATED: A dedicated physical interconnection with the customer.
      * Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
-     *
-     *
-     * - - -
      */
     public readonly interconnectType!: pulumi.Output<string>;
     /**
@@ -453,9 +450,6 @@ export interface InterconnectState {
      * - PARTNER: A partner-managed interconnection shared between customers though a partner.
      * - DEDICATED: A dedicated physical interconnection with the customer.
      * Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
-     *
-     *
-     * - - -
      */
     interconnectType?: pulumi.Input<string>;
     /**
@@ -611,9 +605,6 @@ export interface InterconnectArgs {
      * - PARTNER: A partner-managed interconnection shared between customers though a partner.
      * - DEDICATED: A dedicated physical interconnection with the customer.
      * Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
-     *
-     *
-     * - - -
      */
     interconnectType: pulumi.Input<string>;
     /**

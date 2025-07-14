@@ -31,9 +31,9 @@ class CxEnvironmentArgs:
         :param pulumi.Input[builtins.str] display_name: The human-readable name of the environment (unique in an agent). Limit of 64 characters.
         :param pulumi.Input[Sequence[pulumi.Input['CxEnvironmentVersionConfigArgs']]] version_configs: A list of configurations for flow versions. You should include version configs for all flows that are reachable from [Start Flow][Agent.start_flow] in the agent. Otherwise, an error will be returned.
                Structure is documented below.
-        :param pulumi.Input[builtins.str] description: The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is
-               rejected.
-        :param pulumi.Input[builtins.str] parent: The Agent to create an Environment for. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
+        :param pulumi.Input[builtins.str] description: The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
+        :param pulumi.Input[builtins.str] parent: The Agent to create an Environment for.
+               Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
         """
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "version_configs", version_configs)
@@ -71,8 +71,7 @@ class CxEnvironmentArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is
-        rejected.
+        The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
         """
         return pulumi.get(self, "description")
 
@@ -84,7 +83,8 @@ class CxEnvironmentArgs:
     @pulumi.getter
     def parent(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The Agent to create an Environment for. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
+        The Agent to create an Environment for.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
         """
         return pulumi.get(self, "parent")
 
@@ -104,11 +104,11 @@ class _CxEnvironmentState:
                  version_configs: Optional[pulumi.Input[Sequence[pulumi.Input['CxEnvironmentVersionConfigArgs']]]] = None):
         """
         Input properties used for looking up and filtering CxEnvironment resources.
-        :param pulumi.Input[builtins.str] description: The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is
-               rejected.
+        :param pulumi.Input[builtins.str] description: The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[builtins.str] display_name: The human-readable name of the environment (unique in an agent). Limit of 64 characters.
         :param pulumi.Input[builtins.str] name: The name of the environment.
-        :param pulumi.Input[builtins.str] parent: The Agent to create an Environment for. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
+        :param pulumi.Input[builtins.str] parent: The Agent to create an Environment for.
+               Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
         :param pulumi.Input[builtins.str] update_time: Update time of this environment. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[Sequence[pulumi.Input['CxEnvironmentVersionConfigArgs']]] version_configs: A list of configurations for flow versions. You should include version configs for all flows that are reachable from [Start Flow][Agent.start_flow] in the agent. Otherwise, an error will be returned.
                Structure is documented below.
@@ -130,8 +130,7 @@ class _CxEnvironmentState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is
-        rejected.
+        The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
         """
         return pulumi.get(self, "description")
 
@@ -167,7 +166,8 @@ class _CxEnvironmentState:
     @pulumi.getter
     def parent(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The Agent to create an Environment for. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
+        The Agent to create an Environment for.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
         """
         return pulumi.get(self, "parent")
 
@@ -281,10 +281,10 @@ class CxEnvironment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] description: The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is
-               rejected.
+        :param pulumi.Input[builtins.str] description: The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[builtins.str] display_name: The human-readable name of the environment (unique in an agent). Limit of 64 characters.
-        :param pulumi.Input[builtins.str] parent: The Agent to create an Environment for. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
+        :param pulumi.Input[builtins.str] parent: The Agent to create an Environment for.
+               Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
         :param pulumi.Input[Sequence[pulumi.Input[Union['CxEnvironmentVersionConfigArgs', 'CxEnvironmentVersionConfigArgsDict']]]] version_configs: A list of configurations for flow versions. You should include version configs for all flows that are reachable from [Start Flow][Agent.start_flow] in the agent. Otherwise, an error will be returned.
                Structure is documented below.
         """
@@ -422,11 +422,11 @@ class CxEnvironment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] description: The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is
-               rejected.
+        :param pulumi.Input[builtins.str] description: The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[builtins.str] display_name: The human-readable name of the environment (unique in an agent). Limit of 64 characters.
         :param pulumi.Input[builtins.str] name: The name of the environment.
-        :param pulumi.Input[builtins.str] parent: The Agent to create an Environment for. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
+        :param pulumi.Input[builtins.str] parent: The Agent to create an Environment for.
+               Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
         :param pulumi.Input[builtins.str] update_time: Update time of this environment. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[Sequence[pulumi.Input[Union['CxEnvironmentVersionConfigArgs', 'CxEnvironmentVersionConfigArgsDict']]]] version_configs: A list of configurations for flow versions. You should include version configs for all flows that are reachable from [Start Flow][Agent.start_flow] in the agent. Otherwise, an error will be returned.
                Structure is documented below.
@@ -447,8 +447,7 @@ class CxEnvironment(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is
-        rejected.
+        The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
         """
         return pulumi.get(self, "description")
 
@@ -472,7 +471,8 @@ class CxEnvironment(pulumi.CustomResource):
     @pulumi.getter
     def parent(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The Agent to create an Environment for. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
+        The Agent to create an Environment for.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
         """
         return pulumi.get(self, "parent")
 

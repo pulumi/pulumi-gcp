@@ -100,8 +100,6 @@ type BackupVault struct {
 	// Required. The default and minimum enforced retention for each backup within the backup vault. The enforced retention for each backup can be extended.
 	BackupMinimumEnforcedRetentionDuration pulumi.StringOutput `pulumi:"backupMinimumEnforcedRetentionDuration"`
 	// Required. ID of the requesting object.
-	//
-	// ***
 	BackupVaultId pulumi.StringOutput `pulumi:"backupVaultId"`
 	// Output only. The time when the instance was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -228,8 +226,6 @@ type backupVaultState struct {
 	// Required. The default and minimum enforced retention for each backup within the backup vault. The enforced retention for each backup can be extended.
 	BackupMinimumEnforcedRetentionDuration *string `pulumi:"backupMinimumEnforcedRetentionDuration"`
 	// Required. ID of the requesting object.
-	//
-	// ***
 	BackupVaultId *string `pulumi:"backupVaultId"`
 	// Output only. The time when the instance was created.
 	CreateTime *string `pulumi:"createTime"`
@@ -313,8 +309,6 @@ type BackupVaultState struct {
 	// Required. The default and minimum enforced retention for each backup within the backup vault. The enforced retention for each backup can be extended.
 	BackupMinimumEnforcedRetentionDuration pulumi.StringPtrInput
 	// Required. ID of the requesting object.
-	//
-	// ***
 	BackupVaultId pulumi.StringPtrInput
 	// Output only. The time when the instance was created.
 	CreateTime pulumi.StringPtrInput
@@ -400,8 +394,6 @@ type backupVaultArgs struct {
 	// Required. The default and minimum enforced retention for each backup within the backup vault. The enforced retention for each backup can be extended.
 	BackupMinimumEnforcedRetentionDuration string `pulumi:"backupMinimumEnforcedRetentionDuration"`
 	// Required. ID of the requesting object.
-	//
-	// ***
 	BackupVaultId string `pulumi:"backupVaultId"`
 	// Optional. The description of the BackupVault instance (2048 characters or less).
 	Description *string `pulumi:"description"`
@@ -454,8 +446,6 @@ type BackupVaultArgs struct {
 	// Required. The default and minimum enforced retention for each backup within the backup vault. The enforced retention for each backup can be extended.
 	BackupMinimumEnforcedRetentionDuration pulumi.StringInput
 	// Required. ID of the requesting object.
-	//
-	// ***
 	BackupVaultId pulumi.StringInput
 	// Optional. The description of the BackupVault instance (2048 characters or less).
 	Description pulumi.StringPtrInput
@@ -610,8 +600,6 @@ func (o BackupVaultOutput) BackupMinimumEnforcedRetentionDuration() pulumi.Strin
 }
 
 // Required. ID of the requesting object.
-//
-// ***
 func (o BackupVaultOutput) BackupVaultId() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupVault) pulumi.StringOutput { return v.BackupVaultId }).(pulumi.StringOutput)
 }

@@ -136,18 +136,22 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:apihub/apiHubInstance:ApiHubInstance")
 public class ApiHubInstance extends com.pulumi.resources.CustomResource {
     /**
-     * Optional. Identifier to assign to the Api Hub instance. Must be unique within scope of the parent resource. If the field
-     * is not provided, system generated id will be used. This value should be 4-40 characters, and valid characters are
-     * &#39;/a-z[0-9]-_/&#39;.
+     * Optional. Identifier to assign to the Api Hub instance. Must be unique within
+     * scope of the parent resource. If the field is not provided,
+     * system generated id will be used.
+     * This value should be 4-40 characters, and valid characters
+     * are `/a-z[0-9]-_/`.
      * 
      */
     @Export(name="apiHubInstanceId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> apiHubInstanceId;
 
     /**
-     * @return Optional. Identifier to assign to the Api Hub instance. Must be unique within scope of the parent resource. If the field
-     * is not provided, system generated id will be used. This value should be 4-40 characters, and valid characters are
-     * &#39;/a-z[0-9]-_/&#39;.
+     * @return Optional. Identifier to assign to the Api Hub instance. Must be unique within
+     * scope of the parent resource. If the field is not provided,
+     * system generated id will be used.
+     * This value should be 4-40 characters, and valid characters
+     * are `/a-z[0-9]-_/`.
      * 
      */
     public Output<Optional<String>> apiHubInstanceId() {
@@ -212,20 +216,22 @@ public class ApiHubInstance extends com.pulumi.resources.CustomResource {
         return this.effectiveLabels;
     }
     /**
-     * Optional. Instance labels to represent user-provided metadata. Refer to cloud documentation on labels for more details.
-     * https://cloud.google.com/compute/docs/labeling-resources **Note**: This field is non-authoritative, and will only manage
-     * the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on
-     * the resource.
+     * Optional. Instance labels to represent user-provided metadata.
+     * Refer to cloud documentation on labels for more details.
+     * https://cloud.google.com/compute/docs/labeling-resources
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return Optional. Instance labels to represent user-provided metadata. Refer to cloud documentation on labels for more details.
-     * https://cloud.google.com/compute/docs/labeling-resources **Note**: This field is non-authoritative, and will only manage
-     * the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on
-     * the resource.
+     * @return Optional. Instance labels to represent user-provided metadata.
+     * Refer to cloud documentation on labels for more details.
+     * https://cloud.google.com/compute/docs/labeling-resources
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -261,9 +267,19 @@ public class ApiHubInstance extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }

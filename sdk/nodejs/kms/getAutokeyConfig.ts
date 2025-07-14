@@ -5,6 +5,13 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides access to Google Cloud Platform KMS AutokeyConfig. A AutokeyConfig is a Cloud KMS resource that helps you safely span the separation of duties to create new Cloud KMS keys for CMEK using Autokey.
+ *
+ * For more information see
+ * [the official documentation](https://cloud.google.com/kms/docs/reference/rest/v1/folders)
+ * and
+ * [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyHandles).
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -50,6 +57,13 @@ export interface GetAutokeyConfigResult {
     readonly keyProject: string;
 }
 /**
+ * Provides access to Google Cloud Platform KMS AutokeyConfig. A AutokeyConfig is a Cloud KMS resource that helps you safely span the separation of duties to create new Cloud KMS keys for CMEK using Autokey.
+ *
+ * For more information see
+ * [the official documentation](https://cloud.google.com/kms/docs/reference/rest/v1/folders)
+ * and
+ * [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyHandles).
+ *
  * ## Example Usage
  *
  * ```typescript

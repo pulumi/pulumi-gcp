@@ -45,8 +45,11 @@ class NoteArgs:
         :param pulumi.Input[builtins.str] expiration_time: Time of expiration for this note. Leave empty if note does not expire.
         :param pulumi.Input[builtins.str] long_description: A detailed description of the note
         :param pulumi.Input[builtins.str] name: The name of the note.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] related_note_names: Names of other notes related to this note.
         :param pulumi.Input[Sequence[pulumi.Input['NoteRelatedUrlArgs']]] related_urls: URLs associated with this note and related metadata.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] short_description: A one sentence description of the note.
         """
         pulumi.set(__self__, "attestation_authority", attestation_authority)
@@ -125,6 +128,10 @@ class NoteArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -148,6 +155,7 @@ class NoteArgs:
     def related_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NoteRelatedUrlArgs']]]]:
         """
         URLs associated with this note and related metadata.
+        Structure is documented below.
         """
         return pulumi.get(self, "related_urls")
 
@@ -199,8 +207,11 @@ class _NoteState:
         :param pulumi.Input[builtins.str] kind: The type of analysis this note describes
         :param pulumi.Input[builtins.str] long_description: A detailed description of the note
         :param pulumi.Input[builtins.str] name: The name of the note.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] related_note_names: Names of other notes related to this note.
         :param pulumi.Input[Sequence[pulumi.Input['NoteRelatedUrlArgs']]] related_urls: URLs associated with this note and related metadata.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] short_description: A one sentence description of the note.
         :param pulumi.Input[builtins.str] update_time: The time this note was last updated.
         """
@@ -311,6 +322,10 @@ class _NoteState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -334,6 +349,7 @@ class _NoteState:
     def related_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NoteRelatedUrlArgs']]]]:
         """
         URLs associated with this note and related metadata.
+        Structure is documented below.
         """
         return pulumi.get(self, "related_urls")
 
@@ -474,8 +490,11 @@ class Note(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] expiration_time: Time of expiration for this note. Leave empty if note does not expire.
         :param pulumi.Input[builtins.str] long_description: A detailed description of the note
         :param pulumi.Input[builtins.str] name: The name of the note.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] related_note_names: Names of other notes related to this note.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NoteRelatedUrlArgs', 'NoteRelatedUrlArgsDict']]]] related_urls: URLs associated with this note and related metadata.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] short_description: A one sentence description of the note.
         """
         ...
@@ -650,8 +669,11 @@ class Note(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] kind: The type of analysis this note describes
         :param pulumi.Input[builtins.str] long_description: A detailed description of the note
         :param pulumi.Input[builtins.str] name: The name of the note.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] related_note_names: Names of other notes related to this note.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NoteRelatedUrlArgs', 'NoteRelatedUrlArgsDict']]]] related_urls: URLs associated with this note and related metadata.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] short_description: A one sentence description of the note.
         :param pulumi.Input[builtins.str] update_time: The time this note was last updated.
         """
@@ -732,6 +754,10 @@ class Note(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property
@@ -747,6 +773,7 @@ class Note(pulumi.CustomResource):
     def related_urls(self) -> pulumi.Output[Optional[Sequence['outputs.NoteRelatedUrl']]]:
         """
         URLs associated with this note and related metadata.
+        Structure is documented below.
         """
         return pulumi.get(self, "related_urls")
 

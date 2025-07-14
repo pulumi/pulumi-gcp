@@ -111,7 +111,9 @@ type TenantInboundSamlConfig struct {
 	// The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters,
 	// hyphens, underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an
 	// alphanumeric character, and have at least 2 characters.
-	Name    pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// SAML SP (Service Provider) configuration when the project acts as the relying party to receive
 	// and accept an authentication assertion issued by a SAML identity provider.
@@ -173,7 +175,9 @@ type tenantInboundSamlConfigState struct {
 	// The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters,
 	// hyphens, underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an
 	// alphanumeric character, and have at least 2 characters.
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// SAML SP (Service Provider) configuration when the project acts as the relying party to receive
 	// and accept an authentication assertion issued by a SAML identity provider.
@@ -194,7 +198,9 @@ type TenantInboundSamlConfigState struct {
 	// The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters,
 	// hyphens, underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an
 	// alphanumeric character, and have at least 2 characters.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// SAML SP (Service Provider) configuration when the project acts as the relying party to receive
 	// and accept an authentication assertion issued by a SAML identity provider.
@@ -219,7 +225,9 @@ type tenantInboundSamlConfigArgs struct {
 	// The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters,
 	// hyphens, underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an
 	// alphanumeric character, and have at least 2 characters.
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// SAML SP (Service Provider) configuration when the project acts as the relying party to receive
 	// and accept an authentication assertion issued by a SAML identity provider.
@@ -241,7 +249,9 @@ type TenantInboundSamlConfigArgs struct {
 	// The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters,
 	// hyphens, underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an
 	// alphanumeric character, and have at least 2 characters.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// SAML SP (Service Provider) configuration when the project acts as the relying party to receive
 	// and accept an authentication assertion issued by a SAML identity provider.
@@ -361,6 +371,8 @@ func (o TenantInboundSamlConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TenantInboundSamlConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o TenantInboundSamlConfigOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *TenantInboundSamlConfig) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

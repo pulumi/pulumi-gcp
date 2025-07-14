@@ -317,16 +317,12 @@ public class BranchRule extends com.pulumi.resources.CustomResource {
     /**
      * The ID for the Repository.
      * 
-     * ***
-     * 
      */
     @Export(name="repositoryId", refs={String.class}, tree="[0]")
     private Output<String> repositoryId;
 
     /**
      * @return The ID for the Repository.
-     * 
-     * ***
      * 
      */
     public Output<String> repositoryId() {

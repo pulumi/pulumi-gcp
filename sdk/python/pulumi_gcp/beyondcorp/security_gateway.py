@@ -33,9 +33,6 @@ class SecurityGatewayArgs:
                * Must start with a letter.
                * Must contain between 4-63 characters from `/a-z-/`.
                * Must end with a number or letter.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] display_name: Optional. An arbitrary user-provided name for the SecurityGateway.
                Cannot exceed 64 characters.
         :param pulumi.Input[Sequence[pulumi.Input['SecurityGatewayHubArgs']]] hubs: Optional. Map of Hubs that represents regional data path deployment with GCP region
@@ -69,9 +66,6 @@ class SecurityGatewayArgs:
         * Must start with a letter.
         * Must contain between 4-63 characters from `/a-z-/`.
         * Must end with a number or letter.
-
-
-        - - -
         """
         return pulumi.get(self, "security_gateway_id")
 
@@ -172,9 +166,6 @@ class _SecurityGatewayState:
                * Must start with a letter.
                * Must contain between 4-63 characters from `/a-z-/`.
                * Must end with a number or letter.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] state: Output only. The operational state of the SecurityGateway.
                Possible values:
                STATE_UNSPECIFIED
@@ -325,9 +316,6 @@ class _SecurityGatewayState:
         * Must start with a letter.
         * Must contain between 4-63 characters from `/a-z-/`.
         * Must end with a number or letter.
-
-
-        - - -
         """
         return pulumi.get(self, "security_gateway_id")
 
@@ -440,9 +428,6 @@ class SecurityGateway(pulumi.CustomResource):
                * Must start with a letter.
                * Must contain between 4-63 characters from `/a-z-/`.
                * Must end with a number or letter.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -583,9 +568,6 @@ class SecurityGateway(pulumi.CustomResource):
                * Must start with a letter.
                * Must contain between 4-63 characters from `/a-z-/`.
                * Must end with a number or letter.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] state: Output only. The operational state of the SecurityGateway.
                Possible values:
                STATE_UNSPECIFIED
@@ -695,9 +677,6 @@ class SecurityGateway(pulumi.CustomResource):
         * Must start with a letter.
         * Must contain between 4-63 characters from `/a-z-/`.
         * Must end with a number or letter.
-
-
-        - - -
         """
         return pulumi.get(self, "security_gateway_id")
 

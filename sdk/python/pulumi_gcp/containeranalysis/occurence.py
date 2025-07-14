@@ -44,6 +44,8 @@ class OccurenceArgs:
         :param pulumi.Input[builtins.str] resource_uri: Required. Immutable. A URI that represents the resource for which
                the occurrence applies. For example,
                https://gcr.io/project/image@sha256:123abc for a Docker image.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] remediation: A description of actions that can be taken to remedy the note.
         """
         pulumi.set(__self__, "attestation", attestation)
@@ -105,6 +107,10 @@ class OccurenceArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -155,6 +161,8 @@ class _OccurenceState:
         :param pulumi.Input[builtins.str] note_name: The analysis note associated with this occurrence, in the form of
                projects/[PROJECT]/notes/[NOTE_ID]. This field can be used as a
                filter in list requests.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] remediation: A description of actions that can be taken to remedy the note.
         :param pulumi.Input[builtins.str] resource_uri: Required. Immutable. A URI that represents the resource for which
                the occurrence applies. For example,
@@ -255,6 +263,10 @@ class _OccurenceState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -362,6 +374,8 @@ class Occurence(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] note_name: The analysis note associated with this occurrence, in the form of
                projects/[PROJECT]/notes/[NOTE_ID]. This field can be used as a
                filter in list requests.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] remediation: A description of actions that can be taken to remedy the note.
         :param pulumi.Input[builtins.str] resource_uri: Required. Immutable. A URI that represents the resource for which
                the occurrence applies. For example,
@@ -496,6 +510,8 @@ class Occurence(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] note_name: The analysis note associated with this occurrence, in the form of
                projects/[PROJECT]/notes/[NOTE_ID]. This field can be used as a
                filter in list requests.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] remediation: A description of actions that can be taken to remedy the note.
         :param pulumi.Input[builtins.str] resource_uri: Required. Immutable. A URI that represents the resource for which
                the occurrence applies. For example,
@@ -572,6 +588,10 @@ class Occurence(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property

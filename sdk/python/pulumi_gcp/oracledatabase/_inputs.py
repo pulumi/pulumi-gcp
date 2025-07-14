@@ -1922,7 +1922,8 @@ if not MYPY:
         """
         display_name: NotRequired[pulumi.Input[builtins.str]]
         """
-        The display name for the database connection.
+        The display name for the Autonomous Database. The name does not have to
+        be unique within your project.
         """
         host_format: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -1998,7 +1999,8 @@ class AutonomousDatabasePropertiesConnectionStringProfileArgs:
                LOW
                TP
                TPURGENT
-        :param pulumi.Input[builtins.str] display_name: The display name for the database connection.
+        :param pulumi.Input[builtins.str] display_name: The display name for the Autonomous Database. The name does not have to
+               be unique within your project.
         :param pulumi.Input[builtins.str] host_format: The host name format being currently used in connection string. 
                 Possible values:
                 HOST_FORMAT_UNSPECIFIED
@@ -2071,7 +2073,8 @@ class AutonomousDatabasePropertiesConnectionStringProfileArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The display name for the database connection.
+        The display name for the Autonomous Database. The name does not have to
+        be unique within your project.
         """
         return pulumi.get(self, "display_name")
 

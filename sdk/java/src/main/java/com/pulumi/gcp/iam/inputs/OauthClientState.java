@@ -223,8 +223,6 @@ public final class OauthClientState extends com.pulumi.resources.ResourceArgs {
      * trailing hyphen. The prefix `gcp-` is reserved for use by Google, and may
      * not be specified.
      * 
-     * ***
-     * 
      */
     @Import(name="oauthClientId")
     private @Nullable Output<String> oauthClientId;
@@ -235,8 +233,6 @@ public final class OauthClientState extends com.pulumi.resources.ResourceArgs {
      * letters, digits, or hyphens. It must start with a letter, and cannot have a
      * trailing hyphen. The prefix `gcp-` is reserved for use by Google, and may
      * not be specified.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> oauthClientId() {
@@ -628,8 +624,6 @@ public final class OauthClientState extends com.pulumi.resources.ResourceArgs {
          * trailing hyphen. The prefix `gcp-` is reserved for use by Google, and may
          * not be specified.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -644,8 +638,6 @@ public final class OauthClientState extends com.pulumi.resources.ResourceArgs {
          * letters, digits, or hyphens. It must start with a letter, and cannot have a
          * trailing hyphen. The prefix `gcp-` is reserved for use by Google, and may
          * not be specified.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -49,16 +49,12 @@ public final class PublicAdvertisedPrefixArgs extends com.pulumi.resources.Resou
     /**
      * The address range, in CIDR format, represented by this public advertised prefix.
      * 
-     * ***
-     * 
      */
     @Import(name="ipCidrRange", required=true)
     private Output<String> ipCidrRange;
 
     /**
      * @return The address range, in CIDR format, represented by this public advertised prefix.
-     * 
-     * ***
      * 
      */
     public Output<String> ipCidrRange() {
@@ -208,8 +204,6 @@ public final class PublicAdvertisedPrefixArgs extends com.pulumi.resources.Resou
         /**
          * @param ipCidrRange The address range, in CIDR format, represented by this public advertised prefix.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -220,8 +214,6 @@ public final class PublicAdvertisedPrefixArgs extends com.pulumi.resources.Resou
 
         /**
          * @param ipCidrRange The address range, in CIDR format, represented by this public advertised prefix.
-         * 
-         * ***
          * 
          * @return builder
          * 

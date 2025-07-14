@@ -132,9 +132,10 @@ export class AppConnector extends pulumi.CustomResource {
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Resource labels to represent user provided metadata. **Note**: This field is non-authoritative, and will only manage the
-     * labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-     * resource.
+     * Resource labels to represent user provided metadata.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -146,6 +147,10 @@ export class AppConnector extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly principalInfo!: pulumi.Output<outputs.beyondcorp.AppConnectorPrincipalInfo>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
@@ -218,9 +223,10 @@ export interface AppConnectorState {
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Resource labels to represent user provided metadata. **Note**: This field is non-authoritative, and will only manage the
-     * labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-     * resource.
+     * Resource labels to represent user provided metadata.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -232,6 +238,10 @@ export interface AppConnectorState {
      * Structure is documented below.
      */
     principalInfo?: pulumi.Input<inputs.beyondcorp.AppConnectorPrincipalInfo>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
@@ -257,9 +267,10 @@ export interface AppConnectorArgs {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Resource labels to represent user provided metadata. **Note**: This field is non-authoritative, and will only manage the
-     * labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-     * resource.
+     * Resource labels to represent user provided metadata.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -271,6 +282,10 @@ export interface AppConnectorArgs {
      * Structure is documented below.
      */
     principalInfo: pulumi.Input<inputs.beyondcorp.AppConnectorPrincipalInfo>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * The region of the AppConnector.

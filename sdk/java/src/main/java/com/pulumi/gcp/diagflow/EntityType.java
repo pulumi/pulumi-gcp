@@ -156,8 +156,6 @@ public class EntityType extends com.pulumi.resources.CustomResource {
      * * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
      *   Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
      * 
-     * ***
-     * 
      */
     @Export(name="kind", refs={String.class}, tree="[0]")
     private Output<String> kind;
@@ -169,8 +167,6 @@ public class EntityType extends com.pulumi.resources.CustomResource {
      *   types can contain references to other entity types (with or without aliases).
      * * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
      *   Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
-     * 
-     * ***
      * 
      */
     public Output<String> kind() {

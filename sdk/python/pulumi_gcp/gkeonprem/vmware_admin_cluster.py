@@ -46,25 +46,42 @@ class VmwareAdminClusterArgs:
         :param pulumi.Input['VmwareAdminClusterNetworkConfigArgs'] network_config: The VMware admin cluster network configuration.
                Structure is documented below.
         :param pulumi.Input['VmwareAdminClusterAddonNodeArgs'] addon_node: The VMware admin cluster addon node configuration.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Annotations on the VMware Admin Cluster. This field has the same restrictions as Kubernetes annotations. The total size
-               of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-               separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-               alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-               non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-               'effective_annotations' for all of the annotations present on the resource.
-        :param pulumi.Input['VmwareAdminClusterAntiAffinityGroupsArgs'] anti_affinity_groups: AAGConfig specifies whether to spread VMware Admin Cluster nodes across at least three physical hosts in the datacenter.
+               Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Annotations on the VMware Admin Cluster.
+               This field has the same restrictions as Kubernetes annotations.
+               The total size of all keys and values combined is limited to 256k.
+               Key can have 2 segments: prefix (optional) and name (required),
+               separated by a slash (/).
+               Prefix must be a DNS subdomain.
+               Name must be 63 characters or less, begin and end with alphanumerics,
+               with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input['VmwareAdminClusterAntiAffinityGroupsArgs'] anti_affinity_groups: AAGConfig specifies whether to spread VMware Admin Cluster nodes across at
+               least three physical hosts in the datacenter.
+               Structure is documented below.
         :param pulumi.Input['VmwareAdminClusterAuthorizationArgs'] authorization: The VMware admin cluster authorization configuration.
+               Structure is documented below.
         :param pulumi.Input['VmwareAdminClusterAutoRepairConfigArgs'] auto_repair_config: Configuration for auto repairing.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] bootstrap_cluster_membership: The bootstrap cluster this VMware admin cluster belongs to.
         :param pulumi.Input['VmwareAdminClusterControlPlaneNodeArgs'] control_plane_node: The VMware admin cluster control plane node configuration.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] description: A human readable description of this VMware admin cluster.
         :param pulumi.Input[builtins.str] image_type: The OS image type for the VMware admin cluster.
         :param pulumi.Input['VmwareAdminClusterLoadBalancerArgs'] load_balancer: Specifies the load balancer configuration for VMware admin cluster.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] name: The VMware admin cluster resource name.
         :param pulumi.Input[builtins.str] on_prem_version: The Anthos clusters on the VMware version for the admin cluster.
         :param pulumi.Input['VmwareAdminClusterPlatformConfigArgs'] platform_config: The VMware platform configuration.
+               Structure is documented below.
         :param pulumi.Input['VmwareAdminClusterPrivateRegistryConfigArgs'] private_registry_config: Configuration for private registry.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input['VmwareAdminClusterVcenterArgs'] vcenter: Specifies vCenter config for the admin cluster.
+               Structure is documented below.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "network_config", network_config)
@@ -131,6 +148,7 @@ class VmwareAdminClusterArgs:
     def addon_node(self) -> Optional[pulumi.Input['VmwareAdminClusterAddonNodeArgs']]:
         """
         The VMware admin cluster addon node configuration.
+        Structure is documented below.
         """
         return pulumi.get(self, "addon_node")
 
@@ -142,12 +160,17 @@ class VmwareAdminClusterArgs:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Annotations on the VMware Admin Cluster. This field has the same restrictions as Kubernetes annotations. The total size
-        of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-        separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-        alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-        non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-        'effective_annotations' for all of the annotations present on the resource.
+        Annotations on the VMware Admin Cluster.
+        This field has the same restrictions as Kubernetes annotations.
+        The total size of all keys and values combined is limited to 256k.
+        Key can have 2 segments: prefix (optional) and name (required),
+        separated by a slash (/).
+        Prefix must be a DNS subdomain.
+        Name must be 63 characters or less, begin and end with alphanumerics,
+        with dashes (-), underscores (_), dots (.), and alphanumerics between.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -159,7 +182,9 @@ class VmwareAdminClusterArgs:
     @pulumi.getter(name="antiAffinityGroups")
     def anti_affinity_groups(self) -> Optional[pulumi.Input['VmwareAdminClusterAntiAffinityGroupsArgs']]:
         """
-        AAGConfig specifies whether to spread VMware Admin Cluster nodes across at least three physical hosts in the datacenter.
+        AAGConfig specifies whether to spread VMware Admin Cluster nodes across at
+        least three physical hosts in the datacenter.
+        Structure is documented below.
         """
         return pulumi.get(self, "anti_affinity_groups")
 
@@ -172,6 +197,7 @@ class VmwareAdminClusterArgs:
     def authorization(self) -> Optional[pulumi.Input['VmwareAdminClusterAuthorizationArgs']]:
         """
         The VMware admin cluster authorization configuration.
+        Structure is documented below.
         """
         return pulumi.get(self, "authorization")
 
@@ -184,6 +210,7 @@ class VmwareAdminClusterArgs:
     def auto_repair_config(self) -> Optional[pulumi.Input['VmwareAdminClusterAutoRepairConfigArgs']]:
         """
         Configuration for auto repairing.
+        Structure is documented below.
         """
         return pulumi.get(self, "auto_repair_config")
 
@@ -208,6 +235,7 @@ class VmwareAdminClusterArgs:
     def control_plane_node(self) -> Optional[pulumi.Input['VmwareAdminClusterControlPlaneNodeArgs']]:
         """
         The VMware admin cluster control plane node configuration.
+        Structure is documented below.
         """
         return pulumi.get(self, "control_plane_node")
 
@@ -244,6 +272,7 @@ class VmwareAdminClusterArgs:
     def load_balancer(self) -> Optional[pulumi.Input['VmwareAdminClusterLoadBalancerArgs']]:
         """
         Specifies the load balancer configuration for VMware admin cluster.
+        Structure is documented below.
         """
         return pulumi.get(self, "load_balancer")
 
@@ -280,6 +309,7 @@ class VmwareAdminClusterArgs:
     def platform_config(self) -> Optional[pulumi.Input['VmwareAdminClusterPlatformConfigArgs']]:
         """
         The VMware platform configuration.
+        Structure is documented below.
         """
         return pulumi.get(self, "platform_config")
 
@@ -292,6 +322,7 @@ class VmwareAdminClusterArgs:
     def private_registry_config(self) -> Optional[pulumi.Input['VmwareAdminClusterPrivateRegistryConfigArgs']]:
         """
         Configuration for private registry.
+        Structure is documented below.
         """
         return pulumi.get(self, "private_registry_config")
 
@@ -302,6 +333,10 @@ class VmwareAdminClusterArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -313,6 +348,7 @@ class VmwareAdminClusterArgs:
     def vcenter(self) -> Optional[pulumi.Input['VmwareAdminClusterVcenterArgs']]:
         """
         Specifies vCenter config for the admin cluster.
+        Structure is documented below.
         """
         return pulumi.get(self, "vcenter")
 
@@ -357,17 +393,28 @@ class _VmwareAdminClusterState:
         """
         Input properties used for looking up and filtering VmwareAdminCluster resources.
         :param pulumi.Input['VmwareAdminClusterAddonNodeArgs'] addon_node: The VMware admin cluster addon node configuration.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Annotations on the VMware Admin Cluster. This field has the same restrictions as Kubernetes annotations. The total size
-               of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-               separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-               alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-               non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-               'effective_annotations' for all of the annotations present on the resource.
-        :param pulumi.Input['VmwareAdminClusterAntiAffinityGroupsArgs'] anti_affinity_groups: AAGConfig specifies whether to spread VMware Admin Cluster nodes across at least three physical hosts in the datacenter.
+               Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Annotations on the VMware Admin Cluster.
+               This field has the same restrictions as Kubernetes annotations.
+               The total size of all keys and values combined is limited to 256k.
+               Key can have 2 segments: prefix (optional) and name (required),
+               separated by a slash (/).
+               Prefix must be a DNS subdomain.
+               Name must be 63 characters or less, begin and end with alphanumerics,
+               with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input['VmwareAdminClusterAntiAffinityGroupsArgs'] anti_affinity_groups: AAGConfig specifies whether to spread VMware Admin Cluster nodes across at
+               least three physical hosts in the datacenter.
+               Structure is documented below.
         :param pulumi.Input['VmwareAdminClusterAuthorizationArgs'] authorization: The VMware admin cluster authorization configuration.
+               Structure is documented below.
         :param pulumi.Input['VmwareAdminClusterAutoRepairConfigArgs'] auto_repair_config: Configuration for auto repairing.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] bootstrap_cluster_membership: The bootstrap cluster this VMware admin cluster belongs to.
         :param pulumi.Input['VmwareAdminClusterControlPlaneNodeArgs'] control_plane_node: The VMware admin cluster control plane node configuration.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] create_time: The time the cluster was created, in RFC3339 text format.
         :param pulumi.Input[builtins.str] description: A human readable description of this VMware admin cluster.
         :param pulumi.Input[builtins.bool] enable_advanced_cluster: If set, the advanced cluster feature is enabled.
@@ -381,6 +428,7 @@ class _VmwareAdminClusterState:
                Structure is documented below.
         :param pulumi.Input[builtins.str] image_type: The OS image type for the VMware admin cluster.
         :param pulumi.Input['VmwareAdminClusterLoadBalancerArgs'] load_balancer: Specifies the load balancer configuration for VMware admin cluster.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] local_name: The object name of the VMwareAdminCluster custom resource on the
                associated admin cluster. This field is used to support conflicting
                names when enrolling existing clusters to the API. When used as a part of
@@ -397,7 +445,11 @@ class _VmwareAdminClusterState:
                Structure is documented below.
         :param pulumi.Input[builtins.str] on_prem_version: The Anthos clusters on the VMware version for the admin cluster.
         :param pulumi.Input['VmwareAdminClusterPlatformConfigArgs'] platform_config: The VMware platform configuration.
+               Structure is documented below.
         :param pulumi.Input['VmwareAdminClusterPrivateRegistryConfigArgs'] private_registry_config: Configuration for private registry.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.bool] reconciling: If set, there are currently changes in flight to the VMware admin cluster.
         :param pulumi.Input[builtins.str] state: (Output)
                The lifecycle state of the condition.
@@ -406,6 +458,7 @@ class _VmwareAdminClusterState:
         :param pulumi.Input[builtins.str] uid: The unique identifier of the VMware Admin Cluster.
         :param pulumi.Input[builtins.str] update_time: The time the cluster was last updated, in RFC3339 text format.
         :param pulumi.Input['VmwareAdminClusterVcenterArgs'] vcenter: Specifies vCenter config for the admin cluster.
+               Structure is documented below.
         """
         if addon_node is not None:
             pulumi.set(__self__, "addon_node", addon_node)
@@ -473,6 +526,7 @@ class _VmwareAdminClusterState:
     def addon_node(self) -> Optional[pulumi.Input['VmwareAdminClusterAddonNodeArgs']]:
         """
         The VMware admin cluster addon node configuration.
+        Structure is documented below.
         """
         return pulumi.get(self, "addon_node")
 
@@ -484,12 +538,17 @@ class _VmwareAdminClusterState:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Annotations on the VMware Admin Cluster. This field has the same restrictions as Kubernetes annotations. The total size
-        of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-        separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-        alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-        non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-        'effective_annotations' for all of the annotations present on the resource.
+        Annotations on the VMware Admin Cluster.
+        This field has the same restrictions as Kubernetes annotations.
+        The total size of all keys and values combined is limited to 256k.
+        Key can have 2 segments: prefix (optional) and name (required),
+        separated by a slash (/).
+        Prefix must be a DNS subdomain.
+        Name must be 63 characters or less, begin and end with alphanumerics,
+        with dashes (-), underscores (_), dots (.), and alphanumerics between.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -501,7 +560,9 @@ class _VmwareAdminClusterState:
     @pulumi.getter(name="antiAffinityGroups")
     def anti_affinity_groups(self) -> Optional[pulumi.Input['VmwareAdminClusterAntiAffinityGroupsArgs']]:
         """
-        AAGConfig specifies whether to spread VMware Admin Cluster nodes across at least three physical hosts in the datacenter.
+        AAGConfig specifies whether to spread VMware Admin Cluster nodes across at
+        least three physical hosts in the datacenter.
+        Structure is documented below.
         """
         return pulumi.get(self, "anti_affinity_groups")
 
@@ -514,6 +575,7 @@ class _VmwareAdminClusterState:
     def authorization(self) -> Optional[pulumi.Input['VmwareAdminClusterAuthorizationArgs']]:
         """
         The VMware admin cluster authorization configuration.
+        Structure is documented below.
         """
         return pulumi.get(self, "authorization")
 
@@ -526,6 +588,7 @@ class _VmwareAdminClusterState:
     def auto_repair_config(self) -> Optional[pulumi.Input['VmwareAdminClusterAutoRepairConfigArgs']]:
         """
         Configuration for auto repairing.
+        Structure is documented below.
         """
         return pulumi.get(self, "auto_repair_config")
 
@@ -550,6 +613,7 @@ class _VmwareAdminClusterState:
     def control_plane_node(self) -> Optional[pulumi.Input['VmwareAdminClusterControlPlaneNodeArgs']]:
         """
         The VMware admin cluster control plane node configuration.
+        Structure is documented below.
         """
         return pulumi.get(self, "control_plane_node")
 
@@ -660,6 +724,7 @@ class _VmwareAdminClusterState:
     def load_balancer(self) -> Optional[pulumi.Input['VmwareAdminClusterLoadBalancerArgs']]:
         """
         Specifies the load balancer configuration for VMware admin cluster.
+        Structure is documented below.
         """
         return pulumi.get(self, "load_balancer")
 
@@ -742,6 +807,7 @@ class _VmwareAdminClusterState:
     def platform_config(self) -> Optional[pulumi.Input['VmwareAdminClusterPlatformConfigArgs']]:
         """
         The VMware platform configuration.
+        Structure is documented below.
         """
         return pulumi.get(self, "platform_config")
 
@@ -754,6 +820,7 @@ class _VmwareAdminClusterState:
     def private_registry_config(self) -> Optional[pulumi.Input['VmwareAdminClusterPrivateRegistryConfigArgs']]:
         """
         Configuration for private registry.
+        Structure is documented below.
         """
         return pulumi.get(self, "private_registry_config")
 
@@ -764,6 +831,10 @@ class _VmwareAdminClusterState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -837,6 +908,7 @@ class _VmwareAdminClusterState:
     def vcenter(self) -> Optional[pulumi.Input['VmwareAdminClusterVcenterArgs']]:
         """
         Specifies vCenter config for the admin cluster.
+        Structure is documented below.
         """
         return pulumi.get(self, "vcenter")
 
@@ -1096,28 +1168,45 @@ class VmwareAdminCluster(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['VmwareAdminClusterAddonNodeArgs', 'VmwareAdminClusterAddonNodeArgsDict']] addon_node: The VMware admin cluster addon node configuration.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Annotations on the VMware Admin Cluster. This field has the same restrictions as Kubernetes annotations. The total size
-               of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-               separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-               alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-               non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-               'effective_annotations' for all of the annotations present on the resource.
-        :param pulumi.Input[Union['VmwareAdminClusterAntiAffinityGroupsArgs', 'VmwareAdminClusterAntiAffinityGroupsArgsDict']] anti_affinity_groups: AAGConfig specifies whether to spread VMware Admin Cluster nodes across at least three physical hosts in the datacenter.
+               Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Annotations on the VMware Admin Cluster.
+               This field has the same restrictions as Kubernetes annotations.
+               The total size of all keys and values combined is limited to 256k.
+               Key can have 2 segments: prefix (optional) and name (required),
+               separated by a slash (/).
+               Prefix must be a DNS subdomain.
+               Name must be 63 characters or less, begin and end with alphanumerics,
+               with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Union['VmwareAdminClusterAntiAffinityGroupsArgs', 'VmwareAdminClusterAntiAffinityGroupsArgsDict']] anti_affinity_groups: AAGConfig specifies whether to spread VMware Admin Cluster nodes across at
+               least three physical hosts in the datacenter.
+               Structure is documented below.
         :param pulumi.Input[Union['VmwareAdminClusterAuthorizationArgs', 'VmwareAdminClusterAuthorizationArgsDict']] authorization: The VMware admin cluster authorization configuration.
+               Structure is documented below.
         :param pulumi.Input[Union['VmwareAdminClusterAutoRepairConfigArgs', 'VmwareAdminClusterAutoRepairConfigArgsDict']] auto_repair_config: Configuration for auto repairing.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] bootstrap_cluster_membership: The bootstrap cluster this VMware admin cluster belongs to.
         :param pulumi.Input[Union['VmwareAdminClusterControlPlaneNodeArgs', 'VmwareAdminClusterControlPlaneNodeArgsDict']] control_plane_node: The VMware admin cluster control plane node configuration.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] description: A human readable description of this VMware admin cluster.
         :param pulumi.Input[builtins.str] image_type: The OS image type for the VMware admin cluster.
         :param pulumi.Input[Union['VmwareAdminClusterLoadBalancerArgs', 'VmwareAdminClusterLoadBalancerArgsDict']] load_balancer: Specifies the load balancer configuration for VMware admin cluster.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] location: The location of the resource.
         :param pulumi.Input[builtins.str] name: The VMware admin cluster resource name.
         :param pulumi.Input[Union['VmwareAdminClusterNetworkConfigArgs', 'VmwareAdminClusterNetworkConfigArgsDict']] network_config: The VMware admin cluster network configuration.
                Structure is documented below.
         :param pulumi.Input[builtins.str] on_prem_version: The Anthos clusters on the VMware version for the admin cluster.
         :param pulumi.Input[Union['VmwareAdminClusterPlatformConfigArgs', 'VmwareAdminClusterPlatformConfigArgsDict']] platform_config: The VMware platform configuration.
+               Structure is documented below.
         :param pulumi.Input[Union['VmwareAdminClusterPrivateRegistryConfigArgs', 'VmwareAdminClusterPrivateRegistryConfigArgsDict']] private_registry_config: Configuration for private registry.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Union['VmwareAdminClusterVcenterArgs', 'VmwareAdminClusterVcenterArgsDict']] vcenter: Specifies vCenter config for the admin cluster.
+               Structure is documented below.
         """
         ...
     @overload
@@ -1472,17 +1561,28 @@ class VmwareAdminCluster(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['VmwareAdminClusterAddonNodeArgs', 'VmwareAdminClusterAddonNodeArgsDict']] addon_node: The VMware admin cluster addon node configuration.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Annotations on the VMware Admin Cluster. This field has the same restrictions as Kubernetes annotations. The total size
-               of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-               separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-               alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-               non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-               'effective_annotations' for all of the annotations present on the resource.
-        :param pulumi.Input[Union['VmwareAdminClusterAntiAffinityGroupsArgs', 'VmwareAdminClusterAntiAffinityGroupsArgsDict']] anti_affinity_groups: AAGConfig specifies whether to spread VMware Admin Cluster nodes across at least three physical hosts in the datacenter.
+               Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Annotations on the VMware Admin Cluster.
+               This field has the same restrictions as Kubernetes annotations.
+               The total size of all keys and values combined is limited to 256k.
+               Key can have 2 segments: prefix (optional) and name (required),
+               separated by a slash (/).
+               Prefix must be a DNS subdomain.
+               Name must be 63 characters or less, begin and end with alphanumerics,
+               with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Union['VmwareAdminClusterAntiAffinityGroupsArgs', 'VmwareAdminClusterAntiAffinityGroupsArgsDict']] anti_affinity_groups: AAGConfig specifies whether to spread VMware Admin Cluster nodes across at
+               least three physical hosts in the datacenter.
+               Structure is documented below.
         :param pulumi.Input[Union['VmwareAdminClusterAuthorizationArgs', 'VmwareAdminClusterAuthorizationArgsDict']] authorization: The VMware admin cluster authorization configuration.
+               Structure is documented below.
         :param pulumi.Input[Union['VmwareAdminClusterAutoRepairConfigArgs', 'VmwareAdminClusterAutoRepairConfigArgsDict']] auto_repair_config: Configuration for auto repairing.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] bootstrap_cluster_membership: The bootstrap cluster this VMware admin cluster belongs to.
         :param pulumi.Input[Union['VmwareAdminClusterControlPlaneNodeArgs', 'VmwareAdminClusterControlPlaneNodeArgsDict']] control_plane_node: The VMware admin cluster control plane node configuration.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] create_time: The time the cluster was created, in RFC3339 text format.
         :param pulumi.Input[builtins.str] description: A human readable description of this VMware admin cluster.
         :param pulumi.Input[builtins.bool] enable_advanced_cluster: If set, the advanced cluster feature is enabled.
@@ -1496,6 +1596,7 @@ class VmwareAdminCluster(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[builtins.str] image_type: The OS image type for the VMware admin cluster.
         :param pulumi.Input[Union['VmwareAdminClusterLoadBalancerArgs', 'VmwareAdminClusterLoadBalancerArgsDict']] load_balancer: Specifies the load balancer configuration for VMware admin cluster.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] local_name: The object name of the VMwareAdminCluster custom resource on the
                associated admin cluster. This field is used to support conflicting
                names when enrolling existing clusters to the API. When used as a part of
@@ -1512,7 +1613,11 @@ class VmwareAdminCluster(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[builtins.str] on_prem_version: The Anthos clusters on the VMware version for the admin cluster.
         :param pulumi.Input[Union['VmwareAdminClusterPlatformConfigArgs', 'VmwareAdminClusterPlatformConfigArgsDict']] platform_config: The VMware platform configuration.
+               Structure is documented below.
         :param pulumi.Input[Union['VmwareAdminClusterPrivateRegistryConfigArgs', 'VmwareAdminClusterPrivateRegistryConfigArgsDict']] private_registry_config: Configuration for private registry.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.bool] reconciling: If set, there are currently changes in flight to the VMware admin cluster.
         :param pulumi.Input[builtins.str] state: (Output)
                The lifecycle state of the condition.
@@ -1521,6 +1626,7 @@ class VmwareAdminCluster(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] uid: The unique identifier of the VMware Admin Cluster.
         :param pulumi.Input[builtins.str] update_time: The time the cluster was last updated, in RFC3339 text format.
         :param pulumi.Input[Union['VmwareAdminClusterVcenterArgs', 'VmwareAdminClusterVcenterArgsDict']] vcenter: Specifies vCenter config for the admin cluster.
+               Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1563,6 +1669,7 @@ class VmwareAdminCluster(pulumi.CustomResource):
     def addon_node(self) -> pulumi.Output['outputs.VmwareAdminClusterAddonNode']:
         """
         The VMware admin cluster addon node configuration.
+        Structure is documented below.
         """
         return pulumi.get(self, "addon_node")
 
@@ -1570,12 +1677,17 @@ class VmwareAdminCluster(pulumi.CustomResource):
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Mapping[str, builtins.str]]:
         """
-        Annotations on the VMware Admin Cluster. This field has the same restrictions as Kubernetes annotations. The total size
-        of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-        separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-        alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-        non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-        'effective_annotations' for all of the annotations present on the resource.
+        Annotations on the VMware Admin Cluster.
+        This field has the same restrictions as Kubernetes annotations.
+        The total size of all keys and values combined is limited to 256k.
+        Key can have 2 segments: prefix (optional) and name (required),
+        separated by a slash (/).
+        Prefix must be a DNS subdomain.
+        Name must be 63 characters or less, begin and end with alphanumerics,
+        with dashes (-), underscores (_), dots (.), and alphanumerics between.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -1583,7 +1695,9 @@ class VmwareAdminCluster(pulumi.CustomResource):
     @pulumi.getter(name="antiAffinityGroups")
     def anti_affinity_groups(self) -> pulumi.Output['outputs.VmwareAdminClusterAntiAffinityGroups']:
         """
-        AAGConfig specifies whether to spread VMware Admin Cluster nodes across at least three physical hosts in the datacenter.
+        AAGConfig specifies whether to spread VMware Admin Cluster nodes across at
+        least three physical hosts in the datacenter.
+        Structure is documented below.
         """
         return pulumi.get(self, "anti_affinity_groups")
 
@@ -1592,6 +1706,7 @@ class VmwareAdminCluster(pulumi.CustomResource):
     def authorization(self) -> pulumi.Output[Optional['outputs.VmwareAdminClusterAuthorization']]:
         """
         The VMware admin cluster authorization configuration.
+        Structure is documented below.
         """
         return pulumi.get(self, "authorization")
 
@@ -1600,6 +1715,7 @@ class VmwareAdminCluster(pulumi.CustomResource):
     def auto_repair_config(self) -> pulumi.Output['outputs.VmwareAdminClusterAutoRepairConfig']:
         """
         Configuration for auto repairing.
+        Structure is documented below.
         """
         return pulumi.get(self, "auto_repair_config")
 
@@ -1616,6 +1732,7 @@ class VmwareAdminCluster(pulumi.CustomResource):
     def control_plane_node(self) -> pulumi.Output[Optional['outputs.VmwareAdminClusterControlPlaneNode']]:
         """
         The VMware admin cluster control plane node configuration.
+        Structure is documented below.
         """
         return pulumi.get(self, "control_plane_node")
 
@@ -1690,6 +1807,7 @@ class VmwareAdminCluster(pulumi.CustomResource):
     def load_balancer(self) -> pulumi.Output[Optional['outputs.VmwareAdminClusterLoadBalancer']]:
         """
         Specifies the load balancer configuration for VMware admin cluster.
+        Structure is documented below.
         """
         return pulumi.get(self, "load_balancer")
 
@@ -1748,6 +1866,7 @@ class VmwareAdminCluster(pulumi.CustomResource):
     def platform_config(self) -> pulumi.Output[Optional['outputs.VmwareAdminClusterPlatformConfig']]:
         """
         The VMware platform configuration.
+        Structure is documented below.
         """
         return pulumi.get(self, "platform_config")
 
@@ -1756,12 +1875,17 @@ class VmwareAdminCluster(pulumi.CustomResource):
     def private_registry_config(self) -> pulumi.Output[Optional['outputs.VmwareAdminClusterPrivateRegistryConfig']]:
         """
         Configuration for private registry.
+        Structure is documented below.
         """
         return pulumi.get(self, "private_registry_config")
 
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property
@@ -1811,6 +1935,7 @@ class VmwareAdminCluster(pulumi.CustomResource):
     def vcenter(self) -> pulumi.Output[Optional['outputs.VmwareAdminClusterVcenter']]:
         """
         Specifies vCenter config for the admin cluster.
+        Structure is documented below.
         """
         return pulumi.get(self, "vcenter")
 

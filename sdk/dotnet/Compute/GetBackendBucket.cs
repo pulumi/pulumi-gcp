@@ -147,6 +147,7 @@ namespace Pulumi.Gcp.Compute
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string LoadBalancingScheme;
         public readonly string Name;
         public readonly string? Project;
         public readonly string SelfLink;
@@ -171,6 +172,8 @@ namespace Pulumi.Gcp.Compute
 
             string id,
 
+            string loadBalancingScheme,
+
             string name,
 
             string? project,
@@ -186,6 +189,7 @@ namespace Pulumi.Gcp.Compute
             EdgeSecurityPolicy = edgeSecurityPolicy;
             EnableCdn = enableCdn;
             Id = id;
+            LoadBalancingScheme = loadBalancingScheme;
             Name = name;
             Project = project;
             SelfLink = selfLink;

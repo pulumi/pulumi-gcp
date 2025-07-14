@@ -46,8 +46,6 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
         public readonly string? RedirectResponseCode;
         /// <summary>
         /// If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained.
-        /// 
-        /// - - -
         /// </summary>
         public readonly bool? StripQuery;
 

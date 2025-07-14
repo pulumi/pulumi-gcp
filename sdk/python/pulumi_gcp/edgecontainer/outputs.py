@@ -90,8 +90,6 @@ class ClusterAuthorizationAdminUsers(dict):
                  username: builtins.str):
         """
         :param builtins.str username: An active Google username.
-               
-               - - -
         """
         pulumi.set(__self__, "username", username)
 
@@ -100,8 +98,6 @@ class ClusterAuthorizationAdminUsers(dict):
     def username(self) -> builtins.str:
         """
         An active Google username.
-
-        - - -
         """
         return pulumi.get(self, "username")
 
@@ -504,8 +500,7 @@ class ClusterMaintenanceEvent(dict):
                The time when the maintenance event started.
         :param builtins.str state: (Output)
                Indicates the maintenance event state.
-        :param builtins.str target_version: (Output)
-               The target version of the cluster.
+        :param builtins.str target_version: The target cluster version. For example: "1.5.0".
         :param builtins.str type: (Output)
                Indicates the maintenance event type.
         :param builtins.str update_time: (Output)
@@ -597,8 +592,7 @@ class ClusterMaintenanceEvent(dict):
     @pulumi.getter(name="targetVersion")
     def target_version(self) -> Optional[builtins.str]:
         """
-        (Output)
-        The target version of the cluster.
+        The target cluster version. For example: "1.5.0".
         """
         return pulumi.get(self, "target_version")
 

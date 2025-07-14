@@ -293,16 +293,12 @@ public final class VpcFlowLogsConfigState extends com.pulumi.resources.ResourceA
     /**
      * Required. ID of the `VpcFlowLogsConfig`.
      * 
-     * ***
-     * 
      */
     @Import(name="vpcFlowLogsConfigId")
     private @Nullable Output<String> vpcFlowLogsConfigId;
 
     /**
      * @return Required. ID of the `VpcFlowLogsConfig`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> vpcFlowLogsConfigId() {
@@ -747,8 +743,6 @@ public final class VpcFlowLogsConfigState extends com.pulumi.resources.ResourceA
         /**
          * @param vpcFlowLogsConfigId Required. ID of the `VpcFlowLogsConfig`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -759,8 +753,6 @@ public final class VpcFlowLogsConfigState extends com.pulumi.resources.ResourceA
 
         /**
          * @param vpcFlowLogsConfigId Required. ID of the `VpcFlowLogsConfig`.
-         * 
-         * ***
          * 
          * @return builder
          * 

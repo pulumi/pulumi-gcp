@@ -143,8 +143,6 @@ type InsightsReportConfig struct {
 	FrequencyOptions InsightsReportConfigFrequencyOptionsPtrOutput `pulumi:"frequencyOptions"`
 	// The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
 	// must be in the same location.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The UUID of the inventory report configuration.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -201,8 +199,6 @@ type insightsReportConfigState struct {
 	FrequencyOptions *InsightsReportConfigFrequencyOptions `pulumi:"frequencyOptions"`
 	// The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
 	// must be in the same location.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// The UUID of the inventory report configuration.
 	Name *string `pulumi:"name"`
@@ -227,8 +223,6 @@ type InsightsReportConfigState struct {
 	FrequencyOptions InsightsReportConfigFrequencyOptionsPtrInput
 	// The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
 	// must be in the same location.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// The UUID of the inventory report configuration.
 	Name pulumi.StringPtrInput
@@ -257,8 +251,6 @@ type insightsReportConfigArgs struct {
 	FrequencyOptions *InsightsReportConfigFrequencyOptions `pulumi:"frequencyOptions"`
 	// The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
 	// must be in the same location.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// Options for including metadata in an inventory report.
 	// Structure is documented below.
@@ -282,8 +274,6 @@ type InsightsReportConfigArgs struct {
 	FrequencyOptions InsightsReportConfigFrequencyOptionsPtrInput
 	// The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
 	// must be in the same location.
-	//
-	// ***
 	Location pulumi.StringInput
 	// Options for including metadata in an inventory report.
 	// Structure is documented below.
@@ -401,8 +391,6 @@ func (o InsightsReportConfigOutput) FrequencyOptions() InsightsReportConfigFrequ
 
 // The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
 // must be in the same location.
-//
-// ***
 func (o InsightsReportConfigOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *InsightsReportConfig) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

@@ -100,8 +100,9 @@ export class RepositoryGroup extends pulumi.CustomResource {
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Optional. Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present
-     * in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+     * Optional. Labels as key value pairs.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -112,6 +113,10 @@ export class RepositoryGroup extends pulumi.CustomResource {
      * Immutable. Identifier. Name of Repository Group.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
@@ -206,8 +211,9 @@ export interface RepositoryGroupState {
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Optional. Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present
-     * in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+     * Optional. Labels as key value pairs.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -218,6 +224,10 @@ export interface RepositoryGroupState {
      * Immutable. Identifier. Name of Repository Group.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
@@ -248,14 +258,19 @@ export interface RepositoryGroupArgs {
      */
     codeRepositoryIndex: pulumi.Input<string>;
     /**
-     * Optional. Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present
-     * in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+     * Optional. Labels as key value pairs.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location of the Code Repository Index, for example `us-central1`.
      */
     location: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * Required. List of repositories to group.

@@ -77,8 +77,6 @@ type CodeRepositoryIndex struct {
 	pulumi.CustomResourceState
 
 	// Required. Id of the Code Repository Index.
-	//
-	// ***
 	CodeRepositoryIndexId pulumi.StringOutput `pulumi:"codeRepositoryIndexId"`
 	// Output only. Create time stamp.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -152,8 +150,6 @@ func GetCodeRepositoryIndex(ctx *pulumi.Context,
 // Input properties used for looking up and filtering CodeRepositoryIndex resources.
 type codeRepositoryIndexState struct {
 	// Required. Id of the Code Repository Index.
-	//
-	// ***
 	CodeRepositoryIndexId *string `pulumi:"codeRepositoryIndexId"`
 	// Output only. Create time stamp.
 	CreateTime *string `pulumi:"createTime"`
@@ -187,8 +183,6 @@ type codeRepositoryIndexState struct {
 
 type CodeRepositoryIndexState struct {
 	// Required. Id of the Code Repository Index.
-	//
-	// ***
 	CodeRepositoryIndexId pulumi.StringPtrInput
 	// Output only. Create time stamp.
 	CreateTime pulumi.StringPtrInput
@@ -226,8 +220,6 @@ func (CodeRepositoryIndexState) ElementType() reflect.Type {
 
 type codeRepositoryIndexArgs struct {
 	// Required. Id of the Code Repository Index.
-	//
-	// ***
 	CodeRepositoryIndexId string `pulumi:"codeRepositoryIndexId"`
 	// If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
@@ -248,8 +240,6 @@ type codeRepositoryIndexArgs struct {
 // The set of arguments for constructing a CodeRepositoryIndex resource.
 type CodeRepositoryIndexArgs struct {
 	// Required. Id of the Code Repository Index.
-	//
-	// ***
 	CodeRepositoryIndexId pulumi.StringInput
 	// If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
 	ForceDestroy pulumi.BoolPtrInput
@@ -355,8 +345,6 @@ func (o CodeRepositoryIndexOutput) ToCodeRepositoryIndexOutputWithContext(ctx co
 }
 
 // Required. Id of the Code Repository Index.
-//
-// ***
 func (o CodeRepositoryIndexOutput) CodeRepositoryIndexId() pulumi.StringOutput {
 	return o.ApplyT(func(v *CodeRepositoryIndex) pulumi.StringOutput { return v.CodeRepositoryIndexId }).(pulumi.StringOutput)
 }

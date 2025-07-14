@@ -98,9 +98,6 @@ namespace Pulumi.Gcp.Composer
 
         /// <summary>
         /// Environment where the Kubernetes ConfigMap will be stored and used.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("environment")]
         public Output<string> Environment { get; private set; } = null!;
@@ -185,9 +182,6 @@ namespace Pulumi.Gcp.Composer
 
         /// <summary>
         /// Environment where the Kubernetes ConfigMap will be stored and used.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("environment", required: true)]
         public Input<string> Environment { get; set; } = null!;
@@ -234,9 +228,6 @@ namespace Pulumi.Gcp.Composer
 
         /// <summary>
         /// Environment where the Kubernetes ConfigMap will be stored and used.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("environment")]
         public Input<string>? Environment { get; set; }

@@ -87,8 +87,6 @@ type Capability struct {
 	// Folder on which Capability needs to be updated in the format folders/folder_id.
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// Capability Value.
-	//
-	// ***
 	Value pulumi.BoolOutput `pulumi:"value"`
 }
 
@@ -136,8 +134,6 @@ type capabilityState struct {
 	// Folder on which Capability needs to be updated in the format folders/folder_id.
 	Parent *string `pulumi:"parent"`
 	// Capability Value.
-	//
-	// ***
 	Value *bool `pulumi:"value"`
 }
 
@@ -147,8 +143,6 @@ type CapabilityState struct {
 	// Folder on which Capability needs to be updated in the format folders/folder_id.
 	Parent pulumi.StringPtrInput
 	// Capability Value.
-	//
-	// ***
 	Value pulumi.BoolPtrInput
 }
 
@@ -162,8 +156,6 @@ type capabilityArgs struct {
 	// Folder on which Capability needs to be updated in the format folders/folder_id.
 	Parent string `pulumi:"parent"`
 	// Capability Value.
-	//
-	// ***
 	Value bool `pulumi:"value"`
 }
 
@@ -174,8 +166,6 @@ type CapabilityArgs struct {
 	// Folder on which Capability needs to be updated in the format folders/folder_id.
 	Parent pulumi.StringInput
 	// Capability Value.
-	//
-	// ***
 	Value pulumi.BoolInput
 }
 
@@ -277,8 +267,6 @@ func (o CapabilityOutput) Parent() pulumi.StringOutput {
 }
 
 // Capability Value.
-//
-// ***
 func (o CapabilityOutput) Value() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Capability) pulumi.BoolOutput { return v.Value }).(pulumi.BoolOutput)
 }

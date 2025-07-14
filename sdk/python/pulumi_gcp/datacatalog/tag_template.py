@@ -34,8 +34,9 @@ class TagTemplateArgs:
                Structure is documented below.
         :param pulumi.Input[builtins.str] tag_template_id: The id of the tag template to create.
         :param pulumi.Input[builtins.str] display_name: The display name for this template.
-        :param pulumi.Input[builtins.bool] force_delete: This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag
-               template.
+        :param pulumi.Input[builtins.bool] force_delete: This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] region: Template location region.
         """
         pulumi.set(__self__, "fields", fields)
@@ -90,8 +91,7 @@ class TagTemplateArgs:
     @pulumi.getter(name="forceDelete")
     def force_delete(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag
-        template.
+        This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
         """
         return pulumi.get(self, "force_delete")
 
@@ -102,6 +102,10 @@ class TagTemplateArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -136,9 +140,10 @@ class _TagTemplateState:
         :param pulumi.Input[builtins.str] display_name: The display name for this template.
         :param pulumi.Input[Sequence[pulumi.Input['TagTemplateFieldArgs']]] fields: Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of field_id will be resulting in re-creating of field. The change of primitive_type will be resulting in re-creating of field, however if the field is a required, you cannot update it.
                Structure is documented below.
-        :param pulumi.Input[builtins.bool] force_delete: This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag
-               template.
+        :param pulumi.Input[builtins.bool] force_delete: This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
         :param pulumi.Input[builtins.str] name: The resource name of the tag template in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] region: Template location region.
         :param pulumi.Input[builtins.str] tag_template_id: The id of the tag template to create.
         """
@@ -186,8 +191,7 @@ class _TagTemplateState:
     @pulumi.getter(name="forceDelete")
     def force_delete(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag
-        template.
+        This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
         """
         return pulumi.get(self, "force_delete")
 
@@ -210,6 +214,10 @@ class _TagTemplateState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -334,8 +342,9 @@ class TagTemplate(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] display_name: The display name for this template.
         :param pulumi.Input[Sequence[pulumi.Input[Union['TagTemplateFieldArgs', 'TagTemplateFieldArgsDict']]]] fields: Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of field_id will be resulting in re-creating of field. The change of primitive_type will be resulting in re-creating of field, however if the field is a required, you cannot update it.
                Structure is documented below.
-        :param pulumi.Input[builtins.bool] force_delete: This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag
-               template.
+        :param pulumi.Input[builtins.bool] force_delete: This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] region: Template location region.
         :param pulumi.Input[builtins.str] tag_template_id: The id of the tag template to create.
         """
@@ -488,9 +497,10 @@ class TagTemplate(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] display_name: The display name for this template.
         :param pulumi.Input[Sequence[pulumi.Input[Union['TagTemplateFieldArgs', 'TagTemplateFieldArgsDict']]]] fields: Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of field_id will be resulting in re-creating of field. The change of primitive_type will be resulting in re-creating of field, however if the field is a required, you cannot update it.
                Structure is documented below.
-        :param pulumi.Input[builtins.bool] force_delete: This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag
-               template.
+        :param pulumi.Input[builtins.bool] force_delete: This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
         :param pulumi.Input[builtins.str] name: The resource name of the tag template in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] region: Template location region.
         :param pulumi.Input[builtins.str] tag_template_id: The id of the tag template to create.
         """
@@ -528,8 +538,7 @@ class TagTemplate(pulumi.CustomResource):
     @pulumi.getter(name="forceDelete")
     def force_delete(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
-        This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag
-        template.
+        This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
         """
         return pulumi.get(self, "force_delete")
 
@@ -544,6 +553,10 @@ class TagTemplate(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property

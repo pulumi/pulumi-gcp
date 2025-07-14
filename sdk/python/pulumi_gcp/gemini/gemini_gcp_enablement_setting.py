@@ -29,9 +29,6 @@ class GeminiGcpEnablementSettingArgs:
         """
         The set of arguments for constructing a GeminiGcpEnablementSetting resource.
         :param pulumi.Input[builtins.str] gemini_gcp_enablement_setting_id: Id of the Gemini Gcp Enablement setting.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[builtins.bool] disable_web_grounding: Whether web grounding should be disabled.
         :param pulumi.Input[builtins.bool] enable_customer_data_sharing: Whether customer data sharing should be enabled.
@@ -57,9 +54,6 @@ class GeminiGcpEnablementSettingArgs:
     def gemini_gcp_enablement_setting_id(self) -> pulumi.Input[builtins.str]:
         """
         Id of the Gemini Gcp Enablement setting.
-
-
-        - - -
         """
         return pulumi.get(self, "gemini_gcp_enablement_setting_id")
 
@@ -152,9 +146,6 @@ class _GeminiGcpEnablementSettingState:
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[builtins.bool] enable_customer_data_sharing: Whether customer data sharing should be enabled.
         :param pulumi.Input[builtins.str] gemini_gcp_enablement_setting_id: Id of the Gemini Gcp Enablement setting.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -243,9 +234,6 @@ class _GeminiGcpEnablementSettingState:
     def gemini_gcp_enablement_setting_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Id of the Gemini Gcp Enablement setting.
-
-
-        - - -
         """
         return pulumi.get(self, "gemini_gcp_enablement_setting_id")
 
@@ -394,9 +382,6 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] disable_web_grounding: Whether web grounding should be disabled.
         :param pulumi.Input[builtins.bool] enable_customer_data_sharing: Whether customer data sharing should be enabled.
         :param pulumi.Input[builtins.str] gemini_gcp_enablement_setting_id: Id of the Gemini Gcp Enablement setting.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -535,9 +520,6 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[builtins.bool] enable_customer_data_sharing: Whether customer data sharing should be enabled.
         :param pulumi.Input[builtins.str] gemini_gcp_enablement_setting_id: Id of the Gemini Gcp Enablement setting.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -604,9 +586,6 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
     def gemini_gcp_enablement_setting_id(self) -> pulumi.Output[builtins.str]:
         """
         Id of the Gemini Gcp Enablement setting.
-
-
-        - - -
         """
         return pulumi.get(self, "gemini_gcp_enablement_setting_id")
 

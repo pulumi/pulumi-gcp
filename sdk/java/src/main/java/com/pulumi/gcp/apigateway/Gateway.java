@@ -123,16 +123,12 @@ public class Gateway extends com.pulumi.resources.CustomResource {
     /**
      * Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
      * 
-     * ***
-     * 
      */
     @Export(name="gatewayId", refs={String.class}, tree="[0]")
     private Output<String> gatewayId;
 
     /**
      * @return Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
-     * 
-     * ***
      * 
      */
     public Output<String> gatewayId() {

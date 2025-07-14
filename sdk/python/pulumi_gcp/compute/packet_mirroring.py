@@ -45,11 +45,16 @@ class PacketMirroringArgs:
                network. All mirrored subnetworks should belong to the given network.
                Structure is documented below.
         :param pulumi.Input[builtins.str] description: A human-readable description of the rule.
-        :param pulumi.Input['PacketMirroringFilterArgs'] filter: A filter for mirrored traffic. If unset, all traffic is mirrored.
+        :param pulumi.Input['PacketMirroringFilterArgs'] filter: A filter for mirrored traffic.  If unset, all traffic is mirrored.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] name: The name of the packet mirroring rule
-        :param pulumi.Input[builtins.int] priority: Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to the
-               same instances.
-        :param pulumi.Input[builtins.str] region: The Region in which the created address should reside. If it is not provided, the provider region is used.
+        :param pulumi.Input[builtins.int] priority: Since only one rule can be active at a time, priority is
+               used to break ties in the case of two rules that apply to
+               the same instances.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[builtins.str] region: The Region in which the created address should reside.
+               If it is not provided, the provider region is used.
         """
         pulumi.set(__self__, "collector_ilb", collector_ilb)
         pulumi.set(__self__, "mirrored_resources", mirrored_resources)
@@ -127,7 +132,8 @@ class PacketMirroringArgs:
     @pulumi.getter
     def filter(self) -> Optional[pulumi.Input['PacketMirroringFilterArgs']]:
         """
-        A filter for mirrored traffic. If unset, all traffic is mirrored.
+        A filter for mirrored traffic.  If unset, all traffic is mirrored.
+        Structure is documented below.
         """
         return pulumi.get(self, "filter")
 
@@ -151,8 +157,9 @@ class PacketMirroringArgs:
     @pulumi.getter
     def priority(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to the
-        same instances.
+        Since only one rule can be active at a time, priority is
+        used to break ties in the case of two rules that apply to
+        the same instances.
         """
         return pulumi.get(self, "priority")
 
@@ -163,6 +170,10 @@ class PacketMirroringArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -173,7 +184,8 @@ class PacketMirroringArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The Region in which the created address should reside. If it is not provided, the provider region is used.
+        The Region in which the created address should reside.
+        If it is not provided, the provider region is used.
         """
         return pulumi.get(self, "region")
 
@@ -202,7 +214,8 @@ class _PacketMirroringState:
                set to true.
                Structure is documented below.
         :param pulumi.Input[builtins.str] description: A human-readable description of the rule.
-        :param pulumi.Input['PacketMirroringFilterArgs'] filter: A filter for mirrored traffic. If unset, all traffic is mirrored.
+        :param pulumi.Input['PacketMirroringFilterArgs'] filter: A filter for mirrored traffic.  If unset, all traffic is mirrored.
+               Structure is documented below.
         :param pulumi.Input['PacketMirroringMirroredResourcesArgs'] mirrored_resources: A means of specifying which resources to mirror.
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: The name of the packet mirroring rule
@@ -210,9 +223,13 @@ class _PacketMirroringState:
                will be mirrored. All mirrored VMs should have a NIC in the given
                network. All mirrored subnetworks should belong to the given network.
                Structure is documented below.
-        :param pulumi.Input[builtins.int] priority: Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to the
-               same instances.
-        :param pulumi.Input[builtins.str] region: The Region in which the created address should reside. If it is not provided, the provider region is used.
+        :param pulumi.Input[builtins.int] priority: Since only one rule can be active at a time, priority is
+               used to break ties in the case of two rules that apply to
+               the same instances.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[builtins.str] region: The Region in which the created address should reside.
+               If it is not provided, the provider region is used.
         """
         if collector_ilb is not None:
             pulumi.set(__self__, "collector_ilb", collector_ilb)
@@ -265,7 +282,8 @@ class _PacketMirroringState:
     @pulumi.getter
     def filter(self) -> Optional[pulumi.Input['PacketMirroringFilterArgs']]:
         """
-        A filter for mirrored traffic. If unset, all traffic is mirrored.
+        A filter for mirrored traffic.  If unset, all traffic is mirrored.
+        Structure is documented below.
         """
         return pulumi.get(self, "filter")
 
@@ -317,8 +335,9 @@ class _PacketMirroringState:
     @pulumi.getter
     def priority(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to the
-        same instances.
+        Since only one rule can be active at a time, priority is
+        used to break ties in the case of two rules that apply to
+        the same instances.
         """
         return pulumi.get(self, "priority")
 
@@ -329,6 +348,10 @@ class _PacketMirroringState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -339,7 +362,8 @@ class _PacketMirroringState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The Region in which the created address should reside. If it is not provided, the provider region is used.
+        The Region in which the created address should reside.
+        If it is not provided, the provider region is used.
         """
         return pulumi.get(self, "region")
 
@@ -481,7 +505,8 @@ class PacketMirroring(pulumi.CustomResource):
                set to true.
                Structure is documented below.
         :param pulumi.Input[builtins.str] description: A human-readable description of the rule.
-        :param pulumi.Input[Union['PacketMirroringFilterArgs', 'PacketMirroringFilterArgsDict']] filter: A filter for mirrored traffic. If unset, all traffic is mirrored.
+        :param pulumi.Input[Union['PacketMirroringFilterArgs', 'PacketMirroringFilterArgsDict']] filter: A filter for mirrored traffic.  If unset, all traffic is mirrored.
+               Structure is documented below.
         :param pulumi.Input[Union['PacketMirroringMirroredResourcesArgs', 'PacketMirroringMirroredResourcesArgsDict']] mirrored_resources: A means of specifying which resources to mirror.
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: The name of the packet mirroring rule
@@ -489,9 +514,13 @@ class PacketMirroring(pulumi.CustomResource):
                will be mirrored. All mirrored VMs should have a NIC in the given
                network. All mirrored subnetworks should belong to the given network.
                Structure is documented below.
-        :param pulumi.Input[builtins.int] priority: Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to the
-               same instances.
-        :param pulumi.Input[builtins.str] region: The Region in which the created address should reside. If it is not provided, the provider region is used.
+        :param pulumi.Input[builtins.int] priority: Since only one rule can be active at a time, priority is
+               used to break ties in the case of two rules that apply to
+               the same instances.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[builtins.str] region: The Region in which the created address should reside.
+               If it is not provided, the provider region is used.
         """
         ...
     @overload
@@ -688,7 +717,8 @@ class PacketMirroring(pulumi.CustomResource):
                set to true.
                Structure is documented below.
         :param pulumi.Input[builtins.str] description: A human-readable description of the rule.
-        :param pulumi.Input[Union['PacketMirroringFilterArgs', 'PacketMirroringFilterArgsDict']] filter: A filter for mirrored traffic. If unset, all traffic is mirrored.
+        :param pulumi.Input[Union['PacketMirroringFilterArgs', 'PacketMirroringFilterArgsDict']] filter: A filter for mirrored traffic.  If unset, all traffic is mirrored.
+               Structure is documented below.
         :param pulumi.Input[Union['PacketMirroringMirroredResourcesArgs', 'PacketMirroringMirroredResourcesArgsDict']] mirrored_resources: A means of specifying which resources to mirror.
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: The name of the packet mirroring rule
@@ -696,9 +726,13 @@ class PacketMirroring(pulumi.CustomResource):
                will be mirrored. All mirrored VMs should have a NIC in the given
                network. All mirrored subnetworks should belong to the given network.
                Structure is documented below.
-        :param pulumi.Input[builtins.int] priority: Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to the
-               same instances.
-        :param pulumi.Input[builtins.str] region: The Region in which the created address should reside. If it is not provided, the provider region is used.
+        :param pulumi.Input[builtins.int] priority: Since only one rule can be active at a time, priority is
+               used to break ties in the case of two rules that apply to
+               the same instances.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[builtins.str] region: The Region in which the created address should reside.
+               If it is not provided, the provider region is used.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -739,7 +773,8 @@ class PacketMirroring(pulumi.CustomResource):
     @pulumi.getter
     def filter(self) -> pulumi.Output[Optional['outputs.PacketMirroringFilter']]:
         """
-        A filter for mirrored traffic. If unset, all traffic is mirrored.
+        A filter for mirrored traffic.  If unset, all traffic is mirrored.
+        Structure is documented below.
         """
         return pulumi.get(self, "filter")
 
@@ -775,21 +810,27 @@ class PacketMirroring(pulumi.CustomResource):
     @pulumi.getter
     def priority(self) -> pulumi.Output[builtins.int]:
         """
-        Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to the
-        same instances.
+        Since only one rule can be active at a time, priority is
+        used to break ties in the case of two rules that apply to
+        the same instances.
         """
         return pulumi.get(self, "priority")
 
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[builtins.str]:
         """
-        The Region in which the created address should reside. If it is not provided, the provider region is used.
+        The Region in which the created address should reside.
+        If it is not provided, the provider region is used.
         """
         return pulumi.get(self, "region")
 

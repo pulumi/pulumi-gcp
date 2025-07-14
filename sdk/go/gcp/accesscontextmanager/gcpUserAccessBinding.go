@@ -127,8 +127,6 @@ type GcpUserAccessBinding struct {
 	// Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by RFC 3986 Section 2.3). Should not be specified by the client during creation. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Required. ID of the parent organization.
-	//
-	// ***
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
 	// Structure is documented below.
@@ -181,8 +179,6 @@ type gcpUserAccessBindingState struct {
 	// Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by RFC 3986 Section 2.3). Should not be specified by the client during creation. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
 	Name *string `pulumi:"name"`
 	// Required. ID of the parent organization.
-	//
-	// ***
 	OrganizationId *string `pulumi:"organizationId"`
 	// Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
 	// Structure is documented below.
@@ -200,8 +196,6 @@ type GcpUserAccessBindingState struct {
 	// Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by RFC 3986 Section 2.3). Should not be specified by the client during creation. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
 	Name pulumi.StringPtrInput
 	// Required. ID of the parent organization.
-	//
-	// ***
 	OrganizationId pulumi.StringPtrInput
 	// Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
 	// Structure is documented below.
@@ -221,8 +215,6 @@ type gcpUserAccessBindingArgs struct {
 	// Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
 	GroupKey string `pulumi:"groupKey"`
 	// Required. ID of the parent organization.
-	//
-	// ***
 	OrganizationId string `pulumi:"organizationId"`
 	// Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
 	// Structure is documented below.
@@ -239,8 +231,6 @@ type GcpUserAccessBindingArgs struct {
 	// Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
 	GroupKey pulumi.StringInput
 	// Required. ID of the parent organization.
-	//
-	// ***
 	OrganizationId pulumi.StringInput
 	// Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
 	// Structure is documented below.
@@ -353,8 +343,6 @@ func (o GcpUserAccessBindingOutput) Name() pulumi.StringOutput {
 }
 
 // Required. ID of the parent organization.
-//
-// ***
 func (o GcpUserAccessBindingOutput) OrganizationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GcpUserAccessBinding) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }

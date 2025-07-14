@@ -82,8 +82,6 @@ public final class NetworkEndpointGroupArgs extends com.pulumi.resources.Resourc
      * The network to which all network endpoints in the NEG belong.
      * Uses &#34;default&#34; project network if unspecified.
      * 
-     * ***
-     * 
      */
     @Import(name="network", required=true)
     private Output<String> network;
@@ -91,8 +89,6 @@ public final class NetworkEndpointGroupArgs extends com.pulumi.resources.Resourc
     /**
      * @return The network to which all network endpoints in the NEG belong.
      * Uses &#34;default&#34; project network if unspecified.
-     * 
-     * ***
      * 
      */
     public Output<String> network() {
@@ -293,8 +289,6 @@ public final class NetworkEndpointGroupArgs extends com.pulumi.resources.Resourc
          * @param network The network to which all network endpoints in the NEG belong.
          * Uses &#34;default&#34; project network if unspecified.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -306,8 +300,6 @@ public final class NetworkEndpointGroupArgs extends com.pulumi.resources.Resourc
         /**
          * @param network The network to which all network endpoints in the NEG belong.
          * Uses &#34;default&#34; project network if unspecified.
-         * 
-         * ***
          * 
          * @return builder
          * 

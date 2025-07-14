@@ -97,9 +97,6 @@ export class ControlOrganizationIntelligenceConfig extends pulumi.CustomResource
     public readonly filter!: pulumi.Output<outputs.storage.ControlOrganizationIntelligenceConfigFilter | undefined>;
     /**
      * Identifier of the GCP Organization. For GCP org, this field should be organization number.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -165,9 +162,6 @@ export interface ControlOrganizationIntelligenceConfigState {
     filter?: pulumi.Input<inputs.storage.ControlOrganizationIntelligenceConfigFilter>;
     /**
      * Identifier of the GCP Organization. For GCP org, this field should be organization number.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -196,9 +190,6 @@ export interface ControlOrganizationIntelligenceConfigArgs {
     filter?: pulumi.Input<inputs.storage.ControlOrganizationIntelligenceConfigFilter>;
     /**
      * Identifier of the GCP Organization. For GCP org, this field should be organization number.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
 }

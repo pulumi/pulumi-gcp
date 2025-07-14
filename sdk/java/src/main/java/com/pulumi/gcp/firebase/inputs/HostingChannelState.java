@@ -20,16 +20,12 @@ public final class HostingChannelState extends com.pulumi.resources.ResourceArgs
     /**
      * Required. Immutable. A unique ID within the site that identifies the channel.
      * 
-     * ***
-     * 
      */
     @Import(name="channelId")
     private @Nullable Output<String> channelId;
 
     /**
      * @return Required. Immutable. A unique ID within the site that identifies the channel.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> channelId() {
@@ -209,8 +205,6 @@ public final class HostingChannelState extends com.pulumi.resources.ResourceArgs
         /**
          * @param channelId Required. Immutable. A unique ID within the site that identifies the channel.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -221,8 +215,6 @@ public final class HostingChannelState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param channelId Required. Immutable. A unique ID within the site that identifies the channel.
-         * 
-         * ***
          * 
          * @return builder
          * 

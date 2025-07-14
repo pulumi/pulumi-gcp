@@ -37,8 +37,6 @@ public final class SecretCiphertextArgs extends com.pulumi.resources.ResourceArg
      * The full name of the CryptoKey that will be used to encrypt the provided plaintext.
      * Format: `&#39;projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}&#39;`
      * 
-     * ***
-     * 
      */
     @Import(name="cryptoKey", required=true)
     private Output<String> cryptoKey;
@@ -46,8 +44,6 @@ public final class SecretCiphertextArgs extends com.pulumi.resources.ResourceArg
     /**
      * @return The full name of the CryptoKey that will be used to encrypt the provided plaintext.
      * Format: `&#39;projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}&#39;`
-     * 
-     * ***
      * 
      */
     public Output<String> cryptoKey() {
@@ -124,8 +120,6 @@ public final class SecretCiphertextArgs extends com.pulumi.resources.ResourceArg
          * @param cryptoKey The full name of the CryptoKey that will be used to encrypt the provided plaintext.
          * Format: `&#39;projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}&#39;`
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -137,8 +131,6 @@ public final class SecretCiphertextArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param cryptoKey The full name of the CryptoKey that will be used to encrypt the provided plaintext.
          * Format: `&#39;projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}&#39;`
-         * 
-         * ***
          * 
          * @return builder
          * 

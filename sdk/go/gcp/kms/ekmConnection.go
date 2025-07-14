@@ -93,19 +93,21 @@ type EkmConnection struct {
 	// Output only. The time at which the EkmConnection was created.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if
-	// KeyManagementMode is CLOUD_KMS.
+	// Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
 	CryptoSpacePath pulumi.StringOutput `pulumi:"cryptoSpacePath"`
 	// Optional. Etag of the currently stored EkmConnection.
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL Default
-	// value: "MANUAL" Possible values: ["MANUAL", "CLOUD_KMS"]
+	// Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL
+	// Default value is `MANUAL`.
+	// Possible values are: `MANUAL`, `CLOUD_KMS`.
 	KeyManagementMode pulumi.StringPtrOutput `pulumi:"keyManagementMode"`
 	// The location for the EkmConnection.
 	// A full list of valid locations can be found by running `gcloud kms locations list`.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name for the EkmConnection.
-	Name    pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported
 	// Structure is documented below.
@@ -151,19 +153,21 @@ type ekmConnectionState struct {
 	// Output only. The time at which the EkmConnection was created.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime *string `pulumi:"createTime"`
-	// Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if
-	// KeyManagementMode is CLOUD_KMS.
+	// Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
 	CryptoSpacePath *string `pulumi:"cryptoSpacePath"`
 	// Optional. Etag of the currently stored EkmConnection.
 	Etag *string `pulumi:"etag"`
-	// Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL Default
-	// value: "MANUAL" Possible values: ["MANUAL", "CLOUD_KMS"]
+	// Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL
+	// Default value is `MANUAL`.
+	// Possible values are: `MANUAL`, `CLOUD_KMS`.
 	KeyManagementMode *string `pulumi:"keyManagementMode"`
 	// The location for the EkmConnection.
 	// A full list of valid locations can be found by running `gcloud kms locations list`.
 	Location *string `pulumi:"location"`
 	// The resource name for the EkmConnection.
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported
 	// Structure is documented below.
@@ -174,19 +178,21 @@ type EkmConnectionState struct {
 	// Output only. The time at which the EkmConnection was created.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringPtrInput
-	// Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if
-	// KeyManagementMode is CLOUD_KMS.
+	// Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
 	CryptoSpacePath pulumi.StringPtrInput
 	// Optional. Etag of the currently stored EkmConnection.
 	Etag pulumi.StringPtrInput
-	// Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL Default
-	// value: "MANUAL" Possible values: ["MANUAL", "CLOUD_KMS"]
+	// Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL
+	// Default value is `MANUAL`.
+	// Possible values are: `MANUAL`, `CLOUD_KMS`.
 	KeyManagementMode pulumi.StringPtrInput
 	// The location for the EkmConnection.
 	// A full list of valid locations can be found by running `gcloud kms locations list`.
 	Location pulumi.StringPtrInput
 	// The resource name for the EkmConnection.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported
 	// Structure is documented below.
@@ -198,19 +204,21 @@ func (EkmConnectionState) ElementType() reflect.Type {
 }
 
 type ekmConnectionArgs struct {
-	// Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if
-	// KeyManagementMode is CLOUD_KMS.
+	// Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
 	CryptoSpacePath *string `pulumi:"cryptoSpacePath"`
 	// Optional. Etag of the currently stored EkmConnection.
 	Etag *string `pulumi:"etag"`
-	// Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL Default
-	// value: "MANUAL" Possible values: ["MANUAL", "CLOUD_KMS"]
+	// Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL
+	// Default value is `MANUAL`.
+	// Possible values are: `MANUAL`, `CLOUD_KMS`.
 	KeyManagementMode *string `pulumi:"keyManagementMode"`
 	// The location for the EkmConnection.
 	// A full list of valid locations can be found by running `gcloud kms locations list`.
 	Location string `pulumi:"location"`
 	// The resource name for the EkmConnection.
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported
 	// Structure is documented below.
@@ -219,19 +227,21 @@ type ekmConnectionArgs struct {
 
 // The set of arguments for constructing a EkmConnection resource.
 type EkmConnectionArgs struct {
-	// Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if
-	// KeyManagementMode is CLOUD_KMS.
+	// Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
 	CryptoSpacePath pulumi.StringPtrInput
 	// Optional. Etag of the currently stored EkmConnection.
 	Etag pulumi.StringPtrInput
-	// Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL Default
-	// value: "MANUAL" Possible values: ["MANUAL", "CLOUD_KMS"]
+	// Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL
+	// Default value is `MANUAL`.
+	// Possible values are: `MANUAL`, `CLOUD_KMS`.
 	KeyManagementMode pulumi.StringPtrInput
 	// The location for the EkmConnection.
 	// A full list of valid locations can be found by running `gcloud kms locations list`.
 	Location pulumi.StringInput
 	// The resource name for the EkmConnection.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported
 	// Structure is documented below.
@@ -331,8 +341,7 @@ func (o EkmConnectionOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *EkmConnection) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if
-// KeyManagementMode is CLOUD_KMS.
+// Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
 func (o EkmConnectionOutput) CryptoSpacePath() pulumi.StringOutput {
 	return o.ApplyT(func(v *EkmConnection) pulumi.StringOutput { return v.CryptoSpacePath }).(pulumi.StringOutput)
 }
@@ -342,8 +351,9 @@ func (o EkmConnectionOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *EkmConnection) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL Default
-// value: "MANUAL" Possible values: ["MANUAL", "CLOUD_KMS"]
+// Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL
+// Default value is `MANUAL`.
+// Possible values are: `MANUAL`, `CLOUD_KMS`.
 func (o EkmConnectionOutput) KeyManagementMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EkmConnection) pulumi.StringPtrOutput { return v.KeyManagementMode }).(pulumi.StringPtrOutput)
 }
@@ -359,6 +369,8 @@ func (o EkmConnectionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *EkmConnection) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o EkmConnectionOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *EkmConnection) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

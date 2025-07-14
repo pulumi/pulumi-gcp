@@ -132,9 +132,6 @@ export class Instance extends pulumi.CustomResource {
      * * Must start with a letter.
      * * Must be between 1-63 characters.
      * * Must end with a number or a letter.
-     *
-     *
-     * - - -
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
@@ -306,9 +303,6 @@ export interface InstanceState {
      * * Must start with a letter.
      * * Must be between 1-63 characters.
      * * Must end with a number or a letter.
-     *
-     *
-     * - - -
      */
     instanceId?: pulumi.Input<string>;
     /**
@@ -398,9 +392,6 @@ export interface InstanceArgs {
      * * Must start with a letter.
      * * Must be between 1-63 characters.
      * * Must end with a number or a letter.
-     *
-     *
-     * - - -
      */
     instanceId: pulumi.Input<string>;
     /**

@@ -144,6 +144,10 @@ namespace Pulumi.Gcp.ManagedKafka
         [Output("patternType")]
         public Output<string> PatternType { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -240,6 +244,10 @@ namespace Pulumi.Gcp.ManagedKafka
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -309,6 +317,10 @@ namespace Pulumi.Gcp.ManagedKafka
         [Input("patternType")]
         public Input<string>? PatternType { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

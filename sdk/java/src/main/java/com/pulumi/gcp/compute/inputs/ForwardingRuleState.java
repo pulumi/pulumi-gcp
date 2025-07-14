@@ -468,8 +468,6 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
      * APIs, the forwarding rule name must be a 1-20 characters string with
      * lowercase letters and numbers and must start with a letter.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
@@ -486,8 +484,6 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
      * For Private Service Connect forwarding rules that forward traffic to Google
      * APIs, the forwarding rule name must be a 1-20 characters string with
      * lowercase letters and numbers and must start with a letter.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -1527,8 +1523,6 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
          * APIs, the forwarding rule name must be a 1-20 characters string with
          * lowercase letters and numbers and must start with a letter.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -1549,8 +1543,6 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
          * For Private Service Connect forwarding rules that forward traffic to Google
          * APIs, the forwarding rule name must be a 1-20 characters string with
          * lowercase letters and numbers and must start with a letter.
-         * 
-         * ***
          * 
          * @return builder
          * 

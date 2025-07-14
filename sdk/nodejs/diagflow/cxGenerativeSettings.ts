@@ -127,9 +127,6 @@ export class CxGenerativeSettings extends pulumi.CustomResource {
     public readonly knowledgeConnectorSettings!: pulumi.Output<outputs.diagflow.CxGenerativeSettingsKnowledgeConnectorSettings | undefined>;
     /**
      * Language for this settings.
-     *
-     *
-     * - - -
      */
     public readonly languageCode!: pulumi.Output<string>;
     /**
@@ -208,9 +205,6 @@ export interface CxGenerativeSettingsState {
     knowledgeConnectorSettings?: pulumi.Input<inputs.diagflow.CxGenerativeSettingsKnowledgeConnectorSettings>;
     /**
      * Language for this settings.
-     *
-     *
-     * - - -
      */
     languageCode?: pulumi.Input<string>;
     /**
@@ -252,9 +246,6 @@ export interface CxGenerativeSettingsArgs {
     knowledgeConnectorSettings?: pulumi.Input<inputs.diagflow.CxGenerativeSettingsKnowledgeConnectorSettings>;
     /**
      * Language for this settings.
-     *
-     *
-     * - - -
      */
     languageCode: pulumi.Input<string>;
     /**

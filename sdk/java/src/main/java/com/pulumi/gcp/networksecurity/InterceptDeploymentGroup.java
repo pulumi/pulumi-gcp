@@ -165,8 +165,6 @@ public class InterceptDeploymentGroup extends com.pulumi.resources.CustomResourc
      * The ID to use for the new deployment group, which will become the final
      * component of the deployment group&#39;s resource name.
      * 
-     * ***
-     * 
      */
     @Export(name="interceptDeploymentGroupId", refs={String.class}, tree="[0]")
     private Output<String> interceptDeploymentGroupId;
@@ -174,8 +172,6 @@ public class InterceptDeploymentGroup extends com.pulumi.resources.CustomResourc
     /**
      * @return The ID to use for the new deployment group, which will become the final
      * component of the deployment group&#39;s resource name.
-     * 
-     * ***
      * 
      */
     public Output<String> interceptDeploymentGroupId() {

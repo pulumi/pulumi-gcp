@@ -233,6 +233,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string StackType;
         public readonly string State;
         public readonly string StateDetails;
+        public readonly string UpdateStrategy;
 
         [OutputConstructor]
         private GetNetworkPeeringResult(
@@ -256,7 +257,9 @@ namespace Pulumi.Gcp.Compute
 
             string state,
 
-            string stateDetails)
+            string stateDetails,
+
+            string updateStrategy)
         {
             ExportCustomRoutes = exportCustomRoutes;
             ExportSubnetRoutesWithPublicIp = exportSubnetRoutesWithPublicIp;
@@ -269,6 +272,7 @@ namespace Pulumi.Gcp.Compute
             StackType = stackType;
             State = state;
             StateDetails = stateDetails;
+            UpdateStrategy = updateStrategy;
         }
     }
 }

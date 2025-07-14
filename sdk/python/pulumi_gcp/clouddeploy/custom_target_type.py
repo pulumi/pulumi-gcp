@@ -32,9 +32,6 @@ class CustomTargetTypeArgs:
         """
         The set of arguments for constructing a CustomTargetType resource.
         :param pulumi.Input[builtins.str] location: The location of the source.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -67,9 +64,6 @@ class CustomTargetTypeArgs:
     def location(self) -> pulumi.Input[builtins.str]:
         """
         The location of the source.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -190,9 +184,6 @@ class _CustomTargetTypeState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location of the source.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: Name of the `CustomTargetType`.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -347,9 +338,6 @@ class _CustomTargetTypeState:
     def location(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The location of the source.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -574,9 +562,6 @@ class CustomTargetType(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location of the source.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: Name of the `CustomTargetType`.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -811,9 +796,6 @@ class CustomTargetType(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location of the source.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: Name of the `CustomTargetType`.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -922,9 +904,6 @@ class CustomTargetType(pulumi.CustomResource):
     def location(self) -> pulumi.Output[builtins.str]:
         """
         The location of the source.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

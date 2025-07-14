@@ -55,8 +55,6 @@ public final class HostProjectRegistrationState extends com.pulumi.resources.Res
      * must be the same as the Google cloud project specified in the
      * host_project_registration.gcp_project field.
      * 
-     * ***
-     * 
      */
     @Import(name="hostProjectRegistrationId")
     private @Nullable Output<String> hostProjectRegistrationId;
@@ -66,8 +64,6 @@ public final class HostProjectRegistrationState extends com.pulumi.resources.Res
      * final component of the host project registration&#39;s resource name. The ID
      * must be the same as the Google cloud project specified in the
      * host_project_registration.gcp_project field.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> hostProjectRegistrationId() {
@@ -206,8 +202,6 @@ public final class HostProjectRegistrationState extends com.pulumi.resources.Res
          * must be the same as the Google cloud project specified in the
          * host_project_registration.gcp_project field.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -221,8 +215,6 @@ public final class HostProjectRegistrationState extends com.pulumi.resources.Res
          * final component of the host project registration&#39;s resource name. The ID
          * must be the same as the Google cloud project specified in the
          * host_project_registration.gcp_project field.
-         * 
-         * ***
          * 
          * @return builder
          * 

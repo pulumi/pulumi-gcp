@@ -76,8 +76,6 @@ type SourceIamPolicy struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The organization whose Cloud Security Command Center the Source
 	// lives in.
-	//
-	// ***
 	Organization pulumi.StringOutput `pulumi:"organization"`
 	PolicyData   pulumi.StringOutput `pulumi:"policyData"`
 	Source       pulumi.StringOutput `pulumi:"source"`
@@ -125,8 +123,6 @@ type sourceIamPolicyState struct {
 	Etag *string `pulumi:"etag"`
 	// The organization whose Cloud Security Command Center the Source
 	// lives in.
-	//
-	// ***
 	Organization *string `pulumi:"organization"`
 	PolicyData   *string `pulumi:"policyData"`
 	Source       *string `pulumi:"source"`
@@ -136,8 +132,6 @@ type SourceIamPolicyState struct {
 	Etag pulumi.StringPtrInput
 	// The organization whose Cloud Security Command Center the Source
 	// lives in.
-	//
-	// ***
 	Organization pulumi.StringPtrInput
 	PolicyData   pulumi.StringPtrInput
 	Source       pulumi.StringPtrInput
@@ -150,8 +144,6 @@ func (SourceIamPolicyState) ElementType() reflect.Type {
 type sourceIamPolicyArgs struct {
 	// The organization whose Cloud Security Command Center the Source
 	// lives in.
-	//
-	// ***
 	Organization string `pulumi:"organization"`
 	PolicyData   string `pulumi:"policyData"`
 	Source       string `pulumi:"source"`
@@ -161,8 +153,6 @@ type sourceIamPolicyArgs struct {
 type SourceIamPolicyArgs struct {
 	// The organization whose Cloud Security Command Center the Source
 	// lives in.
-	//
-	// ***
 	Organization pulumi.StringInput
 	PolicyData   pulumi.StringInput
 	Source       pulumi.StringInput
@@ -261,8 +251,6 @@ func (o SourceIamPolicyOutput) Etag() pulumi.StringOutput {
 
 // The organization whose Cloud Security Command Center the Source
 // lives in.
-//
-// ***
 func (o SourceIamPolicyOutput) Organization() pulumi.StringOutput {
 	return o.ApplyT(func(v *SourceIamPolicy) pulumi.StringOutput { return v.Organization }).(pulumi.StringOutput)
 }

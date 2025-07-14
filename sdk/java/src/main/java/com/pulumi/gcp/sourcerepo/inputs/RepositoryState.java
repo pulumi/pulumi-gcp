@@ -38,8 +38,6 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
      * Resource name of the repository, of the form `{{repo}}`.
      * The repo name may contain slashes. eg, `name/with/slash`
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
@@ -47,8 +45,6 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Resource name of the repository, of the form `{{repo}}`.
      * The repo name may contain slashes. eg, `name/with/slash`
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -175,8 +171,6 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
          * @param name Resource name of the repository, of the form `{{repo}}`.
          * The repo name may contain slashes. eg, `name/with/slash`
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -188,8 +182,6 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name Resource name of the repository, of the form `{{repo}}`.
          * The repo name may contain slashes. eg, `name/with/slash`
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -113,9 +113,6 @@ export class HostProjectRegistration extends pulumi.CustomResource {
      * final component of the host project registration's resource name. The ID
      * must be the same as the Google cloud project specified in the
      * host_project_registration.gcp_project field.
-     *
-     *
-     * - - -
      */
     public readonly hostProjectRegistrationId!: pulumi.Output<string>;
     /**
@@ -195,9 +192,6 @@ export interface HostProjectRegistrationState {
      * final component of the host project registration's resource name. The ID
      * must be the same as the Google cloud project specified in the
      * host_project_registration.gcp_project field.
-     *
-     *
-     * - - -
      */
     hostProjectRegistrationId?: pulumi.Input<string>;
     /**
@@ -232,9 +226,6 @@ export interface HostProjectRegistrationArgs {
      * final component of the host project registration's resource name. The ID
      * must be the same as the Google cloud project specified in the
      * host_project_registration.gcp_project field.
-     *
-     *
-     * - - -
      */
     hostProjectRegistrationId: pulumi.Input<string>;
     /**

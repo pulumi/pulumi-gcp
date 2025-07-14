@@ -208,6 +208,23 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A list of fields which should be ignored for each column in schema.
+     * **NOTE:** Right now only `dataPolicies` field is supported. We might support others in the future.
+     * 
+     */
+    @Import(name="ignoreSchemaChanges")
+    private @Nullable Output<List<String>> ignoreSchemaChanges;
+
+    /**
+     * @return A list of fields which should be ignored for each column in schema.
+     * **NOTE:** Right now only `dataPolicies` field is supported. We might support others in the future.
+     * 
+     */
+    public Optional<Output<List<String>>> ignoreSchemaChanges() {
+        return Optional.ofNullable(this.ignoreSchemaChanges);
+    }
+
+    /**
      * A mapping of labels to assign to the resource.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -497,6 +514,7 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
         this.externalCatalogTableOptions = $.externalCatalogTableOptions;
         this.externalDataConfiguration = $.externalDataConfiguration;
         this.friendlyName = $.friendlyName;
+        this.ignoreSchemaChanges = $.ignoreSchemaChanges;
         this.labels = $.labels;
         this.materializedView = $.materializedView;
         this.maxStaleness = $.maxStaleness;
@@ -778,6 +796,40 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder friendlyName(String friendlyName) {
             return friendlyName(Output.of(friendlyName));
+        }
+
+        /**
+         * @param ignoreSchemaChanges A list of fields which should be ignored for each column in schema.
+         * **NOTE:** Right now only `dataPolicies` field is supported. We might support others in the future.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ignoreSchemaChanges(@Nullable Output<List<String>> ignoreSchemaChanges) {
+            $.ignoreSchemaChanges = ignoreSchemaChanges;
+            return this;
+        }
+
+        /**
+         * @param ignoreSchemaChanges A list of fields which should be ignored for each column in schema.
+         * **NOTE:** Right now only `dataPolicies` field is supported. We might support others in the future.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ignoreSchemaChanges(List<String> ignoreSchemaChanges) {
+            return ignoreSchemaChanges(Output.of(ignoreSchemaChanges));
+        }
+
+        /**
+         * @param ignoreSchemaChanges A list of fields which should be ignored for each column in schema.
+         * **NOTE:** Right now only `dataPolicies` field is supported. We might support others in the future.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ignoreSchemaChanges(String... ignoreSchemaChanges) {
+            return ignoreSchemaChanges(List.of(ignoreSchemaChanges));
         }
 
         /**

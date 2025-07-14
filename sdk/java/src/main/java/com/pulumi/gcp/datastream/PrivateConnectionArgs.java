@@ -72,16 +72,12 @@ public final class PrivateConnectionArgs extends com.pulumi.resources.ResourceAr
     /**
      * The name of the location this private connection is located in.
      * 
-     * ***
-     * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
      * @return The name of the location this private connection is located in.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {
@@ -259,8 +255,6 @@ public final class PrivateConnectionArgs extends com.pulumi.resources.ResourceAr
         /**
          * @param location The name of the location this private connection is located in.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -271,8 +265,6 @@ public final class PrivateConnectionArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param location The name of the location this private connection is located in.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -142,8 +142,6 @@ public class RowAccessPolicy extends com.pulumi.resources.CustomResource {
      * nullable_field is not NULL
      * numeric_field BETWEEN 1.0 AND 5.0
      * 
-     * ***
-     * 
      */
     @Export(name="filterPredicate", refs={String.class}, tree="[0]")
     private Output<String> filterPredicate;
@@ -158,8 +156,6 @@ public class RowAccessPolicy extends com.pulumi.resources.CustomResource {
      * date_field = CAST(&#39;2019-9-27&#39; as DATE)
      * nullable_field is not NULL
      * numeric_field BETWEEN 1.0 AND 5.0
-     * 
-     * ***
      * 
      */
     public Output<String> filterPredicate() {

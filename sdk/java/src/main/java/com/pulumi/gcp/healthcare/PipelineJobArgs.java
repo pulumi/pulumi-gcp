@@ -41,16 +41,12 @@ public final class PipelineJobArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Healthcare Dataset under which the Pipeline Job is to run
      * 
-     * ***
-     * 
      */
     @Import(name="dataset", required=true)
     private Output<String> dataset;
 
     /**
      * @return Healthcare Dataset under which the Pipeline Job is to run
-     * 
-     * ***
      * 
      */
     public Output<String> dataset() {
@@ -232,8 +228,6 @@ public final class PipelineJobArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param dataset Healthcare Dataset under which the Pipeline Job is to run
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -244,8 +238,6 @@ public final class PipelineJobArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dataset Healthcare Dataset under which the Pipeline Job is to run
-         * 
-         * ***
          * 
          * @return builder
          * 

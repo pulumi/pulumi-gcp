@@ -444,8 +444,6 @@ type VpcFlowLogsConfig struct {
 	// Output only. The time the config was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Required. ID of the `VpcFlowLogsConfig`.
-	//
-	// ***
 	VpcFlowLogsConfigId pulumi.StringOutput `pulumi:"vpcFlowLogsConfigId"`
 	// Traffic will be logged from the VPN Tunnel. Format: projects/{project_id}/regions/{region}/vpnTunnels/{name}
 	VpnTunnel pulumi.StringPtrOutput `pulumi:"vpnTunnel"`
@@ -541,8 +539,6 @@ type vpcFlowLogsConfigState struct {
 	// Output only. The time the config was updated.
 	UpdateTime *string `pulumi:"updateTime"`
 	// Required. ID of the `VpcFlowLogsConfig`.
-	//
-	// ***
 	VpcFlowLogsConfigId *string `pulumi:"vpcFlowLogsConfigId"`
 	// Traffic will be logged from the VPN Tunnel. Format: projects/{project_id}/regions/{region}/vpnTunnels/{name}
 	VpnTunnel *string `pulumi:"vpnTunnel"`
@@ -598,8 +594,6 @@ type VpcFlowLogsConfigState struct {
 	// Output only. The time the config was updated.
 	UpdateTime pulumi.StringPtrInput
 	// Required. ID of the `VpcFlowLogsConfig`.
-	//
-	// ***
 	VpcFlowLogsConfigId pulumi.StringPtrInput
 	// Traffic will be logged from the VPN Tunnel. Format: projects/{project_id}/regions/{region}/vpnTunnels/{name}
 	VpnTunnel pulumi.StringPtrInput
@@ -648,8 +642,6 @@ type vpcFlowLogsConfigArgs struct {
 	// is ENABLED. When creating a new configuration, it must be enabled.   Possible
 	State *string `pulumi:"state"`
 	// Required. ID of the `VpcFlowLogsConfig`.
-	//
-	// ***
 	VpcFlowLogsConfigId string `pulumi:"vpcFlowLogsConfigId"`
 	// Traffic will be logged from the VPN Tunnel. Format: projects/{project_id}/regions/{region}/vpnTunnels/{name}
 	VpnTunnel *string `pulumi:"vpnTunnel"`
@@ -695,8 +687,6 @@ type VpcFlowLogsConfigArgs struct {
 	// is ENABLED. When creating a new configuration, it must be enabled.   Possible
 	State pulumi.StringPtrInput
 	// Required. ID of the `VpcFlowLogsConfig`.
-	//
-	// ***
 	VpcFlowLogsConfigId pulumi.StringInput
 	// Traffic will be logged from the VPN Tunnel. Format: projects/{project_id}/regions/{region}/vpnTunnels/{name}
 	VpnTunnel pulumi.StringPtrInput
@@ -886,8 +876,6 @@ func (o VpcFlowLogsConfigOutput) UpdateTime() pulumi.StringOutput {
 }
 
 // Required. ID of the `VpcFlowLogsConfig`.
-//
-// ***
 func (o VpcFlowLogsConfigOutput) VpcFlowLogsConfigId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcFlowLogsConfig) pulumi.StringOutput { return v.VpcFlowLogsConfigId }).(pulumi.StringOutput)
 }

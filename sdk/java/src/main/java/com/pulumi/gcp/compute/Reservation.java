@@ -183,9 +183,19 @@ public class Reservation extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }
@@ -205,6 +215,7 @@ public class Reservation extends com.pulumi.resources.CustomResource {
     }
     /**
      * The share setting for reservations.
+     * Structure is documented below.
      * 
      */
     @Export(name="shareSettings", refs={ReservationShareSettings.class}, tree="[0]")
@@ -212,6 +223,7 @@ public class Reservation extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The share setting for reservations.
+     * Structure is documented below.
      * 
      */
     public Output<ReservationShareSettings> shareSettings() {
@@ -234,16 +246,18 @@ public class Reservation extends com.pulumi.resources.CustomResource {
         return this.specificReservation;
     }
     /**
-     * When set to true, only VMs that target this reservation by name can consume this reservation. Otherwise, it can be
-     * consumed by VMs with affinity for any reservation. Defaults to false.
+     * When set to true, only VMs that target this reservation by name can
+     * consume this reservation. Otherwise, it can be consumed by VMs with
+     * affinity for any reservation. Defaults to false.
      * 
      */
     @Export(name="specificReservationRequired", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> specificReservationRequired;
 
     /**
-     * @return When set to true, only VMs that target this reservation by name can consume this reservation. Otherwise, it can be
-     * consumed by VMs with affinity for any reservation. Defaults to false.
+     * @return When set to true, only VMs that target this reservation by name can
+     * consume this reservation. Otherwise, it can be consumed by VMs with
+     * affinity for any reservation. Defaults to false.
      * 
      */
     public Output<Optional<Boolean>> specificReservationRequired() {

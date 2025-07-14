@@ -106,9 +106,6 @@ namespace Pulumi.Gcp.Gemini
 
         /// <summary>
         /// Id of the Logging Setting.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("loggingSettingId")]
         public Output<string> LoggingSettingId { get; private set; } = null!;
@@ -225,9 +222,6 @@ namespace Pulumi.Gcp.Gemini
 
         /// <summary>
         /// Id of the Logging Setting.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("loggingSettingId", required: true)]
         public Input<string> LoggingSettingId { get; set; } = null!;
@@ -303,9 +297,6 @@ namespace Pulumi.Gcp.Gemini
 
         /// <summary>
         /// Id of the Logging Setting.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("loggingSettingId")]
         public Input<string>? LoggingSettingId { get; set; }

@@ -28,9 +28,6 @@ class ApiArgs:
         """
         The set of arguments for constructing a Api resource.
         :param pulumi.Input[builtins.str] api_id: Identifier to assign to the API. Must be unique within scope of the parent resource(project)
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] display_name: A user-visible name for the API.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user-provided metadata.
                
@@ -56,9 +53,6 @@ class ApiArgs:
     def api_id(self) -> pulumi.Input[builtins.str]:
         """
         Identifier to assign to the API. Must be unique within scope of the parent resource(project)
-
-
-        - - -
         """
         return pulumi.get(self, "api_id")
 
@@ -135,9 +129,6 @@ class _ApiState:
         """
         Input properties used for looking up and filtering Api resources.
         :param pulumi.Input[builtins.str] api_id: Identifier to assign to the API. Must be unique within scope of the parent resource(project)
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] create_time: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[builtins.str] display_name: A user-visible name for the API.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -177,9 +168,6 @@ class _ApiState:
     def api_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Identifier to assign to the API. Must be unique within scope of the parent resource(project)
-
-
-        - - -
         """
         return pulumi.get(self, "api_id")
 
@@ -349,9 +337,6 @@ class Api(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] api_id: Identifier to assign to the API. Must be unique within scope of the parent resource(project)
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] display_name: A user-visible name for the API.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user-provided metadata.
                
@@ -481,9 +466,6 @@ class Api(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] api_id: Identifier to assign to the API. Must be unique within scope of the parent resource(project)
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] create_time: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[builtins.str] display_name: A user-visible name for the API.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -519,9 +501,6 @@ class Api(pulumi.CustomResource):
     def api_id(self) -> pulumi.Output[builtins.str]:
         """
         Identifier to assign to the API. Must be unique within scope of the parent resource(project)
-
-
-        - - -
         """
         return pulumi.get(self, "api_id")
 

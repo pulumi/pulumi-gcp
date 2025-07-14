@@ -114,8 +114,6 @@ public final class ServiceAttachmentArgs extends com.pulumi.resources.ResourceAr
      * address data in TCP connections that traverse proxies on their way to
      * destination servers.
      * 
-     * ***
-     * 
      */
     @Import(name="enableProxyProtocol", required=true)
     private Output<Boolean> enableProxyProtocol;
@@ -124,8 +122,6 @@ public final class ServiceAttachmentArgs extends com.pulumi.resources.ResourceAr
      * @return If true, enable the proxy protocol which is for supplying client TCP/IP
      * address data in TCP connections that traverse proxies on their way to
      * destination servers.
-     * 
-     * ***
      * 
      */
     public Output<Boolean> enableProxyProtocol() {
@@ -479,8 +475,6 @@ public final class ServiceAttachmentArgs extends com.pulumi.resources.ResourceAr
          * address data in TCP connections that traverse proxies on their way to
          * destination servers.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -493,8 +487,6 @@ public final class ServiceAttachmentArgs extends com.pulumi.resources.ResourceAr
          * @param enableProxyProtocol If true, enable the proxy protocol which is for supplying client TCP/IP
          * address data in TCP connections that traverse proxies on their way to
          * destination servers.
-         * 
-         * ***
          * 
          * @return builder
          * 

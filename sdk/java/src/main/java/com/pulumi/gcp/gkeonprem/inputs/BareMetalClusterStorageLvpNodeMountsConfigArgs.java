@@ -32,16 +32,12 @@ public final class BareMetalClusterStorageLvpNodeMountsConfigArgs extends com.pu
     /**
      * The StorageClass name that PVs will be created with.
      * 
-     * ***
-     * 
      */
     @Import(name="storageClass", required=true)
     private Output<String> storageClass;
 
     /**
      * @return The StorageClass name that PVs will be created with.
-     * 
-     * ***
      * 
      */
     public Output<String> storageClass() {
@@ -97,8 +93,6 @@ public final class BareMetalClusterStorageLvpNodeMountsConfigArgs extends com.pu
         /**
          * @param storageClass The StorageClass name that PVs will be created with.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -109,8 +103,6 @@ public final class BareMetalClusterStorageLvpNodeMountsConfigArgs extends com.pu
 
         /**
          * @param storageClass The StorageClass name that PVs will be created with.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -245,16 +245,12 @@ public class TrustConfig extends com.pulumi.resources.CustomResource {
     /**
      * The trust config location.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return The trust config location.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

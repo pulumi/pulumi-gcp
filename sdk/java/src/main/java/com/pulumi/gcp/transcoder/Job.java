@@ -1055,16 +1055,12 @@ public class Job extends com.pulumi.resources.CustomResource {
     /**
      * The location of the transcoding job resource.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return The location of the transcoding job resource.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

@@ -69,8 +69,6 @@ class SQuotaPreferenceQuotaConfig(dict):
                Granted quota value.
         :param builtins.str request_origin: (Output)
                The origin of the quota preference request.
-               
-               - - -
         :param builtins.str state_detail: (Output)
                Optional details about the state of this quota preference.
         :param builtins.str trace_id: (Output)
@@ -120,8 +118,6 @@ class SQuotaPreferenceQuotaConfig(dict):
         """
         (Output)
         The origin of the quota preference request.
-
-        - - -
         """
         return pulumi.get(self, "request_origin")
 

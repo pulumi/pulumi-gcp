@@ -40,16 +40,12 @@ public final class BackupPlanAssociationArgs extends com.pulumi.resources.Resour
     /**
      * The id of backupplan association
      * 
-     * ***
-     * 
      */
     @Import(name="backupPlanAssociationId", required=true)
     private Output<String> backupPlanAssociationId;
 
     /**
      * @return The id of backupplan association
-     * 
-     * ***
      * 
      */
     public Output<String> backupPlanAssociationId() {
@@ -179,8 +175,6 @@ public final class BackupPlanAssociationArgs extends com.pulumi.resources.Resour
         /**
          * @param backupPlanAssociationId The id of backupplan association
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -191,8 +185,6 @@ public final class BackupPlanAssociationArgs extends com.pulumi.resources.Resour
 
         /**
          * @param backupPlanAssociationId The id of backupplan association
-         * 
-         * ***
          * 
          * @return builder
          * 

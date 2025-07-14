@@ -36,8 +36,6 @@ public final class DatabaseHiveOptionsArgs extends com.pulumi.resources.Resource
      * list of&#34;key&#34;: value pairs.
      * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
-     * ***
-     * 
      */
     @Import(name="parameters")
     private @Nullable Output<Map<String,String>> parameters;
@@ -46,8 +44,6 @@ public final class DatabaseHiveOptionsArgs extends com.pulumi.resources.Resource
      * @return Stores user supplied Hive database parameters. An object containing a
      * list of&#34;key&#34;: value pairs.
      * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
-     * 
-     * ***
      * 
      */
     public Optional<Output<Map<String,String>>> parameters() {
@@ -105,8 +101,6 @@ public final class DatabaseHiveOptionsArgs extends com.pulumi.resources.Resource
          * list of&#34;key&#34;: value pairs.
          * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -119,8 +113,6 @@ public final class DatabaseHiveOptionsArgs extends com.pulumi.resources.Resource
          * @param parameters Stores user supplied Hive database parameters. An object containing a
          * list of&#34;key&#34;: value pairs.
          * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
-         * 
-         * ***
          * 
          * @return builder
          * 

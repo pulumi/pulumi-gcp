@@ -28,9 +28,6 @@ class LogicalViewArgs:
         """
         The set of arguments for constructing a LogicalView resource.
         :param pulumi.Input[builtins.str] logical_view_id: The unique name of the logical view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] query: The logical view's select query.
         :param pulumi.Input[builtins.bool] deletion_protection: Set to true to make the logical view protected against deletion.
         :param pulumi.Input[builtins.str] instance: The name of the instance to create the logical view within.
@@ -51,9 +48,6 @@ class LogicalViewArgs:
     def logical_view_id(self) -> pulumi.Input[builtins.str]:
         """
         The unique name of the logical view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-
-
-        - - -
         """
         return pulumi.get(self, "logical_view_id")
 
@@ -125,9 +119,6 @@ class _LogicalViewState:
         :param pulumi.Input[builtins.bool] deletion_protection: Set to true to make the logical view protected against deletion.
         :param pulumi.Input[builtins.str] instance: The name of the instance to create the logical view within.
         :param pulumi.Input[builtins.str] logical_view_id: The unique name of the logical view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The unique name of the requested logical view. Values are of the form `projects/<project>/instances/<instance>/logicalViews/<logicalViewId>`.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -175,9 +166,6 @@ class _LogicalViewState:
     def logical_view_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The unique name of the logical view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-
-
-        - - -
         """
         return pulumi.get(self, "logical_view_id")
 
@@ -304,9 +292,6 @@ class LogicalView(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] deletion_protection: Set to true to make the logical view protected against deletion.
         :param pulumi.Input[builtins.str] instance: The name of the instance to create the logical view within.
         :param pulumi.Input[builtins.str] logical_view_id: The unique name of the logical view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] query: The logical view's select query.
@@ -446,9 +431,6 @@ class LogicalView(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] deletion_protection: Set to true to make the logical view protected against deletion.
         :param pulumi.Input[builtins.str] instance: The name of the instance to create the logical view within.
         :param pulumi.Input[builtins.str] logical_view_id: The unique name of the logical view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The unique name of the requested logical view. Values are of the form `projects/<project>/instances/<instance>/logicalViews/<logicalViewId>`.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -487,9 +469,6 @@ class LogicalView(pulumi.CustomResource):
     def logical_view_id(self) -> pulumi.Output[builtins.str]:
         """
         The unique name of the logical view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-
-
-        - - -
         """
         return pulumi.get(self, "logical_view_id")
 

@@ -27,9 +27,6 @@ class SitemapArgs:
         """
         The set of arguments for constructing a Sitemap resource.
         :param pulumi.Input[builtins.str] data_store_id: The unique id of the data store.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: The geographic location where the data store should reside. The value can
                only be one of "global", "us" and "eu".
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -48,9 +45,6 @@ class SitemapArgs:
     def data_store_id(self) -> pulumi.Input[builtins.str]:
         """
         The unique id of the data store.
-
-
-        - - -
         """
         return pulumi.get(self, "data_store_id")
 
@@ -111,9 +105,6 @@ class _SitemapState:
         Input properties used for looking up and filtering Sitemap resources.
         :param pulumi.Input[builtins.str] create_time: Timestamp when the sitemap was created.
         :param pulumi.Input[builtins.str] data_store_id: The unique id of the data store.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: The geographic location where the data store should reside. The value can
                only be one of "global", "us" and "eu".
         :param pulumi.Input[builtins.str] name: The unique full resource name of the sitemap. Values are of the format
@@ -157,9 +148,6 @@ class _SitemapState:
     def data_store_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The unique id of the data store.
-
-
-        - - -
         """
         return pulumi.get(self, "data_store_id")
 
@@ -290,9 +278,6 @@ class Sitemap(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] data_store_id: The unique id of the data store.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: The geographic location where the data store should reside. The value can
                only be one of "global", "us" and "eu".
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -413,9 +398,6 @@ class Sitemap(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] create_time: Timestamp when the sitemap was created.
         :param pulumi.Input[builtins.str] data_store_id: The unique id of the data store.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: The geographic location where the data store should reside. The value can
                only be one of "global", "us" and "eu".
         :param pulumi.Input[builtins.str] name: The unique full resource name of the sitemap. Values are of the format
@@ -453,9 +435,6 @@ class Sitemap(pulumi.CustomResource):
     def data_store_id(self) -> pulumi.Output[builtins.str]:
         """
         The unique id of the data store.
-
-
-        - - -
         """
         return pulumi.get(self, "data_store_id")
 

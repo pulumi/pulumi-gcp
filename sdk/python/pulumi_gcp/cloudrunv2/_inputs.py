@@ -1961,8 +1961,6 @@ if not MYPY:
         accelerator: pulumi.Input[builtins.str]
         """
         The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/jobs/gpu for configuring GPU.
-
-        - - -
         """
 elif False:
     JobTemplateTemplateNodeSelectorArgsDict: TypeAlias = Mapping[str, Any]
@@ -1973,8 +1971,6 @@ class JobTemplateTemplateNodeSelectorArgs:
                  accelerator: pulumi.Input[builtins.str]):
         """
         :param pulumi.Input[builtins.str] accelerator: The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/jobs/gpu for configuring GPU.
-               
-               - - -
         """
         pulumi.set(__self__, "accelerator", accelerator)
 
@@ -1983,8 +1979,6 @@ class JobTemplateTemplateNodeSelectorArgs:
     def accelerator(self) -> pulumi.Input[builtins.str]:
         """
         The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/jobs/gpu for configuring GPU.
-
-        - - -
         """
         return pulumi.get(self, "accelerator")
 
@@ -5386,8 +5380,6 @@ if not MYPY:
         accelerator: pulumi.Input[builtins.str]
         """
         The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/services/gpu for configuring GPU.
-
-        - - -
         """
 elif False:
     ServiceTemplateNodeSelectorArgsDict: TypeAlias = Mapping[str, Any]
@@ -5398,8 +5390,6 @@ class ServiceTemplateNodeSelectorArgs:
                  accelerator: pulumi.Input[builtins.str]):
         """
         :param pulumi.Input[builtins.str] accelerator: The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/services/gpu for configuring GPU.
-               
-               - - -
         """
         pulumi.set(__self__, "accelerator", accelerator)
 
@@ -5408,8 +5398,6 @@ class ServiceTemplateNodeSelectorArgs:
     def accelerator(self) -> pulumi.Input[builtins.str]:
         """
         The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/services/gpu for configuring GPU.
-
-        - - -
         """
         return pulumi.get(self, "accelerator")
 
@@ -7964,8 +7952,6 @@ if not MYPY:
         accelerator: pulumi.Input[builtins.str]
         """
         The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/services/gpu for configuring GPU.
-
-        - - -
         """
 elif False:
     WorkerPoolTemplateNodeSelectorArgsDict: TypeAlias = Mapping[str, Any]
@@ -7976,8 +7962,6 @@ class WorkerPoolTemplateNodeSelectorArgs:
                  accelerator: pulumi.Input[builtins.str]):
         """
         :param pulumi.Input[builtins.str] accelerator: The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/services/gpu for configuring GPU.
-               
-               - - -
         """
         pulumi.set(__self__, "accelerator", accelerator)
 
@@ -7986,8 +7970,6 @@ class WorkerPoolTemplateNodeSelectorArgs:
     def accelerator(self) -> pulumi.Input[builtins.str]:
         """
         The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/services/gpu for configuring GPU.
-
-        - - -
         """
         return pulumi.get(self, "accelerator")
 

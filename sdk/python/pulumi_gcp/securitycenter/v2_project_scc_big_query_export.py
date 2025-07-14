@@ -29,9 +29,6 @@ class V2ProjectSccBigQueryExportArgs:
         """
         The set of arguments for constructing a V2ProjectSccBigQueryExport resource.
         :param pulumi.Input[builtins.str] big_query_export_id: This must be unique within the organization.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] dataset: The dataset to write findings' updates to.
                Its format is "projects/[projectId]/datasets/[bigquery_dataset_id]".
                BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
@@ -76,9 +73,6 @@ class V2ProjectSccBigQueryExportArgs:
     def big_query_export_id(self) -> pulumi.Input[builtins.str]:
         """
         This must be unique within the organization.
-
-
-        - - -
         """
         return pulumi.get(self, "big_query_export_id")
 
@@ -185,9 +179,6 @@ class _V2ProjectSccBigQueryExportState:
         """
         Input properties used for looking up and filtering V2ProjectSccBigQueryExport resources.
         :param pulumi.Input[builtins.str] big_query_export_id: This must be unique within the organization.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] create_time: The time at which the BigQuery export was created. This field is set by the server and will be ignored if provided on export on creation.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -255,9 +246,6 @@ class _V2ProjectSccBigQueryExportState:
     def big_query_export_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         This must be unique within the organization.
-
-
-        - - -
         """
         return pulumi.get(self, "big_query_export_id")
 
@@ -470,9 +458,6 @@ class V2ProjectSccBigQueryExport(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] big_query_export_id: This must be unique within the organization.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] dataset: The dataset to write findings' updates to.
                Its format is "projects/[projectId]/datasets/[bigquery_dataset_id]".
                BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
@@ -618,9 +603,6 @@ class V2ProjectSccBigQueryExport(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] big_query_export_id: This must be unique within the organization.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] create_time: The time at which the BigQuery export was created. This field is set by the server and will be ignored if provided on export on creation.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -682,9 +664,6 @@ class V2ProjectSccBigQueryExport(pulumi.CustomResource):
     def big_query_export_id(self) -> pulumi.Output[builtins.str]:
         """
         This must be unique within the organization.
-
-
-        - - -
         """
         return pulumi.get(self, "big_query_export_id")
 

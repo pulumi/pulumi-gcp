@@ -187,20 +187,22 @@ type Cluster struct {
 	// Configuration properties for a Kafka cluster deployed to Google Cloud Platform.
 	// Structure is documented below.
 	GcpConfig ClusterGcpConfigOutput `pulumi:"gcpConfig"`
-	// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-),
-	// underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase
-	// characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
-	// configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+	// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the cluster. Structured like: `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID`.
-	Name    pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Defines rebalancing behavior of a Kafka cluster.
+	// Structure is documented below.
 	RebalanceConfig ClusterRebalanceConfigPtrOutput `pulumi:"rebalanceConfig"`
 	// The current state of the cluster. Possible values: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -267,20 +269,22 @@ type clusterState struct {
 	// Configuration properties for a Kafka cluster deployed to Google Cloud Platform.
 	// Structure is documented below.
 	GcpConfig *ClusterGcpConfig `pulumi:"gcpConfig"`
-	// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-),
-	// underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase
-	// characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
-	// configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+	// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
 	Location *string `pulumi:"location"`
 	// The name of the cluster. Structured like: `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID`.
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Defines rebalancing behavior of a Kafka cluster.
+	// Structure is documented below.
 	RebalanceConfig *ClusterRebalanceConfig `pulumi:"rebalanceConfig"`
 	// The current state of the cluster. Possible values: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`.
 	State *string `pulumi:"state"`
@@ -301,20 +305,22 @@ type ClusterState struct {
 	// Configuration properties for a Kafka cluster deployed to Google Cloud Platform.
 	// Structure is documented below.
 	GcpConfig ClusterGcpConfigPtrInput
-	// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-),
-	// underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase
-	// characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
-	// configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+	// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
 	Location pulumi.StringPtrInput
 	// The name of the cluster. Structured like: `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID`.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Defines rebalancing behavior of a Kafka cluster.
+	// Structure is documented below.
 	RebalanceConfig ClusterRebalanceConfigPtrInput
 	// The current state of the cluster. Possible values: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`.
 	State pulumi.StringPtrInput
@@ -335,15 +341,17 @@ type clusterArgs struct {
 	// Configuration properties for a Kafka cluster deployed to Google Cloud Platform.
 	// Structure is documented below.
 	GcpConfig ClusterGcpConfig `pulumi:"gcpConfig"`
-	// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-),
-	// underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase
-	// characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
-	// configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+	// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
-	Location string  `pulumi:"location"`
-	Project  *string `pulumi:"project"`
+	Location string `pulumi:"location"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// Defines rebalancing behavior of a Kafka cluster.
+	// Structure is documented below.
 	RebalanceConfig *ClusterRebalanceConfig `pulumi:"rebalanceConfig"`
 }
 
@@ -357,15 +365,17 @@ type ClusterArgs struct {
 	// Configuration properties for a Kafka cluster deployed to Google Cloud Platform.
 	// Structure is documented below.
 	GcpConfig ClusterGcpConfigInput
-	// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-),
-	// underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase
-	// characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
-	// configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+	// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
 	Location pulumi.StringInput
-	Project  pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// Defines rebalancing behavior of a Kafka cluster.
+	// Structure is documented below.
 	RebalanceConfig ClusterRebalanceConfigPtrInput
 }
 
@@ -483,10 +493,9 @@ func (o ClusterOutput) GcpConfig() ClusterGcpConfigOutput {
 	return o.ApplyT(func(v *Cluster) ClusterGcpConfigOutput { return v.GcpConfig }).(ClusterGcpConfigOutput)
 }
 
-// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-),
-// underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase
-// characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
-// configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o ClusterOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -501,6 +510,8 @@ func (o ClusterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o ClusterOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -512,6 +523,7 @@ func (o ClusterOutput) PulumiLabels() pulumi.StringMapOutput {
 }
 
 // Defines rebalancing behavior of a Kafka cluster.
+// Structure is documented below.
 func (o ClusterOutput) RebalanceConfig() ClusterRebalanceConfigPtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterRebalanceConfigPtrOutput { return v.RebalanceConfig }).(ClusterRebalanceConfigPtrOutput)
 }

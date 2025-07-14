@@ -1407,9 +1407,6 @@ namespace Pulumi.Gcp.Compute
         /// For Private Service Connect forwarding rules that forward traffic to Google
         /// APIs, the forwarding rule name must be a 1-20 characters string with
         /// lowercase letters and numbers and must start with a letter.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -1830,9 +1827,6 @@ namespace Pulumi.Gcp.Compute
         /// For Private Service Connect forwarding rules that forward traffic to Google
         /// APIs, the forwarding rule name must be a 1-20 characters string with
         /// lowercase letters and numbers and must start with a letter.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -2231,9 +2225,6 @@ namespace Pulumi.Gcp.Compute
         /// For Private Service Connect forwarding rules that forward traffic to Google
         /// APIs, the forwarding rule name must be a 1-20 characters string with
         /// lowercase letters and numbers and must start with a letter.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

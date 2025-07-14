@@ -13,16 +13,12 @@ public final class ReferenceListEntry {
     /**
      * @return Required. The value of the entry. Maximum length is 512 characters.
      * 
-     * ***
-     * 
      */
     private String value;
 
     private ReferenceListEntry() {}
     /**
      * @return Required. The value of the entry. Maximum length is 512 characters.
-     * 
-     * ***
      * 
      */
     public String value() {

@@ -155,9 +155,6 @@ namespace Pulumi.Gcp.ParameterManager
 
         /// <summary>
         /// Version ID of the Parameter Version Resource. This must be unique within the Parameter.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("parameterVersionId")]
         public Output<string> ParameterVersionId { get; private set; } = null!;
@@ -249,9 +246,6 @@ namespace Pulumi.Gcp.ParameterManager
 
         /// <summary>
         /// Version ID of the Parameter Version Resource. This must be unique within the Parameter.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("parameterVersionId", required: true)]
         public Input<string> ParameterVersionId { get; set; } = null!;
@@ -315,9 +309,6 @@ namespace Pulumi.Gcp.ParameterManager
 
         /// <summary>
         /// Version ID of the Parameter Version Resource. This must be unique within the Parameter.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("parameterVersionId")]
         public Input<string>? ParameterVersionId { get; set; }

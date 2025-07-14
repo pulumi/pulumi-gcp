@@ -27,9 +27,6 @@ class BackendBucketSignedUrlKeyArgs:
         """
         The set of arguments for constructing a BackendBucketSignedUrlKey resource.
         :param pulumi.Input[builtins.str] backend_bucket: The backend bucket this signed URL key belongs.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] key_value: 128-bit key value used for signing the URL. The key value must be a
                valid RFC 4648 Section 5 base64url encoded string.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -49,9 +46,6 @@ class BackendBucketSignedUrlKeyArgs:
     def backend_bucket(self) -> pulumi.Input[builtins.str]:
         """
         The backend bucket this signed URL key belongs.
-
-
-        - - -
         """
         return pulumi.get(self, "backend_bucket")
 
@@ -109,9 +103,6 @@ class _BackendBucketSignedUrlKeyState:
         """
         Input properties used for looking up and filtering BackendBucketSignedUrlKey resources.
         :param pulumi.Input[builtins.str] backend_bucket: The backend bucket this signed URL key belongs.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] key_value: 128-bit key value used for signing the URL. The key value must be a
                valid RFC 4648 Section 5 base64url encoded string.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -133,9 +124,6 @@ class _BackendBucketSignedUrlKeyState:
     def backend_bucket(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The backend bucket this signed URL key belongs.
-
-
-        - - -
         """
         return pulumi.get(self, "backend_bucket")
 
@@ -234,9 +222,6 @@ class BackendBucketSignedUrlKey(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] backend_bucket: The backend bucket this signed URL key belongs.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] key_value: 128-bit key value used for signing the URL. The key value must be a
                valid RFC 4648 Section 5 base64url encoded string.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -347,9 +332,6 @@ class BackendBucketSignedUrlKey(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] backend_bucket: The backend bucket this signed URL key belongs.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] key_value: 128-bit key value used for signing the URL. The key value must be a
                valid RFC 4648 Section 5 base64url encoded string.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -372,9 +354,6 @@ class BackendBucketSignedUrlKey(pulumi.CustomResource):
     def backend_bucket(self) -> pulumi.Output[builtins.str]:
         """
         The backend bucket this signed URL key belongs.
-
-
-        - - -
         """
         return pulumi.get(self, "backend_bucket")
 

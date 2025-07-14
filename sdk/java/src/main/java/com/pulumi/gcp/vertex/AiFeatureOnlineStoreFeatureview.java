@@ -788,16 +788,12 @@ public class AiFeatureOnlineStoreFeatureview extends com.pulumi.resources.Custom
     /**
      * The region for the resource. It should be the same as the featureonlinestore region.
      * 
-     * ***
-     * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
      * @return The region for the resource. It should be the same as the featureonlinestore region.
-     * 
-     * ***
      * 
      */
     public Output<String> region() {

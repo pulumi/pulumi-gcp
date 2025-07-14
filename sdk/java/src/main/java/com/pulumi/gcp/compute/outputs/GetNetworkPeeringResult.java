@@ -26,6 +26,7 @@ public final class GetNetworkPeeringResult {
     private String stackType;
     private String state;
     private String stateDetails;
+    private String updateStrategy;
 
     private GetNetworkPeeringResult() {}
     public Boolean exportCustomRoutes() {
@@ -65,6 +66,9 @@ public final class GetNetworkPeeringResult {
     public String stateDetails() {
         return this.stateDetails;
     }
+    public String updateStrategy() {
+        return this.updateStrategy;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -86,6 +90,7 @@ public final class GetNetworkPeeringResult {
         private String stackType;
         private String state;
         private String stateDetails;
+        private String updateStrategy;
         public Builder() {}
         public Builder(GetNetworkPeeringResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -100,6 +105,7 @@ public final class GetNetworkPeeringResult {
     	      this.stackType = defaults.stackType;
     	      this.state = defaults.state;
     	      this.stateDetails = defaults.stateDetails;
+    	      this.updateStrategy = defaults.updateStrategy;
         }
 
         @CustomType.Setter
@@ -190,6 +196,14 @@ public final class GetNetworkPeeringResult {
             this.stateDetails = stateDetails;
             return this;
         }
+        @CustomType.Setter
+        public Builder updateStrategy(String updateStrategy) {
+            if (updateStrategy == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPeeringResult", "updateStrategy");
+            }
+            this.updateStrategy = updateStrategy;
+            return this;
+        }
         public GetNetworkPeeringResult build() {
             final var _resultValue = new GetNetworkPeeringResult();
             _resultValue.exportCustomRoutes = exportCustomRoutes;
@@ -203,6 +217,7 @@ public final class GetNetworkPeeringResult {
             _resultValue.stackType = stackType;
             _resultValue.state = state;
             _resultValue.stateDetails = stateDetails;
+            _resultValue.updateStrategy = updateStrategy;
             return _resultValue;
         }
     }

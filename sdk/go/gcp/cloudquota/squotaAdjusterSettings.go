@@ -69,8 +69,6 @@ type SQuotaAdjusterSettings struct {
 	// The value will be empty when `enablement` is specified on this resource container.
 	InheritedFrom pulumi.StringOutput `pulumi:"inheritedFrom"`
 	// The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
-	//
-	// ***
 	Parent pulumi.StringOutput `pulumi:"parent"`
 }
 
@@ -121,8 +119,6 @@ type squotaAdjusterSettingsState struct {
 	// The value will be empty when `enablement` is specified on this resource container.
 	InheritedFrom *string `pulumi:"inheritedFrom"`
 	// The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
-	//
-	// ***
 	Parent *string `pulumi:"parent"`
 }
 
@@ -141,8 +137,6 @@ type SQuotaAdjusterSettingsState struct {
 	// The value will be empty when `enablement` is specified on this resource container.
 	InheritedFrom pulumi.StringPtrInput
 	// The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
-	//
-	// ***
 	Parent pulumi.StringPtrInput
 }
 
@@ -155,8 +149,6 @@ type squotaAdjusterSettingsArgs struct {
 	// Possible values are: `ENABLED`, `DISABLED`.
 	Enablement string `pulumi:"enablement"`
 	// The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
-	//
-	// ***
 	Parent *string `pulumi:"parent"`
 }
 
@@ -166,8 +158,6 @@ type SQuotaAdjusterSettingsArgs struct {
 	// Possible values are: `ENABLED`, `DISABLED`.
 	Enablement pulumi.StringInput
 	// The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
-	//
-	// ***
 	Parent pulumi.StringPtrInput
 }
 
@@ -287,8 +277,6 @@ func (o SQuotaAdjusterSettingsOutput) InheritedFrom() pulumi.StringOutput {
 }
 
 // The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
-//
-// ***
 func (o SQuotaAdjusterSettingsOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *SQuotaAdjusterSettings) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }

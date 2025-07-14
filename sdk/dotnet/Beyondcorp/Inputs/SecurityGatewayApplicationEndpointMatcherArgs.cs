@@ -23,8 +23,6 @@ namespace Pulumi.Gcp.Beyondcorp.Inputs
 
         /// <summary>
         /// Optional. Ports of the application.
-        /// 
-        /// - - -
         /// </summary>
         public InputList<int> Ports
         {

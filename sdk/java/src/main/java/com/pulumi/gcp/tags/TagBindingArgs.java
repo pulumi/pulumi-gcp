@@ -32,16 +32,12 @@ public final class TagBindingArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The TagValue of the TagBinding. Must be of the form tagValues/456.
      * 
-     * ***
-     * 
      */
     @Import(name="tagValue", required=true)
     private Output<String> tagValue;
 
     /**
      * @return The TagValue of the TagBinding. Must be of the form tagValues/456.
-     * 
-     * ***
      * 
      */
     public Output<String> tagValue() {
@@ -97,8 +93,6 @@ public final class TagBindingArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param tagValue The TagValue of the TagBinding. Must be of the form tagValues/456.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -109,8 +103,6 @@ public final class TagBindingArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tagValue The TagValue of the TagBinding. Must be of the form tagValues/456.
-         * 
-         * ***
          * 
          * @return builder
          * 

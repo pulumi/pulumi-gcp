@@ -33,7 +33,10 @@ class DomainMappingArgs:
         :param pulumi.Input['DomainMappingSpecArgs'] spec: The spec for this DomainMapping.
                Structure is documented below.
         :param pulumi.Input['DomainMappingMetadataArgs'] metadata: Metadata associated with this DomainMapping.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] name: Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "spec", spec)
@@ -74,6 +77,7 @@ class DomainMappingArgs:
     def metadata(self) -> Optional[pulumi.Input['DomainMappingMetadataArgs']]:
         """
         Metadata associated with this DomainMapping.
+        Structure is documented below.
         """
         return pulumi.get(self, "metadata")
 
@@ -96,6 +100,10 @@ class DomainMappingArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -116,7 +124,10 @@ class _DomainMappingState:
         Input properties used for looking up and filtering DomainMapping resources.
         :param pulumi.Input[builtins.str] location: The location of the cloud run instance. eg us-central1
         :param pulumi.Input['DomainMappingMetadataArgs'] metadata: Metadata associated with this DomainMapping.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] name: Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input['DomainMappingSpecArgs'] spec: The spec for this DomainMapping.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['DomainMappingStatusArgs']]] statuses: (Output)
@@ -152,6 +163,7 @@ class _DomainMappingState:
     def metadata(self) -> Optional[pulumi.Input['DomainMappingMetadataArgs']]:
         """
         Metadata associated with this DomainMapping.
+        Structure is documented below.
         """
         return pulumi.get(self, "metadata")
 
@@ -174,6 +186,10 @@ class _DomainMappingState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -288,7 +304,10 @@ class DomainMapping(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] location: The location of the cloud run instance. eg us-central1
         :param pulumi.Input[Union['DomainMappingMetadataArgs', 'DomainMappingMetadataArgsDict']] metadata: Metadata associated with this DomainMapping.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] name: Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Union['DomainMappingSpecArgs', 'DomainMappingSpecArgsDict']] spec: The spec for this DomainMapping.
                Structure is documented below.
         """
@@ -427,7 +446,10 @@ class DomainMapping(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] location: The location of the cloud run instance. eg us-central1
         :param pulumi.Input[Union['DomainMappingMetadataArgs', 'DomainMappingMetadataArgsDict']] metadata: Metadata associated with this DomainMapping.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] name: Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Union['DomainMappingSpecArgs', 'DomainMappingSpecArgsDict']] spec: The spec for this DomainMapping.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DomainMappingStatusArgs', 'DomainMappingStatusArgsDict']]]] statuses: (Output)
@@ -458,6 +480,7 @@ class DomainMapping(pulumi.CustomResource):
     def metadata(self) -> pulumi.Output['outputs.DomainMappingMetadata']:
         """
         Metadata associated with this DomainMapping.
+        Structure is documented below.
         """
         return pulumi.get(self, "metadata")
 
@@ -472,6 +495,10 @@ class DomainMapping(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property

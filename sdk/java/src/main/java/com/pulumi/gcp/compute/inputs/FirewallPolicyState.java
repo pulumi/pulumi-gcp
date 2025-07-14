@@ -94,16 +94,12 @@ public final class FirewallPolicyState extends com.pulumi.resources.ResourceArgs
     /**
      * The parent of the firewall policy.
      * 
-     * ***
-     * 
      */
     @Import(name="parent")
     private @Nullable Output<String> parent;
 
     /**
      * @return The parent of the firewall policy.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> parent() {
@@ -315,8 +311,6 @@ public final class FirewallPolicyState extends com.pulumi.resources.ResourceArgs
         /**
          * @param parent The parent of the firewall policy.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -327,8 +321,6 @@ public final class FirewallPolicyState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param parent The parent of the firewall policy.
-         * 
-         * ***
          * 
          * @return builder
          * 

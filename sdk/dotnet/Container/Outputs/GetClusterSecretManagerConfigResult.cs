@@ -17,11 +17,19 @@ namespace Pulumi.Gcp.Container.Outputs
         /// Enable the Secret manager csi component.
         /// </summary>
         public readonly bool Enabled;
+        /// <summary>
+        /// Configuration for Secret Manager auto rotation.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClusterSecretManagerConfigRotationConfigResult> RotationConfigs;
 
         [OutputConstructor]
-        private GetClusterSecretManagerConfigResult(bool enabled)
+        private GetClusterSecretManagerConfigResult(
+            bool enabled,
+
+            ImmutableArray<Outputs.GetClusterSecretManagerConfigRotationConfigResult> rotationConfigs)
         {
             Enabled = enabled;
+            RotationConfigs = rotationConfigs;
         }
     }
 }

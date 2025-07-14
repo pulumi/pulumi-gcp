@@ -19,8 +19,6 @@ public final class SnapshotSettingsStorageLocationLocation {
      * @return Name of the location. It should be one of the Cloud Storage buckets.
      * Only one location can be specified. (should match location)
      * 
-     * ***
-     * 
      */
     private String name;
 
@@ -35,8 +33,6 @@ public final class SnapshotSettingsStorageLocationLocation {
     /**
      * @return Name of the location. It should be one of the Cloud Storage buckets.
      * Only one location can be specified. (should match location)
-     * 
-     * ***
      * 
      */
     public String name() {

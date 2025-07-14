@@ -38,9 +38,6 @@ class MirroringDeploymentArgs:
                See https://google.aip.dev/124.
         :param pulumi.Input[builtins.str] mirroring_deployment_id: The ID to use for the new deployment, which will become the final
                component of the deployment's resource name.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] description: User-provided description of the deployment.
                Used as additional context for the deployment.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels are key/value pairs that help to organize and filter resources.
@@ -106,9 +103,6 @@ class MirroringDeploymentArgs:
         """
         The ID to use for the new deployment, which will become the final
         component of the deployment's resource name.
-
-
-        - - -
         """
         return pulumi.get(self, "mirroring_deployment_id")
 
@@ -193,9 +187,6 @@ class _MirroringDeploymentState:
                See https://google.aip.dev/124.
         :param pulumi.Input[builtins.str] mirroring_deployment_id: The ID to use for the new deployment, which will become the final
                component of the deployment's resource name.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The resource name of this deployment, for example:
                `projects/123456789/locations/us-central1-a/mirroringDeployments/my-dep`.
                See https://google.aip.dev/122 for more details.
@@ -346,9 +337,6 @@ class _MirroringDeploymentState:
         """
         The ID to use for the new deployment, which will become the final
         component of the deployment's resource name.
-
-
-        - - -
         """
         return pulumi.get(self, "mirroring_deployment_id")
 
@@ -564,9 +552,6 @@ class MirroringDeployment(pulumi.CustomResource):
                See https://google.aip.dev/124.
         :param pulumi.Input[builtins.str] mirroring_deployment_id: The ID to use for the new deployment, which will become the final
                component of the deployment's resource name.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -768,9 +753,6 @@ class MirroringDeployment(pulumi.CustomResource):
                See https://google.aip.dev/124.
         :param pulumi.Input[builtins.str] mirroring_deployment_id: The ID to use for the new deployment, which will become the final
                component of the deployment's resource name.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The resource name of this deployment, for example:
                `projects/123456789/locations/us-central1-a/mirroringDeployments/my-dep`.
                See https://google.aip.dev/122 for more details.
@@ -884,9 +866,6 @@ class MirroringDeployment(pulumi.CustomResource):
         """
         The ID to use for the new deployment, which will become the final
         component of the deployment's resource name.
-
-
-        - - -
         """
         return pulumi.get(self, "mirroring_deployment_id")
 

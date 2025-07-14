@@ -2200,8 +2200,6 @@ type ListingSubscriptionDestinationDatasetDatasetReference struct {
 	// A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
 	DatasetId string `pulumi:"datasetId"`
 	// The ID of the project containing this dataset.
-	//
-	// ***
 	ProjectId string `pulumi:"projectId"`
 }
 
@@ -2220,8 +2218,6 @@ type ListingSubscriptionDestinationDatasetDatasetReferenceArgs struct {
 	// A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
 	DatasetId pulumi.StringInput `pulumi:"datasetId"`
 	// The ID of the project containing this dataset.
-	//
-	// ***
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
 }
 
@@ -2308,8 +2304,6 @@ func (o ListingSubscriptionDestinationDatasetDatasetReferenceOutput) DatasetId()
 }
 
 // The ID of the project containing this dataset.
-//
-// ***
 func (o ListingSubscriptionDestinationDatasetDatasetReferenceOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v ListingSubscriptionDestinationDatasetDatasetReference) string { return v.ProjectId }).(pulumi.StringOutput)
 }
@@ -2349,8 +2343,6 @@ func (o ListingSubscriptionDestinationDatasetDatasetReferencePtrOutput) DatasetI
 }
 
 // The ID of the project containing this dataset.
-//
-// ***
 func (o ListingSubscriptionDestinationDatasetDatasetReferencePtrOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ListingSubscriptionDestinationDatasetDatasetReference) *string {
 		if v == nil {

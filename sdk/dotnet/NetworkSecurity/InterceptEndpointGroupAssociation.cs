@@ -137,9 +137,6 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// The cloud location of the association, currently restricted to `global`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -302,9 +299,6 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// The cloud location of the association, currently restricted to `global`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -387,9 +381,6 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// The cloud location of the association, currently restricted to `global`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

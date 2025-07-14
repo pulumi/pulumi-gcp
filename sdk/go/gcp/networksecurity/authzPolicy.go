@@ -64,25 +64,28 @@ type AuthzPolicy struct {
 	Action pulumi.StringOutput `pulumi:"action"`
 	// The timestamp when the resource was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One
-	// of cloudIap or authzExtension must be specified.
+	// Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One of cloudIap or authzExtension must be specified.
+	// Structure is documented below.
 	CustomProvider AuthzPolicyCustomProviderPtrOutput `pulumi:"customProvider"`
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
-	// A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP
-	// rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow
-	// or Deny Action. Limited to 5 rules.
+	// A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+	// Limited to 5 rules.
+	// Structure is documented below.
 	HttpRules AuthzPolicyHttpRuleArrayOutput `pulumi:"httpRules"`
-	// Set of labels associated with the AuthzExtension resource. **Note**: This field is non-authoritative, and will only
-	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-	// present on the resource.
+	// Set of labels associated with the AuthzExtension resource.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location of the resource.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Identifier. Name of the AuthzPolicy resource.
-	Name    pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -150,25 +153,28 @@ type authzPolicyState struct {
 	Action *string `pulumi:"action"`
 	// The timestamp when the resource was created.
 	CreateTime *string `pulumi:"createTime"`
-	// Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One
-	// of cloudIap or authzExtension must be specified.
+	// Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One of cloudIap or authzExtension must be specified.
+	// Structure is documented below.
 	CustomProvider *AuthzPolicyCustomProvider `pulumi:"customProvider"`
 	// A human-readable description of the resource.
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
-	// A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP
-	// rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow
-	// or Deny Action. Limited to 5 rules.
+	// A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+	// Limited to 5 rules.
+	// Structure is documented below.
 	HttpRules []AuthzPolicyHttpRule `pulumi:"httpRules"`
-	// Set of labels associated with the AuthzExtension resource. **Note**: This field is non-authoritative, and will only
-	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-	// present on the resource.
+	// Set of labels associated with the AuthzExtension resource.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location of the resource.
 	Location *string `pulumi:"location"`
 	// Identifier. Name of the AuthzPolicy resource.
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -193,25 +199,28 @@ type AuthzPolicyState struct {
 	Action pulumi.StringPtrInput
 	// The timestamp when the resource was created.
 	CreateTime pulumi.StringPtrInput
-	// Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One
-	// of cloudIap or authzExtension must be specified.
+	// Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One of cloudIap or authzExtension must be specified.
+	// Structure is documented below.
 	CustomProvider AuthzPolicyCustomProviderPtrInput
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
-	// A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP
-	// rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow
-	// or Deny Action. Limited to 5 rules.
+	// A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+	// Limited to 5 rules.
+	// Structure is documented below.
 	HttpRules AuthzPolicyHttpRuleArrayInput
-	// Set of labels associated with the AuthzExtension resource. **Note**: This field is non-authoritative, and will only
-	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-	// present on the resource.
+	// Set of labels associated with the AuthzExtension resource.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location of the resource.
 	Location pulumi.StringPtrInput
 	// Identifier. Name of the AuthzPolicy resource.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -238,23 +247,26 @@ type authzPolicyArgs struct {
 	// 4. Else the request is denied by default if none of the configured AuthzPolicies with ALLOW action match the request.
 	//    Possible values are: `ALLOW`, `DENY`, `CUSTOM`.
 	Action string `pulumi:"action"`
-	// Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One
-	// of cloudIap or authzExtension must be specified.
+	// Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One of cloudIap or authzExtension must be specified.
+	// Structure is documented below.
 	CustomProvider *AuthzPolicyCustomProvider `pulumi:"customProvider"`
 	// A human-readable description of the resource.
 	Description *string `pulumi:"description"`
-	// A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP
-	// rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow
-	// or Deny Action. Limited to 5 rules.
+	// A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+	// Limited to 5 rules.
+	// Structure is documented below.
 	HttpRules []AuthzPolicyHttpRule `pulumi:"httpRules"`
-	// Set of labels associated with the AuthzExtension resource. **Note**: This field is non-authoritative, and will only
-	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-	// present on the resource.
+	// Set of labels associated with the AuthzExtension resource.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location of the resource.
 	Location string `pulumi:"location"`
 	// Identifier. Name of the AuthzPolicy resource.
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Specifies the set of resources to which this policy should be applied to.
 	// Structure is documented below.
@@ -273,23 +285,26 @@ type AuthzPolicyArgs struct {
 	// 4. Else the request is denied by default if none of the configured AuthzPolicies with ALLOW action match the request.
 	//    Possible values are: `ALLOW`, `DENY`, `CUSTOM`.
 	Action pulumi.StringInput
-	// Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One
-	// of cloudIap or authzExtension must be specified.
+	// Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One of cloudIap or authzExtension must be specified.
+	// Structure is documented below.
 	CustomProvider AuthzPolicyCustomProviderPtrInput
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrInput
-	// A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP
-	// rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow
-	// or Deny Action. Limited to 5 rules.
+	// A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+	// Limited to 5 rules.
+	// Structure is documented below.
 	HttpRules AuthzPolicyHttpRuleArrayInput
-	// Set of labels associated with the AuthzExtension resource. **Note**: This field is non-authoritative, and will only
-	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-	// present on the resource.
+	// Set of labels associated with the AuthzExtension resource.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location of the resource.
 	Location pulumi.StringInput
 	// Identifier. Name of the AuthzPolicy resource.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Specifies the set of resources to which this policy should be applied to.
 	// Structure is documented below.
@@ -401,8 +416,8 @@ func (o AuthzPolicyOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthzPolicy) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One
-// of cloudIap or authzExtension must be specified.
+// Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One of cloudIap or authzExtension must be specified.
+// Structure is documented below.
 func (o AuthzPolicyOutput) CustomProvider() AuthzPolicyCustomProviderPtrOutput {
 	return o.ApplyT(func(v *AuthzPolicy) AuthzPolicyCustomProviderPtrOutput { return v.CustomProvider }).(AuthzPolicyCustomProviderPtrOutput)
 }
@@ -417,16 +432,17 @@ func (o AuthzPolicyOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AuthzPolicy) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
-// A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP
-// rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow
-// or Deny Action. Limited to 5 rules.
+// A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+// Limited to 5 rules.
+// Structure is documented below.
 func (o AuthzPolicyOutput) HttpRules() AuthzPolicyHttpRuleArrayOutput {
 	return o.ApplyT(func(v *AuthzPolicy) AuthzPolicyHttpRuleArrayOutput { return v.HttpRules }).(AuthzPolicyHttpRuleArrayOutput)
 }
 
-// Set of labels associated with the AuthzExtension resource. **Note**: This field is non-authoritative, and will only
-// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-// present on the resource.
+// Set of labels associated with the AuthzExtension resource.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o AuthzPolicyOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AuthzPolicy) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -441,6 +457,8 @@ func (o AuthzPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthzPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o AuthzPolicyOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthzPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

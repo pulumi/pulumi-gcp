@@ -160,9 +160,6 @@ export class HostingRelease extends pulumi.CustomResource {
     public /*out*/ readonly releaseId!: pulumi.Output<string>;
     /**
      * Required. The ID of the site to which the release belongs.
-     *
-     *
-     * - - -
      */
     public readonly siteId!: pulumi.Output<string>;
     /**
@@ -245,9 +242,6 @@ export interface HostingReleaseState {
     releaseId?: pulumi.Input<string>;
     /**
      * Required. The ID of the site to which the release belongs.
-     *
-     *
-     * - - -
      */
     siteId?: pulumi.Input<string>;
     /**
@@ -283,9 +277,6 @@ export interface HostingReleaseArgs {
     message?: pulumi.Input<string>;
     /**
      * Required. The ID of the site to which the release belongs.
-     *
-     *
-     * - - -
      */
     siteId: pulumi.Input<string>;
     /**

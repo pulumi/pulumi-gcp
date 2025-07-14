@@ -16,14 +16,14 @@ public final class JobStatusErrorArgs extends com.pulumi.resources.ResourceArgs 
     public static final JobStatusErrorArgs Empty = new JobStatusErrorArgs();
 
     /**
-     * Specifies where the error occurred, if present.
+     * The geographic location of the job. The default value is US.
      * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
-     * @return Specifies where the error occurred, if present.
+     * @return The geographic location of the job. The default value is US.
      * 
      */
     public Optional<Output<String>> location() {
@@ -87,7 +87,7 @@ public final class JobStatusErrorArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param location Specifies where the error occurred, if present.
+         * @param location The geographic location of the job. The default value is US.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class JobStatusErrorArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param location Specifies where the error occurred, if present.
+         * @param location The geographic location of the job. The default value is US.
          * 
          * @return builder
          * 

@@ -25,7 +25,8 @@ public final class AutonomousDatabasePropertiesConnectionStringProfile {
      */
     private @Nullable String consumerGroup;
     /**
-     * @return The display name for the database connection.
+     * @return The display name for the Autonomous Database. The name does not have to
+     * be unique within your project.
      * 
      */
     private @Nullable String displayName;
@@ -103,7 +104,8 @@ public final class AutonomousDatabasePropertiesConnectionStringProfile {
         return Optional.ofNullable(this.consumerGroup);
     }
     /**
-     * @return The display name for the database connection.
+     * @return The display name for the Autonomous Database. The name does not have to
+     * be unique within your project.
      * 
      */
     public Optional<String> displayName() {

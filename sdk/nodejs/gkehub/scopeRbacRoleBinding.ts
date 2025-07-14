@@ -132,19 +132,26 @@ export class ScopeRbacRoleBinding extends pulumi.CustomResource {
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
-     * other automatically. group is the group, as seen by the kubernetes cluster.
+     * Principal that is be authorized in the cluster (at least of one the oneof
+     * is required). Updating one will unset the other automatically.
+     * group is the group, as seen by the kubernetes cluster.
      */
     public readonly group!: pulumi.Output<string | undefined>;
     /**
-     * Labels for this ScopeRBACRoleBinding. **Note**: This field is non-authoritative, and will only manage the labels present
-     * in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+     * Labels for this ScopeRBACRoleBinding.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The resource name for the RBAC Role Binding
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
@@ -178,9 +185,10 @@ export class ScopeRbacRoleBinding extends pulumi.CustomResource {
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
-     * Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
-     * other automatically. user is the name of the user as seen by the kubernetes cluster, example "alice" or
-     * "alice@domain.tld"
+     * Principal that is be authorized in the cluster (at least of one the oneof
+     * is required). Updating one will unset the other automatically.
+     * user is the name of the user as seen by the kubernetes cluster, example
+     * "alice" or "alice@domain.tld"
      */
     public readonly user!: pulumi.Output<string | undefined>;
 
@@ -263,19 +271,26 @@ export interface ScopeRbacRoleBindingState {
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
-     * other automatically. group is the group, as seen by the kubernetes cluster.
+     * Principal that is be authorized in the cluster (at least of one the oneof
+     * is required). Updating one will unset the other automatically.
+     * group is the group, as seen by the kubernetes cluster.
      */
     group?: pulumi.Input<string>;
     /**
-     * Labels for this ScopeRBACRoleBinding. **Note**: This field is non-authoritative, and will only manage the labels present
-     * in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+     * Labels for this ScopeRBACRoleBinding.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The resource name for the RBAC Role Binding
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
@@ -309,9 +324,10 @@ export interface ScopeRbacRoleBindingState {
      */
     updateTime?: pulumi.Input<string>;
     /**
-     * Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
-     * other automatically. user is the name of the user as seen by the kubernetes cluster, example "alice" or
-     * "alice@domain.tld"
+     * Principal that is be authorized in the cluster (at least of one the oneof
+     * is required). Updating one will unset the other automatically.
+     * user is the name of the user as seen by the kubernetes cluster, example
+     * "alice" or "alice@domain.tld"
      */
     user?: pulumi.Input<string>;
 }
@@ -321,15 +337,22 @@ export interface ScopeRbacRoleBindingState {
  */
 export interface ScopeRbacRoleBindingArgs {
     /**
-     * Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
-     * other automatically. group is the group, as seen by the kubernetes cluster.
+     * Principal that is be authorized in the cluster (at least of one the oneof
+     * is required). Updating one will unset the other automatically.
+     * group is the group, as seen by the kubernetes cluster.
      */
     group?: pulumi.Input<string>;
     /**
-     * Labels for this ScopeRBACRoleBinding. **Note**: This field is non-authoritative, and will only manage the labels present
-     * in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+     * Labels for this ScopeRBACRoleBinding.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * Role to bind to the principal.
@@ -345,9 +368,10 @@ export interface ScopeRbacRoleBindingArgs {
      */
     scopeRbacRoleBindingId: pulumi.Input<string>;
     /**
-     * Principal that is be authorized in the cluster (at least of one the oneof is required). Updating one will unset the
-     * other automatically. user is the name of the user as seen by the kubernetes cluster, example "alice" or
-     * "alice@domain.tld"
+     * Principal that is be authorized in the cluster (at least of one the oneof
+     * is required). Updating one will unset the other automatically.
+     * user is the name of the user as seen by the kubernetes cluster, example
+     * "alice" or "alice@domain.tld"
      */
     user?: pulumi.Input<string>;
 }

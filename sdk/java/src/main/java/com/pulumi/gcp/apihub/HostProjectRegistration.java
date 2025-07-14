@@ -155,8 +155,6 @@ public class HostProjectRegistration extends com.pulumi.resources.CustomResource
      * must be the same as the Google cloud project specified in the
      * host_project_registration.gcp_project field.
      * 
-     * ***
-     * 
      */
     @Export(name="hostProjectRegistrationId", refs={String.class}, tree="[0]")
     private Output<String> hostProjectRegistrationId;
@@ -166,8 +164,6 @@ public class HostProjectRegistration extends com.pulumi.resources.CustomResource
      * final component of the host project registration&#39;s resource name. The ID
      * must be the same as the Google cloud project specified in the
      * host_project_registration.gcp_project field.
-     * 
-     * ***
      * 
      */
     public Output<String> hostProjectRegistrationId() {

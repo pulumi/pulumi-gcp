@@ -184,9 +184,6 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -330,9 +327,6 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
@@ -408,9 +402,6 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }

@@ -32,8 +32,6 @@ namespace Pulumi.Gcp.Datastream.Inputs
 
         /// <summary>
         /// The root path inside the Cloud Storage bucket.
-        /// 
-        /// - - -
         /// </summary>
         [Input("rootPath")]
         public Input<string>? RootPath { get; set; }

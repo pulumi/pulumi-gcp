@@ -104,9 +104,6 @@ export class UserWorkloadsConfigMap extends pulumi.CustomResource {
     public readonly data!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Environment where the Kubernetes ConfigMap will be stored and used.
-     *
-     *
-     * - - -
      */
     public readonly environment!: pulumi.Output<string>;
     /**
@@ -168,9 +165,6 @@ export interface UserWorkloadsConfigMapState {
     data?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Environment where the Kubernetes ConfigMap will be stored and used.
-     *
-     *
-     * - - -
      */
     environment?: pulumi.Input<string>;
     /**
@@ -199,9 +193,6 @@ export interface UserWorkloadsConfigMapArgs {
     data?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Environment where the Kubernetes ConfigMap will be stored and used.
-     *
-     *
-     * - - -
      */
     environment: pulumi.Input<string>;
     /**

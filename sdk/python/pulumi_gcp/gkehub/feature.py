@@ -31,9 +31,6 @@ class FeatureArgs:
         """
         The set of arguments for constructing a Feature resource.
         :param pulumi.Input[builtins.str] location: The location for the resource
-               
-               
-               - - -
         :param pulumi.Input['FeatureFleetDefaultMemberConfigArgs'] fleet_default_member_config: Optional. Fleet Default Membership Configuration.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: GCP labels for this Feature.
@@ -62,9 +59,6 @@ class FeatureArgs:
     def location(self) -> pulumi.Input[builtins.str]:
         """
         The location for the resource
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -165,9 +159,6 @@ class _FeatureState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location for the resource
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The full, unique name of this Feature resource
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -278,9 +269,6 @@ class _FeatureState:
     def location(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The location for the resource
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -743,9 +731,6 @@ class Feature(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location for the resource
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The full, unique name of this Feature resource
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1186,9 +1171,6 @@ class Feature(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location for the resource
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The full, unique name of this Feature resource
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1271,9 +1253,6 @@ class Feature(pulumi.CustomResource):
     def location(self) -> pulumi.Output[builtins.str]:
         """
         The location for the resource
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

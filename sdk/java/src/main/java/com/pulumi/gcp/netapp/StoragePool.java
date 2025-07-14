@@ -332,16 +332,12 @@ public class StoragePool extends com.pulumi.resources.CustomResource {
     /**
      * The resource name of the storage pool. Needs to be unique per location/region.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return The resource name of the storage pool. Needs to be unique per location/region.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

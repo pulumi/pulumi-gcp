@@ -112,9 +112,6 @@ export class Endpoint extends pulumi.CustomResource {
     public /*out*/ readonly endpointIp!: pulumi.Output<string>;
     /**
      * The location for the endpoint.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -218,9 +215,6 @@ export interface EndpointState {
     endpointIp?: pulumi.Input<string>;
     /**
      * The location for the endpoint.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -261,9 +255,6 @@ export interface EndpointArgs {
     description?: pulumi.Input<string>;
     /**
      * The location for the endpoint.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

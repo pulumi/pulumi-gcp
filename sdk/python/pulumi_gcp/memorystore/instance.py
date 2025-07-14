@@ -55,9 +55,6 @@ class InstanceArgs:
                * Must contain only lowercase letters, digits, and hyphens
                * Must not end with a hyphen
                * Must be unique within a location
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `memorystore.googleapis.com/CertificateAuthority`.
         :param pulumi.Input[builtins.int] shard_count: Required. Number of shards for the instance.
         :param pulumi.Input[builtins.str] authorization_mode: Optional. Immutable. Authorization mode of the instance. Possible values:
@@ -164,9 +161,6 @@ class InstanceArgs:
         * Must contain only lowercase letters, digits, and hyphens
         * Must not end with a hyphen
         * Must be unique within a location
-
-
-        - - -
         """
         return pulumi.get(self, "instance_id")
 
@@ -488,6 +482,7 @@ class _InstanceState:
                  maintenance_policy: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']] = None,
                  maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]] = None,
                  managed_backup_source: Optional[pulumi.Input['InstanceManagedBackupSourceArgs']] = None,
+                 managed_server_cas: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceManagedServerCaArgs']]]] = None,
                  mode: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  node_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNodeConfigArgs']]]] = None,
@@ -539,9 +534,6 @@ class _InstanceState:
                * Must contain only lowercase letters, digits, and hyphens
                * Must not end with a hyphen
                * Must be unique within a location
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] kms_key: The KMS key used to encrypt the at-rest data of the cluster
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Labels to represent user-provided metadata.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -552,6 +544,8 @@ class _InstanceState:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]] maintenance_schedules: Upcoming maintenance schedule.
                Structure is documented below.
         :param pulumi.Input['InstanceManagedBackupSourceArgs'] managed_backup_source: Managed backup source for the instance.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceManagedServerCaArgs']]] managed_server_cas: Instance's Certificate Authority. This field will only be populated if instance's transit_encryption_mode is SERVER_AUTHENTICATION
                Structure is documented below.
         :param pulumi.Input[builtins.str] mode: Optional. cluster or cluster-disabled.
                Possible values:
@@ -646,6 +640,8 @@ class _InstanceState:
             pulumi.set(__self__, "maintenance_schedules", maintenance_schedules)
         if managed_backup_source is not None:
             pulumi.set(__self__, "managed_backup_source", managed_backup_source)
+        if managed_server_cas is not None:
+            pulumi.set(__self__, "managed_server_cas", managed_server_cas)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
         if name is not None:
@@ -876,9 +872,6 @@ class _InstanceState:
         * Must contain only lowercase letters, digits, and hyphens
         * Must not end with a hyphen
         * Must be unique within a location
-
-
-        - - -
         """
         return pulumi.get(self, "instance_id")
 
@@ -962,6 +955,19 @@ class _InstanceState:
     @managed_backup_source.setter
     def managed_backup_source(self, value: Optional[pulumi.Input['InstanceManagedBackupSourceArgs']]):
         pulumi.set(self, "managed_backup_source", value)
+
+    @property
+    @pulumi.getter(name="managedServerCas")
+    def managed_server_cas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceManagedServerCaArgs']]]]:
+        """
+        Instance's Certificate Authority. This field will only be populated if instance's transit_encryption_mode is SERVER_AUTHENTICATION
+        Structure is documented below.
+        """
+        return pulumi.get(self, "managed_server_cas")
+
+    @managed_server_cas.setter
+    def managed_server_cas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceManagedServerCaArgs']]]]):
+        pulumi.set(self, "managed_server_cas", value)
 
     @property
     @pulumi.getter
@@ -1555,9 +1561,6 @@ class Instance(pulumi.CustomResource):
                * Must contain only lowercase letters, digits, and hyphens
                * Must not end with a hyphen
                * Must be unique within a location
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] kms_key: The KMS key used to encrypt the at-rest data of the cluster
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Labels to represent user-provided metadata.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -1984,6 +1987,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["endpoints"] = None
             __props__.__dict__["maintenance_schedules"] = None
+            __props__.__dict__["managed_server_cas"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["node_configs"] = None
             __props__.__dict__["psc_attachment_details"] = None
@@ -2026,6 +2030,7 @@ class Instance(pulumi.CustomResource):
             maintenance_policy: Optional[pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']]] = None,
             maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceMaintenanceScheduleArgs', 'InstanceMaintenanceScheduleArgsDict']]]]] = None,
             managed_backup_source: Optional[pulumi.Input[Union['InstanceManagedBackupSourceArgs', 'InstanceManagedBackupSourceArgsDict']]] = None,
+            managed_server_cas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceManagedServerCaArgs', 'InstanceManagedServerCaArgsDict']]]]] = None,
             mode: Optional[pulumi.Input[builtins.str]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
             node_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceNodeConfigArgs', 'InstanceNodeConfigArgsDict']]]]] = None,
@@ -2082,9 +2087,6 @@ class Instance(pulumi.CustomResource):
                * Must contain only lowercase letters, digits, and hyphens
                * Must not end with a hyphen
                * Must be unique within a location
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] kms_key: The KMS key used to encrypt the at-rest data of the cluster
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Labels to represent user-provided metadata.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -2095,6 +2097,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceMaintenanceScheduleArgs', 'InstanceMaintenanceScheduleArgsDict']]]] maintenance_schedules: Upcoming maintenance schedule.
                Structure is documented below.
         :param pulumi.Input[Union['InstanceManagedBackupSourceArgs', 'InstanceManagedBackupSourceArgsDict']] managed_backup_source: Managed backup source for the instance.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceManagedServerCaArgs', 'InstanceManagedServerCaArgsDict']]]] managed_server_cas: Instance's Certificate Authority. This field will only be populated if instance's transit_encryption_mode is SERVER_AUTHENTICATION
                Structure is documented below.
         :param pulumi.Input[builtins.str] mode: Optional. cluster or cluster-disabled.
                Possible values:
@@ -2166,6 +2170,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["maintenance_policy"] = maintenance_policy
         __props__.__dict__["maintenance_schedules"] = maintenance_schedules
         __props__.__dict__["managed_backup_source"] = managed_backup_source
+        __props__.__dict__["managed_server_cas"] = managed_server_cas
         __props__.__dict__["mode"] = mode
         __props__.__dict__["name"] = name
         __props__.__dict__["node_configs"] = node_configs
@@ -2321,9 +2326,6 @@ class Instance(pulumi.CustomResource):
         * Must contain only lowercase letters, digits, and hyphens
         * Must not end with a hyphen
         * Must be unique within a location
-
-
-        - - -
         """
         return pulumi.get(self, "instance_id")
 
@@ -2379,6 +2381,15 @@ class Instance(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "managed_backup_source")
+
+    @property
+    @pulumi.getter(name="managedServerCas")
+    def managed_server_cas(self) -> pulumi.Output[Sequence['outputs.InstanceManagedServerCa']]:
+        """
+        Instance's Certificate Authority. This field will only be populated if instance's transit_encryption_mode is SERVER_AUTHENTICATION
+        Structure is documented below.
+        """
+        return pulumi.get(self, "managed_server_cas")
 
     @property
     @pulumi.getter

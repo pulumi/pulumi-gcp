@@ -31,9 +31,6 @@ class HostingCustomDomainArgs:
         """
         The set of arguments for constructing a HostingCustomDomain resource.
         :param pulumi.Input[builtins.str] custom_domain: The ID of the `CustomDomain`, which is the domain name you'd like to use with Firebase Hosting.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] site_id: The ID of the site in which to create this custom domain association.
         :param pulumi.Input[builtins.str] cert_preference: A field that lets you specify which SSL certificate type Hosting creates
                for your domain name. Spark plan `CustomDomain`s only have access to the
@@ -62,9 +59,6 @@ class HostingCustomDomainArgs:
     def custom_domain(self) -> pulumi.Input[builtins.str]:
         """
         The ID of the `CustomDomain`, which is the domain name you'd like to use with Firebase Hosting.
-
-
-        - - -
         """
         return pulumi.get(self, "custom_domain")
 
@@ -171,9 +165,6 @@ class _HostingCustomDomainState:
                Structure is documented below.
         :param pulumi.Input[builtins.str] create_time: The `CustomDomain`'s create time.
         :param pulumi.Input[builtins.str] custom_domain: The ID of the `CustomDomain`, which is the domain name you'd like to use with Firebase Hosting.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] delete_time: The time the `CustomDomain` was deleted; null for `CustomDomains` that
                haven't been deleted. Deleted `CustomDomains` persist for approximately 30
                days, after which time Hosting removes them completely.
@@ -339,9 +330,6 @@ class _HostingCustomDomainState:
     def custom_domain(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The ID of the `CustomDomain`, which is the domain name you'd like to use with Firebase Hosting.
-
-
-        - - -
         """
         return pulumi.get(self, "custom_domain")
 
@@ -704,9 +692,6 @@ class HostingCustomDomain(pulumi.CustomResource):
                `GROUPED` cert type, while Blaze plan can select any option.
                Possible values are: `GROUPED`, `PROJECT_GROUPED`, `DEDICATED`.
         :param pulumi.Input[builtins.str] custom_domain: The ID of the `CustomDomain`, which is the domain name you'd like to use with Firebase Hosting.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] redirect_target: A domain name that this CustomDomain should direct traffic towards. If
@@ -922,9 +907,6 @@ class HostingCustomDomain(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[builtins.str] create_time: The `CustomDomain`'s create time.
         :param pulumi.Input[builtins.str] custom_domain: The ID of the `CustomDomain`, which is the domain name you'd like to use with Firebase Hosting.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] delete_time: The time the `CustomDomain` was deleted; null for `CustomDomains` that
                haven't been deleted. Deleted `CustomDomains` persist for approximately 30
                days, after which time Hosting removes them completely.
@@ -1065,9 +1047,6 @@ class HostingCustomDomain(pulumi.CustomResource):
     def custom_domain(self) -> pulumi.Output[builtins.str]:
         """
         The ID of the `CustomDomain`, which is the domain name you'd like to use with Firebase Hosting.
-
-
-        - - -
         """
         return pulumi.get(self, "custom_domain")
 

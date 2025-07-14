@@ -84,20 +84,18 @@ public final class ConnectClusterArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-),
-     * underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase
-     * characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
-     * configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+     * List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-),
-     * underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase
-     * characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
-     * configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+     * @return List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -119,9 +117,19 @@ public final class ConnectClusterArgs extends com.pulumi.resources.ResourceArgs 
         return this.location;
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -245,10 +253,9 @@ public final class ConnectClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param labels List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-),
-         * underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase
-         * characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
-         * configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+         * @param labels List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -259,10 +266,9 @@ public final class ConnectClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param labels List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-),
-         * underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase
-         * characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
-         * configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+         * @param labels List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -292,11 +298,25 @@ public final class ConnectClusterArgs extends com.pulumi.resources.ResourceArgs 
             return location(Output.of(location));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

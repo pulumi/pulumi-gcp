@@ -137,18 +137,20 @@ public final class GuestPoliciesState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * A list of package repositories to configure on the VM instance. This is done before any other configs are applied so
-     * they can use these repos. Package repositories are only configured if the corresponding package manager(s) are
-     * available.
+     * A list of package repositories to configure on the VM instance.
+     * This is done before any other configs are applied so they can use these repos.
+     * Package repositories are only configured if the corresponding package manager(s) are available.
+     * Structure is documented below.
      * 
      */
     @Import(name="packageRepositories")
     private @Nullable Output<List<GuestPoliciesPackageRepositoryArgs>> packageRepositories;
 
     /**
-     * @return A list of package repositories to configure on the VM instance. This is done before any other configs are applied so
-     * they can use these repos. Package repositories are only configured if the corresponding package manager(s) are
-     * available.
+     * @return A list of package repositories to configure on the VM instance.
+     * This is done before any other configs are applied so they can use these repos.
+     * Package repositories are only configured if the corresponding package manager(s) are available.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<GuestPoliciesPackageRepositoryArgs>>> packageRepositories() {
@@ -157,6 +159,7 @@ public final class GuestPoliciesState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * The software packages to be managed by this policy.
+     * Structure is documented below.
      * 
      */
     @Import(name="packages")
@@ -164,21 +167,33 @@ public final class GuestPoliciesState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return The software packages to be managed by this policy.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<GuestPoliciesPackageArgs>>> packages() {
         return Optional.ofNullable(this.packages);
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
 
     /**
      * A list of Recipes to install on the VM instance.
+     * Structure is documented below.
      * 
      */
     @Import(name="recipes")
@@ -186,6 +201,7 @@ public final class GuestPoliciesState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return A list of Recipes to install on the VM instance.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<GuestPoliciesRecipeArgs>>> recipes() {
@@ -396,9 +412,10 @@ public final class GuestPoliciesState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param packageRepositories A list of package repositories to configure on the VM instance. This is done before any other configs are applied so
-         * they can use these repos. Package repositories are only configured if the corresponding package manager(s) are
-         * available.
+         * @param packageRepositories A list of package repositories to configure on the VM instance.
+         * This is done before any other configs are applied so they can use these repos.
+         * Package repositories are only configured if the corresponding package manager(s) are available.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -409,9 +426,10 @@ public final class GuestPoliciesState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param packageRepositories A list of package repositories to configure on the VM instance. This is done before any other configs are applied so
-         * they can use these repos. Package repositories are only configured if the corresponding package manager(s) are
-         * available.
+         * @param packageRepositories A list of package repositories to configure on the VM instance.
+         * This is done before any other configs are applied so they can use these repos.
+         * Package repositories are only configured if the corresponding package manager(s) are available.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -421,9 +439,10 @@ public final class GuestPoliciesState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param packageRepositories A list of package repositories to configure on the VM instance. This is done before any other configs are applied so
-         * they can use these repos. Package repositories are only configured if the corresponding package manager(s) are
-         * available.
+         * @param packageRepositories A list of package repositories to configure on the VM instance.
+         * This is done before any other configs are applied so they can use these repos.
+         * Package repositories are only configured if the corresponding package manager(s) are available.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -434,6 +453,7 @@ public final class GuestPoliciesState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param packages The software packages to be managed by this policy.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -445,6 +465,7 @@ public final class GuestPoliciesState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param packages The software packages to be managed by this policy.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -455,6 +476,7 @@ public final class GuestPoliciesState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param packages The software packages to be managed by this policy.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -463,17 +485,32 @@ public final class GuestPoliciesState extends com.pulumi.resources.ResourceArgs 
             return packages(List.of(packages));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
 
         /**
          * @param recipes A list of Recipes to install on the VM instance.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -485,6 +522,7 @@ public final class GuestPoliciesState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param recipes A list of Recipes to install on the VM instance.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -495,6 +533,7 @@ public final class GuestPoliciesState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param recipes A list of Recipes to install on the VM instance.
+         * Structure is documented below.
          * 
          * @return builder
          * 

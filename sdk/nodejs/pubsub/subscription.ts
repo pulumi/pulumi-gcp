@@ -535,9 +535,6 @@ export class Subscription extends pulumi.CustomResource {
      * A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
      * (as in the id property of a google_pubsub_topic), or just a topic name if
      * the topic is in the same project as the subscription.
-     *
-     *
-     * - - -
      */
     public readonly topic!: pulumi.Output<string>;
 
@@ -752,9 +749,6 @@ export interface SubscriptionState {
      * A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
      * (as in the id property of a google_pubsub_topic), or just a topic name if
      * the topic is in the same project as the subscription.
-     *
-     *
-     * - - -
      */
     topic?: pulumi.Input<string>;
 }
@@ -897,9 +891,6 @@ export interface SubscriptionArgs {
      * A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
      * (as in the id property of a google_pubsub_topic), or just a topic name if
      * the topic is in the same project as the subscription.
-     *
-     *
-     * - - -
      */
     topic: pulumi.Input<string>;
 }

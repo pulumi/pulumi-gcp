@@ -162,16 +162,12 @@ public final class SecurityProfileState extends com.pulumi.resources.ResourceArg
     /**
      * The name of the security profile resource.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return The name of the security profile resource.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -505,8 +501,6 @@ public final class SecurityProfileState extends com.pulumi.resources.ResourceArg
         /**
          * @param name The name of the security profile resource.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -517,8 +511,6 @@ public final class SecurityProfileState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param name The name of the security profile resource.
-         * 
-         * ***
          * 
          * @return builder
          * 

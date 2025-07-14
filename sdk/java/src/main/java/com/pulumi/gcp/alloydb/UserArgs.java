@@ -85,8 +85,6 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
      * The type of this user.
      * Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
      * 
-     * ***
-     * 
      */
     @Import(name="userType", required=true)
     private Output<String> userType;
@@ -94,8 +92,6 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The type of this user.
      * Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
-     * 
-     * ***
      * 
      */
     public Output<String> userType() {
@@ -232,8 +228,6 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
          * @param userType The type of this user.
          * Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -245,8 +239,6 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param userType The type of this user.
          * Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
-         * 
-         * ***
          * 
          * @return builder
          * 

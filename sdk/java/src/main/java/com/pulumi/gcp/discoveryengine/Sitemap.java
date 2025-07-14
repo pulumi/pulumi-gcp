@@ -106,16 +106,12 @@ public class Sitemap extends com.pulumi.resources.CustomResource {
     /**
      * The unique id of the data store.
      * 
-     * ***
-     * 
      */
     @Export(name="dataStoreId", refs={String.class}, tree="[0]")
     private Output<String> dataStoreId;
 
     /**
      * @return The unique id of the data store.
-     * 
-     * ***
      * 
      */
     public Output<String> dataStoreId() {

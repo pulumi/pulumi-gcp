@@ -587,8 +587,6 @@ type BackupPlan struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The region of the Backup Plan.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The full name of the BackupPlan Resource.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -684,8 +682,6 @@ type backupPlanState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The region of the Backup Plan.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// The full name of the BackupPlan Resource.
 	Name *string `pulumi:"name"`
@@ -741,8 +737,6 @@ type BackupPlanState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The region of the Backup Plan.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// The full name of the BackupPlan Resource.
 	Name pulumi.StringPtrInput
@@ -793,8 +787,6 @@ type backupPlanArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The region of the Backup Plan.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// The full name of the BackupPlan Resource.
 	Name *string `pulumi:"name"`
@@ -831,8 +823,6 @@ type BackupPlanArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The region of the Backup Plan.
-	//
-	// ***
 	Location pulumi.StringInput
 	// The full name of the BackupPlan Resource.
 	Name pulumi.StringPtrInput
@@ -987,8 +977,6 @@ func (o BackupPlanOutput) Labels() pulumi.StringMapOutput {
 }
 
 // The region of the Backup Plan.
-//
-// ***
 func (o BackupPlanOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupPlan) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

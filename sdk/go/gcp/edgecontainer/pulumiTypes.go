@@ -164,8 +164,6 @@ func (o ClusterAuthorizationPtrOutput) AdminUsers() ClusterAuthorizationAdminUse
 
 type ClusterAuthorizationAdminUsers struct {
 	// An active Google username.
-	//
-	// ***
 	Username string `pulumi:"username"`
 }
 
@@ -182,8 +180,6 @@ type ClusterAuthorizationAdminUsersInput interface {
 
 type ClusterAuthorizationAdminUsersArgs struct {
 	// An active Google username.
-	//
-	// ***
 	Username pulumi.StringInput `pulumi:"username"`
 }
 
@@ -265,8 +261,6 @@ func (o ClusterAuthorizationAdminUsersOutput) ToClusterAuthorizationAdminUsersPt
 }
 
 // An active Google username.
-//
-// ***
 func (o ClusterAuthorizationAdminUsersOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterAuthorizationAdminUsers) string { return v.Username }).(pulumi.StringOutput)
 }
@@ -296,8 +290,6 @@ func (o ClusterAuthorizationAdminUsersPtrOutput) Elem() ClusterAuthorizationAdmi
 }
 
 // An active Google username.
-//
-// ***
 func (o ClusterAuthorizationAdminUsersPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterAuthorizationAdminUsers) *string {
 		if v == nil {
@@ -1386,8 +1378,7 @@ type ClusterMaintenanceEvent struct {
 	// (Output)
 	// Indicates the maintenance event state.
 	State *string `pulumi:"state"`
-	// (Output)
-	// The target version of the cluster.
+	// The target cluster version. For example: "1.5.0".
 	TargetVersion *string `pulumi:"targetVersion"`
 	// (Output)
 	// Indicates the maintenance event type.
@@ -1435,8 +1426,7 @@ type ClusterMaintenanceEventArgs struct {
 	// (Output)
 	// Indicates the maintenance event state.
 	State pulumi.StringPtrInput `pulumi:"state"`
-	// (Output)
-	// The target version of the cluster.
+	// The target cluster version. For example: "1.5.0".
 	TargetVersion pulumi.StringPtrInput `pulumi:"targetVersion"`
 	// (Output)
 	// Indicates the maintenance event type.
@@ -1541,8 +1531,7 @@ func (o ClusterMaintenanceEventOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterMaintenanceEvent) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
-// (Output)
-// The target version of the cluster.
+// The target cluster version. For example: "1.5.0".
 func (o ClusterMaintenanceEventOutput) TargetVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterMaintenanceEvent) *string { return v.TargetVersion }).(pulumi.StringPtrOutput)
 }

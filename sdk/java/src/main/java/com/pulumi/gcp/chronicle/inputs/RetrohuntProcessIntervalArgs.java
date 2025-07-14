@@ -17,16 +17,12 @@ public final class RetrohuntProcessIntervalArgs extends com.pulumi.resources.Res
     /**
      * Exclusive end of the interval.
      * 
-     * ***
-     * 
      */
     @Import(name="endTime", required=true)
     private Output<String> endTime;
 
     /**
      * @return Exclusive end of the interval.
-     * 
-     * ***
      * 
      */
     public Output<String> endTime() {
@@ -76,8 +72,6 @@ public final class RetrohuntProcessIntervalArgs extends com.pulumi.resources.Res
         /**
          * @param endTime Exclusive end of the interval.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -88,8 +82,6 @@ public final class RetrohuntProcessIntervalArgs extends com.pulumi.resources.Res
 
         /**
          * @param endTime Exclusive end of the interval.
-         * 
-         * ***
          * 
          * @return builder
          * 

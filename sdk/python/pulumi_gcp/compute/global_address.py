@@ -54,9 +54,6 @@ class GlobalAddressArgs:
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] network: The URL of the network in which to reserve the IP range. The IP range
                must be in RFC1918 space. The network cannot be deleted if there are
                any reserved IP ranges referring to it.
@@ -173,9 +170,6 @@ class GlobalAddressArgs:
         the first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -287,9 +281,6 @@ class _GlobalAddressState:
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] network: The URL of the network in which to reserve the IP range. The IP range
                must be in RFC1918 space. The network cannot be deleted if there are
                any reserved IP ranges referring to it.
@@ -456,9 +447,6 @@ class _GlobalAddressState:
         the first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -651,9 +639,6 @@ class GlobalAddress(pulumi.CustomResource):
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] network: The URL of the network in which to reserve the IP range. The IP range
                must be in RFC1918 space. The network cannot be deleted if there are
                any reserved IP ranges referring to it.
@@ -844,9 +829,6 @@ class GlobalAddress(pulumi.CustomResource):
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] network: The URL of the network in which to reserve the IP range. The IP range
                must be in RFC1918 space. The network cannot be deleted if there are
                any reserved IP ranges referring to it.
@@ -971,9 +953,6 @@ class GlobalAddress(pulumi.CustomResource):
         the first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

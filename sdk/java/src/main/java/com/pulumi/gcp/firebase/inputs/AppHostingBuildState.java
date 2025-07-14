@@ -20,20 +20,22 @@ public final class AppHostingBuildState extends com.pulumi.resources.ResourceArg
     public static final AppHostingBuildState Empty = new AppHostingBuildState();
 
     /**
-     * Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
-     * should be preserved when modifying objects. **Note**: This field is non-authoritative, and will only manage the
-     * annotations present in your configuration. Please refer to the field &#39;effective_annotations&#39; for all of the annotations
-     * present on the resource.
+     * Unstructured key value map that may be set by external tools to
+     * store and arbitrary metadata. They are not queryable and should be
+     * preserved when modifying objects.
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     @Import(name="annotations")
     private @Nullable Output<Map<String,String>> annotations;
 
     /**
-     * @return Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
-     * should be preserved when modifying objects. **Note**: This field is non-authoritative, and will only manage the
-     * annotations present in your configuration. Please refer to the field &#39;effective_annotations&#39; for all of the annotations
-     * present on the resource.
+     * @return Unstructured key value map that may be set by external tools to
+     * store and arbitrary metadata. They are not queryable and should be
+     * preserved when modifying objects.
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -247,18 +249,20 @@ public final class AppHostingBuildState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Unstructured key value map that can be used to organize and categorize objects. **Note**: This field is
-     * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-     * &#39;effective_labels&#39; for all of the labels present on the resource.
+     * Unstructured key value map that can be used to organize and categorize
+     * objects.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Unstructured key value map that can be used to organize and categorize objects. **Note**: This field is
-     * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-     * &#39;effective_labels&#39; for all of the labels present on the resource.
+     * @return Unstructured key value map that can be used to organize and categorize
+     * objects.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -299,9 +303,19 @@ public final class AppHostingBuildState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -443,10 +457,11 @@ public final class AppHostingBuildState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param annotations Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
-         * should be preserved when modifying objects. **Note**: This field is non-authoritative, and will only manage the
-         * annotations present in your configuration. Please refer to the field &#39;effective_annotations&#39; for all of the annotations
-         * present on the resource.
+         * @param annotations Unstructured key value map that may be set by external tools to
+         * store and arbitrary metadata. They are not queryable and should be
+         * preserved when modifying objects.
+         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -457,10 +472,11 @@ public final class AppHostingBuildState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param annotations Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
-         * should be preserved when modifying objects. **Note**: This field is non-authoritative, and will only manage the
-         * annotations present in your configuration. Please refer to the field &#39;effective_annotations&#39; for all of the annotations
-         * present on the resource.
+         * @param annotations Unstructured key value map that may be set by external tools to
+         * store and arbitrary metadata. They are not queryable and should be
+         * preserved when modifying objects.
+         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -760,9 +776,10 @@ public final class AppHostingBuildState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param labels Unstructured key value map that can be used to organize and categorize objects. **Note**: This field is
-         * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-         * &#39;effective_labels&#39; for all of the labels present on the resource.
+         * @param labels Unstructured key value map that can be used to organize and categorize
+         * objects.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -773,9 +790,10 @@ public final class AppHostingBuildState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param labels Unstructured key value map that can be used to organize and categorize objects. **Note**: This field is
-         * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-         * &#39;effective_labels&#39; for all of the labels present on the resource.
+         * @param labels Unstructured key value map that can be used to organize and categorize
+         * objects.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -830,11 +848,25 @@ public final class AppHostingBuildState extends com.pulumi.resources.ResourceArg
             return name(Output.of(name));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

@@ -124,8 +124,6 @@ type CodeToolsSettingBinding struct {
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Id of the setting binding.
-	//
-	// ***
 	SettingBindingId pulumi.StringOutput `pulumi:"settingBindingId"`
 	// Target of the binding.
 	Target pulumi.StringOutput `pulumi:"target"`
@@ -202,8 +200,6 @@ type codeToolsSettingBindingState struct {
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Id of the setting binding.
-	//
-	// ***
 	SettingBindingId *string `pulumi:"settingBindingId"`
 	// Target of the binding.
 	Target *string `pulumi:"target"`
@@ -237,8 +233,6 @@ type CodeToolsSettingBindingState struct {
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Id of the setting binding.
-	//
-	// ***
 	SettingBindingId pulumi.StringPtrInput
 	// Target of the binding.
 	Target pulumi.StringPtrInput
@@ -266,8 +260,6 @@ type codeToolsSettingBindingArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Id of the setting binding.
-	//
-	// ***
 	SettingBindingId string `pulumi:"settingBindingId"`
 	// Target of the binding.
 	Target string `pulumi:"target"`
@@ -290,8 +282,6 @@ type CodeToolsSettingBindingArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Id of the setting binding.
-	//
-	// ***
 	SettingBindingId pulumi.StringInput
 	// Target of the binding.
 	Target pulumi.StringInput
@@ -436,8 +426,6 @@ func (o CodeToolsSettingBindingOutput) PulumiLabels() pulumi.StringMapOutput {
 }
 
 // Id of the setting binding.
-//
-// ***
 func (o CodeToolsSettingBindingOutput) SettingBindingId() pulumi.StringOutput {
 	return o.ApplyT(func(v *CodeToolsSettingBinding) pulumi.StringOutput { return v.SettingBindingId }).(pulumi.StringOutput)
 }

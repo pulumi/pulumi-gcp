@@ -143,9 +143,6 @@ export class AndroidApp extends pulumi.CustomResource {
     /**
      * The canonical package name of the Android app as would appear in the Google Play
      * Developer Console.
-     *
-     *
-     * - - -
      */
     public readonly packageName!: pulumi.Output<string>;
     /**
@@ -242,9 +239,6 @@ export interface AndroidAppState {
     /**
      * The canonical package name of the Android app as would appear in the Google Play
      * Developer Console.
-     *
-     *
-     * - - -
      */
     packageName?: pulumi.Input<string>;
     /**
@@ -280,9 +274,6 @@ export interface AndroidAppArgs {
     /**
      * The canonical package name of the Android app as would appear in the Google Play
      * Developer Console.
-     *
-     *
-     * - - -
      */
     packageName: pulumi.Input<string>;
     /**

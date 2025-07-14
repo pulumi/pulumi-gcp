@@ -45,6 +45,7 @@ public final class GetTableResult {
      * 
      */
     private String id;
+    private List<String> ignoreSchemaChanges;
     private Map<String,String> labels;
     private Integer lastModifiedTime;
     private String location;
@@ -115,6 +116,9 @@ public final class GetTableResult {
      */
     public String id() {
         return this.id;
+    }
+    public List<String> ignoreSchemaChanges() {
+        return this.ignoreSchemaChanges;
     }
     public Map<String,String> labels() {
         return this.labels;
@@ -209,6 +213,7 @@ public final class GetTableResult {
         private List<GetTableExternalDataConfiguration> externalDataConfigurations;
         private String friendlyName;
         private String id;
+        private List<String> ignoreSchemaChanges;
         private Map<String,String> labels;
         private Integer lastModifiedTime;
         private String location;
@@ -249,6 +254,7 @@ public final class GetTableResult {
     	      this.externalDataConfigurations = defaults.externalDataConfigurations;
     	      this.friendlyName = defaults.friendlyName;
     	      this.id = defaults.id;
+    	      this.ignoreSchemaChanges = defaults.ignoreSchemaChanges;
     	      this.labels = defaults.labels;
     	      this.lastModifiedTime = defaults.lastModifiedTime;
     	      this.location = defaults.location;
@@ -400,6 +406,17 @@ public final class GetTableResult {
             }
             this.id = id;
             return this;
+        }
+        @CustomType.Setter
+        public Builder ignoreSchemaChanges(List<String> ignoreSchemaChanges) {
+            if (ignoreSchemaChanges == null) {
+              throw new MissingRequiredPropertyException("GetTableResult", "ignoreSchemaChanges");
+            }
+            this.ignoreSchemaChanges = ignoreSchemaChanges;
+            return this;
+        }
+        public Builder ignoreSchemaChanges(String... ignoreSchemaChanges) {
+            return ignoreSchemaChanges(List.of(ignoreSchemaChanges));
         }
         @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
@@ -620,6 +637,7 @@ public final class GetTableResult {
             _resultValue.externalDataConfigurations = externalDataConfigurations;
             _resultValue.friendlyName = friendlyName;
             _resultValue.id = id;
+            _resultValue.ignoreSchemaChanges = ignoreSchemaChanges;
             _resultValue.labels = labels;
             _resultValue.lastModifiedTime = lastModifiedTime;
             _resultValue.location = location;

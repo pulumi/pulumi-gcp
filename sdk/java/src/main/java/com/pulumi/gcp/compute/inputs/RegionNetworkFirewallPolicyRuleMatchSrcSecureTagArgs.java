@@ -34,8 +34,6 @@ public final class RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs extends 
      * (Output)
      * State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
      * 
-     * ***
-     * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
@@ -43,8 +41,6 @@ public final class RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs extends 
     /**
      * @return (Output)
      * State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> state() {
@@ -101,8 +97,6 @@ public final class RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs extends 
          * @param state (Output)
          * State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -114,8 +108,6 @@ public final class RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs extends 
         /**
          * @param state (Output)
          * State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
-         * 
-         * ***
          * 
          * @return builder
          * 

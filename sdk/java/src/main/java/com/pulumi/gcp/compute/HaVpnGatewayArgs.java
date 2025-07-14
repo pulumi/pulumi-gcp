@@ -106,16 +106,12 @@ public final class HaVpnGatewayArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The network this VPN gateway is accepting traffic for.
      * 
-     * ***
-     * 
      */
     @Import(name="network", required=true)
     private Output<String> network;
 
     /**
      * @return The network this VPN gateway is accepting traffic for.
-     * 
-     * ***
      * 
      */
     public Output<String> network() {
@@ -335,8 +331,6 @@ public final class HaVpnGatewayArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param network The network this VPN gateway is accepting traffic for.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -347,8 +341,6 @@ public final class HaVpnGatewayArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param network The network this VPN gateway is accepting traffic for.
-         * 
-         * ***
          * 
          * @return builder
          * 

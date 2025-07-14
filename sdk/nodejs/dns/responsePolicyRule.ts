@@ -127,9 +127,6 @@ export class ResponsePolicyRule extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * Identifies the response policy addressed by this request.
-     *
-     *
-     * - - -
      */
     public readonly responsePolicy!: pulumi.Output<string>;
     /**
@@ -204,9 +201,6 @@ export interface ResponsePolicyRuleState {
     project?: pulumi.Input<string>;
     /**
      * Identifies the response policy addressed by this request.
-     *
-     *
-     * - - -
      */
     responsePolicy?: pulumi.Input<string>;
     /**
@@ -240,9 +234,6 @@ export interface ResponsePolicyRuleArgs {
     project?: pulumi.Input<string>;
     /**
      * Identifies the response policy addressed by this request.
-     *
-     *
-     * - - -
      */
     responsePolicy: pulumi.Input<string>;
     /**

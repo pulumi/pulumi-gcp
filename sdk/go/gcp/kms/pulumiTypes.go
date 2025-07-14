@@ -1941,8 +1941,6 @@ type EkmConnectionServiceResolverServerCertificate struct {
 	Subject *string `pulumi:"subject"`
 	// (Output)
 	// Output only. The subject Alternative DNS names. Only present if parsed is true.
-	//
-	// ***
 	SubjectAlternativeDnsNames []string `pulumi:"subjectAlternativeDnsNames"`
 }
 
@@ -1985,8 +1983,6 @@ type EkmConnectionServiceResolverServerCertificateArgs struct {
 	Subject pulumi.StringPtrInput `pulumi:"subject"`
 	// (Output)
 	// Output only. The subject Alternative DNS names. Only present if parsed is true.
-	//
-	// ***
 	SubjectAlternativeDnsNames pulumi.StringArrayInput `pulumi:"subjectAlternativeDnsNames"`
 }
 
@@ -2092,8 +2088,6 @@ func (o EkmConnectionServiceResolverServerCertificateOutput) Subject() pulumi.St
 
 // (Output)
 // Output only. The subject Alternative DNS names. Only present if parsed is true.
-//
-// ***
 func (o EkmConnectionServiceResolverServerCertificateOutput) SubjectAlternativeDnsNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EkmConnectionServiceResolverServerCertificate) []string { return v.SubjectAlternativeDnsNames }).(pulumi.StringArrayOutput)
 }

@@ -233,8 +233,6 @@ public class DefaultObjectAccessControl extends com.pulumi.resources.CustomResou
      * The access permission for the entity.
      * Possible values are: `OWNER`, `READER`.
      * 
-     * ***
-     * 
      */
     @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
@@ -242,8 +240,6 @@ public class DefaultObjectAccessControl extends com.pulumi.resources.CustomResou
     /**
      * @return The access permission for the entity.
      * Possible values are: `OWNER`, `READER`.
-     * 
-     * ***
      * 
      */
     public Output<String> role() {

@@ -101,16 +101,12 @@ public final class AiFeatureGroupFeatureArgs extends com.pulumi.resources.Resour
     /**
      * The region for the resource. It should be the same as the feature group&#39;s region.
      * 
-     * ***
-     * 
      */
     @Import(name="region", required=true)
     private Output<String> region;
 
     /**
      * @return The region for the resource. It should be the same as the feature group&#39;s region.
-     * 
-     * ***
      * 
      */
     public Output<String> region() {
@@ -276,8 +272,6 @@ public final class AiFeatureGroupFeatureArgs extends com.pulumi.resources.Resour
         /**
          * @param region The region for the resource. It should be the same as the feature group&#39;s region.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -288,8 +282,6 @@ public final class AiFeatureGroupFeatureArgs extends com.pulumi.resources.Resour
 
         /**
          * @param region The region for the resource. It should be the same as the feature group&#39;s region.
-         * 
-         * ***
          * 
          * @return builder
          * 

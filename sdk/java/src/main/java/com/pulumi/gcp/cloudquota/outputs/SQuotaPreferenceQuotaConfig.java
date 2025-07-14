@@ -34,8 +34,6 @@ public final class SQuotaPreferenceQuotaConfig {
      * @return (Output)
      * The origin of the quota preference request.
      * 
-     * ***
-     * 
      */
     private @Nullable String requestOrigin;
     /**
@@ -78,8 +76,6 @@ public final class SQuotaPreferenceQuotaConfig {
     /**
      * @return (Output)
      * The origin of the quota preference request.
-     * 
-     * ***
      * 
      */
     public Optional<String> requestOrigin() {

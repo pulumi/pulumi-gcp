@@ -327,16 +327,12 @@ public class BackendAuthenticationConfig extends com.pulumi.resources.CustomReso
     /**
      * Name of the BackendAuthenticationConfig resource.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return Name of the BackendAuthenticationConfig resource.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

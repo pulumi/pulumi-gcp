@@ -150,7 +150,9 @@ type ListingSubscription struct {
 	OrganizationDisplayName pulumi.StringOutput `pulumi:"organizationDisplayName"`
 	// Organization of the project this subscription belongs to.
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
-	Project        pulumi.StringOutput `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Listing shared asset type.
 	ResourceType pulumi.StringOutput `pulumi:"resourceType"`
 	// Current state of the subscription.
@@ -231,7 +233,9 @@ type listingSubscriptionState struct {
 	OrganizationDisplayName *string `pulumi:"organizationDisplayName"`
 	// Organization of the project this subscription belongs to.
 	OrganizationId *string `pulumi:"organizationId"`
-	Project        *string `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// Listing shared asset type.
 	ResourceType *string `pulumi:"resourceType"`
 	// Current state of the subscription.
@@ -271,7 +275,9 @@ type ListingSubscriptionState struct {
 	OrganizationDisplayName pulumi.StringPtrInput
 	// Organization of the project this subscription belongs to.
 	OrganizationId pulumi.StringPtrInput
-	Project        pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// Listing shared asset type.
 	ResourceType pulumi.StringPtrInput
 	// Current state of the subscription.
@@ -295,8 +301,10 @@ type listingSubscriptionArgs struct {
 	// The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
 	ListingId string `pulumi:"listingId"`
 	// The name of the location of the data exchange. Distinct from the location of the destination data set.
-	Location string  `pulumi:"location"`
-	Project  *string `pulumi:"project"`
+	Location string `pulumi:"location"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a ListingSubscription resource.
@@ -310,7 +318,9 @@ type ListingSubscriptionArgs struct {
 	ListingId pulumi.StringInput
 	// The name of the location of the data exchange. Distinct from the location of the destination data set.
 	Location pulumi.StringInput
-	Project  pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 }
 
 func (ListingSubscriptionArgs) ElementType() reflect.Type {
@@ -466,6 +476,8 @@ func (o ListingSubscriptionOutput) OrganizationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ListingSubscription) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o ListingSubscriptionOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ListingSubscription) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

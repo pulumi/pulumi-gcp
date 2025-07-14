@@ -462,8 +462,6 @@ public class DataTransferConfig extends com.pulumi.resources.CustomResource {
      * https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
      * **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
      * 
-     * ***
-     * 
      */
     @Export(name="params", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> params;
@@ -473,8 +471,6 @@ public class DataTransferConfig extends com.pulumi.resources.CustomResource {
      * section for each data source. For example the parameters for Cloud Storage transfers are listed here:
      * https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
      * **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
-     * 
-     * ***
      * 
      */
     public Output<Map<String,String>> params() {

@@ -41,9 +41,6 @@ class ConnectionArgs:
         :param pulumi.Input[builtins.str] connection_id: Required. Id of the requesting object
                If auto-generating Id server-side, remove this field and
                connection_id from the method_signature of Create RPC
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Optional. Allows clients to store small amounts of arbitrary data.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -109,9 +106,6 @@ class ConnectionArgs:
         Required. Id of the requesting object
         If auto-generating Id server-side, remove this field and
         connection_id from the method_signature of Create RPC
-
-
-        - - -
         """
         return pulumi.get(self, "connection_id")
 
@@ -332,9 +326,6 @@ class _ConnectionState:
         :param pulumi.Input[builtins.str] connection_id: Required. Id of the requesting object
                If auto-generating Id server-side, remove this field and
                connection_id from the method_signature of Create RPC
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] create_time: Output only. [Output only] Create timestamp
         :param pulumi.Input['ConnectionCryptoKeyConfigArgs'] crypto_key_config: The crypto key configuration. This field is used by the Customer-managed
                encryption keys (CMEK) feature.
@@ -470,9 +461,6 @@ class _ConnectionState:
         Required. Id of the requesting object
         If auto-generating Id server-side, remove this field and
         connection_id from the method_signature of Create RPC
-
-
-        - - -
         """
         return pulumi.get(self, "connection_id")
 
@@ -1070,9 +1058,6 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] connection_id: Required. Id of the requesting object
                If auto-generating Id server-side, remove this field and
                connection_id from the method_signature of Create RPC
-               
-               
-               - - -
         :param pulumi.Input[Union['ConnectionCryptoKeyConfigArgs', 'ConnectionCryptoKeyConfigArgsDict']] crypto_key_config: The crypto key configuration. This field is used by the Customer-managed
                encryption keys (CMEK) feature.
                Structure is documented below.
@@ -1522,9 +1507,6 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] connection_id: Required. Id of the requesting object
                If auto-generating Id server-side, remove this field and
                connection_id from the method_signature of Create RPC
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] create_time: Output only. [Output only] Create timestamp
         :param pulumi.Input[Union['ConnectionCryptoKeyConfigArgs', 'ConnectionCryptoKeyConfigArgsDict']] crypto_key_config: The crypto key configuration. This field is used by the Customer-managed
                encryption keys (CMEK) feature.
@@ -1629,9 +1611,6 @@ class Connection(pulumi.CustomResource):
         Required. Id of the requesting object
         If auto-generating Id server-side, remove this field and
         connection_id from the method_signature of Create RPC
-
-
-        - - -
         """
         return pulumi.get(self, "connection_id")
 

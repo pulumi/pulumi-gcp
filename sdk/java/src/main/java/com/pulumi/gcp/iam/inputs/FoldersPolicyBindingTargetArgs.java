@@ -21,8 +21,6 @@ public final class FoldersPolicyBindingTargetArgs extends com.pulumi.resources.R
      * * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
      *   It must be parent by the policy binding&#39;s parent (the folder).
      * 
-     * ***
-     * 
      */
     @Import(name="principalSet")
     private @Nullable Output<String> principalSet;
@@ -32,8 +30,6 @@ public final class FoldersPolicyBindingTargetArgs extends com.pulumi.resources.R
      * Examples for each one of the following supported principal set types:
      * * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
      *   It must be parent by the policy binding&#39;s parent (the folder).
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> principalSet() {
@@ -70,8 +66,6 @@ public final class FoldersPolicyBindingTargetArgs extends com.pulumi.resources.R
          * * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
          *   It must be parent by the policy binding&#39;s parent (the folder).
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -85,8 +79,6 @@ public final class FoldersPolicyBindingTargetArgs extends com.pulumi.resources.R
          * Examples for each one of the following supported principal set types:
          * * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
          *   It must be parent by the policy binding&#39;s parent (the folder).
-         * 
-         * ***
          * 
          * @return builder
          * 

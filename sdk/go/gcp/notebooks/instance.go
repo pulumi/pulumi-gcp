@@ -318,8 +318,6 @@ type Instance struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// A reference to the zone where the machine resides.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// A reference to a machine type which defines VM kind.
 	MachineType pulumi.StringOutput `pulumi:"machineType"`
@@ -483,8 +481,6 @@ type instanceState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// A reference to the zone where the machine resides.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// A reference to a machine type which defines VM kind.
 	MachineType *string `pulumi:"machineType"`
@@ -608,8 +604,6 @@ type InstanceState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// A reference to the zone where the machine resides.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// A reference to a machine type which defines VM kind.
 	MachineType pulumi.StringPtrInput
@@ -735,8 +729,6 @@ type instanceArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// A reference to the zone where the machine resides.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// A reference to a machine type which defines VM kind.
 	MachineType string `pulumi:"machineType"`
@@ -849,8 +841,6 @@ type InstanceArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// A reference to the zone where the machine resides.
-	//
-	// ***
 	Location pulumi.StringInput
 	// A reference to a machine type which defines VM kind.
 	MachineType pulumi.StringInput
@@ -1095,8 +1085,6 @@ func (o InstanceOutput) Labels() pulumi.StringMapOutput {
 }
 
 // A reference to the zone where the machine resides.
-//
-// ***
 func (o InstanceOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

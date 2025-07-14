@@ -32,9 +32,6 @@ class NetworkPeeringRoutesConfigArgs:
         :param pulumi.Input[builtins.bool] export_custom_routes: Whether to export the custom routes to the peer network.
         :param pulumi.Input[builtins.bool] import_custom_routes: Whether to import the custom routes to the peer network.
         :param pulumi.Input[builtins.str] network: The name of the primary network for the peering.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] peering: Name of the peering.
         :param pulumi.Input[builtins.bool] export_subnet_routes_with_public_ip: Whether subnet routes with public IP range are exported.
                IPv4 special-use ranges are always exported to peers and
@@ -85,9 +82,6 @@ class NetworkPeeringRoutesConfigArgs:
     def network(self) -> pulumi.Input[builtins.str]:
         """
         The name of the primary network for the peering.
-
-
-        - - -
         """
         return pulumi.get(self, "network")
 
@@ -170,9 +164,6 @@ class _NetworkPeeringRoutesConfigState:
                IPv4 special-use ranges are always imported from peers and
                are not controlled by this field.
         :param pulumi.Input[builtins.str] network: The name of the primary network for the peering.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] peering: Name of the peering.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -249,9 +240,6 @@ class _NetworkPeeringRoutesConfigState:
     def network(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The name of the primary network for the peering.
-
-
-        - - -
         """
         return pulumi.get(self, "network")
 
@@ -431,9 +419,6 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
                IPv4 special-use ranges are always imported from peers and
                are not controlled by this field.
         :param pulumi.Input[builtins.str] network: The name of the primary network for the peering.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] peering: Name of the peering.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -644,9 +629,6 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
                IPv4 special-use ranges are always imported from peers and
                are not controlled by this field.
         :param pulumi.Input[builtins.str] network: The name of the primary network for the peering.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] peering: Name of the peering.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -705,9 +687,6 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
     def network(self) -> pulumi.Output[builtins.str]:
         """
         The name of the primary network for the peering.
-
-
-        - - -
         """
         return pulumi.get(self, "network")
 

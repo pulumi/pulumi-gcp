@@ -45,9 +45,6 @@ class SecurityPolicyRuleInitArgs:
                The priority must be a positive value between 0 and 2147483647.
                Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
         :param pulumi.Input[builtins.str] security_policy: The name of the security policy this rule belongs to.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input['SecurityPolicyRuleHeaderActionArgs'] header_action: Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
                Structure is documented below.
@@ -121,9 +118,6 @@ class SecurityPolicyRuleInitArgs:
     def security_policy(self) -> pulumi.Input[builtins.str]:
         """
         The name of the security policy this rule belongs to.
-
-
-        - - -
         """
         return pulumi.get(self, "security_policy")
 
@@ -278,9 +272,6 @@ class _SecurityPolicyRuleState:
         :param pulumi.Input['SecurityPolicyRuleRedirectOptionsArgs'] redirect_options: Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
                Structure is documented below.
         :param pulumi.Input[builtins.str] security_policy: The name of the security policy this rule belongs to.
-               
-               
-               - - -
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -445,9 +436,6 @@ class _SecurityPolicyRuleState:
     def security_policy(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The name of the security policy this rule belongs to.
-
-
-        - - -
         """
         return pulumi.get(self, "security_policy")
 
@@ -633,9 +621,6 @@ class SecurityPolicyRule(pulumi.CustomResource):
         :param pulumi.Input[Union['SecurityPolicyRuleRedirectOptionsArgs', 'SecurityPolicyRuleRedirectOptionsArgsDict']] redirect_options: Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
                Structure is documented below.
         :param pulumi.Input[builtins.str] security_policy: The name of the security policy this rule belongs to.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -880,9 +865,6 @@ class SecurityPolicyRule(pulumi.CustomResource):
         :param pulumi.Input[Union['SecurityPolicyRuleRedirectOptionsArgs', 'SecurityPolicyRuleRedirectOptionsArgsDict']] redirect_options: Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
                Structure is documented below.
         :param pulumi.Input[builtins.str] security_policy: The name of the security policy this rule belongs to.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1001,9 +983,6 @@ class SecurityPolicyRule(pulumi.CustomResource):
     def security_policy(self) -> pulumi.Output[builtins.str]:
         """
         The name of the security policy this rule belongs to.
-
-
-        - - -
         """
         return pulumi.get(self, "security_policy")
 

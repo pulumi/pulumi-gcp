@@ -34,9 +34,6 @@ class InstancePartitionArgs:
         :param pulumi.Input[builtins.str] display_name: The descriptive name for this instance partition as it appears in UIs.
                Must be unique per project and between 4 and 30 characters in length.
         :param pulumi.Input[builtins.str] instance: The instance to create the instance partition in.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: A unique identifier for the instance partition, which cannot be changed after
                the instance partition is created. The name must be between 2 and 64 characters
                and match the regular expression [a-z][a-z0-9\\\\-]{0,61}[a-z0-9].
@@ -91,9 +88,6 @@ class InstancePartitionArgs:
     def instance(self) -> pulumi.Input[builtins.str]:
         """
         The instance to create the instance partition in.
-
-
-        - - -
         """
         return pulumi.get(self, "instance")
 
@@ -174,9 +168,6 @@ class _InstancePartitionState:
         :param pulumi.Input[builtins.str] display_name: The descriptive name for this instance partition as it appears in UIs.
                Must be unique per project and between 4 and 30 characters in length.
         :param pulumi.Input[builtins.str] instance: The instance to create the instance partition in.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: A unique identifier for the instance partition, which cannot be changed after
                the instance partition is created. The name must be between 2 and 64 characters
                and match the regular expression [a-z][a-z0-9\\\\-]{0,61}[a-z0-9].
@@ -240,9 +231,6 @@ class _InstancePartitionState:
     def instance(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The instance to create the instance partition in.
-
-
-        - - -
         """
         return pulumi.get(self, "instance")
 
@@ -397,9 +385,6 @@ class InstancePartition(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] display_name: The descriptive name for this instance partition as it appears in UIs.
                Must be unique per project and between 4 and 30 characters in length.
         :param pulumi.Input[builtins.str] instance: The instance to create the instance partition in.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: A unique identifier for the instance partition, which cannot be changed after
                the instance partition is created. The name must be between 2 and 64 characters
                and match the regular expression [a-z][a-z0-9\\\\-]{0,61}[a-z0-9].
@@ -548,9 +533,6 @@ class InstancePartition(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] display_name: The descriptive name for this instance partition as it appears in UIs.
                Must be unique per project and between 4 and 30 characters in length.
         :param pulumi.Input[builtins.str] instance: The instance to create the instance partition in.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: A unique identifier for the instance partition, which cannot be changed after
                the instance partition is created. The name must be between 2 and 64 characters
                and match the regular expression [a-z][a-z0-9\\\\-]{0,61}[a-z0-9].
@@ -603,9 +585,6 @@ class InstancePartition(pulumi.CustomResource):
     def instance(self) -> pulumi.Output[builtins.str]:
         """
         The instance to create the instance partition in.
-
-
-        - - -
         """
         return pulumi.get(self, "instance")
 

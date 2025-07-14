@@ -88,8 +88,6 @@ if not MYPY:
         A CA pool resource used to issue a certificate.
         The CA pool string has a relative resource path following the form
         "projects/{project}/locations/{location}/caPools/{caPool}".
-
-        - - -
         """
 elif False:
     CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -102,8 +100,6 @@ class CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthoritySer
         :param pulumi.Input[builtins.str] ca_pool: A CA pool resource used to issue a certificate.
                The CA pool string has a relative resource path following the form
                "projects/{project}/locations/{location}/caPools/{caPool}".
-               
-               - - -
         """
         pulumi.set(__self__, "ca_pool", ca_pool)
 
@@ -114,8 +110,6 @@ class CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthoritySer
         A CA pool resource used to issue a certificate.
         The CA pool string has a relative resource path following the form
         "projects/{project}/locations/{location}/caPools/{caPool}".
-
-        - - -
         """
         return pulumi.get(self, "ca_pool")
 
@@ -735,9 +729,6 @@ if not MYPY:
         Name of the resource; provided by the client when the resource is created.
         The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
         and all following characters must be a dash, underscore, letter or digit.
-
-
-        - - -
         """
         type: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -764,9 +755,6 @@ class DnsAuthorizationDnsResourceRecordArgs:
         :param pulumi.Input[builtins.str] name: Name of the resource; provided by the client when the resource is created.
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
                and all following characters must be a dash, underscore, letter or digit.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] type: type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
                be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
                FIXED_RECORD DNS authorization uses DNS-01 validation method
@@ -802,9 +790,6 @@ class DnsAuthorizationDnsResourceRecordArgs:
         Name of the resource; provided by the client when the resource is created.
         The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
         and all following characters must be a dash, underscore, letter or digit.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

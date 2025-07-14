@@ -124,6 +124,10 @@ export class Reservation extends pulumi.CustomResource {
      * character, which cannot be a dash.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The URI of the created resource.
@@ -131,6 +135,7 @@ export class Reservation extends pulumi.CustomResource {
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
      * The share setting for reservations.
+     * Structure is documented below.
      */
     public readonly shareSettings!: pulumi.Output<outputs.compute.ReservationShareSettings>;
     /**
@@ -139,8 +144,9 @@ export class Reservation extends pulumi.CustomResource {
      */
     public readonly specificReservation!: pulumi.Output<outputs.compute.ReservationSpecificReservation>;
     /**
-     * When set to true, only VMs that target this reservation by name can consume this reservation. Otherwise, it can be
-     * consumed by VMs with affinity for any reservation. Defaults to false.
+     * When set to true, only VMs that target this reservation by name can
+     * consume this reservation. Otherwise, it can be consumed by VMs with
+     * affinity for any reservation. Defaults to false.
      */
     public readonly specificReservationRequired!: pulumi.Output<boolean | undefined>;
     /**
@@ -228,6 +234,10 @@ export interface ReservationState {
      * character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * The URI of the created resource.
@@ -235,6 +245,7 @@ export interface ReservationState {
     selfLink?: pulumi.Input<string>;
     /**
      * The share setting for reservations.
+     * Structure is documented below.
      */
     shareSettings?: pulumi.Input<inputs.compute.ReservationShareSettings>;
     /**
@@ -243,8 +254,9 @@ export interface ReservationState {
      */
     specificReservation?: pulumi.Input<inputs.compute.ReservationSpecificReservation>;
     /**
-     * When set to true, only VMs that target this reservation by name can consume this reservation. Otherwise, it can be
-     * consumed by VMs with affinity for any reservation. Defaults to false.
+     * When set to true, only VMs that target this reservation by name can
+     * consume this reservation. Otherwise, it can be consumed by VMs with
+     * affinity for any reservation. Defaults to false.
      */
     specificReservationRequired?: pulumi.Input<boolean>;
     /**
@@ -275,9 +287,14 @@ export interface ReservationArgs {
      * character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * The share setting for reservations.
+     * Structure is documented below.
      */
     shareSettings?: pulumi.Input<inputs.compute.ReservationShareSettings>;
     /**
@@ -286,8 +303,9 @@ export interface ReservationArgs {
      */
     specificReservation: pulumi.Input<inputs.compute.ReservationSpecificReservation>;
     /**
-     * When set to true, only VMs that target this reservation by name can consume this reservation. Otherwise, it can be
-     * consumed by VMs with affinity for any reservation. Defaults to false.
+     * When set to true, only VMs that target this reservation by name can
+     * consume this reservation. Otherwise, it can be consumed by VMs with
+     * affinity for any reservation. Defaults to false.
      */
     specificReservationRequired?: pulumi.Input<boolean>;
     /**

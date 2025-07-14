@@ -194,8 +194,6 @@ type RegionalParameter struct {
 	// `projects/{{project}}/locations/{{location}}/parameters/{{parameter_id}}`
 	Name pulumi.StringOutput `pulumi:"name"`
 	// This must be unique within the project.
-	//
-	// ***
 	ParameterId pulumi.StringOutput `pulumi:"parameterId"`
 	// An object containing a unique resource identity tied to the regional parameter.
 	// Structure is documented below.
@@ -280,8 +278,6 @@ type regionalParameterState struct {
 	// `projects/{{project}}/locations/{{location}}/parameters/{{parameter_id}}`
 	Name *string `pulumi:"name"`
 	// This must be unique within the project.
-	//
-	// ***
 	ParameterId *string `pulumi:"parameterId"`
 	// An object containing a unique resource identity tied to the regional parameter.
 	// Structure is documented below.
@@ -326,8 +322,6 @@ type RegionalParameterState struct {
 	// `projects/{{project}}/locations/{{location}}/parameters/{{parameter_id}}`
 	Name pulumi.StringPtrInput
 	// This must be unique within the project.
-	//
-	// ***
 	ParameterId pulumi.StringPtrInput
 	// An object containing a unique resource identity tied to the regional parameter.
 	// Structure is documented below.
@@ -369,8 +363,6 @@ type regionalParameterArgs struct {
 	// The location of the regional parameter. eg us-central1
 	Location string `pulumi:"location"`
 	// This must be unique within the project.
-	//
-	// ***
 	ParameterId string `pulumi:"parameterId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -401,8 +393,6 @@ type RegionalParameterArgs struct {
 	// The location of the regional parameter. eg us-central1
 	Location pulumi.StringInput
 	// This must be unique within the project.
-	//
-	// ***
 	ParameterId pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -546,8 +536,6 @@ func (o RegionalParameterOutput) Name() pulumi.StringOutput {
 }
 
 // This must be unique within the project.
-//
-// ***
 func (o RegionalParameterOutput) ParameterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionalParameter) pulumi.StringOutput { return v.ParameterId }).(pulumi.StringOutput)
 }

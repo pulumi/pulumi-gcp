@@ -18,16 +18,12 @@ public final class ScopeRbacRoleBindingRoleArgs extends com.pulumi.resources.Res
     /**
      * CustomRole is the custom Kubernetes ClusterRole to be used. The custom role format must be allowlisted in the rbacrolebindingactuation feature and RFC 1123 compliant.
      * 
-     * ***
-     * 
      */
     @Import(name="customRole")
     private @Nullable Output<String> customRole;
 
     /**
      * @return CustomRole is the custom Kubernetes ClusterRole to be used. The custom role format must be allowlisted in the rbacrolebindingactuation feature and RFC 1123 compliant.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> customRole() {
@@ -79,8 +75,6 @@ public final class ScopeRbacRoleBindingRoleArgs extends com.pulumi.resources.Res
         /**
          * @param customRole CustomRole is the custom Kubernetes ClusterRole to be used. The custom role format must be allowlisted in the rbacrolebindingactuation feature and RFC 1123 compliant.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -91,8 +85,6 @@ public final class ScopeRbacRoleBindingRoleArgs extends com.pulumi.resources.Res
 
         /**
          * @param customRole CustomRole is the custom Kubernetes ClusterRole to be used. The custom role format must be allowlisted in the rbacrolebindingactuation feature and RFC 1123 compliant.
-         * 
-         * ***
          * 
          * @return builder
          * 

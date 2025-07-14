@@ -27,9 +27,6 @@ class AnywhereCacheArgs:
         """
         The set of arguments for constructing a AnywhereCache resource.
         :param pulumi.Input[builtins.str] bucket: A reference to Bucket resource
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] zone: The zone in which the cache instance needs to be created. For example, `us-central1-a.`
         :param pulumi.Input[builtins.str] admission_policy: The cache admission policy dictates whether a block should be inserted upon a cache miss.
                Default value is `admit-on-first-miss`.
@@ -48,9 +45,6 @@ class AnywhereCacheArgs:
     def bucket(self) -> pulumi.Input[builtins.str]:
         """
         A reference to Bucket resource
-
-
-        - - -
         """
         return pulumi.get(self, "bucket")
 
@@ -116,9 +110,6 @@ class _AnywhereCacheState:
                Possible values are: `admit-on-first-miss`, `admit-on-second-miss`.
         :param pulumi.Input[builtins.str] anywhere_cache_id: The ID of the Anywhere cache instance.
         :param pulumi.Input[builtins.str] bucket: A reference to Bucket resource
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] create_time: The creation time of the cache instance in RFC 3339 format.
         :param pulumi.Input[builtins.bool] pending_update: True if the cache instance has an active Update long-running operation.
         :param pulumi.Input[builtins.str] state: The current state of the cache instance.
@@ -176,9 +167,6 @@ class _AnywhereCacheState:
     def bucket(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         A reference to Bucket resource
-
-
-        - - -
         """
         return pulumi.get(self, "bucket")
 
@@ -321,9 +309,6 @@ class AnywhereCache(pulumi.CustomResource):
                Default value is `admit-on-first-miss`.
                Possible values are: `admit-on-first-miss`, `admit-on-second-miss`.
         :param pulumi.Input[builtins.str] bucket: A reference to Bucket resource
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] ttl: The TTL of all cache entries in whole seconds. e.g., "7200s". It defaults to `86400s`
         :param pulumi.Input[builtins.str] zone: The zone in which the cache instance needs to be created. For example, `us-central1-a.`
         """
@@ -450,9 +435,6 @@ class AnywhereCache(pulumi.CustomResource):
                Possible values are: `admit-on-first-miss`, `admit-on-second-miss`.
         :param pulumi.Input[builtins.str] anywhere_cache_id: The ID of the Anywhere cache instance.
         :param pulumi.Input[builtins.str] bucket: A reference to Bucket resource
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] create_time: The creation time of the cache instance in RFC 3339 format.
         :param pulumi.Input[builtins.bool] pending_update: True if the cache instance has an active Update long-running operation.
         :param pulumi.Input[builtins.str] state: The current state of the cache instance.
@@ -498,9 +480,6 @@ class AnywhereCache(pulumi.CustomResource):
     def bucket(self) -> pulumi.Output[builtins.str]:
         """
         A reference to Bucket resource
-
-
-        - - -
         """
         return pulumi.get(self, "bucket")
 

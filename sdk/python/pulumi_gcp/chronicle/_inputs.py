@@ -437,8 +437,6 @@ if not MYPY:
         value: pulumi.Input[builtins.str]
         """
         Required. The value of the entry. Maximum length is 512 characters.
-
-        - - -
         """
 elif False:
     ReferenceListEntryArgsDict: TypeAlias = Mapping[str, Any]
@@ -449,8 +447,6 @@ class ReferenceListEntryArgs:
                  value: pulumi.Input[builtins.str]):
         """
         :param pulumi.Input[builtins.str] value: Required. The value of the entry. Maximum length is 512 characters.
-               
-               - - -
         """
         pulumi.set(__self__, "value", value)
 
@@ -459,8 +455,6 @@ class ReferenceListEntryArgs:
     def value(self) -> pulumi.Input[builtins.str]:
         """
         Required. The value of the entry. Maximum length is 512 characters.
-
-        - - -
         """
         return pulumi.get(self, "value")
 
@@ -610,8 +604,6 @@ if not MYPY:
         end_time: pulumi.Input[builtins.str]
         """
         Exclusive end of the interval.
-
-        - - -
         """
         start_time: pulumi.Input[builtins.str]
         """
@@ -627,8 +619,6 @@ class RetrohuntProcessIntervalArgs:
                  start_time: pulumi.Input[builtins.str]):
         """
         :param pulumi.Input[builtins.str] end_time: Exclusive end of the interval.
-               
-               - - -
         :param pulumi.Input[builtins.str] start_time: Inclusive start of the interval.
         """
         pulumi.set(__self__, "end_time", end_time)
@@ -639,8 +629,6 @@ class RetrohuntProcessIntervalArgs:
     def end_time(self) -> pulumi.Input[builtins.str]:
         """
         Exclusive end of the interval.
-
-        - - -
         """
         return pulumi.get(self, "end_time")
 
@@ -982,8 +970,6 @@ if not MYPY:
         manual: NotRequired[pulumi.Input['WatchlistEntityPopulationMechanismManualArgsDict']]
         """
         Entities are added manually.
-
-        - - -
         """
 elif False:
     WatchlistEntityPopulationMechanismArgsDict: TypeAlias = Mapping[str, Any]
@@ -994,8 +980,6 @@ class WatchlistEntityPopulationMechanismArgs:
                  manual: Optional[pulumi.Input['WatchlistEntityPopulationMechanismManualArgs']] = None):
         """
         :param pulumi.Input['WatchlistEntityPopulationMechanismManualArgs'] manual: Entities are added manually.
-               
-               - - -
         """
         if manual is not None:
             pulumi.set(__self__, "manual", manual)
@@ -1005,8 +989,6 @@ class WatchlistEntityPopulationMechanismArgs:
     def manual(self) -> Optional[pulumi.Input['WatchlistEntityPopulationMechanismManualArgs']]:
         """
         Entities are added manually.
-
-        - - -
         """
         return pulumi.get(self, "manual")
 

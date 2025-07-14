@@ -29,6 +29,8 @@ class SnapshotSettingsArgs:
         :param pulumi.Input['SnapshotSettingsStorageLocationArgs'] storage_location: Policy of which storage location is going to be resolved, and additional data
                that particularizes how the policy is going to be carried out
                Structure is documented below.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "storage_location", storage_location)
         if project is not None:
@@ -51,6 +53,10 @@ class SnapshotSettingsArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -65,6 +71,8 @@ class _SnapshotSettingsState:
                  storage_location: Optional[pulumi.Input['SnapshotSettingsStorageLocationArgs']] = None):
         """
         Input properties used for looking up and filtering SnapshotSettings resources.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input['SnapshotSettingsStorageLocationArgs'] storage_location: Policy of which storage location is going to be resolved, and additional data
                that particularizes how the policy is going to be carried out
                Structure is documented below.
@@ -77,6 +85,10 @@ class _SnapshotSettingsState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -153,6 +165,8 @@ class SnapshotSettings(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Union['SnapshotSettingsStorageLocationArgs', 'SnapshotSettingsStorageLocationArgsDict']] storage_location: Policy of which storage location is going to be resolved, and additional data
                that particularizes how the policy is going to be carried out
                Structure is documented below.
@@ -256,6 +270,8 @@ class SnapshotSettings(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Union['SnapshotSettingsStorageLocationArgs', 'SnapshotSettingsStorageLocationArgsDict']] storage_location: Policy of which storage location is going to be resolved, and additional data
                that particularizes how the policy is going to be carried out
                Structure is documented below.
@@ -271,6 +287,10 @@ class SnapshotSettings(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property

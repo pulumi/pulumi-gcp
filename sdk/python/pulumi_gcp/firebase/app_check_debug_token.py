@@ -30,9 +30,6 @@ class AppCheckDebugTokenArgs:
                [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id),
                [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id),
                or [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id)
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] display_name: A human readable display name used to identify this debug token.
         :param pulumi.Input[builtins.str] token: The secret token itself. Must be provided during creation, and must be a UUID4,
                case insensitive. You may use a method of your choice such as random/random_uuid
@@ -58,9 +55,6 @@ class AppCheckDebugTokenArgs:
         [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id),
         [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id),
         or [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id)
-
-
-        - - -
         """
         return pulumi.get(self, "app_id")
 
@@ -126,9 +120,6 @@ class _AppCheckDebugTokenState:
                [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id),
                [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id),
                or [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id)
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] debug_token_id: The last segment of the resource name of the debug token.
         :param pulumi.Input[builtins.str] display_name: A human readable display name used to identify this debug token.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -160,9 +151,6 @@ class _AppCheckDebugTokenState:
         [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id),
         [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id),
         or [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id)
-
-
-        - - -
         """
         return pulumi.get(self, "app_id")
 
@@ -303,9 +291,6 @@ class AppCheckDebugToken(pulumi.CustomResource):
                [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id),
                [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id),
                or [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id)
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] display_name: A human readable display name used to identify this debug token.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -450,9 +435,6 @@ class AppCheckDebugToken(pulumi.CustomResource):
                [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id),
                [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id),
                or [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id)
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] debug_token_id: The last segment of the resource name of the debug token.
         :param pulumi.Input[builtins.str] display_name: A human readable display name used to identify this debug token.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -484,9 +466,6 @@ class AppCheckDebugToken(pulumi.CustomResource):
         [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id),
         [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id),
         or [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id)
-
-
-        - - -
         """
         return pulumi.get(self, "app_id")
 

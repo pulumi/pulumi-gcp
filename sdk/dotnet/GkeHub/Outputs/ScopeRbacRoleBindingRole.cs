@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.GkeHub.Outputs
     {
         /// <summary>
         /// CustomRole is the custom Kubernetes ClusterRole to be used. The custom role format must be allowlisted in the rbacrolebindingactuation feature and RFC 1123 compliant.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string? CustomRole;
         /// <summary>

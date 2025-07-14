@@ -153,8 +153,7 @@ export class PrivateCloud extends pulumi.CustomResource {
     }
 
     /**
-     * The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0
-     * starts the deletion request immediately. If no value is set, a default value is set at the API Level.
+     * The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
      */
     public readonly deletionDelayHours!: pulumi.Output<number | undefined>;
     /**
@@ -189,11 +188,13 @@ export class PrivateCloud extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public /*out*/ readonly nsxes!: pulumi.Output<outputs.vmwareengine.PrivateCloudNsx[]>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
-     * While set true, deletionDelayHours value will be sent in the request even for zero value of the field. This field is
-     * only useful for setting 0 value to the deletionDelayHours field. It can be used both alone and together with
-     * deletion_delay_hours.
+     * While set true, deletionDelayHours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletionDelayHours field. It can be used both alone and together with deletion_delay_hours.
      */
     public readonly sendDeletionDelayHoursIfZero!: pulumi.Output<boolean | undefined>;
     /**
@@ -202,7 +203,8 @@ export class PrivateCloud extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
+     * Initial type of the private cloud.
+     * Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
      */
     public readonly type!: pulumi.Output<string | undefined>;
     /**
@@ -278,8 +280,7 @@ export class PrivateCloud extends pulumi.CustomResource {
  */
 export interface PrivateCloudState {
     /**
-     * The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0
-     * starts the deletion request immediately. If no value is set, a default value is set at the API Level.
+     * The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
      */
     deletionDelayHours?: pulumi.Input<number>;
     /**
@@ -314,11 +315,13 @@ export interface PrivateCloudState {
      * Structure is documented below.
      */
     nsxes?: pulumi.Input<pulumi.Input<inputs.vmwareengine.PrivateCloudNsx>[]>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
-     * While set true, deletionDelayHours value will be sent in the request even for zero value of the field. This field is
-     * only useful for setting 0 value to the deletionDelayHours field. It can be used both alone and together with
-     * deletion_delay_hours.
+     * While set true, deletionDelayHours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletionDelayHours field. It can be used both alone and together with deletion_delay_hours.
      */
     sendDeletionDelayHoursIfZero?: pulumi.Input<boolean>;
     /**
@@ -327,7 +330,8 @@ export interface PrivateCloudState {
      */
     state?: pulumi.Input<string>;
     /**
-     * Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
+     * Initial type of the private cloud.
+     * Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
      */
     type?: pulumi.Input<string>;
     /**
@@ -346,8 +350,7 @@ export interface PrivateCloudState {
  */
 export interface PrivateCloudArgs {
     /**
-     * The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0
-     * starts the deletion request immediately. If no value is set, a default value is set at the API Level.
+     * The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
      */
     deletionDelayHours?: pulumi.Input<number>;
     /**
@@ -372,15 +375,18 @@ export interface PrivateCloudArgs {
      * Structure is documented below.
      */
     networkConfig: pulumi.Input<inputs.vmwareengine.PrivateCloudNetworkConfig>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
-     * While set true, deletionDelayHours value will be sent in the request even for zero value of the field. This field is
-     * only useful for setting 0 value to the deletionDelayHours field. It can be used both alone and together with
-     * deletion_delay_hours.
+     * While set true, deletionDelayHours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletionDelayHours field. It can be used both alone and together with deletion_delay_hours.
      */
     sendDeletionDelayHoursIfZero?: pulumi.Input<boolean>;
     /**
-     * Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
+     * Initial type of the private cloud.
+     * Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
      */
     type?: pulumi.Input<string>;
 }

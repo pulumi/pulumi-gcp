@@ -126,8 +126,6 @@ type VolumeQuotaRule struct {
 	// Loction of the quotaRule. QuotaRules are child resources of volumes and live in the same location.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The resource name of the quotaRule.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -214,8 +212,6 @@ type volumeQuotaRuleState struct {
 	// Loction of the quotaRule. QuotaRules are child resources of volumes and live in the same location.
 	Location *string `pulumi:"location"`
 	// The resource name of the quotaRule.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -259,8 +255,6 @@ type VolumeQuotaRuleState struct {
 	// Loction of the quotaRule. QuotaRules are child resources of volumes and live in the same location.
 	Location pulumi.StringPtrInput
 	// The resource name of the quotaRule.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -304,8 +298,6 @@ type volumeQuotaRuleArgs struct {
 	// Loction of the quotaRule. QuotaRules are child resources of volumes and live in the same location.
 	Location *string `pulumi:"location"`
 	// The resource name of the quotaRule.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -339,8 +331,6 @@ type VolumeQuotaRuleArgs struct {
 	// Loction of the quotaRule. QuotaRules are child resources of volumes and live in the same location.
 	Location pulumi.StringPtrInput
 	// The resource name of the quotaRule.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -481,8 +471,6 @@ func (o VolumeQuotaRuleOutput) Location() pulumi.StringPtrOutput {
 }
 
 // The resource name of the quotaRule.
-//
-// ***
 func (o VolumeQuotaRuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *VolumeQuotaRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

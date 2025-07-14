@@ -101,6 +101,13 @@ def get_key_handles(location: Optional[builtins.str] = None,
                     resource_type_selector: Optional[builtins.str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKeyHandlesResult:
     """
+    Provides access to Google Cloud Platform KMS KeyHandle. A key handle is a Cloud KMS resource that helps you safely span the separation of duties to create new Cloud KMS keys for CMEK using Autokey.
+
+    For more information see
+    [the official documentation](https://cloud.google.com/kms/docs/resource-hierarchy#key_handles)
+    and
+    [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyHandles/list).
+
     ## Example Usage
 
     ```python
@@ -139,6 +146,13 @@ def get_key_handles_output(location: Optional[pulumi.Input[builtins.str]] = None
                            resource_type_selector: Optional[pulumi.Input[builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKeyHandlesResult]:
     """
+    Provides access to Google Cloud Platform KMS KeyHandle. A key handle is a Cloud KMS resource that helps you safely span the separation of duties to create new Cloud KMS keys for CMEK using Autokey.
+
+    For more information see
+    [the official documentation](https://cloud.google.com/kms/docs/resource-hierarchy#key_handles)
+    and
+    [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyHandles/list).
+
     ## Example Usage
 
     ```python

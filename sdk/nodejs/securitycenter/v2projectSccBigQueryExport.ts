@@ -74,9 +74,6 @@ export class V2ProjectSccBigQueryExport extends pulumi.CustomResource {
 
     /**
      * This must be unique within the organization.
-     *
-     *
-     * - - -
      */
     public readonly bigQueryExportId!: pulumi.Output<string>;
     /**
@@ -200,9 +197,6 @@ export class V2ProjectSccBigQueryExport extends pulumi.CustomResource {
 export interface V2ProjectSccBigQueryExportState {
     /**
      * This must be unique within the organization.
-     *
-     *
-     * - - -
      */
     bigQueryExportId?: pulumi.Input<string>;
     /**
@@ -281,9 +275,6 @@ export interface V2ProjectSccBigQueryExportState {
 export interface V2ProjectSccBigQueryExportArgs {
     /**
      * This must be unique within the organization.
-     *
-     *
-     * - - -
      */
     bigQueryExportId: pulumi.Input<string>;
     /**

@@ -71,16 +71,12 @@ public final class BackupArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The resource name of the backup. Needs to be unique per location.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return The resource name of the backup. Needs to be unique per location.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -256,8 +252,6 @@ public final class BackupArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name The resource name of the backup. Needs to be unique per location.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -268,8 +262,6 @@ public final class BackupArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name The resource name of the backup. Needs to be unique per location.
-         * 
-         * ***
          * 
          * @return builder
          * 

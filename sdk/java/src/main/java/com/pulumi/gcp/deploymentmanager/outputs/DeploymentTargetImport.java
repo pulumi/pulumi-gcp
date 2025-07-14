@@ -20,8 +20,6 @@ public final class DeploymentTargetImport {
      * @return The name of the template to import, as declared in the YAML
      * configuration.
      * 
-     * ***
-     * 
      */
     private @Nullable String name;
 
@@ -36,8 +34,6 @@ public final class DeploymentTargetImport {
     /**
      * @return The name of the template to import, as declared in the YAML
      * configuration.
-     * 
-     * ***
      * 
      */
     public Optional<String> name() {

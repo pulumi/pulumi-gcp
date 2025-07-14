@@ -89,9 +89,6 @@ export class OrganizationSecurityPolicy extends pulumi.CustomResource {
     /**
      * The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
      * Format: organizations/{organization_id} or folders/{folder_id}
-     *
-     *
-     * - - -
      */
     public readonly parent!: pulumi.Output<string>;
     /**
@@ -166,9 +163,6 @@ export interface OrganizationSecurityPolicyState {
     /**
      * The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
      * Format: organizations/{organization_id} or folders/{folder_id}
-     *
-     *
-     * - - -
      */
     parent?: pulumi.Input<string>;
     /**
@@ -200,9 +194,6 @@ export interface OrganizationSecurityPolicyArgs {
     /**
      * The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
      * Format: organizations/{organization_id} or folders/{folder_id}
-     *
-     *
-     * - - -
      */
     parent: pulumi.Input<string>;
     /**

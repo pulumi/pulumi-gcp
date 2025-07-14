@@ -345,8 +345,6 @@ public class TargetInstance extends com.pulumi.resources.CustomResource {
      * the provider-default zone and the project will default to the
      * provider-level project.
      * 
-     * ***
-     * 
      */
     @Export(name="instance", refs={String.class}, tree="[0]")
     private Output<String> instance;
@@ -358,8 +356,6 @@ public class TargetInstance extends com.pulumi.resources.CustomResource {
      * name is given, the zone will default to the given zone or
      * the provider-default zone and the project will default to the
      * provider-level project.
-     * 
-     * ***
      * 
      */
     public Output<String> instance() {

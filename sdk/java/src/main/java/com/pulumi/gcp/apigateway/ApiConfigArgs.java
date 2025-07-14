@@ -25,16 +25,12 @@ public final class ApiConfigArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The API to attach the config to.
      * 
-     * ***
-     * 
      */
     @Import(name="api", required=true)
     private Output<String> api;
 
     /**
      * @return The API to attach the config to.
-     * 
-     * ***
      * 
      */
     public Output<String> api() {
@@ -234,8 +230,6 @@ public final class ApiConfigArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param api The API to attach the config to.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -246,8 +240,6 @@ public final class ApiConfigArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param api The API to attach the config to.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -294,8 +294,6 @@ public class OauthClient extends com.pulumi.resources.CustomResource {
      * trailing hyphen. The prefix `gcp-` is reserved for use by Google, and may
      * not be specified.
      * 
-     * ***
-     * 
      */
     @Export(name="oauthClientId", refs={String.class}, tree="[0]")
     private Output<String> oauthClientId;
@@ -306,8 +304,6 @@ public class OauthClient extends com.pulumi.resources.CustomResource {
      * letters, digits, or hyphens. It must start with a letter, and cannot have a
      * trailing hyphen. The prefix `gcp-` is reserved for use by Google, and may
      * not be specified.
-     * 
-     * ***
      * 
      */
     public Output<String> oauthClientId() {

@@ -35,16 +35,12 @@ public final class ConnectClusterGcpConfigAccessConfigNetworkConfigArgs extends 
     /**
      * Additional DNS domain names from the subnet&#39;s network to be made visible to the Connect Cluster. When using MirrorMaker2, it&#39;s necessary to add the bootstrap address&#39;s dns domain name of the target cluster to make it visible to the connector. For example: my-kafka-cluster.us-central1.managedkafka.my-project.cloud.goog
      * 
-     * ***
-     * 
      */
     @Import(name="dnsDomainNames")
     private @Nullable Output<List<String>> dnsDomainNames;
 
     /**
      * @return Additional DNS domain names from the subnet&#39;s network to be made visible to the Connect Cluster. When using MirrorMaker2, it&#39;s necessary to add the bootstrap address&#39;s dns domain name of the target cluster to make it visible to the connector. For example: my-kafka-cluster.us-central1.managedkafka.my-project.cloud.goog
-     * 
-     * ***
      * 
      */
     public Optional<Output<List<String>>> dnsDomainNames() {
@@ -126,8 +122,6 @@ public final class ConnectClusterGcpConfigAccessConfigNetworkConfigArgs extends 
         /**
          * @param dnsDomainNames Additional DNS domain names from the subnet&#39;s network to be made visible to the Connect Cluster. When using MirrorMaker2, it&#39;s necessary to add the bootstrap address&#39;s dns domain name of the target cluster to make it visible to the connector. For example: my-kafka-cluster.us-central1.managedkafka.my-project.cloud.goog
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -139,8 +133,6 @@ public final class ConnectClusterGcpConfigAccessConfigNetworkConfigArgs extends 
         /**
          * @param dnsDomainNames Additional DNS domain names from the subnet&#39;s network to be made visible to the Connect Cluster. When using MirrorMaker2, it&#39;s necessary to add the bootstrap address&#39;s dns domain name of the target cluster to make it visible to the connector. For example: my-kafka-cluster.us-central1.managedkafka.my-project.cloud.goog
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -150,8 +142,6 @@ public final class ConnectClusterGcpConfigAccessConfigNetworkConfigArgs extends 
 
         /**
          * @param dnsDomainNames Additional DNS domain names from the subnet&#39;s network to be made visible to the Connect Cluster. When using MirrorMaker2, it&#39;s necessary to add the bootstrap address&#39;s dns domain name of the target cluster to make it visible to the connector. For example: my-kafka-cluster.us-central1.managedkafka.my-project.cloud.goog
-         * 
-         * ***
          * 
          * @return builder
          * 

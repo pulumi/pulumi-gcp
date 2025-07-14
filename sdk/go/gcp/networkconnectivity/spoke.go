@@ -783,8 +783,6 @@ type Spoke struct {
 	// Structure is documented below.
 	LinkedVpnTunnels SpokeLinkedVpnTunnelsPtrOutput `pulumi:"linkedVpnTunnels"`
 	// The location for the resource
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Immutable. The name of the spoke. Spoke names must be unique.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -876,8 +874,6 @@ type spokeState struct {
 	// Structure is documented below.
 	LinkedVpnTunnels *SpokeLinkedVpnTunnels `pulumi:"linkedVpnTunnels"`
 	// The location for the resource
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// Immutable. The name of the spoke. Spoke names must be unique.
 	Name *string `pulumi:"name"`
@@ -929,8 +925,6 @@ type SpokeState struct {
 	// Structure is documented below.
 	LinkedVpnTunnels SpokeLinkedVpnTunnelsPtrInput
 	// The location for the resource
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// Immutable. The name of the spoke. Spoke names must be unique.
 	Name pulumi.StringPtrInput
@@ -982,8 +976,6 @@ type spokeArgs struct {
 	// Structure is documented below.
 	LinkedVpnTunnels *SpokeLinkedVpnTunnels `pulumi:"linkedVpnTunnels"`
 	// The location for the resource
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// Immutable. The name of the spoke. Spoke names must be unique.
 	Name *string `pulumi:"name"`
@@ -1020,8 +1012,6 @@ type SpokeArgs struct {
 	// Structure is documented below.
 	LinkedVpnTunnels SpokeLinkedVpnTunnelsPtrInput
 	// The location for the resource
-	//
-	// ***
 	Location pulumi.StringInput
 	// Immutable. The name of the spoke. Spoke names must be unique.
 	Name pulumi.StringPtrInput
@@ -1180,8 +1170,6 @@ func (o SpokeOutput) LinkedVpnTunnels() SpokeLinkedVpnTunnelsPtrOutput {
 }
 
 // The location for the resource
-//
-// ***
 func (o SpokeOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Spoke) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

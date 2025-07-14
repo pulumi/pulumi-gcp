@@ -159,16 +159,12 @@ public class FirewallPolicy extends com.pulumi.resources.CustomResource {
     /**
      * The parent of the firewall policy.
      * 
-     * ***
-     * 
      */
     @Export(name="parent", refs={String.class}, tree="[0]")
     private Output<String> parent;
 
     /**
      * @return The parent of the firewall policy.
-     * 
-     * ***
      * 
      */
     public Output<String> parent() {

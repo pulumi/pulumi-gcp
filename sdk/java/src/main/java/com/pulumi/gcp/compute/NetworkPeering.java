@@ -240,6 +240,20 @@ public class NetworkPeering extends com.pulumi.resources.CustomResource {
     public Output<String> stateDetails() {
         return this.stateDetails;
     }
+    /**
+     * The update strategy determines the semantics for updates and deletes to the peering connection configuration. The default value is INDEPENDENT. Possible values: [&#34;INDEPENDENT&#34;, &#34;CONSENSUS&#34;]
+     * 
+     */
+    @Export(name="updateStrategy", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> updateStrategy;
+
+    /**
+     * @return The update strategy determines the semantics for updates and deletes to the peering connection configuration. The default value is INDEPENDENT. Possible values: [&#34;INDEPENDENT&#34;, &#34;CONSENSUS&#34;]
+     * 
+     */
+    public Output<Optional<String>> updateStrategy() {
+        return Codegen.optional(this.updateStrategy);
+    }
 
     /**
      *

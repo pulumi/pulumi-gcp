@@ -43,9 +43,6 @@ class RoutineArgs:
         :param pulumi.Input[builtins.str] dataset_id: The ID of the dataset containing this routine
         :param pulumi.Input[builtins.str] definition_body: The body of the routine. For functions, this is the expression in the AS clause.
                If language=SQL, it is the substring inside (but excluding) the parentheses.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] routine_id: The ID of the the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
         :param pulumi.Input[builtins.str] routine_type: The type of routine.
                Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
@@ -129,9 +126,6 @@ class RoutineArgs:
         """
         The body of the routine. For functions, this is the expression in the AS clause.
         If language=SQL, it is the substring inside (but excluding) the parentheses.
-
-
-        - - -
         """
         return pulumi.get(self, "definition_body")
 
@@ -361,9 +355,6 @@ class _RoutineState:
         :param pulumi.Input[builtins.str] dataset_id: The ID of the dataset containing this routine
         :param pulumi.Input[builtins.str] definition_body: The body of the routine. For functions, this is the expression in the AS clause.
                If language=SQL, it is the substring inside (but excluding) the parentheses.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] description: The description of the routine if defined.
         :param pulumi.Input[builtins.str] determinism_level: The determinism level of the JavaScript UDF if defined.
                Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
@@ -492,9 +483,6 @@ class _RoutineState:
         """
         The body of the routine. For functions, this is the expression in the AS clause.
         If language=SQL, it is the substring inside (but excluding) the parentheses.
-
-
-        - - -
         """
         return pulumi.get(self, "definition_body")
 
@@ -959,9 +947,6 @@ class Routine(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] dataset_id: The ID of the dataset containing this routine
         :param pulumi.Input[builtins.str] definition_body: The body of the routine. For functions, this is the expression in the AS clause.
                If language=SQL, it is the substring inside (but excluding) the parentheses.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] description: The description of the routine if defined.
         :param pulumi.Input[builtins.str] determinism_level: The determinism level of the JavaScript UDF if defined.
                Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
@@ -1358,9 +1343,6 @@ class Routine(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] dataset_id: The ID of the dataset containing this routine
         :param pulumi.Input[builtins.str] definition_body: The body of the routine. For functions, this is the expression in the AS clause.
                If language=SQL, it is the substring inside (but excluding) the parentheses.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] description: The description of the routine if defined.
         :param pulumi.Input[builtins.str] determinism_level: The determinism level of the JavaScript UDF if defined.
                Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
@@ -1460,9 +1442,6 @@ class Routine(pulumi.CustomResource):
         """
         The body of the routine. For functions, this is the expression in the AS clause.
         If language=SQL, it is the substring inside (but excluding) the parentheses.
-
-
-        - - -
         """
         return pulumi.get(self, "definition_body")
 

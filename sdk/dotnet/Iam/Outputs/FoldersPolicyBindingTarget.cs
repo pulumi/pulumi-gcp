@@ -18,8 +18,6 @@ namespace Pulumi.Gcp.Iam.Outputs
         /// Examples for each one of the following supported principal set types:
         /// * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
         /// It must be parent by the policy binding's parent (the folder).
-        /// 
-        /// - - -
         /// </summary>
         public readonly string? PrincipalSet;
 

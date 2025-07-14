@@ -104,9 +104,6 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// <summary>
         /// The ID to use for the new deployment group, which will become the final
         /// component of the deployment group's resource name.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("interceptDeploymentGroupId")]
         public Output<string> InterceptDeploymentGroupId { get; private set; } = null!;
@@ -251,9 +248,6 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// <summary>
         /// The ID to use for the new deployment group, which will become the final
         /// component of the deployment group's resource name.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("interceptDeploymentGroupId", required: true)]
         public Input<string> InterceptDeploymentGroupId { get; set; } = null!;
@@ -347,9 +341,6 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// <summary>
         /// The ID to use for the new deployment group, which will become the final
         /// component of the deployment group's resource name.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("interceptDeploymentGroupId")]
         public Input<string>? InterceptDeploymentGroupId { get; set; }

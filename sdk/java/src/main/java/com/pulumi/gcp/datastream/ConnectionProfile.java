@@ -741,16 +741,12 @@ public class ConnectionProfile extends com.pulumi.resources.CustomResource {
     /**
      * The name of the location this connection profile is located in.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return The name of the location this connection profile is located in.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

@@ -91,8 +91,6 @@ type TagValue struct {
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
 	// The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\), and forward slashes (/).
-	//
-	// ***
 	ShortName pulumi.StringOutput `pulumi:"shortName"`
 	// Output only. Update time.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -148,8 +146,6 @@ type tagValueState struct {
 	Parent *string `pulumi:"parent"`
 	// Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
 	// The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\), and forward slashes (/).
-	//
-	// ***
 	ShortName *string `pulumi:"shortName"`
 	// Output only. Update time.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -170,8 +166,6 @@ type TagValueState struct {
 	Parent pulumi.StringPtrInput
 	// Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
 	// The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\), and forward slashes (/).
-	//
-	// ***
 	ShortName pulumi.StringPtrInput
 	// Output only. Update time.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -189,8 +183,6 @@ type tagValueArgs struct {
 	Parent string `pulumi:"parent"`
 	// Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
 	// The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\), and forward slashes (/).
-	//
-	// ***
 	ShortName string `pulumi:"shortName"`
 }
 
@@ -202,8 +194,6 @@ type TagValueArgs struct {
 	Parent pulumi.StringInput
 	// Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
 	// The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\), and forward slashes (/).
-	//
-	// ***
 	ShortName pulumi.StringInput
 }
 
@@ -322,8 +312,6 @@ func (o TagValueOutput) Parent() pulumi.StringOutput {
 
 // Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
 // The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\), and forward slashes (/).
-//
-// ***
 func (o TagValueOutput) ShortName() pulumi.StringOutput {
 	return o.ApplyT(func(v *TagValue) pulumi.StringOutput { return v.ShortName }).(pulumi.StringOutput)
 }

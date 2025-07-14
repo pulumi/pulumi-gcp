@@ -154,16 +154,12 @@ public final class RegionalParameterState extends com.pulumi.resources.ResourceA
     /**
      * This must be unique within the project.
      * 
-     * ***
-     * 
      */
     @Import(name="parameterId")
     private @Nullable Output<String> parameterId;
 
     /**
      * @return This must be unique within the project.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> parameterId() {
@@ -449,8 +445,6 @@ public final class RegionalParameterState extends com.pulumi.resources.ResourceA
         /**
          * @param parameterId This must be unique within the project.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -461,8 +455,6 @@ public final class RegionalParameterState extends com.pulumi.resources.ResourceA
 
         /**
          * @param parameterId This must be unique within the project.
-         * 
-         * ***
          * 
          * @return builder
          * 

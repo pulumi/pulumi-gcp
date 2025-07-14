@@ -111,9 +111,6 @@ export class MaterializedView extends pulumi.CustomResource {
     public readonly instance!: pulumi.Output<string | undefined>;
     /**
      * The unique name of the materialized view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-     *
-     *
-     * - - -
      */
     public readonly materializedViewId!: pulumi.Output<string>;
     /**
@@ -183,9 +180,6 @@ export interface MaterializedViewState {
     instance?: pulumi.Input<string>;
     /**
      * The unique name of the materialized view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-     *
-     *
-     * - - -
      */
     materializedViewId?: pulumi.Input<string>;
     /**
@@ -217,9 +211,6 @@ export interface MaterializedViewArgs {
     instance?: pulumi.Input<string>;
     /**
      * The unique name of the materialized view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-     *
-     *
-     * - - -
      */
     materializedViewId: pulumi.Input<string>;
     /**

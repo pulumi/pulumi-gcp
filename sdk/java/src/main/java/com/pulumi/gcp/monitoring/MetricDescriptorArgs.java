@@ -200,8 +200,6 @@ public final class MetricDescriptorArgs extends com.pulumi.resources.ResourceArg
      * Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
      * Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
      * 
-     * ***
-     * 
      */
     @Import(name="valueType", required=true)
     private Output<String> valueType;
@@ -209,8 +207,6 @@ public final class MetricDescriptorArgs extends com.pulumi.resources.ResourceArg
     /**
      * @return Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
      * Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
-     * 
-     * ***
      * 
      */
     public Output<String> valueType() {
@@ -496,8 +492,6 @@ public final class MetricDescriptorArgs extends com.pulumi.resources.ResourceArg
          * @param valueType Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
          * Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -509,8 +503,6 @@ public final class MetricDescriptorArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param valueType Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
          * Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
-         * 
-         * ***
          * 
          * @return builder
          * 

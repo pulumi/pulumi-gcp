@@ -1312,8 +1312,6 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigR
                  resource_types: Sequence[builtins.str]):
         """
         :param Sequence[builtins.str] resource_types: The resource types to run the detector on.
-               
-               - - -
         """
         pulumi.set(__self__, "resource_types", resource_types)
 
@@ -1322,8 +1320,6 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigR
     def resource_types(self) -> Sequence[builtins.str]:
         """
         The resource types to run the detector on.
-
-        - - -
         """
         return pulumi.get(self, "resource_types")
 

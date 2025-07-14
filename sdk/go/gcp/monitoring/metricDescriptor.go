@@ -187,8 +187,6 @@ type MetricDescriptor struct {
 	Unit pulumi.StringPtrOutput `pulumi:"unit"`
 	// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
 	// Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
-	//
-	// ***
 	ValueType pulumi.StringOutput `pulumi:"valueType"`
 }
 
@@ -276,8 +274,6 @@ type metricDescriptorState struct {
 	Unit *string `pulumi:"unit"`
 	// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
 	// Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
-	//
-	// ***
 	ValueType *string `pulumi:"valueType"`
 }
 
@@ -327,8 +323,6 @@ type MetricDescriptorState struct {
 	Unit pulumi.StringPtrInput
 	// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
 	// Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
-	//
-	// ***
 	ValueType pulumi.StringPtrInput
 }
 
@@ -378,8 +372,6 @@ type metricDescriptorArgs struct {
 	Unit *string `pulumi:"unit"`
 	// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
 	// Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
-	//
-	// ***
 	ValueType string `pulumi:"valueType"`
 }
 
@@ -426,8 +418,6 @@ type MetricDescriptorArgs struct {
 	Unit pulumi.StringPtrInput
 	// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
 	// Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
-	//
-	// ***
 	ValueType pulumi.StringInput
 }
 
@@ -596,8 +586,6 @@ func (o MetricDescriptorOutput) Unit() pulumi.StringPtrOutput {
 
 // Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
 // Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
-//
-// ***
 func (o MetricDescriptorOutput) ValueType() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetricDescriptor) pulumi.StringOutput { return v.ValueType }).(pulumi.StringOutput)
 }

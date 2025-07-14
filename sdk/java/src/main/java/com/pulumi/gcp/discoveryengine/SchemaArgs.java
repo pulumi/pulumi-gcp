@@ -83,16 +83,12 @@ public final class SchemaArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The unique id of the schema.
      * 
-     * ***
-     * 
      */
     @Import(name="schemaId", required=true)
     private Output<String> schemaId;
 
     /**
      * @return The unique id of the schema.
-     * 
-     * ***
      * 
      */
     public Output<String> schemaId() {
@@ -218,8 +214,6 @@ public final class SchemaArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param schemaId The unique id of the schema.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -230,8 +224,6 @@ public final class SchemaArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param schemaId The unique id of the schema.
-         * 
-         * ***
          * 
          * @return builder
          * 

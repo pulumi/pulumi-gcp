@@ -8,6 +8,7 @@ import typing
 # Export this package's modules as members:
 from .cluster import *
 from .cluster_user_created_connections import *
+from .get_cluster import *
 from .get_instance import *
 from .instance import *
 from ._inputs import *

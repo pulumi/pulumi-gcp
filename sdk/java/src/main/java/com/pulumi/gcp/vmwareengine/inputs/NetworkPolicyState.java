@@ -128,16 +128,12 @@ public final class NetworkPolicyState extends com.pulumi.resources.ResourceArgs 
     /**
      * The ID of the Network Policy.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return The ID of the Network Policy.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -413,8 +409,6 @@ public final class NetworkPolicyState extends com.pulumi.resources.ResourceArgs 
         /**
          * @param name The ID of the Network Policy.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -425,8 +419,6 @@ public final class NetworkPolicyState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param name The ID of the Network Policy.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -22,16 +22,12 @@ public final class TargetSiteState extends com.pulumi.resources.ResourceArgs {
     /**
      * The unique id of the data store.
      * 
-     * ***
-     * 
      */
     @Import(name="dataStoreId")
     private @Nullable Output<String> dataStoreId;
 
     /**
      * @return The unique id of the data store.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> dataStoreId() {
@@ -301,8 +297,6 @@ public final class TargetSiteState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param dataStoreId The unique id of the data store.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -313,8 +307,6 @@ public final class TargetSiteState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dataStoreId The unique id of the data store.
-         * 
-         * ***
          * 
          * @return builder
          * 

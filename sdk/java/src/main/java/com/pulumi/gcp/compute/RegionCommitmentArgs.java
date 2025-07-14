@@ -139,8 +139,6 @@ public final class RegionCommitmentArgs extends com.pulumi.resources.ResourceArg
      * The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
      * Possible values are: `TWELVE_MONTH`, `THIRTY_SIX_MONTH`.
      * 
-     * ***
-     * 
      */
     @Import(name="plan", required=true)
     private Output<String> plan;
@@ -149,8 +147,6 @@ public final class RegionCommitmentArgs extends com.pulumi.resources.ResourceArg
      * @return The plan for this commitment, which determines duration and discount rate.
      * The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
      * Possible values are: `TWELVE_MONTH`, `THIRTY_SIX_MONTH`.
-     * 
-     * ***
      * 
      */
     public Output<String> plan() {
@@ -420,8 +416,6 @@ public final class RegionCommitmentArgs extends com.pulumi.resources.ResourceArg
          * The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
          * Possible values are: `TWELVE_MONTH`, `THIRTY_SIX_MONTH`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -434,8 +428,6 @@ public final class RegionCommitmentArgs extends com.pulumi.resources.ResourceArg
          * @param plan The plan for this commitment, which determines duration and discount rate.
          * The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
          * Possible values are: `TWELVE_MONTH`, `THIRTY_SIX_MONTH`.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -18,8 +18,6 @@ public final class RepositoryGroupRepositoryArgs extends com.pulumi.resources.Re
      * Required. The Git branch pattern used for indexing in RE2 syntax.
      * See https://github.com/google/re2/wiki/syntax for syntax.
      * 
-     * ***
-     * 
      */
     @Import(name="branchPattern", required=true)
     private Output<String> branchPattern;
@@ -27,8 +25,6 @@ public final class RepositoryGroupRepositoryArgs extends com.pulumi.resources.Re
     /**
      * @return Required. The Git branch pattern used for indexing in RE2 syntax.
      * See https://github.com/google/re2/wiki/syntax for syntax.
-     * 
-     * ***
      * 
      */
     public Output<String> branchPattern() {
@@ -81,8 +77,6 @@ public final class RepositoryGroupRepositoryArgs extends com.pulumi.resources.Re
          * @param branchPattern Required. The Git branch pattern used for indexing in RE2 syntax.
          * See https://github.com/google/re2/wiki/syntax for syntax.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -94,8 +88,6 @@ public final class RepositoryGroupRepositoryArgs extends com.pulumi.resources.Re
         /**
          * @param branchPattern Required. The Git branch pattern used for indexing in RE2 syntax.
          * See https://github.com/google/re2/wiki/syntax for syntax.
-         * 
-         * ***
          * 
          * @return builder
          * 

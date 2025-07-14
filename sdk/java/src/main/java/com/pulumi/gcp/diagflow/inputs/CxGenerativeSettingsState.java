@@ -75,16 +75,12 @@ public final class CxGenerativeSettingsState extends com.pulumi.resources.Resour
     /**
      * Language for this settings.
      * 
-     * ***
-     * 
      */
     @Import(name="languageCode")
     private @Nullable Output<String> languageCode;
 
     /**
      * @return Language for this settings.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> languageCode() {
@@ -246,8 +242,6 @@ public final class CxGenerativeSettingsState extends com.pulumi.resources.Resour
         /**
          * @param languageCode Language for this settings.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -258,8 +252,6 @@ public final class CxGenerativeSettingsState extends com.pulumi.resources.Resour
 
         /**
          * @param languageCode Language for this settings.
-         * 
-         * ***
          * 
          * @return builder
          * 

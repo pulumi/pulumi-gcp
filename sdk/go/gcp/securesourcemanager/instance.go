@@ -736,8 +736,6 @@ type Instance struct {
 	// Structure is documented below.
 	HostConfigs InstanceHostConfigArrayOutput `pulumi:"hostConfigs"`
 	// The name for the Instance.
-	//
-	// ***
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// Customer-managed encryption key name, in the format projects/*/locations/*/keyRings/*/cryptoKeys/*.
 	KmsKey pulumi.StringPtrOutput `pulumi:"kmsKey"`
@@ -820,8 +818,6 @@ type instanceState struct {
 	// Structure is documented below.
 	HostConfigs []InstanceHostConfig `pulumi:"hostConfigs"`
 	// The name for the Instance.
-	//
-	// ***
 	InstanceId *string `pulumi:"instanceId"`
 	// Customer-managed encryption key name, in the format projects/*/locations/*/keyRings/*/cryptoKeys/*.
 	KmsKey *string `pulumi:"kmsKey"`
@@ -864,8 +860,6 @@ type InstanceState struct {
 	// Structure is documented below.
 	HostConfigs InstanceHostConfigArrayInput
 	// The name for the Instance.
-	//
-	// ***
 	InstanceId pulumi.StringPtrInput
 	// Customer-managed encryption key name, in the format projects/*/locations/*/keyRings/*/cryptoKeys/*.
 	KmsKey pulumi.StringPtrInput
@@ -905,8 +899,6 @@ func (InstanceState) ElementType() reflect.Type {
 
 type instanceArgs struct {
 	// The name for the Instance.
-	//
-	// ***
 	InstanceId string `pulumi:"instanceId"`
 	// Customer-managed encryption key name, in the format projects/*/locations/*/keyRings/*/cryptoKeys/*.
 	KmsKey *string `pulumi:"kmsKey"`
@@ -932,8 +924,6 @@ type instanceArgs struct {
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
 	// The name for the Instance.
-	//
-	// ***
 	InstanceId pulumi.StringInput
 	// Customer-managed encryption key name, in the format projects/*/locations/*/keyRings/*/cryptoKeys/*.
 	KmsKey pulumi.StringPtrInput
@@ -1060,8 +1050,6 @@ func (o InstanceOutput) HostConfigs() InstanceHostConfigArrayOutput {
 }
 
 // The name for the Instance.
-//
-// ***
 func (o InstanceOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }

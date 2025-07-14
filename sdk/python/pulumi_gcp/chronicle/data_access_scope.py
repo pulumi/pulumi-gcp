@@ -35,9 +35,6 @@ class DataAccessScopeArgs:
         :param pulumi.Input[builtins.str] data_access_scope_id: Required. The user provided scope id which will become the last part of the name
                of the scope resource.
                Needs to be compliant with https://google.aip.dev/122
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] instance: The unique identifier for the Chronicle instance, which is the same as the customer ID.
         :param pulumi.Input[builtins.str] location: The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
         :param pulumi.Input[builtins.bool] allow_all: Optional. Whether or not the scope allows all labels, allow_all and
@@ -86,9 +83,6 @@ class DataAccessScopeArgs:
         Required. The user provided scope id which will become the last part of the name
         of the scope resource.
         Needs to be compliant with https://google.aip.dev/122
-
-
-        - - -
         """
         return pulumi.get(self, "data_access_scope_id")
 
@@ -239,9 +233,6 @@ class _DataAccessScopeState:
         :param pulumi.Input[builtins.str] data_access_scope_id: Required. The user provided scope id which will become the last part of the name
                of the scope resource.
                Needs to be compliant with https://google.aip.dev/122
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['DataAccessScopeDeniedDataAccessLabelArgs']]] denied_data_access_labels: Optional. The denied labels for the scope.
                The logical operator for evaluation of the denied labels is AND.
                E.g.: A customer with scope with denied labels A and B won't be able
@@ -357,9 +348,6 @@ class _DataAccessScopeState:
         Required. The user provided scope id which will become the last part of the name
         of the scope resource.
         Needs to be compliant with https://google.aip.dev/122
-
-
-        - - -
         """
         return pulumi.get(self, "data_access_scope_id")
 
@@ -663,9 +651,6 @@ class DataAccessScope(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] data_access_scope_id: Required. The user provided scope id which will become the last part of the name
                of the scope resource.
                Needs to be compliant with https://google.aip.dev/122
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[Union['DataAccessScopeDeniedDataAccessLabelArgs', 'DataAccessScopeDeniedDataAccessLabelArgsDict']]]] denied_data_access_labels: Optional. The denied labels for the scope.
                The logical operator for evaluation of the denied labels is AND.
                E.g.: A customer with scope with denied labels A and B won't be able
@@ -931,9 +916,6 @@ class DataAccessScope(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] data_access_scope_id: Required. The user provided scope id which will become the last part of the name
                of the scope resource.
                Needs to be compliant with https://google.aip.dev/122
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[Union['DataAccessScopeDeniedDataAccessLabelArgs', 'DataAccessScopeDeniedDataAccessLabelArgsDict']]]] denied_data_access_labels: Optional. The denied labels for the scope.
                The logical operator for evaluation of the denied labels is AND.
                E.g.: A customer with scope with denied labels A and B won't be able
@@ -1024,9 +1006,6 @@ class DataAccessScope(pulumi.CustomResource):
         Required. The user provided scope id which will become the last part of the name
         of the scope resource.
         Needs to be compliant with https://google.aip.dev/122
-
-
-        - - -
         """
         return pulumi.get(self, "data_access_scope_id")
 

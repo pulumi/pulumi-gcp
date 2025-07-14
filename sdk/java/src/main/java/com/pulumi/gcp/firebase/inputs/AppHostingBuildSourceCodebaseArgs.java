@@ -107,14 +107,16 @@ public final class AppHostingBuildSourceCodebaseArgs extends com.pulumi.resource
     }
 
     /**
-     * Human-readable name. 63 character limit.
+     * (Output)
+     * The &#39;name&#39; field in a Git user&#39;s git.config. Required by Git.
      * 
      */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
 
     /**
-     * @return Human-readable name. 63 character limit.
+     * @return (Output)
+     * The &#39;name&#39; field in a Git user&#39;s git.config. Required by Git.
      * 
      */
     public Optional<Output<String>> displayName() {
@@ -323,7 +325,8 @@ public final class AppHostingBuildSourceCodebaseArgs extends com.pulumi.resource
         }
 
         /**
-         * @param displayName Human-readable name. 63 character limit.
+         * @param displayName (Output)
+         * The &#39;name&#39; field in a Git user&#39;s git.config. Required by Git.
          * 
          * @return builder
          * 
@@ -334,7 +337,8 @@ public final class AppHostingBuildSourceCodebaseArgs extends com.pulumi.resource
         }
 
         /**
-         * @param displayName Human-readable name. 63 character limit.
+         * @param displayName (Output)
+         * The &#39;name&#39; field in a Git user&#39;s git.config. Required by Git.
          * 
          * @return builder
          * 

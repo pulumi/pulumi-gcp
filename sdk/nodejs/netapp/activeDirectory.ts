@@ -169,9 +169,6 @@ export class ActiveDirectory extends pulumi.CustomResource {
     public readonly location!: pulumi.Output<string>;
     /**
      * The resource name of the Active Directory pool. Needs to be unique per location.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -381,9 +378,6 @@ export interface ActiveDirectoryState {
     location?: pulumi.Input<string>;
     /**
      * The resource name of the Active Directory pool. Needs to be unique per location.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -493,9 +487,6 @@ export interface ActiveDirectoryArgs {
     location: pulumi.Input<string>;
     /**
      * The resource name of the Active Directory pool. Needs to be unique per location.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

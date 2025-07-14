@@ -22,6 +22,10 @@ __all__ = [
     'ConnectivityTestSourceAppEngineVersion',
     'ConnectivityTestSourceCloudFunction',
     'ConnectivityTestSourceCloudRunRevision',
+    'GetConnectivityTestRunReachabilityDetailResult',
+    'GetConnectivityTestRunReachabilityDetailTraceResult',
+    'GetConnectivityTestRunReachabilityDetailTraceEndpointInfoResult',
+    'GetConnectivityTestRunReachabilityDetailTraceStepResult',
 ]
 
 @pulumi.output_type
@@ -89,8 +93,6 @@ class ConnectivityTestDestination(dict):
                2. When you are using Shared VPC and the IP address that you provide is
                from the service project. In this case, the network that the IP address
                resides in is defined in the host project.
-               
-               - - -
         :param builtins.str redis_cluster: A Redis Cluster URI.
         :param builtins.str redis_instance: A Redis Instance URI.
         """
@@ -198,8 +200,6 @@ class ConnectivityTestDestination(dict):
         2. When you are using Shared VPC and the IP address that you provide is
         from the service project. In this case, the network that the IP address
         resides in is defined in the host project.
-
-        - - -
         """
         return pulumi.get(self, "project_id")
 
@@ -471,5 +471,275 @@ class ConnectivityTestSourceCloudRunRevision(dict):
         A Cloud Run revision URI.
         """
         return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class GetConnectivityTestRunReachabilityDetailResult(dict):
+    def __init__(__self__, *,
+                 result: builtins.str,
+                 traces: Sequence['outputs.GetConnectivityTestRunReachabilityDetailTraceResult'],
+                 verify_time: builtins.str):
+        """
+        :param builtins.str result: (Output)
+               Status of the connectivity test: RESULT_UNSPECIFIED, REACHABLE, UNREACHABLE, AMBIGUOUS or UNDETERMINED.
+        :param Sequence['GetConnectivityTestRunReachabilityDetailTraceArgs'] traces: (Output)
+               List of connectivity test traces.
+               Structure is documented below.
+        :param builtins.str verify_time: (Output)
+               Time when reachability details were determined. An RFC3339 timestamp in UTC time.
+               This in the format of yyyy-MM-ddTHH:mm:ss.SSSZ.
+        """
+        pulumi.set(__self__, "result", result)
+        pulumi.set(__self__, "traces", traces)
+        pulumi.set(__self__, "verify_time", verify_time)
+
+    @property
+    @pulumi.getter
+    def result(self) -> builtins.str:
+        """
+        (Output)
+        Status of the connectivity test: RESULT_UNSPECIFIED, REACHABLE, UNREACHABLE, AMBIGUOUS or UNDETERMINED.
+        """
+        return pulumi.get(self, "result")
+
+    @property
+    @pulumi.getter
+    def traces(self) -> Sequence['outputs.GetConnectivityTestRunReachabilityDetailTraceResult']:
+        """
+        (Output)
+        List of connectivity test traces.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "traces")
+
+    @property
+    @pulumi.getter(name="verifyTime")
+    def verify_time(self) -> builtins.str:
+        """
+        (Output)
+        Time when reachability details were determined. An RFC3339 timestamp in UTC time.
+        This in the format of yyyy-MM-ddTHH:mm:ss.SSSZ.
+        """
+        return pulumi.get(self, "verify_time")
+
+
+@pulumi.output_type
+class GetConnectivityTestRunReachabilityDetailTraceResult(dict):
+    def __init__(__self__, *,
+                 endpoint_infos: Sequence['outputs.GetConnectivityTestRunReachabilityDetailTraceEndpointInfoResult'],
+                 forward_trace_id: builtins.int,
+                 steps: Sequence['outputs.GetConnectivityTestRunReachabilityDetailTraceStepResult']):
+        """
+        :param Sequence['GetConnectivityTestRunReachabilityDetailTraceEndpointInfoArgs'] endpoint_infos: (Output)
+               Derived from the source and destination endpoints definition specified by user request, and validated by the data plane model.
+               Structure is documented below.
+        :param builtins.int forward_trace_id: (Output)
+               ID of the trace.
+        :param Sequence['GetConnectivityTestRunReachabilityDetailTraceStepArgs'] steps: (Output)
+               A trace of a test contains multiple steps from the initial state to the final state (delivered, dropped, forwarded, or aborted).
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "endpoint_infos", endpoint_infos)
+        pulumi.set(__self__, "forward_trace_id", forward_trace_id)
+        pulumi.set(__self__, "steps", steps)
+
+    @property
+    @pulumi.getter(name="endpointInfos")
+    def endpoint_infos(self) -> Sequence['outputs.GetConnectivityTestRunReachabilityDetailTraceEndpointInfoResult']:
+        """
+        (Output)
+        Derived from the source and destination endpoints definition specified by user request, and validated by the data plane model.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "endpoint_infos")
+
+    @property
+    @pulumi.getter(name="forwardTraceId")
+    def forward_trace_id(self) -> builtins.int:
+        """
+        (Output)
+        ID of the trace.
+        """
+        return pulumi.get(self, "forward_trace_id")
+
+    @property
+    @pulumi.getter
+    def steps(self) -> Sequence['outputs.GetConnectivityTestRunReachabilityDetailTraceStepResult']:
+        """
+        (Output)
+        A trace of a test contains multiple steps from the initial state to the final state (delivered, dropped, forwarded, or aborted).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "steps")
+
+
+@pulumi.output_type
+class GetConnectivityTestRunReachabilityDetailTraceEndpointInfoResult(dict):
+    def __init__(__self__, *,
+                 destination_ip: builtins.str,
+                 destination_network_uri: builtins.str,
+                 destination_port: builtins.int,
+                 protocol: builtins.str,
+                 source_agent_uri: builtins.str,
+                 source_ip: builtins.str,
+                 source_network_uri: builtins.str,
+                 source_port: builtins.int):
+        """
+        :param builtins.str destination_ip: (Output)
+               Destination IP address.
+        :param builtins.str destination_network_uri: (Output)
+               URI of the network where this packet is sent to.
+        :param builtins.int destination_port: (Output)
+               Destination port. Only valid when protocol is TCP or UDP.
+        :param builtins.str protocol: (Output)
+               IP protocol in string format, for example: "TCP", "UDP", "ICMP".
+        :param builtins.str source_agent_uri: (Output)
+               URI of the source telemetry agent this packet originates from.
+        :param builtins.str source_ip: (Output)
+               Source IP address.
+        :param builtins.str source_network_uri: (Output)
+               URI of the network where this packet originates from.
+        :param builtins.int source_port: (Output)
+               Source port. Only valid when protocol is TCP or UDP.
+        """
+        pulumi.set(__self__, "destination_ip", destination_ip)
+        pulumi.set(__self__, "destination_network_uri", destination_network_uri)
+        pulumi.set(__self__, "destination_port", destination_port)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "source_agent_uri", source_agent_uri)
+        pulumi.set(__self__, "source_ip", source_ip)
+        pulumi.set(__self__, "source_network_uri", source_network_uri)
+        pulumi.set(__self__, "source_port", source_port)
+
+    @property
+    @pulumi.getter(name="destinationIp")
+    def destination_ip(self) -> builtins.str:
+        """
+        (Output)
+        Destination IP address.
+        """
+        return pulumi.get(self, "destination_ip")
+
+    @property
+    @pulumi.getter(name="destinationNetworkUri")
+    def destination_network_uri(self) -> builtins.str:
+        """
+        (Output)
+        URI of the network where this packet is sent to.
+        """
+        return pulumi.get(self, "destination_network_uri")
+
+    @property
+    @pulumi.getter(name="destinationPort")
+    def destination_port(self) -> builtins.int:
+        """
+        (Output)
+        Destination port. Only valid when protocol is TCP or UDP.
+        """
+        return pulumi.get(self, "destination_port")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> builtins.str:
+        """
+        (Output)
+        IP protocol in string format, for example: "TCP", "UDP", "ICMP".
+        """
+        return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter(name="sourceAgentUri")
+    def source_agent_uri(self) -> builtins.str:
+        """
+        (Output)
+        URI of the source telemetry agent this packet originates from.
+        """
+        return pulumi.get(self, "source_agent_uri")
+
+    @property
+    @pulumi.getter(name="sourceIp")
+    def source_ip(self) -> builtins.str:
+        """
+        (Output)
+        Source IP address.
+        """
+        return pulumi.get(self, "source_ip")
+
+    @property
+    @pulumi.getter(name="sourceNetworkUri")
+    def source_network_uri(self) -> builtins.str:
+        """
+        (Output)
+        URI of the network where this packet originates from.
+        """
+        return pulumi.get(self, "source_network_uri")
+
+    @property
+    @pulumi.getter(name="sourcePort")
+    def source_port(self) -> builtins.int:
+        """
+        (Output)
+        Source port. Only valid when protocol is TCP or UDP.
+        """
+        return pulumi.get(self, "source_port")
+
+
+@pulumi.output_type
+class GetConnectivityTestRunReachabilityDetailTraceStepResult(dict):
+    def __init__(__self__, *,
+                 causes_drop: builtins.bool,
+                 description: builtins.str,
+                 project_id: builtins.str,
+                 state: builtins.str):
+        """
+        :param builtins.bool causes_drop: (Output)
+               If this step leads to the final state Drop.
+        :param builtins.str description: (Output)
+               Description of the connectivity test step.
+        :param builtins.str project_id: (Output)
+               Project ID of the connectivity test step.
+        :param builtins.str state: (Output)
+               State of the connectivity test step.
+        """
+        pulumi.set(__self__, "causes_drop", causes_drop)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="causesDrop")
+    def causes_drop(self) -> builtins.bool:
+        """
+        (Output)
+        If this step leads to the final state Drop.
+        """
+        return pulumi.get(self, "causes_drop")
+
+    @property
+    @pulumi.getter
+    def description(self) -> builtins.str:
+        """
+        (Output)
+        Description of the connectivity test step.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> builtins.str:
+        """
+        (Output)
+        Project ID of the connectivity test step.
+        """
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter
+    def state(self) -> builtins.str:
+        """
+        (Output)
+        State of the connectivity test step.
+        """
+        return pulumi.get(self, "state")
 
 

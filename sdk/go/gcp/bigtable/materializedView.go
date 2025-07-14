@@ -109,8 +109,6 @@ type MaterializedView struct {
 	// The name of the instance to create the materialized view within.
 	Instance pulumi.StringPtrOutput `pulumi:"instance"`
 	// The unique name of the materialized view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-	//
-	// ***
 	MaterializedViewId pulumi.StringOutput `pulumi:"materializedViewId"`
 	// The unique name of the requested materialized view. Values are of the form `projects/<project>/instances/<instance>/materializedViews/<materializedViewId>`.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -162,8 +160,6 @@ type materializedViewState struct {
 	// The name of the instance to create the materialized view within.
 	Instance *string `pulumi:"instance"`
 	// The unique name of the materialized view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-	//
-	// ***
 	MaterializedViewId *string `pulumi:"materializedViewId"`
 	// The unique name of the requested materialized view. Values are of the form `projects/<project>/instances/<instance>/materializedViews/<materializedViewId>`.
 	Name *string `pulumi:"name"`
@@ -180,8 +176,6 @@ type MaterializedViewState struct {
 	// The name of the instance to create the materialized view within.
 	Instance pulumi.StringPtrInput
 	// The unique name of the materialized view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-	//
-	// ***
 	MaterializedViewId pulumi.StringPtrInput
 	// The unique name of the requested materialized view. Values are of the form `projects/<project>/instances/<instance>/materializedViews/<materializedViewId>`.
 	Name pulumi.StringPtrInput
@@ -202,8 +196,6 @@ type materializedViewArgs struct {
 	// The name of the instance to create the materialized view within.
 	Instance *string `pulumi:"instance"`
 	// The unique name of the materialized view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-	//
-	// ***
 	MaterializedViewId string `pulumi:"materializedViewId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -219,8 +211,6 @@ type MaterializedViewArgs struct {
 	// The name of the instance to create the materialized view within.
 	Instance pulumi.StringPtrInput
 	// The unique name of the materialized view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-	//
-	// ***
 	MaterializedViewId pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -327,8 +317,6 @@ func (o MaterializedViewOutput) Instance() pulumi.StringPtrOutput {
 }
 
 // The unique name of the materialized view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-//
-// ***
 func (o MaterializedViewOutput) MaterializedViewId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MaterializedView) pulumi.StringOutput { return v.MaterializedViewId }).(pulumi.StringOutput)
 }

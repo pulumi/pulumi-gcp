@@ -117,9 +117,6 @@ export class Group extends pulumi.CustomResource {
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The name of the hub. Hub names must be unique. They use the following form: projects/{projectNumber}/locations/global/hubs/{hubId}
-     *
-     *
-     * - - -
      */
     public readonly hub!: pulumi.Output<string>;
     /**
@@ -235,9 +232,6 @@ export interface GroupState {
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the hub. Hub names must be unique. They use the following form: projects/{projectNumber}/locations/global/hubs/{hubId}
-     *
-     *
-     * - - -
      */
     hub?: pulumi.Input<string>;
     /**
@@ -294,9 +288,6 @@ export interface GroupArgs {
     description?: pulumi.Input<string>;
     /**
      * The name of the hub. Hub names must be unique. They use the following form: projects/{projectNumber}/locations/global/hubs/{hubId}
-     *
-     *
-     * - - -
      */
     hub: pulumi.Input<string>;
     /**

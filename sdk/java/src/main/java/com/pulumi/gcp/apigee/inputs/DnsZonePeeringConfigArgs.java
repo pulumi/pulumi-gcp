@@ -17,16 +17,12 @@ public final class DnsZonePeeringConfigArgs extends com.pulumi.resources.Resourc
     /**
      * The name of the producer VPC network.
      * 
-     * ***
-     * 
      */
     @Import(name="targetNetworkId", required=true)
     private Output<String> targetNetworkId;
 
     /**
      * @return The name of the producer VPC network.
-     * 
-     * ***
      * 
      */
     public Output<String> targetNetworkId() {
@@ -76,8 +72,6 @@ public final class DnsZonePeeringConfigArgs extends com.pulumi.resources.Resourc
         /**
          * @param targetNetworkId The name of the producer VPC network.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -88,8 +82,6 @@ public final class DnsZonePeeringConfigArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param targetNetworkId The name of the producer VPC network.
-         * 
-         * ***
          * 
          * @return builder
          * 

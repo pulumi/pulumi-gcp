@@ -125,8 +125,6 @@ public class DataAccessLabel extends com.pulumi.resources.CustomResource {
      * maximum number of characters should be 63. Regex pattern is as per AIP:
      * https://google.aip.dev/122#resource-id-segments
      * 
-     * ***
-     * 
      */
     @Export(name="dataAccessLabelId", refs={String.class}, tree="[0]")
     private Output<String> dataAccessLabelId;
@@ -136,8 +134,6 @@ public class DataAccessLabel extends com.pulumi.resources.CustomResource {
      * display name and the final component of the label&#39;s resource name. The
      * maximum number of characters should be 63. Regex pattern is as per AIP:
      * https://google.aip.dev/122#resource-id-segments
-     * 
-     * ***
      * 
      */
     public Output<String> dataAccessLabelId() {

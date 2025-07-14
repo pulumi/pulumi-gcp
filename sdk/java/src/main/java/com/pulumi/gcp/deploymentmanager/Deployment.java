@@ -113,40 +113,54 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:deploymentmanager/deployment:Deployment")
 public class Deployment extends com.pulumi.resources.CustomResource {
     /**
-     * Set the policy to use for creating new resources. Only used on create and update. Valid values are &#39;CREATE_OR_ACQUIRE&#39;
-     * (default) or &#39;ACQUIRE&#39;. If set to &#39;ACQUIRE&#39; and resources do not already exist, the deployment will fail. Note that
-     * updating this field does not actually affect the deployment, just how it is updated. Default value: &#34;CREATE_OR_ACQUIRE&#34;
-     * Possible values: [&#34;ACQUIRE&#34;, &#34;CREATE_OR_ACQUIRE&#34;]
+     * Set the policy to use for creating new resources. Only used on
+     * create and update. Valid values are `CREATE_OR_ACQUIRE` (default) or
+     * `ACQUIRE`. If set to `ACQUIRE` and resources do not already exist,
+     * the deployment will fail. Note that updating this field does not
+     * actually affect the deployment, just how it is updated.
+     * Default value is `CREATE_OR_ACQUIRE`.
+     * Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
      * 
      */
     @Export(name="createPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> createPolicy;
 
     /**
-     * @return Set the policy to use for creating new resources. Only used on create and update. Valid values are &#39;CREATE_OR_ACQUIRE&#39;
-     * (default) or &#39;ACQUIRE&#39;. If set to &#39;ACQUIRE&#39; and resources do not already exist, the deployment will fail. Note that
-     * updating this field does not actually affect the deployment, just how it is updated. Default value: &#34;CREATE_OR_ACQUIRE&#34;
-     * Possible values: [&#34;ACQUIRE&#34;, &#34;CREATE_OR_ACQUIRE&#34;]
+     * @return Set the policy to use for creating new resources. Only used on
+     * create and update. Valid values are `CREATE_OR_ACQUIRE` (default) or
+     * `ACQUIRE`. If set to `ACQUIRE` and resources do not already exist,
+     * the deployment will fail. Note that updating this field does not
+     * actually affect the deployment, just how it is updated.
+     * Default value is `CREATE_OR_ACQUIRE`.
+     * Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
      * 
      */
     public Output<Optional<String>> createPolicy() {
         return Codegen.optional(this.createPolicy);
     }
     /**
-     * Set the policy to use for deleting new resources on update/delete. Valid values are &#39;DELETE&#39; (default) or &#39;ABANDON&#39;. If
-     * &#39;DELETE&#39;, resource is deleted after removal from Deployment Manager. If &#39;ABANDON&#39;, the resource is only removed from
-     * Deployment Manager and is not actually deleted. Note that updating this field does not actually change the deployment,
-     * just how it is updated. Default value: &#34;DELETE&#34; Possible values: [&#34;ABANDON&#34;, &#34;DELETE&#34;]
+     * Set the policy to use for deleting new resources on update/delete.
+     * Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
+     * resource is deleted after removal from Deployment Manager. If
+     * `ABANDON`, the resource is only removed from Deployment Manager
+     * and is not actually deleted. Note that updating this field does not
+     * actually change the deployment, just how it is updated.
+     * Default value is `DELETE`.
+     * Possible values are: `ABANDON`, `DELETE`.
      * 
      */
     @Export(name="deletePolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deletePolicy;
 
     /**
-     * @return Set the policy to use for deleting new resources on update/delete. Valid values are &#39;DELETE&#39; (default) or &#39;ABANDON&#39;. If
-     * &#39;DELETE&#39;, resource is deleted after removal from Deployment Manager. If &#39;ABANDON&#39;, the resource is only removed from
-     * Deployment Manager and is not actually deleted. Note that updating this field does not actually change the deployment,
-     * just how it is updated. Default value: &#34;DELETE&#34; Possible values: [&#34;ABANDON&#34;, &#34;DELETE&#34;]
+     * @return Set the policy to use for deleting new resources on update/delete.
+     * Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
+     * resource is deleted after removal from Deployment Manager. If
+     * `ABANDON`, the resource is only removed from Deployment Manager
+     * and is not actually deleted. Note that updating this field does not
+     * actually change the deployment, just how it is updated.
+     * Default value is `DELETE`.
+     * Possible values are: `ABANDON`, `DELETE`.
      * 
      */
     public Output<Optional<String>> deletePolicy() {
@@ -182,6 +196,7 @@ public class Deployment extends com.pulumi.resources.CustomResource {
     }
     /**
      * Key-value pairs to apply to this labels.
+     * Structure is documented below.
      * 
      */
     @Export(name="labels", refs={List.class,DeploymentLabel.class}, tree="[0,1]")
@@ -189,6 +204,7 @@ public class Deployment extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Key-value pairs to apply to this labels.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<List<DeploymentLabel>>> labels() {
@@ -224,15 +240,47 @@ public class Deployment extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * If set to true, a deployment is created with &#34;shell&#34; resources
+     * that are not actually instantiated. This allows you to preview a
+     * deployment. It can be updated to false to actually deploy
+     * with real resources.
+     * ~&gt;**NOTE:** Deployment Manager does not allow update
+     * of a deployment in preview (unless updating to preview=false). Thus,
+     * the provider will force-recreate deployments if either preview is updated
+     * to true or if other fields are updated while preview is true.
+     * 
+     */
     @Export(name="preview", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> preview;
 
+    /**
+     * @return If set to true, a deployment is created with &#34;shell&#34; resources
+     * that are not actually instantiated. This allows you to preview a
+     * deployment. It can be updated to false to actually deploy
+     * with real resources.
+     * ~&gt;**NOTE:** Deployment Manager does not allow update
+     * of a deployment in preview (unless updating to preview=false). Thus,
+     * the provider will force-recreate deployments if either preview is updated
+     * to true or if other fields are updated while preview is true.
+     * 
+     */
     public Output<Optional<Boolean>> preview() {
         return Codegen.optional(this.preview);
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }

@@ -366,16 +366,12 @@ public class Entry extends com.pulumi.resources.CustomResource {
     /**
      * The relative resource name of the entry type that was used to create this entry, in the format projects/{project_number}/locations/{locationId}/entryTypes/{entryTypeId}.
      * 
-     * ***
-     * 
      */
     @Export(name="entryType", refs={String.class}, tree="[0]")
     private Output<String> entryType;
 
     /**
      * @return The relative resource name of the entry type that was used to create this entry, in the format projects/{project_number}/locations/{locationId}/entryTypes/{entryTypeId}.
-     * 
-     * ***
      * 
      */
     public Output<String> entryType() {

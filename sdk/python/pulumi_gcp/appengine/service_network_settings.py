@@ -30,6 +30,8 @@ class ServiceNetworkSettingsArgs:
         :param pulumi.Input['ServiceNetworkSettingsNetworkSettingsArgs'] network_settings: Ingress settings for this service. Will apply to all versions.
                Structure is documented below.
         :param pulumi.Input[builtins.str] service: The name of the service these settings apply to.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "network_settings", network_settings)
         pulumi.set(__self__, "service", service)
@@ -64,6 +66,10 @@ class ServiceNetworkSettingsArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -81,6 +87,8 @@ class _ServiceNetworkSettingsState:
         Input properties used for looking up and filtering ServiceNetworkSettings resources.
         :param pulumi.Input['ServiceNetworkSettingsNetworkSettingsArgs'] network_settings: Ingress settings for this service. Will apply to all versions.
                Structure is documented below.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] service: The name of the service these settings apply to.
         """
         if network_settings is not None:
@@ -106,6 +114,10 @@ class _ServiceNetworkSettingsState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -212,6 +224,8 @@ class ServiceNetworkSettings(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ServiceNetworkSettingsNetworkSettingsArgs', 'ServiceNetworkSettingsNetworkSettingsArgsDict']] network_settings: Ingress settings for this service. Will apply to all versions.
                Structure is documented below.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] service: The name of the service these settings apply to.
         """
         ...
@@ -349,6 +363,8 @@ class ServiceNetworkSettings(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ServiceNetworkSettingsNetworkSettingsArgs', 'ServiceNetworkSettingsNetworkSettingsArgsDict']] network_settings: Ingress settings for this service. Will apply to all versions.
                Structure is documented below.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] service: The name of the service these settings apply to.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -372,6 +388,10 @@ class ServiceNetworkSettings(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property

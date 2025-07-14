@@ -30,9 +30,6 @@ class ParameterArgs:
         """
         The set of arguments for constructing a Parameter resource.
         :param pulumi.Input[builtins.str] parameter_id: This must be unique within the project.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] format: The format type of the parameter resource.
                Default value is `UNFORMATTED`.
                Possible values are: `UNFORMATTED`, `YAML`, `JSON`.
@@ -67,9 +64,6 @@ class ParameterArgs:
     def parameter_id(self) -> pulumi.Input[builtins.str]:
         """
         This must be unique within the project.
-
-
-        - - -
         """
         return pulumi.get(self, "parameter_id")
 
@@ -177,9 +171,6 @@ class _ParameterState:
         :param pulumi.Input[builtins.str] name: The resource name of the Parameter. Format:
                `projects/{{project}}/locations/global/parameters/{{parameter_id}}`
         :param pulumi.Input[builtins.str] parameter_id: This must be unique within the project.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['ParameterPolicyMemberArgs']]] policy_members: Policy member strings of a Google Cloud resource.
                Structure is documented below.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -302,9 +293,6 @@ class _ParameterState:
     def parameter_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         This must be unique within the project.
-
-
-        - - -
         """
         return pulumi.get(self, "parameter_id")
 
@@ -474,9 +462,6 @@ class Parameter(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] parameter_id: This must be unique within the project.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -658,9 +643,6 @@ class Parameter(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] name: The resource name of the Parameter. Format:
                `projects/{{project}}/locations/global/parameters/{{parameter_id}}`
         :param pulumi.Input[builtins.str] parameter_id: This must be unique within the project.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[Union['ParameterPolicyMemberArgs', 'ParameterPolicyMemberArgsDict']]]] policy_members: Policy member strings of a Google Cloud resource.
                Structure is documented below.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -753,9 +735,6 @@ class Parameter(pulumi.CustomResource):
     def parameter_id(self) -> pulumi.Output[builtins.str]:
         """
         This must be unique within the project.
-
-
-        - - -
         """
         return pulumi.get(self, "parameter_id")
 

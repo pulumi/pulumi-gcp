@@ -166,16 +166,12 @@ public final class AiFeatureOnlineStoreState extends com.pulumi.resources.Resour
     /**
      * The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -507,8 +503,6 @@ public final class AiFeatureOnlineStoreState extends com.pulumi.resources.Resour
         /**
          * @param name The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -519,8 +513,6 @@ public final class AiFeatureOnlineStoreState extends com.pulumi.resources.Resour
 
         /**
          * @param name The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
-         * 
-         * ***
          * 
          * @return builder
          * 

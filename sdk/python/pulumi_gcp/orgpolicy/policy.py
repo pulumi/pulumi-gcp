@@ -29,9 +29,6 @@ class PolicyArgs:
         """
         The set of arguments for constructing a Policy resource.
         :param pulumi.Input[builtins.str] parent: The parent of the resource.
-               
-               
-               - - -
         :param pulumi.Input['PolicyDryRunSpecArgs'] dry_run_spec: Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
@@ -51,9 +48,6 @@ class PolicyArgs:
     def parent(self) -> pulumi.Input[builtins.str]:
         """
         The parent of the resource.
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 
@@ -115,9 +109,6 @@ class _PolicyState:
         :param pulumi.Input[builtins.str] etag: Optional. An opaque tag indicating the current state of the policy, used for concurrency control. This 'etag' is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[builtins.str] name: Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
         :param pulumi.Input[builtins.str] parent: The parent of the resource.
-               
-               
-               - - -
         :param pulumi.Input['PolicySpecArgs'] spec: Basic information about the Organization Policy.
                Structure is documented below.
         """
@@ -174,9 +165,6 @@ class _PolicyState:
     def parent(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The parent of the resource.
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 
@@ -386,9 +374,6 @@ class Policy(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
         :param pulumi.Input[builtins.str] parent: The parent of the resource.
-               
-               
-               - - -
         :param pulumi.Input[Union['PolicySpecArgs', 'PolicySpecArgsDict']] spec: Basic information about the Organization Policy.
                Structure is documented below.
         """
@@ -631,9 +616,6 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] etag: Optional. An opaque tag indicating the current state of the policy, used for concurrency control. This 'etag' is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[builtins.str] name: Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
         :param pulumi.Input[builtins.str] parent: The parent of the resource.
-               
-               
-               - - -
         :param pulumi.Input[Union['PolicySpecArgs', 'PolicySpecArgsDict']] spec: Basic information about the Organization Policy.
                Structure is documented below.
         """
@@ -678,9 +660,6 @@ class Policy(pulumi.CustomResource):
     def parent(self) -> pulumi.Output[builtins.str]:
         """
         The parent of the resource.
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 

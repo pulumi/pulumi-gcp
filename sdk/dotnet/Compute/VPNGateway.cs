@@ -167,9 +167,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The network this VPN gateway is accepting traffic for.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
@@ -259,9 +256,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The network this VPN gateway is accepting traffic for.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("network", required: true)]
         public Input<string> Network { get; set; } = null!;
@@ -319,9 +313,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The network this VPN gateway is accepting traffic for.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }

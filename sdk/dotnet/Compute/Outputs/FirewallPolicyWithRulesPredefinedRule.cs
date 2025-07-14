@@ -20,8 +20,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? Action;
         /// <summary>
-        /// (Output)
-        /// A description of the rule.
+        /// An optional description of this resource.
         /// </summary>
         public readonly string? Description;
         /// <summary>

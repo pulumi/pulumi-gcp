@@ -49,8 +49,6 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         /// Metadata associated with the extension. This field is used to pass metadata to the extension service.
         /// You can set up key value pairs for metadata as you like and need.
         /// f.e. {"key": "value", "key2": "value2"}.
-        /// 
-        /// - - -
         /// </summary>
         public InputMap<string> Metadata
         {

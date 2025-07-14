@@ -130,9 +130,6 @@ export class GlossaryTerm extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location where the glossary term should reside.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -256,9 +253,6 @@ export interface GlossaryTermState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location where the glossary term should reside.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -318,9 +312,6 @@ export interface GlossaryTermArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location where the glossary term should reside.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

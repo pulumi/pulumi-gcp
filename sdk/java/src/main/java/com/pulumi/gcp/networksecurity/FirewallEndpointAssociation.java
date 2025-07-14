@@ -136,16 +136,12 @@ public class FirewallEndpointAssociation extends com.pulumi.resources.CustomReso
     /**
      * The location (zone) of the firewall endpoint association.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return The location (zone) of the firewall endpoint association.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

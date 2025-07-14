@@ -170,8 +170,6 @@ public final class PipelineDestinationHttpEndpointArgs extends com.pulumi.resour
      *   standard CloudEvent format. If it doesn&#39;t then the outgoing message
      *   request may fail with a persistent error.
      * 
-     * ***
-     * 
      */
     @Import(name="messageBindingTemplate")
     private @Nullable Output<String> messageBindingTemplate;
@@ -329,8 +327,6 @@ public final class PipelineDestinationHttpEndpointArgs extends com.pulumi.resour
      *   The Pipeline expects that the message it receives adheres to the
      *   standard CloudEvent format. If it doesn&#39;t then the outgoing message
      *   request may fail with a persistent error.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> messageBindingTemplate() {
@@ -537,8 +533,6 @@ public final class PipelineDestinationHttpEndpointArgs extends com.pulumi.resour
          *   standard CloudEvent format. If it doesn&#39;t then the outgoing message
          *   request may fail with a persistent error.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -700,8 +694,6 @@ public final class PipelineDestinationHttpEndpointArgs extends com.pulumi.resour
          *   The Pipeline expects that the message it receives adheres to the
          *   standard CloudEvent format. If it doesn&#39;t then the outgoing message
          *   request may fail with a persistent error.
-         * 
-         * ***
          * 
          * @return builder
          * 

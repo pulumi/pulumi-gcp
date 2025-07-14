@@ -149,9 +149,6 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// <summary>
         /// The ID to use for the endpoint group, which will become the final component
         /// of the endpoint group's resource name.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("mirroringEndpointGroupId")]
         public Output<string> MirroringEndpointGroupId { get; private set; } = null!;
@@ -295,9 +292,6 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// <summary>
         /// The ID to use for the endpoint group, which will become the final component
         /// of the endpoint group's resource name.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("mirroringEndpointGroupId", required: true)]
         public Input<string> MirroringEndpointGroupId { get; set; } = null!;
@@ -405,9 +399,6 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// <summary>
         /// The ID to use for the endpoint group, which will become the final component
         /// of the endpoint group's resource name.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("mirroringEndpointGroupId")]
         public Input<string>? MirroringEndpointGroupId { get; set; }

@@ -21,8 +21,6 @@ public final class PreventionJobTriggerTriggerScheduleArgs extends com.pulumi.re
      * This value must be set to a time duration greater than or equal to 1 day and can be no longer than 60 days.
      * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
-     * ***
-     * 
      */
     @Import(name="recurrencePeriodDuration")
     private @Nullable Output<String> recurrencePeriodDuration;
@@ -32,8 +30,6 @@ public final class PreventionJobTriggerTriggerScheduleArgs extends com.pulumi.re
      * A scheduled start time will be skipped if the previous execution has not ended when its scheduled time occurs.
      * This value must be set to a time duration greater than or equal to 1 day and can be no longer than 60 days.
      * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> recurrencePeriodDuration() {
@@ -70,8 +66,6 @@ public final class PreventionJobTriggerTriggerScheduleArgs extends com.pulumi.re
          * This value must be set to a time duration greater than or equal to 1 day and can be no longer than 60 days.
          * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -85,8 +79,6 @@ public final class PreventionJobTriggerTriggerScheduleArgs extends com.pulumi.re
          * A scheduled start time will be skipped if the previous execution has not ended when its scheduled time occurs.
          * This value must be set to a time duration greater than or equal to 1 day and can be no longer than 60 days.
          * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
-         * 
-         * ***
          * 
          * @return builder
          * 

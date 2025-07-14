@@ -33,9 +33,6 @@ class ServiceLbPoliciesArgs:
         """
         The set of arguments for constructing a ServiceLbPolicies resource.
         :param pulumi.Input[builtins.str] location: The location of the service lb policy.
-               
-               
-               - - -
         :param pulumi.Input['ServiceLbPoliciesAutoCapacityDrainArgs'] auto_capacity_drain: Option to specify if an unhealthy MIG/NEG should be considered for global load balancing and traffic routing.
                Structure is documented below.
         :param pulumi.Input[builtins.str] description: A free-text description of the resource. Max length 1024 characters.
@@ -71,9 +68,6 @@ class ServiceLbPoliciesArgs:
     def location(self) -> pulumi.Input[builtins.str]:
         """
         The location of the service lb policy.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -202,9 +196,6 @@ class _ServiceLbPoliciesState:
         :param pulumi.Input[builtins.str] load_balancing_algorithm: The type of load balancing algorithm to be used. The default behavior is WATERFALL_BY_REGION.
                Possible values are: `SPRAY_TO_REGION`, `SPRAY_TO_WORLD`, `WATERFALL_BY_REGION`, `WATERFALL_BY_ZONE`.
         :param pulumi.Input[builtins.str] location: The location of the service lb policy.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: Name of the ServiceLbPolicy resource. It matches pattern `projects/{project}/locations/{location}/serviceLbPolicies/{service_lb_policy_name}`.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -331,9 +322,6 @@ class _ServiceLbPoliciesState:
     def location(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The location of the service lb policy.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -485,9 +473,6 @@ class ServiceLbPolicies(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] load_balancing_algorithm: The type of load balancing algorithm to be used. The default behavior is WATERFALL_BY_REGION.
                Possible values are: `SPRAY_TO_REGION`, `SPRAY_TO_WORLD`, `WATERFALL_BY_REGION`, `WATERFALL_BY_ZONE`.
         :param pulumi.Input[builtins.str] location: The location of the service lb policy.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: Name of the ServiceLbPolicy resource. It matches pattern `projects/{project}/locations/{location}/serviceLbPolicies/{service_lb_policy_name}`.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -653,9 +638,6 @@ class ServiceLbPolicies(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] load_balancing_algorithm: The type of load balancing algorithm to be used. The default behavior is WATERFALL_BY_REGION.
                Possible values are: `SPRAY_TO_REGION`, `SPRAY_TO_WORLD`, `WATERFALL_BY_REGION`, `WATERFALL_BY_ZONE`.
         :param pulumi.Input[builtins.str] location: The location of the service lb policy.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: Name of the ServiceLbPolicy resource. It matches pattern `projects/{project}/locations/{location}/serviceLbPolicies/{service_lb_policy_name}`.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -747,9 +729,6 @@ class ServiceLbPolicies(pulumi.CustomResource):
     def location(self) -> pulumi.Output[builtins.str]:
         """
         The location of the service lb policy.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

@@ -676,16 +676,12 @@ public class Connection extends com.pulumi.resources.CustomResource {
     /**
      * Name of Connection needs to be created.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return Name of Connection needs to be created.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

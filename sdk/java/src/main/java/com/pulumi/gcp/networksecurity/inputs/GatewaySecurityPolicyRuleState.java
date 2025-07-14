@@ -101,16 +101,12 @@ public final class GatewaySecurityPolicyRuleState extends com.pulumi.resources.R
     /**
      * The name of the gatewat security policy this rule belongs to.
      * 
-     * ***
-     * 
      */
     @Import(name="gatewaySecurityPolicy")
     private @Nullable Output<String> gatewaySecurityPolicy;
 
     /**
      * @return The name of the gatewat security policy this rule belongs to.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> gatewaySecurityPolicy() {
@@ -398,8 +394,6 @@ public final class GatewaySecurityPolicyRuleState extends com.pulumi.resources.R
         /**
          * @param gatewaySecurityPolicy The name of the gatewat security policy this rule belongs to.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -410,8 +404,6 @@ public final class GatewaySecurityPolicyRuleState extends com.pulumi.resources.R
 
         /**
          * @param gatewaySecurityPolicy The name of the gatewat security policy this rule belongs to.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -18,16 +18,12 @@ public final class PatchDeploymentInstanceFilterGroupLabelArgs extends com.pulum
     /**
      * Compute Engine instance labels that must be present for a VM instance to be targeted by this filter
      * 
-     * ***
-     * 
      */
     @Import(name="labels", required=true)
     private Output<Map<String,String>> labels;
 
     /**
      * @return Compute Engine instance labels that must be present for a VM instance to be targeted by this filter
-     * 
-     * ***
      * 
      */
     public Output<Map<String,String>> labels() {
@@ -61,8 +57,6 @@ public final class PatchDeploymentInstanceFilterGroupLabelArgs extends com.pulum
         /**
          * @param labels Compute Engine instance labels that must be present for a VM instance to be targeted by this filter
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -73,8 +67,6 @@ public final class PatchDeploymentInstanceFilterGroupLabelArgs extends com.pulum
 
         /**
          * @param labels Compute Engine instance labels that must be present for a VM instance to be targeted by this filter
-         * 
-         * ***
          * 
          * @return builder
          * 

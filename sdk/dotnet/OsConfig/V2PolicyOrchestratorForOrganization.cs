@@ -167,8 +167,9 @@ namespace Pulumi.Gcp.OsConfig
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
-        /// in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        /// Optional. Labels as key value pairs
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -190,7 +191,9 @@ namespace Pulumi.Gcp.OsConfig
         public Output<Outputs.V2PolicyOrchestratorForOrganizationOrchestratedResource> OrchestratedResource { get; private set; } = null!;
 
         /// <summary>
-        /// Defines a set of selectors which drive which resources are in scope of policy orchestration.
+        /// Defines a set of selectors which drive which resources are in scope of policy
+        /// orchestration.
+        /// Structure is documented below.
         /// </summary>
         [Output("orchestrationScope")]
         public Output<Outputs.V2PolicyOrchestratorForOrganizationOrchestrationScope?> OrchestrationScope { get; private set; } = null!;
@@ -238,15 +241,13 @@ namespace Pulumi.Gcp.OsConfig
         public Output<bool> Reconciling { get; private set; } = null!;
 
         /// <summary>
-        /// (Output)
-        /// Output only. State of the iteration.
-        /// Possible values:
-        /// STATE_UNSPECIFIED
-        /// PROCESSING
-        /// COMPLETED
-        /// FAILED
-        /// CANCELLED
-        /// UNKNOWN
+        /// Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+        /// Allowed values:
+        /// - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+        /// - `STOPPED` - orchestrator won't make any changes.
+        /// Note: There might be more states added in the future. We use string here
+        /// instead of an enum, to avoid the need of propagating new states to all the
+        /// client code.
         /// </summary>
         [Output("state")]
         public Output<string?> State { get; private set; } = null!;
@@ -328,8 +329,9 @@ namespace Pulumi.Gcp.OsConfig
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
-        /// in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        /// Optional. Labels as key value pairs
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -345,7 +347,9 @@ namespace Pulumi.Gcp.OsConfig
         public Input<Inputs.V2PolicyOrchestratorForOrganizationOrchestratedResourceArgs> OrchestratedResource { get; set; } = null!;
 
         /// <summary>
-        /// Defines a set of selectors which drive which resources are in scope of policy orchestration.
+        /// Defines a set of selectors which drive which resources are in scope of policy
+        /// orchestration.
+        /// Structure is documented below.
         /// </summary>
         [Input("orchestrationScope")]
         public Input<Inputs.V2PolicyOrchestratorForOrganizationOrchestrationScopeArgs>? OrchestrationScope { get; set; }
@@ -372,15 +376,13 @@ namespace Pulumi.Gcp.OsConfig
         public Input<string> PolicyOrchestratorId { get; set; } = null!;
 
         /// <summary>
-        /// (Output)
-        /// Output only. State of the iteration.
-        /// Possible values:
-        /// STATE_UNSPECIFIED
-        /// PROCESSING
-        /// COMPLETED
-        /// FAILED
-        /// CANCELLED
-        /// UNKNOWN
+        /// Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+        /// Allowed values:
+        /// - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+        /// - `STOPPED` - orchestrator won't make any changes.
+        /// Note: There might be more states added in the future. We use string here
+        /// instead of an enum, to avoid the need of propagating new states to all the
+        /// client code.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
@@ -443,8 +445,9 @@ namespace Pulumi.Gcp.OsConfig
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
-        /// in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        /// Optional. Labels as key value pairs
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -469,7 +472,9 @@ namespace Pulumi.Gcp.OsConfig
         public Input<Inputs.V2PolicyOrchestratorForOrganizationOrchestratedResourceGetArgs>? OrchestratedResource { get; set; }
 
         /// <summary>
-        /// Defines a set of selectors which drive which resources are in scope of policy orchestration.
+        /// Defines a set of selectors which drive which resources are in scope of policy
+        /// orchestration.
+        /// Structure is documented below.
         /// </summary>
         [Input("orchestrationScope")]
         public Input<Inputs.V2PolicyOrchestratorForOrganizationOrchestrationScopeGetArgs>? OrchestrationScope { get; set; }
@@ -533,15 +538,13 @@ namespace Pulumi.Gcp.OsConfig
         public Input<bool>? Reconciling { get; set; }
 
         /// <summary>
-        /// (Output)
-        /// Output only. State of the iteration.
-        /// Possible values:
-        /// STATE_UNSPECIFIED
-        /// PROCESSING
-        /// COMPLETED
-        /// FAILED
-        /// CANCELLED
-        /// UNKNOWN
+        /// Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+        /// Allowed values:
+        /// - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+        /// - `STOPPED` - orchestrator won't make any changes.
+        /// Note: There might be more states added in the future. We use string here
+        /// instead of an enum, to avoid the need of propagating new states to all the
+        /// client code.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

@@ -234,8 +234,6 @@ type Developer struct {
 	LastName pulumi.StringOutput `pulumi:"lastName"`
 	// The Apigee Organization associated with the Apigee instance,
 	// in the format `organizations/{{org_name}}`.
-	//
-	// ***
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
 	// Name of the Apigee organization in which the developer resides.
 	OrganizatioName pulumi.StringOutput `pulumi:"organizatioName"`
@@ -305,8 +303,6 @@ type developerState struct {
 	LastName *string `pulumi:"lastName"`
 	// The Apigee Organization associated with the Apigee instance,
 	// in the format `organizations/{{org_name}}`.
-	//
-	// ***
 	OrgId *string `pulumi:"orgId"`
 	// Name of the Apigee organization in which the developer resides.
 	OrganizatioName *string `pulumi:"organizatioName"`
@@ -332,8 +328,6 @@ type DeveloperState struct {
 	LastName pulumi.StringPtrInput
 	// The Apigee Organization associated with the Apigee instance,
 	// in the format `organizations/{{org_name}}`.
-	//
-	// ***
 	OrgId pulumi.StringPtrInput
 	// Name of the Apigee organization in which the developer resides.
 	OrganizatioName pulumi.StringPtrInput
@@ -359,8 +353,6 @@ type developerArgs struct {
 	LastName string `pulumi:"lastName"`
 	// The Apigee Organization associated with the Apigee instance,
 	// in the format `organizations/{{org_name}}`.
-	//
-	// ***
 	OrgId string `pulumi:"orgId"`
 	// User name of the developer. Not used by Apigee hybrid.
 	UserName string `pulumi:"userName"`
@@ -379,8 +371,6 @@ type DeveloperArgs struct {
 	LastName pulumi.StringInput
 	// The Apigee Organization associated with the Apigee instance,
 	// in the format `organizations/{{org_name}}`.
-	//
-	// ***
 	OrgId pulumi.StringInput
 	// User name of the developer. Not used by Apigee hybrid.
 	UserName pulumi.StringInput
@@ -506,8 +496,6 @@ func (o DeveloperOutput) LastName() pulumi.StringOutput {
 
 // The Apigee Organization associated with the Apigee instance,
 // in the format `organizations/{{org_name}}`.
-//
-// ***
 func (o DeveloperOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Developer) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }

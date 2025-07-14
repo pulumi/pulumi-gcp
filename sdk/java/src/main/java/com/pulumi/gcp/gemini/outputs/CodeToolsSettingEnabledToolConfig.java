@@ -18,8 +18,6 @@ public final class CodeToolsSettingEnabledToolConfig {
     /**
      * @return Value of the configuration item.
      * 
-     * ***
-     * 
      */
     private String value;
 
@@ -33,8 +31,6 @@ public final class CodeToolsSettingEnabledToolConfig {
     }
     /**
      * @return Value of the configuration item.
-     * 
-     * ***
      * 
      */
     public String value() {

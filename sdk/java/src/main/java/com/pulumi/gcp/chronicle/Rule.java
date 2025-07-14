@@ -361,16 +361,12 @@ public class Rule extends com.pulumi.resources.CustomResource {
     /**
      * The unique identifier for the Chronicle instance, which is the same as the customer ID.
      * 
-     * ***
-     * 
      */
     @Export(name="instance", refs={String.class}, tree="[0]")
     private Output<String> instance;
 
     /**
      * @return The unique identifier for the Chronicle instance, which is the same as the customer ID.
-     * 
-     * ***
      * 
      */
     public Output<String> instance() {

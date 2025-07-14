@@ -18,14 +18,14 @@ public final class FutureReservationStatusLastKnownGoodStateArgs extends com.pul
     public static final FutureReservationStatusLastKnownGoodStateArgs Empty = new FutureReservationStatusLastKnownGoodStateArgs();
 
     /**
-     * The description of the FutureReservation before an amendment was requested.
+     * An optional description of this resource.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the FutureReservation before an amendment was requested.
+     * @return An optional description of this resource.
      * 
      */
     public Optional<Output<String>> description() {
@@ -82,14 +82,14 @@ public final class FutureReservationStatusLastKnownGoodStateArgs extends com.pul
     }
 
     /**
-     * The name prefix of the Future Reservation before an amendment was requested.
+     * Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
      * 
      */
     @Import(name="namePrefix")
     private @Nullable Output<String> namePrefix;
 
     /**
-     * @return The name prefix of the Future Reservation before an amendment was requested.
+     * @return Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
      * 
      */
     public Optional<Output<String>> namePrefix() {
@@ -143,7 +143,7 @@ public final class FutureReservationStatusLastKnownGoodStateArgs extends com.pul
         }
 
         /**
-         * @param description The description of the FutureReservation before an amendment was requested.
+         * @param description An optional description of this resource.
          * 
          * @return builder
          * 
@@ -154,7 +154,7 @@ public final class FutureReservationStatusLastKnownGoodStateArgs extends com.pul
         }
 
         /**
-         * @param description The description of the FutureReservation before an amendment was requested.
+         * @param description An optional description of this resource.
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class FutureReservationStatusLastKnownGoodStateArgs extends com.pul
         }
 
         /**
-         * @param namePrefix The name prefix of the Future Reservation before an amendment was requested.
+         * @param namePrefix Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class FutureReservationStatusLastKnownGoodStateArgs extends com.pul
         }
 
         /**
-         * @param namePrefix The name prefix of the Future Reservation before an amendment was requested.
+         * @param namePrefix Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
          * 
          * @return builder
          * 

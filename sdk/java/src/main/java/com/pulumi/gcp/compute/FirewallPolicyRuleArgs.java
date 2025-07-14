@@ -69,16 +69,18 @@ public final class FirewallPolicyRuleArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
-     * traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
+     * Denotes whether the firewall policy rule is disabled.
+     * When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist.
+     * If this is unspecified, the firewall policy rule will be enabled.
      * 
      */
     @Import(name="disabled")
     private @Nullable Output<Boolean> disabled;
 
     /**
-     * @return Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
-     * traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
+     * @return Denotes whether the firewall policy rule is disabled.
+     * When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist.
+     * If this is unspecified, the firewall policy rule will be enabled.
      * 
      */
     public Optional<Output<Boolean>> disabled() {
@@ -86,18 +88,20 @@ public final class FirewallPolicyRuleArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
-     * export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
-     * &#34;goto_next&#34; rules.
+     * Denotes whether to enable logging for a particular rule.
+     * If logging is enabled, logs will be exported to the configured export destination in Stackdriver.
+     * Logs may be exported to BigQuery or Pub/Sub.
+     * Note: you cannot enable logging on &#34;goto_next&#34; rules.
      * 
      */
     @Import(name="enableLogging")
     private @Nullable Output<Boolean> enableLogging;
 
     /**
-     * @return Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
-     * export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
-     * &#34;goto_next&#34; rules.
+     * @return Denotes whether to enable logging for a particular rule.
+     * If logging is enabled, logs will be exported to the configured export destination in Stackdriver.
+     * Logs may be exported to BigQuery or Pub/Sub.
+     * Note: you cannot enable logging on &#34;goto_next&#34; rules.
      * 
      */
     public Optional<Output<Boolean>> enableLogging() {
@@ -156,8 +160,8 @@ public final class FirewallPolicyRuleArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * A fully-qualified URL of a SecurityProfile resource instance. Example:
-     * https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+     * A fully-qualified URL of a SecurityProfile resource instance.
+     * Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
      * Must be specified if action = &#39;apply_security_profile_group&#39; and cannot be specified for other actions.
      * 
      */
@@ -165,8 +169,8 @@ public final class FirewallPolicyRuleArgs extends com.pulumi.resources.ResourceA
     private @Nullable Output<String> securityProfileGroup;
 
     /**
-     * @return A fully-qualified URL of a SecurityProfile resource instance. Example:
-     * https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+     * @return A fully-qualified URL of a SecurityProfile resource instance.
+     * Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
      * Must be specified if action = &#39;apply_security_profile_group&#39; and cannot be specified for other actions.
      * 
      */
@@ -175,16 +179,18 @@ public final class FirewallPolicyRuleArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * A list of network resource URLs to which this rule applies. This field allows you to control which network&#39;s VMs get
-     * this rule. If this field is left blank, all VMs within the organization will receive the rule.
+     * A list of network resource URLs to which this rule applies.
+     * This field allows you to control which network&#39;s VMs get this rule.
+     * If this field is left blank, all VMs within the organization will receive the rule.
      * 
      */
     @Import(name="targetResources")
     private @Nullable Output<List<String>> targetResources;
 
     /**
-     * @return A list of network resource URLs to which this rule applies. This field allows you to control which network&#39;s VMs get
-     * this rule. If this field is left blank, all VMs within the organization will receive the rule.
+     * @return A list of network resource URLs to which this rule applies.
+     * This field allows you to control which network&#39;s VMs get this rule.
+     * If this field is left blank, all VMs within the organization will receive the rule.
      * 
      */
     public Optional<Output<List<String>>> targetResources() {
@@ -192,22 +198,20 @@ public final class FirewallPolicyRuleArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
-     * the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
-     * targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
-     * time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
-     * applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+     * A list of secure tags that controls which instances the firewall rule applies to.
+     * If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
+     * targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+     * Structure is documented below.
      * 
      */
     @Import(name="targetSecureTags")
     private @Nullable Output<List<FirewallPolicyRuleTargetSecureTagArgs>> targetSecureTags;
 
     /**
-     * @return A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
-     * the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
-     * targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
-     * time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
-     * applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+     * @return A list of secure tags that controls which instances the firewall rule applies to.
+     * If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
+     * targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<FirewallPolicyRuleTargetSecureTagArgs>>> targetSecureTags() {
@@ -230,16 +234,16 @@ public final class FirewallPolicyRuleArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
-     * &#39;apply_security_profile_group&#39; and cannot be set for other actions.
+     * Boolean flag indicating if the traffic should be TLS decrypted.
+     * Can be set only if action = &#39;apply_security_profile_group&#39; and cannot be set for other actions.
      * 
      */
     @Import(name="tlsInspect")
     private @Nullable Output<Boolean> tlsInspect;
 
     /**
-     * @return Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
-     * &#39;apply_security_profile_group&#39; and cannot be set for other actions.
+     * @return Boolean flag indicating if the traffic should be TLS decrypted.
+     * Can be set only if action = &#39;apply_security_profile_group&#39; and cannot be set for other actions.
      * 
      */
     public Optional<Output<Boolean>> tlsInspect() {
@@ -348,8 +352,9 @@ public final class FirewallPolicyRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param disabled Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
-         * traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
+         * @param disabled Denotes whether the firewall policy rule is disabled.
+         * When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist.
+         * If this is unspecified, the firewall policy rule will be enabled.
          * 
          * @return builder
          * 
@@ -360,8 +365,9 @@ public final class FirewallPolicyRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param disabled Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
-         * traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
+         * @param disabled Denotes whether the firewall policy rule is disabled.
+         * When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist.
+         * If this is unspecified, the firewall policy rule will be enabled.
          * 
          * @return builder
          * 
@@ -371,9 +377,10 @@ public final class FirewallPolicyRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param enableLogging Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
-         * export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
-         * &#34;goto_next&#34; rules.
+         * @param enableLogging Denotes whether to enable logging for a particular rule.
+         * If logging is enabled, logs will be exported to the configured export destination in Stackdriver.
+         * Logs may be exported to BigQuery or Pub/Sub.
+         * Note: you cannot enable logging on &#34;goto_next&#34; rules.
          * 
          * @return builder
          * 
@@ -384,9 +391,10 @@ public final class FirewallPolicyRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param enableLogging Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
-         * export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
-         * &#34;goto_next&#34; rules.
+         * @param enableLogging Denotes whether to enable logging for a particular rule.
+         * If logging is enabled, logs will be exported to the configured export destination in Stackdriver.
+         * Logs may be exported to BigQuery or Pub/Sub.
+         * Note: you cannot enable logging on &#34;goto_next&#34; rules.
          * 
          * @return builder
          * 
@@ -465,8 +473,8 @@ public final class FirewallPolicyRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param securityProfileGroup A fully-qualified URL of a SecurityProfile resource instance. Example:
-         * https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+         * @param securityProfileGroup A fully-qualified URL of a SecurityProfile resource instance.
+         * Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
          * Must be specified if action = &#39;apply_security_profile_group&#39; and cannot be specified for other actions.
          * 
          * @return builder
@@ -478,8 +486,8 @@ public final class FirewallPolicyRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param securityProfileGroup A fully-qualified URL of a SecurityProfile resource instance. Example:
-         * https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+         * @param securityProfileGroup A fully-qualified URL of a SecurityProfile resource instance.
+         * Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
          * Must be specified if action = &#39;apply_security_profile_group&#39; and cannot be specified for other actions.
          * 
          * @return builder
@@ -490,8 +498,9 @@ public final class FirewallPolicyRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param targetResources A list of network resource URLs to which this rule applies. This field allows you to control which network&#39;s VMs get
-         * this rule. If this field is left blank, all VMs within the organization will receive the rule.
+         * @param targetResources A list of network resource URLs to which this rule applies.
+         * This field allows you to control which network&#39;s VMs get this rule.
+         * If this field is left blank, all VMs within the organization will receive the rule.
          * 
          * @return builder
          * 
@@ -502,8 +511,9 @@ public final class FirewallPolicyRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param targetResources A list of network resource URLs to which this rule applies. This field allows you to control which network&#39;s VMs get
-         * this rule. If this field is left blank, all VMs within the organization will receive the rule.
+         * @param targetResources A list of network resource URLs to which this rule applies.
+         * This field allows you to control which network&#39;s VMs get this rule.
+         * If this field is left blank, all VMs within the organization will receive the rule.
          * 
          * @return builder
          * 
@@ -513,8 +523,9 @@ public final class FirewallPolicyRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param targetResources A list of network resource URLs to which this rule applies. This field allows you to control which network&#39;s VMs get
-         * this rule. If this field is left blank, all VMs within the organization will receive the rule.
+         * @param targetResources A list of network resource URLs to which this rule applies.
+         * This field allows you to control which network&#39;s VMs get this rule.
+         * If this field is left blank, all VMs within the organization will receive the rule.
          * 
          * @return builder
          * 
@@ -524,11 +535,10 @@ public final class FirewallPolicyRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param targetSecureTags A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
-         * the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
-         * targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
-         * time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
-         * applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+         * @param targetSecureTags A list of secure tags that controls which instances the firewall rule applies to.
+         * If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
+         * targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -539,11 +549,10 @@ public final class FirewallPolicyRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param targetSecureTags A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
-         * the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
-         * targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
-         * time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
-         * applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+         * @param targetSecureTags A list of secure tags that controls which instances the firewall rule applies to.
+         * If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
+         * targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -553,11 +562,10 @@ public final class FirewallPolicyRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param targetSecureTags A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
-         * the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
-         * targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
-         * time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
-         * applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+         * @param targetSecureTags A list of secure tags that controls which instances the firewall rule applies to.
+         * If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
+         * targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -598,8 +606,8 @@ public final class FirewallPolicyRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param tlsInspect Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
-         * &#39;apply_security_profile_group&#39; and cannot be set for other actions.
+         * @param tlsInspect Boolean flag indicating if the traffic should be TLS decrypted.
+         * Can be set only if action = &#39;apply_security_profile_group&#39; and cannot be set for other actions.
          * 
          * @return builder
          * 
@@ -610,8 +618,8 @@ public final class FirewallPolicyRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param tlsInspect Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
-         * &#39;apply_security_profile_group&#39; and cannot be set for other actions.
+         * @param tlsInspect Boolean flag indicating if the traffic should be TLS decrypted.
+         * Can be set only if action = &#39;apply_security_profile_group&#39; and cannot be set for other actions.
          * 
          * @return builder
          * 

@@ -64,8 +64,6 @@ type PostureDeployment struct {
 	// The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// ID of the posture deployment.
-	//
-	// ***
 	PostureDeploymentId pulumi.StringOutput `pulumi:"postureDeploymentId"`
 	// Relative name of the posture which needs to be deployed. It should be in the format:
 	// organizations/{organization_id}/locations/{location}/postures/{posture_id}
@@ -160,8 +158,6 @@ type postureDeploymentState struct {
 	// The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
 	Parent *string `pulumi:"parent"`
 	// ID of the posture deployment.
-	//
-	// ***
 	PostureDeploymentId *string `pulumi:"postureDeploymentId"`
 	// Relative name of the posture which needs to be deployed. It should be in the format:
 	// organizations/{organization_id}/locations/{location}/postures/{posture_id}
@@ -209,8 +205,6 @@ type PostureDeploymentState struct {
 	// The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
 	Parent pulumi.StringPtrInput
 	// ID of the posture deployment.
-	//
-	// ***
 	PostureDeploymentId pulumi.StringPtrInput
 	// Relative name of the posture which needs to be deployed. It should be in the format:
 	// organizations/{organization_id}/locations/{location}/postures/{posture_id}
@@ -243,8 +237,6 @@ type postureDeploymentArgs struct {
 	// The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
 	Parent string `pulumi:"parent"`
 	// ID of the posture deployment.
-	//
-	// ***
 	PostureDeploymentId string `pulumi:"postureDeploymentId"`
 	// Relative name of the posture which needs to be deployed. It should be in the format:
 	// organizations/{organization_id}/locations/{location}/postures/{posture_id}
@@ -267,8 +259,6 @@ type PostureDeploymentArgs struct {
 	// The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
 	Parent pulumi.StringInput
 	// ID of the posture deployment.
-	//
-	// ***
 	PostureDeploymentId pulumi.StringInput
 	// Relative name of the posture which needs to be deployed. It should be in the format:
 	// organizations/{organization_id}/locations/{location}/postures/{posture_id}
@@ -422,8 +412,6 @@ func (o PostureDeploymentOutput) Parent() pulumi.StringOutput {
 }
 
 // ID of the posture deployment.
-//
-// ***
 func (o PostureDeploymentOutput) PostureDeploymentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostureDeployment) pulumi.StringOutput { return v.PostureDeploymentId }).(pulumi.StringOutput)
 }

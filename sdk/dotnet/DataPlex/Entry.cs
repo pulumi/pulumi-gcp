@@ -289,9 +289,6 @@ namespace Pulumi.Gcp.DataPlex
 
         /// <summary>
         /// The relative resource name of the entry type that was used to create this entry, in the format projects/{project_number}/locations/{locationId}/entryTypes/{entryTypeId}.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("entryType")]
         public Output<string> EntryType { get; private set; } = null!;
@@ -414,9 +411,6 @@ namespace Pulumi.Gcp.DataPlex
 
         /// <summary>
         /// The relative resource name of the entry type that was used to create this entry, in the format projects/{project_number}/locations/{locationId}/entryTypes/{entryTypeId}.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("entryType", required: true)]
         public Input<string> EntryType { get; set; } = null!;
@@ -495,9 +489,6 @@ namespace Pulumi.Gcp.DataPlex
 
         /// <summary>
         /// The relative resource name of the entry type that was used to create this entry, in the format projects/{project_number}/locations/{locationId}/entryTypes/{entryTypeId}.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("entryType")]
         public Input<string>? EntryType { get; set; }

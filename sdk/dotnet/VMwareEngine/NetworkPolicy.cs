@@ -158,9 +158,6 @@ namespace Pulumi.Gcp.VMwareEngine
 
         /// <summary>
         /// The ID of the Network Policy.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -286,9 +283,6 @@ namespace Pulumi.Gcp.VMwareEngine
 
         /// <summary>
         /// The ID of the Network Policy.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -363,9 +357,6 @@ namespace Pulumi.Gcp.VMwareEngine
 
         /// <summary>
         /// The ID of the Network Policy.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -23,8 +23,6 @@ namespace Pulumi.Gcp.DiscoveryEngine.Outputs
         public readonly string DefaultLanguageCode;
         /// <summary>
         /// Agent location for Agent creation, currently supported values: global/us/eu, it needs to be the same region as the Chat Engine.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string? Location;
         /// <summary>

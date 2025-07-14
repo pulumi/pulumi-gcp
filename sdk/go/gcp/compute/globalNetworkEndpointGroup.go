@@ -124,8 +124,6 @@ type GlobalNetworkEndpointGroup struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Type of network endpoints in this network endpoint group.
 	// Possible values are: `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
-	//
-	// ***
 	NetworkEndpointType pulumi.StringOutput `pulumi:"networkEndpointType"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -183,8 +181,6 @@ type globalNetworkEndpointGroupState struct {
 	Name *string `pulumi:"name"`
 	// Type of network endpoints in this network endpoint group.
 	// Possible values are: `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
-	//
-	// ***
 	NetworkEndpointType *string `pulumi:"networkEndpointType"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -210,8 +206,6 @@ type GlobalNetworkEndpointGroupState struct {
 	Name pulumi.StringPtrInput
 	// Type of network endpoints in this network endpoint group.
 	// Possible values are: `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
-	//
-	// ***
 	NetworkEndpointType pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -241,8 +235,6 @@ type globalNetworkEndpointGroupArgs struct {
 	Name *string `pulumi:"name"`
 	// Type of network endpoints in this network endpoint group.
 	// Possible values are: `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
-	//
-	// ***
 	NetworkEndpointType string `pulumi:"networkEndpointType"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -267,8 +259,6 @@ type GlobalNetworkEndpointGroupArgs struct {
 	Name pulumi.StringPtrInput
 	// Type of network endpoints in this network endpoint group.
 	// Possible values are: `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
-	//
-	// ***
 	NetworkEndpointType pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -387,8 +377,6 @@ func (o GlobalNetworkEndpointGroupOutput) Name() pulumi.StringOutput {
 
 // Type of network endpoints in this network endpoint group.
 // Possible values are: `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
-//
-// ***
 func (o GlobalNetworkEndpointGroupOutput) NetworkEndpointType() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalNetworkEndpointGroup) pulumi.StringOutput { return v.NetworkEndpointType }).(pulumi.StringOutput)
 }

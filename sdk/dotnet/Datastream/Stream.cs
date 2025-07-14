@@ -1450,6 +1450,7 @@ namespace Pulumi.Gcp.Datastream
     {
         /// <summary>
         /// Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
+        /// Structure is documented below.
         /// </summary>
         [Output("backfillAll")]
         public Output<Outputs.StreamBackfillAll?> BackfillAll { get; private set; } = null!;
@@ -1467,16 +1468,17 @@ namespace Pulumi.Gcp.Datastream
         public Output<bool?> CreateWithoutValidation { get; private set; } = null!;
 
         /// <summary>
-        /// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
-        /// encrypted using an internal Stream-specific encryption key provisioned through KMS.
+        /// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
+        /// will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
         /// </summary>
         [Output("customerManagedEncryptionKey")]
         public Output<string?> CustomerManagedEncryptionKey { get; private set; } = null!;
 
         /// <summary>
-        /// Desired state of the Stream. Set this field to 'RUNNING' to start the stream, 'NOT_STARTED' to create the stream without
-        /// starting and 'PAUSED' to pause the stream from a 'RUNNING' state. Possible values: NOT_STARTED, RUNNING, PAUSED.
-        /// Default: NOT_STARTED
+        /// Desired state of the Stream. Set this field to `RUNNING` to start the stream,
+        /// `NOT_STARTED` to create the stream without starting and `PAUSED` to pause
+        /// the stream from a `RUNNING` state.
+        /// Possible values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
         /// </summary>
         [Output("desiredState")]
         public Output<string?> DesiredState { get; private set; } = null!;
@@ -1501,8 +1503,9 @@ namespace Pulumi.Gcp.Datastream
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
-        /// refer to the field 'effective_labels' for all of the labels present on the resource.
+        /// Labels.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -1519,6 +1522,10 @@ namespace Pulumi.Gcp.Datastream
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -1601,6 +1608,7 @@ namespace Pulumi.Gcp.Datastream
     {
         /// <summary>
         /// Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
+        /// Structure is documented below.
         /// </summary>
         [Input("backfillAll")]
         public Input<Inputs.StreamBackfillAllArgs>? BackfillAll { get; set; }
@@ -1618,16 +1626,17 @@ namespace Pulumi.Gcp.Datastream
         public Input<bool>? CreateWithoutValidation { get; set; }
 
         /// <summary>
-        /// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
-        /// encrypted using an internal Stream-specific encryption key provisioned through KMS.
+        /// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
+        /// will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
         /// </summary>
         [Input("customerManagedEncryptionKey")]
         public Input<string>? CustomerManagedEncryptionKey { get; set; }
 
         /// <summary>
-        /// Desired state of the Stream. Set this field to 'RUNNING' to start the stream, 'NOT_STARTED' to create the stream without
-        /// starting and 'PAUSED' to pause the stream from a 'RUNNING' state. Possible values: NOT_STARTED, RUNNING, PAUSED.
-        /// Default: NOT_STARTED
+        /// Desired state of the Stream. Set this field to `RUNNING` to start the stream,
+        /// `NOT_STARTED` to create the stream without starting and `PAUSED` to pause
+        /// the stream from a `RUNNING` state.
+        /// Possible values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
         /// </summary>
         [Input("desiredState")]
         public Input<string>? DesiredState { get; set; }
@@ -1649,8 +1658,9 @@ namespace Pulumi.Gcp.Datastream
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
-        /// refer to the field 'effective_labels' for all of the labels present on the resource.
+        /// Labels.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -1664,6 +1674,10 @@ namespace Pulumi.Gcp.Datastream
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -1690,6 +1704,7 @@ namespace Pulumi.Gcp.Datastream
     {
         /// <summary>
         /// Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
+        /// Structure is documented below.
         /// </summary>
         [Input("backfillAll")]
         public Input<Inputs.StreamBackfillAllGetArgs>? BackfillAll { get; set; }
@@ -1707,16 +1722,17 @@ namespace Pulumi.Gcp.Datastream
         public Input<bool>? CreateWithoutValidation { get; set; }
 
         /// <summary>
-        /// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
-        /// encrypted using an internal Stream-specific encryption key provisioned through KMS.
+        /// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
+        /// will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
         /// </summary>
         [Input("customerManagedEncryptionKey")]
         public Input<string>? CustomerManagedEncryptionKey { get; set; }
 
         /// <summary>
-        /// Desired state of the Stream. Set this field to 'RUNNING' to start the stream, 'NOT_STARTED' to create the stream without
-        /// starting and 'PAUSED' to pause the stream from a 'RUNNING' state. Possible values: NOT_STARTED, RUNNING, PAUSED.
-        /// Default: NOT_STARTED
+        /// Desired state of the Stream. Set this field to `RUNNING` to start the stream,
+        /// `NOT_STARTED` to create the stream without starting and `PAUSED` to pause
+        /// the stream from a `RUNNING` state.
+        /// Possible values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
         /// </summary>
         [Input("desiredState")]
         public Input<string>? DesiredState { get; set; }
@@ -1754,8 +1770,9 @@ namespace Pulumi.Gcp.Datastream
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
-        /// refer to the field 'effective_labels' for all of the labels present on the resource.
+        /// Labels.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -1775,6 +1792,10 @@ namespace Pulumi.Gcp.Datastream
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

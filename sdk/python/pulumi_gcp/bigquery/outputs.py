@@ -2492,8 +2492,6 @@ class JobExtractSourceModel(dict):
         """
         :param builtins.str dataset_id: The ID of the dataset containing this model.
         :param builtins.str model_id: The ID of the model.
-               
-               - - -
         :param builtins.str project_id: The ID of the project containing this model.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
@@ -2513,8 +2511,6 @@ class JobExtractSourceModel(dict):
     def model_id(self) -> builtins.str:
         """
         The ID of the model.
-
-        - - -
         """
         return pulumi.get(self, "model_id")
 
@@ -3966,7 +3962,7 @@ class JobStatusError(dict):
                  message: Optional[builtins.str] = None,
                  reason: Optional[builtins.str] = None):
         """
-        :param builtins.str location: Specifies where the error occurred, if present.
+        :param builtins.str location: The geographic location of the job. The default value is US.
         :param builtins.str message: A human-readable description of the error.
         :param builtins.str reason: A short error code that summarizes the error.
         """
@@ -3981,7 +3977,7 @@ class JobStatusError(dict):
     @pulumi.getter
     def location(self) -> Optional[builtins.str]:
         """
-        Specifies where the error occurred, if present.
+        The geographic location of the job. The default value is US.
         """
         return pulumi.get(self, "location")
 
@@ -4009,7 +4005,7 @@ class JobStatusErrorResult(dict):
                  message: Optional[builtins.str] = None,
                  reason: Optional[builtins.str] = None):
         """
-        :param builtins.str location: Specifies where the error occurred, if present.
+        :param builtins.str location: The geographic location of the job. The default value is US.
         :param builtins.str message: A human-readable description of the error.
         :param builtins.str reason: A short error code that summarizes the error.
         """
@@ -4024,7 +4020,7 @@ class JobStatusErrorResult(dict):
     @pulumi.getter
     def location(self) -> Optional[builtins.str]:
         """
-        Specifies where the error occurred, if present.
+        The geographic location of the job. The default value is US.
         """
         return pulumi.get(self, "location")
 

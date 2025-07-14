@@ -14,8 +14,6 @@ namespace Pulumi.Gcp.Beyondcorp.Inputs
     {
         /// <summary>
         /// Email address of the service account.
-        /// 
-        /// - - -
         /// </summary>
         [Input("email", required: true)]
         public Input<string> Email { get; set; } = null!;

@@ -153,9 +153,6 @@ namespace Pulumi.Gcp.Storage
         /// <summary>
         /// The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
         /// must be in the same location.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -255,9 +252,6 @@ namespace Pulumi.Gcp.Storage
         /// <summary>
         /// The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
         /// must be in the same location.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -313,9 +307,6 @@ namespace Pulumi.Gcp.Storage
         /// <summary>
         /// The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
         /// must be in the same location.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

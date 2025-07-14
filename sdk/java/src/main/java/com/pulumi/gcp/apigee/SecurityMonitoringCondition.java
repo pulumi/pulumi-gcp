@@ -154,16 +154,12 @@ public class SecurityMonitoringCondition extends com.pulumi.resources.CustomReso
     /**
      * Resource ID of the security monitoring condition.
      * 
-     * ***
-     * 
      */
     @Export(name="conditionId", refs={String.class}, tree="[0]")
     private Output<String> conditionId;
 
     /**
      * @return Resource ID of the security monitoring condition.
-     * 
-     * ***
      * 
      */
     public Output<String> conditionId() {

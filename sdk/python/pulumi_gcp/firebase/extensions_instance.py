@@ -31,6 +31,8 @@ class ExtensionsInstanceArgs:
                Structure is documented below.
         :param pulumi.Input[builtins.str] instance_id: The ID to use for the Extension Instance, which will become the final
                component of the instance's name.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "config", config)
         pulumi.set(__self__, "instance_id", instance_id)
@@ -66,6 +68,10 @@ class ExtensionsInstanceArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -106,6 +112,8 @@ class _ExtensionsInstanceState:
                Instance
         :param pulumi.Input[builtins.str] last_operation_type: The type of the last operation that acted on the Extension Instance.
         :param pulumi.Input[builtins.str] name: The fully-qualified resource name of the Extension Instance.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input['ExtensionsInstanceRuntimeDataArgs']]] runtime_datas: Data set by the extension instance at runtime.
                Structure is documented below.
         :param pulumi.Input[builtins.str] service_account_email: The email of the service account to be used at runtime by compute resources
@@ -246,6 +254,10 @@ class _ExtensionsInstanceState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -385,6 +397,8 @@ class ExtensionsInstance(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[builtins.str] instance_id: The ID to use for the Extension Instance, which will become the final
                component of the instance's name.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         ...
     @overload
@@ -547,6 +561,8 @@ class ExtensionsInstance(pulumi.CustomResource):
                Instance
         :param pulumi.Input[builtins.str] last_operation_type: The type of the last operation that acted on the Extension Instance.
         :param pulumi.Input[builtins.str] name: The fully-qualified resource name of the Extension Instance.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ExtensionsInstanceRuntimeDataArgs', 'ExtensionsInstanceRuntimeDataArgsDict']]]] runtime_datas: Data set by the extension instance at runtime.
                Structure is documented below.
         :param pulumi.Input[builtins.str] service_account_email: The email of the service account to be used at runtime by compute resources
@@ -647,6 +663,10 @@ class ExtensionsInstance(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property

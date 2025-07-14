@@ -108,6 +108,8 @@ type NetworkPeering struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// Details about the current state of the peering.
 	StateDetails pulumi.StringOutput `pulumi:"stateDetails"`
+	// The update strategy determines the semantics for updates and deletes to the peering connection configuration. The default value is INDEPENDENT. Possible values: ["INDEPENDENT", "CONSENSUS"]
+	UpdateStrategy pulumi.StringPtrOutput `pulumi:"updateStrategy"`
 }
 
 // NewNetworkPeering registers a new resource with the given unique name, arguments, and options.
@@ -168,6 +170,8 @@ type networkPeeringState struct {
 	State *string `pulumi:"state"`
 	// Details about the current state of the peering.
 	StateDetails *string `pulumi:"stateDetails"`
+	// The update strategy determines the semantics for updates and deletes to the peering connection configuration. The default value is INDEPENDENT. Possible values: ["INDEPENDENT", "CONSENSUS"]
+	UpdateStrategy *string `pulumi:"updateStrategy"`
 }
 
 type NetworkPeeringState struct {
@@ -193,6 +197,8 @@ type NetworkPeeringState struct {
 	State pulumi.StringPtrInput
 	// Details about the current state of the peering.
 	StateDetails pulumi.StringPtrInput
+	// The update strategy determines the semantics for updates and deletes to the peering connection configuration. The default value is INDEPENDENT. Possible values: ["INDEPENDENT", "CONSENSUS"]
+	UpdateStrategy pulumi.StringPtrInput
 }
 
 func (NetworkPeeringState) ElementType() reflect.Type {
@@ -217,6 +223,8 @@ type networkPeeringArgs struct {
 	PeerNetwork string `pulumi:"peerNetwork"`
 	// Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY. Possible values: ["IPV4_ONLY", "IPV4_IPV6"].
 	StackType *string `pulumi:"stackType"`
+	// The update strategy determines the semantics for updates and deletes to the peering connection configuration. The default value is INDEPENDENT. Possible values: ["INDEPENDENT", "CONSENSUS"]
+	UpdateStrategy *string `pulumi:"updateStrategy"`
 }
 
 // The set of arguments for constructing a NetworkPeering resource.
@@ -238,6 +246,8 @@ type NetworkPeeringArgs struct {
 	PeerNetwork pulumi.StringInput
 	// Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY. Possible values: ["IPV4_ONLY", "IPV4_IPV6"].
 	StackType pulumi.StringPtrInput
+	// The update strategy determines the semantics for updates and deletes to the peering connection configuration. The default value is INDEPENDENT. Possible values: ["INDEPENDENT", "CONSENSUS"]
+	UpdateStrategy pulumi.StringPtrInput
 }
 
 func (NetworkPeeringArgs) ElementType() reflect.Type {
@@ -377,6 +387,11 @@ func (o NetworkPeeringOutput) State() pulumi.StringOutput {
 // Details about the current state of the peering.
 func (o NetworkPeeringOutput) StateDetails() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkPeering) pulumi.StringOutput { return v.StateDetails }).(pulumi.StringOutput)
+}
+
+// The update strategy determines the semantics for updates and deletes to the peering connection configuration. The default value is INDEPENDENT. Possible values: ["INDEPENDENT", "CONSENSUS"]
+func (o NetworkPeeringOutput) UpdateStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkPeering) pulumi.StringPtrOutput { return v.UpdateStrategy }).(pulumi.StringPtrOutput)
 }
 
 type NetworkPeeringArrayOutput struct{ *pulumi.OutputState }

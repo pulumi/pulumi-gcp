@@ -328,8 +328,7 @@ export class Schedule extends pulumi.CustomResource {
     }
 
     /**
-     * Whether new scheduled runs can be queued when maxConcurrentRuns limit is reached. If set to true, new runs will be
-     * queued instead of skipped. Default to false.
+     * Whether new scheduled runs can be queued when maxConcurrentRuns limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
      */
     public readonly allowQueueing!: pulumi.Output<boolean | undefined>;
     /**
@@ -342,8 +341,7 @@ export class Schedule extends pulumi.CustomResource {
      */
     public readonly cron!: pulumi.Output<string>;
     /**
-     * Desired state of the Colab Schedule. Set this field to 'ACTIVE' to start/resume the schedule, and 'PAUSED' to pause the
-     * schedule.
+     * Desired state of the Colab Schedule. Set this field to `ACTIVE` to start/resume the schedule, and `PAUSED` to pause the schedule.
      */
     public readonly desiredState!: pulumi.Output<string | undefined>;
     /**
@@ -351,9 +349,7 @@ export class Schedule extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either endTime is
-     * reached or when scheduledRunCount >= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt)
-     * format.
+     * Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either endTime is reached or when scheduledRunCount >= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
      */
     public readonly endTime!: pulumi.Output<string | undefined>;
     /**
@@ -365,19 +361,20 @@ export class Schedule extends pulumi.CustomResource {
      */
     public readonly maxConcurrentRunCount!: pulumi.Output<string>;
     /**
-     * Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount >=
-     * maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is
-     * paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
+     * Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount >= maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
      */
     public readonly maxRunCount!: pulumi.Output<string | undefined>;
     /**
      * The resource name of the Schedule
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC
-     * 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
+     * The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
      */
     public readonly startTime!: pulumi.Output<string>;
     /**
@@ -452,8 +449,7 @@ export class Schedule extends pulumi.CustomResource {
  */
 export interface ScheduleState {
     /**
-     * Whether new scheduled runs can be queued when maxConcurrentRuns limit is reached. If set to true, new runs will be
-     * queued instead of skipped. Default to false.
+     * Whether new scheduled runs can be queued when maxConcurrentRuns limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
      */
     allowQueueing?: pulumi.Input<boolean>;
     /**
@@ -466,8 +462,7 @@ export interface ScheduleState {
      */
     cron?: pulumi.Input<string>;
     /**
-     * Desired state of the Colab Schedule. Set this field to 'ACTIVE' to start/resume the schedule, and 'PAUSED' to pause the
-     * schedule.
+     * Desired state of the Colab Schedule. Set this field to `ACTIVE` to start/resume the schedule, and `PAUSED` to pause the schedule.
      */
     desiredState?: pulumi.Input<string>;
     /**
@@ -475,9 +470,7 @@ export interface ScheduleState {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either endTime is
-     * reached or when scheduledRunCount >= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt)
-     * format.
+     * Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either endTime is reached or when scheduledRunCount >= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
      */
     endTime?: pulumi.Input<string>;
     /**
@@ -489,19 +482,20 @@ export interface ScheduleState {
      */
     maxConcurrentRunCount?: pulumi.Input<string>;
     /**
-     * Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount >=
-     * maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is
-     * paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
+     * Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount >= maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
      */
     maxRunCount?: pulumi.Input<string>;
     /**
      * The resource name of the Schedule
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
-     * The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC
-     * 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
+     * The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
      */
     startTime?: pulumi.Input<string>;
     /**
@@ -515,8 +509,7 @@ export interface ScheduleState {
  */
 export interface ScheduleArgs {
     /**
-     * Whether new scheduled runs can be queued when maxConcurrentRuns limit is reached. If set to true, new runs will be
-     * queued instead of skipped. Default to false.
+     * Whether new scheduled runs can be queued when maxConcurrentRuns limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
      */
     allowQueueing?: pulumi.Input<boolean>;
     /**
@@ -529,8 +522,7 @@ export interface ScheduleArgs {
      */
     cron: pulumi.Input<string>;
     /**
-     * Desired state of the Colab Schedule. Set this field to 'ACTIVE' to start/resume the schedule, and 'PAUSED' to pause the
-     * schedule.
+     * Desired state of the Colab Schedule. Set this field to `ACTIVE` to start/resume the schedule, and `PAUSED` to pause the schedule.
      */
     desiredState?: pulumi.Input<string>;
     /**
@@ -538,9 +530,7 @@ export interface ScheduleArgs {
      */
     displayName: pulumi.Input<string>;
     /**
-     * Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either endTime is
-     * reached or when scheduledRunCount >= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt)
-     * format.
+     * Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either endTime is reached or when scheduledRunCount >= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
      */
     endTime?: pulumi.Input<string>;
     /**
@@ -552,15 +542,16 @@ export interface ScheduleArgs {
      */
     maxConcurrentRunCount: pulumi.Input<string>;
     /**
-     * Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount >=
-     * maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is
-     * paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
+     * Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount >= maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
      */
     maxRunCount?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
-     * The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC
-     * 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
+     * The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
      */
     startTime?: pulumi.Input<string>;
 }

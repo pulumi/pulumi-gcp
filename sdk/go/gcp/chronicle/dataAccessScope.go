@@ -275,8 +275,6 @@ type DataAccessScope struct {
 	// Required. The user provided scope id which will become the last part of the name
 	// of the scope resource.
 	// Needs to be compliant with https://google.aip.dev/122
-	//
-	// ***
 	DataAccessScopeId pulumi.StringOutput `pulumi:"dataAccessScopeId"`
 	// Optional. The denied labels for the scope.
 	// The logical operator for evaluation of the denied labels is AND.
@@ -369,8 +367,6 @@ type dataAccessScopeState struct {
 	// Required. The user provided scope id which will become the last part of the name
 	// of the scope resource.
 	// Needs to be compliant with https://google.aip.dev/122
-	//
-	// ***
 	DataAccessScopeId *string `pulumi:"dataAccessScopeId"`
 	// Optional. The denied labels for the scope.
 	// The logical operator for evaluation of the denied labels is AND.
@@ -425,8 +421,6 @@ type DataAccessScopeState struct {
 	// Required. The user provided scope id which will become the last part of the name
 	// of the scope resource.
 	// Needs to be compliant with https://google.aip.dev/122
-	//
-	// ***
 	DataAccessScopeId pulumi.StringPtrInput
 	// Optional. The denied labels for the scope.
 	// The logical operator for evaluation of the denied labels is AND.
@@ -481,8 +475,6 @@ type dataAccessScopeArgs struct {
 	// Required. The user provided scope id which will become the last part of the name
 	// of the scope resource.
 	// Needs to be compliant with https://google.aip.dev/122
-	//
-	// ***
 	DataAccessScopeId string `pulumi:"dataAccessScopeId"`
 	// Optional. The denied labels for the scope.
 	// The logical operator for evaluation of the denied labels is AND.
@@ -524,8 +516,6 @@ type DataAccessScopeArgs struct {
 	// Required. The user provided scope id which will become the last part of the name
 	// of the scope resource.
 	// Needs to be compliant with https://google.aip.dev/122
-	//
-	// ***
 	DataAccessScopeId pulumi.StringInput
 	// Optional. The denied labels for the scope.
 	// The logical operator for evaluation of the denied labels is AND.
@@ -670,8 +660,6 @@ func (o DataAccessScopeOutput) CreateTime() pulumi.StringOutput {
 // Required. The user provided scope id which will become the last part of the name
 // of the scope resource.
 // Needs to be compliant with https://google.aip.dev/122
-//
-// ***
 func (o DataAccessScopeOutput) DataAccessScopeId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataAccessScope) pulumi.StringOutput { return v.DataAccessScopeId }).(pulumi.StringOutput)
 }

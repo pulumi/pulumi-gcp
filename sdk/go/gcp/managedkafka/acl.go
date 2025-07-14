@@ -123,7 +123,9 @@ type Acl struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The acl pattern type derived from the name. One of: LITERAL, PREFIXED.
 	PatternType pulumi.StringOutput `pulumi:"patternType"`
-	Project     pulumi.StringOutput `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The acl resource name derived from the name. For cluster resource_type, this is always "kafka-cluster". Can be the wildcard literal "*".
 	ResourceName pulumi.StringOutput `pulumi:"resourceName"`
 	// The acl resource type derived from the name. One of: CLUSTER, TOPIC, GROUP, TRANSACTIONAL_ID.
@@ -196,7 +198,9 @@ type aclState struct {
 	Name *string `pulumi:"name"`
 	// The acl pattern type derived from the name. One of: LITERAL, PREFIXED.
 	PatternType *string `pulumi:"patternType"`
-	Project     *string `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// The acl resource name derived from the name. For cluster resource_type, this is always "kafka-cluster". Can be the wildcard literal "*".
 	ResourceName *string `pulumi:"resourceName"`
 	// The acl resource type derived from the name. One of: CLUSTER, TOPIC, GROUP, TRANSACTIONAL_ID.
@@ -228,7 +232,9 @@ type AclState struct {
 	Name pulumi.StringPtrInput
 	// The acl pattern type derived from the name. One of: LITERAL, PREFIXED.
 	PatternType pulumi.StringPtrInput
-	Project     pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// The acl resource name derived from the name. For cluster resource_type, this is always "kafka-cluster". Can be the wildcard literal "*".
 	ResourceName pulumi.StringPtrInput
 	// The acl resource type derived from the name. One of: CLUSTER, TOPIC, GROUP, TRANSACTIONAL_ID.
@@ -252,8 +258,10 @@ type aclArgs struct {
 	// The cluster name.
 	Cluster string `pulumi:"cluster"`
 	// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
-	Location string  `pulumi:"location"`
-	Project  *string `pulumi:"project"`
+	Location string `pulumi:"location"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Acl resource.
@@ -271,7 +279,9 @@ type AclArgs struct {
 	Cluster pulumi.StringInput
 	// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
 	Location pulumi.StringInput
-	Project  pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 }
 
 func (AclArgs) ElementType() reflect.Type {
@@ -406,6 +416,8 @@ func (o AclOutput) PatternType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Acl) pulumi.StringOutput { return v.PatternType }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o AclOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Acl) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

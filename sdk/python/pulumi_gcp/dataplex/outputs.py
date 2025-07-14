@@ -1829,6 +1829,7 @@ class DatascanDataQualitySpecRule(dict):
                  set_expectation: Optional['outputs.DatascanDataQualitySpecRuleSetExpectation'] = None,
                  sql_assertion: Optional['outputs.DatascanDataQualitySpecRuleSqlAssertion'] = None,
                  statistic_range_expectation: Optional['outputs.DatascanDataQualitySpecRuleStatisticRangeExpectation'] = None,
+                 suspended: Optional[builtins.bool] = None,
                  table_condition_expectation: Optional['outputs.DatascanDataQualitySpecRuleTableConditionExpectation'] = None,
                  threshold: Optional[builtins.float] = None,
                  uniqueness_expectation: Optional['outputs.DatascanDataQualitySpecRuleUniquenessExpectation'] = None):
@@ -1856,6 +1857,7 @@ class DatascanDataQualitySpecRule(dict):
                Structure is documented below.
         :param 'DatascanDataQualitySpecRuleStatisticRangeExpectationArgs' statistic_range_expectation: ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
                Structure is documented below.
+        :param builtins.bool suspended: Whether the Rule is active or suspended. Default = false.
         :param 'DatascanDataQualitySpecRuleTableConditionExpectationArgs' table_condition_expectation: Table rule which evaluates whether the provided expression is true.
                Structure is documented below.
         :param builtins.float threshold: The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
@@ -1884,6 +1886,8 @@ class DatascanDataQualitySpecRule(dict):
             pulumi.set(__self__, "sql_assertion", sql_assertion)
         if statistic_range_expectation is not None:
             pulumi.set(__self__, "statistic_range_expectation", statistic_range_expectation)
+        if suspended is not None:
+            pulumi.set(__self__, "suspended", suspended)
         if table_condition_expectation is not None:
             pulumi.set(__self__, "table_condition_expectation", table_condition_expectation)
         if threshold is not None:
@@ -1997,6 +2001,14 @@ class DatascanDataQualitySpecRule(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "statistic_range_expectation")
+
+    @property
+    @pulumi.getter
+    def suspended(self) -> Optional[builtins.bool]:
+        """
+        Whether the Rule is active or suspended. Default = false.
+        """
+        return pulumi.get(self, "suspended")
 
     @property
     @pulumi.getter(name="tableConditionExpectation")
@@ -2452,8 +2464,6 @@ class DatascanExecutionSpecTriggerSchedule(dict):
                  cron: builtins.str):
         """
         :param builtins.str cron: Cron schedule for running scans periodically. This field is required for Schedule scans.
-               
-               - - -
         """
         pulumi.set(__self__, "cron", cron)
 
@@ -2462,8 +2472,6 @@ class DatascanExecutionSpecTriggerSchedule(dict):
     def cron(self) -> builtins.str:
         """
         Cron schedule for running scans periodically. This field is required for Schedule scans.
-
-        - - -
         """
         return pulumi.get(self, "cron")
 
@@ -3337,11 +3345,8 @@ class TaskExecutionSpec(dict):
         :param builtins.str service_account: Service account to use to execute a task. If not provided, the default Compute service account for the project is used.
         :param Mapping[str, builtins.str] args: The arguments to pass to the task. The args can use placeholders of the format ${placeholder} as part of key/value string. These will be interpolated before passing the args to the driver. Currently supported placeholders: - ${taskId} - ${job_time} To pass positional args, set the key as TASK_ARGS. The value should be a comma-separated string of all the positional arguments. To use a delimiter other than comma, refer to https://cloud.google.com/sdk/gcloud/reference/topic/escaping. In case of other keys being present in the args, then TASK_ARGS will be passed as the last argument. An object containing a list of 'key': value pairs. Example: { 'name': 'wrench', 'mass': '1.3kg', 'count': '3' }.
         :param builtins.str kms_key: The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{locationId}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
-               
-               - - -
         :param builtins.str max_job_execution_lifetime: The maximum duration after which the job execution is expired. A duration in seconds with up to nine fractional digits, ending with 's'. Example: '3.5s'.
-        :param builtins.str project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
+        :param builtins.str project: The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
         """
         pulumi.set(__self__, "service_account", service_account)
         if args is not None:
@@ -3374,8 +3379,6 @@ class TaskExecutionSpec(dict):
     def kms_key(self) -> Optional[builtins.str]:
         """
         The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{locationId}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
-
-        - - -
         """
         return pulumi.get(self, "kms_key")
 
@@ -3391,8 +3394,7 @@ class TaskExecutionSpec(dict):
     @pulumi.getter
     def project(self) -> Optional[builtins.str]:
         """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
+        The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
         """
         return pulumi.get(self, "project")
 

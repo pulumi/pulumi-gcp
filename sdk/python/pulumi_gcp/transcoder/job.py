@@ -30,9 +30,6 @@ class JobArgs:
         """
         The set of arguments for constructing a Job resource.
         :param pulumi.Input[builtins.str] location: The location of the transcoding job resource.
-               
-               
-               - - -
         :param pulumi.Input['JobConfigArgs'] config: The configuration for this template.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: The labels associated with this job. You can use these to organize and group your jobs.
@@ -59,9 +56,6 @@ class JobArgs:
     def location(self) -> pulumi.Input[builtins.str]:
         """
         The location of the transcoding job resource.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -151,9 +145,6 @@ class _JobState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location of the transcoding job resource.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The resource name of the job.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -258,9 +249,6 @@ class _JobState:
     def location(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The location of the transcoding job resource.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -1144,9 +1132,6 @@ class Job(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location of the transcoding job resource.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] template_id: Specify the templateId to use for populating Job.config.
@@ -2021,9 +2006,6 @@ class Job(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location of the transcoding job resource.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The resource name of the job.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -2101,9 +2083,6 @@ class Job(pulumi.CustomResource):
     def location(self) -> pulumi.Output[builtins.str]:
         """
         The location of the transcoding job resource.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

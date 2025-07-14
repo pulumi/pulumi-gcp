@@ -139,8 +139,6 @@ public final class FirewallEndpointState extends com.pulumi.resources.ResourceAr
      * The name of the parent this firewall endpoint belongs to.
      * Format: organizations/{organization_id}.
      * 
-     * ***
-     * 
      */
     @Import(name="parent")
     private @Nullable Output<String> parent;
@@ -148,8 +146,6 @@ public final class FirewallEndpointState extends com.pulumi.resources.ResourceAr
     /**
      * @return The name of the parent this firewall endpoint belongs to.
      * Format: organizations/{organization_id}.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> parent() {
@@ -445,8 +441,6 @@ public final class FirewallEndpointState extends com.pulumi.resources.ResourceAr
          * @param parent The name of the parent this firewall endpoint belongs to.
          * Format: organizations/{organization_id}.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -458,8 +452,6 @@ public final class FirewallEndpointState extends com.pulumi.resources.ResourceAr
         /**
          * @param parent The name of the parent this firewall endpoint belongs to.
          * Format: organizations/{organization_id}.
-         * 
-         * ***
          * 
          * @return builder
          * 

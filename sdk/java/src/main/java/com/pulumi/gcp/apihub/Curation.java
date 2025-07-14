@@ -304,9 +304,19 @@ public class Curation extends com.pulumi.resources.CustomResource {
     public Output<List<CurationPluginInstanceAction>> pluginInstanceActions() {
         return this.pluginInstanceActions;
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }

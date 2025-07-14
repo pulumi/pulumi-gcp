@@ -373,8 +373,6 @@ type Organization struct {
 	// Output only. Name of the Apigee organization.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project ID associated with the Apigee organization.
-	//
-	// ***
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// Properties defined in the Apigee organization profile.
 	// Structure is documented below.
@@ -468,8 +466,6 @@ type organizationState struct {
 	// Output only. Name of the Apigee organization.
 	Name *string `pulumi:"name"`
 	// The project ID associated with the Apigee organization.
-	//
-	// ***
 	ProjectId *string `pulumi:"projectId"`
 	// Properties defined in the Apigee organization profile.
 	// Structure is documented below.
@@ -531,8 +527,6 @@ type OrganizationState struct {
 	// Output only. Name of the Apigee organization.
 	Name pulumi.StringPtrInput
 	// The project ID associated with the Apigee organization.
-	//
-	// ***
 	ProjectId pulumi.StringPtrInput
 	// Properties defined in the Apigee organization profile.
 	// Structure is documented below.
@@ -591,8 +585,6 @@ type organizationArgs struct {
 	// The display name of the Apigee organization.
 	DisplayName *string `pulumi:"displayName"`
 	// The project ID associated with the Apigee organization.
-	//
-	// ***
 	ProjectId string `pulumi:"projectId"`
 	// Properties defined in the Apigee organization profile.
 	// Structure is documented below.
@@ -645,8 +637,6 @@ type OrganizationArgs struct {
 	// The display name of the Apigee organization.
 	DisplayName pulumi.StringPtrInput
 	// The project ID associated with the Apigee organization.
-	//
-	// ***
 	ProjectId pulumi.StringInput
 	// Properties defined in the Apigee organization profile.
 	// Structure is documented below.
@@ -827,8 +817,6 @@ func (o OrganizationOutput) Name() pulumi.StringOutput {
 }
 
 // The project ID associated with the Apigee organization.
-//
-// ***
 func (o OrganizationOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }

@@ -148,8 +148,6 @@ type GlossaryCategory struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location where the glossary category should reside.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the GlossaryCategory. Format: projects/{projectId}/locations/{locationId}/glossaries/{glossaryId}/categories/{categoryId}
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -226,8 +224,6 @@ type glossaryCategoryState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the glossary category should reside.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// The resource name of the GlossaryCategory. Format: projects/{projectId}/locations/{locationId}/glossaries/{glossaryId}/categories/{categoryId}
 	Name *string `pulumi:"name"`
@@ -264,8 +260,6 @@ type GlossaryCategoryState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location where the glossary category should reside.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// The resource name of the GlossaryCategory. Format: projects/{projectId}/locations/{locationId}/glossaries/{glossaryId}/categories/{categoryId}
 	Name pulumi.StringPtrInput
@@ -302,8 +296,6 @@ type glossaryCategoryArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the glossary category should reside.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// The immediate parent of the GlossaryCategory in the resource-hierarchy. It can either be a Glossary or a Category. Format: projects/{projectId}/locations/{locationId}/glossaries/{glossaryId} OR projects/{projectId}/locations/{locationId}/glossaries/{glossaryId}/categories/{categoryId}
 	Parent string `pulumi:"parent"`
@@ -328,8 +320,6 @@ type GlossaryCategoryArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location where the glossary category should reside.
-	//
-	// ***
 	Location pulumi.StringInput
 	// The immediate parent of the GlossaryCategory in the resource-hierarchy. It can either be a Glossary or a Category. Format: projects/{projectId}/locations/{locationId}/glossaries/{glossaryId} OR projects/{projectId}/locations/{locationId}/glossaries/{glossaryId}/categories/{categoryId}
 	Parent pulumi.StringInput
@@ -464,8 +454,6 @@ func (o GlossaryCategoryOutput) Labels() pulumi.StringMapOutput {
 }
 
 // The location where the glossary category should reside.
-//
-// ***
 func (o GlossaryCategoryOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlossaryCategory) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

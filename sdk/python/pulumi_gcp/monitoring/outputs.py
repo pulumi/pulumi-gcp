@@ -1314,8 +1314,6 @@ class AlertPolicyConditionConditionSqlBooleanTest(dict):
         """
         :param builtins.str column: The name of the column containing the boolean value. If the value in a row is
                NULL, that row is ignored.
-               
-               - - -
         """
         pulumi.set(__self__, "column", column)
 
@@ -1325,8 +1323,6 @@ class AlertPolicyConditionConditionSqlBooleanTest(dict):
         """
         The name of the column containing the boolean value. If the value in a row is
         NULL, that row is ignored.
-
-        - - -
         """
         return pulumi.get(self, "column")
 

@@ -203,16 +203,12 @@ public class RegionResizeRequest extends com.pulumi.resources.CustomResource {
     /**
      * The reference of the regional instance group manager this ResizeRequest is a part of.
      * 
-     * ***
-     * 
      */
     @Export(name="instanceGroupManager", refs={String.class}, tree="[0]")
     private Output<String> instanceGroupManager;
 
     /**
      * @return The reference of the regional instance group manager this ResizeRequest is a part of.
-     * 
-     * ***
      * 
      */
     public Output<String> instanceGroupManager() {

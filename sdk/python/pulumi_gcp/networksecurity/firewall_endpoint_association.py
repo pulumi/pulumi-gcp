@@ -32,9 +32,6 @@ class FirewallEndpointAssociationArgs:
         The set of arguments for constructing a FirewallEndpointAssociation resource.
         :param pulumi.Input[builtins.str] firewall_endpoint: The URL of the firewall endpoint that is being associated.
         :param pulumi.Input[builtins.str] location: The location (zone) of the firewall endpoint association.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] network: The URL of the network that is being associated.
         :param pulumi.Input[builtins.bool] disabled: Whether the association is disabled. True indicates that traffic will not be intercepted.
                > **Note:** The API will reject the request if this value is set to true when creating the resource,
@@ -79,9 +76,6 @@ class FirewallEndpointAssociationArgs:
     def location(self) -> pulumi.Input[builtins.str]:
         """
         The location (zone) of the firewall endpoint association.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -199,9 +193,6 @@ class _FirewallEndpointAssociationState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location (zone) of the firewall endpoint association.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The name of the firewall endpoint association resource.
         :param pulumi.Input[builtins.str] network: The URL of the network that is being associated.
         :param pulumi.Input[builtins.str] parent: The name of the parent this firewall endpoint association belongs to.
@@ -315,9 +306,6 @@ class _FirewallEndpointAssociationState:
     def location(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The location (zone) of the firewall endpoint association.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -495,9 +483,6 @@ class FirewallEndpointAssociation(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location (zone) of the firewall endpoint association.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The name of the firewall endpoint association resource.
         :param pulumi.Input[builtins.str] network: The URL of the network that is being associated.
         :param pulumi.Input[builtins.str] parent: The name of the parent this firewall endpoint association belongs to.
@@ -641,9 +626,6 @@ class FirewallEndpointAssociation(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location (zone) of the firewall endpoint association.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The name of the firewall endpoint association resource.
         :param pulumi.Input[builtins.str] network: The URL of the network that is being associated.
         :param pulumi.Input[builtins.str] parent: The name of the parent this firewall endpoint association belongs to.
@@ -727,9 +709,6 @@ class FirewallEndpointAssociation(pulumi.CustomResource):
     def location(self) -> pulumi.Output[builtins.str]:
         """
         The location (zone) of the firewall endpoint association.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

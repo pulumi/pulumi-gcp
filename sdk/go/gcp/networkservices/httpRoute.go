@@ -407,22 +407,23 @@ type HttpRoute struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
-	// Gateways defines a list of gateways this HttpRoute is attached to, as one of the routing rules to route the requests
-	// served by the gateway. Each gateway reference should match the pattern:
-	// projects/*/locations/global/gateways/<gateway_name>
+	// Gateways defines a list of gateways this HttpRoute is attached to, as one of the routing rules to route the requests served by the gateway.
+	// Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
 	Gateways pulumi.StringArrayOutput `pulumi:"gateways"`
 	// Set of hosts that should match against the HTTP host header to select a HttpRoute to process the request.
 	Hostnames pulumi.StringArrayOutput `pulumi:"hostnames"`
-	// Set of label tags associated with the HttpRoute resource. **Note**: This field is non-authoritative, and will only
-	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-	// present on the resource.
+	// Set of label tags associated with the HttpRoute resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// Meshes defines a list of meshes this HttpRoute is attached to, as one of the routing rules to route the requests served
-	// by the mesh. Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>. The attached
-	// Mesh should be of a type SIDECAR.
+	// Meshes defines a list of meshes this HttpRoute is attached to, as one of the routing rules to route the requests served by the mesh.
+	// Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>.
+	// The attached Mesh should be of a type SIDECAR.
 	Meshes pulumi.StringArrayOutput `pulumi:"meshes"`
 	// Name of the HttpRoute resource.
-	Name    pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -483,22 +484,23 @@ type httpRouteState struct {
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
-	// Gateways defines a list of gateways this HttpRoute is attached to, as one of the routing rules to route the requests
-	// served by the gateway. Each gateway reference should match the pattern:
-	// projects/*/locations/global/gateways/<gateway_name>
+	// Gateways defines a list of gateways this HttpRoute is attached to, as one of the routing rules to route the requests served by the gateway.
+	// Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
 	Gateways []string `pulumi:"gateways"`
 	// Set of hosts that should match against the HTTP host header to select a HttpRoute to process the request.
 	Hostnames []string `pulumi:"hostnames"`
-	// Set of label tags associated with the HttpRoute resource. **Note**: This field is non-authoritative, and will only
-	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-	// present on the resource.
+	// Set of label tags associated with the HttpRoute resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// Meshes defines a list of meshes this HttpRoute is attached to, as one of the routing rules to route the requests served
-	// by the mesh. Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>. The attached
-	// Mesh should be of a type SIDECAR.
+	// Meshes defines a list of meshes this HttpRoute is attached to, as one of the routing rules to route the requests served by the mesh.
+	// Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>.
+	// The attached Mesh should be of a type SIDECAR.
 	Meshes []string `pulumi:"meshes"`
 	// Name of the HttpRoute resource.
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -519,22 +521,23 @@ type HttpRouteState struct {
 	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
-	// Gateways defines a list of gateways this HttpRoute is attached to, as one of the routing rules to route the requests
-	// served by the gateway. Each gateway reference should match the pattern:
-	// projects/*/locations/global/gateways/<gateway_name>
+	// Gateways defines a list of gateways this HttpRoute is attached to, as one of the routing rules to route the requests served by the gateway.
+	// Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
 	Gateways pulumi.StringArrayInput
 	// Set of hosts that should match against the HTTP host header to select a HttpRoute to process the request.
 	Hostnames pulumi.StringArrayInput
-	// Set of label tags associated with the HttpRoute resource. **Note**: This field is non-authoritative, and will only
-	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-	// present on the resource.
+	// Set of label tags associated with the HttpRoute resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// Meshes defines a list of meshes this HttpRoute is attached to, as one of the routing rules to route the requests served
-	// by the mesh. Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>. The attached
-	// Mesh should be of a type SIDECAR.
+	// Meshes defines a list of meshes this HttpRoute is attached to, as one of the routing rules to route the requests served by the mesh.
+	// Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>.
+	// The attached Mesh should be of a type SIDECAR.
 	Meshes pulumi.StringArrayInput
 	// Name of the HttpRoute resource.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -555,22 +558,23 @@ func (HttpRouteState) ElementType() reflect.Type {
 type httpRouteArgs struct {
 	// A free-text description of the resource. Max length 1024 characters.
 	Description *string `pulumi:"description"`
-	// Gateways defines a list of gateways this HttpRoute is attached to, as one of the routing rules to route the requests
-	// served by the gateway. Each gateway reference should match the pattern:
-	// projects/*/locations/global/gateways/<gateway_name>
+	// Gateways defines a list of gateways this HttpRoute is attached to, as one of the routing rules to route the requests served by the gateway.
+	// Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
 	Gateways []string `pulumi:"gateways"`
 	// Set of hosts that should match against the HTTP host header to select a HttpRoute to process the request.
 	Hostnames []string `pulumi:"hostnames"`
-	// Set of label tags associated with the HttpRoute resource. **Note**: This field is non-authoritative, and will only
-	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-	// present on the resource.
+	// Set of label tags associated with the HttpRoute resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// Meshes defines a list of meshes this HttpRoute is attached to, as one of the routing rules to route the requests served
-	// by the mesh. Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>. The attached
-	// Mesh should be of a type SIDECAR.
+	// Meshes defines a list of meshes this HttpRoute is attached to, as one of the routing rules to route the requests served by the mesh.
+	// Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>.
+	// The attached Mesh should be of a type SIDECAR.
 	Meshes []string `pulumi:"meshes"`
 	// Name of the HttpRoute resource.
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Rules that define how traffic is routed and handled.
 	// Structure is documented below.
@@ -581,22 +585,23 @@ type httpRouteArgs struct {
 type HttpRouteArgs struct {
 	// A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrInput
-	// Gateways defines a list of gateways this HttpRoute is attached to, as one of the routing rules to route the requests
-	// served by the gateway. Each gateway reference should match the pattern:
-	// projects/*/locations/global/gateways/<gateway_name>
+	// Gateways defines a list of gateways this HttpRoute is attached to, as one of the routing rules to route the requests served by the gateway.
+	// Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
 	Gateways pulumi.StringArrayInput
 	// Set of hosts that should match against the HTTP host header to select a HttpRoute to process the request.
 	Hostnames pulumi.StringArrayInput
-	// Set of label tags associated with the HttpRoute resource. **Note**: This field is non-authoritative, and will only
-	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-	// present on the resource.
+	// Set of label tags associated with the HttpRoute resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// Meshes defines a list of meshes this HttpRoute is attached to, as one of the routing rules to route the requests served
-	// by the mesh. Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>. The attached
-	// Mesh should be of a type SIDECAR.
+	// Meshes defines a list of meshes this HttpRoute is attached to, as one of the routing rules to route the requests served by the mesh.
+	// Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>.
+	// The attached Mesh should be of a type SIDECAR.
 	Meshes pulumi.StringArrayInput
 	// Name of the HttpRoute resource.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Rules that define how traffic is routed and handled.
 	// Structure is documented below.
@@ -705,9 +710,8 @@ func (o HttpRouteOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *HttpRoute) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
-// Gateways defines a list of gateways this HttpRoute is attached to, as one of the routing rules to route the requests
-// served by the gateway. Each gateway reference should match the pattern:
-// projects/*/locations/global/gateways/<gateway_name>
+// Gateways defines a list of gateways this HttpRoute is attached to, as one of the routing rules to route the requests served by the gateway.
+// Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
 func (o HttpRouteOutput) Gateways() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *HttpRoute) pulumi.StringArrayOutput { return v.Gateways }).(pulumi.StringArrayOutput)
 }
@@ -717,16 +721,16 @@ func (o HttpRouteOutput) Hostnames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *HttpRoute) pulumi.StringArrayOutput { return v.Hostnames }).(pulumi.StringArrayOutput)
 }
 
-// Set of label tags associated with the HttpRoute resource. **Note**: This field is non-authoritative, and will only
-// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-// present on the resource.
+// Set of label tags associated with the HttpRoute resource.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o HttpRouteOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *HttpRoute) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Meshes defines a list of meshes this HttpRoute is attached to, as one of the routing rules to route the requests served
-// by the mesh. Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>. The attached
-// Mesh should be of a type SIDECAR.
+// Meshes defines a list of meshes this HttpRoute is attached to, as one of the routing rules to route the requests served by the mesh.
+// Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>.
+// The attached Mesh should be of a type SIDECAR.
 func (o HttpRouteOutput) Meshes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *HttpRoute) pulumi.StringArrayOutput { return v.Meshes }).(pulumi.StringArrayOutput)
 }
@@ -736,6 +740,8 @@ func (o HttpRouteOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *HttpRoute) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o HttpRouteOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *HttpRoute) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

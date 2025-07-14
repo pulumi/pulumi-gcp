@@ -149,8 +149,6 @@ type Environment struct {
 	NodeConfig EnvironmentNodeConfigOutput `pulumi:"nodeConfig"`
 	// The Apigee Organization associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}`.
-	//
-	// ***
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
 	// Key-value pairs that may be used for customizing the environment.
 	// Structure is documented below.
@@ -225,8 +223,6 @@ type environmentState struct {
 	NodeConfig *EnvironmentNodeConfig `pulumi:"nodeConfig"`
 	// The Apigee Organization associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}`.
-	//
-	// ***
 	OrgId *string `pulumi:"orgId"`
 	// Key-value pairs that may be used for customizing the environment.
 	// Structure is documented below.
@@ -269,8 +265,6 @@ type EnvironmentState struct {
 	NodeConfig EnvironmentNodeConfigPtrInput
 	// The Apigee Organization associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}`.
-	//
-	// ***
 	OrgId pulumi.StringPtrInput
 	// Key-value pairs that may be used for customizing the environment.
 	// Structure is documented below.
@@ -317,8 +311,6 @@ type environmentArgs struct {
 	NodeConfig *EnvironmentNodeConfig `pulumi:"nodeConfig"`
 	// The Apigee Organization associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}`.
-	//
-	// ***
 	OrgId string `pulumi:"orgId"`
 	// Key-value pairs that may be used for customizing the environment.
 	// Structure is documented below.
@@ -362,8 +354,6 @@ type EnvironmentArgs struct {
 	NodeConfig EnvironmentNodeConfigPtrInput
 	// The Apigee Organization associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}`.
-	//
-	// ***
 	OrgId pulumi.StringInput
 	// Key-value pairs that may be used for customizing the environment.
 	// Structure is documented below.
@@ -516,8 +506,6 @@ func (o EnvironmentOutput) NodeConfig() EnvironmentNodeConfigOutput {
 
 // The Apigee Organization associated with the Apigee environment,
 // in the format `organizations/{{org_name}}`.
-//
-// ***
 func (o EnvironmentOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }

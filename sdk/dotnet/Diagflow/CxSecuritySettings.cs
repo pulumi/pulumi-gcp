@@ -178,9 +178,6 @@ namespace Pulumi.Gcp.Diagflow
 
         /// <summary>
         /// The human-readable name of the security settings, unique within the location.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -326,9 +323,6 @@ namespace Pulumi.Gcp.Diagflow
 
         /// <summary>
         /// The human-readable name of the security settings, unique within the location.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
@@ -435,9 +429,6 @@ namespace Pulumi.Gcp.Diagflow
 
         /// <summary>
         /// The human-readable name of the security settings, unique within the location.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }

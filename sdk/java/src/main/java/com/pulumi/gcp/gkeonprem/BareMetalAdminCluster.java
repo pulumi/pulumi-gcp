@@ -33,6 +33,10 @@ import javax.annotation.Nullable;
 /**
  * A Google Bare Metal Admin Cluster.
  * 
+ * To get more information about BareMetalAdminCluster, see:
+ * 
+ * * [API documentation](https://cloud.google.com/kubernetes-engine/distributed-cloud/reference/on-prem-api/rest/v1/projects.locations.bareMetalAdminClusters)
+ * 
  * ## Example Usage
  * 
  * ### Gkeonprem Bare Metal Admin Cluster Basic
@@ -559,16 +563,12 @@ public class BareMetalAdminCluster extends com.pulumi.resources.CustomResource {
     /**
      * The location of the resource.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return The location of the resource.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

@@ -659,8 +659,6 @@ public class ManagedZone extends com.pulumi.resources.CustomResource {
      * User assigned name for this resource.
      * Must be unique within the project.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -668,8 +666,6 @@ public class ManagedZone extends com.pulumi.resources.CustomResource {
     /**
      * @return User assigned name for this resource.
      * Must be unique within the project.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

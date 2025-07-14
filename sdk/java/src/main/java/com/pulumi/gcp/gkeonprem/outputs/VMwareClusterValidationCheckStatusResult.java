@@ -18,8 +18,7 @@ public final class VMwareClusterValidationCheckStatusResult {
      */
     private @Nullable String category;
     /**
-     * @return (Output)
-     * The description of the validation check.
+     * @return A human readable description of this VMware User Cluster.
      * 
      */
     private @Nullable String description;
@@ -52,8 +51,7 @@ public final class VMwareClusterValidationCheckStatusResult {
         return Optional.ofNullable(this.category);
     }
     /**
-     * @return (Output)
-     * The description of the validation check.
+     * @return A human readable description of this VMware User Cluster.
      * 
      */
     public Optional<String> description() {

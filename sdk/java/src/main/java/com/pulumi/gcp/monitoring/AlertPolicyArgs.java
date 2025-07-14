@@ -24,6 +24,7 @@ public final class AlertPolicyArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Control over how this alert policy&#39;s notification channels are notified.
+     * Structure is documented below.
      * 
      */
     @Import(name="alertStrategy")
@@ -31,6 +32,7 @@ public final class AlertPolicyArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Control over how this alert policy&#39;s notification channels are notified.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<AlertPolicyAlertStrategyArgs>> alertStrategy() {
@@ -101,20 +103,24 @@ public final class AlertPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Documentation that is included with notifications and incidents related to this policy. Best practice is for the
-     * documentation to include information to help responders understand, mitigate, escalate, and correct the underlying
-     * problems detected by the alerting policy. Notification channels that have limited capacity might not show this
-     * documentation.
+     * Documentation that is included with notifications and incidents related
+     * to this policy. Best practice is for the documentation to include information
+     * to help responders understand, mitigate, escalate, and correct the underlying
+     * problems detected by the alerting policy. Notification channels that have
+     * limited capacity might not show this documentation.
+     * Structure is documented below.
      * 
      */
     @Import(name="documentation")
     private @Nullable Output<AlertPolicyDocumentationArgs> documentation;
 
     /**
-     * @return Documentation that is included with notifications and incidents related to this policy. Best practice is for the
-     * documentation to include information to help responders understand, mitigate, escalate, and correct the underlying
-     * problems detected by the alerting policy. Notification channels that have limited capacity might not show this
-     * documentation.
+     * @return Documentation that is included with notifications and incidents related
+     * to this policy. Best practice is for the documentation to include information
+     * to help responders understand, mitigate, escalate, and correct the underlying
+     * problems detected by the alerting policy. Notification channels that have
+     * limited capacity might not show this documentation.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<AlertPolicyDocumentationArgs>> documentation() {
@@ -137,44 +143,64 @@ public final class AlertPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Identifies the notification channels to which notifications should be sent when incidents are opened or closed or when
-     * new violations occur on an already opened incident. Each element of this array corresponds to the name field in each of
-     * the NotificationChannel objects that are returned from the notificationChannels.list method. The syntax of the entries
-     * in this field is &#39;projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]&#39;
+     * Identifies the notification channels to which notifications should be
+     * sent when incidents are opened or closed or when new violations occur
+     * on an already opened incident. Each element of this array corresponds
+     * to the name field in each of the NotificationChannel objects that are
+     * returned from the notificationChannels.list method. The syntax of the
+     * entries in this field is
+     * `projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]`
      * 
      */
     @Import(name="notificationChannels")
     private @Nullable Output<List<String>> notificationChannels;
 
     /**
-     * @return Identifies the notification channels to which notifications should be sent when incidents are opened or closed or when
-     * new violations occur on an already opened incident. Each element of this array corresponds to the name field in each of
-     * the NotificationChannel objects that are returned from the notificationChannels.list method. The syntax of the entries
-     * in this field is &#39;projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]&#39;
+     * @return Identifies the notification channels to which notifications should be
+     * sent when incidents are opened or closed or when new violations occur
+     * on an already opened incident. Each element of this array corresponds
+     * to the name field in each of the NotificationChannel objects that are
+     * returned from the notificationChannels.list method. The syntax of the
+     * entries in this field is
+     * `projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]`
      * 
      */
     public Optional<Output<List<String>>> notificationChannels() {
         return Optional.ofNullable(this.notificationChannels);
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
 
     /**
-     * The severity of an alert policy indicates how important incidents generated by that policy are. The severity level will
-     * be displayed on the Incident detail page and in notifications. Possible values: [&#34;CRITICAL&#34;, &#34;ERROR&#34;, &#34;WARNING&#34;]
+     * The severity of an alert policy indicates how important incidents generated
+     * by that policy are. The severity level will be displayed on the Incident
+     * detail page and in notifications.
+     * Possible values are: `CRITICAL`, `ERROR`, `WARNING`.
      * 
      */
     @Import(name="severity")
     private @Nullable Output<String> severity;
 
     /**
-     * @return The severity of an alert policy indicates how important incidents generated by that policy are. The severity level will
-     * be displayed on the Incident detail page and in notifications. Possible values: [&#34;CRITICAL&#34;, &#34;ERROR&#34;, &#34;WARNING&#34;]
+     * @return The severity of an alert policy indicates how important incidents generated
+     * by that policy are. The severity level will be displayed on the Incident
+     * detail page and in notifications.
+     * Possible values are: `CRITICAL`, `ERROR`, `WARNING`.
      * 
      */
     public Optional<Output<String>> severity() {
@@ -182,18 +208,22 @@ public final class AlertPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64
-     * entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
-     * can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+     * This field is intended to be used for organizing and identifying the AlertPolicy
+     * objects.The field can contain up to 64 entries. Each key and value is limited
+     * to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
+     * can contain only lowercase letters, numerals, underscores, and dashes. Keys
+     * must begin with a letter.
      * 
      */
     @Import(name="userLabels")
     private @Nullable Output<Map<String,String>> userLabels;
 
     /**
-     * @return This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64
-     * entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
-     * can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+     * @return This field is intended to be used for organizing and identifying the AlertPolicy
+     * objects.The field can contain up to 64 entries. Each key and value is limited
+     * to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
+     * can contain only lowercase letters, numerals, underscores, and dashes. Keys
+     * must begin with a letter.
      * 
      */
     public Optional<Output<Map<String,String>>> userLabels() {
@@ -235,6 +265,7 @@ public final class AlertPolicyArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param alertStrategy Control over how this alert policy&#39;s notification channels are notified.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -246,6 +277,7 @@ public final class AlertPolicyArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param alertStrategy Control over how this alert policy&#39;s notification channels are notified.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -350,10 +382,12 @@ public final class AlertPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param documentation Documentation that is included with notifications and incidents related to this policy. Best practice is for the
-         * documentation to include information to help responders understand, mitigate, escalate, and correct the underlying
-         * problems detected by the alerting policy. Notification channels that have limited capacity might not show this
-         * documentation.
+         * @param documentation Documentation that is included with notifications and incidents related
+         * to this policy. Best practice is for the documentation to include information
+         * to help responders understand, mitigate, escalate, and correct the underlying
+         * problems detected by the alerting policy. Notification channels that have
+         * limited capacity might not show this documentation.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -364,10 +398,12 @@ public final class AlertPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param documentation Documentation that is included with notifications and incidents related to this policy. Best practice is for the
-         * documentation to include information to help responders understand, mitigate, escalate, and correct the underlying
-         * problems detected by the alerting policy. Notification channels that have limited capacity might not show this
-         * documentation.
+         * @param documentation Documentation that is included with notifications and incidents related
+         * to this policy. Best practice is for the documentation to include information
+         * to help responders understand, mitigate, escalate, and correct the underlying
+         * problems detected by the alerting policy. Notification channels that have
+         * limited capacity might not show this documentation.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -398,10 +434,13 @@ public final class AlertPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notificationChannels Identifies the notification channels to which notifications should be sent when incidents are opened or closed or when
-         * new violations occur on an already opened incident. Each element of this array corresponds to the name field in each of
-         * the NotificationChannel objects that are returned from the notificationChannels.list method. The syntax of the entries
-         * in this field is &#39;projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]&#39;
+         * @param notificationChannels Identifies the notification channels to which notifications should be
+         * sent when incidents are opened or closed or when new violations occur
+         * on an already opened incident. Each element of this array corresponds
+         * to the name field in each of the NotificationChannel objects that are
+         * returned from the notificationChannels.list method. The syntax of the
+         * entries in this field is
+         * `projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]`
          * 
          * @return builder
          * 
@@ -412,10 +451,13 @@ public final class AlertPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notificationChannels Identifies the notification channels to which notifications should be sent when incidents are opened or closed or when
-         * new violations occur on an already opened incident. Each element of this array corresponds to the name field in each of
-         * the NotificationChannel objects that are returned from the notificationChannels.list method. The syntax of the entries
-         * in this field is &#39;projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]&#39;
+         * @param notificationChannels Identifies the notification channels to which notifications should be
+         * sent when incidents are opened or closed or when new violations occur
+         * on an already opened incident. Each element of this array corresponds
+         * to the name field in each of the NotificationChannel objects that are
+         * returned from the notificationChannels.list method. The syntax of the
+         * entries in this field is
+         * `projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]`
          * 
          * @return builder
          * 
@@ -425,10 +467,13 @@ public final class AlertPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notificationChannels Identifies the notification channels to which notifications should be sent when incidents are opened or closed or when
-         * new violations occur on an already opened incident. Each element of this array corresponds to the name field in each of
-         * the NotificationChannel objects that are returned from the notificationChannels.list method. The syntax of the entries
-         * in this field is &#39;projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]&#39;
+         * @param notificationChannels Identifies the notification channels to which notifications should be
+         * sent when incidents are opened or closed or when new violations occur
+         * on an already opened incident. Each element of this array corresponds
+         * to the name field in each of the NotificationChannel objects that are
+         * returned from the notificationChannels.list method. The syntax of the
+         * entries in this field is
+         * `projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]`
          * 
          * @return builder
          * 
@@ -437,18 +482,34 @@ public final class AlertPolicyArgs extends com.pulumi.resources.ResourceArgs {
             return notificationChannels(List.of(notificationChannels));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
 
         /**
-         * @param severity The severity of an alert policy indicates how important incidents generated by that policy are. The severity level will
-         * be displayed on the Incident detail page and in notifications. Possible values: [&#34;CRITICAL&#34;, &#34;ERROR&#34;, &#34;WARNING&#34;]
+         * @param severity The severity of an alert policy indicates how important incidents generated
+         * by that policy are. The severity level will be displayed on the Incident
+         * detail page and in notifications.
+         * Possible values are: `CRITICAL`, `ERROR`, `WARNING`.
          * 
          * @return builder
          * 
@@ -459,8 +520,10 @@ public final class AlertPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param severity The severity of an alert policy indicates how important incidents generated by that policy are. The severity level will
-         * be displayed on the Incident detail page and in notifications. Possible values: [&#34;CRITICAL&#34;, &#34;ERROR&#34;, &#34;WARNING&#34;]
+         * @param severity The severity of an alert policy indicates how important incidents generated
+         * by that policy are. The severity level will be displayed on the Incident
+         * detail page and in notifications.
+         * Possible values are: `CRITICAL`, `ERROR`, `WARNING`.
          * 
          * @return builder
          * 
@@ -470,9 +533,11 @@ public final class AlertPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userLabels This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64
-         * entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
-         * can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+         * @param userLabels This field is intended to be used for organizing and identifying the AlertPolicy
+         * objects.The field can contain up to 64 entries. Each key and value is limited
+         * to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
+         * can contain only lowercase letters, numerals, underscores, and dashes. Keys
+         * must begin with a letter.
          * 
          * @return builder
          * 
@@ -483,9 +548,11 @@ public final class AlertPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userLabels This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64
-         * entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
-         * can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+         * @param userLabels This field is intended to be used for organizing and identifying the AlertPolicy
+         * objects.The field can contain up to 64 entries. Each key and value is limited
+         * to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
+         * can contain only lowercase letters, numerals, underscores, and dashes. Keys
+         * must begin with a letter.
          * 
          * @return builder
          * 

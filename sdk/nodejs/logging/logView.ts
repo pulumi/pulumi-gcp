@@ -77,9 +77,6 @@ export class LogView extends pulumi.CustomResource {
 
     /**
      * The bucket of the resource
-     *
-     *
-     * - - -
      */
     public readonly bucket!: pulumi.Output<string>;
     /**
@@ -157,9 +154,6 @@ export class LogView extends pulumi.CustomResource {
 export interface LogViewState {
     /**
      * The bucket of the resource
-     *
-     *
-     * - - -
      */
     bucket?: pulumi.Input<string>;
     /**
@@ -198,9 +192,6 @@ export interface LogViewState {
 export interface LogViewArgs {
     /**
      * The bucket of the resource
-     *
-     *
-     * - - -
      */
     bucket: pulumi.Input<string>;
     /**

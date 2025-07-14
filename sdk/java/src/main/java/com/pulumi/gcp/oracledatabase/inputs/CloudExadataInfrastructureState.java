@@ -24,8 +24,6 @@ public final class CloudExadataInfrastructureState extends com.pulumi.resources.
      * characters in length. The value must start with a letter and end with
      * a letter or a number.
      * 
-     * ***
-     * 
      */
     @Import(name="cloudExadataInfrastructureId")
     private @Nullable Output<String> cloudExadataInfrastructureId;
@@ -35,8 +33,6 @@ public final class CloudExadataInfrastructureState extends com.pulumi.resources.
      * to (^a-z?$) and must be a maximum of 63
      * characters in length. The value must start with a letter and end with
      * a letter or a number.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> cloudExadataInfrastructureId() {
@@ -271,8 +267,6 @@ public final class CloudExadataInfrastructureState extends com.pulumi.resources.
          * characters in length. The value must start with a letter and end with
          * a letter or a number.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -286,8 +280,6 @@ public final class CloudExadataInfrastructureState extends com.pulumi.resources.
          * to (^a-z?$) and must be a maximum of 63
          * characters in length. The value must start with a letter and end with
          * a letter or a number.
-         * 
-         * ***
          * 
          * @return builder
          * 

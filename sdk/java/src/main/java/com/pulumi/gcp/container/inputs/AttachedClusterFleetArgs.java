@@ -38,16 +38,14 @@ public final class AttachedClusterFleetArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
+     * The number of the Fleet host project where this cluster will be registered.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
+     * @return The number of the Fleet host project where this cluster will be registered.
      * 
      */
     public Output<String> project() {
@@ -107,8 +105,7 @@ public final class AttachedClusterFleetArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
+         * @param project The number of the Fleet host project where this cluster will be registered.
          * 
          * @return builder
          * 
@@ -119,8 +116,7 @@ public final class AttachedClusterFleetArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
+         * @param project The number of the Fleet host project where this cluster will be registered.
          * 
          * @return builder
          * 

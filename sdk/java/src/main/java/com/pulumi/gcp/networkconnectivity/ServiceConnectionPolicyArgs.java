@@ -57,16 +57,12 @@ public final class ServiceConnectionPolicyArgs extends com.pulumi.resources.Reso
     /**
      * The location of the ServiceConnectionPolicy.
      * 
-     * ***
-     * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
      * @return The location of the ServiceConnectionPolicy.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {
@@ -236,8 +232,6 @@ public final class ServiceConnectionPolicyArgs extends com.pulumi.resources.Reso
         /**
          * @param location The location of the ServiceConnectionPolicy.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -248,8 +242,6 @@ public final class ServiceConnectionPolicyArgs extends com.pulumi.resources.Reso
 
         /**
          * @param location The location of the ServiceConnectionPolicy.
-         * 
-         * ***
          * 
          * @return builder
          * 

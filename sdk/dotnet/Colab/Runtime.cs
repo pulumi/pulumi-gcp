@@ -258,9 +258,6 @@ namespace Pulumi.Gcp.Colab
 
         /// <summary>
         /// The location for the resource: https://cloud.google.com/colab/docs/locations
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -375,9 +372,6 @@ namespace Pulumi.Gcp.Colab
 
         /// <summary>
         /// The location for the resource: https://cloud.google.com/colab/docs/locations
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -454,9 +448,6 @@ namespace Pulumi.Gcp.Colab
 
         /// <summary>
         /// The location for the resource: https://cloud.google.com/colab/docs/locations
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

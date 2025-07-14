@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.VMwareEngine.Outputs
     {
         /// <summary>
         /// The utilization triggering the scale-in operation in percent.
-        /// 
-        /// - - -
         /// </summary>
         public readonly int ScaleIn;
         /// <summary>

@@ -20,8 +20,6 @@ public final class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPoli
      * @return Specifies the relative value defined as a percentage, which will be
      * multiplied by a reference value.
      * 
-     * ***
-     * 
      */
     private @Nullable Integer percent;
 
@@ -36,8 +34,6 @@ public final class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPoli
     /**
      * @return Specifies the relative value defined as a percentage, which will be
      * multiplied by a reference value.
-     * 
-     * ***
      * 
      */
     public Optional<Integer> percent() {

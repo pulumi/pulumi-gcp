@@ -29,9 +29,6 @@ class ServicePerimeterEgressPolicyArgs:
         """
         The set of arguments for constructing a ServicePerimeterEgressPolicy resource.
         :param pulumi.Input[builtins.str] perimeter: The name of the Service Perimeter to add this resource to.
-               
-               
-               - - -
         :param pulumi.Input['ServicePerimeterEgressPolicyEgressFromArgs'] egress_from: Defines conditions on the source of a request causing this `EgressPolicy` to apply.
                Structure is documented below.
         :param pulumi.Input['ServicePerimeterEgressPolicyEgressToArgs'] egress_to: Defines the conditions on the `ApiOperation` and destination resources that
@@ -52,9 +49,6 @@ class ServicePerimeterEgressPolicyArgs:
     def perimeter(self) -> pulumi.Input[builtins.str]:
         """
         The name of the Service Perimeter to add this resource to.
-
-
-        - - -
         """
         return pulumi.get(self, "perimeter")
 
@@ -121,9 +115,6 @@ class _ServicePerimeterEgressPolicyState:
                Structure is documented below.
         :param pulumi.Input[builtins.str] etag: The perimeter etag is internally used to prevent overwriting the list of policies on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of policies. The policy defined in this resource is added or removed from that list, and then this etag is sent with the PATCH call along with the updated policies.
         :param pulumi.Input[builtins.str] perimeter: The name of the Service Perimeter to add this resource to.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] title: Human readable title. Must be unique within the perimeter. Does not affect behavior.
         """
         if access_policy_id is not None:
@@ -195,9 +186,6 @@ class _ServicePerimeterEgressPolicyState:
     def perimeter(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The name of the Service Perimeter to add this resource to.
-
-
-        - - -
         """
         return pulumi.get(self, "perimeter")
 
@@ -262,9 +250,6 @@ class ServicePerimeterEgressPolicy(pulumi.CustomResource):
                cause this `EgressPolicy` to apply.
                Structure is documented below.
         :param pulumi.Input[builtins.str] perimeter: The name of the Service Perimeter to add this resource to.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] title: Human readable title. Must be unique within the perimeter. Does not affect behavior.
         """
         ...
@@ -365,9 +350,6 @@ class ServicePerimeterEgressPolicy(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[builtins.str] etag: The perimeter etag is internally used to prevent overwriting the list of policies on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of policies. The policy defined in this resource is added or removed from that list, and then this etag is sent with the PATCH call along with the updated policies.
         :param pulumi.Input[builtins.str] perimeter: The name of the Service Perimeter to add this resource to.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] title: Human readable title. Must be unique within the perimeter. Does not affect behavior.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -422,9 +404,6 @@ class ServicePerimeterEgressPolicy(pulumi.CustomResource):
     def perimeter(self) -> pulumi.Output[builtins.str]:
         """
         The name of the Service Perimeter to add this resource to.
-
-
-        - - -
         """
         return pulumi.get(self, "perimeter")
 

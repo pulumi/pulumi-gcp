@@ -798,8 +798,6 @@ type Subscription struct {
 	// A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
 	// (as in the id property of a google_pubsub_topic), or just a topic name if
 	// the topic is in the same project as the subscription.
-	//
-	// ***
 	Topic pulumi.StringOutput `pulumi:"topic"`
 }
 
@@ -947,8 +945,6 @@ type subscriptionState struct {
 	// A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
 	// (as in the id property of a google_pubsub_topic), or just a topic name if
 	// the topic is in the same project as the subscription.
-	//
-	// ***
 	Topic *string `pulumi:"topic"`
 }
 
@@ -1059,8 +1055,6 @@ type SubscriptionState struct {
 	// A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
 	// (as in the id property of a google_pubsub_topic), or just a topic name if
 	// the topic is in the same project as the subscription.
-	//
-	// ***
 	Topic pulumi.StringPtrInput
 }
 
@@ -1170,8 +1164,6 @@ type subscriptionArgs struct {
 	// A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
 	// (as in the id property of a google_pubsub_topic), or just a topic name if
 	// the topic is in the same project as the subscription.
-	//
-	// ***
 	Topic string `pulumi:"topic"`
 }
 
@@ -1278,8 +1270,6 @@ type SubscriptionArgs struct {
 	// A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
 	// (as in the id property of a google_pubsub_topic), or just a topic name if
 	// the topic is in the same project as the subscription.
-	//
-	// ***
 	Topic pulumi.StringInput
 }
 
@@ -1530,8 +1520,6 @@ func (o SubscriptionOutput) RetryPolicy() SubscriptionRetryPolicyPtrOutput {
 // A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
 // (as in the id property of a google_pubsub_topic), or just a topic name if
 // the topic is in the same project as the subscription.
-//
-// ***
 func (o SubscriptionOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subscription) pulumi.StringOutput { return v.Topic }).(pulumi.StringOutput)
 }

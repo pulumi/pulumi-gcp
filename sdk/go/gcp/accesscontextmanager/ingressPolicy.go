@@ -35,8 +35,6 @@ type IngressPolicy struct {
 	// The name of the Access Policy this resource belongs to.
 	AccessPolicyId pulumi.StringOutput `pulumi:"accessPolicyId"`
 	// The name of the Service Perimeter to add this resource to.
-	//
-	// ***
 	IngressPolicyName pulumi.StringOutput `pulumi:"ingressPolicyName"`
 	// A GCP resource that is inside of the service perimeter.
 	Resource pulumi.StringOutput `pulumi:"resource"`
@@ -81,8 +79,6 @@ type ingressPolicyState struct {
 	// The name of the Access Policy this resource belongs to.
 	AccessPolicyId *string `pulumi:"accessPolicyId"`
 	// The name of the Service Perimeter to add this resource to.
-	//
-	// ***
 	IngressPolicyName *string `pulumi:"ingressPolicyName"`
 	// A GCP resource that is inside of the service perimeter.
 	Resource *string `pulumi:"resource"`
@@ -92,8 +88,6 @@ type IngressPolicyState struct {
 	// The name of the Access Policy this resource belongs to.
 	AccessPolicyId pulumi.StringPtrInput
 	// The name of the Service Perimeter to add this resource to.
-	//
-	// ***
 	IngressPolicyName pulumi.StringPtrInput
 	// A GCP resource that is inside of the service perimeter.
 	Resource pulumi.StringPtrInput
@@ -105,8 +99,6 @@ func (IngressPolicyState) ElementType() reflect.Type {
 
 type ingressPolicyArgs struct {
 	// The name of the Service Perimeter to add this resource to.
-	//
-	// ***
 	IngressPolicyName string `pulumi:"ingressPolicyName"`
 	// A GCP resource that is inside of the service perimeter.
 	Resource string `pulumi:"resource"`
@@ -115,8 +107,6 @@ type ingressPolicyArgs struct {
 // The set of arguments for constructing a IngressPolicy resource.
 type IngressPolicyArgs struct {
 	// The name of the Service Perimeter to add this resource to.
-	//
-	// ***
 	IngressPolicyName pulumi.StringInput
 	// A GCP resource that is inside of the service perimeter.
 	Resource pulumi.StringInput
@@ -215,8 +205,6 @@ func (o IngressPolicyOutput) AccessPolicyId() pulumi.StringOutput {
 }
 
 // The name of the Service Perimeter to add this resource to.
-//
-// ***
 func (o IngressPolicyOutput) IngressPolicyName() pulumi.StringOutput {
 	return o.ApplyT(func(v *IngressPolicy) pulumi.StringOutput { return v.IngressPolicyName }).(pulumi.StringOutput)
 }

@@ -37,6 +37,8 @@ class ProjectCustomModuleArgs:
                characters or underscores only.
         :param pulumi.Input[builtins.str] enablement_state: The enablement state of the custom module.
                Possible values are: `ENABLED`, `DISABLED`.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "custom_config", custom_config)
         pulumi.set(__self__, "display_name", display_name)
@@ -89,6 +91,10 @@ class ProjectCustomModuleArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -124,6 +130,8 @@ class _ProjectCustomModuleState:
         :param pulumi.Input[builtins.str] last_editor: The editor that last updated the custom module.
         :param pulumi.Input[builtins.str] name: The resource name of the custom module. Its format is "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}".
                The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] update_time: The time at which the custom module was last updated.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
                up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -229,6 +237,10 @@ class _ProjectCustomModuleState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -368,6 +380,8 @@ class ProjectCustomModule(pulumi.CustomResource):
                characters or underscores only.
         :param pulumi.Input[builtins.str] enablement_state: The enablement state of the custom module.
                Possible values are: `ENABLED`, `DISABLED`.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         ...
     @overload
@@ -553,6 +567,8 @@ class ProjectCustomModule(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] last_editor: The editor that last updated the custom module.
         :param pulumi.Input[builtins.str] name: The resource name of the custom module. Its format is "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}".
                The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] update_time: The time at which the custom module was last updated.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
                up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -631,6 +647,10 @@ class ProjectCustomModule(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property

@@ -138,6 +138,7 @@ type Provider struct {
 	MemorystoreCustomEndpoint              pulumi.StringPtrOutput `pulumi:"memorystoreCustomEndpoint"`
 	MigrationCenterCustomEndpoint          pulumi.StringPtrOutput `pulumi:"migrationCenterCustomEndpoint"`
 	MlEngineCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"mlEngineCustomEndpoint"`
+	ModelArmorCustomEndpoint               pulumi.StringPtrOutput `pulumi:"modelArmorCustomEndpoint"`
 	MonitoringCustomEndpoint               pulumi.StringPtrOutput `pulumi:"monitoringCustomEndpoint"`
 	NetappCustomEndpoint                   pulumi.StringPtrOutput `pulumi:"netappCustomEndpoint"`
 	NetworkConnectivityCustomEndpoint      pulumi.StringPtrOutput `pulumi:"networkConnectivityCustomEndpoint"`
@@ -371,6 +372,7 @@ type providerArgs struct {
 	MemorystoreCustomEndpoint              *string                      `pulumi:"memorystoreCustomEndpoint"`
 	MigrationCenterCustomEndpoint          *string                      `pulumi:"migrationCenterCustomEndpoint"`
 	MlEngineCustomEndpoint                 *string                      `pulumi:"mlEngineCustomEndpoint"`
+	ModelArmorCustomEndpoint               *string                      `pulumi:"modelArmorCustomEndpoint"`
 	MonitoringCustomEndpoint               *string                      `pulumi:"monitoringCustomEndpoint"`
 	NetappCustomEndpoint                   *string                      `pulumi:"netappCustomEndpoint"`
 	NetworkConnectivityCustomEndpoint      *string                      `pulumi:"networkConnectivityCustomEndpoint"`
@@ -569,6 +571,7 @@ type ProviderArgs struct {
 	MemorystoreCustomEndpoint              pulumi.StringPtrInput
 	MigrationCenterCustomEndpoint          pulumi.StringPtrInput
 	MlEngineCustomEndpoint                 pulumi.StringPtrInput
+	ModelArmorCustomEndpoint               pulumi.StringPtrInput
 	MonitoringCustomEndpoint               pulumi.StringPtrInput
 	NetappCustomEndpoint                   pulumi.StringPtrInput
 	NetworkConnectivityCustomEndpoint      pulumi.StringPtrInput
@@ -1177,6 +1180,10 @@ func (o ProviderOutput) MigrationCenterCustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) MlEngineCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.MlEngineCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) ModelArmorCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ModelArmorCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) MonitoringCustomEndpoint() pulumi.StringPtrOutput {

@@ -131,9 +131,6 @@ export class VolumeQuotaRule extends pulumi.CustomResource {
     public readonly location!: pulumi.Output<string | undefined>;
     /**
      * The resource name of the quotaRule.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -267,9 +264,6 @@ export interface VolumeQuotaRuleState {
     location?: pulumi.Input<string>;
     /**
      * The resource name of the quotaRule.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -336,9 +330,6 @@ export interface VolumeQuotaRuleArgs {
     location?: pulumi.Input<string>;
     /**
      * The resource name of the quotaRule.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

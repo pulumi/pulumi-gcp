@@ -933,8 +933,6 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Unique name of the resource in this scope including project and location using the form:
      * projects/{projectId}/locations/{locationId}/clusters/{clusterId}
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -942,8 +940,6 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * @return Unique name of the resource in this scope including project and location using the form:
      * projects/{projectId}/locations/{locationId}/clusters/{clusterId}
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

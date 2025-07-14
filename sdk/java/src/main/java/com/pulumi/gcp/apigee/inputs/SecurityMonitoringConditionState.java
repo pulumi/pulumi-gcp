@@ -20,16 +20,12 @@ public final class SecurityMonitoringConditionState extends com.pulumi.resources
     /**
      * Resource ID of the security monitoring condition.
      * 
-     * ***
-     * 
      */
     @Import(name="conditionId")
     private @Nullable Output<String> conditionId;
 
     /**
      * @return Resource ID of the security monitoring condition.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> conditionId() {
@@ -211,8 +207,6 @@ public final class SecurityMonitoringConditionState extends com.pulumi.resources
         /**
          * @param conditionId Resource ID of the security monitoring condition.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -223,8 +217,6 @@ public final class SecurityMonitoringConditionState extends com.pulumi.resources
 
         /**
          * @param conditionId Resource ID of the security monitoring condition.
-         * 
-         * ***
          * 
          * @return builder
          * 

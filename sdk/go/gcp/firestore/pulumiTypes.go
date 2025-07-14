@@ -1056,8 +1056,6 @@ type IndexFieldVectorConfig struct {
 	// with the same dimension.
 	Dimension *int `pulumi:"dimension"`
 	// Indicates the vector index is a flat index.
-	//
-	// ***
 	Flat *IndexFieldVectorConfigFlat `pulumi:"flat"`
 }
 
@@ -1077,8 +1075,6 @@ type IndexFieldVectorConfigArgs struct {
 	// with the same dimension.
 	Dimension pulumi.IntPtrInput `pulumi:"dimension"`
 	// Indicates the vector index is a flat index.
-	//
-	// ***
 	Flat IndexFieldVectorConfigFlatPtrInput `pulumi:"flat"`
 }
 
@@ -1166,8 +1162,6 @@ func (o IndexFieldVectorConfigOutput) Dimension() pulumi.IntPtrOutput {
 }
 
 // Indicates the vector index is a flat index.
-//
-// ***
 func (o IndexFieldVectorConfigOutput) Flat() IndexFieldVectorConfigFlatPtrOutput {
 	return o.ApplyT(func(v IndexFieldVectorConfig) *IndexFieldVectorConfigFlat { return v.Flat }).(IndexFieldVectorConfigFlatPtrOutput)
 }
@@ -1208,8 +1202,6 @@ func (o IndexFieldVectorConfigPtrOutput) Dimension() pulumi.IntPtrOutput {
 }
 
 // Indicates the vector index is a flat index.
-//
-// ***
 func (o IndexFieldVectorConfigPtrOutput) Flat() IndexFieldVectorConfigFlatPtrOutput {
 	return o.ApplyT(func(v *IndexFieldVectorConfig) *IndexFieldVectorConfigFlat {
 		if v == nil {

@@ -193,9 +193,6 @@ export class Connector extends pulumi.CustomResource {
     public readonly connectCluster!: pulumi.Output<string>;
     /**
      * The ID to use for the connector, which will become the final component of the connector's name. This value is structured like: `my-connector-id`.
-     *
-     *
-     * - - -
      */
     public readonly connectorId!: pulumi.Output<string>;
     /**
@@ -281,9 +278,6 @@ export interface ConnectorState {
     connectCluster?: pulumi.Input<string>;
     /**
      * The ID to use for the connector, which will become the final component of the connector's name. This value is structured like: `my-connector-id`.
-     *
-     *
-     * - - -
      */
     connectorId?: pulumi.Input<string>;
     /**
@@ -324,9 +318,6 @@ export interface ConnectorArgs {
     connectCluster: pulumi.Input<string>;
     /**
      * The ID to use for the connector, which will become the final component of the connector's name. This value is structured like: `my-connector-id`.
-     *
-     *
-     * - - -
      */
     connectorId: pulumi.Input<string>;
     /**

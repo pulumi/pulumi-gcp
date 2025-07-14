@@ -164,9 +164,6 @@ namespace Pulumi.Gcp.Spanner
     {
         /// <summary>
         /// The database to create the backup schedule on.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("database")]
         public Output<string> Database { get; private set; } = null!;
@@ -273,9 +270,6 @@ namespace Pulumi.Gcp.Spanner
     {
         /// <summary>
         /// The database to create the backup schedule on.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("database", required: true)]
         public Input<string> Database { get; set; } = null!;
@@ -344,9 +338,6 @@ namespace Pulumi.Gcp.Spanner
     {
         /// <summary>
         /// The database to create the backup schedule on.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("database")]
         public Input<string>? Database { get; set; }

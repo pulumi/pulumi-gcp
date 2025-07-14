@@ -1330,8 +1330,6 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
      * *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
      *    For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
      * 
-     * ***
-     * 
      */
     @Export(name="target", refs={String.class}, tree="[0]")
     private Output<String> target;
@@ -1347,8 +1345,6 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
      * *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
      * *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
      *    For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
-     * 
-     * ***
      * 
      */
     public Output<String> target() {

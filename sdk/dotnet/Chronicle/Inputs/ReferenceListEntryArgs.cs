@@ -14,8 +14,6 @@ namespace Pulumi.Gcp.Chronicle.Inputs
     {
         /// <summary>
         /// Required. The value of the entry. Maximum length is 512 characters.
-        /// 
-        /// - - -
         /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;

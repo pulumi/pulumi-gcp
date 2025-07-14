@@ -198,9 +198,6 @@ export class AppGroup extends pulumi.CustomResource {
     /**
      * The Apigee Organization associated with the Apigee app group,
      * in the format `organizations/{{org_name}}`.
-     *
-     *
-     * - - -
      */
     public readonly orgId!: pulumi.Output<string>;
     /**
@@ -299,9 +296,6 @@ export interface AppGroupState {
     /**
      * The Apigee Organization associated with the Apigee app group,
      * in the format `organizations/{{org_name}}`.
-     *
-     *
-     * - - -
      */
     orgId?: pulumi.Input<string>;
     /**
@@ -343,9 +337,6 @@ export interface AppGroupArgs {
     /**
      * The Apigee Organization associated with the Apigee app group,
      * in the format `organizations/{{org_name}}`.
-     *
-     *
-     * - - -
      */
     orgId: pulumi.Input<string>;
     /**

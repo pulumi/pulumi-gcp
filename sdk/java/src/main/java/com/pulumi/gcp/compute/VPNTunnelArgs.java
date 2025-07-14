@@ -277,8 +277,6 @@ public final class VPNTunnelArgs extends com.pulumi.resources.ResourceArgs {
      * gateway and the peer VPN gateway.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
-     * ***
-     * 
      */
     @Import(name="sharedSecret", required=true)
     private Output<String> sharedSecret;
@@ -287,8 +285,6 @@ public final class VPNTunnelArgs extends com.pulumi.resources.ResourceArgs {
      * @return Shared secret used to set the secure session between the Cloud VPN
      * gateway and the peer VPN gateway.
      * **Note**: This property is sensitive and will not be displayed in the plan.
-     * 
-     * ***
      * 
      */
     public Output<String> sharedSecret() {
@@ -754,8 +750,6 @@ public final class VPNTunnelArgs extends com.pulumi.resources.ResourceArgs {
          * gateway and the peer VPN gateway.
          * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -768,8 +762,6 @@ public final class VPNTunnelArgs extends com.pulumi.resources.ResourceArgs {
          * @param sharedSecret Shared secret used to set the secure session between the Cloud VPN
          * gateway and the peer VPN gateway.
          * **Note**: This property is sensitive and will not be displayed in the plan.
-         * 
-         * ***
          * 
          * @return builder
          * 

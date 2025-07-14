@@ -29,9 +29,6 @@ class SecretVersionArgs:
         """
         The set of arguments for constructing a SecretVersion resource.
         :param pulumi.Input[builtins.str] secret: Secret Manager secret resource
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] deletion_policy: The deletion policy for the secret version. Setting `ABANDON` allows the resource
                to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
                disabled rather than deleted. Default is `DELETE`. Possible values are:
@@ -61,9 +58,6 @@ class SecretVersionArgs:
     def secret(self) -> pulumi.Input[builtins.str]:
         """
         Secret Manager secret resource
-
-
-        - - -
         """
         return pulumi.get(self, "secret")
 
@@ -166,9 +160,6 @@ class _SecretVersionState:
         :param pulumi.Input[builtins.str] name: The resource name of the SecretVersion. Format:
                `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
         :param pulumi.Input[builtins.str] secret: Secret Manager secret resource
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] secret_data: The secret data. Must be no larger than 64KiB.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[builtins.int] secret_data_wo_version: Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
@@ -278,9 +269,6 @@ class _SecretVersionState:
     def secret(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Secret Manager secret resource
-
-
-        - - -
         """
         return pulumi.get(self, "secret")
 
@@ -455,9 +443,6 @@ class SecretVersion(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] enabled: The current state of the SecretVersion.
         :param pulumi.Input[builtins.bool] is_secret_data_base64: If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
         :param pulumi.Input[builtins.str] secret: Secret Manager secret resource
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] secret_data: The secret data. Must be no larger than 64KiB.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[builtins.int] secret_data_wo_version: Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
@@ -657,9 +642,6 @@ class SecretVersion(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] name: The resource name of the SecretVersion. Format:
                `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
         :param pulumi.Input[builtins.str] secret: Secret Manager secret resource
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] secret_data: The secret data. Must be no larger than 64KiB.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[builtins.int] secret_data_wo_version: Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
@@ -740,9 +722,6 @@ class SecretVersion(pulumi.CustomResource):
     def secret(self) -> pulumi.Output[builtins.str]:
         """
         Secret Manager secret resource
-
-
-        - - -
         """
         return pulumi.get(self, "secret")
 

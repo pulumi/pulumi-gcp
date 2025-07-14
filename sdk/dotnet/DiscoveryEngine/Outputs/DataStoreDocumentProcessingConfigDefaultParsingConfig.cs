@@ -19,6 +19,7 @@ namespace Pulumi.Gcp.DiscoveryEngine.Outputs
         public readonly Outputs.DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfig? DigitalParsingConfig;
         /// <summary>
         /// Configurations applied to layout parser.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig? LayoutParsingConfig;
         /// <summary>

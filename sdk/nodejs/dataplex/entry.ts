@@ -257,9 +257,6 @@ export class Entry extends pulumi.CustomResource {
     public readonly entrySource!: pulumi.Output<outputs.dataplex.EntryEntrySource>;
     /**
      * The relative resource name of the entry type that was used to create this entry, in the format projects/{project_number}/locations/{locationId}/entryTypes/{entryTypeId}.
-     *
-     *
-     * - - -
      */
     public readonly entryType!: pulumi.Output<string>;
     /**
@@ -365,9 +362,6 @@ export interface EntryState {
     entrySource?: pulumi.Input<inputs.dataplex.EntryEntrySource>;
     /**
      * The relative resource name of the entry type that was used to create this entry, in the format projects/{project_number}/locations/{locationId}/entryTypes/{entryTypeId}.
-     *
-     *
-     * - - -
      */
     entryType?: pulumi.Input<string>;
     /**
@@ -422,9 +416,6 @@ export interface EntryArgs {
     entrySource?: pulumi.Input<inputs.dataplex.EntryEntrySource>;
     /**
      * The relative resource name of the entry type that was used to create this entry, in the format projects/{project_number}/locations/{locationId}/entryTypes/{entryTypeId}.
-     *
-     *
-     * - - -
      */
     entryType: pulumi.Input<string>;
     /**

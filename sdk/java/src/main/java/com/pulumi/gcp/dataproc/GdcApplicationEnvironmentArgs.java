@@ -136,16 +136,12 @@ public final class GdcApplicationEnvironmentArgs extends com.pulumi.resources.Re
     /**
      * The id of the service instance to which this application environment belongs.
      * 
-     * ***
-     * 
      */
     @Import(name="serviceinstance", required=true)
     private Output<String> serviceinstance;
 
     /**
      * @return The id of the service instance to which this application environment belongs.
-     * 
-     * ***
      * 
      */
     public Output<String> serviceinstance() {
@@ -361,8 +357,6 @@ public final class GdcApplicationEnvironmentArgs extends com.pulumi.resources.Re
         /**
          * @param serviceinstance The id of the service instance to which this application environment belongs.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -373,8 +367,6 @@ public final class GdcApplicationEnvironmentArgs extends com.pulumi.resources.Re
 
         /**
          * @param serviceinstance The id of the service instance to which this application environment belongs.
-         * 
-         * ***
          * 
          * @return builder
          * 

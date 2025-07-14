@@ -178,9 +178,6 @@ namespace Pulumi.Gcp.Iam
         /// * end with an alphanumeric character
         /// 
         /// The prefix `gcp-` will be reserved for future uses.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("workloadIdentityPoolManagedIdentityId")]
         public Output<string> WorkloadIdentityPoolManagedIdentityId { get; private set; } = null!;
@@ -294,9 +291,6 @@ namespace Pulumi.Gcp.Iam
         /// * end with an alphanumeric character
         /// 
         /// The prefix `gcp-` will be reserved for future uses.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("workloadIdentityPoolManagedIdentityId", required: true)]
         public Input<string> WorkloadIdentityPoolManagedIdentityId { get; set; } = null!;
@@ -390,9 +384,6 @@ namespace Pulumi.Gcp.Iam
         /// * end with an alphanumeric character
         /// 
         /// The prefix `gcp-` will be reserved for future uses.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("workloadIdentityPoolManagedIdentityId")]
         public Input<string>? WorkloadIdentityPoolManagedIdentityId { get; set; }

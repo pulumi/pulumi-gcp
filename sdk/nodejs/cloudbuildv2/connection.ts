@@ -245,9 +245,6 @@ export class Connection extends pulumi.CustomResource {
     public /*out*/ readonly installationStates!: pulumi.Output<outputs.cloudbuildv2.ConnectionInstallationState[]>;
     /**
      * The location for the resource
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -379,9 +376,6 @@ export interface ConnectionState {
     installationStates?: pulumi.Input<pulumi.Input<inputs.cloudbuildv2.ConnectionInstallationState>[]>;
     /**
      * The location for the resource
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -444,9 +438,6 @@ export interface ConnectionArgs {
     gitlabConfig?: pulumi.Input<inputs.cloudbuildv2.ConnectionGitlabConfig>;
     /**
      * The location for the resource
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

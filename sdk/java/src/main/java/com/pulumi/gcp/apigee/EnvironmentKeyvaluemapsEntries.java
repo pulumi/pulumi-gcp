@@ -168,8 +168,6 @@ public class EnvironmentKeyvaluemapsEntries extends com.pulumi.resources.CustomR
      * The Apigee environment keyvalumaps Id associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}/keyvaluemaps/{{keyvaluemap_name}}`.
      * 
-     * ***
-     * 
      */
     @Export(name="envKeyvaluemapId", refs={String.class}, tree="[0]")
     private Output<String> envKeyvaluemapId;
@@ -177,8 +175,6 @@ public class EnvironmentKeyvaluemapsEntries extends com.pulumi.resources.CustomR
     /**
      * @return The Apigee environment keyvalumaps Id associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}/keyvaluemaps/{{keyvaluemap_name}}`.
-     * 
-     * ***
      * 
      */
     public Output<String> envKeyvaluemapId() {

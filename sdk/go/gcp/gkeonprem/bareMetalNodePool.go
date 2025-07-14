@@ -14,6 +14,10 @@ import (
 
 // A Google Bare Metal Node Pool.
 //
+// To get more information about BareMetalNodePool, see:
+//
+// * [API documentation](https://cloud.google.com/kubernetes-engine/distributed-cloud/reference/on-prem-api/rest/v1/projects.locations.bareMetalClusters.bareMetalNodePools)
+//
 // ## Example Usage
 //
 // ### Gkeonprem Bare Metal Node Pool Basic
@@ -288,12 +292,17 @@ import (
 type BareMetalNodePool struct {
 	pulumi.CustomResourceState
 
-	// Annotations on the Bare Metal Node Pool. This field has the same restrictions as Kubernetes annotations. The total size
-	// of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// 'effective_annotations' for all of the annotations present on the resource.
+	// Annotations on the Bare Metal Node Pool.
+	// This field has the same restrictions as Kubernetes annotations.
+	// The total size of all keys and values combined is limited to 256k.
+	// Key can have 2 segments: prefix (optional) and name (required),
+	// separated by a slash (/).
+	// Prefix must be a DNS subdomain.
+	// Name must be 63 characters or less, begin and end with alphanumerics,
+	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// The cluster this node pool belongs to.
 	BareMetalCluster pulumi.StringOutput `pulumi:"bareMetalCluster"`
@@ -317,7 +326,9 @@ type BareMetalNodePool struct {
 	// Node pool configuration.
 	// Structure is documented below.
 	NodePoolConfig BareMetalNodePoolNodePoolConfigOutput `pulumi:"nodePoolConfig"`
-	Project        pulumi.StringOutput                   `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringOutput `pulumi:"project"`
 	// If set, there are currently changes in flight to the Bare Metal User Cluster.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
 	// (Output)
@@ -371,12 +382,17 @@ func GetBareMetalNodePool(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering BareMetalNodePool resources.
 type bareMetalNodePoolState struct {
-	// Annotations on the Bare Metal Node Pool. This field has the same restrictions as Kubernetes annotations. The total size
-	// of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// 'effective_annotations' for all of the annotations present on the resource.
+	// Annotations on the Bare Metal Node Pool.
+	// This field has the same restrictions as Kubernetes annotations.
+	// The total size of all keys and values combined is limited to 256k.
+	// Key can have 2 segments: prefix (optional) and name (required),
+	// separated by a slash (/).
+	// Prefix must be a DNS subdomain.
+	// Name must be 63 characters or less, begin and end with alphanumerics,
+	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// The cluster this node pool belongs to.
 	BareMetalCluster *string `pulumi:"bareMetalCluster"`
@@ -400,7 +416,9 @@ type bareMetalNodePoolState struct {
 	// Node pool configuration.
 	// Structure is documented below.
 	NodePoolConfig *BareMetalNodePoolNodePoolConfig `pulumi:"nodePoolConfig"`
-	Project        *string                          `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// If set, there are currently changes in flight to the Bare Metal User Cluster.
 	Reconciling *bool `pulumi:"reconciling"`
 	// (Output)
@@ -416,12 +434,17 @@ type bareMetalNodePoolState struct {
 }
 
 type BareMetalNodePoolState struct {
-	// Annotations on the Bare Metal Node Pool. This field has the same restrictions as Kubernetes annotations. The total size
-	// of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// 'effective_annotations' for all of the annotations present on the resource.
+	// Annotations on the Bare Metal Node Pool.
+	// This field has the same restrictions as Kubernetes annotations.
+	// The total size of all keys and values combined is limited to 256k.
+	// Key can have 2 segments: prefix (optional) and name (required),
+	// separated by a slash (/).
+	// Prefix must be a DNS subdomain.
+	// Name must be 63 characters or less, begin and end with alphanumerics,
+	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// The cluster this node pool belongs to.
 	BareMetalCluster pulumi.StringPtrInput
@@ -445,7 +468,9 @@ type BareMetalNodePoolState struct {
 	// Node pool configuration.
 	// Structure is documented below.
 	NodePoolConfig BareMetalNodePoolNodePoolConfigPtrInput
-	Project        pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// If set, there are currently changes in flight to the Bare Metal User Cluster.
 	Reconciling pulumi.BoolPtrInput
 	// (Output)
@@ -465,12 +490,17 @@ func (BareMetalNodePoolState) ElementType() reflect.Type {
 }
 
 type bareMetalNodePoolArgs struct {
-	// Annotations on the Bare Metal Node Pool. This field has the same restrictions as Kubernetes annotations. The total size
-	// of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// 'effective_annotations' for all of the annotations present on the resource.
+	// Annotations on the Bare Metal Node Pool.
+	// This field has the same restrictions as Kubernetes annotations.
+	// The total size of all keys and values combined is limited to 256k.
+	// Key can have 2 segments: prefix (optional) and name (required),
+	// separated by a slash (/).
+	// Prefix must be a DNS subdomain.
+	// Name must be 63 characters or less, begin and end with alphanumerics,
+	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// The cluster this node pool belongs to.
 	BareMetalCluster string `pulumi:"bareMetalCluster"`
@@ -483,17 +513,24 @@ type bareMetalNodePoolArgs struct {
 	// Node pool configuration.
 	// Structure is documented below.
 	NodePoolConfig BareMetalNodePoolNodePoolConfig `pulumi:"nodePoolConfig"`
-	Project        *string                         `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a BareMetalNodePool resource.
 type BareMetalNodePoolArgs struct {
-	// Annotations on the Bare Metal Node Pool. This field has the same restrictions as Kubernetes annotations. The total size
-	// of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// 'effective_annotations' for all of the annotations present on the resource.
+	// Annotations on the Bare Metal Node Pool.
+	// This field has the same restrictions as Kubernetes annotations.
+	// The total size of all keys and values combined is limited to 256k.
+	// Key can have 2 segments: prefix (optional) and name (required),
+	// separated by a slash (/).
+	// Prefix must be a DNS subdomain.
+	// Name must be 63 characters or less, begin and end with alphanumerics,
+	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// The cluster this node pool belongs to.
 	BareMetalCluster pulumi.StringInput
@@ -506,7 +543,9 @@ type BareMetalNodePoolArgs struct {
 	// Node pool configuration.
 	// Structure is documented below.
 	NodePoolConfig BareMetalNodePoolNodePoolConfigInput
-	Project        pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 }
 
 func (BareMetalNodePoolArgs) ElementType() reflect.Type {
@@ -596,12 +635,17 @@ func (o BareMetalNodePoolOutput) ToBareMetalNodePoolOutputWithContext(ctx contex
 	return o
 }
 
-// Annotations on the Bare Metal Node Pool. This field has the same restrictions as Kubernetes annotations. The total size
-// of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-// 'effective_annotations' for all of the annotations present on the resource.
+// Annotations on the Bare Metal Node Pool.
+// This field has the same restrictions as Kubernetes annotations.
+// The total size of all keys and values combined is limited to 256k.
+// Key can have 2 segments: prefix (optional) and name (required),
+// separated by a slash (/).
+// Prefix must be a DNS subdomain.
+// Name must be 63 characters or less, begin and end with alphanumerics,
+// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+//
+// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 func (o BareMetalNodePoolOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *BareMetalNodePool) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -655,6 +699,8 @@ func (o BareMetalNodePoolOutput) NodePoolConfig() BareMetalNodePoolNodePoolConfi
 	return o.ApplyT(func(v *BareMetalNodePool) BareMetalNodePoolNodePoolConfigOutput { return v.NodePoolConfig }).(BareMetalNodePoolNodePoolConfigOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o BareMetalNodePoolOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *BareMetalNodePool) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.Apphub.Outputs
         /// REGIONAL
         /// GLOBAL
         /// Possible values are: `REGIONAL`, `GLOBAL`.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string Type;
 

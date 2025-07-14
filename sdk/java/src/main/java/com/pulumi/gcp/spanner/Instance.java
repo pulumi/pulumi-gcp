@@ -226,8 +226,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The descriptive name for this instance as it appears in UIs. Must be
      * unique per project and between 4 and 30 characters in length.
      * 
-     * ***
-     * 
      */
     @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
@@ -235,8 +233,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * @return The descriptive name for this instance as it appears in UIs. Must be
      * unique per project and between 4 and 30 characters in length.
-     * 
-     * ***
      * 
      */
     public Output<String> displayName() {

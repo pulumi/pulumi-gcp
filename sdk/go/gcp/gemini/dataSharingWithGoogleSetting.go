@@ -77,8 +77,6 @@ type DataSharingWithGoogleSetting struct {
 	// Create time stamp.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Id of the Data Sharing With Google Setting.
-	//
-	// ***
 	DataSharingWithGoogleSettingId pulumi.StringOutput `pulumi:"dataSharingWithGoogleSettingId"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -146,8 +144,6 @@ type dataSharingWithGoogleSettingState struct {
 	// Create time stamp.
 	CreateTime *string `pulumi:"createTime"`
 	// Id of the Data Sharing With Google Setting.
-	//
-	// ***
 	DataSharingWithGoogleSettingId *string `pulumi:"dataSharingWithGoogleSettingId"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -178,8 +174,6 @@ type DataSharingWithGoogleSettingState struct {
 	// Create time stamp.
 	CreateTime pulumi.StringPtrInput
 	// Id of the Data Sharing With Google Setting.
-	//
-	// ***
 	DataSharingWithGoogleSettingId pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -212,8 +206,6 @@ func (DataSharingWithGoogleSettingState) ElementType() reflect.Type {
 
 type dataSharingWithGoogleSettingArgs struct {
 	// Id of the Data Sharing With Google Setting.
-	//
-	// ***
 	DataSharingWithGoogleSettingId string `pulumi:"dataSharingWithGoogleSettingId"`
 	// Whether data sharing should be enabled in GA products.
 	EnableDataSharing *bool `pulumi:"enableDataSharing"`
@@ -233,8 +225,6 @@ type dataSharingWithGoogleSettingArgs struct {
 // The set of arguments for constructing a DataSharingWithGoogleSetting resource.
 type DataSharingWithGoogleSettingArgs struct {
 	// Id of the Data Sharing With Google Setting.
-	//
-	// ***
 	DataSharingWithGoogleSettingId pulumi.StringInput
 	// Whether data sharing should be enabled in GA products.
 	EnableDataSharing pulumi.BoolPtrInput
@@ -344,8 +334,6 @@ func (o DataSharingWithGoogleSettingOutput) CreateTime() pulumi.StringOutput {
 }
 
 // Id of the Data Sharing With Google Setting.
-//
-// ***
 func (o DataSharingWithGoogleSettingOutput) DataSharingWithGoogleSettingId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataSharingWithGoogleSetting) pulumi.StringOutput { return v.DataSharingWithGoogleSettingId }).(pulumi.StringOutput)
 }

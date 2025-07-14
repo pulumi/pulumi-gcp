@@ -14,8 +14,6 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
     {
         /// <summary>
         /// Optional. The starting phase of the rollout created by this rule. Default to the first phase.
-        /// 
-        /// - - -
         /// </summary>
         [Input("destinationPhase")]
         public Input<string>? DestinationPhase { get; set; }

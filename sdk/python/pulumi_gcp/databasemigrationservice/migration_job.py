@@ -41,9 +41,6 @@ class MigrationJobArgs:
         The set of arguments for constructing a MigrationJob resource.
         :param pulumi.Input[builtins.str] destination: The name of the destination connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{destinationConnectionProfile}.
         :param pulumi.Input[builtins.str] migration_job_id: The ID of the migration job.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] source: The name of the source connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{sourceConnectionProfile}.
         :param pulumi.Input[builtins.str] type: The type of the migration job.
                Possible values are: `ONE_TIME`, `CONTINUOUS`.
@@ -118,9 +115,6 @@ class MigrationJobArgs:
     def migration_job_id(self) -> pulumi.Input[builtins.str]:
         """
         The ID of the migration job.
-
-
-        - - -
         """
         return pulumi.get(self, "migration_job_id")
 
@@ -348,9 +342,6 @@ class _MigrationJobState:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location where the migration job should reside.
         :param pulumi.Input[builtins.str] migration_job_id: The ID of the migration job.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The name of this migration job resource in the form of projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
         :param pulumi.Input['MigrationJobPerformanceConfigArgs'] performance_config: Data dump parallelism settings used by the migration.
                Structure is documented below.
@@ -551,9 +542,6 @@ class _MigrationJobState:
     def migration_job_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The ID of the migration job.
-
-
-        - - -
         """
         return pulumi.get(self, "migration_job_id")
 
@@ -1042,9 +1030,6 @@ class MigrationJob(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location where the migration job should reside.
         :param pulumi.Input[builtins.str] migration_job_id: The ID of the migration job.
-               
-               
-               - - -
         :param pulumi.Input[Union['MigrationJobPerformanceConfigArgs', 'MigrationJobPerformanceConfigArgsDict']] performance_config: Data dump parallelism settings used by the migration.
                Structure is documented below.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -1496,9 +1481,6 @@ class MigrationJob(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location where the migration job should reside.
         :param pulumi.Input[builtins.str] migration_job_id: The ID of the migration job.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The name of this migration job resource in the form of projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
         :param pulumi.Input[Union['MigrationJobPerformanceConfigArgs', 'MigrationJobPerformanceConfigArgsDict']] performance_config: Data dump parallelism settings used by the migration.
                Structure is documented below.
@@ -1642,9 +1624,6 @@ class MigrationJob(pulumi.CustomResource):
     def migration_job_id(self) -> pulumi.Output[builtins.str]:
         """
         The ID of the migration job.
-
-
-        - - -
         """
         return pulumi.get(self, "migration_job_id")
 

@@ -51,16 +51,12 @@ public final class AiIndexEndpointState extends com.pulumi.resources.ResourceArg
     /**
      * The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
      * 
-     * ***
-     * 
      */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
 
     /**
      * @return The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> displayName() {
@@ -346,8 +342,6 @@ public final class AiIndexEndpointState extends com.pulumi.resources.ResourceArg
         /**
          * @param displayName The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -358,8 +352,6 @@ public final class AiIndexEndpointState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param displayName The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-         * 
-         * ***
          * 
          * @return builder
          * 

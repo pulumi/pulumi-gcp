@@ -105,16 +105,12 @@ public final class FirewallEndpointAssociationState extends com.pulumi.resources
     /**
      * The location (zone) of the firewall endpoint association.
      * 
-     * ***
-     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
      * @return The location (zone) of the firewall endpoint association.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> location() {
@@ -416,8 +412,6 @@ public final class FirewallEndpointAssociationState extends com.pulumi.resources
         /**
          * @param location The location (zone) of the firewall endpoint association.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -428,8 +422,6 @@ public final class FirewallEndpointAssociationState extends com.pulumi.resources
 
         /**
          * @param location The location (zone) of the firewall endpoint association.
-         * 
-         * ***
          * 
          * @return builder
          * 

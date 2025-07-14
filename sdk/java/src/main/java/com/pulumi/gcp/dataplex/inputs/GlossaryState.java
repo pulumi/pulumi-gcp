@@ -95,16 +95,12 @@ public final class GlossaryState extends com.pulumi.resources.ResourceArgs {
     /**
      * The glossary id for creation.
      * 
-     * ***
-     * 
      */
     @Import(name="glossaryId")
     private @Nullable Output<String> glossaryId;
 
     /**
      * @return The glossary id for creation.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> glossaryId() {
@@ -386,8 +382,6 @@ public final class GlossaryState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param glossaryId The glossary id for creation.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -398,8 +392,6 @@ public final class GlossaryState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param glossaryId The glossary id for creation.
-         * 
-         * ***
          * 
          * @return builder
          * 

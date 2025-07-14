@@ -142,16 +142,12 @@ public class RouterNatAddress extends com.pulumi.resources.CustomResource {
     /**
      * The name of the Nat service in which this address will be configured.
      * 
-     * ***
-     * 
      */
     @Export(name="routerNat", refs={String.class}, tree="[0]")
     private Output<String> routerNat;
 
     /**
      * @return The name of the Nat service in which this address will be configured.
-     * 
-     * ***
      * 
      */
     public Output<String> routerNat() {

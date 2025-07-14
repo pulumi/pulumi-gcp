@@ -62,16 +62,16 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Desired state of the CertificateAuthority. Set this field to &#39;STAGED&#39; to create a &#39;STAGED&#39; root CA. Possible values:
-     * ENABLED, DISABLED, STAGED.
+     * Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
+     * Possible values: ENABLED, DISABLED, STAGED.
      * 
      */
     @Import(name="desiredState")
     private @Nullable Output<String> desiredState;
 
     /**
-     * @return Desired state of the CertificateAuthority. Set this field to &#39;STAGED&#39; to create a &#39;STAGED&#39; root CA. Possible values:
-     * ENABLED, DISABLED, STAGED.
+     * @return Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
+     * Possible values: ENABLED, DISABLED, STAGED.
      * 
      */
     public Optional<Output<String>> desiredState() {
@@ -79,20 +79,22 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and
-     * CRLs. This must be a bucket name, without any prefixes (such as &#39;gs://&#39;) or suffixes (such as &#39;.googleapis.com&#39;). For
-     * example, to use a bucket named my-bucket, you would simply specify &#39;my-bucket&#39;. If not specified, a managed bucket will
-     * be created.
+     * The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
+     * such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
+     * (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
+     * my-bucket, you would simply specify `my-bucket`. If not specified, a managed bucket will be
+     * created.
      * 
      */
     @Import(name="gcsBucket")
     private @Nullable Output<String> gcsBucket;
 
     /**
-     * @return The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and
-     * CRLs. This must be a bucket name, without any prefixes (such as &#39;gs://&#39;) or suffixes (such as &#39;.googleapis.com&#39;). For
-     * example, to use a bucket named my-bucket, you would simply specify &#39;my-bucket&#39;. If not specified, a managed bucket will
-     * be created.
+     * @return The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
+     * such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
+     * (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
+     * my-bucket, you would simply specify `my-bucket`. If not specified, a managed bucket will be
+     * created.
      * 
      */
     public Optional<Output<String>> gcsBucket() {
@@ -100,16 +102,16 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and
-     * unexpired certs. Use with care. Defaults to &#39;false&#39;.
+     * This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and unexpired certs.
+     * Use with care. Defaults to `false`.
      * 
      */
     @Import(name="ignoreActiveCertificatesOnDeletion")
     private @Nullable Output<Boolean> ignoreActiveCertificatesOnDeletion;
 
     /**
-     * @return This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and
-     * unexpired certs. Use with care. Defaults to &#39;false&#39;.
+     * @return This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and unexpired certs.
+     * Use with care. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> ignoreActiveCertificatesOnDeletion() {
@@ -138,18 +140,24 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Labels with user-defined metadata. An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;,
-     * &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }. **Note**: This field is non-authoritative, and will only manage the labels present in
-     * your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+     * Labels with user-defined metadata.
+     * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;:
+     * &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Labels with user-defined metadata. An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;,
-     * &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }. **Note**: This field is non-authoritative, and will only manage the labels present in
-     * your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+     * @return Labels with user-defined metadata.
+     * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;:
+     * &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -157,16 +165,18 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The desired lifetime of the CA certificate. Used to create the &#34;notBeforeTime&#34; and &#34;notAfterTime&#34; fields inside an X.509
-     * certificate. A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * The desired lifetime of the CA certificate. Used to create the &#34;notBeforeTime&#34; and
+     * &#34;notAfterTime&#34; fields inside an X.509 certificate. A duration in seconds with up to nine
+     * fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
      */
     @Import(name="lifetime")
     private @Nullable Output<String> lifetime;
 
     /**
-     * @return The desired lifetime of the CA certificate. Used to create the &#34;notBeforeTime&#34; and &#34;notAfterTime&#34; fields inside an X.509
-     * certificate. A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * @return The desired lifetime of the CA certificate. Used to create the &#34;notBeforeTime&#34; and
+     * &#34;notAfterTime&#34; fields inside an X.509 certificate. A duration in seconds with up to nine
+     * fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
      */
     public Optional<Output<String>> lifetime() {
@@ -191,16 +201,14 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The signed CA certificate issued from the subordinated CA&#39;s CSR. This is needed when activating the subordiante CA with
-     * a third party issuer.
+     * The signed CA certificate issued from the subordinated CA&#39;s CSR. This is needed when activating the subordiante CA with a third party issuer.
      * 
      */
     @Import(name="pemCaCertificate")
     private @Nullable Output<String> pemCaCertificate;
 
     /**
-     * @return The signed CA certificate issued from the subordinated CA&#39;s CSR. This is needed when activating the subordiante CA with
-     * a third party issuer.
+     * @return The signed CA certificate issued from the subordinated CA&#39;s CSR. This is needed when activating the subordiante CA with a third party issuer.
      * 
      */
     public Optional<Output<String>> pemCaCertificate() {
@@ -222,26 +230,38 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
         return this.pool;
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
 
     /**
-     * If this flag is set, the Certificate Authority will be deleted as soon as possible without a 30-day grace period where
-     * undeletion would have been allowed. If you proceed, there will be no way to recover this CA. Use with care. Defaults to
-     * &#39;false&#39;.
+     * If this flag is set, the Certificate Authority will be deleted as soon as
+     * possible without a 30-day grace period where undeletion would have been
+     * allowed. If you proceed, there will be no way to recover this CA.
+     * Use with care. Defaults to `false`.
      * 
      */
     @Import(name="skipGracePeriod")
     private @Nullable Output<Boolean> skipGracePeriod;
 
     /**
-     * @return If this flag is set, the Certificate Authority will be deleted as soon as possible without a 30-day grace period where
-     * undeletion would have been allowed. If you proceed, there will be no way to recover this CA. Use with care. Defaults to
-     * &#39;false&#39;.
+     * @return If this flag is set, the Certificate Authority will be deleted as soon as
+     * possible without a 30-day grace period where undeletion would have been
+     * allowed. If you proceed, there will be no way to recover this CA.
+     * Use with care. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> skipGracePeriod() {
@@ -249,16 +269,18 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which
-     * describes its issuers.
+     * If this is a subordinate CertificateAuthority, this field will be set
+     * with the subordinate configuration, which describes its issuers.
+     * Structure is documented below.
      * 
      */
     @Import(name="subordinateConfig")
     private @Nullable Output<AuthoritySubordinateConfigArgs> subordinateConfig;
 
     /**
-     * @return If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which
-     * describes its issuers.
+     * @return If this is a subordinate CertificateAuthority, this field will be set
+     * with the subordinate configuration, which describes its issuers.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<AuthoritySubordinateConfigArgs>> subordinateConfig() {
@@ -266,16 +288,22 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Type of this CertificateAuthority. &gt; **Note:** For &#39;SUBORDINATE&#39; Certificate Authorities, they need to be activated
-     * before they can issue certificates. Default value: &#34;SELF_SIGNED&#34; Possible values: [&#34;SELF_SIGNED&#34;, &#34;SUBORDINATE&#34;]
+     * The Type of this CertificateAuthority.
+     * &gt; **Note:** For `SUBORDINATE` Certificate Authorities, they need to
+     * be activated before they can issue certificates.
+     * Default value is `SELF_SIGNED`.
+     * Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The Type of this CertificateAuthority. &gt; **Note:** For &#39;SUBORDINATE&#39; Certificate Authorities, they need to be activated
-     * before they can issue certificates. Default value: &#34;SELF_SIGNED&#34; Possible values: [&#34;SELF_SIGNED&#34;, &#34;SUBORDINATE&#34;]
+     * @return The Type of this CertificateAuthority.
+     * &gt; **Note:** For `SUBORDINATE` Certificate Authorities, they need to
+     * be activated before they can issue certificates.
+     * Default value is `SELF_SIGNED`.
+     * Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -283,16 +311,18 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs, that can be specified by
-     * users.
+     * Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs,
+     * that can be specified by users.
+     * Structure is documented below.
      * 
      */
     @Import(name="userDefinedAccessUrls")
     private @Nullable Output<AuthorityUserDefinedAccessUrlsArgs> userDefinedAccessUrls;
 
     /**
-     * @return Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs, that can be specified by
-     * users.
+     * @return Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs,
+     * that can be specified by users.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<AuthorityUserDefinedAccessUrlsArgs>> userDefinedAccessUrls() {
@@ -393,8 +423,8 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param desiredState Desired state of the CertificateAuthority. Set this field to &#39;STAGED&#39; to create a &#39;STAGED&#39; root CA. Possible values:
-         * ENABLED, DISABLED, STAGED.
+         * @param desiredState Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
+         * Possible values: ENABLED, DISABLED, STAGED.
          * 
          * @return builder
          * 
@@ -405,8 +435,8 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param desiredState Desired state of the CertificateAuthority. Set this field to &#39;STAGED&#39; to create a &#39;STAGED&#39; root CA. Possible values:
-         * ENABLED, DISABLED, STAGED.
+         * @param desiredState Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
+         * Possible values: ENABLED, DISABLED, STAGED.
          * 
          * @return builder
          * 
@@ -416,10 +446,11 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gcsBucket The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and
-         * CRLs. This must be a bucket name, without any prefixes (such as &#39;gs://&#39;) or suffixes (such as &#39;.googleapis.com&#39;). For
-         * example, to use a bucket named my-bucket, you would simply specify &#39;my-bucket&#39;. If not specified, a managed bucket will
-         * be created.
+         * @param gcsBucket The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
+         * such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
+         * (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
+         * my-bucket, you would simply specify `my-bucket`. If not specified, a managed bucket will be
+         * created.
          * 
          * @return builder
          * 
@@ -430,10 +461,11 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gcsBucket The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and
-         * CRLs. This must be a bucket name, without any prefixes (such as &#39;gs://&#39;) or suffixes (such as &#39;.googleapis.com&#39;). For
-         * example, to use a bucket named my-bucket, you would simply specify &#39;my-bucket&#39;. If not specified, a managed bucket will
-         * be created.
+         * @param gcsBucket The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
+         * such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
+         * (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
+         * my-bucket, you would simply specify `my-bucket`. If not specified, a managed bucket will be
+         * created.
          * 
          * @return builder
          * 
@@ -443,8 +475,8 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ignoreActiveCertificatesOnDeletion This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and
-         * unexpired certs. Use with care. Defaults to &#39;false&#39;.
+         * @param ignoreActiveCertificatesOnDeletion This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and unexpired certs.
+         * Use with care. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -455,8 +487,8 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ignoreActiveCertificatesOnDeletion This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and
-         * unexpired certs. Use with care. Defaults to &#39;false&#39;.
+         * @param ignoreActiveCertificatesOnDeletion This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and unexpired certs.
+         * Use with care. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -493,9 +525,12 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Labels with user-defined metadata. An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;,
-         * &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }. **Note**: This field is non-authoritative, and will only manage the labels present in
-         * your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+         * @param labels Labels with user-defined metadata.
+         * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;:
+         * &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -506,9 +541,12 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Labels with user-defined metadata. An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;,
-         * &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }. **Note**: This field is non-authoritative, and will only manage the labels present in
-         * your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+         * @param labels Labels with user-defined metadata.
+         * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;:
+         * &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -518,8 +556,9 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lifetime The desired lifetime of the CA certificate. Used to create the &#34;notBeforeTime&#34; and &#34;notAfterTime&#34; fields inside an X.509
-         * certificate. A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
+         * @param lifetime The desired lifetime of the CA certificate. Used to create the &#34;notBeforeTime&#34; and
+         * &#34;notAfterTime&#34; fields inside an X.509 certificate. A duration in seconds with up to nine
+         * fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
          * 
          * @return builder
          * 
@@ -530,8 +569,9 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lifetime The desired lifetime of the CA certificate. Used to create the &#34;notBeforeTime&#34; and &#34;notAfterTime&#34; fields inside an X.509
-         * certificate. A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
+         * @param lifetime The desired lifetime of the CA certificate. Used to create the &#34;notBeforeTime&#34; and
+         * &#34;notAfterTime&#34; fields inside an X.509 certificate. A duration in seconds with up to nine
+         * fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
          * 
          * @return builder
          * 
@@ -564,8 +604,7 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pemCaCertificate The signed CA certificate issued from the subordinated CA&#39;s CSR. This is needed when activating the subordiante CA with
-         * a third party issuer.
+         * @param pemCaCertificate The signed CA certificate issued from the subordinated CA&#39;s CSR. This is needed when activating the subordiante CA with a third party issuer.
          * 
          * @return builder
          * 
@@ -576,8 +615,7 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pemCaCertificate The signed CA certificate issued from the subordinated CA&#39;s CSR. This is needed when activating the subordiante CA with
-         * a third party issuer.
+         * @param pemCaCertificate The signed CA certificate issued from the subordinated CA&#39;s CSR. This is needed when activating the subordiante CA with a third party issuer.
          * 
          * @return builder
          * 
@@ -607,19 +645,34 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
             return pool(Output.of(pool));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
 
         /**
-         * @param skipGracePeriod If this flag is set, the Certificate Authority will be deleted as soon as possible without a 30-day grace period where
-         * undeletion would have been allowed. If you proceed, there will be no way to recover this CA. Use with care. Defaults to
-         * &#39;false&#39;.
+         * @param skipGracePeriod If this flag is set, the Certificate Authority will be deleted as soon as
+         * possible without a 30-day grace period where undeletion would have been
+         * allowed. If you proceed, there will be no way to recover this CA.
+         * Use with care. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -630,9 +683,10 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param skipGracePeriod If this flag is set, the Certificate Authority will be deleted as soon as possible without a 30-day grace period where
-         * undeletion would have been allowed. If you proceed, there will be no way to recover this CA. Use with care. Defaults to
-         * &#39;false&#39;.
+         * @param skipGracePeriod If this flag is set, the Certificate Authority will be deleted as soon as
+         * possible without a 30-day grace period where undeletion would have been
+         * allowed. If you proceed, there will be no way to recover this CA.
+         * Use with care. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -642,8 +696,9 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param subordinateConfig If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which
-         * describes its issuers.
+         * @param subordinateConfig If this is a subordinate CertificateAuthority, this field will be set
+         * with the subordinate configuration, which describes its issuers.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -654,8 +709,9 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param subordinateConfig If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which
-         * describes its issuers.
+         * @param subordinateConfig If this is a subordinate CertificateAuthority, this field will be set
+         * with the subordinate configuration, which describes its issuers.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -665,8 +721,11 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The Type of this CertificateAuthority. &gt; **Note:** For &#39;SUBORDINATE&#39; Certificate Authorities, they need to be activated
-         * before they can issue certificates. Default value: &#34;SELF_SIGNED&#34; Possible values: [&#34;SELF_SIGNED&#34;, &#34;SUBORDINATE&#34;]
+         * @param type The Type of this CertificateAuthority.
+         * &gt; **Note:** For `SUBORDINATE` Certificate Authorities, they need to
+         * be activated before they can issue certificates.
+         * Default value is `SELF_SIGNED`.
+         * Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
          * 
          * @return builder
          * 
@@ -677,8 +736,11 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The Type of this CertificateAuthority. &gt; **Note:** For &#39;SUBORDINATE&#39; Certificate Authorities, they need to be activated
-         * before they can issue certificates. Default value: &#34;SELF_SIGNED&#34; Possible values: [&#34;SELF_SIGNED&#34;, &#34;SUBORDINATE&#34;]
+         * @param type The Type of this CertificateAuthority.
+         * &gt; **Note:** For `SUBORDINATE` Certificate Authorities, they need to
+         * be activated before they can issue certificates.
+         * Default value is `SELF_SIGNED`.
+         * Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
          * 
          * @return builder
          * 
@@ -688,8 +750,9 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userDefinedAccessUrls Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs, that can be specified by
-         * users.
+         * @param userDefinedAccessUrls Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs,
+         * that can be specified by users.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -700,8 +763,9 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userDefinedAccessUrls Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs, that can be specified by
-         * users.
+         * @param userDefinedAccessUrls Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs,
+         * that can be specified by users.
+         * Structure is documented below.
          * 
          * @return builder
          * 

@@ -309,16 +309,12 @@ public class AppProfile extends com.pulumi.resources.CustomResource {
     /**
      * The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
      * 
-     * ***
-     * 
      */
     @Export(name="appProfileId", refs={String.class}, tree="[0]")
     private Output<String> appProfileId;
 
     /**
      * @return The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-     * 
-     * ***
      * 
      */
     public Output<String> appProfileId() {

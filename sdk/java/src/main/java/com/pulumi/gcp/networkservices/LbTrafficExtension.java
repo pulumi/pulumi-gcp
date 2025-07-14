@@ -124,40 +124,38 @@ public class LbTrafficExtension extends com.pulumi.resources.CustomResource {
         return this.forwardingRules;
     }
     /**
-     * Set of labels associated with the LbTrafficExtension resource. **Note**: This field is non-authoritative, and will only
-     * manage the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels
-     * present on the resource.
+     * Set of labels associated with the LbTrafficExtension resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return Set of labels associated with the LbTrafficExtension resource. **Note**: This field is non-authoritative, and will only
-     * manage the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels
-     * present on the resource.
+     * @return Set of labels associated with the LbTrafficExtension resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
         return Codegen.optional(this.labels);
     }
     /**
-     * All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. For
-     * more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
-     * [Supported application load
-     * balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs). Possible values:
-     * [&#34;INTERNAL_MANAGED&#34;, &#34;EXTERNAL_MANAGED&#34;]
+     * All backend services and forwarding rules referenced by this extension must share the same load balancing scheme.
+     * For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
+     * [Supported application load balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs).
+     * Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
      * 
      */
     @Export(name="loadBalancingScheme", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> loadBalancingScheme;
 
     /**
-     * @return All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. For
-     * more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
-     * [Supported application load
-     * balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs). Possible values:
-     * [&#34;INTERNAL_MANAGED&#34;, &#34;EXTERNAL_MANAGED&#34;]
+     * @return All backend services and forwarding rules referenced by this extension must share the same load balancing scheme.
+     * For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
+     * [Supported application load balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs).
+     * Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
      * 
      */
     public Output<Optional<String>> loadBalancingScheme() {
@@ -191,9 +189,19 @@ public class LbTrafficExtension extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }

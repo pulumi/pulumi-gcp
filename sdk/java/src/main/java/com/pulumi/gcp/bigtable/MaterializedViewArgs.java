@@ -50,16 +50,12 @@ public final class MaterializedViewArgs extends com.pulumi.resources.ResourceArg
     /**
      * The unique name of the materialized view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
      * 
-     * ***
-     * 
      */
     @Import(name="materializedViewId", required=true)
     private Output<String> materializedViewId;
 
     /**
      * @return The unique name of the materialized view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-     * 
-     * ***
      * 
      */
     public Output<String> materializedViewId() {
@@ -171,8 +167,6 @@ public final class MaterializedViewArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param materializedViewId The unique name of the materialized view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -183,8 +177,6 @@ public final class MaterializedViewArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param materializedViewId The unique name of the materialized view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -47,9 +47,6 @@ class OauthClientArgs:
                letters, digits, or hyphens. It must start with a letter, and cannot have a
                trailing hyphen. The prefix `gcp-` is reserved for use by Google, and may
                not be specified.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] client_type: Immutable. The type of OauthClient. Either public or private.
                For private clients, the client secret can be managed using the dedicated
                OauthClientCredential resource.
@@ -145,9 +142,6 @@ class OauthClientArgs:
         letters, digits, or hyphens. It must start with a letter, and cannot have a
         trailing hyphen. The prefix `gcp-` is reserved for use by Google, and may
         not be specified.
-
-
-        - - -
         """
         return pulumi.get(self, "oauth_client_id")
 
@@ -278,9 +272,6 @@ class _OauthClientState:
                letters, digits, or hyphens. It must start with a letter, and cannot have a
                trailing hyphen. The prefix `gcp-` is reserved for use by Google, and may
                not be specified.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] state: The state of the OauthClient.
@@ -476,9 +467,6 @@ class _OauthClientState:
         letters, digits, or hyphens. It must start with a letter, and cannot have a
         trailing hyphen. The prefix `gcp-` is reserved for use by Google, and may
         not be specified.
-
-
-        - - -
         """
         return pulumi.get(self, "oauth_client_id")
 
@@ -618,9 +606,6 @@ class OauthClient(pulumi.CustomResource):
                letters, digits, or hyphens. It must start with a letter, and cannot have a
                trailing hyphen. The prefix `gcp-` is reserved for use by Google, and may
                not be specified.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -807,9 +792,6 @@ class OauthClient(pulumi.CustomResource):
                letters, digits, or hyphens. It must start with a letter, and cannot have a
                trailing hyphen. The prefix `gcp-` is reserved for use by Google, and may
                not be specified.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] state: The state of the OauthClient.
@@ -952,9 +934,6 @@ class OauthClient(pulumi.CustomResource):
         letters, digits, or hyphens. It must start with a letter, and cannot have a
         trailing hyphen. The prefix `gcp-` is reserved for use by Google, and may
         not be specified.
-
-
-        - - -
         """
         return pulumi.get(self, "oauth_client_id")
 

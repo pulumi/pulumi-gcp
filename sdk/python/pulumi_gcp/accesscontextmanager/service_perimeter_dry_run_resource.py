@@ -25,9 +25,6 @@ class ServicePerimeterDryRunResourceArgs:
         """
         The set of arguments for constructing a ServicePerimeterDryRunResource resource.
         :param pulumi.Input[builtins.str] perimeter_name: The name of the Service Perimeter to add this resource to.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] resource: A GCP resource that is inside of the service perimeter.
                Currently only projects are allowed.
                Format: projects/{project_number}
@@ -40,9 +37,6 @@ class ServicePerimeterDryRunResourceArgs:
     def perimeter_name(self) -> pulumi.Input[builtins.str]:
         """
         The name of the Service Perimeter to add this resource to.
-
-
-        - - -
         """
         return pulumi.get(self, "perimeter_name")
 
@@ -77,9 +71,6 @@ class _ServicePerimeterDryRunResourceState:
         :param pulumi.Input[builtins.str] access_policy_id: The name of the Access Policy this resource belongs to.
         :param pulumi.Input[builtins.str] etag: The perimeter etag is internally used to prevent overwriting the list of perimeter resources on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of resources. The resource to add or remove is merged into that list and then this etag is sent with the PATCH call along with the updated resource list.
         :param pulumi.Input[builtins.str] perimeter_name: The name of the Service Perimeter to add this resource to.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] resource: A GCP resource that is inside of the service perimeter.
                Currently only projects are allowed.
                Format: projects/{project_number}
@@ -122,9 +113,6 @@ class _ServicePerimeterDryRunResourceState:
     def perimeter_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The name of the Service Perimeter to add this resource to.
-
-
-        - - -
         """
         return pulumi.get(self, "perimeter_name")
 
@@ -218,9 +206,6 @@ class ServicePerimeterDryRunResource(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] perimeter_name: The name of the Service Perimeter to add this resource to.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] resource: A GCP resource that is inside of the service perimeter.
                Currently only projects are allowed.
                Format: projects/{project_number}
@@ -348,9 +333,6 @@ class ServicePerimeterDryRunResource(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] access_policy_id: The name of the Access Policy this resource belongs to.
         :param pulumi.Input[builtins.str] etag: The perimeter etag is internally used to prevent overwriting the list of perimeter resources on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of resources. The resource to add or remove is merged into that list and then this etag is sent with the PATCH call along with the updated resource list.
         :param pulumi.Input[builtins.str] perimeter_name: The name of the Service Perimeter to add this resource to.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] resource: A GCP resource that is inside of the service perimeter.
                Currently only projects are allowed.
                Format: projects/{project_number}
@@ -386,9 +368,6 @@ class ServicePerimeterDryRunResource(pulumi.CustomResource):
     def perimeter_name(self) -> pulumi.Output[builtins.str]:
         """
         The name of the Service Perimeter to add this resource to.
-
-
-        - - -
         """
         return pulumi.get(self, "perimeter_name")
 

@@ -93,9 +93,6 @@ export class AnywhereCache extends pulumi.CustomResource {
     public /*out*/ readonly anywhereCacheId!: pulumi.Output<string>;
     /**
      * A reference to Bucket resource
-     *
-     *
-     * - - -
      */
     public readonly bucket!: pulumi.Output<string>;
     /**
@@ -184,9 +181,6 @@ export interface AnywhereCacheState {
     anywhereCacheId?: pulumi.Input<string>;
     /**
      * A reference to Bucket resource
-     *
-     *
-     * - - -
      */
     bucket?: pulumi.Input<string>;
     /**
@@ -227,9 +221,6 @@ export interface AnywhereCacheArgs {
     admissionPolicy?: pulumi.Input<string>;
     /**
      * A reference to Bucket resource
-     *
-     *
-     * - - -
      */
     bucket: pulumi.Input<string>;
     /**

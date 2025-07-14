@@ -143,11 +143,14 @@ type Note struct {
 	// A detailed description of the note
 	LongDescription pulumi.StringPtrOutput `pulumi:"longDescription"`
 	// The name of the note.
-	Name    pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Names of other notes related to this note.
 	RelatedNoteNames pulumi.StringArrayOutput `pulumi:"relatedNoteNames"`
 	// URLs associated with this note and related metadata.
+	// Structure is documented below.
 	RelatedUrls NoteRelatedUrlArrayOutput `pulumi:"relatedUrls"`
 	// A one sentence description of the note.
 	ShortDescription pulumi.StringPtrOutput `pulumi:"shortDescription"`
@@ -208,11 +211,14 @@ type noteState struct {
 	// A detailed description of the note
 	LongDescription *string `pulumi:"longDescription"`
 	// The name of the note.
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Names of other notes related to this note.
 	RelatedNoteNames []string `pulumi:"relatedNoteNames"`
 	// URLs associated with this note and related metadata.
+	// Structure is documented below.
 	RelatedUrls []NoteRelatedUrl `pulumi:"relatedUrls"`
 	// A one sentence description of the note.
 	ShortDescription *string `pulumi:"shortDescription"`
@@ -241,11 +247,14 @@ type NoteState struct {
 	// A detailed description of the note
 	LongDescription pulumi.StringPtrInput
 	// The name of the note.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Names of other notes related to this note.
 	RelatedNoteNames pulumi.StringArrayInput
 	// URLs associated with this note and related metadata.
+	// Structure is documented below.
 	RelatedUrls NoteRelatedUrlArrayInput
 	// A one sentence description of the note.
 	ShortDescription pulumi.StringPtrInput
@@ -274,11 +283,14 @@ type noteArgs struct {
 	// A detailed description of the note
 	LongDescription *string `pulumi:"longDescription"`
 	// The name of the note.
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Names of other notes related to this note.
 	RelatedNoteNames []string `pulumi:"relatedNoteNames"`
 	// URLs associated with this note and related metadata.
+	// Structure is documented below.
 	RelatedUrls []NoteRelatedUrl `pulumi:"relatedUrls"`
 	// A one sentence description of the note.
 	ShortDescription *string `pulumi:"shortDescription"`
@@ -302,11 +314,14 @@ type NoteArgs struct {
 	// A detailed description of the note
 	LongDescription pulumi.StringPtrInput
 	// The name of the note.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Names of other notes related to this note.
 	RelatedNoteNames pulumi.StringArrayInput
 	// URLs associated with this note and related metadata.
+	// Structure is documented below.
 	RelatedUrls NoteRelatedUrlArrayInput
 	// A one sentence description of the note.
 	ShortDescription pulumi.StringPtrInput
@@ -438,6 +453,8 @@ func (o NoteOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Note) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o NoteOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Note) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -448,6 +465,7 @@ func (o NoteOutput) RelatedNoteNames() pulumi.StringArrayOutput {
 }
 
 // URLs associated with this note and related metadata.
+// Structure is documented below.
 func (o NoteOutput) RelatedUrls() NoteRelatedUrlArrayOutput {
 	return o.ApplyT(func(v *Note) NoteRelatedUrlArrayOutput { return v.RelatedUrls }).(NoteRelatedUrlArrayOutput)
 }

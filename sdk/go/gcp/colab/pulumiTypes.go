@@ -3043,8 +3043,6 @@ func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRep
 
 type ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource struct {
 	// The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
-	//
-	// ***
 	Generation *string `pulumi:"generation"`
 	// The Cloud Storage uri pointing to the ipynb file. Format: gs://bucket/notebook_file.ipynb
 	Uri string `pulumi:"uri"`
@@ -3063,8 +3061,6 @@ type ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSou
 
 type ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs struct {
 	// The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
-	//
-	// ***
 	Generation pulumi.StringPtrInput `pulumi:"generation"`
 	// The Cloud Storage uri pointing to the ipynb file. Format: gs://bucket/notebook_file.ipynb
 	Uri pulumi.StringInput `pulumi:"uri"`
@@ -3148,8 +3144,6 @@ func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebook
 }
 
 // The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
-//
-// ***
 func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceOutput) Generation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource) *string {
 		return v.Generation
@@ -3188,8 +3182,6 @@ func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebook
 }
 
 // The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
-//
-// ***
 func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrOutput) Generation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource) *string {
 		if v == nil {

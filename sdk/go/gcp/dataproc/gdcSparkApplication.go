@@ -372,8 +372,6 @@ type GdcSparkApplication struct {
 	// Structure is documented below.
 	SparkApplicationConfig GdcSparkApplicationSparkApplicationConfigPtrOutput `pulumi:"sparkApplicationConfig"`
 	// The id of the application
-	//
-	// ***
 	SparkApplicationId pulumi.StringOutput `pulumi:"sparkApplicationId"`
 	// Represents the SparkRApplicationConfig.
 	// Structure is documented below.
@@ -493,8 +491,6 @@ type gdcSparkApplicationState struct {
 	// Structure is documented below.
 	SparkApplicationConfig *GdcSparkApplicationSparkApplicationConfig `pulumi:"sparkApplicationConfig"`
 	// The id of the application
-	//
-	// ***
 	SparkApplicationId *string `pulumi:"sparkApplicationId"`
 	// Represents the SparkRApplicationConfig.
 	// Structure is documented below.
@@ -571,8 +567,6 @@ type GdcSparkApplicationState struct {
 	// Structure is documented below.
 	SparkApplicationConfig GdcSparkApplicationSparkApplicationConfigPtrInput
 	// The id of the application
-	//
-	// ***
 	SparkApplicationId pulumi.StringPtrInput
 	// Represents the SparkRApplicationConfig.
 	// Structure is documented below.
@@ -637,8 +631,6 @@ type gdcSparkApplicationArgs struct {
 	// Structure is documented below.
 	SparkApplicationConfig *GdcSparkApplicationSparkApplicationConfig `pulumi:"sparkApplicationConfig"`
 	// The id of the application
-	//
-	// ***
 	SparkApplicationId string `pulumi:"sparkApplicationId"`
 	// Represents the SparkRApplicationConfig.
 	// Structure is documented below.
@@ -684,8 +676,6 @@ type GdcSparkApplicationArgs struct {
 	// Structure is documented below.
 	SparkApplicationConfig GdcSparkApplicationSparkApplicationConfigPtrInput
 	// The id of the application
-	//
-	// ***
 	SparkApplicationId pulumi.StringInput
 	// Represents the SparkRApplicationConfig.
 	// Structure is documented below.
@@ -896,8 +886,6 @@ func (o GdcSparkApplicationOutput) SparkApplicationConfig() GdcSparkApplicationS
 }
 
 // The id of the application
-//
-// ***
 func (o GdcSparkApplicationOutput) SparkApplicationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GdcSparkApplication) pulumi.StringOutput { return v.SparkApplicationId }).(pulumi.StringOutput)
 }

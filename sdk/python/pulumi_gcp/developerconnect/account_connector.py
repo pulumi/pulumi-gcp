@@ -34,9 +34,6 @@ class AccountConnectorArgs:
                component of the AccountConnector's resource name. Its format should adhere
                to https://google.aip.dev/122#resource-id-segments Names must be unique
                per-project per-location.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: The location of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Optional. Allows users to store small amounts of arbitrary data.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -68,9 +65,6 @@ class AccountConnectorArgs:
         component of the AccountConnector's resource name. Its format should adhere
         to https://google.aip.dev/122#resource-id-segments Names must be unique
         per-project per-location.
-
-
-        - - -
         """
         return pulumi.get(self, "account_connector_id")
 
@@ -167,9 +161,6 @@ class _AccountConnectorState:
                component of the AccountConnector's resource name. Its format should adhere
                to https://google.aip.dev/122#resource-id-segments Names must be unique
                per-project per-location.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Optional. Allows users to store small amounts of arbitrary data.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -225,9 +216,6 @@ class _AccountConnectorState:
         component of the AccountConnector's resource name. Its format should adhere
         to https://google.aip.dev/122#resource-id-segments Names must be unique
         per-project per-location.
-
-
-        - - -
         """
         return pulumi.get(self, "account_connector_id")
 
@@ -532,9 +520,6 @@ class AccountConnector(pulumi.CustomResource):
                component of the AccountConnector's resource name. Its format should adhere
                to https://google.aip.dev/122#resource-id-segments Names must be unique
                per-project per-location.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Optional. Allows users to store small amounts of arbitrary data.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -764,9 +749,6 @@ class AccountConnector(pulumi.CustomResource):
                component of the AccountConnector's resource name. Its format should adhere
                to https://google.aip.dev/122#resource-id-segments Names must be unique
                per-project per-location.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Optional. Allows users to store small amounts of arbitrary data.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -814,9 +796,6 @@ class AccountConnector(pulumi.CustomResource):
         component of the AccountConnector's resource name. Its format should adhere
         to https://google.aip.dev/122#resource-id-segments Names must be unique
         per-project per-location.
-
-
-        - - -
         """
         return pulumi.get(self, "account_connector_id")
 

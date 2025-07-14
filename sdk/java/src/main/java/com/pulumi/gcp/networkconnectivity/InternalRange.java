@@ -481,8 +481,6 @@ public class InternalRange extends com.pulumi.resources.CustomResource {
      * The type of peering set for this internal range.
      * Possible values are: `FOR_SELF`, `FOR_PEER`, `NOT_SHARED`.
      * 
-     * ***
-     * 
      */
     @Export(name="peering", refs={String.class}, tree="[0]")
     private Output<String> peering;
@@ -490,8 +488,6 @@ public class InternalRange extends com.pulumi.resources.CustomResource {
     /**
      * @return The type of peering set for this internal range.
      * Possible values are: `FOR_SELF`, `FOR_PEER`, `NOT_SHARED`.
-     * 
-     * ***
      * 
      */
     public Output<String> peering() {

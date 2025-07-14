@@ -471,8 +471,6 @@ type ApplicationUrlDispatchRulesDispatchRule struct {
 	Path string `pulumi:"path"`
 	// Pathname within the host. Must start with a "/". A single "*" can be included at the end of the path.
 	// The sum of the lengths of the domain and path may not exceed 100 characters.
-	//
-	// ***
 	Service string `pulumi:"service"`
 }
 
@@ -496,8 +494,6 @@ type ApplicationUrlDispatchRulesDispatchRuleArgs struct {
 	Path pulumi.StringInput `pulumi:"path"`
 	// Pathname within the host. Must start with a "/". A single "*" can be included at the end of the path.
 	// The sum of the lengths of the domain and path may not exceed 100 characters.
-	//
-	// ***
 	Service pulumi.StringInput `pulumi:"service"`
 }
 
@@ -566,8 +562,6 @@ func (o ApplicationUrlDispatchRulesDispatchRuleOutput) Path() pulumi.StringOutpu
 
 // Pathname within the host. Must start with a "/". A single "*" can be included at the end of the path.
 // The sum of the lengths of the domain and path may not exceed 100 characters.
-//
-// ***
 func (o ApplicationUrlDispatchRulesDispatchRuleOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v ApplicationUrlDispatchRulesDispatchRule) string { return v.Service }).(pulumi.StringOutput)
 }
@@ -935,8 +929,6 @@ func (o DomainMappingSslSettingsPtrOutput) SslManagementType() pulumi.StringPtrO
 
 type EngineSplitTrafficSplit struct {
 	// Mapping from version IDs within the service to fractional (0.000, 1] allocations of traffic for that version. Each version can be specified only once, but some versions in the service may not have any traffic allocation. Services that have traffic allocated cannot be deleted until either the service is deleted or their traffic allocation is removed. Allocations must sum to 1. Up to two decimal place precision is supported for IP-based splits and up to three decimal places is supported for cookie-based splits.
-	//
-	// ***
 	Allocations map[string]string `pulumi:"allocations"`
 	// Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed.
 	// Possible values are: `UNSPECIFIED`, `COOKIE`, `IP`, `RANDOM`.
@@ -956,8 +948,6 @@ type EngineSplitTrafficSplitInput interface {
 
 type EngineSplitTrafficSplitArgs struct {
 	// Mapping from version IDs within the service to fractional (0.000, 1] allocations of traffic for that version. Each version can be specified only once, but some versions in the service may not have any traffic allocation. Services that have traffic allocated cannot be deleted until either the service is deleted or their traffic allocation is removed. Allocations must sum to 1. Up to two decimal place precision is supported for IP-based splits and up to three decimal places is supported for cookie-based splits.
-	//
-	// ***
 	Allocations pulumi.StringMapInput `pulumi:"allocations"`
 	// Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed.
 	// Possible values are: `UNSPECIFIED`, `COOKIE`, `IP`, `RANDOM`.
@@ -1042,8 +1032,6 @@ func (o EngineSplitTrafficSplitOutput) ToEngineSplitTrafficSplitPtrOutputWithCon
 }
 
 // Mapping from version IDs within the service to fractional (0.000, 1] allocations of traffic for that version. Each version can be specified only once, but some versions in the service may not have any traffic allocation. Services that have traffic allocated cannot be deleted until either the service is deleted or their traffic allocation is removed. Allocations must sum to 1. Up to two decimal place precision is supported for IP-based splits and up to three decimal places is supported for cookie-based splits.
-//
-// ***
 func (o EngineSplitTrafficSplitOutput) Allocations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v EngineSplitTrafficSplit) map[string]string { return v.Allocations }).(pulumi.StringMapOutput)
 }
@@ -1079,8 +1067,6 @@ func (o EngineSplitTrafficSplitPtrOutput) Elem() EngineSplitTrafficSplitOutput {
 }
 
 // Mapping from version IDs within the service to fractional (0.000, 1] allocations of traffic for that version. Each version can be specified only once, but some versions in the service may not have any traffic allocation. Services that have traffic allocated cannot be deleted until either the service is deleted or their traffic allocation is removed. Allocations must sum to 1. Up to two decimal place precision is supported for IP-based splits and up to three decimal places is supported for cookie-based splits.
-//
-// ***
 func (o EngineSplitTrafficSplitPtrOutput) Allocations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *EngineSplitTrafficSplit) map[string]string {
 		if v == nil {
@@ -4333,8 +4319,6 @@ type FlexibleAppVersionLivenessCheck struct {
 	// Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com"
 	Host *string `pulumi:"host"`
 	// The initial delay before starting to execute the checks. Default: "300s"
-	//
-	// ***
 	InitialDelay *string `pulumi:"initialDelay"`
 	// The request path.
 	Path string `pulumi:"path"`
@@ -4363,8 +4347,6 @@ type FlexibleAppVersionLivenessCheckArgs struct {
 	// Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com"
 	Host pulumi.StringPtrInput `pulumi:"host"`
 	// The initial delay before starting to execute the checks. Default: "300s"
-	//
-	// ***
 	InitialDelay pulumi.StringPtrInput `pulumi:"initialDelay"`
 	// The request path.
 	Path pulumi.StringInput `pulumi:"path"`
@@ -4467,8 +4449,6 @@ func (o FlexibleAppVersionLivenessCheckOutput) Host() pulumi.StringPtrOutput {
 }
 
 // The initial delay before starting to execute the checks. Default: "300s"
-//
-// ***
 func (o FlexibleAppVersionLivenessCheckOutput) InitialDelay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionLivenessCheck) *string { return v.InitialDelay }).(pulumi.StringPtrOutput)
 }
@@ -4543,8 +4523,6 @@ func (o FlexibleAppVersionLivenessCheckPtrOutput) Host() pulumi.StringPtrOutput 
 }
 
 // The initial delay before starting to execute the checks. Default: "300s"
-//
-// ***
 func (o FlexibleAppVersionLivenessCheckPtrOutput) InitialDelay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlexibleAppVersionLivenessCheck) *string {
 		if v == nil {
@@ -5690,8 +5668,6 @@ type ServiceNetworkSettingsNetworkSettings struct {
 	// The ingress settings for version or service.
 	// Default value is `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`.
 	// Possible values are: `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`, `INGRESS_TRAFFIC_ALLOWED_ALL`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB`.
-	//
-	// ***
 	IngressTrafficAllowed *string `pulumi:"ingressTrafficAllowed"`
 }
 
@@ -5710,8 +5686,6 @@ type ServiceNetworkSettingsNetworkSettingsArgs struct {
 	// The ingress settings for version or service.
 	// Default value is `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`.
 	// Possible values are: `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`, `INGRESS_TRAFFIC_ALLOWED_ALL`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB`.
-	//
-	// ***
 	IngressTrafficAllowed pulumi.StringPtrInput `pulumi:"ingressTrafficAllowed"`
 }
 
@@ -5795,8 +5769,6 @@ func (o ServiceNetworkSettingsNetworkSettingsOutput) ToServiceNetworkSettingsNet
 // The ingress settings for version or service.
 // Default value is `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`.
 // Possible values are: `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`, `INGRESS_TRAFFIC_ALLOWED_ALL`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB`.
-//
-// ***
 func (o ServiceNetworkSettingsNetworkSettingsOutput) IngressTrafficAllowed() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceNetworkSettingsNetworkSettings) *string { return v.IngressTrafficAllowed }).(pulumi.StringPtrOutput)
 }
@@ -5828,8 +5800,6 @@ func (o ServiceNetworkSettingsNetworkSettingsPtrOutput) Elem() ServiceNetworkSet
 // The ingress settings for version or service.
 // Default value is `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`.
 // Possible values are: `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`, `INGRESS_TRAFFIC_ALLOWED_ALL`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB`.
-//
-// ***
 func (o ServiceNetworkSettingsNetworkSettingsPtrOutput) IngressTrafficAllowed() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceNetworkSettingsNetworkSettings) *string {
 		if v == nil {
@@ -6892,8 +6862,6 @@ func (o StandardAppVersionDeploymentZipPtrOutput) SourceUrl() pulumi.StringPtrOu
 
 type StandardAppVersionEntrypoint struct {
 	// The format should be a shell command that can be fed to bash -c.
-	//
-	// ***
 	Shell string `pulumi:"shell"`
 }
 
@@ -6910,8 +6878,6 @@ type StandardAppVersionEntrypointInput interface {
 
 type StandardAppVersionEntrypointArgs struct {
 	// The format should be a shell command that can be fed to bash -c.
-	//
-	// ***
 	Shell pulumi.StringInput `pulumi:"shell"`
 }
 
@@ -6993,8 +6959,6 @@ func (o StandardAppVersionEntrypointOutput) ToStandardAppVersionEntrypointPtrOut
 }
 
 // The format should be a shell command that can be fed to bash -c.
-//
-// ***
 func (o StandardAppVersionEntrypointOutput) Shell() pulumi.StringOutput {
 	return o.ApplyT(func(v StandardAppVersionEntrypoint) string { return v.Shell }).(pulumi.StringOutput)
 }
@@ -7024,8 +6988,6 @@ func (o StandardAppVersionEntrypointPtrOutput) Elem() StandardAppVersionEntrypoi
 }
 
 // The format should be a shell command that can be fed to bash -c.
-//
-// ***
 func (o StandardAppVersionEntrypointPtrOutput) Shell() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StandardAppVersionEntrypoint) *string {
 		if v == nil {

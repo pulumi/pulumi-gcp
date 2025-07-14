@@ -93,18 +93,24 @@ public final class InterconnectGroupState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * (Output)
-     * Interconnects used to explain this blocker in more
-     * detail.
+     * Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
+     * strings. Users are encouraged, but not required, to use their preferred
+     * format for resource links as keys.
+     * Note that there are add-members and remove-members methods in gcloud.
+     * The size of this map is limited by an &#34;Interconnects per group&#34; quota.
+     * Structure is documented below.
      * 
      */
     @Import(name="interconnects")
     private @Nullable Output<List<InterconnectGroupInterconnectArgs>> interconnects;
 
     /**
-     * @return (Output)
-     * Interconnects used to explain this blocker in more
-     * detail.
+     * @return Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
+     * strings. Users are encouraged, but not required, to use their preferred
+     * format for resource links as keys.
+     * Note that there are add-members and remove-members methods in gcloud.
+     * The size of this map is limited by an &#34;Interconnects per group&#34; quota.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<InterconnectGroupInterconnectArgs>>> interconnects() {
@@ -153,9 +159,19 @@ public final class InterconnectGroupState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.physicalStructures);
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -302,9 +318,12 @@ public final class InterconnectGroupState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param interconnects (Output)
-         * Interconnects used to explain this blocker in more
-         * detail.
+         * @param interconnects Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
+         * strings. Users are encouraged, but not required, to use their preferred
+         * format for resource links as keys.
+         * Note that there are add-members and remove-members methods in gcloud.
+         * The size of this map is limited by an &#34;Interconnects per group&#34; quota.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -315,9 +334,12 @@ public final class InterconnectGroupState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param interconnects (Output)
-         * Interconnects used to explain this blocker in more
-         * detail.
+         * @param interconnects Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
+         * strings. Users are encouraged, but not required, to use their preferred
+         * format for resource links as keys.
+         * Note that there are add-members and remove-members methods in gcloud.
+         * The size of this map is limited by an &#34;Interconnects per group&#34; quota.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -327,9 +349,12 @@ public final class InterconnectGroupState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param interconnects (Output)
-         * Interconnects used to explain this blocker in more
-         * detail.
+         * @param interconnects Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
+         * strings. Users are encouraged, but not required, to use their preferred
+         * format for resource links as keys.
+         * Note that there are add-members and remove-members methods in gcloud.
+         * The size of this map is limited by an &#34;Interconnects per group&#34; quota.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -404,11 +429,25 @@ public final class InterconnectGroupState extends com.pulumi.resources.ResourceA
             return physicalStructures(List.of(physicalStructures));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

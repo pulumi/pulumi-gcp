@@ -76,16 +76,12 @@ public final class TrustConfigArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The trust config location.
      * 
-     * ***
-     * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
      * @return The trust config location.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {
@@ -259,8 +255,6 @@ public final class TrustConfigArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param location The trust config location.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -271,8 +265,6 @@ public final class TrustConfigArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location The trust config location.
-         * 
-         * ***
          * 
          * @return builder
          * 

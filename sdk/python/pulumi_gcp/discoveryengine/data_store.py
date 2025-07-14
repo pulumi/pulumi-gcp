@@ -30,6 +30,7 @@ class DataStoreArgs:
                  advanced_site_search_config: Optional[pulumi.Input['DataStoreAdvancedSiteSearchConfigArgs']] = None,
                  create_advanced_site_search: Optional[pulumi.Input[builtins.bool]] = None,
                  document_processing_config: Optional[pulumi.Input['DataStoreDocumentProcessingConfigArgs']] = None,
+                 kms_key_name: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  skip_default_schema_creation: Optional[pulumi.Input[builtins.bool]] = None,
                  solution_types: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
@@ -38,9 +39,6 @@ class DataStoreArgs:
         :param pulumi.Input[builtins.str] content_config: The content config of the data store.
                Possible values are: `NO_CONTENT`, `CONTENT_REQUIRED`, `PUBLIC_WEBSITE`.
         :param pulumi.Input[builtins.str] data_store_id: The unique id of the data store.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] display_name: The display name of the data store. This field must be a UTF-8 encoded
                string with a length limit of 128 characters.
         :param pulumi.Input[builtins.str] industry_vertical: The industry vertical that the data store registers.
@@ -54,6 +52,12 @@ class DataStoreArgs:
                PUBLIC_WEBSITE contentConfig), this flag will be ignored.
         :param pulumi.Input['DataStoreDocumentProcessingConfigArgs'] document_processing_config: Configuration for Document understanding and enrichment.
                Structure is documented below.
+        :param pulumi.Input[builtins.str] kms_key_name: KMS key resource name which will be used to encrypt resources:
+               `/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`
+               The KMS key to be used to protect this DataStore at creation time. Must be
+               set for requests that need to comply with CMEK Org Policy protections.
+               If this field is set and processed successfully, the DataStore will be
+               protected by the KMS key, as indicated in the cmek_config field.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.bool] skip_default_schema_creation: A boolean flag indicating whether to skip the default schema creation for
@@ -77,6 +81,8 @@ class DataStoreArgs:
             pulumi.set(__self__, "create_advanced_site_search", create_advanced_site_search)
         if document_processing_config is not None:
             pulumi.set(__self__, "document_processing_config", document_processing_config)
+        if kms_key_name is not None:
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if skip_default_schema_creation is not None:
@@ -102,9 +108,6 @@ class DataStoreArgs:
     def data_store_id(self) -> pulumi.Input[builtins.str]:
         """
         The unique id of the data store.
-
-
-        - - -
         """
         return pulumi.get(self, "data_store_id")
 
@@ -192,6 +195,23 @@ class DataStoreArgs:
         pulumi.set(self, "document_processing_config", value)
 
     @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        KMS key resource name which will be used to encrypt resources:
+        `/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`
+        The KMS key to be used to protect this DataStore at creation time. Must be
+        set for requests that need to comply with CMEK Org Policy protections.
+        If this field is set and processed successfully, the DataStore will be
+        protected by the KMS key, as indicated in the cmek_config field.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "kms_key_name", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -248,6 +268,7 @@ class _DataStoreState:
                  display_name: Optional[pulumi.Input[builtins.str]] = None,
                  document_processing_config: Optional[pulumi.Input['DataStoreDocumentProcessingConfigArgs']] = None,
                  industry_vertical: Optional[pulumi.Input[builtins.str]] = None,
+                 kms_key_name: Optional[pulumi.Input[builtins.str]] = None,
                  location: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
@@ -264,9 +285,6 @@ class _DataStoreState:
                PUBLIC_WEBSITE contentConfig), this flag will be ignored.
         :param pulumi.Input[builtins.str] create_time: Timestamp when the DataStore was created.
         :param pulumi.Input[builtins.str] data_store_id: The unique id of the data store.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] default_schema_id: The id of the default Schema associated with this data store.
         :param pulumi.Input[builtins.str] display_name: The display name of the data store. This field must be a UTF-8 encoded
                string with a length limit of 128 characters.
@@ -274,6 +292,12 @@ class _DataStoreState:
                Structure is documented below.
         :param pulumi.Input[builtins.str] industry_vertical: The industry vertical that the data store registers.
                Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
+        :param pulumi.Input[builtins.str] kms_key_name: KMS key resource name which will be used to encrypt resources:
+               `/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`
+               The KMS key to be used to protect this DataStore at creation time. Must be
+               set for requests that need to comply with CMEK Org Policy protections.
+               If this field is set and processed successfully, the DataStore will be
+               protected by the KMS key, as indicated in the cmek_config field.
         :param pulumi.Input[builtins.str] location: The geographic location where the data store should reside. The value can
                only be one of "global", "us" and "eu".
         :param pulumi.Input[builtins.str] name: The unique full resource name of the data store. Values are of the format
@@ -310,6 +334,8 @@ class _DataStoreState:
             pulumi.set(__self__, "document_processing_config", document_processing_config)
         if industry_vertical is not None:
             pulumi.set(__self__, "industry_vertical", industry_vertical)
+        if kms_key_name is not None:
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
@@ -378,9 +404,6 @@ class _DataStoreState:
     def data_store_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The unique id of the data store.
-
-
-        - - -
         """
         return pulumi.get(self, "data_store_id")
 
@@ -438,6 +461,23 @@ class _DataStoreState:
     @industry_vertical.setter
     def industry_vertical(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "industry_vertical", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        KMS key resource name which will be used to encrypt resources:
+        `/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`
+        The KMS key to be used to protect this DataStore at creation time. Must be
+        set for requests that need to comply with CMEK Org Policy protections.
+        If this field is set and processed successfully, the DataStore will be
+        protected by the KMS key, as indicated in the cmek_config field.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "kms_key_name", value)
 
     @property
     @pulumi.getter
@@ -525,6 +565,7 @@ class DataStore(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[builtins.str]] = None,
                  document_processing_config: Optional[pulumi.Input[Union['DataStoreDocumentProcessingConfigArgs', 'DataStoreDocumentProcessingConfigArgsDict']]] = None,
                  industry_vertical: Optional[pulumi.Input[builtins.str]] = None,
+                 kms_key_name: Optional[pulumi.Input[builtins.str]] = None,
                  location: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  skip_default_schema_creation: Optional[pulumi.Input[builtins.bool]] = None,
@@ -556,6 +597,23 @@ class DataStore(pulumi.CustomResource):
             industry_vertical="GENERIC",
             content_config="NO_CONTENT",
             solution_types=["SOLUTION_TYPE_SEARCH"],
+            create_advanced_site_search=False,
+            skip_default_schema_creation=False)
+        ```
+        ### Discoveryengine Datastore Kms Key Name
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        kms_key_name = gcp.discoveryengine.DataStore("kms_key_name",
+            location="us",
+            data_store_id="data-store-id",
+            display_name="tf-test-structured-datastore",
+            industry_vertical="GENERIC",
+            content_config="NO_CONTENT",
+            solution_types=["SOLUTION_TYPE_SEARCH"],
+            kms_key_name="kms-key",
             create_advanced_site_search=False,
             skip_default_schema_creation=False)
         ```
@@ -640,15 +698,18 @@ class DataStore(pulumi.CustomResource):
                data store is not configured as site search (GENERIC vertical and
                PUBLIC_WEBSITE contentConfig), this flag will be ignored.
         :param pulumi.Input[builtins.str] data_store_id: The unique id of the data store.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] display_name: The display name of the data store. This field must be a UTF-8 encoded
                string with a length limit of 128 characters.
         :param pulumi.Input[Union['DataStoreDocumentProcessingConfigArgs', 'DataStoreDocumentProcessingConfigArgsDict']] document_processing_config: Configuration for Document understanding and enrichment.
                Structure is documented below.
         :param pulumi.Input[builtins.str] industry_vertical: The industry vertical that the data store registers.
                Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
+        :param pulumi.Input[builtins.str] kms_key_name: KMS key resource name which will be used to encrypt resources:
+               `/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`
+               The KMS key to be used to protect this DataStore at creation time. Must be
+               set for requests that need to comply with CMEK Org Policy protections.
+               If this field is set and processed successfully, the DataStore will be
+               protected by the KMS key, as indicated in the cmek_config field.
         :param pulumi.Input[builtins.str] location: The geographic location where the data store should reside. The value can
                only be one of "global", "us" and "eu".
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -695,6 +756,23 @@ class DataStore(pulumi.CustomResource):
             industry_vertical="GENERIC",
             content_config="NO_CONTENT",
             solution_types=["SOLUTION_TYPE_SEARCH"],
+            create_advanced_site_search=False,
+            skip_default_schema_creation=False)
+        ```
+        ### Discoveryengine Datastore Kms Key Name
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        kms_key_name = gcp.discoveryengine.DataStore("kms_key_name",
+            location="us",
+            data_store_id="data-store-id",
+            display_name="tf-test-structured-datastore",
+            industry_vertical="GENERIC",
+            content_config="NO_CONTENT",
+            solution_types=["SOLUTION_TYPE_SEARCH"],
+            kms_key_name="kms-key",
             create_advanced_site_search=False,
             skip_default_schema_creation=False)
         ```
@@ -791,6 +869,7 @@ class DataStore(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[builtins.str]] = None,
                  document_processing_config: Optional[pulumi.Input[Union['DataStoreDocumentProcessingConfigArgs', 'DataStoreDocumentProcessingConfigArgsDict']]] = None,
                  industry_vertical: Optional[pulumi.Input[builtins.str]] = None,
+                 kms_key_name: Optional[pulumi.Input[builtins.str]] = None,
                  location: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  skip_default_schema_creation: Optional[pulumi.Input[builtins.bool]] = None,
@@ -819,6 +898,7 @@ class DataStore(pulumi.CustomResource):
             if industry_vertical is None and not opts.urn:
                 raise TypeError("Missing required property 'industry_vertical'")
             __props__.__dict__["industry_vertical"] = industry_vertical
+            __props__.__dict__["kms_key_name"] = kms_key_name
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
@@ -847,6 +927,7 @@ class DataStore(pulumi.CustomResource):
             display_name: Optional[pulumi.Input[builtins.str]] = None,
             document_processing_config: Optional[pulumi.Input[Union['DataStoreDocumentProcessingConfigArgs', 'DataStoreDocumentProcessingConfigArgsDict']]] = None,
             industry_vertical: Optional[pulumi.Input[builtins.str]] = None,
+            kms_key_name: Optional[pulumi.Input[builtins.str]] = None,
             location: Optional[pulumi.Input[builtins.str]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
             project: Optional[pulumi.Input[builtins.str]] = None,
@@ -868,9 +949,6 @@ class DataStore(pulumi.CustomResource):
                PUBLIC_WEBSITE contentConfig), this flag will be ignored.
         :param pulumi.Input[builtins.str] create_time: Timestamp when the DataStore was created.
         :param pulumi.Input[builtins.str] data_store_id: The unique id of the data store.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] default_schema_id: The id of the default Schema associated with this data store.
         :param pulumi.Input[builtins.str] display_name: The display name of the data store. This field must be a UTF-8 encoded
                string with a length limit of 128 characters.
@@ -878,6 +956,12 @@ class DataStore(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[builtins.str] industry_vertical: The industry vertical that the data store registers.
                Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
+        :param pulumi.Input[builtins.str] kms_key_name: KMS key resource name which will be used to encrypt resources:
+               `/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`
+               The KMS key to be used to protect this DataStore at creation time. Must be
+               set for requests that need to comply with CMEK Org Policy protections.
+               If this field is set and processed successfully, the DataStore will be
+               protected by the KMS key, as indicated in the cmek_config field.
         :param pulumi.Input[builtins.str] location: The geographic location where the data store should reside. The value can
                only be one of "global", "us" and "eu".
         :param pulumi.Input[builtins.str] name: The unique full resource name of the data store. Values are of the format
@@ -909,6 +993,7 @@ class DataStore(pulumi.CustomResource):
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["document_processing_config"] = document_processing_config
         __props__.__dict__["industry_vertical"] = industry_vertical
+        __props__.__dict__["kms_key_name"] = kms_key_name
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
@@ -957,9 +1042,6 @@ class DataStore(pulumi.CustomResource):
     def data_store_id(self) -> pulumi.Output[builtins.str]:
         """
         The unique id of the data store.
-
-
-        - - -
         """
         return pulumi.get(self, "data_store_id")
 
@@ -997,6 +1079,19 @@ class DataStore(pulumi.CustomResource):
         Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
         """
         return pulumi.get(self, "industry_vertical")
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        KMS key resource name which will be used to encrypt resources:
+        `/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`
+        The KMS key to be used to protect this DataStore at creation time. Must be
+        set for requests that need to comply with CMEK Org Policy protections.
+        If this field is set and processed successfully, the DataStore will be
+        protected by the KMS key, as indicated in the cmek_config field.
+        """
+        return pulumi.get(self, "kms_key_name")
 
     @property
     @pulumi.getter

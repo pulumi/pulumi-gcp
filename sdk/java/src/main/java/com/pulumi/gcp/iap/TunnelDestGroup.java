@@ -141,16 +141,12 @@ public class TunnelDestGroup extends com.pulumi.resources.CustomResource {
     /**
      * Unique tunnel destination group name.
      * 
-     * ***
-     * 
      */
     @Export(name="groupName", refs={String.class}, tree="[0]")
     private Output<String> groupName;
 
     /**
      * @return Unique tunnel destination group name.
-     * 
-     * ***
      * 
      */
     public Output<String> groupName() {

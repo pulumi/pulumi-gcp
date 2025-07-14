@@ -219,8 +219,6 @@ class ApplicationUrlDispatchRulesDispatchRule(dict):
                The sum of the lengths of the domain and path may not exceed 100 characters.
         :param builtins.str service: Pathname within the host. Must start with a "/". A single "*" can be included at the end of the path.
                The sum of the lengths of the domain and path may not exceed 100 characters.
-               
-               - - -
         :param builtins.str domain: Domain name to match against. The wildcard "*" is supported if specified before a period: "*.".
                Defaults to matching all domains: "*".
         """
@@ -244,8 +242,6 @@ class ApplicationUrlDispatchRulesDispatchRule(dict):
         """
         Pathname within the host. Must start with a "/". A single "*" can be included at the end of the path.
         The sum of the lengths of the domain and path may not exceed 100 characters.
-
-        - - -
         """
         return pulumi.get(self, "service")
 
@@ -415,8 +411,6 @@ class EngineSplitTrafficSplit(dict):
                  shard_by: Optional[builtins.str] = None):
         """
         :param Mapping[str, builtins.str] allocations: Mapping from version IDs within the service to fractional (0.000, 1] allocations of traffic for that version. Each version can be specified only once, but some versions in the service may not have any traffic allocation. Services that have traffic allocated cannot be deleted until either the service is deleted or their traffic allocation is removed. Allocations must sum to 1. Up to two decimal place precision is supported for IP-based splits and up to three decimal places is supported for cookie-based splits.
-               
-               - - -
         :param builtins.str shard_by: Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed.
                Possible values are: `UNSPECIFIED`, `COOKIE`, `IP`, `RANDOM`.
         """
@@ -429,8 +423,6 @@ class EngineSplitTrafficSplit(dict):
     def allocations(self) -> Mapping[str, builtins.str]:
         """
         Mapping from version IDs within the service to fractional (0.000, 1] allocations of traffic for that version. Each version can be specified only once, but some versions in the service may not have any traffic allocation. Services that have traffic allocated cannot be deleted until either the service is deleted or their traffic allocation is removed. Allocations must sum to 1. Up to two decimal place precision is supported for IP-based splits and up to three decimal places is supported for cookie-based splits.
-
-        - - -
         """
         return pulumi.get(self, "allocations")
 
@@ -1756,8 +1748,6 @@ class FlexibleAppVersionLivenessCheck(dict):
         :param builtins.float failure_threshold: Number of consecutive failed checks required before considering the VM unhealthy. Default: 4.
         :param builtins.str host: Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com"
         :param builtins.str initial_delay: The initial delay before starting to execute the checks. Default: "300s"
-               
-               - - -
         :param builtins.float success_threshold: Number of consecutive successful checks required before considering the VM healthy. Default: 2.
         :param builtins.str timeout: Time before the check is considered failed. Default: "4s"
         """
@@ -1812,8 +1802,6 @@ class FlexibleAppVersionLivenessCheck(dict):
     def initial_delay(self) -> Optional[builtins.str]:
         """
         The initial delay before starting to execute the checks. Default: "300s"
-
-        - - -
         """
         return pulumi.get(self, "initial_delay")
 
@@ -2260,8 +2248,6 @@ class ServiceNetworkSettingsNetworkSettings(dict):
         :param builtins.str ingress_traffic_allowed: The ingress settings for version or service.
                Default value is `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`.
                Possible values are: `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`, `INGRESS_TRAFFIC_ALLOWED_ALL`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB`.
-               
-               - - -
         """
         if ingress_traffic_allowed is not None:
             pulumi.set(__self__, "ingress_traffic_allowed", ingress_traffic_allowed)
@@ -2273,8 +2259,6 @@ class ServiceNetworkSettingsNetworkSettings(dict):
         The ingress settings for version or service.
         Default value is `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`.
         Possible values are: `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`, `INGRESS_TRAFFIC_ALLOWED_ALL`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB`.
-
-        - - -
         """
         return pulumi.get(self, "ingress_traffic_allowed")
 
@@ -2676,8 +2660,6 @@ class StandardAppVersionEntrypoint(dict):
                  shell: builtins.str):
         """
         :param builtins.str shell: The format should be a shell command that can be fed to bash -c.
-               
-               - - -
         """
         pulumi.set(__self__, "shell", shell)
 
@@ -2686,8 +2668,6 @@ class StandardAppVersionEntrypoint(dict):
     def shell(self) -> builtins.str:
         """
         The format should be a shell command that can be fed to bash -c.
-
-        - - -
         """
         return pulumi.get(self, "shell")
 

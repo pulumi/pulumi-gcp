@@ -372,34 +372,32 @@ public class GrpcRoute extends com.pulumi.resources.CustomResource {
         return this.hostnames;
     }
     /**
-     * Set of label tags associated with the GrpcRoute resource. **Note**: This field is non-authoritative, and will only
-     * manage the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels
-     * present on the resource.
+     * Set of label tags associated with the GrpcRoute resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return Set of label tags associated with the GrpcRoute resource. **Note**: This field is non-authoritative, and will only
-     * manage the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels
-     * present on the resource.
+     * @return Set of label tags associated with the GrpcRoute resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
         return Codegen.optional(this.labels);
     }
     /**
-     * Location (region) of the GRPCRoute resource to be created. Only the value &#39;global&#39; is currently allowed; defaults to
-     * &#39;global&#39; if omitted.
+     * Location (region) of the GRPCRoute resource to be created. Only the value &#39;global&#39; is currently allowed; defaults to &#39;global&#39; if omitted.
      * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> location;
 
     /**
-     * @return Location (region) of the GRPCRoute resource to be created. Only the value &#39;global&#39; is currently allowed; defaults to
-     * &#39;global&#39; if omitted.
+     * @return Location (region) of the GRPCRoute resource to be created. Only the value &#39;global&#39; is currently allowed; defaults to &#39;global&#39; if omitted.
      * 
      */
     public Output<Optional<String>> location() {
@@ -433,9 +431,19 @@ public class GrpcRoute extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }

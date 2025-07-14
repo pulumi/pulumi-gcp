@@ -32,6 +32,7 @@ class RouteArgs:
                  next_hop_instance_zone: Optional[pulumi.Input[builtins.str]] = None,
                  next_hop_ip: Optional[pulumi.Input[builtins.str]] = None,
                  next_hop_vpn_tunnel: Optional[pulumi.Input[builtins.str]] = None,
+                 params: Optional[pulumi.Input['RouteParamsArgs']] = None,
                  priority: Optional[pulumi.Input[builtins.int]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
@@ -40,9 +41,6 @@ class RouteArgs:
         :param pulumi.Input[builtins.str] dest_range: The destination range of outgoing packets that this route applies to.
                Only IPv4 is supported.
         :param pulumi.Input[builtins.str] network: The network that this route applies to.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] description: An optional description of this resource. Provide this property
                when you create the resource.
         :param pulumi.Input[builtins.str] name: Name of the resource. Provided by the client when the resource is
@@ -84,6 +82,8 @@ class RouteArgs:
                a URL.
         :param pulumi.Input[builtins.str] next_hop_ip: Network IP address of an instance that should handle matching packets.
         :param pulumi.Input[builtins.str] next_hop_vpn_tunnel: URL to a VpnTunnel that should handle matching packets.
+        :param pulumi.Input['RouteParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[builtins.int] priority: The priority of this route. Priority is used to break ties in cases
                where there is more than one matching route of equal prefix length.
                In the case of two routes with equal prefix length, the one with the
@@ -111,6 +111,8 @@ class RouteArgs:
             pulumi.set(__self__, "next_hop_ip", next_hop_ip)
         if next_hop_vpn_tunnel is not None:
             pulumi.set(__self__, "next_hop_vpn_tunnel", next_hop_vpn_tunnel)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
         if project is not None:
@@ -136,9 +138,6 @@ class RouteArgs:
     def network(self) -> pulumi.Input[builtins.str]:
         """
         The network that this route applies to.
-
-
-        - - -
         """
         return pulumi.get(self, "network")
 
@@ -277,6 +276,19 @@ class RouteArgs:
 
     @property
     @pulumi.getter
+    def params(self) -> Optional[pulumi.Input['RouteParamsArgs']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input['RouteParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @property
+    @pulumi.getter
     def priority(self) -> Optional[pulumi.Input[builtins.int]]:
         """
         The priority of this route. Priority is used to break ties in cases
@@ -338,6 +350,7 @@ class _RouteState:
                  next_hop_origin: Optional[pulumi.Input[builtins.str]] = None,
                  next_hop_peering: Optional[pulumi.Input[builtins.str]] = None,
                  next_hop_vpn_tunnel: Optional[pulumi.Input[builtins.str]] = None,
+                 params: Optional[pulumi.Input['RouteParamsArgs']] = None,
                  priority: Optional[pulumi.Input[builtins.int]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  route_status: Optional[pulumi.Input[builtins.str]] = None,
@@ -361,9 +374,6 @@ class _RouteState:
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
         :param pulumi.Input[builtins.str] network: The network that this route applies to.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] next_hop_gateway: URL to a gateway that should handle matching packets.
                Currently, you can only specify the internet gateway, using a full or
                partial valid URL:
@@ -402,6 +412,8 @@ class _RouteState:
         :param pulumi.Input[builtins.str] next_hop_origin: Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
         :param pulumi.Input[builtins.str] next_hop_peering: The network peering name that should handle matching packets, which should conform to RFC1035.
         :param pulumi.Input[builtins.str] next_hop_vpn_tunnel: URL to a VpnTunnel that should handle matching packets.
+        :param pulumi.Input['RouteParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[builtins.int] priority: The priority of this route. Priority is used to break ties in cases
                where there is more than one matching route of equal prefix length.
                In the case of two routes with equal prefix length, the one with the
@@ -458,6 +470,8 @@ class _RouteState:
             pulumi.set(__self__, "next_hop_peering", next_hop_peering)
         if next_hop_vpn_tunnel is not None:
             pulumi.set(__self__, "next_hop_vpn_tunnel", next_hop_vpn_tunnel)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
         if project is not None:
@@ -546,9 +560,6 @@ class _RouteState:
     def network(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The network that this route applies to.
-
-
-        - - -
         """
         return pulumi.get(self, "network")
 
@@ -728,6 +739,19 @@ class _RouteState:
 
     @property
     @pulumi.getter
+    def params(self) -> Optional[pulumi.Input['RouteParamsArgs']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input['RouteParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @property
+    @pulumi.getter
     def priority(self) -> Optional[pulumi.Input[builtins.int]]:
         """
         The priority of this route. Priority is used to break ties in cases
@@ -839,6 +863,7 @@ class Route(pulumi.CustomResource):
                  next_hop_instance_zone: Optional[pulumi.Input[builtins.str]] = None,
                  next_hop_ip: Optional[pulumi.Input[builtins.str]] = None,
                  next_hop_vpn_tunnel: Optional[pulumi.Input[builtins.str]] = None,
+                 params: Optional[pulumi.Input[Union['RouteParamsArgs', 'RouteParamsArgsDict']]] = None,
                  priority: Optional[pulumi.Input[builtins.int]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -1032,9 +1057,6 @@ class Route(pulumi.CustomResource):
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
         :param pulumi.Input[builtins.str] network: The network that this route applies to.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] next_hop_gateway: URL to a gateway that should handle matching packets.
                Currently, you can only specify the internet gateway, using a full or
                partial valid URL:
@@ -1067,6 +1089,8 @@ class Route(pulumi.CustomResource):
                a URL.
         :param pulumi.Input[builtins.str] next_hop_ip: Network IP address of an instance that should handle matching packets.
         :param pulumi.Input[builtins.str] next_hop_vpn_tunnel: URL to a VpnTunnel that should handle matching packets.
+        :param pulumi.Input[Union['RouteParamsArgs', 'RouteParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[builtins.int] priority: The priority of this route. Priority is used to break ties in cases
                where there is more than one matching route of equal prefix length.
                In the case of two routes with equal prefix length, the one with the
@@ -1282,6 +1306,7 @@ class Route(pulumi.CustomResource):
                  next_hop_instance_zone: Optional[pulumi.Input[builtins.str]] = None,
                  next_hop_ip: Optional[pulumi.Input[builtins.str]] = None,
                  next_hop_vpn_tunnel: Optional[pulumi.Input[builtins.str]] = None,
+                 params: Optional[pulumi.Input[Union['RouteParamsArgs', 'RouteParamsArgsDict']]] = None,
                  priority: Optional[pulumi.Input[builtins.int]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -1308,6 +1333,7 @@ class Route(pulumi.CustomResource):
             __props__.__dict__["next_hop_instance_zone"] = next_hop_instance_zone
             __props__.__dict__["next_hop_ip"] = next_hop_ip
             __props__.__dict__["next_hop_vpn_tunnel"] = next_hop_vpn_tunnel
+            __props__.__dict__["params"] = params
             __props__.__dict__["priority"] = priority
             __props__.__dict__["project"] = project
             __props__.__dict__["tags"] = tags
@@ -1351,6 +1377,7 @@ class Route(pulumi.CustomResource):
             next_hop_origin: Optional[pulumi.Input[builtins.str]] = None,
             next_hop_peering: Optional[pulumi.Input[builtins.str]] = None,
             next_hop_vpn_tunnel: Optional[pulumi.Input[builtins.str]] = None,
+            params: Optional[pulumi.Input[Union['RouteParamsArgs', 'RouteParamsArgsDict']]] = None,
             priority: Optional[pulumi.Input[builtins.int]] = None,
             project: Optional[pulumi.Input[builtins.str]] = None,
             route_status: Optional[pulumi.Input[builtins.str]] = None,
@@ -1379,9 +1406,6 @@ class Route(pulumi.CustomResource):
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
         :param pulumi.Input[builtins.str] network: The network that this route applies to.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] next_hop_gateway: URL to a gateway that should handle matching packets.
                Currently, you can only specify the internet gateway, using a full or
                partial valid URL:
@@ -1420,6 +1444,8 @@ class Route(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] next_hop_origin: Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
         :param pulumi.Input[builtins.str] next_hop_peering: The network peering name that should handle matching packets, which should conform to RFC1035.
         :param pulumi.Input[builtins.str] next_hop_vpn_tunnel: URL to a VpnTunnel that should handle matching packets.
+        :param pulumi.Input[Union['RouteParamsArgs', 'RouteParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[builtins.int] priority: The priority of this route. Priority is used to break ties in cases
                where there is more than one matching route of equal prefix length.
                In the case of two routes with equal prefix length, the one with the
@@ -1462,6 +1488,7 @@ class Route(pulumi.CustomResource):
         __props__.__dict__["next_hop_origin"] = next_hop_origin
         __props__.__dict__["next_hop_peering"] = next_hop_peering
         __props__.__dict__["next_hop_vpn_tunnel"] = next_hop_vpn_tunnel
+        __props__.__dict__["params"] = params
         __props__.__dict__["priority"] = priority
         __props__.__dict__["project"] = project
         __props__.__dict__["route_status"] = route_status
@@ -1524,9 +1551,6 @@ class Route(pulumi.CustomResource):
     def network(self) -> pulumi.Output[builtins.str]:
         """
         The network that this route applies to.
-
-
-        - - -
         """
         return pulumi.get(self, "network")
 
@@ -1651,6 +1675,15 @@ class Route(pulumi.CustomResource):
         URL to a VpnTunnel that should handle matching packets.
         """
         return pulumi.get(self, "next_hop_vpn_tunnel")
+
+    @property
+    @pulumi.getter
+    def params(self) -> pulumi.Output[Optional['outputs.RouteParams']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
 
     @property
     @pulumi.getter

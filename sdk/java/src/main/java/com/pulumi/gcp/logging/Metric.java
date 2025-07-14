@@ -359,8 +359,6 @@ public class Metric extends com.pulumi.resources.CustomResource {
      * An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
      * is used to match log entries.
      * 
-     * ***
-     * 
      */
     @Export(name="filter", refs={String.class}, tree="[0]")
     private Output<String> filter;
@@ -368,8 +366,6 @@ public class Metric extends com.pulumi.resources.CustomResource {
     /**
      * @return An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
      * is used to match log entries.
-     * 
-     * ***
      * 
      */
     public Output<String> filter() {

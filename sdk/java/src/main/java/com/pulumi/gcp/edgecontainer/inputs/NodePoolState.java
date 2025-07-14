@@ -22,16 +22,12 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     /**
      * The name of the target Distributed Cloud Edge Cluster.
      * 
-     * ***
-     * 
      */
     @Import(name="cluster")
     private @Nullable Output<String> cluster;
 
     /**
      * @return The name of the target Distributed Cloud Edge Cluster.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> cluster() {
@@ -305,8 +301,6 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param cluster The name of the target Distributed Cloud Edge Cluster.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -317,8 +311,6 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param cluster The name of the target Distributed Cloud Edge Cluster.
-         * 
-         * ***
          * 
          * @return builder
          * 

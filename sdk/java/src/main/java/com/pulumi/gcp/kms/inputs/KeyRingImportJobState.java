@@ -59,16 +59,12 @@ public final class KeyRingImportJobState extends com.pulumi.resources.ResourceAr
     /**
      * It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
      * 
-     * ***
-     * 
      */
     @Import(name="importJobId")
     private @Nullable Output<String> importJobId;
 
     /**
      * @return It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> importJobId() {
@@ -273,8 +269,6 @@ public final class KeyRingImportJobState extends com.pulumi.resources.ResourceAr
         /**
          * @param importJobId It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -285,8 +279,6 @@ public final class KeyRingImportJobState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param importJobId It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
-         * 
-         * ***
          * 
          * @return builder
          * 

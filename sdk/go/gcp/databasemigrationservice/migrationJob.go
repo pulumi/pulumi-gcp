@@ -524,8 +524,6 @@ type MigrationJob struct {
 	// The location where the migration job should reside.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The ID of the migration job.
-	//
-	// ***
 	MigrationJobId pulumi.StringOutput `pulumi:"migrationJobId"`
 	// The name of this migration job resource in the form of projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -637,8 +635,6 @@ type migrationJobState struct {
 	// The location where the migration job should reside.
 	Location *string `pulumi:"location"`
 	// The ID of the migration job.
-	//
-	// ***
 	MigrationJobId *string `pulumi:"migrationJobId"`
 	// The name of this migration job resource in the form of projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
 	Name *string `pulumi:"name"`
@@ -704,8 +700,6 @@ type MigrationJobState struct {
 	// The location where the migration job should reside.
 	Location pulumi.StringPtrInput
 	// The ID of the migration job.
-	//
-	// ***
 	MigrationJobId pulumi.StringPtrInput
 	// The name of this migration job resource in the form of projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
 	Name pulumi.StringPtrInput
@@ -768,8 +762,6 @@ type migrationJobArgs struct {
 	// The location where the migration job should reside.
 	Location *string `pulumi:"location"`
 	// The ID of the migration job.
-	//
-	// ***
 	MigrationJobId string `pulumi:"migrationJobId"`
 	// Data dump parallelism settings used by the migration.
 	// Structure is documented below.
@@ -820,8 +812,6 @@ type MigrationJobArgs struct {
 	// The location where the migration job should reside.
 	Location pulumi.StringPtrInput
 	// The ID of the migration job.
-	//
-	// ***
 	MigrationJobId pulumi.StringInput
 	// Data dump parallelism settings used by the migration.
 	// Structure is documented below.
@@ -994,8 +984,6 @@ func (o MigrationJobOutput) Location() pulumi.StringPtrOutput {
 }
 
 // The ID of the migration job.
-//
-// ***
 func (o MigrationJobOutput) MigrationJobId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.MigrationJobId }).(pulumi.StringOutput)
 }

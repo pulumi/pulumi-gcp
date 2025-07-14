@@ -828,8 +828,6 @@ type WorkstationConfig struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location where the workstation cluster config should reside.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Maximum number of workstations under this configuration a user can have workstations.workstation.use permission on. Only enforced on CreateWorkstation API calls on the user issuing the API request.
 	MaxUsableWorkstations pulumi.IntOutput `pulumi:"maxUsableWorkstations"`
@@ -954,8 +952,6 @@ type workstationConfigState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the workstation cluster config should reside.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// Maximum number of workstations under this configuration a user can have workstations.workstation.use permission on. Only enforced on CreateWorkstation API calls on the user issuing the API request.
 	MaxUsableWorkstations *int `pulumi:"maxUsableWorkstations"`
@@ -1037,8 +1033,6 @@ type WorkstationConfigState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location where the workstation cluster config should reside.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// Maximum number of workstations under this configuration a user can have workstations.workstation.use permission on. Only enforced on CreateWorkstation API calls on the user issuing the API request.
 	MaxUsableWorkstations pulumi.IntPtrInput
@@ -1111,8 +1105,6 @@ type workstationConfigArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the workstation cluster config should reside.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// Maximum number of workstations under this configuration a user can have workstations.workstation.use permission on. Only enforced on CreateWorkstation API calls on the user issuing the API request.
 	MaxUsableWorkstations *int `pulumi:"maxUsableWorkstations"`
@@ -1175,8 +1167,6 @@ type WorkstationConfigArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location where the workstation cluster config should reside.
-	//
-	// ***
 	Location pulumi.StringInput
 	// Maximum number of workstations under this configuration a user can have workstations.workstation.use permission on. Only enforced on CreateWorkstation API calls on the user issuing the API request.
 	MaxUsableWorkstations pulumi.IntPtrInput
@@ -1390,8 +1380,6 @@ func (o WorkstationConfigOutput) Labels() pulumi.StringMapOutput {
 }
 
 // The location where the workstation cluster config should reside.
-//
-// ***
 func (o WorkstationConfigOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

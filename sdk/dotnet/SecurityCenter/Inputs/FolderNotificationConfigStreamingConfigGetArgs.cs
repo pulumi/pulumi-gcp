@@ -32,8 +32,6 @@ namespace Pulumi.Gcp.SecurityCenter.Inputs
         /// See
         /// [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
         /// for information on how to write a filter.
-        /// 
-        /// - - -
         /// </summary>
         [Input("filter", required: true)]
         public Input<string> Filter { get; set; } = null!;

@@ -35,9 +35,6 @@ class CxPageArgs:
         """
         The set of arguments for constructing a CxPage resource.
         :param pulumi.Input[builtins.str] display_name: The human-readable name of the page, unique within the agent.
-               
-               
-               - - -
         :param pulumi.Input['CxPageAdvancedSettingsArgs'] advanced_settings: Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
                Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
                Structure is documented below.
@@ -102,9 +99,6 @@ class CxPageArgs:
     def display_name(self) -> pulumi.Input[builtins.str]:
         """
         The human-readable name of the page, unique within the agent.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -270,9 +264,6 @@ class _CxPageState:
                Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
                Structure is documented below.
         :param pulumi.Input[builtins.str] display_name: The human-readable name of the page, unique within the agent.
-               
-               
-               - - -
         :param pulumi.Input['CxPageEntryFulfillmentArgs'] entry_fulfillment: The fulfillment to call when the session is entering the page.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerArgs']]] event_handlers: Handlers associated with the page to handle events such as webhook errors, no match or no input.
@@ -353,9 +344,6 @@ class _CxPageState:
     def display_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The human-readable name of the page, unique within the agent.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -1237,9 +1225,6 @@ class CxPage(pulumi.CustomResource):
                Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
                Structure is documented below.
         :param pulumi.Input[builtins.str] display_name: The human-readable name of the page, unique within the agent.
-               
-               
-               - - -
         :param pulumi.Input[Union['CxPageEntryFulfillmentArgs', 'CxPageEntryFulfillmentArgsDict']] entry_fulfillment: The fulfillment to call when the session is entering the page.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['CxPageEventHandlerArgs', 'CxPageEventHandlerArgsDict']]]] event_handlers: Handlers associated with the page to handle events such as webhook errors, no match or no input.
@@ -2075,9 +2060,6 @@ class CxPage(pulumi.CustomResource):
                Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
                Structure is documented below.
         :param pulumi.Input[builtins.str] display_name: The human-readable name of the page, unique within the agent.
-               
-               
-               - - -
         :param pulumi.Input[Union['CxPageEntryFulfillmentArgs', 'CxPageEntryFulfillmentArgsDict']] entry_fulfillment: The fulfillment to call when the session is entering the page.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['CxPageEventHandlerArgs', 'CxPageEventHandlerArgsDict']]]] event_handlers: Handlers associated with the page to handle events such as webhook errors, no match or no input.
@@ -2148,9 +2130,6 @@ class CxPage(pulumi.CustomResource):
     def display_name(self) -> pulumi.Output[builtins.str]:
         """
         The human-readable name of the page, unique within the agent.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 

@@ -91,8 +91,6 @@ type CertificateMapResource struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// A user-defined name of the Certificate Map. Certificate Map names must be unique
 	// globally and match the pattern `projects/*/locations/*/certificateMaps/*`.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -159,8 +157,6 @@ type certificateMapResourceState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// A user-defined name of the Certificate Map. Certificate Map names must be unique
 	// globally and match the pattern `projects/*/locations/*/certificateMaps/*`.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -193,8 +189,6 @@ type CertificateMapResourceState struct {
 	Labels pulumi.StringMapInput
 	// A user-defined name of the Certificate Map. Certificate Map names must be unique
 	// globally and match the pattern `projects/*/locations/*/certificateMaps/*`.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -222,8 +216,6 @@ type certificateMapResourceArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// A user-defined name of the Certificate Map. Certificate Map names must be unique
 	// globally and match the pattern `projects/*/locations/*/certificateMaps/*`.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -241,8 +233,6 @@ type CertificateMapResourceArgs struct {
 	Labels pulumi.StringMapInput
 	// A user-defined name of the Certificate Map. Certificate Map names must be unique
 	// globally and match the pattern `projects/*/locations/*/certificateMaps/*`.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -369,8 +359,6 @@ func (o CertificateMapResourceOutput) Labels() pulumi.StringMapOutput {
 
 // A user-defined name of the Certificate Map. Certificate Map names must be unique
 // globally and match the pattern `projects/*/locations/*/certificateMaps/*`.
-//
-// ***
 func (o CertificateMapResourceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificateMapResource) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

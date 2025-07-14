@@ -448,8 +448,6 @@ type InstanceDesiredUserCreatedEndpoints struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The name of the region of the Memorystore instance these endpoints should be added to.
-	//
-	// ***
 	Region pulumi.StringOutput `pulumi:"region"`
 }
 
@@ -495,8 +493,6 @@ type instanceDesiredUserCreatedEndpointsState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The name of the region of the Memorystore instance these endpoints should be added to.
-	//
-	// ***
 	Region *string `pulumi:"region"`
 }
 
@@ -510,8 +506,6 @@ type InstanceDesiredUserCreatedEndpointsState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The name of the region of the Memorystore instance these endpoints should be added to.
-	//
-	// ***
 	Region pulumi.StringPtrInput
 }
 
@@ -529,8 +523,6 @@ type instanceDesiredUserCreatedEndpointsArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The name of the region of the Memorystore instance these endpoints should be added to.
-	//
-	// ***
 	Region string `pulumi:"region"`
 }
 
@@ -545,8 +537,6 @@ type InstanceDesiredUserCreatedEndpointsArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The name of the region of the Memorystore instance these endpoints should be added to.
-	//
-	// ***
 	Region pulumi.StringInput
 }
 
@@ -657,8 +647,6 @@ func (o InstanceDesiredUserCreatedEndpointsOutput) Project() pulumi.StringOutput
 }
 
 // The name of the region of the Memorystore instance these endpoints should be added to.
-//
-// ***
 func (o InstanceDesiredUserCreatedEndpointsOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceDesiredUserCreatedEndpoints) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

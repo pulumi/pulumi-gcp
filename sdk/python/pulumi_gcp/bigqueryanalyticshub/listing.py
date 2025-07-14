@@ -43,9 +43,6 @@ class ListingArgs:
         The set of arguments for constructing a Listing resource.
         :param pulumi.Input[builtins.str] data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input[builtins.str] display_name: Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] listing_id: The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input[builtins.str] location: The name of the location this data exchange listing.
         :param pulumi.Input['ListingBigqueryDatasetArgs'] bigquery_dataset: Shared dataset i.e. BigQuery dataset source.
@@ -116,9 +113,6 @@ class ListingArgs:
     def display_name(self) -> pulumi.Input[builtins.str]:
         """
         Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -344,9 +338,6 @@ class _ListingState:
                Structure is documented below.
         :param pulumi.Input[builtins.str] description: Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
         :param pulumi.Input[builtins.str] display_name: Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] documentation: Documentation describing the listing.
         :param pulumi.Input[builtins.str] icon: Base64 encoded image representing the listing.
         :param pulumi.Input[builtins.str] listing_id: The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
@@ -468,9 +459,6 @@ class _ListingState:
     def display_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -863,9 +851,6 @@ class Listing(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[builtins.str] description: Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
         :param pulumi.Input[builtins.str] display_name: Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] documentation: Documentation describing the listing.
         :param pulumi.Input[builtins.str] icon: Base64 encoded image representing the listing.
         :param pulumi.Input[builtins.str] listing_id: The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
@@ -1200,9 +1185,6 @@ class Listing(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[builtins.str] description: Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
         :param pulumi.Input[builtins.str] display_name: Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] documentation: Documentation describing the listing.
         :param pulumi.Input[builtins.str] icon: Base64 encoded image representing the listing.
         :param pulumi.Input[builtins.str] listing_id: The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
@@ -1291,9 +1273,6 @@ class Listing(pulumi.CustomResource):
     def display_name(self) -> pulumi.Output[builtins.str]:
         """
         Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 

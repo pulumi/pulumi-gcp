@@ -41,9 +41,6 @@ class InternalRangeArgs:
         :param pulumi.Input[builtins.str] network: Fully-qualified URL of the network that this route applies to, for example: projects/my-project/global/networks/my-network.
         :param pulumi.Input[builtins.str] peering: The type of peering set for this internal range.
                Possible values are: `FOR_SELF`, `FOR_PEER`, `NOT_SHARED`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] usage: The type of usage set for this InternalRange.
                Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`, `FOR_MIGRATION`.
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
@@ -115,9 +112,6 @@ class InternalRangeArgs:
         """
         The type of peering set for this internal range.
         Possible values are: `FOR_SELF`, `FOR_PEER`, `NOT_SHARED`.
-
-
-        - - -
         """
         return pulumi.get(self, "peering")
 
@@ -326,9 +320,6 @@ class _InternalRangeState:
                Each value may be one of: `OVERLAP_ROUTE_RANGE`, `OVERLAP_EXISTING_SUBNET_RANGE`.
         :param pulumi.Input[builtins.str] peering: The type of peering set for this internal range.
                Possible values are: `FOR_SELF`, `FOR_PEER`, `NOT_SHARED`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.int] prefix_length: An alternate to ipCidrRange. Can be set when trying to create a reservation that automatically finds a free range of the given size.
                If both ipCidrRange and prefixLength are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
                NOTE: For IPv6 this field only works if ip_cidr_range is set as well, and both fields must match. In other words, with IPv6 this field only works as
@@ -514,9 +505,6 @@ class _InternalRangeState:
         """
         The type of peering set for this internal range.
         Possible values are: `FOR_SELF`, `FOR_PEER`, `NOT_SHARED`.
-
-
-        - - -
         """
         return pulumi.get(self, "peering")
 
@@ -791,9 +779,6 @@ class InternalRange(pulumi.CustomResource):
                Each value may be one of: `OVERLAP_ROUTE_RANGE`, `OVERLAP_EXISTING_SUBNET_RANGE`.
         :param pulumi.Input[builtins.str] peering: The type of peering set for this internal range.
                Possible values are: `FOR_SELF`, `FOR_PEER`, `NOT_SHARED`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.int] prefix_length: An alternate to ipCidrRange. Can be set when trying to create a reservation that automatically finds a free range of the given size.
                If both ipCidrRange and prefixLength are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
                NOTE: For IPv6 this field only works if ip_cidr_range is set as well, and both fields must match. In other words, with IPv6 this field only works as
@@ -1071,9 +1056,6 @@ class InternalRange(pulumi.CustomResource):
                Each value may be one of: `OVERLAP_ROUTE_RANGE`, `OVERLAP_EXISTING_SUBNET_RANGE`.
         :param pulumi.Input[builtins.str] peering: The type of peering set for this internal range.
                Possible values are: `FOR_SELF`, `FOR_PEER`, `NOT_SHARED`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.int] prefix_length: An alternate to ipCidrRange. Can be set when trying to create a reservation that automatically finds a free range of the given size.
                If both ipCidrRange and prefixLength are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
                NOTE: For IPv6 this field only works if ip_cidr_range is set as well, and both fields must match. In other words, with IPv6 this field only works as
@@ -1207,9 +1189,6 @@ class InternalRange(pulumi.CustomResource):
         """
         The type of peering set for this internal range.
         Possible values are: `FOR_SELF`, `FOR_PEER`, `NOT_SHARED`.
-
-
-        - - -
         """
         return pulumi.get(self, "peering")
 

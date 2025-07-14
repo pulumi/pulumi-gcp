@@ -58,7 +58,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? ProcurementStatus { get; set; }
 
         /// <summary>
-        /// The previous instance related properties of the Future Reservation.
+        /// Future Reservation configuration to indicate instance properties and total count.
         /// Structure is documented below.
         /// </summary>
         [Input("specificSkuProperties")]

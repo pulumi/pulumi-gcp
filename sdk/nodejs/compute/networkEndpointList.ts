@@ -158,9 +158,6 @@ export class NetworkEndpointList extends pulumi.CustomResource {
 
     /**
      * The network endpoint group these endpoints are part of.
-     *
-     *
-     * - - -
      */
     public readonly networkEndpointGroup!: pulumi.Output<string>;
     /**
@@ -218,9 +215,6 @@ export class NetworkEndpointList extends pulumi.CustomResource {
 export interface NetworkEndpointListState {
     /**
      * The network endpoint group these endpoints are part of.
-     *
-     *
-     * - - -
      */
     networkEndpointGroup?: pulumi.Input<string>;
     /**
@@ -247,9 +241,6 @@ export interface NetworkEndpointListState {
 export interface NetworkEndpointListArgs {
     /**
      * The network endpoint group these endpoints are part of.
-     *
-     *
-     * - - -
      */
     networkEndpointGroup: pulumi.Input<string>;
     /**

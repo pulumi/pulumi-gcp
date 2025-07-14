@@ -782,9 +782,6 @@ namespace Pulumi.Gcp.Redis
         /// <summary>
         /// Unique name of the resource in this scope including project and location using the form:
         /// projects/{projectId}/locations/{locationId}/clusters/{clusterId}
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -1013,9 +1010,6 @@ namespace Pulumi.Gcp.Redis
         /// <summary>
         /// Unique name of the resource in this scope including project and location using the form:
         /// projects/{projectId}/locations/{locationId}/clusters/{clusterId}
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -1229,9 +1223,6 @@ namespace Pulumi.Gcp.Redis
         /// <summary>
         /// Unique name of the resource in this scope including project and location using the form:
         /// projects/{projectId}/locations/{locationId}/clusters/{clusterId}
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

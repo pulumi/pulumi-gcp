@@ -357,9 +357,6 @@ namespace Pulumi.Gcp.SecretManager
 
         /// <summary>
         /// This must be unique within the project.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("secretId")]
         public Output<string> SecretId { get; private set; } = null!;
@@ -541,9 +538,6 @@ namespace Pulumi.Gcp.SecretManager
 
         /// <summary>
         /// This must be unique within the project.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("secretId", required: true)]
         public Input<string> SecretId { get; set; } = null!;
@@ -748,9 +742,6 @@ namespace Pulumi.Gcp.SecretManager
 
         /// <summary>
         /// This must be unique within the project.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("secretId")]
         public Input<string>? SecretId { get; set; }

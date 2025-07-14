@@ -120,9 +120,6 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// <summary>
         /// The name of the parent this firewall endpoint belongs to.
         /// Format: organizations/{organization_id}.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
@@ -245,9 +242,6 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// <summary>
         /// The name of the parent this firewall endpoint belongs to.
         /// Format: organizations/{organization_id}.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
@@ -333,9 +327,6 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// <summary>
         /// The name of the parent this firewall endpoint belongs to.
         /// Format: organizations/{organization_id}.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }

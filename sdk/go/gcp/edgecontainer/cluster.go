@@ -229,16 +229,20 @@ type Cluster struct {
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	ClusterCaCertificate pulumi.StringOutput `pulumi:"clusterCaCertificate"`
 	// The configuration of the cluster control plane.
+	// Structure is documented below.
 	ControlPlane ClusterControlPlanePtrOutput `pulumi:"controlPlane"`
-	// Remote control plane disk encryption options. This field is only used when enabling CMEK support.
+	// Remote control plane disk encryption options. This field is only used when
+	// enabling CMEK support.
+	// Structure is documented below.
 	ControlPlaneEncryption ClusterControlPlaneEncryptionOutput `pulumi:"controlPlaneEncryption"`
 	// The control plane release version.
 	ControlPlaneVersion pulumi.StringOutput `pulumi:"controlPlaneVersion"`
 	// (Output)
 	// The time when the maintenance event request was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The default maximum number of pods per node used if a maximum value is not specified explicitly for a node pool in this
-	// cluster. If unspecified, the Kubernetes default value will be used.
+	// The default maximum number of pods per node used if a maximum value is not
+	// specified explicitly for a node pool in this cluster. If unspecified, the
+	// Kubernetes default value will be used.
 	DefaultMaxPodsPerNode pulumi.IntOutput `pulumi:"defaultMaxPodsPerNode"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -252,9 +256,9 @@ type Cluster struct {
 	// consistent policies across your systems.
 	// Structure is documented below.
 	Fleet ClusterFleetOutput `pulumi:"fleet"`
-	// User-defined labels for the edgecloud cluster. **Note**: This field is non-authoritative, and will only manage the
-	// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-	// resource.
+	// User-defined labels for the edgecloud cluster.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location of the resource.
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -263,6 +267,7 @@ type Cluster struct {
 	// Structure is documented below.
 	MaintenanceEvents ClusterMaintenanceEventArrayOutput `pulumi:"maintenanceEvents"`
 	// Cluster-wide maintenance policy configuration.
+	// Structure is documented below.
 	MaintenancePolicy ClusterMaintenancePolicyOutput `pulumi:"maintenancePolicy"`
 	// The GDCE cluster name.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -276,19 +281,22 @@ type Cluster struct {
 	// if the cluster does not have any worker nodes.
 	NodeVersion pulumi.StringOutput `pulumi:"nodeVersion"`
 	// The port number of the Kubernetes API server.
-	Port    pulumi.IntOutput    `pulumi:"port"`
+	Port pulumi.IntOutput `pulumi:"port"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
-	// The release channel a cluster is subscribed to. Possible values: ["RELEASE_CHANNEL_UNSPECIFIED", "NONE", "REGULAR"]
+	// The release channel a cluster is subscribed to.
+	// Possible values are: `RELEASE_CHANNEL_UNSPECIFIED`, `NONE`, `REGULAR`.
 	ReleaseChannel pulumi.StringOutput `pulumi:"releaseChannel"`
 	// Indicates the status of the cluster.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Config that customers are allowed to define for GDCE system add-ons.
+	// Structure is documented below.
 	SystemAddonsConfig ClusterSystemAddonsConfigOutput `pulumi:"systemAddonsConfig"`
-	// (Output)
-	// The target version of the cluster.
+	// The target cluster version. For example: "1.5.0".
 	TargetVersion pulumi.StringOutput `pulumi:"targetVersion"`
 	// (Output)
 	// The time when the maintenance event message was updated.
@@ -350,16 +358,20 @@ type clusterState struct {
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	ClusterCaCertificate *string `pulumi:"clusterCaCertificate"`
 	// The configuration of the cluster control plane.
+	// Structure is documented below.
 	ControlPlane *ClusterControlPlane `pulumi:"controlPlane"`
-	// Remote control plane disk encryption options. This field is only used when enabling CMEK support.
+	// Remote control plane disk encryption options. This field is only used when
+	// enabling CMEK support.
+	// Structure is documented below.
 	ControlPlaneEncryption *ClusterControlPlaneEncryption `pulumi:"controlPlaneEncryption"`
 	// The control plane release version.
 	ControlPlaneVersion *string `pulumi:"controlPlaneVersion"`
 	// (Output)
 	// The time when the maintenance event request was created.
 	CreateTime *string `pulumi:"createTime"`
-	// The default maximum number of pods per node used if a maximum value is not specified explicitly for a node pool in this
-	// cluster. If unspecified, the Kubernetes default value will be used.
+	// The default maximum number of pods per node used if a maximum value is not
+	// specified explicitly for a node pool in this cluster. If unspecified, the
+	// Kubernetes default value will be used.
 	DefaultMaxPodsPerNode *int `pulumi:"defaultMaxPodsPerNode"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -373,9 +385,9 @@ type clusterState struct {
 	// consistent policies across your systems.
 	// Structure is documented below.
 	Fleet *ClusterFleet `pulumi:"fleet"`
-	// User-defined labels for the edgecloud cluster. **Note**: This field is non-authoritative, and will only manage the
-	// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-	// resource.
+	// User-defined labels for the edgecloud cluster.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location of the resource.
 	Location *string `pulumi:"location"`
@@ -384,6 +396,7 @@ type clusterState struct {
 	// Structure is documented below.
 	MaintenanceEvents []ClusterMaintenanceEvent `pulumi:"maintenanceEvents"`
 	// Cluster-wide maintenance policy configuration.
+	// Structure is documented below.
 	MaintenancePolicy *ClusterMaintenancePolicy `pulumi:"maintenancePolicy"`
 	// The GDCE cluster name.
 	Name *string `pulumi:"name"`
@@ -397,19 +410,22 @@ type clusterState struct {
 	// if the cluster does not have any worker nodes.
 	NodeVersion *string `pulumi:"nodeVersion"`
 	// The port number of the Kubernetes API server.
-	Port    *int    `pulumi:"port"`
+	Port *int `pulumi:"port"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
-	// The release channel a cluster is subscribed to. Possible values: ["RELEASE_CHANNEL_UNSPECIFIED", "NONE", "REGULAR"]
+	// The release channel a cluster is subscribed to.
+	// Possible values are: `RELEASE_CHANNEL_UNSPECIFIED`, `NONE`, `REGULAR`.
 	ReleaseChannel *string `pulumi:"releaseChannel"`
 	// Indicates the status of the cluster.
 	Status *string `pulumi:"status"`
 	// Config that customers are allowed to define for GDCE system add-ons.
+	// Structure is documented below.
 	SystemAddonsConfig *ClusterSystemAddonsConfig `pulumi:"systemAddonsConfig"`
-	// (Output)
-	// The target version of the cluster.
+	// The target cluster version. For example: "1.5.0".
 	TargetVersion *string `pulumi:"targetVersion"`
 	// (Output)
 	// The time when the maintenance event message was updated.
@@ -424,16 +440,20 @@ type ClusterState struct {
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	ClusterCaCertificate pulumi.StringPtrInput
 	// The configuration of the cluster control plane.
+	// Structure is documented below.
 	ControlPlane ClusterControlPlanePtrInput
-	// Remote control plane disk encryption options. This field is only used when enabling CMEK support.
+	// Remote control plane disk encryption options. This field is only used when
+	// enabling CMEK support.
+	// Structure is documented below.
 	ControlPlaneEncryption ClusterControlPlaneEncryptionPtrInput
 	// The control plane release version.
 	ControlPlaneVersion pulumi.StringPtrInput
 	// (Output)
 	// The time when the maintenance event request was created.
 	CreateTime pulumi.StringPtrInput
-	// The default maximum number of pods per node used if a maximum value is not specified explicitly for a node pool in this
-	// cluster. If unspecified, the Kubernetes default value will be used.
+	// The default maximum number of pods per node used if a maximum value is not
+	// specified explicitly for a node pool in this cluster. If unspecified, the
+	// Kubernetes default value will be used.
 	DefaultMaxPodsPerNode pulumi.IntPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -447,9 +467,9 @@ type ClusterState struct {
 	// consistent policies across your systems.
 	// Structure is documented below.
 	Fleet ClusterFleetPtrInput
-	// User-defined labels for the edgecloud cluster. **Note**: This field is non-authoritative, and will only manage the
-	// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-	// resource.
+	// User-defined labels for the edgecloud cluster.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location of the resource.
 	Location pulumi.StringPtrInput
@@ -458,6 +478,7 @@ type ClusterState struct {
 	// Structure is documented below.
 	MaintenanceEvents ClusterMaintenanceEventArrayInput
 	// Cluster-wide maintenance policy configuration.
+	// Structure is documented below.
 	MaintenancePolicy ClusterMaintenancePolicyPtrInput
 	// The GDCE cluster name.
 	Name pulumi.StringPtrInput
@@ -471,19 +492,22 @@ type ClusterState struct {
 	// if the cluster does not have any worker nodes.
 	NodeVersion pulumi.StringPtrInput
 	// The port number of the Kubernetes API server.
-	Port    pulumi.IntPtrInput
+	Port pulumi.IntPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
-	// The release channel a cluster is subscribed to. Possible values: ["RELEASE_CHANNEL_UNSPECIFIED", "NONE", "REGULAR"]
+	// The release channel a cluster is subscribed to.
+	// Possible values are: `RELEASE_CHANNEL_UNSPECIFIED`, `NONE`, `REGULAR`.
 	ReleaseChannel pulumi.StringPtrInput
 	// Indicates the status of the cluster.
 	Status pulumi.StringPtrInput
 	// Config that customers are allowed to define for GDCE system add-ons.
+	// Structure is documented below.
 	SystemAddonsConfig ClusterSystemAddonsConfigPtrInput
-	// (Output)
-	// The target version of the cluster.
+	// The target cluster version. For example: "1.5.0".
 	TargetVersion pulumi.StringPtrInput
 	// (Output)
 	// The time when the maintenance event message was updated.
@@ -499,11 +523,15 @@ type clusterArgs struct {
 	// Structure is documented below.
 	Authorization ClusterAuthorization `pulumi:"authorization"`
 	// The configuration of the cluster control plane.
+	// Structure is documented below.
 	ControlPlane *ClusterControlPlane `pulumi:"controlPlane"`
-	// Remote control plane disk encryption options. This field is only used when enabling CMEK support.
+	// Remote control plane disk encryption options. This field is only used when
+	// enabling CMEK support.
+	// Structure is documented below.
 	ControlPlaneEncryption *ClusterControlPlaneEncryption `pulumi:"controlPlaneEncryption"`
-	// The default maximum number of pods per node used if a maximum value is not specified explicitly for a node pool in this
-	// cluster. If unspecified, the Kubernetes default value will be used.
+	// The default maximum number of pods per node used if a maximum value is not
+	// specified explicitly for a node pool in this cluster. If unspecified, the
+	// Kubernetes default value will be used.
 	DefaultMaxPodsPerNode *int `pulumi:"defaultMaxPodsPerNode"`
 	// Address pools for cluster data plane external load balancing.
 	ExternalLoadBalancerIpv4AddressPools []string `pulumi:"externalLoadBalancerIpv4AddressPools"`
@@ -513,13 +541,14 @@ type clusterArgs struct {
 	// consistent policies across your systems.
 	// Structure is documented below.
 	Fleet ClusterFleet `pulumi:"fleet"`
-	// User-defined labels for the edgecloud cluster. **Note**: This field is non-authoritative, and will only manage the
-	// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-	// resource.
+	// User-defined labels for the edgecloud cluster.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location of the resource.
 	Location string `pulumi:"location"`
 	// Cluster-wide maintenance policy configuration.
+	// Structure is documented below.
 	MaintenancePolicy *ClusterMaintenancePolicy `pulumi:"maintenancePolicy"`
 	// The GDCE cluster name.
 	Name *string `pulumi:"name"`
@@ -529,13 +558,16 @@ type clusterArgs struct {
 	// consistent policies across your systems.
 	// Structure is documented below.
 	Networking ClusterNetworking `pulumi:"networking"`
-	Project    *string           `pulumi:"project"`
-	// The release channel a cluster is subscribed to. Possible values: ["RELEASE_CHANNEL_UNSPECIFIED", "NONE", "REGULAR"]
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
+	// The release channel a cluster is subscribed to.
+	// Possible values are: `RELEASE_CHANNEL_UNSPECIFIED`, `NONE`, `REGULAR`.
 	ReleaseChannel *string `pulumi:"releaseChannel"`
 	// Config that customers are allowed to define for GDCE system add-ons.
+	// Structure is documented below.
 	SystemAddonsConfig *ClusterSystemAddonsConfig `pulumi:"systemAddonsConfig"`
-	// (Output)
-	// The target version of the cluster.
+	// The target cluster version. For example: "1.5.0".
 	TargetVersion *string `pulumi:"targetVersion"`
 }
 
@@ -545,11 +577,15 @@ type ClusterArgs struct {
 	// Structure is documented below.
 	Authorization ClusterAuthorizationInput
 	// The configuration of the cluster control plane.
+	// Structure is documented below.
 	ControlPlane ClusterControlPlanePtrInput
-	// Remote control plane disk encryption options. This field is only used when enabling CMEK support.
+	// Remote control plane disk encryption options. This field is only used when
+	// enabling CMEK support.
+	// Structure is documented below.
 	ControlPlaneEncryption ClusterControlPlaneEncryptionPtrInput
-	// The default maximum number of pods per node used if a maximum value is not specified explicitly for a node pool in this
-	// cluster. If unspecified, the Kubernetes default value will be used.
+	// The default maximum number of pods per node used if a maximum value is not
+	// specified explicitly for a node pool in this cluster. If unspecified, the
+	// Kubernetes default value will be used.
 	DefaultMaxPodsPerNode pulumi.IntPtrInput
 	// Address pools for cluster data plane external load balancing.
 	ExternalLoadBalancerIpv4AddressPools pulumi.StringArrayInput
@@ -559,13 +595,14 @@ type ClusterArgs struct {
 	// consistent policies across your systems.
 	// Structure is documented below.
 	Fleet ClusterFleetInput
-	// User-defined labels for the edgecloud cluster. **Note**: This field is non-authoritative, and will only manage the
-	// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-	// resource.
+	// User-defined labels for the edgecloud cluster.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location of the resource.
 	Location pulumi.StringInput
 	// Cluster-wide maintenance policy configuration.
+	// Structure is documented below.
 	MaintenancePolicy ClusterMaintenancePolicyPtrInput
 	// The GDCE cluster name.
 	Name pulumi.StringPtrInput
@@ -575,13 +612,16 @@ type ClusterArgs struct {
 	// consistent policies across your systems.
 	// Structure is documented below.
 	Networking ClusterNetworkingInput
-	Project    pulumi.StringPtrInput
-	// The release channel a cluster is subscribed to. Possible values: ["RELEASE_CHANNEL_UNSPECIFIED", "NONE", "REGULAR"]
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
+	// The release channel a cluster is subscribed to.
+	// Possible values are: `RELEASE_CHANNEL_UNSPECIFIED`, `NONE`, `REGULAR`.
 	ReleaseChannel pulumi.StringPtrInput
 	// Config that customers are allowed to define for GDCE system add-ons.
+	// Structure is documented below.
 	SystemAddonsConfig ClusterSystemAddonsConfigPtrInput
-	// (Output)
-	// The target version of the cluster.
+	// The target cluster version. For example: "1.5.0".
 	TargetVersion pulumi.StringPtrInput
 }
 
@@ -685,11 +725,14 @@ func (o ClusterOutput) ClusterCaCertificate() pulumi.StringOutput {
 }
 
 // The configuration of the cluster control plane.
+// Structure is documented below.
 func (o ClusterOutput) ControlPlane() ClusterControlPlanePtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterControlPlanePtrOutput { return v.ControlPlane }).(ClusterControlPlanePtrOutput)
 }
 
-// Remote control plane disk encryption options. This field is only used when enabling CMEK support.
+// Remote control plane disk encryption options. This field is only used when
+// enabling CMEK support.
+// Structure is documented below.
 func (o ClusterOutput) ControlPlaneEncryption() ClusterControlPlaneEncryptionOutput {
 	return o.ApplyT(func(v *Cluster) ClusterControlPlaneEncryptionOutput { return v.ControlPlaneEncryption }).(ClusterControlPlaneEncryptionOutput)
 }
@@ -705,8 +748,9 @@ func (o ClusterOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The default maximum number of pods per node used if a maximum value is not specified explicitly for a node pool in this
-// cluster. If unspecified, the Kubernetes default value will be used.
+// The default maximum number of pods per node used if a maximum value is not
+// specified explicitly for a node pool in this cluster. If unspecified, the
+// Kubernetes default value will be used.
 func (o ClusterOutput) DefaultMaxPodsPerNode() pulumi.IntOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.DefaultMaxPodsPerNode }).(pulumi.IntOutput)
 }
@@ -735,9 +779,9 @@ func (o ClusterOutput) Fleet() ClusterFleetOutput {
 	return o.ApplyT(func(v *Cluster) ClusterFleetOutput { return v.Fleet }).(ClusterFleetOutput)
 }
 
-// User-defined labels for the edgecloud cluster. **Note**: This field is non-authoritative, and will only manage the
-// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-// resource.
+// User-defined labels for the edgecloud cluster.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o ClusterOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -755,6 +799,7 @@ func (o ClusterOutput) MaintenanceEvents() ClusterMaintenanceEventArrayOutput {
 }
 
 // Cluster-wide maintenance policy configuration.
+// Structure is documented below.
 func (o ClusterOutput) MaintenancePolicy() ClusterMaintenancePolicyOutput {
 	return o.ApplyT(func(v *Cluster) ClusterMaintenancePolicyOutput { return v.MaintenancePolicy }).(ClusterMaintenancePolicyOutput)
 }
@@ -784,6 +829,8 @@ func (o ClusterOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.Port }).(pulumi.IntOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o ClusterOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -794,7 +841,8 @@ func (o ClusterOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
-// The release channel a cluster is subscribed to. Possible values: ["RELEASE_CHANNEL_UNSPECIFIED", "NONE", "REGULAR"]
+// The release channel a cluster is subscribed to.
+// Possible values are: `RELEASE_CHANNEL_UNSPECIFIED`, `NONE`, `REGULAR`.
 func (o ClusterOutput) ReleaseChannel() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ReleaseChannel }).(pulumi.StringOutput)
 }
@@ -805,12 +853,12 @@ func (o ClusterOutput) Status() pulumi.StringOutput {
 }
 
 // Config that customers are allowed to define for GDCE system add-ons.
+// Structure is documented below.
 func (o ClusterOutput) SystemAddonsConfig() ClusterSystemAddonsConfigOutput {
 	return o.ApplyT(func(v *Cluster) ClusterSystemAddonsConfigOutput { return v.SystemAddonsConfig }).(ClusterSystemAddonsConfigOutput)
 }
 
-// (Output)
-// The target version of the cluster.
+// The target cluster version. For example: "1.5.0".
 func (o ClusterOutput) TargetVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.TargetVersion }).(pulumi.StringOutput)
 }

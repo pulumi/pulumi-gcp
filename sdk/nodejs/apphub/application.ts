@@ -134,6 +134,7 @@ export class Application extends pulumi.CustomResource {
     public readonly applicationId!: pulumi.Output<string>;
     /**
      * Consumer provided attributes.
+     * Structure is documented below.
      */
     public readonly attributes!: pulumi.Output<outputs.apphub.ApplicationAttributes | undefined>;
     /**
@@ -157,6 +158,10 @@ export class Application extends pulumi.CustomResource {
      * "projects/{host-project-id}/locations/{location}/applications/{application-id}"
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * Scope of an application.
@@ -245,6 +250,7 @@ export interface ApplicationState {
     applicationId?: pulumi.Input<string>;
     /**
      * Consumer provided attributes.
+     * Structure is documented below.
      */
     attributes?: pulumi.Input<inputs.apphub.ApplicationAttributes>;
     /**
@@ -268,6 +274,10 @@ export interface ApplicationState {
      * "projects/{host-project-id}/locations/{location}/applications/{application-id}"
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * Scope of an application.
@@ -303,6 +313,7 @@ export interface ApplicationArgs {
     applicationId: pulumi.Input<string>;
     /**
      * Consumer provided attributes.
+     * Structure is documented below.
      */
     attributes?: pulumi.Input<inputs.apphub.ApplicationAttributes>;
     /**
@@ -317,6 +328,10 @@ export interface ApplicationArgs {
      * Part of `parent`. See documentation of `projectsId`.
      */
     location: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * Scope of an application.

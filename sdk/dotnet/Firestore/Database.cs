@@ -395,9 +395,6 @@ namespace Pulumi.Gcp.Firestore
         /// See https://cloud.google.com/datastore/docs/firestore-or-datastore
         /// for information about how to choose.
         /// Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -547,9 +544,6 @@ namespace Pulumi.Gcp.Firestore
         /// See https://cloud.google.com/datastore/docs/firestore-or-datastore
         /// for information about how to choose.
         /// Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -671,9 +665,6 @@ namespace Pulumi.Gcp.Firestore
         /// See https://cloud.google.com/datastore/docs/firestore-or-datastore
         /// for information about how to choose.
         /// Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

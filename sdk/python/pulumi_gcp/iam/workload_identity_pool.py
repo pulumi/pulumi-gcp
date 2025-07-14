@@ -35,9 +35,6 @@ class WorkloadIdentityPoolArgs:
         :param pulumi.Input[builtins.str] workload_identity_pool_id: The ID to use for the pool, which becomes the final component of the resource name. This
                value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
                `gcp-` is reserved for use by Google, and may not be specified.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] description: A description of the pool. Cannot exceed 256 characters.
         :param pulumi.Input[builtins.bool] disabled: Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use
                existing tokens to access resources. If the pool is re-enabled, existing tokens grant
@@ -97,9 +94,6 @@ class WorkloadIdentityPoolArgs:
         The ID to use for the pool, which becomes the final component of the resource name. This
         value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
         `gcp-` is reserved for use by Google, and may not be specified.
-
-
-        - - -
         """
         return pulumi.get(self, "workload_identity_pool_id")
 
@@ -284,9 +278,6 @@ class _WorkloadIdentityPoolState:
         :param pulumi.Input[builtins.str] workload_identity_pool_id: The ID to use for the pool, which becomes the final component of the resource name. This
                value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
                `gcp-` is reserved for use by Google, and may not be specified.
-               
-               
-               - - -
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -461,9 +452,6 @@ class _WorkloadIdentityPoolState:
         The ID to use for the pool, which becomes the final component of the resource name. This
         value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
         `gcp-` is reserved for use by Google, and may not be specified.
-
-
-        - - -
         """
         return pulumi.get(self, "workload_identity_pool_id")
 
@@ -636,9 +624,6 @@ class WorkloadIdentityPool(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] workload_identity_pool_id: The ID to use for the pool, which becomes the final component of the resource name. This
                value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
                `gcp-` is reserved for use by Google, and may not be specified.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -875,9 +860,6 @@ class WorkloadIdentityPool(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] workload_identity_pool_id: The ID to use for the pool, which becomes the final component of the resource name. This
                value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
                `gcp-` is reserved for use by Google, and may not be specified.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1011,9 +993,6 @@ class WorkloadIdentityPool(pulumi.CustomResource):
         The ID to use for the pool, which becomes the final component of the resource name. This
         value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
         `gcp-` is reserved for use by Google, and may not be specified.
-
-
-        - - -
         """
         return pulumi.get(self, "workload_identity_pool_id")
 

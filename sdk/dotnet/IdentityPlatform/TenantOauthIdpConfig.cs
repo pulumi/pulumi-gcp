@@ -76,9 +76,6 @@ namespace Pulumi.Gcp.IdentityPlatform
     {
         /// <summary>
         /// The client id of an OAuth client.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("clientId")]
         public Output<string> ClientId { get; private set; } = null!;
@@ -174,9 +171,6 @@ namespace Pulumi.Gcp.IdentityPlatform
     {
         /// <summary>
         /// The client id of an OAuth client.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("clientId", required: true)]
         public Input<string> ClientId { get; set; } = null!;
@@ -234,9 +228,6 @@ namespace Pulumi.Gcp.IdentityPlatform
     {
         /// <summary>
         /// The client id of an OAuth client.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }

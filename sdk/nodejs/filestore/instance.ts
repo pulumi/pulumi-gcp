@@ -194,7 +194,9 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Directory Services configuration. Should only be set if protocol is "NFS_V4_1".
+     * Directory Services configuration.
+     * Should only be set if protocol is "NFS_V4_1".
+     * Structure is documented below.
      */
     public readonly directoryServices!: pulumi.Output<outputs.filestore.InstanceDirectoryServices | undefined>;
     /**
@@ -218,8 +220,9 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly fileShares!: pulumi.Output<outputs.filestore.InstanceFileShares>;
     /**
-     * Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
-     * instance only, indicating the active as the peer_instance
+     * Replication configuration, once set, this cannot be updated.
+     * Additionally this should be specified on the replica instance only, indicating the active as the peerInstance
+     * Structure is documented below.
      */
     public readonly initialReplication!: pulumi.Output<outputs.filestore.InstanceInitialReplication | undefined>;
     /**
@@ -227,9 +230,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly kmsKeyName!: pulumi.Output<string | undefined>;
     /**
-     * Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-     * labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-     * resource.
+     * Resource labels to represent user-provided metadata.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -247,14 +251,23 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly networks!: pulumi.Output<outputs.filestore.InstanceNetwork[]>;
     /**
-     * Performance configuration for the instance. If not provided, the default performance settings will be used.
+     * Performance configuration for the instance. If not provided,
+     * the default performance settings will be used.
+     * Structure is documented below.
      */
     public readonly performanceConfig!: pulumi.Output<outputs.filestore.InstancePerformanceConfig | undefined>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
-     * protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
-     * "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
+     * Either NFSv3, for using NFS version 3 as file sharing protocol,
+     * or NFSv4.1, for using NFS version 4.1 as file sharing protocol.
+     * NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE.
+     * The default is NFSv3.
+     * Default value is `NFS_V3`.
+     * Possible values are: `NFS_V3`, `NFS_V4_1`.
      */
     public readonly protocol!: pulumi.Output<string | undefined>;
     /**
@@ -263,11 +276,15 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags.
-     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when
-     * empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and
-     * modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the
-     * 'google_tags_tag_value' resource.
+     * A map of resource manager tags. Resource manager tag keys
+     * and values have the same definition as resource manager
+     * tags. Keys must be in the format tagKeys/{tag_key_id},
+     * and values are in the format tagValues/456. The field is
+     * ignored when empty. The field is immutable and causes
+     * resource replacement when mutated. This field is only set
+     * at create time and modifying this field after creation
+     * will trigger recreation. To apply tags to an existing
+     * resource, see the `gcp.tags.TagValue` resource.
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -276,7 +293,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly tier!: pulumi.Output<string>;
     /**
+     * (Optional, Deprecated)
      * The name of the Filestore zone of the instance.
+     *
+     * > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
      *
      * @deprecated `zone` is deprecated and will be removed in a future major release. Use `location` instead.
      */
@@ -379,7 +399,9 @@ export interface InstanceState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Directory Services configuration. Should only be set if protocol is "NFS_V4_1".
+     * Directory Services configuration.
+     * Should only be set if protocol is "NFS_V4_1".
+     * Structure is documented below.
      */
     directoryServices?: pulumi.Input<inputs.filestore.InstanceDirectoryServices>;
     /**
@@ -403,8 +425,9 @@ export interface InstanceState {
      */
     fileShares?: pulumi.Input<inputs.filestore.InstanceFileShares>;
     /**
-     * Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
-     * instance only, indicating the active as the peer_instance
+     * Replication configuration, once set, this cannot be updated.
+     * Additionally this should be specified on the replica instance only, indicating the active as the peerInstance
+     * Structure is documented below.
      */
     initialReplication?: pulumi.Input<inputs.filestore.InstanceInitialReplication>;
     /**
@@ -412,9 +435,10 @@ export interface InstanceState {
      */
     kmsKeyName?: pulumi.Input<string>;
     /**
-     * Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-     * labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-     * resource.
+     * Resource labels to represent user-provided metadata.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -432,14 +456,23 @@ export interface InstanceState {
      */
     networks?: pulumi.Input<pulumi.Input<inputs.filestore.InstanceNetwork>[]>;
     /**
-     * Performance configuration for the instance. If not provided, the default performance settings will be used.
+     * Performance configuration for the instance. If not provided,
+     * the default performance settings will be used.
+     * Structure is documented below.
      */
     performanceConfig?: pulumi.Input<inputs.filestore.InstancePerformanceConfig>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
-     * Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
-     * protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
-     * "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
+     * Either NFSv3, for using NFS version 3 as file sharing protocol,
+     * or NFSv4.1, for using NFS version 4.1 as file sharing protocol.
+     * NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE.
+     * The default is NFSv3.
+     * Default value is `NFS_V3`.
+     * Possible values are: `NFS_V3`, `NFS_V4_1`.
      */
     protocol?: pulumi.Input<string>;
     /**
@@ -448,11 +481,15 @@ export interface InstanceState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags.
-     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when
-     * empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and
-     * modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the
-     * 'google_tags_tag_value' resource.
+     * A map of resource manager tags. Resource manager tag keys
+     * and values have the same definition as resource manager
+     * tags. Keys must be in the format tagKeys/{tag_key_id},
+     * and values are in the format tagValues/456. The field is
+     * ignored when empty. The field is immutable and causes
+     * resource replacement when mutated. This field is only set
+     * at create time and modifying this field after creation
+     * will trigger recreation. To apply tags to an existing
+     * resource, see the `gcp.tags.TagValue` resource.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -461,7 +498,10 @@ export interface InstanceState {
      */
     tier?: pulumi.Input<string>;
     /**
+     * (Optional, Deprecated)
      * The name of the Filestore zone of the instance.
+     *
+     * > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
      *
      * @deprecated `zone` is deprecated and will be removed in a future major release. Use `location` instead.
      */
@@ -485,7 +525,9 @@ export interface InstanceArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Directory Services configuration. Should only be set if protocol is "NFS_V4_1".
+     * Directory Services configuration.
+     * Should only be set if protocol is "NFS_V4_1".
+     * Structure is documented below.
      */
     directoryServices?: pulumi.Input<inputs.filestore.InstanceDirectoryServices>;
     /**
@@ -495,8 +537,9 @@ export interface InstanceArgs {
      */
     fileShares: pulumi.Input<inputs.filestore.InstanceFileShares>;
     /**
-     * Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
-     * instance only, indicating the active as the peer_instance
+     * Replication configuration, once set, this cannot be updated.
+     * Additionally this should be specified on the replica instance only, indicating the active as the peerInstance
+     * Structure is documented below.
      */
     initialReplication?: pulumi.Input<inputs.filestore.InstanceInitialReplication>;
     /**
@@ -504,9 +547,10 @@ export interface InstanceArgs {
      */
     kmsKeyName?: pulumi.Input<string>;
     /**
-     * Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-     * labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-     * resource.
+     * Resource labels to represent user-provided metadata.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -524,22 +568,35 @@ export interface InstanceArgs {
      */
     networks: pulumi.Input<pulumi.Input<inputs.filestore.InstanceNetwork>[]>;
     /**
-     * Performance configuration for the instance. If not provided, the default performance settings will be used.
+     * Performance configuration for the instance. If not provided,
+     * the default performance settings will be used.
+     * Structure is documented below.
      */
     performanceConfig?: pulumi.Input<inputs.filestore.InstancePerformanceConfig>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
-     * Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
-     * protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
-     * "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
+     * Either NFSv3, for using NFS version 3 as file sharing protocol,
+     * or NFSv4.1, for using NFS version 4.1 as file sharing protocol.
+     * NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE.
+     * The default is NFSv3.
+     * Default value is `NFS_V3`.
+     * Possible values are: `NFS_V3`, `NFS_V4_1`.
      */
     protocol?: pulumi.Input<string>;
     /**
-     * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags.
-     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when
-     * empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and
-     * modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the
-     * 'google_tags_tag_value' resource.
+     * A map of resource manager tags. Resource manager tag keys
+     * and values have the same definition as resource manager
+     * tags. Keys must be in the format tagKeys/{tag_key_id},
+     * and values are in the format tagValues/456. The field is
+     * ignored when empty. The field is immutable and causes
+     * resource replacement when mutated. This field is only set
+     * at create time and modifying this field after creation
+     * will trigger recreation. To apply tags to an existing
+     * resource, see the `gcp.tags.TagValue` resource.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -548,7 +605,10 @@ export interface InstanceArgs {
      */
     tier: pulumi.Input<string>;
     /**
+     * (Optional, Deprecated)
      * The name of the Filestore zone of the instance.
+     *
+     * > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
      *
      * @deprecated `zone` is deprecated and will be removed in a future major release. Use `location` instead.
      */

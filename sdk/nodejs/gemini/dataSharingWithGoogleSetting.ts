@@ -84,9 +84,6 @@ export class DataSharingWithGoogleSetting extends pulumi.CustomResource {
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * Id of the Data Sharing With Google Setting.
-     *
-     *
-     * - - -
      */
     public readonly dataSharingWithGoogleSettingId!: pulumi.Output<string>;
     /**
@@ -189,9 +186,6 @@ export interface DataSharingWithGoogleSettingState {
     createTime?: pulumi.Input<string>;
     /**
      * Id of the Data Sharing With Google Setting.
-     *
-     *
-     * - - -
      */
     dataSharingWithGoogleSettingId?: pulumi.Input<string>;
     /**
@@ -243,9 +237,6 @@ export interface DataSharingWithGoogleSettingState {
 export interface DataSharingWithGoogleSettingArgs {
     /**
      * Id of the Data Sharing With Google Setting.
-     *
-     *
-     * - - -
      */
     dataSharingWithGoogleSettingId: pulumi.Input<string>;
     /**

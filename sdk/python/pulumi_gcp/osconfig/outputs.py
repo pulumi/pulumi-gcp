@@ -453,8 +453,6 @@ class GuestPoliciesAssignmentOsType(dict):
                  os_version: Optional[builtins.str] = None):
         """
         :param builtins.str os_architecture: Targets VM instances with OS Inventory enabled and having the following OS architecture.
-               
-               - - -
         :param builtins.str os_short_name: Targets VM instances with OS Inventory enabled and having the following OS short name, for example "debian" or "windows".
         :param builtins.str os_version: Targets VM instances with OS Inventory enabled and having the following following OS version.
         """
@@ -470,8 +468,6 @@ class GuestPoliciesAssignmentOsType(dict):
     def os_architecture(self) -> Optional[builtins.str]:
         """
         Targets VM instances with OS Inventory enabled and having the following OS architecture.
-
-        - - -
         """
         return pulumi.get(self, "os_architecture")
 
@@ -5083,8 +5079,6 @@ class PatchDeploymentInstanceFilterGroupLabel(dict):
                  labels: Mapping[str, builtins.str]):
         """
         :param Mapping[str, builtins.str] labels: Compute Engine instance labels that must be present for a VM instance to be targeted by this filter
-               
-               - - -
         """
         pulumi.set(__self__, "labels", labels)
 
@@ -5093,8 +5087,6 @@ class PatchDeploymentInstanceFilterGroupLabel(dict):
     def labels(self) -> Mapping[str, builtins.str]:
         """
         Compute Engine instance labels that must be present for a VM instance to be targeted by this filter
-
-        - - -
         """
         return pulumi.get(self, "labels")
 
@@ -6916,8 +6908,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
                For a given OS policy assignment, there is only one revision with a value
                of 'true' for this field.
         :param builtins.bool deleted: Indicates that this revision deletes the OS policy assignment.
-        :param builtins.str description: OS policy assignment description.
-               Length of the description is limited to 1024 characters.
+        :param builtins.str description: Freeform text describing the purpose of the resource.
         :param builtins.str etag: This checksum is computed by the server based on the value of other
                fields, and may be sent on update and delete requests to ensure the
                client has an up-to-date value before proceeding.
@@ -7015,8 +7006,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     @pulumi.getter
     def description(self) -> Optional[builtins.str]:
         """
-        OS policy assignment description.
-        Length of the description is limited to 1024 characters.
+        Freeform text describing the purpose of the resource.
         """
         return pulumi.get(self, "description")
 
@@ -9840,8 +9830,6 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         :param builtins.int fixed: Specifies a fixed value.
         :param builtins.int percent: Specifies the relative value defined as a percentage, which will be
                multiplied by a reference value.
-               
-               - - -
         """
         if fixed is not None:
             pulumi.set(__self__, "fixed", fixed)
@@ -9862,8 +9850,6 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         """
         Specifies the relative value defined as a percentage, which will be
         multiplied by a reference value.
-
-        - - -
         """
         return pulumi.get(self, "percent")
 
@@ -10160,14 +10146,13 @@ class V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationState(dict)
                detailed information about a particular orchestration iteration.
         :param builtins.str start_time: (Output)
                Start time of the wave iteration.
-        :param builtins.str state: (Output)
-               State of the iteration.
-               Possible values:
-               PROCESSING
-               COMPLETED
-               FAILED
-               CANCELLED
-               UNKNOWN
+        :param builtins.str state: State of the orchestrator. Can be updated to change orchestrator behaviour.
+               Allowed values:
+               - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+               - `STOPPED` - orchestrator won't make any changes.
+               Note: There might be more states added in the future. We use string here
+               instead of an enum, to avoid the need of propagating new states to all the
+               client code.
         """
         if errors is not None:
             pulumi.set(__self__, "errors", errors)
@@ -10261,14 +10246,13 @@ class V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationState(dict)
     @pulumi.getter
     def state(self) -> Optional[builtins.str]:
         """
-        (Output)
-        State of the iteration.
-        Possible values:
-        PROCESSING
-        COMPLETED
-        FAILED
-        CANCELLED
-        UNKNOWN
+        State of the orchestrator. Can be updated to change orchestrator behaviour.
+        Allowed values:
+        - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+        - `STOPPED` - orchestrator won't make any changes.
+        Note: There might be more states added in the future. We use string here
+        instead of an enum, to avoid the need of propagating new states to all the
+        client code.
         """
         return pulumi.get(self, "state")
 
@@ -10439,14 +10423,13 @@ class V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationState(dict
                detailed information about a particular orchestration iteration.
         :param builtins.str start_time: (Output)
                Start time of the wave iteration.
-        :param builtins.str state: (Output)
-               State of the iteration.
-               Possible values:
-               PROCESSING
-               COMPLETED
-               FAILED
-               CANCELLED
-               UNKNOWN
+        :param builtins.str state: State of the orchestrator. Can be updated to change orchestrator behaviour.
+               Allowed values:
+               - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+               - `STOPPED` - orchestrator won't make any changes.
+               Note: There might be more states added in the future. We use string here
+               instead of an enum, to avoid the need of propagating new states to all the
+               client code.
         """
         if errors is not None:
             pulumi.set(__self__, "errors", errors)
@@ -10540,14 +10523,13 @@ class V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationState(dict
     @pulumi.getter
     def state(self) -> Optional[builtins.str]:
         """
-        (Output)
-        State of the iteration.
-        Possible values:
-        PROCESSING
-        COMPLETED
-        FAILED
-        CANCELLED
-        UNKNOWN
+        State of the orchestrator. Can be updated to change orchestrator behaviour.
+        Allowed values:
+        - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+        - `STOPPED` - orchestrator won't make any changes.
+        Note: There might be more states added in the future. We use string here
+        instead of an enum, to avoid the need of propagating new states to all the
+        client code.
         """
         return pulumi.get(self, "state")
 
@@ -10810,8 +10792,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
                For a given OS policy assignment, there is only one revision with a value
                of 'true' for this field.
         :param builtins.bool deleted: Output only. Indicates that this revision deletes the OS policy assignment.
-        :param builtins.str description: OS policy assignment description.
-               Length of the description is limited to 1024 characters.
+        :param builtins.str description: Optional. Freeform text describing the purpose of the resource.
         :param builtins.str etag: Output only. This checksum is computed by the server based on the value of other
                fields, and may be sent on update and delete requests to ensure the
                client has an up-to-date value before proceeding.
@@ -10910,8 +10891,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     @pulumi.getter
     def description(self) -> Optional[builtins.str]:
         """
-        OS policy assignment description.
-        Length of the description is limited to 1024 characters.
+        Optional. Freeform text describing the purpose of the resource.
         """
         return pulumi.get(self, "description")
 
@@ -13778,8 +13758,6 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         :param builtins.int fixed: Specifies a fixed value.
         :param builtins.int percent: Specifies the relative value defined as a percentage, which will be
                multiplied by a reference value.
-               
-               - - -
         """
         if fixed is not None:
             pulumi.set(__self__, "fixed", fixed)
@@ -13800,8 +13778,6 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         """
         Specifies the relative value defined as a percentage, which will be
         multiplied by a reference value.
-
-        - - -
         """
         return pulumi.get(self, "percent")
 
@@ -14095,15 +14071,13 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationState
                detailed information about a particular orchestration iteration.
         :param builtins.str start_time: (Output)
                Output only. Start time of the wave iteration.
-        :param builtins.str state: (Output)
-               Output only. State of the iteration.
-               Possible values:
-               STATE_UNSPECIFIED
-               PROCESSING
-               COMPLETED
-               FAILED
-               CANCELLED
-               UNKNOWN
+        :param builtins.str state: Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+               Allowed values:
+               - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+               - `STOPPED` - orchestrator won't make any changes.
+               Note: There might be more states added in the future. We use string here
+               instead of an enum, to avoid the need of propagating new states to all the
+               client code.
         """
         if error is not None:
             pulumi.set(__self__, "error", error)
@@ -14196,15 +14170,13 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationState
     @pulumi.getter
     def state(self) -> Optional[builtins.str]:
         """
-        (Output)
-        Output only. State of the iteration.
-        Possible values:
-        STATE_UNSPECIFIED
-        PROCESSING
-        COMPLETED
-        FAILED
-        CANCELLED
-        UNKNOWN
+        Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+        Allowed values:
+        - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+        - `STOPPED` - orchestrator won't make any changes.
+        Note: There might be more states added in the future. We use string here
+        instead of an enum, to avoid the need of propagating new states to all the
+        client code.
         """
         return pulumi.get(self, "state")
 
@@ -14366,15 +14338,13 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStat
                detailed information about a particular orchestration iteration.
         :param builtins.str start_time: (Output)
                Output only. Start time of the wave iteration.
-        :param builtins.str state: (Output)
-               Output only. State of the iteration.
-               Possible values:
-               STATE_UNSPECIFIED
-               PROCESSING
-               COMPLETED
-               FAILED
-               CANCELLED
-               UNKNOWN
+        :param builtins.str state: Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+               Allowed values:
+               - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+               - `STOPPED` - orchestrator won't make any changes.
+               Note: There might be more states added in the future. We use string here
+               instead of an enum, to avoid the need of propagating new states to all the
+               client code.
         """
         if error is not None:
             pulumi.set(__self__, "error", error)
@@ -14467,15 +14437,13 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStat
     @pulumi.getter
     def state(self) -> Optional[builtins.str]:
         """
-        (Output)
-        Output only. State of the iteration.
-        Possible values:
-        STATE_UNSPECIFIED
-        PROCESSING
-        COMPLETED
-        FAILED
-        CANCELLED
-        UNKNOWN
+        Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+        Allowed values:
+        - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+        - `STOPPED` - orchestrator won't make any changes.
+        Note: There might be more states added in the future. We use string here
+        instead of an enum, to avoid the need of propagating new states to all the
+        client code.
         """
         return pulumi.get(self, "state")
 
@@ -14729,8 +14697,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1Payload(dict):
                For a given OS policy assignment, there is only one revision with a value
                of 'true' for this field.
         :param builtins.bool deleted: Output only. Indicates that this revision deletes the OS policy assignment.
-        :param builtins.str description: OS policy assignment description.
-               Length of the description is limited to 1024 characters.
+        :param builtins.str description: Optional. Freeform text describing the purpose of the resource.
         :param builtins.str name: Immutable. Identifier. In form of
                * `organizations/{organization_id}/locations/global/policyOrchestrators/{orchestrator_id}`
                * `folders/{folder_id}/locations/global/policyOrchestrators/{orchestrator_id}`
@@ -14824,8 +14791,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1Payload(dict):
     @pulumi.getter
     def description(self) -> Optional[builtins.str]:
         """
-        OS policy assignment description.
-        Length of the description is limited to 1024 characters.
+        Optional. Freeform text describing the purpose of the resource.
         """
         return pulumi.get(self, "description")
 
@@ -17682,8 +17648,6 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadRollout
         :param builtins.int fixed: Specifies a fixed value.
         :param builtins.int percent: Specifies the relative value defined as a percentage, which will be
                multiplied by a reference value.
-               
-               - - -
         """
         if fixed is not None:
             pulumi.set(__self__, "fixed", fixed)
@@ -17704,8 +17668,6 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadRollout
         """
         Specifies the relative value defined as a percentage, which will be
         multiplied by a reference value.
-
-        - - -
         """
         return pulumi.get(self, "percent")
 
@@ -17999,15 +17961,13 @@ class V2PolicyOrchestratorOrchestrationStateCurrentIterationState(dict):
                detailed information about a particular orchestration iteration.
         :param builtins.str start_time: (Output)
                Output only. Start time of the wave iteration.
-        :param builtins.str state: (Output)
-               Output only. State of the iteration.
-               Possible values:
-               STATE_UNSPECIFIED
-               PROCESSING
-               COMPLETED
-               FAILED
-               CANCELLED
-               UNKNOWN
+        :param builtins.str state: Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+               Allowed values:
+               - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+               - `STOPPED` - orchestrator won't make any changes.
+               Note: There might be more states added in the future. We use string here
+               instead of an enum, to avoid the need of propagating new states to all the
+               client code.
         """
         if error is not None:
             pulumi.set(__self__, "error", error)
@@ -18100,15 +18060,13 @@ class V2PolicyOrchestratorOrchestrationStateCurrentIterationState(dict):
     @pulumi.getter
     def state(self) -> Optional[builtins.str]:
         """
-        (Output)
-        Output only. State of the iteration.
-        Possible values:
-        STATE_UNSPECIFIED
-        PROCESSING
-        COMPLETED
-        FAILED
-        CANCELLED
-        UNKNOWN
+        Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+        Allowed values:
+        - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+        - `STOPPED` - orchestrator won't make any changes.
+        Note: There might be more states added in the future. We use string here
+        instead of an enum, to avoid the need of propagating new states to all the
+        client code.
         """
         return pulumi.get(self, "state")
 
@@ -18270,15 +18228,13 @@ class V2PolicyOrchestratorOrchestrationStatePreviousIterationState(dict):
                detailed information about a particular orchestration iteration.
         :param builtins.str start_time: (Output)
                Output only. Start time of the wave iteration.
-        :param builtins.str state: (Output)
-               Output only. State of the iteration.
-               Possible values:
-               STATE_UNSPECIFIED
-               PROCESSING
-               COMPLETED
-               FAILED
-               CANCELLED
-               UNKNOWN
+        :param builtins.str state: Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+               Allowed values:
+               - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+               - `STOPPED` - orchestrator won't make any changes.
+               Note: There might be more states added in the future. We use string here
+               instead of an enum, to avoid the need of propagating new states to all the
+               client code.
         """
         if error is not None:
             pulumi.set(__self__, "error", error)
@@ -18371,15 +18327,13 @@ class V2PolicyOrchestratorOrchestrationStatePreviousIterationState(dict):
     @pulumi.getter
     def state(self) -> Optional[builtins.str]:
         """
-        (Output)
-        Output only. State of the iteration.
-        Possible values:
-        STATE_UNSPECIFIED
-        PROCESSING
-        COMPLETED
-        FAILED
-        CANCELLED
-        UNKNOWN
+        Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+        Allowed values:
+        - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+        - `STOPPED` - orchestrator won't make any changes.
+        Note: There might be more states added in the future. We use string here
+        instead of an enum, to avoid the need of propagating new states to all the
+        client code.
         """
         return pulumi.get(self, "state")
 

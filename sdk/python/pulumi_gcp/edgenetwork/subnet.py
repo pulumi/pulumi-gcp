@@ -36,9 +36,6 @@ class SubnetArgs:
         :param pulumi.Input[builtins.str] network: The ID of the network to which this router belongs.
                Must be of the form: `projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}`
         :param pulumi.Input[builtins.str] subnet_id: A unique ID that identifies this subnet.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] zone: The name of the target Distributed Cloud Edge zone.
         :param pulumi.Input[builtins.str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ipv4_cidrs: The ranges of ipv4 addresses that are owned by this subnetwork, in CIDR format.
@@ -98,9 +95,6 @@ class SubnetArgs:
     def subnet_id(self) -> pulumi.Input[builtins.str]:
         """
         A unique ID that identifies this subnet.
-
-
-        - - -
         """
         return pulumi.get(self, "subnet_id")
 
@@ -240,9 +234,6 @@ class _SubnetState:
                and default labels configured on the provider.
         :param pulumi.Input[builtins.str] state: Current stage of the resource to the device by config push.
         :param pulumi.Input[builtins.str] subnet_id: A unique ID that identifies this subnet.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] update_time: The time when the subnet was last updated.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
                fractional digits. Examples: `2014-10-02T15:01:23Z` and `2014-10-02T15:01:23.045123456Z`.
@@ -440,9 +431,6 @@ class _SubnetState:
     def subnet_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         A unique ID that identifies this subnet.
-
-
-        - - -
         """
         return pulumi.get(self, "subnet_id")
 
@@ -616,9 +604,6 @@ class Subnet(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] subnet_id: A unique ID that identifies this subnet.
-               
-               
-               - - -
         :param pulumi.Input[builtins.int] vlan_id: VLAN ID for this subnetwork. If not specified, one is assigned automatically.
         :param pulumi.Input[builtins.str] zone: The name of the target Distributed Cloud Edge zone.
         """
@@ -838,9 +823,6 @@ class Subnet(pulumi.CustomResource):
                and default labels configured on the provider.
         :param pulumi.Input[builtins.str] state: Current stage of the resource to the device by config push.
         :param pulumi.Input[builtins.str] subnet_id: A unique ID that identifies this subnet.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] update_time: The time when the subnet was last updated.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
                fractional digits. Examples: `2014-10-02T15:01:23Z` and `2014-10-02T15:01:23.045123456Z`.
@@ -979,9 +961,6 @@ class Subnet(pulumi.CustomResource):
     def subnet_id(self) -> pulumi.Output[builtins.str]:
         """
         A unique ID that identifies this subnet.
-
-
-        - - -
         """
         return pulumi.get(self, "subnet_id")
 

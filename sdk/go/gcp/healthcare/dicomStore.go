@@ -172,8 +172,6 @@ type DicomStore struct {
 
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
-	//
-	// ***
 	Dataset pulumi.StringOutput `pulumi:"dataset"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -246,8 +244,6 @@ func GetDicomStore(ctx *pulumi.Context,
 type dicomStoreState struct {
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
-	//
-	// ***
 	Dataset *string `pulumi:"dataset"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -283,8 +279,6 @@ type dicomStoreState struct {
 type DicomStoreState struct {
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
-	//
-	// ***
 	Dataset pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -324,8 +318,6 @@ func (DicomStoreState) ElementType() reflect.Type {
 type dicomStoreArgs struct {
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
-	//
-	// ***
 	Dataset string `pulumi:"dataset"`
 	// User-supplied key-value pairs used to organize DICOM stores.
 	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
@@ -355,8 +347,6 @@ type dicomStoreArgs struct {
 type DicomStoreArgs struct {
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
-	//
-	// ***
 	Dataset pulumi.StringInput
 	// User-supplied key-value pairs used to organize DICOM stores.
 	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
@@ -471,8 +461,6 @@ func (o DicomStoreOutput) ToDicomStoreOutputWithContext(ctx context.Context) Dic
 
 // Identifies the dataset addressed by this request. Must be in the format
 // 'projects/{project}/locations/{location}/datasets/{dataset}'
-//
-// ***
 func (o DicomStoreOutput) Dataset() pulumi.StringOutput {
 	return o.ApplyT(func(v *DicomStore) pulumi.StringOutput { return v.Dataset }).(pulumi.StringOutput)
 }

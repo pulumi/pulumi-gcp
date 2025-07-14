@@ -416,8 +416,6 @@ type Cluster struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location where the alloydb cluster should reside.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// MaintenanceUpdatePolicy defines the policy for system updates.
 	// Structure is documented below.
@@ -564,8 +562,6 @@ type clusterState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the alloydb cluster should reside.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// MaintenanceUpdatePolicy defines the policy for system updates.
 	// Structure is documented below.
@@ -672,8 +668,6 @@ type ClusterState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location where the alloydb cluster should reside.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// MaintenanceUpdatePolicy defines the policy for system updates.
 	// Structure is documented below.
@@ -771,8 +765,6 @@ type clusterArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the alloydb cluster should reside.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// MaintenanceUpdatePolicy defines the policy for system updates.
 	// Structure is documented below.
@@ -848,8 +840,6 @@ type ClusterArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location where the alloydb cluster should reside.
-	//
-	// ***
 	Location pulumi.StringInput
 	// MaintenanceUpdatePolicy defines the policy for system updates.
 	// Structure is documented below.
@@ -1074,8 +1064,6 @@ func (o ClusterOutput) Labels() pulumi.StringMapOutput {
 }
 
 // The location where the alloydb cluster should reside.
-//
-// ***
 func (o ClusterOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

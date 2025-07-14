@@ -131,9 +131,6 @@ export class ReleaseChannelSettingBinding extends pulumi.CustomResource {
     public readonly releaseChannelSettingId!: pulumi.Output<string>;
     /**
      * Id of the setting binding.
-     *
-     *
-     * - - -
      */
     public readonly settingBindingId!: pulumi.Output<string>;
     /**
@@ -249,9 +246,6 @@ export interface ReleaseChannelSettingBindingState {
     releaseChannelSettingId?: pulumi.Input<string>;
     /**
      * Id of the setting binding.
-     *
-     *
-     * - - -
      */
     settingBindingId?: pulumi.Input<string>;
     /**
@@ -294,9 +288,6 @@ export interface ReleaseChannelSettingBindingArgs {
     releaseChannelSettingId: pulumi.Input<string>;
     /**
      * Id of the setting binding.
-     *
-     *
-     * - - -
      */
     settingBindingId: pulumi.Input<string>;
     /**

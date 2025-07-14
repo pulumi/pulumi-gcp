@@ -121,8 +121,6 @@ type Enrollment struct {
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The user-provided ID to be assigned to the Enrollment. It should match the
 	// format `^a-z?$`.
-	//
-	// ***
 	EnrollmentId pulumi.StringOutput `pulumi:"enrollmentId"`
 	// This checksum is computed by the server based on the value of other
 	// fields, and might be sent only on update and delete requests to ensure that
@@ -223,8 +221,6 @@ type enrollmentState struct {
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The user-provided ID to be assigned to the Enrollment. It should match the
 	// format `^a-z?$`.
-	//
-	// ***
 	EnrollmentId *string `pulumi:"enrollmentId"`
 	// This checksum is computed by the server based on the value of other
 	// fields, and might be sent only on update and delete requests to ensure that
@@ -276,8 +272,6 @@ type EnrollmentState struct {
 	EffectiveLabels pulumi.StringMapInput
 	// The user-provided ID to be assigned to the Enrollment. It should match the
 	// format `^a-z?$`.
-	//
-	// ***
 	EnrollmentId pulumi.StringPtrInput
 	// This checksum is computed by the server based on the value of other
 	// fields, and might be sent only on update and delete requests to ensure that
@@ -328,8 +322,6 @@ type enrollmentArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// The user-provided ID to be assigned to the Enrollment. It should match the
 	// format `^a-z?$`.
-	//
-	// ***
 	EnrollmentId string `pulumi:"enrollmentId"`
 	// Resource labels.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -362,8 +354,6 @@ type EnrollmentArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// The user-provided ID to be assigned to the Enrollment. It should match the
 	// format `^a-z?$`.
-	//
-	// ***
 	EnrollmentId pulumi.StringInput
 	// Resource labels.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -507,8 +497,6 @@ func (o EnrollmentOutput) EffectiveLabels() pulumi.StringMapOutput {
 
 // The user-provided ID to be assigned to the Enrollment. It should match the
 // format `^a-z?$`.
-//
-// ***
 func (o EnrollmentOutput) EnrollmentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Enrollment) pulumi.StringOutput { return v.EnrollmentId }).(pulumi.StringOutput)
 }

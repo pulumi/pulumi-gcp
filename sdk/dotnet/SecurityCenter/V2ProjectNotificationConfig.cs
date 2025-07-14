@@ -103,11 +103,16 @@ namespace Pulumi.Gcp.SecurityCenter
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
+        /// The Pub/Sub topic to send notifications to. Its format is
+        /// "projects/[project_id]/topics/[topic]".
         /// </summary>
         [Output("pubsubTopic")]
         public Output<string?> PubsubTopic { get; private set; } = null!;
@@ -190,11 +195,16 @@ namespace Pulumi.Gcp.SecurityCenter
         [Input("location")]
         public Input<string>? Location { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
+        /// The Pub/Sub topic to send notifications to. Its format is
+        /// "projects/[project_id]/topics/[topic]".
         /// </summary>
         [Input("pubsubTopic")]
         public Input<string>? PubsubTopic { get; set; }
@@ -239,11 +249,16 @@ namespace Pulumi.Gcp.SecurityCenter
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
+        /// The Pub/Sub topic to send notifications to. Its format is
+        /// "projects/[project_id]/topics/[topic]".
         /// </summary>
         [Input("pubsubTopic")]
         public Input<string>? PubsubTopic { get; set; }

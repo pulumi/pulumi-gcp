@@ -332,8 +332,6 @@ class DomainMappingSpec(dict):
         :param builtins.str certificate_mode: The mode of the certificate.
                Default value is `AUTOMATIC`.
                Possible values are: `NONE`, `AUTOMATIC`.
-               
-               - - -
         :param builtins.bool force_override: If set, the mapping will override any mapping set before this spec was set.
                It is recommended that the user leaves this empty to receive an error
                warning about a potential conflict and only set it once the respective UI
@@ -361,8 +359,6 @@ class DomainMappingSpec(dict):
         The mode of the certificate.
         Default value is `AUTOMATIC`.
         Possible values are: `NONE`, `AUTOMATIC`.
-
-        - - -
         """
         return pulumi.get(self, "certificate_mode")
 
@@ -911,8 +907,7 @@ class ServiceStatus(dict):
                controller.
                Clients polling for completed reconciliation should poll until observedGeneration =
                metadata.generation and the Ready condition's status is True or False.
-        :param Sequence['ServiceStatusTrafficArgs'] traffics: (Output)
-               Traffic specifies how to distribute traffic over a collection of Knative Revisions
+        :param Sequence['ServiceStatusTrafficArgs'] traffics: Traffic specifies how to distribute traffic over a collection of Knative Revisions
                and Configurations
                Structure is documented below.
         :param builtins.str url: (Output)
@@ -981,7 +976,6 @@ class ServiceStatus(dict):
     @pulumi.getter
     def traffics(self) -> Optional[Sequence['outputs.ServiceStatusTraffic']]:
         """
-        (Output)
         Traffic specifies how to distribute traffic over a collection of Knative Revisions
         and Configurations
         Structure is documented below.
@@ -3055,8 +3049,6 @@ class ServiceTemplateSpecVolumeNfs(dict):
         :param builtins.str path: Path exported by the NFS server
         :param builtins.str server: IP address or hostname of the NFS server
         :param builtins.bool read_only: If true, mount the NFS volume as read only in all mounts. Defaults to false.
-               
-               - - -
         """
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "server", server)
@@ -3084,8 +3076,6 @@ class ServiceTemplateSpecVolumeNfs(dict):
     def read_only(self) -> Optional[builtins.bool]:
         """
         If true, mount the NFS volume as read only in all mounts. Defaults to false.
-
-        - - -
         """
         return pulumi.get(self, "read_only")
 

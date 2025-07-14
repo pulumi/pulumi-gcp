@@ -476,16 +476,12 @@ public class TlsInspectionPolicy extends com.pulumi.resources.CustomResource {
     /**
      * Short name of the TlsInspectionPolicy resource to be created.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return Short name of the TlsInspectionPolicy resource to be created.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

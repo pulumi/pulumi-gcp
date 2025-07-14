@@ -79,8 +79,6 @@ public final class ObjectAccessControlArgs extends com.pulumi.resources.Resource
      * The access permission for the entity.
      * Possible values are: `OWNER`, `READER`.
      * 
-     * ***
-     * 
      */
     @Import(name="role", required=true)
     private Output<String> role;
@@ -88,8 +86,6 @@ public final class ObjectAccessControlArgs extends com.pulumi.resources.Resource
     /**
      * @return The access permission for the entity.
      * Possible values are: `OWNER`, `READER`.
-     * 
-     * ***
      * 
      */
     public Output<String> role() {
@@ -206,8 +202,6 @@ public final class ObjectAccessControlArgs extends com.pulumi.resources.Resource
          * @param role The access permission for the entity.
          * Possible values are: `OWNER`, `READER`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -219,8 +213,6 @@ public final class ObjectAccessControlArgs extends com.pulumi.resources.Resource
         /**
          * @param role The access permission for the entity.
          * Possible values are: `OWNER`, `READER`.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -163,8 +163,8 @@ import (
 type AccessApprovalSettings struct {
 	pulumi.CustomResourceState
 
-	// The asymmetric crypto key version to use for signing approval requests. Empty activeKeyVersion indicates that a
-	// Google-managed key should be used for signing.
+	// The asymmetric crypto key version to use for signing approval requests.
+	// Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
 	ActiveKeyVersion pulumi.StringPtrOutput `pulumi:"activeKeyVersion"`
 	// This field will always be unset for the organization since organizations do not have ancestors.
 	AncestorHasActiveKeyVersion pulumi.BoolOutput `pulumi:"ancestorHasActiveKeyVersion"`
@@ -182,9 +182,9 @@ type AccessApprovalSettings struct {
 	InvalidKeyVersion pulumi.BoolOutput `pulumi:"invalidKeyVersion"`
 	// The resource name of the settings. Format is "organizations/{organization_id}/accessApprovalSettings"
 	Name pulumi.StringOutput `pulumi:"name"`
-	// A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
-	// a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
-	// addresses are allowed.
+	// A list of email addresses to which notifications relating to approval requests should be sent.
+	// Notifications relating to a resource will be sent to all emails in the settings of ancestor
+	// resources of that resource. A maximum of 50 email addresses are allowed.
 	NotificationEmails pulumi.StringArrayOutput `pulumi:"notificationEmails"`
 	// ID of the organization of the access approval settings.
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
@@ -226,8 +226,8 @@ func GetAccessApprovalSettings(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessApprovalSettings resources.
 type accessApprovalSettingsState struct {
-	// The asymmetric crypto key version to use for signing approval requests. Empty activeKeyVersion indicates that a
-	// Google-managed key should be used for signing.
+	// The asymmetric crypto key version to use for signing approval requests.
+	// Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
 	ActiveKeyVersion *string `pulumi:"activeKeyVersion"`
 	// This field will always be unset for the organization since organizations do not have ancestors.
 	AncestorHasActiveKeyVersion *bool `pulumi:"ancestorHasActiveKeyVersion"`
@@ -245,17 +245,17 @@ type accessApprovalSettingsState struct {
 	InvalidKeyVersion *bool `pulumi:"invalidKeyVersion"`
 	// The resource name of the settings. Format is "organizations/{organization_id}/accessApprovalSettings"
 	Name *string `pulumi:"name"`
-	// A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
-	// a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
-	// addresses are allowed.
+	// A list of email addresses to which notifications relating to approval requests should be sent.
+	// Notifications relating to a resource will be sent to all emails in the settings of ancestor
+	// resources of that resource. A maximum of 50 email addresses are allowed.
 	NotificationEmails []string `pulumi:"notificationEmails"`
 	// ID of the organization of the access approval settings.
 	OrganizationId *string `pulumi:"organizationId"`
 }
 
 type AccessApprovalSettingsState struct {
-	// The asymmetric crypto key version to use for signing approval requests. Empty activeKeyVersion indicates that a
-	// Google-managed key should be used for signing.
+	// The asymmetric crypto key version to use for signing approval requests.
+	// Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
 	ActiveKeyVersion pulumi.StringPtrInput
 	// This field will always be unset for the organization since organizations do not have ancestors.
 	AncestorHasActiveKeyVersion pulumi.BoolPtrInput
@@ -273,9 +273,9 @@ type AccessApprovalSettingsState struct {
 	InvalidKeyVersion pulumi.BoolPtrInput
 	// The resource name of the settings. Format is "organizations/{organization_id}/accessApprovalSettings"
 	Name pulumi.StringPtrInput
-	// A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
-	// a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
-	// addresses are allowed.
+	// A list of email addresses to which notifications relating to approval requests should be sent.
+	// Notifications relating to a resource will be sent to all emails in the settings of ancestor
+	// resources of that resource. A maximum of 50 email addresses are allowed.
 	NotificationEmails pulumi.StringArrayInput
 	// ID of the organization of the access approval settings.
 	OrganizationId pulumi.StringPtrInput
@@ -286,8 +286,8 @@ func (AccessApprovalSettingsState) ElementType() reflect.Type {
 }
 
 type accessApprovalSettingsArgs struct {
-	// The asymmetric crypto key version to use for signing approval requests. Empty activeKeyVersion indicates that a
-	// Google-managed key should be used for signing.
+	// The asymmetric crypto key version to use for signing approval requests.
+	// Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
 	ActiveKeyVersion *string `pulumi:"activeKeyVersion"`
 	// A list of Google Cloud Services for which the given resource has Access Approval enrolled.
 	// Access requests for the resource given by name against any of these services contained here will be required
@@ -295,9 +295,9 @@ type accessApprovalSettingsArgs struct {
 	// A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.
 	// Structure is documented below.
 	EnrolledServices []AccessApprovalSettingsEnrolledService `pulumi:"enrolledServices"`
-	// A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
-	// a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
-	// addresses are allowed.
+	// A list of email addresses to which notifications relating to approval requests should be sent.
+	// Notifications relating to a resource will be sent to all emails in the settings of ancestor
+	// resources of that resource. A maximum of 50 email addresses are allowed.
 	NotificationEmails []string `pulumi:"notificationEmails"`
 	// ID of the organization of the access approval settings.
 	OrganizationId string `pulumi:"organizationId"`
@@ -305,8 +305,8 @@ type accessApprovalSettingsArgs struct {
 
 // The set of arguments for constructing a AccessApprovalSettings resource.
 type AccessApprovalSettingsArgs struct {
-	// The asymmetric crypto key version to use for signing approval requests. Empty activeKeyVersion indicates that a
-	// Google-managed key should be used for signing.
+	// The asymmetric crypto key version to use for signing approval requests.
+	// Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
 	ActiveKeyVersion pulumi.StringPtrInput
 	// A list of Google Cloud Services for which the given resource has Access Approval enrolled.
 	// Access requests for the resource given by name against any of these services contained here will be required
@@ -314,9 +314,9 @@ type AccessApprovalSettingsArgs struct {
 	// A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.
 	// Structure is documented below.
 	EnrolledServices AccessApprovalSettingsEnrolledServiceArrayInput
-	// A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
-	// a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
-	// addresses are allowed.
+	// A list of email addresses to which notifications relating to approval requests should be sent.
+	// Notifications relating to a resource will be sent to all emails in the settings of ancestor
+	// resources of that resource. A maximum of 50 email addresses are allowed.
 	NotificationEmails pulumi.StringArrayInput
 	// ID of the organization of the access approval settings.
 	OrganizationId pulumi.StringInput
@@ -409,8 +409,8 @@ func (o AccessApprovalSettingsOutput) ToAccessApprovalSettingsOutputWithContext(
 	return o
 }
 
-// The asymmetric crypto key version to use for signing approval requests. Empty activeKeyVersion indicates that a
-// Google-managed key should be used for signing.
+// The asymmetric crypto key version to use for signing approval requests.
+// Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
 func (o AccessApprovalSettingsOutput) ActiveKeyVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApprovalSettings) pulumi.StringPtrOutput { return v.ActiveKeyVersion }).(pulumi.StringPtrOutput)
 }
@@ -448,9 +448,9 @@ func (o AccessApprovalSettingsOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessApprovalSettings) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
-// a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
-// addresses are allowed.
+// A list of email addresses to which notifications relating to approval requests should be sent.
+// Notifications relating to a resource will be sent to all emails in the settings of ancestor
+// resources of that resource. A maximum of 50 email addresses are allowed.
 func (o AccessApprovalSettingsOutput) NotificationEmails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AccessApprovalSettings) pulumi.StringArrayOutput { return v.NotificationEmails }).(pulumi.StringArrayOutput)
 }

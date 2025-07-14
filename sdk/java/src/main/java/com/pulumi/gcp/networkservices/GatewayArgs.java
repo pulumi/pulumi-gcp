@@ -188,16 +188,12 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Name of the Gateway resource.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return Name of the Gateway resource.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -633,8 +629,6 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name Name of the Gateway resource.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -645,8 +639,6 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name Name of the Gateway resource.
-         * 
-         * ***
          * 
          * @return builder
          * 

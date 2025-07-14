@@ -140,9 +140,6 @@ export class AppCheckServiceConfig extends pulumi.CustomResource {
      * firebasedatabase.googleapis.com (Firebase Realtime Database)
      * firestore.googleapis.com (Cloud Firestore)
      * identitytoolkit.googleapis.com (Authentication)
-     *
-     *
-     * - - -
      */
     public readonly serviceId!: pulumi.Output<string>;
 
@@ -198,9 +195,6 @@ export interface AppCheckServiceConfigState {
      * firebasedatabase.googleapis.com (Firebase Realtime Database)
      * firestore.googleapis.com (Cloud Firestore)
      * identitytoolkit.googleapis.com (Authentication)
-     *
-     *
-     * - - -
      */
     serviceId?: pulumi.Input<string>;
 }
@@ -221,9 +215,6 @@ export interface AppCheckServiceConfigArgs {
      * firebasedatabase.googleapis.com (Firebase Realtime Database)
      * firestore.googleapis.com (Cloud Firestore)
      * identitytoolkit.googleapis.com (Authentication)
-     *
-     *
-     * - - -
      */
     serviceId: pulumi.Input<string>;
 }

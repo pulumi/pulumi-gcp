@@ -51,16 +51,12 @@ public final class ControlProjectIntelligenceConfigArgs extends com.pulumi.resou
     /**
      * Identifier of the GCP project. For GCP project, this field can be project name or project number.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return Identifier of the GCP project. For GCP project, this field can be project name or project number.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -140,8 +136,6 @@ public final class ControlProjectIntelligenceConfigArgs extends com.pulumi.resou
         /**
          * @param name Identifier of the GCP project. For GCP project, this field can be project name or project number.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -152,8 +146,6 @@ public final class ControlProjectIntelligenceConfigArgs extends com.pulumi.resou
 
         /**
          * @param name Identifier of the GCP project. For GCP project, this field can be project name or project number.
-         * 
-         * ***
          * 
          * @return builder
          * 

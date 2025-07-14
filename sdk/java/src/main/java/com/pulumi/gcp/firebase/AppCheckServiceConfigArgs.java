@@ -47,8 +47,6 @@ public final class AppCheckServiceConfigArgs extends com.pulumi.resources.Resour
      * firestore.googleapis.com (Cloud Firestore)
      * identitytoolkit.googleapis.com (Authentication)
      * 
-     * ***
-     * 
      */
     @Import(name="serviceId", required=true)
     private Output<String> serviceId;
@@ -59,8 +57,6 @@ public final class AppCheckServiceConfigArgs extends com.pulumi.resources.Resour
      * firebasedatabase.googleapis.com (Firebase Realtime Database)
      * firestore.googleapis.com (Cloud Firestore)
      * identitytoolkit.googleapis.com (Authentication)
-     * 
-     * ***
      * 
      */
     public Output<String> serviceId() {
@@ -132,8 +128,6 @@ public final class AppCheckServiceConfigArgs extends com.pulumi.resources.Resour
          * firestore.googleapis.com (Cloud Firestore)
          * identitytoolkit.googleapis.com (Authentication)
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -148,8 +142,6 @@ public final class AppCheckServiceConfigArgs extends com.pulumi.resources.Resour
          * firebasedatabase.googleapis.com (Firebase Realtime Database)
          * firestore.googleapis.com (Cloud Firestore)
          * identitytoolkit.googleapis.com (Authentication)
-         * 
-         * ***
          * 
          * @return builder
          * 

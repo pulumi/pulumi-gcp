@@ -293,8 +293,6 @@ type DataTransferConfig struct {
 	// section for each data source. For example the parameters for Cloud Storage transfers are listed here:
 	// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
 	// **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
-	//
-	// ***
 	Params pulumi.StringMapOutput `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -402,8 +400,6 @@ type dataTransferConfigState struct {
 	// section for each data source. For example the parameters for Cloud Storage transfers are listed here:
 	// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
 	// **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
-	//
-	// ***
 	Params map[string]string `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -473,8 +469,6 @@ type DataTransferConfigState struct {
 	// section for each data source. For example the parameters for Cloud Storage transfers are listed here:
 	// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
 	// **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
-	//
-	// ***
 	Params pulumi.StringMapInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -542,8 +536,6 @@ type dataTransferConfigArgs struct {
 	// section for each data source. For example the parameters for Cloud Storage transfers are listed here:
 	// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
 	// **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
-	//
-	// ***
 	Params map[string]string `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -608,8 +600,6 @@ type DataTransferConfigArgs struct {
 	// section for each data source. For example the parameters for Cloud Storage transfers are listed here:
 	// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
 	// **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
-	//
-	// ***
 	Params pulumi.StringMapInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -797,8 +787,6 @@ func (o DataTransferConfigOutput) NotificationPubsubTopic() pulumi.StringPtrOutp
 // section for each data source. For example the parameters for Cloud Storage transfers are listed here:
 // https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
 // **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
-//
-// ***
 func (o DataTransferConfigOutput) Params() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DataTransferConfig) pulumi.StringMapOutput { return v.Params }).(pulumi.StringMapOutput)
 }

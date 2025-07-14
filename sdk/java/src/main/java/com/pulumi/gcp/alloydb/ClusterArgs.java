@@ -245,16 +245,12 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The location where the alloydb cluster should reside.
      * 
-     * ***
-     * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
      * @return The location where the alloydb cluster should reside.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {
@@ -750,8 +746,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param location The location where the alloydb cluster should reside.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -762,8 +756,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location The location where the alloydb cluster should reside.
-         * 
-         * ***
          * 
          * @return builder
          * 

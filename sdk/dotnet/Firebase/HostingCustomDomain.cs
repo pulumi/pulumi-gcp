@@ -192,9 +192,6 @@ namespace Pulumi.Gcp.Firebase
 
         /// <summary>
         /// The ID of the `CustomDomain`, which is the domain name you'd like to use with Firebase Hosting.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("customDomain")]
         public Output<string> CustomDomain { get; private set; } = null!;
@@ -403,9 +400,6 @@ namespace Pulumi.Gcp.Firebase
 
         /// <summary>
         /// The ID of the `CustomDomain`, which is the domain name you'd like to use with Firebase Hosting.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("customDomain", required: true)]
         public Input<string> CustomDomain { get; set; } = null!;
@@ -476,9 +470,6 @@ namespace Pulumi.Gcp.Firebase
 
         /// <summary>
         /// The ID of the `CustomDomain`, which is the domain name you'd like to use with Firebase Hosting.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("customDomain")]
         public Input<string>? CustomDomain { get; set; }

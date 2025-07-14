@@ -96,8 +96,6 @@ type InstancePartition struct {
 	// Must be unique per project and between 4 and 30 characters in length.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The instance to create the instance partition in.
-	//
-	// ***
 	Instance pulumi.StringOutput `pulumi:"instance"`
 	// A unique identifier for the instance partition, which cannot be changed after
 	// the instance partition is created. The name must be between 2 and 64 characters
@@ -166,8 +164,6 @@ type instancePartitionState struct {
 	// Must be unique per project and between 4 and 30 characters in length.
 	DisplayName *string `pulumi:"displayName"`
 	// The instance to create the instance partition in.
-	//
-	// ***
 	Instance *string `pulumi:"instance"`
 	// A unique identifier for the instance partition, which cannot be changed after
 	// the instance partition is created. The name must be between 2 and 64 characters
@@ -198,8 +194,6 @@ type InstancePartitionState struct {
 	// Must be unique per project and between 4 and 30 characters in length.
 	DisplayName pulumi.StringPtrInput
 	// The instance to create the instance partition in.
-	//
-	// ***
 	Instance pulumi.StringPtrInput
 	// A unique identifier for the instance partition, which cannot be changed after
 	// the instance partition is created. The name must be between 2 and 64 characters
@@ -234,8 +228,6 @@ type instancePartitionArgs struct {
 	// Must be unique per project and between 4 and 30 characters in length.
 	DisplayName string `pulumi:"displayName"`
 	// The instance to create the instance partition in.
-	//
-	// ***
 	Instance string `pulumi:"instance"`
 	// A unique identifier for the instance partition, which cannot be changed after
 	// the instance partition is created. The name must be between 2 and 64 characters
@@ -262,8 +254,6 @@ type InstancePartitionArgs struct {
 	// Must be unique per project and between 4 and 30 characters in length.
 	DisplayName pulumi.StringInput
 	// The instance to create the instance partition in.
-	//
-	// ***
 	Instance pulumi.StringInput
 	// A unique identifier for the instance partition, which cannot be changed after
 	// the instance partition is created. The name must be between 2 and 64 characters
@@ -381,8 +371,6 @@ func (o InstancePartitionOutput) DisplayName() pulumi.StringOutput {
 }
 
 // The instance to create the instance partition in.
-//
-// ***
 func (o InstancePartitionOutput) Instance() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstancePartition) pulumi.StringOutput { return v.Instance }).(pulumi.StringOutput)
 }

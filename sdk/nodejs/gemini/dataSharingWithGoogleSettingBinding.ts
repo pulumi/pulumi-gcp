@@ -131,9 +131,6 @@ export class DataSharingWithGoogleSettingBinding extends pulumi.CustomResource {
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Required. Id of the setting binding.
-     *
-     *
-     * - - -
      */
     public readonly settingBindingId!: pulumi.Output<string>;
     /**
@@ -248,9 +245,6 @@ export interface DataSharingWithGoogleSettingBindingState {
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Required. Id of the setting binding.
-     *
-     *
-     * - - -
      */
     settingBindingId?: pulumi.Input<string>;
     /**
@@ -292,9 +286,6 @@ export interface DataSharingWithGoogleSettingBindingArgs {
     project?: pulumi.Input<string>;
     /**
      * Required. Id of the setting binding.
-     *
-     *
-     * - - -
      */
     settingBindingId: pulumi.Input<string>;
     /**

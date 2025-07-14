@@ -257,16 +257,12 @@ public class Namespace extends com.pulumi.resources.CustomResource {
     /**
      * Id of the scope
      * 
-     * ***
-     * 
      */
     @Export(name="scopeId", refs={String.class}, tree="[0]")
     private Output<String> scopeId;
 
     /**
      * @return Id of the scope
-     * 
-     * ***
      * 
      */
     public Output<String> scopeId() {

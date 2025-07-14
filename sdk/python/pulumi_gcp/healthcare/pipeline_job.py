@@ -33,9 +33,6 @@ class PipelineJobArgs:
         """
         The set of arguments for constructing a PipelineJob resource.
         :param pulumi.Input[builtins.str] dataset: Healthcare Dataset under which the Pipeline Job is to run
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: Location where the Pipeline Job is to run
         :param pulumi.Input['PipelineJobBackfillPipelineJobArgs'] backfill_pipeline_job: Specifies the backfill configuration.
                Structure is documented below.
@@ -79,9 +76,6 @@ class PipelineJobArgs:
     def dataset(self) -> pulumi.Input[builtins.str]:
         """
         Healthcare Dataset under which the Pipeline Job is to run
-
-
-        - - -
         """
         return pulumi.get(self, "dataset")
 
@@ -208,9 +202,6 @@ class _PipelineJobState:
         :param pulumi.Input['PipelineJobBackfillPipelineJobArgs'] backfill_pipeline_job: Specifies the backfill configuration.
                Structure is documented below.
         :param pulumi.Input[builtins.str] dataset: Healthcare Dataset under which the Pipeline Job is to run
-               
-               
-               - - -
         :param pulumi.Input[builtins.bool] disable_lineage: If true, disables writing lineage for the pipeline.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: User-supplied key-value pairs used to organize Pipeline Jobs.
@@ -277,9 +268,6 @@ class _PipelineJobState:
     def dataset(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Healthcare Dataset under which the Pipeline Job is to run
-
-
-        - - -
         """
         return pulumi.get(self, "dataset")
 
@@ -701,9 +689,6 @@ class PipelineJob(pulumi.CustomResource):
         :param pulumi.Input[Union['PipelineJobBackfillPipelineJobArgs', 'PipelineJobBackfillPipelineJobArgsDict']] backfill_pipeline_job: Specifies the backfill configuration.
                Structure is documented below.
         :param pulumi.Input[builtins.str] dataset: Healthcare Dataset under which the Pipeline Job is to run
-               
-               
-               - - -
         :param pulumi.Input[builtins.bool] disable_lineage: If true, disables writing lineage for the pipeline.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: User-supplied key-value pairs used to organize Pipeline Jobs.
                Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
@@ -1081,9 +1066,6 @@ class PipelineJob(pulumi.CustomResource):
         :param pulumi.Input[Union['PipelineJobBackfillPipelineJobArgs', 'PipelineJobBackfillPipelineJobArgsDict']] backfill_pipeline_job: Specifies the backfill configuration.
                Structure is documented below.
         :param pulumi.Input[builtins.str] dataset: Healthcare Dataset under which the Pipeline Job is to run
-               
-               
-               - - -
         :param pulumi.Input[builtins.bool] disable_lineage: If true, disables writing lineage for the pipeline.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: User-supplied key-value pairs used to organize Pipeline Jobs.
@@ -1140,9 +1122,6 @@ class PipelineJob(pulumi.CustomResource):
     def dataset(self) -> pulumi.Output[builtins.str]:
         """
         Healthcare Dataset under which the Pipeline Job is to run
-
-
-        - - -
         """
         return pulumi.get(self, "dataset")
 

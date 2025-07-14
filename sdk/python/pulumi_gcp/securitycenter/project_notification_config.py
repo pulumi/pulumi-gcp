@@ -35,6 +35,8 @@ class ProjectNotificationConfigArgs:
         :param pulumi.Input['ProjectNotificationConfigStreamingConfigArgs'] streaming_config: The config for triggering streaming-based notifications.
                Structure is documented below.
         :param pulumi.Input[builtins.str] description: The description of the notification config (max of 1024 characters).
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "config_id", config_id)
         pulumi.set(__self__, "pubsub_topic", pubsub_topic)
@@ -97,6 +99,10 @@ class ProjectNotificationConfigArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -120,6 +126,8 @@ class _ProjectNotificationConfigState:
         :param pulumi.Input[builtins.str] description: The description of the notification config (max of 1024 characters).
         :param pulumi.Input[builtins.str] name: The resource name of this notification config, in the format
                `projects/{{projectId}}/notificationConfigs/{{config_id}}`.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] pubsub_topic: The Pub/Sub topic to send notifications to. Its format is
                "projects/[project_id]/topics/[topic]".
         :param pulumi.Input[builtins.str] service_account: The service account that needs "pubsub.topics.publish" permission to
@@ -182,6 +190,10 @@ class _ProjectNotificationConfigState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -290,6 +302,8 @@ class ProjectNotificationConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] config_id: This must be unique within the organization.
         :param pulumi.Input[builtins.str] description: The description of the notification config (max of 1024 characters).
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] pubsub_topic: The Pub/Sub topic to send notifications to. Its format is
                "projects/[project_id]/topics/[topic]".
         :param pulumi.Input[Union['ProjectNotificationConfigStreamingConfigArgs', 'ProjectNotificationConfigStreamingConfigArgsDict']] streaming_config: The config for triggering streaming-based notifications.
@@ -417,6 +431,8 @@ class ProjectNotificationConfig(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] description: The description of the notification config (max of 1024 characters).
         :param pulumi.Input[builtins.str] name: The resource name of this notification config, in the format
                `projects/{{projectId}}/notificationConfigs/{{config_id}}`.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] pubsub_topic: The Pub/Sub topic to send notifications to. Its format is
                "projects/[project_id]/topics/[topic]".
         :param pulumi.Input[builtins.str] service_account: The service account that needs "pubsub.topics.publish" permission to
@@ -465,6 +481,10 @@ class ProjectNotificationConfig(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property

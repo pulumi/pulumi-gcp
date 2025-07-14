@@ -29,9 +29,6 @@ class LogViewArgs:
         """
         The set of arguments for constructing a LogView resource.
         :param pulumi.Input[builtins.str] bucket: The bucket of the resource
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] description: Describes this view.
         :param pulumi.Input[builtins.str] filter: Filter that restricts which log entries in a bucket are visible in this view. Filters are restricted to be a logical AND of ==/!= of any of the following: - originating project/folder/organization/billing account. - resource type - log id For example: SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
         :param pulumi.Input[builtins.str] location: The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.
@@ -55,9 +52,6 @@ class LogViewArgs:
     def bucket(self) -> pulumi.Input[builtins.str]:
         """
         The bucket of the resource
-
-
-        - - -
         """
         return pulumi.get(self, "bucket")
 
@@ -140,9 +134,6 @@ class _LogViewState:
         """
         Input properties used for looking up and filtering LogView resources.
         :param pulumi.Input[builtins.str] bucket: The bucket of the resource
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] create_time: Output only. The creation timestamp of the view.
         :param pulumi.Input[builtins.str] description: Describes this view.
         :param pulumi.Input[builtins.str] filter: Filter that restricts which log entries in a bucket are visible in this view. Filters are restricted to be a logical AND of ==/!= of any of the following: - originating project/folder/organization/billing account. - resource type - log id For example: SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
@@ -173,9 +164,6 @@ class _LogViewState:
     def bucket(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The bucket of the resource
-
-
-        - - -
         """
         return pulumi.get(self, "bucket")
 
@@ -325,9 +313,6 @@ class LogView(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] bucket: The bucket of the resource
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] description: Describes this view.
         :param pulumi.Input[builtins.str] filter: Filter that restricts which log entries in a bucket are visible in this view. Filters are restricted to be a logical AND of ==/!= of any of the following: - originating project/folder/organization/billing account. - resource type - log id For example: SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
         :param pulumi.Input[builtins.str] location: The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.
@@ -447,9 +432,6 @@ class LogView(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] bucket: The bucket of the resource
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] create_time: Output only. The creation timestamp of the view.
         :param pulumi.Input[builtins.str] description: Describes this view.
         :param pulumi.Input[builtins.str] filter: Filter that restricts which log entries in a bucket are visible in this view. Filters are restricted to be a logical AND of ==/!= of any of the following: - originating project/folder/organization/billing account. - resource type - log id For example: SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
@@ -477,9 +459,6 @@ class LogView(pulumi.CustomResource):
     def bucket(self) -> pulumi.Output[builtins.str]:
         """
         The bucket of the resource
-
-
-        - - -
         """
         return pulumi.get(self, "bucket")
 

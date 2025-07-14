@@ -351,16 +351,12 @@ public class AiFeatureOnlineStore extends com.pulumi.resources.CustomResource {
     /**
      * The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

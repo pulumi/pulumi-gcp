@@ -174,8 +174,6 @@ type Intent struct {
 	// Each value may be one of: `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, `GOOGLE_HANGOUTS`.
 	DefaultResponsePlatforms pulumi.StringArrayOutput `pulumi:"defaultResponsePlatforms"`
 	// The name of this intent to be displayed on the console.
-	//
-	// ***
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of
 	// the contexts must be present in the active user session for an event to trigger this intent. See the
@@ -263,8 +261,6 @@ type intentState struct {
 	// Each value may be one of: `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, `GOOGLE_HANGOUTS`.
 	DefaultResponsePlatforms []string `pulumi:"defaultResponsePlatforms"`
 	// The name of this intent to be displayed on the console.
-	//
-	// ***
 	DisplayName *string `pulumi:"displayName"`
 	// The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of
 	// the contexts must be present in the active user session for an event to trigger this intent. See the
@@ -320,8 +316,6 @@ type IntentState struct {
 	// Each value may be one of: `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, `GOOGLE_HANGOUTS`.
 	DefaultResponsePlatforms pulumi.StringArrayInput
 	// The name of this intent to be displayed on the console.
-	//
-	// ***
 	DisplayName pulumi.StringPtrInput
 	// The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of
 	// the contexts must be present in the active user session for an event to trigger this intent. See the
@@ -381,8 +375,6 @@ type intentArgs struct {
 	// Each value may be one of: `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, `GOOGLE_HANGOUTS`.
 	DefaultResponsePlatforms []string `pulumi:"defaultResponsePlatforms"`
 	// The name of this intent to be displayed on the console.
-	//
-	// ***
 	DisplayName string `pulumi:"displayName"`
 	// The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of
 	// the contexts must be present in the active user session for an event to trigger this intent. See the
@@ -428,8 +420,6 @@ type IntentArgs struct {
 	// Each value may be one of: `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, `GOOGLE_HANGOUTS`.
 	DefaultResponsePlatforms pulumi.StringArrayInput
 	// The name of this intent to be displayed on the console.
-	//
-	// ***
 	DisplayName pulumi.StringInput
 	// The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of
 	// the contexts must be present in the active user session for an event to trigger this intent. See the
@@ -566,8 +556,6 @@ func (o IntentOutput) DefaultResponsePlatforms() pulumi.StringArrayOutput {
 }
 
 // The name of this intent to be displayed on the console.
-//
-// ***
 func (o IntentOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Intent) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }

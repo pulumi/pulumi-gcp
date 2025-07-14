@@ -29,9 +29,6 @@ class V2QueuedResourceArgs:
         """
         The set of arguments for constructing a V2QueuedResource resource.
         :param pulumi.Input[builtins.str] name: The immutable name of the Queued Resource.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['V2QueuedResourceTpuArgs'] tpu: Defines a TPU resource.
@@ -52,9 +49,6 @@ class V2QueuedResourceArgs:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The immutable name of the Queued Resource.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -111,9 +105,6 @@ class _V2QueuedResourceState:
         """
         Input properties used for looking up and filtering V2QueuedResource resources.
         :param pulumi.Input[builtins.str] name: The immutable name of the Queued Resource.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['V2QueuedResourceTpuArgs'] tpu: Defines a TPU resource.
@@ -134,9 +125,6 @@ class _V2QueuedResourceState:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The immutable name of the Queued Resource.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -290,9 +278,6 @@ class V2QueuedResource(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] name: The immutable name of the Queued Resource.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Union['V2QueuedResourceTpuArgs', 'V2QueuedResourceTpuArgsDict']] tpu: Defines a TPU resource.
@@ -452,9 +437,6 @@ class V2QueuedResource(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] name: The immutable name of the Queued Resource.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Union['V2QueuedResourceTpuArgs', 'V2QueuedResourceTpuArgsDict']] tpu: Defines a TPU resource.
@@ -476,9 +458,6 @@ class V2QueuedResource(pulumi.CustomResource):
     def name(self) -> pulumi.Output[builtins.str]:
         """
         The immutable name of the Queued Resource.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

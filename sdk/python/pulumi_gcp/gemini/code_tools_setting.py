@@ -32,10 +32,12 @@ class CodeToolsSettingArgs:
         :param pulumi.Input[builtins.str] code_tools_setting_id: Id of the Code Tools Setting.
         :param pulumi.Input[Sequence[pulumi.Input['CodeToolsSettingEnabledToolArgs']]] enabled_tools: Represents the full set of enabled tools.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present in your
-               configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
-        :param pulumi.Input[builtins.str] location: Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in
-               https://google.aip.dev/122.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels as key value pairs.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "code_tools_setting_id", code_tools_setting_id)
         pulumi.set(__self__, "enabled_tools", enabled_tools)
@@ -75,8 +77,9 @@ class CodeToolsSettingArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present in your
-        configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        Labels as key value pairs.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -88,8 +91,7 @@ class CodeToolsSettingArgs:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in
-        https://google.aip.dev/122.
+        Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         """
         return pulumi.get(self, "location")
 
@@ -100,6 +102,10 @@ class CodeToolsSettingArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -127,12 +133,14 @@ class _CodeToolsSettingState:
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input['CodeToolsSettingEnabledToolArgs']]] enabled_tools: Represents the full set of enabled tools.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present in your
-               configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
-        :param pulumi.Input[builtins.str] location: Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in
-               https://google.aip.dev/122.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels as key value pairs.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[builtins.str] name: Identifier. Name of the resource.
                Format:projects/{project}/locations/{location}/codeToolsSettings/{codeToolsSetting}
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[builtins.str] update_time: Update time stamp.
@@ -211,8 +219,9 @@ class _CodeToolsSettingState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present in your
-        configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        Labels as key value pairs.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -224,8 +233,7 @@ class _CodeToolsSettingState:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in
-        https://google.aip.dev/122.
+        Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         """
         return pulumi.get(self, "location")
 
@@ -249,6 +257,10 @@ class _CodeToolsSettingState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -351,10 +363,12 @@ class CodeToolsSetting(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] code_tools_setting_id: Id of the Code Tools Setting.
         :param pulumi.Input[Sequence[pulumi.Input[Union['CodeToolsSettingEnabledToolArgs', 'CodeToolsSettingEnabledToolArgsDict']]]] enabled_tools: Represents the full set of enabled tools.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present in your
-               configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
-        :param pulumi.Input[builtins.str] location: Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in
-               https://google.aip.dev/122.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels as key value pairs.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         ...
     @overload
@@ -492,12 +506,14 @@ class CodeToolsSetting(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[Union['CodeToolsSettingEnabledToolArgs', 'CodeToolsSettingEnabledToolArgsDict']]]] enabled_tools: Represents the full set of enabled tools.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present in your
-               configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
-        :param pulumi.Input[builtins.str] location: Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in
-               https://google.aip.dev/122.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels as key value pairs.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[builtins.str] name: Identifier. Name of the resource.
                Format:projects/{project}/locations/{location}/codeToolsSettings/{codeToolsSetting}
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[builtins.str] update_time: Update time stamp.
@@ -555,8 +571,9 @@ class CodeToolsSetting(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
         """
-        Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present in your
-        configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        Labels as key value pairs.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -564,8 +581,7 @@ class CodeToolsSetting(pulumi.CustomResource):
     @pulumi.getter
     def location(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in
-        https://google.aip.dev/122.
+        Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         """
         return pulumi.get(self, "location")
 
@@ -581,6 +597,10 @@ class CodeToolsSetting(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property

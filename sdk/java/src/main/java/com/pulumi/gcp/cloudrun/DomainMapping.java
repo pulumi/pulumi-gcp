@@ -135,6 +135,7 @@ public class DomainMapping extends com.pulumi.resources.CustomResource {
     }
     /**
      * Metadata associated with this DomainMapping.
+     * Structure is documented below.
      * 
      */
     @Export(name="metadata", refs={DomainMappingMetadata.class}, tree="[0]")
@@ -142,6 +143,7 @@ public class DomainMapping extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Metadata associated with this DomainMapping.
+     * Structure is documented below.
      * 
      */
     public Output<DomainMappingMetadata> metadata() {
@@ -161,9 +163,19 @@ public class DomainMapping extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }

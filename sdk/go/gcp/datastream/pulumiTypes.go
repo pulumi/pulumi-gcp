@@ -6416,8 +6416,6 @@ type StreamDestinationConfigBigqueryDestinationConfigBlmtConfig struct {
 	// The file format.
 	FileFormat string `pulumi:"fileFormat"`
 	// The root path inside the Cloud Storage bucket.
-	//
-	// ***
 	RootPath *string `pulumi:"rootPath"`
 	// The table format.
 	TableFormat string `pulumi:"tableFormat"`
@@ -6442,8 +6440,6 @@ type StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs struct {
 	// The file format.
 	FileFormat pulumi.StringInput `pulumi:"fileFormat"`
 	// The root path inside the Cloud Storage bucket.
-	//
-	// ***
 	RootPath pulumi.StringPtrInput `pulumi:"rootPath"`
 	// The table format.
 	TableFormat pulumi.StringInput `pulumi:"tableFormat"`
@@ -6542,8 +6538,6 @@ func (o StreamDestinationConfigBigqueryDestinationConfigBlmtConfigOutput) FileFo
 }
 
 // The root path inside the Cloud Storage bucket.
-//
-// ***
 func (o StreamDestinationConfigBigqueryDestinationConfigBlmtConfigOutput) RootPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamDestinationConfigBigqueryDestinationConfigBlmtConfig) *string { return v.RootPath }).(pulumi.StringPtrOutput)
 }
@@ -6608,8 +6602,6 @@ func (o StreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrOutput) Fil
 }
 
 // The root path inside the Cloud Storage bucket.
-//
-// ***
 func (o StreamDestinationConfigBigqueryDestinationConfigBlmtConfigPtrOutput) RootPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StreamDestinationConfigBigqueryDestinationConfigBlmtConfig) *string {
 		if v == nil {

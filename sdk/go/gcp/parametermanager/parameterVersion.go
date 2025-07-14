@@ -166,8 +166,6 @@ type ParameterVersion struct {
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	ParameterData pulumi.StringOutput `pulumi:"parameterData"`
 	// Version ID of the Parameter Version Resource. This must be unique within the Parameter.
-	//
-	// ***
 	ParameterVersionId pulumi.StringOutput `pulumi:"parameterVersionId"`
 	// The time at which the Parameter Version was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -235,8 +233,6 @@ type parameterVersionState struct {
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	ParameterData *string `pulumi:"parameterData"`
 	// Version ID of the Parameter Version Resource. This must be unique within the Parameter.
-	//
-	// ***
 	ParameterVersionId *string `pulumi:"parameterVersionId"`
 	// The time at which the Parameter Version was updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -259,8 +255,6 @@ type ParameterVersionState struct {
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	ParameterData pulumi.StringPtrInput
 	// Version ID of the Parameter Version Resource. This must be unique within the Parameter.
-	//
-	// ***
 	ParameterVersionId pulumi.StringPtrInput
 	// The time at which the Parameter Version was updated.
 	UpdateTime pulumi.StringPtrInput
@@ -279,8 +273,6 @@ type parameterVersionArgs struct {
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	ParameterData string `pulumi:"parameterData"`
 	// Version ID of the Parameter Version Resource. This must be unique within the Parameter.
-	//
-	// ***
 	ParameterVersionId string `pulumi:"parameterVersionId"`
 }
 
@@ -294,8 +286,6 @@ type ParameterVersionArgs struct {
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	ParameterData pulumi.StringInput
 	// Version ID of the Parameter Version Resource. This must be unique within the Parameter.
-	//
-	// ***
 	ParameterVersionId pulumi.StringInput
 }
 
@@ -420,8 +410,6 @@ func (o ParameterVersionOutput) ParameterData() pulumi.StringOutput {
 }
 
 // Version ID of the Parameter Version Resource. This must be unique within the Parameter.
-//
-// ***
 func (o ParameterVersionOutput) ParameterVersionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ParameterVersion) pulumi.StringOutput { return v.ParameterVersionId }).(pulumi.StringOutput)
 }

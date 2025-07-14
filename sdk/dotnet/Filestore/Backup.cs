@@ -146,9 +146,6 @@ namespace Pulumi.Gcp.Filestore
 
         /// <summary>
         /// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -292,9 +289,6 @@ namespace Pulumi.Gcp.Filestore
 
         /// <summary>
         /// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -416,9 +410,6 @@ namespace Pulumi.Gcp.Filestore
 
         /// <summary>
         /// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

@@ -178,8 +178,6 @@ type CxSecuritySettings struct {
 	// Format: projects/<Project ID>/locations/<Location ID>/deidentifyTemplates/<Template ID> OR organizations/<Organization ID>/locations/<Location ID>/deidentifyTemplates/<Template ID>
 	DeidentifyTemplate pulumi.StringPtrOutput `pulumi:"deidentifyTemplate"`
 	// The human-readable name of the security settings, unique within the location.
-	//
-	// ***
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Controls conversation exporting settings to Insights after conversation is completed.
 	// If retentionStrategy is set to REMOVE_AFTER_CONVERSATION, Insights export is disabled no matter what you configure here.
@@ -265,8 +263,6 @@ type cxSecuritySettingsState struct {
 	// Format: projects/<Project ID>/locations/<Location ID>/deidentifyTemplates/<Template ID> OR organizations/<Organization ID>/locations/<Location ID>/deidentifyTemplates/<Template ID>
 	DeidentifyTemplate *string `pulumi:"deidentifyTemplate"`
 	// The human-readable name of the security settings, unique within the location.
-	//
-	// ***
 	DisplayName *string `pulumi:"displayName"`
 	// Controls conversation exporting settings to Insights after conversation is completed.
 	// If retentionStrategy is set to REMOVE_AFTER_CONVERSATION, Insights export is disabled no matter what you configure here.
@@ -317,8 +313,6 @@ type CxSecuritySettingsState struct {
 	// Format: projects/<Project ID>/locations/<Location ID>/deidentifyTemplates/<Template ID> OR organizations/<Organization ID>/locations/<Location ID>/deidentifyTemplates/<Template ID>
 	DeidentifyTemplate pulumi.StringPtrInput
 	// The human-readable name of the security settings, unique within the location.
-	//
-	// ***
 	DisplayName pulumi.StringPtrInput
 	// Controls conversation exporting settings to Insights after conversation is completed.
 	// If retentionStrategy is set to REMOVE_AFTER_CONVERSATION, Insights export is disabled no matter what you configure here.
@@ -373,8 +367,6 @@ type cxSecuritySettingsArgs struct {
 	// Format: projects/<Project ID>/locations/<Location ID>/deidentifyTemplates/<Template ID> OR organizations/<Organization ID>/locations/<Location ID>/deidentifyTemplates/<Template ID>
 	DeidentifyTemplate *string `pulumi:"deidentifyTemplate"`
 	// The human-readable name of the security settings, unique within the location.
-	//
-	// ***
 	DisplayName string `pulumi:"displayName"`
 	// Controls conversation exporting settings to Insights after conversation is completed.
 	// If retentionStrategy is set to REMOVE_AFTER_CONVERSATION, Insights export is disabled no matter what you configure here.
@@ -423,8 +415,6 @@ type CxSecuritySettingsArgs struct {
 	// Format: projects/<Project ID>/locations/<Location ID>/deidentifyTemplates/<Template ID> OR organizations/<Organization ID>/locations/<Location ID>/deidentifyTemplates/<Template ID>
 	DeidentifyTemplate pulumi.StringPtrInput
 	// The human-readable name of the security settings, unique within the location.
-	//
-	// ***
 	DisplayName pulumi.StringInput
 	// Controls conversation exporting settings to Insights after conversation is completed.
 	// If retentionStrategy is set to REMOVE_AFTER_CONVERSATION, Insights export is disabled no matter what you configure here.
@@ -566,8 +556,6 @@ func (o CxSecuritySettingsOutput) DeidentifyTemplate() pulumi.StringPtrOutput {
 }
 
 // The human-readable name of the security settings, unique within the location.
-//
-// ***
 func (o CxSecuritySettingsOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *CxSecuritySettings) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }

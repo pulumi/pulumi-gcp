@@ -37,11 +37,13 @@ class ClusterArgs:
         :param pulumi.Input['ClusterGcpConfigArgs'] gcp_config: Configuration properties for a Kafka cluster deployed to Google Cloud Platform.
                Structure is documented below.
         :param pulumi.Input[builtins.str] location: ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-),
-               underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase
-               characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
-               configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input['ClusterRebalanceConfigArgs'] rebalance_config: Defines rebalancing behavior of a Kafka cluster.
+               Structure is documented below.
         """
         pulumi.set(__self__, "capacity_config", capacity_config)
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -108,10 +110,9 @@ class ClusterArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-),
-        underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase
-        characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
-        configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -122,6 +123,10 @@ class ClusterArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -133,6 +138,7 @@ class ClusterArgs:
     def rebalance_config(self) -> Optional[pulumi.Input['ClusterRebalanceConfigArgs']]:
         """
         Defines rebalancing behavior of a Kafka cluster.
+        Structure is documented below.
         """
         return pulumi.get(self, "rebalance_config")
 
@@ -166,15 +172,17 @@ class _ClusterState:
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input['ClusterGcpConfigArgs'] gcp_config: Configuration properties for a Kafka cluster deployed to Google Cloud Platform.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-),
-               underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase
-               characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
-               configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
         :param pulumi.Input[builtins.str] name: The name of the cluster. Structured like: `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID`.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input['ClusterRebalanceConfigArgs'] rebalance_config: Defines rebalancing behavior of a Kafka cluster.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] state: The current state of the cluster. Possible values: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`.
         :param pulumi.Input[builtins.str] update_time: The time when the cluster was last updated.
         """
@@ -271,10 +279,9 @@ class _ClusterState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-),
-        underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase
-        characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
-        configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -309,6 +316,10 @@ class _ClusterState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -333,6 +344,7 @@ class _ClusterState:
     def rebalance_config(self) -> Optional[pulumi.Input['ClusterRebalanceConfigArgs']]:
         """
         Defines rebalancing behavior of a Kafka cluster.
+        Structure is documented below.
         """
         return pulumi.get(self, "rebalance_config")
 
@@ -480,12 +492,14 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] cluster_id: The ID to use for the cluster, which will become the final component of the cluster's name. The ID must be 1-63 characters long, and match the regular expression `a-z?` to comply with RFC 1035. This value is structured like: `my-cluster-id`.
         :param pulumi.Input[Union['ClusterGcpConfigArgs', 'ClusterGcpConfigArgsDict']] gcp_config: Configuration properties for a Kafka cluster deployed to Google Cloud Platform.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-),
-               underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase
-               characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
-               configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Union['ClusterRebalanceConfigArgs', 'ClusterRebalanceConfigArgsDict']] rebalance_config: Defines rebalancing behavior of a Kafka cluster.
+               Structure is documented below.
         """
         ...
     @overload
@@ -678,15 +692,17 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Union['ClusterGcpConfigArgs', 'ClusterGcpConfigArgsDict']] gcp_config: Configuration properties for a Kafka cluster deployed to Google Cloud Platform.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-),
-               underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase
-               characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
-               configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
         :param pulumi.Input[builtins.str] name: The name of the cluster. Structured like: `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID`.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[Union['ClusterRebalanceConfigArgs', 'ClusterRebalanceConfigArgsDict']] rebalance_config: Defines rebalancing behavior of a Kafka cluster.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] state: The current state of the cluster. Possible values: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`.
         :param pulumi.Input[builtins.str] update_time: The time when the cluster was last updated.
         """
@@ -755,10 +771,9 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
         """
-        List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-),
-        underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase
-        characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
-        configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -781,6 +796,10 @@ class Cluster(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property
@@ -797,6 +816,7 @@ class Cluster(pulumi.CustomResource):
     def rebalance_config(self) -> pulumi.Output[Optional['outputs.ClusterRebalanceConfig']]:
         """
         Defines rebalancing behavior of a Kafka cluster.
+        Structure is documented below.
         """
         return pulumi.get(self, "rebalance_config")
 

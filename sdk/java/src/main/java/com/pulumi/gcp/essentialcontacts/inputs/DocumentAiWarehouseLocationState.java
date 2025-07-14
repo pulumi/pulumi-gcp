@@ -92,16 +92,12 @@ public final class DocumentAiWarehouseLocationState extends com.pulumi.resources
     /**
      * The location in which the instance is to be provisioned. It takes the form projects/{projectNumber}/locations/{location}.
      * 
-     * ***
-     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
      * @return The location in which the instance is to be provisioned. It takes the form projects/{projectNumber}/locations/{location}.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> location() {
@@ -253,8 +249,6 @@ public final class DocumentAiWarehouseLocationState extends com.pulumi.resources
         /**
          * @param location The location in which the instance is to be provisioned. It takes the form projects/{projectNumber}/locations/{location}.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -265,8 +259,6 @@ public final class DocumentAiWarehouseLocationState extends com.pulumi.resources
 
         /**
          * @param location The location in which the instance is to be provisioned. It takes the form projects/{projectNumber}/locations/{location}.
-         * 
-         * ***
          * 
          * @return builder
          * 

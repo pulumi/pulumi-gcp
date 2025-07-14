@@ -287,8 +287,6 @@ type TargetInstance struct {
 	// name is given, the zone will default to the given zone or
 	// the provider-default zone and the project will default to the
 	// provider-level project.
-	//
-	// ***
 	Instance pulumi.StringOutput `pulumi:"instance"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -359,8 +357,6 @@ type targetInstanceState struct {
 	// name is given, the zone will default to the given zone or
 	// the provider-default zone and the project will default to the
 	// provider-level project.
-	//
-	// ***
 	Instance *string `pulumi:"instance"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -399,8 +395,6 @@ type TargetInstanceState struct {
 	// name is given, the zone will default to the given zone or
 	// the provider-default zone and the project will default to the
 	// provider-level project.
-	//
-	// ***
 	Instance pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -441,8 +435,6 @@ type targetInstanceArgs struct {
 	// name is given, the zone will default to the given zone or
 	// the provider-default zone and the project will default to the
 	// provider-level project.
-	//
-	// ***
 	Instance string `pulumi:"instance"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -478,8 +470,6 @@ type TargetInstanceArgs struct {
 	// name is given, the zone will default to the given zone or
 	// the provider-default zone and the project will default to the
 	// provider-level project.
-	//
-	// ***
 	Instance pulumi.StringInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -608,8 +598,6 @@ func (o TargetInstanceOutput) Description() pulumi.StringPtrOutput {
 // name is given, the zone will default to the given zone or
 // the provider-default zone and the project will default to the
 // provider-level project.
-//
-// ***
 func (o TargetInstanceOutput) Instance() pulumi.StringOutput {
 	return o.ApplyT(func(v *TargetInstance) pulumi.StringOutput { return v.Instance }).(pulumi.StringOutput)
 }

@@ -246,8 +246,6 @@ public final class DataConnectServiceState extends com.pulumi.resources.Resource
      * Required. The ID to use for the service, which will become the final component of the
      * service&#39;s resource name.
      * 
-     * ***
-     * 
      */
     @Import(name="serviceId")
     private @Nullable Output<String> serviceId;
@@ -255,8 +253,6 @@ public final class DataConnectServiceState extends com.pulumi.resources.Resource
     /**
      * @return Required. The ID to use for the service, which will become the final component of the
      * service&#39;s resource name.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> serviceId() {
@@ -635,8 +631,6 @@ public final class DataConnectServiceState extends com.pulumi.resources.Resource
          * @param serviceId Required. The ID to use for the service, which will become the final component of the
          * service&#39;s resource name.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -648,8 +642,6 @@ public final class DataConnectServiceState extends com.pulumi.resources.Resource
         /**
          * @param serviceId Required. The ID to use for the service, which will become the final component of the
          * service&#39;s resource name.
-         * 
-         * ***
          * 
          * @return builder
          * 

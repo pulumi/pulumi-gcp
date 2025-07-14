@@ -87,24 +87,21 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> AutoCreatedReservationsDeleteTime { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the duration of auto-created reservations. It represents relative time to future reservation startTime when
-        /// auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count
-        /// of seconds and fractions of seconds at nanosecond resolution.
+        /// Specifies the duration of auto-created reservations. It represents relative time to future reservation startTime when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
+        /// Structure is documented below.
         /// </summary>
         [Output("autoCreatedReservationsDuration")]
         public Output<Outputs.FutureReservationAutoCreatedReservationsDuration?> AutoCreatedReservationsDuration { get; private set; } = null!;
 
         /// <summary>
-        /// Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created
-        /// reservations will be deleted at Future Reservation's end time (default) or at user's defined timestamp if any of the
-        /// [autoCreatedReservationsDeleteTime, autoCreatedReservationsDuration] values is specified. For keeping auto-created
-        /// reservation indefinitely, this value should be set to false.
+        /// Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created reservations will be deleted at Future Reservation's end time (default) or at user's defined timestamp if any of the [autoCreatedReservationsDeleteTime, autoCreatedReservationsDuration] values is specified. For keeping auto-created reservation indefinitely, this value should be set to false.
         /// </summary>
         [Output("autoDeleteAutoCreatedReservations")]
         public Output<bool?> AutoDeleteAutoCreatedReservations { get; private set; } = null!;
 
         /// <summary>
         /// If not present, then FR will not deliver a new commitment or update an existing commitment.
+        /// Structure is documented below.
         /// </summary>
         [Output("commitmentInfo")]
         public Output<Outputs.FutureReservationCommitmentInfo?> CommitmentInfo { get; private set; } = null!;
@@ -116,13 +113,14 @@ namespace Pulumi.Gcp.Compute
         public Output<string> CreationTimestamp { get; private set; } = null!;
 
         /// <summary>
-        /// Type of the deployment requested as part of future reservation. Possible values: ["DENSE", "FLEXIBLE"]
+        /// Type of the deployment requested as part of future reservation.
+        /// Possible values are: `DENSE`, `FLEXIBLE`.
         /// </summary>
         [Output("deploymentType")]
         public Output<string?> DeploymentType { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the FutureReservation before an amendment was requested.
+        /// An optional description of this resource.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -140,40 +138,41 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The name prefix of the Future Reservation before an amendment was requested.
+        /// Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
         /// </summary>
         [Output("namePrefix")]
         public Output<string?> NamePrefix { get; private set; } = null!;
 
         /// <summary>
-        /// Planning state before being submitted for evaluation Possible values: ["DRAFT", "SUBMITTED"]
+        /// Planning state before being submitted for evaluation
+        /// Possible values are: `DRAFT`, `SUBMITTED`.
         /// </summary>
         [Output("planningStatus")]
         public Output<string> PlanningStatus { get; private set; } = null!;
 
         /// <summary>
-        /// (Required) The identifier for this object. Format specified above.
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The reservation mode which determines reservation-termination behavior and expected pricing. Possible values:
-        /// ["CALENDAR", "DEFAULT"]
+        /// The reservation mode which determines reservation-termination behavior and expected pricing.
+        /// Possible values are: `CALENDAR`, `DEFAULT`.
         /// </summary>
         [Output("reservationMode")]
         public Output<string?> ReservationMode { get; private set; } = null!;
 
         /// <summary>
-        /// Name of reservations where the capacity is provisioned at the time of delivery of future reservations. If the
-        /// reservation with the given name does not exist already, it is created automatically at the time of Approval with
-        /// INACTIVE state till specified start-time. Either provide the reservationName or a namePrefix.
+        /// Name of reservations where the capacity is provisioned at the time of delivery of future reservations. If the reservation with the given name does not exist already, it is created automatically at the time of Approval with INACTIVE state till specified start-time. Either provide the reservationName or a namePrefix.
         /// </summary>
         [Output("reservationName")]
         public Output<string?> ReservationName { get; private set; } = null!;
 
         /// <summary>
-        /// Maintenance information for this reservation Possible values: ["GROUPED", "INDEPENDENT"]
+        /// Maintenance information for this reservation
+        /// Possible values are: `GROUPED`, `INDEPENDENT`.
         /// </summary>
         [Output("schedulingType")]
         public Output<string?> SchedulingType { get; private set; } = null!;
@@ -191,21 +190,20 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SelfLinkWithId { get; private set; } = null!;
 
         /// <summary>
-        /// The previous share settings of the Future Reservation.
+        /// Settings for sharing the future reservation
         /// Structure is documented below.
         /// </summary>
         [Output("shareSettings")]
         public Output<Outputs.FutureReservationShareSettings?> ShareSettings { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether the auto-created reservation can be consumed by VMs with affinity for "any" reservation. If the field
-        /// is set, then only VMs that target the reservation by name can consume from the delivered reservation.
+        /// Indicates whether the auto-created reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from the delivered reservation.
         /// </summary>
         [Output("specificReservationRequired")]
         public Output<bool?> SpecificReservationRequired { get; private set; } = null!;
 
         /// <summary>
-        /// The previous instance related properties of the Future Reservation.
+        /// Future Reservation configuration to indicate instance properties and total count.
         /// Structure is documented below.
         /// </summary>
         [Output("specificSkuProperties")]
@@ -284,36 +282,34 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? AutoCreatedReservationsDeleteTime { get; set; }
 
         /// <summary>
-        /// Specifies the duration of auto-created reservations. It represents relative time to future reservation startTime when
-        /// auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count
-        /// of seconds and fractions of seconds at nanosecond resolution.
+        /// Specifies the duration of auto-created reservations. It represents relative time to future reservation startTime when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
+        /// Structure is documented below.
         /// </summary>
         [Input("autoCreatedReservationsDuration")]
         public Input<Inputs.FutureReservationAutoCreatedReservationsDurationArgs>? AutoCreatedReservationsDuration { get; set; }
 
         /// <summary>
-        /// Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created
-        /// reservations will be deleted at Future Reservation's end time (default) or at user's defined timestamp if any of the
-        /// [autoCreatedReservationsDeleteTime, autoCreatedReservationsDuration] values is specified. For keeping auto-created
-        /// reservation indefinitely, this value should be set to false.
+        /// Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created reservations will be deleted at Future Reservation's end time (default) or at user's defined timestamp if any of the [autoCreatedReservationsDeleteTime, autoCreatedReservationsDuration] values is specified. For keeping auto-created reservation indefinitely, this value should be set to false.
         /// </summary>
         [Input("autoDeleteAutoCreatedReservations")]
         public Input<bool>? AutoDeleteAutoCreatedReservations { get; set; }
 
         /// <summary>
         /// If not present, then FR will not deliver a new commitment or update an existing commitment.
+        /// Structure is documented below.
         /// </summary>
         [Input("commitmentInfo")]
         public Input<Inputs.FutureReservationCommitmentInfoArgs>? CommitmentInfo { get; set; }
 
         /// <summary>
-        /// Type of the deployment requested as part of future reservation. Possible values: ["DENSE", "FLEXIBLE"]
+        /// Type of the deployment requested as part of future reservation.
+        /// Possible values are: `DENSE`, `FLEXIBLE`.
         /// </summary>
         [Input("deploymentType")]
         public Input<string>? DeploymentType { get; set; }
 
         /// <summary>
-        /// The description of the FutureReservation before an amendment was requested.
+        /// An optional description of this resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -331,60 +327,60 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The name prefix of the Future Reservation before an amendment was requested.
+        /// Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
         /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
 
         /// <summary>
-        /// Planning state before being submitted for evaluation Possible values: ["DRAFT", "SUBMITTED"]
+        /// Planning state before being submitted for evaluation
+        /// Possible values are: `DRAFT`, `SUBMITTED`.
         /// </summary>
         [Input("planningStatus")]
         public Input<string>? PlanningStatus { get; set; }
 
         /// <summary>
-        /// (Required) The identifier for this object. Format specified above.
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The reservation mode which determines reservation-termination behavior and expected pricing. Possible values:
-        /// ["CALENDAR", "DEFAULT"]
+        /// The reservation mode which determines reservation-termination behavior and expected pricing.
+        /// Possible values are: `CALENDAR`, `DEFAULT`.
         /// </summary>
         [Input("reservationMode")]
         public Input<string>? ReservationMode { get; set; }
 
         /// <summary>
-        /// Name of reservations where the capacity is provisioned at the time of delivery of future reservations. If the
-        /// reservation with the given name does not exist already, it is created automatically at the time of Approval with
-        /// INACTIVE state till specified start-time. Either provide the reservationName or a namePrefix.
+        /// Name of reservations where the capacity is provisioned at the time of delivery of future reservations. If the reservation with the given name does not exist already, it is created automatically at the time of Approval with INACTIVE state till specified start-time. Either provide the reservationName or a namePrefix.
         /// </summary>
         [Input("reservationName")]
         public Input<string>? ReservationName { get; set; }
 
         /// <summary>
-        /// Maintenance information for this reservation Possible values: ["GROUPED", "INDEPENDENT"]
+        /// Maintenance information for this reservation
+        /// Possible values are: `GROUPED`, `INDEPENDENT`.
         /// </summary>
         [Input("schedulingType")]
         public Input<string>? SchedulingType { get; set; }
 
         /// <summary>
-        /// The previous share settings of the Future Reservation.
+        /// Settings for sharing the future reservation
         /// Structure is documented below.
         /// </summary>
         [Input("shareSettings")]
         public Input<Inputs.FutureReservationShareSettingsArgs>? ShareSettings { get; set; }
 
         /// <summary>
-        /// Indicates whether the auto-created reservation can be consumed by VMs with affinity for "any" reservation. If the field
-        /// is set, then only VMs that target the reservation by name can consume from the delivered reservation.
+        /// Indicates whether the auto-created reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from the delivered reservation.
         /// </summary>
         [Input("specificReservationRequired")]
         public Input<bool>? SpecificReservationRequired { get; set; }
 
         /// <summary>
-        /// The previous instance related properties of the Future Reservation.
+        /// Future Reservation configuration to indicate instance properties and total count.
         /// Structure is documented below.
         /// </summary>
         [Input("specificSkuProperties")]
@@ -412,24 +408,21 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? AutoCreatedReservationsDeleteTime { get; set; }
 
         /// <summary>
-        /// Specifies the duration of auto-created reservations. It represents relative time to future reservation startTime when
-        /// auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count
-        /// of seconds and fractions of seconds at nanosecond resolution.
+        /// Specifies the duration of auto-created reservations. It represents relative time to future reservation startTime when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
+        /// Structure is documented below.
         /// </summary>
         [Input("autoCreatedReservationsDuration")]
         public Input<Inputs.FutureReservationAutoCreatedReservationsDurationGetArgs>? AutoCreatedReservationsDuration { get; set; }
 
         /// <summary>
-        /// Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created
-        /// reservations will be deleted at Future Reservation's end time (default) or at user's defined timestamp if any of the
-        /// [autoCreatedReservationsDeleteTime, autoCreatedReservationsDuration] values is specified. For keeping auto-created
-        /// reservation indefinitely, this value should be set to false.
+        /// Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created reservations will be deleted at Future Reservation's end time (default) or at user's defined timestamp if any of the [autoCreatedReservationsDeleteTime, autoCreatedReservationsDuration] values is specified. For keeping auto-created reservation indefinitely, this value should be set to false.
         /// </summary>
         [Input("autoDeleteAutoCreatedReservations")]
         public Input<bool>? AutoDeleteAutoCreatedReservations { get; set; }
 
         /// <summary>
         /// If not present, then FR will not deliver a new commitment or update an existing commitment.
+        /// Structure is documented below.
         /// </summary>
         [Input("commitmentInfo")]
         public Input<Inputs.FutureReservationCommitmentInfoGetArgs>? CommitmentInfo { get; set; }
@@ -441,13 +434,14 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? CreationTimestamp { get; set; }
 
         /// <summary>
-        /// Type of the deployment requested as part of future reservation. Possible values: ["DENSE", "FLEXIBLE"]
+        /// Type of the deployment requested as part of future reservation.
+        /// Possible values are: `DENSE`, `FLEXIBLE`.
         /// </summary>
         [Input("deploymentType")]
         public Input<string>? DeploymentType { get; set; }
 
         /// <summary>
-        /// The description of the FutureReservation before an amendment was requested.
+        /// An optional description of this resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -465,40 +459,41 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The name prefix of the Future Reservation before an amendment was requested.
+        /// Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
         /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
 
         /// <summary>
-        /// Planning state before being submitted for evaluation Possible values: ["DRAFT", "SUBMITTED"]
+        /// Planning state before being submitted for evaluation
+        /// Possible values are: `DRAFT`, `SUBMITTED`.
         /// </summary>
         [Input("planningStatus")]
         public Input<string>? PlanningStatus { get; set; }
 
         /// <summary>
-        /// (Required) The identifier for this object. Format specified above.
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The reservation mode which determines reservation-termination behavior and expected pricing. Possible values:
-        /// ["CALENDAR", "DEFAULT"]
+        /// The reservation mode which determines reservation-termination behavior and expected pricing.
+        /// Possible values are: `CALENDAR`, `DEFAULT`.
         /// </summary>
         [Input("reservationMode")]
         public Input<string>? ReservationMode { get; set; }
 
         /// <summary>
-        /// Name of reservations where the capacity is provisioned at the time of delivery of future reservations. If the
-        /// reservation with the given name does not exist already, it is created automatically at the time of Approval with
-        /// INACTIVE state till specified start-time. Either provide the reservationName or a namePrefix.
+        /// Name of reservations where the capacity is provisioned at the time of delivery of future reservations. If the reservation with the given name does not exist already, it is created automatically at the time of Approval with INACTIVE state till specified start-time. Either provide the reservationName or a namePrefix.
         /// </summary>
         [Input("reservationName")]
         public Input<string>? ReservationName { get; set; }
 
         /// <summary>
-        /// Maintenance information for this reservation Possible values: ["GROUPED", "INDEPENDENT"]
+        /// Maintenance information for this reservation
+        /// Possible values are: `GROUPED`, `INDEPENDENT`.
         /// </summary>
         [Input("schedulingType")]
         public Input<string>? SchedulingType { get; set; }
@@ -516,21 +511,20 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? SelfLinkWithId { get; set; }
 
         /// <summary>
-        /// The previous share settings of the Future Reservation.
+        /// Settings for sharing the future reservation
         /// Structure is documented below.
         /// </summary>
         [Input("shareSettings")]
         public Input<Inputs.FutureReservationShareSettingsGetArgs>? ShareSettings { get; set; }
 
         /// <summary>
-        /// Indicates whether the auto-created reservation can be consumed by VMs with affinity for "any" reservation. If the field
-        /// is set, then only VMs that target the reservation by name can consume from the delivered reservation.
+        /// Indicates whether the auto-created reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from the delivered reservation.
         /// </summary>
         [Input("specificReservationRequired")]
         public Input<bool>? SpecificReservationRequired { get; set; }
 
         /// <summary>
-        /// The previous instance related properties of the Future Reservation.
+        /// Future Reservation configuration to indicate instance properties and total count.
         /// Structure is documented below.
         /// </summary>
         [Input("specificSkuProperties")]

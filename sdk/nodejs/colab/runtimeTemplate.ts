@@ -203,9 +203,6 @@ export class RuntimeTemplate extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The location for the resource: https://cloud.google.com/colab/docs/locations
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -354,9 +351,6 @@ export interface RuntimeTemplateState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location for the resource: https://cloud.google.com/colab/docs/locations
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -439,9 +433,6 @@ export interface RuntimeTemplateArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location for the resource: https://cloud.google.com/colab/docs/locations
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

@@ -73,6 +73,10 @@ namespace Pulumi.Gcp.DataPlex.Outputs
         /// </summary>
         public readonly Outputs.DatascanDataQualitySpecRuleStatisticRangeExpectation? StatisticRangeExpectation;
         /// <summary>
+        /// Whether the Rule is active or suspended. Default = false.
+        /// </summary>
+        public readonly bool? Suspended;
+        /// <summary>
         /// Table rule which evaluates whether the provided expression is true.
         /// Structure is documented below.
         /// </summary>
@@ -112,6 +116,8 @@ namespace Pulumi.Gcp.DataPlex.Outputs
 
             Outputs.DatascanDataQualitySpecRuleStatisticRangeExpectation? statisticRangeExpectation,
 
+            bool? suspended,
+
             Outputs.DatascanDataQualitySpecRuleTableConditionExpectation? tableConditionExpectation,
 
             double? threshold,
@@ -130,6 +136,7 @@ namespace Pulumi.Gcp.DataPlex.Outputs
             SetExpectation = setExpectation;
             SqlAssertion = sqlAssertion;
             StatisticRangeExpectation = statisticRangeExpectation;
+            Suspended = suspended;
             TableConditionExpectation = tableConditionExpectation;
             Threshold = threshold;
             UniquenessExpectation = uniquenessExpectation;

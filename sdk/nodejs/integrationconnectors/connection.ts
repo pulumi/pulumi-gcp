@@ -415,9 +415,6 @@ export class Connection extends pulumi.CustomResource {
     public readonly logConfig!: pulumi.Output<outputs.integrationconnectors.ConnectionLogConfig | undefined>;
     /**
      * Name of Connection needs to be created.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -639,9 +636,6 @@ export interface ConnectionState {
     logConfig?: pulumi.Input<inputs.integrationconnectors.ConnectionLogConfig>;
     /**
      * Name of Connection needs to be created.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -753,9 +747,6 @@ export interface ConnectionArgs {
     logConfig?: pulumi.Input<inputs.integrationconnectors.ConnectionLogConfig>;
     /**
      * Name of Connection needs to be created.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

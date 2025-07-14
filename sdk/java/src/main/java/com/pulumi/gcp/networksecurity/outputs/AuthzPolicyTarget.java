@@ -22,8 +22,6 @@ public final class AuthzPolicyTarget {
     /**
      * @return A list of references to the Forwarding Rules on which this policy will be applied.
      * 
-     * ***
-     * 
      */
     private @Nullable List<String> resources;
 
@@ -39,8 +37,6 @@ public final class AuthzPolicyTarget {
     }
     /**
      * @return A list of references to the Forwarding Rules on which this policy will be applied.
-     * 
-     * ***
      * 
      */
     public List<String> resources() {

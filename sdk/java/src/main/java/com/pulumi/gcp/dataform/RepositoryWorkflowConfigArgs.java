@@ -99,16 +99,12 @@ public final class RepositoryWorkflowConfigArgs extends com.pulumi.resources.Res
     /**
      * The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*&#47;locations/*&#47;repositories/*&#47;releaseConfigs/*.
      * 
-     * ***
-     * 
      */
     @Import(name="releaseConfig", required=true)
     private Output<String> releaseConfig;
 
     /**
      * @return The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*&#47;locations/*&#47;repositories/*&#47;releaseConfigs/*.
-     * 
-     * ***
      * 
      */
     public Output<String> releaseConfig() {
@@ -288,8 +284,6 @@ public final class RepositoryWorkflowConfigArgs extends com.pulumi.resources.Res
         /**
          * @param releaseConfig The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*&#47;locations/*&#47;repositories/*&#47;releaseConfigs/*.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -300,8 +294,6 @@ public final class RepositoryWorkflowConfigArgs extends com.pulumi.resources.Res
 
         /**
          * @param releaseConfig The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*&#47;locations/*&#47;repositories/*&#47;releaseConfigs/*.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -32,9 +32,6 @@ class PublicDelegatedPrefixArgs:
         """
         The set of arguments for constructing a PublicDelegatedPrefix resource.
         :param pulumi.Input[builtins.str] ip_cidr_range: The IP address range, in CIDR format, represented by this public delegated prefix.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] parent_prefix: The URL of parent prefix. Either PublicAdvertisedPrefix or PublicDelegatedPrefix.
         :param pulumi.Input[builtins.str] region: A region where the prefix will reside.
         :param pulumi.Input[builtins.int] allocatable_prefix_length: The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
@@ -73,9 +70,6 @@ class PublicDelegatedPrefixArgs:
     def ip_cidr_range(self) -> pulumi.Input[builtins.str]:
         """
         The IP address range, in CIDR format, represented by this public delegated prefix.
-
-
-        - - -
         """
         return pulumi.get(self, "ip_cidr_range")
 
@@ -206,9 +200,6 @@ class _PublicDelegatedPrefixState:
         :param pulumi.Input[builtins.int] allocatable_prefix_length: The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
         :param pulumi.Input[builtins.str] ip_cidr_range: The IP address range, in CIDR format, represented by this public delegated prefix.
-               
-               
-               - - -
         :param pulumi.Input[builtins.bool] is_live_migration: If true, the prefix will be live migrated.
         :param pulumi.Input[builtins.str] mode: Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
                EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
@@ -275,9 +266,6 @@ class _PublicDelegatedPrefixState:
     def ip_cidr_range(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The IP address range, in CIDR format, represented by this public delegated prefix.
-
-
-        - - -
         """
         return pulumi.get(self, "ip_cidr_range")
 
@@ -514,9 +502,6 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
         :param pulumi.Input[builtins.int] allocatable_prefix_length: The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
         :param pulumi.Input[builtins.str] ip_cidr_range: The IP address range, in CIDR format, represented by this public delegated prefix.
-               
-               
-               - - -
         :param pulumi.Input[builtins.bool] is_live_migration: If true, the prefix will be live migrated.
         :param pulumi.Input[builtins.str] mode: Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
                EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
@@ -732,9 +717,6 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
         :param pulumi.Input[builtins.int] allocatable_prefix_length: The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
         :param pulumi.Input[builtins.str] ip_cidr_range: The IP address range, in CIDR format, represented by this public delegated prefix.
-               
-               
-               - - -
         :param pulumi.Input[builtins.bool] is_live_migration: If true, the prefix will be live migrated.
         :param pulumi.Input[builtins.str] mode: Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,
                EXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION.
@@ -788,9 +770,6 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
     def ip_cidr_range(self) -> pulumi.Output[builtins.str]:
         """
         The IP address range, in CIDR format, represented by this public delegated prefix.
-
-
-        - - -
         """
         return pulumi.get(self, "ip_cidr_range")
 

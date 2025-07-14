@@ -217,24 +217,29 @@ namespace Pulumi.Gcp.Container
     public partial class AttachedCluster : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
-        /// all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-        /// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-        /// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-        /// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-        /// 'effective_annotations' for all of the annotations present on the resource.
+        /// Optional. Annotations on the cluster. This field has the same
+        /// restrictions as Kubernetes annotations. The total size of all keys and
+        /// values combined is limited to 256k. Key can have 2 segments: prefix (optional)
+        /// and name (required), separated by a slash (/). Prefix must be a DNS subdomain.
+        /// Name must be 63 characters or less, begin and end with alphanumerics,
+        /// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
 
         /// <summary>
         /// Configuration related to the cluster RBAC settings.
+        /// Structure is documented below.
         /// </summary>
         [Output("authorization")]
         public Output<Outputs.AttachedClusterAuthorization?> Authorization { get; private set; } = null!;
 
         /// <summary>
         /// Binary Authorization configuration.
+        /// Structure is documented below.
         /// </summary>
         [Output("binaryAuthorization")]
         public Output<Outputs.AttachedClusterBinaryAuthorization> BinaryAuthorization { get; private set; } = null!;
@@ -260,7 +265,8 @@ namespace Pulumi.Gcp.Container
         public Output<string?> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
+        /// A human readable description of this attached cluster. Cannot be longer
+        /// than 255 UTF-8 encoded bytes.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -304,12 +310,14 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// Logging configuration.
+        /// Structure is documented below.
         /// </summary>
         [Output("loggingConfig")]
         public Output<Outputs.AttachedClusterLoggingConfig?> LoggingConfig { get; private set; } = null!;
 
         /// <summary>
         /// Monitoring configuration.
+        /// Structure is documented below.
         /// </summary>
         [Output("monitoringConfig")]
         public Output<Outputs.AttachedClusterMonitoringConfig> MonitoringConfig { get; private set; } = null!;
@@ -341,11 +349,16 @@ namespace Pulumi.Gcp.Container
         [Output("platformVersion")]
         public Output<string> PlatformVersion { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Support for proxy configuration.
+        /// Structure is documented below.
         /// </summary>
         [Output("proxyConfig")]
         public Output<Outputs.AttachedClusterProxyConfig?> ProxyConfig { get; private set; } = null!;
@@ -357,7 +370,11 @@ namespace Pulumi.Gcp.Container
         public Output<bool> Reconciling { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// Enable/Disable Security Posture API features for the cluster.
+        /// Structure is documented below.
+        /// 
+        /// &gt; **Warning:** `security_posture_config` is deprecated and will be removed in a future major release.
         /// </summary>
         [Output("securityPostureConfig")]
         public Output<Outputs.AttachedClusterSecurityPostureConfig> SecurityPostureConfig { get; private set; } = null!;
@@ -439,12 +456,15 @@ namespace Pulumi.Gcp.Container
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
-        /// all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-        /// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-        /// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-        /// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-        /// 'effective_annotations' for all of the annotations present on the resource.
+        /// Optional. Annotations on the cluster. This field has the same
+        /// restrictions as Kubernetes annotations. The total size of all keys and
+        /// values combined is limited to 256k. Key can have 2 segments: prefix (optional)
+        /// and name (required), separated by a slash (/). Prefix must be a DNS subdomain.
+        /// Name must be 63 characters or less, begin and end with alphanumerics,
+        /// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -454,12 +474,14 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// Configuration related to the cluster RBAC settings.
+        /// Structure is documented below.
         /// </summary>
         [Input("authorization")]
         public Input<Inputs.AttachedClusterAuthorizationArgs>? Authorization { get; set; }
 
         /// <summary>
         /// Binary Authorization configuration.
+        /// Structure is documented below.
         /// </summary>
         [Input("binaryAuthorization")]
         public Input<Inputs.AttachedClusterBinaryAuthorizationArgs>? BinaryAuthorization { get; set; }
@@ -471,7 +493,8 @@ namespace Pulumi.Gcp.Container
         public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
-        /// A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
+        /// A human readable description of this attached cluster. Cannot be longer
+        /// than 255 UTF-8 encoded bytes.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -499,12 +522,14 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// Logging configuration.
+        /// Structure is documented below.
         /// </summary>
         [Input("loggingConfig")]
         public Input<Inputs.AttachedClusterLoggingConfigArgs>? LoggingConfig { get; set; }
 
         /// <summary>
         /// Monitoring configuration.
+        /// Structure is documented below.
         /// </summary>
         [Input("monitoringConfig")]
         public Input<Inputs.AttachedClusterMonitoringConfigArgs>? MonitoringConfig { get; set; }
@@ -536,17 +561,26 @@ namespace Pulumi.Gcp.Container
         [Input("platformVersion", required: true)]
         public Input<string> PlatformVersion { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Support for proxy configuration.
+        /// Structure is documented below.
         /// </summary>
         [Input("proxyConfig")]
         public Input<Inputs.AttachedClusterProxyConfigArgs>? ProxyConfig { get; set; }
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// Enable/Disable Security Posture API features for the cluster.
+        /// Structure is documented below.
+        /// 
+        /// &gt; **Warning:** `security_posture_config` is deprecated and will be removed in a future major release.
         /// </summary>
         [Input("securityPostureConfig")]
         public Input<Inputs.AttachedClusterSecurityPostureConfigArgs>? SecurityPostureConfig { get; set; }
@@ -563,12 +597,15 @@ namespace Pulumi.Gcp.Container
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
-        /// all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-        /// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-        /// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-        /// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-        /// 'effective_annotations' for all of the annotations present on the resource.
+        /// Optional. Annotations on the cluster. This field has the same
+        /// restrictions as Kubernetes annotations. The total size of all keys and
+        /// values combined is limited to 256k. Key can have 2 segments: prefix (optional)
+        /// and name (required), separated by a slash (/). Prefix must be a DNS subdomain.
+        /// Name must be 63 characters or less, begin and end with alphanumerics,
+        /// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -578,12 +615,14 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// Configuration related to the cluster RBAC settings.
+        /// Structure is documented below.
         /// </summary>
         [Input("authorization")]
         public Input<Inputs.AttachedClusterAuthorizationGetArgs>? Authorization { get; set; }
 
         /// <summary>
         /// Binary Authorization configuration.
+        /// Structure is documented below.
         /// </summary>
         [Input("binaryAuthorization")]
         public Input<Inputs.AttachedClusterBinaryAuthorizationGetArgs>? BinaryAuthorization { get; set; }
@@ -609,7 +648,8 @@ namespace Pulumi.Gcp.Container
         public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
-        /// A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
+        /// A human readable description of this attached cluster. Cannot be longer
+        /// than 255 UTF-8 encoded bytes.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -664,12 +704,14 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// Logging configuration.
+        /// Structure is documented below.
         /// </summary>
         [Input("loggingConfig")]
         public Input<Inputs.AttachedClusterLoggingConfigGetArgs>? LoggingConfig { get; set; }
 
         /// <summary>
         /// Monitoring configuration.
+        /// Structure is documented below.
         /// </summary>
         [Input("monitoringConfig")]
         public Input<Inputs.AttachedClusterMonitoringConfigGetArgs>? MonitoringConfig { get; set; }
@@ -701,11 +743,16 @@ namespace Pulumi.Gcp.Container
         [Input("platformVersion")]
         public Input<string>? PlatformVersion { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Support for proxy configuration.
+        /// Structure is documented below.
         /// </summary>
         [Input("proxyConfig")]
         public Input<Inputs.AttachedClusterProxyConfigGetArgs>? ProxyConfig { get; set; }
@@ -717,7 +764,11 @@ namespace Pulumi.Gcp.Container
         public Input<bool>? Reconciling { get; set; }
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// Enable/Disable Security Posture API features for the cluster.
+        /// Structure is documented below.
+        /// 
+        /// &gt; **Warning:** `security_posture_config` is deprecated and will be removed in a future major release.
         /// </summary>
         [Input("securityPostureConfig")]
         public Input<Inputs.AttachedClusterSecurityPostureConfigGetArgs>? SecurityPostureConfig { get; set; }

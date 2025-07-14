@@ -359,8 +359,6 @@ class ReferenceListEntry(dict):
                  value: builtins.str):
         """
         :param builtins.str value: Required. The value of the entry. Maximum length is 512 characters.
-               
-               - - -
         """
         pulumi.set(__self__, "value", value)
 
@@ -369,8 +367,6 @@ class ReferenceListEntry(dict):
     def value(self) -> builtins.str:
         """
         Required. The value of the entry. Maximum length is 512 characters.
-
-        - - -
         """
         return pulumi.get(self, "value")
 
@@ -536,8 +532,6 @@ class RetrohuntProcessInterval(dict):
                  start_time: builtins.str):
         """
         :param builtins.str end_time: Exclusive end of the interval.
-               
-               - - -
         :param builtins.str start_time: Inclusive start of the interval.
         """
         pulumi.set(__self__, "end_time", end_time)
@@ -548,8 +542,6 @@ class RetrohuntProcessInterval(dict):
     def end_time(self) -> builtins.str:
         """
         Exclusive end of the interval.
-
-        - - -
         """
         return pulumi.get(self, "end_time")
 
@@ -800,8 +792,6 @@ class WatchlistEntityPopulationMechanism(dict):
                  manual: Optional['outputs.WatchlistEntityPopulationMechanismManual'] = None):
         """
         :param 'WatchlistEntityPopulationMechanismManualArgs' manual: Entities are added manually.
-               
-               - - -
         """
         if manual is not None:
             pulumi.set(__self__, "manual", manual)
@@ -811,8 +801,6 @@ class WatchlistEntityPopulationMechanism(dict):
     def manual(self) -> Optional['outputs.WatchlistEntityPopulationMechanismManual']:
         """
         Entities are added manually.
-
-        - - -
         """
         return pulumi.get(self, "manual")
 

@@ -116,8 +116,6 @@ public final class RegistrationContactSettingsRegistrantContactPostalAddressArgs
      * The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
      * it might contain &#34;care of&#34; information.
      * 
-     * ***
-     * 
      */
     @Import(name="recipients")
     private @Nullable Output<List<String>> recipients;
@@ -125,8 +123,6 @@ public final class RegistrationContactSettingsRegistrantContactPostalAddressArgs
     /**
      * @return The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
      * it might contain &#34;care of&#34; information.
-     * 
-     * ***
      * 
      */
     public Optional<Output<List<String>>> recipients() {
@@ -326,8 +322,6 @@ public final class RegistrationContactSettingsRegistrantContactPostalAddressArgs
          * @param recipients The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
          * it might contain &#34;care of&#34; information.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -340,8 +334,6 @@ public final class RegistrationContactSettingsRegistrantContactPostalAddressArgs
          * @param recipients The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
          * it might contain &#34;care of&#34; information.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -352,8 +344,6 @@ public final class RegistrationContactSettingsRegistrantContactPostalAddressArgs
         /**
          * @param recipients The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
          * it might contain &#34;care of&#34; information.
-         * 
-         * ***
          * 
          * @return builder
          * 

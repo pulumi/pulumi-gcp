@@ -56,24 +56,39 @@ class BareMetalClusterArgs:
                Structure is documented below.
         :param pulumi.Input['BareMetalClusterStorageArgs'] storage: Specifies the cluster storage configuration.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Annotations on the Bare Metal User Cluster. This field has the same restrictions as Kubernetes annotations. The total
-               size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-               separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-               alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-               non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-               'effective_annotations' for all of the annotations present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Annotations on the Bare Metal User Cluster.
+               This field has the same restrictions as Kubernetes annotations.
+               The total size of all keys and values combined is limited to 256k.
+               Key can have 2 segments: prefix (optional) and name (required),
+               separated by a slash (/).
+               Prefix must be a DNS subdomain.
+               Name must be 63 characters or less, begin and end with alphanumerics,
+               with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input['BareMetalClusterBinaryAuthorizationArgs'] binary_authorization: Binary Authorization related configurations.
+               Structure is documented below.
         :param pulumi.Input['BareMetalClusterClusterOperationsArgs'] cluster_operations: Specifies the User Cluster's observability infrastructure.
-        :param pulumi.Input[builtins.str] description: (Output)
-               The description of the validation check.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] description: A human readable description of this Bare Metal User Cluster.
         :param pulumi.Input['BareMetalClusterMaintenanceConfigArgs'] maintenance_config: Specifies the workload node configurations.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] name: The bare metal cluster name.
         :param pulumi.Input['BareMetalClusterNodeAccessConfigArgs'] node_access_config: Specifies the node access related settings for the bare metal user cluster.
+               Structure is documented below.
         :param pulumi.Input['BareMetalClusterNodeConfigArgs'] node_config: Specifies the workload node configurations.
+               Structure is documented below.
         :param pulumi.Input['BareMetalClusterOsEnvironmentConfigArgs'] os_environment_config: OS environment related configurations.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input['BareMetalClusterProxyArgs'] proxy: Specifies the cluster proxy configuration.
+               Structure is documented below.
         :param pulumi.Input['BareMetalClusterSecurityConfigArgs'] security_config: Specifies the security related settings for the Bare Metal User Cluster.
+               Structure is documented below.
         :param pulumi.Input['BareMetalClusterUpgradePolicyArgs'] upgrade_policy: The cluster upgrade policy.
+               Structure is documented below.
         """
         pulumi.set(__self__, "admin_cluster_membership", admin_cluster_membership)
         pulumi.set(__self__, "bare_metal_version", bare_metal_version)
@@ -202,12 +217,17 @@ class BareMetalClusterArgs:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Annotations on the Bare Metal User Cluster. This field has the same restrictions as Kubernetes annotations. The total
-        size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-        separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-        alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-        non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-        'effective_annotations' for all of the annotations present on the resource.
+        Annotations on the Bare Metal User Cluster.
+        This field has the same restrictions as Kubernetes annotations.
+        The total size of all keys and values combined is limited to 256k.
+        Key can have 2 segments: prefix (optional) and name (required),
+        separated by a slash (/).
+        Prefix must be a DNS subdomain.
+        Name must be 63 characters or less, begin and end with alphanumerics,
+        with dashes (-), underscores (_), dots (.), and alphanumerics between.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -220,6 +240,7 @@ class BareMetalClusterArgs:
     def binary_authorization(self) -> Optional[pulumi.Input['BareMetalClusterBinaryAuthorizationArgs']]:
         """
         Binary Authorization related configurations.
+        Structure is documented below.
         """
         return pulumi.get(self, "binary_authorization")
 
@@ -232,6 +253,7 @@ class BareMetalClusterArgs:
     def cluster_operations(self) -> Optional[pulumi.Input['BareMetalClusterClusterOperationsArgs']]:
         """
         Specifies the User Cluster's observability infrastructure.
+        Structure is documented below.
         """
         return pulumi.get(self, "cluster_operations")
 
@@ -243,8 +265,7 @@ class BareMetalClusterArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        (Output)
-        The description of the validation check.
+        A human readable description of this Bare Metal User Cluster.
         """
         return pulumi.get(self, "description")
 
@@ -257,6 +278,7 @@ class BareMetalClusterArgs:
     def maintenance_config(self) -> Optional[pulumi.Input['BareMetalClusterMaintenanceConfigArgs']]:
         """
         Specifies the workload node configurations.
+        Structure is documented below.
         """
         return pulumi.get(self, "maintenance_config")
 
@@ -281,6 +303,7 @@ class BareMetalClusterArgs:
     def node_access_config(self) -> Optional[pulumi.Input['BareMetalClusterNodeAccessConfigArgs']]:
         """
         Specifies the node access related settings for the bare metal user cluster.
+        Structure is documented below.
         """
         return pulumi.get(self, "node_access_config")
 
@@ -293,6 +316,7 @@ class BareMetalClusterArgs:
     def node_config(self) -> Optional[pulumi.Input['BareMetalClusterNodeConfigArgs']]:
         """
         Specifies the workload node configurations.
+        Structure is documented below.
         """
         return pulumi.get(self, "node_config")
 
@@ -305,6 +329,7 @@ class BareMetalClusterArgs:
     def os_environment_config(self) -> Optional[pulumi.Input['BareMetalClusterOsEnvironmentConfigArgs']]:
         """
         OS environment related configurations.
+        Structure is documented below.
         """
         return pulumi.get(self, "os_environment_config")
 
@@ -315,6 +340,10 @@ class BareMetalClusterArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -326,6 +355,7 @@ class BareMetalClusterArgs:
     def proxy(self) -> Optional[pulumi.Input['BareMetalClusterProxyArgs']]:
         """
         Specifies the cluster proxy configuration.
+        Structure is documented below.
         """
         return pulumi.get(self, "proxy")
 
@@ -338,6 +368,7 @@ class BareMetalClusterArgs:
     def security_config(self) -> Optional[pulumi.Input['BareMetalClusterSecurityConfigArgs']]:
         """
         Specifies the security related settings for the Bare Metal User Cluster.
+        Structure is documented below.
         """
         return pulumi.get(self, "security_config")
 
@@ -350,6 +381,7 @@ class BareMetalClusterArgs:
     def upgrade_policy(self) -> Optional[pulumi.Input['BareMetalClusterUpgradePolicyArgs']]:
         """
         The cluster upgrade policy.
+        Structure is documented below.
         """
         return pulumi.get(self, "upgrade_policy")
 
@@ -398,21 +430,27 @@ class _BareMetalClusterState:
         Input properties used for looking up and filtering BareMetalCluster resources.
         :param pulumi.Input[builtins.str] admin_cluster_membership: The Admin Cluster this Bare Metal User Cluster belongs to.
                This is the full resource name of the Admin Cluster's hub membership.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Annotations on the Bare Metal User Cluster. This field has the same restrictions as Kubernetes annotations. The total
-               size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-               separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-               alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-               non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-               'effective_annotations' for all of the annotations present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Annotations on the Bare Metal User Cluster.
+               This field has the same restrictions as Kubernetes annotations.
+               The total size of all keys and values combined is limited to 256k.
+               Key can have 2 segments: prefix (optional) and name (required),
+               separated by a slash (/).
+               Prefix must be a DNS subdomain.
+               Name must be 63 characters or less, begin and end with alphanumerics,
+               with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[builtins.str] bare_metal_version: A human readable description of this Bare Metal User Cluster.
         :param pulumi.Input['BareMetalClusterBinaryAuthorizationArgs'] binary_authorization: Binary Authorization related configurations.
+               Structure is documented below.
         :param pulumi.Input['BareMetalClusterClusterOperationsArgs'] cluster_operations: Specifies the User Cluster's observability infrastructure.
+               Structure is documented below.
         :param pulumi.Input['BareMetalClusterControlPlaneArgs'] control_plane: Specifies the control plane configuration.
                Structure is documented below.
         :param pulumi.Input[builtins.str] create_time: The time the cluster was created, in RFC3339 text format.
         :param pulumi.Input[builtins.str] delete_time: The time the cluster was deleted, in RFC3339 text format.
-        :param pulumi.Input[builtins.str] description: (Output)
-               The description of the validation check.
+        :param pulumi.Input[builtins.str] description: A human readable description of this Bare Metal User Cluster.
         :param pulumi.Input[builtins.str] endpoint: The IP address name of Bare Metal User Cluster's API server.
         :param pulumi.Input[builtins.str] etag: This checksum is computed by the server based on the value of other
                fields, and may be sent on update and delete requests to ensure the
@@ -440,15 +478,23 @@ class _BareMetalClusterState:
                cluster controller logs.
         :param pulumi.Input[builtins.str] location: The location of the resource.
         :param pulumi.Input['BareMetalClusterMaintenanceConfigArgs'] maintenance_config: Specifies the workload node configurations.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] name: The bare metal cluster name.
         :param pulumi.Input['BareMetalClusterNetworkConfigArgs'] network_config: Network configuration.
                Structure is documented below.
         :param pulumi.Input['BareMetalClusterNodeAccessConfigArgs'] node_access_config: Specifies the node access related settings for the bare metal user cluster.
+               Structure is documented below.
         :param pulumi.Input['BareMetalClusterNodeConfigArgs'] node_config: Specifies the workload node configurations.
+               Structure is documented below.
         :param pulumi.Input['BareMetalClusterOsEnvironmentConfigArgs'] os_environment_config: OS environment related configurations.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input['BareMetalClusterProxyArgs'] proxy: Specifies the cluster proxy configuration.
+               Structure is documented below.
         :param pulumi.Input[builtins.bool] reconciling: If set, there are currently changes in flight to the Bare Metal User Cluster.
         :param pulumi.Input['BareMetalClusterSecurityConfigArgs'] security_config: Specifies the security related settings for the Bare Metal User Cluster.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] state: (Output)
                The lifecycle state of the condition.
         :param pulumi.Input[Sequence[pulumi.Input['BareMetalClusterStatusArgs']]] statuses: (Output)
@@ -459,6 +505,7 @@ class _BareMetalClusterState:
         :param pulumi.Input[builtins.str] uid: The unique identifier of the Bare Metal User Cluster.
         :param pulumi.Input[builtins.str] update_time: The time the cluster was last updated, in RFC3339 text format.
         :param pulumi.Input['BareMetalClusterUpgradePolicyArgs'] upgrade_policy: The cluster upgrade policy.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['BareMetalClusterValidationCheckArgs']]] validation_checks: Specifies the security related settings for the Bare Metal User Cluster.
                Structure is documented below.
         """
@@ -546,12 +593,17 @@ class _BareMetalClusterState:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Annotations on the Bare Metal User Cluster. This field has the same restrictions as Kubernetes annotations. The total
-        size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-        separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-        alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-        non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-        'effective_annotations' for all of the annotations present on the resource.
+        Annotations on the Bare Metal User Cluster.
+        This field has the same restrictions as Kubernetes annotations.
+        The total size of all keys and values combined is limited to 256k.
+        Key can have 2 segments: prefix (optional) and name (required),
+        separated by a slash (/).
+        Prefix must be a DNS subdomain.
+        Name must be 63 characters or less, begin and end with alphanumerics,
+        with dashes (-), underscores (_), dots (.), and alphanumerics between.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -576,6 +628,7 @@ class _BareMetalClusterState:
     def binary_authorization(self) -> Optional[pulumi.Input['BareMetalClusterBinaryAuthorizationArgs']]:
         """
         Binary Authorization related configurations.
+        Structure is documented below.
         """
         return pulumi.get(self, "binary_authorization")
 
@@ -588,6 +641,7 @@ class _BareMetalClusterState:
     def cluster_operations(self) -> Optional[pulumi.Input['BareMetalClusterClusterOperationsArgs']]:
         """
         Specifies the User Cluster's observability infrastructure.
+        Structure is documented below.
         """
         return pulumi.get(self, "cluster_operations")
 
@@ -636,8 +690,7 @@ class _BareMetalClusterState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        (Output)
-        The description of the validation check.
+        A human readable description of this Bare Metal User Cluster.
         """
         return pulumi.get(self, "description")
 
@@ -751,6 +804,7 @@ class _BareMetalClusterState:
     def maintenance_config(self) -> Optional[pulumi.Input['BareMetalClusterMaintenanceConfigArgs']]:
         """
         Specifies the workload node configurations.
+        Structure is documented below.
         """
         return pulumi.get(self, "maintenance_config")
 
@@ -788,6 +842,7 @@ class _BareMetalClusterState:
     def node_access_config(self) -> Optional[pulumi.Input['BareMetalClusterNodeAccessConfigArgs']]:
         """
         Specifies the node access related settings for the bare metal user cluster.
+        Structure is documented below.
         """
         return pulumi.get(self, "node_access_config")
 
@@ -800,6 +855,7 @@ class _BareMetalClusterState:
     def node_config(self) -> Optional[pulumi.Input['BareMetalClusterNodeConfigArgs']]:
         """
         Specifies the workload node configurations.
+        Structure is documented below.
         """
         return pulumi.get(self, "node_config")
 
@@ -812,6 +868,7 @@ class _BareMetalClusterState:
     def os_environment_config(self) -> Optional[pulumi.Input['BareMetalClusterOsEnvironmentConfigArgs']]:
         """
         OS environment related configurations.
+        Structure is documented below.
         """
         return pulumi.get(self, "os_environment_config")
 
@@ -822,6 +879,10 @@ class _BareMetalClusterState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -833,6 +894,7 @@ class _BareMetalClusterState:
     def proxy(self) -> Optional[pulumi.Input['BareMetalClusterProxyArgs']]:
         """
         Specifies the cluster proxy configuration.
+        Structure is documented below.
         """
         return pulumi.get(self, "proxy")
 
@@ -857,6 +919,7 @@ class _BareMetalClusterState:
     def security_config(self) -> Optional[pulumi.Input['BareMetalClusterSecurityConfigArgs']]:
         """
         Specifies the security related settings for the Bare Metal User Cluster.
+        Structure is documented below.
         """
         return pulumi.get(self, "security_config")
 
@@ -933,6 +996,7 @@ class _BareMetalClusterState:
     def upgrade_policy(self) -> Optional[pulumi.Input['BareMetalClusterUpgradePolicyArgs']]:
         """
         The cluster upgrade policy.
+        Structure is documented below.
         """
         return pulumi.get(self, "upgrade_policy")
 
@@ -983,6 +1047,10 @@ class BareMetalCluster(pulumi.CustomResource):
                  __props__=None):
         """
         A Google Bare Metal User Cluster.
+
+        To get more information about BareMetalCluster, see:
+
+        * [API documentation](https://cloud.google.com/kubernetes-engine/distributed-cloud/reference/on-prem-api/rest/v1/projects.locations.bareMetalClusters)
 
         ## Example Usage
 
@@ -1297,34 +1365,49 @@ class BareMetalCluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] admin_cluster_membership: The Admin Cluster this Bare Metal User Cluster belongs to.
                This is the full resource name of the Admin Cluster's hub membership.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Annotations on the Bare Metal User Cluster. This field has the same restrictions as Kubernetes annotations. The total
-               size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-               separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-               alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-               non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-               'effective_annotations' for all of the annotations present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Annotations on the Bare Metal User Cluster.
+               This field has the same restrictions as Kubernetes annotations.
+               The total size of all keys and values combined is limited to 256k.
+               Key can have 2 segments: prefix (optional) and name (required),
+               separated by a slash (/).
+               Prefix must be a DNS subdomain.
+               Name must be 63 characters or less, begin and end with alphanumerics,
+               with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[builtins.str] bare_metal_version: A human readable description of this Bare Metal User Cluster.
         :param pulumi.Input[Union['BareMetalClusterBinaryAuthorizationArgs', 'BareMetalClusterBinaryAuthorizationArgsDict']] binary_authorization: Binary Authorization related configurations.
+               Structure is documented below.
         :param pulumi.Input[Union['BareMetalClusterClusterOperationsArgs', 'BareMetalClusterClusterOperationsArgsDict']] cluster_operations: Specifies the User Cluster's observability infrastructure.
+               Structure is documented below.
         :param pulumi.Input[Union['BareMetalClusterControlPlaneArgs', 'BareMetalClusterControlPlaneArgsDict']] control_plane: Specifies the control plane configuration.
                Structure is documented below.
-        :param pulumi.Input[builtins.str] description: (Output)
-               The description of the validation check.
+        :param pulumi.Input[builtins.str] description: A human readable description of this Bare Metal User Cluster.
         :param pulumi.Input[Union['BareMetalClusterLoadBalancerArgs', 'BareMetalClusterLoadBalancerArgsDict']] load_balancer: Specifies the load balancer configuration.
                Structure is documented below.
         :param pulumi.Input[builtins.str] location: The location of the resource.
         :param pulumi.Input[Union['BareMetalClusterMaintenanceConfigArgs', 'BareMetalClusterMaintenanceConfigArgsDict']] maintenance_config: Specifies the workload node configurations.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] name: The bare metal cluster name.
         :param pulumi.Input[Union['BareMetalClusterNetworkConfigArgs', 'BareMetalClusterNetworkConfigArgsDict']] network_config: Network configuration.
                Structure is documented below.
         :param pulumi.Input[Union['BareMetalClusterNodeAccessConfigArgs', 'BareMetalClusterNodeAccessConfigArgsDict']] node_access_config: Specifies the node access related settings for the bare metal user cluster.
+               Structure is documented below.
         :param pulumi.Input[Union['BareMetalClusterNodeConfigArgs', 'BareMetalClusterNodeConfigArgsDict']] node_config: Specifies the workload node configurations.
+               Structure is documented below.
         :param pulumi.Input[Union['BareMetalClusterOsEnvironmentConfigArgs', 'BareMetalClusterOsEnvironmentConfigArgsDict']] os_environment_config: OS environment related configurations.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Union['BareMetalClusterProxyArgs', 'BareMetalClusterProxyArgsDict']] proxy: Specifies the cluster proxy configuration.
+               Structure is documented below.
         :param pulumi.Input[Union['BareMetalClusterSecurityConfigArgs', 'BareMetalClusterSecurityConfigArgsDict']] security_config: Specifies the security related settings for the Bare Metal User Cluster.
+               Structure is documented below.
         :param pulumi.Input[Union['BareMetalClusterStorageArgs', 'BareMetalClusterStorageArgsDict']] storage: Specifies the cluster storage configuration.
                Structure is documented below.
         :param pulumi.Input[Union['BareMetalClusterUpgradePolicyArgs', 'BareMetalClusterUpgradePolicyArgsDict']] upgrade_policy: The cluster upgrade policy.
+               Structure is documented below.
         """
         ...
     @overload
@@ -1334,6 +1417,10 @@ class BareMetalCluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A Google Bare Metal User Cluster.
+
+        To get more information about BareMetalCluster, see:
+
+        * [API documentation](https://cloud.google.com/kubernetes-engine/distributed-cloud/reference/on-prem-api/rest/v1/projects.locations.bareMetalClusters)
 
         ## Example Usage
 
@@ -1787,21 +1874,27 @@ class BareMetalCluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] admin_cluster_membership: The Admin Cluster this Bare Metal User Cluster belongs to.
                This is the full resource name of the Admin Cluster's hub membership.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Annotations on the Bare Metal User Cluster. This field has the same restrictions as Kubernetes annotations. The total
-               size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-               separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-               alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-               non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-               'effective_annotations' for all of the annotations present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Annotations on the Bare Metal User Cluster.
+               This field has the same restrictions as Kubernetes annotations.
+               The total size of all keys and values combined is limited to 256k.
+               Key can have 2 segments: prefix (optional) and name (required),
+               separated by a slash (/).
+               Prefix must be a DNS subdomain.
+               Name must be 63 characters or less, begin and end with alphanumerics,
+               with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[builtins.str] bare_metal_version: A human readable description of this Bare Metal User Cluster.
         :param pulumi.Input[Union['BareMetalClusterBinaryAuthorizationArgs', 'BareMetalClusterBinaryAuthorizationArgsDict']] binary_authorization: Binary Authorization related configurations.
+               Structure is documented below.
         :param pulumi.Input[Union['BareMetalClusterClusterOperationsArgs', 'BareMetalClusterClusterOperationsArgsDict']] cluster_operations: Specifies the User Cluster's observability infrastructure.
+               Structure is documented below.
         :param pulumi.Input[Union['BareMetalClusterControlPlaneArgs', 'BareMetalClusterControlPlaneArgsDict']] control_plane: Specifies the control plane configuration.
                Structure is documented below.
         :param pulumi.Input[builtins.str] create_time: The time the cluster was created, in RFC3339 text format.
         :param pulumi.Input[builtins.str] delete_time: The time the cluster was deleted, in RFC3339 text format.
-        :param pulumi.Input[builtins.str] description: (Output)
-               The description of the validation check.
+        :param pulumi.Input[builtins.str] description: A human readable description of this Bare Metal User Cluster.
         :param pulumi.Input[builtins.str] endpoint: The IP address name of Bare Metal User Cluster's API server.
         :param pulumi.Input[builtins.str] etag: This checksum is computed by the server based on the value of other
                fields, and may be sent on update and delete requests to ensure the
@@ -1829,15 +1922,23 @@ class BareMetalCluster(pulumi.CustomResource):
                cluster controller logs.
         :param pulumi.Input[builtins.str] location: The location of the resource.
         :param pulumi.Input[Union['BareMetalClusterMaintenanceConfigArgs', 'BareMetalClusterMaintenanceConfigArgsDict']] maintenance_config: Specifies the workload node configurations.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] name: The bare metal cluster name.
         :param pulumi.Input[Union['BareMetalClusterNetworkConfigArgs', 'BareMetalClusterNetworkConfigArgsDict']] network_config: Network configuration.
                Structure is documented below.
         :param pulumi.Input[Union['BareMetalClusterNodeAccessConfigArgs', 'BareMetalClusterNodeAccessConfigArgsDict']] node_access_config: Specifies the node access related settings for the bare metal user cluster.
+               Structure is documented below.
         :param pulumi.Input[Union['BareMetalClusterNodeConfigArgs', 'BareMetalClusterNodeConfigArgsDict']] node_config: Specifies the workload node configurations.
+               Structure is documented below.
         :param pulumi.Input[Union['BareMetalClusterOsEnvironmentConfigArgs', 'BareMetalClusterOsEnvironmentConfigArgsDict']] os_environment_config: OS environment related configurations.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Union['BareMetalClusterProxyArgs', 'BareMetalClusterProxyArgsDict']] proxy: Specifies the cluster proxy configuration.
+               Structure is documented below.
         :param pulumi.Input[builtins.bool] reconciling: If set, there are currently changes in flight to the Bare Metal User Cluster.
         :param pulumi.Input[Union['BareMetalClusterSecurityConfigArgs', 'BareMetalClusterSecurityConfigArgsDict']] security_config: Specifies the security related settings for the Bare Metal User Cluster.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] state: (Output)
                The lifecycle state of the condition.
         :param pulumi.Input[Sequence[pulumi.Input[Union['BareMetalClusterStatusArgs', 'BareMetalClusterStatusArgsDict']]]] statuses: (Output)
@@ -1848,6 +1949,7 @@ class BareMetalCluster(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] uid: The unique identifier of the Bare Metal User Cluster.
         :param pulumi.Input[builtins.str] update_time: The time the cluster was last updated, in RFC3339 text format.
         :param pulumi.Input[Union['BareMetalClusterUpgradePolicyArgs', 'BareMetalClusterUpgradePolicyArgsDict']] upgrade_policy: The cluster upgrade policy.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['BareMetalClusterValidationCheckArgs', 'BareMetalClusterValidationCheckArgsDict']]]] validation_checks: Specifies the security related settings for the Bare Metal User Cluster.
                Structure is documented below.
         """
@@ -1903,12 +2005,17 @@ class BareMetalCluster(pulumi.CustomResource):
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
         """
-        Annotations on the Bare Metal User Cluster. This field has the same restrictions as Kubernetes annotations. The total
-        size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-        separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-        alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-        non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-        'effective_annotations' for all of the annotations present on the resource.
+        Annotations on the Bare Metal User Cluster.
+        This field has the same restrictions as Kubernetes annotations.
+        The total size of all keys and values combined is limited to 256k.
+        Key can have 2 segments: prefix (optional) and name (required),
+        separated by a slash (/).
+        Prefix must be a DNS subdomain.
+        Name must be 63 characters or less, begin and end with alphanumerics,
+        with dashes (-), underscores (_), dots (.), and alphanumerics between.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -1925,6 +2032,7 @@ class BareMetalCluster(pulumi.CustomResource):
     def binary_authorization(self) -> pulumi.Output[Optional['outputs.BareMetalClusterBinaryAuthorization']]:
         """
         Binary Authorization related configurations.
+        Structure is documented below.
         """
         return pulumi.get(self, "binary_authorization")
 
@@ -1933,6 +2041,7 @@ class BareMetalCluster(pulumi.CustomResource):
     def cluster_operations(self) -> pulumi.Output[Optional['outputs.BareMetalClusterClusterOperations']]:
         """
         Specifies the User Cluster's observability infrastructure.
+        Structure is documented below.
         """
         return pulumi.get(self, "cluster_operations")
 
@@ -1965,8 +2074,7 @@ class BareMetalCluster(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        (Output)
-        The description of the validation check.
+        A human readable description of this Bare Metal User Cluster.
         """
         return pulumi.get(self, "description")
 
@@ -2048,6 +2156,7 @@ class BareMetalCluster(pulumi.CustomResource):
     def maintenance_config(self) -> pulumi.Output[Optional['outputs.BareMetalClusterMaintenanceConfig']]:
         """
         Specifies the workload node configurations.
+        Structure is documented below.
         """
         return pulumi.get(self, "maintenance_config")
 
@@ -2073,6 +2182,7 @@ class BareMetalCluster(pulumi.CustomResource):
     def node_access_config(self) -> pulumi.Output[Optional['outputs.BareMetalClusterNodeAccessConfig']]:
         """
         Specifies the node access related settings for the bare metal user cluster.
+        Structure is documented below.
         """
         return pulumi.get(self, "node_access_config")
 
@@ -2081,6 +2191,7 @@ class BareMetalCluster(pulumi.CustomResource):
     def node_config(self) -> pulumi.Output[Optional['outputs.BareMetalClusterNodeConfig']]:
         """
         Specifies the workload node configurations.
+        Structure is documented below.
         """
         return pulumi.get(self, "node_config")
 
@@ -2089,12 +2200,17 @@ class BareMetalCluster(pulumi.CustomResource):
     def os_environment_config(self) -> pulumi.Output[Optional['outputs.BareMetalClusterOsEnvironmentConfig']]:
         """
         OS environment related configurations.
+        Structure is documented below.
         """
         return pulumi.get(self, "os_environment_config")
 
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property
@@ -2102,6 +2218,7 @@ class BareMetalCluster(pulumi.CustomResource):
     def proxy(self) -> pulumi.Output[Optional['outputs.BareMetalClusterProxy']]:
         """
         Specifies the cluster proxy configuration.
+        Structure is documented below.
         """
         return pulumi.get(self, "proxy")
 
@@ -2118,6 +2235,7 @@ class BareMetalCluster(pulumi.CustomResource):
     def security_config(self) -> pulumi.Output[Optional['outputs.BareMetalClusterSecurityConfig']]:
         """
         Specifies the security related settings for the Bare Metal User Cluster.
+        Structure is documented below.
         """
         return pulumi.get(self, "security_config")
 
@@ -2170,6 +2288,7 @@ class BareMetalCluster(pulumi.CustomResource):
     def upgrade_policy(self) -> pulumi.Output[Optional['outputs.BareMetalClusterUpgradePolicy']]:
         """
         The cluster upgrade policy.
+        Structure is documented below.
         """
         return pulumi.get(self, "upgrade_policy")
 

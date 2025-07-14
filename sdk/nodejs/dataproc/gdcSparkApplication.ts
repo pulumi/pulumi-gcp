@@ -305,9 +305,6 @@ export class GdcSparkApplication extends pulumi.CustomResource {
     public readonly sparkApplicationConfig!: pulumi.Output<outputs.dataproc.GdcSparkApplicationSparkApplicationConfig | undefined>;
     /**
      * The id of the application
-     *
-     *
-     * - - -
      */
     public readonly sparkApplicationId!: pulumi.Output<string>;
     /**
@@ -528,9 +525,6 @@ export interface GdcSparkApplicationState {
     sparkApplicationConfig?: pulumi.Input<inputs.dataproc.GdcSparkApplicationSparkApplicationConfig>;
     /**
      * The id of the application
-     *
-     *
-     * - - -
      */
     sparkApplicationId?: pulumi.Input<string>;
     /**
@@ -634,9 +628,6 @@ export interface GdcSparkApplicationArgs {
     sparkApplicationConfig?: pulumi.Input<inputs.dataproc.GdcSparkApplicationSparkApplicationConfig>;
     /**
      * The id of the application
-     *
-     *
-     * - - -
      */
     sparkApplicationId: pulumi.Input<string>;
     /**

@@ -35,14 +35,21 @@ class JobArgs:
         The set of arguments for constructing a Job resource.
         :param pulumi.Input[builtins.str] job_id: The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
         :param pulumi.Input['JobCopyArgs'] copy: Copies a table.
+               Structure is documented below.
         :param pulumi.Input['JobExtractArgs'] extract: Configures an extract job.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] job_timeout_ms: Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: The labels associated with this job. You can use these to organize and group your jobs. **Note**: This field is
-               non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-               'effective_labels' for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: The labels associated with this job. You can use these to organize and group your jobs.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input['JobLoadArgs'] load: Configures a load job.
-        :param pulumi.Input[builtins.str] location: Specifies where the error occurred, if present.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] location: The geographic location of the job. The default value is US.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input['JobQueryArgs'] query: Configures a query job.
+               Structure is documented below.
         """
         pulumi.set(__self__, "job_id", job_id)
         if copy is not None:
@@ -79,6 +86,7 @@ class JobArgs:
     def copy(self) -> Optional[pulumi.Input['JobCopyArgs']]:
         """
         Copies a table.
+        Structure is documented below.
         """
         return pulumi.get(self, "copy")
 
@@ -91,6 +99,7 @@ class JobArgs:
     def extract(self) -> Optional[pulumi.Input['JobExtractArgs']]:
         """
         Configures an extract job.
+        Structure is documented below.
         """
         return pulumi.get(self, "extract")
 
@@ -114,9 +123,10 @@ class JobArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        The labels associated with this job. You can use these to organize and group your jobs. **Note**: This field is
-        non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-        'effective_labels' for all of the labels present on the resource.
+        The labels associated with this job. You can use these to organize and group your jobs.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -129,6 +139,7 @@ class JobArgs:
     def load(self) -> Optional[pulumi.Input['JobLoadArgs']]:
         """
         Configures a load job.
+        Structure is documented below.
         """
         return pulumi.get(self, "load")
 
@@ -140,7 +151,7 @@ class JobArgs:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Specifies where the error occurred, if present.
+        The geographic location of the job. The default value is US.
         """
         return pulumi.get(self, "location")
 
@@ -151,6 +162,10 @@ class JobArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -162,6 +177,7 @@ class JobArgs:
     def query(self) -> Optional[pulumi.Input['JobQueryArgs']]:
         """
         Configures a query job.
+        Structure is documented below.
         """
         return pulumi.get(self, "query")
 
@@ -190,22 +206,29 @@ class _JobState:
         """
         Input properties used for looking up and filtering Job resources.
         :param pulumi.Input['JobCopyArgs'] copy: Copies a table.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: (Output)
                All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input['JobExtractArgs'] extract: Configures an extract job.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] job_id: The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
         :param pulumi.Input[builtins.str] job_timeout_ms: Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
         :param pulumi.Input[builtins.str] job_type: (Output)
                The type of the job.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: The labels associated with this job. You can use these to organize and group your jobs. **Note**: This field is
-               non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-               'effective_labels' for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: The labels associated with this job. You can use these to organize and group your jobs.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input['JobLoadArgs'] load: Configures a load job.
-        :param pulumi.Input[builtins.str] location: Specifies where the error occurred, if present.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] location: The geographic location of the job. The default value is US.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: (Output)
                The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input['JobQueryArgs'] query: Configures a query job.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]] statuses: The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
                Structure is documented below.
         :param pulumi.Input[builtins.str] user_email: Email address of the user who ran the job.
@@ -244,6 +267,7 @@ class _JobState:
     def copy(self) -> Optional[pulumi.Input['JobCopyArgs']]:
         """
         Copies a table.
+        Structure is documented below.
         """
         return pulumi.get(self, "copy")
 
@@ -269,6 +293,7 @@ class _JobState:
     def extract(self) -> Optional[pulumi.Input['JobExtractArgs']]:
         """
         Configures an extract job.
+        Structure is documented below.
         """
         return pulumi.get(self, "extract")
 
@@ -317,9 +342,10 @@ class _JobState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        The labels associated with this job. You can use these to organize and group your jobs. **Note**: This field is
-        non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-        'effective_labels' for all of the labels present on the resource.
+        The labels associated with this job. You can use these to organize and group your jobs.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -332,6 +358,7 @@ class _JobState:
     def load(self) -> Optional[pulumi.Input['JobLoadArgs']]:
         """
         Configures a load job.
+        Structure is documented below.
         """
         return pulumi.get(self, "load")
 
@@ -343,7 +370,7 @@ class _JobState:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Specifies where the error occurred, if present.
+        The geographic location of the job. The default value is US.
         """
         return pulumi.get(self, "location")
 
@@ -354,6 +381,10 @@ class _JobState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -379,6 +410,7 @@ class _JobState:
     def query(self) -> Optional[pulumi.Input['JobQueryArgs']]:
         """
         Configures a query job.
+        Structure is documented below.
         """
         return pulumi.get(self, "query")
 
@@ -842,15 +874,22 @@ class Job(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['JobCopyArgs', 'JobCopyArgsDict']] copy: Copies a table.
+               Structure is documented below.
         :param pulumi.Input[Union['JobExtractArgs', 'JobExtractArgsDict']] extract: Configures an extract job.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] job_id: The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
         :param pulumi.Input[builtins.str] job_timeout_ms: Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: The labels associated with this job. You can use these to organize and group your jobs. **Note**: This field is
-               non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-               'effective_labels' for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: The labels associated with this job. You can use these to organize and group your jobs.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[Union['JobLoadArgs', 'JobLoadArgsDict']] load: Configures a load job.
-        :param pulumi.Input[builtins.str] location: Specifies where the error occurred, if present.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] location: The geographic location of the job. The default value is US.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Union['JobQueryArgs', 'JobQueryArgsDict']] query: Configures a query job.
+               Structure is documented below.
         """
         ...
     @overload
@@ -1352,22 +1391,29 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['JobCopyArgs', 'JobCopyArgsDict']] copy: Copies a table.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: (Output)
                All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Union['JobExtractArgs', 'JobExtractArgsDict']] extract: Configures an extract job.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] job_id: The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
         :param pulumi.Input[builtins.str] job_timeout_ms: Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
         :param pulumi.Input[builtins.str] job_type: (Output)
                The type of the job.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: The labels associated with this job. You can use these to organize and group your jobs. **Note**: This field is
-               non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-               'effective_labels' for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: The labels associated with this job. You can use these to organize and group your jobs.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[Union['JobLoadArgs', 'JobLoadArgsDict']] load: Configures a load job.
-        :param pulumi.Input[builtins.str] location: Specifies where the error occurred, if present.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] location: The geographic location of the job. The default value is US.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: (Output)
                The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[Union['JobQueryArgs', 'JobQueryArgsDict']] query: Configures a query job.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['JobStatusArgs', 'JobStatusArgsDict']]]] statuses: The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
                Structure is documented below.
         :param pulumi.Input[builtins.str] user_email: Email address of the user who ran the job.
@@ -1397,6 +1443,7 @@ class Job(pulumi.CustomResource):
     def copy(self) -> pulumi.Output[Optional['outputs.JobCopy']]:
         """
         Copies a table.
+        Structure is documented below.
         """
         return pulumi.get(self, "copy")
 
@@ -1414,6 +1461,7 @@ class Job(pulumi.CustomResource):
     def extract(self) -> pulumi.Output[Optional['outputs.JobExtract']]:
         """
         Configures an extract job.
+        Structure is documented below.
         """
         return pulumi.get(self, "extract")
 
@@ -1446,9 +1494,10 @@ class Job(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
         """
-        The labels associated with this job. You can use these to organize and group your jobs. **Note**: This field is
-        non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-        'effective_labels' for all of the labels present on the resource.
+        The labels associated with this job. You can use these to organize and group your jobs.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1457,6 +1506,7 @@ class Job(pulumi.CustomResource):
     def load(self) -> pulumi.Output[Optional['outputs.JobLoad']]:
         """
         Configures a load job.
+        Structure is documented below.
         """
         return pulumi.get(self, "load")
 
@@ -1464,13 +1514,17 @@ class Job(pulumi.CustomResource):
     @pulumi.getter
     def location(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Specifies where the error occurred, if present.
+        The geographic location of the job. The default value is US.
         """
         return pulumi.get(self, "location")
 
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property
@@ -1488,6 +1542,7 @@ class Job(pulumi.CustomResource):
     def query(self) -> pulumi.Output[Optional['outputs.JobQuery']]:
         """
         Configures a query job.
+        Structure is documented below.
         """
         return pulumi.get(self, "query")
 

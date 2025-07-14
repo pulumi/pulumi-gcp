@@ -110,9 +110,6 @@ class DiskArgs:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input['DiskParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[builtins.int] physical_block_size_bytes: Physical block size of the persistent disk, in bytes. If not present
@@ -467,9 +464,6 @@ class DiskArgs:
         first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -838,9 +832,6 @@ class _DiskState:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input['DiskParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[builtins.int] physical_block_size_bytes: Physical block size of the persistent disk, in bytes. If not present
@@ -1318,9 +1309,6 @@ class _DiskState:
         first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -1893,9 +1881,6 @@ class Disk(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[Union['DiskParamsArgs', 'DiskParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[builtins.int] physical_block_size_bytes: Physical block size of the persistent disk, in bytes. If not present
@@ -2319,9 +2304,6 @@ class Disk(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[Union['DiskParamsArgs', 'DiskParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
         :param pulumi.Input[builtins.int] physical_block_size_bytes: Physical block size of the persistent disk, in bytes. If not present
@@ -2677,9 +2659,6 @@ class Disk(pulumi.CustomResource):
         first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

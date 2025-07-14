@@ -20,8 +20,6 @@ namespace Pulumi.Gcp.Gemini.Inputs
 
         /// <summary>
         /// Value of the configuration item.
-        /// 
-        /// - - -
         /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;

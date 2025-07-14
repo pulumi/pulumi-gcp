@@ -94,9 +94,6 @@ namespace Pulumi.Gcp.DeveloperConnect
         /// Required. The ID to use for the repository, which will become the final component of
         /// the repository's resource name. This ID should be unique in the connection.
         /// Allows alphanumeric characters and any of -._~%!$&amp;'()*+,;=@.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("gitRepositoryLinkId")]
         public Output<string> GitRepositoryLinkId { get; private set; } = null!;
@@ -244,9 +241,6 @@ namespace Pulumi.Gcp.DeveloperConnect
         /// Required. The ID to use for the repository, which will become the final component of
         /// the repository's resource name. This ID should be unique in the connection.
         /// Allows alphanumeric characters and any of -._~%!$&amp;'()*+,;=@.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("gitRepositoryLinkId", required: true)]
         public Input<string> GitRepositoryLinkId { get; set; } = null!;
@@ -360,9 +354,6 @@ namespace Pulumi.Gcp.DeveloperConnect
         /// Required. The ID to use for the repository, which will become the final component of
         /// the repository's resource name. This ID should be unique in the connection.
         /// Allows alphanumeric characters and any of -._~%!$&amp;'()*+,;=@.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("gitRepositoryLinkId")]
         public Input<string>? GitRepositoryLinkId { get; set; }

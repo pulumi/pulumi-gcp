@@ -323,9 +323,6 @@ export class Instance extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Part of `parent`. See documentation of `projectsId`.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -495,9 +492,6 @@ export interface InstanceState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Part of `parent`. See documentation of `projectsId`.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -579,9 +573,6 @@ export interface InstanceArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Part of `parent`. See documentation of `projectsId`.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

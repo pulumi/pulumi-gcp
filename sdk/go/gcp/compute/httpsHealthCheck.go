@@ -105,8 +105,6 @@ type HttpsHealthCheck struct {
 	// the first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the
 	// last character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The TCP port number for the HTTPS health check request.
 	// The default value is 443.
@@ -180,8 +178,6 @@ type httpsHealthCheckState struct {
 	// the first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the
 	// last character, which cannot be a dash.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The TCP port number for the HTTPS health check request.
 	// The default value is 443.
@@ -226,8 +222,6 @@ type HttpsHealthCheckState struct {
 	// the first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the
 	// last character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The TCP port number for the HTTPS health check request.
 	// The default value is 443.
@@ -274,8 +268,6 @@ type httpsHealthCheckArgs struct {
 	// the first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the
 	// last character, which cannot be a dash.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The TCP port number for the HTTPS health check request.
 	// The default value is 443.
@@ -317,8 +309,6 @@ type HttpsHealthCheckArgs struct {
 	// the first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the
 	// last character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The TCP port number for the HTTPS health check request.
 	// The default value is 443.
@@ -462,8 +452,6 @@ func (o HttpsHealthCheckOutput) Host() pulumi.StringPtrOutput {
 // the first character must be a lowercase letter, and all following
 // characters must be a dash, lowercase letter, or digit, except the
 // last character, which cannot be a dash.
-//
-// ***
 func (o HttpsHealthCheckOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *HttpsHealthCheck) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

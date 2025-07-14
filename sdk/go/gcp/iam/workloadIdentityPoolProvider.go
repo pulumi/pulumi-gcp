@@ -602,8 +602,6 @@ type WorkloadIdentityPoolProvider struct {
 	// The ID for the provider, which becomes the final component of the resource name. This
 	// value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
 	// `gcp-` is reserved for use by Google, and may not be specified.
-	//
-	// ***
 	WorkloadIdentityPoolProviderId pulumi.StringOutput `pulumi:"workloadIdentityPoolProviderId"`
 	// An X.509-type identity provider represents a CA. It is trusted to assert a
 	// client identity if the client has a certificate that chains up to this CA.
@@ -728,8 +726,6 @@ type workloadIdentityPoolProviderState struct {
 	// The ID for the provider, which becomes the final component of the resource name. This
 	// value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
 	// `gcp-` is reserved for use by Google, and may not be specified.
-	//
-	// ***
 	WorkloadIdentityPoolProviderId *string `pulumi:"workloadIdentityPoolProviderId"`
 	// An X.509-type identity provider represents a CA. It is trusted to assert a
 	// client identity if the client has a certificate that chains up to this CA.
@@ -819,8 +815,6 @@ type WorkloadIdentityPoolProviderState struct {
 	// The ID for the provider, which becomes the final component of the resource name. This
 	// value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
 	// `gcp-` is reserved for use by Google, and may not be specified.
-	//
-	// ***
 	WorkloadIdentityPoolProviderId pulumi.StringPtrInput
 	// An X.509-type identity provider represents a CA. It is trusted to assert a
 	// client identity if the client has a certificate that chains up to this CA.
@@ -903,8 +897,6 @@ type workloadIdentityPoolProviderArgs struct {
 	// The ID for the provider, which becomes the final component of the resource name. This
 	// value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
 	// `gcp-` is reserved for use by Google, and may not be specified.
-	//
-	// ***
 	WorkloadIdentityPoolProviderId string `pulumi:"workloadIdentityPoolProviderId"`
 	// An X.509-type identity provider represents a CA. It is trusted to assert a
 	// client identity if the client has a certificate that chains up to this CA.
@@ -984,8 +976,6 @@ type WorkloadIdentityPoolProviderArgs struct {
 	// The ID for the provider, which becomes the final component of the resource name. This
 	// value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
 	// `gcp-` is reserved for use by Google, and may not be specified.
-	//
-	// ***
 	WorkloadIdentityPoolProviderId pulumi.StringInput
 	// An X.509-type identity provider represents a CA. It is trusted to assert a
 	// client identity if the client has a certificate that chains up to this CA.
@@ -1197,8 +1187,6 @@ func (o WorkloadIdentityPoolProviderOutput) WorkloadIdentityPoolId() pulumi.Stri
 // The ID for the provider, which becomes the final component of the resource name. This
 // value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
 // `gcp-` is reserved for use by Google, and may not be specified.
-//
-// ***
 func (o WorkloadIdentityPoolProviderOutput) WorkloadIdentityPoolProviderId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkloadIdentityPoolProvider) pulumi.StringOutput { return v.WorkloadIdentityPoolProviderId }).(pulumi.StringOutput)
 }

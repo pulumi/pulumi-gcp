@@ -433,8 +433,6 @@ type DomainMappingSpec struct {
 	// The mode of the certificate.
 	// Default value is `AUTOMATIC`.
 	// Possible values are: `NONE`, `AUTOMATIC`.
-	//
-	// ***
 	CertificateMode *string `pulumi:"certificateMode"`
 	// If set, the mapping will override any mapping set before this spec was set.
 	// It is recommended that the user leaves this empty to receive an error
@@ -461,8 +459,6 @@ type DomainMappingSpecArgs struct {
 	// The mode of the certificate.
 	// Default value is `AUTOMATIC`.
 	// Possible values are: `NONE`, `AUTOMATIC`.
-	//
-	// ***
 	CertificateMode pulumi.StringPtrInput `pulumi:"certificateMode"`
 	// If set, the mapping will override any mapping set before this spec was set.
 	// It is recommended that the user leaves this empty to receive an error
@@ -554,8 +550,6 @@ func (o DomainMappingSpecOutput) ToDomainMappingSpecPtrOutputWithContext(ctx con
 // The mode of the certificate.
 // Default value is `AUTOMATIC`.
 // Possible values are: `NONE`, `AUTOMATIC`.
-//
-// ***
 func (o DomainMappingSpecOutput) CertificateMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainMappingSpec) *string { return v.CertificateMode }).(pulumi.StringPtrOutput)
 }
@@ -601,8 +595,6 @@ func (o DomainMappingSpecPtrOutput) Elem() DomainMappingSpecOutput {
 // The mode of the certificate.
 // Default value is `AUTOMATIC`.
 // Possible values are: `NONE`, `AUTOMATIC`.
-//
-// ***
 func (o DomainMappingSpecPtrOutput) CertificateMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DomainMappingSpec) *string {
 		if v == nil {
@@ -1854,7 +1846,6 @@ type ServiceStatus struct {
 	// Clients polling for completed reconciliation should poll until observedGeneration =
 	// metadata.generation and the Ready condition's status is True or False.
 	ObservedGeneration *int `pulumi:"observedGeneration"`
-	// (Output)
 	// Traffic specifies how to distribute traffic over a collection of Knative Revisions
 	// and Configurations
 	// Structure is documented below.
@@ -1898,7 +1889,6 @@ type ServiceStatusArgs struct {
 	// Clients polling for completed reconciliation should poll until observedGeneration =
 	// metadata.generation and the Ready condition's status is True or False.
 	ObservedGeneration pulumi.IntPtrInput `pulumi:"observedGeneration"`
-	// (Output)
 	// Traffic specifies how to distribute traffic over a collection of Knative Revisions
 	// and Configurations
 	// Structure is documented below.
@@ -1993,7 +1983,6 @@ func (o ServiceStatusOutput) ObservedGeneration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceStatus) *int { return v.ObservedGeneration }).(pulumi.IntPtrOutput)
 }
 
-// (Output)
 // Traffic specifies how to distribute traffic over a collection of Knative Revisions
 // and Configurations
 // Structure is documented below.
@@ -7226,8 +7215,6 @@ type ServiceTemplateSpecVolumeNfs struct {
 	// Path exported by the NFS server
 	Path string `pulumi:"path"`
 	// If true, mount the NFS volume as read only in all mounts. Defaults to false.
-	//
-	// ***
 	ReadOnly *bool `pulumi:"readOnly"`
 	// IP address or hostname of the NFS server
 	Server string `pulumi:"server"`
@@ -7248,8 +7235,6 @@ type ServiceTemplateSpecVolumeNfsArgs struct {
 	// Path exported by the NFS server
 	Path pulumi.StringInput `pulumi:"path"`
 	// If true, mount the NFS volume as read only in all mounts. Defaults to false.
-	//
-	// ***
 	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
 	// IP address or hostname of the NFS server
 	Server pulumi.StringInput `pulumi:"server"`
@@ -7338,8 +7323,6 @@ func (o ServiceTemplateSpecVolumeNfsOutput) Path() pulumi.StringOutput {
 }
 
 // If true, mount the NFS volume as read only in all mounts. Defaults to false.
-//
-// ***
 func (o ServiceTemplateSpecVolumeNfsOutput) ReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecVolumeNfs) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
 }
@@ -7384,8 +7367,6 @@ func (o ServiceTemplateSpecVolumeNfsPtrOutput) Path() pulumi.StringPtrOutput {
 }
 
 // If true, mount the NFS volume as read only in all mounts. Defaults to false.
-//
-// ***
 func (o ServiceTemplateSpecVolumeNfsPtrOutput) ReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateSpecVolumeNfs) *bool {
 		if v == nil {

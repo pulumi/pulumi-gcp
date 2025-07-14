@@ -82,16 +82,12 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
     /**
      * The name of the hub. Hub names must be unique. They use the following form: projects/{projectNumber}/locations/global/hubs/{hubId}
      * 
-     * ***
-     * 
      */
     @Import(name="hub")
     private @Nullable Output<String> hub;
 
     /**
      * @return The name of the hub. Hub names must be unique. They use the following form: projects/{projectNumber}/locations/global/hubs/{hubId}
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> hub() {
@@ -353,8 +349,6 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param hub The name of the hub. Hub names must be unique. They use the following form: projects/{projectNumber}/locations/global/hubs/{hubId}
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -365,8 +359,6 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param hub The name of the hub. Hub names must be unique. They use the following form: projects/{projectNumber}/locations/global/hubs/{hubId}
-         * 
-         * ***
          * 
          * @return builder
          * 

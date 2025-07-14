@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.GkeOnPrem.Outputs
         /// <summary>
         /// If true, prevent IP addresses from being automatically assigned.
         /// </summary>
-        public readonly string? ManualAssign;
+        public readonly bool? ManualAssign;
         /// <summary>
         /// The name of the address pool.
         /// </summary>
@@ -37,7 +37,7 @@ namespace Pulumi.Gcp.GkeOnPrem.Outputs
 
             bool? avoidBuggyIps,
 
-            string? manualAssign,
+            bool? manualAssign,
 
             string pool)
         {

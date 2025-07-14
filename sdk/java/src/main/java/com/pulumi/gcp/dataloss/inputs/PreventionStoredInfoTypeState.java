@@ -104,8 +104,6 @@ public final class PreventionStoredInfoTypeState extends com.pulumi.resources.Re
      * * `organizations/{{organization_id}}`
      * * `organizations/{{organization_id}}/locations/{{location}}`
      * 
-     * ***
-     * 
      */
     @Import(name="parent")
     private @Nullable Output<String> parent;
@@ -116,8 +114,6 @@ public final class PreventionStoredInfoTypeState extends com.pulumi.resources.Re
      * * `projects/{{project}}/locations/{{location}}`
      * * `organizations/{{organization_id}}`
      * * `organizations/{{organization_id}}/locations/{{location}}`
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> parent() {
@@ -307,8 +303,6 @@ public final class PreventionStoredInfoTypeState extends com.pulumi.resources.Re
          * * `organizations/{{organization_id}}`
          * * `organizations/{{organization_id}}/locations/{{location}}`
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -323,8 +317,6 @@ public final class PreventionStoredInfoTypeState extends com.pulumi.resources.Re
          * * `projects/{{project}}/locations/{{location}}`
          * * `organizations/{{organization_id}}`
          * * `organizations/{{organization_id}}/locations/{{location}}`
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -17,8 +17,6 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         /// If empty, the resource is secured by the default Google encryption key.
         /// Only the key in the same location as this resource is allowed to be used for encryption.
         /// Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{key}
-        /// 
-        /// - - -
         /// </summary>
         [Input("kmsKey", required: true)]
         public Input<string> KmsKey { get; set; } = null!;

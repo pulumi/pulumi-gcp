@@ -84,8 +84,6 @@ public final class AppHostingDomainState extends com.pulumi.resources.ResourceAr
      * Id of the domain to create.
      * Must be a valid domain name, such as &#34;foo.com&#34;
      * 
-     * ***
-     * 
      */
     @Import(name="domainId")
     private @Nullable Output<String> domainId;
@@ -93,8 +91,6 @@ public final class AppHostingDomainState extends com.pulumi.resources.ResourceAr
     /**
      * @return Id of the domain to create.
      * Must be a valid domain name, such as &#34;foo.com&#34;
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> domainId() {
@@ -370,8 +366,6 @@ public final class AppHostingDomainState extends com.pulumi.resources.ResourceAr
          * @param domainId Id of the domain to create.
          * Must be a valid domain name, such as &#34;foo.com&#34;
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -383,8 +377,6 @@ public final class AppHostingDomainState extends com.pulumi.resources.ResourceAr
         /**
          * @param domainId Id of the domain to create.
          * Must be a valid domain name, such as &#34;foo.com&#34;
-         * 
-         * ***
          * 
          * @return builder
          * 

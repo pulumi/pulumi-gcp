@@ -85,9 +85,6 @@ namespace Pulumi.Gcp.Compute
         /// firewall policy with the flag to override the existing attachmentTarget's policy association.
         /// **Note** Due to potential risks with this operation it is *highly* recommended to use the `create_before_destroy` life cycle option
         /// on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("firewallPolicy")]
         public Output<string> FirewallPolicy { get; private set; } = null!;
@@ -162,9 +159,6 @@ namespace Pulumi.Gcp.Compute
         /// firewall policy with the flag to override the existing attachmentTarget's policy association.
         /// **Note** Due to potential risks with this operation it is *highly* recommended to use the `create_before_destroy` life cycle option
         /// on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("firewallPolicy", required: true)]
         public Input<string> FirewallPolicy { get; set; } = null!;
@@ -195,9 +189,6 @@ namespace Pulumi.Gcp.Compute
         /// firewall policy with the flag to override the existing attachmentTarget's policy association.
         /// **Note** Due to potential risks with this operation it is *highly* recommended to use the `create_before_destroy` life cycle option
         /// on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("firewallPolicy")]
         public Input<string>? FirewallPolicy { get; set; }

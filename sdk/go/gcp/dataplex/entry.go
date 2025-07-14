@@ -277,8 +277,6 @@ type Entry struct {
 	// Structure is documented below.
 	EntrySource EntryEntrySourceOutput `pulumi:"entrySource"`
 	// The relative resource name of the entry type that was used to create this entry, in the format projects/{project_number}/locations/{locationId}/entryTypes/{entryTypeId}.
-	//
-	// ***
 	EntryType pulumi.StringOutput `pulumi:"entryType"`
 	// A name for the entry that can be referenced by an external system. For more information, see https://cloud.google.com/dataplex/docs/fully-qualified-names.
 	// The maximum size of the field is 4000 characters.
@@ -342,8 +340,6 @@ type entryState struct {
 	// Structure is documented below.
 	EntrySource *EntryEntrySource `pulumi:"entrySource"`
 	// The relative resource name of the entry type that was used to create this entry, in the format projects/{project_number}/locations/{locationId}/entryTypes/{entryTypeId}.
-	//
-	// ***
 	EntryType *string `pulumi:"entryType"`
 	// A name for the entry that can be referenced by an external system. For more information, see https://cloud.google.com/dataplex/docs/fully-qualified-names.
 	// The maximum size of the field is 4000 characters.
@@ -375,8 +371,6 @@ type EntryState struct {
 	// Structure is documented below.
 	EntrySource EntryEntrySourcePtrInput
 	// The relative resource name of the entry type that was used to create this entry, in the format projects/{project_number}/locations/{locationId}/entryTypes/{entryTypeId}.
-	//
-	// ***
 	EntryType pulumi.StringPtrInput
 	// A name for the entry that can be referenced by an external system. For more information, see https://cloud.google.com/dataplex/docs/fully-qualified-names.
 	// The maximum size of the field is 4000 characters.
@@ -410,8 +404,6 @@ type entryArgs struct {
 	// Structure is documented below.
 	EntrySource *EntryEntrySource `pulumi:"entrySource"`
 	// The relative resource name of the entry type that was used to create this entry, in the format projects/{project_number}/locations/{locationId}/entryTypes/{entryTypeId}.
-	//
-	// ***
 	EntryType string `pulumi:"entryType"`
 	// A name for the entry that can be referenced by an external system. For more information, see https://cloud.google.com/dataplex/docs/fully-qualified-names.
 	// The maximum size of the field is 4000 characters.
@@ -438,8 +430,6 @@ type EntryArgs struct {
 	// Structure is documented below.
 	EntrySource EntryEntrySourcePtrInput
 	// The relative resource name of the entry type that was used to create this entry, in the format projects/{project_number}/locations/{locationId}/entryTypes/{entryTypeId}.
-	//
-	// ***
 	EntryType pulumi.StringInput
 	// A name for the entry that can be referenced by an external system. For more information, see https://cloud.google.com/dataplex/docs/fully-qualified-names.
 	// The maximum size of the field is 4000 characters.
@@ -568,8 +558,6 @@ func (o EntryOutput) EntrySource() EntryEntrySourceOutput {
 }
 
 // The relative resource name of the entry type that was used to create this entry, in the format projects/{project_number}/locations/{locationId}/entryTypes/{entryTypeId}.
-//
-// ***
 func (o EntryOutput) EntryType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Entry) pulumi.StringOutput { return v.EntryType }).(pulumi.StringOutput)
 }

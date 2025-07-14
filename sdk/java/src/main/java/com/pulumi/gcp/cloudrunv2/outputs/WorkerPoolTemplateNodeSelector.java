@@ -13,16 +13,12 @@ public final class WorkerPoolTemplateNodeSelector {
     /**
      * @return The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/services/gpu for configuring GPU.
      * 
-     * ***
-     * 
      */
     private String accelerator;
 
     private WorkerPoolTemplateNodeSelector() {}
     /**
      * @return The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/services/gpu for configuring GPU.
-     * 
-     * ***
      * 
      */
     public String accelerator() {

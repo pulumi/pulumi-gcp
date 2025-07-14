@@ -89,9 +89,10 @@ export class Workspace extends pulumi.CustomResource {
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * The user labels. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg",
-     * "count": "3" } **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field 'effective_labels' for all of the labels present on the resource.
+     * The user labels. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -164,9 +165,10 @@ export interface WorkspaceState {
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The user labels. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg",
-     * "count": "3" } **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field 'effective_labels' for all of the labels present on the resource.
+     * The user labels. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -195,9 +197,10 @@ export interface WorkspaceArgs {
      */
     dataset: pulumi.Input<string>;
     /**
-     * The user labels. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg",
-     * "count": "3" } **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field 'effective_labels' for all of the labels present on the resource.
+     * The user labels. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

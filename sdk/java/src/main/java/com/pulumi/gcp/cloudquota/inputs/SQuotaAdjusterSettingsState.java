@@ -100,16 +100,12 @@ public final class SQuotaAdjusterSettingsState extends com.pulumi.resources.Reso
     /**
      * The parent of the quota preference. Allowed parent format is &#34;projects/[project-id / number]&#34;.
      * 
-     * ***
-     * 
      */
     @Import(name="parent")
     private @Nullable Output<String> parent;
 
     /**
      * @return The parent of the quota preference. Allowed parent format is &#34;projects/[project-id / number]&#34;.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> parent() {
@@ -259,8 +255,6 @@ public final class SQuotaAdjusterSettingsState extends com.pulumi.resources.Reso
         /**
          * @param parent The parent of the quota preference. Allowed parent format is &#34;projects/[project-id / number]&#34;.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -271,8 +265,6 @@ public final class SQuotaAdjusterSettingsState extends com.pulumi.resources.Reso
 
         /**
          * @param parent The parent of the quota preference. Allowed parent format is &#34;projects/[project-id / number]&#34;.
-         * 
-         * ***
          * 
          * @return builder
          * 

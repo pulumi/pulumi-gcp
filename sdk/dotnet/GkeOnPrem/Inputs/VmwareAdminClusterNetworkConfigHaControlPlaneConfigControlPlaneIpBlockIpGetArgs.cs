@@ -14,8 +14,6 @@ namespace Pulumi.Gcp.GkeOnPrem.Inputs
     {
         /// <summary>
         /// Hostname of the machine. VM's name will be used if this field is empty.
-        /// 
-        /// - - -
         /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }

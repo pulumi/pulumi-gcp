@@ -37,10 +37,12 @@ class MetastoreFederationArgs:
                and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
                3 and 63 characters.
         :param pulumi.Input[builtins.str] version: The Apache Hive metastore version of the federation. All backend metastore versions must be compatible with the federation version.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: User-defined labels for the metastore federation. **Note**: This field is non-authoritative, and will only manage the
-               labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-               resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: User-defined labels for the metastore federation.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location where the metastore federation should reside.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "backend_metastores", backend_metastores)
         pulumi.set(__self__, "federation_id", federation_id)
@@ -106,9 +108,9 @@ class MetastoreFederationArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        User-defined labels for the metastore federation. **Note**: This field is non-authoritative, and will only manage the
-        labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-        resource.
+        User-defined labels for the metastore federation.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -131,6 +133,10 @@ class MetastoreFederationArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -167,11 +173,13 @@ class _MetastoreFederationState:
         :param pulumi.Input[builtins.str] federation_id: The ID of the metastore federation. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
                and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
                3 and 63 characters.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: User-defined labels for the metastore federation. **Note**: This field is non-authoritative, and will only manage the
-               labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-               resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: User-defined labels for the metastore federation.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location where the metastore federation should reside.
         :param pulumi.Input[builtins.str] name: The relative resource name of the metastore federation.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[builtins.str] state: The current state of the metastore federation.
@@ -289,9 +297,9 @@ class _MetastoreFederationState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        User-defined labels for the metastore federation. **Note**: This field is non-authoritative, and will only manage the
-        labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-        resource.
+        User-defined labels for the metastore federation.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -326,6 +334,10 @@ class _MetastoreFederationState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -514,10 +526,12 @@ class MetastoreFederation(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] federation_id: The ID of the metastore federation. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
                and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
                3 and 63 characters.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: User-defined labels for the metastore federation. **Note**: This field is non-authoritative, and will only manage the
-               labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-               resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: User-defined labels for the metastore federation.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location where the metastore federation should reside.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] version: The Apache Hive metastore version of the federation. All backend metastore versions must be compatible with the federation version.
         """
         ...
@@ -709,11 +723,13 @@ class MetastoreFederation(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] federation_id: The ID of the metastore federation. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
                and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
                3 and 63 characters.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: User-defined labels for the metastore federation. **Note**: This field is non-authoritative, and will only manage the
-               labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-               resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: User-defined labels for the metastore federation.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location where the metastore federation should reside.
         :param pulumi.Input[builtins.str] name: The relative resource name of the metastore federation.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[builtins.str] state: The current state of the metastore federation.
@@ -796,9 +812,9 @@ class MetastoreFederation(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
         """
-        User-defined labels for the metastore federation. **Note**: This field is non-authoritative, and will only manage the
-        labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-        resource.
+        User-defined labels for the metastore federation.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -821,6 +837,10 @@ class MetastoreFederation(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property

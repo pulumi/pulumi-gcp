@@ -32,9 +32,6 @@ class DataConnectServiceArgs:
         :param pulumi.Input[builtins.str] location: The region in which the service resides, e.g. "us-central1" or "asia-east1".
         :param pulumi.Input[builtins.str] service_id: Required. The ID to use for the service, which will become the final component of the
                service's resource name.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Optional. Stores small amounts of arbitrary data.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -81,9 +78,6 @@ class DataConnectServiceArgs:
         """
         Required. The ID to use for the service, which will become the final component of the
         service's resource name.
-
-
-        - - -
         """
         return pulumi.get(self, "service_id")
 
@@ -217,9 +211,6 @@ class _DataConnectServiceState:
                service.
         :param pulumi.Input[builtins.str] service_id: Required. The ID to use for the service, which will become the final component of the
                service's resource name.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] uid: Output only. System-assigned, unique identifier.
         :param pulumi.Input[builtins.str] update_time: Output only. [Output only] Update time stamp.
         """
@@ -436,9 +427,6 @@ class _DataConnectServiceState:
         """
         Required. The ID to use for the service, which will become the final component of the
         service's resource name.
-
-
-        - - -
         """
         return pulumi.get(self, "service_id")
 
@@ -585,9 +573,6 @@ class DataConnectService(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] service_id: Required. The ID to use for the service, which will become the final component of the
                service's resource name.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -797,9 +782,6 @@ class DataConnectService(pulumi.CustomResource):
                service.
         :param pulumi.Input[builtins.str] service_id: Required. The ID to use for the service, which will become the final component of the
                service's resource name.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] uid: Output only. System-assigned, unique identifier.
         :param pulumi.Input[builtins.str] update_time: Output only. [Output only] Update time stamp.
         """
@@ -953,9 +935,6 @@ class DataConnectService(pulumi.CustomResource):
         """
         Required. The ID to use for the service, which will become the final component of the
         service's resource name.
-
-
-        - - -
         """
         return pulumi.get(self, "service_id")
 

@@ -165,9 +165,6 @@ namespace Pulumi.Gcp.Firebase
         /// firebasedatabase.googleapis.com (Firebase Realtime Database)
         /// firestore.googleapis.com (Cloud Firestore)
         /// identitytoolkit.googleapis.com (Authentication)
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("serviceId")]
         public Output<string> ServiceId { get; private set; } = null!;
@@ -234,9 +231,6 @@ namespace Pulumi.Gcp.Firebase
         /// firebasedatabase.googleapis.com (Firebase Realtime Database)
         /// firestore.googleapis.com (Cloud Firestore)
         /// identitytoolkit.googleapis.com (Authentication)
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("serviceId", required: true)]
         public Input<string> ServiceId { get; set; } = null!;
@@ -271,9 +265,6 @@ namespace Pulumi.Gcp.Firebase
         /// firebasedatabase.googleapis.com (Firebase Realtime Database)
         /// firestore.googleapis.com (Cloud Firestore)
         /// identitytoolkit.googleapis.com (Authentication)
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("serviceId")]
         public Input<string>? ServiceId { get; set; }

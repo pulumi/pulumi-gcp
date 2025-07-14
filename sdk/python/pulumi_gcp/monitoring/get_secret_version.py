@@ -29,7 +29,7 @@ class GetSecretVersionResult:
     """
     A collection of values returned by getSecretVersion.
     """
-    def __init__(__self__, create_time=None, destroy_time=None, enabled=None, id=None, is_secret_data_base64=None, name=None, project=None, secret=None, secret_data=None, version=None):
+    def __init__(__self__, create_time=None, destroy_time=None, enabled=None, fetch_secret_data=None, id=None, is_secret_data_base64=None, name=None, project=None, secret=None, secret_data=None, version=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -39,6 +39,9 @@ class GetSecretVersionResult:
         if enabled and not isinstance(enabled, bool):
             raise TypeError("Expected argument 'enabled' to be a bool")
         pulumi.set(__self__, "enabled", enabled)
+        if fetch_secret_data and not isinstance(fetch_secret_data, bool):
+            raise TypeError("Expected argument 'fetch_secret_data' to be a bool")
+        pulumi.set(__self__, "fetch_secret_data", fetch_secret_data)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -84,6 +87,11 @@ class GetSecretVersionResult:
         True if the current state of the SecretVersion is enabled.
         """
         return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="fetchSecretData")
+    def fetch_secret_data(self) -> Optional[builtins.bool]:
+        return pulumi.get(self, "fetch_secret_data")
 
     @property
     @pulumi.getter
@@ -140,6 +148,7 @@ class AwaitableGetSecretVersionResult(GetSecretVersionResult):
             create_time=self.create_time,
             destroy_time=self.destroy_time,
             enabled=self.enabled,
+            fetch_secret_data=self.fetch_secret_data,
             id=self.id,
             is_secret_data_base64=self.is_secret_data_base64,
             name=self.name,
@@ -149,7 +158,8 @@ class AwaitableGetSecretVersionResult(GetSecretVersionResult):
             version=self.version)
 
 
-def get_secret_version(is_secret_data_base64: Optional[builtins.bool] = None,
+def get_secret_version(fetch_secret_data: Optional[builtins.bool] = None,
+                       is_secret_data_base64: Optional[builtins.bool] = None,
                        project: Optional[builtins.str] = None,
                        secret: Optional[builtins.str] = None,
                        version: Optional[builtins.str] = None,
@@ -167,7 +177,9 @@ def get_secret_version(is_secret_data_base64: Optional[builtins.bool] = None,
     ```
 
 
-    :param builtins.bool is_secret_data_base64: If set to 'true', the secret data is
+    :param builtins.bool fetch_secret_data: If set to `false`, the `secret_data` 
+           will not be fetched. Default is `true`.
+    :param builtins.bool is_secret_data_base64: If set to `true`, the secret data is
            expected to be base64-encoded string.
     :param builtins.str project: The project to get the secret version for. If it
            is not provided, the provider project is used.
@@ -177,6 +189,7 @@ def get_secret_version(is_secret_data_base64: Optional[builtins.bool] = None,
     """
     pulumi.log.warn("""get_secret_version is deprecated: gcp.monitoring.getSecretVersion has been deprecated in favor of gcp.secretmanager.getSecretVersion""")
     __args__ = dict()
+    __args__['fetchSecretData'] = fetch_secret_data
     __args__['isSecretDataBase64'] = is_secret_data_base64
     __args__['project'] = project
     __args__['secret'] = secret
@@ -188,6 +201,7 @@ def get_secret_version(is_secret_data_base64: Optional[builtins.bool] = None,
         create_time=pulumi.get(__ret__, 'create_time'),
         destroy_time=pulumi.get(__ret__, 'destroy_time'),
         enabled=pulumi.get(__ret__, 'enabled'),
+        fetch_secret_data=pulumi.get(__ret__, 'fetch_secret_data'),
         id=pulumi.get(__ret__, 'id'),
         is_secret_data_base64=pulumi.get(__ret__, 'is_secret_data_base64'),
         name=pulumi.get(__ret__, 'name'),
@@ -195,7 +209,8 @@ def get_secret_version(is_secret_data_base64: Optional[builtins.bool] = None,
         secret=pulumi.get(__ret__, 'secret'),
         secret_data=pulumi.get(__ret__, 'secret_data'),
         version=pulumi.get(__ret__, 'version'))
-def get_secret_version_output(is_secret_data_base64: Optional[pulumi.Input[Optional[builtins.bool]]] = None,
+def get_secret_version_output(fetch_secret_data: Optional[pulumi.Input[Optional[builtins.bool]]] = None,
+                              is_secret_data_base64: Optional[pulumi.Input[Optional[builtins.bool]]] = None,
                               project: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                               secret: Optional[pulumi.Input[builtins.str]] = None,
                               version: Optional[pulumi.Input[Optional[builtins.str]]] = None,
@@ -213,7 +228,9 @@ def get_secret_version_output(is_secret_data_base64: Optional[pulumi.Input[Optio
     ```
 
 
-    :param builtins.bool is_secret_data_base64: If set to 'true', the secret data is
+    :param builtins.bool fetch_secret_data: If set to `false`, the `secret_data` 
+           will not be fetched. Default is `true`.
+    :param builtins.bool is_secret_data_base64: If set to `true`, the secret data is
            expected to be base64-encoded string.
     :param builtins.str project: The project to get the secret version for. If it
            is not provided, the provider project is used.
@@ -223,6 +240,7 @@ def get_secret_version_output(is_secret_data_base64: Optional[pulumi.Input[Optio
     """
     pulumi.log.warn("""get_secret_version is deprecated: gcp.monitoring.getSecretVersion has been deprecated in favor of gcp.secretmanager.getSecretVersion""")
     __args__ = dict()
+    __args__['fetchSecretData'] = fetch_secret_data
     __args__['isSecretDataBase64'] = is_secret_data_base64
     __args__['project'] = project
     __args__['secret'] = secret
@@ -233,6 +251,7 @@ def get_secret_version_output(is_secret_data_base64: Optional[pulumi.Input[Optio
         create_time=pulumi.get(__response__, 'create_time'),
         destroy_time=pulumi.get(__response__, 'destroy_time'),
         enabled=pulumi.get(__response__, 'enabled'),
+        fetch_secret_data=pulumi.get(__response__, 'fetch_secret_data'),
         id=pulumi.get(__response__, 'id'),
         is_secret_data_base64=pulumi.get(__response__, 'is_secret_data_base64'),
         name=pulumi.get(__response__, 'name'),

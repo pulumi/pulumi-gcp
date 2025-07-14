@@ -23,14 +23,16 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     public static final InstanceArgs Empty = new InstanceArgs();
 
     /**
-     * The full name of the GCE network to connect the instance to. If not provided, &#39;default&#39; will be used.
+     * The full name of the GCE network to connect the instance to.  If not provided,
+     * &#39;default&#39; will be used.
      * 
      */
     @Import(name="authorizedNetwork")
     private @Nullable Output<String> authorizedNetwork;
 
     /**
-     * @return The full name of the GCE network to connect the instance to. If not provided, &#39;default&#39; will be used.
+     * @return The full name of the GCE network to connect the instance to.  If not provided,
+     * &#39;default&#39; will be used.
      * 
      */
     public Optional<Output<String>> authorizedNetwork() {
@@ -53,18 +55,20 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-     * labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the
-     * resource.
+     * Resource labels to represent user-provided metadata.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-     * labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the
-     * resource.
+     * @return Resource labels to represent user-provided metadata.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -73,6 +77,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Maintenance policy for an instance.
+     * Structure is documented below.
      * 
      */
     @Import(name="maintenancePolicy")
@@ -80,6 +85,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Maintenance policy for an instance.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<InstanceMaintenancePolicyArgs>> maintenancePolicy() {
@@ -88,6 +94,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * User-specified parameters for this memcache instance.
+     * Structure is documented below.
      * 
      */
     @Import(name="memcacheParameters")
@@ -95,6 +102,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return User-specified parameters for this memcache instance.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<InstanceMemcacheParametersArgs>> memcacheParameters() {
@@ -102,18 +110,22 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest
-     * supported major version is MEMCACHE_1_5. The minor version will be automatically determined by our system based on the
-     * latest supported minor version. Default value: &#34;MEMCACHE_1_5&#34; Possible values: [&#34;MEMCACHE_1_5&#34;, &#34;MEMCACHE_1_6_15&#34;]
+     * The major version of Memcached software. If not provided, latest supported version will be used.
+     * Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
+     * determined by our system based on the latest supported minor version.
+     * Default value is `MEMCACHE_1_5`.
+     * Possible values are: `MEMCACHE_1_5`, `MEMCACHE_1_6_15`.
      * 
      */
     @Import(name="memcacheVersion")
     private @Nullable Output<String> memcacheVersion;
 
     /**
-     * @return The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest
-     * supported major version is MEMCACHE_1_5. The minor version will be automatically determined by our system based on the
-     * latest supported minor version. Default value: &#34;MEMCACHE_1_5&#34; Possible values: [&#34;MEMCACHE_1_5&#34;, &#34;MEMCACHE_1_6_15&#34;]
+     * @return The major version of Memcached software. If not provided, latest supported version will be used.
+     * Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
+     * determined by our system based on the latest supported minor version.
+     * Default value is `MEMCACHE_1_5`.
+     * Possible values are: `MEMCACHE_1_5`, `MEMCACHE_1_6_15`.
      * 
      */
     public Optional<Output<String>> memcacheVersion() {
@@ -167,9 +179,19 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         return this.nodeCount;
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -190,16 +212,18 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Contains the name of allocated IP address ranges associated with the private service access connection for example,
-     * &#34;test-default&#34; associated with IP range 10.0.0.0/29.
+     * Contains the name of allocated IP address ranges associated with
+     * the private service access connection for example, &#34;test-default&#34;
+     * associated with IP range 10.0.0.0/29.
      * 
      */
     @Import(name="reservedIpRangeIds")
     private @Nullable Output<List<String>> reservedIpRangeIds;
 
     /**
-     * @return Contains the name of allocated IP address ranges associated with the private service access connection for example,
-     * &#34;test-default&#34; associated with IP range 10.0.0.0/29.
+     * @return Contains the name of allocated IP address ranges associated with
+     * the private service access connection for example, &#34;test-default&#34;
+     * associated with IP range 10.0.0.0/29.
      * 
      */
     public Optional<Output<List<String>>> reservedIpRangeIds() {
@@ -207,14 +231,16 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Zones where memcache nodes should be provisioned. If not provided, all zones will be used.
+     * Zones where memcache nodes should be provisioned.  If not
+     * provided, all zones will be used.
      * 
      */
     @Import(name="zones")
     private @Nullable Output<List<String>> zones;
 
     /**
-     * @return Zones where memcache nodes should be provisioned. If not provided, all zones will be used.
+     * @return Zones where memcache nodes should be provisioned.  If not
+     * provided, all zones will be used.
      * 
      */
     public Optional<Output<List<String>>> zones() {
@@ -258,7 +284,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedNetwork The full name of the GCE network to connect the instance to. If not provided, &#39;default&#39; will be used.
+         * @param authorizedNetwork The full name of the GCE network to connect the instance to.  If not provided,
+         * &#39;default&#39; will be used.
          * 
          * @return builder
          * 
@@ -269,7 +296,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedNetwork The full name of the GCE network to connect the instance to. If not provided, &#39;default&#39; will be used.
+         * @param authorizedNetwork The full name of the GCE network to connect the instance to.  If not provided,
+         * &#39;default&#39; will be used.
          * 
          * @return builder
          * 
@@ -300,9 +328,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-         * labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the
-         * resource.
+         * @param labels Resource labels to represent user-provided metadata.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -313,9 +342,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-         * labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the
-         * resource.
+         * @param labels Resource labels to represent user-provided metadata.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -326,6 +356,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param maintenancePolicy Maintenance policy for an instance.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -337,6 +368,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param maintenancePolicy Maintenance policy for an instance.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -347,6 +379,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param memcacheParameters User-specified parameters for this memcache instance.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -358,6 +391,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param memcacheParameters User-specified parameters for this memcache instance.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -367,9 +401,11 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param memcacheVersion The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest
-         * supported major version is MEMCACHE_1_5. The minor version will be automatically determined by our system based on the
-         * latest supported minor version. Default value: &#34;MEMCACHE_1_5&#34; Possible values: [&#34;MEMCACHE_1_5&#34;, &#34;MEMCACHE_1_6_15&#34;]
+         * @param memcacheVersion The major version of Memcached software. If not provided, latest supported version will be used.
+         * Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
+         * determined by our system based on the latest supported minor version.
+         * Default value is `MEMCACHE_1_5`.
+         * Possible values are: `MEMCACHE_1_5`, `MEMCACHE_1_6_15`.
          * 
          * @return builder
          * 
@@ -380,9 +416,11 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param memcacheVersion The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest
-         * supported major version is MEMCACHE_1_5. The minor version will be automatically determined by our system based on the
-         * latest supported minor version. Default value: &#34;MEMCACHE_1_5&#34; Possible values: [&#34;MEMCACHE_1_5&#34;, &#34;MEMCACHE_1_6_15&#34;]
+         * @param memcacheVersion The major version of Memcached software. If not provided, latest supported version will be used.
+         * Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
+         * determined by our system based on the latest supported minor version.
+         * Default value is `MEMCACHE_1_5`.
+         * Possible values are: `MEMCACHE_1_5`, `MEMCACHE_1_6_15`.
          * 
          * @return builder
          * 
@@ -456,11 +494,25 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
             return nodeCount(Output.of(nodeCount));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
@@ -487,8 +539,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param reservedIpRangeIds Contains the name of allocated IP address ranges associated with the private service access connection for example,
-         * &#34;test-default&#34; associated with IP range 10.0.0.0/29.
+         * @param reservedIpRangeIds Contains the name of allocated IP address ranges associated with
+         * the private service access connection for example, &#34;test-default&#34;
+         * associated with IP range 10.0.0.0/29.
          * 
          * @return builder
          * 
@@ -499,8 +552,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param reservedIpRangeIds Contains the name of allocated IP address ranges associated with the private service access connection for example,
-         * &#34;test-default&#34; associated with IP range 10.0.0.0/29.
+         * @param reservedIpRangeIds Contains the name of allocated IP address ranges associated with
+         * the private service access connection for example, &#34;test-default&#34;
+         * associated with IP range 10.0.0.0/29.
          * 
          * @return builder
          * 
@@ -510,8 +564,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param reservedIpRangeIds Contains the name of allocated IP address ranges associated with the private service access connection for example,
-         * &#34;test-default&#34; associated with IP range 10.0.0.0/29.
+         * @param reservedIpRangeIds Contains the name of allocated IP address ranges associated with
+         * the private service access connection for example, &#34;test-default&#34;
+         * associated with IP range 10.0.0.0/29.
          * 
          * @return builder
          * 
@@ -521,7 +576,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zones Zones where memcache nodes should be provisioned. If not provided, all zones will be used.
+         * @param zones Zones where memcache nodes should be provisioned.  If not
+         * provided, all zones will be used.
          * 
          * @return builder
          * 
@@ -532,7 +588,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zones Zones where memcache nodes should be provisioned. If not provided, all zones will be used.
+         * @param zones Zones where memcache nodes should be provisioned.  If not
+         * provided, all zones will be used.
          * 
          * @return builder
          * 
@@ -542,7 +599,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zones Zones where memcache nodes should be provisioned. If not provided, all zones will be used.
+         * @param zones Zones where memcache nodes should be provisioned.  If not
+         * provided, all zones will be used.
          * 
          * @return builder
          * 

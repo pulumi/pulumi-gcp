@@ -337,35 +337,45 @@ namespace Pulumi.Gcp.GkeOnPrem
     {
         /// <summary>
         /// The VMware admin cluster addon node configuration.
+        /// Structure is documented below.
         /// </summary>
         [Output("addonNode")]
         public Output<Outputs.VmwareAdminClusterAddonNode> AddonNode { get; private set; } = null!;
 
         /// <summary>
-        /// Annotations on the VMware Admin Cluster. This field has the same restrictions as Kubernetes annotations. The total size
-        /// of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-        /// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-        /// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-        /// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-        /// 'effective_annotations' for all of the annotations present on the resource.
+        /// Annotations on the VMware Admin Cluster.
+        /// This field has the same restrictions as Kubernetes annotations.
+        /// The total size of all keys and values combined is limited to 256k.
+        /// Key can have 2 segments: prefix (optional) and name (required),
+        /// separated by a slash (/).
+        /// Prefix must be a DNS subdomain.
+        /// Name must be 63 characters or less, begin and end with alphanumerics,
+        /// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, string>> Annotations { get; private set; } = null!;
 
         /// <summary>
-        /// AAGConfig specifies whether to spread VMware Admin Cluster nodes across at least three physical hosts in the datacenter.
+        /// AAGConfig specifies whether to spread VMware Admin Cluster nodes across at
+        /// least three physical hosts in the datacenter.
+        /// Structure is documented below.
         /// </summary>
         [Output("antiAffinityGroups")]
         public Output<Outputs.VmwareAdminClusterAntiAffinityGroups> AntiAffinityGroups { get; private set; } = null!;
 
         /// <summary>
         /// The VMware admin cluster authorization configuration.
+        /// Structure is documented below.
         /// </summary>
         [Output("authorization")]
         public Output<Outputs.VmwareAdminClusterAuthorization?> Authorization { get; private set; } = null!;
 
         /// <summary>
         /// Configuration for auto repairing.
+        /// Structure is documented below.
         /// </summary>
         [Output("autoRepairConfig")]
         public Output<Outputs.VmwareAdminClusterAutoRepairConfig> AutoRepairConfig { get; private set; } = null!;
@@ -378,6 +388,7 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// The VMware admin cluster control plane node configuration.
+        /// Structure is documented below.
         /// </summary>
         [Output("controlPlaneNode")]
         public Output<Outputs.VmwareAdminClusterControlPlaneNode?> ControlPlaneNode { get; private set; } = null!;
@@ -434,6 +445,7 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// Specifies the load balancer configuration for VMware admin cluster.
+        /// Structure is documented below.
         /// </summary>
         [Output("loadBalancer")]
         public Output<Outputs.VmwareAdminClusterLoadBalancer?> LoadBalancer { get; private set; } = null!;
@@ -480,16 +492,22 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// The VMware platform configuration.
+        /// Structure is documented below.
         /// </summary>
         [Output("platformConfig")]
         public Output<Outputs.VmwareAdminClusterPlatformConfig?> PlatformConfig { get; private set; } = null!;
 
         /// <summary>
         /// Configuration for private registry.
+        /// Structure is documented below.
         /// </summary>
         [Output("privateRegistryConfig")]
         public Output<Outputs.VmwareAdminClusterPrivateRegistryConfig?> PrivateRegistryConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -527,6 +545,7 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// Specifies vCenter config for the admin cluster.
+        /// Structure is documented below.
         /// </summary>
         [Output("vcenter")]
         public Output<Outputs.VmwareAdminClusterVcenter?> Vcenter { get; private set; } = null!;
@@ -579,6 +598,7 @@ namespace Pulumi.Gcp.GkeOnPrem
     {
         /// <summary>
         /// The VMware admin cluster addon node configuration.
+        /// Structure is documented below.
         /// </summary>
         [Input("addonNode")]
         public Input<Inputs.VmwareAdminClusterAddonNodeArgs>? AddonNode { get; set; }
@@ -587,12 +607,17 @@ namespace Pulumi.Gcp.GkeOnPrem
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// Annotations on the VMware Admin Cluster. This field has the same restrictions as Kubernetes annotations. The total size
-        /// of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-        /// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-        /// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-        /// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-        /// 'effective_annotations' for all of the annotations present on the resource.
+        /// Annotations on the VMware Admin Cluster.
+        /// This field has the same restrictions as Kubernetes annotations.
+        /// The total size of all keys and values combined is limited to 256k.
+        /// Key can have 2 segments: prefix (optional) and name (required),
+        /// separated by a slash (/).
+        /// Prefix must be a DNS subdomain.
+        /// Name must be 63 characters or less, begin and end with alphanumerics,
+        /// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -601,19 +626,23 @@ namespace Pulumi.Gcp.GkeOnPrem
         }
 
         /// <summary>
-        /// AAGConfig specifies whether to spread VMware Admin Cluster nodes across at least three physical hosts in the datacenter.
+        /// AAGConfig specifies whether to spread VMware Admin Cluster nodes across at
+        /// least three physical hosts in the datacenter.
+        /// Structure is documented below.
         /// </summary>
         [Input("antiAffinityGroups")]
         public Input<Inputs.VmwareAdminClusterAntiAffinityGroupsArgs>? AntiAffinityGroups { get; set; }
 
         /// <summary>
         /// The VMware admin cluster authorization configuration.
+        /// Structure is documented below.
         /// </summary>
         [Input("authorization")]
         public Input<Inputs.VmwareAdminClusterAuthorizationArgs>? Authorization { get; set; }
 
         /// <summary>
         /// Configuration for auto repairing.
+        /// Structure is documented below.
         /// </summary>
         [Input("autoRepairConfig")]
         public Input<Inputs.VmwareAdminClusterAutoRepairConfigArgs>? AutoRepairConfig { get; set; }
@@ -626,6 +655,7 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// The VMware admin cluster control plane node configuration.
+        /// Structure is documented below.
         /// </summary>
         [Input("controlPlaneNode")]
         public Input<Inputs.VmwareAdminClusterControlPlaneNodeArgs>? ControlPlaneNode { get; set; }
@@ -644,6 +674,7 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// Specifies the load balancer configuration for VMware admin cluster.
+        /// Structure is documented below.
         /// </summary>
         [Input("loadBalancer")]
         public Input<Inputs.VmwareAdminClusterLoadBalancerArgs>? LoadBalancer { get; set; }
@@ -675,21 +706,28 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// The VMware platform configuration.
+        /// Structure is documented below.
         /// </summary>
         [Input("platformConfig")]
         public Input<Inputs.VmwareAdminClusterPlatformConfigArgs>? PlatformConfig { get; set; }
 
         /// <summary>
         /// Configuration for private registry.
+        /// Structure is documented below.
         /// </summary>
         [Input("privateRegistryConfig")]
         public Input<Inputs.VmwareAdminClusterPrivateRegistryConfigArgs>? PrivateRegistryConfig { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Specifies vCenter config for the admin cluster.
+        /// Structure is documented below.
         /// </summary>
         [Input("vcenter")]
         public Input<Inputs.VmwareAdminClusterVcenterArgs>? Vcenter { get; set; }
@@ -704,6 +742,7 @@ namespace Pulumi.Gcp.GkeOnPrem
     {
         /// <summary>
         /// The VMware admin cluster addon node configuration.
+        /// Structure is documented below.
         /// </summary>
         [Input("addonNode")]
         public Input<Inputs.VmwareAdminClusterAddonNodeGetArgs>? AddonNode { get; set; }
@@ -712,12 +751,17 @@ namespace Pulumi.Gcp.GkeOnPrem
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// Annotations on the VMware Admin Cluster. This field has the same restrictions as Kubernetes annotations. The total size
-        /// of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-        /// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-        /// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-        /// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-        /// 'effective_annotations' for all of the annotations present on the resource.
+        /// Annotations on the VMware Admin Cluster.
+        /// This field has the same restrictions as Kubernetes annotations.
+        /// The total size of all keys and values combined is limited to 256k.
+        /// Key can have 2 segments: prefix (optional) and name (required),
+        /// separated by a slash (/).
+        /// Prefix must be a DNS subdomain.
+        /// Name must be 63 characters or less, begin and end with alphanumerics,
+        /// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -726,19 +770,23 @@ namespace Pulumi.Gcp.GkeOnPrem
         }
 
         /// <summary>
-        /// AAGConfig specifies whether to spread VMware Admin Cluster nodes across at least three physical hosts in the datacenter.
+        /// AAGConfig specifies whether to spread VMware Admin Cluster nodes across at
+        /// least three physical hosts in the datacenter.
+        /// Structure is documented below.
         /// </summary>
         [Input("antiAffinityGroups")]
         public Input<Inputs.VmwareAdminClusterAntiAffinityGroupsGetArgs>? AntiAffinityGroups { get; set; }
 
         /// <summary>
         /// The VMware admin cluster authorization configuration.
+        /// Structure is documented below.
         /// </summary>
         [Input("authorization")]
         public Input<Inputs.VmwareAdminClusterAuthorizationGetArgs>? Authorization { get; set; }
 
         /// <summary>
         /// Configuration for auto repairing.
+        /// Structure is documented below.
         /// </summary>
         [Input("autoRepairConfig")]
         public Input<Inputs.VmwareAdminClusterAutoRepairConfigGetArgs>? AutoRepairConfig { get; set; }
@@ -751,6 +799,7 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// The VMware admin cluster control plane node configuration.
+        /// Structure is documented below.
         /// </summary>
         [Input("controlPlaneNode")]
         public Input<Inputs.VmwareAdminClusterControlPlaneNodeGetArgs>? ControlPlaneNode { get; set; }
@@ -818,6 +867,7 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// Specifies the load balancer configuration for VMware admin cluster.
+        /// Structure is documented below.
         /// </summary>
         [Input("loadBalancer")]
         public Input<Inputs.VmwareAdminClusterLoadBalancerGetArgs>? LoadBalancer { get; set; }
@@ -864,16 +914,22 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// The VMware platform configuration.
+        /// Structure is documented below.
         /// </summary>
         [Input("platformConfig")]
         public Input<Inputs.VmwareAdminClusterPlatformConfigGetArgs>? PlatformConfig { get; set; }
 
         /// <summary>
         /// Configuration for private registry.
+        /// Structure is documented below.
         /// </summary>
         [Input("privateRegistryConfig")]
         public Input<Inputs.VmwareAdminClusterPrivateRegistryConfigGetArgs>? PrivateRegistryConfig { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -917,6 +973,7 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// Specifies vCenter config for the admin cluster.
+        /// Structure is documented below.
         /// </summary>
         [Input("vcenter")]
         public Input<Inputs.VmwareAdminClusterVcenterGetArgs>? Vcenter { get; set; }

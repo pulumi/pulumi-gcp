@@ -119,8 +119,6 @@ type Instance struct {
 	// * Must start with a letter.
 	// * Must be between 1-63 characters.
 	// * Must end with a number or a letter.
-	//
-	// ***
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// Labels as key value pairs.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -233,8 +231,6 @@ type instanceState struct {
 	// * Must start with a letter.
 	// * Must be between 1-63 characters.
 	// * Must end with a number or a letter.
-	//
-	// ***
 	InstanceId *string `pulumi:"instanceId"`
 	// Labels as key value pairs.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -295,8 +291,6 @@ type InstanceState struct {
 	// * Must start with a letter.
 	// * Must be between 1-63 characters.
 	// * Must end with a number or a letter.
-	//
-	// ***
 	InstanceId pulumi.StringPtrInput
 	// Labels as key value pairs.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -357,8 +351,6 @@ type instanceArgs struct {
 	// * Must start with a letter.
 	// * Must be between 1-63 characters.
 	// * Must end with a number or a letter.
-	//
-	// ***
 	InstanceId string `pulumi:"instanceId"`
 	// Labels as key value pairs.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -397,8 +389,6 @@ type InstanceArgs struct {
 	// * Must start with a letter.
 	// * Must be between 1-63 characters.
 	// * Must end with a number or a letter.
-	//
-	// ***
 	InstanceId pulumi.StringInput
 	// Labels as key value pairs.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -544,8 +534,6 @@ func (o InstanceOutput) GkeSupportEnabled() pulumi.BoolPtrOutput {
 // * Must start with a letter.
 // * Must be between 1-63 characters.
 // * Must end with a number or a letter.
-//
-// ***
 func (o InstanceOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }

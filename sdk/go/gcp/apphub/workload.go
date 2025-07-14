@@ -69,8 +69,6 @@ type Workload struct {
 	// Output only. Update time.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// The Workload identifier.
-	//
-	// ***
 	WorkloadId pulumi.StringOutput `pulumi:"workloadId"`
 	// Properties of an underlying compute resource represented by the Workload.
 	// Structure is documented below.
@@ -149,8 +147,6 @@ type workloadState struct {
 	// Output only. Update time.
 	UpdateTime *string `pulumi:"updateTime"`
 	// The Workload identifier.
-	//
-	// ***
 	WorkloadId *string `pulumi:"workloadId"`
 	// Properties of an underlying compute resource represented by the Workload.
 	// Structure is documented below.
@@ -188,8 +184,6 @@ type WorkloadState struct {
 	// Output only. Update time.
 	UpdateTime pulumi.StringPtrInput
 	// The Workload identifier.
-	//
-	// ***
 	WorkloadId pulumi.StringPtrInput
 	// Properties of an underlying compute resource represented by the Workload.
 	// Structure is documented below.
@@ -221,8 +215,6 @@ type workloadArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The Workload identifier.
-	//
-	// ***
 	WorkloadId string `pulumi:"workloadId"`
 }
 
@@ -245,8 +237,6 @@ type WorkloadArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The Workload identifier.
-	//
-	// ***
 	WorkloadId pulumi.StringInput
 }
 
@@ -400,8 +390,6 @@ func (o WorkloadOutput) UpdateTime() pulumi.StringOutput {
 }
 
 // The Workload identifier.
-//
-// ***
 func (o WorkloadOutput) WorkloadId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workload) pulumi.StringOutput { return v.WorkloadId }).(pulumi.StringOutput)
 }

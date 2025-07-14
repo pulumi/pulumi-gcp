@@ -128,8 +128,6 @@ type InstantSnapshot struct {
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// A reference to the disk used to create this instant snapshot.
-	//
-	// ***
 	SourceDisk pulumi.StringOutput `pulumi:"sourceDisk"`
 	// The ID value of the disk used to create this InstantSnapshot.
 	SourceDiskId pulumi.StringOutput `pulumi:"sourceDiskId"`
@@ -207,8 +205,6 @@ type instantSnapshotState struct {
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// A reference to the disk used to create this instant snapshot.
-	//
-	// ***
 	SourceDisk *string `pulumi:"sourceDisk"`
 	// The ID value of the disk used to create this InstantSnapshot.
 	SourceDiskId *string `pulumi:"sourceDiskId"`
@@ -249,8 +245,6 @@ type InstantSnapshotState struct {
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
 	// A reference to the disk used to create this instant snapshot.
-	//
-	// ***
 	SourceDisk pulumi.StringPtrInput
 	// The ID value of the disk used to create this InstantSnapshot.
 	SourceDiskId pulumi.StringPtrInput
@@ -281,8 +275,6 @@ type instantSnapshotArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// A reference to the disk used to create this instant snapshot.
-	//
-	// ***
 	SourceDisk string `pulumi:"sourceDisk"`
 	// A reference to the zone where the disk is located.
 	Zone *string `pulumi:"zone"`
@@ -308,8 +300,6 @@ type InstantSnapshotArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// A reference to the disk used to create this instant snapshot.
-	//
-	// ***
 	SourceDisk pulumi.StringInput
 	// A reference to the zone where the disk is located.
 	Zone pulumi.StringPtrInput
@@ -464,8 +454,6 @@ func (o InstantSnapshotOutput) SelfLink() pulumi.StringOutput {
 }
 
 // A reference to the disk used to create this instant snapshot.
-//
-// ***
 func (o InstantSnapshotOutput) SourceDisk() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstantSnapshot) pulumi.StringOutput { return v.SourceDisk }).(pulumi.StringOutput)
 }

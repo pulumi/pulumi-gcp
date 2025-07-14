@@ -14,8 +14,6 @@ namespace Pulumi.Gcp.CloudAsset.Inputs
     {
         /// <summary>
         /// Destination on Cloud Pubsub topic.
-        /// 
-        /// - - -
         /// </summary>
         [Input("topic", required: true)]
         public Input<string> Topic { get; set; } = null!;

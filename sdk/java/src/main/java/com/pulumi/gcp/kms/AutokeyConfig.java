@@ -180,16 +180,12 @@ public class AutokeyConfig extends com.pulumi.resources.CustomResource {
     /**
      * The folder for which to retrieve config.
      * 
-     * ***
-     * 
      */
     @Export(name="folder", refs={String.class}, tree="[0]")
     private Output<String> folder;
 
     /**
      * @return The folder for which to retrieve config.
-     * 
-     * ***
      * 
      */
     public Output<String> folder() {

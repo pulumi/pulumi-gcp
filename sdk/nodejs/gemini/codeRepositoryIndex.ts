@@ -82,9 +82,6 @@ export class CodeRepositoryIndex extends pulumi.CustomResource {
 
     /**
      * Required. Id of the Code Repository Index.
-     *
-     *
-     * - - -
      */
     public readonly codeRepositoryIndexId!: pulumi.Output<string>;
     /**
@@ -197,9 +194,6 @@ export class CodeRepositoryIndex extends pulumi.CustomResource {
 export interface CodeRepositoryIndexState {
     /**
      * Required. Id of the Code Repository Index.
-     *
-     *
-     * - - -
      */
     codeRepositoryIndexId?: pulumi.Input<string>;
     /**
@@ -260,9 +254,6 @@ export interface CodeRepositoryIndexState {
 export interface CodeRepositoryIndexArgs {
     /**
      * Required. Id of the Code Repository Index.
-     *
-     *
-     * - - -
      */
     codeRepositoryIndexId: pulumi.Input<string>;
     /**

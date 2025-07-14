@@ -58,8 +58,6 @@ type EventThreatDetectionCustomModule struct {
 	// Its format is "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}".
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Numerical ID of the parent organization.
-	//
-	// ***
 	Organization pulumi.StringOutput `pulumi:"organization"`
 	// Immutable. Type for the module. e.g. CONFIGURABLE_BAD_IP.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -125,8 +123,6 @@ type eventThreatDetectionCustomModuleState struct {
 	// Its format is "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}".
 	Name *string `pulumi:"name"`
 	// Numerical ID of the parent organization.
-	//
-	// ***
 	Organization *string `pulumi:"organization"`
 	// Immutable. Type for the module. e.g. CONFIGURABLE_BAD_IP.
 	Type *string `pulumi:"type"`
@@ -151,8 +147,6 @@ type EventThreatDetectionCustomModuleState struct {
 	// Its format is "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}".
 	Name pulumi.StringPtrInput
 	// Numerical ID of the parent organization.
-	//
-	// ***
 	Organization pulumi.StringPtrInput
 	// Immutable. Type for the module. e.g. CONFIGURABLE_BAD_IP.
 	Type pulumi.StringPtrInput
@@ -176,8 +170,6 @@ type eventThreatDetectionCustomModuleArgs struct {
 	// Possible values are: `ENABLED`, `DISABLED`.
 	EnablementState string `pulumi:"enablementState"`
 	// Numerical ID of the parent organization.
-	//
-	// ***
 	Organization string `pulumi:"organization"`
 	// Immutable. Type for the module. e.g. CONFIGURABLE_BAD_IP.
 	Type string `pulumi:"type"`
@@ -194,8 +186,6 @@ type EventThreatDetectionCustomModuleArgs struct {
 	// Possible values are: `ENABLED`, `DISABLED`.
 	EnablementState pulumi.StringInput
 	// Numerical ID of the parent organization.
-	//
-	// ***
 	Organization pulumi.StringInput
 	// Immutable. Type for the module. e.g. CONFIGURABLE_BAD_IP.
 	Type pulumi.StringInput
@@ -317,8 +307,6 @@ func (o EventThreatDetectionCustomModuleOutput) Name() pulumi.StringOutput {
 }
 
 // Numerical ID of the parent organization.
-//
-// ***
 func (o EventThreatDetectionCustomModuleOutput) Organization() pulumi.StringOutput {
 	return o.ApplyT(func(v *EventThreatDetectionCustomModule) pulumi.StringOutput { return v.Organization }).(pulumi.StringOutput)
 }

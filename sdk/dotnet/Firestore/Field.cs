@@ -227,9 +227,6 @@ namespace Pulumi.Gcp.Firestore
 
         /// <summary>
         /// The id of the field to configure.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("field")]
         public Output<string> FieldId { get; private set; } = null!;
@@ -325,9 +322,6 @@ namespace Pulumi.Gcp.Firestore
 
         /// <summary>
         /// The id of the field to configure.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("field", required: true)]
         public Input<string> FieldId { get; set; } = null!;
@@ -378,9 +372,6 @@ namespace Pulumi.Gcp.Firestore
 
         /// <summary>
         /// The id of the field to configure.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("field")]
         public Input<string>? FieldId { get; set; }

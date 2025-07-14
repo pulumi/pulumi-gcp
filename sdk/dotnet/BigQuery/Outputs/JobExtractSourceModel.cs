@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         public readonly string DatasetId;
         /// <summary>
         /// The ID of the model.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string ModelId;
         /// <summary>

@@ -416,9 +416,6 @@ namespace Pulumi.Gcp.Redis
 
         /// <summary>
         /// The name of the region of the Redis cluster these endpoints should be added to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -497,9 +494,6 @@ namespace Pulumi.Gcp.Redis
 
         /// <summary>
         /// The name of the region of the Redis cluster these endpoints should be added to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
@@ -540,9 +534,6 @@ namespace Pulumi.Gcp.Redis
 
         /// <summary>
         /// The name of the region of the Redis cluster these endpoints should be added to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

@@ -41,9 +41,6 @@ class WorkloadIdentityPoolManagedIdentityArgs:
                * end with an alphanumeric character
                
                The prefix `gcp-` will be reserved for future uses.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] workload_identity_pool_namespace_id: The ID to use for the namespace. This value must:
                * contain at most 63 characters
                * contain only lowercase alphanumeric characters or `-`
@@ -98,9 +95,6 @@ class WorkloadIdentityPoolManagedIdentityArgs:
         * end with an alphanumeric character
 
         The prefix `gcp-` will be reserved for future uses.
-
-
-        - - -
         """
         return pulumi.get(self, "workload_identity_pool_managed_identity_id")
 
@@ -221,9 +215,6 @@ class _WorkloadIdentityPoolManagedIdentityState:
                * end with an alphanumeric character
                
                The prefix `gcp-` will be reserved for future uses.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] workload_identity_pool_namespace_id: The ID to use for the namespace. This value must:
                * contain at most 63 characters
                * contain only lowercase alphanumeric characters or `-`
@@ -359,9 +350,6 @@ class _WorkloadIdentityPoolManagedIdentityState:
         * end with an alphanumeric character
 
         The prefix `gcp-` will be reserved for future uses.
-
-
-        - - -
         """
         return pulumi.get(self, "workload_identity_pool_managed_identity_id")
 
@@ -495,9 +483,6 @@ class WorkloadIdentityPoolManagedIdentity(pulumi.CustomResource):
                * end with an alphanumeric character
                
                The prefix `gcp-` will be reserved for future uses.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] workload_identity_pool_namespace_id: The ID to use for the namespace. This value must:
                * contain at most 63 characters
                * contain only lowercase alphanumeric characters or `-`
@@ -683,9 +668,6 @@ class WorkloadIdentityPoolManagedIdentity(pulumi.CustomResource):
                * end with an alphanumeric character
                
                The prefix `gcp-` will be reserved for future uses.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] workload_identity_pool_namespace_id: The ID to use for the namespace. This value must:
                * contain at most 63 characters
                * contain only lowercase alphanumeric characters or `-`
@@ -789,9 +771,6 @@ class WorkloadIdentityPoolManagedIdentity(pulumi.CustomResource):
         * end with an alphanumeric character
 
         The prefix `gcp-` will be reserved for future uses.
-
-
-        - - -
         """
         return pulumi.get(self, "workload_identity_pool_managed_identity_id")
 

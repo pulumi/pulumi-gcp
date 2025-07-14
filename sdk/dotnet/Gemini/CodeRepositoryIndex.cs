@@ -69,9 +69,6 @@ namespace Pulumi.Gcp.Gemini
     {
         /// <summary>
         /// Required. Id of the Code Repository Index.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("codeRepositoryIndexId")]
         public Output<string> CodeRepositoryIndexId { get; private set; } = null!;
@@ -201,9 +198,6 @@ namespace Pulumi.Gcp.Gemini
     {
         /// <summary>
         /// Required. Id of the Code Repository Index.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("codeRepositoryIndexId", required: true)]
         public Input<string> CodeRepositoryIndexId { get; set; } = null!;
@@ -258,9 +252,6 @@ namespace Pulumi.Gcp.Gemini
     {
         /// <summary>
         /// Required. Id of the Code Repository Index.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("codeRepositoryIndexId")]
         public Input<string>? CodeRepositoryIndexId { get; set; }

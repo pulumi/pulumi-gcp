@@ -78,9 +78,12 @@ import (
 type InterconnectAttachmentGroup struct {
 	pulumi.CustomResourceState
 
-	// (Output)
-	// URLs of any particular Attachments to explain this
-	// blocker in more detail.
+	// Attachments in the AttachmentGroup. Keys are arbitrary user-specified
+	// strings. Users are encouraged, but not required, to use their preferred
+	// format for resource links as keys.
+	// Note that there are add-members and remove-members methods in gcloud.
+	// The size of this map is limited by an "Attachments per group" quota.
+	// Structure is documented below.
 	Attachments InterconnectAttachmentGroupAttachmentArrayOutput `pulumi:"attachments"`
 	// The redundancy this group is configured to support. The way a
 	// user queries what SLA their Attachment gets is by looking at this field of
@@ -95,8 +98,9 @@ type InterconnectAttachmentGroup struct {
 	// the name that must be specified on group creation.
 	// Structure is documented below.
 	Intent InterconnectAttachmentGroupIntentOutput `pulumi:"intent"`
-	// The URL of an InterconnectGroup that groups these Attachments' Interconnects. Customers do not need to set this unless
-	// directed by Google Support.
+	// The URL of an InterconnectGroup that groups these Attachments'
+	// Interconnects. Customers do not need to set this unless directed by
+	// Google Support.
 	InterconnectGroup pulumi.StringPtrOutput `pulumi:"interconnectGroup"`
 	// An analysis of the logical layout of Attachments in this
 	// group. Every Attachment in the group is shown once in this structure.
@@ -107,7 +111,9 @@ type InterconnectAttachmentGroup struct {
 	// long and match the regular expression `a-z?` which means the first
 	// character must be a lowercase letter, and all following characters must be a dash,
 	// lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name    pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 }
 
@@ -144,9 +150,12 @@ func GetInterconnectAttachmentGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InterconnectAttachmentGroup resources.
 type interconnectAttachmentGroupState struct {
-	// (Output)
-	// URLs of any particular Attachments to explain this
-	// blocker in more detail.
+	// Attachments in the AttachmentGroup. Keys are arbitrary user-specified
+	// strings. Users are encouraged, but not required, to use their preferred
+	// format for resource links as keys.
+	// Note that there are add-members and remove-members methods in gcloud.
+	// The size of this map is limited by an "Attachments per group" quota.
+	// Structure is documented below.
 	Attachments []InterconnectAttachmentGroupAttachment `pulumi:"attachments"`
 	// The redundancy this group is configured to support. The way a
 	// user queries what SLA their Attachment gets is by looking at this field of
@@ -161,8 +170,9 @@ type interconnectAttachmentGroupState struct {
 	// the name that must be specified on group creation.
 	// Structure is documented below.
 	Intent *InterconnectAttachmentGroupIntent `pulumi:"intent"`
-	// The URL of an InterconnectGroup that groups these Attachments' Interconnects. Customers do not need to set this unless
-	// directed by Google Support.
+	// The URL of an InterconnectGroup that groups these Attachments'
+	// Interconnects. Customers do not need to set this unless directed by
+	// Google Support.
 	InterconnectGroup *string `pulumi:"interconnectGroup"`
 	// An analysis of the logical layout of Attachments in this
 	// group. Every Attachment in the group is shown once in this structure.
@@ -173,14 +183,19 @@ type interconnectAttachmentGroupState struct {
 	// long and match the regular expression `a-z?` which means the first
 	// character must be a lowercase letter, and all following characters must be a dash,
 	// lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 }
 
 type InterconnectAttachmentGroupState struct {
-	// (Output)
-	// URLs of any particular Attachments to explain this
-	// blocker in more detail.
+	// Attachments in the AttachmentGroup. Keys are arbitrary user-specified
+	// strings. Users are encouraged, but not required, to use their preferred
+	// format for resource links as keys.
+	// Note that there are add-members and remove-members methods in gcloud.
+	// The size of this map is limited by an "Attachments per group" quota.
+	// Structure is documented below.
 	Attachments InterconnectAttachmentGroupAttachmentArrayInput
 	// The redundancy this group is configured to support. The way a
 	// user queries what SLA their Attachment gets is by looking at this field of
@@ -195,8 +210,9 @@ type InterconnectAttachmentGroupState struct {
 	// the name that must be specified on group creation.
 	// Structure is documented below.
 	Intent InterconnectAttachmentGroupIntentPtrInput
-	// The URL of an InterconnectGroup that groups these Attachments' Interconnects. Customers do not need to set this unless
-	// directed by Google Support.
+	// The URL of an InterconnectGroup that groups these Attachments'
+	// Interconnects. Customers do not need to set this unless directed by
+	// Google Support.
 	InterconnectGroup pulumi.StringPtrInput
 	// An analysis of the logical layout of Attachments in this
 	// group. Every Attachment in the group is shown once in this structure.
@@ -207,7 +223,9 @@ type InterconnectAttachmentGroupState struct {
 	// long and match the regular expression `a-z?` which means the first
 	// character must be a lowercase letter, and all following characters must be a dash,
 	// lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 }
 
@@ -216,9 +234,12 @@ func (InterconnectAttachmentGroupState) ElementType() reflect.Type {
 }
 
 type interconnectAttachmentGroupArgs struct {
-	// (Output)
-	// URLs of any particular Attachments to explain this
-	// blocker in more detail.
+	// Attachments in the AttachmentGroup. Keys are arbitrary user-specified
+	// strings. Users are encouraged, but not required, to use their preferred
+	// format for resource links as keys.
+	// Note that there are add-members and remove-members methods in gcloud.
+	// The size of this map is limited by an "Attachments per group" quota.
+	// Structure is documented below.
 	Attachments []InterconnectAttachmentGroupAttachment `pulumi:"attachments"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
@@ -226,23 +247,29 @@ type interconnectAttachmentGroupArgs struct {
 	// the name that must be specified on group creation.
 	// Structure is documented below.
 	Intent InterconnectAttachmentGroupIntent `pulumi:"intent"`
-	// The URL of an InterconnectGroup that groups these Attachments' Interconnects. Customers do not need to set this unless
-	// directed by Google Support.
+	// The URL of an InterconnectGroup that groups these Attachments'
+	// Interconnects. Customers do not need to set this unless directed by
+	// Google Support.
 	InterconnectGroup *string `pulumi:"interconnectGroup"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be
 	// 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
 	// long and match the regular expression `a-z?` which means the first
 	// character must be a lowercase letter, and all following characters must be a dash,
 	// lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a InterconnectAttachmentGroup resource.
 type InterconnectAttachmentGroupArgs struct {
-	// (Output)
-	// URLs of any particular Attachments to explain this
-	// blocker in more detail.
+	// Attachments in the AttachmentGroup. Keys are arbitrary user-specified
+	// strings. Users are encouraged, but not required, to use their preferred
+	// format for resource links as keys.
+	// Note that there are add-members and remove-members methods in gcloud.
+	// The size of this map is limited by an "Attachments per group" quota.
+	// Structure is documented below.
 	Attachments InterconnectAttachmentGroupAttachmentArrayInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
@@ -250,15 +277,18 @@ type InterconnectAttachmentGroupArgs struct {
 	// the name that must be specified on group creation.
 	// Structure is documented below.
 	Intent InterconnectAttachmentGroupIntentInput
-	// The URL of an InterconnectGroup that groups these Attachments' Interconnects. Customers do not need to set this unless
-	// directed by Google Support.
+	// The URL of an InterconnectGroup that groups these Attachments'
+	// Interconnects. Customers do not need to set this unless directed by
+	// Google Support.
 	InterconnectGroup pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be
 	// 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
 	// long and match the regular expression `a-z?` which means the first
 	// character must be a lowercase letter, and all following characters must be a dash,
 	// lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 }
 
@@ -349,9 +379,12 @@ func (o InterconnectAttachmentGroupOutput) ToInterconnectAttachmentGroupOutputWi
 	return o
 }
 
-// (Output)
-// URLs of any particular Attachments to explain this
-// blocker in more detail.
+// Attachments in the AttachmentGroup. Keys are arbitrary user-specified
+// strings. Users are encouraged, but not required, to use their preferred
+// format for resource links as keys.
+// Note that there are add-members and remove-members methods in gcloud.
+// The size of this map is limited by an "Attachments per group" quota.
+// Structure is documented below.
 func (o InterconnectAttachmentGroupOutput) Attachments() InterconnectAttachmentGroupAttachmentArrayOutput {
 	return o.ApplyT(func(v *InterconnectAttachmentGroup) InterconnectAttachmentGroupAttachmentArrayOutput {
 		return v.Attachments
@@ -385,8 +418,9 @@ func (o InterconnectAttachmentGroupOutput) Intent() InterconnectAttachmentGroupI
 	return o.ApplyT(func(v *InterconnectAttachmentGroup) InterconnectAttachmentGroupIntentOutput { return v.Intent }).(InterconnectAttachmentGroupIntentOutput)
 }
 
-// The URL of an InterconnectGroup that groups these Attachments' Interconnects. Customers do not need to set this unless
-// directed by Google Support.
+// The URL of an InterconnectGroup that groups these Attachments'
+// Interconnects. Customers do not need to set this unless directed by
+// Google Support.
 func (o InterconnectAttachmentGroupOutput) InterconnectGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InterconnectAttachmentGroup) pulumi.StringPtrOutput { return v.InterconnectGroup }).(pulumi.StringPtrOutput)
 }
@@ -409,6 +443,8 @@ func (o InterconnectAttachmentGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterconnectAttachmentGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o InterconnectAttachmentGroupOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterconnectAttachmentGroup) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

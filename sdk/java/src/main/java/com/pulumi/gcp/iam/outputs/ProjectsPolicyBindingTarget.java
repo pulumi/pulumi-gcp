@@ -20,8 +20,6 @@ public final class ProjectsPolicyBindingTarget {
      * * Workload Identity Pool: `//iam.googleapis.com/projects/PROJECT_NUMBER/locations/LOCATION/workloadIdentityPools/WORKLOAD_POOL_ID`
      *   It must be parent by the policy binding&#39;s parent (the project).
      * 
-     * ***
-     * 
      */
     private @Nullable String principalSet;
 
@@ -34,8 +32,6 @@ public final class ProjectsPolicyBindingTarget {
      * * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
      * * Workload Identity Pool: `//iam.googleapis.com/projects/PROJECT_NUMBER/locations/LOCATION/workloadIdentityPools/WORKLOAD_POOL_ID`
      *   It must be parent by the policy binding&#39;s parent (the project).
-     * 
-     * ***
      * 
      */
     public Optional<String> principalSet() {

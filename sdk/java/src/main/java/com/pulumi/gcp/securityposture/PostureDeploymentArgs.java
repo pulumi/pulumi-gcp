@@ -64,16 +64,12 @@ public final class PostureDeploymentArgs extends com.pulumi.resources.ResourceAr
     /**
      * ID of the posture deployment.
      * 
-     * ***
-     * 
      */
     @Import(name="postureDeploymentId", required=true)
     private Output<String> postureDeploymentId;
 
     /**
      * @return ID of the posture deployment.
-     * 
-     * ***
      * 
      */
     public Output<String> postureDeploymentId() {
@@ -229,8 +225,6 @@ public final class PostureDeploymentArgs extends com.pulumi.resources.ResourceAr
         /**
          * @param postureDeploymentId ID of the posture deployment.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -241,8 +235,6 @@ public final class PostureDeploymentArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param postureDeploymentId ID of the posture deployment.
-         * 
-         * ***
          * 
          * @return builder
          * 

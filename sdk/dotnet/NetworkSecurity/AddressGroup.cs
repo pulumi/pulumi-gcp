@@ -186,9 +186,6 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// <summary>
         /// The location of the gateway security policy.
         /// The default value is `global`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -328,9 +325,6 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// <summary>
         /// The location of the gateway security policy.
         /// The default value is `global`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -442,9 +436,6 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// <summary>
         /// The location of the gateway security policy.
         /// The default value is `global`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

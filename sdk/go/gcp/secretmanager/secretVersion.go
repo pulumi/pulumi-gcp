@@ -229,8 +229,6 @@ type SecretVersion struct {
 	// `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Secret Manager secret resource
-	//
-	// ***
 	Secret pulumi.StringOutput `pulumi:"secret"`
 	// The secret data. Must be no larger than 64KiB.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -300,8 +298,6 @@ type secretVersionState struct {
 	// `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
 	Name *string `pulumi:"name"`
 	// Secret Manager secret resource
-	//
-	// ***
 	Secret *string `pulumi:"secret"`
 	// The secret data. Must be no larger than 64KiB.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -332,8 +328,6 @@ type SecretVersionState struct {
 	// `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
 	Name pulumi.StringPtrInput
 	// Secret Manager secret resource
-	//
-	// ***
 	Secret pulumi.StringPtrInput
 	// The secret data. Must be no larger than 64KiB.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -361,8 +355,6 @@ type secretVersionArgs struct {
 	// If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
 	IsSecretDataBase64 *bool `pulumi:"isSecretDataBase64"`
 	// Secret Manager secret resource
-	//
-	// ***
 	Secret string `pulumi:"secret"`
 	// The secret data. Must be no larger than 64KiB.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -385,8 +377,6 @@ type SecretVersionArgs struct {
 	// If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
 	IsSecretDataBase64 pulumi.BoolPtrInput
 	// Secret Manager secret resource
-	//
-	// ***
 	Secret pulumi.StringInput
 	// The secret data. Must be no larger than 64KiB.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -519,8 +509,6 @@ func (o SecretVersionOutput) Name() pulumi.StringOutput {
 }
 
 // Secret Manager secret resource
-//
-// ***
 func (o SecretVersionOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecretVersion) pulumi.StringOutput { return v.Secret }).(pulumi.StringOutput)
 }

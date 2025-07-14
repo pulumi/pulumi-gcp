@@ -34,16 +34,12 @@ public final class EntitlementRequesterJustificationConfigArgs extends com.pulum
     /**
      * The requester has to provide a justification in the form of free flowing text.
      * 
-     * ***
-     * 
      */
     @Import(name="unstructured")
     private @Nullable Output<EntitlementRequesterJustificationConfigUnstructuredArgs> unstructured;
 
     /**
      * @return The requester has to provide a justification in the form of free flowing text.
-     * 
-     * ***
      * 
      */
     public Optional<Output<EntitlementRequesterJustificationConfigUnstructuredArgs>> unstructured() {
@@ -99,8 +95,6 @@ public final class EntitlementRequesterJustificationConfigArgs extends com.pulum
         /**
          * @param unstructured The requester has to provide a justification in the form of free flowing text.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -111,8 +105,6 @@ public final class EntitlementRequesterJustificationConfigArgs extends com.pulum
 
         /**
          * @param unstructured The requester has to provide a justification in the form of free flowing text.
-         * 
-         * ***
          * 
          * @return builder
          * 

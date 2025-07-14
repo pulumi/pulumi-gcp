@@ -141,6 +141,10 @@ export class ExtensionsInstance extends pulumi.CustomResource {
      * The fully-qualified resource name of the Extension Instance.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * Data set by the extension instance at runtime.
@@ -257,6 +261,10 @@ export interface ExtensionsInstanceState {
      * The fully-qualified resource name of the Extension Instance.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * Data set by the extension instance at runtime.
@@ -292,5 +300,9 @@ export interface ExtensionsInstanceArgs {
      * component of the instance's name.
      */
     instanceId: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
 }

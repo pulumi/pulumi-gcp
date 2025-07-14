@@ -148,9 +148,6 @@ export class NetworkPolicy extends pulumi.CustomResource {
     public readonly location!: pulumi.Output<string>;
     /**
      * The ID of the Network Policy.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -273,9 +270,6 @@ export interface NetworkPolicyState {
     location?: pulumi.Input<string>;
     /**
      * The ID of the Network Policy.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -339,9 +333,6 @@ export interface NetworkPolicyArgs {
     location: pulumi.Input<string>;
     /**
      * The ID of the Network Policy.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

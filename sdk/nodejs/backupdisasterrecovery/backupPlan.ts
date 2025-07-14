@@ -154,7 +154,7 @@ export class BackupPlan extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * The description allows for additional details about 'BackupPlan' and its use cases to be provided.
+     * The description allows for additional details about `BackupPlan` and its use cases to be provided.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -165,6 +165,10 @@ export class BackupPlan extends pulumi.CustomResource {
      * The name of backup plan resource created
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The resource type to which the `BackupPlan` will be applied.
@@ -266,7 +270,7 @@ export interface BackupPlanState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * The description allows for additional details about 'BackupPlan' and its use cases to be provided.
+     * The description allows for additional details about `BackupPlan` and its use cases to be provided.
      */
     description?: pulumi.Input<string>;
     /**
@@ -277,6 +281,10 @@ export interface BackupPlanState {
      * The name of backup plan resource created
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * The resource type to which the `BackupPlan` will be applied.
@@ -311,13 +319,17 @@ export interface BackupPlanArgs {
      */
     backupVault: pulumi.Input<string>;
     /**
-     * The description allows for additional details about 'BackupPlan' and its use cases to be provided.
+     * The description allows for additional details about `BackupPlan` and its use cases to be provided.
      */
     description?: pulumi.Input<string>;
     /**
      * The location for the backup plan
      */
     location: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * The resource type to which the `BackupPlan` will be applied.

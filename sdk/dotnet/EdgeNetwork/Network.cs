@@ -135,9 +135,6 @@ namespace Pulumi.Gcp.EdgeNetwork
 
         /// <summary>
         /// A unique ID that identifies this network.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("networkId")]
         public Output<string> NetworkId { get; private set; } = null!;
@@ -256,9 +253,6 @@ namespace Pulumi.Gcp.EdgeNetwork
 
         /// <summary>
         /// A unique ID that identifies this network.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("networkId", required: true)]
         public Input<string> NetworkId { get; set; } = null!;
@@ -350,9 +344,6 @@ namespace Pulumi.Gcp.EdgeNetwork
 
         /// <summary>
         /// A unique ID that identifies this network.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("networkId")]
         public Input<string>? NetworkId { get; set; }

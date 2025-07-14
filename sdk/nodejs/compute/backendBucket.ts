@@ -196,6 +196,12 @@ export class BackendBucket extends pulumi.CustomResource {
      */
     public readonly enableCdn!: pulumi.Output<boolean | undefined>;
     /**
+     * The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
+     * If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+     * Possible values are: `INTERNAL_MANAGED`.
+     */
+    public readonly loadBalancingScheme!: pulumi.Output<string | undefined>;
+    /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
      * RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -203,9 +209,6 @@ export class BackendBucket extends pulumi.CustomResource {
      * the first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the
      * last character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -239,6 +242,7 @@ export class BackendBucket extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["edgeSecurityPolicy"] = state ? state.edgeSecurityPolicy : undefined;
             resourceInputs["enableCdn"] = state ? state.enableCdn : undefined;
+            resourceInputs["loadBalancingScheme"] = state ? state.loadBalancingScheme : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
@@ -254,6 +258,7 @@ export class BackendBucket extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["edgeSecurityPolicy"] = args ? args.edgeSecurityPolicy : undefined;
             resourceInputs["enableCdn"] = args ? args.enableCdn : undefined;
+            resourceInputs["loadBalancingScheme"] = args ? args.loadBalancingScheme : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
@@ -304,6 +309,12 @@ export interface BackendBucketState {
      */
     enableCdn?: pulumi.Input<boolean>;
     /**
+     * The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
+     * If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+     * Possible values are: `INTERNAL_MANAGED`.
+     */
+    loadBalancingScheme?: pulumi.Input<string>;
+    /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
      * RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -311,9 +322,6 @@ export interface BackendBucketState {
      * the first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the
      * last character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -363,6 +371,12 @@ export interface BackendBucketArgs {
      */
     enableCdn?: pulumi.Input<boolean>;
     /**
+     * The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
+     * If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+     * Possible values are: `INTERNAL_MANAGED`.
+     */
+    loadBalancingScheme?: pulumi.Input<string>;
+    /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
      * RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -370,9 +384,6 @@ export interface BackendBucketArgs {
      * the first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the
      * last character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

@@ -48,16 +48,12 @@ public final class KeystoresAliasesSelfSignedCertSubjectArgs extends com.pulumi.
     /**
      * Email address. Max 255 characters.
      * 
-     * ***
-     * 
      */
     @Import(name="email")
     private @Nullable Output<String> email;
 
     /**
      * @return Email address. Max 255 characters.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> email() {
@@ -199,8 +195,6 @@ public final class KeystoresAliasesSelfSignedCertSubjectArgs extends com.pulumi.
         /**
          * @param email Email address. Max 255 characters.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -211,8 +205,6 @@ public final class KeystoresAliasesSelfSignedCertSubjectArgs extends com.pulumi.
 
         /**
          * @param email Email address. Max 255 characters.
-         * 
-         * ***
          * 
          * @return builder
          * 

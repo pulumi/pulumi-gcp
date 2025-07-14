@@ -103,42 +103,47 @@ namespace Pulumi.Gcp.CloudAsset
     public partial class ProjectFeed : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A list of the full names of the assets to receive updates. You must specify either or both of assetNames and assetTypes.
-        /// Only asset updates matching specified assetNames and assetTypes are exported to the feed. For example:
-        /// //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1. See
-        /// https://cloud.google.com/apis/design/resourceNames#fullResourceName for more info.
+        /// A list of the full names of the assets to receive updates. You must specify either or both of
+        /// assetNames and assetTypes. Only asset updates matching specified assetNames and assetTypes are
+        /// exported to the feed. For example: //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1.
+        /// See https://cloud.google.com/apis/design/resourceNames#fullResourceName for more info.
         /// </summary>
         [Output("assetNames")]
         public Output<ImmutableArray<string>> AssetNames { get; private set; } = null!;
 
         /// <summary>
-        /// A list of types of the assets to receive updates. You must specify either or both of assetNames and assetTypes. Only
-        /// asset updates matching specified assetNames and assetTypes are exported to the feed. For example:
-        /// "compute.googleapis.com/Disk" See https://cloud.google.com/asset-inventory/docs/supported-asset-types for a list of all
+        /// A list of types of the assets to receive updates. You must specify either or both of assetNames
+        /// and assetTypes. Only asset updates matching specified assetNames and assetTypes are exported to
+        /// the feed. For example: "compute.googleapis.com/Disk"
+        /// See https://cloud.google.com/asset-inventory/docs/supported-asset-types for a list of all
         /// supported asset types.
         /// </summary>
         [Output("assetTypes")]
         public Output<ImmutableArray<string>> AssetTypes { get; private set; } = null!;
 
         /// <summary>
-        /// The project whose identity will be used when sending messages to the destination pubsub topic. It also specifies the
-        /// project for API enablement check, quota, and billing. If not specified, the resource's project will be used.
+        /// The project whose identity will be used when sending messages to the
+        /// destination pubsub topic. It also specifies the project for API
+        /// enablement check, quota, and billing. If not specified, the resource's
+        /// project will be used.
         /// </summary>
         [Output("billingProject")]
         public Output<string?> BillingProject { get; private set; } = null!;
 
         /// <summary>
-        /// A condition which determines whether an asset update should be published. If specified, an asset will be returned only
-        /// when the expression evaluates to true. When set, expression field must be a valid CEL expression on a TemporalAsset with
-        /// name temporal_asset. Example: a Feed with expression "temporal_asset.deleted == true" will only publish Asset deletions.
-        /// Other fields of condition are optional.
+        /// A condition which determines whether an asset update should be published. If specified, an asset
+        /// will be returned only when the expression evaluates to true. When set, expression field
+        /// must be a valid CEL expression on a TemporalAsset with name temporal_asset. Example: a Feed with
+        /// expression "temporal_asset.deleted == true" will only publish Asset deletions. Other fields of
+        /// condition are optional.
+        /// Structure is documented below.
         /// </summary>
         [Output("condition")]
         public Output<Outputs.ProjectFeedCondition?> Condition { get; private set; } = null!;
 
         /// <summary>
-        /// Asset content type. If not specified, no content but the asset name and type will be returned. Possible values:
-        /// ["CONTENT_TYPE_UNSPECIFIED", "RESOURCE", "IAM_POLICY", "ORG_POLICY", "OS_INVENTORY", "ACCESS_POLICY"]
+        /// Asset content type. If not specified, no content but the asset name and type will be returned.
+        /// Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
         /// </summary>
         [Output("contentType")]
         public Output<string?> ContentType { get; private set; } = null!;
@@ -162,6 +167,10 @@ namespace Pulumi.Gcp.CloudAsset
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -215,10 +224,10 @@ namespace Pulumi.Gcp.CloudAsset
         private InputList<string>? _assetNames;
 
         /// <summary>
-        /// A list of the full names of the assets to receive updates. You must specify either or both of assetNames and assetTypes.
-        /// Only asset updates matching specified assetNames and assetTypes are exported to the feed. For example:
-        /// //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1. See
-        /// https://cloud.google.com/apis/design/resourceNames#fullResourceName for more info.
+        /// A list of the full names of the assets to receive updates. You must specify either or both of
+        /// assetNames and assetTypes. Only asset updates matching specified assetNames and assetTypes are
+        /// exported to the feed. For example: //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1.
+        /// See https://cloud.google.com/apis/design/resourceNames#fullResourceName for more info.
         /// </summary>
         public InputList<string> AssetNames
         {
@@ -230,9 +239,10 @@ namespace Pulumi.Gcp.CloudAsset
         private InputList<string>? _assetTypes;
 
         /// <summary>
-        /// A list of types of the assets to receive updates. You must specify either or both of assetNames and assetTypes. Only
-        /// asset updates matching specified assetNames and assetTypes are exported to the feed. For example:
-        /// "compute.googleapis.com/Disk" See https://cloud.google.com/asset-inventory/docs/supported-asset-types for a list of all
+        /// A list of types of the assets to receive updates. You must specify either or both of assetNames
+        /// and assetTypes. Only asset updates matching specified assetNames and assetTypes are exported to
+        /// the feed. For example: "compute.googleapis.com/Disk"
+        /// See https://cloud.google.com/asset-inventory/docs/supported-asset-types for a list of all
         /// supported asset types.
         /// </summary>
         public InputList<string> AssetTypes
@@ -242,24 +252,28 @@ namespace Pulumi.Gcp.CloudAsset
         }
 
         /// <summary>
-        /// The project whose identity will be used when sending messages to the destination pubsub topic. It also specifies the
-        /// project for API enablement check, quota, and billing. If not specified, the resource's project will be used.
+        /// The project whose identity will be used when sending messages to the
+        /// destination pubsub topic. It also specifies the project for API
+        /// enablement check, quota, and billing. If not specified, the resource's
+        /// project will be used.
         /// </summary>
         [Input("billingProject")]
         public Input<string>? BillingProject { get; set; }
 
         /// <summary>
-        /// A condition which determines whether an asset update should be published. If specified, an asset will be returned only
-        /// when the expression evaluates to true. When set, expression field must be a valid CEL expression on a TemporalAsset with
-        /// name temporal_asset. Example: a Feed with expression "temporal_asset.deleted == true" will only publish Asset deletions.
-        /// Other fields of condition are optional.
+        /// A condition which determines whether an asset update should be published. If specified, an asset
+        /// will be returned only when the expression evaluates to true. When set, expression field
+        /// must be a valid CEL expression on a TemporalAsset with name temporal_asset. Example: a Feed with
+        /// expression "temporal_asset.deleted == true" will only publish Asset deletions. Other fields of
+        /// condition are optional.
+        /// Structure is documented below.
         /// </summary>
         [Input("condition")]
         public Input<Inputs.ProjectFeedConditionArgs>? Condition { get; set; }
 
         /// <summary>
-        /// Asset content type. If not specified, no content but the asset name and type will be returned. Possible values:
-        /// ["CONTENT_TYPE_UNSPECIFIED", "RESOURCE", "IAM_POLICY", "ORG_POLICY", "OS_INVENTORY", "ACCESS_POLICY"]
+        /// Asset content type. If not specified, no content but the asset name and type will be returned.
+        /// Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
         /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
@@ -277,6 +291,10 @@ namespace Pulumi.Gcp.CloudAsset
         [Input("feedOutputConfig", required: true)]
         public Input<Inputs.ProjectFeedFeedOutputConfigArgs> FeedOutputConfig { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -292,10 +310,10 @@ namespace Pulumi.Gcp.CloudAsset
         private InputList<string>? _assetNames;
 
         /// <summary>
-        /// A list of the full names of the assets to receive updates. You must specify either or both of assetNames and assetTypes.
-        /// Only asset updates matching specified assetNames and assetTypes are exported to the feed. For example:
-        /// //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1. See
-        /// https://cloud.google.com/apis/design/resourceNames#fullResourceName for more info.
+        /// A list of the full names of the assets to receive updates. You must specify either or both of
+        /// assetNames and assetTypes. Only asset updates matching specified assetNames and assetTypes are
+        /// exported to the feed. For example: //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1.
+        /// See https://cloud.google.com/apis/design/resourceNames#fullResourceName for more info.
         /// </summary>
         public InputList<string> AssetNames
         {
@@ -307,9 +325,10 @@ namespace Pulumi.Gcp.CloudAsset
         private InputList<string>? _assetTypes;
 
         /// <summary>
-        /// A list of types of the assets to receive updates. You must specify either or both of assetNames and assetTypes. Only
-        /// asset updates matching specified assetNames and assetTypes are exported to the feed. For example:
-        /// "compute.googleapis.com/Disk" See https://cloud.google.com/asset-inventory/docs/supported-asset-types for a list of all
+        /// A list of types of the assets to receive updates. You must specify either or both of assetNames
+        /// and assetTypes. Only asset updates matching specified assetNames and assetTypes are exported to
+        /// the feed. For example: "compute.googleapis.com/Disk"
+        /// See https://cloud.google.com/asset-inventory/docs/supported-asset-types for a list of all
         /// supported asset types.
         /// </summary>
         public InputList<string> AssetTypes
@@ -319,24 +338,28 @@ namespace Pulumi.Gcp.CloudAsset
         }
 
         /// <summary>
-        /// The project whose identity will be used when sending messages to the destination pubsub topic. It also specifies the
-        /// project for API enablement check, quota, and billing. If not specified, the resource's project will be used.
+        /// The project whose identity will be used when sending messages to the
+        /// destination pubsub topic. It also specifies the project for API
+        /// enablement check, quota, and billing. If not specified, the resource's
+        /// project will be used.
         /// </summary>
         [Input("billingProject")]
         public Input<string>? BillingProject { get; set; }
 
         /// <summary>
-        /// A condition which determines whether an asset update should be published. If specified, an asset will be returned only
-        /// when the expression evaluates to true. When set, expression field must be a valid CEL expression on a TemporalAsset with
-        /// name temporal_asset. Example: a Feed with expression "temporal_asset.deleted == true" will only publish Asset deletions.
-        /// Other fields of condition are optional.
+        /// A condition which determines whether an asset update should be published. If specified, an asset
+        /// will be returned only when the expression evaluates to true. When set, expression field
+        /// must be a valid CEL expression on a TemporalAsset with name temporal_asset. Example: a Feed with
+        /// expression "temporal_asset.deleted == true" will only publish Asset deletions. Other fields of
+        /// condition are optional.
+        /// Structure is documented below.
         /// </summary>
         [Input("condition")]
         public Input<Inputs.ProjectFeedConditionGetArgs>? Condition { get; set; }
 
         /// <summary>
-        /// Asset content type. If not specified, no content but the asset name and type will be returned. Possible values:
-        /// ["CONTENT_TYPE_UNSPECIFIED", "RESOURCE", "IAM_POLICY", "ORG_POLICY", "OS_INVENTORY", "ACCESS_POLICY"]
+        /// Asset content type. If not specified, no content but the asset name and type will be returned.
+        /// Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
         /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
@@ -360,6 +383,10 @@ namespace Pulumi.Gcp.CloudAsset
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

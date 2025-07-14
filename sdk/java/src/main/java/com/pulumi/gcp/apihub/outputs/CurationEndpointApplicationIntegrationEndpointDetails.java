@@ -23,8 +23,6 @@ public final class CurationEndpointApplicationIntegrationEndpointDetails {
      * or
      * `https://{location}-integrations.googleapis.com/v1/{name=projects/*&#47;locations/*&#47;integrations/*}:execute`
      * 
-     * ***
-     * 
      */
     private String uri;
 
@@ -43,8 +41,6 @@ public final class CurationEndpointApplicationIntegrationEndpointDetails {
      * `https://integrations.googleapis.com/v1/{name=projects/*&#47;locations/*&#47;integrations/*}:execute`
      * or
      * `https://{location}-integrations.googleapis.com/v1/{name=projects/*&#47;locations/*&#47;integrations/*}:execute`
-     * 
-     * ***
      * 
      */
     public String uri() {

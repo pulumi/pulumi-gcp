@@ -271,16 +271,12 @@ public class ParameterVersion extends com.pulumi.resources.CustomResource {
     /**
      * Version ID of the Parameter Version Resource. This must be unique within the Parameter.
      * 
-     * ***
-     * 
      */
     @Export(name="parameterVersionId", refs={String.class}, tree="[0]")
     private Output<String> parameterVersionId;
 
     /**
      * @return Version ID of the Parameter Version Resource. This must be unique within the Parameter.
-     * 
-     * ***
      * 
      */
     public Output<String> parameterVersionId() {

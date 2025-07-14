@@ -95,8 +95,6 @@ public class ProjectInfo extends com.pulumi.resources.CustomResource {
      * any. Set to empty string to disable billing for the project.
      * For example, `&#34;012345-567890-ABCDEF&#34;` or `&#34;&#34;`.
      * 
-     * ***
-     * 
      */
     @Export(name="billingAccount", refs={String.class}, tree="[0]")
     private Output<String> billingAccount;
@@ -105,8 +103,6 @@ public class ProjectInfo extends com.pulumi.resources.CustomResource {
      * @return The ID of the billing account associated with the project, if
      * any. Set to empty string to disable billing for the project.
      * For example, `&#34;012345-567890-ABCDEF&#34;` or `&#34;&#34;`.
-     * 
-     * ***
      * 
      */
     public Output<String> billingAccount() {

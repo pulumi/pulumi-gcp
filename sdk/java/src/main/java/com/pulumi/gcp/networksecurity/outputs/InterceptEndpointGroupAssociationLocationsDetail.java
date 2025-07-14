@@ -14,8 +14,6 @@ public final class InterceptEndpointGroupAssociationLocationsDetail {
     /**
      * @return The cloud location of the association, currently restricted to `global`.
      * 
-     * ***
-     * 
      */
     private @Nullable String location;
     /**
@@ -32,8 +30,6 @@ public final class InterceptEndpointGroupAssociationLocationsDetail {
     private InterceptEndpointGroupAssociationLocationsDetail() {}
     /**
      * @return The cloud location of the association, currently restricted to `global`.
-     * 
-     * ***
      * 
      */
     public Optional<String> location() {

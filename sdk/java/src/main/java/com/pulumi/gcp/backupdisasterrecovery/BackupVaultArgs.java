@@ -91,16 +91,12 @@ public final class BackupVaultArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Required. ID of the requesting object.
      * 
-     * ***
-     * 
      */
     @Import(name="backupVaultId", required=true)
     private Output<String> backupVaultId;
 
     /**
      * @return Required. ID of the requesting object.
-     * 
-     * ***
      * 
      */
     public Output<String> backupVaultId() {
@@ -410,8 +406,6 @@ public final class BackupVaultArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param backupVaultId Required. ID of the requesting object.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -422,8 +416,6 @@ public final class BackupVaultArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param backupVaultId Required. ID of the requesting object.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -64,8 +64,6 @@ public final class AppHostingBackendArgs extends com.pulumi.resources.ResourceAr
      * Id of the backend. Also used as the service ID for Cloud Run, and as part
      * of the default domain name.
      * 
-     * ***
-     * 
      */
     @Import(name="backendId", required=true)
     private Output<String> backendId;
@@ -73,8 +71,6 @@ public final class AppHostingBackendArgs extends com.pulumi.resources.ResourceAr
     /**
      * @return Id of the backend. Also used as the service ID for Cloud Run, and as part
      * of the default domain name.
-     * 
-     * ***
      * 
      */
     public Output<String> backendId() {
@@ -317,8 +313,6 @@ public final class AppHostingBackendArgs extends com.pulumi.resources.ResourceAr
          * @param backendId Id of the backend. Also used as the service ID for Cloud Run, and as part
          * of the default domain name.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -330,8 +324,6 @@ public final class AppHostingBackendArgs extends com.pulumi.resources.ResourceAr
         /**
          * @param backendId Id of the backend. Also used as the service ID for Cloud Run, and as part
          * of the default domain name.
-         * 
-         * ***
          * 
          * @return builder
          * 

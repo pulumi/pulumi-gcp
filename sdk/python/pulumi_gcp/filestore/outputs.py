@@ -709,8 +709,6 @@ class InstanceNetworkPscConfig(dict):
                would be set up. This is optional, and only relevant in case the network
                is a shared VPC. If this is not specified, the endpoint would be set up
                in the VPC host project.
-               
-               - - -
         """
         if endpoint_project is not None:
             pulumi.set(__self__, "endpoint_project", endpoint_project)
@@ -723,8 +721,6 @@ class InstanceNetworkPscConfig(dict):
         would be set up. This is optional, and only relevant in case the network
         is a shared VPC. If this is not specified, the endpoint would be set up
         in the VPC host project.
-
-        - - -
         """
         return pulumi.get(self, "endpoint_project")
 

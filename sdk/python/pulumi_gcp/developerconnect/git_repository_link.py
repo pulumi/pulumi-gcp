@@ -34,9 +34,6 @@ class GitRepositoryLinkArgs:
         :param pulumi.Input[builtins.str] git_repository_link_id: Required. The ID to use for the repository, which will become the final component of
                the repository's resource name. This ID should be unique in the connection.
                Allows alphanumeric characters and any of -._~%!$&'()*+,;=@.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
         :param pulumi.Input[builtins.str] parent_connection: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Optional. Allows clients to store small amounts of arbitrary data.
@@ -83,9 +80,6 @@ class GitRepositoryLinkArgs:
         Required. The ID to use for the repository, which will become the final component of
         the repository's resource name. This ID should be unique in the connection.
         Allows alphanumeric characters and any of -._~%!$&'()*+,;=@.
-
-
-        - - -
         """
         return pulumi.get(self, "git_repository_link_id")
 
@@ -208,9 +202,6 @@ class _GitRepositoryLinkState:
         :param pulumi.Input[builtins.str] git_repository_link_id: Required. The ID to use for the repository, which will become the final component of
                the repository's resource name. This ID should be unique in the connection.
                Allows alphanumeric characters and any of -._~%!$&'()*+,;=@.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Labels as key value pairs
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -354,9 +345,6 @@ class _GitRepositoryLinkState:
         Required. The ID to use for the repository, which will become the final component of
         the repository's resource name. This ID should be unique in the connection.
         Allows alphanumeric characters and any of -._~%!$&'()*+,;=@.
-
-
-        - - -
         """
         return pulumi.get(self, "git_repository_link_id")
 
@@ -541,9 +529,6 @@ class GitRepositoryLink(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] git_repository_link_id: Required. The ID to use for the repository, which will become the final component of
                the repository's resource name. This ID should be unique in the connection.
                Allows alphanumeric characters and any of -._~%!$&'()*+,;=@.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Labels as key value pairs
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -699,9 +684,6 @@ class GitRepositoryLink(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] git_repository_link_id: Required. The ID to use for the repository, which will become the final component of
                the repository's resource name. This ID should be unique in the connection.
                Allows alphanumeric characters and any of -._~%!$&'()*+,;=@.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional. Labels as key value pairs
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -805,9 +787,6 @@ class GitRepositoryLink(pulumi.CustomResource):
         Required. The ID to use for the repository, which will become the final component of
         the repository's resource name. This ID should be unique in the connection.
         Allows alphanumeric characters and any of -._~%!$&'()*+,;=@.
-
-
-        - - -
         """
         return pulumi.get(self, "git_repository_link_id")
 

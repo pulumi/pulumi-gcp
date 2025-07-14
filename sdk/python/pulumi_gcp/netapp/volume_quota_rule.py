@@ -42,9 +42,6 @@ class VolumeQuotaRuleArgs:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: Loction of the quotaRule. QuotaRules are child resources of volumes and live in the same location.
         :param pulumi.Input[builtins.str] name: The resource name of the quotaRule.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] target: The quota rule applies to the specified user or group.
@@ -152,9 +149,6 @@ class VolumeQuotaRuleArgs:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The resource name of the quotaRule.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -223,9 +217,6 @@ class _VolumeQuotaRuleState:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: Loction of the quotaRule. QuotaRules are child resources of volumes and live in the same location.
         :param pulumi.Input[builtins.str] name: The resource name of the quotaRule.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -352,9 +343,6 @@ class _VolumeQuotaRuleState:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The resource name of the quotaRule.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -546,9 +534,6 @@ class VolumeQuotaRule(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: Loction of the quotaRule. QuotaRules are child resources of volumes and live in the same location.
         :param pulumi.Input[builtins.str] name: The resource name of the quotaRule.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] target: The quota rule applies to the specified user or group.
@@ -728,9 +713,6 @@ class VolumeQuotaRule(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: Loction of the quotaRule. QuotaRules are child resources of volumes and live in the same location.
         :param pulumi.Input[builtins.str] name: The resource name of the quotaRule.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -824,9 +806,6 @@ class VolumeQuotaRule(pulumi.CustomResource):
     def name(self) -> pulumi.Output[builtins.str]:
         """
         The resource name of the quotaRule.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

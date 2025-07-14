@@ -91,8 +91,6 @@ public final class MirroringEndpointGroupArgs extends com.pulumi.resources.Resou
      * The ID to use for the endpoint group, which will become the final component
      * of the endpoint group&#39;s resource name.
      * 
-     * ***
-     * 
      */
     @Import(name="mirroringEndpointGroupId", required=true)
     private Output<String> mirroringEndpointGroupId;
@@ -100,8 +98,6 @@ public final class MirroringEndpointGroupArgs extends com.pulumi.resources.Resou
     /**
      * @return The ID to use for the endpoint group, which will become the final component
      * of the endpoint group&#39;s resource name.
-     * 
-     * ***
      * 
      */
     public Output<String> mirroringEndpointGroupId() {
@@ -252,8 +248,6 @@ public final class MirroringEndpointGroupArgs extends com.pulumi.resources.Resou
          * @param mirroringEndpointGroupId The ID to use for the endpoint group, which will become the final component
          * of the endpoint group&#39;s resource name.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -265,8 +259,6 @@ public final class MirroringEndpointGroupArgs extends com.pulumi.resources.Resou
         /**
          * @param mirroringEndpointGroupId The ID to use for the endpoint group, which will become the final component
          * of the endpoint group&#39;s resource name.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -183,16 +183,12 @@ public class BackupVault extends com.pulumi.resources.CustomResource {
     /**
      * Required. ID of the requesting object.
      * 
-     * ***
-     * 
      */
     @Export(name="backupVaultId", refs={String.class}, tree="[0]")
     private Output<String> backupVaultId;
 
     /**
      * @return Required. ID of the requesting object.
-     * 
-     * ***
      * 
      */
     public Output<String> backupVaultId() {

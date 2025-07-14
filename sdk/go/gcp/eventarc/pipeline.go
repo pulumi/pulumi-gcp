@@ -429,17 +429,18 @@ import (
 type Pipeline struct {
 	pulumi.CustomResourceState
 
-	// User-defined annotations. See https://google.aip.dev/128#annotations. **Note**: This field is non-authoritative, and
-	// will only manage the annotations present in your configuration. Please refer to the field 'effective_annotations' for
-	// all of the annotations present on the resource.
+	// User-defined annotations. See https://google.aip.dev/128#annotations.
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// The creation time.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
 	// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
 	// "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt the event data. If not set, an internal
-	// Google-owned key will be used to encrypt messages. It must match the pattern
+	// Resource name of a KMS crypto key (managed by the user) used to
+	// encrypt/decrypt the event data. If not set, an internal Google-owned key
+	// will be used to encrypt messages. It must match the pattern
 	// "projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}".
 	CryptoKeyName pulumi.StringPtrOutput `pulumi:"cryptoKeyName"`
 	// List of destinations to which messages will be forwarded. Currently,
@@ -456,18 +457,23 @@ type Pipeline struct {
 	// client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Represents the format of message data.
+	// Structure is documented below.
 	InputPayloadFormat PipelineInputPayloadFormatPtrOutput `pulumi:"inputPayloadFormat"`
-	// User labels attached to the Pipeline that can be used to group resources. An object containing a list of "key": value
-	// pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will
-	// only manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-	// present on the resource.
+	// User labels attached to the Pipeline that can be used to group
+	// resources. An object containing a list of "key": value pairs. Example: {
+	// "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringOutput `pulumi:"location"`
-	// The configuration for Platform Telemetry logging for Eventarc Advanced resources.
+	// The configuration for Platform Telemetry logging for Eventarc Advanced
+	// resources.
+	// Structure is documented below.
 	LoggingConfig PipelineLoggingConfigOutput `pulumi:"loggingConfig"`
-	// List of mediation operations to be performed on the message. Currently, only one Transformation operation is allowed in
-	// each Pipeline.
+	// List of mediation operations to be performed on the message. Currently,
+	// only one Transformation operation is allowed in each Pipeline.
+	// Structure is documented below.
 	Mediations PipelineMediationArrayOutput `pulumi:"mediations"`
 	// The resource name of the Pipeline. Must be unique within the
 	// location of the project and must be in
@@ -476,15 +482,21 @@ type Pipeline struct {
 	// The user-provided ID to be assigned to the Pipeline. It should match the
 	// format `^a-z?$`.
 	PipelineId pulumi.StringOutput `pulumi:"pipelineId"`
-	Project    pulumi.StringOutput `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
-	// The retry policy configuration for the Pipeline. The pipeline exponentially backs off in case the destination is non
-	// responsive or returns a retryable error code. The default semantics are as follows: The backoff starts with a 5 second
-	// delay and doubles the delay after each failed attempt (10 seconds, 20 seconds, 40 seconds, etc.). The delay is capped at
-	// 60 seconds by default. Please note that if you set the minRetryDelay and maxRetryDelay fields to the same value this
-	// will make the duration between retries constant.
+	// The retry policy configuration for the Pipeline. The pipeline
+	// exponentially backs off in case the destination is non responsive or
+	// returns a retryable error code. The default semantics are as follows:
+	// The backoff starts with a 5 second delay and doubles the
+	// delay after each failed attempt (10 seconds, 20 seconds, 40 seconds, etc.).
+	// The delay is capped at 60 seconds by default.
+	// Please note that if you set the minRetryDelay and maxRetryDelay fields
+	// to the same value this will make the duration between retries constant.
+	// Structure is documented below.
 	RetryPolicy PipelineRetryPolicyOutput `pulumi:"retryPolicy"`
 	// Server-assigned unique identifier for the Pipeline. The value
 	// is a UUID4 string and guaranteed to remain unchanged until the resource is
@@ -541,17 +553,18 @@ func GetPipeline(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Pipeline resources.
 type pipelineState struct {
-	// User-defined annotations. See https://google.aip.dev/128#annotations. **Note**: This field is non-authoritative, and
-	// will only manage the annotations present in your configuration. Please refer to the field 'effective_annotations' for
-	// all of the annotations present on the resource.
+	// User-defined annotations. See https://google.aip.dev/128#annotations.
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// The creation time.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
 	// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
 	// "2014-10-02T15:01:23.045123456Z".
 	CreateTime *string `pulumi:"createTime"`
-	// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt the event data. If not set, an internal
-	// Google-owned key will be used to encrypt messages. It must match the pattern
+	// Resource name of a KMS crypto key (managed by the user) used to
+	// encrypt/decrypt the event data. If not set, an internal Google-owned key
+	// will be used to encrypt messages. It must match the pattern
 	// "projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}".
 	CryptoKeyName *string `pulumi:"cryptoKeyName"`
 	// List of destinations to which messages will be forwarded. Currently,
@@ -568,18 +581,23 @@ type pipelineState struct {
 	// client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
 	// Represents the format of message data.
+	// Structure is documented below.
 	InputPayloadFormat *PipelineInputPayloadFormat `pulumi:"inputPayloadFormat"`
-	// User labels attached to the Pipeline that can be used to group resources. An object containing a list of "key": value
-	// pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will
-	// only manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-	// present on the resource.
+	// User labels attached to the Pipeline that can be used to group
+	// resources. An object containing a list of "key": value pairs. Example: {
+	// "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location *string `pulumi:"location"`
-	// The configuration for Platform Telemetry logging for Eventarc Advanced resources.
+	// The configuration for Platform Telemetry logging for Eventarc Advanced
+	// resources.
+	// Structure is documented below.
 	LoggingConfig *PipelineLoggingConfig `pulumi:"loggingConfig"`
-	// List of mediation operations to be performed on the message. Currently, only one Transformation operation is allowed in
-	// each Pipeline.
+	// List of mediation operations to be performed on the message. Currently,
+	// only one Transformation operation is allowed in each Pipeline.
+	// Structure is documented below.
 	Mediations []PipelineMediation `pulumi:"mediations"`
 	// The resource name of the Pipeline. Must be unique within the
 	// location of the project and must be in
@@ -588,15 +606,21 @@ type pipelineState struct {
 	// The user-provided ID to be assigned to the Pipeline. It should match the
 	// format `^a-z?$`.
 	PipelineId *string `pulumi:"pipelineId"`
-	Project    *string `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
-	// The retry policy configuration for the Pipeline. The pipeline exponentially backs off in case the destination is non
-	// responsive or returns a retryable error code. The default semantics are as follows: The backoff starts with a 5 second
-	// delay and doubles the delay after each failed attempt (10 seconds, 20 seconds, 40 seconds, etc.). The delay is capped at
-	// 60 seconds by default. Please note that if you set the minRetryDelay and maxRetryDelay fields to the same value this
-	// will make the duration between retries constant.
+	// The retry policy configuration for the Pipeline. The pipeline
+	// exponentially backs off in case the destination is non responsive or
+	// returns a retryable error code. The default semantics are as follows:
+	// The backoff starts with a 5 second delay and doubles the
+	// delay after each failed attempt (10 seconds, 20 seconds, 40 seconds, etc.).
+	// The delay is capped at 60 seconds by default.
+	// Please note that if you set the minRetryDelay and maxRetryDelay fields
+	// to the same value this will make the duration between retries constant.
+	// Structure is documented below.
 	RetryPolicy *PipelineRetryPolicy `pulumi:"retryPolicy"`
 	// Server-assigned unique identifier for the Pipeline. The value
 	// is a UUID4 string and guaranteed to remain unchanged until the resource is
@@ -610,17 +634,18 @@ type pipelineState struct {
 }
 
 type PipelineState struct {
-	// User-defined annotations. See https://google.aip.dev/128#annotations. **Note**: This field is non-authoritative, and
-	// will only manage the annotations present in your configuration. Please refer to the field 'effective_annotations' for
-	// all of the annotations present on the resource.
+	// User-defined annotations. See https://google.aip.dev/128#annotations.
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// The creation time.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
 	// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
 	// "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringPtrInput
-	// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt the event data. If not set, an internal
-	// Google-owned key will be used to encrypt messages. It must match the pattern
+	// Resource name of a KMS crypto key (managed by the user) used to
+	// encrypt/decrypt the event data. If not set, an internal Google-owned key
+	// will be used to encrypt messages. It must match the pattern
 	// "projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}".
 	CryptoKeyName pulumi.StringPtrInput
 	// List of destinations to which messages will be forwarded. Currently,
@@ -637,18 +662,23 @@ type PipelineState struct {
 	// client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
 	// Represents the format of message data.
+	// Structure is documented below.
 	InputPayloadFormat PipelineInputPayloadFormatPtrInput
-	// User labels attached to the Pipeline that can be used to group resources. An object containing a list of "key": value
-	// pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will
-	// only manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-	// present on the resource.
+	// User labels attached to the Pipeline that can be used to group
+	// resources. An object containing a list of "key": value pairs. Example: {
+	// "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringPtrInput
-	// The configuration for Platform Telemetry logging for Eventarc Advanced resources.
+	// The configuration for Platform Telemetry logging for Eventarc Advanced
+	// resources.
+	// Structure is documented below.
 	LoggingConfig PipelineLoggingConfigPtrInput
-	// List of mediation operations to be performed on the message. Currently, only one Transformation operation is allowed in
-	// each Pipeline.
+	// List of mediation operations to be performed on the message. Currently,
+	// only one Transformation operation is allowed in each Pipeline.
+	// Structure is documented below.
 	Mediations PipelineMediationArrayInput
 	// The resource name of the Pipeline. Must be unique within the
 	// location of the project and must be in
@@ -657,15 +687,21 @@ type PipelineState struct {
 	// The user-provided ID to be assigned to the Pipeline. It should match the
 	// format `^a-z?$`.
 	PipelineId pulumi.StringPtrInput
-	Project    pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
-	// The retry policy configuration for the Pipeline. The pipeline exponentially backs off in case the destination is non
-	// responsive or returns a retryable error code. The default semantics are as follows: The backoff starts with a 5 second
-	// delay and doubles the delay after each failed attempt (10 seconds, 20 seconds, 40 seconds, etc.). The delay is capped at
-	// 60 seconds by default. Please note that if you set the minRetryDelay and maxRetryDelay fields to the same value this
-	// will make the duration between retries constant.
+	// The retry policy configuration for the Pipeline. The pipeline
+	// exponentially backs off in case the destination is non responsive or
+	// returns a retryable error code. The default semantics are as follows:
+	// The backoff starts with a 5 second delay and doubles the
+	// delay after each failed attempt (10 seconds, 20 seconds, 40 seconds, etc.).
+	// The delay is capped at 60 seconds by default.
+	// Please note that if you set the minRetryDelay and maxRetryDelay fields
+	// to the same value this will make the duration between retries constant.
+	// Structure is documented below.
 	RetryPolicy PipelineRetryPolicyPtrInput
 	// Server-assigned unique identifier for the Pipeline. The value
 	// is a UUID4 string and guaranteed to remain unchanged until the resource is
@@ -683,12 +719,13 @@ func (PipelineState) ElementType() reflect.Type {
 }
 
 type pipelineArgs struct {
-	// User-defined annotations. See https://google.aip.dev/128#annotations. **Note**: This field is non-authoritative, and
-	// will only manage the annotations present in your configuration. Please refer to the field 'effective_annotations' for
-	// all of the annotations present on the resource.
+	// User-defined annotations. See https://google.aip.dev/128#annotations.
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
-	// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt the event data. If not set, an internal
-	// Google-owned key will be used to encrypt messages. It must match the pattern
+	// Resource name of a KMS crypto key (managed by the user) used to
+	// encrypt/decrypt the event data. If not set, an internal Google-owned key
+	// will be used to encrypt messages. It must match the pattern
 	// "projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}".
 	CryptoKeyName *string `pulumi:"cryptoKeyName"`
 	// List of destinations to which messages will be forwarded. Currently,
@@ -698,39 +735,51 @@ type pipelineArgs struct {
 	// Display name of resource.
 	DisplayName *string `pulumi:"displayName"`
 	// Represents the format of message data.
+	// Structure is documented below.
 	InputPayloadFormat *PipelineInputPayloadFormat `pulumi:"inputPayloadFormat"`
-	// User labels attached to the Pipeline that can be used to group resources. An object containing a list of "key": value
-	// pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will
-	// only manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-	// present on the resource.
+	// User labels attached to the Pipeline that can be used to group
+	// resources. An object containing a list of "key": value pairs. Example: {
+	// "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location string `pulumi:"location"`
-	// The configuration for Platform Telemetry logging for Eventarc Advanced resources.
+	// The configuration for Platform Telemetry logging for Eventarc Advanced
+	// resources.
+	// Structure is documented below.
 	LoggingConfig *PipelineLoggingConfig `pulumi:"loggingConfig"`
-	// List of mediation operations to be performed on the message. Currently, only one Transformation operation is allowed in
-	// each Pipeline.
+	// List of mediation operations to be performed on the message. Currently,
+	// only one Transformation operation is allowed in each Pipeline.
+	// Structure is documented below.
 	Mediations []PipelineMediation `pulumi:"mediations"`
 	// The user-provided ID to be assigned to the Pipeline. It should match the
 	// format `^a-z?$`.
-	PipelineId string  `pulumi:"pipelineId"`
-	Project    *string `pulumi:"project"`
-	// The retry policy configuration for the Pipeline. The pipeline exponentially backs off in case the destination is non
-	// responsive or returns a retryable error code. The default semantics are as follows: The backoff starts with a 5 second
-	// delay and doubles the delay after each failed attempt (10 seconds, 20 seconds, 40 seconds, etc.). The delay is capped at
-	// 60 seconds by default. Please note that if you set the minRetryDelay and maxRetryDelay fields to the same value this
-	// will make the duration between retries constant.
+	PipelineId string `pulumi:"pipelineId"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
+	// The retry policy configuration for the Pipeline. The pipeline
+	// exponentially backs off in case the destination is non responsive or
+	// returns a retryable error code. The default semantics are as follows:
+	// The backoff starts with a 5 second delay and doubles the
+	// delay after each failed attempt (10 seconds, 20 seconds, 40 seconds, etc.).
+	// The delay is capped at 60 seconds by default.
+	// Please note that if you set the minRetryDelay and maxRetryDelay fields
+	// to the same value this will make the duration between retries constant.
+	// Structure is documented below.
 	RetryPolicy *PipelineRetryPolicy `pulumi:"retryPolicy"`
 }
 
 // The set of arguments for constructing a Pipeline resource.
 type PipelineArgs struct {
-	// User-defined annotations. See https://google.aip.dev/128#annotations. **Note**: This field is non-authoritative, and
-	// will only manage the annotations present in your configuration. Please refer to the field 'effective_annotations' for
-	// all of the annotations present on the resource.
+	// User-defined annotations. See https://google.aip.dev/128#annotations.
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
-	// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt the event data. If not set, an internal
-	// Google-owned key will be used to encrypt messages. It must match the pattern
+	// Resource name of a KMS crypto key (managed by the user) used to
+	// encrypt/decrypt the event data. If not set, an internal Google-owned key
+	// will be used to encrypt messages. It must match the pattern
 	// "projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}".
 	CryptoKeyName pulumi.StringPtrInput
 	// List of destinations to which messages will be forwarded. Currently,
@@ -740,28 +789,39 @@ type PipelineArgs struct {
 	// Display name of resource.
 	DisplayName pulumi.StringPtrInput
 	// Represents the format of message data.
+	// Structure is documented below.
 	InputPayloadFormat PipelineInputPayloadFormatPtrInput
-	// User labels attached to the Pipeline that can be used to group resources. An object containing a list of "key": value
-	// pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will
-	// only manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-	// present on the resource.
+	// User labels attached to the Pipeline that can be used to group
+	// resources. An object containing a list of "key": value pairs. Example: {
+	// "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringInput
-	// The configuration for Platform Telemetry logging for Eventarc Advanced resources.
+	// The configuration for Platform Telemetry logging for Eventarc Advanced
+	// resources.
+	// Structure is documented below.
 	LoggingConfig PipelineLoggingConfigPtrInput
-	// List of mediation operations to be performed on the message. Currently, only one Transformation operation is allowed in
-	// each Pipeline.
+	// List of mediation operations to be performed on the message. Currently,
+	// only one Transformation operation is allowed in each Pipeline.
+	// Structure is documented below.
 	Mediations PipelineMediationArrayInput
 	// The user-provided ID to be assigned to the Pipeline. It should match the
 	// format `^a-z?$`.
 	PipelineId pulumi.StringInput
-	Project    pulumi.StringPtrInput
-	// The retry policy configuration for the Pipeline. The pipeline exponentially backs off in case the destination is non
-	// responsive or returns a retryable error code. The default semantics are as follows: The backoff starts with a 5 second
-	// delay and doubles the delay after each failed attempt (10 seconds, 20 seconds, 40 seconds, etc.). The delay is capped at
-	// 60 seconds by default. Please note that if you set the minRetryDelay and maxRetryDelay fields to the same value this
-	// will make the duration between retries constant.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
+	// The retry policy configuration for the Pipeline. The pipeline
+	// exponentially backs off in case the destination is non responsive or
+	// returns a retryable error code. The default semantics are as follows:
+	// The backoff starts with a 5 second delay and doubles the
+	// delay after each failed attempt (10 seconds, 20 seconds, 40 seconds, etc.).
+	// The delay is capped at 60 seconds by default.
+	// Please note that if you set the minRetryDelay and maxRetryDelay fields
+	// to the same value this will make the duration between retries constant.
+	// Structure is documented below.
 	RetryPolicy PipelineRetryPolicyPtrInput
 }
 
@@ -852,9 +912,9 @@ func (o PipelineOutput) ToPipelineOutputWithContext(ctx context.Context) Pipelin
 	return o
 }
 
-// User-defined annotations. See https://google.aip.dev/128#annotations. **Note**: This field is non-authoritative, and
-// will only manage the annotations present in your configuration. Please refer to the field 'effective_annotations' for
-// all of the annotations present on the resource.
+// User-defined annotations. See https://google.aip.dev/128#annotations.
+// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 func (o PipelineOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -867,8 +927,9 @@ func (o PipelineOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt the event data. If not set, an internal
-// Google-owned key will be used to encrypt messages. It must match the pattern
+// Resource name of a KMS crypto key (managed by the user) used to
+// encrypt/decrypt the event data. If not set, an internal Google-owned key
+// will be used to encrypt messages. It must match the pattern
 // "projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}".
 func (o PipelineOutput) CryptoKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringPtrOutput { return v.CryptoKeyName }).(pulumi.StringPtrOutput)
@@ -903,14 +964,16 @@ func (o PipelineOutput) Etag() pulumi.StringOutput {
 }
 
 // Represents the format of message data.
+// Structure is documented below.
 func (o PipelineOutput) InputPayloadFormat() PipelineInputPayloadFormatPtrOutput {
 	return o.ApplyT(func(v *Pipeline) PipelineInputPayloadFormatPtrOutput { return v.InputPayloadFormat }).(PipelineInputPayloadFormatPtrOutput)
 }
 
-// User labels attached to the Pipeline that can be used to group resources. An object containing a list of "key": value
-// pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will
-// only manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-// present on the resource.
+// User labels attached to the Pipeline that can be used to group
+// resources. An object containing a list of "key": value pairs. Example: {
+// "name": "wrench", "mass": "1.3kg", "count": "3" }.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o PipelineOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -920,13 +983,16 @@ func (o PipelineOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The configuration for Platform Telemetry logging for Eventarc Advanced resources.
+// The configuration for Platform Telemetry logging for Eventarc Advanced
+// resources.
+// Structure is documented below.
 func (o PipelineOutput) LoggingConfig() PipelineLoggingConfigOutput {
 	return o.ApplyT(func(v *Pipeline) PipelineLoggingConfigOutput { return v.LoggingConfig }).(PipelineLoggingConfigOutput)
 }
 
-// List of mediation operations to be performed on the message. Currently, only one Transformation operation is allowed in
-// each Pipeline.
+// List of mediation operations to be performed on the message. Currently,
+// only one Transformation operation is allowed in each Pipeline.
+// Structure is documented below.
 func (o PipelineOutput) Mediations() PipelineMediationArrayOutput {
 	return o.ApplyT(func(v *Pipeline) PipelineMediationArrayOutput { return v.Mediations }).(PipelineMediationArrayOutput)
 }
@@ -944,6 +1010,8 @@ func (o PipelineOutput) PipelineId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.PipelineId }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o PipelineOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -954,11 +1022,15 @@ func (o PipelineOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
-// The retry policy configuration for the Pipeline. The pipeline exponentially backs off in case the destination is non
-// responsive or returns a retryable error code. The default semantics are as follows: The backoff starts with a 5 second
-// delay and doubles the delay after each failed attempt (10 seconds, 20 seconds, 40 seconds, etc.). The delay is capped at
-// 60 seconds by default. Please note that if you set the minRetryDelay and maxRetryDelay fields to the same value this
-// will make the duration between retries constant.
+// The retry policy configuration for the Pipeline. The pipeline
+// exponentially backs off in case the destination is non responsive or
+// returns a retryable error code. The default semantics are as follows:
+// The backoff starts with a 5 second delay and doubles the
+// delay after each failed attempt (10 seconds, 20 seconds, 40 seconds, etc.).
+// The delay is capped at 60 seconds by default.
+// Please note that if you set the minRetryDelay and maxRetryDelay fields
+// to the same value this will make the duration between retries constant.
+// Structure is documented below.
 func (o PipelineOutput) RetryPolicy() PipelineRetryPolicyOutput {
 	return o.ApplyT(func(v *Pipeline) PipelineRetryPolicyOutput { return v.RetryPolicy }).(PipelineRetryPolicyOutput)
 }

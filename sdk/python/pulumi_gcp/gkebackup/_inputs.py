@@ -1993,8 +1993,6 @@ if not MYPY:
         """
         Kind of a Kubernetes resource, e.g.
         "CustomResourceDefinition", "StorageClass", etc.
-
-        - - -
         """
 elif False:
     RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgsDict: TypeAlias = Mapping[str, Any]
@@ -2010,8 +2008,6 @@ class RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgs:
                Use empty string for core group.
         :param pulumi.Input[builtins.str] resource_kind: Kind of a Kubernetes resource, e.g.
                "CustomResourceDefinition", "StorageClass", etc.
-               
-               - - -
         """
         if resource_group is not None:
             pulumi.set(__self__, "resource_group", resource_group)
@@ -2038,8 +2034,6 @@ class RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgs:
         """
         Kind of a Kubernetes resource, e.g.
         "CustomResourceDefinition", "StorageClass", etc.
-
-        - - -
         """
         return pulumi.get(self, "resource_kind")
 

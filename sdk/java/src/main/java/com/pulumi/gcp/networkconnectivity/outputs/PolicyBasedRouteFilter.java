@@ -15,8 +15,6 @@ public final class PolicyBasedRouteFilter {
     /**
      * @return The destination IP range of outgoing packets that this policy-based route applies to. Default is &#34;0.0.0.0/0&#34;.
      * 
-     * ***
-     * 
      */
     private @Nullable String destRange;
     /**
@@ -39,8 +37,6 @@ public final class PolicyBasedRouteFilter {
     private PolicyBasedRouteFilter() {}
     /**
      * @return The destination IP range of outgoing packets that this policy-based route applies to. Default is &#34;0.0.0.0/0&#34;.
-     * 
-     * ***
      * 
      */
     public Optional<String> destRange() {

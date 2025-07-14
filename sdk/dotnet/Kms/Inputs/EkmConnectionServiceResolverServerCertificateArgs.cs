@@ -75,8 +75,6 @@ namespace Pulumi.Gcp.Kms.Inputs
         /// <summary>
         /// (Output)
         /// Output only. The subject Alternative DNS names. Only present if parsed is true.
-        /// 
-        /// - - -
         /// </summary>
         public InputList<string> SubjectAlternativeDnsNames
         {

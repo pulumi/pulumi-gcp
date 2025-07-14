@@ -525,8 +525,6 @@ class ExternalAccessRuleDestinationIpRange(dict):
                  ip_address_range: Optional[builtins.str] = None):
         """
         :param builtins.str external_address: The name of an `ExternalAddress` resource.
-               
-               - - -
         :param builtins.str ip_address_range: An IP address range in the CIDR format.
         """
         if external_address is not None:
@@ -539,8 +537,6 @@ class ExternalAccessRuleDestinationIpRange(dict):
     def external_address(self) -> Optional[builtins.str]:
         """
         The name of an `ExternalAddress` resource.
-
-        - - -
         """
         return pulumi.get(self, "external_address")
 
@@ -1219,8 +1215,6 @@ class PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageTh
                  scale_out: builtins.int):
         """
         :param builtins.int scale_in: The utilization triggering the scale-in operation in percent.
-               
-               - - -
         :param builtins.int scale_out: The utilization triggering the scale-out operation in percent.
         """
         pulumi.set(__self__, "scale_in", scale_in)
@@ -1231,8 +1225,6 @@ class PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageTh
     def scale_in(self) -> builtins.int:
         """
         The utilization triggering the scale-in operation in percent.
-
-        - - -
         """
         return pulumi.get(self, "scale_in")
 

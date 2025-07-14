@@ -57,8 +57,6 @@ public final class ManagedFolderArgs extends com.pulumi.resources.ResourceArgs {
      * The name of the managed folder expressed as a path. Must include
      * trailing &#39;/&#39;. For example, `example_dir/example_dir2/`.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
@@ -66,8 +64,6 @@ public final class ManagedFolderArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The name of the managed folder expressed as a path. Must include
      * trailing &#39;/&#39;. For example, `example_dir/example_dir2/`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -152,8 +148,6 @@ public final class ManagedFolderArgs extends com.pulumi.resources.ResourceArgs {
          * @param name The name of the managed folder expressed as a path. Must include
          * trailing &#39;/&#39;. For example, `example_dir/example_dir2/`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -165,8 +159,6 @@ public final class ManagedFolderArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name The name of the managed folder expressed as a path. Must include
          * trailing &#39;/&#39;. For example, `example_dir/example_dir2/`.
-         * 
-         * ***
          * 
          * @return builder
          * 

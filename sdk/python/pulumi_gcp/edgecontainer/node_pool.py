@@ -35,9 +35,6 @@ class NodePoolArgs:
         """
         The set of arguments for constructing a NodePool resource.
         :param pulumi.Input[builtins.str] cluster: The name of the target Distributed Cloud Edge Cluster.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: The location of the resource.
         :param pulumi.Input[builtins.int] node_count: The number of nodes in the pool.
         :param pulumi.Input[builtins.str] node_location: Name of the Google Distributed Cloud Edge zone where this node pool will be created. For example: `us-central1-edge-customer-a`.
@@ -77,9 +74,6 @@ class NodePoolArgs:
     def cluster(self) -> pulumi.Input[builtins.str]:
         """
         The name of the target Distributed Cloud Edge Cluster.
-
-
-        - - -
         """
         return pulumi.get(self, "cluster")
 
@@ -224,9 +218,6 @@ class _NodePoolState:
         """
         Input properties used for looking up and filtering NodePool resources.
         :param pulumi.Input[builtins.str] cluster: The name of the target Distributed Cloud Edge Cluster.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] create_time: The time when the node pool was created.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels associated with this resource.
@@ -286,9 +277,6 @@ class _NodePoolState:
     def cluster(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The name of the target Distributed Cloud Edge Cluster.
-
-
-        - - -
         """
         return pulumi.get(self, "cluster")
 
@@ -643,9 +631,6 @@ class NodePool(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] cluster: The name of the target Distributed Cloud Edge Cluster.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels associated with this resource.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -911,9 +896,6 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] cluster: The name of the target Distributed Cloud Edge Cluster.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] create_time: The time when the node pool was created.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels associated with this resource.
@@ -963,9 +945,6 @@ class NodePool(pulumi.CustomResource):
     def cluster(self) -> pulumi.Output[builtins.str]:
         """
         The name of the target Distributed Cloud Edge Cluster.
-
-
-        - - -
         """
         return pulumi.get(self, "cluster")
 

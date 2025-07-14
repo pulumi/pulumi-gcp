@@ -141,8 +141,6 @@ type BlockchainNodes struct {
 	pulumi.CustomResourceState
 
 	// ID of the requesting object.
-	//
-	// ***
 	BlockchainNodeId pulumi.StringOutput `pulumi:"blockchainNodeId"`
 	// User-provided key-value pairs
 	// Possible values are: `ETHEREUM`.
@@ -218,8 +216,6 @@ func GetBlockchainNodes(ctx *pulumi.Context,
 // Input properties used for looking up and filtering BlockchainNodes resources.
 type blockchainNodesState struct {
 	// ID of the requesting object.
-	//
-	// ***
 	BlockchainNodeId *string `pulumi:"blockchainNodeId"`
 	// User-provided key-value pairs
 	// Possible values are: `ETHEREUM`.
@@ -255,8 +251,6 @@ type blockchainNodesState struct {
 
 type BlockchainNodesState struct {
 	// ID of the requesting object.
-	//
-	// ***
 	BlockchainNodeId pulumi.StringPtrInput
 	// User-provided key-value pairs
 	// Possible values are: `ETHEREUM`.
@@ -296,8 +290,6 @@ func (BlockchainNodesState) ElementType() reflect.Type {
 
 type blockchainNodesArgs struct {
 	// ID of the requesting object.
-	//
-	// ***
 	BlockchainNodeId string `pulumi:"blockchainNodeId"`
 	// User-provided key-value pairs
 	// Possible values are: `ETHEREUM`.
@@ -320,8 +312,6 @@ type blockchainNodesArgs struct {
 // The set of arguments for constructing a BlockchainNodes resource.
 type BlockchainNodesArgs struct {
 	// ID of the requesting object.
-	//
-	// ***
 	BlockchainNodeId pulumi.StringInput
 	// User-provided key-value pairs
 	// Possible values are: `ETHEREUM`.
@@ -429,8 +419,6 @@ func (o BlockchainNodesOutput) ToBlockchainNodesOutputWithContext(ctx context.Co
 }
 
 // ID of the requesting object.
-//
-// ***
 func (o BlockchainNodesOutput) BlockchainNodeId() pulumi.StringOutput {
 	return o.ApplyT(func(v *BlockchainNodes) pulumi.StringOutput { return v.BlockchainNodeId }).(pulumi.StringOutput)
 }

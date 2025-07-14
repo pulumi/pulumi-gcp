@@ -32,9 +32,6 @@ class RegionalParameterArgs:
         The set of arguments for constructing a RegionalParameter resource.
         :param pulumi.Input[builtins.str] location: The location of the regional parameter. eg us-central1
         :param pulumi.Input[builtins.str] parameter_id: This must be unique within the project.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] format: The format type of the regional parameter.
                Default value is `UNFORMATTED`.
                Possible values are: `UNFORMATTED`, `YAML`, `JSON`.
@@ -82,9 +79,6 @@ class RegionalParameterArgs:
     def parameter_id(self) -> pulumi.Input[builtins.str]:
         """
         This must be unique within the project.
-
-
-        - - -
         """
         return pulumi.get(self, "parameter_id")
 
@@ -194,9 +188,6 @@ class _RegionalParameterState:
         :param pulumi.Input[builtins.str] name: The resource name of the regional Parameter. Format:
                `projects/{{project}}/locations/{{location}}/parameters/{{parameter_id}}`
         :param pulumi.Input[builtins.str] parameter_id: This must be unique within the project.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['RegionalParameterPolicyMemberArgs']]] policy_members: An object containing a unique resource identity tied to the regional parameter.
                Structure is documented below.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -333,9 +324,6 @@ class _RegionalParameterState:
     def parameter_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         This must be unique within the project.
-
-
-        - - -
         """
         return pulumi.get(self, "parameter_id")
 
@@ -512,9 +500,6 @@ class RegionalParameter(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location of the regional parameter. eg us-central1
         :param pulumi.Input[builtins.str] parameter_id: This must be unique within the project.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -707,9 +692,6 @@ class RegionalParameter(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] name: The resource name of the regional Parameter. Format:
                `projects/{{project}}/locations/{{location}}/parameters/{{parameter_id}}`
         :param pulumi.Input[builtins.str] parameter_id: This must be unique within the project.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegionalParameterPolicyMemberArgs', 'RegionalParameterPolicyMemberArgsDict']]]] policy_members: An object containing a unique resource identity tied to the regional parameter.
                Structure is documented below.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -811,9 +793,6 @@ class RegionalParameter(pulumi.CustomResource):
     def parameter_id(self) -> pulumi.Output[builtins.str]:
         """
         This must be unique within the project.
-
-
-        - - -
         """
         return pulumi.get(self, "parameter_id")
 

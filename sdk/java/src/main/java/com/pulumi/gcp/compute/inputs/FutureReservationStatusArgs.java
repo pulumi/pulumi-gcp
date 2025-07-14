@@ -115,7 +115,7 @@ public final class FutureReservationStatusArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The previous instance related properties of the Future Reservation.
+     * Future Reservation configuration to indicate instance properties and total count.
      * Structure is documented below.
      * 
      */
@@ -123,7 +123,7 @@ public final class FutureReservationStatusArgs extends com.pulumi.resources.Reso
     private @Nullable Output<FutureReservationStatusSpecificSkuPropertiesArgs> specificSkuProperties;
 
     /**
-     * @return The previous instance related properties of the Future Reservation.
+     * @return Future Reservation configuration to indicate instance properties and total count.
      * Structure is documented below.
      * 
      */
@@ -304,7 +304,7 @@ public final class FutureReservationStatusArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param specificSkuProperties The previous instance related properties of the Future Reservation.
+         * @param specificSkuProperties Future Reservation configuration to indicate instance properties and total count.
          * Structure is documented below.
          * 
          * @return builder
@@ -316,7 +316,7 @@ public final class FutureReservationStatusArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param specificSkuProperties The previous instance related properties of the Future Reservation.
+         * @param specificSkuProperties Future Reservation configuration to indicate instance properties and total count.
          * Structure is documented below.
          * 
          * @return builder

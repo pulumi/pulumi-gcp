@@ -1496,8 +1496,6 @@ class JobTemplateTemplateNodeSelector(dict):
                  accelerator: builtins.str):
         """
         :param builtins.str accelerator: The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/jobs/gpu for configuring GPU.
-               
-               - - -
         """
         pulumi.set(__self__, "accelerator", accelerator)
 
@@ -1506,8 +1504,6 @@ class JobTemplateTemplateNodeSelector(dict):
     def accelerator(self) -> builtins.str:
         """
         The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/jobs/gpu for configuring GPU.
-
-        - - -
         """
         return pulumi.get(self, "accelerator")
 
@@ -4028,8 +4024,6 @@ class ServiceTemplateNodeSelector(dict):
                  accelerator: builtins.str):
         """
         :param builtins.str accelerator: The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/services/gpu for configuring GPU.
-               
-               - - -
         """
         pulumi.set(__self__, "accelerator", accelerator)
 
@@ -4038,8 +4032,6 @@ class ServiceTemplateNodeSelector(dict):
     def accelerator(self) -> builtins.str:
         """
         The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/services/gpu for configuring GPU.
-
-        - - -
         """
         return pulumi.get(self, "accelerator")
 
@@ -5885,8 +5877,6 @@ class WorkerPoolTemplateNodeSelector(dict):
                  accelerator: builtins.str):
         """
         :param builtins.str accelerator: The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/services/gpu for configuring GPU.
-               
-               - - -
         """
         pulumi.set(__self__, "accelerator", accelerator)
 
@@ -5895,8 +5885,6 @@ class WorkerPoolTemplateNodeSelector(dict):
     def accelerator(self) -> builtins.str:
         """
         The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/services/gpu for configuring GPU.
-
-        - - -
         """
         return pulumi.get(self, "accelerator")
 

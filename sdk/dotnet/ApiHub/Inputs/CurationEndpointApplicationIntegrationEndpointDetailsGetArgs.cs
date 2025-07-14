@@ -25,8 +25,6 @@ namespace Pulumi.Gcp.ApiHub.Inputs
         /// `https://integrations.googleapis.com/v1/{name=projects/*/locations/*/integrations/*}:execute`
         /// or
         /// `https://{location}-integrations.googleapis.com/v1/{name=projects/*/locations/*/integrations/*}:execute`
-        /// 
-        /// - - -
         /// </summary>
         [Input("uri", required: true)]
         public Input<string> Uri { get; set; } = null!;

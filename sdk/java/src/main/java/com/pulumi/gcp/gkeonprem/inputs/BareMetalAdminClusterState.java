@@ -285,16 +285,12 @@ public final class BareMetalAdminClusterState extends com.pulumi.resources.Resou
     /**
      * The location of the resource.
      * 
-     * ***
-     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
      * @return The location of the resource.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> location() {
@@ -946,8 +942,6 @@ public final class BareMetalAdminClusterState extends com.pulumi.resources.Resou
         /**
          * @param location The location of the resource.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -958,8 +952,6 @@ public final class BareMetalAdminClusterState extends com.pulumi.resources.Resou
 
         /**
          * @param location The location of the resource.
-         * 
-         * ***
          * 
          * @return builder
          * 

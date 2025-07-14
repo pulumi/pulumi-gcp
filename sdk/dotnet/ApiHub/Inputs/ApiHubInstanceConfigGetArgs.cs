@@ -43,8 +43,6 @@ namespace Pulumi.Gcp.ApiHub.Inputs
 
         /// <summary>
         /// Optional. The name of the Vertex AI location where the data store is stored.
-        /// 
-        /// - - -
         /// </summary>
         [Input("vertexLocation")]
         public Input<string>? VertexLocation { get; set; }

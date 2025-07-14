@@ -167,8 +167,6 @@ type WorkloadIdentityPoolManagedIdentity struct {
 	// * end with an alphanumeric character
 	//
 	// The prefix `gcp-` will be reserved for future uses.
-	//
-	// ***
 	WorkloadIdentityPoolManagedIdentityId pulumi.StringOutput `pulumi:"workloadIdentityPoolManagedIdentityId"`
 	// The ID to use for the namespace. This value must:
 	// * contain at most 63 characters
@@ -253,8 +251,6 @@ type workloadIdentityPoolManagedIdentityState struct {
 	// * end with an alphanumeric character
 	//
 	// The prefix `gcp-` will be reserved for future uses.
-	//
-	// ***
 	WorkloadIdentityPoolManagedIdentityId *string `pulumi:"workloadIdentityPoolManagedIdentityId"`
 	// The ID to use for the namespace. This value must:
 	// * contain at most 63 characters
@@ -301,8 +297,6 @@ type WorkloadIdentityPoolManagedIdentityState struct {
 	// * end with an alphanumeric character
 	//
 	// The prefix `gcp-` will be reserved for future uses.
-	//
-	// ***
 	WorkloadIdentityPoolManagedIdentityId pulumi.StringPtrInput
 	// The ID to use for the namespace. This value must:
 	// * contain at most 63 characters
@@ -343,8 +337,6 @@ type workloadIdentityPoolManagedIdentityArgs struct {
 	// * end with an alphanumeric character
 	//
 	// The prefix `gcp-` will be reserved for future uses.
-	//
-	// ***
 	WorkloadIdentityPoolManagedIdentityId string `pulumi:"workloadIdentityPoolManagedIdentityId"`
 	// The ID to use for the namespace. This value must:
 	// * contain at most 63 characters
@@ -382,8 +374,6 @@ type WorkloadIdentityPoolManagedIdentityArgs struct {
 	// * end with an alphanumeric character
 	//
 	// The prefix `gcp-` will be reserved for future uses.
-	//
-	// ***
 	WorkloadIdentityPoolManagedIdentityId pulumi.StringInput
 	// The ID to use for the namespace. This value must:
 	// * contain at most 63 characters
@@ -539,8 +529,6 @@ func (o WorkloadIdentityPoolManagedIdentityOutput) WorkloadIdentityPoolId() pulu
 // * end with an alphanumeric character
 //
 // The prefix `gcp-` will be reserved for future uses.
-//
-// ***
 func (o WorkloadIdentityPoolManagedIdentityOutput) WorkloadIdentityPoolManagedIdentityId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkloadIdentityPoolManagedIdentity) pulumi.StringOutput {
 		return v.WorkloadIdentityPoolManagedIdentityId

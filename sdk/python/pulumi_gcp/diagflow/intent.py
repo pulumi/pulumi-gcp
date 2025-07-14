@@ -37,9 +37,6 @@ class IntentArgs:
         """
         The set of arguments for constructing a Intent resource.
         :param pulumi.Input[builtins.str] display_name: The name of this intent to be displayed on the console.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] action: The name of the action associated with the intent.
                Note: The action name must not contain whitespaces.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] default_response_platforms: The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
@@ -98,9 +95,6 @@ class IntentArgs:
     def display_name(self) -> pulumi.Input[builtins.str]:
         """
         The name of this intent to be displayed on the console.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -284,9 +278,6 @@ class _IntentState:
                (i.e. default platform).
                Each value may be one of: `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, `GOOGLE_HANGOUTS`.
         :param pulumi.Input[builtins.str] display_name: The name of this intent to be displayed on the console.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] events: The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of
                the contexts must be present in the active user session for an event to trigger this intent. See the
                [events reference](https://cloud.google.com/dialogflow/docs/events-overview) for more details.
@@ -382,9 +373,6 @@ class _IntentState:
     def display_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The name of this intent to be displayed on the console.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -663,9 +651,6 @@ class Intent(pulumi.CustomResource):
                (i.e. default platform).
                Each value may be one of: `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, `GOOGLE_HANGOUTS`.
         :param pulumi.Input[builtins.str] display_name: The name of this intent to be displayed on the console.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] events: The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of
                the contexts must be present in the active user session for an event to trigger this intent. See the
                [events reference](https://cloud.google.com/dialogflow/docs/events-overview) for more details.
@@ -867,9 +852,6 @@ class Intent(pulumi.CustomResource):
                (i.e. default platform).
                Each value may be one of: `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, `GOOGLE_HANGOUTS`.
         :param pulumi.Input[builtins.str] display_name: The name of this intent to be displayed on the console.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] events: The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of
                the contexts must be present in the active user session for an event to trigger this intent. See the
                [events reference](https://cloud.google.com/dialogflow/docs/events-overview) for more details.
@@ -947,9 +929,6 @@ class Intent(pulumi.CustomResource):
     def display_name(self) -> pulumi.Output[builtins.str]:
         """
         The name of this intent to be displayed on the console.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 

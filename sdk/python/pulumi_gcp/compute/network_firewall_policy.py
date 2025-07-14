@@ -28,9 +28,6 @@ class NetworkFirewallPolicyArgs:
         The set of arguments for constructing a NetworkFirewallPolicy resource.
         :param pulumi.Input[builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[builtins.str] name: User-provided name of the Network firewall policy. The name should be unique in the project in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] policy_type: Policy type is used to determine which resources (networks) the policy can be associated with.
                A policy can be associated with a network only if the network has the matching policyType in its network profile.
                Different policy types may support some of the Firewall Rules features.
@@ -64,9 +61,6 @@ class NetworkFirewallPolicyArgs:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         User-provided name of the Network firewall policy. The name should be unique in the project in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -122,9 +116,6 @@ class _NetworkFirewallPolicyState:
         :param pulumi.Input[builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[builtins.str] fingerprint: Fingerprint of the resource. This field is used internally during updates of this resource.
         :param pulumi.Input[builtins.str] name: User-provided name of the Network firewall policy. The name should be unique in the project in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] network_firewall_policy_id: The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[builtins.str] policy_type: Policy type is used to determine which resources (networks) the policy can be associated with.
                A policy can be associated with a network only if the network has the matching policyType in its network profile.
@@ -198,9 +189,6 @@ class _NetworkFirewallPolicyState:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         User-provided name of the Network firewall policy. The name should be unique in the project in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -340,9 +328,6 @@ class NetworkFirewallPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[builtins.str] name: User-provided name of the Network firewall policy. The name should be unique in the project in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] policy_type: Policy type is used to determine which resources (networks) the policy can be associated with.
                A policy can be associated with a network only if the network has the matching policyType in its network profile.
                Different policy types may support some of the Firewall Rules features.
@@ -465,9 +450,6 @@ class NetworkFirewallPolicy(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[builtins.str] fingerprint: Fingerprint of the resource. This field is used internally during updates of this resource.
         :param pulumi.Input[builtins.str] name: User-provided name of the Network firewall policy. The name should be unique in the project in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] network_firewall_policy_id: The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[builtins.str] policy_type: Policy type is used to determine which resources (networks) the policy can be associated with.
                A policy can be associated with a network only if the network has the matching policyType in its network profile.
@@ -524,9 +506,6 @@ class NetworkFirewallPolicy(pulumi.CustomResource):
     def name(self) -> pulumi.Output[builtins.str]:
         """
         User-provided name of the Network firewall policy. The name should be unique in the project in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

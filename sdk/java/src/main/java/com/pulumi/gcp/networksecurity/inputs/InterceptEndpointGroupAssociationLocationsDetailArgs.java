@@ -18,16 +18,12 @@ public final class InterceptEndpointGroupAssociationLocationsDetailArgs extends 
     /**
      * The cloud location of the association, currently restricted to `global`.
      * 
-     * ***
-     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
      * @return The cloud location of the association, currently restricted to `global`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> location() {
@@ -87,8 +83,6 @@ public final class InterceptEndpointGroupAssociationLocationsDetailArgs extends 
         /**
          * @param location The cloud location of the association, currently restricted to `global`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -99,8 +93,6 @@ public final class InterceptEndpointGroupAssociationLocationsDetailArgs extends 
 
         /**
          * @param location The cloud location of the association, currently restricted to `global`.
-         * 
-         * ***
          * 
          * @return builder
          * 

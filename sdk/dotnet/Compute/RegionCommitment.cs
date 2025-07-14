@@ -194,9 +194,6 @@ namespace Pulumi.Gcp.Compute
         /// The plan for this commitment, which determines duration and discount rate.
         /// The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
         /// Possible values are: `TWELVE_MONTH`, `THIRTY_SIX_MONTH`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("plan")]
         public Output<string> Plan { get; private set; } = null!;
@@ -355,9 +352,6 @@ namespace Pulumi.Gcp.Compute
         /// The plan for this commitment, which determines duration and discount rate.
         /// The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
         /// Possible values are: `TWELVE_MONTH`, `THIRTY_SIX_MONTH`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("plan", required: true)]
         public Input<string> Plan { get; set; } = null!;
@@ -477,9 +471,6 @@ namespace Pulumi.Gcp.Compute
         /// The plan for this commitment, which determines duration and discount rate.
         /// The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
         /// Possible values are: `TWELVE_MONTH`, `THIRTY_SIX_MONTH`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("plan")]
         public Input<string>? Plan { get; set; }

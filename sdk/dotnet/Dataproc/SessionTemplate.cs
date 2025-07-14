@@ -326,9 +326,6 @@ namespace Pulumi.Gcp.Dataproc
         /// <summary>
         /// The resource name of the session template in the following format:
         /// projects/{project}/locations/{location}/sessionTemplates/{template_id}
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -461,9 +458,6 @@ namespace Pulumi.Gcp.Dataproc
         /// <summary>
         /// The resource name of the session template in the following format:
         /// projects/{project}/locations/{location}/sessionTemplates/{template_id}
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -562,9 +556,6 @@ namespace Pulumi.Gcp.Dataproc
         /// <summary>
         /// The resource name of the session template in the following format:
         /// projects/{project}/locations/{location}/sessionTemplates/{template_id}
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

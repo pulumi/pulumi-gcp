@@ -4766,8 +4766,6 @@ func (o PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrOut
 
 type WorkspaceSettings struct {
 	// Project IDs for data projects hosted in a workspace.
-	//
-	// ***
 	DataProjectIds []string `pulumi:"dataProjectIds"`
 }
 
@@ -4784,8 +4782,6 @@ type WorkspaceSettingsInput interface {
 
 type WorkspaceSettingsArgs struct {
 	// Project IDs for data projects hosted in a workspace.
-	//
-	// ***
 	DataProjectIds pulumi.StringArrayInput `pulumi:"dataProjectIds"`
 }
 
@@ -4867,8 +4863,6 @@ func (o WorkspaceSettingsOutput) ToWorkspaceSettingsPtrOutputWithContext(ctx con
 }
 
 // Project IDs for data projects hosted in a workspace.
-//
-// ***
 func (o WorkspaceSettingsOutput) DataProjectIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WorkspaceSettings) []string { return v.DataProjectIds }).(pulumi.StringArrayOutput)
 }
@@ -4898,8 +4892,6 @@ func (o WorkspaceSettingsPtrOutput) Elem() WorkspaceSettingsOutput {
 }
 
 // Project IDs for data projects hosted in a workspace.
-//
-// ***
 func (o WorkspaceSettingsPtrOutput) DataProjectIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkspaceSettings) []string {
 		if v == nil {
