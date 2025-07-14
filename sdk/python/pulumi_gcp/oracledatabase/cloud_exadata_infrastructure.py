@@ -36,9 +36,6 @@ class CloudExadataInfrastructureArgs:
                to (^a-z?$) and must be a maximum of 63
                characters in length. The value must start with a letter and end with
                a letter or a number.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/DbServer`.
         :param pulumi.Input[builtins.str] display_name: User friendly name for this resource.
         :param pulumi.Input[builtins.str] gcp_oracle_zone: GCP location where Oracle Exadata is hosted.
@@ -73,9 +70,6 @@ class CloudExadataInfrastructureArgs:
         to (^a-z?$) and must be a maximum of 63
         characters in length. The value must start with a letter and end with
         a letter or a number.
-
-
-        - - -
         """
         return pulumi.get(self, "cloud_exadata_infrastructure_id")
 
@@ -191,9 +185,6 @@ class _CloudExadataInfrastructureState:
                to (^a-z?$) and must be a maximum of 63
                characters in length. The value must start with a letter and end with
                a letter or a number.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] create_time: The date and time that the Exadata Infrastructure was created.
         :param pulumi.Input[builtins.str] display_name: User friendly name for this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -248,9 +239,6 @@ class _CloudExadataInfrastructureState:
         to (^a-z?$) and must be a maximum of 63
         characters in length. The value must start with a letter and end with
         a letter or a number.
-
-
-        - - -
         """
         return pulumi.get(self, "cloud_exadata_infrastructure_id")
 
@@ -524,9 +512,6 @@ class CloudExadataInfrastructure(pulumi.CustomResource):
                to (^a-z?$) and must be a maximum of 63
                characters in length. The value must start with a letter and end with
                a letter or a number.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] display_name: User friendly name for this resource.
         :param pulumi.Input[builtins.str] gcp_oracle_zone: GCP location where Oracle Exadata is hosted.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels or tags associated with the resource.
@@ -725,9 +710,6 @@ class CloudExadataInfrastructure(pulumi.CustomResource):
                to (^a-z?$) and must be a maximum of 63
                characters in length. The value must start with a letter and end with
                a letter or a number.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] create_time: The date and time that the Exadata Infrastructure was created.
         :param pulumi.Input[builtins.str] display_name: User friendly name for this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -774,9 +756,6 @@ class CloudExadataInfrastructure(pulumi.CustomResource):
         to (^a-z?$) and must be a maximum of 63
         characters in length. The value must start with a letter and end with
         a letter or a number.
-
-
-        - - -
         """
         return pulumi.get(self, "cloud_exadata_infrastructure_id")
 

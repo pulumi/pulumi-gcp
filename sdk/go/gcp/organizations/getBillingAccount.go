@@ -74,7 +74,9 @@ type GetBillingAccountArgs struct {
 // A collection of values returned by getBillingAccount.
 type GetBillingAccountResult struct {
 	BillingAccount *string `pulumi:"billingAccount"`
-	DisplayName    string  `pulumi:"displayName"`
+	// The currency code of the billing account, e.g. `USD`.
+	CurrencyCode string `pulumi:"currencyCode"`
+	DisplayName  string `pulumi:"displayName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id             string `pulumi:"id"`
 	LookupProjects *bool  `pulumi:"lookupProjects"`
@@ -131,6 +133,11 @@ func (o GetBillingAccountResultOutput) ToGetBillingAccountResultOutputWithContex
 
 func (o GetBillingAccountResultOutput) BillingAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBillingAccountResult) *string { return v.BillingAccount }).(pulumi.StringPtrOutput)
+}
+
+// The currency code of the billing account, e.g. `USD`.
+func (o GetBillingAccountResultOutput) CurrencyCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBillingAccountResult) string { return v.CurrencyCode }).(pulumi.StringOutput)
 }
 
 func (o GetBillingAccountResultOutput) DisplayName() pulumi.StringOutput {

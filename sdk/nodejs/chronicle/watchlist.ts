@@ -144,7 +144,9 @@ export class Watchlist extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * Optional. Weight applied to the risk score for entities in this watchlist. The default is 1.0 if it is not specified.
+     * Optional. Weight applied to the risk score for entities
+     * in this watchlist.
+     * The default is 1.0 if it is not specified.
      */
     public readonly multiplyingFactor!: pulumi.Output<number | undefined>;
     /**
@@ -153,18 +155,25 @@ export class Watchlist extends pulumi.CustomResource {
      * projects/{project}/locations/{location}/instances/{instance}/watchlists/{watchlist}
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * Output only. Time the watchlist was last updated.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
-     * Optional. The ID to use for the watchlist, which will become the final component of the watchlist's resource name. This
-     * value should be 4-63 characters, and valid characters are /a-z-/.
+     * Optional. The ID to use for the watchlist,
+     * which will become the final component of the watchlist's resource name.
+     * This value should be 4-63 characters, and valid characters
+     * are /a-z-/.
      */
     public readonly watchlistId!: pulumi.Output<string>;
     /**
      * A collection of user preferences for watchlist UI configuration.
+     * Structure is documented below.
      */
     public readonly watchlistUserPreferences!: pulumi.Output<outputs.chronicle.WatchlistWatchlistUserPreferences>;
 
@@ -264,7 +273,9 @@ export interface WatchlistState {
      */
     location?: pulumi.Input<string>;
     /**
-     * Optional. Weight applied to the risk score for entities in this watchlist. The default is 1.0 if it is not specified.
+     * Optional. Weight applied to the risk score for entities
+     * in this watchlist.
+     * The default is 1.0 if it is not specified.
      */
     multiplyingFactor?: pulumi.Input<number>;
     /**
@@ -273,18 +284,25 @@ export interface WatchlistState {
      * projects/{project}/locations/{location}/instances/{instance}/watchlists/{watchlist}
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * Output only. Time the watchlist was last updated.
      */
     updateTime?: pulumi.Input<string>;
     /**
-     * Optional. The ID to use for the watchlist, which will become the final component of the watchlist's resource name. This
-     * value should be 4-63 characters, and valid characters are /a-z-/.
+     * Optional. The ID to use for the watchlist,
+     * which will become the final component of the watchlist's resource name.
+     * This value should be 4-63 characters, and valid characters
+     * are /a-z-/.
      */
     watchlistId?: pulumi.Input<string>;
     /**
      * A collection of user preferences for watchlist UI configuration.
+     * Structure is documented below.
      */
     watchlistUserPreferences?: pulumi.Input<inputs.chronicle.WatchlistWatchlistUserPreferences>;
 }
@@ -317,17 +335,26 @@ export interface WatchlistArgs {
      */
     location: pulumi.Input<string>;
     /**
-     * Optional. Weight applied to the risk score for entities in this watchlist. The default is 1.0 if it is not specified.
+     * Optional. Weight applied to the risk score for entities
+     * in this watchlist.
+     * The default is 1.0 if it is not specified.
      */
     multiplyingFactor?: pulumi.Input<number>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
-     * Optional. The ID to use for the watchlist, which will become the final component of the watchlist's resource name. This
-     * value should be 4-63 characters, and valid characters are /a-z-/.
+     * Optional. The ID to use for the watchlist,
+     * which will become the final component of the watchlist's resource name.
+     * This value should be 4-63 characters, and valid characters
+     * are /a-z-/.
      */
     watchlistId?: pulumi.Input<string>;
     /**
      * A collection of user preferences for watchlist UI configuration.
+     * Structure is documented below.
      */
     watchlistUserPreferences?: pulumi.Input<inputs.chronicle.WatchlistWatchlistUserPreferences>;
 }

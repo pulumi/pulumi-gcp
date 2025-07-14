@@ -267,16 +267,12 @@ public final class RegionalSecretState extends com.pulumi.resources.ResourceArgs
     /**
      * This must be unique within the project.
      * 
-     * ***
-     * 
      */
     @Import(name="secretId")
     private @Nullable Output<String> secretId;
 
     /**
      * @return This must be unique within the project.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> secretId() {
@@ -726,8 +722,6 @@ public final class RegionalSecretState extends com.pulumi.resources.ResourceArgs
         /**
          * @param secretId This must be unique within the project.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -738,8 +732,6 @@ public final class RegionalSecretState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param secretId This must be unique within the project.
-         * 
-         * ***
          * 
          * @return builder
          * 

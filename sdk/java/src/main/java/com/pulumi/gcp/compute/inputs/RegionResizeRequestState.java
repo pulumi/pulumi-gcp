@@ -52,16 +52,12 @@ public final class RegionResizeRequestState extends com.pulumi.resources.Resourc
     /**
      * The reference of the regional instance group manager this ResizeRequest is a part of.
      * 
-     * ***
-     * 
      */
     @Import(name="instanceGroupManager")
     private @Nullable Output<String> instanceGroupManager;
 
     /**
      * @return The reference of the regional instance group manager this ResizeRequest is a part of.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> instanceGroupManager() {
@@ -257,8 +253,6 @@ public final class RegionResizeRequestState extends com.pulumi.resources.Resourc
         /**
          * @param instanceGroupManager The reference of the regional instance group manager this ResizeRequest is a part of.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -269,8 +263,6 @@ public final class RegionResizeRequestState extends com.pulumi.resources.Resourc
 
         /**
          * @param instanceGroupManager The reference of the regional instance group manager this ResizeRequest is a part of.
-         * 
-         * ***
          * 
          * @return builder
          * 

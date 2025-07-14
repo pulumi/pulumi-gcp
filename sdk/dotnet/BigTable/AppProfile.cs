@@ -237,9 +237,6 @@ namespace Pulumi.Gcp.BigTable
     {
         /// <summary>
         /// The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("appProfileId")]
         public Output<string> AppProfileId { get; private set; } = null!;
@@ -373,9 +370,6 @@ namespace Pulumi.Gcp.BigTable
     {
         /// <summary>
         /// The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("appProfileId", required: true)]
         public Input<string> AppProfileId { get; set; } = null!;
@@ -467,9 +461,6 @@ namespace Pulumi.Gcp.BigTable
     {
         /// <summary>
         /// The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("appProfileId")]
         public Input<string>? AppProfileId { get; set; }

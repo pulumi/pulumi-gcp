@@ -321,8 +321,6 @@ public class User extends com.pulumi.resources.CustomResource {
      * The type of this user.
      * Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
      * 
-     * ***
-     * 
      */
     @Export(name="userType", refs={String.class}, tree="[0]")
     private Output<String> userType;
@@ -330,8 +328,6 @@ public class User extends com.pulumi.resources.CustomResource {
     /**
      * @return The type of this user.
      * Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
-     * 
-     * ***
      * 
      */
     public Output<String> userType() {

@@ -40,9 +40,6 @@ class EngineModelArgs:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] name: The name specified for the model.
-               
-               
-               - - -
         :param pulumi.Input[builtins.bool] online_prediction_console_logging: If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
         :param pulumi.Input[builtins.bool] online_prediction_logging: If true, online prediction access logs are sent to StackDriver Logging.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -112,9 +109,6 @@ class EngineModelArgs:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The name specified for the model.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -197,9 +191,6 @@ class _EngineModelState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] name: The name specified for the model.
-               
-               
-               - - -
         :param pulumi.Input[builtins.bool] online_prediction_console_logging: If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
         :param pulumi.Input[builtins.bool] online_prediction_logging: If true, online prediction access logs are sent to StackDriver Logging.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -287,9 +278,6 @@ class _EngineModelState:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The name specified for the model.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -441,9 +429,6 @@ class EngineModel(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] name: The name specified for the model.
-               
-               
-               - - -
         :param pulumi.Input[builtins.bool] online_prediction_console_logging: If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
         :param pulumi.Input[builtins.bool] online_prediction_logging: If true, online prediction access logs are sent to StackDriver Logging.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -592,9 +577,6 @@ class EngineModel(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] name: The name specified for the model.
-               
-               
-               - - -
         :param pulumi.Input[builtins.bool] online_prediction_console_logging: If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
         :param pulumi.Input[builtins.bool] online_prediction_logging: If true, online prediction access logs are sent to StackDriver Logging.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -661,9 +643,6 @@ class EngineModel(pulumi.CustomResource):
     def name(self) -> pulumi.Output[builtins.str]:
         """
         The name specified for the model.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

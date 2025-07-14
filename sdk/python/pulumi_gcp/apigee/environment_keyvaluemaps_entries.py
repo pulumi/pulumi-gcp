@@ -27,9 +27,6 @@ class EnvironmentKeyvaluemapsEntriesArgs:
         The set of arguments for constructing a EnvironmentKeyvaluemapsEntries resource.
         :param pulumi.Input[builtins.str] env_keyvaluemap_id: The Apigee environment keyvalumaps Id associated with the Apigee environment,
                in the format `organizations/{{org_name}}/environments/{{env_name}}/keyvaluemaps/{{keyvaluemap_name}}`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] value: Required. Data or payload that is being retrieved and associated with the unique key.
         :param pulumi.Input[builtins.str] name: Required. Resource URI that can be used to identify the scope of the key value map entries.
         """
@@ -44,9 +41,6 @@ class EnvironmentKeyvaluemapsEntriesArgs:
         """
         The Apigee environment keyvalumaps Id associated with the Apigee environment,
         in the format `organizations/{{org_name}}/environments/{{env_name}}/keyvaluemaps/{{keyvaluemap_name}}`.
-
-
-        - - -
         """
         return pulumi.get(self, "env_keyvaluemap_id")
 
@@ -89,9 +83,6 @@ class _EnvironmentKeyvaluemapsEntriesState:
         Input properties used for looking up and filtering EnvironmentKeyvaluemapsEntries resources.
         :param pulumi.Input[builtins.str] env_keyvaluemap_id: The Apigee environment keyvalumaps Id associated with the Apigee environment,
                in the format `organizations/{{org_name}}/environments/{{env_name}}/keyvaluemaps/{{keyvaluemap_name}}`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: Required. Resource URI that can be used to identify the scope of the key value map entries.
         :param pulumi.Input[builtins.str] value: Required. Data or payload that is being retrieved and associated with the unique key.
         """
@@ -108,9 +99,6 @@ class _EnvironmentKeyvaluemapsEntriesState:
         """
         The Apigee environment keyvalumaps Id associated with the Apigee environment,
         in the format `organizations/{{org_name}}/environments/{{env_name}}/keyvaluemaps/{{keyvaluemap_name}}`.
-
-
-        - - -
         """
         return pulumi.get(self, "env_keyvaluemap_id")
 
@@ -243,9 +231,6 @@ class EnvironmentKeyvaluemapsEntries(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] env_keyvaluemap_id: The Apigee environment keyvalumaps Id associated with the Apigee environment,
                in the format `organizations/{{org_name}}/environments/{{env_name}}/keyvaluemaps/{{keyvaluemap_name}}`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: Required. Resource URI that can be used to identify the scope of the key value map entries.
         :param pulumi.Input[builtins.str] value: Required. Data or payload that is being retrieved and associated with the unique key.
         """
@@ -397,9 +382,6 @@ class EnvironmentKeyvaluemapsEntries(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] env_keyvaluemap_id: The Apigee environment keyvalumaps Id associated with the Apigee environment,
                in the format `organizations/{{org_name}}/environments/{{env_name}}/keyvaluemaps/{{keyvaluemap_name}}`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: Required. Resource URI that can be used to identify the scope of the key value map entries.
         :param pulumi.Input[builtins.str] value: Required. Data or payload that is being retrieved and associated with the unique key.
         """
@@ -418,9 +400,6 @@ class EnvironmentKeyvaluemapsEntries(pulumi.CustomResource):
         """
         The Apigee environment keyvalumaps Id associated with the Apigee environment,
         in the format `organizations/{{org_name}}/environments/{{env_name}}/keyvaluemaps/{{keyvaluemap_name}}`.
-
-
-        - - -
         """
         return pulumi.get(self, "env_keyvaluemap_id")
 

@@ -123,6 +123,10 @@ export class NetworkPeering extends pulumi.CustomResource {
      * Details about the current state of the peering.
      */
     public /*out*/ readonly stateDetails!: pulumi.Output<string>;
+    /**
+     * The update strategy determines the semantics for updates and deletes to the peering connection configuration. The default value is INDEPENDENT. Possible values: ["INDEPENDENT", "CONSENSUS"]
+     */
+    public readonly updateStrategy!: pulumi.Output<string | undefined>;
 
     /**
      * Create a NetworkPeering resource with the given unique name, arguments, and options.
@@ -147,6 +151,7 @@ export class NetworkPeering extends pulumi.CustomResource {
             resourceInputs["stackType"] = state ? state.stackType : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["stateDetails"] = state ? state.stateDetails : undefined;
+            resourceInputs["updateStrategy"] = state ? state.updateStrategy : undefined;
         } else {
             const args = argsOrState as NetworkPeeringArgs | undefined;
             if ((!args || args.network === undefined) && !opts.urn) {
@@ -163,6 +168,7 @@ export class NetworkPeering extends pulumi.CustomResource {
             resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["peerNetwork"] = args ? args.peerNetwork : undefined;
             resourceInputs["stackType"] = args ? args.stackType : undefined;
+            resourceInputs["updateStrategy"] = args ? args.updateStrategy : undefined;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateDetails"] = undefined /*out*/;
         }
@@ -217,6 +223,10 @@ export interface NetworkPeeringState {
      * Details about the current state of the peering.
      */
     stateDetails?: pulumi.Input<string>;
+    /**
+     * The update strategy determines the semantics for updates and deletes to the peering connection configuration. The default value is INDEPENDENT. Possible values: ["INDEPENDENT", "CONSENSUS"]
+     */
+    updateStrategy?: pulumi.Input<string>;
 }
 
 /**
@@ -256,4 +266,8 @@ export interface NetworkPeeringArgs {
      * Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY. Possible values: ["IPV4_ONLY", "IPV4_IPV6"].
      */
     stackType?: pulumi.Input<string>;
+    /**
+     * The update strategy determines the semantics for updates and deletes to the peering connection configuration. The default value is INDEPENDENT. Possible values: ["INDEPENDENT", "CONSENSUS"]
+     */
+    updateStrategy?: pulumi.Input<string>;
 }

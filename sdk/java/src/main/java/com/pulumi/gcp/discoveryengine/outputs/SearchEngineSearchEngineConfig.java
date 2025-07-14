@@ -16,8 +16,6 @@ public final class SearchEngineSearchEngineConfig {
      * @return The add-on that this search engine enables.
      * Each value may be one of: `SEARCH_ADD_ON_LLM`.
      * 
-     * ***
-     * 
      */
     private @Nullable List<String> searchAddOns;
     /**
@@ -32,8 +30,6 @@ public final class SearchEngineSearchEngineConfig {
     /**
      * @return The add-on that this search engine enables.
      * Each value may be one of: `SEARCH_ADD_ON_LLM`.
-     * 
-     * ***
      * 
      */
     public List<String> searchAddOns() {

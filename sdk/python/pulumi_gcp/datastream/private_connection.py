@@ -34,9 +34,6 @@ class PrivateConnectionArgs:
         The set of arguments for constructing a PrivateConnection resource.
         :param pulumi.Input[builtins.str] display_name: Display name.
         :param pulumi.Input[builtins.str] location: The name of the location this private connection is located in.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] private_connection_id: The private connectivity identifier.
         :param pulumi.Input[builtins.bool] create_without_validation: If set to true, will skip validations.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels.
@@ -82,9 +79,6 @@ class PrivateConnectionArgs:
     def location(self) -> pulumi.Input[builtins.str]:
         """
         The name of the location this private connection is located in.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -199,9 +193,6 @@ class _PrivateConnectionState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The name of the location this private connection is located in.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The resource's name.
         :param pulumi.Input[builtins.str] private_connection_id: The private connectivity identifier.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -311,9 +302,6 @@ class _PrivateConnectionState:
     def location(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The name of the location this private connection is located in.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -521,9 +509,6 @@ class PrivateConnection(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The name of the location this private connection is located in.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] private_connection_id: The private connectivity identifier.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -718,9 +703,6 @@ class PrivateConnection(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The name of the location this private connection is located in.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The resource's name.
         :param pulumi.Input[builtins.str] private_connection_id: The private connectivity identifier.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -802,9 +784,6 @@ class PrivateConnection(pulumi.CustomResource):
     def location(self) -> pulumi.Output[builtins.str]:
         """
         The name of the location this private connection is located in.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

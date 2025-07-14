@@ -156,8 +156,6 @@ type InterceptDeployment struct {
 	InterceptDeploymentGroup pulumi.StringOutput `pulumi:"interceptDeploymentGroup"`
 	// The ID to use for the new deployment, which will become the final
 	// component of the deployment's resource name.
-	//
-	// ***
 	InterceptDeploymentId pulumi.StringOutput `pulumi:"interceptDeploymentId"`
 	// Labels are key/value pairs that help to organize and filter resources.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -260,8 +258,6 @@ type interceptDeploymentState struct {
 	InterceptDeploymentGroup *string `pulumi:"interceptDeploymentGroup"`
 	// The ID to use for the new deployment, which will become the final
 	// component of the deployment's resource name.
-	//
-	// ***
 	InterceptDeploymentId *string `pulumi:"interceptDeploymentId"`
 	// Labels are key/value pairs that help to organize and filter resources.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -318,8 +314,6 @@ type InterceptDeploymentState struct {
 	InterceptDeploymentGroup pulumi.StringPtrInput
 	// The ID to use for the new deployment, which will become the final
 	// component of the deployment's resource name.
-	//
-	// ***
 	InterceptDeploymentId pulumi.StringPtrInput
 	// Labels are key/value pairs that help to organize and filter resources.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -375,8 +369,6 @@ type interceptDeploymentArgs struct {
 	InterceptDeploymentGroup string `pulumi:"interceptDeploymentGroup"`
 	// The ID to use for the new deployment, which will become the final
 	// component of the deployment's resource name.
-	//
-	// ***
 	InterceptDeploymentId string `pulumi:"interceptDeploymentId"`
 	// Labels are key/value pairs that help to organize and filter resources.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -404,8 +396,6 @@ type InterceptDeploymentArgs struct {
 	InterceptDeploymentGroup pulumi.StringInput
 	// The ID to use for the new deployment, which will become the final
 	// component of the deployment's resource name.
-	//
-	// ***
 	InterceptDeploymentId pulumi.StringInput
 	// Labels are key/value pairs that help to organize and filter resources.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -538,8 +528,6 @@ func (o InterceptDeploymentOutput) InterceptDeploymentGroup() pulumi.StringOutpu
 
 // The ID to use for the new deployment, which will become the final
 // component of the deployment's resource name.
-//
-// ***
 func (o InterceptDeploymentOutput) InterceptDeploymentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterceptDeployment) pulumi.StringOutput { return v.InterceptDeploymentId }).(pulumi.StringOutput)
 }

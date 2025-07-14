@@ -52,8 +52,6 @@ public final class RegistrationContactSettingsTechnicalContactPostalAddress {
      * @return The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
      * it might contain &#34;care of&#34; information.
      * 
-     * ***
-     * 
      */
     private @Nullable List<String> recipients;
     /**
@@ -113,8 +111,6 @@ public final class RegistrationContactSettingsTechnicalContactPostalAddress {
     /**
      * @return The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
      * it might contain &#34;care of&#34; information.
-     * 
-     * ***
      * 
      */
     public List<String> recipients() {

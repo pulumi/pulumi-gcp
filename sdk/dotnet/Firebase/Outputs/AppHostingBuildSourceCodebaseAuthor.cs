@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Firebase.Outputs
     public sealed class AppHostingBuildSourceCodebaseAuthor
     {
         /// <summary>
-        /// The 'name' field in a Git user's git.config. Required by Git.
+        /// Human-readable name. 63 character limit.
         /// </summary>
         public readonly string? DisplayName;
         /// <summary>

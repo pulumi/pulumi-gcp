@@ -7286,8 +7286,6 @@ class MetastoreFederationBackendMetastore(dict):
         """
         :param builtins.str metastore_type: The type of the backend metastore.
                Possible values are: `METASTORE_TYPE_UNSPECIFIED`, `DATAPROC_METASTORE`, `BIGQUERY`.
-               
-               - - -
         :param builtins.str name: The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
         :param builtins.str rank: The identifier for this object. Format specified above.
         """
@@ -7301,8 +7299,6 @@ class MetastoreFederationBackendMetastore(dict):
         """
         The type of the backend metastore.
         Possible values are: `METASTORE_TYPE_UNSPECIFIED`, `DATAPROC_METASTORE`, `BIGQUERY`.
-
-        - - -
         """
         return pulumi.get(self, "metastore_type")
 

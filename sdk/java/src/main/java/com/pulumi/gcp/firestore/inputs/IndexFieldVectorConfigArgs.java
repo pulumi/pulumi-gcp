@@ -36,16 +36,12 @@ public final class IndexFieldVectorConfigArgs extends com.pulumi.resources.Resou
     /**
      * Indicates the vector index is a flat index.
      * 
-     * ***
-     * 
      */
     @Import(name="flat")
     private @Nullable Output<IndexFieldVectorConfigFlatArgs> flat;
 
     /**
      * @return Indicates the vector index is a flat index.
-     * 
-     * ***
      * 
      */
     public Optional<Output<IndexFieldVectorConfigFlatArgs>> flat() {
@@ -103,8 +99,6 @@ public final class IndexFieldVectorConfigArgs extends com.pulumi.resources.Resou
         /**
          * @param flat Indicates the vector index is a flat index.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -115,8 +109,6 @@ public final class IndexFieldVectorConfigArgs extends com.pulumi.resources.Resou
 
         /**
          * @param flat Indicates the vector index is a flat index.
-         * 
-         * ***
          * 
          * @return builder
          * 

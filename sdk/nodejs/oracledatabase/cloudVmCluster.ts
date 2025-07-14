@@ -194,9 +194,6 @@ export class CloudVmCluster extends pulumi.CustomResource {
      * to (^a-z?$) and must be a maximum of 63
      * characters in length. The value must start with a letter and end with
      * a letter or a number.
-     *
-     *
-     * - - -
      */
     public readonly cloudVmClusterId!: pulumi.Output<string>;
     /**
@@ -349,9 +346,6 @@ export interface CloudVmClusterState {
      * to (^a-z?$) and must be a maximum of 63
      * characters in length. The value must start with a letter and end with
      * a letter or a number.
-     *
-     *
-     * - - -
      */
     cloudVmClusterId?: pulumi.Input<string>;
     /**
@@ -432,9 +426,6 @@ export interface CloudVmClusterArgs {
      * to (^a-z?$) and must be a maximum of 63
      * characters in length. The value must start with a letter and end with
      * a letter or a number.
-     *
-     *
-     * - - -
      */
     cloudVmClusterId: pulumi.Input<string>;
     deletionProtection?: pulumi.Input<boolean>;

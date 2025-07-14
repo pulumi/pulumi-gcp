@@ -383,16 +383,12 @@ public class RegionalSecretVersion extends com.pulumi.resources.CustomResource {
     /**
      * Secret Manager regional secret resource.
      * 
-     * ***
-     * 
      */
     @Export(name="secret", refs={String.class}, tree="[0]")
     private Output<String> secret;
 
     /**
      * @return Secret Manager regional secret resource.
-     * 
-     * ***
      * 
      */
     public Output<String> secret() {

@@ -111,8 +111,6 @@ type GeminiGcpEnablementSettingBinding struct {
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Id of the setting binding.
-	//
-	// ***
 	SettingBindingId pulumi.StringOutput `pulumi:"settingBindingId"`
 	// Target of the binding.
 	Target pulumi.StringOutput `pulumi:"target"`
@@ -188,8 +186,6 @@ type geminiGcpEnablementSettingBindingState struct {
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Id of the setting binding.
-	//
-	// ***
 	SettingBindingId *string `pulumi:"settingBindingId"`
 	// Target of the binding.
 	Target *string `pulumi:"target"`
@@ -222,8 +218,6 @@ type GeminiGcpEnablementSettingBindingState struct {
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Id of the setting binding.
-	//
-	// ***
 	SettingBindingId pulumi.StringPtrInput
 	// Target of the binding.
 	Target pulumi.StringPtrInput
@@ -250,8 +244,6 @@ type geminiGcpEnablementSettingBindingArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Id of the setting binding.
-	//
-	// ***
 	SettingBindingId string `pulumi:"settingBindingId"`
 	// Target of the binding.
 	Target string `pulumi:"target"`
@@ -273,8 +265,6 @@ type GeminiGcpEnablementSettingBindingArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Id of the setting binding.
-	//
-	// ***
 	SettingBindingId pulumi.StringInput
 	// Target of the binding.
 	Target pulumi.StringInput
@@ -418,8 +408,6 @@ func (o GeminiGcpEnablementSettingBindingOutput) PulumiLabels() pulumi.StringMap
 }
 
 // Id of the setting binding.
-//
-// ***
 func (o GeminiGcpEnablementSettingBindingOutput) SettingBindingId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GeminiGcpEnablementSettingBinding) pulumi.StringOutput { return v.SettingBindingId }).(pulumi.StringOutput)
 }

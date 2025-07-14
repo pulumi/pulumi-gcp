@@ -13,9 +13,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InterconnectAttachmentGroupConfiguredAvailabilitySlaIntendedSlaBlocker {
     /**
-     * @return (Output)
-     * URLs of any particular Attachments to explain this
-     * blocker in more detail.
+     * @return Attachments in the AttachmentGroup. Keys are arbitrary user-specified
+     * strings. Users are encouraged, but not required, to use their preferred
+     * format for resource links as keys.
+     * Note that there are add-members and remove-members methods in gcloud.
+     * The size of this map is limited by an &#34;Attachments per group&#34; quota.
+     * Structure is documented below.
      * 
      */
     private @Nullable List<String> attachments;
@@ -68,9 +71,12 @@ public final class InterconnectAttachmentGroupConfiguredAvailabilitySlaIntendedS
 
     private InterconnectAttachmentGroupConfiguredAvailabilitySlaIntendedSlaBlocker() {}
     /**
-     * @return (Output)
-     * URLs of any particular Attachments to explain this
-     * blocker in more detail.
+     * @return Attachments in the AttachmentGroup. Keys are arbitrary user-specified
+     * strings. Users are encouraged, but not required, to use their preferred
+     * format for resource links as keys.
+     * Note that there are add-members and remove-members methods in gcloud.
+     * The size of this map is limited by an &#34;Attachments per group&#34; quota.
+     * Structure is documented below.
      * 
      */
     public List<String> attachments() {

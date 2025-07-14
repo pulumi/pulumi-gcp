@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.SiteVerification.Inputs
         /// <summary>
         /// The site identifier. If the type is set to SITE, the identifier is a URL. If the type is
         /// set to INET_DOMAIN, the identifier is a domain name.
-        /// 
-        /// - - -
         /// </summary>
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;

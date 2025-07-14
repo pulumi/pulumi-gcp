@@ -53,16 +53,16 @@ public final class OrganizationSecurityPolicyRuleArgs extends com.pulumi.resourc
     }
 
     /**
-     * The direction in which this rule applies. If unspecified an INGRESS rule is created. Possible values: [&#34;INGRESS&#34;,
-     * &#34;EGRESS&#34;]
+     * The direction in which this rule applies. If unspecified an INGRESS rule is created.
+     * Possible values are: `INGRESS`, `EGRESS`.
      * 
      */
     @Import(name="direction")
     private @Nullable Output<String> direction;
 
     /**
-     * @return The direction in which this rule applies. If unspecified an INGRESS rule is created. Possible values: [&#34;INGRESS&#34;,
-     * &#34;EGRESS&#34;]
+     * @return The direction in which this rule applies. If unspecified an INGRESS rule is created.
+     * Possible values are: `INGRESS`, `EGRESS`.
      * 
      */
     public Optional<Output<String>> direction() {
@@ -70,16 +70,18 @@ public final class OrganizationSecurityPolicyRuleArgs extends com.pulumi.resourc
     }
 
     /**
-     * Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
-     * export destination in Stackdriver.
+     * Denotes whether to enable logging for a particular rule.
+     * If logging is enabled, logs will be exported to the
+     * configured export destination in Stackdriver.
      * 
      */
     @Import(name="enableLogging")
     private @Nullable Output<Boolean> enableLogging;
 
     /**
-     * @return Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
-     * export destination in Stackdriver.
+     * @return Denotes whether to enable logging for a particular rule.
+     * If logging is enabled, logs will be exported to the
+     * configured export destination in Stackdriver.
      * 
      */
     public Optional<Output<Boolean>> enableLogging() {
@@ -153,16 +155,20 @@ public final class OrganizationSecurityPolicyRuleArgs extends com.pulumi.resourc
     }
 
     /**
-     * A list of network resource URLs to which this rule applies. This field allows you to control which network&#39;s VMs get
-     * this rule. If this field is left blank, all VMs within the organization will receive the rule.
+     * A list of network resource URLs to which this rule applies.
+     * This field allows you to control which network&#39;s VMs get
+     * this rule. If this field is left blank, all VMs
+     * within the organization will receive the rule.
      * 
      */
     @Import(name="targetResources")
     private @Nullable Output<List<String>> targetResources;
 
     /**
-     * @return A list of network resource URLs to which this rule applies. This field allows you to control which network&#39;s VMs get
-     * this rule. If this field is left blank, all VMs within the organization will receive the rule.
+     * @return A list of network resource URLs to which this rule applies.
+     * This field allows you to control which network&#39;s VMs get
+     * this rule. If this field is left blank, all VMs
+     * within the organization will receive the rule.
      * 
      */
     public Optional<Output<List<String>>> targetResources() {
@@ -170,14 +176,16 @@ public final class OrganizationSecurityPolicyRuleArgs extends com.pulumi.resourc
     }
 
     /**
-     * A list of service accounts indicating the sets of instances that are applied with this rule.
+     * A list of service accounts indicating the sets of
+     * instances that are applied with this rule.
      * 
      */
     @Import(name="targetServiceAccounts")
     private @Nullable Output<List<String>> targetServiceAccounts;
 
     /**
-     * @return A list of service accounts indicating the sets of instances that are applied with this rule.
+     * @return A list of service accounts indicating the sets of
+     * instances that are applied with this rule.
      * 
      */
     public Optional<Output<List<String>>> targetServiceAccounts() {
@@ -262,8 +270,8 @@ public final class OrganizationSecurityPolicyRuleArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param direction The direction in which this rule applies. If unspecified an INGRESS rule is created. Possible values: [&#34;INGRESS&#34;,
-         * &#34;EGRESS&#34;]
+         * @param direction The direction in which this rule applies. If unspecified an INGRESS rule is created.
+         * Possible values are: `INGRESS`, `EGRESS`.
          * 
          * @return builder
          * 
@@ -274,8 +282,8 @@ public final class OrganizationSecurityPolicyRuleArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param direction The direction in which this rule applies. If unspecified an INGRESS rule is created. Possible values: [&#34;INGRESS&#34;,
-         * &#34;EGRESS&#34;]
+         * @param direction The direction in which this rule applies. If unspecified an INGRESS rule is created.
+         * Possible values are: `INGRESS`, `EGRESS`.
          * 
          * @return builder
          * 
@@ -285,8 +293,9 @@ public final class OrganizationSecurityPolicyRuleArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param enableLogging Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
-         * export destination in Stackdriver.
+         * @param enableLogging Denotes whether to enable logging for a particular rule.
+         * If logging is enabled, logs will be exported to the
+         * configured export destination in Stackdriver.
          * 
          * @return builder
          * 
@@ -297,8 +306,9 @@ public final class OrganizationSecurityPolicyRuleArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param enableLogging Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
-         * export destination in Stackdriver.
+         * @param enableLogging Denotes whether to enable logging for a particular rule.
+         * If logging is enabled, logs will be exported to the
+         * configured export destination in Stackdriver.
          * 
          * @return builder
          * 
@@ -398,8 +408,10 @@ public final class OrganizationSecurityPolicyRuleArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param targetResources A list of network resource URLs to which this rule applies. This field allows you to control which network&#39;s VMs get
-         * this rule. If this field is left blank, all VMs within the organization will receive the rule.
+         * @param targetResources A list of network resource URLs to which this rule applies.
+         * This field allows you to control which network&#39;s VMs get
+         * this rule. If this field is left blank, all VMs
+         * within the organization will receive the rule.
          * 
          * @return builder
          * 
@@ -410,8 +422,10 @@ public final class OrganizationSecurityPolicyRuleArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param targetResources A list of network resource URLs to which this rule applies. This field allows you to control which network&#39;s VMs get
-         * this rule. If this field is left blank, all VMs within the organization will receive the rule.
+         * @param targetResources A list of network resource URLs to which this rule applies.
+         * This field allows you to control which network&#39;s VMs get
+         * this rule. If this field is left blank, all VMs
+         * within the organization will receive the rule.
          * 
          * @return builder
          * 
@@ -421,8 +435,10 @@ public final class OrganizationSecurityPolicyRuleArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param targetResources A list of network resource URLs to which this rule applies. This field allows you to control which network&#39;s VMs get
-         * this rule. If this field is left blank, all VMs within the organization will receive the rule.
+         * @param targetResources A list of network resource URLs to which this rule applies.
+         * This field allows you to control which network&#39;s VMs get
+         * this rule. If this field is left blank, all VMs
+         * within the organization will receive the rule.
          * 
          * @return builder
          * 
@@ -432,7 +448,8 @@ public final class OrganizationSecurityPolicyRuleArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param targetServiceAccounts A list of service accounts indicating the sets of instances that are applied with this rule.
+         * @param targetServiceAccounts A list of service accounts indicating the sets of
+         * instances that are applied with this rule.
          * 
          * @return builder
          * 
@@ -443,7 +460,8 @@ public final class OrganizationSecurityPolicyRuleArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param targetServiceAccounts A list of service accounts indicating the sets of instances that are applied with this rule.
+         * @param targetServiceAccounts A list of service accounts indicating the sets of
+         * instances that are applied with this rule.
          * 
          * @return builder
          * 
@@ -453,7 +471,8 @@ public final class OrganizationSecurityPolicyRuleArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param targetServiceAccounts A list of service accounts indicating the sets of instances that are applied with this rule.
+         * @param targetServiceAccounts A list of service accounts indicating the sets of
+         * instances that are applied with this rule.
          * 
          * @return builder
          * 

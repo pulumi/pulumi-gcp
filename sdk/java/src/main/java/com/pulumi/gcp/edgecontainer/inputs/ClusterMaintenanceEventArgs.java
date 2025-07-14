@@ -128,16 +128,14 @@ public final class ClusterMaintenanceEventArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * (Output)
-     * The target version of the cluster.
+     * The target cluster version. For example: &#34;1.5.0&#34;.
      * 
      */
     @Import(name="targetVersion")
     private @Nullable Output<String> targetVersion;
 
     /**
-     * @return (Output)
-     * The target version of the cluster.
+     * @return The target cluster version. For example: &#34;1.5.0&#34;.
      * 
      */
     public Optional<Output<String>> targetVersion() {
@@ -377,8 +375,7 @@ public final class ClusterMaintenanceEventArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param targetVersion (Output)
-         * The target version of the cluster.
+         * @param targetVersion The target cluster version. For example: &#34;1.5.0&#34;.
          * 
          * @return builder
          * 
@@ -389,8 +386,7 @@ public final class ClusterMaintenanceEventArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param targetVersion (Output)
-         * The target version of the cluster.
+         * @param targetVersion The target cluster version. For example: &#34;1.5.0&#34;.
          * 
          * @return builder
          * 

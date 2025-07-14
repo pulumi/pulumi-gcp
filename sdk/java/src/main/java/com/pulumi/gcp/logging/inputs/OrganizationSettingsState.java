@@ -94,16 +94,12 @@ public final class OrganizationSettingsState extends com.pulumi.resources.Resour
     /**
      * The organization for which to retrieve or configure settings.
      * 
-     * ***
-     * 
      */
     @Import(name="organization")
     private @Nullable Output<String> organization;
 
     /**
      * @return The organization for which to retrieve or configure settings.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> organization() {
@@ -263,8 +259,6 @@ public final class OrganizationSettingsState extends com.pulumi.resources.Resour
         /**
          * @param organization The organization for which to retrieve or configure settings.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -275,8 +269,6 @@ public final class OrganizationSettingsState extends com.pulumi.resources.Resour
 
         /**
          * @param organization The organization for which to retrieve or configure settings.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -83,8 +83,6 @@ type ControlOrganizationIntelligenceConfig struct {
 	// Structure is documented below.
 	Filter ControlOrganizationIntelligenceConfigFilterPtrOutput `pulumi:"filter"`
 	// Identifier of the GCP Organization. For GCP org, this field should be organization number.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The trial configuration of the Storage Intelligence resource.
 	// Structure is documented below.
@@ -132,8 +130,6 @@ type controlOrganizationIntelligenceConfigState struct {
 	// Structure is documented below.
 	Filter *ControlOrganizationIntelligenceConfigFilter `pulumi:"filter"`
 	// Identifier of the GCP Organization. For GCP org, this field should be organization number.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The trial configuration of the Storage Intelligence resource.
 	// Structure is documented below.
@@ -152,8 +148,6 @@ type ControlOrganizationIntelligenceConfigState struct {
 	// Structure is documented below.
 	Filter ControlOrganizationIntelligenceConfigFilterPtrInput
 	// Identifier of the GCP Organization. For GCP org, this field should be organization number.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The trial configuration of the Storage Intelligence resource.
 	// Structure is documented below.
@@ -173,8 +167,6 @@ type controlOrganizationIntelligenceConfigArgs struct {
 	// Structure is documented below.
 	Filter *ControlOrganizationIntelligenceConfigFilter `pulumi:"filter"`
 	// Identifier of the GCP Organization. For GCP org, this field should be organization number.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 }
 
@@ -186,8 +178,6 @@ type ControlOrganizationIntelligenceConfigArgs struct {
 	// Structure is documented below.
 	Filter ControlOrganizationIntelligenceConfigFilterPtrInput
 	// Identifier of the GCP Organization. For GCP org, this field should be organization number.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 }
 
@@ -300,8 +290,6 @@ func (o ControlOrganizationIntelligenceConfigOutput) Filter() ControlOrganizatio
 }
 
 // Identifier of the GCP Organization. For GCP org, this field should be organization number.
-//
-// ***
 func (o ControlOrganizationIntelligenceConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ControlOrganizationIntelligenceConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

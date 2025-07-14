@@ -64,9 +64,6 @@ export class EnvGroupAttachment extends pulumi.CustomResource {
     /**
      * The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/envgroups/{{envgroup_name}}`.
-     *
-     *
-     * - - -
      */
     public readonly envgroupId!: pulumi.Output<string>;
     /**
@@ -118,9 +115,6 @@ export interface EnvGroupAttachmentState {
     /**
      * The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/envgroups/{{envgroup_name}}`.
-     *
-     *
-     * - - -
      */
     envgroupId?: pulumi.Input<string>;
     /**
@@ -140,9 +134,6 @@ export interface EnvGroupAttachmentArgs {
     /**
      * The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/envgroups/{{envgroup_name}}`.
-     *
-     *
-     * - - -
      */
     envgroupId: pulumi.Input<string>;
     /**

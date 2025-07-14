@@ -34,9 +34,6 @@ class InterconnectAttachmentArgs:
         The set of arguments for constructing a InterconnectAttachment resource.
         :param pulumi.Input[builtins.str] interconnect: The ID of the underlying interconnect that this attachment's traffic will traverse through.
         :param pulumi.Input[builtins.str] interconnect_attachment_id: A unique ID that identifies this interconnect attachment.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: The Google Cloud region to which the target Distributed Cloud Edge zone belongs.
         :param pulumi.Input[builtins.str] network: The ID of the network to which this interconnect attachment belongs.
                Must be of the form: `projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}`
@@ -83,9 +80,6 @@ class InterconnectAttachmentArgs:
     def interconnect_attachment_id(self) -> pulumi.Input[builtins.str]:
         """
         A unique ID that identifies this interconnect attachment.
-
-
-        - - -
         """
         return pulumi.get(self, "interconnect_attachment_id")
 
@@ -222,9 +216,6 @@ class _InterconnectAttachmentState:
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[builtins.str] interconnect: The ID of the underlying interconnect that this attachment's traffic will traverse through.
         :param pulumi.Input[builtins.str] interconnect_attachment_id: A unique ID that identifies this interconnect attachment.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels associated with this resource.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -331,9 +322,6 @@ class _InterconnectAttachmentState:
     def interconnect_attachment_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         A unique ID that identifies this interconnect attachment.
-
-
-        - - -
         """
         return pulumi.get(self, "interconnect_attachment_id")
 
@@ -566,9 +554,6 @@ class InterconnectAttachment(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[builtins.str] interconnect: The ID of the underlying interconnect that this attachment's traffic will traverse through.
         :param pulumi.Input[builtins.str] interconnect_attachment_id: A unique ID that identifies this interconnect attachment.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels associated with this resource.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -763,9 +748,6 @@ class InterconnectAttachment(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[builtins.str] interconnect: The ID of the underlying interconnect that this attachment's traffic will traverse through.
         :param pulumi.Input[builtins.str] interconnect_attachment_id: A unique ID that identifies this interconnect attachment.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels associated with this resource.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -846,9 +828,6 @@ class InterconnectAttachment(pulumi.CustomResource):
     def interconnect_attachment_id(self) -> pulumi.Output[builtins.str]:
         """
         A unique ID that identifies this interconnect attachment.
-
-
-        - - -
         """
         return pulumi.get(self, "interconnect_attachment_id")
 

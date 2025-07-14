@@ -175,8 +175,6 @@ public class Lien extends com.pulumi.resources.CustomResource {
      * list is meaningless and will be rejected.
      * e.g. [&#39;resourcemanager.projects.delete&#39;]
      * 
-     * ***
-     * 
      */
     @Export(name="restrictions", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> restrictions;
@@ -187,8 +185,6 @@ public class Lien extends com.pulumi.resources.CustomResource {
      * the permissions against those for which Liens are supported.  An empty
      * list is meaningless and will be rejected.
      * e.g. [&#39;resourcemanager.projects.delete&#39;]
-     * 
-     * ***
      * 
      */
     public Output<List<String>> restrictions() {

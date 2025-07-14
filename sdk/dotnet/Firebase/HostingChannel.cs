@@ -90,9 +90,6 @@ namespace Pulumi.Gcp.Firebase
     {
         /// <summary>
         /// Required. Immutable. A unique ID within the site that identifies the channel.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("channelId")]
         public Output<string> ChannelId { get; private set; } = null!;
@@ -207,9 +204,6 @@ namespace Pulumi.Gcp.Firebase
     {
         /// <summary>
         /// Required. Immutable. A unique ID within the site that identifies the channel.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("channelId", required: true)]
         public Input<string> ChannelId { get; set; } = null!;
@@ -267,9 +261,6 @@ namespace Pulumi.Gcp.Firebase
     {
         /// <summary>
         /// Required. Immutable. A unique ID within the site that identifies the channel.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("channelId")]
         public Input<string>? ChannelId { get; set; }

@@ -29,7 +29,7 @@ public final class BareMetalClusterLoadBalancerBgpLbConfigAddressPool {
      * @return If true, prevent IP addresses from being automatically assigned.
      * 
      */
-    private @Nullable String manualAssign;
+    private @Nullable Boolean manualAssign;
     /**
      * @return The name of the address pool.
      * 
@@ -56,7 +56,7 @@ public final class BareMetalClusterLoadBalancerBgpLbConfigAddressPool {
      * @return If true, prevent IP addresses from being automatically assigned.
      * 
      */
-    public Optional<String> manualAssign() {
+    public Optional<Boolean> manualAssign() {
         return Optional.ofNullable(this.manualAssign);
     }
     /**
@@ -78,7 +78,7 @@ public final class BareMetalClusterLoadBalancerBgpLbConfigAddressPool {
     public static final class Builder {
         private List<String> addresses;
         private @Nullable Boolean avoidBuggyIps;
-        private @Nullable String manualAssign;
+        private @Nullable Boolean manualAssign;
         private String pool;
         public Builder() {}
         public Builder(BareMetalClusterLoadBalancerBgpLbConfigAddressPool defaults) {
@@ -107,7 +107,7 @@ public final class BareMetalClusterLoadBalancerBgpLbConfigAddressPool {
             return this;
         }
         @CustomType.Setter
-        public Builder manualAssign(@Nullable String manualAssign) {
+        public Builder manualAssign(@Nullable Boolean manualAssign) {
 
             this.manualAssign = manualAssign;
             return this;

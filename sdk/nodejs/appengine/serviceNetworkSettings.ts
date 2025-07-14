@@ -112,6 +112,10 @@ export class ServiceNetworkSettings extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly networkSettings!: pulumi.Output<outputs.appengine.ServiceNetworkSettingsNetworkSettings>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The name of the service these settings apply to.
@@ -160,6 +164,10 @@ export interface ServiceNetworkSettingsState {
      * Structure is documented below.
      */
     networkSettings?: pulumi.Input<inputs.appengine.ServiceNetworkSettingsNetworkSettings>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * The name of the service these settings apply to.
@@ -176,6 +184,10 @@ export interface ServiceNetworkSettingsArgs {
      * Structure is documented below.
      */
     networkSettings: pulumi.Input<inputs.appengine.ServiceNetworkSettingsNetworkSettings>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * The name of the service these settings apply to.

@@ -130,8 +130,6 @@ public class OrganizationSecurityPolicy extends com.pulumi.resources.CustomResou
      * The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
      * Format: organizations/{organization_id} or folders/{folder_id}
      * 
-     * ***
-     * 
      */
     @Export(name="parent", refs={String.class}, tree="[0]")
     private Output<String> parent;
@@ -139,8 +137,6 @@ public class OrganizationSecurityPolicy extends com.pulumi.resources.CustomResou
     /**
      * @return The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
      * Format: organizations/{organization_id} or folders/{folder_id}
-     * 
-     * ***
      * 
      */
     public Output<String> parent() {

@@ -225,8 +225,6 @@ type NetworkAttachment struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// URL of the region where the network attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	//
-	// ***
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -300,8 +298,6 @@ type networkAttachmentState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// URL of the region where the network attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	//
-	// ***
 	Region *string `pulumi:"region"`
 	// Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -340,8 +336,6 @@ type NetworkAttachmentState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// URL of the region where the network attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	//
-	// ***
 	Region pulumi.StringPtrInput
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
@@ -371,8 +365,6 @@ type networkAttachmentArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// URL of the region where the network attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	//
-	// ***
 	Region *string `pulumi:"region"`
 	// An array of URLs where each entry is the URL of a subnet provided by the service consumer to use for endpoints in the producers that connect to this network attachment.
 	Subnetworks []string `pulumi:"subnetworks"`
@@ -395,8 +387,6 @@ type NetworkAttachmentArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// URL of the region where the network attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	//
-	// ***
 	Region pulumi.StringPtrInput
 	// An array of URLs where each entry is the URL of a subnet provided by the service consumer to use for endpoints in the producers that connect to this network attachment.
 	Subnetworks pulumi.StringArrayInput
@@ -552,8 +542,6 @@ func (o NetworkAttachmentOutput) Project() pulumi.StringOutput {
 }
 
 // URL of the region where the network attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-//
-// ***
 func (o NetworkAttachmentOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkAttachment) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

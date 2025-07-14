@@ -154,9 +154,6 @@ export class TrustConfig extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The trust config location.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -266,9 +263,6 @@ export interface TrustConfigState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The trust config location.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -321,9 +315,6 @@ export interface TrustConfigArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The trust config location.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

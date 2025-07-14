@@ -507,9 +507,6 @@ export class ConnectionProfile extends pulumi.CustomResource {
     public readonly cloudsql!: pulumi.Output<outputs.databasemigrationservice.ConnectionProfileCloudsql | undefined>;
     /**
      * The ID of the connection profile.
-     *
-     *
-     * - - -
      */
     public readonly connectionProfileId!: pulumi.Output<string>;
     /**
@@ -654,9 +651,6 @@ export interface ConnectionProfileState {
     cloudsql?: pulumi.Input<inputs.databasemigrationservice.ConnectionProfileCloudsql>;
     /**
      * The ID of the connection profile.
-     *
-     *
-     * - - -
      */
     connectionProfileId?: pulumi.Input<string>;
     /**
@@ -742,9 +736,6 @@ export interface ConnectionProfileArgs {
     cloudsql?: pulumi.Input<inputs.databasemigrationservice.ConnectionProfileCloudsql>;
     /**
      * The ID of the connection profile.
-     *
-     *
-     * - - -
      */
     connectionProfileId: pulumi.Input<string>;
     /**

@@ -229,6 +229,7 @@ type BitbucketServerConfig struct {
 	// The ID to use for the BitbucketServerConfig, which will become the final component of the BitbucketServerConfig's resource name.
 	ConfigId pulumi.StringOutput `pulumi:"configId"`
 	// Connected Bitbucket Server repositories for this config.
+	// Structure is documented below.
 	ConnectedRepositories BitbucketServerConfigConnectedRepositoryArrayOutput `pulumi:"connectedRepositories"`
 	// Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed.
 	// If you need to change it, please create another BitbucketServerConfig.
@@ -237,18 +238,18 @@ type BitbucketServerConfig struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name for the config.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private
-	// service connection. This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by
-	// public internet. If this field is left empty, no network peering will occur and calls to the Bitbucket Server instance
-	// will be made over the public internet. Must be in the format projects/{project}/global/networks/{network}, where
-	// {project} is a project number or id and {network} is the name of a VPC network in the project.
+	// The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection.
+	// This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty,
+	// no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format
+	// projects/{project}/global/networks/{network}, where {project} is a project number or id and {network} is the name of a VPC network in the project.
 	PeeredNetwork pulumi.StringPtrOutput `pulumi:"peeredNetwork"`
-	Project       pulumi.StringOutput    `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Secret Manager secrets needed by the config.
 	// Structure is documented below.
 	Secrets BitbucketServerConfigSecretsOutput `pulumi:"secrets"`
-	// SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of
-	// .pem, .cer, or .crt.
+	// SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
 	SslCa pulumi.StringPtrOutput `pulumi:"sslCa"`
 	// Username of the account Cloud Build will use on Bitbucket Server.
 	Username pulumi.StringOutput `pulumi:"username"`
@@ -310,6 +311,7 @@ type bitbucketServerConfigState struct {
 	// The ID to use for the BitbucketServerConfig, which will become the final component of the BitbucketServerConfig's resource name.
 	ConfigId *string `pulumi:"configId"`
 	// Connected Bitbucket Server repositories for this config.
+	// Structure is documented below.
 	ConnectedRepositories []BitbucketServerConfigConnectedRepository `pulumi:"connectedRepositories"`
 	// Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed.
 	// If you need to change it, please create another BitbucketServerConfig.
@@ -318,18 +320,18 @@ type bitbucketServerConfigState struct {
 	Location *string `pulumi:"location"`
 	// The resource name for the config.
 	Name *string `pulumi:"name"`
-	// The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private
-	// service connection. This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by
-	// public internet. If this field is left empty, no network peering will occur and calls to the Bitbucket Server instance
-	// will be made over the public internet. Must be in the format projects/{project}/global/networks/{network}, where
-	// {project} is a project number or id and {network} is the name of a VPC network in the project.
+	// The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection.
+	// This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty,
+	// no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format
+	// projects/{project}/global/networks/{network}, where {project} is a project number or id and {network} is the name of a VPC network in the project.
 	PeeredNetwork *string `pulumi:"peeredNetwork"`
-	Project       *string `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// Secret Manager secrets needed by the config.
 	// Structure is documented below.
 	Secrets *BitbucketServerConfigSecrets `pulumi:"secrets"`
-	// SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of
-	// .pem, .cer, or .crt.
+	// SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
 	SslCa *string `pulumi:"sslCa"`
 	// Username of the account Cloud Build will use on Bitbucket Server.
 	Username *string `pulumi:"username"`
@@ -344,6 +346,7 @@ type BitbucketServerConfigState struct {
 	// The ID to use for the BitbucketServerConfig, which will become the final component of the BitbucketServerConfig's resource name.
 	ConfigId pulumi.StringPtrInput
 	// Connected Bitbucket Server repositories for this config.
+	// Structure is documented below.
 	ConnectedRepositories BitbucketServerConfigConnectedRepositoryArrayInput
 	// Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed.
 	// If you need to change it, please create another BitbucketServerConfig.
@@ -352,18 +355,18 @@ type BitbucketServerConfigState struct {
 	Location pulumi.StringPtrInput
 	// The resource name for the config.
 	Name pulumi.StringPtrInput
-	// The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private
-	// service connection. This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by
-	// public internet. If this field is left empty, no network peering will occur and calls to the Bitbucket Server instance
-	// will be made over the public internet. Must be in the format projects/{project}/global/networks/{network}, where
-	// {project} is a project number or id and {network} is the name of a VPC network in the project.
+	// The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection.
+	// This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty,
+	// no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format
+	// projects/{project}/global/networks/{network}, where {project} is a project number or id and {network} is the name of a VPC network in the project.
 	PeeredNetwork pulumi.StringPtrInput
-	Project       pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// Secret Manager secrets needed by the config.
 	// Structure is documented below.
 	Secrets BitbucketServerConfigSecretsPtrInput
-	// SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of
-	// .pem, .cer, or .crt.
+	// SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
 	SslCa pulumi.StringPtrInput
 	// Username of the account Cloud Build will use on Bitbucket Server.
 	Username pulumi.StringPtrInput
@@ -382,24 +385,25 @@ type bitbucketServerConfigArgs struct {
 	// The ID to use for the BitbucketServerConfig, which will become the final component of the BitbucketServerConfig's resource name.
 	ConfigId string `pulumi:"configId"`
 	// Connected Bitbucket Server repositories for this config.
+	// Structure is documented below.
 	ConnectedRepositories []BitbucketServerConfigConnectedRepository `pulumi:"connectedRepositories"`
 	// Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed.
 	// If you need to change it, please create another BitbucketServerConfig.
 	HostUri string `pulumi:"hostUri"`
 	// The location of this bitbucket server config.
 	Location string `pulumi:"location"`
-	// The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private
-	// service connection. This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by
-	// public internet. If this field is left empty, no network peering will occur and calls to the Bitbucket Server instance
-	// will be made over the public internet. Must be in the format projects/{project}/global/networks/{network}, where
-	// {project} is a project number or id and {network} is the name of a VPC network in the project.
+	// The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection.
+	// This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty,
+	// no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format
+	// projects/{project}/global/networks/{network}, where {project} is a project number or id and {network} is the name of a VPC network in the project.
 	PeeredNetwork *string `pulumi:"peeredNetwork"`
-	Project       *string `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// Secret Manager secrets needed by the config.
 	// Structure is documented below.
 	Secrets BitbucketServerConfigSecrets `pulumi:"secrets"`
-	// SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of
-	// .pem, .cer, or .crt.
+	// SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
 	SslCa *string `pulumi:"sslCa"`
 	// Username of the account Cloud Build will use on Bitbucket Server.
 	Username string `pulumi:"username"`
@@ -413,24 +417,25 @@ type BitbucketServerConfigArgs struct {
 	// The ID to use for the BitbucketServerConfig, which will become the final component of the BitbucketServerConfig's resource name.
 	ConfigId pulumi.StringInput
 	// Connected Bitbucket Server repositories for this config.
+	// Structure is documented below.
 	ConnectedRepositories BitbucketServerConfigConnectedRepositoryArrayInput
 	// Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed.
 	// If you need to change it, please create another BitbucketServerConfig.
 	HostUri pulumi.StringInput
 	// The location of this bitbucket server config.
 	Location pulumi.StringInput
-	// The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private
-	// service connection. This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by
-	// public internet. If this field is left empty, no network peering will occur and calls to the Bitbucket Server instance
-	// will be made over the public internet. Must be in the format projects/{project}/global/networks/{network}, where
-	// {project} is a project number or id and {network} is the name of a VPC network in the project.
+	// The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection.
+	// This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty,
+	// no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format
+	// projects/{project}/global/networks/{network}, where {project} is a project number or id and {network} is the name of a VPC network in the project.
 	PeeredNetwork pulumi.StringPtrInput
-	Project       pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// Secret Manager secrets needed by the config.
 	// Structure is documented below.
 	Secrets BitbucketServerConfigSecretsInput
-	// SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of
-	// .pem, .cer, or .crt.
+	// SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
 	SslCa pulumi.StringPtrInput
 	// Username of the account Cloud Build will use on Bitbucket Server.
 	Username pulumi.StringInput
@@ -535,6 +540,7 @@ func (o BitbucketServerConfigOutput) ConfigId() pulumi.StringOutput {
 }
 
 // Connected Bitbucket Server repositories for this config.
+// Structure is documented below.
 func (o BitbucketServerConfigOutput) ConnectedRepositories() BitbucketServerConfigConnectedRepositoryArrayOutput {
 	return o.ApplyT(func(v *BitbucketServerConfig) BitbucketServerConfigConnectedRepositoryArrayOutput {
 		return v.ConnectedRepositories
@@ -557,15 +563,16 @@ func (o BitbucketServerConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *BitbucketServerConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private
-// service connection. This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by
-// public internet. If this field is left empty, no network peering will occur and calls to the Bitbucket Server instance
-// will be made over the public internet. Must be in the format projects/{project}/global/networks/{network}, where
-// {project} is a project number or id and {network} is the name of a VPC network in the project.
+// The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection.
+// This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty,
+// no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format
+// projects/{project}/global/networks/{network}, where {project} is a project number or id and {network} is the name of a VPC network in the project.
 func (o BitbucketServerConfigOutput) PeeredNetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BitbucketServerConfig) pulumi.StringPtrOutput { return v.PeeredNetwork }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o BitbucketServerConfigOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *BitbucketServerConfig) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -576,8 +583,7 @@ func (o BitbucketServerConfigOutput) Secrets() BitbucketServerConfigSecretsOutpu
 	return o.ApplyT(func(v *BitbucketServerConfig) BitbucketServerConfigSecretsOutput { return v.Secrets }).(BitbucketServerConfigSecretsOutput)
 }
 
-// SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of
-// .pem, .cer, or .crt.
+// SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
 func (o BitbucketServerConfigOutput) SslCa() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BitbucketServerConfig) pulumi.StringPtrOutput { return v.SslCa }).(pulumi.StringPtrOutput)
 }

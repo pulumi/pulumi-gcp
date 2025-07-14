@@ -314,16 +314,12 @@ public class GdcServiceInstance extends com.pulumi.resources.CustomResource {
     /**
      * Id of the service instance.
      * 
-     * ***
-     * 
      */
     @Export(name="serviceInstanceId", refs={String.class}, tree="[0]")
     private Output<String> serviceInstanceId;
 
     /**
      * @return Id of the service instance.
-     * 
-     * ***
      * 
      */
     public Output<String> serviceInstanceId() {

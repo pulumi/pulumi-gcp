@@ -421,9 +421,6 @@ export class MigrationJob extends pulumi.CustomResource {
     public readonly location!: pulumi.Output<string | undefined>;
     /**
      * The ID of the migration job.
-     *
-     *
-     * - - -
      */
     public readonly migrationJobId!: pulumi.Output<string>;
     /**
@@ -614,9 +611,6 @@ export interface MigrationJobState {
     location?: pulumi.Input<string>;
     /**
      * The ID of the migration job.
-     *
-     *
-     * - - -
      */
     migrationJobId?: pulumi.Input<string>;
     /**
@@ -716,9 +710,6 @@ export interface MigrationJobArgs {
     location?: pulumi.Input<string>;
     /**
      * The ID of the migration job.
-     *
-     *
-     * - - -
      */
     migrationJobId: pulumi.Input<string>;
     /**

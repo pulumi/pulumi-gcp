@@ -211,16 +211,12 @@ public class InterceptEndpointGroupAssociation extends com.pulumi.resources.Cust
     /**
      * The cloud location of the association, currently restricted to `global`.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return The cloud location of the association, currently restricted to `global`.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

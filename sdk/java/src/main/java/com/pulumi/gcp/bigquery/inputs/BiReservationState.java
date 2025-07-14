@@ -21,16 +21,12 @@ public final class BiReservationState extends com.pulumi.resources.ResourceArgs 
     /**
      * LOCATION_DESCRIPTION
      * 
-     * ***
-     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
      * @return LOCATION_DESCRIPTION
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> location() {
@@ -150,8 +146,6 @@ public final class BiReservationState extends com.pulumi.resources.ResourceArgs 
         /**
          * @param location LOCATION_DESCRIPTION
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -162,8 +156,6 @@ public final class BiReservationState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param location LOCATION_DESCRIPTION
-         * 
-         * ***
          * 
          * @return builder
          * 

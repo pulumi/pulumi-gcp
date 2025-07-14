@@ -86,8 +86,6 @@ type V2OrganizationSource struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The organization whose Cloud Security Command Center the Source
 	// lives in.
-	//
-	// ***
 	Organization pulumi.StringOutput `pulumi:"organization"`
 }
 
@@ -140,8 +138,6 @@ type v2organizationSourceState struct {
 	Name *string `pulumi:"name"`
 	// The organization whose Cloud Security Command Center the Source
 	// lives in.
-	//
-	// ***
 	Organization *string `pulumi:"organization"`
 }
 
@@ -159,8 +155,6 @@ type V2OrganizationSourceState struct {
 	Name pulumi.StringPtrInput
 	// The organization whose Cloud Security Command Center the Source
 	// lives in.
-	//
-	// ***
 	Organization pulumi.StringPtrInput
 }
 
@@ -179,8 +173,6 @@ type v2organizationSourceArgs struct {
 	DisplayName string `pulumi:"displayName"`
 	// The organization whose Cloud Security Command Center the Source
 	// lives in.
-	//
-	// ***
 	Organization string `pulumi:"organization"`
 }
 
@@ -196,8 +188,6 @@ type V2OrganizationSourceArgs struct {
 	DisplayName pulumi.StringInput
 	// The organization whose Cloud Security Command Center the Source
 	// lives in.
-	//
-	// ***
 	Organization pulumi.StringInput
 }
 
@@ -310,8 +300,6 @@ func (o V2OrganizationSourceOutput) Name() pulumi.StringOutput {
 
 // The organization whose Cloud Security Command Center the Source
 // lives in.
-//
-// ***
 func (o V2OrganizationSourceOutput) Organization() pulumi.StringOutput {
 	return o.ApplyT(func(v *V2OrganizationSource) pulumi.StringOutput { return v.Organization }).(pulumi.StringOutput)
 }

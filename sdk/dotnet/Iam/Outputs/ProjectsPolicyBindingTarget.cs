@@ -21,8 +21,6 @@ namespace Pulumi.Gcp.Iam.Outputs
         /// * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
         /// * Workload Identity Pool: `//iam.googleapis.com/projects/PROJECT_NUMBER/locations/LOCATION/workloadIdentityPools/WORKLOAD_POOL_ID`
         /// It must be parent by the policy binding's parent (the project).
-        /// 
-        /// - - -
         /// </summary>
         public readonly string? PrincipalSet;
 

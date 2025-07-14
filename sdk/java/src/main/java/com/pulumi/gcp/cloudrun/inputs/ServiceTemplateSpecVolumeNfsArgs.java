@@ -35,16 +35,12 @@ public final class ServiceTemplateSpecVolumeNfsArgs extends com.pulumi.resources
     /**
      * If true, mount the NFS volume as read only in all mounts. Defaults to false.
      * 
-     * ***
-     * 
      */
     @Import(name="readOnly")
     private @Nullable Output<Boolean> readOnly;
 
     /**
      * @return If true, mount the NFS volume as read only in all mounts. Defaults to false.
-     * 
-     * ***
      * 
      */
     public Optional<Output<Boolean>> readOnly() {
@@ -116,8 +112,6 @@ public final class ServiceTemplateSpecVolumeNfsArgs extends com.pulumi.resources
         /**
          * @param readOnly If true, mount the NFS volume as read only in all mounts. Defaults to false.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -128,8 +122,6 @@ public final class ServiceTemplateSpecVolumeNfsArgs extends com.pulumi.resources
 
         /**
          * @param readOnly If true, mount the NFS volume as read only in all mounts. Defaults to false.
-         * 
-         * ***
          * 
          * @return builder
          * 

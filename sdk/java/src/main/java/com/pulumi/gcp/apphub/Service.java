@@ -523,16 +523,12 @@ public class Service extends com.pulumi.resources.CustomResource {
     /**
      * The Service identifier.
      * 
-     * ***
-     * 
      */
     @Export(name="serviceId", refs={String.class}, tree="[0]")
     private Output<String> serviceId;
 
     /**
      * @return The Service identifier.
-     * 
-     * ***
      * 
      */
     public Output<String> serviceId() {

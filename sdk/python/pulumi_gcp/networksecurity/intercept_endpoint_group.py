@@ -35,9 +35,6 @@ class InterceptEndpointGroupArgs:
                See https://google.aip.dev/124.
         :param pulumi.Input[builtins.str] intercept_endpoint_group_id: The ID to use for the endpoint group, which will become the final component
                of the endpoint group's resource name.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: The cloud location of the endpoint group, currently restricted to `global`.
         :param pulumi.Input[builtins.str] description: User-provided description of the endpoint group.
                Used as additional context for the endpoint group.
@@ -77,9 +74,6 @@ class InterceptEndpointGroupArgs:
         """
         The ID to use for the endpoint group, which will become the final component
         of the endpoint group's resource name.
-
-
-        - - -
         """
         return pulumi.get(self, "intercept_endpoint_group_id")
 
@@ -174,9 +168,6 @@ class _InterceptEndpointGroupState:
                See https://google.aip.dev/124.
         :param pulumi.Input[builtins.str] intercept_endpoint_group_id: The ID to use for the endpoint group, which will become the final component
                of the endpoint group's resource name.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels are key/value pairs that help to organize and filter resources.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -317,9 +308,6 @@ class _InterceptEndpointGroupState:
         """
         The ID to use for the endpoint group, which will become the final component
         of the endpoint group's resource name.
-
-
-        - - -
         """
         return pulumi.get(self, "intercept_endpoint_group_id")
 
@@ -518,9 +506,6 @@ class InterceptEndpointGroup(pulumi.CustomResource):
                See https://google.aip.dev/124.
         :param pulumi.Input[builtins.str] intercept_endpoint_group_id: The ID to use for the endpoint group, which will become the final component
                of the endpoint group's resource name.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels are key/value pairs that help to organize and filter resources.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -689,9 +674,6 @@ class InterceptEndpointGroup(pulumi.CustomResource):
                See https://google.aip.dev/124.
         :param pulumi.Input[builtins.str] intercept_endpoint_group_id: The ID to use for the endpoint group, which will become the final component
                of the endpoint group's resource name.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels are key/value pairs that help to organize and filter resources.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -798,9 +780,6 @@ class InterceptEndpointGroup(pulumi.CustomResource):
         """
         The ID to use for the endpoint group, which will become the final component
         of the endpoint group's resource name.
-
-
-        - - -
         """
         return pulumi.get(self, "intercept_endpoint_group_id")
 

@@ -30,8 +30,6 @@ namespace Pulumi.Gcp.CloudQuota.Outputs
         /// <summary>
         /// (Output)
         /// The origin of the quota preference request.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string? RequestOrigin;
         /// <summary>

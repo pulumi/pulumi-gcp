@@ -300,9 +300,6 @@ export class PipelineJob extends pulumi.CustomResource {
     public readonly backfillPipelineJob!: pulumi.Output<outputs.healthcare.PipelineJobBackfillPipelineJob | undefined>;
     /**
      * Healthcare Dataset under which the Pipeline Job is to run
-     *
-     *
-     * - - -
      */
     public readonly dataset!: pulumi.Output<string>;
     /**
@@ -419,9 +416,6 @@ export interface PipelineJobState {
     backfillPipelineJob?: pulumi.Input<inputs.healthcare.PipelineJobBackfillPipelineJob>;
     /**
      * Healthcare Dataset under which the Pipeline Job is to run
-     *
-     *
-     * - - -
      */
     dataset?: pulumi.Input<string>;
     /**
@@ -488,9 +482,6 @@ export interface PipelineJobArgs {
     backfillPipelineJob?: pulumi.Input<inputs.healthcare.PipelineJobBackfillPipelineJob>;
     /**
      * Healthcare Dataset under which the Pipeline Job is to run
-     *
-     *
-     * - - -
      */
     dataset: pulumi.Input<string>;
     /**

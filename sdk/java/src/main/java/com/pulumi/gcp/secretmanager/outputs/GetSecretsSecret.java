@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.secretmanager.outputs.GetSecretsSecretReplication;
 import com.pulumi.gcp.secretmanager.outputs.GetSecretsSecretRotation;
 import com.pulumi.gcp.secretmanager.outputs.GetSecretsSecretTopic;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -25,6 +26,7 @@ public final class GetSecretsSecret {
      * 
      */
     private String createTime;
+    private Boolean deletionProtection;
     private Map<String,String> effectiveAnnotations;
     private Map<String,String> effectiveLabels;
     /**
@@ -108,6 +110,9 @@ public final class GetSecretsSecret {
      */
     public String createTime() {
         return this.createTime;
+    }
+    public Boolean deletionProtection() {
+        return this.deletionProtection;
     }
     public Map<String,String> effectiveAnnotations() {
         return this.effectiveAnnotations;
@@ -217,6 +222,7 @@ public final class GetSecretsSecret {
     public static final class Builder {
         private Map<String,String> annotations;
         private String createTime;
+        private Boolean deletionProtection;
         private Map<String,String> effectiveAnnotations;
         private Map<String,String> effectiveLabels;
         private String expireTime;
@@ -236,6 +242,7 @@ public final class GetSecretsSecret {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
     	      this.createTime = defaults.createTime;
+    	      this.deletionProtection = defaults.deletionProtection;
     	      this.effectiveAnnotations = defaults.effectiveAnnotations;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.expireTime = defaults.expireTime;
@@ -266,6 +273,14 @@ public final class GetSecretsSecret {
               throw new MissingRequiredPropertyException("GetSecretsSecret", "createTime");
             }
             this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionProtection(Boolean deletionProtection) {
+            if (deletionProtection == null) {
+              throw new MissingRequiredPropertyException("GetSecretsSecret", "deletionProtection");
+            }
+            this.deletionProtection = deletionProtection;
             return this;
         }
         @CustomType.Setter
@@ -393,6 +408,7 @@ public final class GetSecretsSecret {
             final var _resultValue = new GetSecretsSecret();
             _resultValue.annotations = annotations;
             _resultValue.createTime = createTime;
+            _resultValue.deletionProtection = deletionProtection;
             _resultValue.effectiveAnnotations = effectiveAnnotations;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.expireTime = expireTime;

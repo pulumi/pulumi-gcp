@@ -675,16 +675,12 @@ public class VpcFlowLogsConfig extends com.pulumi.resources.CustomResource {
     /**
      * Required. ID of the `VpcFlowLogsConfig`.
      * 
-     * ***
-     * 
      */
     @Export(name="vpcFlowLogsConfigId", refs={String.class}, tree="[0]")
     private Output<String> vpcFlowLogsConfigId;
 
     /**
      * @return Required. ID of the `VpcFlowLogsConfig`.
-     * 
-     * ***
      * 
      */
     public Output<String> vpcFlowLogsConfigId() {

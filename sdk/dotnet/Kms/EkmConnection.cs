@@ -93,8 +93,7 @@ namespace Pulumi.Gcp.Kms
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if
-        /// KeyManagementMode is CLOUD_KMS.
+        /// Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
         /// </summary>
         [Output("cryptoSpacePath")]
         public Output<string> CryptoSpacePath { get; private set; } = null!;
@@ -106,8 +105,9 @@ namespace Pulumi.Gcp.Kms
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL Default
-        /// value: "MANUAL" Possible values: ["MANUAL", "CLOUD_KMS"]
+        /// Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL
+        /// Default value is `MANUAL`.
+        /// Possible values are: `MANUAL`, `CLOUD_KMS`.
         /// </summary>
         [Output("keyManagementMode")]
         public Output<string?> KeyManagementMode { get; private set; } = null!;
@@ -125,6 +125,10 @@ namespace Pulumi.Gcp.Kms
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -182,8 +186,7 @@ namespace Pulumi.Gcp.Kms
     public sealed class EkmConnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if
-        /// KeyManagementMode is CLOUD_KMS.
+        /// Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
         /// </summary>
         [Input("cryptoSpacePath")]
         public Input<string>? CryptoSpacePath { get; set; }
@@ -195,8 +198,9 @@ namespace Pulumi.Gcp.Kms
         public Input<string>? Etag { get; set; }
 
         /// <summary>
-        /// Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL Default
-        /// value: "MANUAL" Possible values: ["MANUAL", "CLOUD_KMS"]
+        /// Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL
+        /// Default value is `MANUAL`.
+        /// Possible values are: `MANUAL`, `CLOUD_KMS`.
         /// </summary>
         [Input("keyManagementMode")]
         public Input<string>? KeyManagementMode { get; set; }
@@ -214,6 +218,10 @@ namespace Pulumi.Gcp.Kms
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -246,8 +254,7 @@ namespace Pulumi.Gcp.Kms
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if
-        /// KeyManagementMode is CLOUD_KMS.
+        /// Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
         /// </summary>
         [Input("cryptoSpacePath")]
         public Input<string>? CryptoSpacePath { get; set; }
@@ -259,8 +266,9 @@ namespace Pulumi.Gcp.Kms
         public Input<string>? Etag { get; set; }
 
         /// <summary>
-        /// Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL Default
-        /// value: "MANUAL" Possible values: ["MANUAL", "CLOUD_KMS"]
+        /// Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL
+        /// Default value is `MANUAL`.
+        /// Possible values are: `MANUAL`, `CLOUD_KMS`.
         /// </summary>
         [Input("keyManagementMode")]
         public Input<string>? KeyManagementMode { get; set; }
@@ -278,6 +286,10 @@ namespace Pulumi.Gcp.Kms
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

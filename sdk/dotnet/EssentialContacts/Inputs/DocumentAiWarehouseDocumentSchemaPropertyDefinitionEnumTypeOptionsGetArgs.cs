@@ -26,8 +26,6 @@ namespace Pulumi.Gcp.EssentialContacts.Inputs
 
         /// <summary>
         /// Make sure the enum property value provided in the document is in the possile value list during document creation. The validation check runs by default.
-        /// 
-        /// - - -
         /// </summary>
         [Input("validationCheckDisabled")]
         public Input<bool>? ValidationCheckDisabled { get; set; }

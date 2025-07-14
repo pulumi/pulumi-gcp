@@ -105,16 +105,12 @@ public class DataSharingWithGoogleSetting extends com.pulumi.resources.CustomRes
     /**
      * Id of the Data Sharing With Google Setting.
      * 
-     * ***
-     * 
      */
     @Export(name="dataSharingWithGoogleSettingId", refs={String.class}, tree="[0]")
     private Output<String> dataSharingWithGoogleSettingId;
 
     /**
      * @return Id of the Data Sharing With Google Setting.
-     * 
-     * ***
      * 
      */
     public Output<String> dataSharingWithGoogleSettingId() {

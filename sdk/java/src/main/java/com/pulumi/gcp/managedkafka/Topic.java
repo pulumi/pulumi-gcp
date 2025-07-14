@@ -217,16 +217,12 @@ public class Topic extends com.pulumi.resources.CustomResource {
     /**
      * The ID to use for the topic, which will become the final component of the topic&#39;s name. This value is structured like: `my-topic-name`.
      * 
-     * ***
-     * 
      */
     @Export(name="topicId", refs={String.class}, tree="[0]")
     private Output<String> topicId;
 
     /**
      * @return The ID to use for the topic, which will become the final component of the topic&#39;s name. This value is structured like: `my-topic-name`.
-     * 
-     * ***
      * 
      */
     public Output<String> topicId() {

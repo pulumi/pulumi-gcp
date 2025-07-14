@@ -1027,8 +1027,6 @@ func (o ClusterNodeTypeConfigArrayOutput) Index(i pulumi.IntInput) ClusterNodeTy
 
 type ExternalAccessRuleDestinationIpRange struct {
 	// The name of an `ExternalAddress` resource.
-	//
-	// ***
 	ExternalAddress *string `pulumi:"externalAddress"`
 	// An IP address range in the CIDR format.
 	IpAddressRange *string `pulumi:"ipAddressRange"`
@@ -1047,8 +1045,6 @@ type ExternalAccessRuleDestinationIpRangeInput interface {
 
 type ExternalAccessRuleDestinationIpRangeArgs struct {
 	// The name of an `ExternalAddress` resource.
-	//
-	// ***
 	ExternalAddress pulumi.StringPtrInput `pulumi:"externalAddress"`
 	// An IP address range in the CIDR format.
 	IpAddressRange pulumi.StringPtrInput `pulumi:"ipAddressRange"`
@@ -1106,8 +1102,6 @@ func (o ExternalAccessRuleDestinationIpRangeOutput) ToExternalAccessRuleDestinat
 }
 
 // The name of an `ExternalAddress` resource.
-//
-// ***
 func (o ExternalAccessRuleDestinationIpRangeOutput) ExternalAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExternalAccessRuleDestinationIpRange) *string { return v.ExternalAddress }).(pulumi.StringPtrOutput)
 }
@@ -2789,8 +2783,6 @@ func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThre
 
 type PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds struct {
 	// The utilization triggering the scale-in operation in percent.
-	//
-	// ***
 	ScaleIn int `pulumi:"scaleIn"`
 	// The utilization triggering the scale-out operation in percent.
 	ScaleOut int `pulumi:"scaleOut"`
@@ -2809,8 +2801,6 @@ type PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThr
 
 type PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs struct {
 	// The utilization triggering the scale-in operation in percent.
-	//
-	// ***
 	ScaleIn pulumi.IntInput `pulumi:"scaleIn"`
 	// The utilization triggering the scale-out operation in percent.
 	ScaleOut pulumi.IntInput `pulumi:"scaleOut"`
@@ -2894,8 +2884,6 @@ func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorage
 }
 
 // The utilization triggering the scale-in operation in percent.
-//
-// ***
 func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput) ScaleIn() pulumi.IntOutput {
 	return o.ApplyT(func(v PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds) int {
 		return v.ScaleIn
@@ -2934,8 +2922,6 @@ func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorage
 }
 
 // The utilization triggering the scale-in operation in percent.
-//
-// ***
 func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput) ScaleIn() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds) *int {
 		if v == nil {

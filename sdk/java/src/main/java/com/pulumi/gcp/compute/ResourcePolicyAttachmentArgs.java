@@ -19,16 +19,12 @@ public final class ResourcePolicyAttachmentArgs extends com.pulumi.resources.Res
     /**
      * The name of the instance in which the resource policies are attached to.
      * 
-     * ***
-     * 
      */
     @Import(name="instance", required=true)
     private Output<String> instance;
 
     /**
      * @return The name of the instance in which the resource policies are attached to.
-     * 
-     * ***
      * 
      */
     public Output<String> instance() {
@@ -114,8 +110,6 @@ public final class ResourcePolicyAttachmentArgs extends com.pulumi.resources.Res
         /**
          * @param instance The name of the instance in which the resource policies are attached to.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -126,8 +120,6 @@ public final class ResourcePolicyAttachmentArgs extends com.pulumi.resources.Res
 
         /**
          * @param instance The name of the instance in which the resource policies are attached to.
-         * 
-         * ***
          * 
          * @return builder
          * 

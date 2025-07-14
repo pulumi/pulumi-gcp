@@ -21,8 +21,6 @@ public final class ApplicationEndpointMatcher {
     /**
      * @return Optional. Ports of the application.
      * 
-     * ***
-     * 
      */
     private @Nullable List<Integer> ports;
 
@@ -36,8 +34,6 @@ public final class ApplicationEndpointMatcher {
     }
     /**
      * @return Optional. Ports of the application.
-     * 
-     * ***
      * 
      */
     public List<Integer> ports() {

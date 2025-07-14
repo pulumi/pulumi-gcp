@@ -48,16 +48,12 @@ public final class ServicePerimeterResourceState extends com.pulumi.resources.Re
     /**
      * The name of the Service Perimeter to add this resource to.
      * 
-     * ***
-     * 
      */
     @Import(name="perimeterName")
     private @Nullable Output<String> perimeterName;
 
     /**
      * @return The name of the Service Perimeter to add this resource to.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> perimeterName() {
@@ -155,8 +151,6 @@ public final class ServicePerimeterResourceState extends com.pulumi.resources.Re
         /**
          * @param perimeterName The name of the Service Perimeter to add this resource to.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -167,8 +161,6 @@ public final class ServicePerimeterResourceState extends com.pulumi.resources.Re
 
         /**
          * @param perimeterName The name of the Service Perimeter to add this resource to.
-         * 
-         * ***
          * 
          * @return builder
          * 

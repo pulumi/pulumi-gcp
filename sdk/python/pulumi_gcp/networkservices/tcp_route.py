@@ -35,16 +35,17 @@ class TcpRouteArgs:
                If there are multiple rules then the action taken will be the first rule to match.
                Structure is documented below.
         :param pulumi.Input[builtins.str] description: A free-text description of the resource. Max length 1024 characters.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] gateways: Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests
-               served by the gateway. Each gateway reference should match the pattern:
-               projects/*/locations/global/gateways/<gateway_name>
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Set of label tags associated with the TcpRoute resource. **Note**: This field is non-authoritative, and will only manage
-               the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
-               the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] meshes: Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served
-               by the mesh. Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name> The attached
-               Mesh should be of a type SIDECAR
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] gateways: Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway.
+               Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Set of label tags associated with the TcpRoute resource.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] meshes: Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served by the mesh.
+               Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
+               The attached Mesh should be of a type SIDECAR
         :param pulumi.Input[builtins.str] name: Name of the TcpRoute resource.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "rules", rules)
         if description is not None:
@@ -90,9 +91,8 @@ class TcpRouteArgs:
     @pulumi.getter
     def gateways(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests
-        served by the gateway. Each gateway reference should match the pattern:
-        projects/*/locations/global/gateways/<gateway_name>
+        Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway.
+        Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
         """
         return pulumi.get(self, "gateways")
 
@@ -104,9 +104,9 @@ class TcpRouteArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Set of label tags associated with the TcpRoute resource. **Note**: This field is non-authoritative, and will only manage
-        the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
-        the resource.
+        Set of label tags associated with the TcpRoute resource.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -118,9 +118,9 @@ class TcpRouteArgs:
     @pulumi.getter
     def meshes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served
-        by the mesh. Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name> The attached
-        Mesh should be of a type SIDECAR
+        Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served by the mesh.
+        Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
+        The attached Mesh should be of a type SIDECAR
         """
         return pulumi.get(self, "meshes")
 
@@ -143,6 +143,10 @@ class TcpRouteArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -170,16 +174,17 @@ class _TcpRouteState:
         :param pulumi.Input[builtins.str] create_time: Time the TcpRoute was created in UTC.
         :param pulumi.Input[builtins.str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] gateways: Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests
-               served by the gateway. Each gateway reference should match the pattern:
-               projects/*/locations/global/gateways/<gateway_name>
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Set of label tags associated with the TcpRoute resource. **Note**: This field is non-authoritative, and will only manage
-               the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
-               the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] meshes: Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served
-               by the mesh. Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name> The attached
-               Mesh should be of a type SIDECAR
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] gateways: Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway.
+               Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Set of label tags associated with the TcpRoute resource.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] meshes: Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served by the mesh.
+               Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
+               The attached Mesh should be of a type SIDECAR
         :param pulumi.Input[builtins.str] name: Name of the TcpRoute resource.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input['TcpRouteRuleArgs']]] rules: Rules that define how traffic is routed and handled. At least one RouteRule must be supplied.
@@ -253,9 +258,8 @@ class _TcpRouteState:
     @pulumi.getter
     def gateways(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests
-        served by the gateway. Each gateway reference should match the pattern:
-        projects/*/locations/global/gateways/<gateway_name>
+        Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway.
+        Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
         """
         return pulumi.get(self, "gateways")
 
@@ -267,9 +271,9 @@ class _TcpRouteState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Set of label tags associated with the TcpRoute resource. **Note**: This field is non-authoritative, and will only manage
-        the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
-        the resource.
+        Set of label tags associated with the TcpRoute resource.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -281,9 +285,9 @@ class _TcpRouteState:
     @pulumi.getter
     def meshes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served
-        by the mesh. Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name> The attached
-        Mesh should be of a type SIDECAR
+        Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served by the mesh.
+        Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
+        The attached Mesh should be of a type SIDECAR
         """
         return pulumi.get(self, "meshes")
 
@@ -306,6 +310,10 @@ class _TcpRouteState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -567,16 +575,17 @@ class TcpRoute(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] description: A free-text description of the resource. Max length 1024 characters.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] gateways: Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests
-               served by the gateway. Each gateway reference should match the pattern:
-               projects/*/locations/global/gateways/<gateway_name>
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Set of label tags associated with the TcpRoute resource. **Note**: This field is non-authoritative, and will only manage
-               the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
-               the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] meshes: Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served
-               by the mesh. Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name> The attached
-               Mesh should be of a type SIDECAR
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] gateways: Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway.
+               Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Set of label tags associated with the TcpRoute resource.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] meshes: Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served by the mesh.
+               Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
+               The attached Mesh should be of a type SIDECAR
         :param pulumi.Input[builtins.str] name: Name of the TcpRoute resource.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[Union['TcpRouteRuleArgs', 'TcpRouteRuleArgsDict']]]] rules: Rules that define how traffic is routed and handled. At least one RouteRule must be supplied.
                If there are multiple rules then the action taken will be the first rule to match.
                Structure is documented below.
@@ -852,16 +861,17 @@ class TcpRoute(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] create_time: Time the TcpRoute was created in UTC.
         :param pulumi.Input[builtins.str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] gateways: Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests
-               served by the gateway. Each gateway reference should match the pattern:
-               projects/*/locations/global/gateways/<gateway_name>
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Set of label tags associated with the TcpRoute resource. **Note**: This field is non-authoritative, and will only manage
-               the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
-               the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] meshes: Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served
-               by the mesh. Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name> The attached
-               Mesh should be of a type SIDECAR
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] gateways: Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway.
+               Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Set of label tags associated with the TcpRoute resource.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] meshes: Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served by the mesh.
+               Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
+               The attached Mesh should be of a type SIDECAR
         :param pulumi.Input[builtins.str] name: Name of the TcpRoute resource.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[Union['TcpRouteRuleArgs', 'TcpRouteRuleArgsDict']]]] rules: Rules that define how traffic is routed and handled. At least one RouteRule must be supplied.
@@ -916,9 +926,8 @@ class TcpRoute(pulumi.CustomResource):
     @pulumi.getter
     def gateways(self) -> pulumi.Output[Optional[Sequence[builtins.str]]]:
         """
-        Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests
-        served by the gateway. Each gateway reference should match the pattern:
-        projects/*/locations/global/gateways/<gateway_name>
+        Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway.
+        Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
         """
         return pulumi.get(self, "gateways")
 
@@ -926,9 +935,9 @@ class TcpRoute(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
         """
-        Set of label tags associated with the TcpRoute resource. **Note**: This field is non-authoritative, and will only manage
-        the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
-        the resource.
+        Set of label tags associated with the TcpRoute resource.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -936,9 +945,9 @@ class TcpRoute(pulumi.CustomResource):
     @pulumi.getter
     def meshes(self) -> pulumi.Output[Optional[Sequence[builtins.str]]]:
         """
-        Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served
-        by the mesh. Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name> The attached
-        Mesh should be of a type SIDECAR
+        Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served by the mesh.
+        Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
+        The attached Mesh should be of a type SIDECAR
         """
         return pulumi.get(self, "meshes")
 
@@ -953,6 +962,10 @@ class TcpRoute(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property

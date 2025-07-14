@@ -24,8 +24,6 @@ public final class ProjectsPolicyBindingTargetArgs extends com.pulumi.resources.
      * * Workload Identity Pool: `//iam.googleapis.com/projects/PROJECT_NUMBER/locations/LOCATION/workloadIdentityPools/WORKLOAD_POOL_ID`
      *   It must be parent by the policy binding&#39;s parent (the project).
      * 
-     * ***
-     * 
      */
     @Import(name="principalSet")
     private @Nullable Output<String> principalSet;
@@ -38,8 +36,6 @@ public final class ProjectsPolicyBindingTargetArgs extends com.pulumi.resources.
      * * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
      * * Workload Identity Pool: `//iam.googleapis.com/projects/PROJECT_NUMBER/locations/LOCATION/workloadIdentityPools/WORKLOAD_POOL_ID`
      *   It must be parent by the policy binding&#39;s parent (the project).
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> principalSet() {
@@ -79,8 +75,6 @@ public final class ProjectsPolicyBindingTargetArgs extends com.pulumi.resources.
          * * Workload Identity Pool: `//iam.googleapis.com/projects/PROJECT_NUMBER/locations/LOCATION/workloadIdentityPools/WORKLOAD_POOL_ID`
          *   It must be parent by the policy binding&#39;s parent (the project).
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -97,8 +91,6 @@ public final class ProjectsPolicyBindingTargetArgs extends com.pulumi.resources.
          * * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
          * * Workload Identity Pool: `//iam.googleapis.com/projects/PROJECT_NUMBER/locations/LOCATION/workloadIdentityPools/WORKLOAD_POOL_ID`
          *   It must be parent by the policy binding&#39;s parent (the project).
-         * 
-         * ***
          * 
          * @return builder
          * 

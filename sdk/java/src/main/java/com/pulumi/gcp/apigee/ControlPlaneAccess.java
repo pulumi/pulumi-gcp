@@ -148,16 +148,12 @@ public class ControlPlaneAccess extends com.pulumi.resources.CustomResource {
     /**
      * Name of the Apigee organization.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return Name of the Apigee organization.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

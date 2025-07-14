@@ -21,8 +21,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string? Membership;
         /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
+        /// The number of the Fleet host project where this cluster will be registered.
         /// </summary>
         public readonly string Project;
 

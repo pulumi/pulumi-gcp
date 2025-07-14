@@ -79,8 +79,6 @@ if not MYPY:
         2. When you are using Shared VPC and the IP address that you provide is
         from the service project. In this case, the network that the IP address
         resides in is defined in the host project.
-
-        - - -
         """
         redis_cluster: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -129,8 +127,6 @@ class ConnectivityTestDestinationArgs:
                2. When you are using Shared VPC and the IP address that you provide is
                from the service project. In this case, the network that the IP address
                resides in is defined in the host project.
-               
-               - - -
         :param pulumi.Input[builtins.str] redis_cluster: A Redis Cluster URI.
         :param pulumi.Input[builtins.str] redis_instance: A Redis Instance URI.
         """
@@ -270,8 +266,6 @@ class ConnectivityTestDestinationArgs:
         2. When you are using Shared VPC and the IP address that you provide is
         from the service project. In this case, the network that the IP address
         resides in is defined in the host project.
-
-        - - -
         """
         return pulumi.get(self, "project_id")
 

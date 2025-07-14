@@ -202,8 +202,7 @@ export class RegionNetworkFirewallPolicyWithRules extends pulumi.CustomResource 
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
-     * (Output)
-     * A description of the rule.
+     * An optional description of this resource.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -224,9 +223,10 @@ export class RegionNetworkFirewallPolicyWithRules extends pulumi.CustomResource 
      */
     public /*out*/ readonly networkFirewallPolicyId!: pulumi.Output<string>;
     /**
-     * Policy type is used to determine which resources (networks) the policy can be associated with. A policy can be
-     * associated with a network only if the network has the matching policyType in its network profile. Different policy types
-     * may support some of the Firewall Rules features. Possible values: ["VPC_POLICY", "RDMA_ROCE_POLICY"]
+     * Policy type is used to determine which resources (networks) the policy can be associated with.
+     * A policy can be associated with a network only if the network has the matching policyType in its network profile.
+     * Different policy types may support some of the Firewall Rules features.
+     * Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`.
      */
     public readonly policyType!: pulumi.Output<string>;
     /**
@@ -234,6 +234,10 @@ export class RegionNetworkFirewallPolicyWithRules extends pulumi.CustomResource 
      * Structure is documented below.
      */
     public /*out*/ readonly predefinedRules!: pulumi.Output<outputs.compute.RegionNetworkFirewallPolicyWithRulesPredefinedRule[]>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The region of this resource.
@@ -316,8 +320,7 @@ export interface RegionNetworkFirewallPolicyWithRulesState {
      */
     creationTimestamp?: pulumi.Input<string>;
     /**
-     * (Output)
-     * A description of the rule.
+     * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
     /**
@@ -338,9 +341,10 @@ export interface RegionNetworkFirewallPolicyWithRulesState {
      */
     networkFirewallPolicyId?: pulumi.Input<string>;
     /**
-     * Policy type is used to determine which resources (networks) the policy can be associated with. A policy can be
-     * associated with a network only if the network has the matching policyType in its network profile. Different policy types
-     * may support some of the Firewall Rules features. Possible values: ["VPC_POLICY", "RDMA_ROCE_POLICY"]
+     * Policy type is used to determine which resources (networks) the policy can be associated with.
+     * A policy can be associated with a network only if the network has the matching policyType in its network profile.
+     * Different policy types may support some of the Firewall Rules features.
+     * Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`.
      */
     policyType?: pulumi.Input<string>;
     /**
@@ -348,6 +352,10 @@ export interface RegionNetworkFirewallPolicyWithRulesState {
      * Structure is documented below.
      */
     predefinedRules?: pulumi.Input<pulumi.Input<inputs.compute.RegionNetworkFirewallPolicyWithRulesPredefinedRule>[]>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * The region of this resource.
@@ -377,8 +385,7 @@ export interface RegionNetworkFirewallPolicyWithRulesState {
  */
 export interface RegionNetworkFirewallPolicyWithRulesArgs {
     /**
-     * (Output)
-     * A description of the rule.
+     * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
     /**
@@ -391,11 +398,16 @@ export interface RegionNetworkFirewallPolicyWithRulesArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Policy type is used to determine which resources (networks) the policy can be associated with. A policy can be
-     * associated with a network only if the network has the matching policyType in its network profile. Different policy types
-     * may support some of the Firewall Rules features. Possible values: ["VPC_POLICY", "RDMA_ROCE_POLICY"]
+     * Policy type is used to determine which resources (networks) the policy can be associated with.
+     * A policy can be associated with a network only if the network has the matching policyType in its network profile.
+     * Different policy types may support some of the Firewall Rules features.
+     * Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`.
      */
     policyType?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * The region of this resource.

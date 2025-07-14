@@ -110,9 +110,6 @@ export class LogicalView extends pulumi.CustomResource {
     public readonly instance!: pulumi.Output<string | undefined>;
     /**
      * The unique name of the logical view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-     *
-     *
-     * - - -
      */
     public readonly logicalViewId!: pulumi.Output<string>;
     /**
@@ -182,9 +179,6 @@ export interface LogicalViewState {
     instance?: pulumi.Input<string>;
     /**
      * The unique name of the logical view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-     *
-     *
-     * - - -
      */
     logicalViewId?: pulumi.Input<string>;
     /**
@@ -216,9 +210,6 @@ export interface LogicalViewArgs {
     instance?: pulumi.Input<string>;
     /**
      * The unique name of the logical view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-     *
-     *
-     * - - -
      */
     logicalViewId: pulumi.Input<string>;
     /**

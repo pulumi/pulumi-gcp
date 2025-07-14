@@ -400,14 +400,17 @@ export class Datascan extends pulumi.CustomResource {
     public readonly data!: pulumi.Output<outputs.dataplex.DatascanData>;
     /**
      * DataDiscoveryScan related setting.
+     * Structure is documented below.
      */
     public readonly dataDiscoverySpec!: pulumi.Output<outputs.dataplex.DatascanDataDiscoverySpec | undefined>;
     /**
      * DataProfileScan related setting.
+     * Structure is documented below.
      */
     public readonly dataProfileSpec!: pulumi.Output<outputs.dataplex.DatascanDataProfileSpec | undefined>;
     /**
      * DataQualityScan related setting.
+     * Structure is documented below.
      */
     public readonly dataQualitySpec!: pulumi.Output<outputs.dataplex.DatascanDataQualitySpec | undefined>;
     /**
@@ -437,9 +440,10 @@ export class Datascan extends pulumi.CustomResource {
      */
     public /*out*/ readonly executionStatuses!: pulumi.Output<outputs.dataplex.DatascanExecutionStatus[]>;
     /**
-     * User-defined labels for the scan. A list of key->value pairs. **Note**: This field is non-authoritative, and will only
-     * manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-     * present on the resource.
+     * User-defined labels for the scan. A list of key->value pairs.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -450,6 +454,10 @@ export class Datascan extends pulumi.CustomResource {
      * The relative resource name of the scan, of the form: projects/{project}/locations/{locationId}/dataScans/{datascan_id}, where project refers to a projectId or projectNumber and locationId refers to a GCP region.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
@@ -563,14 +571,17 @@ export interface DatascanState {
     data?: pulumi.Input<inputs.dataplex.DatascanData>;
     /**
      * DataDiscoveryScan related setting.
+     * Structure is documented below.
      */
     dataDiscoverySpec?: pulumi.Input<inputs.dataplex.DatascanDataDiscoverySpec>;
     /**
      * DataProfileScan related setting.
+     * Structure is documented below.
      */
     dataProfileSpec?: pulumi.Input<inputs.dataplex.DatascanDataProfileSpec>;
     /**
      * DataQualityScan related setting.
+     * Structure is documented below.
      */
     dataQualitySpec?: pulumi.Input<inputs.dataplex.DatascanDataQualitySpec>;
     /**
@@ -600,9 +611,10 @@ export interface DatascanState {
      */
     executionStatuses?: pulumi.Input<pulumi.Input<inputs.dataplex.DatascanExecutionStatus>[]>;
     /**
-     * User-defined labels for the scan. A list of key->value pairs. **Note**: This field is non-authoritative, and will only
-     * manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-     * present on the resource.
+     * User-defined labels for the scan. A list of key->value pairs.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -613,6 +625,10 @@ export interface DatascanState {
      * The relative resource name of the scan, of the form: projects/{project}/locations/{locationId}/dataScans/{datascan_id}, where project refers to a projectId or projectNumber and locationId refers to a GCP region.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
@@ -648,14 +664,17 @@ export interface DatascanArgs {
     data: pulumi.Input<inputs.dataplex.DatascanData>;
     /**
      * DataDiscoveryScan related setting.
+     * Structure is documented below.
      */
     dataDiscoverySpec?: pulumi.Input<inputs.dataplex.DatascanDataDiscoverySpec>;
     /**
      * DataProfileScan related setting.
+     * Structure is documented below.
      */
     dataProfileSpec?: pulumi.Input<inputs.dataplex.DatascanDataProfileSpec>;
     /**
      * DataQualityScan related setting.
+     * Structure is documented below.
      */
     dataQualitySpec?: pulumi.Input<inputs.dataplex.DatascanDataQualitySpec>;
     /**
@@ -676,14 +695,19 @@ export interface DatascanArgs {
      */
     executionSpec: pulumi.Input<inputs.dataplex.DatascanExecutionSpec>;
     /**
-     * User-defined labels for the scan. A list of key->value pairs. **Note**: This field is non-authoritative, and will only
-     * manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-     * present on the resource.
+     * User-defined labels for the scan. A list of key->value pairs.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location where the data scan should reside.
      */
     location: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
 }

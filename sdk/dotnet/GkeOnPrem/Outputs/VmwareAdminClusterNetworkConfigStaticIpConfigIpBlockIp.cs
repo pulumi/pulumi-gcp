@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.GkeOnPrem.Outputs
     {
         /// <summary>
         /// Hostname of the machine. VM's name will be used if this field is empty.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string? Hostname;
         /// <summary>

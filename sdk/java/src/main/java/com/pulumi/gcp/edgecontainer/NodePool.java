@@ -303,16 +303,12 @@ public class NodePool extends com.pulumi.resources.CustomResource {
     /**
      * The name of the target Distributed Cloud Edge Cluster.
      * 
-     * ***
-     * 
      */
     @Export(name="cluster", refs={String.class}, tree="[0]")
     private Output<String> cluster;
 
     /**
      * @return The name of the target Distributed Cloud Edge Cluster.
-     * 
-     * ***
      * 
      */
     public Output<String> cluster() {

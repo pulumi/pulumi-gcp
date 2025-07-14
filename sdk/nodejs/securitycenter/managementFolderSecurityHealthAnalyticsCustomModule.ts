@@ -166,9 +166,6 @@ export class ManagementFolderSecurityHealthAnalyticsCustomModule extends pulumi.
     public readonly enablementState!: pulumi.Output<string | undefined>;
     /**
      * Numerical ID of the parent folder.
-     *
-     *
-     * - - -
      */
     public readonly folder!: pulumi.Output<string>;
     /**
@@ -263,9 +260,6 @@ export interface ManagementFolderSecurityHealthAnalyticsCustomModuleState {
     enablementState?: pulumi.Input<string>;
     /**
      * Numerical ID of the parent folder.
-     *
-     *
-     * - - -
      */
     folder?: pulumi.Input<string>;
     /**
@@ -313,9 +307,6 @@ export interface ManagementFolderSecurityHealthAnalyticsCustomModuleArgs {
     enablementState?: pulumi.Input<string>;
     /**
      * Numerical ID of the parent folder.
-     *
-     *
-     * - - -
      */
     folder: pulumi.Input<string>;
     /**

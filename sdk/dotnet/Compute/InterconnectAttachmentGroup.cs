@@ -71,9 +71,12 @@ namespace Pulumi.Gcp.Compute
     public partial class InterconnectAttachmentGroup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// (Output)
-        /// URLs of any particular Attachments to explain this
-        /// blocker in more detail.
+        /// Attachments in the AttachmentGroup. Keys are arbitrary user-specified
+        /// strings. Users are encouraged, but not required, to use their preferred
+        /// format for resource links as keys.
+        /// Note that there are add-members and remove-members methods in gcloud.
+        /// The size of this map is limited by an "Attachments per group" quota.
+        /// Structure is documented below.
         /// </summary>
         [Output("attachments")]
         public Output<ImmutableArray<Outputs.InterconnectAttachmentGroupAttachment>> Attachments { get; private set; } = null!;
@@ -108,8 +111,9 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.InterconnectAttachmentGroupIntent> Intent { get; private set; } = null!;
 
         /// <summary>
-        /// The URL of an InterconnectGroup that groups these Attachments' Interconnects. Customers do not need to set this unless
-        /// directed by Google Support.
+        /// The URL of an InterconnectGroup that groups these Attachments'
+        /// Interconnects. Customers do not need to set this unless directed by
+        /// Google Support.
         /// </summary>
         [Output("interconnectGroup")]
         public Output<string?> InterconnectGroup { get; private set; } = null!;
@@ -132,6 +136,10 @@ namespace Pulumi.Gcp.Compute
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -185,9 +193,12 @@ namespace Pulumi.Gcp.Compute
         private InputList<Inputs.InterconnectAttachmentGroupAttachmentArgs>? _attachments;
 
         /// <summary>
-        /// (Output)
-        /// URLs of any particular Attachments to explain this
-        /// blocker in more detail.
+        /// Attachments in the AttachmentGroup. Keys are arbitrary user-specified
+        /// strings. Users are encouraged, but not required, to use their preferred
+        /// format for resource links as keys.
+        /// Note that there are add-members and remove-members methods in gcloud.
+        /// The size of this map is limited by an "Attachments per group" quota.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.InterconnectAttachmentGroupAttachmentArgs> Attachments
         {
@@ -210,8 +221,9 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.InterconnectAttachmentGroupIntentArgs> Intent { get; set; } = null!;
 
         /// <summary>
-        /// The URL of an InterconnectGroup that groups these Attachments' Interconnects. Customers do not need to set this unless
-        /// directed by Google Support.
+        /// The URL of an InterconnectGroup that groups these Attachments'
+        /// Interconnects. Customers do not need to set this unless directed by
+        /// Google Support.
         /// </summary>
         [Input("interconnectGroup")]
         public Input<string>? InterconnectGroup { get; set; }
@@ -226,6 +238,10 @@ namespace Pulumi.Gcp.Compute
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -241,9 +257,12 @@ namespace Pulumi.Gcp.Compute
         private InputList<Inputs.InterconnectAttachmentGroupAttachmentGetArgs>? _attachments;
 
         /// <summary>
-        /// (Output)
-        /// URLs of any particular Attachments to explain this
-        /// blocker in more detail.
+        /// Attachments in the AttachmentGroup. Keys are arbitrary user-specified
+        /// strings. Users are encouraged, but not required, to use their preferred
+        /// format for resource links as keys.
+        /// Note that there are add-members and remove-members methods in gcloud.
+        /// The size of this map is limited by an "Attachments per group" quota.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.InterconnectAttachmentGroupAttachmentGetArgs> Attachments
         {
@@ -287,8 +306,9 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.InterconnectAttachmentGroupIntentGetArgs>? Intent { get; set; }
 
         /// <summary>
-        /// The URL of an InterconnectGroup that groups these Attachments' Interconnects. Customers do not need to set this unless
-        /// directed by Google Support.
+        /// The URL of an InterconnectGroup that groups these Attachments'
+        /// Interconnects. Customers do not need to set this unless directed by
+        /// Google Support.
         /// </summary>
         [Input("interconnectGroup")]
         public Input<string>? InterconnectGroup { get; set; }
@@ -317,6 +337,10 @@ namespace Pulumi.Gcp.Compute
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

@@ -215,9 +215,6 @@ export class Plugin extends pulumi.CustomResource {
      * `projects/{project}/locations/{location}/plugins/{plugin}`,
      * its length is limited to 1000 characters and valid characters are
      * /a-z[0-9]-_/.
-     *
-     *
-     * - - -
      */
     public readonly pluginId!: pulumi.Output<string>;
     /**
@@ -376,9 +373,6 @@ export interface PluginState {
      * `projects/{project}/locations/{location}/plugins/{plugin}`,
      * its length is limited to 1000 characters and valid characters are
      * /a-z[0-9]-_/.
-     *
-     *
-     * - - -
      */
     pluginId?: pulumi.Input<string>;
     /**
@@ -460,9 +454,6 @@ export interface PluginArgs {
      * `projects/{project}/locations/{location}/plugins/{plugin}`,
      * its length is limited to 1000 characters and valid characters are
      * /a-z[0-9]-_/.
-     *
-     *
-     * - - -
      */
     pluginId: pulumi.Input<string>;
     /**

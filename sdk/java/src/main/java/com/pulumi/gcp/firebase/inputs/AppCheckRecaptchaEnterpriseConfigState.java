@@ -19,8 +19,6 @@ public final class AppCheckRecaptchaEnterpriseConfigState extends com.pulumi.res
      * The ID of an
      * [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id).
      * 
-     * ***
-     * 
      */
     @Import(name="appId")
     private @Nullable Output<String> appId;
@@ -28,8 +26,6 @@ public final class AppCheckRecaptchaEnterpriseConfigState extends com.pulumi.res
     /**
      * @return The ID of an
      * [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id).
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> appId() {
@@ -136,8 +132,6 @@ public final class AppCheckRecaptchaEnterpriseConfigState extends com.pulumi.res
          * @param appId The ID of an
          * [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id).
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -149,8 +143,6 @@ public final class AppCheckRecaptchaEnterpriseConfigState extends com.pulumi.res
         /**
          * @param appId The ID of an
          * [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id).
-         * 
-         * ***
          * 
          * @return builder
          * 

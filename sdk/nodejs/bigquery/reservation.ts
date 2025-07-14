@@ -114,9 +114,6 @@ export class Reservation extends pulumi.CustomResource {
     public readonly location!: pulumi.Output<string | undefined>;
     /**
      * The name of the reservation. This field must only contain alphanumeric characters or dash.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -236,9 +233,6 @@ export interface ReservationState {
     location?: pulumi.Input<string>;
     /**
      * The name of the reservation. This field must only contain alphanumeric characters or dash.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -311,9 +305,6 @@ export interface ReservationArgs {
     location?: pulumi.Input<string>;
     /**
      * The name of the reservation. This field must only contain alphanumeric characters or dash.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

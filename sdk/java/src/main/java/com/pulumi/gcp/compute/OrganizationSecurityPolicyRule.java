@@ -138,32 +138,34 @@ public class OrganizationSecurityPolicyRule extends com.pulumi.resources.CustomR
         return Codegen.optional(this.description);
     }
     /**
-     * The direction in which this rule applies. If unspecified an INGRESS rule is created. Possible values: [&#34;INGRESS&#34;,
-     * &#34;EGRESS&#34;]
+     * The direction in which this rule applies. If unspecified an INGRESS rule is created.
+     * Possible values are: `INGRESS`, `EGRESS`.
      * 
      */
     @Export(name="direction", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> direction;
 
     /**
-     * @return The direction in which this rule applies. If unspecified an INGRESS rule is created. Possible values: [&#34;INGRESS&#34;,
-     * &#34;EGRESS&#34;]
+     * @return The direction in which this rule applies. If unspecified an INGRESS rule is created.
+     * Possible values are: `INGRESS`, `EGRESS`.
      * 
      */
     public Output<Optional<String>> direction() {
         return Codegen.optional(this.direction);
     }
     /**
-     * Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
-     * export destination in Stackdriver.
+     * Denotes whether to enable logging for a particular rule.
+     * If logging is enabled, logs will be exported to the
+     * configured export destination in Stackdriver.
      * 
      */
     @Export(name="enableLogging", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableLogging;
 
     /**
-     * @return Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
-     * export destination in Stackdriver.
+     * @return Denotes whether to enable logging for a particular rule.
+     * If logging is enabled, logs will be exported to the
+     * configured export destination in Stackdriver.
      * 
      */
     public Output<Optional<Boolean>> enableLogging() {
@@ -232,30 +234,36 @@ public class OrganizationSecurityPolicyRule extends com.pulumi.resources.CustomR
         return this.priority;
     }
     /**
-     * A list of network resource URLs to which this rule applies. This field allows you to control which network&#39;s VMs get
-     * this rule. If this field is left blank, all VMs within the organization will receive the rule.
+     * A list of network resource URLs to which this rule applies.
+     * This field allows you to control which network&#39;s VMs get
+     * this rule. If this field is left blank, all VMs
+     * within the organization will receive the rule.
      * 
      */
     @Export(name="targetResources", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> targetResources;
 
     /**
-     * @return A list of network resource URLs to which this rule applies. This field allows you to control which network&#39;s VMs get
-     * this rule. If this field is left blank, all VMs within the organization will receive the rule.
+     * @return A list of network resource URLs to which this rule applies.
+     * This field allows you to control which network&#39;s VMs get
+     * this rule. If this field is left blank, all VMs
+     * within the organization will receive the rule.
      * 
      */
     public Output<Optional<List<String>>> targetResources() {
         return Codegen.optional(this.targetResources);
     }
     /**
-     * A list of service accounts indicating the sets of instances that are applied with this rule.
+     * A list of service accounts indicating the sets of
+     * instances that are applied with this rule.
      * 
      */
     @Export(name="targetServiceAccounts", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> targetServiceAccounts;
 
     /**
-     * @return A list of service accounts indicating the sets of instances that are applied with this rule.
+     * @return A list of service accounts indicating the sets of
+     * instances that are applied with this rule.
      * 
      */
     public Output<Optional<List<String>>> targetServiceAccounts() {

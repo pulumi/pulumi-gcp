@@ -453,16 +453,12 @@ public class ClusterUserCreatedConnections extends com.pulumi.resources.CustomRe
     /**
      * The name of the region of the Redis cluster these endpoints should be added to.
      * 
-     * ***
-     * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
      * @return The name of the region of the Redis cluster these endpoints should be added to.
-     * 
-     * ***
      * 
      */
     public Output<String> region() {

@@ -19,8 +19,6 @@ public final class AppCheckAppAttestConfigState extends com.pulumi.resources.Res
      * The ID of an
      * [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
      * 
-     * ***
-     * 
      */
     @Import(name="appId")
     private @Nullable Output<String> appId;
@@ -28,8 +26,6 @@ public final class AppCheckAppAttestConfigState extends com.pulumi.resources.Res
     /**
      * @return The ID of an
      * [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> appId() {
@@ -118,8 +114,6 @@ public final class AppCheckAppAttestConfigState extends com.pulumi.resources.Res
          * @param appId The ID of an
          * [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -131,8 +125,6 @@ public final class AppCheckAppAttestConfigState extends com.pulumi.resources.Res
         /**
          * @param appId The ID of an
          * [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -314,8 +314,6 @@ type Runtime struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// A reference to the zone where the machine resides.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Contains Runtime daemon metrics such as Service status and JupyterLab
 	// status
@@ -397,8 +395,6 @@ type runtimeState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// A reference to the zone where the machine resides.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// Contains Runtime daemon metrics such as Service status and JupyterLab
 	// status
@@ -443,8 +439,6 @@ type RuntimeState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// A reference to the zone where the machine resides.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// Contains Runtime daemon metrics such as Service status and JupyterLab
 	// status
@@ -487,8 +481,6 @@ type runtimeArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// A reference to the zone where the machine resides.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// The name specified for the Notebook runtime.
 	Name *string `pulumi:"name"`
@@ -519,8 +511,6 @@ type RuntimeArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// A reference to the zone where the machine resides.
-	//
-	// ***
 	Location pulumi.StringInput
 	// The name specified for the Notebook runtime.
 	Name pulumi.StringPtrInput
@@ -654,8 +644,6 @@ func (o RuntimeOutput) Labels() pulumi.StringMapOutput {
 }
 
 // A reference to the zone where the machine resides.
-//
-// ***
 func (o RuntimeOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Runtime) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

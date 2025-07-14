@@ -137,9 +137,6 @@ export class AppCheckPlayIntegrityConfig extends pulumi.CustomResource {
     /**
      * The ID of an
      * [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id).
-     *
-     *
-     * - - -
      */
     public readonly appId!: pulumi.Output<string>;
     /**
@@ -197,9 +194,6 @@ export interface AppCheckPlayIntegrityConfigState {
     /**
      * The ID of an
      * [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id).
-     *
-     *
-     * - - -
      */
     appId?: pulumi.Input<string>;
     /**
@@ -226,9 +220,6 @@ export interface AppCheckPlayIntegrityConfigArgs {
     /**
      * The ID of an
      * [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id).
-     *
-     *
-     * - - -
      */
     appId: pulumi.Input<string>;
     /**

@@ -118,8 +118,6 @@ type Topic struct {
 	// The number of replicas of each partition. A replication factor of 3 is recommended for high availability.
 	ReplicationFactor pulumi.IntOutput `pulumi:"replicationFactor"`
 	// The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
-	//
-	// ***
 	TopicId pulumi.StringOutput `pulumi:"topicId"`
 }
 
@@ -181,8 +179,6 @@ type topicState struct {
 	// The number of replicas of each partition. A replication factor of 3 is recommended for high availability.
 	ReplicationFactor *int `pulumi:"replicationFactor"`
 	// The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
-	//
-	// ***
 	TopicId *string `pulumi:"topicId"`
 }
 
@@ -203,8 +199,6 @@ type TopicState struct {
 	// The number of replicas of each partition. A replication factor of 3 is recommended for high availability.
 	ReplicationFactor pulumi.IntPtrInput
 	// The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
-	//
-	// ***
 	TopicId pulumi.StringPtrInput
 }
 
@@ -227,8 +221,6 @@ type topicArgs struct {
 	// The number of replicas of each partition. A replication factor of 3 is recommended for high availability.
 	ReplicationFactor int `pulumi:"replicationFactor"`
 	// The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
-	//
-	// ***
 	TopicId string `pulumi:"topicId"`
 }
 
@@ -248,8 +240,6 @@ type TopicArgs struct {
 	// The number of replicas of each partition. A replication factor of 3 is recommended for high availability.
 	ReplicationFactor pulumi.IntInput
 	// The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
-	//
-	// ***
 	TopicId pulumi.StringInput
 }
 
@@ -377,8 +367,6 @@ func (o TopicOutput) ReplicationFactor() pulumi.IntOutput {
 }
 
 // The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
-//
-// ***
 func (o TopicOutput) TopicId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.TopicId }).(pulumi.StringOutput)
 }

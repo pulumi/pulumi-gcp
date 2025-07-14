@@ -102,8 +102,6 @@ type EntityType struct {
 	//   types can contain references to other entity types (with or without aliases).
 	// * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
 	//   Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
-	//
-	// ***
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The unique identifier of the entity type.
 	// Format: projects/<Project ID>/agent/entityTypes/<Entity type ID>.
@@ -162,8 +160,6 @@ type entityTypeState struct {
 	//   types can contain references to other entity types (with or without aliases).
 	// * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
 	//   Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
-	//
-	// ***
 	Kind *string `pulumi:"kind"`
 	// The unique identifier of the entity type.
 	// Format: projects/<Project ID>/agent/entityTypes/<Entity type ID>.
@@ -187,8 +183,6 @@ type EntityTypeState struct {
 	//   types can contain references to other entity types (with or without aliases).
 	// * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
 	//   Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
-	//
-	// ***
 	Kind pulumi.StringPtrInput
 	// The unique identifier of the entity type.
 	// Format: projects/<Project ID>/agent/entityTypes/<Entity type ID>.
@@ -216,8 +210,6 @@ type entityTypeArgs struct {
 	//   types can contain references to other entity types (with or without aliases).
 	// * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
 	//   Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
-	//
-	// ***
 	Kind string `pulumi:"kind"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -239,8 +231,6 @@ type EntityTypeArgs struct {
 	//   types can contain references to other entity types (with or without aliases).
 	// * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
 	//   Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
-	//
-	// ***
 	Kind pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -356,8 +346,6 @@ func (o EntityTypeOutput) Entities() EntityTypeEntityArrayOutput {
 //     types can contain references to other entity types (with or without aliases).
 //   - KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
 //     Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
-//
-// ***
 func (o EntityTypeOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *EntityType) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }

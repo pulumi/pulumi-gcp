@@ -384,8 +384,6 @@ class BackupPlanBackupRuleStandardScheduleBackupWindow(dict):
         :param builtins.int start_hour_of_day: The hour of the day (0-23) when the window starts, for example, if the value of the start hour of the day is 6, that means the backup window starts at 6:00.
         :param builtins.int end_hour_of_day: The hour of the day (1-24) when the window ends, for example, if the value of end hour of the day is 10, that means the backup window end time is 10:00.
                The end hour of the day should be greater than the start
-               
-               - - -
         """
         pulumi.set(__self__, "start_hour_of_day", start_hour_of_day)
         if end_hour_of_day is not None:
@@ -405,8 +403,6 @@ class BackupPlanBackupRuleStandardScheduleBackupWindow(dict):
         """
         The hour of the day (1-24) when the window ends, for example, if the value of end hour of the day is 10, that means the backup window end time is 10:00.
         The end hour of the day should be greater than the start
-
-        - - -
         """
         return pulumi.get(self, "end_hour_of_day")
 

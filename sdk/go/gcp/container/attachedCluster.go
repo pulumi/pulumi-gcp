@@ -244,16 +244,21 @@ import (
 type AttachedCluster struct {
 	pulumi.CustomResourceState
 
-	// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
-	// all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// 'effective_annotations' for all of the annotations present on the resource.
+	// Optional. Annotations on the cluster. This field has the same
+	// restrictions as Kubernetes annotations. The total size of all keys and
+	// values combined is limited to 256k. Key can have 2 segments: prefix (optional)
+	// and name (required), separated by a slash (/). Prefix must be a DNS subdomain.
+	// Name must be 63 characters or less, begin and end with alphanumerics,
+	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Configuration related to the cluster RBAC settings.
+	// Structure is documented below.
 	Authorization AttachedClusterAuthorizationPtrOutput `pulumi:"authorization"`
 	// Binary Authorization configuration.
+	// Structure is documented below.
 	BinaryAuthorization AttachedClusterBinaryAuthorizationOutput `pulumi:"binaryAuthorization"`
 	// Output only. The region where this cluster runs.
 	// For EKS clusters, this is an AWS region. For AKS clusters,
@@ -263,7 +268,8 @@ type AttachedCluster struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
 	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
-	// A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
+	// A human readable description of this attached cluster. Cannot be longer
+	// than 255 UTF-8 encoded bytes.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The Kubernetes distribution of the underlying attached cluster. Supported values:
 	// "eks", "aks", "generic". The generic distribution provides the ability to register
@@ -281,8 +287,10 @@ type AttachedCluster struct {
 	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Logging configuration.
+	// Structure is documented below.
 	LoggingConfig AttachedClusterLoggingConfigPtrOutput `pulumi:"loggingConfig"`
 	// Monitoring configuration.
+	// Structure is documented below.
 	MonitoringConfig AttachedClusterMonitoringConfigOutput `pulumi:"monitoringConfig"`
 	// The name of this resource.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -299,12 +307,19 @@ type AttachedCluster struct {
 	OidcConfig AttachedClusterOidcConfigOutput `pulumi:"oidcConfig"`
 	// The platform version for the cluster (e.g. `1.23.0-gke.1`).
 	PlatformVersion pulumi.StringOutput `pulumi:"platformVersion"`
-	Project         pulumi.StringOutput `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Support for proxy configuration.
+	// Structure is documented below.
 	ProxyConfig AttachedClusterProxyConfigPtrOutput `pulumi:"proxyConfig"`
 	// If set, there are currently changes in flight to the cluster.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
+	// (Optional, Deprecated)
 	// Enable/Disable Security Posture API features for the cluster.
+	// Structure is documented below.
+	//
+	// > **Warning:** `securityPostureConfig` is deprecated and will be removed in a future major release.
 	//
 	// Deprecated: `securityPostureConfig` is deprecated and will be removed in a future major release.
 	SecurityPostureConfig AttachedClusterSecurityPostureConfigOutput `pulumi:"securityPostureConfig"`
@@ -366,16 +381,21 @@ func GetAttachedCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AttachedCluster resources.
 type attachedClusterState struct {
-	// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
-	// all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// 'effective_annotations' for all of the annotations present on the resource.
+	// Optional. Annotations on the cluster. This field has the same
+	// restrictions as Kubernetes annotations. The total size of all keys and
+	// values combined is limited to 256k. Key can have 2 segments: prefix (optional)
+	// and name (required), separated by a slash (/). Prefix must be a DNS subdomain.
+	// Name must be 63 characters or less, begin and end with alphanumerics,
+	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Configuration related to the cluster RBAC settings.
+	// Structure is documented below.
 	Authorization *AttachedClusterAuthorization `pulumi:"authorization"`
 	// Binary Authorization configuration.
+	// Structure is documented below.
 	BinaryAuthorization *AttachedClusterBinaryAuthorization `pulumi:"binaryAuthorization"`
 	// Output only. The region where this cluster runs.
 	// For EKS clusters, this is an AWS region. For AKS clusters,
@@ -385,7 +405,8 @@ type attachedClusterState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
-	// A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
+	// A human readable description of this attached cluster. Cannot be longer
+	// than 255 UTF-8 encoded bytes.
 	Description *string `pulumi:"description"`
 	// The Kubernetes distribution of the underlying attached cluster. Supported values:
 	// "eks", "aks", "generic". The generic distribution provides the ability to register
@@ -403,8 +424,10 @@ type attachedClusterState struct {
 	// The location for the resource
 	Location *string `pulumi:"location"`
 	// Logging configuration.
+	// Structure is documented below.
 	LoggingConfig *AttachedClusterLoggingConfig `pulumi:"loggingConfig"`
 	// Monitoring configuration.
+	// Structure is documented below.
 	MonitoringConfig *AttachedClusterMonitoringConfig `pulumi:"monitoringConfig"`
 	// The name of this resource.
 	Name *string `pulumi:"name"`
@@ -421,12 +444,19 @@ type attachedClusterState struct {
 	OidcConfig *AttachedClusterOidcConfig `pulumi:"oidcConfig"`
 	// The platform version for the cluster (e.g. `1.23.0-gke.1`).
 	PlatformVersion *string `pulumi:"platformVersion"`
-	Project         *string `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// Support for proxy configuration.
+	// Structure is documented below.
 	ProxyConfig *AttachedClusterProxyConfig `pulumi:"proxyConfig"`
 	// If set, there are currently changes in flight to the cluster.
 	Reconciling *bool `pulumi:"reconciling"`
+	// (Optional, Deprecated)
 	// Enable/Disable Security Posture API features for the cluster.
+	// Structure is documented below.
+	//
+	// > **Warning:** `securityPostureConfig` is deprecated and will be removed in a future major release.
 	//
 	// Deprecated: `securityPostureConfig` is deprecated and will be removed in a future major release.
 	SecurityPostureConfig *AttachedClusterSecurityPostureConfig `pulumi:"securityPostureConfig"`
@@ -444,16 +474,21 @@ type attachedClusterState struct {
 }
 
 type AttachedClusterState struct {
-	// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
-	// all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// 'effective_annotations' for all of the annotations present on the resource.
+	// Optional. Annotations on the cluster. This field has the same
+	// restrictions as Kubernetes annotations. The total size of all keys and
+	// values combined is limited to 256k. Key can have 2 segments: prefix (optional)
+	// and name (required), separated by a slash (/). Prefix must be a DNS subdomain.
+	// Name must be 63 characters or less, begin and end with alphanumerics,
+	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// Configuration related to the cluster RBAC settings.
+	// Structure is documented below.
 	Authorization AttachedClusterAuthorizationPtrInput
 	// Binary Authorization configuration.
+	// Structure is documented below.
 	BinaryAuthorization AttachedClusterBinaryAuthorizationPtrInput
 	// Output only. The region where this cluster runs.
 	// For EKS clusters, this is an AWS region. For AKS clusters,
@@ -463,7 +498,8 @@ type AttachedClusterState struct {
 	CreateTime pulumi.StringPtrInput
 	// Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
 	DeletionPolicy pulumi.StringPtrInput
-	// A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
+	// A human readable description of this attached cluster. Cannot be longer
+	// than 255 UTF-8 encoded bytes.
 	Description pulumi.StringPtrInput
 	// The Kubernetes distribution of the underlying attached cluster. Supported values:
 	// "eks", "aks", "generic". The generic distribution provides the ability to register
@@ -481,8 +517,10 @@ type AttachedClusterState struct {
 	// The location for the resource
 	Location pulumi.StringPtrInput
 	// Logging configuration.
+	// Structure is documented below.
 	LoggingConfig AttachedClusterLoggingConfigPtrInput
 	// Monitoring configuration.
+	// Structure is documented below.
 	MonitoringConfig AttachedClusterMonitoringConfigPtrInput
 	// The name of this resource.
 	Name pulumi.StringPtrInput
@@ -499,12 +537,19 @@ type AttachedClusterState struct {
 	OidcConfig AttachedClusterOidcConfigPtrInput
 	// The platform version for the cluster (e.g. `1.23.0-gke.1`).
 	PlatformVersion pulumi.StringPtrInput
-	Project         pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// Support for proxy configuration.
+	// Structure is documented below.
 	ProxyConfig AttachedClusterProxyConfigPtrInput
 	// If set, there are currently changes in flight to the cluster.
 	Reconciling pulumi.BoolPtrInput
+	// (Optional, Deprecated)
 	// Enable/Disable Security Posture API features for the cluster.
+	// Structure is documented below.
+	//
+	// > **Warning:** `securityPostureConfig` is deprecated and will be removed in a future major release.
 	//
 	// Deprecated: `securityPostureConfig` is deprecated and will be removed in a future major release.
 	SecurityPostureConfig AttachedClusterSecurityPostureConfigPtrInput
@@ -526,20 +571,26 @@ func (AttachedClusterState) ElementType() reflect.Type {
 }
 
 type attachedClusterArgs struct {
-	// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
-	// all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// 'effective_annotations' for all of the annotations present on the resource.
+	// Optional. Annotations on the cluster. This field has the same
+	// restrictions as Kubernetes annotations. The total size of all keys and
+	// values combined is limited to 256k. Key can have 2 segments: prefix (optional)
+	// and name (required), separated by a slash (/). Prefix must be a DNS subdomain.
+	// Name must be 63 characters or less, begin and end with alphanumerics,
+	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Configuration related to the cluster RBAC settings.
+	// Structure is documented below.
 	Authorization *AttachedClusterAuthorization `pulumi:"authorization"`
 	// Binary Authorization configuration.
+	// Structure is documented below.
 	BinaryAuthorization *AttachedClusterBinaryAuthorization `pulumi:"binaryAuthorization"`
 	// Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
-	// A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
+	// A human readable description of this attached cluster. Cannot be longer
+	// than 255 UTF-8 encoded bytes.
 	Description *string `pulumi:"description"`
 	// The Kubernetes distribution of the underlying attached cluster. Supported values:
 	// "eks", "aks", "generic". The generic distribution provides the ability to register
@@ -551,8 +602,10 @@ type attachedClusterArgs struct {
 	// The location for the resource
 	Location string `pulumi:"location"`
 	// Logging configuration.
+	// Structure is documented below.
 	LoggingConfig *AttachedClusterLoggingConfig `pulumi:"loggingConfig"`
 	// Monitoring configuration.
+	// Structure is documented below.
 	MonitoringConfig *AttachedClusterMonitoringConfig `pulumi:"monitoringConfig"`
 	// The name of this resource.
 	Name *string `pulumi:"name"`
@@ -568,11 +621,18 @@ type attachedClusterArgs struct {
 	// Structure is documented below.
 	OidcConfig AttachedClusterOidcConfig `pulumi:"oidcConfig"`
 	// The platform version for the cluster (e.g. `1.23.0-gke.1`).
-	PlatformVersion string  `pulumi:"platformVersion"`
-	Project         *string `pulumi:"project"`
+	PlatformVersion string `pulumi:"platformVersion"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// Support for proxy configuration.
+	// Structure is documented below.
 	ProxyConfig *AttachedClusterProxyConfig `pulumi:"proxyConfig"`
+	// (Optional, Deprecated)
 	// Enable/Disable Security Posture API features for the cluster.
+	// Structure is documented below.
+	//
+	// > **Warning:** `securityPostureConfig` is deprecated and will be removed in a future major release.
 	//
 	// Deprecated: `securityPostureConfig` is deprecated and will be removed in a future major release.
 	SecurityPostureConfig *AttachedClusterSecurityPostureConfig `pulumi:"securityPostureConfig"`
@@ -580,20 +640,26 @@ type attachedClusterArgs struct {
 
 // The set of arguments for constructing a AttachedCluster resource.
 type AttachedClusterArgs struct {
-	// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
-	// all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// 'effective_annotations' for all of the annotations present on the resource.
+	// Optional. Annotations on the cluster. This field has the same
+	// restrictions as Kubernetes annotations. The total size of all keys and
+	// values combined is limited to 256k. Key can have 2 segments: prefix (optional)
+	// and name (required), separated by a slash (/). Prefix must be a DNS subdomain.
+	// Name must be 63 characters or less, begin and end with alphanumerics,
+	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// Configuration related to the cluster RBAC settings.
+	// Structure is documented below.
 	Authorization AttachedClusterAuthorizationPtrInput
 	// Binary Authorization configuration.
+	// Structure is documented below.
 	BinaryAuthorization AttachedClusterBinaryAuthorizationPtrInput
 	// Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
 	DeletionPolicy pulumi.StringPtrInput
-	// A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
+	// A human readable description of this attached cluster. Cannot be longer
+	// than 255 UTF-8 encoded bytes.
 	Description pulumi.StringPtrInput
 	// The Kubernetes distribution of the underlying attached cluster. Supported values:
 	// "eks", "aks", "generic". The generic distribution provides the ability to register
@@ -605,8 +671,10 @@ type AttachedClusterArgs struct {
 	// The location for the resource
 	Location pulumi.StringInput
 	// Logging configuration.
+	// Structure is documented below.
 	LoggingConfig AttachedClusterLoggingConfigPtrInput
 	// Monitoring configuration.
+	// Structure is documented below.
 	MonitoringConfig AttachedClusterMonitoringConfigPtrInput
 	// The name of this resource.
 	Name pulumi.StringPtrInput
@@ -623,10 +691,17 @@ type AttachedClusterArgs struct {
 	OidcConfig AttachedClusterOidcConfigInput
 	// The platform version for the cluster (e.g. `1.23.0-gke.1`).
 	PlatformVersion pulumi.StringInput
-	Project         pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// Support for proxy configuration.
+	// Structure is documented below.
 	ProxyConfig AttachedClusterProxyConfigPtrInput
+	// (Optional, Deprecated)
 	// Enable/Disable Security Posture API features for the cluster.
+	// Structure is documented below.
+	//
+	// > **Warning:** `securityPostureConfig` is deprecated and will be removed in a future major release.
 	//
 	// Deprecated: `securityPostureConfig` is deprecated and will be removed in a future major release.
 	SecurityPostureConfig AttachedClusterSecurityPostureConfigPtrInput
@@ -719,22 +794,27 @@ func (o AttachedClusterOutput) ToAttachedClusterOutputWithContext(ctx context.Co
 	return o
 }
 
-// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
-// all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-// 'effective_annotations' for all of the annotations present on the resource.
+// Optional. Annotations on the cluster. This field has the same
+// restrictions as Kubernetes annotations. The total size of all keys and
+// values combined is limited to 256k. Key can have 2 segments: prefix (optional)
+// and name (required), separated by a slash (/). Prefix must be a DNS subdomain.
+// Name must be 63 characters or less, begin and end with alphanumerics,
+// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+//
+// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 func (o AttachedClusterOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AttachedCluster) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // Configuration related to the cluster RBAC settings.
+// Structure is documented below.
 func (o AttachedClusterOutput) Authorization() AttachedClusterAuthorizationPtrOutput {
 	return o.ApplyT(func(v *AttachedCluster) AttachedClusterAuthorizationPtrOutput { return v.Authorization }).(AttachedClusterAuthorizationPtrOutput)
 }
 
 // Binary Authorization configuration.
+// Structure is documented below.
 func (o AttachedClusterOutput) BinaryAuthorization() AttachedClusterBinaryAuthorizationOutput {
 	return o.ApplyT(func(v *AttachedCluster) AttachedClusterBinaryAuthorizationOutput { return v.BinaryAuthorization }).(AttachedClusterBinaryAuthorizationOutput)
 }
@@ -756,7 +836,8 @@ func (o AttachedClusterOutput) DeletionPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AttachedCluster) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
 }
 
-// A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
+// A human readable description of this attached cluster. Cannot be longer
+// than 255 UTF-8 encoded bytes.
 func (o AttachedClusterOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AttachedCluster) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -795,11 +876,13 @@ func (o AttachedClusterOutput) Location() pulumi.StringOutput {
 }
 
 // Logging configuration.
+// Structure is documented below.
 func (o AttachedClusterOutput) LoggingConfig() AttachedClusterLoggingConfigPtrOutput {
 	return o.ApplyT(func(v *AttachedCluster) AttachedClusterLoggingConfigPtrOutput { return v.LoggingConfig }).(AttachedClusterLoggingConfigPtrOutput)
 }
 
 // Monitoring configuration.
+// Structure is documented below.
 func (o AttachedClusterOutput) MonitoringConfig() AttachedClusterMonitoringConfigOutput {
 	return o.ApplyT(func(v *AttachedCluster) AttachedClusterMonitoringConfigOutput { return v.MonitoringConfig }).(AttachedClusterMonitoringConfigOutput)
 }
@@ -828,11 +911,14 @@ func (o AttachedClusterOutput) PlatformVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *AttachedCluster) pulumi.StringOutput { return v.PlatformVersion }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o AttachedClusterOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *AttachedCluster) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Support for proxy configuration.
+// Structure is documented below.
 func (o AttachedClusterOutput) ProxyConfig() AttachedClusterProxyConfigPtrOutput {
 	return o.ApplyT(func(v *AttachedCluster) AttachedClusterProxyConfigPtrOutput { return v.ProxyConfig }).(AttachedClusterProxyConfigPtrOutput)
 }
@@ -842,7 +928,11 @@ func (o AttachedClusterOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v *AttachedCluster) pulumi.BoolOutput { return v.Reconciling }).(pulumi.BoolOutput)
 }
 
+// (Optional, Deprecated)
 // Enable/Disable Security Posture API features for the cluster.
+// Structure is documented below.
+//
+// > **Warning:** `securityPostureConfig` is deprecated and will be removed in a future major release.
 //
 // Deprecated: `securityPostureConfig` is deprecated and will be removed in a future major release.
 func (o AttachedClusterOutput) SecurityPostureConfig() AttachedClusterSecurityPostureConfigOutput {

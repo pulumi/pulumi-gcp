@@ -250,6 +250,7 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// List of alternative host names. Maximum length is 255 characters for each value.
+        /// Structure is documented below.
         /// </summary>
         [Output("subjectAlternativeDnsNames")]
         public Output<Outputs.KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames?> SubjectAlternativeDnsNames { get; private set; } = null!;
@@ -359,6 +360,7 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// List of alternative host names. Maximum length is 255 characters for each value.
+        /// Structure is documented below.
         /// </summary>
         [Input("subjectAlternativeDnsNames")]
         public Input<Inputs.KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs>? SubjectAlternativeDnsNames { get; set; }
@@ -437,6 +439,7 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// List of alternative host names. Maximum length is 255 characters for each value.
+        /// Structure is documented below.
         /// </summary>
         [Input("subjectAlternativeDnsNames")]
         public Input<Inputs.KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesGetArgs>? SubjectAlternativeDnsNames { get; set; }

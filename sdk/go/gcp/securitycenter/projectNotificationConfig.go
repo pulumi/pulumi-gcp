@@ -87,7 +87,9 @@ type ProjectNotificationConfig struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The resource name of this notification config, in the format
 	// `projects/{{projectId}}/notificationConfigs/{{config_id}}`.
-	Name    pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The Pub/Sub topic to send notifications to. Its format is
 	// "projects/[projectId]/topics/[topic]".
@@ -145,7 +147,9 @@ type projectNotificationConfigState struct {
 	Description *string `pulumi:"description"`
 	// The resource name of this notification config, in the format
 	// `projects/{{projectId}}/notificationConfigs/{{config_id}}`.
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The Pub/Sub topic to send notifications to. Its format is
 	// "projects/[projectId]/topics/[topic]".
@@ -165,7 +169,9 @@ type ProjectNotificationConfigState struct {
 	Description pulumi.StringPtrInput
 	// The resource name of this notification config, in the format
 	// `projects/{{projectId}}/notificationConfigs/{{config_id}}`.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The Pub/Sub topic to send notifications to. Its format is
 	// "projects/[projectId]/topics/[topic]".
@@ -187,7 +193,9 @@ type projectNotificationConfigArgs struct {
 	ConfigId string `pulumi:"configId"`
 	// The description of the notification config (max of 1024 characters).
 	Description *string `pulumi:"description"`
-	Project     *string `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// The Pub/Sub topic to send notifications to. Its format is
 	// "projects/[projectId]/topics/[topic]".
 	PubsubTopic string `pulumi:"pubsubTopic"`
@@ -202,7 +210,9 @@ type ProjectNotificationConfigArgs struct {
 	ConfigId pulumi.StringInput
 	// The description of the notification config (max of 1024 characters).
 	Description pulumi.StringPtrInput
-	Project     pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// The Pub/Sub topic to send notifications to. Its format is
 	// "projects/[projectId]/topics/[topic]".
 	PubsubTopic pulumi.StringInput
@@ -314,6 +324,8 @@ func (o ProjectNotificationConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectNotificationConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o ProjectNotificationConfigOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectNotificationConfig) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

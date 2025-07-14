@@ -33,9 +33,6 @@ class SubnetArgs:
                For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
         :param pulumi.Input[builtins.str] name: The ID of the subnet. For userDefined subnets, this name should be in the format of "service-n",
                where n ranges from 1 to 5.
-               
-               
-               - - -
         """
         pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
         pulumi.set(__self__, "parent", parent)
@@ -74,9 +71,6 @@ class SubnetArgs:
         """
         The ID of the subnet. For userDefined subnets, this name should be in the format of "service-n",
         where n ranges from 1 to 5.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -113,9 +107,6 @@ class _SubnetState:
         :param pulumi.Input[builtins.str] ip_cidr_range: The IP address range of the subnet in CIDR format.
         :param pulumi.Input[builtins.str] name: The ID of the subnet. For userDefined subnets, this name should be in the format of "service-n",
                where n ranges from 1 to 5.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] parent: The resource name of the private cloud to create a new subnet in.
                Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
                For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
@@ -225,9 +216,6 @@ class _SubnetState:
         """
         The ID of the subnet. For userDefined subnets, this name should be in the format of "service-n",
         where n ranges from 1 to 5.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -395,9 +383,6 @@ class Subnet(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] ip_cidr_range: The IP address range of the subnet in CIDR format.
         :param pulumi.Input[builtins.str] name: The ID of the subnet. For userDefined subnets, this name should be in the format of "service-n",
                where n ranges from 1 to 5.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] parent: The resource name of the private cloud to create a new subnet in.
                Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
                For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
@@ -547,9 +532,6 @@ class Subnet(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] ip_cidr_range: The IP address range of the subnet in CIDR format.
         :param pulumi.Input[builtins.str] name: The ID of the subnet. For userDefined subnets, this name should be in the format of "service-n",
                where n ranges from 1 to 5.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] parent: The resource name of the private cloud to create a new subnet in.
                Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
                For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
@@ -631,9 +613,6 @@ class Subnet(pulumi.CustomResource):
         """
         The ID of the subnet. For userDefined subnets, this name should be in the format of "service-n",
         where n ranges from 1 to 5.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

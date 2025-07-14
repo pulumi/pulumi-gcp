@@ -378,6 +378,9 @@ namespace Pulumi.Gcp
         [Output("mlEngineCustomEndpoint")]
         public Output<string?> MlEngineCustomEndpoint { get; private set; } = null!;
 
+        [Output("modelArmorCustomEndpoint")]
+        public Output<string?> ModelArmorCustomEndpoint { get; private set; } = null!;
+
         [Output("monitoringCustomEndpoint")]
         public Output<string?> MonitoringCustomEndpoint { get; private set; } = null!;
 
@@ -1010,6 +1013,9 @@ namespace Pulumi.Gcp
 
         [Input("mlEngineCustomEndpoint")]
         public Input<string>? MlEngineCustomEndpoint { get; set; }
+
+        [Input("modelArmorCustomEndpoint")]
+        public Input<string>? ModelArmorCustomEndpoint { get; set; }
 
         [Input("monitoringCustomEndpoint")]
         public Input<string>? MonitoringCustomEndpoint { get; set; }

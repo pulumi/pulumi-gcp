@@ -14,8 +14,6 @@ public final class WebResourceSite {
      * @return The site identifier. If the type is set to SITE, the identifier is a URL. If the type is
      * set to INET_DOMAIN, the identifier is a domain name.
      * 
-     * ***
-     * 
      */
     private String identifier;
     /**
@@ -29,8 +27,6 @@ public final class WebResourceSite {
     /**
      * @return The site identifier. If the type is set to SITE, the identifier is a URL. If the type is
      * set to INET_DOMAIN, the identifier is a domain name.
-     * 
-     * ***
      * 
      */
     public String identifier() {

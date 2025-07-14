@@ -48,7 +48,7 @@ public final class FutureReservationStatus {
      */
     private @Nullable String procurementStatus;
     /**
-     * @return The previous instance related properties of the Future Reservation.
+     * @return Future Reservation configuration to indicate instance properties and total count.
      * Structure is documented below.
      * 
      */
@@ -101,7 +101,7 @@ public final class FutureReservationStatus {
         return Optional.ofNullable(this.procurementStatus);
     }
     /**
-     * @return The previous instance related properties of the Future Reservation.
+     * @return Future Reservation configuration to indicate instance properties and total count.
      * Structure is documented below.
      * 
      */

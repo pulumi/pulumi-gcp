@@ -130,9 +130,6 @@ namespace Pulumi.Gcp.Healthcare
 
         /// <summary>
         /// The location for the Dataset.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -219,9 +216,6 @@ namespace Pulumi.Gcp.Healthcare
 
         /// <summary>
         /// The location for the Dataset.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -264,9 +258,6 @@ namespace Pulumi.Gcp.Healthcare
 
         /// <summary>
         /// The location for the Dataset.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

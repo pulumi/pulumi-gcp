@@ -196,9 +196,6 @@ export class Field extends pulumi.CustomResource {
     public readonly database!: pulumi.Output<string | undefined>;
     /**
      * The id of the field to configure.
-     *
-     *
-     * - - -
      */
     public readonly field!: pulumi.Output<string>;
     /**
@@ -280,9 +277,6 @@ export interface FieldState {
     database?: pulumi.Input<string>;
     /**
      * The id of the field to configure.
-     *
-     *
-     * - - -
      */
     field?: pulumi.Input<string>;
     /**
@@ -324,9 +318,6 @@ export interface FieldArgs {
     database?: pulumi.Input<string>;
     /**
      * The id of the field to configure.
-     *
-     *
-     * - - -
      */
     field: pulumi.Input<string>;
     /**

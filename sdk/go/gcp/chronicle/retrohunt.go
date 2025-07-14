@@ -76,7 +76,9 @@ type Retrohunt struct {
 	ProcessInterval RetrohuntProcessIntervalOutput `pulumi:"processInterval"`
 	// Output only. Percent progress of the retrohunt towards completion, from 0.00 to 100.00.
 	ProgressPercentage pulumi.Float64Output `pulumi:"progressPercentage"`
-	Project            pulumi.StringOutput  `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The Rule ID of the rule.
 	Rule pulumi.StringOutput `pulumi:"rule"`
 	// Output only. The state of the retrohunt.
@@ -158,7 +160,9 @@ type retrohuntState struct {
 	ProcessInterval *RetrohuntProcessInterval `pulumi:"processInterval"`
 	// Output only. Percent progress of the retrohunt towards completion, from 0.00 to 100.00.
 	ProgressPercentage *float64 `pulumi:"progressPercentage"`
-	Project            *string  `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// The Rule ID of the rule.
 	Rule *string `pulumi:"rule"`
 	// Output only. The state of the retrohunt.
@@ -199,7 +203,9 @@ type RetrohuntState struct {
 	ProcessInterval RetrohuntProcessIntervalPtrInput
 	// Output only. Percent progress of the retrohunt towards completion, from 0.00 to 100.00.
 	ProgressPercentage pulumi.Float64PtrInput
-	Project            pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// The Rule ID of the rule.
 	Rule pulumi.StringPtrInput
 	// Output only. The state of the retrohunt.
@@ -229,7 +235,9 @@ type retrohuntArgs struct {
 	// When both start and end are unspecified, the interval matches any time.
 	// Structure is documented below.
 	ProcessInterval RetrohuntProcessInterval `pulumi:"processInterval"`
-	Project         *string                  `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// The Rule ID of the rule.
 	Rule string `pulumi:"rule"`
 }
@@ -249,7 +257,9 @@ type RetrohuntArgs struct {
 	// When both start and end are unspecified, the interval matches any time.
 	// Structure is documented below.
 	ProcessInterval RetrohuntProcessIntervalInput
-	Project         pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// The Rule ID of the rule.
 	Rule pulumi.StringInput
 }
@@ -390,6 +400,8 @@ func (o RetrohuntOutput) ProgressPercentage() pulumi.Float64Output {
 	return o.ApplyT(func(v *Retrohunt) pulumi.Float64Output { return v.ProgressPercentage }).(pulumi.Float64Output)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o RetrohuntOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Retrohunt) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

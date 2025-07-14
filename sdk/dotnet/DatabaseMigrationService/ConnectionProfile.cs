@@ -724,9 +724,6 @@ namespace Pulumi.Gcp.DatabaseMigrationService
 
         /// <summary>
         /// The ID of the connection profile.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("connectionProfileId")]
         public Output<string> ConnectionProfileId { get; private set; } = null!;
@@ -891,9 +888,6 @@ namespace Pulumi.Gcp.DatabaseMigrationService
 
         /// <summary>
         /// The ID of the connection profile.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("connectionProfileId", required: true)]
         public Input<string> ConnectionProfileId { get; set; } = null!;
@@ -977,9 +971,6 @@ namespace Pulumi.Gcp.DatabaseMigrationService
 
         /// <summary>
         /// The ID of the connection profile.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("connectionProfileId")]
         public Input<string>? ConnectionProfileId { get; set; }

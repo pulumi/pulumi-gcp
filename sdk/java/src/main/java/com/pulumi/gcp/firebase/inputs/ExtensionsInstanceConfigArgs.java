@@ -137,8 +137,6 @@ public final class ExtensionsInstanceConfigArgs extends com.pulumi.resources.Res
      * ${function:myFunc.url},
      * ${function:myFunc.name}, and ${function:myFunc.location}
      * 
-     * ***
-     * 
      */
     @Import(name="populatedPostinstallContent")
     private @Nullable Output<String> populatedPostinstallContent;
@@ -150,8 +148,6 @@ public final class ExtensionsInstanceConfigArgs extends com.pulumi.resources.Res
      * with actual values. These strings include: ${param:FOO},
      * ${function:myFunc.url},
      * ${function:myFunc.name}, and ${function:myFunc.location}
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> populatedPostinstallContent() {
@@ -383,8 +379,6 @@ public final class ExtensionsInstanceConfigArgs extends com.pulumi.resources.Res
          * ${function:myFunc.url},
          * ${function:myFunc.name}, and ${function:myFunc.location}
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -400,8 +394,6 @@ public final class ExtensionsInstanceConfigArgs extends com.pulumi.resources.Res
          * with actual values. These strings include: ${param:FOO},
          * ${function:myFunc.url},
          * ${function:myFunc.name}, and ${function:myFunc.location}
-         * 
-         * ***
          * 
          * @return builder
          * 

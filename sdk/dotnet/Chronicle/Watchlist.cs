@@ -154,7 +154,9 @@ namespace Pulumi.Gcp.Chronicle
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Weight applied to the risk score for entities in this watchlist. The default is 1.0 if it is not specified.
+        /// Optional. Weight applied to the risk score for entities
+        /// in this watchlist.
+        /// The default is 1.0 if it is not specified.
         /// </summary>
         [Output("multiplyingFactor")]
         public Output<double?> MultiplyingFactor { get; private set; } = null!;
@@ -167,6 +169,10 @@ namespace Pulumi.Gcp.Chronicle
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -177,14 +183,17 @@ namespace Pulumi.Gcp.Chronicle
         public Output<string> UpdateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. The ID to use for the watchlist, which will become the final component of the watchlist's resource name. This
-        /// value should be 4-63 characters, and valid characters are /a-z-/.
+        /// Optional. The ID to use for the watchlist,
+        /// which will become the final component of the watchlist's resource name.
+        /// This value should be 4-63 characters, and valid characters
+        /// are /a-z-/.
         /// </summary>
         [Output("watchlistId")]
         public Output<string> WatchlistId { get; private set; } = null!;
 
         /// <summary>
         /// A collection of user preferences for watchlist UI configuration.
+        /// Structure is documented below.
         /// </summary>
         [Output("watchlistUserPreferences")]
         public Output<Outputs.WatchlistWatchlistUserPreferences> WatchlistUserPreferences { get; private set; } = null!;
@@ -269,23 +278,32 @@ namespace Pulumi.Gcp.Chronicle
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// Optional. Weight applied to the risk score for entities in this watchlist. The default is 1.0 if it is not specified.
+        /// Optional. Weight applied to the risk score for entities
+        /// in this watchlist.
+        /// The default is 1.0 if it is not specified.
         /// </summary>
         [Input("multiplyingFactor")]
         public Input<double>? MultiplyingFactor { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Optional. The ID to use for the watchlist, which will become the final component of the watchlist's resource name. This
-        /// value should be 4-63 characters, and valid characters are /a-z-/.
+        /// Optional. The ID to use for the watchlist,
+        /// which will become the final component of the watchlist's resource name.
+        /// This value should be 4-63 characters, and valid characters
+        /// are /a-z-/.
         /// </summary>
         [Input("watchlistId")]
         public Input<string>? WatchlistId { get; set; }
 
         /// <summary>
         /// A collection of user preferences for watchlist UI configuration.
+        /// Structure is documented below.
         /// </summary>
         [Input("watchlistUserPreferences")]
         public Input<Inputs.WatchlistWatchlistUserPreferencesArgs>? WatchlistUserPreferences { get; set; }
@@ -351,7 +369,9 @@ namespace Pulumi.Gcp.Chronicle
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Optional. Weight applied to the risk score for entities in this watchlist. The default is 1.0 if it is not specified.
+        /// Optional. Weight applied to the risk score for entities
+        /// in this watchlist.
+        /// The default is 1.0 if it is not specified.
         /// </summary>
         [Input("multiplyingFactor")]
         public Input<double>? MultiplyingFactor { get; set; }
@@ -364,6 +384,10 @@ namespace Pulumi.Gcp.Chronicle
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -374,14 +398,17 @@ namespace Pulumi.Gcp.Chronicle
         public Input<string>? UpdateTime { get; set; }
 
         /// <summary>
-        /// Optional. The ID to use for the watchlist, which will become the final component of the watchlist's resource name. This
-        /// value should be 4-63 characters, and valid characters are /a-z-/.
+        /// Optional. The ID to use for the watchlist,
+        /// which will become the final component of the watchlist's resource name.
+        /// This value should be 4-63 characters, and valid characters
+        /// are /a-z-/.
         /// </summary>
         [Input("watchlistId")]
         public Input<string>? WatchlistId { get; set; }
 
         /// <summary>
         /// A collection of user preferences for watchlist UI configuration.
+        /// Structure is documented below.
         /// </summary>
         [Input("watchlistUserPreferences")]
         public Input<Inputs.WatchlistWatchlistUserPreferencesGetArgs>? WatchlistUserPreferences { get; set; }

@@ -28,13 +28,16 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, addons_configs=None, allow_net_admin=None, authenticator_groups_configs=None, binary_authorizations=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, cluster_telemetries=None, confidential_nodes=None, control_plane_endpoints_configs=None, cost_management_configs=None, database_encryptions=None, datapath_provider=None, default_max_pods_per_node=None, default_snat_statuses=None, deletion_protection=None, description=None, disable_l4_lb_firewall_reconciliation=None, dns_configs=None, effective_labels=None, enable_autopilot=None, enable_cilium_clusterwide_network_policy=None, enable_fqdn_network_policy=None, enable_intranode_visibility=None, enable_k8s_beta_apis=None, enable_kubernetes_alpha=None, enable_l4_ilb_subsetting=None, enable_legacy_abac=None, enable_multi_networking=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, enterprise_configs=None, fleets=None, gateway_api_configs=None, gke_auto_upgrade_configs=None, id=None, identity_service_configs=None, in_transit_encryption_config=None, initial_node_count=None, ip_allocation_policies=None, label_fingerprint=None, location=None, logging_configs=None, logging_service=None, maintenance_policies=None, master_authorized_networks_configs=None, master_auths=None, master_version=None, mesh_certificates=None, min_master_version=None, monitoring_configs=None, monitoring_service=None, name=None, network=None, network_performance_configs=None, network_policies=None, networking_mode=None, node_configs=None, node_locations=None, node_pool_auto_configs=None, node_pool_defaults=None, node_pools=None, node_version=None, notification_configs=None, operation=None, pod_autoscalings=None, pod_security_policy_configs=None, private_cluster_configs=None, private_ipv6_google_access=None, project=None, protect_configs=None, pulumi_labels=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, secret_manager_configs=None, security_posture_configs=None, self_link=None, service_external_ips_configs=None, services_ipv4_cidr=None, subnetwork=None, tpu_configs=None, tpu_ipv4_cidr_block=None, user_managed_keys_configs=None, vertical_pod_autoscalings=None, workload_alts_configs=None, workload_identity_configs=None):
+    def __init__(__self__, addons_configs=None, allow_net_admin=None, anonymous_authentication_configs=None, authenticator_groups_configs=None, binary_authorizations=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, cluster_telemetries=None, confidential_nodes=None, control_plane_endpoints_configs=None, cost_management_configs=None, database_encryptions=None, datapath_provider=None, default_max_pods_per_node=None, default_snat_statuses=None, deletion_protection=None, description=None, disable_l4_lb_firewall_reconciliation=None, dns_configs=None, effective_labels=None, enable_autopilot=None, enable_cilium_clusterwide_network_policy=None, enable_fqdn_network_policy=None, enable_intranode_visibility=None, enable_k8s_beta_apis=None, enable_kubernetes_alpha=None, enable_l4_ilb_subsetting=None, enable_legacy_abac=None, enable_multi_networking=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, enterprise_configs=None, fleets=None, gateway_api_configs=None, gke_auto_upgrade_configs=None, id=None, identity_service_configs=None, in_transit_encryption_config=None, initial_node_count=None, ip_allocation_policies=None, label_fingerprint=None, location=None, logging_configs=None, logging_service=None, maintenance_policies=None, master_authorized_networks_configs=None, master_auths=None, master_version=None, mesh_certificates=None, min_master_version=None, monitoring_configs=None, monitoring_service=None, name=None, network=None, network_performance_configs=None, network_policies=None, networking_mode=None, node_configs=None, node_locations=None, node_pool_auto_configs=None, node_pool_defaults=None, node_pools=None, node_version=None, notification_configs=None, operation=None, pod_autoscalings=None, pod_security_policy_configs=None, private_cluster_configs=None, private_ipv6_google_access=None, project=None, protect_configs=None, pulumi_labels=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, secret_manager_configs=None, security_posture_configs=None, self_link=None, service_external_ips_configs=None, services_ipv4_cidr=None, subnetwork=None, tpu_configs=None, tpu_ipv4_cidr_block=None, user_managed_keys_configs=None, vertical_pod_autoscalings=None, workload_alts_configs=None, workload_identity_configs=None):
         if addons_configs and not isinstance(addons_configs, list):
             raise TypeError("Expected argument 'addons_configs' to be a list")
         pulumi.set(__self__, "addons_configs", addons_configs)
         if allow_net_admin and not isinstance(allow_net_admin, bool):
             raise TypeError("Expected argument 'allow_net_admin' to be a bool")
         pulumi.set(__self__, "allow_net_admin", allow_net_admin)
+        if anonymous_authentication_configs and not isinstance(anonymous_authentication_configs, list):
+            raise TypeError("Expected argument 'anonymous_authentication_configs' to be a list")
+        pulumi.set(__self__, "anonymous_authentication_configs", anonymous_authentication_configs)
         if authenticator_groups_configs and not isinstance(authenticator_groups_configs, list):
             raise TypeError("Expected argument 'authenticator_groups_configs' to be a list")
         pulumi.set(__self__, "authenticator_groups_configs", authenticator_groups_configs)
@@ -303,6 +306,11 @@ class GetClusterResult:
     @pulumi.getter(name="allowNetAdmin")
     def allow_net_admin(self) -> builtins.bool:
         return pulumi.get(self, "allow_net_admin")
+
+    @property
+    @pulumi.getter(name="anonymousAuthenticationConfigs")
+    def anonymous_authentication_configs(self) -> Sequence['outputs.GetClusterAnonymousAuthenticationConfigResult']:
+        return pulumi.get(self, "anonymous_authentication_configs")
 
     @property
     @pulumi.getter(name="authenticatorGroupsConfigs")
@@ -746,6 +754,7 @@ class AwaitableGetClusterResult(GetClusterResult):
         return GetClusterResult(
             addons_configs=self.addons_configs,
             allow_net_admin=self.allow_net_admin,
+            anonymous_authentication_configs=self.anonymous_authentication_configs,
             authenticator_groups_configs=self.authenticator_groups_configs,
             binary_authorizations=self.binary_authorizations,
             cluster_autoscalings=self.cluster_autoscalings,
@@ -873,6 +882,7 @@ def get_cluster(location: Optional[builtins.str] = None,
     return AwaitableGetClusterResult(
         addons_configs=pulumi.get(__ret__, 'addons_configs'),
         allow_net_admin=pulumi.get(__ret__, 'allow_net_admin'),
+        anonymous_authentication_configs=pulumi.get(__ret__, 'anonymous_authentication_configs'),
         authenticator_groups_configs=pulumi.get(__ret__, 'authenticator_groups_configs'),
         binary_authorizations=pulumi.get(__ret__, 'binary_authorizations'),
         cluster_autoscalings=pulumi.get(__ret__, 'cluster_autoscalings'),
@@ -997,6 +1007,7 @@ def get_cluster_output(location: Optional[pulumi.Input[Optional[builtins.str]]] 
     return __ret__.apply(lambda __response__: GetClusterResult(
         addons_configs=pulumi.get(__response__, 'addons_configs'),
         allow_net_admin=pulumi.get(__response__, 'allow_net_admin'),
+        anonymous_authentication_configs=pulumi.get(__response__, 'anonymous_authentication_configs'),
         authenticator_groups_configs=pulumi.get(__response__, 'authenticator_groups_configs'),
         binary_authorizations=pulumi.get(__response__, 'binary_authorizations'),
         cluster_autoscalings=pulumi.get(__response__, 'cluster_autoscalings'),

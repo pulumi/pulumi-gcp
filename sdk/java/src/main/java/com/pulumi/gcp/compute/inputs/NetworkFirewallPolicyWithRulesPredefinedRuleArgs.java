@@ -40,16 +40,14 @@ public final class NetworkFirewallPolicyWithRulesPredefinedRuleArgs extends com.
     }
 
     /**
-     * (Output)
-     * A description of the rule.
+     * An optional description of this resource.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return (Output)
-     * A description of the rule.
+     * @return An optional description of this resource.
      * 
      */
     public Optional<Output<String>> description() {
@@ -337,8 +335,7 @@ public final class NetworkFirewallPolicyWithRulesPredefinedRuleArgs extends com.
         }
 
         /**
-         * @param description (Output)
-         * A description of the rule.
+         * @param description An optional description of this resource.
          * 
          * @return builder
          * 
@@ -349,8 +346,7 @@ public final class NetworkFirewallPolicyWithRulesPredefinedRuleArgs extends com.
         }
 
         /**
-         * @param description (Output)
-         * A description of the rule.
+         * @param description An optional description of this resource.
          * 
          * @return builder
          * 

@@ -260,9 +260,6 @@ namespace Pulumi.Gcp.CloudDeploy
 
         /// <summary>
         /// The location of the source.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -393,9 +390,6 @@ namespace Pulumi.Gcp.CloudDeploy
 
         /// <summary>
         /// The location of the source.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -506,9 +500,6 @@ namespace Pulumi.Gcp.CloudDeploy
 
         /// <summary>
         /// The location of the source.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

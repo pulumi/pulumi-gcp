@@ -133,9 +133,6 @@ export class Network extends pulumi.CustomResource {
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * A unique ID that identifies this network.
-     *
-     *
-     * - - -
      */
     public readonly networkId!: pulumi.Output<string>;
     /**
@@ -255,9 +252,6 @@ export interface NetworkState {
     name?: pulumi.Input<string>;
     /**
      * A unique ID that identifies this network.
-     *
-     *
-     * - - -
      */
     networkId?: pulumi.Input<string>;
     /**
@@ -307,9 +301,6 @@ export interface NetworkArgs {
     mtu?: pulumi.Input<number>;
     /**
      * A unique ID that identifies this network.
-     *
-     *
-     * - - -
      */
     networkId: pulumi.Input<string>;
     /**

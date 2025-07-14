@@ -33,9 +33,6 @@ class TopicArgs:
         :param pulumi.Input[builtins.str] location: ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
         :param pulumi.Input[builtins.int] replication_factor: The number of replicas of each partition. A replication factor of 3 is recommended for high availability.
         :param pulumi.Input[builtins.str] topic_id: The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] configs: Configuration for the topic that are overridden from the cluster defaults. The key of the map is a Kafka topic property name, for example: `cleanup.policy=compact`, `compression.type=producer`.
         :param pulumi.Input[builtins.int] partition_count: The number of partitions in a topic. You can increase the partition count for a topic, but you cannot decrease it. Increasing partitions for a topic that uses a key might change how messages are distributed.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -93,9 +90,6 @@ class TopicArgs:
     def topic_id(self) -> pulumi.Input[builtins.str]:
         """
         The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
-
-
-        - - -
         """
         return pulumi.get(self, "topic_id")
 
@@ -163,9 +157,6 @@ class _TopicState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.int] replication_factor: The number of replicas of each partition. A replication factor of 3 is recommended for high availability.
         :param pulumi.Input[builtins.str] topic_id: The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
-               
-               
-               - - -
         """
         if cluster is not None:
             pulumi.set(__self__, "cluster", cluster)
@@ -274,9 +265,6 @@ class _TopicState:
     def topic_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
-
-
-        - - -
         """
         return pulumi.get(self, "topic_id")
 
@@ -370,9 +358,6 @@ class Topic(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.int] replication_factor: The number of replicas of each partition. A replication factor of 3 is recommended for high availability.
         :param pulumi.Input[builtins.str] topic_id: The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -522,9 +507,6 @@ class Topic(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.int] replication_factor: The number of replicas of each partition. A replication factor of 3 is recommended for high availability.
         :param pulumi.Input[builtins.str] topic_id: The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -602,9 +584,6 @@ class Topic(pulumi.CustomResource):
     def topic_id(self) -> pulumi.Output[builtins.str]:
         """
         The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
-
-
-        - - -
         """
         return pulumi.get(self, "topic_id")
 

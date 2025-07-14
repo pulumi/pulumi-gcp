@@ -27,9 +27,6 @@ class AppCheckAppAttestConfigArgs:
         The set of arguments for constructing a AppCheckAppAttestConfig resource.
         :param pulumi.Input[builtins.str] app_id: The ID of an
                [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] token_ttl: Specifies the duration for which App Check tokens exchanged from App Attest artifacts will be valid.
@@ -48,9 +45,6 @@ class AppCheckAppAttestConfigArgs:
         """
         The ID of an
         [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
-
-
-        - - -
         """
         return pulumi.get(self, "app_id")
 
@@ -97,9 +91,6 @@ class _AppCheckAppAttestConfigState:
         Input properties used for looking up and filtering AppCheckAppAttestConfig resources.
         :param pulumi.Input[builtins.str] app_id: The ID of an
                [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The relative resource name of the App Attest configuration object
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -122,9 +113,6 @@ class _AppCheckAppAttestConfigState:
         """
         The ID of an
         [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
-
-
-        - - -
         """
         return pulumi.get(self, "app_id")
 
@@ -266,9 +254,6 @@ class AppCheckAppAttestConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] app_id: The ID of an
                [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] token_ttl: Specifies the duration for which App Check tokens exchanged from App Attest artifacts will be valid.
@@ -417,9 +402,6 @@ class AppCheckAppAttestConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] app_id: The ID of an
                [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The relative resource name of the App Attest configuration object
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -443,9 +425,6 @@ class AppCheckAppAttestConfig(pulumi.CustomResource):
         """
         The ID of an
         [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
-
-
-        - - -
         """
         return pulumi.get(self, "app_id")
 

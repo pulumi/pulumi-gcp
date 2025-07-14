@@ -139,8 +139,6 @@ public class ProjectCloudArmorTier extends com.pulumi.resources.CustomResource {
      * Managed protection tier to be set.
      * Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`, `CA_ENTERPRISE_ANNUAL`.
      * 
-     * ***
-     * 
      */
     @Export(name="cloudArmorTier", refs={String.class}, tree="[0]")
     private Output<String> cloudArmorTier;
@@ -148,8 +146,6 @@ public class ProjectCloudArmorTier extends com.pulumi.resources.CustomResource {
     /**
      * @return Managed protection tier to be set.
      * Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`, `CA_ENTERPRISE_ANNUAL`.
-     * 
-     * ***
      * 
      */
     public Output<String> cloudArmorTier() {

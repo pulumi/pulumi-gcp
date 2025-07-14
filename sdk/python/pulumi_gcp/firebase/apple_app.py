@@ -30,9 +30,6 @@ class AppleAppArgs:
         """
         The set of arguments for constructing a AppleApp resource.
         :param pulumi.Input[builtins.str] bundle_id: The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] display_name: The user-assigned display name of the App.
         :param pulumi.Input[builtins.str] api_key_id: The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AppleApp.
                If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AppleApp.
@@ -60,9 +57,6 @@ class AppleAppArgs:
     def bundle_id(self) -> pulumi.Input[builtins.str]:
         """
         The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
-
-
-        - - -
         """
         return pulumi.get(self, "bundle_id")
 
@@ -164,9 +158,6 @@ class _AppleAppState:
                This identifier should be treated as an opaque token, as the data format is not specified.
         :param pulumi.Input[builtins.str] app_store_id: The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
         :param pulumi.Input[builtins.str] bundle_id: The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] display_name: The user-assigned display name of the App.
         :param pulumi.Input[builtins.str] name: The fully qualified resource name of the App, for example:
                projects/projectId/iosApps/appId
@@ -237,9 +228,6 @@ class _AppleAppState:
     def bundle_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
-
-
-        - - -
         """
         return pulumi.get(self, "bundle_id")
 
@@ -402,9 +390,6 @@ class AppleApp(pulumi.CustomResource):
                This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
         :param pulumi.Input[builtins.str] app_store_id: The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
         :param pulumi.Input[builtins.str] bundle_id: The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] display_name: The user-assigned display name of the App.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -567,9 +552,6 @@ class AppleApp(pulumi.CustomResource):
                This identifier should be treated as an opaque token, as the data format is not specified.
         :param pulumi.Input[builtins.str] app_store_id: The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
         :param pulumi.Input[builtins.str] bundle_id: The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] display_name: The user-assigned display name of the App.
         :param pulumi.Input[builtins.str] name: The fully qualified resource name of the App, for example:
                projects/projectId/iosApps/appId
@@ -624,9 +606,6 @@ class AppleApp(pulumi.CustomResource):
     def bundle_id(self) -> pulumi.Output[builtins.str]:
         """
         The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
-
-
-        - - -
         """
         return pulumi.get(self, "bundle_id")
 

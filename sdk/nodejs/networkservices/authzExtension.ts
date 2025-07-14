@@ -141,9 +141,6 @@ export class AuthzExtension extends pulumi.CustomResource {
     public readonly loadBalancingScheme!: pulumi.Output<string>;
     /**
      * The location of the resource.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -303,9 +300,6 @@ export interface AuthzExtensionState {
     loadBalancingScheme?: pulumi.Input<string>;
     /**
      * The location of the resource.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -386,9 +380,6 @@ export interface AuthzExtensionArgs {
     loadBalancingScheme: pulumi.Input<string>;
     /**
      * The location of the resource.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

@@ -41,8 +41,6 @@ public final class LbTrafficExtensionExtensionChainExtension {
      * You can set up key value pairs for metadata as you like and need.
      * f.e. {&#34;key&#34;: &#34;value&#34;, &#34;key2&#34;: &#34;value2&#34;}.
      * 
-     * ***
-     * 
      */
     private @Nullable Map<String,String> metadata;
     /**
@@ -105,8 +103,6 @@ public final class LbTrafficExtensionExtensionChainExtension {
      * @return Metadata associated with the extension. This field is used to pass metadata to the extension service.
      * You can set up key value pairs for metadata as you like and need.
      * f.e. {&#34;key&#34;: &#34;value&#34;, &#34;key2&#34;: &#34;value2&#34;}.
-     * 
-     * ***
      * 
      */
     public Map<String,String> metadata() {

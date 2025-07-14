@@ -31,9 +31,6 @@ class AiFeatureStoreEntityTypeArgs:
         """
         The set of arguments for constructing a AiFeatureStoreEntityType resource.
         :param pulumi.Input[builtins.str] featurestore: The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] description: Optional. Description of the EntityType.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: A set of key/value label pairs to assign to this EntityType.
                
@@ -62,9 +59,6 @@ class AiFeatureStoreEntityTypeArgs:
     def featurestore(self) -> pulumi.Input[builtins.str]:
         """
         The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
-
-
-        - - -
         """
         return pulumi.get(self, "featurestore")
 
@@ -160,9 +154,6 @@ class _AiFeatureStoreEntityTypeState:
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[builtins.str] etag: Used to perform consistent read-modify-write updates.
         :param pulumi.Input[builtins.str] featurestore: The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: A set of key/value label pairs to assign to this EntityType.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -255,9 +246,6 @@ class _AiFeatureStoreEntityTypeState:
     def featurestore(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
-
-
-        - - -
         """
         return pulumi.get(self, "featurestore")
 
@@ -478,9 +466,6 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] description: Optional. Description of the EntityType.
         :param pulumi.Input[builtins.str] featurestore: The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: A set of key/value label pairs to assign to this EntityType.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -682,9 +667,6 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[builtins.str] etag: Used to perform consistent read-modify-write updates.
         :param pulumi.Input[builtins.str] featurestore: The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: A set of key/value label pairs to assign to this EntityType.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -754,9 +736,6 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
     def featurestore(self) -> pulumi.Output[builtins.str]:
         """
         The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
-
-
-        - - -
         """
         return pulumi.get(self, "featurestore")
 

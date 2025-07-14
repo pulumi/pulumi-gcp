@@ -155,7 +155,9 @@ type EncryptionSpec struct {
 	EncryptionSpec EncryptionSpecEncryptionSpecOutput `pulumi:"encryptionSpec"`
 	// The location in which the encryptionSpec is to be initialized.
 	Location pulumi.StringOutput `pulumi:"location"`
-	Project  pulumi.StringOutput `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringOutput `pulumi:"project"`
 }
 
 // NewEncryptionSpec registers a new resource with the given unique name, arguments, and options.
@@ -199,7 +201,9 @@ type encryptionSpecState struct {
 	EncryptionSpec *EncryptionSpecEncryptionSpec `pulumi:"encryptionSpec"`
 	// The location in which the encryptionSpec is to be initialized.
 	Location *string `pulumi:"location"`
-	Project  *string `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 }
 
 type EncryptionSpecState struct {
@@ -208,7 +212,9 @@ type EncryptionSpecState struct {
 	EncryptionSpec EncryptionSpecEncryptionSpecPtrInput
 	// The location in which the encryptionSpec is to be initialized.
 	Location pulumi.StringPtrInput
-	Project  pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 }
 
 func (EncryptionSpecState) ElementType() reflect.Type {
@@ -220,8 +226,10 @@ type encryptionSpecArgs struct {
 	// Structure is documented below.
 	EncryptionSpec EncryptionSpecEncryptionSpec `pulumi:"encryptionSpec"`
 	// The location in which the encryptionSpec is to be initialized.
-	Location string  `pulumi:"location"`
-	Project  *string `pulumi:"project"`
+	Location string `pulumi:"location"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a EncryptionSpec resource.
@@ -231,7 +239,9 @@ type EncryptionSpecArgs struct {
 	EncryptionSpec EncryptionSpecEncryptionSpecInput
 	// The location in which the encryptionSpec is to be initialized.
 	Location pulumi.StringInput
-	Project  pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 }
 
 func (EncryptionSpecArgs) ElementType() reflect.Type {
@@ -332,6 +342,8 @@ func (o EncryptionSpecOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *EncryptionSpec) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o EncryptionSpecOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *EncryptionSpec) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

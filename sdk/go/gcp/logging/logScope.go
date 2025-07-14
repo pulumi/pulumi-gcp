@@ -81,8 +81,6 @@ type LogScope struct {
 	// The parent of the resource.
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// Names of one or more parent resources : *  \`projects/[PROJECT_ID]\` May alternatively be one or more views : * \`projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]\` A log scope can include a maximum of 50 projects and a maximum of 100 resources in total.
-	//
-	// ***
 	ResourceNames pulumi.StringArrayOutput `pulumi:"resourceNames"`
 	// Output only. The last update timestamp of the log scopes.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -132,8 +130,6 @@ type logScopeState struct {
 	// The parent of the resource.
 	Parent *string `pulumi:"parent"`
 	// Names of one or more parent resources : *  \`projects/[PROJECT_ID]\` May alternatively be one or more views : * \`projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]\` A log scope can include a maximum of 50 projects and a maximum of 100 resources in total.
-	//
-	// ***
 	ResourceNames []string `pulumi:"resourceNames"`
 	// Output only. The last update timestamp of the log scopes.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -151,8 +147,6 @@ type LogScopeState struct {
 	// The parent of the resource.
 	Parent pulumi.StringPtrInput
 	// Names of one or more parent resources : *  \`projects/[PROJECT_ID]\` May alternatively be one or more views : * \`projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]\` A log scope can include a maximum of 50 projects and a maximum of 100 resources in total.
-	//
-	// ***
 	ResourceNames pulumi.StringArrayInput
 	// Output only. The last update timestamp of the log scopes.
 	UpdateTime pulumi.StringPtrInput
@@ -172,8 +166,6 @@ type logScopeArgs struct {
 	// The parent of the resource.
 	Parent *string `pulumi:"parent"`
 	// Names of one or more parent resources : *  \`projects/[PROJECT_ID]\` May alternatively be one or more views : * \`projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]\` A log scope can include a maximum of 50 projects and a maximum of 100 resources in total.
-	//
-	// ***
 	ResourceNames []string `pulumi:"resourceNames"`
 }
 
@@ -188,8 +180,6 @@ type LogScopeArgs struct {
 	// The parent of the resource.
 	Parent pulumi.StringPtrInput
 	// Names of one or more parent resources : *  \`projects/[PROJECT_ID]\` May alternatively be one or more views : * \`projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]\` A log scope can include a maximum of 50 projects and a maximum of 100 resources in total.
-	//
-	// ***
 	ResourceNames pulumi.StringArrayInput
 }
 
@@ -306,8 +296,6 @@ func (o LogScopeOutput) Parent() pulumi.StringOutput {
 }
 
 // Names of one or more parent resources : *  \`projects/[PROJECT_ID]\` May alternatively be one or more views : * \`projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]\` A log scope can include a maximum of 50 projects and a maximum of 100 resources in total.
-//
-// ***
 func (o LogScopeOutput) ResourceNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *LogScope) pulumi.StringArrayOutput { return v.ResourceNames }).(pulumi.StringArrayOutput)
 }

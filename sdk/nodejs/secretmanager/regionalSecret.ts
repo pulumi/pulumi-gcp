@@ -279,9 +279,6 @@ export class RegionalSecret extends pulumi.CustomResource {
     public readonly rotation!: pulumi.Output<outputs.secretmanager.RegionalSecretRotation | undefined>;
     /**
      * This must be unique within the project.
-     *
-     *
-     * - - -
      */
     public readonly secretId!: pulumi.Output<string>;
     /**
@@ -463,9 +460,6 @@ export interface RegionalSecretState {
     rotation?: pulumi.Input<inputs.secretmanager.RegionalSecretRotation>;
     /**
      * This must be unique within the project.
-     *
-     *
-     * - - -
      */
     secretId?: pulumi.Input<string>;
     /**
@@ -564,9 +558,6 @@ export interface RegionalSecretArgs {
     rotation?: pulumi.Input<inputs.secretmanager.RegionalSecretRotation>;
     /**
      * This must be unique within the project.
-     *
-     *
-     * - - -
      */
     secretId: pulumi.Input<string>;
     /**

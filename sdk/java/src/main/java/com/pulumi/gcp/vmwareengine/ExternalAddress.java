@@ -181,16 +181,12 @@ public class ExternalAddress extends com.pulumi.resources.CustomResource {
     /**
      * The ID of the external IP Address.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return The ID of the external IP Address.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

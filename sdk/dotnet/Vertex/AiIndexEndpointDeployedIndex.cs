@@ -358,9 +358,6 @@ namespace Pulumi.Gcp.Vertex
         /// <summary>
         /// Identifies the index endpoint. Must be in the format
         /// 'projects/{{project}}/locations/{{region}}/indexEndpoints/{{indexEndpoint}}'
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("indexEndpoint")]
         public Output<string> IndexEndpoint { get; private set; } = null!;
@@ -506,9 +503,6 @@ namespace Pulumi.Gcp.Vertex
         /// <summary>
         /// Identifies the index endpoint. Must be in the format
         /// 'projects/{{project}}/locations/{{region}}/indexEndpoints/{{indexEndpoint}}'
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("indexEndpoint", required: true)]
         public Input<string> IndexEndpoint { get; set; } = null!;
@@ -608,9 +602,6 @@ namespace Pulumi.Gcp.Vertex
         /// <summary>
         /// Identifies the index endpoint. Must be in the format
         /// 'projects/{{project}}/locations/{{region}}/indexEndpoints/{{indexEndpoint}}'
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("indexEndpoint")]
         public Input<string>? IndexEndpoint { get; set; }

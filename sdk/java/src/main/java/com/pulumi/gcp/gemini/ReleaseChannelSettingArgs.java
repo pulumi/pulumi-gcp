@@ -92,16 +92,12 @@ public final class ReleaseChannelSettingArgs extends com.pulumi.resources.Resour
     /**
      * Id of the Release Channel Setting.
      * 
-     * ***
-     * 
      */
     @Import(name="releaseChannelSettingId", required=true)
     private Output<String> releaseChannelSettingId;
 
     /**
      * @return Id of the Release Channel Setting.
-     * 
-     * ***
      * 
      */
     public Output<String> releaseChannelSettingId() {
@@ -235,8 +231,6 @@ public final class ReleaseChannelSettingArgs extends com.pulumi.resources.Resour
         /**
          * @param releaseChannelSettingId Id of the Release Channel Setting.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -247,8 +241,6 @@ public final class ReleaseChannelSettingArgs extends com.pulumi.resources.Resour
 
         /**
          * @param releaseChannelSettingId Id of the Release Channel Setting.
-         * 
-         * ***
          * 
          * @return builder
          * 

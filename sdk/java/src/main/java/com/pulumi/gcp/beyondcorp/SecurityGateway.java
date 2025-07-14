@@ -226,8 +226,6 @@ public class SecurityGateway extends com.pulumi.resources.CustomResource {
      * * Must contain between 4-63 characters from `/a-z-/`.
      * * Must end with a number or letter.
      * 
-     * ***
-     * 
      */
     @Export(name="securityGatewayId", refs={String.class}, tree="[0]")
     private Output<String> securityGatewayId;
@@ -237,8 +235,6 @@ public class SecurityGateway extends com.pulumi.resources.CustomResource {
      * * Must start with a letter.
      * * Must contain between 4-63 characters from `/a-z-/`.
      * * Must end with a number or letter.
-     * 
-     * ***
      * 
      */
     public Output<String> securityGatewayId() {

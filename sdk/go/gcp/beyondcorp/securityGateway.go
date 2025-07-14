@@ -104,8 +104,6 @@ type SecurityGateway struct {
 	// * Must start with a letter.
 	// * Must contain between 4-63 characters from `/a-z-/`.
 	// * Must end with a number or letter.
-	//
-	// ***
 	SecurityGatewayId pulumi.StringOutput `pulumi:"securityGatewayId"`
 	// Output only. The operational state of the SecurityGateway.
 	// Possible values:
@@ -184,8 +182,6 @@ type securityGatewayState struct {
 	// * Must start with a letter.
 	// * Must contain between 4-63 characters from `/a-z-/`.
 	// * Must end with a number or letter.
-	//
-	// ***
 	SecurityGatewayId *string `pulumi:"securityGatewayId"`
 	// Output only. The operational state of the SecurityGateway.
 	// Possible values:
@@ -232,8 +228,6 @@ type SecurityGatewayState struct {
 	// * Must start with a letter.
 	// * Must contain between 4-63 characters from `/a-z-/`.
 	// * Must end with a number or letter.
-	//
-	// ***
 	SecurityGatewayId pulumi.StringPtrInput
 	// Output only. The operational state of the SecurityGateway.
 	// Possible values:
@@ -275,8 +269,6 @@ type securityGatewayArgs struct {
 	// * Must start with a letter.
 	// * Must contain between 4-63 characters from `/a-z-/`.
 	// * Must end with a number or letter.
-	//
-	// ***
 	SecurityGatewayId string `pulumi:"securityGatewayId"`
 }
 
@@ -303,8 +295,6 @@ type SecurityGatewayArgs struct {
 	// * Must start with a letter.
 	// * Must contain between 4-63 characters from `/a-z-/`.
 	// * Must end with a number or letter.
-	//
-	// ***
 	SecurityGatewayId pulumi.StringInput
 }
 
@@ -449,8 +439,6 @@ func (o SecurityGatewayOutput) Project() pulumi.StringOutput {
 // * Must start with a letter.
 // * Must contain between 4-63 characters from `/a-z-/`.
 // * Must end with a number or letter.
-//
-// ***
 func (o SecurityGatewayOutput) SecurityGatewayId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityGateway) pulumi.StringOutput { return v.SecurityGatewayId }).(pulumi.StringOutput)
 }

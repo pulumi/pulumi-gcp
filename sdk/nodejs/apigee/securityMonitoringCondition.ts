@@ -117,9 +117,6 @@ export class SecurityMonitoringCondition extends pulumi.CustomResource {
 
     /**
      * Resource ID of the security monitoring condition.
-     *
-     *
-     * - - -
      */
     public readonly conditionId!: pulumi.Output<string>;
     /**
@@ -220,9 +217,6 @@ export class SecurityMonitoringCondition extends pulumi.CustomResource {
 export interface SecurityMonitoringConditionState {
     /**
      * Resource ID of the security monitoring condition.
-     *
-     *
-     * - - -
      */
     conditionId?: pulumi.Input<string>;
     /**
@@ -271,9 +265,6 @@ export interface SecurityMonitoringConditionState {
 export interface SecurityMonitoringConditionArgs {
     /**
      * Resource ID of the security monitoring condition.
-     *
-     *
-     * - - -
      */
     conditionId: pulumi.Input<string>;
     /**

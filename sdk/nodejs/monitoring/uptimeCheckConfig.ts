@@ -330,9 +330,6 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
     public readonly tcpCheck!: pulumi.Output<outputs.monitoring.UptimeCheckConfigTcpCheck | undefined>;
     /**
      * The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
-     *
-     *
-     * - - -
      */
     public readonly timeout!: pulumi.Output<string>;
     /**
@@ -471,9 +468,6 @@ export interface UptimeCheckConfigState {
     tcpCheck?: pulumi.Input<inputs.monitoring.UptimeCheckConfigTcpCheck>;
     /**
      * The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
-     *
-     *
-     * - - -
      */
     timeout?: pulumi.Input<string>;
     /**
@@ -550,9 +544,6 @@ export interface UptimeCheckConfigArgs {
     tcpCheck?: pulumi.Input<inputs.monitoring.UptimeCheckConfigTcpCheck>;
     /**
      * The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
-     *
-     *
-     * - - -
      */
     timeout: pulumi.Input<string>;
     /**

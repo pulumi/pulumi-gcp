@@ -45,16 +45,19 @@ class AuthzPolicyArgs:
         :param pulumi.Input[builtins.str] location: The location of the resource.
         :param pulumi.Input['AuthzPolicyTargetArgs'] target: Specifies the set of resources to which this policy should be applied to.
                Structure is documented below.
-        :param pulumi.Input['AuthzPolicyCustomProviderArgs'] custom_provider: Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One
-               of cloudIap or authzExtension must be specified.
+        :param pulumi.Input['AuthzPolicyCustomProviderArgs'] custom_provider: Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One of cloudIap or authzExtension must be specified.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] description: A human-readable description of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleArgs']]] http_rules: A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP
-               rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow
-               or Deny Action. Limited to 5 rules.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Set of labels associated with the AuthzExtension resource. **Note**: This field is non-authoritative, and will only
-               manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-               present on the resource.
+        :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleArgs']]] http_rules: A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+               Limited to 5 rules.
+               Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Set of labels associated with the AuthzExtension resource.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] name: Identifier. Name of the AuthzPolicy resource.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "location", location)
@@ -121,8 +124,8 @@ class AuthzPolicyArgs:
     @pulumi.getter(name="customProvider")
     def custom_provider(self) -> Optional[pulumi.Input['AuthzPolicyCustomProviderArgs']]:
         """
-        Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One
-        of cloudIap or authzExtension must be specified.
+        Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One of cloudIap or authzExtension must be specified.
+        Structure is documented below.
         """
         return pulumi.get(self, "custom_provider")
 
@@ -146,9 +149,9 @@ class AuthzPolicyArgs:
     @pulumi.getter(name="httpRules")
     def http_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleArgs']]]]:
         """
-        A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP
-        rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow
-        or Deny Action. Limited to 5 rules.
+        A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+        Limited to 5 rules.
+        Structure is documented below.
         """
         return pulumi.get(self, "http_rules")
 
@@ -160,9 +163,10 @@ class AuthzPolicyArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Set of labels associated with the AuthzExtension resource. **Note**: This field is non-authoritative, and will only
-        manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-        present on the resource.
+        Set of labels associated with the AuthzExtension resource.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -185,6 +189,10 @@ class AuthzPolicyArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -220,18 +228,21 @@ class _AuthzPolicyState:
                4. Else the request is denied by default if none of the configured AuthzPolicies with ALLOW action match the request.
                Possible values are: `ALLOW`, `DENY`, `CUSTOM`.
         :param pulumi.Input[builtins.str] create_time: The timestamp when the resource was created.
-        :param pulumi.Input['AuthzPolicyCustomProviderArgs'] custom_provider: Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One
-               of cloudIap or authzExtension must be specified.
+        :param pulumi.Input['AuthzPolicyCustomProviderArgs'] custom_provider: Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One of cloudIap or authzExtension must be specified.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] description: A human-readable description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleArgs']]] http_rules: A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP
-               rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow
-               or Deny Action. Limited to 5 rules.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Set of labels associated with the AuthzExtension resource. **Note**: This field is non-authoritative, and will only
-               manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-               present on the resource.
+        :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleArgs']]] http_rules: A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+               Limited to 5 rules.
+               Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Set of labels associated with the AuthzExtension resource.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location of the resource.
         :param pulumi.Input[builtins.str] name: Identifier. Name of the AuthzPolicy resource.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input['AuthzPolicyTargetArgs'] target: Specifies the set of resources to which this policy should be applied to.
@@ -301,8 +312,8 @@ class _AuthzPolicyState:
     @pulumi.getter(name="customProvider")
     def custom_provider(self) -> Optional[pulumi.Input['AuthzPolicyCustomProviderArgs']]:
         """
-        Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One
-        of cloudIap or authzExtension must be specified.
+        Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One of cloudIap or authzExtension must be specified.
+        Structure is documented below.
         """
         return pulumi.get(self, "custom_provider")
 
@@ -338,9 +349,9 @@ class _AuthzPolicyState:
     @pulumi.getter(name="httpRules")
     def http_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleArgs']]]]:
         """
-        A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP
-        rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow
-        or Deny Action. Limited to 5 rules.
+        A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+        Limited to 5 rules.
+        Structure is documented below.
         """
         return pulumi.get(self, "http_rules")
 
@@ -352,9 +363,10 @@ class _AuthzPolicyState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Set of labels associated with the AuthzExtension resource. **Note**: This field is non-authoritative, and will only
-        manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-        present on the resource.
+        Set of labels associated with the AuthzExtension resource.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -389,6 +401,10 @@ class _AuthzPolicyState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -500,17 +516,20 @@ class AuthzPolicy(pulumi.CustomResource):
                3. If there are no ALLOW policies for the resource or if any of the ALLOW policies match the request, the request is allowed.
                4. Else the request is denied by default if none of the configured AuthzPolicies with ALLOW action match the request.
                Possible values are: `ALLOW`, `DENY`, `CUSTOM`.
-        :param pulumi.Input[Union['AuthzPolicyCustomProviderArgs', 'AuthzPolicyCustomProviderArgsDict']] custom_provider: Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One
-               of cloudIap or authzExtension must be specified.
+        :param pulumi.Input[Union['AuthzPolicyCustomProviderArgs', 'AuthzPolicyCustomProviderArgsDict']] custom_provider: Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One of cloudIap or authzExtension must be specified.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] description: A human-readable description of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AuthzPolicyHttpRuleArgs', 'AuthzPolicyHttpRuleArgsDict']]]] http_rules: A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP
-               rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow
-               or Deny Action. Limited to 5 rules.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Set of labels associated with the AuthzExtension resource. **Note**: This field is non-authoritative, and will only
-               manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-               present on the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AuthzPolicyHttpRuleArgs', 'AuthzPolicyHttpRuleArgsDict']]]] http_rules: A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+               Limited to 5 rules.
+               Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Set of labels associated with the AuthzExtension resource.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location of the resource.
         :param pulumi.Input[builtins.str] name: Identifier. Name of the AuthzPolicy resource.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Union['AuthzPolicyTargetArgs', 'AuthzPolicyTargetArgsDict']] target: Specifies the set of resources to which this policy should be applied to.
                Structure is documented below.
         """
@@ -653,18 +672,21 @@ class AuthzPolicy(pulumi.CustomResource):
                4. Else the request is denied by default if none of the configured AuthzPolicies with ALLOW action match the request.
                Possible values are: `ALLOW`, `DENY`, `CUSTOM`.
         :param pulumi.Input[builtins.str] create_time: The timestamp when the resource was created.
-        :param pulumi.Input[Union['AuthzPolicyCustomProviderArgs', 'AuthzPolicyCustomProviderArgsDict']] custom_provider: Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One
-               of cloudIap or authzExtension must be specified.
+        :param pulumi.Input[Union['AuthzPolicyCustomProviderArgs', 'AuthzPolicyCustomProviderArgsDict']] custom_provider: Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One of cloudIap or authzExtension must be specified.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] description: A human-readable description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AuthzPolicyHttpRuleArgs', 'AuthzPolicyHttpRuleArgsDict']]]] http_rules: A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP
-               rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow
-               or Deny Action. Limited to 5 rules.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Set of labels associated with the AuthzExtension resource. **Note**: This field is non-authoritative, and will only
-               manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-               present on the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AuthzPolicyHttpRuleArgs', 'AuthzPolicyHttpRuleArgsDict']]]] http_rules: A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+               Limited to 5 rules.
+               Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Set of labels associated with the AuthzExtension resource.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location of the resource.
         :param pulumi.Input[builtins.str] name: Identifier. Name of the AuthzPolicy resource.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[Union['AuthzPolicyTargetArgs', 'AuthzPolicyTargetArgsDict']] target: Specifies the set of resources to which this policy should be applied to.
@@ -718,8 +740,8 @@ class AuthzPolicy(pulumi.CustomResource):
     @pulumi.getter(name="customProvider")
     def custom_provider(self) -> pulumi.Output[Optional['outputs.AuthzPolicyCustomProvider']]:
         """
-        Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One
-        of cloudIap or authzExtension must be specified.
+        Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One of cloudIap or authzExtension must be specified.
+        Structure is documented below.
         """
         return pulumi.get(self, "custom_provider")
 
@@ -743,9 +765,9 @@ class AuthzPolicy(pulumi.CustomResource):
     @pulumi.getter(name="httpRules")
     def http_rules(self) -> pulumi.Output[Optional[Sequence['outputs.AuthzPolicyHttpRule']]]:
         """
-        A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP
-        rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow
-        or Deny Action. Limited to 5 rules.
+        A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+        Limited to 5 rules.
+        Structure is documented below.
         """
         return pulumi.get(self, "http_rules")
 
@@ -753,9 +775,10 @@ class AuthzPolicy(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
         """
-        Set of labels associated with the AuthzExtension resource. **Note**: This field is non-authoritative, and will only
-        manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-        present on the resource.
+        Set of labels associated with the AuthzExtension resource.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -778,6 +801,10 @@ class AuthzPolicy(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property

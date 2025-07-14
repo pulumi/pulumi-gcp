@@ -134,9 +134,6 @@ namespace Pulumi.Gcp.Netapp
 
         /// <summary>
         /// The name of the snapshot.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -247,9 +244,6 @@ namespace Pulumi.Gcp.Netapp
 
         /// <summary>
         /// The name of the snapshot.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -320,9 +314,6 @@ namespace Pulumi.Gcp.Netapp
 
         /// <summary>
         /// The name of the snapshot.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

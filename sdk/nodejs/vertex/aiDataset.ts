@@ -91,9 +91,6 @@ export class AiDataset extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Points to a YAML file stored on Google Cloud Storage describing additional information about the Dataset. The schema is defined as an OpenAPI 3.0.2 Schema Object. The schema files that can be used here are found in gs://google-cloud-aiplatform/schema/dataset/metadata/.
-     *
-     *
-     * - - -
      */
     public readonly metadataSchemaUri!: pulumi.Output<string>;
     /**
@@ -200,9 +197,6 @@ export interface AiDatasetState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Points to a YAML file stored on Google Cloud Storage describing additional information about the Dataset. The schema is defined as an OpenAPI 3.0.2 Schema Object. The schema files that can be used here are found in gs://google-cloud-aiplatform/schema/dataset/metadata/.
-     *
-     *
-     * - - -
      */
     metadataSchemaUri?: pulumi.Input<string>;
     /**
@@ -251,9 +245,6 @@ export interface AiDatasetArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Points to a YAML file stored on Google Cloud Storage describing additional information about the Dataset. The schema is defined as an OpenAPI 3.0.2 Schema Object. The schema files that can be used here are found in gs://google-cloud-aiplatform/schema/dataset/metadata/.
-     *
-     *
-     * - - -
      */
     metadataSchemaUri: pulumi.Input<string>;
     /**

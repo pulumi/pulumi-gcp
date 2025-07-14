@@ -70,8 +70,6 @@ public final class SQuotaPreferenceQuotaConfigArgs extends com.pulumi.resources.
      * (Output)
      * The origin of the quota preference request.
      * 
-     * ***
-     * 
      */
     @Import(name="requestOrigin")
     private @Nullable Output<String> requestOrigin;
@@ -79,8 +77,6 @@ public final class SQuotaPreferenceQuotaConfigArgs extends com.pulumi.resources.
     /**
      * @return (Output)
      * The origin of the quota preference request.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> requestOrigin() {
@@ -221,8 +217,6 @@ public final class SQuotaPreferenceQuotaConfigArgs extends com.pulumi.resources.
          * @param requestOrigin (Output)
          * The origin of the quota preference request.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -234,8 +228,6 @@ public final class SQuotaPreferenceQuotaConfigArgs extends com.pulumi.resources.
         /**
          * @param requestOrigin (Output)
          * The origin of the quota preference request.
-         * 
-         * ***
          * 
          * @return builder
          * 

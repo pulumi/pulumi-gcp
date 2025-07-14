@@ -167,8 +167,6 @@ type RegionalEndpoint struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location of the RegionalEndpoint.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the RegionalEndpoint.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -252,8 +250,6 @@ type regionalEndpointState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location of the RegionalEndpoint.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// The name of the RegionalEndpoint.
 	Name *string `pulumi:"name"`
@@ -294,8 +290,6 @@ type RegionalEndpointState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location of the RegionalEndpoint.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// The name of the RegionalEndpoint.
 	Name pulumi.StringPtrInput
@@ -336,8 +330,6 @@ type regionalEndpointArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location of the RegionalEndpoint.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// The name of the RegionalEndpoint.
 	Name *string `pulumi:"name"`
@@ -368,8 +360,6 @@ type RegionalEndpointArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location of the RegionalEndpoint.
-	//
-	// ***
 	Location pulumi.StringInput
 	// The name of the RegionalEndpoint.
 	Name pulumi.StringPtrInput
@@ -507,8 +497,6 @@ func (o RegionalEndpointOutput) Labels() pulumi.StringMapOutput {
 }
 
 // The location of the RegionalEndpoint.
-//
-// ***
 func (o RegionalEndpointOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionalEndpoint) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

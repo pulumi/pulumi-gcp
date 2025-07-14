@@ -28,6 +28,7 @@ public final class GetBackendBucketResult {
      * 
      */
     private String id;
+    private String loadBalancingScheme;
     private String name;
     private @Nullable String project;
     private String selfLink;
@@ -64,6 +65,9 @@ public final class GetBackendBucketResult {
     public String id() {
         return this.id;
     }
+    public String loadBalancingScheme() {
+        return this.loadBalancingScheme;
+    }
     public String name() {
         return this.name;
     }
@@ -92,6 +96,7 @@ public final class GetBackendBucketResult {
         private String edgeSecurityPolicy;
         private Boolean enableCdn;
         private String id;
+        private String loadBalancingScheme;
         private String name;
         private @Nullable String project;
         private String selfLink;
@@ -107,6 +112,7 @@ public final class GetBackendBucketResult {
     	      this.edgeSecurityPolicy = defaults.edgeSecurityPolicy;
     	      this.enableCdn = defaults.enableCdn;
     	      this.id = defaults.id;
+    	      this.loadBalancingScheme = defaults.loadBalancingScheme;
     	      this.name = defaults.name;
     	      this.project = defaults.project;
     	      this.selfLink = defaults.selfLink;
@@ -191,6 +197,14 @@ public final class GetBackendBucketResult {
             return this;
         }
         @CustomType.Setter
+        public Builder loadBalancingScheme(String loadBalancingScheme) {
+            if (loadBalancingScheme == null) {
+              throw new MissingRequiredPropertyException("GetBackendBucketResult", "loadBalancingScheme");
+            }
+            this.loadBalancingScheme = loadBalancingScheme;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetBackendBucketResult", "name");
@@ -223,6 +237,7 @@ public final class GetBackendBucketResult {
             _resultValue.edgeSecurityPolicy = edgeSecurityPolicy;
             _resultValue.enableCdn = enableCdn;
             _resultValue.id = id;
+            _resultValue.loadBalancingScheme = loadBalancingScheme;
             _resultValue.name = name;
             _resultValue.project = project;
             _resultValue.selfLink = selfLink;

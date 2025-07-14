@@ -18,8 +18,7 @@ public final class BareMetalClusterValidationCheckStatusResult {
      */
     private @Nullable String category;
     /**
-     * @return (Output)
-     * The description of the validation check.
+     * @return A human readable description of this Bare Metal User Cluster.
      * 
      */
     private @Nullable String description;
@@ -52,8 +51,7 @@ public final class BareMetalClusterValidationCheckStatusResult {
         return Optional.ofNullable(this.category);
     }
     /**
-     * @return (Output)
-     * The description of the validation check.
+     * @return A human readable description of this Bare Metal User Cluster.
      * 
      */
     public Optional<String> description() {

@@ -40,6 +40,8 @@ class RetrohuntArgs:
                Structure is documented below.
         :param pulumi.Input[builtins.str] rule: The Rule ID of the rule.
         :param pulumi.Input[builtins.str] retrohunt_id: The retrohunt ID of the Retrohunt. A retrohunt is an execution of a Rule over a time range in the past.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "instance", instance)
         pulumi.set(__self__, "location", location)
@@ -118,6 +120,10 @@ class RetrohuntArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -161,6 +167,8 @@ class _RetrohuntState:
                When both start and end are unspecified, the interval matches any time.
                Structure is documented below.
         :param pulumi.Input[builtins.float] progress_percentage: Output only. Percent progress of the retrohunt towards completion, from 0.00 to 100.00.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] rule: The Rule ID of the rule.
         :param pulumi.Input[builtins.str] state: Output only. The state of the retrohunt.
                Possible values:
@@ -291,6 +299,10 @@ class _RetrohuntState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -386,6 +398,8 @@ class Retrohunt(pulumi.CustomResource):
                When the start equals the end, the interval is empty (matches no time).
                When both start and end are unspecified, the interval matches any time.
                Structure is documented below.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] rule: The Rule ID of the rule.
         """
         ...
@@ -525,6 +539,8 @@ class Retrohunt(pulumi.CustomResource):
                When both start and end are unspecified, the interval matches any time.
                Structure is documented below.
         :param pulumi.Input[builtins.float] progress_percentage: Output only. Percent progress of the retrohunt towards completion, from 0.00 to 100.00.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] rule: The Rule ID of the rule.
         :param pulumi.Input[builtins.str] state: Output only. The state of the retrohunt.
                Possible values:
@@ -622,6 +638,10 @@ class Retrohunt(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property

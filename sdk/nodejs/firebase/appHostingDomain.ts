@@ -144,9 +144,6 @@ export class AppHostingDomain extends pulumi.CustomResource {
     /**
      * Id of the domain to create.
      * Must be a valid domain name, such as "foo.com"
-     *
-     *
-     * - - -
      */
     public readonly domainId!: pulumi.Output<string>;
     /**
@@ -268,9 +265,6 @@ export interface AppHostingDomainState {
     /**
      * Id of the domain to create.
      * Must be a valid domain name, such as "foo.com"
-     *
-     *
-     * - - -
      */
     domainId?: pulumi.Input<string>;
     /**
@@ -324,9 +318,6 @@ export interface AppHostingDomainArgs {
     /**
      * Id of the domain to create.
      * Must be a valid domain name, such as "foo.com"
-     *
-     *
-     * - - -
      */
     domainId: pulumi.Input<string>;
     /**

@@ -433,8 +433,6 @@ type DeploymentTargetImport struct {
 	Content *string `pulumi:"content"`
 	// The name of the template to import, as declared in the YAML
 	// configuration.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 }
 
@@ -454,8 +452,6 @@ type DeploymentTargetImportArgs struct {
 	Content pulumi.StringPtrInput `pulumi:"content"`
 	// The name of the template to import, as declared in the YAML
 	// configuration.
-	//
-	// ***
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -517,8 +513,6 @@ func (o DeploymentTargetImportOutput) Content() pulumi.StringPtrOutput {
 
 // The name of the template to import, as declared in the YAML
 // configuration.
-//
-// ***
 func (o DeploymentTargetImportOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeploymentTargetImport) *string { return v.Name }).(pulumi.StringPtrOutput)
 }

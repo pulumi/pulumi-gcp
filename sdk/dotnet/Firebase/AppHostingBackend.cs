@@ -272,9 +272,6 @@ namespace Pulumi.Gcp.Firebase
         /// <summary>
         /// Id of the backend. Also used as the service ID for Cloud Run, and as part
         /// of the default domain name.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("backendId")]
         public Output<string> BackendId { get; private set; } = null!;
@@ -485,9 +482,6 @@ namespace Pulumi.Gcp.Firebase
         /// <summary>
         /// Id of the backend. Also used as the service ID for Cloud Run, and as part
         /// of the default domain name.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("backendId", required: true)]
         public Input<string> BackendId { get; set; } = null!;
@@ -593,9 +587,6 @@ namespace Pulumi.Gcp.Firebase
         /// <summary>
         /// Id of the backend. Also used as the service ID for Cloud Run, and as part
         /// of the default domain name.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("backendId")]
         public Input<string>? BackendId { get; set; }

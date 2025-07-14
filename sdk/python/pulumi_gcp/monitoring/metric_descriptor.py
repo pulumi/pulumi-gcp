@@ -39,9 +39,6 @@ class MetricDescriptorArgs:
         :param pulumi.Input[builtins.str] type: The metric type, including its DNS name prefix. The type is not URL-encoded. All service defined metrics must be prefixed with the service name, in the format of {service name}/{relative metric name}, such as cloudsql.googleapis.com/database/cpu/utilization. The relative metric name must have only upper and lower-case letters, digits, '/' and underscores '_' are allowed. Additionally, the maximum number of characters allowed for the relative_metric_name is 100. All user-defined metric types have the DNS name custom.googleapis.com, external.googleapis.com, or logging.googleapis.com/user/.
         :param pulumi.Input[builtins.str] value_type: Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
                Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] description: A detailed description of the metric, which can be used in documentation.
         :param pulumi.Input[builtins.str] display_name: A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
         :param pulumi.Input[Sequence[pulumi.Input['MetricDescriptorLabelArgs']]] labels: The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
@@ -119,9 +116,6 @@ class MetricDescriptorArgs:
         """
         Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
         Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
-
-
-        - - -
         """
         return pulumi.get(self, "value_type")
 
@@ -285,9 +279,6 @@ class _MetricDescriptorState:
                (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
         :param pulumi.Input[builtins.str] value_type: Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
                Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
-               
-               
-               - - -
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -473,9 +464,6 @@ class _MetricDescriptorState:
         """
         Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
         Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
-
-
-        - - -
         """
         return pulumi.get(self, "value_type")
 
@@ -620,9 +608,6 @@ class MetricDescriptor(pulumi.CustomResource):
                (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
         :param pulumi.Input[builtins.str] value_type: Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
                Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -830,9 +815,6 @@ class MetricDescriptor(pulumi.CustomResource):
                (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
         :param pulumi.Input[builtins.str] value_type: Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
                Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -967,9 +949,6 @@ class MetricDescriptor(pulumi.CustomResource):
         """
         Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
         Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
-
-
-        - - -
         """
         return pulumi.get(self, "value_type")
 

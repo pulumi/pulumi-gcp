@@ -256,9 +256,6 @@ export class SessionTemplate extends pulumi.CustomResource {
     /**
      * The resource name of the session template in the following format:
      * projects/{project}/locations/{location}/sessionTemplates/{template_id}
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -380,9 +377,6 @@ export interface SessionTemplateState {
     /**
      * The resource name of the session template in the following format:
      * projects/{project}/locations/{location}/sessionTemplates/{template_id}
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -442,9 +436,6 @@ export interface SessionTemplateArgs {
     /**
      * The resource name of the session template in the following format:
      * projects/{project}/locations/{location}/sessionTemplates/{template_id}
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

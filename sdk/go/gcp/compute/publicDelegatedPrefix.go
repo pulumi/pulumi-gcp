@@ -201,8 +201,6 @@ type PublicDelegatedPrefix struct {
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The IP address range, in CIDR format, represented by this public delegated prefix.
-	//
-	// ***
 	IpCidrRange pulumi.StringOutput `pulumi:"ipCidrRange"`
 	// If true, the prefix will be live migrated.
 	IsLiveMigration pulumi.BoolPtrOutput `pulumi:"isLiveMigration"`
@@ -272,8 +270,6 @@ type publicDelegatedPrefixState struct {
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// The IP address range, in CIDR format, represented by this public delegated prefix.
-	//
-	// ***
 	IpCidrRange *string `pulumi:"ipCidrRange"`
 	// If true, the prefix will be live migrated.
 	IsLiveMigration *bool `pulumi:"isLiveMigration"`
@@ -305,8 +301,6 @@ type PublicDelegatedPrefixState struct {
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// The IP address range, in CIDR format, represented by this public delegated prefix.
-	//
-	// ***
 	IpCidrRange pulumi.StringPtrInput
 	// If true, the prefix will be live migrated.
 	IsLiveMigration pulumi.BoolPtrInput
@@ -342,8 +336,6 @@ type publicDelegatedPrefixArgs struct {
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// The IP address range, in CIDR format, represented by this public delegated prefix.
-	//
-	// ***
 	IpCidrRange string `pulumi:"ipCidrRange"`
 	// If true, the prefix will be live migrated.
 	IsLiveMigration *bool `pulumi:"isLiveMigration"`
@@ -374,8 +366,6 @@ type PublicDelegatedPrefixArgs struct {
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// The IP address range, in CIDR format, represented by this public delegated prefix.
-	//
-	// ***
 	IpCidrRange pulumi.StringInput
 	// If true, the prefix will be live migrated.
 	IsLiveMigration pulumi.BoolPtrInput
@@ -497,8 +487,6 @@ func (o PublicDelegatedPrefixOutput) Description() pulumi.StringPtrOutput {
 }
 
 // The IP address range, in CIDR format, represented by this public delegated prefix.
-//
-// ***
 func (o PublicDelegatedPrefixOutput) IpCidrRange() pulumi.StringOutput {
 	return o.ApplyT(func(v *PublicDelegatedPrefix) pulumi.StringOutput { return v.IpCidrRange }).(pulumi.StringOutput)
 }

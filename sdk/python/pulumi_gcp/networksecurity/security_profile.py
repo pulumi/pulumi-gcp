@@ -49,9 +49,6 @@ class SecurityProfileArgs:
         :param pulumi.Input[builtins.str] location: The location of the security profile.
                The default value is `global`.
         :param pulumi.Input[builtins.str] name: The name of the security profile resource.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] parent: The name of the parent this security profile belongs to.
                Format: organizations/{organization_id}.
         :param pulumi.Input['SecurityProfileThreatPreventionProfileArgs'] threat_prevention_profile: The threat prevention configuration for the security profile.
@@ -161,9 +158,6 @@ class SecurityProfileArgs:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The name of the security profile resource.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -237,9 +231,6 @@ class _SecurityProfileState:
         :param pulumi.Input[builtins.str] location: The location of the security profile.
                The default value is `global`.
         :param pulumi.Input[builtins.str] name: The name of the security profile resource.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] parent: The name of the parent this security profile belongs to.
                Format: organizations/{organization_id}.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -393,9 +384,6 @@ class _SecurityProfileState:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The name of the security profile resource.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -635,9 +623,6 @@ class SecurityProfile(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] location: The location of the security profile.
                The default value is `global`.
         :param pulumi.Input[builtins.str] name: The name of the security profile resource.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] parent: The name of the parent this security profile belongs to.
                Format: organizations/{organization_id}.
         :param pulumi.Input[Union['SecurityProfileThreatPreventionProfileArgs', 'SecurityProfileThreatPreventionProfileArgsDict']] threat_prevention_profile: The threat prevention configuration for the security profile.
@@ -877,9 +862,6 @@ class SecurityProfile(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] location: The location of the security profile.
                The default value is `global`.
         :param pulumi.Input[builtins.str] name: The name of the security profile resource.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] parent: The name of the parent this security profile belongs to.
                Format: organizations/{organization_id}.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -991,9 +973,6 @@ class SecurityProfile(pulumi.CustomResource):
     def name(self) -> pulumi.Output[builtins.str]:
         """
         The name of the security profile resource.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

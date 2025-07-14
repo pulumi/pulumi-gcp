@@ -100,9 +100,6 @@ export class FolderSccBigQueryExport extends pulumi.CustomResource {
 
     /**
      * This must be unique within the organization.
-     *
-     *
-     * - - -
      */
     public readonly bigQueryExportId!: pulumi.Output<string>;
     /**
@@ -231,9 +228,6 @@ export class FolderSccBigQueryExport extends pulumi.CustomResource {
 export interface FolderSccBigQueryExportState {
     /**
      * This must be unique within the organization.
-     *
-     *
-     * - - -
      */
     bigQueryExportId?: pulumi.Input<string>;
     /**
@@ -307,9 +301,6 @@ export interface FolderSccBigQueryExportState {
 export interface FolderSccBigQueryExportArgs {
     /**
      * This must be unique within the organization.
-     *
-     *
-     * - - -
      */
     bigQueryExportId: pulumi.Input<string>;
     /**

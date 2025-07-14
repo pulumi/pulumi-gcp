@@ -92,9 +92,6 @@ export class ManagementOrganizationEventThreatDetectionCustomModule extends pulu
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * Numerical ID of the parent organization.
-     *
-     *
-     * - - -
      */
     public readonly organization!: pulumi.Output<string>;
     /**
@@ -183,9 +180,6 @@ export interface ManagementOrganizationEventThreatDetectionCustomModuleState {
     name?: pulumi.Input<string>;
     /**
      * Numerical ID of the parent organization.
-     *
-     *
-     * - - -
      */
     organization?: pulumi.Input<string>;
     /**
@@ -224,9 +218,6 @@ export interface ManagementOrganizationEventThreatDetectionCustomModuleArgs {
     location?: pulumi.Input<string>;
     /**
      * Numerical ID of the parent organization.
-     *
-     *
-     * - - -
      */
     organization: pulumi.Input<string>;
     /**

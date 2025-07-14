@@ -120,9 +120,6 @@ export class InstanceGroupNamedPort extends pulumi.CustomResource {
 
     /**
      * The name of the instance group.
-     *
-     *
-     * - - -
      */
     public readonly group!: pulumi.Output<string>;
     /**
@@ -187,9 +184,6 @@ export class InstanceGroupNamedPort extends pulumi.CustomResource {
 export interface InstanceGroupNamedPortState {
     /**
      * The name of the instance group.
-     *
-     *
-     * - - -
      */
     group?: pulumi.Input<string>;
     /**
@@ -218,9 +212,6 @@ export interface InstanceGroupNamedPortState {
 export interface InstanceGroupNamedPortArgs {
     /**
      * The name of the instance group.
-     *
-     *
-     * - - -
      */
     group: pulumi.Input<string>;
     /**

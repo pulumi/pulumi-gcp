@@ -1109,8 +1109,6 @@ if not MYPY:
         generation: NotRequired[pulumi.Input[builtins.str]]
         """
         The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
-
-        - - -
         """
 elif False:
     ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgsDict: TypeAlias = Mapping[str, Any]
@@ -1123,8 +1121,6 @@ class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSo
         """
         :param pulumi.Input[builtins.str] uri: The Cloud Storage uri pointing to the ipynb file. Format: gs://bucket/notebook_file.ipynb
         :param pulumi.Input[builtins.str] generation: The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
-               
-               - - -
         """
         pulumi.set(__self__, "uri", uri)
         if generation is not None:
@@ -1147,8 +1143,6 @@ class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSo
     def generation(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
-
-        - - -
         """
         return pulumi.get(self, "generation")
 

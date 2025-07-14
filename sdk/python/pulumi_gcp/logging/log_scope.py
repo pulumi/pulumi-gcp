@@ -28,9 +28,6 @@ class LogScopeArgs:
         """
         The set of arguments for constructing a LogScope resource.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] resource_names: Names of one or more parent resources : *  \\`projects/[PROJECT_ID]\\` May alternatively be one or more views : * \\`projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]\\` A log scope can include a maximum of 50 projects and a maximum of 100 resources in total.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] description: Describes this log scopes.
         :param pulumi.Input[builtins.str] location: The location of the resource. The only supported location is global so far.
         :param pulumi.Input[builtins.str] name: The resource name of the log scope. For example: \\`projects/my-project/locations/global/logScopes/my-log-scope\\`
@@ -51,9 +48,6 @@ class LogScopeArgs:
     def resource_names(self) -> pulumi.Input[Sequence[pulumi.Input[builtins.str]]]:
         """
         Names of one or more parent resources : *  \\`projects/[PROJECT_ID]\\` May alternatively be one or more views : * \\`projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]\\` A log scope can include a maximum of 50 projects and a maximum of 100 resources in total.
-
-
-        - - -
         """
         return pulumi.get(self, "resource_names")
 
@@ -128,9 +122,6 @@ class _LogScopeState:
         :param pulumi.Input[builtins.str] name: The resource name of the log scope. For example: \\`projects/my-project/locations/global/logScopes/my-log-scope\\`
         :param pulumi.Input[builtins.str] parent: The parent of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] resource_names: Names of one or more parent resources : *  \\`projects/[PROJECT_ID]\\` May alternatively be one or more views : * \\`projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]\\` A log scope can include a maximum of 50 projects and a maximum of 100 resources in total.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] update_time: Output only. The last update timestamp of the log scopes.
         """
         if create_time is not None:
@@ -213,9 +204,6 @@ class _LogScopeState:
     def resource_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
         Names of one or more parent resources : *  \\`projects/[PROJECT_ID]\\` May alternatively be one or more views : * \\`projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]\\` A log scope can include a maximum of 50 projects and a maximum of 100 resources in total.
-
-
-        - - -
         """
         return pulumi.get(self, "resource_names")
 
@@ -296,9 +284,6 @@ class LogScope(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] name: The resource name of the log scope. For example: \\`projects/my-project/locations/global/logScopes/my-log-scope\\`
         :param pulumi.Input[builtins.str] parent: The parent of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] resource_names: Names of one or more parent resources : *  \\`projects/[PROJECT_ID]\\` May alternatively be one or more views : * \\`projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]\\` A log scope can include a maximum of 50 projects and a maximum of 100 resources in total.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -415,9 +400,6 @@ class LogScope(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] name: The resource name of the log scope. For example: \\`projects/my-project/locations/global/logScopes/my-log-scope\\`
         :param pulumi.Input[builtins.str] parent: The parent of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] resource_names: Names of one or more parent resources : *  \\`projects/[PROJECT_ID]\\` May alternatively be one or more views : * \\`projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]\\` A log scope can include a maximum of 50 projects and a maximum of 100 resources in total.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] update_time: Output only. The last update timestamp of the log scopes.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -478,9 +460,6 @@ class LogScope(pulumi.CustomResource):
     def resource_names(self) -> pulumi.Output[Sequence[builtins.str]]:
         """
         Names of one or more parent resources : *  \\`projects/[PROJECT_ID]\\` May alternatively be one or more views : * \\`projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]\\` A log scope can include a maximum of 50 projects and a maximum of 100 resources in total.
-
-
-        - - -
         """
         return pulumi.get(self, "resource_names")
 

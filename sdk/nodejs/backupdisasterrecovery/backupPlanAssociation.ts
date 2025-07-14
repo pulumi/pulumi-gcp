@@ -146,9 +146,6 @@ export class BackupPlanAssociation extends pulumi.CustomResource {
     public readonly backupPlan!: pulumi.Output<string>;
     /**
      * The id of backupplan association
-     *
-     *
-     * - - -
      */
     public readonly backupPlanAssociationId!: pulumi.Output<string>;
     /**
@@ -268,9 +265,6 @@ export interface BackupPlanAssociationState {
     backupPlan?: pulumi.Input<string>;
     /**
      * The id of backupplan association
-     *
-     *
-     * - - -
      */
     backupPlanAssociationId?: pulumi.Input<string>;
     /**
@@ -331,9 +325,6 @@ export interface BackupPlanAssociationArgs {
     backupPlan: pulumi.Input<string>;
     /**
      * The id of backupplan association
-     *
-     *
-     * - - -
      */
     backupPlanAssociationId: pulumi.Input<string>;
     /**

@@ -46,7 +46,8 @@ public final class AppHostingBuildSourceCodebase {
      */
     private @Nullable String commitTime;
     /**
-     * @return Human-readable name. 63 character limit.
+     * @return (Output)
+     * The &#39;name&#39; field in a Git user&#39;s git.config. Required by Git.
      * 
      */
     private @Nullable String displayName;
@@ -109,7 +110,8 @@ public final class AppHostingBuildSourceCodebase {
         return Optional.ofNullable(this.commitTime);
     }
     /**
-     * @return Human-readable name. 63 character limit.
+     * @return (Output)
+     * The &#39;name&#39; field in a Git user&#39;s git.config. Required by Git.
      * 
      */
     public Optional<String> displayName() {

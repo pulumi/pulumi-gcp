@@ -33,9 +33,6 @@ class QueueArgs:
         """
         The set of arguments for constructing a Queue resource.
         :param pulumi.Input[builtins.str] location: The location of the queue
-               
-               
-               - - -
         :param pulumi.Input['QueueAppEngineRoutingOverrideArgs'] app_engine_routing_override: Overrides for task-level appEngineRouting. These settings apply only
                to App Engine tasks in this queue
                Structure is documented below.
@@ -78,9 +75,6 @@ class QueueArgs:
     def location(self) -> pulumi.Input[builtins.str]:
         """
         The location of the queue
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -205,9 +199,6 @@ class _QueueState:
         :param pulumi.Input['QueueHttpTargetArgs'] http_target: Modifies HTTP target for HTTP tasks.
                Structure is documented below.
         :param pulumi.Input[builtins.str] location: The location of the queue
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The queue name.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -273,9 +264,6 @@ class _QueueState:
     def location(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The location of the queue
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -538,9 +526,6 @@ class Queue(pulumi.CustomResource):
         :param pulumi.Input[Union['QueueHttpTargetArgs', 'QueueHttpTargetArgsDict']] http_target: Modifies HTTP target for HTTP tasks.
                Structure is documented below.
         :param pulumi.Input[builtins.str] location: The location of the queue
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The queue name.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -797,9 +782,6 @@ class Queue(pulumi.CustomResource):
         :param pulumi.Input[Union['QueueHttpTargetArgs', 'QueueHttpTargetArgsDict']] http_target: Modifies HTTP target for HTTP tasks.
                Structure is documented below.
         :param pulumi.Input[builtins.str] location: The location of the queue
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The queue name.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -854,9 +836,6 @@ class Queue(pulumi.CustomResource):
     def location(self) -> pulumi.Output[builtins.str]:
         """
         The location of the queue
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

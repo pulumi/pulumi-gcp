@@ -112,8 +112,6 @@ type MirroringDeploymentGroup struct {
 	Locations MirroringDeploymentGroupLocationArrayOutput `pulumi:"locations"`
 	// The ID to use for the new deployment group, which will become the final
 	// component of the deployment group's resource name.
-	//
-	// ***
 	MirroringDeploymentGroupId pulumi.StringOutput `pulumi:"mirroringDeploymentGroupId"`
 	// (Output)
 	// The connected endpoint group's resource name, for example:
@@ -213,8 +211,6 @@ type mirroringDeploymentGroupState struct {
 	Locations []MirroringDeploymentGroupLocation `pulumi:"locations"`
 	// The ID to use for the new deployment group, which will become the final
 	// component of the deployment group's resource name.
-	//
-	// ***
 	MirroringDeploymentGroupId *string `pulumi:"mirroringDeploymentGroupId"`
 	// (Output)
 	// The connected endpoint group's resource name, for example:
@@ -271,8 +267,6 @@ type MirroringDeploymentGroupState struct {
 	Locations MirroringDeploymentGroupLocationArrayInput
 	// The ID to use for the new deployment group, which will become the final
 	// component of the deployment group's resource name.
-	//
-	// ***
 	MirroringDeploymentGroupId pulumi.StringPtrInput
 	// (Output)
 	// The connected endpoint group's resource name, for example:
@@ -322,8 +316,6 @@ type mirroringDeploymentGroupArgs struct {
 	Location string `pulumi:"location"`
 	// The ID to use for the new deployment group, which will become the final
 	// component of the deployment group's resource name.
-	//
-	// ***
 	MirroringDeploymentGroupId string `pulumi:"mirroringDeploymentGroupId"`
 	// The network that will be used for all child deployments, for example:
 	// `projects/{project}/global/networks/{network}`.
@@ -347,8 +339,6 @@ type MirroringDeploymentGroupArgs struct {
 	Location pulumi.StringInput
 	// The ID to use for the new deployment group, which will become the final
 	// component of the deployment group's resource name.
-	//
-	// ***
 	MirroringDeploymentGroupId pulumi.StringInput
 	// The network that will be used for all child deployments, for example:
 	// `projects/{project}/global/networks/{network}`.
@@ -491,8 +481,6 @@ func (o MirroringDeploymentGroupOutput) Locations() MirroringDeploymentGroupLoca
 
 // The ID to use for the new deployment group, which will become the final
 // component of the deployment group's resource name.
-//
-// ***
 func (o MirroringDeploymentGroupOutput) MirroringDeploymentGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MirroringDeploymentGroup) pulumi.StringOutput { return v.MirroringDeploymentGroupId }).(pulumi.StringOutput)
 }

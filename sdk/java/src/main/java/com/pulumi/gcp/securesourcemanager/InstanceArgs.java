@@ -22,16 +22,12 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The name for the Instance.
      * 
-     * ***
-     * 
      */
     @Import(name="instanceId", required=true)
     private Output<String> instanceId;
 
     /**
      * @return The name for the Instance.
-     * 
-     * ***
      * 
      */
     public Output<String> instanceId() {
@@ -175,8 +171,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param instanceId The name for the Instance.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -187,8 +181,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param instanceId The name for the Instance.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// <summary>
         /// Which SLA the user intends this group to support.
         /// Possible values are: `PRODUCTION_NON_CRITICAL`, `PRODUCTION_CRITICAL`, `NO_SLA`, `AVAILABILITY_SLA_UNSPECIFIED`.
-        /// 
-        /// - - -
         /// </summary>
         [Input("availabilitySla")]
         public Input<string>? AvailabilitySla { get; set; }

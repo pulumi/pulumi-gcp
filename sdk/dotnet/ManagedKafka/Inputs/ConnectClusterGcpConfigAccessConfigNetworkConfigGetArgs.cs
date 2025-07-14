@@ -29,8 +29,6 @@ namespace Pulumi.Gcp.ManagedKafka.Inputs
 
         /// <summary>
         /// Additional DNS domain names from the subnet's network to be made visible to the Connect Cluster. When using MirrorMaker2, it's necessary to add the bootstrap address's dns domain name of the target cluster to make it visible to the connector. For example: my-kafka-cluster.us-central1.managedkafka.my-project.cloud.goog
-        /// 
-        /// - - -
         /// </summary>
         public InputList<string> DnsDomainNames
         {

@@ -17,7 +17,24 @@ public final class GetSecretVersionPlainArgs extends com.pulumi.resources.Invoke
     public static final GetSecretVersionPlainArgs Empty = new GetSecretVersionPlainArgs();
 
     /**
-     * If set to &#39;true&#39;, the secret data is
+     * If set to `false`, the `secret_data`
+     * will not be fetched. Default is `true`.
+     * 
+     */
+    @Import(name="fetchSecretData")
+    private @Nullable Boolean fetchSecretData;
+
+    /**
+     * @return If set to `false`, the `secret_data`
+     * will not be fetched. Default is `true`.
+     * 
+     */
+    public Optional<Boolean> fetchSecretData() {
+        return Optional.ofNullable(this.fetchSecretData);
+    }
+
+    /**
+     * If set to `true`, the secret data is
      * expected to be base64-encoded string.
      * 
      */
@@ -25,7 +42,7 @@ public final class GetSecretVersionPlainArgs extends com.pulumi.resources.Invoke
     private @Nullable Boolean isSecretDataBase64;
 
     /**
-     * @return If set to &#39;true&#39;, the secret data is
+     * @return If set to `true`, the secret data is
      * expected to be base64-encoded string.
      * 
      */
@@ -85,6 +102,7 @@ public final class GetSecretVersionPlainArgs extends com.pulumi.resources.Invoke
     private GetSecretVersionPlainArgs() {}
 
     private GetSecretVersionPlainArgs(GetSecretVersionPlainArgs $) {
+        this.fetchSecretData = $.fetchSecretData;
         this.isSecretDataBase64 = $.isSecretDataBase64;
         this.project = $.project;
         this.secret = $.secret;
@@ -110,7 +128,19 @@ public final class GetSecretVersionPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param isSecretDataBase64 If set to &#39;true&#39;, the secret data is
+         * @param fetchSecretData If set to `false`, the `secret_data`
+         * will not be fetched. Default is `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fetchSecretData(@Nullable Boolean fetchSecretData) {
+            $.fetchSecretData = fetchSecretData;
+            return this;
+        }
+
+        /**
+         * @param isSecretDataBase64 If set to `true`, the secret data is
          * expected to be base64-encoded string.
          * 
          * @return builder

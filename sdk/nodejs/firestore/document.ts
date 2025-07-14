@@ -170,9 +170,6 @@ export class Document extends pulumi.CustomResource {
     public readonly database!: pulumi.Output<string | undefined>;
     /**
      * The client-assigned document ID to use for this document during creation.
-     *
-     *
-     * - - -
      */
     public readonly documentId!: pulumi.Output<string>;
     /**
@@ -264,9 +261,6 @@ export interface DocumentState {
     database?: pulumi.Input<string>;
     /**
      * The client-assigned document ID to use for this document during creation.
-     *
-     *
-     * - - -
      */
     documentId?: pulumi.Input<string>;
     /**
@@ -307,9 +301,6 @@ export interface DocumentArgs {
     database?: pulumi.Input<string>;
     /**
      * The client-assigned document ID to use for this document during creation.
-     *
-     *
-     * - - -
      */
     documentId: pulumi.Input<string>;
     /**

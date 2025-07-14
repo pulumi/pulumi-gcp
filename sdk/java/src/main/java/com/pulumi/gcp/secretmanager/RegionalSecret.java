@@ -581,16 +581,12 @@ public class RegionalSecret extends com.pulumi.resources.CustomResource {
     /**
      * This must be unique within the project.
      * 
-     * ***
-     * 
      */
     @Export(name="secretId", refs={String.class}, tree="[0]")
     private Output<String> secretId;
 
     /**
      * @return This must be unique within the project.
-     * 
-     * ***
      * 
      */
     public Output<String> secretId() {

@@ -96,8 +96,6 @@ public final class GoogleApiSourceArgs extends com.pulumi.resources.ResourceArgs
      * The user-provided ID to be assigned to the GoogleApiSource. It should match
      * the format `^a-z?$`.
      * 
-     * ***
-     * 
      */
     @Import(name="googleApiSourceId", required=true)
     private Output<String> googleApiSourceId;
@@ -105,8 +103,6 @@ public final class GoogleApiSourceArgs extends com.pulumi.resources.ResourceArgs
     /**
      * @return The user-provided ID to be assigned to the GoogleApiSource. It should match
      * the format `^a-z?$`.
-     * 
-     * ***
      * 
      */
     public Output<String> googleApiSourceId() {
@@ -317,8 +313,6 @@ public final class GoogleApiSourceArgs extends com.pulumi.resources.ResourceArgs
          * @param googleApiSourceId The user-provided ID to be assigned to the GoogleApiSource. It should match
          * the format `^a-z?$`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -330,8 +324,6 @@ public final class GoogleApiSourceArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param googleApiSourceId The user-provided ID to be assigned to the GoogleApiSource. It should match
          * the format `^a-z?$`.
-         * 
-         * ***
          * 
          * @return builder
          * 

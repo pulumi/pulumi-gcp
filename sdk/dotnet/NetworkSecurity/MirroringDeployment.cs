@@ -185,9 +185,6 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// <summary>
         /// The ID to use for the new deployment, which will become the final
         /// component of the deployment's resource name.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("mirroringDeploymentId")]
         public Output<string> MirroringDeploymentId { get; private set; } = null!;
@@ -341,9 +338,6 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// <summary>
         /// The ID to use for the new deployment, which will become the final
         /// component of the deployment's resource name.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("mirroringDeploymentId", required: true)]
         public Input<string> MirroringDeploymentId { get; set; } = null!;
@@ -432,9 +426,6 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// <summary>
         /// The ID to use for the new deployment, which will become the final
         /// component of the deployment's resource name.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("mirroringDeploymentId")]
         public Input<string>? MirroringDeploymentId { get; set; }

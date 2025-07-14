@@ -186,10 +186,11 @@ namespace Pulumi.Gcp.Firebase
     public partial class AppHostingBuild : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
-        /// should be preserved when modifying objects. **Note**: This field is non-authoritative, and will only manage the
-        /// annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
-        /// present on the resource.
+        /// Unstructured key value map that may be set by external tools to
+        /// store and arbitrary metadata. They are not queryable and should be
+        /// preserved when modifying objects.
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
@@ -281,9 +282,10 @@ namespace Pulumi.Gcp.Firebase
         public Output<string> Image { get; private set; } = null!;
 
         /// <summary>
-        /// Unstructured key value map that can be used to organize and categorize objects. **Note**: This field is
-        /// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-        /// 'effective_labels' for all of the labels present on the resource.
+        /// Unstructured key value map that can be used to organize and categorize
+        /// objects.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -302,6 +304,10 @@ namespace Pulumi.Gcp.Firebase
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -398,10 +404,11 @@ namespace Pulumi.Gcp.Firebase
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
-        /// should be preserved when modifying objects. **Note**: This field is non-authoritative, and will only manage the
-        /// annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
-        /// present on the resource.
+        /// Unstructured key value map that may be set by external tools to
+        /// store and arbitrary metadata. They are not queryable and should be
+        /// preserved when modifying objects.
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -431,9 +438,10 @@ namespace Pulumi.Gcp.Firebase
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Unstructured key value map that can be used to organize and categorize objects. **Note**: This field is
-        /// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-        /// 'effective_labels' for all of the labels present on the resource.
+        /// Unstructured key value map that can be used to organize and categorize
+        /// objects.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -447,6 +455,10 @@ namespace Pulumi.Gcp.Firebase
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -469,10 +481,11 @@ namespace Pulumi.Gcp.Firebase
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
-        /// should be preserved when modifying objects. **Note**: This field is non-authoritative, and will only manage the
-        /// annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
-        /// present on the resource.
+        /// Unstructured key value map that may be set by external tools to
+        /// store and arbitrary metadata. They are not queryable and should be
+        /// preserved when modifying objects.
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -591,9 +604,10 @@ namespace Pulumi.Gcp.Firebase
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Unstructured key value map that can be used to organize and categorize objects. **Note**: This field is
-        /// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-        /// 'effective_labels' for all of the labels present on the resource.
+        /// Unstructured key value map that can be used to organize and categorize
+        /// objects.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -615,6 +629,10 @@ namespace Pulumi.Gcp.Firebase
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

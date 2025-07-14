@@ -50,8 +50,6 @@ type ServicePerimeterDryRunEgressPolicy struct {
 	// The perimeter etag is internally used to prevent overwriting the list of policies on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of policies. The policy defined in this resource is added or removed from that list, and then this etag is sent with the PATCH call along with the updated policies.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The name of the Service Perimeter to add this resource to.
-	//
-	// ***
 	Perimeter pulumi.StringOutput `pulumi:"perimeter"`
 	// Human readable title. Must be unique within the perimeter. Does not affect behavior.
 	Title pulumi.StringPtrOutput `pulumi:"title"`
@@ -102,8 +100,6 @@ type servicePerimeterDryRunEgressPolicyState struct {
 	// The perimeter etag is internally used to prevent overwriting the list of policies on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of policies. The policy defined in this resource is added or removed from that list, and then this etag is sent with the PATCH call along with the updated policies.
 	Etag *string `pulumi:"etag"`
 	// The name of the Service Perimeter to add this resource to.
-	//
-	// ***
 	Perimeter *string `pulumi:"perimeter"`
 	// Human readable title. Must be unique within the perimeter. Does not affect behavior.
 	Title *string `pulumi:"title"`
@@ -122,8 +118,6 @@ type ServicePerimeterDryRunEgressPolicyState struct {
 	// The perimeter etag is internally used to prevent overwriting the list of policies on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of policies. The policy defined in this resource is added or removed from that list, and then this etag is sent with the PATCH call along with the updated policies.
 	Etag pulumi.StringPtrInput
 	// The name of the Service Perimeter to add this resource to.
-	//
-	// ***
 	Perimeter pulumi.StringPtrInput
 	// Human readable title. Must be unique within the perimeter. Does not affect behavior.
 	Title pulumi.StringPtrInput
@@ -142,8 +136,6 @@ type servicePerimeterDryRunEgressPolicyArgs struct {
 	// Structure is documented below.
 	EgressTo *ServicePerimeterDryRunEgressPolicyEgressTo `pulumi:"egressTo"`
 	// The name of the Service Perimeter to add this resource to.
-	//
-	// ***
 	Perimeter string `pulumi:"perimeter"`
 	// Human readable title. Must be unique within the perimeter. Does not affect behavior.
 	Title *string `pulumi:"title"`
@@ -159,8 +151,6 @@ type ServicePerimeterDryRunEgressPolicyArgs struct {
 	// Structure is documented below.
 	EgressTo ServicePerimeterDryRunEgressPolicyEgressToPtrInput
 	// The name of the Service Perimeter to add this resource to.
-	//
-	// ***
 	Perimeter pulumi.StringInput
 	// Human readable title. Must be unique within the perimeter. Does not affect behavior.
 	Title pulumi.StringPtrInput
@@ -281,8 +271,6 @@ func (o ServicePerimeterDryRunEgressPolicyOutput) Etag() pulumi.StringOutput {
 }
 
 // The name of the Service Perimeter to add this resource to.
-//
-// ***
 func (o ServicePerimeterDryRunEgressPolicyOutput) Perimeter() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePerimeterDryRunEgressPolicy) pulumi.StringOutput { return v.Perimeter }).(pulumi.StringOutput)
 }

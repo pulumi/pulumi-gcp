@@ -106,11 +106,13 @@ export class Entitlement extends pulumi.CustomResource {
 
     /**
      * AdditionalNotificationTargets includes email addresses to be notified.
+     * Structure is documented below.
      */
     public readonly additionalNotificationTargets!: pulumi.Output<outputs.privilegedaccessmanager.EntitlementAdditionalNotificationTargets | undefined>;
     /**
-     * The approvals needed before access will be granted to a requester. No approvals will be needed if this field is null.
-     * Different types of approval workflows that can be used to gate privileged access granting.
+     * The approvals needed before access will be granted to a requester.
+     * No approvals will be needed if this field is null. Different types of approval workflows that can be used to gate privileged access granting.
+     * Structure is documented below.
      */
     public readonly approvalWorkflow!: pulumi.Output<outputs.privilegedaccessmanager.EntitlementApprovalWorkflow | undefined>;
     /**
@@ -248,11 +250,13 @@ export class Entitlement extends pulumi.CustomResource {
 export interface EntitlementState {
     /**
      * AdditionalNotificationTargets includes email addresses to be notified.
+     * Structure is documented below.
      */
     additionalNotificationTargets?: pulumi.Input<inputs.privilegedaccessmanager.EntitlementAdditionalNotificationTargets>;
     /**
-     * The approvals needed before access will be granted to a requester. No approvals will be needed if this field is null.
-     * Different types of approval workflows that can be used to gate privileged access granting.
+     * The approvals needed before access will be granted to a requester.
+     * No approvals will be needed if this field is null. Different types of approval workflows that can be used to gate privileged access granting.
+     * Structure is documented below.
      */
     approvalWorkflow?: pulumi.Input<inputs.privilegedaccessmanager.EntitlementApprovalWorkflow>;
     /**
@@ -321,11 +325,13 @@ export interface EntitlementState {
 export interface EntitlementArgs {
     /**
      * AdditionalNotificationTargets includes email addresses to be notified.
+     * Structure is documented below.
      */
     additionalNotificationTargets?: pulumi.Input<inputs.privilegedaccessmanager.EntitlementAdditionalNotificationTargets>;
     /**
-     * The approvals needed before access will be granted to a requester. No approvals will be needed if this field is null.
-     * Different types of approval workflows that can be used to gate privileged access granting.
+     * The approvals needed before access will be granted to a requester.
+     * No approvals will be needed if this field is null. Different types of approval workflows that can be used to gate privileged access granting.
+     * Structure is documented below.
      */
     approvalWorkflow?: pulumi.Input<inputs.privilegedaccessmanager.EntitlementApprovalWorkflow>;
     /**

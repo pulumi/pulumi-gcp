@@ -112,16 +112,17 @@ export class FolderFeed extends pulumi.CustomResource {
     }
 
     /**
-     * A list of the full names of the assets to receive updates. You must specify either or both of assetNames and assetTypes.
-     * Only asset updates matching specified assetNames and assetTypes are exported to the feed. For example:
-     * //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1. See
-     * https://cloud.google.com/apis/design/resourceNames#fullResourceName for more info.
+     * A list of the full names of the assets to receive updates. You must specify either or both of
+     * assetNames and assetTypes. Only asset updates matching specified assetNames and assetTypes are
+     * exported to the feed. For example: //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1.
+     * See https://cloud.google.com/apis/design/resourceNames#fullResourceName for more info.
      */
     public readonly assetNames!: pulumi.Output<string[] | undefined>;
     /**
-     * A list of types of the assets to receive updates. You must specify either or both of assetNames and assetTypes. Only
-     * asset updates matching specified assetNames and assetTypes are exported to the feed. For example:
-     * "compute.googleapis.com/Disk" See https://cloud.google.com/asset-inventory/docs/supported-asset-types for a list of all
+     * A list of types of the assets to receive updates. You must specify either or both of assetNames
+     * and assetTypes. Only asset updates matching specified assetNames and assetTypes are exported to
+     * the feed. For example: "compute.googleapis.com/Disk"
+     * See https://cloud.google.com/asset-inventory/docs/supported-asset-types for a list of all
      * supported asset types.
      */
     public readonly assetTypes!: pulumi.Output<string[] | undefined>;
@@ -132,15 +133,17 @@ export class FolderFeed extends pulumi.CustomResource {
      */
     public readonly billingProject!: pulumi.Output<string>;
     /**
-     * A condition which determines whether an asset update should be published. If specified, an asset will be returned only
-     * when the expression evaluates to true. When set, expression field must be a valid CEL expression on a TemporalAsset with
-     * name temporal_asset. Example: a Feed with expression "temporal_asset.deleted == true" will only publish Asset deletions.
-     * Other fields of condition are optional.
+     * A condition which determines whether an asset update should be published. If specified, an asset
+     * will be returned only when the expression evaluates to true. When set, expression field
+     * must be a valid CEL expression on a TemporalAsset with name temporal_asset. Example: a Feed with
+     * expression "temporal_asset.deleted == true" will only publish Asset deletions. Other fields of
+     * condition are optional.
+     * Structure is documented below.
      */
     public readonly condition!: pulumi.Output<outputs.cloudasset.FolderFeedCondition | undefined>;
     /**
-     * Asset content type. If not specified, no content but the asset name and type will be returned. Possible values:
-     * ["CONTENT_TYPE_UNSPECIFIED", "RESOURCE", "IAM_POLICY", "ORG_POLICY", "OS_INVENTORY", "ACCESS_POLICY"]
+     * Asset content type. If not specified, no content but the asset name and type will be returned.
+     * Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
      */
     public readonly contentType!: pulumi.Output<string | undefined>;
     /**
@@ -224,16 +227,17 @@ export class FolderFeed extends pulumi.CustomResource {
  */
 export interface FolderFeedState {
     /**
-     * A list of the full names of the assets to receive updates. You must specify either or both of assetNames and assetTypes.
-     * Only asset updates matching specified assetNames and assetTypes are exported to the feed. For example:
-     * //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1. See
-     * https://cloud.google.com/apis/design/resourceNames#fullResourceName for more info.
+     * A list of the full names of the assets to receive updates. You must specify either or both of
+     * assetNames and assetTypes. Only asset updates matching specified assetNames and assetTypes are
+     * exported to the feed. For example: //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1.
+     * See https://cloud.google.com/apis/design/resourceNames#fullResourceName for more info.
      */
     assetNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of types of the assets to receive updates. You must specify either or both of assetNames and assetTypes. Only
-     * asset updates matching specified assetNames and assetTypes are exported to the feed. For example:
-     * "compute.googleapis.com/Disk" See https://cloud.google.com/asset-inventory/docs/supported-asset-types for a list of all
+     * A list of types of the assets to receive updates. You must specify either or both of assetNames
+     * and assetTypes. Only asset updates matching specified assetNames and assetTypes are exported to
+     * the feed. For example: "compute.googleapis.com/Disk"
+     * See https://cloud.google.com/asset-inventory/docs/supported-asset-types for a list of all
      * supported asset types.
      */
     assetTypes?: pulumi.Input<pulumi.Input<string>[]>;
@@ -244,15 +248,17 @@ export interface FolderFeedState {
      */
     billingProject?: pulumi.Input<string>;
     /**
-     * A condition which determines whether an asset update should be published. If specified, an asset will be returned only
-     * when the expression evaluates to true. When set, expression field must be a valid CEL expression on a TemporalAsset with
-     * name temporal_asset. Example: a Feed with expression "temporal_asset.deleted == true" will only publish Asset deletions.
-     * Other fields of condition are optional.
+     * A condition which determines whether an asset update should be published. If specified, an asset
+     * will be returned only when the expression evaluates to true. When set, expression field
+     * must be a valid CEL expression on a TemporalAsset with name temporal_asset. Example: a Feed with
+     * expression "temporal_asset.deleted == true" will only publish Asset deletions. Other fields of
+     * condition are optional.
+     * Structure is documented below.
      */
     condition?: pulumi.Input<inputs.cloudasset.FolderFeedCondition>;
     /**
-     * Asset content type. If not specified, no content but the asset name and type will be returned. Possible values:
-     * ["CONTENT_TYPE_UNSPECIFIED", "RESOURCE", "IAM_POLICY", "ORG_POLICY", "OS_INVENTORY", "ACCESS_POLICY"]
+     * Asset content type. If not specified, no content but the asset name and type will be returned.
+     * Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
      */
     contentType?: pulumi.Input<string>;
     /**
@@ -284,16 +290,17 @@ export interface FolderFeedState {
  */
 export interface FolderFeedArgs {
     /**
-     * A list of the full names of the assets to receive updates. You must specify either or both of assetNames and assetTypes.
-     * Only asset updates matching specified assetNames and assetTypes are exported to the feed. For example:
-     * //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1. See
-     * https://cloud.google.com/apis/design/resourceNames#fullResourceName for more info.
+     * A list of the full names of the assets to receive updates. You must specify either or both of
+     * assetNames and assetTypes. Only asset updates matching specified assetNames and assetTypes are
+     * exported to the feed. For example: //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1.
+     * See https://cloud.google.com/apis/design/resourceNames#fullResourceName for more info.
      */
     assetNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of types of the assets to receive updates. You must specify either or both of assetNames and assetTypes. Only
-     * asset updates matching specified assetNames and assetTypes are exported to the feed. For example:
-     * "compute.googleapis.com/Disk" See https://cloud.google.com/asset-inventory/docs/supported-asset-types for a list of all
+     * A list of types of the assets to receive updates. You must specify either or both of assetNames
+     * and assetTypes. Only asset updates matching specified assetNames and assetTypes are exported to
+     * the feed. For example: "compute.googleapis.com/Disk"
+     * See https://cloud.google.com/asset-inventory/docs/supported-asset-types for a list of all
      * supported asset types.
      */
     assetTypes?: pulumi.Input<pulumi.Input<string>[]>;
@@ -304,15 +311,17 @@ export interface FolderFeedArgs {
      */
     billingProject: pulumi.Input<string>;
     /**
-     * A condition which determines whether an asset update should be published. If specified, an asset will be returned only
-     * when the expression evaluates to true. When set, expression field must be a valid CEL expression on a TemporalAsset with
-     * name temporal_asset. Example: a Feed with expression "temporal_asset.deleted == true" will only publish Asset deletions.
-     * Other fields of condition are optional.
+     * A condition which determines whether an asset update should be published. If specified, an asset
+     * will be returned only when the expression evaluates to true. When set, expression field
+     * must be a valid CEL expression on a TemporalAsset with name temporal_asset. Example: a Feed with
+     * expression "temporal_asset.deleted == true" will only publish Asset deletions. Other fields of
+     * condition are optional.
+     * Structure is documented below.
      */
     condition?: pulumi.Input<inputs.cloudasset.FolderFeedCondition>;
     /**
-     * Asset content type. If not specified, no content but the asset name and type will be returned. Possible values:
-     * ["CONTENT_TYPE_UNSPECIFIED", "RESOURCE", "IAM_POLICY", "ORG_POLICY", "OS_INVENTORY", "ACCESS_POLICY"]
+     * Asset content type. If not specified, no content but the asset name and type will be returned.
+     * Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
      */
     contentType?: pulumi.Input<string>;
     /**

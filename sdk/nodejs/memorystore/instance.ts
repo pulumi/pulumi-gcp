@@ -443,9 +443,6 @@ export class Instance extends pulumi.CustomResource {
      * * Must contain only lowercase letters, digits, and hyphens
      * * Must not end with a hyphen
      * * Must be unique within a location
-     *
-     *
-     * - - -
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
@@ -477,6 +474,11 @@ export class Instance extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly managedBackupSource!: pulumi.Output<outputs.memorystore.InstanceManagedBackupSource | undefined>;
+    /**
+     * Instance's Certificate Authority. This field will only be populated if instance's transitEncryptionMode is SERVER_AUTHENTICATION
+     * Structure is documented below.
+     */
+    public /*out*/ readonly managedServerCas!: pulumi.Output<outputs.memorystore.InstanceManagedServerCa[]>;
     /**
      * Optional. cluster or cluster-disabled.
      * Possible values:
@@ -609,6 +611,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["maintenancePolicy"] = state ? state.maintenancePolicy : undefined;
             resourceInputs["maintenanceSchedules"] = state ? state.maintenanceSchedules : undefined;
             resourceInputs["managedBackupSource"] = state ? state.managedBackupSource : undefined;
+            resourceInputs["managedServerCas"] = state ? state.managedServerCas : undefined;
             resourceInputs["mode"] = state ? state.mode : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["nodeConfigs"] = state ? state.nodeConfigs : undefined;
@@ -666,6 +669,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["endpoints"] = undefined /*out*/;
             resourceInputs["maintenanceSchedules"] = undefined /*out*/;
+            resourceInputs["managedServerCas"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["nodeConfigs"] = undefined /*out*/;
             resourceInputs["pscAttachmentDetails"] = undefined /*out*/;
@@ -766,9 +770,6 @@ export interface InstanceState {
      * * Must contain only lowercase letters, digits, and hyphens
      * * Must not end with a hyphen
      * * Must be unique within a location
-     *
-     *
-     * - - -
      */
     instanceId?: pulumi.Input<string>;
     /**
@@ -800,6 +801,11 @@ export interface InstanceState {
      * Structure is documented below.
      */
     managedBackupSource?: pulumi.Input<inputs.memorystore.InstanceManagedBackupSource>;
+    /**
+     * Instance's Certificate Authority. This field will only be populated if instance's transitEncryptionMode is SERVER_AUTHENTICATION
+     * Structure is documented below.
+     */
+    managedServerCas?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceManagedServerCa>[]>;
     /**
      * Optional. cluster or cluster-disabled.
      * Possible values:
@@ -955,9 +961,6 @@ export interface InstanceArgs {
      * * Must contain only lowercase letters, digits, and hyphens
      * * Must not end with a hyphen
      * * Must be unique within a location
-     *
-     *
-     * - - -
      */
     instanceId: pulumi.Input<string>;
     /**

@@ -235,9 +235,19 @@ public class RouterRoutePolicy extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }
@@ -286,16 +296,16 @@ public class RouterRoutePolicy extends com.pulumi.resources.CustomResource {
         return this.terms;
     }
     /**
-     * This is policy&#39;s type, which is one of IMPORT or EXPORT Possible values: [&#34;ROUTE_POLICY_TYPE_IMPORT&#34;,
-     * &#34;ROUTE_POLICY_TYPE_EXPORT&#34;]
+     * This is policy&#39;s type, which is one of IMPORT or EXPORT
+     * Possible values are: `ROUTE_POLICY_TYPE_IMPORT`, `ROUTE_POLICY_TYPE_EXPORT`.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
-     * @return This is policy&#39;s type, which is one of IMPORT or EXPORT Possible values: [&#34;ROUTE_POLICY_TYPE_IMPORT&#34;,
-     * &#34;ROUTE_POLICY_TYPE_EXPORT&#34;]
+     * @return This is policy&#39;s type, which is one of IMPORT or EXPORT
+     * Possible values are: `ROUTE_POLICY_TYPE_IMPORT`, `ROUTE_POLICY_TYPE_EXPORT`.
      * 
      */
     public Output<Optional<String>> type() {

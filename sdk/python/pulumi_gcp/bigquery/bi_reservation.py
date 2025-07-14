@@ -29,9 +29,6 @@ class BiReservationArgs:
         """
         The set of arguments for constructing a BiReservation resource.
         :param pulumi.Input[builtins.str] location: LOCATION_DESCRIPTION
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['BiReservationPreferredTableArgs']]] preferred_tables: Preferred tables to use BI capacity for.
                Structure is documented below.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -51,9 +48,6 @@ class BiReservationArgs:
     def location(self) -> pulumi.Input[builtins.str]:
         """
         LOCATION_DESCRIPTION
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -112,9 +106,6 @@ class _BiReservationState:
         """
         Input properties used for looking up and filtering BiReservation resources.
         :param pulumi.Input[builtins.str] location: LOCATION_DESCRIPTION
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The resource name of the singleton BI reservation. Reservation names have the form `projects/{projectId}/locations/{locationId}/biReservation`.
         :param pulumi.Input[Sequence[pulumi.Input['BiReservationPreferredTableArgs']]] preferred_tables: Preferred tables to use BI capacity for.
                Structure is documented below.
@@ -142,9 +133,6 @@ class _BiReservationState:
     def location(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         LOCATION_DESCRIPTION
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -276,9 +264,6 @@ class BiReservation(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] location: LOCATION_DESCRIPTION
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[Union['BiReservationPreferredTableArgs', 'BiReservationPreferredTableArgsDict']]]] preferred_tables: Preferred tables to use BI capacity for.
                Structure is documented below.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -397,9 +382,6 @@ class BiReservation(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] location: LOCATION_DESCRIPTION
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The resource name of the singleton BI reservation. Reservation names have the form `projects/{projectId}/locations/{locationId}/biReservation`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['BiReservationPreferredTableArgs', 'BiReservationPreferredTableArgsDict']]]] preferred_tables: Preferred tables to use BI capacity for.
                Structure is documented below.
@@ -426,9 +408,6 @@ class BiReservation(pulumi.CustomResource):
     def location(self) -> pulumi.Output[builtins.str]:
         """
         LOCATION_DESCRIPTION
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

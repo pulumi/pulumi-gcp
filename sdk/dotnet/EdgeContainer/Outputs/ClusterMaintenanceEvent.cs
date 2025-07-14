@@ -49,8 +49,7 @@ namespace Pulumi.Gcp.EdgeContainer.Outputs
         /// </summary>
         public readonly string? State;
         /// <summary>
-        /// (Output)
-        /// The target version of the cluster.
+        /// The target cluster version. For example: "1.5.0".
         /// </summary>
         public readonly string? TargetVersion;
         /// <summary>

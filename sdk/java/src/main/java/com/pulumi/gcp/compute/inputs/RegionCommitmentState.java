@@ -184,8 +184,6 @@ public final class RegionCommitmentState extends com.pulumi.resources.ResourceAr
      * The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
      * Possible values are: `TWELVE_MONTH`, `THIRTY_SIX_MONTH`.
      * 
-     * ***
-     * 
      */
     @Import(name="plan")
     private @Nullable Output<String> plan;
@@ -194,8 +192,6 @@ public final class RegionCommitmentState extends com.pulumi.resources.ResourceAr
      * @return The plan for this commitment, which determines duration and discount rate.
      * The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
      * Possible values are: `TWELVE_MONTH`, `THIRTY_SIX_MONTH`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> plan() {
@@ -597,8 +593,6 @@ public final class RegionCommitmentState extends com.pulumi.resources.ResourceAr
          * The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
          * Possible values are: `TWELVE_MONTH`, `THIRTY_SIX_MONTH`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -611,8 +605,6 @@ public final class RegionCommitmentState extends com.pulumi.resources.ResourceAr
          * @param plan The plan for this commitment, which determines duration and discount rate.
          * The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
          * Possible values are: `TWELVE_MONTH`, `THIRTY_SIX_MONTH`.
-         * 
-         * ***
          * 
          * @return builder
          * 

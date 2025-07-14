@@ -95,8 +95,6 @@ public class SourceIamPolicy extends com.pulumi.resources.CustomResource {
      * The organization whose Cloud Security Command Center the Source
      * lives in.
      * 
-     * ***
-     * 
      */
     @Export(name="organization", refs={String.class}, tree="[0]")
     private Output<String> organization;
@@ -104,8 +102,6 @@ public class SourceIamPolicy extends com.pulumi.resources.CustomResource {
     /**
      * @return The organization whose Cloud Security Command Center the Source
      * lives in.
-     * 
-     * ***
      * 
      */
     public Output<String> organization() {

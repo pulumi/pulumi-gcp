@@ -146,8 +146,6 @@ type GlossaryTerm struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location where the glossary term should reside.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the GlossaryTerm. Format: projects/{projectId}/locations/{locationId}/glossaries/{glossaryId}/categories/{termId}
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -224,8 +222,6 @@ type glossaryTermState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the glossary term should reside.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// The resource name of the GlossaryTerm. Format: projects/{projectId}/locations/{locationId}/glossaries/{glossaryId}/categories/{termId}
 	Name *string `pulumi:"name"`
@@ -262,8 +258,6 @@ type GlossaryTermState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location where the glossary term should reside.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// The resource name of the GlossaryTerm. Format: projects/{projectId}/locations/{locationId}/glossaries/{glossaryId}/categories/{termId}
 	Name pulumi.StringPtrInput
@@ -300,8 +294,6 @@ type glossaryTermArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the glossary term should reside.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// The immediate parent of the GlossaryTerm in the resource-hierarchy. It can either be a Glossary or a Term. Format: projects/{projectId}/locations/{locationId}/glossaries/{glossaryId} OR projects/{projectId}/locations/{locationId}/glossaries/{glossaryId}/terms/{termId}
 	Parent string `pulumi:"parent"`
@@ -326,8 +318,6 @@ type GlossaryTermArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location where the glossary term should reside.
-	//
-	// ***
 	Location pulumi.StringInput
 	// The immediate parent of the GlossaryTerm in the resource-hierarchy. It can either be a Glossary or a Term. Format: projects/{projectId}/locations/{locationId}/glossaries/{glossaryId} OR projects/{projectId}/locations/{locationId}/glossaries/{glossaryId}/terms/{termId}
 	Parent pulumi.StringInput
@@ -459,8 +449,6 @@ func (o GlossaryTermOutput) Labels() pulumi.StringMapOutput {
 }
 
 // The location where the glossary term should reside.
-//
-// ***
 func (o GlossaryTermOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlossaryTerm) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

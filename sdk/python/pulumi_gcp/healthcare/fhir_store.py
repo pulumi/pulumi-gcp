@@ -40,9 +40,6 @@ class FhirStoreArgs:
         The set of arguments for constructing a FhirStore resource.
         :param pulumi.Input[builtins.str] dataset: Identifies the dataset addressed by this request. Must be in the format
                'projects/{project}/locations/{location}/datasets/{dataset}'
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] complex_data_type_reference_parsing: Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED by default after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
                Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
         :param pulumi.Input[builtins.bool] default_search_handling_strict: If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
@@ -142,9 +139,6 @@ class FhirStoreArgs:
         """
         Identifies the dataset addressed by this request. Must be in the format
         'projects/{project}/locations/{location}/datasets/{dataset}'
-
-
-        - - -
         """
         return pulumi.get(self, "dataset")
 
@@ -384,9 +378,6 @@ class _FhirStoreState:
                Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
         :param pulumi.Input[builtins.str] dataset: Identifies the dataset addressed by this request. Must be in the format
                'projects/{project}/locations/{location}/datasets/{dataset}'
-               
-               
-               - - -
         :param pulumi.Input[builtins.bool] default_search_handling_strict: If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
                If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
                The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
@@ -508,9 +499,6 @@ class _FhirStoreState:
         """
         Identifies the dataset addressed by this request. Must be in the format
         'projects/{project}/locations/{location}/datasets/{dataset}'
-
-
-        - - -
         """
         return pulumi.get(self, "dataset")
 
@@ -905,9 +893,6 @@ class FhirStore(pulumi.CustomResource):
                Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
         :param pulumi.Input[builtins.str] dataset: Identifies the dataset addressed by this request. Must be in the format
                'projects/{project}/locations/{location}/datasets/{dataset}'
-               
-               
-               - - -
         :param pulumi.Input[builtins.bool] default_search_handling_strict: If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
                If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
                The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
@@ -1201,9 +1186,6 @@ class FhirStore(pulumi.CustomResource):
                Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
         :param pulumi.Input[builtins.str] dataset: Identifies the dataset addressed by this request. Must be in the format
                'projects/{project}/locations/{location}/datasets/{dataset}'
-               
-               
-               - - -
         :param pulumi.Input[builtins.bool] default_search_handling_strict: If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
                If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
                The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
@@ -1306,9 +1288,6 @@ class FhirStore(pulumi.CustomResource):
         """
         Identifies the dataset addressed by this request. Must be in the format
         'projects/{project}/locations/{location}/datasets/{dataset}'
-
-
-        - - -
         """
         return pulumi.get(self, "dataset")
 

@@ -131,6 +131,10 @@ export class EncryptionSpec extends pulumi.CustomResource {
      * The location in which the encryptionSpec is to be initialized.
      */
     public readonly location!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
 
     /**
@@ -179,6 +183,10 @@ export interface EncryptionSpecState {
      * The location in which the encryptionSpec is to be initialized.
      */
     location?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
 }
 
@@ -195,5 +203,9 @@ export interface EncryptionSpecArgs {
      * The location in which the encryptionSpec is to be initialized.
      */
     location: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
 }

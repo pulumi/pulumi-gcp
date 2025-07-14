@@ -36,9 +36,6 @@ class EntryArgs:
         The set of arguments for constructing a Entry resource.
         :param pulumi.Input[builtins.str] entry_group: The name of the entry group this entry is in.
         :param pulumi.Input[builtins.str] entry_id: The id of the entry to create.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] description: Entry description, which can consist of several sentences or paragraphs that describe entry contents.
         :param pulumi.Input[builtins.str] display_name: Display information such as title and description. A short name to identify the entry,
                for example, "Analytics Data - Jan 2011".
@@ -102,9 +99,6 @@ class EntryArgs:
     def entry_id(self) -> pulumi.Input[builtins.str]:
         """
         The id of the entry to create.
-
-
-        - - -
         """
         return pulumi.get(self, "entry_id")
 
@@ -256,9 +250,6 @@ class _EntryState:
                for example, "Analytics Data - Jan 2011".
         :param pulumi.Input[builtins.str] entry_group: The name of the entry group this entry is in.
         :param pulumi.Input[builtins.str] entry_id: The id of the entry to create.
-               
-               
-               - - -
         :param pulumi.Input['EntryGcsFilesetSpecArgs'] gcs_fileset_spec: Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
                Structure is documented below.
         :param pulumi.Input[builtins.str] integrated_system: This field indicates the entry's source system that Data Catalog integrates with, such as BigQuery or Pub/Sub.
@@ -385,9 +376,6 @@ class _EntryState:
     def entry_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The id of the entry to create.
-
-
-        - - -
         """
         return pulumi.get(self, "entry_id")
 
@@ -647,9 +635,6 @@ class Entry(pulumi.CustomResource):
                for example, "Analytics Data - Jan 2011".
         :param pulumi.Input[builtins.str] entry_group: The name of the entry group this entry is in.
         :param pulumi.Input[builtins.str] entry_id: The id of the entry to create.
-               
-               
-               - - -
         :param pulumi.Input[Union['EntryGcsFilesetSpecArgs', 'EntryGcsFilesetSpecArgsDict']] gcs_fileset_spec: Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
                Structure is documented below.
         :param pulumi.Input[builtins.str] linked_resource: The resource this metadata entry refers to.
@@ -885,9 +870,6 @@ class Entry(pulumi.CustomResource):
                for example, "Analytics Data - Jan 2011".
         :param pulumi.Input[builtins.str] entry_group: The name of the entry group this entry is in.
         :param pulumi.Input[builtins.str] entry_id: The id of the entry to create.
-               
-               
-               - - -
         :param pulumi.Input[Union['EntryGcsFilesetSpecArgs', 'EntryGcsFilesetSpecArgsDict']] gcs_fileset_spec: Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
                Structure is documented below.
         :param pulumi.Input[builtins.str] integrated_system: This field indicates the entry's source system that Data Catalog integrates with, such as BigQuery or Pub/Sub.
@@ -985,9 +967,6 @@ class Entry(pulumi.CustomResource):
     def entry_id(self) -> pulumi.Output[builtins.str]:
         """
         The id of the entry to create.
-
-
-        - - -
         """
         return pulumi.get(self, "entry_id")
 

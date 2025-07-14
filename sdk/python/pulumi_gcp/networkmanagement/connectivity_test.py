@@ -49,15 +49,21 @@ class ConnectivityTestArgs:
                that you don't intend to test.
                Structure is documented below.
         :param pulumi.Input[builtins.bool] bypass_firewall_checks: Whether the analysis should skip firewall checking. Default value is false.
-        :param pulumi.Input[builtins.str] description: The user-supplied description of the Connectivity Test. Maximum of 512 characters.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-               labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-               resource.
+        :param pulumi.Input[builtins.str] description: The user-supplied description of the Connectivity Test.
+               Maximum of 512 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user-provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] name: Unique name for the connectivity test.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] protocol: IP Protocol of the test. When not provided, "TCP" is assumed.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] related_projects: Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross
-               project boundaries.
-        :param pulumi.Input[builtins.bool] round_trip: Whether run analysis for the return path from destination to source. Default value is false.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] related_projects: Other projects that may be relevant for reachability analysis.
+               This is applicable to scenarios where a test can cross project
+               boundaries.
+        :param pulumi.Input[builtins.bool] round_trip: Whether run analysis for the return path from destination to source.
+               Default value is false.
         """
         pulumi.set(__self__, "destination", destination)
         pulumi.set(__self__, "source", source)
@@ -130,7 +136,8 @@ class ConnectivityTestArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The user-supplied description of the Connectivity Test. Maximum of 512 characters.
+        The user-supplied description of the Connectivity Test.
+        Maximum of 512 characters.
         """
         return pulumi.get(self, "description")
 
@@ -142,9 +149,10 @@ class ConnectivityTestArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-        labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-        resource.
+        Resource labels to represent user-provided metadata.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -167,6 +175,10 @@ class ConnectivityTestArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -189,8 +201,9 @@ class ConnectivityTestArgs:
     @pulumi.getter(name="relatedProjects")
     def related_projects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross
-        project boundaries.
+        Other projects that may be relevant for reachability analysis.
+        This is applicable to scenarios where a test can cross project
+        boundaries.
         """
         return pulumi.get(self, "related_projects")
 
@@ -202,7 +215,8 @@ class ConnectivityTestArgs:
     @pulumi.getter(name="roundTrip")
     def round_trip(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Whether run analysis for the return path from destination to source. Default value is false.
+        Whether run analysis for the return path from destination to source.
+        Default value is false.
         """
         return pulumi.get(self, "round_trip")
 
@@ -229,7 +243,8 @@ class _ConnectivityTestState:
         """
         Input properties used for looking up and filtering ConnectivityTest resources.
         :param pulumi.Input[builtins.bool] bypass_firewall_checks: Whether the analysis should skip firewall checking. Default value is false.
-        :param pulumi.Input[builtins.str] description: The user-supplied description of the Connectivity Test. Maximum of 512 characters.
+        :param pulumi.Input[builtins.str] description: The user-supplied description of the Connectivity Test.
+               Maximum of 512 characters.
         :param pulumi.Input['ConnectivityTestDestinationArgs'] destination: Required. Destination specification of the Connectivity Test.
                You can use a combination of destination IP address, URI of a supported
                endpoint, project ID, or VPC network to identify the destination location.
@@ -238,16 +253,21 @@ class _ConnectivityTestState:
                destination that you don't intend to test.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-               labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-               resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user-provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] name: Unique name for the connectivity test.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] protocol: IP Protocol of the test. When not provided, "TCP" is assumed.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] related_projects: Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross
-               project boundaries.
-        :param pulumi.Input[builtins.bool] round_trip: Whether run analysis for the return path from destination to source. Default value is false.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] related_projects: Other projects that may be relevant for reachability analysis.
+               This is applicable to scenarios where a test can cross project
+               boundaries.
+        :param pulumi.Input[builtins.bool] round_trip: Whether run analysis for the return path from destination to source.
+               Default value is false.
         :param pulumi.Input['ConnectivityTestSourceArgs'] source: Required. Source specification of the Connectivity Test.
                You can use a combination of source IP address, URI of a supported
                endpoint, project ID, or VPC network to identify the source location.
@@ -297,7 +317,8 @@ class _ConnectivityTestState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The user-supplied description of the Connectivity Test. Maximum of 512 characters.
+        The user-supplied description of the Connectivity Test.
+        Maximum of 512 characters.
         """
         return pulumi.get(self, "description")
 
@@ -339,9 +360,10 @@ class _ConnectivityTestState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-        labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-        resource.
+        Resource labels to represent user-provided metadata.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -364,6 +386,10 @@ class _ConnectivityTestState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -399,8 +425,9 @@ class _ConnectivityTestState:
     @pulumi.getter(name="relatedProjects")
     def related_projects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross
-        project boundaries.
+        Other projects that may be relevant for reachability analysis.
+        This is applicable to scenarios where a test can cross project
+        boundaries.
         """
         return pulumi.get(self, "related_projects")
 
@@ -412,7 +439,8 @@ class _ConnectivityTestState:
     @pulumi.getter(name="roundTrip")
     def round_trip(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Whether run analysis for the return path from destination to source. Default value is false.
+        Whether run analysis for the return path from destination to source.
+        Default value is false.
         """
         return pulumi.get(self, "round_trip")
 
@@ -616,7 +644,8 @@ class ConnectivityTest(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.bool] bypass_firewall_checks: Whether the analysis should skip firewall checking. Default value is false.
-        :param pulumi.Input[builtins.str] description: The user-supplied description of the Connectivity Test. Maximum of 512 characters.
+        :param pulumi.Input[builtins.str] description: The user-supplied description of the Connectivity Test.
+               Maximum of 512 characters.
         :param pulumi.Input[Union['ConnectivityTestDestinationArgs', 'ConnectivityTestDestinationArgsDict']] destination: Required. Destination specification of the Connectivity Test.
                You can use a combination of destination IP address, URI of a supported
                endpoint, project ID, or VPC network to identify the destination location.
@@ -624,14 +653,19 @@ class ConnectivityTest(pulumi.CustomResource):
                ambiguous. However, the test result might include endpoints or use a
                destination that you don't intend to test.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-               labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-               resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user-provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] name: Unique name for the connectivity test.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] protocol: IP Protocol of the test. When not provided, "TCP" is assumed.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] related_projects: Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross
-               project boundaries.
-        :param pulumi.Input[builtins.bool] round_trip: Whether run analysis for the return path from destination to source. Default value is false.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] related_projects: Other projects that may be relevant for reachability analysis.
+               This is applicable to scenarios where a test can cross project
+               boundaries.
+        :param pulumi.Input[builtins.bool] round_trip: Whether run analysis for the return path from destination to source.
+               Default value is false.
         :param pulumi.Input[Union['ConnectivityTestSourceArgs', 'ConnectivityTestSourceArgsDict']] source: Required. Source specification of the Connectivity Test.
                You can use a combination of source IP address, URI of a supported
                endpoint, project ID, or VPC network to identify the source location.
@@ -885,7 +919,8 @@ class ConnectivityTest(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.bool] bypass_firewall_checks: Whether the analysis should skip firewall checking. Default value is false.
-        :param pulumi.Input[builtins.str] description: The user-supplied description of the Connectivity Test. Maximum of 512 characters.
+        :param pulumi.Input[builtins.str] description: The user-supplied description of the Connectivity Test.
+               Maximum of 512 characters.
         :param pulumi.Input[Union['ConnectivityTestDestinationArgs', 'ConnectivityTestDestinationArgsDict']] destination: Required. Destination specification of the Connectivity Test.
                You can use a combination of destination IP address, URI of a supported
                endpoint, project ID, or VPC network to identify the destination location.
@@ -894,16 +929,21 @@ class ConnectivityTest(pulumi.CustomResource):
                destination that you don't intend to test.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-               labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-               resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user-provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] name: Unique name for the connectivity test.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] protocol: IP Protocol of the test. When not provided, "TCP" is assumed.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] related_projects: Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross
-               project boundaries.
-        :param pulumi.Input[builtins.bool] round_trip: Whether run analysis for the return path from destination to source. Default value is false.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] related_projects: Other projects that may be relevant for reachability analysis.
+               This is applicable to scenarios where a test can cross project
+               boundaries.
+        :param pulumi.Input[builtins.bool] round_trip: Whether run analysis for the return path from destination to source.
+               Default value is false.
         :param pulumi.Input[Union['ConnectivityTestSourceArgs', 'ConnectivityTestSourceArgsDict']] source: Required. Source specification of the Connectivity Test.
                You can use a combination of source IP address, URI of a supported
                endpoint, project ID, or VPC network to identify the source location.
@@ -942,7 +982,8 @@ class ConnectivityTest(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The user-supplied description of the Connectivity Test. Maximum of 512 characters.
+        The user-supplied description of the Connectivity Test.
+        Maximum of 512 characters.
         """
         return pulumi.get(self, "description")
 
@@ -972,9 +1013,10 @@ class ConnectivityTest(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
         """
-        Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-        labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-        resource.
+        Resource labels to represent user-provided metadata.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -989,6 +1031,10 @@ class ConnectivityTest(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property
@@ -1012,8 +1058,9 @@ class ConnectivityTest(pulumi.CustomResource):
     @pulumi.getter(name="relatedProjects")
     def related_projects(self) -> pulumi.Output[Optional[Sequence[builtins.str]]]:
         """
-        Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross
-        project boundaries.
+        Other projects that may be relevant for reachability analysis.
+        This is applicable to scenarios where a test can cross project
+        boundaries.
         """
         return pulumi.get(self, "related_projects")
 
@@ -1021,7 +1068,8 @@ class ConnectivityTest(pulumi.CustomResource):
     @pulumi.getter(name="roundTrip")
     def round_trip(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
-        Whether run analysis for the return path from destination to source. Default value is false.
+        Whether run analysis for the return path from destination to source.
+        Default value is false.
         """
         return pulumi.get(self, "round_trip")
 

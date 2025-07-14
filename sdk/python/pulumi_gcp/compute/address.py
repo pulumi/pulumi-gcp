@@ -60,9 +60,6 @@ class AddressArgs:
                which means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] network: The URL of the network in which to reserve the address. This field
                can only be used with INTERNAL type with the VPC_PEERING and
                IPSEC_INTERCONNECT purposes.
@@ -216,9 +213,6 @@ class AddressArgs:
         which means the first character must be a lowercase letter, and all
         following characters must be a dash, lowercase letter, or digit,
         except the last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -386,9 +380,6 @@ class _AddressState:
                which means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] network: The URL of the network in which to reserve the address. This field
                can only be used with INTERNAL type with the VPC_PEERING and
                IPSEC_INTERCONNECT purposes.
@@ -595,9 +586,6 @@ class _AddressState:
         which means the first character must be a lowercase letter, and all
         following characters must be a dash, lowercase letter, or digit,
         except the last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -931,9 +919,6 @@ class Address(pulumi.CustomResource):
                which means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] network: The URL of the network in which to reserve the address. This field
                can only be used with INTERNAL type with the VPC_PEERING and
                IPSEC_INTERCONNECT purposes.
@@ -1230,9 +1215,6 @@ class Address(pulumi.CustomResource):
                which means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] network: The URL of the network in which to reserve the address. This field
                can only be used with INTERNAL type with the VPC_PEERING and
                IPSEC_INTERCONNECT purposes.
@@ -1388,9 +1370,6 @@ class Address(pulumi.CustomResource):
         which means the first character must be a lowercase letter, and all
         following characters must be a dash, lowercase letter, or digit,
         except the last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

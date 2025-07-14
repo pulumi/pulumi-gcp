@@ -38,9 +38,6 @@ class GoogleApiSourceArgs:
                "projects/{PROJECT_ID}/locations/{region}/messagesBuses/{MESSAGE_BUS_ID)
         :param pulumi.Input[builtins.str] google_api_source_id: The user-provided ID to be assigned to the GoogleApiSource. It should match
                the format `^a-z?$`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Resource annotations.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -95,9 +92,6 @@ class GoogleApiSourceArgs:
         """
         The user-provided ID to be assigned to the GoogleApiSource. It should match
         the format `^a-z?$`.
-
-
-        - - -
         """
         return pulumi.get(self, "google_api_source_id")
 
@@ -240,9 +234,6 @@ class _GoogleApiSourceState:
                the client has an up-to-date value before proceeding.
         :param pulumi.Input[builtins.str] google_api_source_id: The user-provided ID to be assigned to the GoogleApiSource. It should match
                the format `^a-z?$`.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -403,9 +394,6 @@ class _GoogleApiSourceState:
         """
         The user-provided ID to be assigned to the GoogleApiSource. It should match
         the format `^a-z?$`.
-
-
-        - - -
         """
         return pulumi.get(self, "google_api_source_id")
 
@@ -610,9 +598,6 @@ class GoogleApiSource(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] display_name: Resource display name.
         :param pulumi.Input[builtins.str] google_api_source_id: The user-provided ID to be assigned to the GoogleApiSource. It should match
                the format `^a-z?$`.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -800,9 +785,6 @@ class GoogleApiSource(pulumi.CustomResource):
                the client has an up-to-date value before proceeding.
         :param pulumi.Input[builtins.str] google_api_source_id: The user-provided ID to be assigned to the GoogleApiSource. It should match
                the format `^a-z?$`.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -919,9 +901,6 @@ class GoogleApiSource(pulumi.CustomResource):
         """
         The user-provided ID to be assigned to the GoogleApiSource. It should match
         the format `^a-z?$`.
-
-
-        - - -
         """
         return pulumi.get(self, "google_api_source_id")
 

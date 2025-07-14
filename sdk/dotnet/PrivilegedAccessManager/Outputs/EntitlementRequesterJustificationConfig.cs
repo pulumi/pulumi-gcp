@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.PrivilegedAccessManager.Outputs
         public readonly Outputs.EntitlementRequesterJustificationConfigNotMandatory? NotMandatory;
         /// <summary>
         /// The requester has to provide a justification in the form of free flowing text.
-        /// 
-        /// - - -
         /// </summary>
         public readonly Outputs.EntitlementRequesterJustificationConfigUnstructured? Unstructured;
 

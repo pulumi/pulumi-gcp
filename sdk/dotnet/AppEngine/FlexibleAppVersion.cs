@@ -198,12 +198,14 @@ namespace Pulumi.Gcp.AppEngine
     {
         /// <summary>
         /// Serving configuration for Google Cloud Endpoints.
+        /// Structure is documented below.
         /// </summary>
         [Output("apiConfig")]
         public Output<Outputs.FlexibleAppVersionApiConfig?> ApiConfig { get; private set; } = null!;
 
         /// <summary>
         /// Automatic scaling is based on request rate, response latencies, and other application metrics.
+        /// Structure is documented below.
         /// </summary>
         [Output("automaticScaling")]
         public Output<Outputs.FlexibleAppVersionAutomaticScaling?> AutomaticScaling { get; private set; } = null!;
@@ -215,64 +217,72 @@ namespace Pulumi.Gcp.AppEngine
         public Output<ImmutableDictionary<string, string>?> BetaSettings { get; private set; } = null!;
 
         /// <summary>
-        /// Duration that static files should be cached by web proxies and browsers. Only applicable if the corresponding
-        /// StaticFilesHandler does not specify its own expiration time.
+        /// Duration that static files should be cached by web proxies and browsers.
+        /// Only applicable if the corresponding StaticFilesHandler does not specify its own expiration time.
         /// </summary>
         [Output("defaultExpiration")]
         public Output<string?> DefaultExpiration { get; private set; } = null!;
 
         /// <summary>
-        /// If set to 'true', the service will be deleted if it is the last version.
+        /// If set to `true`, the service will be deleted if it is the last version.
         /// </summary>
         [Output("deleteServiceOnDestroy")]
         public Output<bool?> DeleteServiceOnDestroy { get; private set; } = null!;
 
         /// <summary>
         /// Code and application artifacts that make up this version.
+        /// Structure is documented below.
         /// </summary>
         [Output("deployment")]
         public Output<Outputs.FlexibleAppVersionDeployment?> Deployment { get; private set; } = null!;
 
         /// <summary>
         /// Code and application artifacts that make up this version.
+        /// Structure is documented below.
         /// </summary>
         [Output("endpointsApiService")]
         public Output<Outputs.FlexibleAppVersionEndpointsApiService?> EndpointsApiService { get; private set; } = null!;
 
         /// <summary>
         /// The entrypoint for the application.
+        /// Structure is documented below.
         /// </summary>
         [Output("entrypoint")]
         public Output<Outputs.FlexibleAppVersionEntrypoint?> Entrypoint { get; private set; } = null!;
 
+        /// <summary>
+        /// Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
+        /// </summary>
         [Output("envVariables")]
         public Output<ImmutableDictionary<string, string>?> EnvVariables { get; private set; } = null!;
 
         /// <summary>
         /// Runtime settings for App Engine flexible environment.
+        /// Structure is documented below.
         /// </summary>
         [Output("flexibleRuntimeSettings")]
         public Output<Outputs.FlexibleAppVersionFlexibleRuntimeSettings?> FlexibleRuntimeSettings { get; private set; } = null!;
 
         /// <summary>
-        /// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
-        /// request and other request handlers are not attempted.
+        /// An ordered list of URL-matching patterns that should be applied to incoming requests.
+        /// The first matching URL handles the request and other request handlers are not attempted.
+        /// Structure is documented below.
         /// </summary>
         [Output("handlers")]
         public Output<ImmutableArray<Outputs.FlexibleAppVersionHandler>> Handlers { get; private set; } = null!;
 
         /// <summary>
-        /// A list of the types of messages that this application is able to receive. Possible values: ["INBOUND_SERVICE_MAIL",
-        /// "INBOUND_SERVICE_MAIL_BOUNCE", "INBOUND_SERVICE_XMPP_ERROR", "INBOUND_SERVICE_XMPP_MESSAGE",
-        /// "INBOUND_SERVICE_XMPP_SUBSCRIBE", "INBOUND_SERVICE_XMPP_PRESENCE", "INBOUND_SERVICE_CHANNEL_PRESENCE",
-        /// "INBOUND_SERVICE_WARMUP"]
+        /// A list of the types of messages that this application is able to receive.
+        /// Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
         /// </summary>
         [Output("inboundServices")]
         public Output<ImmutableArray<string>> InboundServices { get; private set; } = null!;
 
         /// <summary>
-        /// Instance class that is used to run this version. Valid values are AutomaticScaling: F1, F2, F4, F4_1G ManualScaling: B1,
-        /// B2, B4, B8, B4_1G Defaults to F1 for AutomaticScaling and B1 for ManualScaling.
+        /// Instance class that is used to run this version. Valid values are
+        /// AutomaticScaling: F1, F2, F4, F4_1G
+        /// ManualScaling: B1, B2, B4, B8, B4_1G
+        /// Defaults to F1 for AutomaticScaling and B1 for ManualScaling.
         /// </summary>
         [Output("instanceClass")]
         public Output<string?> InstanceClass { get; private set; } = null!;
@@ -285,8 +295,8 @@ namespace Pulumi.Gcp.AppEngine
         public Output<Outputs.FlexibleAppVersionLivenessCheck> LivenessCheck { get; private set; } = null!;
 
         /// <summary>
-        /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
-        /// its memory over time.
+        /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+        /// Structure is documented below.
         /// </summary>
         [Output("manualScaling")]
         public Output<Outputs.FlexibleAppVersionManualScaling?> ManualScaling { get; private set; } = null!;
@@ -299,6 +309,7 @@ namespace Pulumi.Gcp.AppEngine
 
         /// <summary>
         /// Extra network settings
+        /// Structure is documented below.
         /// </summary>
         [Output("network")]
         public Output<Outputs.FlexibleAppVersionNetwork?> Network { get; private set; } = null!;
@@ -310,11 +321,15 @@ namespace Pulumi.Gcp.AppEngine
         public Output<string?> NobuildFilesRegex { get; private set; } = null!;
 
         /// <summary>
-        /// If set to 'true', the application version will not be deleted.
+        /// If set to `true`, the application version will not be deleted.
         /// </summary>
         [Output("noopOnDestroy")]
         public Output<bool?> NoopOnDestroy { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -327,6 +342,7 @@ namespace Pulumi.Gcp.AppEngine
 
         /// <summary>
         /// Machine resources for a version.
+        /// Structure is documented below.
         /// </summary>
         [Output("resources")]
         public Output<Outputs.FlexibleAppVersionResources?> Resources { get; private set; } = null!;
@@ -338,9 +354,9 @@ namespace Pulumi.Gcp.AppEngine
         public Output<string> Runtime { get; private set; } = null!;
 
         /// <summary>
-        /// The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at
-        /// 'https://cloud.google.com/appengine/docs/standard/&lt;language&gt;/config/appref'\ Substitute '&lt;language&gt;' with 'python',
-        /// 'java', 'php', 'ruby', 'go' or 'nodejs'.
+        /// The version of the API in the given runtime environment.
+        /// Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/&lt;language&gt;/config/appref`\
+        /// Substitute `&lt;language&gt;` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
         /// </summary>
         [Output("runtimeApiVersion")]
         public Output<string> RuntimeApiVersion { get; private set; } = null!;
@@ -364,28 +380,30 @@ namespace Pulumi.Gcp.AppEngine
         public Output<string> Service { get; private set; } = null!;
 
         /// <summary>
-        /// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default
-        /// if this field is neither provided in app.yaml file nor through CLI flag.
+        /// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as
+        /// default if this field is neither provided in app.yaml file nor through CLI flag.
         /// </summary>
         [Output("serviceAccount")]
         public Output<string> ServiceAccount { get; private set; } = null!;
 
         /// <summary>
         /// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
-        /// Default value: "SERVING" Possible values: ["SERVING", "STOPPED"]
+        /// Default value is `SERVING`.
+        /// Possible values are: `SERVING`, `STOPPED`.
         /// </summary>
         [Output("servingStatus")]
         public Output<string?> ServingStatus { get; private set; } = null!;
 
         /// <summary>
-        /// Relative name of the version within the service. For example, 'v1'. Version names can contain only lowercase letters,
-        /// numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
+        /// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens.
+        /// Reserved names,"default", "latest", and any name with the prefix "ah-".
         /// </summary>
         [Output("versionId")]
         public Output<string?> VersionId { get; private set; } = null!;
 
         /// <summary>
         /// Enables VPC connectivity for standard apps.
+        /// Structure is documented below.
         /// </summary>
         [Output("vpcAccessConnector")]
         public Output<Outputs.FlexibleAppVersionVpcAccessConnector?> VpcAccessConnector { get; private set; } = null!;
@@ -438,12 +456,14 @@ namespace Pulumi.Gcp.AppEngine
     {
         /// <summary>
         /// Serving configuration for Google Cloud Endpoints.
+        /// Structure is documented below.
         /// </summary>
         [Input("apiConfig")]
         public Input<Inputs.FlexibleAppVersionApiConfigArgs>? ApiConfig { get; set; }
 
         /// <summary>
         /// Automatic scaling is based on request rate, response latencies, and other application metrics.
+        /// Structure is documented below.
         /// </summary>
         [Input("automaticScaling")]
         public Input<Inputs.FlexibleAppVersionAutomaticScalingArgs>? AutomaticScaling { get; set; }
@@ -461,38 +481,45 @@ namespace Pulumi.Gcp.AppEngine
         }
 
         /// <summary>
-        /// Duration that static files should be cached by web proxies and browsers. Only applicable if the corresponding
-        /// StaticFilesHandler does not specify its own expiration time.
+        /// Duration that static files should be cached by web proxies and browsers.
+        /// Only applicable if the corresponding StaticFilesHandler does not specify its own expiration time.
         /// </summary>
         [Input("defaultExpiration")]
         public Input<string>? DefaultExpiration { get; set; }
 
         /// <summary>
-        /// If set to 'true', the service will be deleted if it is the last version.
+        /// If set to `true`, the service will be deleted if it is the last version.
         /// </summary>
         [Input("deleteServiceOnDestroy")]
         public Input<bool>? DeleteServiceOnDestroy { get; set; }
 
         /// <summary>
         /// Code and application artifacts that make up this version.
+        /// Structure is documented below.
         /// </summary>
         [Input("deployment")]
         public Input<Inputs.FlexibleAppVersionDeploymentArgs>? Deployment { get; set; }
 
         /// <summary>
         /// Code and application artifacts that make up this version.
+        /// Structure is documented below.
         /// </summary>
         [Input("endpointsApiService")]
         public Input<Inputs.FlexibleAppVersionEndpointsApiServiceArgs>? EndpointsApiService { get; set; }
 
         /// <summary>
         /// The entrypoint for the application.
+        /// Structure is documented below.
         /// </summary>
         [Input("entrypoint")]
         public Input<Inputs.FlexibleAppVersionEntrypointArgs>? Entrypoint { get; set; }
 
         [Input("envVariables")]
         private InputMap<string>? _envVariables;
+
+        /// <summary>
+        /// Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
+        /// </summary>
         public InputMap<string> EnvVariables
         {
             get => _envVariables ?? (_envVariables = new InputMap<string>());
@@ -501,6 +528,7 @@ namespace Pulumi.Gcp.AppEngine
 
         /// <summary>
         /// Runtime settings for App Engine flexible environment.
+        /// Structure is documented below.
         /// </summary>
         [Input("flexibleRuntimeSettings")]
         public Input<Inputs.FlexibleAppVersionFlexibleRuntimeSettingsArgs>? FlexibleRuntimeSettings { get; set; }
@@ -509,8 +537,9 @@ namespace Pulumi.Gcp.AppEngine
         private InputList<Inputs.FlexibleAppVersionHandlerArgs>? _handlers;
 
         /// <summary>
-        /// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
-        /// request and other request handlers are not attempted.
+        /// An ordered list of URL-matching patterns that should be applied to incoming requests.
+        /// The first matching URL handles the request and other request handlers are not attempted.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.FlexibleAppVersionHandlerArgs> Handlers
         {
@@ -522,10 +551,8 @@ namespace Pulumi.Gcp.AppEngine
         private InputList<string>? _inboundServices;
 
         /// <summary>
-        /// A list of the types of messages that this application is able to receive. Possible values: ["INBOUND_SERVICE_MAIL",
-        /// "INBOUND_SERVICE_MAIL_BOUNCE", "INBOUND_SERVICE_XMPP_ERROR", "INBOUND_SERVICE_XMPP_MESSAGE",
-        /// "INBOUND_SERVICE_XMPP_SUBSCRIBE", "INBOUND_SERVICE_XMPP_PRESENCE", "INBOUND_SERVICE_CHANNEL_PRESENCE",
-        /// "INBOUND_SERVICE_WARMUP"]
+        /// A list of the types of messages that this application is able to receive.
+        /// Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
         /// </summary>
         public InputList<string> InboundServices
         {
@@ -534,8 +561,10 @@ namespace Pulumi.Gcp.AppEngine
         }
 
         /// <summary>
-        /// Instance class that is used to run this version. Valid values are AutomaticScaling: F1, F2, F4, F4_1G ManualScaling: B1,
-        /// B2, B4, B8, B4_1G Defaults to F1 for AutomaticScaling and B1 for ManualScaling.
+        /// Instance class that is used to run this version. Valid values are
+        /// AutomaticScaling: F1, F2, F4, F4_1G
+        /// ManualScaling: B1, B2, B4, B8, B4_1G
+        /// Defaults to F1 for AutomaticScaling and B1 for ManualScaling.
         /// </summary>
         [Input("instanceClass")]
         public Input<string>? InstanceClass { get; set; }
@@ -548,14 +577,15 @@ namespace Pulumi.Gcp.AppEngine
         public Input<Inputs.FlexibleAppVersionLivenessCheckArgs> LivenessCheck { get; set; } = null!;
 
         /// <summary>
-        /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
-        /// its memory over time.
+        /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+        /// Structure is documented below.
         /// </summary>
         [Input("manualScaling")]
         public Input<Inputs.FlexibleAppVersionManualScalingArgs>? ManualScaling { get; set; }
 
         /// <summary>
         /// Extra network settings
+        /// Structure is documented below.
         /// </summary>
         [Input("network")]
         public Input<Inputs.FlexibleAppVersionNetworkArgs>? Network { get; set; }
@@ -567,11 +597,15 @@ namespace Pulumi.Gcp.AppEngine
         public Input<string>? NobuildFilesRegex { get; set; }
 
         /// <summary>
-        /// If set to 'true', the application version will not be deleted.
+        /// If set to `true`, the application version will not be deleted.
         /// </summary>
         [Input("noopOnDestroy")]
         public Input<bool>? NoopOnDestroy { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -584,6 +618,7 @@ namespace Pulumi.Gcp.AppEngine
 
         /// <summary>
         /// Machine resources for a version.
+        /// Structure is documented below.
         /// </summary>
         [Input("resources")]
         public Input<Inputs.FlexibleAppVersionResourcesArgs>? Resources { get; set; }
@@ -595,9 +630,9 @@ namespace Pulumi.Gcp.AppEngine
         public Input<string> Runtime { get; set; } = null!;
 
         /// <summary>
-        /// The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at
-        /// 'https://cloud.google.com/appengine/docs/standard/&lt;language&gt;/config/appref'\ Substitute '&lt;language&gt;' with 'python',
-        /// 'java', 'php', 'ruby', 'go' or 'nodejs'.
+        /// The version of the API in the given runtime environment.
+        /// Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/&lt;language&gt;/config/appref`\
+        /// Substitute `&lt;language&gt;` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
         /// </summary>
         [Input("runtimeApiVersion")]
         public Input<string>? RuntimeApiVersion { get; set; }
@@ -621,28 +656,30 @@ namespace Pulumi.Gcp.AppEngine
         public Input<string> Service { get; set; } = null!;
 
         /// <summary>
-        /// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default
-        /// if this field is neither provided in app.yaml file nor through CLI flag.
+        /// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as
+        /// default if this field is neither provided in app.yaml file nor through CLI flag.
         /// </summary>
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }
 
         /// <summary>
         /// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
-        /// Default value: "SERVING" Possible values: ["SERVING", "STOPPED"]
+        /// Default value is `SERVING`.
+        /// Possible values are: `SERVING`, `STOPPED`.
         /// </summary>
         [Input("servingStatus")]
         public Input<string>? ServingStatus { get; set; }
 
         /// <summary>
-        /// Relative name of the version within the service. For example, 'v1'. Version names can contain only lowercase letters,
-        /// numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
+        /// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens.
+        /// Reserved names,"default", "latest", and any name with the prefix "ah-".
         /// </summary>
         [Input("versionId")]
         public Input<string>? VersionId { get; set; }
 
         /// <summary>
         /// Enables VPC connectivity for standard apps.
+        /// Structure is documented below.
         /// </summary>
         [Input("vpcAccessConnector")]
         public Input<Inputs.FlexibleAppVersionVpcAccessConnectorArgs>? VpcAccessConnector { get; set; }
@@ -657,12 +694,14 @@ namespace Pulumi.Gcp.AppEngine
     {
         /// <summary>
         /// Serving configuration for Google Cloud Endpoints.
+        /// Structure is documented below.
         /// </summary>
         [Input("apiConfig")]
         public Input<Inputs.FlexibleAppVersionApiConfigGetArgs>? ApiConfig { get; set; }
 
         /// <summary>
         /// Automatic scaling is based on request rate, response latencies, and other application metrics.
+        /// Structure is documented below.
         /// </summary>
         [Input("automaticScaling")]
         public Input<Inputs.FlexibleAppVersionAutomaticScalingGetArgs>? AutomaticScaling { get; set; }
@@ -680,38 +719,45 @@ namespace Pulumi.Gcp.AppEngine
         }
 
         /// <summary>
-        /// Duration that static files should be cached by web proxies and browsers. Only applicable if the corresponding
-        /// StaticFilesHandler does not specify its own expiration time.
+        /// Duration that static files should be cached by web proxies and browsers.
+        /// Only applicable if the corresponding StaticFilesHandler does not specify its own expiration time.
         /// </summary>
         [Input("defaultExpiration")]
         public Input<string>? DefaultExpiration { get; set; }
 
         /// <summary>
-        /// If set to 'true', the service will be deleted if it is the last version.
+        /// If set to `true`, the service will be deleted if it is the last version.
         /// </summary>
         [Input("deleteServiceOnDestroy")]
         public Input<bool>? DeleteServiceOnDestroy { get; set; }
 
         /// <summary>
         /// Code and application artifacts that make up this version.
+        /// Structure is documented below.
         /// </summary>
         [Input("deployment")]
         public Input<Inputs.FlexibleAppVersionDeploymentGetArgs>? Deployment { get; set; }
 
         /// <summary>
         /// Code and application artifacts that make up this version.
+        /// Structure is documented below.
         /// </summary>
         [Input("endpointsApiService")]
         public Input<Inputs.FlexibleAppVersionEndpointsApiServiceGetArgs>? EndpointsApiService { get; set; }
 
         /// <summary>
         /// The entrypoint for the application.
+        /// Structure is documented below.
         /// </summary>
         [Input("entrypoint")]
         public Input<Inputs.FlexibleAppVersionEntrypointGetArgs>? Entrypoint { get; set; }
 
         [Input("envVariables")]
         private InputMap<string>? _envVariables;
+
+        /// <summary>
+        /// Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
+        /// </summary>
         public InputMap<string> EnvVariables
         {
             get => _envVariables ?? (_envVariables = new InputMap<string>());
@@ -720,6 +766,7 @@ namespace Pulumi.Gcp.AppEngine
 
         /// <summary>
         /// Runtime settings for App Engine flexible environment.
+        /// Structure is documented below.
         /// </summary>
         [Input("flexibleRuntimeSettings")]
         public Input<Inputs.FlexibleAppVersionFlexibleRuntimeSettingsGetArgs>? FlexibleRuntimeSettings { get; set; }
@@ -728,8 +775,9 @@ namespace Pulumi.Gcp.AppEngine
         private InputList<Inputs.FlexibleAppVersionHandlerGetArgs>? _handlers;
 
         /// <summary>
-        /// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
-        /// request and other request handlers are not attempted.
+        /// An ordered list of URL-matching patterns that should be applied to incoming requests.
+        /// The first matching URL handles the request and other request handlers are not attempted.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.FlexibleAppVersionHandlerGetArgs> Handlers
         {
@@ -741,10 +789,8 @@ namespace Pulumi.Gcp.AppEngine
         private InputList<string>? _inboundServices;
 
         /// <summary>
-        /// A list of the types of messages that this application is able to receive. Possible values: ["INBOUND_SERVICE_MAIL",
-        /// "INBOUND_SERVICE_MAIL_BOUNCE", "INBOUND_SERVICE_XMPP_ERROR", "INBOUND_SERVICE_XMPP_MESSAGE",
-        /// "INBOUND_SERVICE_XMPP_SUBSCRIBE", "INBOUND_SERVICE_XMPP_PRESENCE", "INBOUND_SERVICE_CHANNEL_PRESENCE",
-        /// "INBOUND_SERVICE_WARMUP"]
+        /// A list of the types of messages that this application is able to receive.
+        /// Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
         /// </summary>
         public InputList<string> InboundServices
         {
@@ -753,8 +799,10 @@ namespace Pulumi.Gcp.AppEngine
         }
 
         /// <summary>
-        /// Instance class that is used to run this version. Valid values are AutomaticScaling: F1, F2, F4, F4_1G ManualScaling: B1,
-        /// B2, B4, B8, B4_1G Defaults to F1 for AutomaticScaling and B1 for ManualScaling.
+        /// Instance class that is used to run this version. Valid values are
+        /// AutomaticScaling: F1, F2, F4, F4_1G
+        /// ManualScaling: B1, B2, B4, B8, B4_1G
+        /// Defaults to F1 for AutomaticScaling and B1 for ManualScaling.
         /// </summary>
         [Input("instanceClass")]
         public Input<string>? InstanceClass { get; set; }
@@ -767,8 +815,8 @@ namespace Pulumi.Gcp.AppEngine
         public Input<Inputs.FlexibleAppVersionLivenessCheckGetArgs>? LivenessCheck { get; set; }
 
         /// <summary>
-        /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
-        /// its memory over time.
+        /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+        /// Structure is documented below.
         /// </summary>
         [Input("manualScaling")]
         public Input<Inputs.FlexibleAppVersionManualScalingGetArgs>? ManualScaling { get; set; }
@@ -781,6 +829,7 @@ namespace Pulumi.Gcp.AppEngine
 
         /// <summary>
         /// Extra network settings
+        /// Structure is documented below.
         /// </summary>
         [Input("network")]
         public Input<Inputs.FlexibleAppVersionNetworkGetArgs>? Network { get; set; }
@@ -792,11 +841,15 @@ namespace Pulumi.Gcp.AppEngine
         public Input<string>? NobuildFilesRegex { get; set; }
 
         /// <summary>
-        /// If set to 'true', the application version will not be deleted.
+        /// If set to `true`, the application version will not be deleted.
         /// </summary>
         [Input("noopOnDestroy")]
         public Input<bool>? NoopOnDestroy { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -809,6 +862,7 @@ namespace Pulumi.Gcp.AppEngine
 
         /// <summary>
         /// Machine resources for a version.
+        /// Structure is documented below.
         /// </summary>
         [Input("resources")]
         public Input<Inputs.FlexibleAppVersionResourcesGetArgs>? Resources { get; set; }
@@ -820,9 +874,9 @@ namespace Pulumi.Gcp.AppEngine
         public Input<string>? Runtime { get; set; }
 
         /// <summary>
-        /// The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at
-        /// 'https://cloud.google.com/appengine/docs/standard/&lt;language&gt;/config/appref'\ Substitute '&lt;language&gt;' with 'python',
-        /// 'java', 'php', 'ruby', 'go' or 'nodejs'.
+        /// The version of the API in the given runtime environment.
+        /// Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/&lt;language&gt;/config/appref`\
+        /// Substitute `&lt;language&gt;` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
         /// </summary>
         [Input("runtimeApiVersion")]
         public Input<string>? RuntimeApiVersion { get; set; }
@@ -846,28 +900,30 @@ namespace Pulumi.Gcp.AppEngine
         public Input<string>? Service { get; set; }
 
         /// <summary>
-        /// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default
-        /// if this field is neither provided in app.yaml file nor through CLI flag.
+        /// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as
+        /// default if this field is neither provided in app.yaml file nor through CLI flag.
         /// </summary>
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }
 
         /// <summary>
         /// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
-        /// Default value: "SERVING" Possible values: ["SERVING", "STOPPED"]
+        /// Default value is `SERVING`.
+        /// Possible values are: `SERVING`, `STOPPED`.
         /// </summary>
         [Input("servingStatus")]
         public Input<string>? ServingStatus { get; set; }
 
         /// <summary>
-        /// Relative name of the version within the service. For example, 'v1'. Version names can contain only lowercase letters,
-        /// numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
+        /// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens.
+        /// Reserved names,"default", "latest", and any name with the prefix "ah-".
         /// </summary>
         [Input("versionId")]
         public Input<string>? VersionId { get; set; }
 
         /// <summary>
         /// Enables VPC connectivity for standard apps.
+        /// Structure is documented below.
         /// </summary>
         [Input("vpcAccessConnector")]
         public Input<Inputs.FlexibleAppVersionVpcAccessConnectorGetArgs>? VpcAccessConnector { get; set; }

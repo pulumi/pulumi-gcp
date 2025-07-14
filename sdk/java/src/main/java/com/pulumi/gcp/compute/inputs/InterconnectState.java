@@ -233,8 +233,6 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
      * - DEDICATED: A dedicated physical interconnection with the customer.
      *   Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
      * 
-     * ***
-     * 
      */
     @Import(name="interconnectType")
     private @Nullable Output<String> interconnectType;
@@ -245,8 +243,6 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
      * - PARTNER: A partner-managed interconnection shared between customers though a partner.
      * - DEDICATED: A dedicated physical interconnection with the customer.
      *   Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> interconnectType() {
@@ -1030,8 +1026,6 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
          * - DEDICATED: A dedicated physical interconnection with the customer.
          *   Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -1046,8 +1040,6 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
          * - PARTNER: A partner-managed interconnection shared between customers though a partner.
          * - DEDICATED: A dedicated physical interconnection with the customer.
          *   Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
-         * 
-         * ***
          * 
          * @return builder
          * 

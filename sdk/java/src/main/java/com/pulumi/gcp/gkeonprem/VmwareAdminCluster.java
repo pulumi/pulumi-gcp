@@ -366,6 +366,7 @@ import javax.annotation.Nullable;
 public class VmwareAdminCluster extends com.pulumi.resources.CustomResource {
     /**
      * The VMware admin cluster addon node configuration.
+     * Structure is documented below.
      * 
      */
     @Export(name="addonNode", refs={VmwareAdminClusterAddonNode.class}, tree="[0]")
@@ -373,44 +374,59 @@ public class VmwareAdminCluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The VMware admin cluster addon node configuration.
+     * Structure is documented below.
      * 
      */
     public Output<VmwareAdminClusterAddonNode> addonNode() {
         return this.addonNode;
     }
     /**
-     * Annotations on the VMware Admin Cluster. This field has the same restrictions as Kubernetes annotations. The total size
-     * of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-     * &#39;effective_annotations&#39; for all of the annotations present on the resource.
+     * Annotations on the VMware Admin Cluster.
+     * This field has the same restrictions as Kubernetes annotations.
+     * The total size of all keys and values combined is limited to 256k.
+     * Key can have 2 segments: prefix (optional) and name (required),
+     * separated by a slash (/).
+     * Prefix must be a DNS subdomain.
+     * Name must be 63 characters or less, begin and end with alphanumerics,
+     * with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> annotations;
 
     /**
-     * @return Annotations on the VMware Admin Cluster. This field has the same restrictions as Kubernetes annotations. The total size
-     * of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-     * &#39;effective_annotations&#39; for all of the annotations present on the resource.
+     * @return Annotations on the VMware Admin Cluster.
+     * This field has the same restrictions as Kubernetes annotations.
+     * The total size of all keys and values combined is limited to 256k.
+     * Key can have 2 segments: prefix (optional) and name (required),
+     * separated by a slash (/).
+     * Prefix must be a DNS subdomain.
+     * Name must be 63 characters or less, begin and end with alphanumerics,
+     * with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     public Output<Map<String,String>> annotations() {
         return this.annotations;
     }
     /**
-     * AAGConfig specifies whether to spread VMware Admin Cluster nodes across at least three physical hosts in the datacenter.
+     * AAGConfig specifies whether to spread VMware Admin Cluster nodes across at
+     * least three physical hosts in the datacenter.
+     * Structure is documented below.
      * 
      */
     @Export(name="antiAffinityGroups", refs={VmwareAdminClusterAntiAffinityGroups.class}, tree="[0]")
     private Output<VmwareAdminClusterAntiAffinityGroups> antiAffinityGroups;
 
     /**
-     * @return AAGConfig specifies whether to spread VMware Admin Cluster nodes across at least three physical hosts in the datacenter.
+     * @return AAGConfig specifies whether to spread VMware Admin Cluster nodes across at
+     * least three physical hosts in the datacenter.
+     * Structure is documented below.
      * 
      */
     public Output<VmwareAdminClusterAntiAffinityGroups> antiAffinityGroups() {
@@ -418,6 +434,7 @@ public class VmwareAdminCluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * The VMware admin cluster authorization configuration.
+     * Structure is documented below.
      * 
      */
     @Export(name="authorization", refs={VmwareAdminClusterAuthorization.class}, tree="[0]")
@@ -425,6 +442,7 @@ public class VmwareAdminCluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The VMware admin cluster authorization configuration.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<VmwareAdminClusterAuthorization>> authorization() {
@@ -432,6 +450,7 @@ public class VmwareAdminCluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * Configuration for auto repairing.
+     * Structure is documented below.
      * 
      */
     @Export(name="autoRepairConfig", refs={VmwareAdminClusterAutoRepairConfig.class}, tree="[0]")
@@ -439,6 +458,7 @@ public class VmwareAdminCluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Configuration for auto repairing.
+     * Structure is documented below.
      * 
      */
     public Output<VmwareAdminClusterAutoRepairConfig> autoRepairConfig() {
@@ -460,6 +480,7 @@ public class VmwareAdminCluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * The VMware admin cluster control plane node configuration.
+     * Structure is documented below.
      * 
      */
     @Export(name="controlPlaneNode", refs={VmwareAdminClusterControlPlaneNode.class}, tree="[0]")
@@ -467,6 +488,7 @@ public class VmwareAdminCluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The VMware admin cluster control plane node configuration.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<VmwareAdminClusterControlPlaneNode>> controlPlaneNode() {
@@ -588,6 +610,7 @@ public class VmwareAdminCluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * Specifies the load balancer configuration for VMware admin cluster.
+     * Structure is documented below.
      * 
      */
     @Export(name="loadBalancer", refs={VmwareAdminClusterLoadBalancer.class}, tree="[0]")
@@ -595,6 +618,7 @@ public class VmwareAdminCluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Specifies the load balancer configuration for VMware admin cluster.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<VmwareAdminClusterLoadBalancer>> loadBalancer() {
@@ -692,6 +716,7 @@ public class VmwareAdminCluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * The VMware platform configuration.
+     * Structure is documented below.
      * 
      */
     @Export(name="platformConfig", refs={VmwareAdminClusterPlatformConfig.class}, tree="[0]")
@@ -699,6 +724,7 @@ public class VmwareAdminCluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The VMware platform configuration.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<VmwareAdminClusterPlatformConfig>> platformConfig() {
@@ -706,6 +732,7 @@ public class VmwareAdminCluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * Configuration for private registry.
+     * Structure is documented below.
      * 
      */
     @Export(name="privateRegistryConfig", refs={VmwareAdminClusterPrivateRegistryConfig.class}, tree="[0]")
@@ -713,14 +740,25 @@ public class VmwareAdminCluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Configuration for private registry.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<VmwareAdminClusterPrivateRegistryConfig>> privateRegistryConfig() {
         return Codegen.optional(this.privateRegistryConfig);
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }
@@ -800,6 +838,7 @@ public class VmwareAdminCluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * Specifies vCenter config for the admin cluster.
+     * Structure is documented below.
      * 
      */
     @Export(name="vcenter", refs={VmwareAdminClusterVcenter.class}, tree="[0]")
@@ -807,6 +846,7 @@ public class VmwareAdminCluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Specifies vCenter config for the admin cluster.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<VmwareAdminClusterVcenter>> vcenter() {

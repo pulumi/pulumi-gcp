@@ -18,7 +18,7 @@ public final class FutureReservationStatusLastKnownGoodStateFutureReservationSpe
     public static final FutureReservationStatusLastKnownGoodStateFutureReservationSpecsArgs Empty = new FutureReservationStatusLastKnownGoodStateFutureReservationSpecsArgs();
 
     /**
-     * The previous share settings of the Future Reservation.
+     * Settings for sharing the future reservation
      * Structure is documented below.
      * 
      */
@@ -26,7 +26,7 @@ public final class FutureReservationStatusLastKnownGoodStateFutureReservationSpe
     private @Nullable Output<FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsArgs> shareSettings;
 
     /**
-     * @return The previous share settings of the Future Reservation.
+     * @return Settings for sharing the future reservation
      * Structure is documented below.
      * 
      */
@@ -35,7 +35,7 @@ public final class FutureReservationStatusLastKnownGoodStateFutureReservationSpe
     }
 
     /**
-     * The previous instance related properties of the Future Reservation.
+     * Future Reservation configuration to indicate instance properties and total count.
      * Structure is documented below.
      * 
      */
@@ -43,7 +43,7 @@ public final class FutureReservationStatusLastKnownGoodStateFutureReservationSpe
     private @Nullable Output<FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesArgs> specificSkuProperties;
 
     /**
-     * @return The previous instance related properties of the Future Reservation.
+     * @return Future Reservation configuration to indicate instance properties and total count.
      * Structure is documented below.
      * 
      */
@@ -95,7 +95,7 @@ public final class FutureReservationStatusLastKnownGoodStateFutureReservationSpe
         }
 
         /**
-         * @param shareSettings The previous share settings of the Future Reservation.
+         * @param shareSettings Settings for sharing the future reservation
          * Structure is documented below.
          * 
          * @return builder
@@ -107,7 +107,7 @@ public final class FutureReservationStatusLastKnownGoodStateFutureReservationSpe
         }
 
         /**
-         * @param shareSettings The previous share settings of the Future Reservation.
+         * @param shareSettings Settings for sharing the future reservation
          * Structure is documented below.
          * 
          * @return builder
@@ -118,7 +118,7 @@ public final class FutureReservationStatusLastKnownGoodStateFutureReservationSpe
         }
 
         /**
-         * @param specificSkuProperties The previous instance related properties of the Future Reservation.
+         * @param specificSkuProperties Future Reservation configuration to indicate instance properties and total count.
          * Structure is documented below.
          * 
          * @return builder
@@ -130,7 +130,7 @@ public final class FutureReservationStatusLastKnownGoodStateFutureReservationSpe
         }
 
         /**
-         * @param specificSkuProperties The previous instance related properties of the Future Reservation.
+         * @param specificSkuProperties Future Reservation configuration to indicate instance properties and total count.
          * Structure is documented below.
          * 
          * @return builder

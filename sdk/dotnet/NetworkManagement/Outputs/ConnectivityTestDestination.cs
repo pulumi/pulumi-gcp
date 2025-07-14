@@ -59,8 +59,6 @@ namespace Pulumi.Gcp.NetworkManagement.Outputs
         /// 2. When you are using Shared VPC and the IP address that you provide is
         /// from the service project. In this case, the network that the IP address
         /// resides in is defined in the host project.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string? ProjectId;
         /// <summary>

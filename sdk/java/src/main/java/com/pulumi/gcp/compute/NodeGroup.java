@@ -410,16 +410,12 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
     /**
      * The URL of the node template to which this node group belongs.
      * 
-     * ***
-     * 
      */
     @Export(name="nodeTemplate", refs={String.class}, tree="[0]")
     private Output<String> nodeTemplate;
 
     /**
      * @return The URL of the node template to which this node group belongs.
-     * 
-     * ***
      * 
      */
     public Output<String> nodeTemplate() {

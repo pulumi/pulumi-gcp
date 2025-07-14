@@ -126,9 +126,6 @@ export class OauthClientCredential extends pulumi.CustomResource {
      * final component of the resource name. This value should be 4-32 characters,
      * and may contain the characters [a-z0-9-]. The prefix `gcp-` is
      * reserved for use by Google, and may not be specified.
-     *
-     *
-     * - - -
      */
     public readonly oauthClientCredentialId!: pulumi.Output<string>;
     /**
@@ -227,9 +224,6 @@ export interface OauthClientCredentialState {
      * final component of the resource name. This value should be 4-32 characters,
      * and may contain the characters [a-z0-9-]. The prefix `gcp-` is
      * reserved for use by Google, and may not be specified.
-     *
-     *
-     * - - -
      */
     oauthClientCredentialId?: pulumi.Input<string>;
     /**
@@ -266,9 +260,6 @@ export interface OauthClientCredentialArgs {
      * final component of the resource name. This value should be 4-32 characters,
      * and may contain the characters [a-z0-9-]. The prefix `gcp-` is
      * reserved for use by Google, and may not be specified.
-     *
-     *
-     * - - -
      */
     oauthClientCredentialId: pulumi.Input<string>;
     /**

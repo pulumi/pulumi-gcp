@@ -55,8 +55,6 @@ class AppConnectionApplicationEndpoint(dict):
         """
         :param builtins.str host: Hostname or IP address of the remote application endpoint.
         :param builtins.int port: Port of the remote application endpoint.
-               
-               - - -
         """
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "port", port)
@@ -74,8 +72,6 @@ class AppConnectionApplicationEndpoint(dict):
     def port(self) -> builtins.int:
         """
         Port of the remote application endpoint.
-
-        - - -
         """
         return pulumi.get(self, "port")
 
@@ -204,8 +200,6 @@ class AppConnectorPrincipalInfoServiceAccount(dict):
                  email: builtins.str):
         """
         :param builtins.str email: Email address of the service account.
-               
-               - - -
         """
         pulumi.set(__self__, "email", email)
 
@@ -214,8 +208,6 @@ class AppConnectorPrincipalInfoServiceAccount(dict):
     def email(self) -> builtins.str:
         """
         Email address of the service account.
-
-        - - -
         """
         return pulumi.get(self, "email")
 
@@ -278,8 +270,6 @@ class ApplicationEndpointMatcher(dict):
         """
         :param builtins.str hostname: Required. Hostname of the application.
         :param Sequence[builtins.int] ports: Optional. Ports of the application.
-               
-               - - -
         """
         pulumi.set(__self__, "hostname", hostname)
         if ports is not None:
@@ -298,8 +288,6 @@ class ApplicationEndpointMatcher(dict):
     def ports(self) -> Optional[Sequence[builtins.int]]:
         """
         Optional. Ports of the application.
-
-        - - -
         """
         return pulumi.get(self, "ports")
 
@@ -476,8 +464,6 @@ class SecurityGatewayApplicationEndpointMatcher(dict):
         """
         :param builtins.str hostname: Required. Hostname of the application.
         :param Sequence[builtins.int] ports: Optional. Ports of the application.
-               
-               - - -
         """
         pulumi.set(__self__, "hostname", hostname)
         if ports is not None:
@@ -496,8 +482,6 @@ class SecurityGatewayApplicationEndpointMatcher(dict):
     def ports(self) -> Optional[Sequence[builtins.int]]:
         """
         Optional. Ports of the application.
-
-        - - -
         """
         return pulumi.get(self, "ports")
 

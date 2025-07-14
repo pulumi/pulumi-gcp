@@ -32,9 +32,6 @@ class InterceptDeploymentGroupArgs:
         The set of arguments for constructing a InterceptDeploymentGroup resource.
         :param pulumi.Input[builtins.str] intercept_deployment_group_id: The ID to use for the new deployment group, which will become the final
                component of the deployment group's resource name.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: The cloud location of the deployment group, currently restricted to `global`.
         :param pulumi.Input[builtins.str] network: The network that will be used for all child deployments, for example:
                `projects/{project}/global/networks/{network}`.
@@ -63,9 +60,6 @@ class InterceptDeploymentGroupArgs:
         """
         The ID to use for the new deployment group, which will become the final
         component of the deployment group's resource name.
-
-
-        - - -
         """
         return pulumi.get(self, "intercept_deployment_group_id")
 
@@ -169,9 +163,6 @@ class _InterceptDeploymentGroupState:
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[builtins.str] intercept_deployment_group_id: The ID to use for the new deployment group, which will become the final
                component of the deployment group's resource name.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels are key/value pairs that help to organize and filter resources.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -290,9 +281,6 @@ class _InterceptDeploymentGroupState:
         """
         The ID to use for the new deployment group, which will become the final
         component of the deployment group's resource name.
-
-
-        - - -
         """
         return pulumi.get(self, "intercept_deployment_group_id")
 
@@ -509,9 +497,6 @@ class InterceptDeploymentGroup(pulumi.CustomResource):
                Used as additional context for the deployment group.
         :param pulumi.Input[builtins.str] intercept_deployment_group_id: The ID to use for the new deployment group, which will become the final
                component of the deployment group's resource name.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels are key/value pairs that help to organize and filter resources.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -672,9 +657,6 @@ class InterceptDeploymentGroup(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[builtins.str] intercept_deployment_group_id: The ID to use for the new deployment group, which will become the final
                component of the deployment group's resource name.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels are key/value pairs that help to organize and filter resources.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -767,9 +749,6 @@ class InterceptDeploymentGroup(pulumi.CustomResource):
         """
         The ID to use for the new deployment group, which will become the final
         component of the deployment group's resource name.
-
-
-        - - -
         """
         return pulumi.get(self, "intercept_deployment_group_id")
 

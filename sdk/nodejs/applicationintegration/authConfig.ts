@@ -144,9 +144,6 @@ export class AuthConfig extends pulumi.CustomResource {
     public /*out*/ readonly lastModifierEmail!: pulumi.Output<string>;
     /**
      * Location in which client needs to be provisioned.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -309,9 +306,6 @@ export interface AuthConfigState {
     lastModifierEmail?: pulumi.Input<string>;
     /**
      * Location in which client needs to be provisioned.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -382,9 +376,6 @@ export interface AuthConfigArgs {
     expiryNotificationDurations?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Location in which client needs to be provisioned.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

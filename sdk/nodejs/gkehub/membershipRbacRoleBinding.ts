@@ -123,6 +123,10 @@ export class MembershipRbacRoleBinding extends pulumi.CustomResource {
      * The resource name for the RBAC Role Binding
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * Role to bind to the principal.
@@ -238,6 +242,10 @@ export interface MembershipRbacRoleBindingState {
      * The resource name for the RBAC Role Binding
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * Role to bind to the principal.
@@ -282,6 +290,10 @@ export interface MembershipRbacRoleBindingArgs {
      * The client-provided identifier of the RBAC Role Binding.
      */
     membershipRbacRoleBindingId: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * Role to bind to the principal.

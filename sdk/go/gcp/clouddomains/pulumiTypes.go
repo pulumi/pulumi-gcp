@@ -474,8 +474,6 @@ type RegistrationContactSettingsAdminContactPostalAddress struct {
 	PostalCode *string `pulumi:"postalCode"`
 	// The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
 	// it might contain "care of" information.
-	//
-	// ***
 	Recipients []string `pulumi:"recipients"`
 	// Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
 	// ensure the value is correct. See https://cldr.unicode.org/ and
@@ -517,8 +515,6 @@ type RegistrationContactSettingsAdminContactPostalAddressArgs struct {
 	PostalCode pulumi.StringPtrInput `pulumi:"postalCode"`
 	// The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
 	// it might contain "care of" information.
-	//
-	// ***
 	Recipients pulumi.StringArrayInput `pulumi:"recipients"`
 	// Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
 	// ensure the value is correct. See https://cldr.unicode.org/ and
@@ -640,8 +636,6 @@ func (o RegistrationContactSettingsAdminContactPostalAddressOutput) PostalCode()
 
 // The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
 // it might contain "care of" information.
-//
-// ***
 func (o RegistrationContactSettingsAdminContactPostalAddressOutput) Recipients() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RegistrationContactSettingsAdminContactPostalAddress) []string { return v.Recipients }).(pulumi.StringArrayOutput)
 }
@@ -739,8 +733,6 @@ func (o RegistrationContactSettingsAdminContactPostalAddressPtrOutput) PostalCod
 
 // The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
 // it might contain "care of" information.
-//
-// ***
 func (o RegistrationContactSettingsAdminContactPostalAddressPtrOutput) Recipients() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RegistrationContactSettingsAdminContactPostalAddress) []string {
 		if v == nil {
@@ -985,8 +977,6 @@ type RegistrationContactSettingsRegistrantContactPostalAddress struct {
 	PostalCode *string `pulumi:"postalCode"`
 	// The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
 	// it might contain "care of" information.
-	//
-	// ***
 	Recipients []string `pulumi:"recipients"`
 	// Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
 	// ensure the value is correct. See https://cldr.unicode.org/ and
@@ -1028,8 +1018,6 @@ type RegistrationContactSettingsRegistrantContactPostalAddressArgs struct {
 	PostalCode pulumi.StringPtrInput `pulumi:"postalCode"`
 	// The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
 	// it might contain "care of" information.
-	//
-	// ***
 	Recipients pulumi.StringArrayInput `pulumi:"recipients"`
 	// Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
 	// ensure the value is correct. See https://cldr.unicode.org/ and
@@ -1151,8 +1139,6 @@ func (o RegistrationContactSettingsRegistrantContactPostalAddressOutput) PostalC
 
 // The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
 // it might contain "care of" information.
-//
-// ***
 func (o RegistrationContactSettingsRegistrantContactPostalAddressOutput) Recipients() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RegistrationContactSettingsRegistrantContactPostalAddress) []string { return v.Recipients }).(pulumi.StringArrayOutput)
 }
@@ -1250,8 +1236,6 @@ func (o RegistrationContactSettingsRegistrantContactPostalAddressPtrOutput) Post
 
 // The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
 // it might contain "care of" information.
-//
-// ***
 func (o RegistrationContactSettingsRegistrantContactPostalAddressPtrOutput) Recipients() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RegistrationContactSettingsRegistrantContactPostalAddress) []string {
 		if v == nil {
@@ -1496,8 +1480,6 @@ type RegistrationContactSettingsTechnicalContactPostalAddress struct {
 	PostalCode *string `pulumi:"postalCode"`
 	// The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
 	// it might contain "care of" information.
-	//
-	// ***
 	Recipients []string `pulumi:"recipients"`
 	// Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
 	// ensure the value is correct. See https://cldr.unicode.org/ and
@@ -1539,8 +1521,6 @@ type RegistrationContactSettingsTechnicalContactPostalAddressArgs struct {
 	PostalCode pulumi.StringPtrInput `pulumi:"postalCode"`
 	// The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
 	// it might contain "care of" information.
-	//
-	// ***
 	Recipients pulumi.StringArrayInput `pulumi:"recipients"`
 	// Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
 	// ensure the value is correct. See https://cldr.unicode.org/ and
@@ -1662,8 +1642,6 @@ func (o RegistrationContactSettingsTechnicalContactPostalAddressOutput) PostalCo
 
 // The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
 // it might contain "care of" information.
-//
-// ***
 func (o RegistrationContactSettingsTechnicalContactPostalAddressOutput) Recipients() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RegistrationContactSettingsTechnicalContactPostalAddress) []string { return v.Recipients }).(pulumi.StringArrayOutput)
 }
@@ -1761,8 +1739,6 @@ func (o RegistrationContactSettingsTechnicalContactPostalAddressPtrOutput) Posta
 
 // The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
 // it might contain "care of" information.
-//
-// ***
 func (o RegistrationContactSettingsTechnicalContactPostalAddressPtrOutput) Recipients() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RegistrationContactSettingsTechnicalContactPostalAddress) []string {
 		if v == nil {

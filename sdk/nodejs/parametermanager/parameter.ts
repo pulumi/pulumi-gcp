@@ -156,9 +156,6 @@ export class Parameter extends pulumi.CustomResource {
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * This must be unique within the project.
-     *
-     *
-     * - - -
      */
     public readonly parameterId!: pulumi.Output<string>;
     /**
@@ -273,9 +270,6 @@ export interface ParameterState {
     name?: pulumi.Input<string>;
     /**
      * This must be unique within the project.
-     *
-     *
-     * - - -
      */
     parameterId?: pulumi.Input<string>;
     /**
@@ -330,9 +324,6 @@ export interface ParameterArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * This must be unique within the project.
-     *
-     *
-     * - - -
      */
     parameterId: pulumi.Input<string>;
     /**

@@ -53,16 +53,12 @@ public final class InstancePartitionState extends com.pulumi.resources.ResourceA
     /**
      * The instance to create the instance partition in.
      * 
-     * ***
-     * 
      */
     @Import(name="instance")
     private @Nullable Output<String> instance;
 
     /**
      * @return The instance to create the instance partition in.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> instance() {
@@ -242,8 +238,6 @@ public final class InstancePartitionState extends com.pulumi.resources.ResourceA
         /**
          * @param instance The instance to create the instance partition in.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -254,8 +248,6 @@ public final class InstancePartitionState extends com.pulumi.resources.ResourceA
 
         /**
          * @param instance The instance to create the instance partition in.
-         * 
-         * ***
          * 
          * @return builder
          * 

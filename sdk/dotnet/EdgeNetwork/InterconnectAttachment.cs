@@ -125,9 +125,6 @@ namespace Pulumi.Gcp.EdgeNetwork
 
         /// <summary>
         /// A unique ID that identifies this interconnect attachment.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("interconnectAttachmentId")]
         public Output<string> InterconnectAttachmentId { get; private set; } = null!;
@@ -266,9 +263,6 @@ namespace Pulumi.Gcp.EdgeNetwork
 
         /// <summary>
         /// A unique ID that identifies this interconnect attachment.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("interconnectAttachmentId", required: true)]
         public Input<string> InterconnectAttachmentId { get; set; } = null!;
@@ -372,9 +366,6 @@ namespace Pulumi.Gcp.EdgeNetwork
 
         /// <summary>
         /// A unique ID that identifies this interconnect attachment.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("interconnectAttachmentId")]
         public Input<string>? InterconnectAttachmentId { get; set; }

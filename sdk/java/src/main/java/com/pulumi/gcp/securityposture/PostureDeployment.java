@@ -186,16 +186,12 @@ public class PostureDeployment extends com.pulumi.resources.CustomResource {
     /**
      * ID of the posture deployment.
      * 
-     * ***
-     * 
      */
     @Export(name="postureDeploymentId", refs={String.class}, tree="[0]")
     private Output<String> postureDeploymentId;
 
     /**
      * @return ID of the posture deployment.
-     * 
-     * ***
      * 
      */
     public Output<String> postureDeploymentId() {

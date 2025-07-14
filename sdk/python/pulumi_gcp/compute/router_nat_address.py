@@ -32,9 +32,6 @@ class RouterNatAddressArgs:
                natIpAllocateOption is set to MANUAL_ONLY.
         :param pulumi.Input[builtins.str] router: The name of the Cloud Router in which the referenced NAT service is configured.
         :param pulumi.Input[builtins.str] router_nat: The name of the Nat service in which this address will be configured.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] drain_nat_ips: A list of URLs of the IP resources to be drained. These IPs must be
                valid static external IPs that have been assigned to the NAT.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -81,9 +78,6 @@ class RouterNatAddressArgs:
     def router_nat(self) -> pulumi.Input[builtins.str]:
         """
         The name of the Nat service in which this address will be configured.
-
-
-        - - -
         """
         return pulumi.get(self, "router_nat")
 
@@ -150,9 +144,6 @@ class _RouterNatAddressState:
         :param pulumi.Input[builtins.str] region: Region where the NAT service reside.
         :param pulumi.Input[builtins.str] router: The name of the Cloud Router in which the referenced NAT service is configured.
         :param pulumi.Input[builtins.str] router_nat: The name of the Nat service in which this address will be configured.
-               
-               
-               - - -
         """
         if drain_nat_ips is not None:
             pulumi.set(__self__, "drain_nat_ips", drain_nat_ips)
@@ -235,9 +226,6 @@ class _RouterNatAddressState:
     def router_nat(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The name of the Nat service in which this address will be configured.
-
-
-        - - -
         """
         return pulumi.get(self, "router_nat")
 
@@ -315,9 +303,6 @@ class RouterNatAddress(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] region: Region where the NAT service reside.
         :param pulumi.Input[builtins.str] router: The name of the Cloud Router in which the referenced NAT service is configured.
         :param pulumi.Input[builtins.str] router_nat: The name of the Nat service in which this address will be configured.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -444,9 +429,6 @@ class RouterNatAddress(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] region: Region where the NAT service reside.
         :param pulumi.Input[builtins.str] router: The name of the Cloud Router in which the referenced NAT service is configured.
         :param pulumi.Input[builtins.str] router_nat: The name of the Nat service in which this address will be configured.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -508,9 +490,6 @@ class RouterNatAddress(pulumi.CustomResource):
     def router_nat(self) -> pulumi.Output[builtins.str]:
         """
         The name of the Nat service in which this address will be configured.
-
-
-        - - -
         """
         return pulumi.get(self, "router_nat")
 

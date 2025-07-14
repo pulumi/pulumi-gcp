@@ -5136,6 +5136,8 @@ type DatascanDataQualitySpecRule struct {
 	// ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
 	// Structure is documented below.
 	StatisticRangeExpectation *DatascanDataQualitySpecRuleStatisticRangeExpectation `pulumi:"statisticRangeExpectation"`
+	// Whether the Rule is active or suspended. Default = false.
+	Suspended *bool `pulumi:"suspended"`
 	// Table rule which evaluates whether the provided expression is true.
 	// Structure is documented below.
 	TableConditionExpectation *DatascanDataQualitySpecRuleTableConditionExpectation `pulumi:"tableConditionExpectation"`
@@ -5192,6 +5194,8 @@ type DatascanDataQualitySpecRuleArgs struct {
 	// ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
 	// Structure is documented below.
 	StatisticRangeExpectation DatascanDataQualitySpecRuleStatisticRangeExpectationPtrInput `pulumi:"statisticRangeExpectation"`
+	// Whether the Rule is active or suspended. Default = false.
+	Suspended pulumi.BoolPtrInput `pulumi:"suspended"`
 	// Table rule which evaluates whether the provided expression is true.
 	// Structure is documented below.
 	TableConditionExpectation DatascanDataQualitySpecRuleTableConditionExpectationPtrInput `pulumi:"tableConditionExpectation"`
@@ -5333,6 +5337,11 @@ func (o DatascanDataQualitySpecRuleOutput) StatisticRangeExpectation() DatascanD
 	return o.ApplyT(func(v DatascanDataQualitySpecRule) *DatascanDataQualitySpecRuleStatisticRangeExpectation {
 		return v.StatisticRangeExpectation
 	}).(DatascanDataQualitySpecRuleStatisticRangeExpectationPtrOutput)
+}
+
+// Whether the Rule is active or suspended. Default = false.
+func (o DatascanDataQualitySpecRuleOutput) Suspended() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecRule) *bool { return v.Suspended }).(pulumi.BoolPtrOutput)
 }
 
 // Table rule which evaluates whether the provided expression is true.
@@ -7171,8 +7180,6 @@ func (o DatascanExecutionSpecTriggerOnDemandPtrOutput) Elem() DatascanExecutionS
 
 type DatascanExecutionSpecTriggerSchedule struct {
 	// Cron schedule for running scans periodically. This field is required for Schedule scans.
-	//
-	// ***
 	Cron string `pulumi:"cron"`
 }
 
@@ -7189,8 +7196,6 @@ type DatascanExecutionSpecTriggerScheduleInput interface {
 
 type DatascanExecutionSpecTriggerScheduleArgs struct {
 	// Cron schedule for running scans periodically. This field is required for Schedule scans.
-	//
-	// ***
 	Cron pulumi.StringInput `pulumi:"cron"`
 }
 
@@ -7272,8 +7277,6 @@ func (o DatascanExecutionSpecTriggerScheduleOutput) ToDatascanExecutionSpecTrigg
 }
 
 // Cron schedule for running scans periodically. This field is required for Schedule scans.
-//
-// ***
 func (o DatascanExecutionSpecTriggerScheduleOutput) Cron() pulumi.StringOutput {
 	return o.ApplyT(func(v DatascanExecutionSpecTriggerSchedule) string { return v.Cron }).(pulumi.StringOutput)
 }
@@ -7303,8 +7306,6 @@ func (o DatascanExecutionSpecTriggerSchedulePtrOutput) Elem() DatascanExecutionS
 }
 
 // Cron schedule for running scans periodically. This field is required for Schedule scans.
-//
-// ***
 func (o DatascanExecutionSpecTriggerSchedulePtrOutput) Cron() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatascanExecutionSpecTriggerSchedule) *string {
 		if v == nil {
@@ -10186,13 +10187,10 @@ type TaskExecutionSpec struct {
 	// The arguments to pass to the task. The args can use placeholders of the format ${placeholder} as part of key/value string. These will be interpolated before passing the args to the driver. Currently supported placeholders: - ${taskId} - ${job_time} To pass positional args, set the key as TASK_ARGS. The value should be a comma-separated string of all the positional arguments. To use a delimiter other than comma, refer to https://cloud.google.com/sdk/gcloud/reference/topic/escaping. In case of other keys being present in the args, then TASK_ARGS will be passed as the last argument. An object containing a list of 'key': value pairs. Example: { 'name': 'wrench', 'mass': '1.3kg', 'count': '3' }.
 	Args map[string]string `pulumi:"args"`
 	// The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{locationId}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
-	//
-	// ***
 	KmsKey *string `pulumi:"kmsKey"`
 	// The maximum duration after which the job execution is expired. A duration in seconds with up to nine fractional digits, ending with 's'. Example: '3.5s'.
 	MaxJobExecutionLifetime *string `pulumi:"maxJobExecutionLifetime"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	// The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
 	Project *string `pulumi:"project"`
 	// Service account to use to execute a task. If not provided, the default Compute service account for the project is used.
 	ServiceAccount string `pulumi:"serviceAccount"`
@@ -10213,13 +10211,10 @@ type TaskExecutionSpecArgs struct {
 	// The arguments to pass to the task. The args can use placeholders of the format ${placeholder} as part of key/value string. These will be interpolated before passing the args to the driver. Currently supported placeholders: - ${taskId} - ${job_time} To pass positional args, set the key as TASK_ARGS. The value should be a comma-separated string of all the positional arguments. To use a delimiter other than comma, refer to https://cloud.google.com/sdk/gcloud/reference/topic/escaping. In case of other keys being present in the args, then TASK_ARGS will be passed as the last argument. An object containing a list of 'key': value pairs. Example: { 'name': 'wrench', 'mass': '1.3kg', 'count': '3' }.
 	Args pulumi.StringMapInput `pulumi:"args"`
 	// The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{locationId}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
-	//
-	// ***
 	KmsKey pulumi.StringPtrInput `pulumi:"kmsKey"`
 	// The maximum duration after which the job execution is expired. A duration in seconds with up to nine fractional digits, ending with 's'. Example: '3.5s'.
 	MaxJobExecutionLifetime pulumi.StringPtrInput `pulumi:"maxJobExecutionLifetime"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	// The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
 	Project pulumi.StringPtrInput `pulumi:"project"`
 	// Service account to use to execute a task. If not provided, the default Compute service account for the project is used.
 	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
@@ -10308,8 +10303,6 @@ func (o TaskExecutionSpecOutput) Args() pulumi.StringMapOutput {
 }
 
 // The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{locationId}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
-//
-// ***
 func (o TaskExecutionSpecOutput) KmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TaskExecutionSpec) *string { return v.KmsKey }).(pulumi.StringPtrOutput)
 }
@@ -10319,8 +10312,7 @@ func (o TaskExecutionSpecOutput) MaxJobExecutionLifetime() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v TaskExecutionSpec) *string { return v.MaxJobExecutionLifetime }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the project in which the resource belongs.
-// If it is not provided, the provider project is used.
+// The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
 func (o TaskExecutionSpecOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TaskExecutionSpec) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
@@ -10365,8 +10357,6 @@ func (o TaskExecutionSpecPtrOutput) Args() pulumi.StringMapOutput {
 }
 
 // The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{locationId}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
-//
-// ***
 func (o TaskExecutionSpecPtrOutput) KmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TaskExecutionSpec) *string {
 		if v == nil {
@@ -10386,8 +10376,7 @@ func (o TaskExecutionSpecPtrOutput) MaxJobExecutionLifetime() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The ID of the project in which the resource belongs.
-// If it is not provided, the provider project is used.
+// The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
 func (o TaskExecutionSpecPtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TaskExecutionSpec) *string {
 		if v == nil {

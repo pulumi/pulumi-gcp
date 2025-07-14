@@ -638,6 +638,7 @@ export class PreventionJobTrigger extends pulumi.CustomResource {
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
      * Controls what and how to inspect for findings.
+     * Structure is documented below.
      */
     public readonly inspectJob!: pulumi.Output<outputs.dataloss.PreventionJobTriggerInspectJob | undefined>;
     /**
@@ -654,12 +655,15 @@ export class PreventionJobTrigger extends pulumi.CustomResource {
      */
     public readonly parent!: pulumi.Output<string>;
     /**
-     * Whether the trigger is currently active. Default value: "HEALTHY" Possible values: ["PAUSED", "HEALTHY", "CANCELLED"]
+     * Whether the trigger is currently active.
+     * Default value is `HEALTHY`.
+     * Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
      */
     public readonly status!: pulumi.Output<string | undefined>;
     /**
-     * The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
-     * expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+     * The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
+     * that is, it must match the regular expression: [a-zA-Z\d-_]+.
+     * The maximum length is 100 characters. Can be empty to allow the system to generate one.
      */
     public readonly triggerId!: pulumi.Output<string>;
     /**
@@ -739,6 +743,7 @@ export interface PreventionJobTriggerState {
     displayName?: pulumi.Input<string>;
     /**
      * Controls what and how to inspect for findings.
+     * Structure is documented below.
      */
     inspectJob?: pulumi.Input<inputs.dataloss.PreventionJobTriggerInspectJob>;
     /**
@@ -755,12 +760,15 @@ export interface PreventionJobTriggerState {
      */
     parent?: pulumi.Input<string>;
     /**
-     * Whether the trigger is currently active. Default value: "HEALTHY" Possible values: ["PAUSED", "HEALTHY", "CANCELLED"]
+     * Whether the trigger is currently active.
+     * Default value is `HEALTHY`.
+     * Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
      */
     status?: pulumi.Input<string>;
     /**
-     * The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
-     * expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+     * The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
+     * that is, it must match the regular expression: [a-zA-Z\d-_]+.
+     * The maximum length is 100 characters. Can be empty to allow the system to generate one.
      */
     triggerId?: pulumi.Input<string>;
     /**
@@ -788,6 +796,7 @@ export interface PreventionJobTriggerArgs {
     displayName?: pulumi.Input<string>;
     /**
      * Controls what and how to inspect for findings.
+     * Structure is documented below.
      */
     inspectJob?: pulumi.Input<inputs.dataloss.PreventionJobTriggerInspectJob>;
     /**
@@ -796,12 +805,15 @@ export interface PreventionJobTriggerArgs {
      */
     parent: pulumi.Input<string>;
     /**
-     * Whether the trigger is currently active. Default value: "HEALTHY" Possible values: ["PAUSED", "HEALTHY", "CANCELLED"]
+     * Whether the trigger is currently active.
+     * Default value is `HEALTHY`.
+     * Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
      */
     status?: pulumi.Input<string>;
     /**
-     * The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
-     * expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+     * The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
+     * that is, it must match the regular expression: [a-zA-Z\d-_]+.
+     * The maximum length is 100 characters. Can be empty to allow the system to generate one.
      */
     triggerId?: pulumi.Input<string>;
     /**

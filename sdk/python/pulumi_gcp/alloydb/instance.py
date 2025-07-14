@@ -44,9 +44,6 @@ class InstanceArgs:
         :param pulumi.Input[builtins.str] cluster: Identifies the alloydb cluster. Must be in the format
                'projects/{project}/locations/{location}/clusters/{cluster_id}'
         :param pulumi.Input[builtins.str] instance_id: The ID of the alloydb instance.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] activation_policy: 'Specifies whether an instance needs to spin up. Once the instance is
                active, the activation policy can be updated to the `NEVER` to stop the
                instance. Likewise, the activation policy can be updated to `ALWAYS` to
@@ -137,9 +134,6 @@ class InstanceArgs:
     def instance_id(self) -> pulumi.Input[builtins.str]:
         """
         The ID of the alloydb instance.
-
-
-        - - -
         """
         return pulumi.get(self, "instance_id")
 
@@ -413,9 +407,6 @@ class _InstanceState:
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[builtins.str] gce_zone: The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
         :param pulumi.Input[builtins.str] instance_id: The ID of the alloydb instance.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] ip_address: The IP address for the Instance. This is the connection endpoint for an end-user application.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: User-defined labels for the alloydb instance.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -657,9 +648,6 @@ class _InstanceState:
     def instance_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The ID of the alloydb instance.
-
-
-        - - -
         """
         return pulumi.get(self, "instance_id")
 
@@ -1055,9 +1043,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] display_name: User-settable and human-readable display name for the Instance.
         :param pulumi.Input[builtins.str] gce_zone: The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
         :param pulumi.Input[builtins.str] instance_id: The ID of the alloydb instance.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: User-defined labels for the alloydb instance.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -1353,9 +1338,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[builtins.str] gce_zone: The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
         :param pulumi.Input[builtins.str] instance_id: The ID of the alloydb instance.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] ip_address: The IP address for the Instance. This is the connection endpoint for an end-user application.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: User-defined labels for the alloydb instance.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -1529,9 +1511,6 @@ class Instance(pulumi.CustomResource):
     def instance_id(self) -> pulumi.Output[builtins.str]:
         """
         The ID of the alloydb instance.
-
-
-        - - -
         """
         return pulumi.get(self, "instance_id")
 

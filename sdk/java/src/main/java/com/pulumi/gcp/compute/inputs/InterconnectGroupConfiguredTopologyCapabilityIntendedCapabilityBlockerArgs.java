@@ -97,18 +97,24 @@ public final class InterconnectGroupConfiguredTopologyCapabilityIntendedCapabili
     }
 
     /**
-     * (Output)
-     * Interconnects used to explain this blocker in more
-     * detail.
+     * Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
+     * strings. Users are encouraged, but not required, to use their preferred
+     * format for resource links as keys.
+     * Note that there are add-members and remove-members methods in gcloud.
+     * The size of this map is limited by an &#34;Interconnects per group&#34; quota.
+     * Structure is documented below.
      * 
      */
     @Import(name="interconnects")
     private @Nullable Output<List<String>> interconnects;
 
     /**
-     * @return (Output)
-     * Interconnects used to explain this blocker in more
-     * detail.
+     * @return Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
+     * strings. Users are encouraged, but not required, to use their preferred
+     * format for resource links as keys.
+     * Note that there are add-members and remove-members methods in gcloud.
+     * The size of this map is limited by an &#34;Interconnects per group&#34; quota.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<String>>> interconnects() {
@@ -305,9 +311,12 @@ public final class InterconnectGroupConfiguredTopologyCapabilityIntendedCapabili
         }
 
         /**
-         * @param interconnects (Output)
-         * Interconnects used to explain this blocker in more
-         * detail.
+         * @param interconnects Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
+         * strings. Users are encouraged, but not required, to use their preferred
+         * format for resource links as keys.
+         * Note that there are add-members and remove-members methods in gcloud.
+         * The size of this map is limited by an &#34;Interconnects per group&#34; quota.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -318,9 +327,12 @@ public final class InterconnectGroupConfiguredTopologyCapabilityIntendedCapabili
         }
 
         /**
-         * @param interconnects (Output)
-         * Interconnects used to explain this blocker in more
-         * detail.
+         * @param interconnects Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
+         * strings. Users are encouraged, but not required, to use their preferred
+         * format for resource links as keys.
+         * Note that there are add-members and remove-members methods in gcloud.
+         * The size of this map is limited by an &#34;Interconnects per group&#34; quota.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -330,9 +342,12 @@ public final class InterconnectGroupConfiguredTopologyCapabilityIntendedCapabili
         }
 
         /**
-         * @param interconnects (Output)
-         * Interconnects used to explain this blocker in more
-         * detail.
+         * @param interconnects Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
+         * strings. Users are encouraged, but not required, to use their preferred
+         * format for resource links as keys.
+         * Note that there are add-members and remove-members methods in gcloud.
+         * The size of this map is limited by an &#34;Interconnects per group&#34; quota.
+         * Structure is documented below.
          * 
          * @return builder
          * 

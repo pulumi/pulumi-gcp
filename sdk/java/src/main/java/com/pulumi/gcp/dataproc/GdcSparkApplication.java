@@ -643,16 +643,12 @@ public class GdcSparkApplication extends com.pulumi.resources.CustomResource {
     /**
      * The id of the application
      * 
-     * ***
-     * 
      */
     @Export(name="sparkApplicationId", refs={String.class}, tree="[0]")
     private Output<String> sparkApplicationId;
 
     /**
      * @return The id of the application
-     * 
-     * ***
      * 
      */
     public Output<String> sparkApplicationId() {

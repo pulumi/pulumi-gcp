@@ -50,16 +50,12 @@ public final class AppHostingDefaultDomainArgs extends com.pulumi.resources.Reso
     /**
      * Id of the domain. For default domain, it should be {{backend}}--{{project_id}}.{{location}}.hosted.app
      * 
-     * ***
-     * 
      */
     @Import(name="domainId", required=true)
     private Output<String> domainId;
 
     /**
      * @return Id of the domain. For default domain, it should be {{backend}}--{{project_id}}.{{location}}.hosted.app
-     * 
-     * ***
      * 
      */
     public Output<String> domainId() {
@@ -171,8 +167,6 @@ public final class AppHostingDefaultDomainArgs extends com.pulumi.resources.Reso
         /**
          * @param domainId Id of the domain. For default domain, it should be {{backend}}--{{project_id}}.{{location}}.hosted.app
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -183,8 +177,6 @@ public final class AppHostingDefaultDomainArgs extends com.pulumi.resources.Reso
 
         /**
          * @param domainId Id of the domain. For default domain, it should be {{backend}}--{{project_id}}.{{location}}.hosted.app
-         * 
-         * ***
          * 
          * @return builder
          * 

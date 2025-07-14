@@ -46,40 +46,58 @@ class InstanceArgs:
         :param pulumi.Input['InstanceOauthConfigArgs'] oauth_config: Looker Instance OAuth login settings.
                Structure is documented below.
         :param pulumi.Input['InstanceAdminSettingsArgs'] admin_settings: Looker instance Admin settings.
-        :param pulumi.Input[builtins.str] consumer_network: Network name in the consumer project in the format of: projects/{project}/global/networks/{network} Note that the
-               consumer network may be in a different GCP project than the consumer project that is hosting the Looker Instance.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] consumer_network: Network name in the consumer project in the format of: projects/{project}/global/networks/{network}
+               Note that the consumer network may be in a different GCP project than the consumer
+               project that is hosting the Looker Instance.
         :param pulumi.Input['InstanceCustomDomainArgs'] custom_domain: Custom domain settings for a Looker instance.
-        :param pulumi.Input[builtins.str] deletion_policy: Policy to determine if the cluster should be deleted forcefully. If setting deletion_policy = "FORCE", the Looker
-               instance will be deleted regardless of its nested resources. If set to "DEFAULT", Looker instances that still have
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] deletion_policy: Policy to determine if the cluster should be deleted forcefully.
+               If setting deletion_policy = "FORCE", the Looker instance will be deleted regardless
+               of its nested resources. If set to "DEFAULT", Looker instances that still have
                nested resources will return an error. Possible values: DEFAULT, FORCE
-        :param pulumi.Input['InstanceDenyMaintenancePeriodArgs'] deny_maintenance_period: Maintenance denial period for this instance. You must allow at least 14 days of maintenance availability between any two
-               deny maintenance periods.
+        :param pulumi.Input['InstanceDenyMaintenancePeriodArgs'] deny_maintenance_period: Maintenance denial period for this instance.
+               You must allow at least 14 days of maintenance availability
+               between any two deny maintenance periods.
+               Structure is documented below.
         :param pulumi.Input['InstanceEncryptionConfigArgs'] encryption_config: Looker instance encryption settings.
+               Structure is documented below.
         :param pulumi.Input[builtins.bool] fips_enabled: FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).
-        :param pulumi.Input['InstanceMaintenanceWindowArgs'] maintenance_window: Maintenance window for an instance. Maintenance of your instance takes place once a month, and will require your
-               instance to be restarted during updates, which will temporarily disrupt service.
+        :param pulumi.Input['InstanceMaintenanceWindowArgs'] maintenance_window: Maintenance window for an instance.
+               Maintenance of your instance takes place once a month, and will require
+               your instance to be restarted during updates, which will temporarily
+               disrupt service.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] name: The ID of the instance or a fully qualified identifier for the instance.
-        :param pulumi.Input[builtins.str] platform_edition: Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of
-               these values: - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable) - LOOKER_CORE_STANDARD: pay as you go standard
-               instance (Currently Unavailable) - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance -
-               LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-               - LOOKER_CORE_NONPROD_STANDARD_ANNUAL: nonprod subscription standard instance - LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL:
-               nonprod subscription enterprise instance - LOOKER_CORE_NONPROD_EMBED_ANNUAL: nonprod subscription embed instance Default
-               value: "LOOKER_CORE_TRIAL" Possible values: ["LOOKER_CORE_TRIAL", "LOOKER_CORE_STANDARD", "LOOKER_CORE_STANDARD_ANNUAL",
-               "LOOKER_CORE_ENTERPRISE_ANNUAL", "LOOKER_CORE_EMBED_ANNUAL", "LOOKER_CORE_NONPROD_STANDARD_ANNUAL",
-               "LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL", "LOOKER_CORE_NONPROD_EMBED_ANNUAL"]
+        :param pulumi.Input[builtins.str] platform_edition: Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
+               - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
+               - LOOKER_CORE_STANDARD: pay as you go standard instance (Currently Unavailable)
+               - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
+               - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
+               - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
+               - LOOKER_CORE_NONPROD_STANDARD_ANNUAL: nonprod subscription standard instance
+               - LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL: nonprod subscription enterprise instance
+               - LOOKER_CORE_NONPROD_EMBED_ANNUAL: nonprod subscription embed instance
+               Default value is `LOOKER_CORE_TRIAL`.
+               Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`, `LOOKER_CORE_NONPROD_STANDARD_ANNUAL`, `LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL`, `LOOKER_CORE_NONPROD_EMBED_ANNUAL`.
         :param pulumi.Input[builtins.bool] private_ip_enabled: Whether private IP is enabled on the Looker instance.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input['InstancePscConfigArgs'] psc_config: Information for Private Service Connect (PSC) setup for a Looker instance.
+               Structure is documented below.
         :param pulumi.Input[builtins.bool] psc_enabled: Whether Public Service Connect (PSC) is enabled on the Looker instance
         :param pulumi.Input[builtins.bool] public_ip_enabled: Whether public IP is enabled on the Looker instance.
         :param pulumi.Input[builtins.str] region: The name of the Looker region of the instance.
-        :param pulumi.Input[builtins.str] reserved_range: Name of a reserved IP address range within the consumer network, to be used for private service access connection. User
-               may or may not specify this in a request.
-        :param pulumi.Input['InstanceUserMetadataArgs'] user_metadata: Metadata about users for a Looker instance. These settings are only available when platform edition LOOKER_CORE_STANDARD
-               is set. There are ten Standard and two Developer users included in the cost of the product. You can allocate additional
-               Standard, Viewer, and Developer users for this instance. It is an optional step and can be modified later. With the
-               Standard edition of Looker (Google Cloud core), you can provision up to 50 total users, distributed across Viewer,
-               Standard, and Developer.
+        :param pulumi.Input[builtins.str] reserved_range: Name of a reserved IP address range within the consumer network, to be used for
+               private service access connection. User may or may not specify this in a request.
+        :param pulumi.Input['InstanceUserMetadataArgs'] user_metadata: Metadata about users for a Looker instance.
+               These settings are only available when platform edition LOOKER_CORE_STANDARD is set.
+               There are ten Standard and two Developer users included in the cost of the product.
+               You can allocate additional Standard, Viewer, and Developer users for this instance.
+               It is an optional step and can be modified later.
+               With the Standard edition of Looker (Google Cloud core), you can provision up to 50
+               total users, distributed across Viewer, Standard, and Developer.
+               Structure is documented below.
         """
         pulumi.set(__self__, "oauth_config", oauth_config)
         if admin_settings is not None:
@@ -137,6 +155,7 @@ class InstanceArgs:
     def admin_settings(self) -> Optional[pulumi.Input['InstanceAdminSettingsArgs']]:
         """
         Looker instance Admin settings.
+        Structure is documented below.
         """
         return pulumi.get(self, "admin_settings")
 
@@ -148,8 +167,9 @@ class InstanceArgs:
     @pulumi.getter(name="consumerNetwork")
     def consumer_network(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Network name in the consumer project in the format of: projects/{project}/global/networks/{network} Note that the
-        consumer network may be in a different GCP project than the consumer project that is hosting the Looker Instance.
+        Network name in the consumer project in the format of: projects/{project}/global/networks/{network}
+        Note that the consumer network may be in a different GCP project than the consumer
+        project that is hosting the Looker Instance.
         """
         return pulumi.get(self, "consumer_network")
 
@@ -162,6 +182,7 @@ class InstanceArgs:
     def custom_domain(self) -> Optional[pulumi.Input['InstanceCustomDomainArgs']]:
         """
         Custom domain settings for a Looker instance.
+        Structure is documented below.
         """
         return pulumi.get(self, "custom_domain")
 
@@ -173,8 +194,9 @@ class InstanceArgs:
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Policy to determine if the cluster should be deleted forcefully. If setting deletion_policy = "FORCE", the Looker
-        instance will be deleted regardless of its nested resources. If set to "DEFAULT", Looker instances that still have
+        Policy to determine if the cluster should be deleted forcefully.
+        If setting deletion_policy = "FORCE", the Looker instance will be deleted regardless
+        of its nested resources. If set to "DEFAULT", Looker instances that still have
         nested resources will return an error. Possible values: DEFAULT, FORCE
         """
         return pulumi.get(self, "deletion_policy")
@@ -187,8 +209,10 @@ class InstanceArgs:
     @pulumi.getter(name="denyMaintenancePeriod")
     def deny_maintenance_period(self) -> Optional[pulumi.Input['InstanceDenyMaintenancePeriodArgs']]:
         """
-        Maintenance denial period for this instance. You must allow at least 14 days of maintenance availability between any two
-        deny maintenance periods.
+        Maintenance denial period for this instance.
+        You must allow at least 14 days of maintenance availability
+        between any two deny maintenance periods.
+        Structure is documented below.
         """
         return pulumi.get(self, "deny_maintenance_period")
 
@@ -201,6 +225,7 @@ class InstanceArgs:
     def encryption_config(self) -> Optional[pulumi.Input['InstanceEncryptionConfigArgs']]:
         """
         Looker instance encryption settings.
+        Structure is documented below.
         """
         return pulumi.get(self, "encryption_config")
 
@@ -224,8 +249,11 @@ class InstanceArgs:
     @pulumi.getter(name="maintenanceWindow")
     def maintenance_window(self) -> Optional[pulumi.Input['InstanceMaintenanceWindowArgs']]:
         """
-        Maintenance window for an instance. Maintenance of your instance takes place once a month, and will require your
-        instance to be restarted during updates, which will temporarily disrupt service.
+        Maintenance window for an instance.
+        Maintenance of your instance takes place once a month, and will require
+        your instance to be restarted during updates, which will temporarily
+        disrupt service.
+        Structure is documented below.
         """
         return pulumi.get(self, "maintenance_window")
 
@@ -249,15 +277,17 @@ class InstanceArgs:
     @pulumi.getter(name="platformEdition")
     def platform_edition(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of
-        these values: - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable) - LOOKER_CORE_STANDARD: pay as you go standard
-        instance (Currently Unavailable) - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance -
-        LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-        - LOOKER_CORE_NONPROD_STANDARD_ANNUAL: nonprod subscription standard instance - LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL:
-        nonprod subscription enterprise instance - LOOKER_CORE_NONPROD_EMBED_ANNUAL: nonprod subscription embed instance Default
-        value: "LOOKER_CORE_TRIAL" Possible values: ["LOOKER_CORE_TRIAL", "LOOKER_CORE_STANDARD", "LOOKER_CORE_STANDARD_ANNUAL",
-        "LOOKER_CORE_ENTERPRISE_ANNUAL", "LOOKER_CORE_EMBED_ANNUAL", "LOOKER_CORE_NONPROD_STANDARD_ANNUAL",
-        "LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL", "LOOKER_CORE_NONPROD_EMBED_ANNUAL"]
+        Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
+        - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
+        - LOOKER_CORE_STANDARD: pay as you go standard instance (Currently Unavailable)
+        - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
+        - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
+        - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
+        - LOOKER_CORE_NONPROD_STANDARD_ANNUAL: nonprod subscription standard instance
+        - LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL: nonprod subscription enterprise instance
+        - LOOKER_CORE_NONPROD_EMBED_ANNUAL: nonprod subscription embed instance
+        Default value is `LOOKER_CORE_TRIAL`.
+        Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`, `LOOKER_CORE_NONPROD_STANDARD_ANNUAL`, `LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL`, `LOOKER_CORE_NONPROD_EMBED_ANNUAL`.
         """
         return pulumi.get(self, "platform_edition")
 
@@ -280,6 +310,10 @@ class InstanceArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -291,6 +325,7 @@ class InstanceArgs:
     def psc_config(self) -> Optional[pulumi.Input['InstancePscConfigArgs']]:
         """
         Information for Private Service Connect (PSC) setup for a Looker instance.
+        Structure is documented below.
         """
         return pulumi.get(self, "psc_config")
 
@@ -338,8 +373,8 @@ class InstanceArgs:
     @pulumi.getter(name="reservedRange")
     def reserved_range(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Name of a reserved IP address range within the consumer network, to be used for private service access connection. User
-        may or may not specify this in a request.
+        Name of a reserved IP address range within the consumer network, to be used for
+        private service access connection. User may or may not specify this in a request.
         """
         return pulumi.get(self, "reserved_range")
 
@@ -351,11 +386,14 @@ class InstanceArgs:
     @pulumi.getter(name="userMetadata")
     def user_metadata(self) -> Optional[pulumi.Input['InstanceUserMetadataArgs']]:
         """
-        Metadata about users for a Looker instance. These settings are only available when platform edition LOOKER_CORE_STANDARD
-        is set. There are ten Standard and two Developer users included in the cost of the product. You can allocate additional
-        Standard, Viewer, and Developer users for this instance. It is an optional step and can be modified later. With the
-        Standard edition of Looker (Google Cloud core), you can provision up to 50 total users, distributed across Viewer,
-        Standard, and Developer.
+        Metadata about users for a Looker instance.
+        These settings are only available when platform edition LOOKER_CORE_STANDARD is set.
+        There are ten Standard and two Developer users included in the cost of the product.
+        You can allocate additional Standard, Viewer, and Developer users for this instance.
+        It is an optional step and can be modified later.
+        With the Standard edition of Looker (Google Cloud core), you can provision up to 50
+        total users, distributed across Viewer, Standard, and Developer.
+        Structure is documented below.
         """
         return pulumi.get(self, "user_metadata")
 
@@ -396,51 +434,69 @@ class _InstanceState:
         """
         Input properties used for looking up and filtering Instance resources.
         :param pulumi.Input['InstanceAdminSettingsArgs'] admin_settings: Looker instance Admin settings.
-        :param pulumi.Input[builtins.str] consumer_network: Network name in the consumer project in the format of: projects/{project}/global/networks/{network} Note that the
-               consumer network may be in a different GCP project than the consumer project that is hosting the Looker Instance.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] consumer_network: Network name in the consumer project in the format of: projects/{project}/global/networks/{network}
+               Note that the consumer network may be in a different GCP project than the consumer
+               project that is hosting the Looker Instance.
         :param pulumi.Input[builtins.str] create_time: The time the instance was created in RFC3339 UTC "Zulu" format,
                accurate to nanoseconds.
         :param pulumi.Input['InstanceCustomDomainArgs'] custom_domain: Custom domain settings for a Looker instance.
-        :param pulumi.Input[builtins.str] deletion_policy: Policy to determine if the cluster should be deleted forcefully. If setting deletion_policy = "FORCE", the Looker
-               instance will be deleted regardless of its nested resources. If set to "DEFAULT", Looker instances that still have
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] deletion_policy: Policy to determine if the cluster should be deleted forcefully.
+               If setting deletion_policy = "FORCE", the Looker instance will be deleted regardless
+               of its nested resources. If set to "DEFAULT", Looker instances that still have
                nested resources will return an error. Possible values: DEFAULT, FORCE
-        :param pulumi.Input['InstanceDenyMaintenancePeriodArgs'] deny_maintenance_period: Maintenance denial period for this instance. You must allow at least 14 days of maintenance availability between any two
-               deny maintenance periods.
+        :param pulumi.Input['InstanceDenyMaintenancePeriodArgs'] deny_maintenance_period: Maintenance denial period for this instance.
+               You must allow at least 14 days of maintenance availability
+               between any two deny maintenance periods.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] egress_public_ip: Public Egress IP (IPv4).
         :param pulumi.Input['InstanceEncryptionConfigArgs'] encryption_config: Looker instance encryption settings.
+               Structure is documented below.
         :param pulumi.Input[builtins.bool] fips_enabled: FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).
         :param pulumi.Input[builtins.str] ingress_private_ip: Private Ingress IP (IPv4).
         :param pulumi.Input[builtins.str] ingress_public_ip: Public Ingress IP (IPv4).
         :param pulumi.Input[builtins.str] looker_uri: Looker instance URI which can be used to access the Looker Instance UI.
         :param pulumi.Input[builtins.str] looker_version: The Looker version that the instance is using.
-        :param pulumi.Input['InstanceMaintenanceWindowArgs'] maintenance_window: Maintenance window for an instance. Maintenance of your instance takes place once a month, and will require your
-               instance to be restarted during updates, which will temporarily disrupt service.
+        :param pulumi.Input['InstanceMaintenanceWindowArgs'] maintenance_window: Maintenance window for an instance.
+               Maintenance of your instance takes place once a month, and will require
+               your instance to be restarted during updates, which will temporarily
+               disrupt service.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] name: The ID of the instance or a fully qualified identifier for the instance.
         :param pulumi.Input['InstanceOauthConfigArgs'] oauth_config: Looker Instance OAuth login settings.
                Structure is documented below.
-        :param pulumi.Input[builtins.str] platform_edition: Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of
-               these values: - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable) - LOOKER_CORE_STANDARD: pay as you go standard
-               instance (Currently Unavailable) - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance -
-               LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-               - LOOKER_CORE_NONPROD_STANDARD_ANNUAL: nonprod subscription standard instance - LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL:
-               nonprod subscription enterprise instance - LOOKER_CORE_NONPROD_EMBED_ANNUAL: nonprod subscription embed instance Default
-               value: "LOOKER_CORE_TRIAL" Possible values: ["LOOKER_CORE_TRIAL", "LOOKER_CORE_STANDARD", "LOOKER_CORE_STANDARD_ANNUAL",
-               "LOOKER_CORE_ENTERPRISE_ANNUAL", "LOOKER_CORE_EMBED_ANNUAL", "LOOKER_CORE_NONPROD_STANDARD_ANNUAL",
-               "LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL", "LOOKER_CORE_NONPROD_EMBED_ANNUAL"]
+        :param pulumi.Input[builtins.str] platform_edition: Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
+               - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
+               - LOOKER_CORE_STANDARD: pay as you go standard instance (Currently Unavailable)
+               - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
+               - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
+               - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
+               - LOOKER_CORE_NONPROD_STANDARD_ANNUAL: nonprod subscription standard instance
+               - LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL: nonprod subscription enterprise instance
+               - LOOKER_CORE_NONPROD_EMBED_ANNUAL: nonprod subscription embed instance
+               Default value is `LOOKER_CORE_TRIAL`.
+               Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`, `LOOKER_CORE_NONPROD_STANDARD_ANNUAL`, `LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL`, `LOOKER_CORE_NONPROD_EMBED_ANNUAL`.
         :param pulumi.Input[builtins.bool] private_ip_enabled: Whether private IP is enabled on the Looker instance.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input['InstancePscConfigArgs'] psc_config: Information for Private Service Connect (PSC) setup for a Looker instance.
+               Structure is documented below.
         :param pulumi.Input[builtins.bool] psc_enabled: Whether Public Service Connect (PSC) is enabled on the Looker instance
         :param pulumi.Input[builtins.bool] public_ip_enabled: Whether public IP is enabled on the Looker instance.
         :param pulumi.Input[builtins.str] region: The name of the Looker region of the instance.
-        :param pulumi.Input[builtins.str] reserved_range: Name of a reserved IP address range within the consumer network, to be used for private service access connection. User
-               may or may not specify this in a request.
+        :param pulumi.Input[builtins.str] reserved_range: Name of a reserved IP address range within the consumer network, to be used for
+               private service access connection. User may or may not specify this in a request.
         :param pulumi.Input[builtins.str] update_time: The time the instance was updated in RFC3339 UTC "Zulu" format,
                accurate to nanoseconds.
-        :param pulumi.Input['InstanceUserMetadataArgs'] user_metadata: Metadata about users for a Looker instance. These settings are only available when platform edition LOOKER_CORE_STANDARD
-               is set. There are ten Standard and two Developer users included in the cost of the product. You can allocate additional
-               Standard, Viewer, and Developer users for this instance. It is an optional step and can be modified later. With the
-               Standard edition of Looker (Google Cloud core), you can provision up to 50 total users, distributed across Viewer,
-               Standard, and Developer.
+        :param pulumi.Input['InstanceUserMetadataArgs'] user_metadata: Metadata about users for a Looker instance.
+               These settings are only available when platform edition LOOKER_CORE_STANDARD is set.
+               There are ten Standard and two Developer users included in the cost of the product.
+               You can allocate additional Standard, Viewer, and Developer users for this instance.
+               It is an optional step and can be modified later.
+               With the Standard edition of Looker (Google Cloud core), you can provision up to 50
+               total users, distributed across Viewer, Standard, and Developer.
+               Structure is documented below.
         """
         if admin_settings is not None:
             pulumi.set(__self__, "admin_settings", admin_settings)
@@ -500,6 +556,7 @@ class _InstanceState:
     def admin_settings(self) -> Optional[pulumi.Input['InstanceAdminSettingsArgs']]:
         """
         Looker instance Admin settings.
+        Structure is documented below.
         """
         return pulumi.get(self, "admin_settings")
 
@@ -511,8 +568,9 @@ class _InstanceState:
     @pulumi.getter(name="consumerNetwork")
     def consumer_network(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Network name in the consumer project in the format of: projects/{project}/global/networks/{network} Note that the
-        consumer network may be in a different GCP project than the consumer project that is hosting the Looker Instance.
+        Network name in the consumer project in the format of: projects/{project}/global/networks/{network}
+        Note that the consumer network may be in a different GCP project than the consumer
+        project that is hosting the Looker Instance.
         """
         return pulumi.get(self, "consumer_network")
 
@@ -538,6 +596,7 @@ class _InstanceState:
     def custom_domain(self) -> Optional[pulumi.Input['InstanceCustomDomainArgs']]:
         """
         Custom domain settings for a Looker instance.
+        Structure is documented below.
         """
         return pulumi.get(self, "custom_domain")
 
@@ -549,8 +608,9 @@ class _InstanceState:
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Policy to determine if the cluster should be deleted forcefully. If setting deletion_policy = "FORCE", the Looker
-        instance will be deleted regardless of its nested resources. If set to "DEFAULT", Looker instances that still have
+        Policy to determine if the cluster should be deleted forcefully.
+        If setting deletion_policy = "FORCE", the Looker instance will be deleted regardless
+        of its nested resources. If set to "DEFAULT", Looker instances that still have
         nested resources will return an error. Possible values: DEFAULT, FORCE
         """
         return pulumi.get(self, "deletion_policy")
@@ -563,8 +623,10 @@ class _InstanceState:
     @pulumi.getter(name="denyMaintenancePeriod")
     def deny_maintenance_period(self) -> Optional[pulumi.Input['InstanceDenyMaintenancePeriodArgs']]:
         """
-        Maintenance denial period for this instance. You must allow at least 14 days of maintenance availability between any two
-        deny maintenance periods.
+        Maintenance denial period for this instance.
+        You must allow at least 14 days of maintenance availability
+        between any two deny maintenance periods.
+        Structure is documented below.
         """
         return pulumi.get(self, "deny_maintenance_period")
 
@@ -589,6 +651,7 @@ class _InstanceState:
     def encryption_config(self) -> Optional[pulumi.Input['InstanceEncryptionConfigArgs']]:
         """
         Looker instance encryption settings.
+        Structure is documented below.
         """
         return pulumi.get(self, "encryption_config")
 
@@ -660,8 +723,11 @@ class _InstanceState:
     @pulumi.getter(name="maintenanceWindow")
     def maintenance_window(self) -> Optional[pulumi.Input['InstanceMaintenanceWindowArgs']]:
         """
-        Maintenance window for an instance. Maintenance of your instance takes place once a month, and will require your
-        instance to be restarted during updates, which will temporarily disrupt service.
+        Maintenance window for an instance.
+        Maintenance of your instance takes place once a month, and will require
+        your instance to be restarted during updates, which will temporarily
+        disrupt service.
+        Structure is documented below.
         """
         return pulumi.get(self, "maintenance_window")
 
@@ -698,15 +764,17 @@ class _InstanceState:
     @pulumi.getter(name="platformEdition")
     def platform_edition(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of
-        these values: - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable) - LOOKER_CORE_STANDARD: pay as you go standard
-        instance (Currently Unavailable) - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance -
-        LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-        - LOOKER_CORE_NONPROD_STANDARD_ANNUAL: nonprod subscription standard instance - LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL:
-        nonprod subscription enterprise instance - LOOKER_CORE_NONPROD_EMBED_ANNUAL: nonprod subscription embed instance Default
-        value: "LOOKER_CORE_TRIAL" Possible values: ["LOOKER_CORE_TRIAL", "LOOKER_CORE_STANDARD", "LOOKER_CORE_STANDARD_ANNUAL",
-        "LOOKER_CORE_ENTERPRISE_ANNUAL", "LOOKER_CORE_EMBED_ANNUAL", "LOOKER_CORE_NONPROD_STANDARD_ANNUAL",
-        "LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL", "LOOKER_CORE_NONPROD_EMBED_ANNUAL"]
+        Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
+        - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
+        - LOOKER_CORE_STANDARD: pay as you go standard instance (Currently Unavailable)
+        - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
+        - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
+        - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
+        - LOOKER_CORE_NONPROD_STANDARD_ANNUAL: nonprod subscription standard instance
+        - LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL: nonprod subscription enterprise instance
+        - LOOKER_CORE_NONPROD_EMBED_ANNUAL: nonprod subscription embed instance
+        Default value is `LOOKER_CORE_TRIAL`.
+        Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`, `LOOKER_CORE_NONPROD_STANDARD_ANNUAL`, `LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL`, `LOOKER_CORE_NONPROD_EMBED_ANNUAL`.
         """
         return pulumi.get(self, "platform_edition")
 
@@ -729,6 +797,10 @@ class _InstanceState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -740,6 +812,7 @@ class _InstanceState:
     def psc_config(self) -> Optional[pulumi.Input['InstancePscConfigArgs']]:
         """
         Information for Private Service Connect (PSC) setup for a Looker instance.
+        Structure is documented below.
         """
         return pulumi.get(self, "psc_config")
 
@@ -787,8 +860,8 @@ class _InstanceState:
     @pulumi.getter(name="reservedRange")
     def reserved_range(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Name of a reserved IP address range within the consumer network, to be used for private service access connection. User
-        may or may not specify this in a request.
+        Name of a reserved IP address range within the consumer network, to be used for
+        private service access connection. User may or may not specify this in a request.
         """
         return pulumi.get(self, "reserved_range")
 
@@ -813,11 +886,14 @@ class _InstanceState:
     @pulumi.getter(name="userMetadata")
     def user_metadata(self) -> Optional[pulumi.Input['InstanceUserMetadataArgs']]:
         """
-        Metadata about users for a Looker instance. These settings are only available when platform edition LOOKER_CORE_STANDARD
-        is set. There are ten Standard and two Developer users included in the cost of the product. You can allocate additional
-        Standard, Viewer, and Developer users for this instance. It is an optional step and can be modified later. With the
-        Standard edition of Looker (Google Cloud core), you can provision up to 50 total users, distributed across Viewer,
-        Standard, and Developer.
+        Metadata about users for a Looker instance.
+        These settings are only available when platform edition LOOKER_CORE_STANDARD is set.
+        There are ten Standard and two Developer users included in the cost of the product.
+        You can allocate additional Standard, Viewer, and Developer users for this instance.
+        It is an optional step and can be modified later.
+        With the Standard edition of Looker (Google Cloud core), you can provision up to 50
+        total users, distributed across Viewer, Standard, and Developer.
+        Structure is documented below.
         """
         return pulumi.get(self, "user_metadata")
 
@@ -1101,42 +1177,60 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['InstanceAdminSettingsArgs', 'InstanceAdminSettingsArgsDict']] admin_settings: Looker instance Admin settings.
-        :param pulumi.Input[builtins.str] consumer_network: Network name in the consumer project in the format of: projects/{project}/global/networks/{network} Note that the
-               consumer network may be in a different GCP project than the consumer project that is hosting the Looker Instance.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] consumer_network: Network name in the consumer project in the format of: projects/{project}/global/networks/{network}
+               Note that the consumer network may be in a different GCP project than the consumer
+               project that is hosting the Looker Instance.
         :param pulumi.Input[Union['InstanceCustomDomainArgs', 'InstanceCustomDomainArgsDict']] custom_domain: Custom domain settings for a Looker instance.
-        :param pulumi.Input[builtins.str] deletion_policy: Policy to determine if the cluster should be deleted forcefully. If setting deletion_policy = "FORCE", the Looker
-               instance will be deleted regardless of its nested resources. If set to "DEFAULT", Looker instances that still have
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] deletion_policy: Policy to determine if the cluster should be deleted forcefully.
+               If setting deletion_policy = "FORCE", the Looker instance will be deleted regardless
+               of its nested resources. If set to "DEFAULT", Looker instances that still have
                nested resources will return an error. Possible values: DEFAULT, FORCE
-        :param pulumi.Input[Union['InstanceDenyMaintenancePeriodArgs', 'InstanceDenyMaintenancePeriodArgsDict']] deny_maintenance_period: Maintenance denial period for this instance. You must allow at least 14 days of maintenance availability between any two
-               deny maintenance periods.
+        :param pulumi.Input[Union['InstanceDenyMaintenancePeriodArgs', 'InstanceDenyMaintenancePeriodArgsDict']] deny_maintenance_period: Maintenance denial period for this instance.
+               You must allow at least 14 days of maintenance availability
+               between any two deny maintenance periods.
+               Structure is documented below.
         :param pulumi.Input[Union['InstanceEncryptionConfigArgs', 'InstanceEncryptionConfigArgsDict']] encryption_config: Looker instance encryption settings.
+               Structure is documented below.
         :param pulumi.Input[builtins.bool] fips_enabled: FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).
-        :param pulumi.Input[Union['InstanceMaintenanceWindowArgs', 'InstanceMaintenanceWindowArgsDict']] maintenance_window: Maintenance window for an instance. Maintenance of your instance takes place once a month, and will require your
-               instance to be restarted during updates, which will temporarily disrupt service.
+        :param pulumi.Input[Union['InstanceMaintenanceWindowArgs', 'InstanceMaintenanceWindowArgsDict']] maintenance_window: Maintenance window for an instance.
+               Maintenance of your instance takes place once a month, and will require
+               your instance to be restarted during updates, which will temporarily
+               disrupt service.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] name: The ID of the instance or a fully qualified identifier for the instance.
         :param pulumi.Input[Union['InstanceOauthConfigArgs', 'InstanceOauthConfigArgsDict']] oauth_config: Looker Instance OAuth login settings.
                Structure is documented below.
-        :param pulumi.Input[builtins.str] platform_edition: Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of
-               these values: - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable) - LOOKER_CORE_STANDARD: pay as you go standard
-               instance (Currently Unavailable) - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance -
-               LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-               - LOOKER_CORE_NONPROD_STANDARD_ANNUAL: nonprod subscription standard instance - LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL:
-               nonprod subscription enterprise instance - LOOKER_CORE_NONPROD_EMBED_ANNUAL: nonprod subscription embed instance Default
-               value: "LOOKER_CORE_TRIAL" Possible values: ["LOOKER_CORE_TRIAL", "LOOKER_CORE_STANDARD", "LOOKER_CORE_STANDARD_ANNUAL",
-               "LOOKER_CORE_ENTERPRISE_ANNUAL", "LOOKER_CORE_EMBED_ANNUAL", "LOOKER_CORE_NONPROD_STANDARD_ANNUAL",
-               "LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL", "LOOKER_CORE_NONPROD_EMBED_ANNUAL"]
+        :param pulumi.Input[builtins.str] platform_edition: Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
+               - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
+               - LOOKER_CORE_STANDARD: pay as you go standard instance (Currently Unavailable)
+               - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
+               - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
+               - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
+               - LOOKER_CORE_NONPROD_STANDARD_ANNUAL: nonprod subscription standard instance
+               - LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL: nonprod subscription enterprise instance
+               - LOOKER_CORE_NONPROD_EMBED_ANNUAL: nonprod subscription embed instance
+               Default value is `LOOKER_CORE_TRIAL`.
+               Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`, `LOOKER_CORE_NONPROD_STANDARD_ANNUAL`, `LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL`, `LOOKER_CORE_NONPROD_EMBED_ANNUAL`.
         :param pulumi.Input[builtins.bool] private_ip_enabled: Whether private IP is enabled on the Looker instance.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Union['InstancePscConfigArgs', 'InstancePscConfigArgsDict']] psc_config: Information for Private Service Connect (PSC) setup for a Looker instance.
+               Structure is documented below.
         :param pulumi.Input[builtins.bool] psc_enabled: Whether Public Service Connect (PSC) is enabled on the Looker instance
         :param pulumi.Input[builtins.bool] public_ip_enabled: Whether public IP is enabled on the Looker instance.
         :param pulumi.Input[builtins.str] region: The name of the Looker region of the instance.
-        :param pulumi.Input[builtins.str] reserved_range: Name of a reserved IP address range within the consumer network, to be used for private service access connection. User
-               may or may not specify this in a request.
-        :param pulumi.Input[Union['InstanceUserMetadataArgs', 'InstanceUserMetadataArgsDict']] user_metadata: Metadata about users for a Looker instance. These settings are only available when platform edition LOOKER_CORE_STANDARD
-               is set. There are ten Standard and two Developer users included in the cost of the product. You can allocate additional
-               Standard, Viewer, and Developer users for this instance. It is an optional step and can be modified later. With the
-               Standard edition of Looker (Google Cloud core), you can provision up to 50 total users, distributed across Viewer,
-               Standard, and Developer.
+        :param pulumi.Input[builtins.str] reserved_range: Name of a reserved IP address range within the consumer network, to be used for
+               private service access connection. User may or may not specify this in a request.
+        :param pulumi.Input[Union['InstanceUserMetadataArgs', 'InstanceUserMetadataArgsDict']] user_metadata: Metadata about users for a Looker instance.
+               These settings are only available when platform edition LOOKER_CORE_STANDARD is set.
+               There are ten Standard and two Developer users included in the cost of the product.
+               You can allocate additional Standard, Viewer, and Developer users for this instance.
+               It is an optional step and can be modified later.
+               With the Standard edition of Looker (Google Cloud core), you can provision up to 50
+               total users, distributed across Viewer, Standard, and Developer.
+               Structure is documented below.
         """
         ...
     @overload
@@ -1505,51 +1599,69 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['InstanceAdminSettingsArgs', 'InstanceAdminSettingsArgsDict']] admin_settings: Looker instance Admin settings.
-        :param pulumi.Input[builtins.str] consumer_network: Network name in the consumer project in the format of: projects/{project}/global/networks/{network} Note that the
-               consumer network may be in a different GCP project than the consumer project that is hosting the Looker Instance.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] consumer_network: Network name in the consumer project in the format of: projects/{project}/global/networks/{network}
+               Note that the consumer network may be in a different GCP project than the consumer
+               project that is hosting the Looker Instance.
         :param pulumi.Input[builtins.str] create_time: The time the instance was created in RFC3339 UTC "Zulu" format,
                accurate to nanoseconds.
         :param pulumi.Input[Union['InstanceCustomDomainArgs', 'InstanceCustomDomainArgsDict']] custom_domain: Custom domain settings for a Looker instance.
-        :param pulumi.Input[builtins.str] deletion_policy: Policy to determine if the cluster should be deleted forcefully. If setting deletion_policy = "FORCE", the Looker
-               instance will be deleted regardless of its nested resources. If set to "DEFAULT", Looker instances that still have
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] deletion_policy: Policy to determine if the cluster should be deleted forcefully.
+               If setting deletion_policy = "FORCE", the Looker instance will be deleted regardless
+               of its nested resources. If set to "DEFAULT", Looker instances that still have
                nested resources will return an error. Possible values: DEFAULT, FORCE
-        :param pulumi.Input[Union['InstanceDenyMaintenancePeriodArgs', 'InstanceDenyMaintenancePeriodArgsDict']] deny_maintenance_period: Maintenance denial period for this instance. You must allow at least 14 days of maintenance availability between any two
-               deny maintenance periods.
+        :param pulumi.Input[Union['InstanceDenyMaintenancePeriodArgs', 'InstanceDenyMaintenancePeriodArgsDict']] deny_maintenance_period: Maintenance denial period for this instance.
+               You must allow at least 14 days of maintenance availability
+               between any two deny maintenance periods.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] egress_public_ip: Public Egress IP (IPv4).
         :param pulumi.Input[Union['InstanceEncryptionConfigArgs', 'InstanceEncryptionConfigArgsDict']] encryption_config: Looker instance encryption settings.
+               Structure is documented below.
         :param pulumi.Input[builtins.bool] fips_enabled: FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).
         :param pulumi.Input[builtins.str] ingress_private_ip: Private Ingress IP (IPv4).
         :param pulumi.Input[builtins.str] ingress_public_ip: Public Ingress IP (IPv4).
         :param pulumi.Input[builtins.str] looker_uri: Looker instance URI which can be used to access the Looker Instance UI.
         :param pulumi.Input[builtins.str] looker_version: The Looker version that the instance is using.
-        :param pulumi.Input[Union['InstanceMaintenanceWindowArgs', 'InstanceMaintenanceWindowArgsDict']] maintenance_window: Maintenance window for an instance. Maintenance of your instance takes place once a month, and will require your
-               instance to be restarted during updates, which will temporarily disrupt service.
+        :param pulumi.Input[Union['InstanceMaintenanceWindowArgs', 'InstanceMaintenanceWindowArgsDict']] maintenance_window: Maintenance window for an instance.
+               Maintenance of your instance takes place once a month, and will require
+               your instance to be restarted during updates, which will temporarily
+               disrupt service.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] name: The ID of the instance or a fully qualified identifier for the instance.
         :param pulumi.Input[Union['InstanceOauthConfigArgs', 'InstanceOauthConfigArgsDict']] oauth_config: Looker Instance OAuth login settings.
                Structure is documented below.
-        :param pulumi.Input[builtins.str] platform_edition: Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of
-               these values: - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable) - LOOKER_CORE_STANDARD: pay as you go standard
-               instance (Currently Unavailable) - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance -
-               LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-               - LOOKER_CORE_NONPROD_STANDARD_ANNUAL: nonprod subscription standard instance - LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL:
-               nonprod subscription enterprise instance - LOOKER_CORE_NONPROD_EMBED_ANNUAL: nonprod subscription embed instance Default
-               value: "LOOKER_CORE_TRIAL" Possible values: ["LOOKER_CORE_TRIAL", "LOOKER_CORE_STANDARD", "LOOKER_CORE_STANDARD_ANNUAL",
-               "LOOKER_CORE_ENTERPRISE_ANNUAL", "LOOKER_CORE_EMBED_ANNUAL", "LOOKER_CORE_NONPROD_STANDARD_ANNUAL",
-               "LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL", "LOOKER_CORE_NONPROD_EMBED_ANNUAL"]
+        :param pulumi.Input[builtins.str] platform_edition: Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
+               - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
+               - LOOKER_CORE_STANDARD: pay as you go standard instance (Currently Unavailable)
+               - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
+               - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
+               - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
+               - LOOKER_CORE_NONPROD_STANDARD_ANNUAL: nonprod subscription standard instance
+               - LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL: nonprod subscription enterprise instance
+               - LOOKER_CORE_NONPROD_EMBED_ANNUAL: nonprod subscription embed instance
+               Default value is `LOOKER_CORE_TRIAL`.
+               Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`, `LOOKER_CORE_NONPROD_STANDARD_ANNUAL`, `LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL`, `LOOKER_CORE_NONPROD_EMBED_ANNUAL`.
         :param pulumi.Input[builtins.bool] private_ip_enabled: Whether private IP is enabled on the Looker instance.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Union['InstancePscConfigArgs', 'InstancePscConfigArgsDict']] psc_config: Information for Private Service Connect (PSC) setup for a Looker instance.
+               Structure is documented below.
         :param pulumi.Input[builtins.bool] psc_enabled: Whether Public Service Connect (PSC) is enabled on the Looker instance
         :param pulumi.Input[builtins.bool] public_ip_enabled: Whether public IP is enabled on the Looker instance.
         :param pulumi.Input[builtins.str] region: The name of the Looker region of the instance.
-        :param pulumi.Input[builtins.str] reserved_range: Name of a reserved IP address range within the consumer network, to be used for private service access connection. User
-               may or may not specify this in a request.
+        :param pulumi.Input[builtins.str] reserved_range: Name of a reserved IP address range within the consumer network, to be used for
+               private service access connection. User may or may not specify this in a request.
         :param pulumi.Input[builtins.str] update_time: The time the instance was updated in RFC3339 UTC "Zulu" format,
                accurate to nanoseconds.
-        :param pulumi.Input[Union['InstanceUserMetadataArgs', 'InstanceUserMetadataArgsDict']] user_metadata: Metadata about users for a Looker instance. These settings are only available when platform edition LOOKER_CORE_STANDARD
-               is set. There are ten Standard and two Developer users included in the cost of the product. You can allocate additional
-               Standard, Viewer, and Developer users for this instance. It is an optional step and can be modified later. With the
-               Standard edition of Looker (Google Cloud core), you can provision up to 50 total users, distributed across Viewer,
-               Standard, and Developer.
+        :param pulumi.Input[Union['InstanceUserMetadataArgs', 'InstanceUserMetadataArgsDict']] user_metadata: Metadata about users for a Looker instance.
+               These settings are only available when platform edition LOOKER_CORE_STANDARD is set.
+               There are ten Standard and two Developer users included in the cost of the product.
+               You can allocate additional Standard, Viewer, and Developer users for this instance.
+               It is an optional step and can be modified later.
+               With the Standard edition of Looker (Google Cloud core), you can provision up to 50
+               total users, distributed across Viewer, Standard, and Developer.
+               Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1588,6 +1700,7 @@ class Instance(pulumi.CustomResource):
     def admin_settings(self) -> pulumi.Output[Optional['outputs.InstanceAdminSettings']]:
         """
         Looker instance Admin settings.
+        Structure is documented below.
         """
         return pulumi.get(self, "admin_settings")
 
@@ -1595,8 +1708,9 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="consumerNetwork")
     def consumer_network(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Network name in the consumer project in the format of: projects/{project}/global/networks/{network} Note that the
-        consumer network may be in a different GCP project than the consumer project that is hosting the Looker Instance.
+        Network name in the consumer project in the format of: projects/{project}/global/networks/{network}
+        Note that the consumer network may be in a different GCP project than the consumer
+        project that is hosting the Looker Instance.
         """
         return pulumi.get(self, "consumer_network")
 
@@ -1614,6 +1728,7 @@ class Instance(pulumi.CustomResource):
     def custom_domain(self) -> pulumi.Output[Optional['outputs.InstanceCustomDomain']]:
         """
         Custom domain settings for a Looker instance.
+        Structure is documented below.
         """
         return pulumi.get(self, "custom_domain")
 
@@ -1621,8 +1736,9 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Policy to determine if the cluster should be deleted forcefully. If setting deletion_policy = "FORCE", the Looker
-        instance will be deleted regardless of its nested resources. If set to "DEFAULT", Looker instances that still have
+        Policy to determine if the cluster should be deleted forcefully.
+        If setting deletion_policy = "FORCE", the Looker instance will be deleted regardless
+        of its nested resources. If set to "DEFAULT", Looker instances that still have
         nested resources will return an error. Possible values: DEFAULT, FORCE
         """
         return pulumi.get(self, "deletion_policy")
@@ -1631,8 +1747,10 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="denyMaintenancePeriod")
     def deny_maintenance_period(self) -> pulumi.Output[Optional['outputs.InstanceDenyMaintenancePeriod']]:
         """
-        Maintenance denial period for this instance. You must allow at least 14 days of maintenance availability between any two
-        deny maintenance periods.
+        Maintenance denial period for this instance.
+        You must allow at least 14 days of maintenance availability
+        between any two deny maintenance periods.
+        Structure is documented below.
         """
         return pulumi.get(self, "deny_maintenance_period")
 
@@ -1649,6 +1767,7 @@ class Instance(pulumi.CustomResource):
     def encryption_config(self) -> pulumi.Output['outputs.InstanceEncryptionConfig']:
         """
         Looker instance encryption settings.
+        Structure is documented below.
         """
         return pulumi.get(self, "encryption_config")
 
@@ -1696,8 +1815,11 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="maintenanceWindow")
     def maintenance_window(self) -> pulumi.Output[Optional['outputs.InstanceMaintenanceWindow']]:
         """
-        Maintenance window for an instance. Maintenance of your instance takes place once a month, and will require your
-        instance to be restarted during updates, which will temporarily disrupt service.
+        Maintenance window for an instance.
+        Maintenance of your instance takes place once a month, and will require
+        your instance to be restarted during updates, which will temporarily
+        disrupt service.
+        Structure is documented below.
         """
         return pulumi.get(self, "maintenance_window")
 
@@ -1722,15 +1844,17 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="platformEdition")
     def platform_edition(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of
-        these values: - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable) - LOOKER_CORE_STANDARD: pay as you go standard
-        instance (Currently Unavailable) - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance -
-        LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-        - LOOKER_CORE_NONPROD_STANDARD_ANNUAL: nonprod subscription standard instance - LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL:
-        nonprod subscription enterprise instance - LOOKER_CORE_NONPROD_EMBED_ANNUAL: nonprod subscription embed instance Default
-        value: "LOOKER_CORE_TRIAL" Possible values: ["LOOKER_CORE_TRIAL", "LOOKER_CORE_STANDARD", "LOOKER_CORE_STANDARD_ANNUAL",
-        "LOOKER_CORE_ENTERPRISE_ANNUAL", "LOOKER_CORE_EMBED_ANNUAL", "LOOKER_CORE_NONPROD_STANDARD_ANNUAL",
-        "LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL", "LOOKER_CORE_NONPROD_EMBED_ANNUAL"]
+        Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
+        - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
+        - LOOKER_CORE_STANDARD: pay as you go standard instance (Currently Unavailable)
+        - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
+        - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
+        - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
+        - LOOKER_CORE_NONPROD_STANDARD_ANNUAL: nonprod subscription standard instance
+        - LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL: nonprod subscription enterprise instance
+        - LOOKER_CORE_NONPROD_EMBED_ANNUAL: nonprod subscription embed instance
+        Default value is `LOOKER_CORE_TRIAL`.
+        Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`, `LOOKER_CORE_NONPROD_STANDARD_ANNUAL`, `LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL`, `LOOKER_CORE_NONPROD_EMBED_ANNUAL`.
         """
         return pulumi.get(self, "platform_edition")
 
@@ -1745,6 +1869,10 @@ class Instance(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property
@@ -1752,6 +1880,7 @@ class Instance(pulumi.CustomResource):
     def psc_config(self) -> pulumi.Output[Optional['outputs.InstancePscConfig']]:
         """
         Information for Private Service Connect (PSC) setup for a Looker instance.
+        Structure is documented below.
         """
         return pulumi.get(self, "psc_config")
 
@@ -1783,8 +1912,8 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="reservedRange")
     def reserved_range(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Name of a reserved IP address range within the consumer network, to be used for private service access connection. User
-        may or may not specify this in a request.
+        Name of a reserved IP address range within the consumer network, to be used for
+        private service access connection. User may or may not specify this in a request.
         """
         return pulumi.get(self, "reserved_range")
 
@@ -1801,11 +1930,14 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="userMetadata")
     def user_metadata(self) -> pulumi.Output[Optional['outputs.InstanceUserMetadata']]:
         """
-        Metadata about users for a Looker instance. These settings are only available when platform edition LOOKER_CORE_STANDARD
-        is set. There are ten Standard and two Developer users included in the cost of the product. You can allocate additional
-        Standard, Viewer, and Developer users for this instance. It is an optional step and can be modified later. With the
-        Standard edition of Looker (Google Cloud core), you can provision up to 50 total users, distributed across Viewer,
-        Standard, and Developer.
+        Metadata about users for a Looker instance.
+        These settings are only available when platform edition LOOKER_CORE_STANDARD is set.
+        There are ten Standard and two Developer users included in the cost of the product.
+        You can allocate additional Standard, Viewer, and Developer users for this instance.
+        It is an optional step and can be modified later.
+        With the Standard edition of Looker (Google Cloud core), you can provision up to 50
+        total users, distributed across Viewer, Standard, and Developer.
+        Structure is documented below.
         """
         return pulumi.get(self, "user_metadata")
 

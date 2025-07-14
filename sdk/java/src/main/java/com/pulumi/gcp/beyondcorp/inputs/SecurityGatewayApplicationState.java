@@ -55,14 +55,16 @@ public final class SecurityGatewayApplicationState extends com.pulumi.resources.
     }
 
     /**
-     * Optional. An arbitrary user-provided name for the Application resource. Cannot exceed 64 characters.
+     * Optional. An arbitrary user-provided name for the Application resource.
+     * Cannot exceed 64 characters.
      * 
      */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
 
     /**
-     * @return Optional. An arbitrary user-provided name for the Application resource. Cannot exceed 64 characters.
+     * @return Optional. An arbitrary user-provided name for the Application resource.
+     * Cannot exceed 64 characters.
      * 
      */
     public Optional<Output<String>> displayName() {
@@ -121,9 +123,19 @@ public final class SecurityGatewayApplicationState extends com.pulumi.resources.
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -160,6 +172,7 @@ public final class SecurityGatewayApplicationState extends com.pulumi.resources.
 
     /**
      * Optional. List of which upstream resource(s) to forward traffic to.
+     * Structure is documented below.
      * 
      */
     @Import(name="upstreams")
@@ -167,6 +180,7 @@ public final class SecurityGatewayApplicationState extends com.pulumi.resources.
 
     /**
      * @return Optional. List of which upstream resource(s) to forward traffic to.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<SecurityGatewayApplicationUpstreamArgs>>> upstreams() {
@@ -254,7 +268,8 @@ public final class SecurityGatewayApplicationState extends com.pulumi.resources.
         }
 
         /**
-         * @param displayName Optional. An arbitrary user-provided name for the Application resource. Cannot exceed 64 characters.
+         * @param displayName Optional. An arbitrary user-provided name for the Application resource.
+         * Cannot exceed 64 characters.
          * 
          * @return builder
          * 
@@ -265,7 +280,8 @@ public final class SecurityGatewayApplicationState extends com.pulumi.resources.
         }
 
         /**
-         * @param displayName Optional. An arbitrary user-provided name for the Application resource. Cannot exceed 64 characters.
+         * @param displayName Optional. An arbitrary user-provided name for the Application resource.
+         * Cannot exceed 64 characters.
          * 
          * @return builder
          * 
@@ -359,11 +375,25 @@ public final class SecurityGatewayApplicationState extends com.pulumi.resources.
             return name(Output.of(name));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
@@ -412,6 +442,7 @@ public final class SecurityGatewayApplicationState extends com.pulumi.resources.
 
         /**
          * @param upstreams Optional. List of which upstream resource(s) to forward traffic to.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -423,6 +454,7 @@ public final class SecurityGatewayApplicationState extends com.pulumi.resources.
 
         /**
          * @param upstreams Optional. List of which upstream resource(s) to forward traffic to.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -433,6 +465,7 @@ public final class SecurityGatewayApplicationState extends com.pulumi.resources.
 
         /**
          * @param upstreams Optional. List of which upstream resource(s) to forward traffic to.
+         * Structure is documented below.
          * 
          * @return builder
          * 

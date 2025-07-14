@@ -57,9 +57,6 @@ export class IngressPolicy extends pulumi.CustomResource {
     public /*out*/ readonly accessPolicyId!: pulumi.Output<string>;
     /**
      * The name of the Service Perimeter to add this resource to.
-     *
-     *
-     * - - -
      */
     public readonly ingressPolicyName!: pulumi.Output<string>;
     /**
@@ -110,9 +107,6 @@ export interface IngressPolicyState {
     accessPolicyId?: pulumi.Input<string>;
     /**
      * The name of the Service Perimeter to add this resource to.
-     *
-     *
-     * - - -
      */
     ingressPolicyName?: pulumi.Input<string>;
     /**
@@ -127,9 +121,6 @@ export interface IngressPolicyState {
 export interface IngressPolicyArgs {
     /**
      * The name of the Service Perimeter to add this resource to.
-     *
-     *
-     * - - -
      */
     ingressPolicyName: pulumi.Input<string>;
     /**

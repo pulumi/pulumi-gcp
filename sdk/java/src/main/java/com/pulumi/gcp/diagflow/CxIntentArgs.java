@@ -40,16 +40,12 @@ public final class CxIntentArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The human-readable name of the intent, unique within the agent.
      * 
-     * ***
-     * 
      */
     @Import(name="displayName", required=true)
     private Output<String> displayName;
 
     /**
      * @return The human-readable name of the intent, unique within the agent.
-     * 
-     * ***
      * 
      */
     public Output<String> displayName() {
@@ -289,8 +285,6 @@ public final class CxIntentArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param displayName The human-readable name of the intent, unique within the agent.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -301,8 +295,6 @@ public final class CxIntentArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param displayName The human-readable name of the intent, unique within the agent.
-         * 
-         * ***
          * 
          * @return builder
          * 

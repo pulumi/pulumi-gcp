@@ -228,8 +228,6 @@ type SecurityProfileGroup struct {
 	// The default value is `global`.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The name of the security profile group resource.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name of the parent this security profile group belongs to.
 	// Format: organizations/{organization_id}.
@@ -301,8 +299,6 @@ type securityProfileGroupState struct {
 	// The default value is `global`.
 	Location *string `pulumi:"location"`
 	// The name of the security profile group resource.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The name of the parent this security profile group belongs to.
 	// Format: organizations/{organization_id}.
@@ -340,8 +336,6 @@ type SecurityProfileGroupState struct {
 	// The default value is `global`.
 	Location pulumi.StringPtrInput
 	// The name of the security profile group resource.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The name of the parent this security profile group belongs to.
 	// Format: organizations/{organization_id}.
@@ -375,8 +369,6 @@ type securityProfileGroupArgs struct {
 	// The default value is `global`.
 	Location *string `pulumi:"location"`
 	// The name of the security profile group resource.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The name of the parent this security profile group belongs to.
 	// Format: organizations/{organization_id}.
@@ -402,8 +394,6 @@ type SecurityProfileGroupArgs struct {
 	// The default value is `global`.
 	Location pulumi.StringPtrInput
 	// The name of the security profile group resource.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The name of the parent this security profile group belongs to.
 	// Format: organizations/{organization_id}.
@@ -546,8 +536,6 @@ func (o SecurityProfileGroupOutput) Location() pulumi.StringPtrOutput {
 }
 
 // The name of the security profile group resource.
-//
-// ***
 func (o SecurityProfileGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityProfileGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

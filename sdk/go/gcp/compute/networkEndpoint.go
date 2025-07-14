@@ -155,8 +155,6 @@ type NetworkEndpoint struct {
 	// range).
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
 	// The network endpoint group this endpoint is part of.
-	//
-	// ***
 	NetworkEndpointGroup pulumi.StringOutput `pulumi:"networkEndpointGroup"`
 	// Port number of network endpoint.
 	// **Note** `port` is required unless the Network Endpoint Group is created
@@ -214,8 +212,6 @@ type networkEndpointState struct {
 	// range).
 	IpAddress *string `pulumi:"ipAddress"`
 	// The network endpoint group this endpoint is part of.
-	//
-	// ***
 	NetworkEndpointGroup *string `pulumi:"networkEndpointGroup"`
 	// Port number of network endpoint.
 	// **Note** `port` is required unless the Network Endpoint Group is created
@@ -238,8 +234,6 @@ type NetworkEndpointState struct {
 	// range).
 	IpAddress pulumi.StringPtrInput
 	// The network endpoint group this endpoint is part of.
-	//
-	// ***
 	NetworkEndpointGroup pulumi.StringPtrInput
 	// Port number of network endpoint.
 	// **Note** `port` is required unless the Network Endpoint Group is created
@@ -266,8 +260,6 @@ type networkEndpointArgs struct {
 	// range).
 	IpAddress string `pulumi:"ipAddress"`
 	// The network endpoint group this endpoint is part of.
-	//
-	// ***
 	NetworkEndpointGroup string `pulumi:"networkEndpointGroup"`
 	// Port number of network endpoint.
 	// **Note** `port` is required unless the Network Endpoint Group is created
@@ -291,8 +283,6 @@ type NetworkEndpointArgs struct {
 	// range).
 	IpAddress pulumi.StringInput
 	// The network endpoint group this endpoint is part of.
-	//
-	// ***
 	NetworkEndpointGroup pulumi.StringInput
 	// Port number of network endpoint.
 	// **Note** `port` is required unless the Network Endpoint Group is created
@@ -407,8 +397,6 @@ func (o NetworkEndpointOutput) IpAddress() pulumi.StringOutput {
 }
 
 // The network endpoint group this endpoint is part of.
-//
-// ***
 func (o NetworkEndpointOutput) NetworkEndpointGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkEndpoint) pulumi.StringOutput { return v.NetworkEndpointGroup }).(pulumi.StringOutput)
 }

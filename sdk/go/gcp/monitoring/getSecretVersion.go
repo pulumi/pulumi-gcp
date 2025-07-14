@@ -52,7 +52,10 @@ func GetSecretVersion(ctx *pulumi.Context, args *GetSecretVersionArgs, opts ...p
 
 // A collection of arguments for invoking getSecretVersion.
 type GetSecretVersionArgs struct {
-	// If set to 'true', the secret data is
+	// If set to `false`, the `secretData`
+	// will not be fetched. Default is `true`.
+	FetchSecretData *bool `pulumi:"fetchSecretData"`
+	// If set to `true`, the secret data is
 	// expected to be base64-encoded string.
 	IsSecretDataBase64 *bool `pulumi:"isSecretDataBase64"`
 	// The project to get the secret version for. If it
@@ -72,7 +75,8 @@ type GetSecretVersionResult struct {
 	// The time at which the Secret was destroyed. Only present if state is DESTROYED.
 	DestroyTime string `pulumi:"destroyTime"`
 	// True if the current state of the SecretVersion is enabled.
-	Enabled bool `pulumi:"enabled"`
+	Enabled         bool  `pulumi:"enabled"`
+	FetchSecretData *bool `pulumi:"fetchSecretData"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                 string `pulumi:"id"`
 	IsSecretDataBase64 *bool  `pulumi:"isSecretDataBase64"`
@@ -97,7 +101,10 @@ func GetSecretVersionOutput(ctx *pulumi.Context, args GetSecretVersionOutputArgs
 
 // A collection of arguments for invoking getSecretVersion.
 type GetSecretVersionOutputArgs struct {
-	// If set to 'true', the secret data is
+	// If set to `false`, the `secretData`
+	// will not be fetched. Default is `true`.
+	FetchSecretData pulumi.BoolPtrInput `pulumi:"fetchSecretData"`
+	// If set to `true`, the secret data is
 	// expected to be base64-encoded string.
 	IsSecretDataBase64 pulumi.BoolPtrInput `pulumi:"isSecretDataBase64"`
 	// The project to get the secret version for. If it
@@ -142,6 +149,10 @@ func (o GetSecretVersionResultOutput) DestroyTime() pulumi.StringOutput {
 // True if the current state of the SecretVersion is enabled.
 func (o GetSecretVersionResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetSecretVersionResult) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetSecretVersionResultOutput) FetchSecretData() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetSecretVersionResult) *bool { return v.FetchSecretData }).(pulumi.BoolPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

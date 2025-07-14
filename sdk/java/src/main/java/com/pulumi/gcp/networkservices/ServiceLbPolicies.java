@@ -251,16 +251,12 @@ public class ServiceLbPolicies extends com.pulumi.resources.CustomResource {
     /**
      * The location of the service lb policy.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return The location of the service lb policy.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

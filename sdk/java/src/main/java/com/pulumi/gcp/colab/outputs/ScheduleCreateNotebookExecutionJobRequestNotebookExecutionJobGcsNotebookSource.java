@@ -15,8 +15,6 @@ public final class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob
     /**
      * @return The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
      * 
-     * ***
-     * 
      */
     private @Nullable String generation;
     /**
@@ -28,8 +26,6 @@ public final class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob
     private ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource() {}
     /**
      * @return The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
-     * 
-     * ***
      * 
      */
     public Optional<String> generation() {

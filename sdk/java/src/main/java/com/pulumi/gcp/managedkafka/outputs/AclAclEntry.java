@@ -15,8 +15,6 @@ public final class AclAclEntry {
     /**
      * @return The host. Must be set to &#34;*&#34; for Managed Service for Apache Kafka.
      * 
-     * ***
-     * 
      */
     private @Nullable String host;
     /**
@@ -41,8 +39,6 @@ public final class AclAclEntry {
     private AclAclEntry() {}
     /**
      * @return The host. Must be set to &#34;*&#34; for Managed Service for Apache Kafka.
-     * 
-     * ***
      * 
      */
     public Optional<String> host() {

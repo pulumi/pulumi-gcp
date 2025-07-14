@@ -141,16 +141,12 @@ public class AccessLevelCondition extends com.pulumi.resources.CustomResource {
     /**
      * The name of the Access Level to add this condition to.
      * 
-     * ***
-     * 
      */
     @Export(name="accessLevel", refs={String.class}, tree="[0]")
     private Output<String> accessLevel;
 
     /**
      * @return The name of the Access Level to add this condition to.
-     * 
-     * ***
      * 
      */
     public Output<String> accessLevel() {

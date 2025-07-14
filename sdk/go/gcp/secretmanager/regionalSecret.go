@@ -352,8 +352,6 @@ type RegionalSecret struct {
 	// Structure is documented below.
 	Rotation RegionalSecretRotationPtrOutput `pulumi:"rotation"`
 	// This must be unique within the project.
-	//
-	// ***
 	SecretId pulumi.StringOutput `pulumi:"secretId"`
 	// A list of up to 10 Pub/Sub topics to which messages are published when control plane
 	// operations are called on the regional secret or its versions.
@@ -476,8 +474,6 @@ type regionalSecretState struct {
 	// Structure is documented below.
 	Rotation *RegionalSecretRotation `pulumi:"rotation"`
 	// This must be unique within the project.
-	//
-	// ***
 	SecretId *string `pulumi:"secretId"`
 	// A list of up to 10 Pub/Sub topics to which messages are published when control plane
 	// operations are called on the regional secret or its versions.
@@ -560,8 +556,6 @@ type RegionalSecretState struct {
 	// Structure is documented below.
 	Rotation RegionalSecretRotationPtrInput
 	// This must be unique within the project.
-	//
-	// ***
 	SecretId pulumi.StringPtrInput
 	// A list of up to 10 Pub/Sub topics to which messages are published when control plane
 	// operations are called on the regional secret or its versions.
@@ -637,8 +631,6 @@ type regionalSecretArgs struct {
 	// Structure is documented below.
 	Rotation *RegionalSecretRotation `pulumi:"rotation"`
 	// This must be unique within the project.
-	//
-	// ***
 	SecretId string `pulumi:"secretId"`
 	// A list of up to 10 Pub/Sub topics to which messages are published when control plane
 	// operations are called on the regional secret or its versions.
@@ -711,8 +703,6 @@ type RegionalSecretArgs struct {
 	// Structure is documented below.
 	Rotation RegionalSecretRotationPtrInput
 	// This must be unique within the project.
-	//
-	// ***
 	SecretId pulumi.StringInput
 	// A list of up to 10 Pub/Sub topics to which messages are published when control plane
 	// operations are called on the regional secret or its versions.
@@ -922,8 +912,6 @@ func (o RegionalSecretOutput) Rotation() RegionalSecretRotationPtrOutput {
 }
 
 // This must be unique within the project.
-//
-// ***
 func (o RegionalSecretOutput) SecretId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionalSecret) pulumi.StringOutput { return v.SecretId }).(pulumi.StringOutput)
 }

@@ -19,16 +19,12 @@ public final class AutomationRuleTimedPromoteReleaseRuleArgs extends com.pulumi.
     /**
      * Optional. The starting phase of the rollout created by this rule. Default to the first phase.
      * 
-     * ***
-     * 
      */
     @Import(name="destinationPhase")
     private @Nullable Output<String> destinationPhase;
 
     /**
      * @return Optional. The starting phase of the rollout created by this rule. Default to the first phase.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> destinationPhase() {
@@ -130,8 +126,6 @@ public final class AutomationRuleTimedPromoteReleaseRuleArgs extends com.pulumi.
         /**
          * @param destinationPhase Optional. The starting phase of the rollout created by this rule. Default to the first phase.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -142,8 +136,6 @@ public final class AutomationRuleTimedPromoteReleaseRuleArgs extends com.pulumi.
 
         /**
          * @param destinationPhase Optional. The starting phase of the rollout created by this rule. Default to the first phase.
-         * 
-         * ***
          * 
          * @return builder
          * 

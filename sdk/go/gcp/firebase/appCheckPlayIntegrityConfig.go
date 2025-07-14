@@ -179,8 +179,6 @@ type AppCheckPlayIntegrityConfig struct {
 
 	// The ID of an
 	// [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id).
-	//
-	// ***
 	AppId pulumi.StringOutput `pulumi:"appId"`
 	// The relative resource name of the Play Integrity configuration object
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -228,8 +226,6 @@ func GetAppCheckPlayIntegrityConfig(ctx *pulumi.Context,
 type appCheckPlayIntegrityConfigState struct {
 	// The ID of an
 	// [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id).
-	//
-	// ***
 	AppId *string `pulumi:"appId"`
 	// The relative resource name of the Play Integrity configuration object
 	Name *string `pulumi:"name"`
@@ -245,8 +241,6 @@ type appCheckPlayIntegrityConfigState struct {
 type AppCheckPlayIntegrityConfigState struct {
 	// The ID of an
 	// [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id).
-	//
-	// ***
 	AppId pulumi.StringPtrInput
 	// The relative resource name of the Play Integrity configuration object
 	Name pulumi.StringPtrInput
@@ -266,8 +260,6 @@ func (AppCheckPlayIntegrityConfigState) ElementType() reflect.Type {
 type appCheckPlayIntegrityConfigArgs struct {
 	// The ID of an
 	// [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id).
-	//
-	// ***
 	AppId string `pulumi:"appId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -282,8 +274,6 @@ type appCheckPlayIntegrityConfigArgs struct {
 type AppCheckPlayIntegrityConfigArgs struct {
 	// The ID of an
 	// [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id).
-	//
-	// ***
 	AppId pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -383,8 +373,6 @@ func (o AppCheckPlayIntegrityConfigOutput) ToAppCheckPlayIntegrityConfigOutputWi
 
 // The ID of an
 // [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id).
-//
-// ***
 func (o AppCheckPlayIntegrityConfigOutput) AppId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppCheckPlayIntegrityConfig) pulumi.StringOutput { return v.AppId }).(pulumi.StringOutput)
 }

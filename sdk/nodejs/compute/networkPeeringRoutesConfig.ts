@@ -184,9 +184,6 @@ export class NetworkPeeringRoutesConfig extends pulumi.CustomResource {
     public readonly importSubnetRoutesWithPublicIp!: pulumi.Output<boolean>;
     /**
      * The name of the primary network for the peering.
-     *
-     *
-     * - - -
      */
     public readonly network!: pulumi.Output<string>;
     /**
@@ -272,9 +269,6 @@ export interface NetworkPeeringRoutesConfigState {
     importSubnetRoutesWithPublicIp?: pulumi.Input<boolean>;
     /**
      * The name of the primary network for the peering.
-     *
-     *
-     * - - -
      */
     network?: pulumi.Input<string>;
     /**
@@ -314,9 +308,6 @@ export interface NetworkPeeringRoutesConfigArgs {
     importSubnetRoutesWithPublicIp?: pulumi.Input<boolean>;
     /**
      * The name of the primary network for the peering.
-     *
-     *
-     * - - -
      */
     network: pulumi.Input<string>;
     /**

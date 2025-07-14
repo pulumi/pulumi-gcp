@@ -28,7 +28,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, authorization_mode=None, automated_backup_configs=None, backup_collection=None, create_time=None, cross_instance_replication_configs=None, deletion_protection_enabled=None, desired_auto_created_endpoints=None, desired_psc_auto_connections=None, discovery_endpoints=None, effective_labels=None, endpoints=None, engine_configs=None, engine_version=None, gcs_sources=None, id=None, instance_id=None, kms_key=None, labels=None, location=None, maintenance_policies=None, maintenance_schedules=None, managed_backup_sources=None, mode=None, name=None, node_configs=None, node_type=None, persistence_configs=None, project=None, psc_attachment_details=None, psc_auto_connections=None, pulumi_labels=None, replica_count=None, shard_count=None, state=None, state_infos=None, transit_encryption_mode=None, uid=None, update_time=None, zone_distribution_configs=None):
+    def __init__(__self__, authorization_mode=None, automated_backup_configs=None, backup_collection=None, create_time=None, cross_instance_replication_configs=None, deletion_protection_enabled=None, desired_auto_created_endpoints=None, desired_psc_auto_connections=None, discovery_endpoints=None, effective_labels=None, endpoints=None, engine_configs=None, engine_version=None, gcs_sources=None, id=None, instance_id=None, kms_key=None, labels=None, location=None, maintenance_policies=None, maintenance_schedules=None, managed_backup_sources=None, managed_server_cas=None, mode=None, name=None, node_configs=None, node_type=None, persistence_configs=None, project=None, psc_attachment_details=None, psc_auto_connections=None, pulumi_labels=None, replica_count=None, shard_count=None, state=None, state_infos=None, transit_encryption_mode=None, uid=None, update_time=None, zone_distribution_configs=None):
         if authorization_mode and not isinstance(authorization_mode, str):
             raise TypeError("Expected argument 'authorization_mode' to be a str")
         pulumi.set(__self__, "authorization_mode", authorization_mode)
@@ -95,6 +95,9 @@ class GetInstanceResult:
         if managed_backup_sources and not isinstance(managed_backup_sources, list):
             raise TypeError("Expected argument 'managed_backup_sources' to be a list")
         pulumi.set(__self__, "managed_backup_sources", managed_backup_sources)
+        if managed_server_cas and not isinstance(managed_server_cas, list):
+            raise TypeError("Expected argument 'managed_server_cas' to be a list")
+        pulumi.set(__self__, "managed_server_cas", managed_server_cas)
         if mode and not isinstance(mode, str):
             raise TypeError("Expected argument 'mode' to be a str")
         pulumi.set(__self__, "mode", mode)
@@ -261,6 +264,11 @@ class GetInstanceResult:
         return pulumi.get(self, "managed_backup_sources")
 
     @property
+    @pulumi.getter(name="managedServerCas")
+    def managed_server_cas(self) -> Sequence['outputs.GetInstanceManagedServerCaResult']:
+        return pulumi.get(self, "managed_server_cas")
+
+    @property
     @pulumi.getter
     def mode(self) -> builtins.str:
         return pulumi.get(self, "mode")
@@ -374,6 +382,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             maintenance_policies=self.maintenance_policies,
             maintenance_schedules=self.maintenance_schedules,
             managed_backup_sources=self.managed_backup_sources,
+            managed_server_cas=self.managed_server_cas,
             mode=self.mode,
             name=self.name,
             node_configs=self.node_configs,
@@ -447,6 +456,7 @@ def get_instance(instance_id: Optional[builtins.str] = None,
         maintenance_policies=pulumi.get(__ret__, 'maintenance_policies'),
         maintenance_schedules=pulumi.get(__ret__, 'maintenance_schedules'),
         managed_backup_sources=pulumi.get(__ret__, 'managed_backup_sources'),
+        managed_server_cas=pulumi.get(__ret__, 'managed_server_cas'),
         mode=pulumi.get(__ret__, 'mode'),
         name=pulumi.get(__ret__, 'name'),
         node_configs=pulumi.get(__ret__, 'node_configs'),
@@ -517,6 +527,7 @@ def get_instance_output(instance_id: Optional[pulumi.Input[builtins.str]] = None
         maintenance_policies=pulumi.get(__response__, 'maintenance_policies'),
         maintenance_schedules=pulumi.get(__response__, 'maintenance_schedules'),
         managed_backup_sources=pulumi.get(__response__, 'managed_backup_sources'),
+        managed_server_cas=pulumi.get(__response__, 'managed_server_cas'),
         mode=pulumi.get(__response__, 'mode'),
         name=pulumi.get(__response__, 'name'),
         node_configs=pulumi.get(__response__, 'node_configs'),

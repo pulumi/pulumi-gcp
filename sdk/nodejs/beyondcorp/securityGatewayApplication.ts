@@ -127,7 +127,8 @@ export class SecurityGatewayApplication extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Optional. An arbitrary user-provided name for the Application resource. Cannot exceed 64 characters.
+     * Optional. An arbitrary user-provided name for the Application resource.
+     * Cannot exceed 64 characters.
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
@@ -149,6 +150,10 @@ export class SecurityGatewayApplication extends pulumi.CustomResource {
      * Identifier. Name of the resource.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * ID of the Security Gateway resource this belongs to.
@@ -160,6 +165,7 @@ export class SecurityGatewayApplication extends pulumi.CustomResource {
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
      * Optional. List of which upstream resource(s) to forward traffic to.
+     * Structure is documented below.
      */
     public readonly upstreams!: pulumi.Output<outputs.beyondcorp.SecurityGatewayApplicationUpstream[] | undefined>;
 
@@ -227,7 +233,8 @@ export interface SecurityGatewayApplicationState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * Optional. An arbitrary user-provided name for the Application resource. Cannot exceed 64 characters.
+     * Optional. An arbitrary user-provided name for the Application resource.
+     * Cannot exceed 64 characters.
      */
     displayName?: pulumi.Input<string>;
     /**
@@ -249,6 +256,10 @@ export interface SecurityGatewayApplicationState {
      * Identifier. Name of the resource.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * ID of the Security Gateway resource this belongs to.
@@ -260,6 +271,7 @@ export interface SecurityGatewayApplicationState {
     updateTime?: pulumi.Input<string>;
     /**
      * Optional. List of which upstream resource(s) to forward traffic to.
+     * Structure is documented below.
      */
     upstreams?: pulumi.Input<pulumi.Input<inputs.beyondcorp.SecurityGatewayApplicationUpstream>[]>;
 }
@@ -276,7 +288,8 @@ export interface SecurityGatewayApplicationArgs {
      */
     applicationId: pulumi.Input<string>;
     /**
-     * Optional. An arbitrary user-provided name for the Application resource. Cannot exceed 64 characters.
+     * Optional. An arbitrary user-provided name for the Application resource.
+     * Cannot exceed 64 characters.
      */
     displayName?: pulumi.Input<string>;
     /**
@@ -294,6 +307,10 @@ export interface SecurityGatewayApplicationArgs {
      * Structure is documented below.
      */
     endpointMatchers: pulumi.Input<pulumi.Input<inputs.beyondcorp.SecurityGatewayApplicationEndpointMatcher>[]>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * ID of the Security Gateway resource this belongs to.
@@ -301,6 +318,7 @@ export interface SecurityGatewayApplicationArgs {
     securityGatewayId: pulumi.Input<string>;
     /**
      * Optional. List of which upstream resource(s) to forward traffic to.
+     * Structure is documented below.
      */
     upstreams?: pulumi.Input<pulumi.Input<inputs.beyondcorp.SecurityGatewayApplicationUpstream>[]>;
 }

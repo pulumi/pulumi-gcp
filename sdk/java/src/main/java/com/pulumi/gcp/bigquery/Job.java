@@ -723,6 +723,7 @@ import javax.annotation.Nullable;
 public class Job extends com.pulumi.resources.CustomResource {
     /**
      * Copies a table.
+     * Structure is documented below.
      * 
      */
     @Export(name="copy", refs={JobCopy.class}, tree="[0]")
@@ -730,6 +731,7 @@ public class Job extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Copies a table.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<JobCopy>> copy() {
@@ -753,6 +755,7 @@ public class Job extends com.pulumi.resources.CustomResource {
     }
     /**
      * Configures an extract job.
+     * Structure is documented below.
      * 
      */
     @Export(name="extract", refs={JobExtract.class}, tree="[0]")
@@ -760,6 +763,7 @@ public class Job extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Configures an extract job.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<JobExtract>> extract() {
@@ -810,18 +814,20 @@ public class Job extends com.pulumi.resources.CustomResource {
         return this.jobType;
     }
     /**
-     * The labels associated with this job. You can use these to organize and group your jobs. **Note**: This field is
-     * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-     * &#39;effective_labels&#39; for all of the labels present on the resource.
+     * The labels associated with this job. You can use these to organize and group your jobs.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return The labels associated with this job. You can use these to organize and group your jobs. **Note**: This field is
-     * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-     * &#39;effective_labels&#39; for all of the labels present on the resource.
+     * @return The labels associated with this job. You can use these to organize and group your jobs.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -829,6 +835,7 @@ public class Job extends com.pulumi.resources.CustomResource {
     }
     /**
      * Configures a load job.
+     * Structure is documented below.
      * 
      */
     @Export(name="load", refs={JobLoad.class}, tree="[0]")
@@ -836,28 +843,39 @@ public class Job extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Configures a load job.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<JobLoad>> load() {
         return Codegen.optional(this.load);
     }
     /**
-     * Specifies where the error occurred, if present.
+     * The geographic location of the job. The default value is US.
      * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> location;
 
     /**
-     * @return Specifies where the error occurred, if present.
+     * @return The geographic location of the job. The default value is US.
      * 
      */
     public Output<Optional<String>> location() {
         return Codegen.optional(this.location);
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }
@@ -881,6 +899,7 @@ public class Job extends com.pulumi.resources.CustomResource {
     }
     /**
      * Configures a query job.
+     * Structure is documented below.
      * 
      */
     @Export(name="query", refs={JobQuery.class}, tree="[0]")
@@ -888,6 +907,7 @@ public class Job extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Configures a query job.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<JobQuery>> query() {

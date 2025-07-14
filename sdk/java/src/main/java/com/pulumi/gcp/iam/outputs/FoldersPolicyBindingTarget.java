@@ -17,8 +17,6 @@ public final class FoldersPolicyBindingTarget {
      * * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
      *   It must be parent by the policy binding&#39;s parent (the folder).
      * 
-     * ***
-     * 
      */
     private @Nullable String principalSet;
 
@@ -28,8 +26,6 @@ public final class FoldersPolicyBindingTarget {
      * Examples for each one of the following supported principal set types:
      * * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
      *   It must be parent by the policy binding&#39;s parent (the folder).
-     * 
-     * ***
      * 
      */
     public Optional<String> principalSet() {

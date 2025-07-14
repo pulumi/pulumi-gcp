@@ -86,8 +86,6 @@ type DataAccessLabel struct {
 	// display name and the final component of the label's resource name. The
 	// maximum number of characters should be 63. Regex pattern is as per AIP:
 	// https://google.aip.dev/122#resource-id-segments
-	//
-	// ***
 	DataAccessLabelId pulumi.StringOutput `pulumi:"dataAccessLabelId"`
 	// Optional. A description of the data access label for a human reader.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -162,8 +160,6 @@ type dataAccessLabelState struct {
 	// display name and the final component of the label's resource name. The
 	// maximum number of characters should be 63. Regex pattern is as per AIP:
 	// https://google.aip.dev/122#resource-id-segments
-	//
-	// ***
 	DataAccessLabelId *string `pulumi:"dataAccessLabelId"`
 	// Optional. A description of the data access label for a human reader.
 	Description *string `pulumi:"description"`
@@ -197,8 +193,6 @@ type DataAccessLabelState struct {
 	// display name and the final component of the label's resource name. The
 	// maximum number of characters should be 63. Regex pattern is as per AIP:
 	// https://google.aip.dev/122#resource-id-segments
-	//
-	// ***
 	DataAccessLabelId pulumi.StringPtrInput
 	// Optional. A description of the data access label for a human reader.
 	Description pulumi.StringPtrInput
@@ -232,8 +226,6 @@ type dataAccessLabelArgs struct {
 	// display name and the final component of the label's resource name. The
 	// maximum number of characters should be 63. Regex pattern is as per AIP:
 	// https://google.aip.dev/122#resource-id-segments
-	//
-	// ***
 	DataAccessLabelId string `pulumi:"dataAccessLabelId"`
 	// Optional. A description of the data access label for a human reader.
 	Description *string `pulumi:"description"`
@@ -254,8 +246,6 @@ type DataAccessLabelArgs struct {
 	// display name and the final component of the label's resource name. The
 	// maximum number of characters should be 63. Regex pattern is as per AIP:
 	// https://google.aip.dev/122#resource-id-segments
-	//
-	// ***
 	DataAccessLabelId pulumi.StringInput
 	// Optional. A description of the data access label for a human reader.
 	Description pulumi.StringPtrInput
@@ -371,8 +361,6 @@ func (o DataAccessLabelOutput) CreateTime() pulumi.StringOutput {
 // display name and the final component of the label's resource name. The
 // maximum number of characters should be 63. Regex pattern is as per AIP:
 // https://google.aip.dev/122#resource-id-segments
-//
-// ***
 func (o DataAccessLabelOutput) DataAccessLabelId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataAccessLabel) pulumi.StringOutput { return v.DataAccessLabelId }).(pulumi.StringOutput)
 }

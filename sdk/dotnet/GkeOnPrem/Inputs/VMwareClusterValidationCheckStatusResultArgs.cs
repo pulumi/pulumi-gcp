@@ -20,8 +20,7 @@ namespace Pulumi.Gcp.GkeOnPrem.Inputs
         public Input<string>? Category { get; set; }
 
         /// <summary>
-        /// (Output)
-        /// The description of the validation check.
+        /// A human readable description of this VMware User Cluster.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

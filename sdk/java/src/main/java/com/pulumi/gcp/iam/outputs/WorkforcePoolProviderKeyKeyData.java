@@ -28,8 +28,6 @@ public final class WorkforcePoolProviderKeyKeyData {
      * @return The specifications for the key.
      * Possible values are: `RSA_2048`, `RSA_3072`, `RSA_4096`.
      * 
-     * ***
-     * 
      */
     private String keySpec;
     /**
@@ -73,8 +71,6 @@ public final class WorkforcePoolProviderKeyKeyData {
     /**
      * @return The specifications for the key.
      * Possible values are: `RSA_2048`, `RSA_3072`, `RSA_4096`.
-     * 
-     * ***
      * 
      */
     public String keySpec() {

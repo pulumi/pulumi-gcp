@@ -45,9 +45,6 @@ class ReservationArgs:
         :param pulumi.Input[builtins.str] location: The geographic location where the transfer config should reside.
                Examples: US, EU, asia-northeast1. The default value is US.
         :param pulumi.Input[builtins.str] name: The name of the reservation. This field must only contain alphanumeric characters or dash.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] secondary_location: The current location of the reservation's secondary replica. This field is only set for
@@ -155,9 +152,6 @@ class ReservationArgs:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The name of the reservation. This field must only contain alphanumeric characters or dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -221,9 +215,6 @@ class _ReservationState:
         :param pulumi.Input[builtins.str] location: The geographic location where the transfer config should reside.
                Examples: US, EU, asia-northeast1. The default value is US.
         :param pulumi.Input[builtins.str] name: The name of the reservation. This field must only contain alphanumeric characters or dash.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] original_primary_location: The location where the reservation was originally created. This is set only during the
                failover reservation's creation. All billing charges for the failover reservation will be
                applied to this location.
@@ -339,9 +330,6 @@ class _ReservationState:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The name of the reservation. This field must only contain alphanumeric characters or dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -517,9 +505,6 @@ class Reservation(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] location: The geographic location where the transfer config should reside.
                Examples: US, EU, asia-northeast1. The default value is US.
         :param pulumi.Input[builtins.str] name: The name of the reservation. This field must only contain alphanumeric characters or dash.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] secondary_location: The current location of the reservation's secondary replica. This field is only set for
@@ -674,9 +659,6 @@ class Reservation(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] location: The geographic location where the transfer config should reside.
                Examples: US, EU, asia-northeast1. The default value is US.
         :param pulumi.Input[builtins.str] name: The name of the reservation. This field must only contain alphanumeric characters or dash.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] original_primary_location: The location where the reservation was originally created. This is set only during the
                failover reservation's creation. All billing charges for the failover reservation will be
                applied to this location.
@@ -765,9 +747,6 @@ class Reservation(pulumi.CustomResource):
     def name(self) -> pulumi.Output[builtins.str]:
         """
         The name of the reservation. This field must only contain alphanumeric characters or dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

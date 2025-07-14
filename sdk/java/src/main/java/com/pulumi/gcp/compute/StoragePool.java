@@ -388,8 +388,6 @@ public class StoragePool extends com.pulumi.resources.CustomResource {
      * * `https://www.googleapis.com/compute/v1/projects/{project_id}/zones/{zone}/storagePoolTypes/hyperdisk-balanced`
      * * `hyperdisk-throughput`
      * 
-     * ***
-     * 
      */
     @Export(name="storagePoolType", refs={String.class}, tree="[0]")
     private Output<String> storagePoolType;
@@ -399,8 +397,6 @@ public class StoragePool extends com.pulumi.resources.CustomResource {
      * following are valid values:
      * * `https://www.googleapis.com/compute/v1/projects/{project_id}/zones/{zone}/storagePoolTypes/hyperdisk-balanced`
      * * `hyperdisk-throughput`
-     * 
-     * ***
      * 
      */
     public Output<String> storagePoolType() {

@@ -179,16 +179,12 @@ public class LoggingSetting extends com.pulumi.resources.CustomResource {
     /**
      * Id of the Logging Setting.
      * 
-     * ***
-     * 
      */
     @Export(name="loggingSettingId", refs={String.class}, tree="[0]")
     private Output<String> loggingSettingId;
 
     /**
      * @return Id of the Logging Setting.
-     * 
-     * ***
      * 
      */
     public Output<String> loggingSettingId() {

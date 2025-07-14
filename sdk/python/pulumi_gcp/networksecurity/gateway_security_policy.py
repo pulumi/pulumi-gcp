@@ -32,9 +32,6 @@ class GatewaySecurityPolicyArgs:
                The default value is `global`.
         :param pulumi.Input[builtins.str] name: Name of the resource. Name is of the form projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}
                gatewaySecurityPolicy should match the pattern:(^a-z?$).
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] tls_inspection_policy: Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
@@ -81,9 +78,6 @@ class GatewaySecurityPolicyArgs:
         """
         Name of the resource. Name is of the form projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}
         gatewaySecurityPolicy should match the pattern:(^a-z?$).
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -138,9 +132,6 @@ class _GatewaySecurityPolicyState:
                The default value is `global`.
         :param pulumi.Input[builtins.str] name: Name of the resource. Name is of the form projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}
                gatewaySecurityPolicy should match the pattern:(^a-z?$).
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] self_link: Server-defined URL of this resource.
@@ -211,9 +202,6 @@ class _GatewaySecurityPolicyState:
         """
         Name of the resource. Name is of the form projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}
         gatewaySecurityPolicy should match the pattern:(^a-z?$).
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -420,9 +408,6 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
                The default value is `global`.
         :param pulumi.Input[builtins.str] name: Name of the resource. Name is of the form projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}
                gatewaySecurityPolicy should match the pattern:(^a-z?$).
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] tls_inspection_policy: Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
@@ -631,9 +616,6 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
                The default value is `global`.
         :param pulumi.Input[builtins.str] name: Name of the resource. Name is of the form projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}
                gatewaySecurityPolicy should match the pattern:(^a-z?$).
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] self_link: Server-defined URL of this resource.
@@ -689,9 +671,6 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
         """
         Name of the resource. Name is of the form projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}
         gatewaySecurityPolicy should match the pattern:(^a-z?$).
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

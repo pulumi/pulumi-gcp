@@ -119,8 +119,6 @@ type ResourcePolicyAttachment struct {
 	pulumi.CustomResourceState
 
 	// The name of the instance in which the resource policies are attached to.
-	//
-	// ***
 	Instance pulumi.StringOutput `pulumi:"instance"`
 	// The resource policy to be attached to the instance for scheduling start/stop
 	// operations. Do not specify the self link.
@@ -166,8 +164,6 @@ func GetResourcePolicyAttachment(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ResourcePolicyAttachment resources.
 type resourcePolicyAttachmentState struct {
 	// The name of the instance in which the resource policies are attached to.
-	//
-	// ***
 	Instance *string `pulumi:"instance"`
 	// The resource policy to be attached to the instance for scheduling start/stop
 	// operations. Do not specify the self link.
@@ -181,8 +177,6 @@ type resourcePolicyAttachmentState struct {
 
 type ResourcePolicyAttachmentState struct {
 	// The name of the instance in which the resource policies are attached to.
-	//
-	// ***
 	Instance pulumi.StringPtrInput
 	// The resource policy to be attached to the instance for scheduling start/stop
 	// operations. Do not specify the self link.
@@ -200,8 +194,6 @@ func (ResourcePolicyAttachmentState) ElementType() reflect.Type {
 
 type resourcePolicyAttachmentArgs struct {
 	// The name of the instance in which the resource policies are attached to.
-	//
-	// ***
 	Instance string `pulumi:"instance"`
 	// The resource policy to be attached to the instance for scheduling start/stop
 	// operations. Do not specify the self link.
@@ -216,8 +208,6 @@ type resourcePolicyAttachmentArgs struct {
 // The set of arguments for constructing a ResourcePolicyAttachment resource.
 type ResourcePolicyAttachmentArgs struct {
 	// The name of the instance in which the resource policies are attached to.
-	//
-	// ***
 	Instance pulumi.StringInput
 	// The resource policy to be attached to the instance for scheduling start/stop
 	// operations. Do not specify the self link.
@@ -317,8 +307,6 @@ func (o ResourcePolicyAttachmentOutput) ToResourcePolicyAttachmentOutputWithCont
 }
 
 // The name of the instance in which the resource policies are attached to.
-//
-// ***
 func (o ResourcePolicyAttachmentOutput) Instance() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourcePolicyAttachment) pulumi.StringOutput { return v.Instance }).(pulumi.StringOutput)
 }

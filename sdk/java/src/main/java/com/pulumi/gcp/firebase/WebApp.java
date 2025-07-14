@@ -175,16 +175,12 @@ public class WebApp extends com.pulumi.resources.CustomResource {
     /**
      * The user-assigned display name of the App.
      * 
-     * ***
-     * 
      */
     @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
      * @return The user-assigned display name of the App.
-     * 
-     * ***
      * 
      */
     public Output<String> displayName() {

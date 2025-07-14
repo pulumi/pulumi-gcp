@@ -10,7 +10,6 @@ import com.pulumi.gcp.compute.outputs.RouterRoutePolicyTermMatch;
 import java.lang.Integer;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
@@ -22,11 +21,11 @@ public final class RouterRoutePolicyTerm {
      */
     private @Nullable List<RouterRoutePolicyTermAction> actions;
     /**
-     * @return CEL expression evaluated against a route to determine if this term applies (see Policy Language). When not set, the term applies to all routes.
+     * @return CEL expression evaluated against a route to determine if this term applies (see Policy Language).
      * Structure is documented below.
      * 
      */
-    private @Nullable RouterRoutePolicyTermMatch match;
+    private RouterRoutePolicyTermMatch match;
     /**
      * @return The evaluation priority for this term, which must be between 0 (inclusive) and 231 (exclusive), and unique within the list.
      * 
@@ -43,12 +42,12 @@ public final class RouterRoutePolicyTerm {
         return this.actions == null ? List.of() : this.actions;
     }
     /**
-     * @return CEL expression evaluated against a route to determine if this term applies (see Policy Language). When not set, the term applies to all routes.
+     * @return CEL expression evaluated against a route to determine if this term applies (see Policy Language).
      * Structure is documented below.
      * 
      */
-    public Optional<RouterRoutePolicyTermMatch> match() {
-        return Optional.ofNullable(this.match);
+    public RouterRoutePolicyTermMatch match() {
+        return this.match;
     }
     /**
      * @return The evaluation priority for this term, which must be between 0 (inclusive) and 231 (exclusive), and unique within the list.
@@ -68,7 +67,7 @@ public final class RouterRoutePolicyTerm {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<RouterRoutePolicyTermAction> actions;
-        private @Nullable RouterRoutePolicyTermMatch match;
+        private RouterRoutePolicyTermMatch match;
         private Integer priority;
         public Builder() {}
         public Builder(RouterRoutePolicyTerm defaults) {
@@ -88,8 +87,10 @@ public final class RouterRoutePolicyTerm {
             return actions(List.of(actions));
         }
         @CustomType.Setter
-        public Builder match(@Nullable RouterRoutePolicyTermMatch match) {
-
+        public Builder match(RouterRoutePolicyTermMatch match) {
+            if (match == null) {
+              throw new MissingRequiredPropertyException("RouterRoutePolicyTerm", "match");
+            }
             this.match = match;
             return this;
         }

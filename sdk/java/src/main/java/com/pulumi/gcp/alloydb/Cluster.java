@@ -707,16 +707,12 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * The location where the alloydb cluster should reside.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return The location where the alloydb cluster should reside.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

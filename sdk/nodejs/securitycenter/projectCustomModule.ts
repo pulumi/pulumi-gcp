@@ -165,6 +165,10 @@ export class ProjectCustomModule extends pulumi.CustomResource {
      * The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The time at which the custom module was last updated.
@@ -256,6 +260,10 @@ export interface ProjectCustomModuleState {
      * The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * The time at which the custom module was last updated.
@@ -287,5 +295,9 @@ export interface ProjectCustomModuleArgs {
      * Possible values are: `ENABLED`, `DISABLED`.
      */
     enablementState: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
 }

@@ -185,8 +185,6 @@ public final class MessageBusState extends com.pulumi.resources.ResourceArgs {
      * Required. The user-provided ID to be assigned to the MessageBus. It should match the
      * format `^a-z?$`.
      * 
-     * ***
-     * 
      */
     @Import(name="messageBusId")
     private @Nullable Output<String> messageBusId;
@@ -194,8 +192,6 @@ public final class MessageBusState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Required. The user-provided ID to be assigned to the MessageBus. It should match the
      * format `^a-z?$`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> messageBusId() {
@@ -548,8 +544,6 @@ public final class MessageBusState extends com.pulumi.resources.ResourceArgs {
          * @param messageBusId Required. The user-provided ID to be assigned to the MessageBus. It should match the
          * format `^a-z?$`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -561,8 +555,6 @@ public final class MessageBusState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param messageBusId Required. The user-provided ID to be assigned to the MessageBus. It should match the
          * format `^a-z?$`.
-         * 
-         * ***
          * 
          * @return builder
          * 

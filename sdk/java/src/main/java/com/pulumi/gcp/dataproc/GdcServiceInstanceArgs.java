@@ -120,16 +120,12 @@ public final class GdcServiceInstanceArgs extends com.pulumi.resources.ResourceA
     /**
      * Id of the service instance.
      * 
-     * ***
-     * 
      */
     @Import(name="serviceInstanceId", required=true)
     private Output<String> serviceInstanceId;
 
     /**
      * @return Id of the service instance.
-     * 
-     * ***
      * 
      */
     public Output<String> serviceInstanceId() {
@@ -319,8 +315,6 @@ public final class GdcServiceInstanceArgs extends com.pulumi.resources.ResourceA
         /**
          * @param serviceInstanceId Id of the service instance.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -331,8 +325,6 @@ public final class GdcServiceInstanceArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param serviceInstanceId Id of the service instance.
-         * 
-         * ***
          * 
          * @return builder
          * 

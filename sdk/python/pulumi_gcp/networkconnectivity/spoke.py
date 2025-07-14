@@ -38,9 +38,6 @@ class SpokeArgs:
         The set of arguments for constructing a Spoke resource.
         :param pulumi.Input[builtins.str] hub: Immutable. The URI of the hub that this spoke is attached to.
         :param pulumi.Input[builtins.str] location: The location for the resource
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] description: An optional description of the spoke.
         :param pulumi.Input[builtins.str] group: The name of the group that this spoke is associated with.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
@@ -100,9 +97,6 @@ class SpokeArgs:
     def location(self) -> pulumi.Input[builtins.str]:
         """
         The location for the resource
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -282,9 +276,6 @@ class _SpokeState:
         :param pulumi.Input['SpokeLinkedVpnTunnelsArgs'] linked_vpn_tunnels: The URIs of linked VPN tunnel resources
                Structure is documented below.
         :param pulumi.Input[builtins.str] location: The location for the resource
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: Immutable. The name of the spoke. Spoke names must be unique.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -479,9 +470,6 @@ class _SpokeState:
     def location(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The location for the resource
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -1044,9 +1032,6 @@ class Spoke(pulumi.CustomResource):
         :param pulumi.Input[Union['SpokeLinkedVpnTunnelsArgs', 'SpokeLinkedVpnTunnelsArgsDict']] linked_vpn_tunnels: The URIs of linked VPN tunnel resources
                Structure is documented below.
         :param pulumi.Input[builtins.str] location: The location for the resource
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: Immutable. The name of the spoke. Spoke names must be unique.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1602,9 +1587,6 @@ class Spoke(pulumi.CustomResource):
         :param pulumi.Input[Union['SpokeLinkedVpnTunnelsArgs', 'SpokeLinkedVpnTunnelsArgsDict']] linked_vpn_tunnels: The URIs of linked VPN tunnel resources
                Structure is documented below.
         :param pulumi.Input[builtins.str] location: The location for the resource
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: Immutable. The name of the spoke. Spoke names must be unique.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1741,9 +1723,6 @@ class Spoke(pulumi.CustomResource):
     def location(self) -> pulumi.Output[builtins.str]:
         """
         The location for the resource
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

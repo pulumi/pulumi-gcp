@@ -128,6 +128,7 @@ import javax.annotation.Nullable;
 public class Entitlement extends com.pulumi.resources.CustomResource {
     /**
      * AdditionalNotificationTargets includes email addresses to be notified.
+     * Structure is documented below.
      * 
      */
     @Export(name="additionalNotificationTargets", refs={EntitlementAdditionalNotificationTargets.class}, tree="[0]")
@@ -135,22 +136,25 @@ public class Entitlement extends com.pulumi.resources.CustomResource {
 
     /**
      * @return AdditionalNotificationTargets includes email addresses to be notified.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<EntitlementAdditionalNotificationTargets>> additionalNotificationTargets() {
         return Codegen.optional(this.additionalNotificationTargets);
     }
     /**
-     * The approvals needed before access will be granted to a requester. No approvals will be needed if this field is null.
-     * Different types of approval workflows that can be used to gate privileged access granting.
+     * The approvals needed before access will be granted to a requester.
+     * No approvals will be needed if this field is null. Different types of approval workflows that can be used to gate privileged access granting.
+     * Structure is documented below.
      * 
      */
     @Export(name="approvalWorkflow", refs={EntitlementApprovalWorkflow.class}, tree="[0]")
     private Output</* @Nullable */ EntitlementApprovalWorkflow> approvalWorkflow;
 
     /**
-     * @return The approvals needed before access will be granted to a requester. No approvals will be needed if this field is null.
-     * Different types of approval workflows that can be used to gate privileged access granting.
+     * @return The approvals needed before access will be granted to a requester.
+     * No approvals will be needed if this field is null. Different types of approval workflows that can be used to gate privileged access granting.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<EntitlementApprovalWorkflow>> approvalWorkflow() {

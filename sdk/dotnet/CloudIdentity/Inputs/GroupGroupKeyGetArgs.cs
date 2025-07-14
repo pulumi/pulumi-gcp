@@ -30,8 +30,6 @@ namespace Pulumi.Gcp.CloudIdentity.Inputs
         /// If specified, the EntityKey represents an external-identity-mapped group.
         /// The namespace must correspond to an identity source created in Admin Console
         /// and must be in the form of `identitysources/{identity_source_id}`.
-        /// 
-        /// - - -
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }

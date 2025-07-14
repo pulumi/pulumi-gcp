@@ -840,16 +840,12 @@ public class ConnectionProfile extends com.pulumi.resources.CustomResource {
     /**
      * The ID of the connection profile.
      * 
-     * ***
-     * 
      */
     @Export(name="connectionProfileId", refs={String.class}, tree="[0]")
     private Output<String> connectionProfileId;
 
     /**
      * @return The ID of the connection profile.
-     * 
-     * ***
      * 
      */
     public Output<String> connectionProfileId() {

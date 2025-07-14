@@ -257,8 +257,6 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
      * * `https://www.googleapis.com/compute/v1/projects/{project_id}/zones/{zone}/storagePoolTypes/hyperdisk-balanced`
      * * `hyperdisk-throughput`
      * 
-     * ***
-     * 
      */
     @Import(name="storagePoolType")
     private @Nullable Output<String> storagePoolType;
@@ -268,8 +266,6 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
      * following are valid values:
      * * `https://www.googleapis.com/compute/v1/projects/{project_id}/zones/{zone}/storagePoolTypes/hyperdisk-balanced`
      * * `hyperdisk-throughput`
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> storagePoolType() {
@@ -670,8 +666,6 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
          * * `https://www.googleapis.com/compute/v1/projects/{project_id}/zones/{zone}/storagePoolTypes/hyperdisk-balanced`
          * * `hyperdisk-throughput`
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -685,8 +679,6 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
          * following are valid values:
          * * `https://www.googleapis.com/compute/v1/projects/{project_id}/zones/{zone}/storagePoolTypes/hyperdisk-balanced`
          * * `hyperdisk-throughput`
-         * 
-         * ***
          * 
          * @return builder
          * 

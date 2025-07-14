@@ -72,8 +72,6 @@ public final class MirroringDeploymentGroupArgs extends com.pulumi.resources.Res
      * The ID to use for the new deployment group, which will become the final
      * component of the deployment group&#39;s resource name.
      * 
-     * ***
-     * 
      */
     @Import(name="mirroringDeploymentGroupId", required=true)
     private Output<String> mirroringDeploymentGroupId;
@@ -81,8 +79,6 @@ public final class MirroringDeploymentGroupArgs extends com.pulumi.resources.Res
     /**
      * @return The ID to use for the new deployment group, which will become the final
      * component of the deployment group&#39;s resource name.
-     * 
-     * ***
      * 
      */
     public Output<String> mirroringDeploymentGroupId() {
@@ -227,8 +223,6 @@ public final class MirroringDeploymentGroupArgs extends com.pulumi.resources.Res
          * @param mirroringDeploymentGroupId The ID to use for the new deployment group, which will become the final
          * component of the deployment group&#39;s resource name.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -240,8 +234,6 @@ public final class MirroringDeploymentGroupArgs extends com.pulumi.resources.Res
         /**
          * @param mirroringDeploymentGroupId The ID to use for the new deployment group, which will become the final
          * component of the deployment group&#39;s resource name.
-         * 
-         * ***
          * 
          * @return builder
          * 

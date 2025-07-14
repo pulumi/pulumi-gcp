@@ -147,6 +147,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly memorystoreCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly migrationCenterCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly mlEngineCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly modelArmorCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly monitoringCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly netappCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly networkConnectivityCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -351,6 +352,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["memorystoreCustomEndpoint"] = args ? args.memorystoreCustomEndpoint : undefined;
             resourceInputs["migrationCenterCustomEndpoint"] = args ? args.migrationCenterCustomEndpoint : undefined;
             resourceInputs["mlEngineCustomEndpoint"] = args ? args.mlEngineCustomEndpoint : undefined;
+            resourceInputs["modelArmorCustomEndpoint"] = args ? args.modelArmorCustomEndpoint : undefined;
             resourceInputs["monitoringCustomEndpoint"] = args ? args.monitoringCustomEndpoint : undefined;
             resourceInputs["netappCustomEndpoint"] = args ? args.netappCustomEndpoint : undefined;
             resourceInputs["networkConnectivityCustomEndpoint"] = args ? args.networkConnectivityCustomEndpoint : undefined;
@@ -566,6 +568,7 @@ export interface ProviderArgs {
     memorystoreCustomEndpoint?: pulumi.Input<string>;
     migrationCenterCustomEndpoint?: pulumi.Input<string>;
     mlEngineCustomEndpoint?: pulumi.Input<string>;
+    modelArmorCustomEndpoint?: pulumi.Input<string>;
     monitoringCustomEndpoint?: pulumi.Input<string>;
     netappCustomEndpoint?: pulumi.Input<string>;
     networkConnectivityCustomEndpoint?: pulumi.Input<string>;

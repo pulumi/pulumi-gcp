@@ -96,9 +96,6 @@ export class LogScope extends pulumi.CustomResource {
     public readonly parent!: pulumi.Output<string>;
     /**
      * Names of one or more parent resources : *  \`projects/[PROJECT_ID]\` May alternatively be one or more views : * \`projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]\` A log scope can include a maximum of 50 projects and a maximum of 100 resources in total.
-     *
-     *
-     * - - -
      */
     public readonly resourceNames!: pulumi.Output<string[]>;
     /**
@@ -170,9 +167,6 @@ export interface LogScopeState {
     parent?: pulumi.Input<string>;
     /**
      * Names of one or more parent resources : *  \`projects/[PROJECT_ID]\` May alternatively be one or more views : * \`projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]\` A log scope can include a maximum of 50 projects and a maximum of 100 resources in total.
-     *
-     *
-     * - - -
      */
     resourceNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -203,9 +197,6 @@ export interface LogScopeArgs {
     parent?: pulumi.Input<string>;
     /**
      * Names of one or more parent resources : *  \`projects/[PROJECT_ID]\` May alternatively be one or more views : * \`projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]\` A log scope can include a maximum of 50 projects and a maximum of 100 resources in total.
-     *
-     *
-     * - - -
      */
     resourceNames: pulumi.Input<pulumi.Input<string>[]>;
 }

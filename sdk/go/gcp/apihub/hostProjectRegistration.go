@@ -121,8 +121,6 @@ type HostProjectRegistration struct {
 	// final component of the host project registration's resource name. The ID
 	// must be the same as the Google cloud project specified in the
 	// host_project_registration.gcp_project field.
-	//
-	// ***
 	HostProjectRegistrationId pulumi.StringOutput `pulumi:"hostProjectRegistrationId"`
 	// Part of `parent`. See documentation of `projectsId`.
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -184,8 +182,6 @@ type hostProjectRegistrationState struct {
 	// final component of the host project registration's resource name. The ID
 	// must be the same as the Google cloud project specified in the
 	// host_project_registration.gcp_project field.
-	//
-	// ***
 	HostProjectRegistrationId *string `pulumi:"hostProjectRegistrationId"`
 	// Part of `parent`. See documentation of `projectsId`.
 	Location *string `pulumi:"location"`
@@ -209,8 +205,6 @@ type HostProjectRegistrationState struct {
 	// final component of the host project registration's resource name. The ID
 	// must be the same as the Google cloud project specified in the
 	// host_project_registration.gcp_project field.
-	//
-	// ***
 	HostProjectRegistrationId pulumi.StringPtrInput
 	// Part of `parent`. See documentation of `projectsId`.
 	Location pulumi.StringPtrInput
@@ -236,8 +230,6 @@ type hostProjectRegistrationArgs struct {
 	// final component of the host project registration's resource name. The ID
 	// must be the same as the Google cloud project specified in the
 	// host_project_registration.gcp_project field.
-	//
-	// ***
 	HostProjectRegistrationId string `pulumi:"hostProjectRegistrationId"`
 	// Part of `parent`. See documentation of `projectsId`.
 	Location string `pulumi:"location"`
@@ -256,8 +248,6 @@ type HostProjectRegistrationArgs struct {
 	// final component of the host project registration's resource name. The ID
 	// must be the same as the Google cloud project specified in the
 	// host_project_registration.gcp_project field.
-	//
-	// ***
 	HostProjectRegistrationId pulumi.StringInput
 	// Part of `parent`. See documentation of `projectsId`.
 	Location pulumi.StringInput
@@ -369,8 +359,6 @@ func (o HostProjectRegistrationOutput) GcpProject() pulumi.StringOutput {
 // final component of the host project registration's resource name. The ID
 // must be the same as the Google cloud project specified in the
 // host_project_registration.gcp_project field.
-//
-// ***
 func (o HostProjectRegistrationOutput) HostProjectRegistrationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *HostProjectRegistration) pulumi.StringOutput { return v.HostProjectRegistrationId }).(pulumi.StringOutput)
 }

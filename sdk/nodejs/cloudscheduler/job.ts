@@ -259,9 +259,6 @@ export class Job extends pulumi.CustomResource {
     public readonly httpTarget!: pulumi.Output<outputs.cloudscheduler.JobHttpTarget | undefined>;
     /**
      * The name of the job.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -388,9 +385,6 @@ export interface JobState {
     httpTarget?: pulumi.Input<inputs.cloudscheduler.JobHttpTarget>;
     /**
      * The name of the job.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -471,9 +465,6 @@ export interface JobArgs {
     httpTarget?: pulumi.Input<inputs.cloudscheduler.JobHttpTarget>;
     /**
      * The name of the job.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

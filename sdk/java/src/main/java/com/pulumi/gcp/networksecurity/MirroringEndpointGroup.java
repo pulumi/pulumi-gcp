@@ -249,8 +249,6 @@ public class MirroringEndpointGroup extends com.pulumi.resources.CustomResource 
      * The ID to use for the endpoint group, which will become the final component
      * of the endpoint group&#39;s resource name.
      * 
-     * ***
-     * 
      */
     @Export(name="mirroringEndpointGroupId", refs={String.class}, tree="[0]")
     private Output<String> mirroringEndpointGroupId;
@@ -258,8 +256,6 @@ public class MirroringEndpointGroup extends com.pulumi.resources.CustomResource 
     /**
      * @return The ID to use for the endpoint group, which will become the final component
      * of the endpoint group&#39;s resource name.
-     * 
-     * ***
      * 
      */
     public Output<String> mirroringEndpointGroupId() {

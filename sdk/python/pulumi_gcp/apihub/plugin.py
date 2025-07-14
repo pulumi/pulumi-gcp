@@ -48,9 +48,6 @@ class PluginArgs:
                `projects/{project}/locations/{location}/plugins/{plugin}`,
                its length is limited to 1000 characters and valid characters are
                /a-z[0-9]-_/.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['PluginActionsConfigArgs']]] actions_configs: The configuration of actions supported by the plugin.
                Structure is documented below.
         :param pulumi.Input['PluginConfigTemplateArgs'] config_template: ConfigTemplate represents the configuration template for a plugin.
@@ -127,9 +124,6 @@ class PluginArgs:
         `projects/{project}/locations/{location}/plugins/{plugin}`,
         its length is limited to 1000 characters and valid characters are
         /a-z[0-9]-_/.
-
-
-        - - -
         """
         return pulumi.get(self, "plugin_id")
 
@@ -290,9 +284,6 @@ class _PluginState:
                `projects/{project}/locations/{location}/plugins/{plugin}`,
                its length is limited to 1000 characters and valid characters are
                /a-z[0-9]-_/.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] state: Represents the state of the plugin.
@@ -498,9 +489,6 @@ class _PluginState:
         `projects/{project}/locations/{location}/plugins/{plugin}`,
         its length is limited to 1000 characters and valid characters are
         /a-z[0-9]-_/.
-
-
-        - - -
         """
         return pulumi.get(self, "plugin_id")
 
@@ -708,9 +696,6 @@ class Plugin(pulumi.CustomResource):
                `projects/{project}/locations/{location}/plugins/{plugin}`,
                its length is limited to 1000 characters and valid characters are
                /a-z[0-9]-_/.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -953,9 +938,6 @@ class Plugin(pulumi.CustomResource):
                `projects/{project}/locations/{location}/plugins/{plugin}`,
                its length is limited to 1000 characters and valid characters are
                /a-z[0-9]-_/.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] state: Represents the state of the plugin.
@@ -1107,9 +1089,6 @@ class Plugin(pulumi.CustomResource):
         `projects/{project}/locations/{location}/plugins/{plugin}`,
         its length is limited to 1000 characters and valid characters are
         /a-z[0-9]-_/.
-
-
-        - - -
         """
         return pulumi.get(self, "plugin_id")
 

@@ -114,8 +114,6 @@ type Network struct {
 	// `projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}`
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A unique ID that identifies this network.
-	//
-	// ***
 	NetworkId pulumi.StringOutput `pulumi:"networkId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -196,8 +194,6 @@ type networkState struct {
 	// `projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}`
 	Name *string `pulumi:"name"`
 	// A unique ID that identifies this network.
-	//
-	// ***
 	NetworkId *string `pulumi:"networkId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -235,8 +231,6 @@ type NetworkState struct {
 	// `projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}`
 	Name pulumi.StringPtrInput
 	// A unique ID that identifies this network.
-	//
-	// ***
 	NetworkId pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -269,8 +263,6 @@ type networkArgs struct {
 	// IP (L3) MTU value of the network. Default value is `1500`. Possible values are: `1500`, `9000`.
 	Mtu *int `pulumi:"mtu"`
 	// A unique ID that identifies this network.
-	//
-	// ***
 	NetworkId string `pulumi:"networkId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -293,8 +285,6 @@ type NetworkArgs struct {
 	// IP (L3) MTU value of the network. Default value is `1500`. Possible values are: `1500`, `9000`.
 	Mtu pulumi.IntPtrInput
 	// A unique ID that identifies this network.
-	//
-	// ***
 	NetworkId pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -432,8 +422,6 @@ func (o NetworkOutput) Name() pulumi.StringOutput {
 }
 
 // A unique ID that identifies this network.
-//
-// ***
 func (o NetworkOutput) NetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.NetworkId }).(pulumi.StringOutput)
 }

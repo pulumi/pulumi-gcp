@@ -121,8 +121,6 @@ type CxIntent struct {
 	// Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The human-readable name of the intent, unique within the agent.
-	//
-	// ***
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -213,8 +211,6 @@ type cxIntentState struct {
 	// Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
 	Description *string `pulumi:"description"`
 	// The human-readable name of the intent, unique within the agent.
-	//
-	// ***
 	DisplayName *string `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -268,8 +264,6 @@ type CxIntentState struct {
 	// Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
 	Description pulumi.StringPtrInput
 	// The human-readable name of the intent, unique within the agent.
-	//
-	// ***
 	DisplayName pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -327,8 +321,6 @@ type cxIntentArgs struct {
 	// Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
 	Description *string `pulumi:"description"`
 	// The human-readable name of the intent, unique within the agent.
-	//
-	// ***
 	DisplayName string `pulumi:"displayName"`
 	// Marks this as the [Default Negative Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#negative) for an agent. When you create an agent, a Default Negative Intent is created automatically.
 	// The Default Negative Intent cannot be deleted; deleting the `diagflow.CxIntent` resource does nothing to the underlying GCP resources.
@@ -375,8 +367,6 @@ type CxIntentArgs struct {
 	// Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
 	Description pulumi.StringPtrInput
 	// The human-readable name of the intent, unique within the agent.
-	//
-	// ***
 	DisplayName pulumi.StringInput
 	// Marks this as the [Default Negative Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#negative) for an agent. When you create an agent, a Default Negative Intent is created automatically.
 	// The Default Negative Intent cannot be deleted; deleting the `diagflow.CxIntent` resource does nothing to the underlying GCP resources.
@@ -511,8 +501,6 @@ func (o CxIntentOutput) Description() pulumi.StringPtrOutput {
 }
 
 // The human-readable name of the intent, unique within the agent.
-//
-// ***
 func (o CxIntentOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *CxIntent) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }

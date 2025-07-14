@@ -83,8 +83,6 @@ type ControlFolderIntelligenceConfig struct {
 	// Structure is documented below.
 	Filter ControlFolderIntelligenceConfigFilterPtrOutput `pulumi:"filter"`
 	// Identifier of the GCP Folder. For GCP Folder, this field can be folder number.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The trial configuration of the Storage Intelligence resource.
 	// Structure is documented below.
@@ -132,8 +130,6 @@ type controlFolderIntelligenceConfigState struct {
 	// Structure is documented below.
 	Filter *ControlFolderIntelligenceConfigFilter `pulumi:"filter"`
 	// Identifier of the GCP Folder. For GCP Folder, this field can be folder number.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The trial configuration of the Storage Intelligence resource.
 	// Structure is documented below.
@@ -152,8 +148,6 @@ type ControlFolderIntelligenceConfigState struct {
 	// Structure is documented below.
 	Filter ControlFolderIntelligenceConfigFilterPtrInput
 	// Identifier of the GCP Folder. For GCP Folder, this field can be folder number.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The trial configuration of the Storage Intelligence resource.
 	// Structure is documented below.
@@ -173,8 +167,6 @@ type controlFolderIntelligenceConfigArgs struct {
 	// Structure is documented below.
 	Filter *ControlFolderIntelligenceConfigFilter `pulumi:"filter"`
 	// Identifier of the GCP Folder. For GCP Folder, this field can be folder number.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 }
 
@@ -186,8 +178,6 @@ type ControlFolderIntelligenceConfigArgs struct {
 	// Structure is documented below.
 	Filter ControlFolderIntelligenceConfigFilterPtrInput
 	// Identifier of the GCP Folder. For GCP Folder, this field can be folder number.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 }
 
@@ -300,8 +290,6 @@ func (o ControlFolderIntelligenceConfigOutput) Filter() ControlFolderIntelligenc
 }
 
 // Identifier of the GCP Folder. For GCP Folder, this field can be folder number.
-//
-// ***
 func (o ControlFolderIntelligenceConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ControlFolderIntelligenceConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

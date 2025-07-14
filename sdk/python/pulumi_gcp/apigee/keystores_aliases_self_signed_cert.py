@@ -45,6 +45,7 @@ class KeystoresAliasesSelfSignedCertArgs:
         :param pulumi.Input[builtins.int] cert_validity_in_days: Validity duration of certificate, in days. Accepts positive non-zero value. Defaults to 365.
         :param pulumi.Input[builtins.str] key_size: Key size. Default and maximum value is 2048 bits.
         :param pulumi.Input['KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs'] subject_alternative_dns_names: List of alternative host names. Maximum length is 255 characters for each value.
+               Structure is documented below.
         """
         pulumi.set(__self__, "alias", alias)
         pulumi.set(__self__, "environment", environment)
@@ -163,6 +164,7 @@ class KeystoresAliasesSelfSignedCertArgs:
     def subject_alternative_dns_names(self) -> Optional[pulumi.Input['KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs']]:
         """
         List of alternative host names. Maximum length is 255 characters for each value.
+        Structure is documented below.
         """
         return pulumi.get(self, "subject_alternative_dns_names")
 
@@ -201,6 +203,7 @@ class _KeystoresAliasesSelfSignedCertState:
         :param pulumi.Input['KeystoresAliasesSelfSignedCertSubjectArgs'] subject: Subject details.
                Structure is documented below.
         :param pulumi.Input['KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs'] subject_alternative_dns_names: List of alternative host names. Maximum length is 255 characters for each value.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] type: Optional.Type of Alias
         """
         if alias is not None:
@@ -343,6 +346,7 @@ class _KeystoresAliasesSelfSignedCertState:
     def subject_alternative_dns_names(self) -> Optional[pulumi.Input['KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs']]:
         """
         List of alternative host names. Maximum length is 255 characters for each value.
+        Structure is documented below.
         """
         return pulumi.get(self, "subject_alternative_dns_names")
 
@@ -497,6 +501,7 @@ class KeystoresAliasesSelfSignedCert(pulumi.CustomResource):
         :param pulumi.Input[Union['KeystoresAliasesSelfSignedCertSubjectArgs', 'KeystoresAliasesSelfSignedCertSubjectArgsDict']] subject: Subject details.
                Structure is documented below.
         :param pulumi.Input[Union['KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs', 'KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgsDict']] subject_alternative_dns_names: List of alternative host names. Maximum length is 255 characters for each value.
+               Structure is documented below.
         """
         ...
     @overload
@@ -706,6 +711,7 @@ class KeystoresAliasesSelfSignedCert(pulumi.CustomResource):
         :param pulumi.Input[Union['KeystoresAliasesSelfSignedCertSubjectArgs', 'KeystoresAliasesSelfSignedCertSubjectArgsDict']] subject: Subject details.
                Structure is documented below.
         :param pulumi.Input[Union['KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs', 'KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgsDict']] subject_alternative_dns_names: List of alternative host names. Maximum length is 255 characters for each value.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] type: Optional.Type of Alias
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -806,6 +812,7 @@ class KeystoresAliasesSelfSignedCert(pulumi.CustomResource):
     def subject_alternative_dns_names(self) -> pulumi.Output[Optional['outputs.KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames']]:
         """
         List of alternative host names. Maximum length is 255 characters for each value.
+        Structure is documented below.
         """
         return pulumi.get(self, "subject_alternative_dns_names")
 

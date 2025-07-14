@@ -152,8 +152,6 @@ type StoragePool struct {
 	// Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the storage pool. Needs to be unique per location/region.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// VPC network name with format: `projects/{{project}}/global/networks/{{network}}`
 	Network pulumi.StringOutput `pulumi:"network"`
@@ -266,8 +264,6 @@ type storagePoolState struct {
 	// Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
 	Location *string `pulumi:"location"`
 	// The resource name of the storage pool. Needs to be unique per location/region.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// VPC network name with format: `projects/{{project}}/global/networks/{{network}}`
 	Network *string `pulumi:"network"`
@@ -334,8 +330,6 @@ type StoragePoolState struct {
 	// Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
 	Location pulumi.StringPtrInput
 	// The resource name of the storage pool. Needs to be unique per location/region.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// VPC network name with format: `projects/{{project}}/global/networks/{{network}}`
 	Network pulumi.StringPtrInput
@@ -402,8 +396,6 @@ type storagePoolArgs struct {
 	// Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
 	Location string `pulumi:"location"`
 	// The resource name of the storage pool. Needs to be unique per location/region.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// VPC network name with format: `projects/{{project}}/global/networks/{{network}}`
 	Network string `pulumi:"network"`
@@ -460,8 +452,6 @@ type StoragePoolArgs struct {
 	// Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
 	Location pulumi.StringInput
 	// The resource name of the storage pool. Needs to be unique per location/region.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// VPC network name with format: `projects/{{project}}/global/networks/{{network}}`
 	Network pulumi.StringInput
@@ -646,8 +636,6 @@ func (o StoragePoolOutput) Location() pulumi.StringOutput {
 }
 
 // The resource name of the storage pool. Needs to be unique per location/region.
-//
-// ***
 func (o StoragePoolOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

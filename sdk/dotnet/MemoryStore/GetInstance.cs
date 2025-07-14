@@ -163,6 +163,7 @@ namespace Pulumi.Gcp.MemoryStore
         public readonly ImmutableArray<Outputs.GetInstanceMaintenancePolicyResult> MaintenancePolicies;
         public readonly ImmutableArray<Outputs.GetInstanceMaintenanceScheduleResult> MaintenanceSchedules;
         public readonly ImmutableArray<Outputs.GetInstanceManagedBackupSourceResult> ManagedBackupSources;
+        public readonly ImmutableArray<Outputs.GetInstanceManagedServerCaResult> ManagedServerCas;
         public readonly string Mode;
         public readonly string Name;
         public readonly ImmutableArray<Outputs.GetInstanceNodeConfigResult> NodeConfigs;
@@ -227,6 +228,8 @@ namespace Pulumi.Gcp.MemoryStore
 
             ImmutableArray<Outputs.GetInstanceManagedBackupSourceResult> managedBackupSources,
 
+            ImmutableArray<Outputs.GetInstanceManagedServerCaResult> managedServerCas,
+
             string mode,
 
             string name,
@@ -283,6 +286,7 @@ namespace Pulumi.Gcp.MemoryStore
             MaintenancePolicies = maintenancePolicies;
             MaintenanceSchedules = maintenanceSchedules;
             ManagedBackupSources = managedBackupSources;
+            ManagedServerCas = managedServerCas;
             Mode = mode;
             Name = name;
             NodeConfigs = nodeConfigs;

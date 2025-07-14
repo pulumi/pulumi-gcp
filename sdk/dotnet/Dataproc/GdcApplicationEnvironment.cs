@@ -184,9 +184,6 @@ namespace Pulumi.Gcp.Dataproc
 
         /// <summary>
         /// The id of the service instance to which this application environment belongs.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("serviceinstance")]
         public Output<string> Serviceinstance { get; private set; } = null!;
@@ -322,9 +319,6 @@ namespace Pulumi.Gcp.Dataproc
 
         /// <summary>
         /// The id of the service instance to which this application environment belongs.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("serviceinstance", required: true)]
         public Input<string> Serviceinstance { get; set; } = null!;
@@ -458,9 +452,6 @@ namespace Pulumi.Gcp.Dataproc
 
         /// <summary>
         /// The id of the service instance to which this application environment belongs.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("serviceinstance")]
         public Input<string>? Serviceinstance { get; set; }

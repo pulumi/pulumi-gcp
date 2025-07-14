@@ -1006,17 +1006,18 @@ import (
 type Service struct {
 	pulumi.CustomResourceState
 
-	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
-	// should be preserved when modifying objects. Cloud Run API v2 does not support annotations with 'run.googleapis.com',
-	// 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected in new
-	// resources. All system annotations in v1 now have a corresponding field in v2 Service. This field follows Kubernetes
-	// annotations' namespacing, limits, and rules. **Note**: This field is non-authoritative, and will only manage the
-	// annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
-	// present on the resource.
+	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+	// Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected in new resources.
+	// All system annotations in v1 now have a corresponding field in v2 Service.
+	// This field follows Kubernetes annotations' namespacing, limits, and rules.
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Settings for the Binary Authorization feature.
+	// Structure is documented below.
 	BinaryAuthorization ServiceBinaryAuthorizationPtrOutput `pulumi:"binaryAuthorization"`
 	// Configuration for building a Cloud Run function.
+	// Structure is documented below.
 	BuildConfig ServiceBuildConfigPtrOutput `pulumi:"buildConfig"`
 	// Arbitrary identifier for the API client.
 	Client pulumi.StringPtrOutput `pulumi:"client"`
@@ -1029,9 +1030,8 @@ type Service struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Email address of the authenticated creator.
 	Creator pulumi.StringOutput `pulumi:"creator"`
-	// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
-	// string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
-	// https://cloud.google.com/run/docs/configuring/custom-audiences.
+	// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
+	// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
 	CustomAudiences pulumi.StringArrayOutput `pulumi:"customAudiences"`
 	// Disables public resolution of the default URI of this service.
 	DefaultUriDisabled pulumi.BoolPtrOutput `pulumi:"defaultUriDisabled"`
@@ -1051,21 +1051,17 @@ type Service struct {
 	Generation pulumi.StringOutput `pulumi:"generation"`
 	// Used to enable/disable IAP for the service.
 	IapEnabled pulumi.BoolPtrOutput `pulumi:"iapEnabled"`
-	// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or
-	// INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: ["INGRESS_TRAFFIC_ALL",
-	// "INGRESS_TRAFFIC_INTERNAL_ONLY", "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"]
+	// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
+	// Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
 	Ingress pulumi.StringOutput `pulumi:"ingress"`
-	// Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit
-	// https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+	// Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
 	InvokerIamDisabled pulumi.BoolPtrOutput `pulumi:"invokerIamDisabled"`
-	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
-	// Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
-	// state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
-	// https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with
-	// 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they
-	// will be rejected. All system labels in v1 now have a corresponding field in v2 Service. **Note**: This field is
-	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-	// 'effective_labels' for all of the labels present on the resource.
+	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
+	// environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+	// Cloud Run API v2 does not support labels with  `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+	// All system labels in v1 now have a corresponding field in v2 Service.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Email address of the last authenticated modifier.
 	LastModifier pulumi.StringOutput `pulumi:"lastModifier"`
@@ -1073,12 +1069,10 @@ type Service struct {
 	LatestCreatedRevision pulumi.StringOutput `pulumi:"latestCreatedRevision"`
 	// Name of the latest revision that is serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run.
 	LatestReadyRevision pulumi.StringOutput `pulumi:"latestReadyRevision"`
-	// The launch stage as defined by [Google Cloud Platform Launch
-	// Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA. If no value is
-	// specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that
-	// stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as
-	// input, but only BETA and GA-level features are used, this field will be BETA on output. Possible values:
-	// ["UNIMPLEMENTED", "PRELAUNCH", "EARLY_ACCESS", "ALPHA", "BETA", "GA", "DEPRECATED"]
+	// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+	// If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+	// For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
+	// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
 	LaunchStage pulumi.StringOutput `pulumi:"launchStage"`
 	// The location of the cloud run service
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -1086,7 +1080,9 @@ type Service struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The generation of this Service currently serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
 	ObservedGeneration pulumi.StringOutput `pulumi:"observedGeneration"`
-	Project            pulumi.StringOutput `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
@@ -1096,6 +1092,7 @@ type Service struct {
 	// If reconciliation failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision, or empty for newly created Services. Additional information on the failure can be found in terminalCondition and conditions.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
 	// Scaling settings that apply to the whole service
+	// Structure is documented below.
 	Scaling ServiceScalingPtrOutput `pulumi:"scaling"`
 	// The template used to create revisions for this Service.
 	// Structure is documented below.
@@ -1106,8 +1103,8 @@ type Service struct {
 	// Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on reconciliation process in Cloud Run.
 	// Structure is documented below.
 	TrafficStatuses ServiceTrafficStatusArrayOutput `pulumi:"trafficStatuses"`
-	// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not
-	// provided, defaults to 100% traffic to the latest Ready Revision.
+	// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
+	// Structure is documented below.
 	Traffics ServiceTrafficArrayOutput `pulumi:"traffics"`
 	// Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
 	Uid pulumi.StringOutput `pulumi:"uid"`
@@ -1161,17 +1158,18 @@ func GetService(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Service resources.
 type serviceState struct {
-	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
-	// should be preserved when modifying objects. Cloud Run API v2 does not support annotations with 'run.googleapis.com',
-	// 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected in new
-	// resources. All system annotations in v1 now have a corresponding field in v2 Service. This field follows Kubernetes
-	// annotations' namespacing, limits, and rules. **Note**: This field is non-authoritative, and will only manage the
-	// annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
-	// present on the resource.
+	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+	// Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected in new resources.
+	// All system annotations in v1 now have a corresponding field in v2 Service.
+	// This field follows Kubernetes annotations' namespacing, limits, and rules.
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Settings for the Binary Authorization feature.
+	// Structure is documented below.
 	BinaryAuthorization *ServiceBinaryAuthorization `pulumi:"binaryAuthorization"`
 	// Configuration for building a Cloud Run function.
+	// Structure is documented below.
 	BuildConfig *ServiceBuildConfig `pulumi:"buildConfig"`
 	// Arbitrary identifier for the API client.
 	Client *string `pulumi:"client"`
@@ -1184,9 +1182,8 @@ type serviceState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Email address of the authenticated creator.
 	Creator *string `pulumi:"creator"`
-	// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
-	// string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
-	// https://cloud.google.com/run/docs/configuring/custom-audiences.
+	// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
+	// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
 	CustomAudiences []string `pulumi:"customAudiences"`
 	// Disables public resolution of the default URI of this service.
 	DefaultUriDisabled *bool `pulumi:"defaultUriDisabled"`
@@ -1206,21 +1203,17 @@ type serviceState struct {
 	Generation *string `pulumi:"generation"`
 	// Used to enable/disable IAP for the service.
 	IapEnabled *bool `pulumi:"iapEnabled"`
-	// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or
-	// INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: ["INGRESS_TRAFFIC_ALL",
-	// "INGRESS_TRAFFIC_INTERNAL_ONLY", "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"]
+	// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
+	// Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
 	Ingress *string `pulumi:"ingress"`
-	// Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit
-	// https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+	// Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
 	InvokerIamDisabled *bool `pulumi:"invokerIamDisabled"`
-	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
-	// Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
-	// state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
-	// https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with
-	// 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they
-	// will be rejected. All system labels in v1 now have a corresponding field in v2 Service. **Note**: This field is
-	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-	// 'effective_labels' for all of the labels present on the resource.
+	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
+	// environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+	// Cloud Run API v2 does not support labels with  `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+	// All system labels in v1 now have a corresponding field in v2 Service.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Email address of the last authenticated modifier.
 	LastModifier *string `pulumi:"lastModifier"`
@@ -1228,12 +1221,10 @@ type serviceState struct {
 	LatestCreatedRevision *string `pulumi:"latestCreatedRevision"`
 	// Name of the latest revision that is serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run.
 	LatestReadyRevision *string `pulumi:"latestReadyRevision"`
-	// The launch stage as defined by [Google Cloud Platform Launch
-	// Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA. If no value is
-	// specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that
-	// stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as
-	// input, but only BETA and GA-level features are used, this field will be BETA on output. Possible values:
-	// ["UNIMPLEMENTED", "PRELAUNCH", "EARLY_ACCESS", "ALPHA", "BETA", "GA", "DEPRECATED"]
+	// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+	// If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+	// For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
+	// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
 	LaunchStage *string `pulumi:"launchStage"`
 	// The location of the cloud run service
 	Location *string `pulumi:"location"`
@@ -1241,7 +1232,9 @@ type serviceState struct {
 	Name *string `pulumi:"name"`
 	// The generation of this Service currently serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
 	ObservedGeneration *string `pulumi:"observedGeneration"`
-	Project            *string `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
@@ -1251,6 +1244,7 @@ type serviceState struct {
 	// If reconciliation failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision, or empty for newly created Services. Additional information on the failure can be found in terminalCondition and conditions.
 	Reconciling *bool `pulumi:"reconciling"`
 	// Scaling settings that apply to the whole service
+	// Structure is documented below.
 	Scaling *ServiceScaling `pulumi:"scaling"`
 	// The template used to create revisions for this Service.
 	// Structure is documented below.
@@ -1261,8 +1255,8 @@ type serviceState struct {
 	// Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on reconciliation process in Cloud Run.
 	// Structure is documented below.
 	TrafficStatuses []ServiceTrafficStatus `pulumi:"trafficStatuses"`
-	// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not
-	// provided, defaults to 100% traffic to the latest Ready Revision.
+	// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
+	// Structure is documented below.
 	Traffics []ServiceTraffic `pulumi:"traffics"`
 	// Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
 	Uid *string `pulumi:"uid"`
@@ -1276,17 +1270,18 @@ type serviceState struct {
 }
 
 type ServiceState struct {
-	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
-	// should be preserved when modifying objects. Cloud Run API v2 does not support annotations with 'run.googleapis.com',
-	// 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected in new
-	// resources. All system annotations in v1 now have a corresponding field in v2 Service. This field follows Kubernetes
-	// annotations' namespacing, limits, and rules. **Note**: This field is non-authoritative, and will only manage the
-	// annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
-	// present on the resource.
+	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+	// Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected in new resources.
+	// All system annotations in v1 now have a corresponding field in v2 Service.
+	// This field follows Kubernetes annotations' namespacing, limits, and rules.
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// Settings for the Binary Authorization feature.
+	// Structure is documented below.
 	BinaryAuthorization ServiceBinaryAuthorizationPtrInput
 	// Configuration for building a Cloud Run function.
+	// Structure is documented below.
 	BuildConfig ServiceBuildConfigPtrInput
 	// Arbitrary identifier for the API client.
 	Client pulumi.StringPtrInput
@@ -1299,9 +1294,8 @@ type ServiceState struct {
 	CreateTime pulumi.StringPtrInput
 	// Email address of the authenticated creator.
 	Creator pulumi.StringPtrInput
-	// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
-	// string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
-	// https://cloud.google.com/run/docs/configuring/custom-audiences.
+	// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
+	// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
 	CustomAudiences pulumi.StringArrayInput
 	// Disables public resolution of the default URI of this service.
 	DefaultUriDisabled pulumi.BoolPtrInput
@@ -1321,21 +1315,17 @@ type ServiceState struct {
 	Generation pulumi.StringPtrInput
 	// Used to enable/disable IAP for the service.
 	IapEnabled pulumi.BoolPtrInput
-	// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or
-	// INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: ["INGRESS_TRAFFIC_ALL",
-	// "INGRESS_TRAFFIC_INTERNAL_ONLY", "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"]
+	// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
+	// Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
 	Ingress pulumi.StringPtrInput
-	// Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit
-	// https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+	// Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
 	InvokerIamDisabled pulumi.BoolPtrInput
-	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
-	// Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
-	// state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
-	// https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with
-	// 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they
-	// will be rejected. All system labels in v1 now have a corresponding field in v2 Service. **Note**: This field is
-	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-	// 'effective_labels' for all of the labels present on the resource.
+	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
+	// environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+	// Cloud Run API v2 does not support labels with  `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+	// All system labels in v1 now have a corresponding field in v2 Service.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Email address of the last authenticated modifier.
 	LastModifier pulumi.StringPtrInput
@@ -1343,12 +1333,10 @@ type ServiceState struct {
 	LatestCreatedRevision pulumi.StringPtrInput
 	// Name of the latest revision that is serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run.
 	LatestReadyRevision pulumi.StringPtrInput
-	// The launch stage as defined by [Google Cloud Platform Launch
-	// Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA. If no value is
-	// specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that
-	// stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as
-	// input, but only BETA and GA-level features are used, this field will be BETA on output. Possible values:
-	// ["UNIMPLEMENTED", "PRELAUNCH", "EARLY_ACCESS", "ALPHA", "BETA", "GA", "DEPRECATED"]
+	// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+	// If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+	// For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
+	// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
 	LaunchStage pulumi.StringPtrInput
 	// The location of the cloud run service
 	Location pulumi.StringPtrInput
@@ -1356,7 +1344,9 @@ type ServiceState struct {
 	Name pulumi.StringPtrInput
 	// The generation of this Service currently serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
 	ObservedGeneration pulumi.StringPtrInput
-	Project            pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
@@ -1366,6 +1356,7 @@ type ServiceState struct {
 	// If reconciliation failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision, or empty for newly created Services. Additional information on the failure can be found in terminalCondition and conditions.
 	Reconciling pulumi.BoolPtrInput
 	// Scaling settings that apply to the whole service
+	// Structure is documented below.
 	Scaling ServiceScalingPtrInput
 	// The template used to create revisions for this Service.
 	// Structure is documented below.
@@ -1376,8 +1367,8 @@ type ServiceState struct {
 	// Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on reconciliation process in Cloud Run.
 	// Structure is documented below.
 	TrafficStatuses ServiceTrafficStatusArrayInput
-	// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not
-	// provided, defaults to 100% traffic to the latest Ready Revision.
+	// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
+	// Structure is documented below.
 	Traffics ServiceTrafficArrayInput
 	// Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
 	Uid pulumi.StringPtrInput
@@ -1395,25 +1386,25 @@ func (ServiceState) ElementType() reflect.Type {
 }
 
 type serviceArgs struct {
-	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
-	// should be preserved when modifying objects. Cloud Run API v2 does not support annotations with 'run.googleapis.com',
-	// 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected in new
-	// resources. All system annotations in v1 now have a corresponding field in v2 Service. This field follows Kubernetes
-	// annotations' namespacing, limits, and rules. **Note**: This field is non-authoritative, and will only manage the
-	// annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
-	// present on the resource.
+	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+	// Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected in new resources.
+	// All system annotations in v1 now have a corresponding field in v2 Service.
+	// This field follows Kubernetes annotations' namespacing, limits, and rules.
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Settings for the Binary Authorization feature.
+	// Structure is documented below.
 	BinaryAuthorization *ServiceBinaryAuthorization `pulumi:"binaryAuthorization"`
 	// Configuration for building a Cloud Run function.
+	// Structure is documented below.
 	BuildConfig *ServiceBuildConfig `pulumi:"buildConfig"`
 	// Arbitrary identifier for the API client.
 	Client *string `pulumi:"client"`
 	// Arbitrary version identifier for the API client.
 	ClientVersion *string `pulumi:"clientVersion"`
-	// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
-	// string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
-	// https://cloud.google.com/run/docs/configuring/custom-audiences.
+	// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
+	// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
 	CustomAudiences []string `pulumi:"customAudiences"`
 	// Disables public resolution of the default URI of this service.
 	DefaultUriDisabled *bool `pulumi:"defaultUriDisabled"`
@@ -1422,65 +1413,62 @@ type serviceArgs struct {
 	Description *string `pulumi:"description"`
 	// Used to enable/disable IAP for the service.
 	IapEnabled *bool `pulumi:"iapEnabled"`
-	// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or
-	// INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: ["INGRESS_TRAFFIC_ALL",
-	// "INGRESS_TRAFFIC_INTERNAL_ONLY", "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"]
+	// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
+	// Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
 	Ingress *string `pulumi:"ingress"`
-	// Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit
-	// https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+	// Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
 	InvokerIamDisabled *bool `pulumi:"invokerIamDisabled"`
-	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
-	// Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
-	// state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
-	// https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with
-	// 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they
-	// will be rejected. All system labels in v1 now have a corresponding field in v2 Service. **Note**: This field is
-	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-	// 'effective_labels' for all of the labels present on the resource.
+	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
+	// environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+	// Cloud Run API v2 does not support labels with  `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+	// All system labels in v1 now have a corresponding field in v2 Service.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// The launch stage as defined by [Google Cloud Platform Launch
-	// Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA. If no value is
-	// specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that
-	// stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as
-	// input, but only BETA and GA-level features are used, this field will be BETA on output. Possible values:
-	// ["UNIMPLEMENTED", "PRELAUNCH", "EARLY_ACCESS", "ALPHA", "BETA", "GA", "DEPRECATED"]
+	// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+	// If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+	// For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
+	// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
 	LaunchStage *string `pulumi:"launchStage"`
 	// The location of the cloud run service
 	Location string `pulumi:"location"`
 	// Name of the Service.
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Scaling settings that apply to the whole service
+	// Structure is documented below.
 	Scaling *ServiceScaling `pulumi:"scaling"`
 	// The template used to create revisions for this Service.
 	// Structure is documented below.
 	Template ServiceTemplate `pulumi:"template"`
-	// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not
-	// provided, defaults to 100% traffic to the latest Ready Revision.
+	// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
+	// Structure is documented below.
 	Traffics []ServiceTraffic `pulumi:"traffics"`
 }
 
 // The set of arguments for constructing a Service resource.
 type ServiceArgs struct {
-	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
-	// should be preserved when modifying objects. Cloud Run API v2 does not support annotations with 'run.googleapis.com',
-	// 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected in new
-	// resources. All system annotations in v1 now have a corresponding field in v2 Service. This field follows Kubernetes
-	// annotations' namespacing, limits, and rules. **Note**: This field is non-authoritative, and will only manage the
-	// annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
-	// present on the resource.
+	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+	// Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected in new resources.
+	// All system annotations in v1 now have a corresponding field in v2 Service.
+	// This field follows Kubernetes annotations' namespacing, limits, and rules.
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// Settings for the Binary Authorization feature.
+	// Structure is documented below.
 	BinaryAuthorization ServiceBinaryAuthorizationPtrInput
 	// Configuration for building a Cloud Run function.
+	// Structure is documented below.
 	BuildConfig ServiceBuildConfigPtrInput
 	// Arbitrary identifier for the API client.
 	Client pulumi.StringPtrInput
 	// Arbitrary version identifier for the API client.
 	ClientVersion pulumi.StringPtrInput
-	// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
-	// string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
-	// https://cloud.google.com/run/docs/configuring/custom-audiences.
+	// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
+	// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
 	CustomAudiences pulumi.StringArrayInput
 	// Disables public resolution of the default URI of this service.
 	DefaultUriDisabled pulumi.BoolPtrInput
@@ -1489,41 +1477,38 @@ type ServiceArgs struct {
 	Description pulumi.StringPtrInput
 	// Used to enable/disable IAP for the service.
 	IapEnabled pulumi.BoolPtrInput
-	// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or
-	// INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: ["INGRESS_TRAFFIC_ALL",
-	// "INGRESS_TRAFFIC_INTERNAL_ONLY", "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"]
+	// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
+	// Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
 	Ingress pulumi.StringPtrInput
-	// Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit
-	// https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+	// Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
 	InvokerIamDisabled pulumi.BoolPtrInput
-	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
-	// Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
-	// state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
-	// https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with
-	// 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they
-	// will be rejected. All system labels in v1 now have a corresponding field in v2 Service. **Note**: This field is
-	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-	// 'effective_labels' for all of the labels present on the resource.
+	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
+	// environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+	// Cloud Run API v2 does not support labels with  `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+	// All system labels in v1 now have a corresponding field in v2 Service.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// The launch stage as defined by [Google Cloud Platform Launch
-	// Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA. If no value is
-	// specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that
-	// stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as
-	// input, but only BETA and GA-level features are used, this field will be BETA on output. Possible values:
-	// ["UNIMPLEMENTED", "PRELAUNCH", "EARLY_ACCESS", "ALPHA", "BETA", "GA", "DEPRECATED"]
+	// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+	// If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+	// For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
+	// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
 	LaunchStage pulumi.StringPtrInput
 	// The location of the cloud run service
 	Location pulumi.StringInput
 	// Name of the Service.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Scaling settings that apply to the whole service
+	// Structure is documented below.
 	Scaling ServiceScalingPtrInput
 	// The template used to create revisions for this Service.
 	// Structure is documented below.
 	Template ServiceTemplateInput
-	// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not
-	// provided, defaults to 100% traffic to the latest Ready Revision.
+	// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
+	// Structure is documented below.
 	Traffics ServiceTrafficArrayInput
 }
 
@@ -1614,23 +1599,24 @@ func (o ServiceOutput) ToServiceOutputWithContext(ctx context.Context) ServiceOu
 	return o
 }
 
-// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
-// should be preserved when modifying objects. Cloud Run API v2 does not support annotations with 'run.googleapis.com',
-// 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected in new
-// resources. All system annotations in v1 now have a corresponding field in v2 Service. This field follows Kubernetes
-// annotations' namespacing, limits, and rules. **Note**: This field is non-authoritative, and will only manage the
-// annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
-// present on the resource.
+// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+// Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected in new resources.
+// All system annotations in v1 now have a corresponding field in v2 Service.
+// This field follows Kubernetes annotations' namespacing, limits, and rules.
+// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 func (o ServiceOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // Settings for the Binary Authorization feature.
+// Structure is documented below.
 func (o ServiceOutput) BinaryAuthorization() ServiceBinaryAuthorizationPtrOutput {
 	return o.ApplyT(func(v *Service) ServiceBinaryAuthorizationPtrOutput { return v.BinaryAuthorization }).(ServiceBinaryAuthorizationPtrOutput)
 }
 
 // Configuration for building a Cloud Run function.
+// Structure is documented below.
 func (o ServiceOutput) BuildConfig() ServiceBuildConfigPtrOutput {
 	return o.ApplyT(func(v *Service) ServiceBuildConfigPtrOutput { return v.BuildConfig }).(ServiceBuildConfigPtrOutput)
 }
@@ -1661,9 +1647,8 @@ func (o ServiceOutput) Creator() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Creator }).(pulumi.StringOutput)
 }
 
-// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
-// string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
-// https://cloud.google.com/run/docs/configuring/custom-audiences.
+// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
+// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
 func (o ServiceOutput) CustomAudiences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringArrayOutput { return v.CustomAudiences }).(pulumi.StringArrayOutput)
 }
@@ -1716,27 +1701,23 @@ func (o ServiceOutput) IapEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.BoolPtrOutput { return v.IapEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or
-// INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: ["INGRESS_TRAFFIC_ALL",
-// "INGRESS_TRAFFIC_INTERNAL_ONLY", "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"]
+// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
+// Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
 func (o ServiceOutput) Ingress() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Ingress }).(pulumi.StringOutput)
 }
 
-// Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit
-// https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+// Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
 func (o ServiceOutput) InvokerIamDisabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.BoolPtrOutput { return v.InvokerIamDisabled }).(pulumi.BoolPtrOutput)
 }
 
-// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
-// Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
-// state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
-// https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with
-// 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they
-// will be rejected. All system labels in v1 now have a corresponding field in v2 Service. **Note**: This field is
-// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-// 'effective_labels' for all of the labels present on the resource.
+// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
+// environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+// Cloud Run API v2 does not support labels with  `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+// All system labels in v1 now have a corresponding field in v2 Service.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o ServiceOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -1756,12 +1737,10 @@ func (o ServiceOutput) LatestReadyRevision() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.LatestReadyRevision }).(pulumi.StringOutput)
 }
 
-// The launch stage as defined by [Google Cloud Platform Launch
-// Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA. If no value is
-// specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that
-// stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as
-// input, but only BETA and GA-level features are used, this field will be BETA on output. Possible values:
-// ["UNIMPLEMENTED", "PRELAUNCH", "EARLY_ACCESS", "ALPHA", "BETA", "GA", "DEPRECATED"]
+// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+// If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+// For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
+// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
 func (o ServiceOutput) LaunchStage() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.LaunchStage }).(pulumi.StringOutput)
 }
@@ -1781,6 +1760,8 @@ func (o ServiceOutput) ObservedGeneration() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.ObservedGeneration }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o ServiceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -1800,6 +1781,7 @@ func (o ServiceOutput) Reconciling() pulumi.BoolOutput {
 }
 
 // Scaling settings that apply to the whole service
+// Structure is documented below.
 func (o ServiceOutput) Scaling() ServiceScalingPtrOutput {
 	return o.ApplyT(func(v *Service) ServiceScalingPtrOutput { return v.Scaling }).(ServiceScalingPtrOutput)
 }
@@ -1822,8 +1804,8 @@ func (o ServiceOutput) TrafficStatuses() ServiceTrafficStatusArrayOutput {
 	return o.ApplyT(func(v *Service) ServiceTrafficStatusArrayOutput { return v.TrafficStatuses }).(ServiceTrafficStatusArrayOutput)
 }
 
-// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not
-// provided, defaults to 100% traffic to the latest Ready Revision.
+// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
+// Structure is documented below.
 func (o ServiceOutput) Traffics() ServiceTrafficArrayOutput {
 	return o.ApplyT(func(v *Service) ServiceTrafficArrayOutput { return v.Traffics }).(ServiceTrafficArrayOutput)
 }

@@ -39,16 +39,12 @@ public final class AuthzPolicyTargetArgs extends com.pulumi.resources.ResourceAr
     /**
      * A list of references to the Forwarding Rules on which this policy will be applied.
      * 
-     * ***
-     * 
      */
     @Import(name="resources")
     private @Nullable Output<List<String>> resources;
 
     /**
      * @return A list of references to the Forwarding Rules on which this policy will be applied.
-     * 
-     * ***
      * 
      */
     public Optional<Output<List<String>>> resources() {
@@ -108,8 +104,6 @@ public final class AuthzPolicyTargetArgs extends com.pulumi.resources.ResourceAr
         /**
          * @param resources A list of references to the Forwarding Rules on which this policy will be applied.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -121,8 +115,6 @@ public final class AuthzPolicyTargetArgs extends com.pulumi.resources.ResourceAr
         /**
          * @param resources A list of references to the Forwarding Rules on which this policy will be applied.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -132,8 +124,6 @@ public final class AuthzPolicyTargetArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param resources A list of references to the Forwarding Rules on which this policy will be applied.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -112,8 +112,6 @@ type ManagementServer struct {
 	// Structure is documented below.
 	ManagementUris ManagementServerManagementUriArrayOutput `pulumi:"managementUris"`
 	// The name of management server (management console)
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Network details to create management server (management console).
 	// Structure is documented below.
@@ -168,8 +166,6 @@ type managementServerState struct {
 	// Structure is documented below.
 	ManagementUris []ManagementServerManagementUri `pulumi:"managementUris"`
 	// The name of management server (management console)
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// Network details to create management server (management console).
 	// Structure is documented below.
@@ -192,8 +188,6 @@ type ManagementServerState struct {
 	// Structure is documented below.
 	ManagementUris ManagementServerManagementUriArrayInput
 	// The name of management server (management console)
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// Network details to create management server (management console).
 	// Structure is documented below.
@@ -217,8 +211,6 @@ type managementServerArgs struct {
 	// The location for the management server (management console)
 	Location string `pulumi:"location"`
 	// The name of management server (management console)
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// Network details to create management server (management console).
 	// Structure is documented below.
@@ -237,8 +229,6 @@ type ManagementServerArgs struct {
 	// The location for the management server (management console)
 	Location pulumi.StringInput
 	// The name of management server (management console)
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// Network details to create management server (management console).
 	// Structure is documented below.
@@ -351,8 +341,6 @@ func (o ManagementServerOutput) ManagementUris() ManagementServerManagementUriAr
 }
 
 // The name of management server (management console)
-//
-// ***
 func (o ManagementServerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagementServer) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

@@ -35,9 +35,6 @@ class GdcApplicationEnvironmentArgs:
         The set of arguments for constructing a GdcApplicationEnvironment resource.
         :param pulumi.Input[builtins.str] location: The location of the application environment
         :param pulumi.Input[builtins.str] serviceinstance: The id of the service instance to which this application environment belongs.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: The annotations to associate with this application environment. Annotations may be used to store client information, but are not used by the server.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -86,9 +83,6 @@ class GdcApplicationEnvironmentArgs:
     def serviceinstance(self) -> pulumi.Input[builtins.str]:
         """
         The id of the service instance to which this application environment belongs.
-
-
-        - - -
         """
         return pulumi.get(self, "serviceinstance")
 
@@ -226,9 +220,6 @@ class _GdcApplicationEnvironmentState:
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[builtins.str] serviceinstance: The id of the service instance to which this application environment belongs.
-               
-               
-               - - -
         :param pulumi.Input['GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgs'] spark_application_environment_config: Represents the SparkApplicationEnvironmentConfig.
                Structure is documented below.
         :param pulumi.Input[builtins.str] uid: System generated unique identifier for this application environment, formatted as UUID4.
@@ -419,9 +410,6 @@ class _GdcApplicationEnvironmentState:
     def serviceinstance(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The id of the service instance to which this application environment belongs.
-
-
-        - - -
         """
         return pulumi.get(self, "serviceinstance")
 
@@ -573,9 +561,6 @@ class GdcApplicationEnvironment(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] serviceinstance: The id of the service instance to which this application environment belongs.
-               
-               
-               - - -
         :param pulumi.Input[Union['GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgs', 'GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgsDict']] spark_application_environment_config: Represents the SparkApplicationEnvironmentConfig.
                Structure is documented below.
         """
@@ -766,9 +751,6 @@ class GdcApplicationEnvironment(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[builtins.str] serviceinstance: The id of the service instance to which this application environment belongs.
-               
-               
-               - - -
         :param pulumi.Input[Union['GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgs', 'GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgsDict']] spark_application_environment_config: Represents the SparkApplicationEnvironmentConfig.
                Structure is documented below.
         :param pulumi.Input[builtins.str] uid: System generated unique identifier for this application environment, formatted as UUID4.
@@ -900,9 +882,6 @@ class GdcApplicationEnvironment(pulumi.CustomResource):
     def serviceinstance(self) -> pulumi.Output[builtins.str]:
         """
         The id of the service instance to which this application environment belongs.
-
-
-        - - -
         """
         return pulumi.get(self, "serviceinstance")
 

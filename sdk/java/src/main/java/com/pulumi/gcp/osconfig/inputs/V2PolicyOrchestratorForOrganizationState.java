@@ -109,16 +109,18 @@ public final class V2PolicyOrchestratorForOrganizationState extends com.pulumi.r
     }
 
     /**
-     * Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
-     * in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+     * Optional. Labels as key value pairs
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
-     * in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+     * @return Optional. Labels as key value pairs
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -164,14 +166,18 @@ public final class V2PolicyOrchestratorForOrganizationState extends com.pulumi.r
     }
 
     /**
-     * Defines a set of selectors which drive which resources are in scope of policy orchestration.
+     * Defines a set of selectors which drive which resources are in scope of policy
+     * orchestration.
+     * Structure is documented below.
      * 
      */
     @Import(name="orchestrationScope")
     private @Nullable Output<V2PolicyOrchestratorForOrganizationOrchestrationScopeArgs> orchestrationScope;
 
     /**
-     * @return Defines a set of selectors which drive which resources are in scope of policy orchestration.
+     * @return Defines a set of selectors which drive which resources are in scope of policy
+     * orchestration.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<V2PolicyOrchestratorForOrganizationOrchestrationScopeArgs>> orchestrationScope() {
@@ -278,30 +284,26 @@ public final class V2PolicyOrchestratorForOrganizationState extends com.pulumi.r
     }
 
     /**
-     * (Output)
-     * Output only. State of the iteration.
-     * Possible values:
-     * STATE_UNSPECIFIED
-     * PROCESSING
-     * COMPLETED
-     * FAILED
-     * CANCELLED
-     * UNKNOWN
+     * Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+     * Allowed values:
+     * - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+     * - `STOPPED` - orchestrator won&#39;t make any changes.
+     *   Note: There might be more states added in the future. We use string here
+     *   instead of an enum, to avoid the need of propagating new states to all the
+     *   client code.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return (Output)
-     * Output only. State of the iteration.
-     * Possible values:
-     * STATE_UNSPECIFIED
-     * PROCESSING
-     * COMPLETED
-     * FAILED
-     * CANCELLED
-     * UNKNOWN
+     * @return Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+     * Allowed values:
+     * - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+     * - `STOPPED` - orchestrator won&#39;t make any changes.
+     *   Note: There might be more states added in the future. We use string here
+     *   instead of an enum, to avoid the need of propagating new states to all the
+     *   client code.
      * 
      */
     public Optional<Output<String>> state() {
@@ -480,8 +482,9 @@ public final class V2PolicyOrchestratorForOrganizationState extends com.pulumi.r
         }
 
         /**
-         * @param labels Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
-         * in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+         * @param labels Optional. Labels as key value pairs
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -492,8 +495,9 @@ public final class V2PolicyOrchestratorForOrganizationState extends com.pulumi.r
         }
 
         /**
-         * @param labels Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
-         * in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+         * @param labels Optional. Labels as key value pairs
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -553,7 +557,9 @@ public final class V2PolicyOrchestratorForOrganizationState extends com.pulumi.r
         }
 
         /**
-         * @param orchestrationScope Defines a set of selectors which drive which resources are in scope of policy orchestration.
+         * @param orchestrationScope Defines a set of selectors which drive which resources are in scope of policy
+         * orchestration.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -564,7 +570,9 @@ public final class V2PolicyOrchestratorForOrganizationState extends com.pulumi.r
         }
 
         /**
-         * @param orchestrationScope Defines a set of selectors which drive which resources are in scope of policy orchestration.
+         * @param orchestrationScope Defines a set of selectors which drive which resources are in scope of policy
+         * orchestration.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -714,15 +722,13 @@ public final class V2PolicyOrchestratorForOrganizationState extends com.pulumi.r
         }
 
         /**
-         * @param state (Output)
-         * Output only. State of the iteration.
-         * Possible values:
-         * STATE_UNSPECIFIED
-         * PROCESSING
-         * COMPLETED
-         * FAILED
-         * CANCELLED
-         * UNKNOWN
+         * @param state Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+         * Allowed values:
+         * - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+         * - `STOPPED` - orchestrator won&#39;t make any changes.
+         *   Note: There might be more states added in the future. We use string here
+         *   instead of an enum, to avoid the need of propagating new states to all the
+         *   client code.
          * 
          * @return builder
          * 
@@ -733,15 +739,13 @@ public final class V2PolicyOrchestratorForOrganizationState extends com.pulumi.r
         }
 
         /**
-         * @param state (Output)
-         * Output only. State of the iteration.
-         * Possible values:
-         * STATE_UNSPECIFIED
-         * PROCESSING
-         * COMPLETED
-         * FAILED
-         * CANCELLED
-         * UNKNOWN
+         * @param state Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+         * Allowed values:
+         * - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+         * - `STOPPED` - orchestrator won&#39;t make any changes.
+         *   Note: There might be more states added in the future. We use string here
+         *   instead of an enum, to avoid the need of propagating new states to all the
+         *   client code.
          * 
          * @return builder
          * 

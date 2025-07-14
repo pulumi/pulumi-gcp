@@ -344,8 +344,6 @@ type Job struct {
 	// Structure is documented below.
 	HttpTarget JobHttpTargetPtrOutput `pulumi:"httpTarget"`
 	// The name of the job.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Sets the job to a paused state. Jobs default to being enabled when this property is not set.
 	Paused pulumi.BoolOutput `pulumi:"paused"`
@@ -426,8 +424,6 @@ type jobState struct {
 	// Structure is documented below.
 	HttpTarget *JobHttpTarget `pulumi:"httpTarget"`
 	// The name of the job.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// Sets the job to a paused state. Jobs default to being enabled when this property is not set.
 	Paused *bool `pulumi:"paused"`
@@ -479,8 +475,6 @@ type JobState struct {
 	// Structure is documented below.
 	HttpTarget JobHttpTargetPtrInput
 	// The name of the job.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// Sets the job to a paused state. Jobs default to being enabled when this property is not set.
 	Paused pulumi.BoolPtrInput
@@ -536,8 +530,6 @@ type jobArgs struct {
 	// Structure is documented below.
 	HttpTarget *JobHttpTarget `pulumi:"httpTarget"`
 	// The name of the job.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// Sets the job to a paused state. Jobs default to being enabled when this property is not set.
 	Paused *bool `pulumi:"paused"`
@@ -588,8 +580,6 @@ type JobArgs struct {
 	// Structure is documented below.
 	HttpTarget JobHttpTargetPtrInput
 	// The name of the job.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// Sets the job to a paused state. Jobs default to being enabled when this property is not set.
 	Paused pulumi.BoolPtrInput
@@ -737,8 +727,6 @@ func (o JobOutput) HttpTarget() JobHttpTargetPtrOutput {
 }
 
 // The name of the job.
-//
-// ***
 func (o JobOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

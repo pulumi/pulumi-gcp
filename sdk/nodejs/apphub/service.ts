@@ -315,9 +315,6 @@ export class Service extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * The Service identifier.
-     *
-     *
-     * - - -
      */
     public readonly serviceId!: pulumi.Output<string>;
     /**
@@ -452,9 +449,6 @@ export interface ServiceState {
     project?: pulumi.Input<string>;
     /**
      * The Service identifier.
-     *
-     *
-     * - - -
      */
     serviceId?: pulumi.Input<string>;
     /**
@@ -518,9 +512,6 @@ export interface ServiceArgs {
     project?: pulumi.Input<string>;
     /**
      * The Service identifier.
-     *
-     *
-     * - - -
      */
     serviceId: pulumi.Input<string>;
 }

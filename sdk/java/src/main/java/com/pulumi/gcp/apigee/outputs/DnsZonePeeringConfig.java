@@ -13,8 +13,6 @@ public final class DnsZonePeeringConfig {
     /**
      * @return The name of the producer VPC network.
      * 
-     * ***
-     * 
      */
     private String targetNetworkId;
     /**
@@ -26,8 +24,6 @@ public final class DnsZonePeeringConfig {
     private DnsZonePeeringConfig() {}
     /**
      * @return The name of the producer VPC network.
-     * 
-     * ***
      * 
      */
     public String targetNetworkId() {

@@ -91,9 +91,6 @@ export class PreventionDiscoveryConfig extends pulumi.CustomResource {
     public /*out*/ readonly lastRunTime!: pulumi.Output<string>;
     /**
      * Location to create the discovery config in.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -211,9 +208,6 @@ export interface PreventionDiscoveryConfigState {
     lastRunTime?: pulumi.Input<string>;
     /**
      * Location to create the discovery config in.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -266,9 +260,6 @@ export interface PreventionDiscoveryConfigArgs {
     inspectTemplates?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Location to create the discovery config in.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

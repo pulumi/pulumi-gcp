@@ -126,16 +126,12 @@ public final class RuleDeploymentArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * The Rule ID of the rule.
      * 
-     * ***
-     * 
      */
     @Import(name="rule", required=true)
     private Output<String> rule;
 
     /**
      * @return The Rule ID of the rule.
-     * 
-     * ***
      * 
      */
     public Output<String> rule() {
@@ -341,8 +337,6 @@ public final class RuleDeploymentArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param rule The Rule ID of the rule.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -353,8 +347,6 @@ public final class RuleDeploymentArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param rule The Rule ID of the rule.
-         * 
-         * ***
          * 
          * @return builder
          * 

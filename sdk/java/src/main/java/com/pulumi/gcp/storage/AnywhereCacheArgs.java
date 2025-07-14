@@ -38,16 +38,12 @@ public final class AnywhereCacheArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * A reference to Bucket resource
      * 
-     * ***
-     * 
      */
     @Import(name="bucket", required=true)
     private Output<String> bucket;
 
     /**
      * @return A reference to Bucket resource
-     * 
-     * ***
      * 
      */
     public Output<String> bucket() {
@@ -139,8 +135,6 @@ public final class AnywhereCacheArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param bucket A reference to Bucket resource
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -151,8 +145,6 @@ public final class AnywhereCacheArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param bucket A reference to Bucket resource
-         * 
-         * ***
          * 
          * @return builder
          * 

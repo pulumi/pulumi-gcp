@@ -313,9 +313,6 @@ export class Gateway extends pulumi.CustomResource {
     public readonly location!: pulumi.Output<string | undefined>;
     /**
      * Name of the Gateway resource.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -515,9 +512,6 @@ export interface GatewayState {
     location?: pulumi.Input<string>;
     /**
      * Name of the Gateway resource.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -635,9 +629,6 @@ export interface GatewayArgs {
     location?: pulumi.Input<string>;
     /**
      * Name of the Gateway resource.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

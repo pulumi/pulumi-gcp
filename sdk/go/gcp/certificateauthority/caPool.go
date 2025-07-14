@@ -253,8 +253,6 @@ type CaPool struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Location of the CaPool. A full list of valid locations can be found by
 	// running `gcloud privateca locations list`.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name for this CaPool.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -327,8 +325,6 @@ type caPoolState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Location of the CaPool. A full list of valid locations can be found by
 	// running `gcloud privateca locations list`.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// The name for this CaPool.
 	Name *string `pulumi:"name"`
@@ -361,8 +357,6 @@ type CaPoolState struct {
 	Labels pulumi.StringMapInput
 	// Location of the CaPool. A full list of valid locations can be found by
 	// running `gcloud privateca locations list`.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// The name for this CaPool.
 	Name pulumi.StringPtrInput
@@ -397,8 +391,6 @@ type caPoolArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Location of the CaPool. A full list of valid locations can be found by
 	// running `gcloud privateca locations list`.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// The name for this CaPool.
 	Name *string `pulumi:"name"`
@@ -427,8 +419,6 @@ type CaPoolArgs struct {
 	Labels pulumi.StringMapInput
 	// Location of the CaPool. A full list of valid locations can be found by
 	// running `gcloud privateca locations list`.
-	//
-	// ***
 	Location pulumi.StringInput
 	// The name for this CaPool.
 	Name pulumi.StringPtrInput
@@ -553,8 +543,6 @@ func (o CaPoolOutput) Labels() pulumi.StringMapOutput {
 
 // Location of the CaPool. A full list of valid locations can be found by
 // running `gcloud privateca locations list`.
-//
-// ***
 func (o CaPoolOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *CaPool) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

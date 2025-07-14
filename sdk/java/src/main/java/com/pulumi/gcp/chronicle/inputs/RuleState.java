@@ -202,16 +202,12 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
     /**
      * The unique identifier for the Chronicle instance, which is the same as the customer ID.
      * 
-     * ***
-     * 
      */
     @Import(name="instance")
     private @Nullable Output<String> instance;
 
     /**
      * @return The unique identifier for the Chronicle instance, which is the same as the customer ID.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> instance() {
@@ -781,8 +777,6 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param instance The unique identifier for the Chronicle instance, which is the same as the customer ID.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -793,8 +787,6 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param instance The unique identifier for the Chronicle instance, which is the same as the customer ID.
-         * 
-         * ***
          * 
          * @return builder
          * 

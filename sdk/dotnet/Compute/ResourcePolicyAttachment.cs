@@ -117,9 +117,6 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The name of the instance in which the resource policies are attached to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("instance")]
         public Output<string> Instance { get; private set; } = null!;
@@ -192,9 +189,6 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The name of the instance in which the resource policies are attached to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("instance", required: true)]
         public Input<string> Instance { get; set; } = null!;
@@ -229,9 +223,6 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The name of the instance in which the resource policies are attached to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("instance")]
         public Input<string>? Instance { get; set; }

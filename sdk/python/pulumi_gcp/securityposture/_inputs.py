@@ -1737,8 +1737,6 @@ if not MYPY:
         resource_types: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]
         """
         The resource types to run the detector on.
-
-        - - -
         """
 elif False:
     PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigResourceSelectorArgsDict: TypeAlias = Mapping[str, Any]
@@ -1749,8 +1747,6 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigR
                  resource_types: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]):
         """
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] resource_types: The resource types to run the detector on.
-               
-               - - -
         """
         pulumi.set(__self__, "resource_types", resource_types)
 
@@ -1759,8 +1755,6 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigR
     def resource_types(self) -> pulumi.Input[Sequence[pulumi.Input[builtins.str]]]:
         """
         The resource types to run the detector on.
-
-        - - -
         """
         return pulumi.get(self, "resource_types")
 

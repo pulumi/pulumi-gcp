@@ -220,8 +220,6 @@ type CloudVmCluster struct {
 	// to (^a-z?$) and must be a maximum of 63
 	// characters in length. The value must start with a letter and end with
 	// a letter or a number.
-	//
-	// ***
 	CloudVmClusterId pulumi.StringOutput `pulumi:"cloudVmClusterId"`
 	// The date and time that the VM cluster was created.
 	CreateTime         pulumi.StringOutput  `pulumi:"createTime"`
@@ -321,8 +319,6 @@ type cloudVmClusterState struct {
 	// to (^a-z?$) and must be a maximum of 63
 	// characters in length. The value must start with a letter and end with
 	// a letter or a number.
-	//
-	// ***
 	CloudVmClusterId *string `pulumi:"cloudVmClusterId"`
 	// The date and time that the VM cluster was created.
 	CreateTime         *string `pulumi:"createTime"`
@@ -370,8 +366,6 @@ type CloudVmClusterState struct {
 	// to (^a-z?$) and must be a maximum of 63
 	// characters in length. The value must start with a letter and end with
 	// a letter or a number.
-	//
-	// ***
 	CloudVmClusterId pulumi.StringPtrInput
 	// The date and time that the VM cluster was created.
 	CreateTime         pulumi.StringPtrInput
@@ -423,8 +417,6 @@ type cloudVmClusterArgs struct {
 	// to (^a-z?$) and must be a maximum of 63
 	// characters in length. The value must start with a letter and end with
 	// a letter or a number.
-	//
-	// ***
 	CloudVmClusterId   string `pulumi:"cloudVmClusterId"`
 	DeletionProtection *bool  `pulumi:"deletionProtection"`
 	// User friendly name for this resource.
@@ -460,8 +452,6 @@ type CloudVmClusterArgs struct {
 	// to (^a-z?$) and must be a maximum of 63
 	// characters in length. The value must start with a letter and end with
 	// a letter or a number.
-	//
-	// ***
 	CloudVmClusterId   pulumi.StringInput
 	DeletionProtection pulumi.BoolPtrInput
 	// User friendly name for this resource.
@@ -588,8 +578,6 @@ func (o CloudVmClusterOutput) Cidr() pulumi.StringOutput {
 // to (^a-z?$) and must be a maximum of 63
 // characters in length. The value must start with a letter and end with
 // a letter or a number.
-//
-// ***
 func (o CloudVmClusterOutput) CloudVmClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudVmCluster) pulumi.StringOutput { return v.CloudVmClusterId }).(pulumi.StringOutput)
 }

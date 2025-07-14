@@ -20,8 +20,6 @@ public final class EncryptionSpecEncryptionSpecArgs extends com.pulumi.resources
      * Only the key in the same location as this resource is allowed to be used for encryption.
      * Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{key}
      * 
-     * ***
-     * 
      */
     @Import(name="kmsKey", required=true)
     private Output<String> kmsKey;
@@ -31,8 +29,6 @@ public final class EncryptionSpecEncryptionSpecArgs extends com.pulumi.resources
      * If empty, the resource is secured by the default Google encryption key.
      * Only the key in the same location as this resource is allowed to be used for encryption.
      * Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{key}
-     * 
-     * ***
      * 
      */
     public Output<String> kmsKey() {
@@ -69,8 +65,6 @@ public final class EncryptionSpecEncryptionSpecArgs extends com.pulumi.resources
          * Only the key in the same location as this resource is allowed to be used for encryption.
          * Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{key}
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -84,8 +78,6 @@ public final class EncryptionSpecEncryptionSpecArgs extends com.pulumi.resources
          * If empty, the resource is secured by the default Google encryption key.
          * Only the key in the same location as this resource is allowed to be used for encryption.
          * Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{key}
-         * 
-         * ***
          * 
          * @return builder
          * 

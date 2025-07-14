@@ -102,9 +102,6 @@ export class RouterNatAddress extends pulumi.CustomResource {
     public readonly router!: pulumi.Output<string>;
     /**
      * The name of the Nat service in which this address will be configured.
-     *
-     *
-     * - - -
      */
     public readonly routerNat!: pulumi.Output<string>;
 
@@ -179,9 +176,6 @@ export interface RouterNatAddressState {
     router?: pulumi.Input<string>;
     /**
      * The name of the Nat service in which this address will be configured.
-     *
-     *
-     * - - -
      */
     routerNat?: pulumi.Input<string>;
 }
@@ -215,9 +209,6 @@ export interface RouterNatAddressArgs {
     router: pulumi.Input<string>;
     /**
      * The name of the Nat service in which this address will be configured.
-     *
-     *
-     * - - -
      */
     routerNat: pulumi.Input<string>;
 }

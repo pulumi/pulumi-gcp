@@ -52,9 +52,6 @@ class VolumeReplicationArgs:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] name: The name of the replication. Needs to be unique per location.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.bool] replication_enabled: Set to false to stop/break the mirror. Stopping the mirror makes the destination volume read-write
@@ -190,9 +187,6 @@ class VolumeReplicationArgs:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The name of the replication. Needs to be unique per location.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -294,9 +288,6 @@ class _VolumeReplicationState:
                transfer ended and destination volume became accessible read-only. TRANSFERRING means a MIRRORED volume
                currently receives an update. Updated every 5 minutes.
         :param pulumi.Input[builtins.str] name: The name of the replication. Needs to be unique per location.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -539,9 +530,6 @@ class _VolumeReplicationState:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The name of the replication. Needs to be unique per location.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -798,9 +786,6 @@ class VolumeReplication(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: Name of region for this resource. The resource needs to be created in the region of the destination volume.
         :param pulumi.Input[builtins.str] name: The name of the replication. Needs to be unique per location.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.bool] replication_enabled: Set to false to stop/break the mirror. Stopping the mirror makes the destination volume read-write
@@ -1030,9 +1015,6 @@ class VolumeReplication(pulumi.CustomResource):
                transfer ended and destination volume became accessible read-only. TRANSFERRING means a MIRRORED volume
                currently receives an update. Updated every 5 minutes.
         :param pulumi.Input[builtins.str] name: The name of the replication. Needs to be unique per location.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -1203,9 +1185,6 @@ class VolumeReplication(pulumi.CustomResource):
     def name(self) -> pulumi.Output[builtins.str]:
         """
         The name of the replication. Needs to be unique per location.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

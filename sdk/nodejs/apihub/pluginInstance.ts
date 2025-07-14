@@ -88,6 +88,7 @@ export class PluginInstance extends pulumi.CustomResource {
     public readonly actions!: pulumi.Output<outputs.apihub.PluginInstanceAction[]>;
     /**
      * AuthConfig represents the authentication information.
+     * Structure is documented below.
      */
     public readonly authConfig!: pulumi.Output<outputs.apihub.PluginInstanceAuthConfig | undefined>;
     /**
@@ -133,6 +134,10 @@ export class PluginInstance extends pulumi.CustomResource {
      * are /a-z[0-9]-_/.
      */
     public readonly pluginInstanceId!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The current state of the plugin instance (e.g., enabled, disabled,
@@ -222,6 +227,7 @@ export interface PluginInstanceState {
     actions?: pulumi.Input<pulumi.Input<inputs.apihub.PluginInstanceAction>[]>;
     /**
      * AuthConfig represents the authentication information.
+     * Structure is documented below.
      */
     authConfig?: pulumi.Input<inputs.apihub.PluginInstanceAuthConfig>;
     /**
@@ -267,6 +273,10 @@ export interface PluginInstanceState {
      * are /a-z[0-9]-_/.
      */
     pluginInstanceId?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * The current state of the plugin instance (e.g., enabled, disabled,
@@ -298,6 +308,7 @@ export interface PluginInstanceArgs {
     actions?: pulumi.Input<pulumi.Input<inputs.apihub.PluginInstanceAction>[]>;
     /**
      * AuthConfig represents the authentication information.
+     * Structure is documented below.
      */
     authConfig?: pulumi.Input<inputs.apihub.PluginInstanceAuthConfig>;
     /**
@@ -327,5 +338,9 @@ export interface PluginInstanceArgs {
      * are /a-z[0-9]-_/.
      */
     pluginInstanceId: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
 }

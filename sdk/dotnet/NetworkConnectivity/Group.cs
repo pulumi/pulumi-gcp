@@ -116,9 +116,6 @@ namespace Pulumi.Gcp.NetworkConnectivity
 
         /// <summary>
         /// The name of the hub. Hub names must be unique. They use the following form: projects/{projectNumber}/locations/global/hubs/{hubId}
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("hub")]
         public Output<string> Hub { get; private set; } = null!;
@@ -242,9 +239,6 @@ namespace Pulumi.Gcp.NetworkConnectivity
 
         /// <summary>
         /// The name of the hub. Hub names must be unique. They use the following form: projects/{projectNumber}/locations/global/hubs/{hubId}
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("hub", required: true)]
         public Input<string> Hub { get; set; } = null!;
@@ -322,9 +316,6 @@ namespace Pulumi.Gcp.NetworkConnectivity
 
         /// <summary>
         /// The name of the hub. Hub names must be unique. They use the following form: projects/{projectNumber}/locations/global/hubs/{hubId}
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("hub")]
         public Input<string>? Hub { get; set; }

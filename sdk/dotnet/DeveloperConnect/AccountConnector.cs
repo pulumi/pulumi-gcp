@@ -223,9 +223,6 @@ namespace Pulumi.Gcp.DeveloperConnect
         /// component of the AccountConnector's resource name. Its format should adhere
         /// to https://google.aip.dev/122#resource-id-segments Names must be unique
         /// per-project per-location.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("accountConnectorId")]
         public Output<string> AccountConnectorId { get; private set; } = null!;
@@ -363,9 +360,6 @@ namespace Pulumi.Gcp.DeveloperConnect
         /// component of the AccountConnector's resource name. Its format should adhere
         /// to https://google.aip.dev/122#resource-id-segments Names must be unique
         /// per-project per-location.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("accountConnectorId", required: true)]
         public Input<string> AccountConnectorId { get; set; } = null!;
@@ -431,9 +425,6 @@ namespace Pulumi.Gcp.DeveloperConnect
         /// component of the AccountConnector's resource name. Its format should adhere
         /// to https://google.aip.dev/122#resource-id-segments Names must be unique
         /// per-project per-location.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("accountConnectorId")]
         public Input<string>? AccountConnectorId { get; set; }

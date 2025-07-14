@@ -260,16 +260,12 @@ public class ManagementFolderSecurityHealthAnalyticsCustomModule extends com.pul
     /**
      * Numerical ID of the parent folder.
      * 
-     * ***
-     * 
      */
     @Export(name="folder", refs={String.class}, tree="[0]")
     private Output<String> folder;
 
     /**
      * @return Numerical ID of the parent folder.
-     * 
-     * ***
      * 
      */
     public Output<String> folder() {

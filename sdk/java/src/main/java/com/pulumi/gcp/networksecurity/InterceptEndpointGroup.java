@@ -209,8 +209,6 @@ public class InterceptEndpointGroup extends com.pulumi.resources.CustomResource 
      * The ID to use for the endpoint group, which will become the final component
      * of the endpoint group&#39;s resource name.
      * 
-     * ***
-     * 
      */
     @Export(name="interceptEndpointGroupId", refs={String.class}, tree="[0]")
     private Output<String> interceptEndpointGroupId;
@@ -218,8 +216,6 @@ public class InterceptEndpointGroup extends com.pulumi.resources.CustomResource 
     /**
      * @return The ID to use for the endpoint group, which will become the final component
      * of the endpoint group&#39;s resource name.
-     * 
-     * ***
      * 
      */
     public Output<String> interceptEndpointGroupId() {

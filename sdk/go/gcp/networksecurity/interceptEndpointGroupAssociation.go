@@ -129,8 +129,6 @@ type InterceptEndpointGroupAssociation struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The cloud location of the association, currently restricted to `global`.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The list of locations where the association is configured. This information
 	// is retrieved from the linked endpoint group.
@@ -237,8 +235,6 @@ type interceptEndpointGroupAssociationState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The cloud location of the association, currently restricted to `global`.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// The list of locations where the association is configured. This information
 	// is retrieved from the linked endpoint group.
@@ -302,8 +298,6 @@ type InterceptEndpointGroupAssociationState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The cloud location of the association, currently restricted to `global`.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// The list of locations where the association is configured. This information
 	// is retrieved from the linked endpoint group.
@@ -366,8 +360,6 @@ type interceptEndpointGroupAssociationArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The cloud location of the association, currently restricted to `global`.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// The VPC network that is associated. for example:
 	// `projects/123456789/global/networks/my-network`.
@@ -393,8 +385,6 @@ type InterceptEndpointGroupAssociationArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The cloud location of the association, currently restricted to `global`.
-	//
-	// ***
 	Location pulumi.StringInput
 	// The VPC network that is associated. for example:
 	// `projects/123456789/global/networks/my-network`.
@@ -527,8 +517,6 @@ func (o InterceptEndpointGroupAssociationOutput) Labels() pulumi.StringMapOutput
 }
 
 // The cloud location of the association, currently restricted to `global`.
-//
-// ***
 func (o InterceptEndpointGroupAssociationOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterceptEndpointGroupAssociation) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

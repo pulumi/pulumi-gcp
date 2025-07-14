@@ -87,8 +87,6 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
      * The name of the Cloud SQL instance. This does not include the project
      * ID.
      * 
-     * ***
-     * 
      */
     @Import(name="instance", required=true)
     private Output<String> instance;
@@ -96,8 +94,6 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The name of the Cloud SQL instance. This does not include the project
      * ID.
-     * 
-     * ***
      * 
      */
     public Output<String> instance() {
@@ -256,8 +252,6 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
          * @param instance The name of the Cloud SQL instance. This does not include the project
          * ID.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -269,8 +263,6 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param instance The name of the Cloud SQL instance. This does not include the project
          * ID.
-         * 
-         * ***
          * 
          * @return builder
          * 

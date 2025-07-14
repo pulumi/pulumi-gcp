@@ -19,16 +19,12 @@ public final class V2QueuedResourceState extends com.pulumi.resources.ResourceAr
     /**
      * The immutable name of the Queued Resource.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return The immutable name of the Queued Resource.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -114,8 +110,6 @@ public final class V2QueuedResourceState extends com.pulumi.resources.ResourceAr
         /**
          * @param name The immutable name of the Queued Resource.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -126,8 +120,6 @@ public final class V2QueuedResourceState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param name The immutable name of the Queued Resource.
-         * 
-         * ***
          * 
          * @return builder
          * 

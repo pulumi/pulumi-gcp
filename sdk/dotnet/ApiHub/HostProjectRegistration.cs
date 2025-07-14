@@ -124,9 +124,6 @@ namespace Pulumi.Gcp.ApiHub
         /// final component of the host project registration's resource name. The ID
         /// must be the same as the Google cloud project specified in the
         /// host_project_registration.gcp_project field.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("hostProjectRegistrationId")]
         public Output<string> HostProjectRegistrationId { get; private set; } = null!;
@@ -211,9 +208,6 @@ namespace Pulumi.Gcp.ApiHub
         /// final component of the host project registration's resource name. The ID
         /// must be the same as the Google cloud project specified in the
         /// host_project_registration.gcp_project field.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("hostProjectRegistrationId", required: true)]
         public Input<string> HostProjectRegistrationId { get; set; } = null!;
@@ -258,9 +252,6 @@ namespace Pulumi.Gcp.ApiHub
         /// final component of the host project registration's resource name. The ID
         /// must be the same as the Google cloud project specified in the
         /// host_project_registration.gcp_project field.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("hostProjectRegistrationId")]
         public Input<string>? HostProjectRegistrationId { get; set; }

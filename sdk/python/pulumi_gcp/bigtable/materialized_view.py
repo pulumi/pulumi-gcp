@@ -28,9 +28,6 @@ class MaterializedViewArgs:
         """
         The set of arguments for constructing a MaterializedView resource.
         :param pulumi.Input[builtins.str] materialized_view_id: The unique name of the materialized view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] query: The materialized view's select query.
         :param pulumi.Input[builtins.bool] deletion_protection: Set to true to make the MaterializedView protected against deletion.
         :param pulumi.Input[builtins.str] instance: The name of the instance to create the materialized view within.
@@ -51,9 +48,6 @@ class MaterializedViewArgs:
     def materialized_view_id(self) -> pulumi.Input[builtins.str]:
         """
         The unique name of the materialized view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-
-
-        - - -
         """
         return pulumi.get(self, "materialized_view_id")
 
@@ -125,9 +119,6 @@ class _MaterializedViewState:
         :param pulumi.Input[builtins.bool] deletion_protection: Set to true to make the MaterializedView protected against deletion.
         :param pulumi.Input[builtins.str] instance: The name of the instance to create the materialized view within.
         :param pulumi.Input[builtins.str] materialized_view_id: The unique name of the materialized view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The unique name of the requested materialized view. Values are of the form `projects/<project>/instances/<instance>/materializedViews/<materializedViewId>`.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -175,9 +166,6 @@ class _MaterializedViewState:
     def materialized_view_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The unique name of the materialized view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-
-
-        - - -
         """
         return pulumi.get(self, "materialized_view_id")
 
@@ -305,9 +293,6 @@ class MaterializedView(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] deletion_protection: Set to true to make the MaterializedView protected against deletion.
         :param pulumi.Input[builtins.str] instance: The name of the instance to create the materialized view within.
         :param pulumi.Input[builtins.str] materialized_view_id: The unique name of the materialized view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] query: The materialized view's select query.
@@ -448,9 +433,6 @@ class MaterializedView(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] deletion_protection: Set to true to make the MaterializedView protected against deletion.
         :param pulumi.Input[builtins.str] instance: The name of the instance to create the materialized view within.
         :param pulumi.Input[builtins.str] materialized_view_id: The unique name of the materialized view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The unique name of the requested materialized view. Values are of the form `projects/<project>/instances/<instance>/materializedViews/<materializedViewId>`.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -489,9 +471,6 @@ class MaterializedView(pulumi.CustomResource):
     def materialized_view_id(self) -> pulumi.Output[builtins.str]:
         """
         The unique name of the materialized view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-
-
-        - - -
         """
         return pulumi.get(self, "materialized_view_id")
 

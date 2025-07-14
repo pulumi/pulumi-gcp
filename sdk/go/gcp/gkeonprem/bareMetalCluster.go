@@ -14,6 +14,10 @@ import (
 
 // A Google Bare Metal User Cluster.
 //
+// To get more information about BareMetalCluster, see:
+//
+// * [API documentation](https://cloud.google.com/kubernetes-engine/distributed-cloud/reference/on-prem-api/rest/v1/projects.locations.bareMetalClusters)
+//
 // ## Example Usage
 //
 // ### Gkeonprem Bare Metal Cluster Basic
@@ -420,18 +424,25 @@ type BareMetalCluster struct {
 	// The Admin Cluster this Bare Metal User Cluster belongs to.
 	// This is the full resource name of the Admin Cluster's hub membership.
 	AdminClusterMembership pulumi.StringOutput `pulumi:"adminClusterMembership"`
-	// Annotations on the Bare Metal User Cluster. This field has the same restrictions as Kubernetes annotations. The total
-	// size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// 'effective_annotations' for all of the annotations present on the resource.
+	// Annotations on the Bare Metal User Cluster.
+	// This field has the same restrictions as Kubernetes annotations.
+	// The total size of all keys and values combined is limited to 256k.
+	// Key can have 2 segments: prefix (optional) and name (required),
+	// separated by a slash (/).
+	// Prefix must be a DNS subdomain.
+	// Name must be 63 characters or less, begin and end with alphanumerics,
+	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// A human readable description of this Bare Metal User Cluster.
 	BareMetalVersion pulumi.StringOutput `pulumi:"bareMetalVersion"`
 	// Binary Authorization related configurations.
+	// Structure is documented below.
 	BinaryAuthorization BareMetalClusterBinaryAuthorizationPtrOutput `pulumi:"binaryAuthorization"`
 	// Specifies the User Cluster's observability infrastructure.
+	// Structure is documented below.
 	ClusterOperations BareMetalClusterClusterOperationsPtrOutput `pulumi:"clusterOperations"`
 	// Specifies the control plane configuration.
 	// Structure is documented below.
@@ -440,8 +451,7 @@ type BareMetalCluster struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The time the cluster was deleted, in RFC3339 text format.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
-	// (Output)
-	// The description of the validation check.
+	// A human readable description of this Bare Metal User Cluster.
 	Description          pulumi.StringPtrOutput `pulumi:"description"`
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// The IP address name of Bare Metal User Cluster's API server.
@@ -477,6 +487,7 @@ type BareMetalCluster struct {
 	// The location of the resource.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Specifies the workload node configurations.
+	// Structure is documented below.
 	MaintenanceConfig BareMetalClusterMaintenanceConfigPtrOutput `pulumi:"maintenanceConfig"`
 	// The bare metal cluster name.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -484,17 +495,24 @@ type BareMetalCluster struct {
 	// Structure is documented below.
 	NetworkConfig BareMetalClusterNetworkConfigOutput `pulumi:"networkConfig"`
 	// Specifies the node access related settings for the bare metal user cluster.
+	// Structure is documented below.
 	NodeAccessConfig BareMetalClusterNodeAccessConfigPtrOutput `pulumi:"nodeAccessConfig"`
 	// Specifies the workload node configurations.
+	// Structure is documented below.
 	NodeConfig BareMetalClusterNodeConfigPtrOutput `pulumi:"nodeConfig"`
 	// OS environment related configurations.
+	// Structure is documented below.
 	OsEnvironmentConfig BareMetalClusterOsEnvironmentConfigPtrOutput `pulumi:"osEnvironmentConfig"`
-	Project             pulumi.StringOutput                          `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Specifies the cluster proxy configuration.
+	// Structure is documented below.
 	Proxy BareMetalClusterProxyPtrOutput `pulumi:"proxy"`
 	// If set, there are currently changes in flight to the Bare Metal User Cluster.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
 	// Specifies the security related settings for the Bare Metal User Cluster.
+	// Structure is documented below.
 	SecurityConfig BareMetalClusterSecurityConfigPtrOutput `pulumi:"securityConfig"`
 	// (Output)
 	// The lifecycle state of the condition.
@@ -511,6 +529,7 @@ type BareMetalCluster struct {
 	// The time the cluster was last updated, in RFC3339 text format.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// The cluster upgrade policy.
+	// Structure is documented below.
 	UpgradePolicy BareMetalClusterUpgradePolicyPtrOutput `pulumi:"upgradePolicy"`
 	// Specifies the security related settings for the Bare Metal User Cluster.
 	// Structure is documented below.
@@ -571,18 +590,25 @@ type bareMetalClusterState struct {
 	// The Admin Cluster this Bare Metal User Cluster belongs to.
 	// This is the full resource name of the Admin Cluster's hub membership.
 	AdminClusterMembership *string `pulumi:"adminClusterMembership"`
-	// Annotations on the Bare Metal User Cluster. This field has the same restrictions as Kubernetes annotations. The total
-	// size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// 'effective_annotations' for all of the annotations present on the resource.
+	// Annotations on the Bare Metal User Cluster.
+	// This field has the same restrictions as Kubernetes annotations.
+	// The total size of all keys and values combined is limited to 256k.
+	// Key can have 2 segments: prefix (optional) and name (required),
+	// separated by a slash (/).
+	// Prefix must be a DNS subdomain.
+	// Name must be 63 characters or less, begin and end with alphanumerics,
+	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// A human readable description of this Bare Metal User Cluster.
 	BareMetalVersion *string `pulumi:"bareMetalVersion"`
 	// Binary Authorization related configurations.
+	// Structure is documented below.
 	BinaryAuthorization *BareMetalClusterBinaryAuthorization `pulumi:"binaryAuthorization"`
 	// Specifies the User Cluster's observability infrastructure.
+	// Structure is documented below.
 	ClusterOperations *BareMetalClusterClusterOperations `pulumi:"clusterOperations"`
 	// Specifies the control plane configuration.
 	// Structure is documented below.
@@ -591,8 +617,7 @@ type bareMetalClusterState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// The time the cluster was deleted, in RFC3339 text format.
 	DeleteTime *string `pulumi:"deleteTime"`
-	// (Output)
-	// The description of the validation check.
+	// A human readable description of this Bare Metal User Cluster.
 	Description          *string           `pulumi:"description"`
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// The IP address name of Bare Metal User Cluster's API server.
@@ -628,6 +653,7 @@ type bareMetalClusterState struct {
 	// The location of the resource.
 	Location *string `pulumi:"location"`
 	// Specifies the workload node configurations.
+	// Structure is documented below.
 	MaintenanceConfig *BareMetalClusterMaintenanceConfig `pulumi:"maintenanceConfig"`
 	// The bare metal cluster name.
 	Name *string `pulumi:"name"`
@@ -635,17 +661,24 @@ type bareMetalClusterState struct {
 	// Structure is documented below.
 	NetworkConfig *BareMetalClusterNetworkConfig `pulumi:"networkConfig"`
 	// Specifies the node access related settings for the bare metal user cluster.
+	// Structure is documented below.
 	NodeAccessConfig *BareMetalClusterNodeAccessConfig `pulumi:"nodeAccessConfig"`
 	// Specifies the workload node configurations.
+	// Structure is documented below.
 	NodeConfig *BareMetalClusterNodeConfig `pulumi:"nodeConfig"`
 	// OS environment related configurations.
+	// Structure is documented below.
 	OsEnvironmentConfig *BareMetalClusterOsEnvironmentConfig `pulumi:"osEnvironmentConfig"`
-	Project             *string                              `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// Specifies the cluster proxy configuration.
+	// Structure is documented below.
 	Proxy *BareMetalClusterProxy `pulumi:"proxy"`
 	// If set, there are currently changes in flight to the Bare Metal User Cluster.
 	Reconciling *bool `pulumi:"reconciling"`
 	// Specifies the security related settings for the Bare Metal User Cluster.
+	// Structure is documented below.
 	SecurityConfig *BareMetalClusterSecurityConfig `pulumi:"securityConfig"`
 	// (Output)
 	// The lifecycle state of the condition.
@@ -662,6 +695,7 @@ type bareMetalClusterState struct {
 	// The time the cluster was last updated, in RFC3339 text format.
 	UpdateTime *string `pulumi:"updateTime"`
 	// The cluster upgrade policy.
+	// Structure is documented below.
 	UpgradePolicy *BareMetalClusterUpgradePolicy `pulumi:"upgradePolicy"`
 	// Specifies the security related settings for the Bare Metal User Cluster.
 	// Structure is documented below.
@@ -672,18 +706,25 @@ type BareMetalClusterState struct {
 	// The Admin Cluster this Bare Metal User Cluster belongs to.
 	// This is the full resource name of the Admin Cluster's hub membership.
 	AdminClusterMembership pulumi.StringPtrInput
-	// Annotations on the Bare Metal User Cluster. This field has the same restrictions as Kubernetes annotations. The total
-	// size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// 'effective_annotations' for all of the annotations present on the resource.
+	// Annotations on the Bare Metal User Cluster.
+	// This field has the same restrictions as Kubernetes annotations.
+	// The total size of all keys and values combined is limited to 256k.
+	// Key can have 2 segments: prefix (optional) and name (required),
+	// separated by a slash (/).
+	// Prefix must be a DNS subdomain.
+	// Name must be 63 characters or less, begin and end with alphanumerics,
+	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// A human readable description of this Bare Metal User Cluster.
 	BareMetalVersion pulumi.StringPtrInput
 	// Binary Authorization related configurations.
+	// Structure is documented below.
 	BinaryAuthorization BareMetalClusterBinaryAuthorizationPtrInput
 	// Specifies the User Cluster's observability infrastructure.
+	// Structure is documented below.
 	ClusterOperations BareMetalClusterClusterOperationsPtrInput
 	// Specifies the control plane configuration.
 	// Structure is documented below.
@@ -692,8 +733,7 @@ type BareMetalClusterState struct {
 	CreateTime pulumi.StringPtrInput
 	// The time the cluster was deleted, in RFC3339 text format.
 	DeleteTime pulumi.StringPtrInput
-	// (Output)
-	// The description of the validation check.
+	// A human readable description of this Bare Metal User Cluster.
 	Description          pulumi.StringPtrInput
 	EffectiveAnnotations pulumi.StringMapInput
 	// The IP address name of Bare Metal User Cluster's API server.
@@ -729,6 +769,7 @@ type BareMetalClusterState struct {
 	// The location of the resource.
 	Location pulumi.StringPtrInput
 	// Specifies the workload node configurations.
+	// Structure is documented below.
 	MaintenanceConfig BareMetalClusterMaintenanceConfigPtrInput
 	// The bare metal cluster name.
 	Name pulumi.StringPtrInput
@@ -736,17 +777,24 @@ type BareMetalClusterState struct {
 	// Structure is documented below.
 	NetworkConfig BareMetalClusterNetworkConfigPtrInput
 	// Specifies the node access related settings for the bare metal user cluster.
+	// Structure is documented below.
 	NodeAccessConfig BareMetalClusterNodeAccessConfigPtrInput
 	// Specifies the workload node configurations.
+	// Structure is documented below.
 	NodeConfig BareMetalClusterNodeConfigPtrInput
 	// OS environment related configurations.
+	// Structure is documented below.
 	OsEnvironmentConfig BareMetalClusterOsEnvironmentConfigPtrInput
-	Project             pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// Specifies the cluster proxy configuration.
+	// Structure is documented below.
 	Proxy BareMetalClusterProxyPtrInput
 	// If set, there are currently changes in flight to the Bare Metal User Cluster.
 	Reconciling pulumi.BoolPtrInput
 	// Specifies the security related settings for the Bare Metal User Cluster.
+	// Structure is documented below.
 	SecurityConfig BareMetalClusterSecurityConfigPtrInput
 	// (Output)
 	// The lifecycle state of the condition.
@@ -763,6 +811,7 @@ type BareMetalClusterState struct {
 	// The time the cluster was last updated, in RFC3339 text format.
 	UpdateTime pulumi.StringPtrInput
 	// The cluster upgrade policy.
+	// Structure is documented below.
 	UpgradePolicy BareMetalClusterUpgradePolicyPtrInput
 	// Specifies the security related settings for the Bare Metal User Cluster.
 	// Structure is documented below.
@@ -777,24 +826,30 @@ type bareMetalClusterArgs struct {
 	// The Admin Cluster this Bare Metal User Cluster belongs to.
 	// This is the full resource name of the Admin Cluster's hub membership.
 	AdminClusterMembership string `pulumi:"adminClusterMembership"`
-	// Annotations on the Bare Metal User Cluster. This field has the same restrictions as Kubernetes annotations. The total
-	// size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// 'effective_annotations' for all of the annotations present on the resource.
+	// Annotations on the Bare Metal User Cluster.
+	// This field has the same restrictions as Kubernetes annotations.
+	// The total size of all keys and values combined is limited to 256k.
+	// Key can have 2 segments: prefix (optional) and name (required),
+	// separated by a slash (/).
+	// Prefix must be a DNS subdomain.
+	// Name must be 63 characters or less, begin and end with alphanumerics,
+	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// A human readable description of this Bare Metal User Cluster.
 	BareMetalVersion string `pulumi:"bareMetalVersion"`
 	// Binary Authorization related configurations.
+	// Structure is documented below.
 	BinaryAuthorization *BareMetalClusterBinaryAuthorization `pulumi:"binaryAuthorization"`
 	// Specifies the User Cluster's observability infrastructure.
+	// Structure is documented below.
 	ClusterOperations *BareMetalClusterClusterOperations `pulumi:"clusterOperations"`
 	// Specifies the control plane configuration.
 	// Structure is documented below.
 	ControlPlane BareMetalClusterControlPlane `pulumi:"controlPlane"`
-	// (Output)
-	// The description of the validation check.
+	// A human readable description of this Bare Metal User Cluster.
 	Description *string `pulumi:"description"`
 	// Specifies the load balancer configuration.
 	// Structure is documented below.
@@ -802,6 +857,7 @@ type bareMetalClusterArgs struct {
 	// The location of the resource.
 	Location string `pulumi:"location"`
 	// Specifies the workload node configurations.
+	// Structure is documented below.
 	MaintenanceConfig *BareMetalClusterMaintenanceConfig `pulumi:"maintenanceConfig"`
 	// The bare metal cluster name.
 	Name *string `pulumi:"name"`
@@ -809,20 +865,28 @@ type bareMetalClusterArgs struct {
 	// Structure is documented below.
 	NetworkConfig BareMetalClusterNetworkConfig `pulumi:"networkConfig"`
 	// Specifies the node access related settings for the bare metal user cluster.
+	// Structure is documented below.
 	NodeAccessConfig *BareMetalClusterNodeAccessConfig `pulumi:"nodeAccessConfig"`
 	// Specifies the workload node configurations.
+	// Structure is documented below.
 	NodeConfig *BareMetalClusterNodeConfig `pulumi:"nodeConfig"`
 	// OS environment related configurations.
+	// Structure is documented below.
 	OsEnvironmentConfig *BareMetalClusterOsEnvironmentConfig `pulumi:"osEnvironmentConfig"`
-	Project             *string                              `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// Specifies the cluster proxy configuration.
+	// Structure is documented below.
 	Proxy *BareMetalClusterProxy `pulumi:"proxy"`
 	// Specifies the security related settings for the Bare Metal User Cluster.
+	// Structure is documented below.
 	SecurityConfig *BareMetalClusterSecurityConfig `pulumi:"securityConfig"`
 	// Specifies the cluster storage configuration.
 	// Structure is documented below.
 	Storage BareMetalClusterStorage `pulumi:"storage"`
 	// The cluster upgrade policy.
+	// Structure is documented below.
 	UpgradePolicy *BareMetalClusterUpgradePolicy `pulumi:"upgradePolicy"`
 }
 
@@ -831,24 +895,30 @@ type BareMetalClusterArgs struct {
 	// The Admin Cluster this Bare Metal User Cluster belongs to.
 	// This is the full resource name of the Admin Cluster's hub membership.
 	AdminClusterMembership pulumi.StringInput
-	// Annotations on the Bare Metal User Cluster. This field has the same restrictions as Kubernetes annotations. The total
-	// size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// 'effective_annotations' for all of the annotations present on the resource.
+	// Annotations on the Bare Metal User Cluster.
+	// This field has the same restrictions as Kubernetes annotations.
+	// The total size of all keys and values combined is limited to 256k.
+	// Key can have 2 segments: prefix (optional) and name (required),
+	// separated by a slash (/).
+	// Prefix must be a DNS subdomain.
+	// Name must be 63 characters or less, begin and end with alphanumerics,
+	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// A human readable description of this Bare Metal User Cluster.
 	BareMetalVersion pulumi.StringInput
 	// Binary Authorization related configurations.
+	// Structure is documented below.
 	BinaryAuthorization BareMetalClusterBinaryAuthorizationPtrInput
 	// Specifies the User Cluster's observability infrastructure.
+	// Structure is documented below.
 	ClusterOperations BareMetalClusterClusterOperationsPtrInput
 	// Specifies the control plane configuration.
 	// Structure is documented below.
 	ControlPlane BareMetalClusterControlPlaneInput
-	// (Output)
-	// The description of the validation check.
+	// A human readable description of this Bare Metal User Cluster.
 	Description pulumi.StringPtrInput
 	// Specifies the load balancer configuration.
 	// Structure is documented below.
@@ -856,6 +926,7 @@ type BareMetalClusterArgs struct {
 	// The location of the resource.
 	Location pulumi.StringInput
 	// Specifies the workload node configurations.
+	// Structure is documented below.
 	MaintenanceConfig BareMetalClusterMaintenanceConfigPtrInput
 	// The bare metal cluster name.
 	Name pulumi.StringPtrInput
@@ -863,20 +934,28 @@ type BareMetalClusterArgs struct {
 	// Structure is documented below.
 	NetworkConfig BareMetalClusterNetworkConfigInput
 	// Specifies the node access related settings for the bare metal user cluster.
+	// Structure is documented below.
 	NodeAccessConfig BareMetalClusterNodeAccessConfigPtrInput
 	// Specifies the workload node configurations.
+	// Structure is documented below.
 	NodeConfig BareMetalClusterNodeConfigPtrInput
 	// OS environment related configurations.
+	// Structure is documented below.
 	OsEnvironmentConfig BareMetalClusterOsEnvironmentConfigPtrInput
-	Project             pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// Specifies the cluster proxy configuration.
+	// Structure is documented below.
 	Proxy BareMetalClusterProxyPtrInput
 	// Specifies the security related settings for the Bare Metal User Cluster.
+	// Structure is documented below.
 	SecurityConfig BareMetalClusterSecurityConfigPtrInput
 	// Specifies the cluster storage configuration.
 	// Structure is documented below.
 	Storage BareMetalClusterStorageInput
 	// The cluster upgrade policy.
+	// Structure is documented below.
 	UpgradePolicy BareMetalClusterUpgradePolicyPtrInput
 }
 
@@ -973,12 +1052,17 @@ func (o BareMetalClusterOutput) AdminClusterMembership() pulumi.StringOutput {
 	return o.ApplyT(func(v *BareMetalCluster) pulumi.StringOutput { return v.AdminClusterMembership }).(pulumi.StringOutput)
 }
 
-// Annotations on the Bare Metal User Cluster. This field has the same restrictions as Kubernetes annotations. The total
-// size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-// 'effective_annotations' for all of the annotations present on the resource.
+// Annotations on the Bare Metal User Cluster.
+// This field has the same restrictions as Kubernetes annotations.
+// The total size of all keys and values combined is limited to 256k.
+// Key can have 2 segments: prefix (optional) and name (required),
+// separated by a slash (/).
+// Prefix must be a DNS subdomain.
+// Name must be 63 characters or less, begin and end with alphanumerics,
+// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+//
+// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 func (o BareMetalClusterOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *BareMetalCluster) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -989,11 +1073,13 @@ func (o BareMetalClusterOutput) BareMetalVersion() pulumi.StringOutput {
 }
 
 // Binary Authorization related configurations.
+// Structure is documented below.
 func (o BareMetalClusterOutput) BinaryAuthorization() BareMetalClusterBinaryAuthorizationPtrOutput {
 	return o.ApplyT(func(v *BareMetalCluster) BareMetalClusterBinaryAuthorizationPtrOutput { return v.BinaryAuthorization }).(BareMetalClusterBinaryAuthorizationPtrOutput)
 }
 
 // Specifies the User Cluster's observability infrastructure.
+// Structure is documented below.
 func (o BareMetalClusterOutput) ClusterOperations() BareMetalClusterClusterOperationsPtrOutput {
 	return o.ApplyT(func(v *BareMetalCluster) BareMetalClusterClusterOperationsPtrOutput { return v.ClusterOperations }).(BareMetalClusterClusterOperationsPtrOutput)
 }
@@ -1014,8 +1100,7 @@ func (o BareMetalClusterOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *BareMetalCluster) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
 }
 
-// (Output)
-// The description of the validation check.
+// A human readable description of this Bare Metal User Cluster.
 func (o BareMetalClusterOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BareMetalCluster) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -1075,6 +1160,7 @@ func (o BareMetalClusterOutput) Location() pulumi.StringOutput {
 }
 
 // Specifies the workload node configurations.
+// Structure is documented below.
 func (o BareMetalClusterOutput) MaintenanceConfig() BareMetalClusterMaintenanceConfigPtrOutput {
 	return o.ApplyT(func(v *BareMetalCluster) BareMetalClusterMaintenanceConfigPtrOutput { return v.MaintenanceConfig }).(BareMetalClusterMaintenanceConfigPtrOutput)
 }
@@ -1091,25 +1177,31 @@ func (o BareMetalClusterOutput) NetworkConfig() BareMetalClusterNetworkConfigOut
 }
 
 // Specifies the node access related settings for the bare metal user cluster.
+// Structure is documented below.
 func (o BareMetalClusterOutput) NodeAccessConfig() BareMetalClusterNodeAccessConfigPtrOutput {
 	return o.ApplyT(func(v *BareMetalCluster) BareMetalClusterNodeAccessConfigPtrOutput { return v.NodeAccessConfig }).(BareMetalClusterNodeAccessConfigPtrOutput)
 }
 
 // Specifies the workload node configurations.
+// Structure is documented below.
 func (o BareMetalClusterOutput) NodeConfig() BareMetalClusterNodeConfigPtrOutput {
 	return o.ApplyT(func(v *BareMetalCluster) BareMetalClusterNodeConfigPtrOutput { return v.NodeConfig }).(BareMetalClusterNodeConfigPtrOutput)
 }
 
 // OS environment related configurations.
+// Structure is documented below.
 func (o BareMetalClusterOutput) OsEnvironmentConfig() BareMetalClusterOsEnvironmentConfigPtrOutput {
 	return o.ApplyT(func(v *BareMetalCluster) BareMetalClusterOsEnvironmentConfigPtrOutput { return v.OsEnvironmentConfig }).(BareMetalClusterOsEnvironmentConfigPtrOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o BareMetalClusterOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *BareMetalCluster) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Specifies the cluster proxy configuration.
+// Structure is documented below.
 func (o BareMetalClusterOutput) Proxy() BareMetalClusterProxyPtrOutput {
 	return o.ApplyT(func(v *BareMetalCluster) BareMetalClusterProxyPtrOutput { return v.Proxy }).(BareMetalClusterProxyPtrOutput)
 }
@@ -1120,6 +1212,7 @@ func (o BareMetalClusterOutput) Reconciling() pulumi.BoolOutput {
 }
 
 // Specifies the security related settings for the Bare Metal User Cluster.
+// Structure is documented below.
 func (o BareMetalClusterOutput) SecurityConfig() BareMetalClusterSecurityConfigPtrOutput {
 	return o.ApplyT(func(v *BareMetalCluster) BareMetalClusterSecurityConfigPtrOutput { return v.SecurityConfig }).(BareMetalClusterSecurityConfigPtrOutput)
 }
@@ -1154,6 +1247,7 @@ func (o BareMetalClusterOutput) UpdateTime() pulumi.StringOutput {
 }
 
 // The cluster upgrade policy.
+// Structure is documented below.
 func (o BareMetalClusterOutput) UpgradePolicy() BareMetalClusterUpgradePolicyPtrOutput {
 	return o.ApplyT(func(v *BareMetalCluster) BareMetalClusterUpgradePolicyPtrOutput { return v.UpgradePolicy }).(BareMetalClusterUpgradePolicyPtrOutput)
 }

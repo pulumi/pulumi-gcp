@@ -774,8 +774,6 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * If auto-generating Id server-side, remove this field and
      * connection_id from the method_signature of Create RPC
      * 
-     * ***
-     * 
      */
     @Export(name="connectionId", refs={String.class}, tree="[0]")
     private Output<String> connectionId;
@@ -784,8 +782,6 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * @return Required. Id of the requesting object
      * If auto-generating Id server-side, remove this field and
      * connection_id from the method_signature of Create RPC
-     * 
-     * ***
      * 
      */
     public Output<String> connectionId() {

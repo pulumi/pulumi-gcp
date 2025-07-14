@@ -16,8 +16,6 @@ namespace Pulumi.Gcp.Spanner.Outputs
         /// <summary>
         /// If true, this location is designated as the default leader location where
         /// leader replicas are placed.
-        /// 
-        /// - - -
         /// </summary>
         public readonly bool? DefaultLeaderLocation;
         /// <summary>

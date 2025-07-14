@@ -158,8 +158,6 @@ public class BucketAccessControl extends com.pulumi.resources.CustomResource {
      * To refer to all members of the Google Apps for Business domain
      * example.com, the entity would be domain-example.com.
      * 
-     * ***
-     * 
      */
     @Export(name="entity", refs={String.class}, tree="[0]")
     private Output<String> entity;
@@ -180,8 +178,6 @@ public class BucketAccessControl extends com.pulumi.resources.CustomResource {
      * group-example{@literal @}googlegroups.com.
      * To refer to all members of the Google Apps for Business domain
      * example.com, the entity would be domain-example.com.
-     * 
-     * ***
      * 
      */
     public Output<String> entity() {

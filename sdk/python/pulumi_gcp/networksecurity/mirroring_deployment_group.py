@@ -33,9 +33,6 @@ class MirroringDeploymentGroupArgs:
         :param pulumi.Input[builtins.str] location: The cloud location of the deployment group, currently restricted to `global`.
         :param pulumi.Input[builtins.str] mirroring_deployment_group_id: The ID to use for the new deployment group, which will become the final
                component of the deployment group's resource name.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] network: The network that will be used for all child deployments, for example:
                `projects/{project}/global/networks/{network}`.
                See https://google.aip.dev/124.
@@ -75,9 +72,6 @@ class MirroringDeploymentGroupArgs:
         """
         The ID to use for the new deployment group, which will become the final
         component of the deployment group's resource name.
-
-
-        - - -
         """
         return pulumi.get(self, "mirroring_deployment_group_id")
 
@@ -175,9 +169,6 @@ class _MirroringDeploymentGroupState:
                Structure is documented below.
         :param pulumi.Input[builtins.str] mirroring_deployment_group_id: The ID to use for the new deployment group, which will become the final
                component of the deployment group's resource name.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: (Output)
                The connected endpoint group's resource name, for example:
                `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
@@ -329,9 +320,6 @@ class _MirroringDeploymentGroupState:
         """
         The ID to use for the new deployment group, which will become the final
         component of the deployment group's resource name.
-
-
-        - - -
         """
         return pulumi.get(self, "mirroring_deployment_group_id")
 
@@ -519,9 +507,6 @@ class MirroringDeploymentGroup(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] location: The cloud location of the deployment group, currently restricted to `global`.
         :param pulumi.Input[builtins.str] mirroring_deployment_group_id: The ID to use for the new deployment group, which will become the final
                component of the deployment group's resource name.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] network: The network that will be used for all child deployments, for example:
                `projects/{project}/global/networks/{network}`.
                See https://google.aip.dev/124.
@@ -690,9 +675,6 @@ class MirroringDeploymentGroup(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[builtins.str] mirroring_deployment_group_id: The ID to use for the new deployment group, which will become the final
                component of the deployment group's resource name.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: (Output)
                The connected endpoint group's resource name, for example:
                `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
@@ -806,9 +788,6 @@ class MirroringDeploymentGroup(pulumi.CustomResource):
         """
         The ID to use for the new deployment group, which will become the final
         component of the deployment group's resource name.
-
-
-        - - -
         """
         return pulumi.get(self, "mirroring_deployment_group_id")
 

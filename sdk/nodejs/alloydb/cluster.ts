@@ -332,9 +332,6 @@ export class Cluster extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location where the alloydb cluster should reside.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -606,9 +603,6 @@ export interface ClusterState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location where the alloydb cluster should reside.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -763,9 +757,6 @@ export interface ClusterArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location where the alloydb cluster should reside.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

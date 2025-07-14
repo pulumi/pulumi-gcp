@@ -713,8 +713,6 @@ type Cluster struct {
 	ManagedServerCas ClusterManagedServerCaArrayOutput `pulumi:"managedServerCas"`
 	// Unique name of the resource in this scope including project and location using the form:
 	// projects/{projectId}/locations/{locationId}/clusters/{clusterId}
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The nodeType for the Redis cluster.
 	// If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
@@ -846,8 +844,6 @@ type clusterState struct {
 	ManagedServerCas []ClusterManagedServerCa `pulumi:"managedServerCas"`
 	// Unique name of the resource in this scope including project and location using the form:
 	// projects/{projectId}/locations/{locationId}/clusters/{clusterId}
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The nodeType for the Redis cluster.
 	// If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
@@ -947,8 +943,6 @@ type ClusterState struct {
 	ManagedServerCas ClusterManagedServerCaArrayInput
 	// Unique name of the resource in this scope including project and location using the form:
 	// projects/{projectId}/locations/{locationId}/clusters/{clusterId}
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The nodeType for the Redis cluster.
 	// If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
@@ -1034,8 +1028,6 @@ type clusterArgs struct {
 	ManagedBackupSource *ClusterManagedBackupSource `pulumi:"managedBackupSource"`
 	// Unique name of the resource in this scope including project and location using the form:
 	// projects/{projectId}/locations/{locationId}/clusters/{clusterId}
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The nodeType for the Redis cluster.
 	// If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
@@ -1101,8 +1093,6 @@ type ClusterArgs struct {
 	ManagedBackupSource ClusterManagedBackupSourcePtrInput
 	// Unique name of the resource in this scope including project and location using the form:
 	// projects/{projectId}/locations/{locationId}/clusters/{clusterId}
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The nodeType for the Redis cluster.
 	// If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
@@ -1310,8 +1300,6 @@ func (o ClusterOutput) ManagedServerCas() ClusterManagedServerCaArrayOutput {
 
 // Unique name of the resource in this scope including project and location using the form:
 // projects/{projectId}/locations/{locationId}/clusters/{clusterId}
-//
-// ***
 func (o ClusterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

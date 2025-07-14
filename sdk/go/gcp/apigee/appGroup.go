@@ -240,8 +240,6 @@ type AppGroup struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The Apigee Organization associated with the Apigee app group,
 	// in the format `organizations/{{org_name}}`.
-	//
-	// ***
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
 	// App group name displayed in the UI
 	Organization pulumi.StringOutput `pulumi:"organization"`
@@ -302,8 +300,6 @@ type appGroupState struct {
 	Name *string `pulumi:"name"`
 	// The Apigee Organization associated with the Apigee app group,
 	// in the format `organizations/{{org_name}}`.
-	//
-	// ***
 	OrgId *string `pulumi:"orgId"`
 	// App group name displayed in the UI
 	Organization *string `pulumi:"organization"`
@@ -332,8 +328,6 @@ type AppGroupState struct {
 	Name pulumi.StringPtrInput
 	// The Apigee Organization associated with the Apigee app group,
 	// in the format `organizations/{{org_name}}`.
-	//
-	// ***
 	OrgId pulumi.StringPtrInput
 	// App group name displayed in the UI
 	Organization pulumi.StringPtrInput
@@ -360,8 +354,6 @@ type appGroupArgs struct {
 	Name *string `pulumi:"name"`
 	// The Apigee Organization associated with the Apigee app group,
 	// in the format `organizations/{{org_name}}`.
-	//
-	// ***
 	OrgId string `pulumi:"orgId"`
 	// Valid values are active or inactive. Note that the status of the AppGroup should be updated via UpdateAppGroupRequest by setting the action as active or inactive.
 	// Possible values are: `active`, `inactive`.
@@ -383,8 +375,6 @@ type AppGroupArgs struct {
 	Name pulumi.StringPtrInput
 	// The Apigee Organization associated with the Apigee app group,
 	// in the format `organizations/{{org_name}}`.
-	//
-	// ***
 	OrgId pulumi.StringInput
 	// Valid values are active or inactive. Note that the status of the AppGroup should be updated via UpdateAppGroupRequest by setting the action as active or inactive.
 	// Possible values are: `active`, `inactive`.
@@ -521,8 +511,6 @@ func (o AppGroupOutput) Name() pulumi.StringOutput {
 
 // The Apigee Organization associated with the Apigee app group,
 // in the format `organizations/{{org_name}}`.
-//
-// ***
 func (o AppGroupOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppGroup) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }

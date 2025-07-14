@@ -38,10 +38,11 @@ class ConnectClusterArgs:
                Structure is documented below.
         :param pulumi.Input[builtins.str] kafka_cluster: The name of the Kafka cluster this Kafka Connect cluster is attached to. Structured like: `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID`.
         :param pulumi.Input[builtins.str] location: ID of the location of the Kafka Connect resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-),
-               underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase
-               characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
-               configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "capacity_config", capacity_config)
         pulumi.set(__self__, "connect_cluster_id", connect_cluster_id)
@@ -119,10 +120,9 @@ class ConnectClusterArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-),
-        underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase
-        characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
-        configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -133,6 +133,10 @@ class ConnectClusterArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -166,12 +170,13 @@ class _ConnectClusterState:
         :param pulumi.Input['ConnectClusterGcpConfigArgs'] gcp_config: Configuration properties for a Kafka Connect cluster deployed to Google Cloud Platform.
                Structure is documented below.
         :param pulumi.Input[builtins.str] kafka_cluster: The name of the Kafka cluster this Kafka Connect cluster is attached to. Structured like: `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-),
-               underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase
-               characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
-               configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: ID of the location of the Kafka Connect resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
         :param pulumi.Input[builtins.str] name: The name of the connect cluster. Structured like: `projects/PROJECT_ID/locations/LOCATION/connectClusters/CONNECT_CLUSTER_ID`.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[builtins.str] state: The current state of the connect cluster. Possible values: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`.
@@ -282,10 +287,9 @@ class _ConnectClusterState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-),
-        underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase
-        characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
-        configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -320,6 +324,10 @@ class _ConnectClusterState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -493,11 +501,12 @@ class ConnectCluster(pulumi.CustomResource):
         :param pulumi.Input[Union['ConnectClusterGcpConfigArgs', 'ConnectClusterGcpConfigArgsDict']] gcp_config: Configuration properties for a Kafka Connect cluster deployed to Google Cloud Platform.
                Structure is documented below.
         :param pulumi.Input[builtins.str] kafka_cluster: The name of the Kafka cluster this Kafka Connect cluster is attached to. Structured like: `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-),
-               underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase
-               characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
-               configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: ID of the location of the Kafka Connect resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         ...
     @overload
@@ -706,12 +715,13 @@ class ConnectCluster(pulumi.CustomResource):
         :param pulumi.Input[Union['ConnectClusterGcpConfigArgs', 'ConnectClusterGcpConfigArgsDict']] gcp_config: Configuration properties for a Kafka Connect cluster deployed to Google Cloud Platform.
                Structure is documented below.
         :param pulumi.Input[builtins.str] kafka_cluster: The name of the Kafka cluster this Kafka Connect cluster is attached to. Structured like: `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-),
-               underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase
-               characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
-               configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: ID of the location of the Kafka Connect resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
         :param pulumi.Input[builtins.str] name: The name of the connect cluster. Structured like: `projects/PROJECT_ID/locations/LOCATION/connectClusters/CONNECT_CLUSTER_ID`.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[builtins.str] state: The current state of the connect cluster. Possible values: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`.
@@ -790,10 +800,9 @@ class ConnectCluster(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
         """
-        List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-),
-        underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase
-        characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
-        configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -816,6 +825,10 @@ class ConnectCluster(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property

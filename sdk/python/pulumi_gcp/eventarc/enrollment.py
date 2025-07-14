@@ -37,9 +37,6 @@ class EnrollmentArgs:
                "projects/{PROJECT_ID}/locations/{region}/pipelines/{PIPELINE_ID)"
         :param pulumi.Input[builtins.str] enrollment_id: The user-provided ID to be assigned to the Enrollment. It should match the
                format `^a-z?$`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[builtins.str] message_bus: Resource name of the message bus identifying the source of the messages. It
                matches the form
@@ -100,9 +97,6 @@ class EnrollmentArgs:
         """
         The user-provided ID to be assigned to the Enrollment. It should match the
         format `^a-z?$`.
-
-
-        - - -
         """
         return pulumi.get(self, "enrollment_id")
 
@@ -224,9 +218,6 @@ class _EnrollmentState:
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[builtins.str] enrollment_id: The user-provided ID to be assigned to the Enrollment. It should match the
                format `^a-z?$`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] etag: This checksum is computed by the server based on the value of other
                fields, and might be sent only on update and delete requests to ensure that
                the client has an up-to-date value before proceeding.
@@ -373,9 +364,6 @@ class _EnrollmentState:
         """
         The user-provided ID to be assigned to the Enrollment. It should match the
         format `^a-z?$`.
-
-
-        - - -
         """
         return pulumi.get(self, "enrollment_id")
 
@@ -593,9 +581,6 @@ class Enrollment(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] display_name: Resource display name.
         :param pulumi.Input[builtins.str] enrollment_id: The user-provided ID to be assigned to the Enrollment. It should match the
                format `^a-z?$`.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -783,9 +768,6 @@ class Enrollment(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[builtins.str] enrollment_id: The user-provided ID to be assigned to the Enrollment. It should match the
                format `^a-z?$`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] etag: This checksum is computed by the server based on the value of other
                fields, and might be sent only on update and delete requests to ensure that
                the client has an up-to-date value before proceeding.
@@ -892,9 +874,6 @@ class Enrollment(pulumi.CustomResource):
         """
         The user-provided ID to be assigned to the Enrollment. It should match the
         format `^a-z?$`.
-
-
-        - - -
         """
         return pulumi.get(self, "enrollment_id")
 

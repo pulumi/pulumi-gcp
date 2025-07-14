@@ -126,9 +126,6 @@ export class Topic extends pulumi.CustomResource {
     public readonly replicationFactor!: pulumi.Output<number>;
     /**
      * The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
-     *
-     *
-     * - - -
      */
     public readonly topicId!: pulumi.Output<string>;
 
@@ -216,9 +213,6 @@ export interface TopicState {
     replicationFactor?: pulumi.Input<number>;
     /**
      * The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
-     *
-     *
-     * - - -
      */
     topicId?: pulumi.Input<string>;
 }
@@ -254,9 +248,6 @@ export interface TopicArgs {
     replicationFactor: pulumi.Input<number>;
     /**
      * The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
-     *
-     *
-     * - - -
      */
     topicId: pulumi.Input<string>;
 }

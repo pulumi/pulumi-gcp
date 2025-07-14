@@ -112,6 +112,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string NextHopVpnTunnel;
         /// <summary>
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetRouterStatusBestRoutesForRouterParamResult> Params;
+        /// <summary>
         /// The priority of this route. Priority is used to break ties in cases
         /// where there is more than one matching route of equal prefix length.
         /// 
@@ -188,6 +192,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string nextHopVpnTunnel,
 
+            ImmutableArray<Outputs.GetRouterStatusBestRoutesForRouterParamResult> @params,
+
             int priority,
 
             string project,
@@ -220,6 +226,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             NextHopOrigin = nextHopOrigin;
             NextHopPeering = nextHopPeering;
             NextHopVpnTunnel = nextHopVpnTunnel;
+            Params = @params;
             Priority = priority;
             Project = project;
             RouteStatus = routeStatus;

@@ -51,6 +51,7 @@ public final class DataStoreDocumentProcessingConfigParsingConfigOverrideArgs ex
 
     /**
      * Configurations applied to layout parser.
+     * Structure is documented below.
      * 
      */
     @Import(name="layoutParsingConfig")
@@ -58,6 +59,7 @@ public final class DataStoreDocumentProcessingConfigParsingConfigOverrideArgs ex
 
     /**
      * @return Configurations applied to layout parser.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigArgs>> layoutParsingConfig() {
@@ -152,6 +154,7 @@ public final class DataStoreDocumentProcessingConfigParsingConfigOverrideArgs ex
 
         /**
          * @param layoutParsingConfig Configurations applied to layout parser.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -163,6 +166,7 @@ public final class DataStoreDocumentProcessingConfigParsingConfigOverrideArgs ex
 
         /**
          * @param layoutParsingConfig Configurations applied to layout parser.
+         * Structure is documented below.
          * 
          * @return builder
          * 

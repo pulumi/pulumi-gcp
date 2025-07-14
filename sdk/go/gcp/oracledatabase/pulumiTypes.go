@@ -2211,7 +2211,8 @@ type AutonomousDatabasePropertiesConnectionStringProfile struct {
 	// TP
 	// TPURGENT
 	ConsumerGroup *string `pulumi:"consumerGroup"`
-	// The display name for the database connection.
+	// The display name for the Autonomous Database. The name does not have to
+	// be unique within your project.
 	DisplayName *string `pulumi:"displayName"`
 	// The host name format being currently used in connection string.
 	//  Possible values:
@@ -2272,7 +2273,8 @@ type AutonomousDatabasePropertiesConnectionStringProfileArgs struct {
 	// TP
 	// TPURGENT
 	ConsumerGroup pulumi.StringPtrInput `pulumi:"consumerGroup"`
-	// The display name for the database connection.
+	// The display name for the Autonomous Database. The name does not have to
+	// be unique within your project.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// The host name format being currently used in connection string.
 	//  Possible values:
@@ -2377,7 +2379,8 @@ func (o AutonomousDatabasePropertiesConnectionStringProfileOutput) ConsumerGroup
 	return o.ApplyT(func(v AutonomousDatabasePropertiesConnectionStringProfile) *string { return v.ConsumerGroup }).(pulumi.StringPtrOutput)
 }
 
-// The display name for the database connection.
+// The display name for the Autonomous Database. The name does not have to
+// be unique within your project.
 func (o AutonomousDatabasePropertiesConnectionStringProfileOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AutonomousDatabasePropertiesConnectionStringProfile) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }

@@ -583,9 +583,6 @@ export class JobTemplate extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location of the transcoding job template resource.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -674,9 +671,6 @@ export interface JobTemplateState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location of the transcoding job template resource.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -717,9 +711,6 @@ export interface JobTemplateArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location of the transcoding job template resource.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

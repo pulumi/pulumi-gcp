@@ -210,9 +210,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Name of the resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -359,9 +356,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Name of the resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -476,9 +470,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Name of the resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

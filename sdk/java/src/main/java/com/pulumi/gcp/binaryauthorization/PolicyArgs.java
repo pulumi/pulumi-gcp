@@ -21,16 +21,20 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
     public static final PolicyArgs Empty = new PolicyArgs();
 
     /**
-     * A whitelist of image patterns to exclude from admission rules. If an image&#39;s name matches a whitelist pattern, the
-     * image&#39;s admission requests will always be permitted regardless of your admission rules.
+     * A whitelist of image patterns to exclude from admission rules. If an
+     * image&#39;s name matches a whitelist pattern, the image&#39;s admission
+     * requests will always be permitted regardless of your admission rules.
+     * Structure is documented below.
      * 
      */
     @Import(name="admissionWhitelistPatterns")
     private @Nullable Output<List<PolicyAdmissionWhitelistPatternArgs>> admissionWhitelistPatterns;
 
     /**
-     * @return A whitelist of image patterns to exclude from admission rules. If an image&#39;s name matches a whitelist pattern, the
-     * image&#39;s admission requests will always be permitted regardless of your admission rules.
+     * @return A whitelist of image patterns to exclude from admission rules. If an
+     * image&#39;s name matches a whitelist pattern, the image&#39;s admission
+     * requests will always be permitted regardless of your admission rules.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<PolicyAdmissionWhitelistPatternArgs>>> admissionWhitelistPatterns() {
@@ -38,20 +42,32 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Per-cluster admission rules. An admission rule specifies either that all container images used in a pod creation request
-     * must be attested to by one or more attestors, that all pod creations will be allowed, or that all pod creations will be
-     * denied. There can be at most one admission rule per cluster spec. Identifier format: &#39;{{location}}.{{clusterId}}&#39;. A
-     * location is either a compute zone (e.g. &#39;us-central1-a&#39;) or a region (e.g. &#39;us-central1&#39;).
+     * Per-cluster admission rules. An admission rule specifies either that
+     * all container images used in a pod creation request must be attested
+     * to by one or more attestors, that all pod creations will be allowed,
+     * or that all pod creations will be denied. There can be at most one
+     * admission rule per cluster spec.
+     * 
+     * Identifier format: `{{location}}.{{clusterId}}`.
+     * A location is either a compute zone (e.g. `us-central1-a`) or a region
+     * (e.g. `us-central1`).
+     * Structure is documented below.
      * 
      */
     @Import(name="clusterAdmissionRules")
     private @Nullable Output<List<PolicyClusterAdmissionRuleArgs>> clusterAdmissionRules;
 
     /**
-     * @return Per-cluster admission rules. An admission rule specifies either that all container images used in a pod creation request
-     * must be attested to by one or more attestors, that all pod creations will be allowed, or that all pod creations will be
-     * denied. There can be at most one admission rule per cluster spec. Identifier format: &#39;{{location}}.{{clusterId}}&#39;. A
-     * location is either a compute zone (e.g. &#39;us-central1-a&#39;) or a region (e.g. &#39;us-central1&#39;).
+     * @return Per-cluster admission rules. An admission rule specifies either that
+     * all container images used in a pod creation request must be attested
+     * to by one or more attestors, that all pod creations will be allowed,
+     * or that all pod creations will be denied. There can be at most one
+     * admission rule per cluster spec.
+     * 
+     * Identifier format: `{{location}}.{{clusterId}}`.
+     * A location is either a compute zone (e.g. `us-central1-a`) or a region
+     * (e.g. `us-central1`).
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<PolicyClusterAdmissionRuleArgs>>> clusterAdmissionRules() {
@@ -93,25 +109,39 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Controls the evaluation of a Google-maintained global admission policy for common system-level images. Images not
-     * covered by the global policy will be subject to the project admission policy. Possible values: [&#34;ENABLE&#34;, &#34;DISABLE&#34;]
+     * Controls the evaluation of a Google-maintained global admission policy
+     * for common system-level images. Images not covered by the global
+     * policy will be subject to the project admission policy.
+     * Possible values are: `ENABLE`, `DISABLE`.
      * 
      */
     @Import(name="globalPolicyEvaluationMode")
     private @Nullable Output<String> globalPolicyEvaluationMode;
 
     /**
-     * @return Controls the evaluation of a Google-maintained global admission policy for common system-level images. Images not
-     * covered by the global policy will be subject to the project admission policy. Possible values: [&#34;ENABLE&#34;, &#34;DISABLE&#34;]
+     * @return Controls the evaluation of a Google-maintained global admission policy
+     * for common system-level images. Images not covered by the global
+     * policy will be subject to the project admission policy.
+     * Possible values are: `ENABLE`, `DISABLE`.
      * 
      */
     public Optional<Output<String>> globalPolicyEvaluationMode() {
         return Optional.ofNullable(this.globalPolicyEvaluationMode);
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -146,8 +176,10 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param admissionWhitelistPatterns A whitelist of image patterns to exclude from admission rules. If an image&#39;s name matches a whitelist pattern, the
-         * image&#39;s admission requests will always be permitted regardless of your admission rules.
+         * @param admissionWhitelistPatterns A whitelist of image patterns to exclude from admission rules. If an
+         * image&#39;s name matches a whitelist pattern, the image&#39;s admission
+         * requests will always be permitted regardless of your admission rules.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -158,8 +190,10 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param admissionWhitelistPatterns A whitelist of image patterns to exclude from admission rules. If an image&#39;s name matches a whitelist pattern, the
-         * image&#39;s admission requests will always be permitted regardless of your admission rules.
+         * @param admissionWhitelistPatterns A whitelist of image patterns to exclude from admission rules. If an
+         * image&#39;s name matches a whitelist pattern, the image&#39;s admission
+         * requests will always be permitted regardless of your admission rules.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -169,8 +203,10 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param admissionWhitelistPatterns A whitelist of image patterns to exclude from admission rules. If an image&#39;s name matches a whitelist pattern, the
-         * image&#39;s admission requests will always be permitted regardless of your admission rules.
+         * @param admissionWhitelistPatterns A whitelist of image patterns to exclude from admission rules. If an
+         * image&#39;s name matches a whitelist pattern, the image&#39;s admission
+         * requests will always be permitted regardless of your admission rules.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -180,10 +216,16 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterAdmissionRules Per-cluster admission rules. An admission rule specifies either that all container images used in a pod creation request
-         * must be attested to by one or more attestors, that all pod creations will be allowed, or that all pod creations will be
-         * denied. There can be at most one admission rule per cluster spec. Identifier format: &#39;{{location}}.{{clusterId}}&#39;. A
-         * location is either a compute zone (e.g. &#39;us-central1-a&#39;) or a region (e.g. &#39;us-central1&#39;).
+         * @param clusterAdmissionRules Per-cluster admission rules. An admission rule specifies either that
+         * all container images used in a pod creation request must be attested
+         * to by one or more attestors, that all pod creations will be allowed,
+         * or that all pod creations will be denied. There can be at most one
+         * admission rule per cluster spec.
+         * 
+         * Identifier format: `{{location}}.{{clusterId}}`.
+         * A location is either a compute zone (e.g. `us-central1-a`) or a region
+         * (e.g. `us-central1`).
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -194,10 +236,16 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterAdmissionRules Per-cluster admission rules. An admission rule specifies either that all container images used in a pod creation request
-         * must be attested to by one or more attestors, that all pod creations will be allowed, or that all pod creations will be
-         * denied. There can be at most one admission rule per cluster spec. Identifier format: &#39;{{location}}.{{clusterId}}&#39;. A
-         * location is either a compute zone (e.g. &#39;us-central1-a&#39;) or a region (e.g. &#39;us-central1&#39;).
+         * @param clusterAdmissionRules Per-cluster admission rules. An admission rule specifies either that
+         * all container images used in a pod creation request must be attested
+         * to by one or more attestors, that all pod creations will be allowed,
+         * or that all pod creations will be denied. There can be at most one
+         * admission rule per cluster spec.
+         * 
+         * Identifier format: `{{location}}.{{clusterId}}`.
+         * A location is either a compute zone (e.g. `us-central1-a`) or a region
+         * (e.g. `us-central1`).
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -207,10 +255,16 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterAdmissionRules Per-cluster admission rules. An admission rule specifies either that all container images used in a pod creation request
-         * must be attested to by one or more attestors, that all pod creations will be allowed, or that all pod creations will be
-         * denied. There can be at most one admission rule per cluster spec. Identifier format: &#39;{{location}}.{{clusterId}}&#39;. A
-         * location is either a compute zone (e.g. &#39;us-central1-a&#39;) or a region (e.g. &#39;us-central1&#39;).
+         * @param clusterAdmissionRules Per-cluster admission rules. An admission rule specifies either that
+         * all container images used in a pod creation request must be attested
+         * to by one or more attestors, that all pod creations will be allowed,
+         * or that all pod creations will be denied. There can be at most one
+         * admission rule per cluster spec.
+         * 
+         * Identifier format: `{{location}}.{{clusterId}}`.
+         * A location is either a compute zone (e.g. `us-central1-a`) or a region
+         * (e.g. `us-central1`).
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -266,8 +320,10 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param globalPolicyEvaluationMode Controls the evaluation of a Google-maintained global admission policy for common system-level images. Images not
-         * covered by the global policy will be subject to the project admission policy. Possible values: [&#34;ENABLE&#34;, &#34;DISABLE&#34;]
+         * @param globalPolicyEvaluationMode Controls the evaluation of a Google-maintained global admission policy
+         * for common system-level images. Images not covered by the global
+         * policy will be subject to the project admission policy.
+         * Possible values are: `ENABLE`, `DISABLE`.
          * 
          * @return builder
          * 
@@ -278,8 +334,10 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param globalPolicyEvaluationMode Controls the evaluation of a Google-maintained global admission policy for common system-level images. Images not
-         * covered by the global policy will be subject to the project admission policy. Possible values: [&#34;ENABLE&#34;, &#34;DISABLE&#34;]
+         * @param globalPolicyEvaluationMode Controls the evaluation of a Google-maintained global admission policy
+         * for common system-level images. Images not covered by the global
+         * policy will be subject to the project admission policy.
+         * Possible values are: `ENABLE`, `DISABLE`.
          * 
          * @return builder
          * 
@@ -288,11 +346,25 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
             return globalPolicyEvaluationMode(Output.of(globalPolicyEvaluationMode));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

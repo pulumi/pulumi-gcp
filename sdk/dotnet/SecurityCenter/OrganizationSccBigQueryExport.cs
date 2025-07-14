@@ -48,9 +48,6 @@ namespace Pulumi.Gcp.SecurityCenter
     {
         /// <summary>
         /// This must be unique within the organization.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("bigQueryExportId")]
         public Output<string> BigQueryExportId { get; private set; } = null!;
@@ -185,9 +182,6 @@ namespace Pulumi.Gcp.SecurityCenter
     {
         /// <summary>
         /// This must be unique within the organization.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("bigQueryExportId", required: true)]
         public Input<string> BigQueryExportId { get; set; } = null!;
@@ -247,9 +241,6 @@ namespace Pulumi.Gcp.SecurityCenter
     {
         /// <summary>
         /// This must be unique within the organization.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("bigQueryExportId")]
         public Input<string>? BigQueryExportId { get; set; }

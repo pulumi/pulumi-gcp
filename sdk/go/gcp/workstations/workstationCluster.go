@@ -350,8 +350,6 @@ type WorkstationCluster struct {
 	// The system-generated UID of the resource.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// ID to use for the workstation cluster.
-	//
-	// ***
 	WorkstationClusterId pulumi.StringOutput `pulumi:"workstationClusterId"`
 }
 
@@ -456,8 +454,6 @@ type workstationClusterState struct {
 	// The system-generated UID of the resource.
 	Uid *string `pulumi:"uid"`
 	// ID to use for the workstation cluster.
-	//
-	// ***
 	WorkstationClusterId *string `pulumi:"workstationClusterId"`
 }
 
@@ -519,8 +515,6 @@ type WorkstationClusterState struct {
 	// The system-generated UID of the resource.
 	Uid pulumi.StringPtrInput
 	// ID to use for the workstation cluster.
-	//
-	// ***
 	WorkstationClusterId pulumi.StringPtrInput
 }
 
@@ -562,8 +556,6 @@ type workstationClusterArgs struct {
 	// "123/costCenter": "marketing"
 	Tags map[string]string `pulumi:"tags"`
 	// ID to use for the workstation cluster.
-	//
-	// ***
 	WorkstationClusterId string `pulumi:"workstationClusterId"`
 }
 
@@ -602,8 +594,6 @@ type WorkstationClusterArgs struct {
 	// "123/costCenter": "marketing"
 	Tags pulumi.StringMapInput
 	// ID to use for the workstation cluster.
-	//
-	// ***
 	WorkstationClusterId pulumi.StringInput
 }
 
@@ -813,8 +803,6 @@ func (o WorkstationClusterOutput) Uid() pulumi.StringOutput {
 }
 
 // ID to use for the workstation cluster.
-//
-// ***
 func (o WorkstationClusterOutput) WorkstationClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationCluster) pulumi.StringOutput { return v.WorkstationClusterId }).(pulumi.StringOutput)
 }

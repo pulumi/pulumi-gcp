@@ -237,16 +237,12 @@ public final class VolumeReplicationState extends com.pulumi.resources.ResourceA
     /**
      * The name of the replication. Needs to be unique per location.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return The name of the replication. Needs to be unique per location.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -777,8 +773,6 @@ public final class VolumeReplicationState extends com.pulumi.resources.ResourceA
         /**
          * @param name The name of the replication. Needs to be unique per location.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -789,8 +783,6 @@ public final class VolumeReplicationState extends com.pulumi.resources.ResourceA
 
         /**
          * @param name The name of the replication. Needs to be unique per location.
-         * 
-         * ***
          * 
          * @return builder
          * 

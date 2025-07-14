@@ -18,18 +18,22 @@ public final class ApiHubInstanceState extends com.pulumi.resources.ResourceArgs
     public static final ApiHubInstanceState Empty = new ApiHubInstanceState();
 
     /**
-     * Optional. Identifier to assign to the Api Hub instance. Must be unique within scope of the parent resource. If the field
-     * is not provided, system generated id will be used. This value should be 4-40 characters, and valid characters are
-     * &#39;/a-z[0-9]-_/&#39;.
+     * Optional. Identifier to assign to the Api Hub instance. Must be unique within
+     * scope of the parent resource. If the field is not provided,
+     * system generated id will be used.
+     * This value should be 4-40 characters, and valid characters
+     * are `/a-z[0-9]-_/`.
      * 
      */
     @Import(name="apiHubInstanceId")
     private @Nullable Output<String> apiHubInstanceId;
 
     /**
-     * @return Optional. Identifier to assign to the Api Hub instance. Must be unique within scope of the parent resource. If the field
-     * is not provided, system generated id will be used. This value should be 4-40 characters, and valid characters are
-     * &#39;/a-z[0-9]-_/&#39;.
+     * @return Optional. Identifier to assign to the Api Hub instance. Must be unique within
+     * scope of the parent resource. If the field is not provided,
+     * system generated id will be used.
+     * This value should be 4-40 characters, and valid characters
+     * are `/a-z[0-9]-_/`.
      * 
      */
     public Optional<Output<String>> apiHubInstanceId() {
@@ -99,20 +103,22 @@ public final class ApiHubInstanceState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Optional. Instance labels to represent user-provided metadata. Refer to cloud documentation on labels for more details.
-     * https://cloud.google.com/compute/docs/labeling-resources **Note**: This field is non-authoritative, and will only manage
-     * the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on
-     * the resource.
+     * Optional. Instance labels to represent user-provided metadata.
+     * Refer to cloud documentation on labels for more details.
+     * https://cloud.google.com/compute/docs/labeling-resources
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Optional. Instance labels to represent user-provided metadata. Refer to cloud documentation on labels for more details.
-     * https://cloud.google.com/compute/docs/labeling-resources **Note**: This field is non-authoritative, and will only manage
-     * the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on
-     * the resource.
+     * @return Optional. Instance labels to represent user-provided metadata.
+     * Refer to cloud documentation on labels for more details.
+     * https://cloud.google.com/compute/docs/labeling-resources
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -151,9 +157,19 @@ public final class ApiHubInstanceState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -275,9 +291,11 @@ public final class ApiHubInstanceState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param apiHubInstanceId Optional. Identifier to assign to the Api Hub instance. Must be unique within scope of the parent resource. If the field
-         * is not provided, system generated id will be used. This value should be 4-40 characters, and valid characters are
-         * &#39;/a-z[0-9]-_/&#39;.
+         * @param apiHubInstanceId Optional. Identifier to assign to the Api Hub instance. Must be unique within
+         * scope of the parent resource. If the field is not provided,
+         * system generated id will be used.
+         * This value should be 4-40 characters, and valid characters
+         * are `/a-z[0-9]-_/`.
          * 
          * @return builder
          * 
@@ -288,9 +306,11 @@ public final class ApiHubInstanceState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param apiHubInstanceId Optional. Identifier to assign to the Api Hub instance. Must be unique within scope of the parent resource. If the field
-         * is not provided, system generated id will be used. This value should be 4-40 characters, and valid characters are
-         * &#39;/a-z[0-9]-_/&#39;.
+         * @param apiHubInstanceId Optional. Identifier to assign to the Api Hub instance. Must be unique within
+         * scope of the parent resource. If the field is not provided,
+         * system generated id will be used.
+         * This value should be 4-40 characters, and valid characters
+         * are `/a-z[0-9]-_/`.
          * 
          * @return builder
          * 
@@ -386,10 +406,11 @@ public final class ApiHubInstanceState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param labels Optional. Instance labels to represent user-provided metadata. Refer to cloud documentation on labels for more details.
-         * https://cloud.google.com/compute/docs/labeling-resources **Note**: This field is non-authoritative, and will only manage
-         * the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on
-         * the resource.
+         * @param labels Optional. Instance labels to represent user-provided metadata.
+         * Refer to cloud documentation on labels for more details.
+         * https://cloud.google.com/compute/docs/labeling-resources
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -400,10 +421,11 @@ public final class ApiHubInstanceState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param labels Optional. Instance labels to represent user-provided metadata. Refer to cloud documentation on labels for more details.
-         * https://cloud.google.com/compute/docs/labeling-resources **Note**: This field is non-authoritative, and will only manage
-         * the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on
-         * the resource.
+         * @param labels Optional. Instance labels to represent user-provided metadata.
+         * Refer to cloud documentation on labels for more details.
+         * https://cloud.google.com/compute/docs/labeling-resources
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -456,11 +478,25 @@ public final class ApiHubInstanceState extends com.pulumi.resources.ResourceArgs
             return name(Output.of(name));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

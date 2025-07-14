@@ -80,9 +80,6 @@ namespace Pulumi.Gcp.DataCatalog
         /// It must: contain only unicode letters, numbers, underscores, dashes
         /// and spaces; not start or end with spaces; and be at most 200 bytes
         /// long when encoded in UTF-8.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -181,9 +178,6 @@ namespace Pulumi.Gcp.DataCatalog
         /// It must: contain only unicode letters, numbers, underscores, dashes
         /// and spaces; not start or end with spaces; and be at most 200 bytes
         /// long when encoded in UTF-8.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
@@ -237,9 +231,6 @@ namespace Pulumi.Gcp.DataCatalog
         /// It must: contain only unicode letters, numbers, underscores, dashes
         /// and spaces; not start or end with spaces; and be at most 200 bytes
         /// long when encoded in UTF-8.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }

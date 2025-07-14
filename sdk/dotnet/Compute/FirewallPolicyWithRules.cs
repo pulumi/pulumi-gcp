@@ -225,8 +225,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> CreationTimestamp { get; private set; } = null!;
 
         /// <summary>
-        /// (Output)
-        /// A description of the rule.
+        /// An optional description of this resource.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -335,8 +334,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class FirewallPolicyWithRulesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Output)
-        /// A description of the rule.
+        /// An optional description of this resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -382,8 +380,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? CreationTimestamp { get; set; }
 
         /// <summary>
-        /// (Output)
-        /// A description of the rule.
+        /// An optional description of this resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

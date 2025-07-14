@@ -215,16 +215,12 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
     /**
      * A reference to the region where the regional NEGs reside.
      * 
-     * ***
-     * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
      * @return A reference to the region where the regional NEGs reside.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> region() {
@@ -574,8 +570,6 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
         /**
          * @param region A reference to the region where the regional NEGs reside.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -586,8 +580,6 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
 
         /**
          * @param region A reference to the region where the regional NEGs reside.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -24,8 +24,6 @@ type SQuotaPreferenceQuotaConfig struct {
 	PreferredValue string `pulumi:"preferredValue"`
 	// (Output)
 	// The origin of the quota preference request.
-	//
-	// ***
 	RequestOrigin *string `pulumi:"requestOrigin"`
 	// (Output)
 	// Optional details about the state of this quota preference.
@@ -57,8 +55,6 @@ type SQuotaPreferenceQuotaConfigArgs struct {
 	PreferredValue pulumi.StringInput `pulumi:"preferredValue"`
 	// (Output)
 	// The origin of the quota preference request.
-	//
-	// ***
 	RequestOrigin pulumi.StringPtrInput `pulumi:"requestOrigin"`
 	// (Output)
 	// Optional details about the state of this quota preference.
@@ -164,8 +160,6 @@ func (o SQuotaPreferenceQuotaConfigOutput) PreferredValue() pulumi.StringOutput 
 
 // (Output)
 // The origin of the quota preference request.
-//
-// ***
 func (o SQuotaPreferenceQuotaConfigOutput) RequestOrigin() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SQuotaPreferenceQuotaConfig) *string { return v.RequestOrigin }).(pulumi.StringPtrOutput)
 }
@@ -240,8 +234,6 @@ func (o SQuotaPreferenceQuotaConfigPtrOutput) PreferredValue() pulumi.StringPtrO
 
 // (Output)
 // The origin of the quota preference request.
-//
-// ***
 func (o SQuotaPreferenceQuotaConfigPtrOutput) RequestOrigin() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SQuotaPreferenceQuotaConfig) *string {
 		if v == nil {

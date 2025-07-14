@@ -107,8 +107,6 @@ public final class PrincipalAccessBoundaryPolicyArgs extends com.pulumi.resource
      * The ID to use to create the principal access boundary policy.
      * This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, hyphens, or dots. Pattern, /a-z{2,62}/.
      * 
-     * ***
-     * 
      */
     @Import(name="principalAccessBoundaryPolicyId", required=true)
     private Output<String> principalAccessBoundaryPolicyId;
@@ -116,8 +114,6 @@ public final class PrincipalAccessBoundaryPolicyArgs extends com.pulumi.resource
     /**
      * @return The ID to use to create the principal access boundary policy.
      * This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, hyphens, or dots. Pattern, /a-z{2,62}/.
-     * 
-     * ***
      * 
      */
     public Output<String> principalAccessBoundaryPolicyId() {
@@ -272,8 +268,6 @@ public final class PrincipalAccessBoundaryPolicyArgs extends com.pulumi.resource
          * @param principalAccessBoundaryPolicyId The ID to use to create the principal access boundary policy.
          * This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, hyphens, or dots. Pattern, /a-z{2,62}/.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -285,8 +279,6 @@ public final class PrincipalAccessBoundaryPolicyArgs extends com.pulumi.resource
         /**
          * @param principalAccessBoundaryPolicyId The ID to use to create the principal access boundary policy.
          * This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, hyphens, or dots. Pattern, /a-z{2,62}/.
-         * 
-         * ***
          * 
          * @return builder
          * 

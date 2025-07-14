@@ -117,8 +117,6 @@ type Group struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The filter used to determine which monitored resources
 	// belong to this group.
-	//
-	// ***
 	Filter pulumi.StringOutput `pulumi:"filter"`
 	// If true, the members of this group are considered to be a
 	// cluster. The system can perform additional analysis on
@@ -177,8 +175,6 @@ type groupState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// The filter used to determine which monitored resources
 	// belong to this group.
-	//
-	// ***
 	Filter *string `pulumi:"filter"`
 	// If true, the members of this group are considered to be a
 	// cluster. The system can perform additional analysis on
@@ -202,8 +198,6 @@ type GroupState struct {
 	DisplayName pulumi.StringPtrInput
 	// The filter used to determine which monitored resources
 	// belong to this group.
-	//
-	// ***
 	Filter pulumi.StringPtrInput
 	// If true, the members of this group are considered to be a
 	// cluster. The system can perform additional analysis on
@@ -231,8 +225,6 @@ type groupArgs struct {
 	DisplayName string `pulumi:"displayName"`
 	// The filter used to determine which monitored resources
 	// belong to this group.
-	//
-	// ***
 	Filter string `pulumi:"filter"`
 	// If true, the members of this group are considered to be a
 	// cluster. The system can perform additional analysis on
@@ -254,8 +246,6 @@ type GroupArgs struct {
 	DisplayName pulumi.StringInput
 	// The filter used to determine which monitored resources
 	// belong to this group.
-	//
-	// ***
 	Filter pulumi.StringInput
 	// If true, the members of this group are considered to be a
 	// cluster. The system can perform additional analysis on
@@ -365,8 +355,6 @@ func (o GroupOutput) DisplayName() pulumi.StringOutput {
 
 // The filter used to determine which monitored resources
 // belong to this group.
-//
-// ***
 func (o GroupOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.Filter }).(pulumi.StringOutput)
 }

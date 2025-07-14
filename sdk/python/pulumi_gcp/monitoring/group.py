@@ -31,9 +31,6 @@ class GroupArgs:
                purposes.
         :param pulumi.Input[builtins.str] filter: The filter used to determine which monitored resources
                belong to this group.
-               
-               
-               - - -
         :param pulumi.Input[builtins.bool] is_cluster: If true, the members of this group are considered to be a
                cluster. The system can perform additional analysis on
                groups that are clusters.
@@ -71,9 +68,6 @@ class GroupArgs:
         """
         The filter used to determine which monitored resources
         belong to this group.
-
-
-        - - -
         """
         return pulumi.get(self, "filter")
 
@@ -138,9 +132,6 @@ class _GroupState:
                purposes.
         :param pulumi.Input[builtins.str] filter: The filter used to determine which monitored resources
                belong to this group.
-               
-               
-               - - -
         :param pulumi.Input[builtins.bool] is_cluster: If true, the members of this group are considered to be a
                cluster. The system can perform additional analysis on
                groups that are clusters.
@@ -184,9 +175,6 @@ class _GroupState:
         """
         The filter used to determine which monitored resources
         belong to this group.
-
-
-        - - -
         """
         return pulumi.get(self, "filter")
 
@@ -330,9 +318,6 @@ class Group(pulumi.CustomResource):
                purposes.
         :param pulumi.Input[builtins.str] filter: The filter used to determine which monitored resources
                belong to this group.
-               
-               
-               - - -
         :param pulumi.Input[builtins.bool] is_cluster: If true, the members of this group are considered to be a
                cluster. The system can perform additional analysis on
                groups that are clusters.
@@ -477,9 +462,6 @@ class Group(pulumi.CustomResource):
                purposes.
         :param pulumi.Input[builtins.str] filter: The filter used to determine which monitored resources
                belong to this group.
-               
-               
-               - - -
         :param pulumi.Input[builtins.bool] is_cluster: If true, the members of this group are considered to be a
                cluster. The system can perform additional analysis on
                groups that are clusters.
@@ -518,9 +500,6 @@ class Group(pulumi.CustomResource):
         """
         The filter used to determine which monitored resources
         belong to this group.
-
-
-        - - -
         """
         return pulumi.get(self, "filter")
 

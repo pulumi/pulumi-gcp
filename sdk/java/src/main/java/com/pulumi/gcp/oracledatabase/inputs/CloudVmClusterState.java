@@ -54,8 +54,6 @@ public final class CloudVmClusterState extends com.pulumi.resources.ResourceArgs
      * characters in length. The value must start with a letter and end with
      * a letter or a number.
      * 
-     * ***
-     * 
      */
     @Import(name="cloudVmClusterId")
     private @Nullable Output<String> cloudVmClusterId;
@@ -65,8 +63,6 @@ public final class CloudVmClusterState extends com.pulumi.resources.ResourceArgs
      * to (^a-z?$) and must be a maximum of 63
      * characters in length. The value must start with a letter and end with
      * a letter or a number.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> cloudVmClusterId() {
@@ -367,8 +363,6 @@ public final class CloudVmClusterState extends com.pulumi.resources.ResourceArgs
          * characters in length. The value must start with a letter and end with
          * a letter or a number.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -382,8 +376,6 @@ public final class CloudVmClusterState extends com.pulumi.resources.ResourceArgs
          * to (^a-z?$) and must be a maximum of 63
          * characters in length. The value must start with a letter and end with
          * a letter or a number.
-         * 
-         * ***
          * 
          * @return builder
          * 

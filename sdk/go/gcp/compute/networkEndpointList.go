@@ -181,8 +181,6 @@ type NetworkEndpointList struct {
 	pulumi.CustomResourceState
 
 	// The network endpoint group these endpoints are part of.
-	//
-	// ***
 	NetworkEndpointGroup pulumi.StringOutput `pulumi:"networkEndpointGroup"`
 	// The network endpoints to be added to the enclosing network endpoint group
 	// (NEG). Each endpoint specifies an IP address and port, along with
@@ -230,8 +228,6 @@ func GetNetworkEndpointList(ctx *pulumi.Context,
 // Input properties used for looking up and filtering NetworkEndpointList resources.
 type networkEndpointListState struct {
 	// The network endpoint group these endpoints are part of.
-	//
-	// ***
 	NetworkEndpointGroup *string `pulumi:"networkEndpointGroup"`
 	// The network endpoints to be added to the enclosing network endpoint group
 	// (NEG). Each endpoint specifies an IP address and port, along with
@@ -247,8 +243,6 @@ type networkEndpointListState struct {
 
 type NetworkEndpointListState struct {
 	// The network endpoint group these endpoints are part of.
-	//
-	// ***
 	NetworkEndpointGroup pulumi.StringPtrInput
 	// The network endpoints to be added to the enclosing network endpoint group
 	// (NEG). Each endpoint specifies an IP address and port, along with
@@ -268,8 +262,6 @@ func (NetworkEndpointListState) ElementType() reflect.Type {
 
 type networkEndpointListArgs struct {
 	// The network endpoint group these endpoints are part of.
-	//
-	// ***
 	NetworkEndpointGroup string `pulumi:"networkEndpointGroup"`
 	// The network endpoints to be added to the enclosing network endpoint group
 	// (NEG). Each endpoint specifies an IP address and port, along with
@@ -286,8 +278,6 @@ type networkEndpointListArgs struct {
 // The set of arguments for constructing a NetworkEndpointList resource.
 type NetworkEndpointListArgs struct {
 	// The network endpoint group these endpoints are part of.
-	//
-	// ***
 	NetworkEndpointGroup pulumi.StringInput
 	// The network endpoints to be added to the enclosing network endpoint group
 	// (NEG). Each endpoint specifies an IP address and port, along with
@@ -389,8 +379,6 @@ func (o NetworkEndpointListOutput) ToNetworkEndpointListOutputWithContext(ctx co
 }
 
 // The network endpoint group these endpoints are part of.
-//
-// ***
 func (o NetworkEndpointListOutput) NetworkEndpointGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkEndpointList) pulumi.StringOutput { return v.NetworkEndpointGroup }).(pulumi.StringOutput)
 }

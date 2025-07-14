@@ -324,9 +324,10 @@ export class Tag extends pulumi.CustomResource {
     }
 
     /**
-     * Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an individual
-     * column based on that schema. For attaching a tag to a nested column, use '.' to separate the column names. Example:
-     * 'outer_column.inner_column'
+     * Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an
+     * individual column based on that schema.
+     * For attaching a tag to a nested column, use `.` to separate the column names. Example:
+     * `outer_column.inner_column`
      */
     public readonly column!: pulumi.Output<string | undefined>;
     /**
@@ -343,8 +344,8 @@ export class Tag extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group,
-     * the tag will be attached to all entries in that group.
+     * The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
+     * all entries in that group.
      */
     public readonly parent!: pulumi.Output<string | undefined>;
     /**
@@ -402,9 +403,10 @@ export class Tag extends pulumi.CustomResource {
  */
 export interface TagState {
     /**
-     * Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an individual
-     * column based on that schema. For attaching a tag to a nested column, use '.' to separate the column names. Example:
-     * 'outer_column.inner_column'
+     * Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an
+     * individual column based on that schema.
+     * For attaching a tag to a nested column, use `.` to separate the column names. Example:
+     * `outer_column.inner_column`
      */
     column?: pulumi.Input<string>;
     /**
@@ -421,8 +423,8 @@ export interface TagState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group,
-     * the tag will be attached to all entries in that group.
+     * The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
+     * all entries in that group.
      */
     parent?: pulumi.Input<string>;
     /**
@@ -442,9 +444,10 @@ export interface TagState {
  */
 export interface TagArgs {
     /**
-     * Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an individual
-     * column based on that schema. For attaching a tag to a nested column, use '.' to separate the column names. Example:
-     * 'outer_column.inner_column'
+     * Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an
+     * individual column based on that schema.
+     * For attaching a tag to a nested column, use `.` to separate the column names. Example:
+     * `outer_column.inner_column`
      */
     column?: pulumi.Input<string>;
     /**
@@ -454,8 +457,8 @@ export interface TagArgs {
      */
     fields: pulumi.Input<pulumi.Input<inputs.datacatalog.TagField>[]>;
     /**
-     * The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group,
-     * the tag will be attached to all entries in that group.
+     * The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
+     * all entries in that group.
      */
     parent?: pulumi.Input<string>;
     /**

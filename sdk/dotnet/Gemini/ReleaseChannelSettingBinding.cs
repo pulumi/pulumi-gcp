@@ -139,9 +139,6 @@ namespace Pulumi.Gcp.Gemini
 
         /// <summary>
         /// Id of the setting binding.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("settingBindingId")]
         public Output<string> SettingBindingId { get; private set; } = null!;
@@ -251,9 +248,6 @@ namespace Pulumi.Gcp.Gemini
 
         /// <summary>
         /// Id of the setting binding.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("settingBindingId", required: true)]
         public Input<string> SettingBindingId { get; set; } = null!;
@@ -360,9 +354,6 @@ namespace Pulumi.Gcp.Gemini
 
         /// <summary>
         /// Id of the setting binding.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("settingBindingId")]
         public Input<string>? SettingBindingId { get; set; }

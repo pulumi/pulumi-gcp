@@ -134,9 +134,6 @@ namespace Pulumi.Gcp.Lustre
         /// * Must start with a letter.
         /// * Must be between 1-63 characters.
         /// * Must end with a number or a letter.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
@@ -301,9 +298,6 @@ namespace Pulumi.Gcp.Lustre
         /// * Must start with a letter.
         /// * Must be between 1-63 characters.
         /// * Must end with a number or a letter.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
@@ -414,9 +408,6 @@ namespace Pulumi.Gcp.Lustre
         /// * Must start with a letter.
         /// * Must be between 1-63 characters.
         /// * Must end with a number or a letter.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }

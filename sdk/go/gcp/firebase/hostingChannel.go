@@ -107,8 +107,6 @@ type HostingChannel struct {
 	pulumi.CustomResourceState
 
 	// Required. Immutable. A unique ID within the site that identifies the channel.
-	//
-	// ***
 	ChannelId pulumi.StringOutput `pulumi:"channelId"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -179,8 +177,6 @@ func GetHostingChannel(ctx *pulumi.Context,
 // Input properties used for looking up and filtering HostingChannel resources.
 type hostingChannelState struct {
 	// Required. Immutable. A unique ID within the site that identifies the channel.
-	//
-	// ***
 	ChannelId *string `pulumi:"channelId"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -211,8 +207,6 @@ type hostingChannelState struct {
 
 type HostingChannelState struct {
 	// Required. Immutable. A unique ID within the site that identifies the channel.
-	//
-	// ***
 	ChannelId pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -247,8 +241,6 @@ func (HostingChannelState) ElementType() reflect.Type {
 
 type hostingChannelArgs struct {
 	// Required. Immutable. A unique ID within the site that identifies the channel.
-	//
-	// ***
 	ChannelId string `pulumi:"channelId"`
 	// The time at which the channel will be automatically deleted. If null, the channel
 	// will not be automatically deleted. This field is present in the output whether it's
@@ -272,8 +264,6 @@ type hostingChannelArgs struct {
 // The set of arguments for constructing a HostingChannel resource.
 type HostingChannelArgs struct {
 	// Required. Immutable. A unique ID within the site that identifies the channel.
-	//
-	// ***
 	ChannelId pulumi.StringInput
 	// The time at which the channel will be automatically deleted. If null, the channel
 	// will not be automatically deleted. This field is present in the output whether it's
@@ -382,8 +372,6 @@ func (o HostingChannelOutput) ToHostingChannelOutputWithContext(ctx context.Cont
 }
 
 // Required. Immutable. A unique ID within the site that identifies the channel.
-//
-// ***
 func (o HostingChannelOutput) ChannelId() pulumi.StringOutput {
 	return o.ApplyT(func(v *HostingChannel) pulumi.StringOutput { return v.ChannelId }).(pulumi.StringOutput)
 }

@@ -87,9 +87,6 @@ export class Capability extends pulumi.CustomResource {
     public readonly parent!: pulumi.Output<string>;
     /**
      * Capability Value.
-     *
-     *
-     * - - -
      */
     public readonly value!: pulumi.Output<boolean>;
 
@@ -143,9 +140,6 @@ export interface CapabilityState {
     parent?: pulumi.Input<string>;
     /**
      * Capability Value.
-     *
-     *
-     * - - -
      */
     value?: pulumi.Input<boolean>;
 }
@@ -164,9 +158,6 @@ export interface CapabilityArgs {
     parent: pulumi.Input<string>;
     /**
      * Capability Value.
-     *
-     *
-     * - - -
      */
     value: pulumi.Input<boolean>;
 }

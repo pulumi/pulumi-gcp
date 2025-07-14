@@ -157,8 +157,6 @@ type AndroidApp struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The canonical package name of the Android app as would appear in the Google Play
 	// Developer Console.
-	//
-	// ***
 	PackageName pulumi.StringOutput `pulumi:"packageName"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -223,8 +221,6 @@ type androidAppState struct {
 	Name *string `pulumi:"name"`
 	// The canonical package name of the Android app as would appear in the Google Play
 	// Developer Console.
-	//
-	// ***
 	PackageName *string `pulumi:"packageName"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -254,8 +250,6 @@ type AndroidAppState struct {
 	Name pulumi.StringPtrInput
 	// The canonical package name of the Android app as would appear in the Google Play
 	// Developer Console.
-	//
-	// ***
 	PackageName pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -280,8 +274,6 @@ type androidAppArgs struct {
 	DisplayName string `pulumi:"displayName"`
 	// The canonical package name of the Android app as would appear in the Google Play
 	// Developer Console.
-	//
-	// ***
 	PackageName string `pulumi:"packageName"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -303,8 +295,6 @@ type AndroidAppArgs struct {
 	DisplayName pulumi.StringInput
 	// The canonical package name of the Android app as would appear in the Google Play
 	// Developer Console.
-	//
-	// ***
 	PackageName pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -438,8 +428,6 @@ func (o AndroidAppOutput) Name() pulumi.StringOutput {
 
 // The canonical package name of the Android app as would appear in the Google Play
 // Developer Console.
-//
-// ***
 func (o AndroidAppOutput) PackageName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AndroidApp) pulumi.StringOutput { return v.PackageName }).(pulumi.StringOutput)
 }

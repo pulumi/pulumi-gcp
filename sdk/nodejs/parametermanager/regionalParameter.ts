@@ -166,9 +166,6 @@ export class RegionalParameter extends pulumi.CustomResource {
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * This must be unique within the project.
-     *
-     *
-     * - - -
      */
     public readonly parameterId!: pulumi.Output<string>;
     /**
@@ -292,9 +289,6 @@ export interface RegionalParameterState {
     name?: pulumi.Input<string>;
     /**
      * This must be unique within the project.
-     *
-     *
-     * - - -
      */
     parameterId?: pulumi.Input<string>;
     /**
@@ -353,9 +347,6 @@ export interface RegionalParameterArgs {
     location: pulumi.Input<string>;
     /**
      * This must be unique within the project.
-     *
-     *
-     * - - -
      */
     parameterId: pulumi.Input<string>;
     /**

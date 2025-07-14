@@ -126,8 +126,6 @@ public final class InterceptEndpointGroupState extends com.pulumi.resources.Reso
      * The ID to use for the endpoint group, which will become the final component
      * of the endpoint group&#39;s resource name.
      * 
-     * ***
-     * 
      */
     @Import(name="interceptEndpointGroupId")
     private @Nullable Output<String> interceptEndpointGroupId;
@@ -135,8 +133,6 @@ public final class InterceptEndpointGroupState extends com.pulumi.resources.Reso
     /**
      * @return The ID to use for the endpoint group, which will become the final component
      * of the endpoint group&#39;s resource name.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> interceptEndpointGroupId() {
@@ -497,8 +493,6 @@ public final class InterceptEndpointGroupState extends com.pulumi.resources.Reso
          * @param interceptEndpointGroupId The ID to use for the endpoint group, which will become the final component
          * of the endpoint group&#39;s resource name.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -510,8 +504,6 @@ public final class InterceptEndpointGroupState extends com.pulumi.resources.Reso
         /**
          * @param interceptEndpointGroupId The ID to use for the endpoint group, which will become the final component
          * of the endpoint group&#39;s resource name.
-         * 
-         * ***
          * 
          * @return builder
          * 

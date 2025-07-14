@@ -322,9 +322,6 @@ export class RouterNat extends pulumi.CustomResource {
     public readonly region!: pulumi.Output<string>;
     /**
      * The name of the Cloud Router in which this NAT will be configured.
-     *
-     *
-     * - - -
      */
     public readonly router!: pulumi.Output<string>;
     /**
@@ -566,9 +563,6 @@ export interface RouterNatState {
     region?: pulumi.Input<string>;
     /**
      * The name of the Cloud Router in which this NAT will be configured.
-     *
-     *
-     * - - -
      */
     router?: pulumi.Input<string>;
     /**
@@ -732,9 +726,6 @@ export interface RouterNatArgs {
     region?: pulumi.Input<string>;
     /**
      * The name of the Cloud Router in which this NAT will be configured.
-     *
-     *
-     * - - -
      */
     router: pulumi.Input<string>;
     /**

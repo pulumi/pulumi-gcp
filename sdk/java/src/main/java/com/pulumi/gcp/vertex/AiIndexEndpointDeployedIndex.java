@@ -465,8 +465,6 @@ public class AiIndexEndpointDeployedIndex extends com.pulumi.resources.CustomRes
      * Identifies the index endpoint. Must be in the format
      * &#39;projects/{{project}}/locations/{{region}}/indexEndpoints/{{indexEndpoint}}&#39;
      * 
-     * ***
-     * 
      */
     @Export(name="indexEndpoint", refs={String.class}, tree="[0]")
     private Output<String> indexEndpoint;
@@ -474,8 +472,6 @@ public class AiIndexEndpointDeployedIndex extends com.pulumi.resources.CustomRes
     /**
      * @return Identifies the index endpoint. Must be in the format
      * &#39;projects/{{project}}/locations/{{region}}/indexEndpoints/{{indexEndpoint}}&#39;
-     * 
-     * ***
      * 
      */
     public Output<String> indexEndpoint() {

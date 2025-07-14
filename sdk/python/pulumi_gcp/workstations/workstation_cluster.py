@@ -40,9 +40,6 @@ class WorkstationClusterArgs:
         :param pulumi.Input[builtins.str] subnetwork: Name of the Compute Engine subnetwork in which instances associated with this cluster will be created.
                Must be part of the subnetwork specified for this cluster.
         :param pulumi.Input[builtins.str] workstation_cluster_id: ID to use for the workstation cluster.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Client-specified annotations. This is distinct from labels.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -113,9 +110,6 @@ class WorkstationClusterArgs:
     def workstation_cluster_id(self) -> pulumi.Input[builtins.str]:
         """
         ID to use for the workstation cluster.
-
-
-        - - -
         """
         return pulumi.get(self, "workstation_cluster_id")
 
@@ -293,9 +287,6 @@ class _WorkstationClusterState:
                "123/costCenter": "marketing"
         :param pulumi.Input[builtins.str] uid: The system-generated UID of the resource.
         :param pulumi.Input[builtins.str] workstation_cluster_id: ID to use for the workstation cluster.
-               
-               
-               - - -
         """
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
@@ -599,9 +590,6 @@ class _WorkstationClusterState:
     def workstation_cluster_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         ID to use for the workstation cluster.
-
-
-        - - -
         """
         return pulumi.get(self, "workstation_cluster_id")
 
@@ -805,9 +793,6 @@ class WorkstationCluster(pulumi.CustomResource):
                "123/environment": "production",
                "123/costCenter": "marketing"
         :param pulumi.Input[builtins.str] workstation_cluster_id: ID to use for the workstation cluster.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -1106,9 +1091,6 @@ class WorkstationCluster(pulumi.CustomResource):
                "123/costCenter": "marketing"
         :param pulumi.Input[builtins.str] uid: The system-generated UID of the resource.
         :param pulumi.Input[builtins.str] workstation_cluster_id: ID to use for the workstation cluster.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1316,9 +1298,6 @@ class WorkstationCluster(pulumi.CustomResource):
     def workstation_cluster_id(self) -> pulumi.Output[builtins.str]:
         """
         ID to use for the workstation cluster.
-
-
-        - - -
         """
         return pulumi.get(self, "workstation_cluster_id")
 

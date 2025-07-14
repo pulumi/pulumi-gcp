@@ -106,9 +106,6 @@ namespace Pulumi.Gcp.Storage
         /// <summary>
         /// The name of the folder expressed as a path. Must include
         /// trailing '/'. For example, `example_dir/example_dir2/`, `example@#/`, `a-b/d-f/`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -186,9 +183,6 @@ namespace Pulumi.Gcp.Storage
         /// <summary>
         /// The name of the folder expressed as a path. Must include
         /// trailing '/'. For example, `example_dir/example_dir2/`, `example@#/`, `a-b/d-f/`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -228,9 +222,6 @@ namespace Pulumi.Gcp.Storage
         /// <summary>
         /// The name of the folder expressed as a path. Must include
         /// trailing '/'. For example, `example_dir/example_dir2/`, `example@#/`, `a-b/d-f/`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -191,9 +191,6 @@ export class StoragePool extends pulumi.CustomResource {
      * following are valid values:
      * * `https://www.googleapis.com/compute/v1/projects/{project_id}/zones/{zone}/storagePoolTypes/hyperdisk-balanced`
      * * `hyperdisk-throughput`
-     *
-     *
-     * - - -
      */
     public readonly storagePoolType!: pulumi.Output<string>;
     /**
@@ -340,9 +337,6 @@ export interface StoragePoolState {
      * following are valid values:
      * * `https://www.googleapis.com/compute/v1/projects/{project_id}/zones/{zone}/storagePoolTypes/hyperdisk-balanced`
      * * `hyperdisk-throughput`
-     *
-     *
-     * - - -
      */
     storagePoolType?: pulumi.Input<string>;
     /**
@@ -405,9 +399,6 @@ export interface StoragePoolArgs {
      * following are valid values:
      * * `https://www.googleapis.com/compute/v1/projects/{project_id}/zones/{zone}/storagePoolTypes/hyperdisk-balanced`
      * * `hyperdisk-throughput`
-     *
-     *
-     * - - -
      */
     storagePoolType: pulumi.Input<string>;
     /**

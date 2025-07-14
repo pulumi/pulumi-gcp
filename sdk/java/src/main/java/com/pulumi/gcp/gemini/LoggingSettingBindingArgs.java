@@ -103,16 +103,12 @@ public final class LoggingSettingBindingArgs extends com.pulumi.resources.Resour
     /**
      * Id of the setting binding.
      * 
-     * ***
-     * 
      */
     @Import(name="settingBindingId", required=true)
     private Output<String> settingBindingId;
 
     /**
      * @return Id of the setting binding.
-     * 
-     * ***
      * 
      */
     public Output<String> settingBindingId() {
@@ -280,8 +276,6 @@ public final class LoggingSettingBindingArgs extends com.pulumi.resources.Resour
         /**
          * @param settingBindingId Id of the setting binding.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -292,8 +286,6 @@ public final class LoggingSettingBindingArgs extends com.pulumi.resources.Resour
 
         /**
          * @param settingBindingId Id of the setting binding.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -65,16 +65,12 @@ public class ProjectSccBigQueryExport extends com.pulumi.resources.CustomResourc
     /**
      * This must be unique within the organization.
      * 
-     * ***
-     * 
      */
     @Export(name="bigQueryExportId", refs={String.class}, tree="[0]")
     private Output<String> bigQueryExportId;
 
     /**
      * @return This must be unique within the organization.
-     * 
-     * ***
      * 
      */
     public Output<String> bigQueryExportId() {

@@ -200,8 +200,6 @@ type AiIndexEndpoint struct {
 	// The description of the Index.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-	//
-	// ***
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -280,8 +278,6 @@ type aiIndexEndpointState struct {
 	// The description of the Index.
 	Description *string `pulumi:"description"`
 	// The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-	//
-	// ***
 	DisplayName *string `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -323,8 +319,6 @@ type AiIndexEndpointState struct {
 	// The description of the Index.
 	Description pulumi.StringPtrInput
 	// The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-	//
-	// ***
 	DisplayName pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -368,8 +362,6 @@ type aiIndexEndpointArgs struct {
 	// The description of the Index.
 	Description *string `pulumi:"description"`
 	// The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-	//
-	// ***
 	DisplayName string `pulumi:"displayName"`
 	// The labels with user-defined metadata to organize your Indexes.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -397,8 +389,6 @@ type AiIndexEndpointArgs struct {
 	// The description of the Index.
 	Description pulumi.StringPtrInput
 	// The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-	//
-	// ***
 	DisplayName pulumi.StringInput
 	// The labels with user-defined metadata to organize your Indexes.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -519,8 +509,6 @@ func (o AiIndexEndpointOutput) Description() pulumi.StringPtrOutput {
 }
 
 // The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-//
-// ***
 func (o AiIndexEndpointOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiIndexEndpoint) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }

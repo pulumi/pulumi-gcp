@@ -470,16 +470,12 @@ public class Job extends com.pulumi.resources.CustomResource {
     /**
      * The name of the job.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return The name of the job.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

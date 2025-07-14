@@ -626,15 +626,15 @@ import (
 type Job struct {
 	pulumi.CustomResourceState
 
-	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
-	// should be preserved when modifying objects. Cloud Run API v2 does not support annotations with 'run.googleapis.com',
-	// 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected on new
-	// resources. All system annotations in v1 now have a corresponding field in v2 Job. This field follows Kubernetes
-	// annotations' namespacing, limits, and rules. **Note**: This field is non-authoritative, and will only manage the
-	// annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
-	// present on the resource.
+	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+	// Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected on new resources.
+	// All system annotations in v1 now have a corresponding field in v2 Job.
+	// This field follows Kubernetes annotations' namespacing, limits, and rules.
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Settings for the Binary Authorization feature.
+	// Structure is documented below.
 	BinaryAuthorization JobBinaryAuthorizationPtrOutput `pulumi:"binaryAuthorization"`
 	// Arbitrary identifier for the API client.
 	Client pulumi.StringPtrOutput `pulumi:"client"`
@@ -663,26 +663,22 @@ type Job struct {
 	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
 	// A number that monotonically increases every time the user modifies the desired state.
 	Generation pulumi.StringOutput `pulumi:"generation"`
-	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
-	// Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
-	// state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
-	// https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with
-	// 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they
-	// will be rejected. All system labels in v1 now have a corresponding field in v2 Job. **Note**: This field is
-	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-	// 'effective_labels' for all of the labels present on the resource.
+	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
+	// environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+	// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+	// All system labels in v1 now have a corresponding field in v2 Job.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Email address of the last authenticated modifier.
 	LastModifier pulumi.StringOutput `pulumi:"lastModifier"`
 	// Name of the last created execution.
 	// Structure is documented below.
 	LatestCreatedExecutions JobLatestCreatedExecutionArrayOutput `pulumi:"latestCreatedExecutions"`
-	// The launch stage as defined by [Google Cloud Platform Launch
-	// Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA. If no value is
-	// specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that
-	// stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as
-	// input, but only BETA and GA-level features are used, this field will be BETA on output. Possible values:
-	// ["UNIMPLEMENTED", "PRELAUNCH", "EARLY_ACCESS", "ALPHA", "BETA", "GA", "DEPRECATED"]
+	// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+	// If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+	// For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
+	// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
 	LaunchStage pulumi.StringOutput `pulumi:"launchStage"`
 	// The location of the cloud run job
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -690,7 +686,9 @@ type Job struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The generation of this Job. See comments in reconciling for additional information on reconciliation process in Cloud Run.
 	ObservedGeneration pulumi.StringOutput `pulumi:"observedGeneration"`
-	Project            pulumi.StringOutput `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
@@ -699,11 +697,11 @@ type Job struct {
 	// If reconciliation succeeded, the following fields will match: observedGeneration and generation, latestSucceededExecution and latestCreatedExecution.
 	// If reconciliation failed, observedGeneration and latestSucceededExecution will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in terminalCondition and conditions
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
-	// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
-	// execution is successfully completed. The sum of job name and token length must be fewer than 63 characters.
+	// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully completed.
+	// The sum of job name and token length must be fewer than 63 characters.
 	RunExecutionToken pulumi.StringPtrOutput `pulumi:"runExecutionToken"`
-	// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
-	// execution is successfully started. The sum of job name and token length must be fewer than 63 characters.
+	// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
+	// The sum of job name and token length must be fewer than 63 characters.
 	StartExecutionToken pulumi.StringPtrOutput `pulumi:"startExecutionToken"`
 	// The template used to create executions for this Job.
 	// Structure is documented below.
@@ -758,15 +756,15 @@ func GetJob(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Job resources.
 type jobState struct {
-	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
-	// should be preserved when modifying objects. Cloud Run API v2 does not support annotations with 'run.googleapis.com',
-	// 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected on new
-	// resources. All system annotations in v1 now have a corresponding field in v2 Job. This field follows Kubernetes
-	// annotations' namespacing, limits, and rules. **Note**: This field is non-authoritative, and will only manage the
-	// annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
-	// present on the resource.
+	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+	// Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected on new resources.
+	// All system annotations in v1 now have a corresponding field in v2 Job.
+	// This field follows Kubernetes annotations' namespacing, limits, and rules.
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Settings for the Binary Authorization feature.
+	// Structure is documented below.
 	BinaryAuthorization *JobBinaryAuthorization `pulumi:"binaryAuthorization"`
 	// Arbitrary identifier for the API client.
 	Client *string `pulumi:"client"`
@@ -795,26 +793,22 @@ type jobState struct {
 	ExpireTime *string `pulumi:"expireTime"`
 	// A number that monotonically increases every time the user modifies the desired state.
 	Generation *string `pulumi:"generation"`
-	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
-	// Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
-	// state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
-	// https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with
-	// 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they
-	// will be rejected. All system labels in v1 now have a corresponding field in v2 Job. **Note**: This field is
-	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-	// 'effective_labels' for all of the labels present on the resource.
+	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
+	// environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+	// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+	// All system labels in v1 now have a corresponding field in v2 Job.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Email address of the last authenticated modifier.
 	LastModifier *string `pulumi:"lastModifier"`
 	// Name of the last created execution.
 	// Structure is documented below.
 	LatestCreatedExecutions []JobLatestCreatedExecution `pulumi:"latestCreatedExecutions"`
-	// The launch stage as defined by [Google Cloud Platform Launch
-	// Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA. If no value is
-	// specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that
-	// stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as
-	// input, but only BETA and GA-level features are used, this field will be BETA on output. Possible values:
-	// ["UNIMPLEMENTED", "PRELAUNCH", "EARLY_ACCESS", "ALPHA", "BETA", "GA", "DEPRECATED"]
+	// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+	// If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+	// For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
+	// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
 	LaunchStage *string `pulumi:"launchStage"`
 	// The location of the cloud run job
 	Location *string `pulumi:"location"`
@@ -822,7 +816,9 @@ type jobState struct {
 	Name *string `pulumi:"name"`
 	// The generation of this Job. See comments in reconciling for additional information on reconciliation process in Cloud Run.
 	ObservedGeneration *string `pulumi:"observedGeneration"`
-	Project            *string `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
@@ -831,11 +827,11 @@ type jobState struct {
 	// If reconciliation succeeded, the following fields will match: observedGeneration and generation, latestSucceededExecution and latestCreatedExecution.
 	// If reconciliation failed, observedGeneration and latestSucceededExecution will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in terminalCondition and conditions
 	Reconciling *bool `pulumi:"reconciling"`
-	// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
-	// execution is successfully completed. The sum of job name and token length must be fewer than 63 characters.
+	// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully completed.
+	// The sum of job name and token length must be fewer than 63 characters.
 	RunExecutionToken *string `pulumi:"runExecutionToken"`
-	// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
-	// execution is successfully started. The sum of job name and token length must be fewer than 63 characters.
+	// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
+	// The sum of job name and token length must be fewer than 63 characters.
 	StartExecutionToken *string `pulumi:"startExecutionToken"`
 	// The template used to create executions for this Job.
 	// Structure is documented below.
@@ -850,15 +846,15 @@ type jobState struct {
 }
 
 type JobState struct {
-	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
-	// should be preserved when modifying objects. Cloud Run API v2 does not support annotations with 'run.googleapis.com',
-	// 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected on new
-	// resources. All system annotations in v1 now have a corresponding field in v2 Job. This field follows Kubernetes
-	// annotations' namespacing, limits, and rules. **Note**: This field is non-authoritative, and will only manage the
-	// annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
-	// present on the resource.
+	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+	// Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected on new resources.
+	// All system annotations in v1 now have a corresponding field in v2 Job.
+	// This field follows Kubernetes annotations' namespacing, limits, and rules.
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// Settings for the Binary Authorization feature.
+	// Structure is documented below.
 	BinaryAuthorization JobBinaryAuthorizationPtrInput
 	// Arbitrary identifier for the API client.
 	Client pulumi.StringPtrInput
@@ -887,26 +883,22 @@ type JobState struct {
 	ExpireTime pulumi.StringPtrInput
 	// A number that monotonically increases every time the user modifies the desired state.
 	Generation pulumi.StringPtrInput
-	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
-	// Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
-	// state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
-	// https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with
-	// 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they
-	// will be rejected. All system labels in v1 now have a corresponding field in v2 Job. **Note**: This field is
-	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-	// 'effective_labels' for all of the labels present on the resource.
+	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
+	// environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+	// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+	// All system labels in v1 now have a corresponding field in v2 Job.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Email address of the last authenticated modifier.
 	LastModifier pulumi.StringPtrInput
 	// Name of the last created execution.
 	// Structure is documented below.
 	LatestCreatedExecutions JobLatestCreatedExecutionArrayInput
-	// The launch stage as defined by [Google Cloud Platform Launch
-	// Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA. If no value is
-	// specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that
-	// stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as
-	// input, but only BETA and GA-level features are used, this field will be BETA on output. Possible values:
-	// ["UNIMPLEMENTED", "PRELAUNCH", "EARLY_ACCESS", "ALPHA", "BETA", "GA", "DEPRECATED"]
+	// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+	// If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+	// For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
+	// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
 	LaunchStage pulumi.StringPtrInput
 	// The location of the cloud run job
 	Location pulumi.StringPtrInput
@@ -914,7 +906,9 @@ type JobState struct {
 	Name pulumi.StringPtrInput
 	// The generation of this Job. See comments in reconciling for additional information on reconciliation process in Cloud Run.
 	ObservedGeneration pulumi.StringPtrInput
-	Project            pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
@@ -923,11 +917,11 @@ type JobState struct {
 	// If reconciliation succeeded, the following fields will match: observedGeneration and generation, latestSucceededExecution and latestCreatedExecution.
 	// If reconciliation failed, observedGeneration and latestSucceededExecution will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in terminalCondition and conditions
 	Reconciling pulumi.BoolPtrInput
-	// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
-	// execution is successfully completed. The sum of job name and token length must be fewer than 63 characters.
+	// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully completed.
+	// The sum of job name and token length must be fewer than 63 characters.
 	RunExecutionToken pulumi.StringPtrInput
-	// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
-	// execution is successfully started. The sum of job name and token length must be fewer than 63 characters.
+	// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
+	// The sum of job name and token length must be fewer than 63 characters.
 	StartExecutionToken pulumi.StringPtrInput
 	// The template used to create executions for this Job.
 	// Structure is documented below.
@@ -946,47 +940,45 @@ func (JobState) ElementType() reflect.Type {
 }
 
 type jobArgs struct {
-	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
-	// should be preserved when modifying objects. Cloud Run API v2 does not support annotations with 'run.googleapis.com',
-	// 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected on new
-	// resources. All system annotations in v1 now have a corresponding field in v2 Job. This field follows Kubernetes
-	// annotations' namespacing, limits, and rules. **Note**: This field is non-authoritative, and will only manage the
-	// annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
-	// present on the resource.
+	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+	// Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected on new resources.
+	// All system annotations in v1 now have a corresponding field in v2 Job.
+	// This field follows Kubernetes annotations' namespacing, limits, and rules.
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Settings for the Binary Authorization feature.
+	// Structure is documented below.
 	BinaryAuthorization *JobBinaryAuthorization `pulumi:"binaryAuthorization"`
 	// Arbitrary identifier for the API client.
 	Client *string `pulumi:"client"`
 	// Arbitrary version identifier for the API client.
 	ClientVersion      *string `pulumi:"clientVersion"`
 	DeletionProtection *bool   `pulumi:"deletionProtection"`
-	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
-	// Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
-	// state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
-	// https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with
-	// 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they
-	// will be rejected. All system labels in v1 now have a corresponding field in v2 Job. **Note**: This field is
-	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-	// 'effective_labels' for all of the labels present on the resource.
+	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
+	// environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+	// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+	// All system labels in v1 now have a corresponding field in v2 Job.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// The launch stage as defined by [Google Cloud Platform Launch
-	// Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA. If no value is
-	// specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that
-	// stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as
-	// input, but only BETA and GA-level features are used, this field will be BETA on output. Possible values:
-	// ["UNIMPLEMENTED", "PRELAUNCH", "EARLY_ACCESS", "ALPHA", "BETA", "GA", "DEPRECATED"]
+	// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+	// If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+	// For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
+	// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
 	LaunchStage *string `pulumi:"launchStage"`
 	// The location of the cloud run job
 	Location string `pulumi:"location"`
 	// Name of the Job.
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
-	// execution is successfully completed. The sum of job name and token length must be fewer than 63 characters.
+	// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully completed.
+	// The sum of job name and token length must be fewer than 63 characters.
 	RunExecutionToken *string `pulumi:"runExecutionToken"`
-	// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
-	// execution is successfully started. The sum of job name and token length must be fewer than 63 characters.
+	// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
+	// The sum of job name and token length must be fewer than 63 characters.
 	StartExecutionToken *string `pulumi:"startExecutionToken"`
 	// The template used to create executions for this Job.
 	// Structure is documented below.
@@ -995,47 +987,45 @@ type jobArgs struct {
 
 // The set of arguments for constructing a Job resource.
 type JobArgs struct {
-	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
-	// should be preserved when modifying objects. Cloud Run API v2 does not support annotations with 'run.googleapis.com',
-	// 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected on new
-	// resources. All system annotations in v1 now have a corresponding field in v2 Job. This field follows Kubernetes
-	// annotations' namespacing, limits, and rules. **Note**: This field is non-authoritative, and will only manage the
-	// annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
-	// present on the resource.
+	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+	// Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected on new resources.
+	// All system annotations in v1 now have a corresponding field in v2 Job.
+	// This field follows Kubernetes annotations' namespacing, limits, and rules.
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// Settings for the Binary Authorization feature.
+	// Structure is documented below.
 	BinaryAuthorization JobBinaryAuthorizationPtrInput
 	// Arbitrary identifier for the API client.
 	Client pulumi.StringPtrInput
 	// Arbitrary version identifier for the API client.
 	ClientVersion      pulumi.StringPtrInput
 	DeletionProtection pulumi.BoolPtrInput
-	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
-	// Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
-	// state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
-	// https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with
-	// 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they
-	// will be rejected. All system labels in v1 now have a corresponding field in v2 Job. **Note**: This field is
-	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-	// 'effective_labels' for all of the labels present on the resource.
+	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
+	// environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+	// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+	// All system labels in v1 now have a corresponding field in v2 Job.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// The launch stage as defined by [Google Cloud Platform Launch
-	// Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA. If no value is
-	// specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that
-	// stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as
-	// input, but only BETA and GA-level features are used, this field will be BETA on output. Possible values:
-	// ["UNIMPLEMENTED", "PRELAUNCH", "EARLY_ACCESS", "ALPHA", "BETA", "GA", "DEPRECATED"]
+	// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+	// If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+	// For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
+	// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
 	LaunchStage pulumi.StringPtrInput
 	// The location of the cloud run job
 	Location pulumi.StringInput
 	// Name of the Job.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
-	// execution is successfully completed. The sum of job name and token length must be fewer than 63 characters.
+	// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully completed.
+	// The sum of job name and token length must be fewer than 63 characters.
 	RunExecutionToken pulumi.StringPtrInput
-	// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
-	// execution is successfully started. The sum of job name and token length must be fewer than 63 characters.
+	// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
+	// The sum of job name and token length must be fewer than 63 characters.
 	StartExecutionToken pulumi.StringPtrInput
 	// The template used to create executions for this Job.
 	// Structure is documented below.
@@ -1129,18 +1119,18 @@ func (o JobOutput) ToJobOutputWithContext(ctx context.Context) JobOutput {
 	return o
 }
 
-// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
-// should be preserved when modifying objects. Cloud Run API v2 does not support annotations with 'run.googleapis.com',
-// 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected on new
-// resources. All system annotations in v1 now have a corresponding field in v2 Job. This field follows Kubernetes
-// annotations' namespacing, limits, and rules. **Note**: This field is non-authoritative, and will only manage the
-// annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
-// present on the resource.
+// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+// Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected on new resources.
+// All system annotations in v1 now have a corresponding field in v2 Job.
+// This field follows Kubernetes annotations' namespacing, limits, and rules.
+// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 func (o JobOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // Settings for the Binary Authorization feature.
+// Structure is documented below.
 func (o JobOutput) BinaryAuthorization() JobBinaryAuthorizationPtrOutput {
 	return o.ApplyT(func(v *Job) JobBinaryAuthorizationPtrOutput { return v.BinaryAuthorization }).(JobBinaryAuthorizationPtrOutput)
 }
@@ -1211,14 +1201,12 @@ func (o JobOutput) Generation() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Generation }).(pulumi.StringOutput)
 }
 
-// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
-// Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
-// state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
-// https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with
-// 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they
-// will be rejected. All system labels in v1 now have a corresponding field in v2 Job. **Note**: This field is
-// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-// 'effective_labels' for all of the labels present on the resource.
+// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
+// environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+// All system labels in v1 now have a corresponding field in v2 Job.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o JobOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -1234,12 +1222,10 @@ func (o JobOutput) LatestCreatedExecutions() JobLatestCreatedExecutionArrayOutpu
 	return o.ApplyT(func(v *Job) JobLatestCreatedExecutionArrayOutput { return v.LatestCreatedExecutions }).(JobLatestCreatedExecutionArrayOutput)
 }
 
-// The launch stage as defined by [Google Cloud Platform Launch
-// Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA. If no value is
-// specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that
-// stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as
-// input, but only BETA and GA-level features are used, this field will be BETA on output. Possible values:
-// ["UNIMPLEMENTED", "PRELAUNCH", "EARLY_ACCESS", "ALPHA", "BETA", "GA", "DEPRECATED"]
+// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+// If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+// For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
+// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
 func (o JobOutput) LaunchStage() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.LaunchStage }).(pulumi.StringOutput)
 }
@@ -1259,6 +1245,8 @@ func (o JobOutput) ObservedGeneration() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.ObservedGeneration }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o JobOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -1277,14 +1265,14 @@ func (o JobOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Job) pulumi.BoolOutput { return v.Reconciling }).(pulumi.BoolOutput)
 }
 
-// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
-// execution is successfully completed. The sum of job name and token length must be fewer than 63 characters.
+// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully completed.
+// The sum of job name and token length must be fewer than 63 characters.
 func (o JobOutput) RunExecutionToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringPtrOutput { return v.RunExecutionToken }).(pulumi.StringPtrOutput)
 }
 
-// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the
-// execution is successfully started. The sum of job name and token length must be fewer than 63 characters.
+// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
+// The sum of job name and token length must be fewer than 63 characters.
 func (o JobOutput) StartExecutionToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringPtrOutput { return v.StartExecutionToken }).(pulumi.StringPtrOutput)
 }

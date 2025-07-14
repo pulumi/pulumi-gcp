@@ -297,8 +297,6 @@ type SessionTemplate struct {
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The resource name of the session template in the following format:
 	// projects/{project}/locations/{location}/sessionTemplates/{template_id}
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -373,8 +371,6 @@ type sessionTemplateState struct {
 	Location *string `pulumi:"location"`
 	// The resource name of the session template in the following format:
 	// projects/{project}/locations/{location}/sessionTemplates/{template_id}
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -415,8 +411,6 @@ type SessionTemplateState struct {
 	Location pulumi.StringPtrInput
 	// The resource name of the session template in the following format:
 	// projects/{project}/locations/{location}/sessionTemplates/{template_id}
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -455,8 +449,6 @@ type sessionTemplateArgs struct {
 	Location *string `pulumi:"location"`
 	// The resource name of the session template in the following format:
 	// projects/{project}/locations/{location}/sessionTemplates/{template_id}
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -485,8 +477,6 @@ type SessionTemplateArgs struct {
 	Location pulumi.StringPtrInput
 	// The resource name of the session template in the following format:
 	// projects/{project}/locations/{location}/sessionTemplates/{template_id}
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -627,8 +617,6 @@ func (o SessionTemplateOutput) Location() pulumi.StringPtrOutput {
 
 // The resource name of the session template in the following format:
 // projects/{project}/locations/{location}/sessionTemplates/{template_id}
-//
-// ***
 func (o SessionTemplateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SessionTemplate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

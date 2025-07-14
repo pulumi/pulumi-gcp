@@ -270,9 +270,6 @@ export class HostingVersion extends pulumi.CustomResource {
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * Required. The ID of the site in which to create this Version.
-     *
-     *
-     * - - -
      */
     public readonly siteId!: pulumi.Output<string>;
     /**
@@ -328,9 +325,6 @@ export interface HostingVersionState {
     name?: pulumi.Input<string>;
     /**
      * Required. The ID of the site in which to create this Version.
-     *
-     *
-     * - - -
      */
     siteId?: pulumi.Input<string>;
     /**
@@ -350,9 +344,6 @@ export interface HostingVersionArgs {
     config?: pulumi.Input<inputs.firebase.HostingVersionConfig>;
     /**
      * Required. The ID of the site in which to create this Version.
-     *
-     *
-     * - - -
      */
     siteId: pulumi.Input<string>;
 }

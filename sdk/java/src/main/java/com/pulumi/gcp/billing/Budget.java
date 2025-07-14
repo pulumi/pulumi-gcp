@@ -470,16 +470,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:billing/budget:Budget")
 public class Budget extends com.pulumi.resources.CustomResource {
     /**
-     * Defines notifications that are sent on every update to the billing account&#39;s spend, regardless of the thresholds defined
+     * Defines notifications that are sent on every update to the
+     * billing account&#39;s spend, regardless of the thresholds defined
      * using threshold rules.
+     * Structure is documented below.
      * 
      */
     @Export(name="allUpdatesRule", refs={BudgetAllUpdatesRule.class}, tree="[0]")
     private Output</* @Nullable */ BudgetAllUpdatesRule> allUpdatesRule;
 
     /**
-     * @return Defines notifications that are sent on every update to the billing account&#39;s spend, regardless of the thresholds defined
+     * @return Defines notifications that are sent on every update to the
+     * billing account&#39;s spend, regardless of the thresholds defined
      * using threshold rules.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<BudgetAllUpdatesRule>> allUpdatesRule() {
@@ -516,14 +520,18 @@ public class Budget extends com.pulumi.resources.CustomResource {
         return this.billingAccount;
     }
     /**
-     * Filters that define which resources are used to compute the actual spend against the budget.
+     * Filters that define which resources are used to compute the actual
+     * spend against the budget.
+     * Structure is documented below.
      * 
      */
     @Export(name="budgetFilter", refs={BudgetBudgetFilter.class}, tree="[0]")
     private Output<BudgetBudgetFilter> budgetFilter;
 
     /**
-     * @return Filters that define which resources are used to compute the actual spend against the budget.
+     * @return Filters that define which resources are used to compute the actual
+     * spend against the budget.
+     * Structure is documented below.
      * 
      */
     public Output<BudgetBudgetFilter> budgetFilter() {
@@ -562,32 +570,38 @@ public class Budget extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The ownership scope of the budget. The ownership scope and users&#39; IAM permissions determine who has full access to the
-     * budget&#39;s data. Possible values: [&#34;OWNERSHIP_SCOPE_UNSPECIFIED&#34;, &#34;ALL_USERS&#34;, &#34;BILLING_ACCOUNT&#34;]
+     * The ownership scope of the budget. The ownership scope and users&#39;
+     * IAM permissions determine who has full access to the budget&#39;s data.
+     * Possible values are: `OWNERSHIP_SCOPE_UNSPECIFIED`, `ALL_USERS`, `BILLING_ACCOUNT`.
      * 
      */
     @Export(name="ownershipScope", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ownershipScope;
 
     /**
-     * @return The ownership scope of the budget. The ownership scope and users&#39; IAM permissions determine who has full access to the
-     * budget&#39;s data. Possible values: [&#34;OWNERSHIP_SCOPE_UNSPECIFIED&#34;, &#34;ALL_USERS&#34;, &#34;BILLING_ACCOUNT&#34;]
+     * @return The ownership scope of the budget. The ownership scope and users&#39;
+     * IAM permissions determine who has full access to the budget&#39;s data.
+     * Possible values are: `OWNERSHIP_SCOPE_UNSPECIFIED`, `ALL_USERS`, `BILLING_ACCOUNT`.
      * 
      */
     public Output<Optional<String>> ownershipScope() {
         return Codegen.optional(this.ownershipScope);
     }
     /**
-     * Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of
-     * the budget.
+     * Rules that trigger alerts (notifications of thresholds being
+     * crossed) when spend exceeds the specified percentages of the
+     * budget.
+     * Structure is documented below.
      * 
      */
     @Export(name="thresholdRules", refs={List.class,BudgetThresholdRule.class}, tree="[0,1]")
     private Output</* @Nullable */ List<BudgetThresholdRule>> thresholdRules;
 
     /**
-     * @return Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of
-     * the budget.
+     * @return Rules that trigger alerts (notifications of thresholds being
+     * crossed) when spend exceeds the specified percentages of the
+     * budget.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<List<BudgetThresholdRule>>> thresholdRules() {

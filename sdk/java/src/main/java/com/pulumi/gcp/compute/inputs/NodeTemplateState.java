@@ -111,16 +111,12 @@ public final class NodeTemplateState extends com.pulumi.resources.ResourceArgs {
     /**
      * Name of the resource.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return Name of the resource.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -432,8 +428,6 @@ public final class NodeTemplateState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name Name of the resource.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -444,8 +438,6 @@ public final class NodeTemplateState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name Name of the resource.
-         * 
-         * ***
          * 
          * @return builder
          * 

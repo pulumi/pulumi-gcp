@@ -39,9 +39,6 @@ class NotebookExecutionArgs:
         :param pulumi.Input[builtins.str] display_name: Required. The display name of the Notebook Execution.
         :param pulumi.Input[builtins.str] gcs_output_uri: The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
         :param pulumi.Input[builtins.str] location: The location for the resource: https://cloud.google.com/colab/docs/locations
-               
-               
-               - - -
         :param pulumi.Input['NotebookExecutionDataformRepositorySourceArgs'] dataform_repository_source: The Dataform Repository containing the input notebook.
                Structure is documented below.
         :param pulumi.Input['NotebookExecutionDirectNotebookSourceArgs'] direct_notebook_source: The content of the input notebook in ipynb format.
@@ -107,9 +104,6 @@ class NotebookExecutionArgs:
     def location(self) -> pulumi.Input[builtins.str]:
         """
         The location for the resource: https://cloud.google.com/colab/docs/locations
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -258,9 +252,6 @@ class _NotebookExecutionState:
                Structure is documented below.
         :param pulumi.Input[builtins.str] gcs_output_uri: The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
         :param pulumi.Input[builtins.str] location: The location for the resource: https://cloud.google.com/colab/docs/locations
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] notebook_execution_job_id: User specified ID for the Notebook Execution Job
         :param pulumi.Input[builtins.str] notebook_runtime_template_resource_name: The NotebookRuntimeTemplate to source compute configuration from.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -384,9 +375,6 @@ class _NotebookExecutionState:
     def location(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The location for the resource: https://cloud.google.com/colab/docs/locations
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -748,9 +736,6 @@ class NotebookExecution(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[builtins.str] gcs_output_uri: The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
         :param pulumi.Input[builtins.str] location: The location for the resource: https://cloud.google.com/colab/docs/locations
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] notebook_execution_job_id: User specified ID for the Notebook Execution Job
         :param pulumi.Input[builtins.str] notebook_runtime_template_resource_name: The NotebookRuntimeTemplate to source compute configuration from.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -1129,9 +1114,6 @@ class NotebookExecution(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[builtins.str] gcs_output_uri: The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
         :param pulumi.Input[builtins.str] location: The location for the resource: https://cloud.google.com/colab/docs/locations
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] notebook_execution_job_id: User specified ID for the Notebook Execution Job
         :param pulumi.Input[builtins.str] notebook_runtime_template_resource_name: The NotebookRuntimeTemplate to source compute configuration from.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -1220,9 +1202,6 @@ class NotebookExecution(pulumi.CustomResource):
     def location(self) -> pulumi.Output[builtins.str]:
         """
         The location for the resource: https://cloud.google.com/colab/docs/locations
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

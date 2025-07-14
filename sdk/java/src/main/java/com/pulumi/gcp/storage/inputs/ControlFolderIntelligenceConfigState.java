@@ -71,16 +71,12 @@ public final class ControlFolderIntelligenceConfigState extends com.pulumi.resou
     /**
      * Identifier of the GCP Folder. For GCP Folder, this field can be folder number.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return Identifier of the GCP Folder. For GCP Folder, this field can be folder number.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -229,8 +225,6 @@ public final class ControlFolderIntelligenceConfigState extends com.pulumi.resou
         /**
          * @param name Identifier of the GCP Folder. For GCP Folder, this field can be folder number.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -241,8 +235,6 @@ public final class ControlFolderIntelligenceConfigState extends com.pulumi.resou
 
         /**
          * @param name Identifier of the GCP Folder. For GCP Folder, this field can be folder number.
-         * 
-         * ***
          * 
          * @return builder
          * 

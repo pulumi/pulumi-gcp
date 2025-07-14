@@ -43,9 +43,6 @@ class GdcSparkApplicationArgs:
         :param pulumi.Input[builtins.str] location: The location of the spark application.
         :param pulumi.Input[builtins.str] serviceinstance: The id of the service instance to which this spark application belongs.
         :param pulumi.Input[builtins.str] spark_application_id: The id of the application
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: The annotations to associate with this application. Annotations may be used to store client information, but are not used by the server.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -128,9 +125,6 @@ class GdcSparkApplicationArgs:
     def spark_application_id(self) -> pulumi.Input[builtins.str]:
         """
         The id of the application
-
-
-        - - -
         """
         return pulumi.get(self, "spark_application_id")
 
@@ -365,9 +359,6 @@ class _GdcSparkApplicationState:
         :param pulumi.Input['GdcSparkApplicationSparkApplicationConfigArgs'] spark_application_config: Represents the SparkApplicationConfig.
                Structure is documented below.
         :param pulumi.Input[builtins.str] spark_application_id: The id of the application
-               
-               
-               - - -
         :param pulumi.Input['GdcSparkApplicationSparkRApplicationConfigArgs'] spark_r_application_config: Represents the SparkRApplicationConfig.
                Structure is documented below.
         :param pulumi.Input['GdcSparkApplicationSparkSqlApplicationConfigArgs'] spark_sql_application_config: Represents the SparkRApplicationConfig.
@@ -693,9 +684,6 @@ class _GdcSparkApplicationState:
     def spark_application_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The id of the application
-
-
-        - - -
         """
         return pulumi.get(self, "spark_application_id")
 
@@ -1020,9 +1008,6 @@ class GdcSparkApplication(pulumi.CustomResource):
         :param pulumi.Input[Union['GdcSparkApplicationSparkApplicationConfigArgs', 'GdcSparkApplicationSparkApplicationConfigArgsDict']] spark_application_config: Represents the SparkApplicationConfig.
                Structure is documented below.
         :param pulumi.Input[builtins.str] spark_application_id: The id of the application
-               
-               
-               - - -
         :param pulumi.Input[Union['GdcSparkApplicationSparkRApplicationConfigArgs', 'GdcSparkApplicationSparkRApplicationConfigArgsDict']] spark_r_application_config: Represents the SparkRApplicationConfig.
                Structure is documented below.
         :param pulumi.Input[Union['GdcSparkApplicationSparkSqlApplicationConfigArgs', 'GdcSparkApplicationSparkSqlApplicationConfigArgsDict']] spark_sql_application_config: Represents the SparkRApplicationConfig.
@@ -1361,9 +1346,6 @@ class GdcSparkApplication(pulumi.CustomResource):
         :param pulumi.Input[Union['GdcSparkApplicationSparkApplicationConfigArgs', 'GdcSparkApplicationSparkApplicationConfigArgsDict']] spark_application_config: Represents the SparkApplicationConfig.
                Structure is documented below.
         :param pulumi.Input[builtins.str] spark_application_id: The id of the application
-               
-               
-               - - -
         :param pulumi.Input[Union['GdcSparkApplicationSparkRApplicationConfigArgs', 'GdcSparkApplicationSparkRApplicationConfigArgsDict']] spark_r_application_config: Represents the SparkRApplicationConfig.
                Structure is documented below.
         :param pulumi.Input[Union['GdcSparkApplicationSparkSqlApplicationConfigArgs', 'GdcSparkApplicationSparkSqlApplicationConfigArgsDict']] spark_sql_application_config: Represents the SparkRApplicationConfig.
@@ -1586,9 +1568,6 @@ class GdcSparkApplication(pulumi.CustomResource):
     def spark_application_id(self) -> pulumi.Output[builtins.str]:
         """
         The id of the application
-
-
-        - - -
         """
         return pulumi.get(self, "spark_application_id")
 

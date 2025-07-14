@@ -88,16 +88,18 @@ public final class PreventionDeidentifyTemplateArgs extends com.pulumi.resources
     }
 
     /**
-     * The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
-     * expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+     * The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+     * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
+     * 100 characters. Can be empty to allow the system to generate one.
      * 
      */
     @Import(name="templateId")
     private @Nullable Output<String> templateId;
 
     /**
-     * @return The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
-     * expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+     * @return The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+     * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
+     * 100 characters. Can be empty to allow the system to generate one.
      * 
      */
     public Optional<Output<String>> templateId() {
@@ -227,8 +229,9 @@ public final class PreventionDeidentifyTemplateArgs extends com.pulumi.resources
         }
 
         /**
-         * @param templateId The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
-         * expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+         * @param templateId The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+         * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
+         * 100 characters. Can be empty to allow the system to generate one.
          * 
          * @return builder
          * 
@@ -239,8 +242,9 @@ public final class PreventionDeidentifyTemplateArgs extends com.pulumi.resources
         }
 
         /**
-         * @param templateId The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
-         * expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+         * @param templateId The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+         * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
+         * 100 characters. Can be empty to allow the system to generate one.
          * 
          * @return builder
          * 

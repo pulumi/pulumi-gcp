@@ -30,9 +30,6 @@ class AppCheckServiceConfigArgs:
                firebasedatabase.googleapis.com (Firebase Realtime Database)
                firestore.googleapis.com (Cloud Firestore)
                identitytoolkit.googleapis.com (Authentication)
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -51,9 +48,6 @@ class AppCheckServiceConfigArgs:
         firebasedatabase.googleapis.com (Firebase Realtime Database)
         firestore.googleapis.com (Cloud Firestore)
         identitytoolkit.googleapis.com (Authentication)
-
-
-        - - -
         """
         return pulumi.get(self, "service_id")
 
@@ -101,9 +95,6 @@ class _AppCheckServiceConfigState:
                firebasedatabase.googleapis.com (Firebase Realtime Database)
                firestore.googleapis.com (Cloud Firestore)
                identitytoolkit.googleapis.com (Authentication)
-               
-               
-               - - -
         """
         if enforcement_mode is not None:
             pulumi.set(__self__, "enforcement_mode", enforcement_mode)
@@ -157,9 +148,6 @@ class _AppCheckServiceConfigState:
         firebasedatabase.googleapis.com (Firebase Realtime Database)
         firestore.googleapis.com (Cloud Firestore)
         identitytoolkit.googleapis.com (Authentication)
-
-
-        - - -
         """
         return pulumi.get(self, "service_id")
 
@@ -270,9 +258,6 @@ class AppCheckServiceConfig(pulumi.CustomResource):
                firebasedatabase.googleapis.com (Firebase Realtime Database)
                firestore.googleapis.com (Cloud Firestore)
                identitytoolkit.googleapis.com (Authentication)
-               
-               
-               - - -
         """
         ...
     @overload
@@ -425,9 +410,6 @@ class AppCheckServiceConfig(pulumi.CustomResource):
                firebasedatabase.googleapis.com (Firebase Realtime Database)
                firestore.googleapis.com (Cloud Firestore)
                identitytoolkit.googleapis.com (Authentication)
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -470,9 +452,6 @@ class AppCheckServiceConfig(pulumi.CustomResource):
         firebasedatabase.googleapis.com (Firebase Realtime Database)
         firestore.googleapis.com (Cloud Firestore)
         identitytoolkit.googleapis.com (Authentication)
-
-
-        - - -
         """
         return pulumi.get(self, "service_id")
 

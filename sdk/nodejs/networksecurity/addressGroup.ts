@@ -151,9 +151,6 @@ export class AddressGroup extends pulumi.CustomResource {
     /**
      * The location of the gateway security policy.
      * The default value is `global`.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -281,9 +278,6 @@ export interface AddressGroupState {
     /**
      * The location of the gateway security policy.
      * The default value is `global`.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -344,9 +338,6 @@ export interface AddressGroupArgs {
     /**
      * The location of the gateway security policy.
      * The default value is `global`.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

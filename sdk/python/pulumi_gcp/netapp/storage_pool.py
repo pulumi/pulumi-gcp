@@ -65,9 +65,6 @@ class StoragePoolArgs:
         :param pulumi.Input[builtins.bool] ldap_enabled: When enabled, the volumes uses Active Directory as LDAP name service for UID/GID lookups. Required to enable extended group support for NFSv3,
                using security identifiers for NFSv4.1 or principal names for kerberized NFSv4.1.
         :param pulumi.Input[builtins.str] name: The resource name of the storage pool. Needs to be unique per location/region.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] replica_zone: Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
@@ -284,9 +281,6 @@ class StoragePoolArgs:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The resource name of the storage pool. Needs to be unique per location/region.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -411,9 +405,6 @@ class _StoragePoolState:
                using security identifiers for NFSv4.1 or principal names for kerberized NFSv4.1.
         :param pulumi.Input[builtins.str] location: Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
         :param pulumi.Input[builtins.str] name: The resource name of the storage pool. Needs to be unique per location/region.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] network: VPC network name with format: `projects/{{project}}/global/networks/{{network}}`
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -650,9 +641,6 @@ class _StoragePoolState:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The resource name of the storage pool. Needs to be unique per location/region.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -902,9 +890,6 @@ class StoragePool(pulumi.CustomResource):
                using security identifiers for NFSv4.1 or principal names for kerberized NFSv4.1.
         :param pulumi.Input[builtins.str] location: Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
         :param pulumi.Input[builtins.str] name: The resource name of the storage pool. Needs to be unique per location/region.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] network: VPC network name with format: `projects/{{project}}/global/networks/{{network}}`
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1131,9 +1116,6 @@ class StoragePool(pulumi.CustomResource):
                using security identifiers for NFSv4.1 or principal names for kerberized NFSv4.1.
         :param pulumi.Input[builtins.str] location: Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
         :param pulumi.Input[builtins.str] name: The resource name of the storage pool. Needs to be unique per location/region.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] network: VPC network name with format: `projects/{{project}}/global/networks/{{network}}`
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1299,9 +1281,6 @@ class StoragePool(pulumi.CustomResource):
     def name(self) -> pulumi.Output[builtins.str]:
         """
         The resource name of the storage pool. Needs to be unique per location/region.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

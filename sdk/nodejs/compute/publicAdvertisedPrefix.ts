@@ -105,9 +105,6 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
     public readonly dnsVerificationIp!: pulumi.Output<string>;
     /**
      * The address range, in CIDR format, represented by this public advertised prefix.
-     *
-     *
-     * - - -
      */
     public readonly ipCidrRange!: pulumi.Output<string>;
     /**
@@ -200,9 +197,6 @@ export interface PublicAdvertisedPrefixState {
     dnsVerificationIp?: pulumi.Input<string>;
     /**
      * The address range, in CIDR format, represented by this public advertised prefix.
-     *
-     *
-     * - - -
      */
     ipCidrRange?: pulumi.Input<string>;
     /**
@@ -253,9 +247,6 @@ export interface PublicAdvertisedPrefixArgs {
     dnsVerificationIp: pulumi.Input<string>;
     /**
      * The address range, in CIDR format, represented by this public advertised prefix.
-     *
-     *
-     * - - -
      */
     ipCidrRange: pulumi.Input<string>;
     /**

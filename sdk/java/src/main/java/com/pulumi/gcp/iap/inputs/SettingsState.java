@@ -65,8 +65,6 @@ public final class SettingsState extends com.pulumi.resources.ResourceArgs {
      * * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}
      * * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}/version/{version_id}
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
@@ -84,8 +82,6 @@ public final class SettingsState extends com.pulumi.resources.ResourceArgs {
      * * projects/{project_id}/iap_web/appengine-{app_id}
      * * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}
      * * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}/version/{version_id}
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -178,8 +174,6 @@ public final class SettingsState extends com.pulumi.resources.ResourceArgs {
          * * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}
          * * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}/version/{version_id}
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -201,8 +195,6 @@ public final class SettingsState extends com.pulumi.resources.ResourceArgs {
          * * projects/{project_id}/iap_web/appengine-{app_id}
          * * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}
          * * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}/version/{version_id}
-         * 
-         * ***
          * 
          * @return builder
          * 

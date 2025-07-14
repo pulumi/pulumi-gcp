@@ -122,8 +122,6 @@ type SourceRepresentationInstance struct {
 	// A file in the bucket that contains the data from the external server.
 	DumpFilePath pulumi.StringPtrOutput `pulumi:"dumpFilePath"`
 	// The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
-	//
-	// ***
 	Host pulumi.StringOutput `pulumi:"host"`
 	// The name of the source representation instance. Use any valid Cloud SQL instance name.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -197,8 +195,6 @@ type sourceRepresentationInstanceState struct {
 	// A file in the bucket that contains the data from the external server.
 	DumpFilePath *string `pulumi:"dumpFilePath"`
 	// The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
-	//
-	// ***
 	Host *string `pulumi:"host"`
 	// The name of the source representation instance. Use any valid Cloud SQL instance name.
 	Name *string `pulumi:"name"`
@@ -230,8 +226,6 @@ type SourceRepresentationInstanceState struct {
 	// A file in the bucket that contains the data from the external server.
 	DumpFilePath pulumi.StringPtrInput
 	// The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
-	//
-	// ***
 	Host pulumi.StringPtrInput
 	// The name of the source representation instance. Use any valid Cloud SQL instance name.
 	Name pulumi.StringPtrInput
@@ -267,8 +261,6 @@ type sourceRepresentationInstanceArgs struct {
 	// A file in the bucket that contains the data from the external server.
 	DumpFilePath *string `pulumi:"dumpFilePath"`
 	// The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
-	//
-	// ***
 	Host string `pulumi:"host"`
 	// The name of the source representation instance. Use any valid Cloud SQL instance name.
 	Name *string `pulumi:"name"`
@@ -301,8 +293,6 @@ type SourceRepresentationInstanceArgs struct {
 	// A file in the bucket that contains the data from the external server.
 	DumpFilePath pulumi.StringPtrInput
 	// The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
-	//
-	// ***
 	Host pulumi.StringInput
 	// The name of the source representation instance. Use any valid Cloud SQL instance name.
 	Name pulumi.StringPtrInput
@@ -435,8 +425,6 @@ func (o SourceRepresentationInstanceOutput) DumpFilePath() pulumi.StringPtrOutpu
 }
 
 // The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
-//
-// ***
 func (o SourceRepresentationInstanceOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v *SourceRepresentationInstance) pulumi.StringOutput { return v.Host }).(pulumi.StringOutput)
 }

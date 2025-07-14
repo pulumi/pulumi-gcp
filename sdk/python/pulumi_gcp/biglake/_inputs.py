@@ -37,8 +37,6 @@ if not MYPY:
         Stores user supplied Hive database parameters. An object containing a
         list of"key": value pairs.
         Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-
-        - - -
         """
 elif False:
     DatabaseHiveOptionsArgsDict: TypeAlias = Mapping[str, Any]
@@ -53,8 +51,6 @@ class DatabaseHiveOptionsArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] parameters: Stores user supplied Hive database parameters. An object containing a
                list of"key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-               
-               - - -
         """
         if location_uri is not None:
             pulumi.set(__self__, "location_uri", location_uri)
@@ -80,8 +76,6 @@ class DatabaseHiveOptionsArgs:
         Stores user supplied Hive database parameters. An object containing a
         list of"key": value pairs.
         Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-
-        - - -
         """
         return pulumi.get(self, "parameters")
 

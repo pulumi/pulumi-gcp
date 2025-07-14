@@ -173,16 +173,12 @@ public class ReservationAssignment extends com.pulumi.resources.CustomResource {
     /**
      * The reservation for the resource
      * 
-     * ***
-     * 
      */
     @Export(name="reservation", refs={String.class}, tree="[0]")
     private Output<String> reservation;
 
     /**
      * @return The reservation for the resource
-     * 
-     * ***
      * 
      */
     public Output<String> reservation() {

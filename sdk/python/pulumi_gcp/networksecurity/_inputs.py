@@ -2916,8 +2916,6 @@ if not MYPY:
         resources: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
         """
         A list of references to the Forwarding Rules on which this policy will be applied.
-
-        - - -
         """
 elif False:
     AuthzPolicyTargetArgsDict: TypeAlias = Mapping[str, Any]
@@ -2932,8 +2930,6 @@ class AuthzPolicyTargetArgs:
                For more information, refer to [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
                Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] resources: A list of references to the Forwarding Rules on which this policy will be applied.
-               
-               - - -
         """
         pulumi.set(__self__, "load_balancing_scheme", load_balancing_scheme)
         if resources is not None:
@@ -2958,8 +2954,6 @@ class AuthzPolicyTargetArgs:
     def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
         A list of references to the Forwarding Rules on which this policy will be applied.
-
-        - - -
         """
         return pulumi.get(self, "resources")
 
@@ -3426,9 +3420,6 @@ if not MYPY:
         location: NotRequired[pulumi.Input[builtins.str]]
         """
         The cloud location of the association, currently restricted to `global`.
-
-
-        - - -
         """
         state: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -3449,9 +3440,6 @@ class InterceptEndpointGroupAssociationLocationArgs:
                  state: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.str] location: The cloud location of the association, currently restricted to `global`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] state: (Output)
                The current state of the association in this location.
                Possible values:
@@ -3469,9 +3457,6 @@ class InterceptEndpointGroupAssociationLocationArgs:
     def location(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The cloud location of the association, currently restricted to `global`.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -3502,9 +3487,6 @@ if not MYPY:
         location: NotRequired[pulumi.Input[builtins.str]]
         """
         The cloud location of the association, currently restricted to `global`.
-
-
-        - - -
         """
         state: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -3525,9 +3507,6 @@ class InterceptEndpointGroupAssociationLocationsDetailArgs:
                  state: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.str] location: The cloud location of the association, currently restricted to `global`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] state: (Output)
                The current state of the association in this location.
                Possible values:
@@ -3545,9 +3524,6 @@ class InterceptEndpointGroupAssociationLocationsDetailArgs:
     def location(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The cloud location of the association, currently restricted to `global`.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -3925,9 +3901,6 @@ if not MYPY:
         location: NotRequired[pulumi.Input[builtins.str]]
         """
         The cloud location of the association, currently restricted to `global`.
-
-
-        - - -
         """
         state: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -3948,9 +3921,6 @@ class MirroringEndpointGroupAssociationLocationArgs:
                  state: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.str] location: The cloud location of the association, currently restricted to `global`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] state: (Output)
                The current state of the association in this location.
                Possible values:
@@ -3968,9 +3938,6 @@ class MirroringEndpointGroupAssociationLocationArgs:
     def location(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The cloud location of the association, currently restricted to `global`.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -4001,9 +3968,6 @@ if not MYPY:
         location: NotRequired[pulumi.Input[builtins.str]]
         """
         The cloud location of the association, currently restricted to `global`.
-
-
-        - - -
         """
         state: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -4024,9 +3988,6 @@ class MirroringEndpointGroupAssociationLocationsDetailArgs:
                  state: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.str] location: The cloud location of the association, currently restricted to `global`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] state: (Output)
                The current state of the association in this location.
                Possible values:
@@ -4044,9 +4005,6 @@ class MirroringEndpointGroupAssociationLocationsDetailArgs:
     def location(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The cloud location of the association, currently restricted to `global`.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

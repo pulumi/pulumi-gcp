@@ -83,7 +83,8 @@ namespace Pulumi.Gcp.CloudIdentity
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// An extended description to help users determine the purpose of a Group. Must not be longer than 4,096 characters.
+        /// An extended description to help users determine the purpose of a Group.
+        /// Must not be longer than 4,096 characters.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -102,9 +103,12 @@ namespace Pulumi.Gcp.CloudIdentity
         public Output<Outputs.GroupGroupKey> GroupKey { get; private set; } = null!;
 
         /// <summary>
-        /// The initial configuration options for creating a Group. See the [API
-        /// reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig) for possible
-        /// values. Default value: "EMPTY" Possible values: ["INITIAL_GROUP_CONFIG_UNSPECIFIED", "WITH_INITIAL_OWNER", "EMPTY"]
+        /// The initial configuration options for creating a Group.
+        /// See the
+        /// [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
+        /// for possible values.
+        /// Default value is `EMPTY`.
+        /// Possible values are: `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, `EMPTY`.
         /// </summary>
         [Output("initialGroupConfig")]
         public Output<string?> InitialGroupConfig { get; private set; } = null!;
@@ -188,7 +192,8 @@ namespace Pulumi.Gcp.CloudIdentity
     public sealed class GroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// An extended description to help users determine the purpose of a Group. Must not be longer than 4,096 characters.
+        /// An extended description to help users determine the purpose of a Group.
+        /// Must not be longer than 4,096 characters.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -207,9 +212,12 @@ namespace Pulumi.Gcp.CloudIdentity
         public Input<Inputs.GroupGroupKeyArgs> GroupKey { get; set; } = null!;
 
         /// <summary>
-        /// The initial configuration options for creating a Group. See the [API
-        /// reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig) for possible
-        /// values. Default value: "EMPTY" Possible values: ["INITIAL_GROUP_CONFIG_UNSPECIFIED", "WITH_INITIAL_OWNER", "EMPTY"]
+        /// The initial configuration options for creating a Group.
+        /// See the
+        /// [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
+        /// for possible values.
+        /// Default value is `EMPTY`.
+        /// Possible values are: `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, `EMPTY`.
         /// </summary>
         [Input("initialGroupConfig")]
         public Input<string>? InitialGroupConfig { get; set; }
@@ -267,7 +275,8 @@ namespace Pulumi.Gcp.CloudIdentity
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// An extended description to help users determine the purpose of a Group. Must not be longer than 4,096 characters.
+        /// An extended description to help users determine the purpose of a Group.
+        /// Must not be longer than 4,096 characters.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -286,9 +295,12 @@ namespace Pulumi.Gcp.CloudIdentity
         public Input<Inputs.GroupGroupKeyGetArgs>? GroupKey { get; set; }
 
         /// <summary>
-        /// The initial configuration options for creating a Group. See the [API
-        /// reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig) for possible
-        /// values. Default value: "EMPTY" Possible values: ["INITIAL_GROUP_CONFIG_UNSPECIFIED", "WITH_INITIAL_OWNER", "EMPTY"]
+        /// The initial configuration options for creating a Group.
+        /// See the
+        /// [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
+        /// for possible values.
+        /// Default value is `EMPTY`.
+        /// Possible values are: `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, `EMPTY`.
         /// </summary>
         [Input("initialGroupConfig")]
         public Input<string>? InitialGroupConfig { get; set; }

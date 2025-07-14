@@ -14,16 +14,12 @@ public final class OrganizationCustomModuleCustomConfigResourceSelector {
     /**
      * @return The resource types to run the detector on.
      * 
-     * ***
-     * 
      */
     private List<String> resourceTypes;
 
     private OrganizationCustomModuleCustomConfigResourceSelector() {}
     /**
      * @return The resource types to run the detector on.
-     * 
-     * ***
      * 
      */
     public List<String> resourceTypes() {

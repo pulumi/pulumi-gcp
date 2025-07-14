@@ -199,16 +199,12 @@ public class MembershipBinding extends com.pulumi.resources.CustomResource {
     /**
      * Location of the membership
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return Location of the membership
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

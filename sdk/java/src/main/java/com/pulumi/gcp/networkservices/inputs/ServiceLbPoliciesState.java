@@ -136,16 +136,12 @@ public final class ServiceLbPoliciesState extends com.pulumi.resources.ResourceA
     /**
      * The location of the service lb policy.
      * 
-     * ***
-     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
      * @return The location of the service lb policy.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> location() {
@@ -411,8 +407,6 @@ public final class ServiceLbPoliciesState extends com.pulumi.resources.ResourceA
         /**
          * @param location The location of the service lb policy.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -423,8 +417,6 @@ public final class ServiceLbPoliciesState extends com.pulumi.resources.ResourceA
 
         /**
          * @param location The location of the service lb policy.
-         * 
-         * ***
          * 
          * @return builder
          * 

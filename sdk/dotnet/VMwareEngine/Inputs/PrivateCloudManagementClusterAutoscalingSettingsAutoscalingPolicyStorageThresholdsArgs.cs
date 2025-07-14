@@ -14,8 +14,6 @@ namespace Pulumi.Gcp.VMwareEngine.Inputs
     {
         /// <summary>
         /// The utilization triggering the scale-in operation in percent.
-        /// 
-        /// - - -
         /// </summary>
         [Input("scaleIn", required: true)]
         public Input<int> ScaleIn { get; set; } = null!;

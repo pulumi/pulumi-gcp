@@ -18,16 +18,12 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
     /**
      * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn&#39;t significant.
      * 
-     * ***
-     * 
      */
     @Import(name="day")
     private @Nullable Output<Integer> day;
 
     /**
      * @return Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn&#39;t significant.
-     * 
-     * ***
      * 
      */
     public Optional<Output<Integer>> day() {
@@ -93,8 +89,6 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
         /**
          * @param day Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn&#39;t significant.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -105,8 +99,6 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
 
         /**
          * @param day Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn&#39;t significant.
-         * 
-         * ***
          * 
          * @return builder
          * 

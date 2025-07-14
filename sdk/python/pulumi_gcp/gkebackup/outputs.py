@@ -1504,8 +1504,6 @@ class RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiring(dict):
                Use empty string for core group.
         :param builtins.str resource_kind: Kind of a Kubernetes resource, e.g.
                "CustomResourceDefinition", "StorageClass", etc.
-               
-               - - -
         """
         if resource_group is not None:
             pulumi.set(__self__, "resource_group", resource_group)
@@ -1528,8 +1526,6 @@ class RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiring(dict):
         """
         Kind of a Kubernetes resource, e.g.
         "CustomResourceDefinition", "StorageClass", etc.
-
-        - - -
         """
         return pulumi.get(self, "resource_kind")
 

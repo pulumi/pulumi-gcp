@@ -131,9 +131,6 @@ export class AutokeyConfig extends pulumi.CustomResource {
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
      * The folder for which to retrieve config.
-     *
-     *
-     * - - -
      */
     public readonly folder!: pulumi.Output<string>;
     /**
@@ -183,9 +180,6 @@ export interface AutokeyConfigState {
     etag?: pulumi.Input<string>;
     /**
      * The folder for which to retrieve config.
-     *
-     *
-     * - - -
      */
     folder?: pulumi.Input<string>;
     /**
@@ -202,9 +196,6 @@ export interface AutokeyConfigState {
 export interface AutokeyConfigArgs {
     /**
      * The folder for which to retrieve config.
-     *
-     *
-     * - - -
      */
     folder: pulumi.Input<string>;
     /**

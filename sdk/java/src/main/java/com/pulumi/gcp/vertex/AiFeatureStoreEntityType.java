@@ -248,16 +248,12 @@ public class AiFeatureStoreEntityType extends com.pulumi.resources.CustomResourc
     /**
      * The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
      * 
-     * ***
-     * 
      */
     @Export(name="featurestore", refs={String.class}, tree="[0]")
     private Output<String> featurestore;
 
     /**
      * @return The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
-     * 
-     * ***
      * 
      */
     public Output<String> featurestore() {

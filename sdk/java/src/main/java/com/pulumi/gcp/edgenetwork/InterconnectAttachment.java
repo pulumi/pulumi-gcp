@@ -183,16 +183,12 @@ public class InterconnectAttachment extends com.pulumi.resources.CustomResource 
     /**
      * A unique ID that identifies this interconnect attachment.
      * 
-     * ***
-     * 
      */
     @Export(name="interconnectAttachmentId", refs={String.class}, tree="[0]")
     private Output<String> interconnectAttachmentId;
 
     /**
      * @return A unique ID that identifies this interconnect attachment.
-     * 
-     * ***
      * 
      */
     public Output<String> interconnectAttachmentId() {

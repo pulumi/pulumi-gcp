@@ -53,16 +53,16 @@ public final class PatchDeploymentState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Duration of the patch. After the duration ends, the patch times out. A duration in seconds with up to nine fractional
-     * digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;
+     * Duration of the patch. After the duration ends, the patch times out.
+     * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;
      * 
      */
     @Import(name="duration")
     private @Nullable Output<String> duration;
 
     /**
-     * @return Duration of the patch. After the duration ends, the patch times out. A duration in seconds with up to nine fractional
-     * digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;
+     * @return Duration of the patch. After the duration ends, the patch times out.
+     * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;
      * 
      */
     public Optional<Output<String>> duration() {
@@ -122,6 +122,7 @@ public final class PatchDeploymentState extends com.pulumi.resources.ResourceArg
 
     /**
      * Schedule a one-time execution.
+     * Structure is documented below.
      * 
      */
     @Import(name="oneTimeSchedule")
@@ -129,6 +130,7 @@ public final class PatchDeploymentState extends com.pulumi.resources.ResourceArg
 
     /**
      * @return Schedule a one-time execution.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<PatchDeploymentOneTimeScheduleArgs>> oneTimeSchedule() {
@@ -137,6 +139,7 @@ public final class PatchDeploymentState extends com.pulumi.resources.ResourceArg
 
     /**
      * Patch configuration that is applied.
+     * Structure is documented below.
      * 
      */
     @Import(name="patchConfig")
@@ -144,6 +147,7 @@ public final class PatchDeploymentState extends com.pulumi.resources.ResourceArg
 
     /**
      * @return Patch configuration that is applied.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<PatchDeploymentPatchConfigArgs>> patchConfig() {
@@ -175,15 +179,26 @@ public final class PatchDeploymentState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.patchDeploymentId);
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
 
     /**
      * Schedule recurring executions.
+     * Structure is documented below.
      * 
      */
     @Import(name="recurringSchedule")
@@ -191,6 +206,7 @@ public final class PatchDeploymentState extends com.pulumi.resources.ResourceArg
 
     /**
      * @return Schedule recurring executions.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<PatchDeploymentRecurringScheduleArgs>> recurringSchedule() {
@@ -199,6 +215,7 @@ public final class PatchDeploymentState extends com.pulumi.resources.ResourceArg
 
     /**
      * Rollout strategy of the patch job.
+     * Structure is documented below.
      * 
      */
     @Import(name="rollout")
@@ -206,6 +223,7 @@ public final class PatchDeploymentState extends com.pulumi.resources.ResourceArg
 
     /**
      * @return Rollout strategy of the patch job.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<PatchDeploymentRolloutArgs>> rollout() {
@@ -310,8 +328,8 @@ public final class PatchDeploymentState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param duration Duration of the patch. After the duration ends, the patch times out. A duration in seconds with up to nine fractional
-         * digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;
+         * @param duration Duration of the patch. After the duration ends, the patch times out.
+         * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;
          * 
          * @return builder
          * 
@@ -322,8 +340,8 @@ public final class PatchDeploymentState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param duration Duration of the patch. After the duration ends, the patch times out. A duration in seconds with up to nine fractional
-         * digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;
+         * @param duration Duration of the patch. After the duration ends, the patch times out.
+         * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;
          * 
          * @return builder
          * 
@@ -403,6 +421,7 @@ public final class PatchDeploymentState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param oneTimeSchedule Schedule a one-time execution.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -414,6 +433,7 @@ public final class PatchDeploymentState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param oneTimeSchedule Schedule a one-time execution.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -424,6 +444,7 @@ public final class PatchDeploymentState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param patchConfig Patch configuration that is applied.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -435,6 +456,7 @@ public final class PatchDeploymentState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param patchConfig Patch configuration that is applied.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -474,17 +496,32 @@ public final class PatchDeploymentState extends com.pulumi.resources.ResourceArg
             return patchDeploymentId(Output.of(patchDeploymentId));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
 
         /**
          * @param recurringSchedule Schedule recurring executions.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -496,6 +533,7 @@ public final class PatchDeploymentState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param recurringSchedule Schedule recurring executions.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -506,6 +544,7 @@ public final class PatchDeploymentState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param rollout Rollout strategy of the patch job.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -517,6 +556,7 @@ public final class PatchDeploymentState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param rollout Rollout strategy of the patch job.
+         * Structure is documented below.
          * 
          * @return builder
          * 

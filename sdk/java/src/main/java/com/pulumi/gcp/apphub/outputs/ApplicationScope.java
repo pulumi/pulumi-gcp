@@ -17,8 +17,6 @@ public final class ApplicationScope {
      * GLOBAL
      * Possible values are: `REGIONAL`, `GLOBAL`.
      * 
-     * ***
-     * 
      */
     private String type;
 
@@ -29,8 +27,6 @@ public final class ApplicationScope {
      * REGIONAL
      * GLOBAL
      * Possible values are: `REGIONAL`, `GLOBAL`.
-     * 
-     * ***
      * 
      */
     public String type() {

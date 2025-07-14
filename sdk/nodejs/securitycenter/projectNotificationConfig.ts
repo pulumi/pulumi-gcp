@@ -94,6 +94,10 @@ export class ProjectNotificationConfig extends pulumi.CustomResource {
      * `projects/{{projectId}}/notificationConfigs/{{config_id}}`.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The Pub/Sub topic to send notifications to. Its format is
@@ -172,6 +176,10 @@ export interface ProjectNotificationConfigState {
      * `projects/{{projectId}}/notificationConfigs/{{config_id}}`.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * The Pub/Sub topic to send notifications to. Its format is
@@ -202,6 +210,10 @@ export interface ProjectNotificationConfigArgs {
      * The description of the notification config (max of 1024 characters).
      */
     description?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * The Pub/Sub topic to send notifications to. Its format is

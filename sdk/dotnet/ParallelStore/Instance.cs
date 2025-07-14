@@ -255,9 +255,6 @@ namespace Pulumi.Gcp.ParallelStore
         /// * Must be between 1-63 characters.
         /// * Must end with a number or a letter.
         /// * Must be unique within the customer project/ location
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
@@ -456,9 +453,6 @@ namespace Pulumi.Gcp.ParallelStore
         /// * Must be between 1-63 characters.
         /// * Must end with a number or a letter.
         /// * Must be unique within the customer project/ location
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
@@ -637,9 +631,6 @@ namespace Pulumi.Gcp.ParallelStore
         /// * Must be between 1-63 characters.
         /// * Must end with a number or a letter.
         /// * Must be unique within the customer project/ location
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }

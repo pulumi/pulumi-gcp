@@ -18,16 +18,12 @@ public final class V2OrganizationSccBigQueryExportState extends com.pulumi.resou
     /**
      * This must be unique within the organization.
      * 
-     * ***
-     * 
      */
     @Import(name="bigQueryExportId")
     private @Nullable Output<String> bigQueryExportId;
 
     /**
      * @return This must be unique within the organization.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> bigQueryExportId() {
@@ -277,8 +273,6 @@ public final class V2OrganizationSccBigQueryExportState extends com.pulumi.resou
         /**
          * @param bigQueryExportId This must be unique within the organization.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -289,8 +283,6 @@ public final class V2OrganizationSccBigQueryExportState extends com.pulumi.resou
 
         /**
          * @param bigQueryExportId This must be unique within the organization.
-         * 
-         * ***
          * 
          * @return builder
          * 

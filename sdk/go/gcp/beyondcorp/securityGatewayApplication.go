@@ -155,7 +155,8 @@ type SecurityGatewayApplication struct {
 	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
 	// Output only. Timestamp when the resource was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Optional. An arbitrary user-provided name for the Application resource. Cannot exceed 64 characters.
+	// Optional. An arbitrary user-provided name for the Application resource.
+	// Cannot exceed 64 characters.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// Required. Endpoint matchers associated with an application.
 	// A combination of hostname and ports as endpoint matcher is used to match
@@ -171,13 +172,16 @@ type SecurityGatewayApplication struct {
 	// Structure is documented below.
 	EndpointMatchers SecurityGatewayApplicationEndpointMatcherArrayOutput `pulumi:"endpointMatchers"`
 	// Identifier. Name of the resource.
-	Name    pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// ID of the Security Gateway resource this belongs to.
 	SecurityGatewayId pulumi.StringOutput `pulumi:"securityGatewayId"`
 	// Output only. Timestamp when the resource was last modified.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Optional. List of which upstream resource(s) to forward traffic to.
+	// Structure is documented below.
 	Upstreams SecurityGatewayApplicationUpstreamArrayOutput `pulumi:"upstreams"`
 }
 
@@ -227,7 +231,8 @@ type securityGatewayApplicationState struct {
 	ApplicationId *string `pulumi:"applicationId"`
 	// Output only. Timestamp when the resource was created.
 	CreateTime *string `pulumi:"createTime"`
-	// Optional. An arbitrary user-provided name for the Application resource. Cannot exceed 64 characters.
+	// Optional. An arbitrary user-provided name for the Application resource.
+	// Cannot exceed 64 characters.
 	DisplayName *string `pulumi:"displayName"`
 	// Required. Endpoint matchers associated with an application.
 	// A combination of hostname and ports as endpoint matcher is used to match
@@ -243,13 +248,16 @@ type securityGatewayApplicationState struct {
 	// Structure is documented below.
 	EndpointMatchers []SecurityGatewayApplicationEndpointMatcher `pulumi:"endpointMatchers"`
 	// Identifier. Name of the resource.
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// ID of the Security Gateway resource this belongs to.
 	SecurityGatewayId *string `pulumi:"securityGatewayId"`
 	// Output only. Timestamp when the resource was last modified.
 	UpdateTime *string `pulumi:"updateTime"`
 	// Optional. List of which upstream resource(s) to forward traffic to.
+	// Structure is documented below.
 	Upstreams []SecurityGatewayApplicationUpstream `pulumi:"upstreams"`
 }
 
@@ -261,7 +269,8 @@ type SecurityGatewayApplicationState struct {
 	ApplicationId pulumi.StringPtrInput
 	// Output only. Timestamp when the resource was created.
 	CreateTime pulumi.StringPtrInput
-	// Optional. An arbitrary user-provided name for the Application resource. Cannot exceed 64 characters.
+	// Optional. An arbitrary user-provided name for the Application resource.
+	// Cannot exceed 64 characters.
 	DisplayName pulumi.StringPtrInput
 	// Required. Endpoint matchers associated with an application.
 	// A combination of hostname and ports as endpoint matcher is used to match
@@ -277,13 +286,16 @@ type SecurityGatewayApplicationState struct {
 	// Structure is documented below.
 	EndpointMatchers SecurityGatewayApplicationEndpointMatcherArrayInput
 	// Identifier. Name of the resource.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// ID of the Security Gateway resource this belongs to.
 	SecurityGatewayId pulumi.StringPtrInput
 	// Output only. Timestamp when the resource was last modified.
 	UpdateTime pulumi.StringPtrInput
 	// Optional. List of which upstream resource(s) to forward traffic to.
+	// Structure is documented below.
 	Upstreams SecurityGatewayApplicationUpstreamArrayInput
 }
 
@@ -297,7 +309,8 @@ type securityGatewayApplicationArgs struct {
 	// * Must contain between 4-63 characters from `/a-z-/`.
 	// * Must end with a number or letter.
 	ApplicationId string `pulumi:"applicationId"`
-	// Optional. An arbitrary user-provided name for the Application resource. Cannot exceed 64 characters.
+	// Optional. An arbitrary user-provided name for the Application resource.
+	// Cannot exceed 64 characters.
 	DisplayName *string `pulumi:"displayName"`
 	// Required. Endpoint matchers associated with an application.
 	// A combination of hostname and ports as endpoint matcher is used to match
@@ -312,10 +325,13 @@ type securityGatewayApplicationArgs struct {
 	// Hostname and Ports - ("abc.com" and "22"), ("abc.com" and "22,33") etc
 	// Structure is documented below.
 	EndpointMatchers []SecurityGatewayApplicationEndpointMatcher `pulumi:"endpointMatchers"`
-	Project          *string                                     `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// ID of the Security Gateway resource this belongs to.
 	SecurityGatewayId string `pulumi:"securityGatewayId"`
 	// Optional. List of which upstream resource(s) to forward traffic to.
+	// Structure is documented below.
 	Upstreams []SecurityGatewayApplicationUpstream `pulumi:"upstreams"`
 }
 
@@ -326,7 +342,8 @@ type SecurityGatewayApplicationArgs struct {
 	// * Must contain between 4-63 characters from `/a-z-/`.
 	// * Must end with a number or letter.
 	ApplicationId pulumi.StringInput
-	// Optional. An arbitrary user-provided name for the Application resource. Cannot exceed 64 characters.
+	// Optional. An arbitrary user-provided name for the Application resource.
+	// Cannot exceed 64 characters.
 	DisplayName pulumi.StringPtrInput
 	// Required. Endpoint matchers associated with an application.
 	// A combination of hostname and ports as endpoint matcher is used to match
@@ -341,10 +358,13 @@ type SecurityGatewayApplicationArgs struct {
 	// Hostname and Ports - ("abc.com" and "22"), ("abc.com" and "22,33") etc
 	// Structure is documented below.
 	EndpointMatchers SecurityGatewayApplicationEndpointMatcherArrayInput
-	Project          pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// ID of the Security Gateway resource this belongs to.
 	SecurityGatewayId pulumi.StringInput
 	// Optional. List of which upstream resource(s) to forward traffic to.
+	// Structure is documented below.
 	Upstreams SecurityGatewayApplicationUpstreamArrayInput
 }
 
@@ -448,7 +468,8 @@ func (o SecurityGatewayApplicationOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityGatewayApplication) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Optional. An arbitrary user-provided name for the Application resource. Cannot exceed 64 characters.
+// Optional. An arbitrary user-provided name for the Application resource.
+// Cannot exceed 64 characters.
 func (o SecurityGatewayApplicationOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityGatewayApplication) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
@@ -476,6 +497,8 @@ func (o SecurityGatewayApplicationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityGatewayApplication) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o SecurityGatewayApplicationOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityGatewayApplication) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -491,6 +514,7 @@ func (o SecurityGatewayApplicationOutput) UpdateTime() pulumi.StringOutput {
 }
 
 // Optional. List of which upstream resource(s) to forward traffic to.
+// Structure is documented below.
 func (o SecurityGatewayApplicationOutput) Upstreams() SecurityGatewayApplicationUpstreamArrayOutput {
 	return o.ApplyT(func(v *SecurityGatewayApplication) SecurityGatewayApplicationUpstreamArrayOutput { return v.Upstreams }).(SecurityGatewayApplicationUpstreamArrayOutput)
 }

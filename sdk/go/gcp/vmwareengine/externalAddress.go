@@ -115,8 +115,6 @@ type ExternalAddress struct {
 	// The internal IP address of a workload VM.
 	InternalIp pulumi.StringOutput `pulumi:"internalIp"`
 	// The ID of the external IP Address.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The resource name of the private cloud to create a new external address in.
 	// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
@@ -179,8 +177,6 @@ type externalAddressState struct {
 	// The internal IP address of a workload VM.
 	InternalIp *string `pulumi:"internalIp"`
 	// The ID of the external IP Address.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The resource name of the private cloud to create a new external address in.
 	// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
@@ -208,8 +204,6 @@ type ExternalAddressState struct {
 	// The internal IP address of a workload VM.
 	InternalIp pulumi.StringPtrInput
 	// The ID of the external IP Address.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The resource name of the private cloud to create a new external address in.
 	// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
@@ -235,8 +229,6 @@ type externalAddressArgs struct {
 	// The internal IP address of a workload VM.
 	InternalIp string `pulumi:"internalIp"`
 	// The ID of the external IP Address.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The resource name of the private cloud to create a new external address in.
 	// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
@@ -251,8 +243,6 @@ type ExternalAddressArgs struct {
 	// The internal IP address of a workload VM.
 	InternalIp pulumi.StringInput
 	// The ID of the external IP Address.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The resource name of the private cloud to create a new external address in.
 	// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
@@ -370,8 +360,6 @@ func (o ExternalAddressOutput) InternalIp() pulumi.StringOutput {
 }
 
 // The ID of the external IP Address.
-//
-// ***
 func (o ExternalAddressOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExternalAddress) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

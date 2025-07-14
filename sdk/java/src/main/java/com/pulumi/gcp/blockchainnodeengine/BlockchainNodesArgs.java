@@ -21,16 +21,12 @@ public final class BlockchainNodesArgs extends com.pulumi.resources.ResourceArgs
     /**
      * ID of the requesting object.
      * 
-     * ***
-     * 
      */
     @Import(name="blockchainNodeId", required=true)
     private Output<String> blockchainNodeId;
 
     /**
      * @return ID of the requesting object.
-     * 
-     * ***
      * 
      */
     public Output<String> blockchainNodeId() {
@@ -156,8 +152,6 @@ public final class BlockchainNodesArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param blockchainNodeId ID of the requesting object.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -168,8 +162,6 @@ public final class BlockchainNodesArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param blockchainNodeId ID of the requesting object.
-         * 
-         * ***
          * 
          * @return builder
          * 

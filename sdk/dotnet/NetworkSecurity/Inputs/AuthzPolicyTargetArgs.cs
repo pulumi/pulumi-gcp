@@ -25,8 +25,6 @@ namespace Pulumi.Gcp.NetworkSecurity.Inputs
 
         /// <summary>
         /// A list of references to the Forwarding Rules on which this policy will be applied.
-        /// 
-        /// - - -
         /// </summary>
         public InputList<string> Resources
         {

@@ -385,54 +385,52 @@ public class TcpRoute extends com.pulumi.resources.CustomResource {
         return this.effectiveLabels;
     }
     /**
-     * Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests
-     * served by the gateway. Each gateway reference should match the pattern:
-     * projects/*&#47;locations/global/gateways/&lt;gateway_name&gt;
+     * Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway.
+     * Each gateway reference should match the pattern: projects/*&#47;locations/global/gateways/&lt;gateway_name&gt;
      * 
      */
     @Export(name="gateways", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> gateways;
 
     /**
-     * @return Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests
-     * served by the gateway. Each gateway reference should match the pattern:
-     * projects/*&#47;locations/global/gateways/&lt;gateway_name&gt;
+     * @return Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway.
+     * Each gateway reference should match the pattern: projects/*&#47;locations/global/gateways/&lt;gateway_name&gt;
      * 
      */
     public Output<Optional<List<String>>> gateways() {
         return Codegen.optional(this.gateways);
     }
     /**
-     * Set of label tags associated with the TcpRoute resource. **Note**: This field is non-authoritative, and will only manage
-     * the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on
-     * the resource.
+     * Set of label tags associated with the TcpRoute resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return Set of label tags associated with the TcpRoute resource. **Note**: This field is non-authoritative, and will only manage
-     * the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on
-     * the resource.
+     * @return Set of label tags associated with the TcpRoute resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
         return Codegen.optional(this.labels);
     }
     /**
-     * Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served
-     * by the mesh. Each mesh reference should match the pattern: projects/*&#47;locations/global/meshes/&lt;mesh_name&gt; The attached
-     * Mesh should be of a type SIDECAR
+     * Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served by the mesh.
+     * Each mesh reference should match the pattern: projects/*&#47;locations/global/meshes/&lt;mesh_name&gt;
+     * The attached Mesh should be of a type SIDECAR
      * 
      */
     @Export(name="meshes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> meshes;
 
     /**
-     * @return Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served
-     * by the mesh. Each mesh reference should match the pattern: projects/*&#47;locations/global/meshes/&lt;mesh_name&gt; The attached
-     * Mesh should be of a type SIDECAR
+     * @return Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served by the mesh.
+     * Each mesh reference should match the pattern: projects/*&#47;locations/global/meshes/&lt;mesh_name&gt;
+     * The attached Mesh should be of a type SIDECAR
      * 
      */
     public Output<Optional<List<String>>> meshes() {
@@ -452,9 +450,19 @@ public class TcpRoute extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }

@@ -159,9 +159,6 @@ export class AppHostingDefaultDomain extends pulumi.CustomResource {
     public readonly disabled!: pulumi.Output<boolean>;
     /**
      * Id of the domain. For default domain, it should be {{backend}}--{{project_id}}.{{location}}.hosted.app
-     *
-     *
-     * - - -
      */
     public readonly domainId!: pulumi.Output<string>;
     /**
@@ -260,9 +257,6 @@ export interface AppHostingDefaultDomainState {
     disabled?: pulumi.Input<boolean>;
     /**
      * Id of the domain. For default domain, it should be {{backend}}--{{project_id}}.{{location}}.hosted.app
-     *
-     *
-     * - - -
      */
     domainId?: pulumi.Input<string>;
     /**
@@ -308,9 +302,6 @@ export interface AppHostingDefaultDomainArgs {
     disabled?: pulumi.Input<boolean>;
     /**
      * Id of the domain. For default domain, it should be {{backend}}--{{project_id}}.{{location}}.hosted.app
-     *
-     *
-     * - - -
      */
     domainId: pulumi.Input<string>;
     /**

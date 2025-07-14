@@ -230,9 +230,6 @@ export class SecurityPolicyRule extends pulumi.CustomResource {
     public readonly redirectOptions!: pulumi.Output<outputs.compute.SecurityPolicyRuleRedirectOptions | undefined>;
     /**
      * The name of the security policy this rule belongs to.
-     *
-     *
-     * - - -
      */
     public readonly securityPolicy!: pulumi.Output<string>;
 
@@ -349,9 +346,6 @@ export interface SecurityPolicyRuleState {
     redirectOptions?: pulumi.Input<inputs.compute.SecurityPolicyRuleRedirectOptions>;
     /**
      * The name of the security policy this rule belongs to.
-     *
-     *
-     * - - -
      */
     securityPolicy?: pulumi.Input<string>;
 }
@@ -417,9 +411,6 @@ export interface SecurityPolicyRuleArgs {
     redirectOptions?: pulumi.Input<inputs.compute.SecurityPolicyRuleRedirectOptions>;
     /**
      * The name of the security policy this rule belongs to.
-     *
-     *
-     * - - -
      */
     securityPolicy: pulumi.Input<string>;
 }

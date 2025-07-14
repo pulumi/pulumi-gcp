@@ -763,8 +763,6 @@ if not MYPY:
         project_id: pulumi.Input[builtins.str]
         """
         The ID of the project containing this dataset.
-
-        - - -
         """
 elif False:
     ListingSubscriptionDestinationDatasetDatasetReferenceArgsDict: TypeAlias = Mapping[str, Any]
@@ -777,8 +775,6 @@ class ListingSubscriptionDestinationDatasetDatasetReferenceArgs:
         """
         :param pulumi.Input[builtins.str] dataset_id: A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
         :param pulumi.Input[builtins.str] project_id: The ID of the project containing this dataset.
-               
-               - - -
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "project_id", project_id)
@@ -800,8 +796,6 @@ class ListingSubscriptionDestinationDatasetDatasetReferenceArgs:
     def project_id(self) -> pulumi.Input[builtins.str]:
         """
         The ID of the project containing this dataset.
-
-        - - -
         """
         return pulumi.get(self, "project_id")
 

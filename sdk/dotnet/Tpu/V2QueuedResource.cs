@@ -142,9 +142,6 @@ namespace Pulumi.Gcp.Tpu
     {
         /// <summary>
         /// The immutable name of the Queued Resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -217,9 +214,6 @@ namespace Pulumi.Gcp.Tpu
     {
         /// <summary>
         /// The immutable name of the Queued Resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -254,9 +248,6 @@ namespace Pulumi.Gcp.Tpu
     {
         /// <summary>
         /// The immutable name of the Queued Resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

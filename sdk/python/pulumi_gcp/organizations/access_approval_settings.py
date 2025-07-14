@@ -34,11 +34,11 @@ class AccessApprovalSettingsArgs:
                A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.
                Structure is documented below.
         :param pulumi.Input[builtins.str] organization_id: ID of the organization of the access approval settings.
-        :param pulumi.Input[builtins.str] active_key_version: The asymmetric crypto key version to use for signing approval requests. Empty active_key_version indicates that a
-               Google-managed key should be used for signing.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] notification_emails: A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
-               a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
-               addresses are allowed.
+        :param pulumi.Input[builtins.str] active_key_version: The asymmetric crypto key version to use for signing approval requests.
+               Empty active_key_version indicates that a Google-managed key should be used for signing.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] notification_emails: A list of email addresses to which notifications relating to approval requests should be sent.
+               Notifications relating to a resource will be sent to all emails in the settings of ancestor
+               resources of that resource. A maximum of 50 email addresses are allowed.
         """
         pulumi.set(__self__, "enrolled_services", enrolled_services)
         pulumi.set(__self__, "organization_id", organization_id)
@@ -79,8 +79,8 @@ class AccessApprovalSettingsArgs:
     @pulumi.getter(name="activeKeyVersion")
     def active_key_version(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The asymmetric crypto key version to use for signing approval requests. Empty active_key_version indicates that a
-        Google-managed key should be used for signing.
+        The asymmetric crypto key version to use for signing approval requests.
+        Empty active_key_version indicates that a Google-managed key should be used for signing.
         """
         return pulumi.get(self, "active_key_version")
 
@@ -92,9 +92,9 @@ class AccessApprovalSettingsArgs:
     @pulumi.getter(name="notificationEmails")
     def notification_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
-        a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
-        addresses are allowed.
+        A list of email addresses to which notifications relating to approval requests should be sent.
+        Notifications relating to a resource will be sent to all emails in the settings of ancestor
+        resources of that resource. A maximum of 50 email addresses are allowed.
         """
         return pulumi.get(self, "notification_emails")
 
@@ -116,8 +116,8 @@ class _AccessApprovalSettingsState:
                  organization_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessApprovalSettings resources.
-        :param pulumi.Input[builtins.str] active_key_version: The asymmetric crypto key version to use for signing approval requests. Empty active_key_version indicates that a
-               Google-managed key should be used for signing.
+        :param pulumi.Input[builtins.str] active_key_version: The asymmetric crypto key version to use for signing approval requests.
+               Empty active_key_version indicates that a Google-managed key should be used for signing.
         :param pulumi.Input[builtins.bool] ancestor_has_active_key_version: This field will always be unset for the organization since organizations do not have ancestors.
         :param pulumi.Input[builtins.bool] enrolled_ancestor: This field will always be unset for the organization since organizations do not have ancestors.
         :param pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArgs']]] enrolled_services: A list of Google Cloud Services for which the given resource has Access Approval enrolled.
@@ -129,9 +129,9 @@ class _AccessApprovalSettingsState:
                configured on this Organization (e.g. it doesn't exist or the Access Approval service account doesn't have the
                correct permissions on it, etc.).
         :param pulumi.Input[builtins.str] name: The resource name of the settings. Format is "organizations/{organization_id}/accessApprovalSettings"
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] notification_emails: A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
-               a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
-               addresses are allowed.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] notification_emails: A list of email addresses to which notifications relating to approval requests should be sent.
+               Notifications relating to a resource will be sent to all emails in the settings of ancestor
+               resources of that resource. A maximum of 50 email addresses are allowed.
         :param pulumi.Input[builtins.str] organization_id: ID of the organization of the access approval settings.
         """
         if active_key_version is not None:
@@ -155,8 +155,8 @@ class _AccessApprovalSettingsState:
     @pulumi.getter(name="activeKeyVersion")
     def active_key_version(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The asymmetric crypto key version to use for signing approval requests. Empty active_key_version indicates that a
-        Google-managed key should be used for signing.
+        The asymmetric crypto key version to use for signing approval requests.
+        Empty active_key_version indicates that a Google-managed key should be used for signing.
         """
         return pulumi.get(self, "active_key_version")
 
@@ -234,9 +234,9 @@ class _AccessApprovalSettingsState:
     @pulumi.getter(name="notificationEmails")
     def notification_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
-        a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
-        addresses are allowed.
+        A list of email addresses to which notifications relating to approval requests should be sent.
+        Notifications relating to a resource will be sent to all emails in the settings of ancestor
+        resources of that resource. A maximum of 50 email addresses are allowed.
         """
         return pulumi.get(self, "notification_emails")
 
@@ -356,16 +356,16 @@ class AccessApprovalSettings(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] active_key_version: The asymmetric crypto key version to use for signing approval requests. Empty active_key_version indicates that a
-               Google-managed key should be used for signing.
+        :param pulumi.Input[builtins.str] active_key_version: The asymmetric crypto key version to use for signing approval requests.
+               Empty active_key_version indicates that a Google-managed key should be used for signing.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AccessApprovalSettingsEnrolledServiceArgs', 'AccessApprovalSettingsEnrolledServiceArgsDict']]]] enrolled_services: A list of Google Cloud Services for which the given resource has Access Approval enrolled.
                Access requests for the resource given by name against any of these services contained here will be required
                to have explicit approval. Enrollment can be done for individual services.
                A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] notification_emails: A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
-               a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
-               addresses are allowed.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] notification_emails: A list of email addresses to which notifications relating to approval requests should be sent.
+               Notifications relating to a resource will be sent to all emails in the settings of ancestor
+               resources of that resource. A maximum of 50 email addresses are allowed.
         :param pulumi.Input[builtins.str] organization_id: ID of the organization of the access approval settings.
         """
         ...
@@ -525,8 +525,8 @@ class AccessApprovalSettings(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] active_key_version: The asymmetric crypto key version to use for signing approval requests. Empty active_key_version indicates that a
-               Google-managed key should be used for signing.
+        :param pulumi.Input[builtins.str] active_key_version: The asymmetric crypto key version to use for signing approval requests.
+               Empty active_key_version indicates that a Google-managed key should be used for signing.
         :param pulumi.Input[builtins.bool] ancestor_has_active_key_version: This field will always be unset for the organization since organizations do not have ancestors.
         :param pulumi.Input[builtins.bool] enrolled_ancestor: This field will always be unset for the organization since organizations do not have ancestors.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AccessApprovalSettingsEnrolledServiceArgs', 'AccessApprovalSettingsEnrolledServiceArgsDict']]]] enrolled_services: A list of Google Cloud Services for which the given resource has Access Approval enrolled.
@@ -538,9 +538,9 @@ class AccessApprovalSettings(pulumi.CustomResource):
                configured on this Organization (e.g. it doesn't exist or the Access Approval service account doesn't have the
                correct permissions on it, etc.).
         :param pulumi.Input[builtins.str] name: The resource name of the settings. Format is "organizations/{organization_id}/accessApprovalSettings"
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] notification_emails: A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
-               a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
-               addresses are allowed.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] notification_emails: A list of email addresses to which notifications relating to approval requests should be sent.
+               Notifications relating to a resource will be sent to all emails in the settings of ancestor
+               resources of that resource. A maximum of 50 email addresses are allowed.
         :param pulumi.Input[builtins.str] organization_id: ID of the organization of the access approval settings.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -561,8 +561,8 @@ class AccessApprovalSettings(pulumi.CustomResource):
     @pulumi.getter(name="activeKeyVersion")
     def active_key_version(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The asymmetric crypto key version to use for signing approval requests. Empty active_key_version indicates that a
-        Google-managed key should be used for signing.
+        The asymmetric crypto key version to use for signing approval requests.
+        Empty active_key_version indicates that a Google-managed key should be used for signing.
         """
         return pulumi.get(self, "active_key_version")
 
@@ -616,9 +616,9 @@ class AccessApprovalSettings(pulumi.CustomResource):
     @pulumi.getter(name="notificationEmails")
     def notification_emails(self) -> pulumi.Output[Sequence[builtins.str]]:
         """
-        A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
-        a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
-        addresses are allowed.
+        A list of email addresses to which notifications relating to approval requests should be sent.
+        Notifications relating to a resource will be sent to all emails in the settings of ancestor
+        resources of that resource. A maximum of 50 email addresses are allowed.
         """
         return pulumi.get(self, "notification_emails")
 

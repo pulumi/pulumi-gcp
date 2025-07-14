@@ -342,8 +342,6 @@ class ApplicationScope(dict):
                REGIONAL
                GLOBAL
                Possible values are: `REGIONAL`, `GLOBAL`.
-               
-               - - -
         """
         pulumi.set(__self__, "type", type)
 
@@ -356,8 +354,6 @@ class ApplicationScope(dict):
         REGIONAL
         GLOBAL
         Possible values are: `REGIONAL`, `GLOBAL`.
-
-        - - -
         """
         return pulumi.get(self, "type")
 

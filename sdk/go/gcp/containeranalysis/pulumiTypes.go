@@ -185,8 +185,6 @@ func (o NoteAttestationAuthorityPtrOutput) Hint() NoteAttestationAuthorityHintPt
 type NoteAttestationAuthorityHint struct {
 	// The human readable name of this Attestation Authority, for
 	// example "qa".
-	//
-	// ***
 	HumanReadableName string `pulumi:"humanReadableName"`
 }
 
@@ -204,8 +202,6 @@ type NoteAttestationAuthorityHintInput interface {
 type NoteAttestationAuthorityHintArgs struct {
 	// The human readable name of this Attestation Authority, for
 	// example "qa".
-	//
-	// ***
 	HumanReadableName pulumi.StringInput `pulumi:"humanReadableName"`
 }
 
@@ -288,8 +284,6 @@ func (o NoteAttestationAuthorityHintOutput) ToNoteAttestationAuthorityHintPtrOut
 
 // The human readable name of this Attestation Authority, for
 // example "qa".
-//
-// ***
 func (o NoteAttestationAuthorityHintOutput) HumanReadableName() pulumi.StringOutput {
 	return o.ApplyT(func(v NoteAttestationAuthorityHint) string { return v.HumanReadableName }).(pulumi.StringOutput)
 }
@@ -320,8 +314,6 @@ func (o NoteAttestationAuthorityHintPtrOutput) Elem() NoteAttestationAuthorityHi
 
 // The human readable name of this Attestation Authority, for
 // example "qa".
-//
-// ***
 func (o NoteAttestationAuthorityHintPtrOutput) HumanReadableName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NoteAttestationAuthorityHint) *string {
 		if v == nil {
@@ -954,8 +946,6 @@ type OccurenceAttestationSignature struct {
 	// * `openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA`
 	// * RFC6920 digest-named SubjectPublicKeyInfo (digest of the DER serialization):
 	// * "ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU"
-	//
-	// ***
 	PublicKeyId string `pulumi:"publicKeyId"`
 	// The content of the signature, an opaque bytestring.
 	// The payload that this signature verifies MUST be
@@ -989,8 +979,6 @@ type OccurenceAttestationSignatureArgs struct {
 	// * `openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA`
 	// * RFC6920 digest-named SubjectPublicKeyInfo (digest of the DER serialization):
 	// * "ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU"
-	//
-	// ***
 	PublicKeyId pulumi.StringInput `pulumi:"publicKeyId"`
 	// The content of the signature, an opaque bytestring.
 	// The payload that this signature verifies MUST be
@@ -1063,8 +1051,6 @@ func (o OccurenceAttestationSignatureOutput) ToOccurenceAttestationSignatureOutp
 //   - `openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA`
 //   - RFC6920 digest-named SubjectPublicKeyInfo (digest of the DER serialization):
 //   - "ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU"
-//
-// ***
 func (o OccurenceAttestationSignatureOutput) PublicKeyId() pulumi.StringOutput {
 	return o.ApplyT(func(v OccurenceAttestationSignature) string { return v.PublicKeyId }).(pulumi.StringOutput)
 }

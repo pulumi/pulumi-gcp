@@ -277,8 +277,6 @@ type AppHostingTraffic struct {
 	pulumi.CustomResourceState
 
 	// Id of the backend that this Traffic config applies to
-	//
-	// ***
 	Backend pulumi.StringOutput `pulumi:"backend"`
 	// Time at which the backend was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -351,8 +349,6 @@ func GetAppHostingTraffic(ctx *pulumi.Context,
 // Input properties used for looking up and filtering AppHostingTraffic resources.
 type appHostingTrafficState struct {
 	// Id of the backend that this Traffic config applies to
-	//
-	// ***
 	Backend *string `pulumi:"backend"`
 	// Time at which the backend was created.
 	CreateTime *string `pulumi:"createTime"`
@@ -390,8 +386,6 @@ type appHostingTrafficState struct {
 
 type AppHostingTrafficState struct {
 	// Id of the backend that this Traffic config applies to
-	//
-	// ***
 	Backend pulumi.StringPtrInput
 	// Time at which the backend was created.
 	CreateTime pulumi.StringPtrInput
@@ -433,8 +427,6 @@ func (AppHostingTrafficState) ElementType() reflect.Type {
 
 type appHostingTrafficArgs struct {
 	// Id of the backend that this Traffic config applies to
-	//
-	// ***
 	Backend string `pulumi:"backend"`
 	// The location the Backend that this Traffic config applies to
 	Location string `pulumi:"location"`
@@ -454,8 +446,6 @@ type appHostingTrafficArgs struct {
 // The set of arguments for constructing a AppHostingTraffic resource.
 type AppHostingTrafficArgs struct {
 	// Id of the backend that this Traffic config applies to
-	//
-	// ***
 	Backend pulumi.StringInput
 	// The location the Backend that this Traffic config applies to
 	Location pulumi.StringInput
@@ -560,8 +550,6 @@ func (o AppHostingTrafficOutput) ToAppHostingTrafficOutputWithContext(ctx contex
 }
 
 // Id of the backend that this Traffic config applies to
-//
-// ***
 func (o AppHostingTrafficOutput) Backend() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppHostingTraffic) pulumi.StringOutput { return v.Backend }).(pulumi.StringOutput)
 }

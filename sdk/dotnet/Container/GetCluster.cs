@@ -173,6 +173,7 @@ namespace Pulumi.Gcp.Container
     {
         public readonly ImmutableArray<Outputs.GetClusterAddonsConfigResult> AddonsConfigs;
         public readonly bool AllowNetAdmin;
+        public readonly ImmutableArray<Outputs.GetClusterAnonymousAuthenticationConfigResult> AnonymousAuthenticationConfigs;
         public readonly ImmutableArray<Outputs.GetClusterAuthenticatorGroupsConfigResult> AuthenticatorGroupsConfigs;
         public readonly ImmutableArray<Outputs.GetClusterBinaryAuthorizationResult> BinaryAuthorizations;
         public readonly ImmutableArray<Outputs.GetClusterClusterAutoscalingResult> ClusterAutoscalings;
@@ -268,6 +269,8 @@ namespace Pulumi.Gcp.Container
             ImmutableArray<Outputs.GetClusterAddonsConfigResult> addonsConfigs,
 
             bool allowNetAdmin,
+
+            ImmutableArray<Outputs.GetClusterAnonymousAuthenticationConfigResult> anonymousAuthenticationConfigs,
 
             ImmutableArray<Outputs.GetClusterAuthenticatorGroupsConfigResult> authenticatorGroupsConfigs,
 
@@ -443,6 +446,7 @@ namespace Pulumi.Gcp.Container
         {
             AddonsConfigs = addonsConfigs;
             AllowNetAdmin = allowNetAdmin;
+            AnonymousAuthenticationConfigs = anonymousAuthenticationConfigs;
             AuthenticatorGroupsConfigs = authenticatorGroupsConfigs;
             BinaryAuthorizations = binaryAuthorizations;
             ClusterAutoscalings = clusterAutoscalings;

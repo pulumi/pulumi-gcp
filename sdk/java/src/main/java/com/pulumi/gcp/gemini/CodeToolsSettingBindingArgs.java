@@ -103,16 +103,12 @@ public final class CodeToolsSettingBindingArgs extends com.pulumi.resources.Reso
     /**
      * Id of the setting binding.
      * 
-     * ***
-     * 
      */
     @Import(name="settingBindingId", required=true)
     private Output<String> settingBindingId;
 
     /**
      * @return Id of the setting binding.
-     * 
-     * ***
      * 
      */
     public Output<String> settingBindingId() {
@@ -280,8 +276,6 @@ public final class CodeToolsSettingBindingArgs extends com.pulumi.resources.Reso
         /**
          * @param settingBindingId Id of the setting binding.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -292,8 +286,6 @@ public final class CodeToolsSettingBindingArgs extends com.pulumi.resources.Reso
 
         /**
          * @param settingBindingId Id of the setting binding.
-         * 
-         * ***
          * 
          * @return builder
          * 

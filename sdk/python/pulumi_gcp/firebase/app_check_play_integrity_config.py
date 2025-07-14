@@ -27,9 +27,6 @@ class AppCheckPlayIntegrityConfigArgs:
         The set of arguments for constructing a AppCheckPlayIntegrityConfig resource.
         :param pulumi.Input[builtins.str] app_id: The ID of an
                [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id).
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] token_ttl: Specifies the duration for which App Check tokens exchanged from Play Integrity artifacts will be valid.
@@ -48,9 +45,6 @@ class AppCheckPlayIntegrityConfigArgs:
         """
         The ID of an
         [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id).
-
-
-        - - -
         """
         return pulumi.get(self, "app_id")
 
@@ -97,9 +91,6 @@ class _AppCheckPlayIntegrityConfigState:
         Input properties used for looking up and filtering AppCheckPlayIntegrityConfig resources.
         :param pulumi.Input[builtins.str] app_id: The ID of an
                [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id).
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The relative resource name of the Play Integrity configuration object
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -122,9 +113,6 @@ class _AppCheckPlayIntegrityConfigState:
         """
         The ID of an
         [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id).
-
-
-        - - -
         """
         return pulumi.get(self, "app_id")
 
@@ -278,9 +266,6 @@ class AppCheckPlayIntegrityConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] app_id: The ID of an
                [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id).
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] token_ttl: Specifies the duration for which App Check tokens exchanged from Play Integrity artifacts will be valid.
@@ -441,9 +426,6 @@ class AppCheckPlayIntegrityConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] app_id: The ID of an
                [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id).
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The relative resource name of the Play Integrity configuration object
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -467,9 +449,6 @@ class AppCheckPlayIntegrityConfig(pulumi.CustomResource):
         """
         The ID of an
         [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id).
-
-
-        - - -
         """
         return pulumi.get(self, "app_id")
 

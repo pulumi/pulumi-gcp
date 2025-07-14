@@ -125,16 +125,12 @@ public class Capability extends com.pulumi.resources.CustomResource {
     /**
      * Capability Value.
      * 
-     * ***
-     * 
      */
     @Export(name="value", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> value;
 
     /**
      * @return Capability Value.
-     * 
-     * ***
      * 
      */
     public Output<Boolean> value() {

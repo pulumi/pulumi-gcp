@@ -34,9 +34,6 @@ class GdcServiceInstanceArgs:
         The set of arguments for constructing a GdcServiceInstance resource.
         :param pulumi.Input[builtins.str] location: Location of the resource.
         :param pulumi.Input[builtins.str] service_instance_id: Id of the service instance.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] display_name: User-provided human-readable name to be used in user interfaces.
         :param pulumi.Input['GdcServiceInstanceGdceClusterArgs'] gdce_cluster: Gdce cluster information.
                Structure is documented below.
@@ -80,9 +77,6 @@ class GdcServiceInstanceArgs:
     def service_instance_id(self) -> pulumi.Input[builtins.str]:
         """
         Id of the service instance.
-
-
-        - - -
         """
         return pulumi.get(self, "service_instance_id")
 
@@ -219,9 +213,6 @@ class _GdcServiceInstanceState:
                * `FAILED`
         :param pulumi.Input[builtins.str] service_account: Requested service account to associate with ServiceInstance.
         :param pulumi.Input[builtins.str] service_instance_id: Id of the service instance.
-               
-               
-               - - -
         :param pulumi.Input['GdcServiceInstanceSparkServiceInstanceConfigArgs'] spark_service_instance_config: Spark-specific service instance configuration.
         :param pulumi.Input[builtins.str] state: The current state. Possible values:
                * `CREATING`
@@ -451,9 +442,6 @@ class _GdcServiceInstanceState:
     def service_instance_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Id of the service instance.
-
-
-        - - -
         """
         return pulumi.get(self, "service_instance_id")
 
@@ -614,9 +602,6 @@ class GdcServiceInstance(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] service_account: Requested service account to associate with ServiceInstance.
         :param pulumi.Input[builtins.str] service_instance_id: Id of the service instance.
-               
-               
-               - - -
         :param pulumi.Input[Union['GdcServiceInstanceSparkServiceInstanceConfigArgs', 'GdcServiceInstanceSparkServiceInstanceConfigArgsDict']] spark_service_instance_config: Spark-specific service instance configuration.
         """
         ...
@@ -801,9 +786,6 @@ class GdcServiceInstance(pulumi.CustomResource):
                * `FAILED`
         :param pulumi.Input[builtins.str] service_account: Requested service account to associate with ServiceInstance.
         :param pulumi.Input[builtins.str] service_instance_id: Id of the service instance.
-               
-               
-               - - -
         :param pulumi.Input[Union['GdcServiceInstanceSparkServiceInstanceConfigArgs', 'GdcServiceInstanceSparkServiceInstanceConfigArgsDict']] spark_service_instance_config: Spark-specific service instance configuration.
         :param pulumi.Input[builtins.str] state: The current state. Possible values:
                * `CREATING`
@@ -967,9 +949,6 @@ class GdcServiceInstance(pulumi.CustomResource):
     def service_instance_id(self) -> pulumi.Output[builtins.str]:
         """
         Id of the service instance.
-
-
-        - - -
         """
         return pulumi.get(self, "service_instance_id")
 

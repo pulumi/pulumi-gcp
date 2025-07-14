@@ -53,16 +53,12 @@ public final class UrlListState extends com.pulumi.resources.ResourceArgs {
     /**
      * The location of the url lists.
      * 
-     * ***
-     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
      * @return The location of the url lists.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> location() {
@@ -216,8 +212,6 @@ public final class UrlListState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param location The location of the url lists.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -228,8 +222,6 @@ public final class UrlListState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location The location of the url lists.
-         * 
-         * ***
          * 
          * @return builder
          * 

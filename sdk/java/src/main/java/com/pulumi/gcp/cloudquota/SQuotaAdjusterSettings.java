@@ -147,16 +147,12 @@ public class SQuotaAdjusterSettings extends com.pulumi.resources.CustomResource 
     /**
      * The parent of the quota preference. Allowed parent format is &#34;projects/[project-id / number]&#34;.
      * 
-     * ***
-     * 
      */
     @Export(name="parent", refs={String.class}, tree="[0]")
     private Output<String> parent;
 
     /**
      * @return The parent of the quota preference. Allowed parent format is &#34;projects/[project-id / number]&#34;.
-     * 
-     * ***
      * 
      */
     public Output<String> parent() {

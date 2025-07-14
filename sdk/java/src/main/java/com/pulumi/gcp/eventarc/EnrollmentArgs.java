@@ -89,8 +89,6 @@ public final class EnrollmentArgs extends com.pulumi.resources.ResourceArgs {
      * The user-provided ID to be assigned to the Enrollment. It should match the
      * format `^a-z?$`.
      * 
-     * ***
-     * 
      */
     @Import(name="enrollmentId", required=true)
     private Output<String> enrollmentId;
@@ -98,8 +96,6 @@ public final class EnrollmentArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The user-provided ID to be assigned to the Enrollment. It should match the
      * format `^a-z?$`.
-     * 
-     * ***
      * 
      */
     public Output<String> enrollmentId() {
@@ -304,8 +300,6 @@ public final class EnrollmentArgs extends com.pulumi.resources.ResourceArgs {
          * @param enrollmentId The user-provided ID to be assigned to the Enrollment. It should match the
          * format `^a-z?$`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -317,8 +311,6 @@ public final class EnrollmentArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param enrollmentId The user-provided ID to be assigned to the Enrollment. It should match the
          * format `^a-z?$`.
-         * 
-         * ***
          * 
          * @return builder
          * 

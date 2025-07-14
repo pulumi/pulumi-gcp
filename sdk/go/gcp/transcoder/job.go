@@ -1042,8 +1042,6 @@ type Job struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location of the transcoding job resource.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the job.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -1115,8 +1113,6 @@ type jobState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location of the transcoding job resource.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// The resource name of the job.
 	Name *string `pulumi:"name"`
@@ -1151,8 +1147,6 @@ type JobState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location of the transcoding job resource.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// The resource name of the job.
 	Name pulumi.StringPtrInput
@@ -1185,8 +1179,6 @@ type jobArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location of the transcoding job resource.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -1207,8 +1199,6 @@ type JobArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location of the transcoding job resource.
-	//
-	// ***
 	Location pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -1335,8 +1325,6 @@ func (o JobOutput) Labels() pulumi.StringMapOutput {
 }
 
 // The location of the transcoding job resource.
-//
-// ***
 func (o JobOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

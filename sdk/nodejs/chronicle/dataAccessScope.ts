@@ -218,9 +218,6 @@ export class DataAccessScope extends pulumi.CustomResource {
      * Required. The user provided scope id which will become the last part of the name
      * of the scope resource.
      * Needs to be compliant with https://google.aip.dev/122
-     *
-     *
-     * - - -
      */
     public readonly dataAccessScopeId!: pulumi.Output<string>;
     /**
@@ -363,9 +360,6 @@ export interface DataAccessScopeState {
      * Required. The user provided scope id which will become the last part of the name
      * of the scope resource.
      * Needs to be compliant with https://google.aip.dev/122
-     *
-     *
-     * - - -
      */
     dataAccessScopeId?: pulumi.Input<string>;
     /**
@@ -443,9 +437,6 @@ export interface DataAccessScopeArgs {
      * Required. The user provided scope id which will become the last part of the name
      * of the scope resource.
      * Needs to be compliant with https://google.aip.dev/122
-     *
-     *
-     * - - -
      */
     dataAccessScopeId: pulumi.Input<string>;
     /**

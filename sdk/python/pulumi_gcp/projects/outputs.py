@@ -82,8 +82,6 @@ class AccessApprovalSettingsEnrolledService(dict):
         :param builtins.str enrollment_level: The enrollment level of the service.
                Default value is `BLOCK_ALL`.
                Possible values are: `BLOCK_ALL`.
-               
-               - - -
         """
         pulumi.set(__self__, "cloud_product", cloud_product)
         if enrollment_level is not None:
@@ -114,8 +112,6 @@ class AccessApprovalSettingsEnrolledService(dict):
         The enrollment level of the service.
         Default value is `BLOCK_ALL`.
         Possible values are: `BLOCK_ALL`.
-
-        - - -
         """
         return pulumi.get(self, "enrollment_level")
 

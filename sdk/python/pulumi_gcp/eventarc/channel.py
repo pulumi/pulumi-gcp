@@ -28,9 +28,6 @@ class ChannelArgs:
         """
         The set of arguments for constructing a Channel resource.
         :param pulumi.Input[builtins.str] location: The location for the resource
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] crypto_key_name: Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         :param pulumi.Input[builtins.str] name: The resource name of the channel. Must be unique within the location on the project.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -52,9 +49,6 @@ class ChannelArgs:
     def location(self) -> pulumi.Input[builtins.str]:
         """
         The location for the resource
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -132,9 +126,6 @@ class _ChannelState:
         :param pulumi.Input[builtins.str] create_time: The creation time.
         :param pulumi.Input[builtins.str] crypto_key_name: Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         :param pulumi.Input[builtins.str] location: The location for the resource
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The resource name of the channel. Must be unique within the location on the project.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -208,9 +199,6 @@ class _ChannelState:
     def location(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The location for the resource
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -368,9 +356,6 @@ class Channel(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] crypto_key_name: Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         :param pulumi.Input[builtins.str] location: The location for the resource
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The resource name of the channel. Must be unique within the location on the project.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -504,9 +489,6 @@ class Channel(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] create_time: The creation time.
         :param pulumi.Input[builtins.str] crypto_key_name: Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         :param pulumi.Input[builtins.str] location: The location for the resource
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The resource name of the channel. Must be unique within the location on the project.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -562,9 +544,6 @@ class Channel(pulumi.CustomResource):
     def location(self) -> pulumi.Output[builtins.str]:
         """
         The location for the resource
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

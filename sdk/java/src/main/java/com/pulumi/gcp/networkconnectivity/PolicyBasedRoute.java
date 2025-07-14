@@ -233,6 +233,7 @@ public class PolicyBasedRoute extends com.pulumi.resources.CustomResource {
     }
     /**
      * The interconnect attachments that this policy-based route applies to.
+     * Structure is documented below.
      * 
      */
     @Export(name="interconnectAttachment", refs={PolicyBasedRouteInterconnectAttachment.class}, tree="[0]")
@@ -240,6 +241,7 @@ public class PolicyBasedRoute extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The interconnect attachments that this policy-based route applies to.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<PolicyBasedRouteInterconnectAttachment>> interconnectAttachment() {
@@ -260,16 +262,20 @@ public class PolicyBasedRoute extends com.pulumi.resources.CustomResource {
         return this.kind;
     }
     /**
-     * User-defined labels. **Note**: This field is non-authoritative, and will only manage the labels present in your
-     * configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+     * User-defined labels.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return User-defined labels. **Note**: This field is non-authoritative, and will only manage the labels present in your
-     * configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+     * @return User-defined labels.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -318,40 +324,48 @@ public class PolicyBasedRoute extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.nextHopIlbIp);
     }
     /**
-     * Other routes that will be referenced to determine the next hop of the packet. Possible values: [&#34;DEFAULT_ROUTING&#34;]
+     * Other routes that will be referenced to determine the next hop of the packet.
+     * Possible values are: `DEFAULT_ROUTING`.
      * 
      */
     @Export(name="nextHopOtherRoutes", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> nextHopOtherRoutes;
 
     /**
-     * @return Other routes that will be referenced to determine the next hop of the packet. Possible values: [&#34;DEFAULT_ROUTING&#34;]
+     * @return Other routes that will be referenced to determine the next hop of the packet.
+     * Possible values are: `DEFAULT_ROUTING`.
      * 
      */
     public Output<Optional<String>> nextHopOtherRoutes() {
         return Codegen.optional(this.nextHopOtherRoutes);
     }
     /**
-     * The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching
-     * policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered
-     * priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
+     * The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
      * 
      */
     @Export(name="priority", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> priority;
 
     /**
-     * @return The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching
-     * policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered
-     * priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
+     * @return The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
      * 
      */
     public Output<Optional<Integer>> priority() {
         return Codegen.optional(this.priority);
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }
@@ -387,6 +401,7 @@ public class PolicyBasedRoute extends com.pulumi.resources.CustomResource {
     }
     /**
      * VM instances to which this policy-based route applies to.
+     * Structure is documented below.
      * 
      */
     @Export(name="virtualMachine", refs={PolicyBasedRouteVirtualMachine.class}, tree="[0]")
@@ -394,6 +409,7 @@ public class PolicyBasedRoute extends com.pulumi.resources.CustomResource {
 
     /**
      * @return VM instances to which this policy-based route applies to.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<PolicyBasedRouteVirtualMachine>> virtualMachine() {

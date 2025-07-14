@@ -480,8 +480,6 @@ public class PreventionInspectTemplate extends com.pulumi.resources.CustomResour
      * * `organizations/{{organization_id}}`
      * * `organizations/{{organization_id}}/locations/{{location}}`
      * 
-     * ***
-     * 
      */
     @Export(name="parent", refs={String.class}, tree="[0]")
     private Output<String> parent;
@@ -492,8 +490,6 @@ public class PreventionInspectTemplate extends com.pulumi.resources.CustomResour
      * * `projects/{{project}}/locations/{{location}}`
      * * `organizations/{{organization_id}}`
      * * `organizations/{{organization_id}}/locations/{{location}}`
-     * 
-     * ***
      * 
      */
     public Output<String> parent() {

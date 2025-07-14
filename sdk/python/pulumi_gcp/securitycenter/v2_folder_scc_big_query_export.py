@@ -31,9 +31,6 @@ class V2FolderSccBigQueryExportArgs:
         :param pulumi.Input[builtins.str] big_query_export_id: This must be unique within the organization.  It must consist of only lowercase letters,
                numbers, and hyphens, must start with a letter, must end with either a letter or a number,
                and must be 63 characters or less.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] folder: The folder where Cloud Security Command Center Big Query Export
                Config lives in.
         :param pulumi.Input[builtins.str] dataset: The dataset to write findings' updates to.
@@ -79,9 +76,6 @@ class V2FolderSccBigQueryExportArgs:
         This must be unique within the organization.  It must consist of only lowercase letters,
         numbers, and hyphens, must start with a letter, must end with either a letter or a number,
         and must be 63 characters or less.
-
-
-        - - -
         """
         return pulumi.get(self, "big_query_export_id")
 
@@ -190,9 +184,6 @@ class _V2FolderSccBigQueryExportState:
         :param pulumi.Input[builtins.str] big_query_export_id: This must be unique within the organization.  It must consist of only lowercase letters,
                numbers, and hyphens, must start with a letter, must end with either a letter or a number,
                and must be 63 characters or less.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] create_time: The time at which the BigQuery export was created. This field is set by the server and will be ignored if provided on export on creation.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -262,9 +253,6 @@ class _V2FolderSccBigQueryExportState:
         This must be unique within the organization.  It must consist of only lowercase letters,
         numbers, and hyphens, must start with a letter, must end with either a letter or a number,
         and must be 63 characters or less.
-
-
-        - - -
         """
         return pulumi.get(self, "big_query_export_id")
 
@@ -502,9 +490,6 @@ class V2FolderSccBigQueryExport(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] big_query_export_id: This must be unique within the organization.  It must consist of only lowercase letters,
                numbers, and hyphens, must start with a letter, must end with either a letter or a number,
                and must be 63 characters or less.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] dataset: The dataset to write findings' updates to.
                Its format is "projects/[projectId]/datasets/[bigquery_dataset_id]".
                BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
@@ -677,9 +662,6 @@ class V2FolderSccBigQueryExport(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] big_query_export_id: This must be unique within the organization.  It must consist of only lowercase letters,
                numbers, and hyphens, must start with a letter, must end with either a letter or a number,
                and must be 63 characters or less.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] create_time: The time at which the BigQuery export was created. This field is set by the server and will be ignored if provided on export on creation.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -743,9 +725,6 @@ class V2FolderSccBigQueryExport(pulumi.CustomResource):
         This must be unique within the organization.  It must consist of only lowercase letters,
         numbers, and hyphens, must start with a letter, must end with either a letter or a number,
         and must be 63 characters or less.
-
-
-        - - -
         """
         return pulumi.get(self, "big_query_export_id")
 

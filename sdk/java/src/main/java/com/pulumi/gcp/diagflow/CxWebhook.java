@@ -127,16 +127,12 @@ public class CxWebhook extends com.pulumi.resources.CustomResource {
     /**
      * The human-readable name of the webhook, unique within the agent.
      * 
-     * ***
-     * 
      */
     @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
      * @return The human-readable name of the webhook, unique within the agent.
-     * 
-     * ***
      * 
      */
     public Output<String> displayName() {

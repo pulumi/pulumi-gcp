@@ -19,16 +19,14 @@ public final class ScheduleArgs extends com.pulumi.resources.ResourceArgs {
     public static final ScheduleArgs Empty = new ScheduleArgs();
 
     /**
-     * Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be
-     * queued instead of skipped. Default to false.
+     * Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
      * 
      */
     @Import(name="allowQueueing")
     private @Nullable Output<Boolean> allowQueueing;
 
     /**
-     * @return Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be
-     * queued instead of skipped. Default to false.
+     * @return Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
      * 
      */
     public Optional<Output<Boolean>> allowQueueing() {
@@ -68,16 +66,14 @@ public final class ScheduleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Desired state of the Colab Schedule. Set this field to &#39;ACTIVE&#39; to start/resume the schedule, and &#39;PAUSED&#39; to pause the
-     * schedule.
+     * Desired state of the Colab Schedule. Set this field to `ACTIVE` to start/resume the schedule, and `PAUSED` to pause the schedule.
      * 
      */
     @Import(name="desiredState")
     private @Nullable Output<String> desiredState;
 
     /**
-     * @return Desired state of the Colab Schedule. Set this field to &#39;ACTIVE&#39; to start/resume the schedule, and &#39;PAUSED&#39; to pause the
-     * schedule.
+     * @return Desired state of the Colab Schedule. Set this field to `ACTIVE` to start/resume the schedule, and `PAUSED` to pause the schedule.
      * 
      */
     public Optional<Output<String>> desiredState() {
@@ -100,18 +96,14 @@ public final class ScheduleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either end_time is
-     * reached or when scheduled_run_count &gt;= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt)
-     * format.
+     * Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either end_time is reached or when scheduled_run_count &gt;= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
      * 
      */
     @Import(name="endTime")
     private @Nullable Output<String> endTime;
 
     /**
-     * @return Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either end_time is
-     * reached or when scheduled_run_count &gt;= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt)
-     * format.
+     * @return Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either end_time is reached or when scheduled_run_count &gt;= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
      * 
      */
     public Optional<Output<String>> endTime() {
@@ -149,42 +141,46 @@ public final class ScheduleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount &gt;=
-     * maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is
-     * paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
+     * Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount &gt;= maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
      * 
      */
     @Import(name="maxRunCount")
     private @Nullable Output<String> maxRunCount;
 
     /**
-     * @return Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount &gt;=
-     * maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is
-     * paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
+     * @return Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount &gt;= maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
      * 
      */
     public Optional<Output<String>> maxRunCount() {
         return Optional.ofNullable(this.maxRunCount);
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
 
     /**
-     * The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC
-     * 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
+     * The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
      * 
      */
     @Import(name="startTime")
     private @Nullable Output<String> startTime;
 
     /**
-     * @return The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC
-     * 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
+     * @return The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
      * 
      */
     public Optional<Output<String>> startTime() {
@@ -226,8 +222,7 @@ public final class ScheduleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowQueueing Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be
-         * queued instead of skipped. Default to false.
+         * @param allowQueueing Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
          * 
          * @return builder
          * 
@@ -238,8 +233,7 @@ public final class ScheduleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowQueueing Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be
-         * queued instead of skipped. Default to false.
+         * @param allowQueueing Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
          * 
          * @return builder
          * 
@@ -293,8 +287,7 @@ public final class ScheduleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param desiredState Desired state of the Colab Schedule. Set this field to &#39;ACTIVE&#39; to start/resume the schedule, and &#39;PAUSED&#39; to pause the
-         * schedule.
+         * @param desiredState Desired state of the Colab Schedule. Set this field to `ACTIVE` to start/resume the schedule, and `PAUSED` to pause the schedule.
          * 
          * @return builder
          * 
@@ -305,8 +298,7 @@ public final class ScheduleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param desiredState Desired state of the Colab Schedule. Set this field to &#39;ACTIVE&#39; to start/resume the schedule, and &#39;PAUSED&#39; to pause the
-         * schedule.
+         * @param desiredState Desired state of the Colab Schedule. Set this field to `ACTIVE` to start/resume the schedule, and `PAUSED` to pause the schedule.
          * 
          * @return builder
          * 
@@ -337,9 +329,7 @@ public final class ScheduleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endTime Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either end_time is
-         * reached or when scheduled_run_count &gt;= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt)
-         * format.
+         * @param endTime Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either end_time is reached or when scheduled_run_count &gt;= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
          * 
          * @return builder
          * 
@@ -350,9 +340,7 @@ public final class ScheduleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endTime Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either end_time is
-         * reached or when scheduled_run_count &gt;= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt)
-         * format.
+         * @param endTime Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either end_time is reached or when scheduled_run_count &gt;= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
          * 
          * @return builder
          * 
@@ -404,9 +392,7 @@ public final class ScheduleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxRunCount Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount &gt;=
-         * maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is
-         * paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
+         * @param maxRunCount Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount &gt;= maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
          * 
          * @return builder
          * 
@@ -417,9 +403,7 @@ public final class ScheduleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxRunCount Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount &gt;=
-         * maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is
-         * paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
+         * @param maxRunCount Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount &gt;= maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
          * 
          * @return builder
          * 
@@ -428,18 +412,31 @@ public final class ScheduleArgs extends com.pulumi.resources.ResourceArgs {
             return maxRunCount(Output.of(maxRunCount));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
 
         /**
-         * @param startTime The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC
-         * 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
+         * @param startTime The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
          * 
          * @return builder
          * 
@@ -450,8 +447,7 @@ public final class ScheduleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param startTime The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC
-         * 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
+         * @param startTime The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
          * 
          * @return builder
          * 

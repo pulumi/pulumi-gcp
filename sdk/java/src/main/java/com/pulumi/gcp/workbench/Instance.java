@@ -608,16 +608,12 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * Part of `parent`. See documentation of `projectsId`.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return Part of `parent`. See documentation of `projectsId`.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

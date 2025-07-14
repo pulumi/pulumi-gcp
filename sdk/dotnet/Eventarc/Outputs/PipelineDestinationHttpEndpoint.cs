@@ -172,8 +172,6 @@ namespace Pulumi.Gcp.Eventarc.Outputs
         /// The Pipeline expects that the message it receives adheres to the
         /// standard CloudEvent format. If it doesn't then the outgoing message
         /// request may fail with a persistent error.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string? MessageBindingTemplate;
         /// <summary>

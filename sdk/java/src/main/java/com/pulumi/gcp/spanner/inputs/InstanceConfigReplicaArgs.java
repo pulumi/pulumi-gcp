@@ -20,8 +20,6 @@ public final class InstanceConfigReplicaArgs extends com.pulumi.resources.Resour
      * If true, this location is designated as the default leader location where
      * leader replicas are placed.
      * 
-     * ***
-     * 
      */
     @Import(name="defaultLeaderLocation")
     private @Nullable Output<Boolean> defaultLeaderLocation;
@@ -29,8 +27,6 @@ public final class InstanceConfigReplicaArgs extends com.pulumi.resources.Resour
     /**
      * @return If true, this location is designated as the default leader location where
      * leader replicas are placed.
-     * 
-     * ***
      * 
      */
     public Optional<Output<Boolean>> defaultLeaderLocation() {
@@ -103,8 +99,6 @@ public final class InstanceConfigReplicaArgs extends com.pulumi.resources.Resour
          * @param defaultLeaderLocation If true, this location is designated as the default leader location where
          * leader replicas are placed.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -116,8 +110,6 @@ public final class InstanceConfigReplicaArgs extends com.pulumi.resources.Resour
         /**
          * @param defaultLeaderLocation If true, this location is designated as the default leader location where
          * leader replicas are placed.
-         * 
-         * ***
          * 
          * @return builder
          * 

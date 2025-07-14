@@ -267,9 +267,6 @@ export class Runtime extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A reference to the zone where the machine resides.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -390,9 +387,6 @@ export interface RuntimeState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A reference to the zone where the machine resides.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -454,9 +448,6 @@ export interface RuntimeArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A reference to the zone where the machine resides.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

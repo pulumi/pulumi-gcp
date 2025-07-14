@@ -270,6 +270,8 @@ migrationCenterCustomEndpoint: Optional[str]
 
 mlEngineCustomEndpoint: Optional[str]
 
+modelArmorCustomEndpoint: Optional[str]
+
 monitoringCustomEndpoint: Optional[str]
 
 netappCustomEndpoint: Optional[str]

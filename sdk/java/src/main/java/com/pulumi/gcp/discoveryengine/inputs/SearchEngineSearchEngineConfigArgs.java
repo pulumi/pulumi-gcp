@@ -20,8 +20,6 @@ public final class SearchEngineSearchEngineConfigArgs extends com.pulumi.resourc
      * The add-on that this search engine enables.
      * Each value may be one of: `SEARCH_ADD_ON_LLM`.
      * 
-     * ***
-     * 
      */
     @Import(name="searchAddOns")
     private @Nullable Output<List<String>> searchAddOns;
@@ -29,8 +27,6 @@ public final class SearchEngineSearchEngineConfigArgs extends com.pulumi.resourc
     /**
      * @return The add-on that this search engine enables.
      * Each value may be one of: `SEARCH_ADD_ON_LLM`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<List<String>>> searchAddOns() {
@@ -85,8 +81,6 @@ public final class SearchEngineSearchEngineConfigArgs extends com.pulumi.resourc
          * @param searchAddOns The add-on that this search engine enables.
          * Each value may be one of: `SEARCH_ADD_ON_LLM`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -99,8 +93,6 @@ public final class SearchEngineSearchEngineConfigArgs extends com.pulumi.resourc
          * @param searchAddOns The add-on that this search engine enables.
          * Each value may be one of: `SEARCH_ADD_ON_LLM`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -111,8 +103,6 @@ public final class SearchEngineSearchEngineConfigArgs extends com.pulumi.resourc
         /**
          * @param searchAddOns The add-on that this search engine enables.
          * Each value may be one of: `SEARCH_ADD_ON_LLM`.
-         * 
-         * ***
          * 
          * @return builder
          * 

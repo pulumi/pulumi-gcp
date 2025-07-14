@@ -32,9 +32,6 @@ class DomainTrustArgs:
         The set of arguments for constructing a DomainTrust resource.
         :param pulumi.Input[builtins.str] domain: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
                of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] target_dns_ip_addresses: The target DNS server IP addresses which can resolve the remote domain involved in the trust.
         :param pulumi.Input[builtins.str] target_domain_name: The fully qualified target domain name which will be in trust with the current domain.
         :param pulumi.Input[builtins.str] trust_direction: The trust direction, which decides if the current domain is trusted, trusting, or both.
@@ -64,9 +61,6 @@ class DomainTrustArgs:
         """
         The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
         of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-
-
-        - - -
         """
         return pulumi.get(self, "domain")
 
@@ -178,9 +172,6 @@ class _DomainTrustState:
         Input properties used for looking up and filtering DomainTrust resources.
         :param pulumi.Input[builtins.str] domain: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
                of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.bool] selective_authentication: Whether the trusted side has forest/domain wide access or selective access to an approved set of resources.
@@ -216,9 +207,6 @@ class _DomainTrustState:
         """
         The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
         of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-
-
-        - - -
         """
         return pulumi.get(self, "domain")
 
@@ -369,9 +357,6 @@ class DomainTrust(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] domain: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
                of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.bool] selective_authentication: Whether the trusted side has forest/domain wide access or selective access to an approved set of resources.
@@ -506,9 +491,6 @@ class DomainTrust(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] domain: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
                of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.bool] selective_authentication: Whether the trusted side has forest/domain wide access or selective access to an approved set of resources.
@@ -541,9 +523,6 @@ class DomainTrust(pulumi.CustomResource):
         """
         The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
         of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-
-
-        - - -
         """
         return pulumi.get(self, "domain")
 

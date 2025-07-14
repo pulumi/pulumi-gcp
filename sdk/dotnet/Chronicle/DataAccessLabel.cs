@@ -86,9 +86,6 @@ namespace Pulumi.Gcp.Chronicle
         /// display name and the final component of the label's resource name. The
         /// maximum number of characters should be 63. Regex pattern is as per AIP:
         /// https://google.aip.dev/122#resource-id-segments
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("dataAccessLabelId")]
         public Output<string> DataAccessLabelId { get; private set; } = null!;
@@ -201,9 +198,6 @@ namespace Pulumi.Gcp.Chronicle
         /// display name and the final component of the label's resource name. The
         /// maximum number of characters should be 63. Regex pattern is as per AIP:
         /// https://google.aip.dev/122#resource-id-segments
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("dataAccessLabelId", required: true)]
         public Input<string> DataAccessLabelId { get; set; } = null!;
@@ -264,9 +258,6 @@ namespace Pulumi.Gcp.Chronicle
         /// display name and the final component of the label's resource name. The
         /// maximum number of characters should be 63. Regex pattern is as per AIP:
         /// https://google.aip.dev/122#resource-id-segments
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("dataAccessLabelId")]
         public Input<string>? DataAccessLabelId { get; set; }

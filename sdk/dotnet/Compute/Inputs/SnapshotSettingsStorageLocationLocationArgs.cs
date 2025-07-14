@@ -21,8 +21,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// <summary>
         /// Name of the location. It should be one of the Cloud Storage buckets.
         /// Only one location can be specified. (should match location)
-        /// 
-        /// - - -
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

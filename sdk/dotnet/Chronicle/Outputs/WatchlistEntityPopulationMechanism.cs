@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.Chronicle.Outputs
     {
         /// <summary>
         /// Entities are added manually.
-        /// 
-        /// - - -
         /// </summary>
         public readonly Outputs.WatchlistEntityPopulationMechanismManual? Manual;
 

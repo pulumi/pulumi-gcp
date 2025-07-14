@@ -178,9 +178,6 @@ namespace Pulumi.Gcp.Firebase
 
         /// <summary>
         /// Id of the domain. For default domain, it should be {{backend}}--{{project_id}}.{{location}}.hosted.app
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("domainId")]
         public Output<string> DomainId { get; private set; } = null!;
@@ -284,9 +281,6 @@ namespace Pulumi.Gcp.Firebase
 
         /// <summary>
         /// Id of the domain. For default domain, it should be {{backend}}--{{project_id}}.{{location}}.hosted.app
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("domainId", required: true)]
         public Input<string> DomainId { get; set; } = null!;
@@ -332,9 +326,6 @@ namespace Pulumi.Gcp.Firebase
 
         /// <summary>
         /// Id of the domain. For default domain, it should be {{backend}}--{{project_id}}.{{location}}.hosted.app
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("domainId")]
         public Input<string>? DomainId { get; set; }

@@ -140,9 +140,6 @@ export class RuleDeployment extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * The Rule ID of the rule.
-     *
-     *
-     * - - -
      */
     public readonly rule!: pulumi.Output<string>;
     /**
@@ -289,9 +286,6 @@ export interface RuleDeploymentState {
     project?: pulumi.Input<string>;
     /**
      * The Rule ID of the rule.
-     *
-     *
-     * - - -
      */
     rule?: pulumi.Input<string>;
     /**
@@ -342,9 +336,6 @@ export interface RuleDeploymentArgs {
     project?: pulumi.Input<string>;
     /**
      * The Rule ID of the rule.
-     *
-     *
-     * - - -
      */
     rule: pulumi.Input<string>;
     /**

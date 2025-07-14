@@ -100,9 +100,6 @@ export class GitRepositoryLink extends pulumi.CustomResource {
      * Required. The ID to use for the repository, which will become the final component of
      * the repository's resource name. This ID should be unique in the connection.
      * Allows alphanumeric characters and any of -._~%!$&'()*+,;=@.
-     *
-     *
-     * - - -
      */
     public readonly gitRepositoryLinkId!: pulumi.Output<string>;
     /**
@@ -254,9 +251,6 @@ export interface GitRepositoryLinkState {
      * Required. The ID to use for the repository, which will become the final component of
      * the repository's resource name. This ID should be unique in the connection.
      * Allows alphanumeric characters and any of -._~%!$&'()*+,;=@.
-     *
-     *
-     * - - -
      */
     gitRepositoryLinkId?: pulumi.Input<string>;
     /**
@@ -327,9 +321,6 @@ export interface GitRepositoryLinkArgs {
      * Required. The ID to use for the repository, which will become the final component of
      * the repository's resource name. This ID should be unique in the connection.
      * Allows alphanumeric characters and any of -._~%!$&'()*+,;=@.
-     *
-     *
-     * - - -
      */
     gitRepositoryLinkId: pulumi.Input<string>;
     /**

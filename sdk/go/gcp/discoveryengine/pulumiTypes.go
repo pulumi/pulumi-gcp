@@ -232,8 +232,6 @@ type ChatEngineChatEngineConfigAgentCreationConfig struct {
 	// The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported language codes.
 	DefaultLanguageCode string `pulumi:"defaultLanguageCode"`
 	// Agent location for Agent creation, currently supported values: global/us/eu, it needs to be the same region as the Chat Engine.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
 	TimeZone string `pulumi:"timeZone"`
@@ -256,8 +254,6 @@ type ChatEngineChatEngineConfigAgentCreationConfigArgs struct {
 	// The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported language codes.
 	DefaultLanguageCode pulumi.StringInput `pulumi:"defaultLanguageCode"`
 	// Agent location for Agent creation, currently supported values: global/us/eu, it needs to be the same region as the Chat Engine.
-	//
-	// ***
 	Location pulumi.StringPtrInput `pulumi:"location"`
 	// The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
 	TimeZone pulumi.StringInput `pulumi:"timeZone"`
@@ -351,8 +347,6 @@ func (o ChatEngineChatEngineConfigAgentCreationConfigOutput) DefaultLanguageCode
 }
 
 // Agent location for Agent creation, currently supported values: global/us/eu, it needs to be the same region as the Chat Engine.
-//
-// ***
 func (o ChatEngineChatEngineConfigAgentCreationConfigOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ChatEngineChatEngineConfigAgentCreationConfig) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
@@ -407,8 +401,6 @@ func (o ChatEngineChatEngineConfigAgentCreationConfigPtrOutput) DefaultLanguageC
 }
 
 // Agent location for Agent creation, currently supported values: global/us/eu, it needs to be the same region as the Chat Engine.
-//
-// ***
 func (o ChatEngineChatEngineConfigAgentCreationConfigPtrOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ChatEngineChatEngineConfigAgentCreationConfig) *string {
 		if v == nil {
@@ -1360,6 +1352,7 @@ type DataStoreDocumentProcessingConfigDefaultParsingConfig struct {
 	// Configurations applied to digital parser.
 	DigitalParsingConfig *DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfig `pulumi:"digitalParsingConfig"`
 	// Configurations applied to layout parser.
+	// Structure is documented below.
 	LayoutParsingConfig *DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig `pulumi:"layoutParsingConfig"`
 	// Configurations applied to OCR parser. Currently it only applies to PDFs.
 	// Structure is documented below.
@@ -1381,6 +1374,7 @@ type DataStoreDocumentProcessingConfigDefaultParsingConfigArgs struct {
 	// Configurations applied to digital parser.
 	DigitalParsingConfig DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrInput `pulumi:"digitalParsingConfig"`
 	// Configurations applied to layout parser.
+	// Structure is documented below.
 	LayoutParsingConfig DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrInput `pulumi:"layoutParsingConfig"`
 	// Configurations applied to OCR parser. Currently it only applies to PDFs.
 	// Structure is documented below.
@@ -1472,6 +1466,7 @@ func (o DataStoreDocumentProcessingConfigDefaultParsingConfigOutput) DigitalPars
 }
 
 // Configurations applied to layout parser.
+// Structure is documented below.
 func (o DataStoreDocumentProcessingConfigDefaultParsingConfigOutput) LayoutParsingConfig() DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutput {
 	return o.ApplyT(func(v DataStoreDocumentProcessingConfigDefaultParsingConfig) *DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig {
 		return v.LayoutParsingConfig
@@ -1521,6 +1516,7 @@ func (o DataStoreDocumentProcessingConfigDefaultParsingConfigPtrOutput) DigitalP
 }
 
 // Configurations applied to layout parser.
+// Structure is documented below.
 func (o DataStoreDocumentProcessingConfigDefaultParsingConfigPtrOutput) LayoutParsingConfig() DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutput {
 	return o.ApplyT(func(v *DataStoreDocumentProcessingConfigDefaultParsingConfig) *DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig {
 		if v == nil {
@@ -1660,6 +1656,18 @@ func (o DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfi
 }
 
 type DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig struct {
+	// If true, the LLM based annotation is added to the image during parsing.
+	EnableImageAnnotation *bool `pulumi:"enableImageAnnotation"`
+	// If true, the LLM based annotation is added to the table during parsing.
+	EnableTableAnnotation *bool `pulumi:"enableTableAnnotation"`
+	// List of HTML classes to exclude from the parsed content.
+	ExcludeHtmlClasses []string `pulumi:"excludeHtmlClasses"`
+	// List of HTML elements to exclude from the parsed content.
+	ExcludeHtmlElements []string `pulumi:"excludeHtmlElements"`
+	// List of HTML ids to exclude from the parsed content.
+	ExcludeHtmlIds []string `pulumi:"excludeHtmlIds"`
+	// Contains the required structure types to extract from the document. Supported values: `shareholder-structure`.
+	StructuredContentTypes []string `pulumi:"structuredContentTypes"`
 }
 
 // DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigInput is an input type that accepts DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigArgs and DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigOutput values.
@@ -1674,6 +1682,18 @@ type DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigInp
 }
 
 type DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigArgs struct {
+	// If true, the LLM based annotation is added to the image during parsing.
+	EnableImageAnnotation pulumi.BoolPtrInput `pulumi:"enableImageAnnotation"`
+	// If true, the LLM based annotation is added to the table during parsing.
+	EnableTableAnnotation pulumi.BoolPtrInput `pulumi:"enableTableAnnotation"`
+	// List of HTML classes to exclude from the parsed content.
+	ExcludeHtmlClasses pulumi.StringArrayInput `pulumi:"excludeHtmlClasses"`
+	// List of HTML elements to exclude from the parsed content.
+	ExcludeHtmlElements pulumi.StringArrayInput `pulumi:"excludeHtmlElements"`
+	// List of HTML ids to exclude from the parsed content.
+	ExcludeHtmlIds pulumi.StringArrayInput `pulumi:"excludeHtmlIds"`
+	// Contains the required structure types to extract from the document. Supported values: `shareholder-structure`.
+	StructuredContentTypes pulumi.StringArrayInput `pulumi:"structuredContentTypes"`
 }
 
 func (DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigArgs) ElementType() reflect.Type {
@@ -1753,6 +1773,48 @@ func (o DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig
 	}).(DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutput)
 }
 
+// If true, the LLM based annotation is added to the image during parsing.
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigOutput) EnableImageAnnotation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig) *bool {
+		return v.EnableImageAnnotation
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, the LLM based annotation is added to the table during parsing.
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigOutput) EnableTableAnnotation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig) *bool {
+		return v.EnableTableAnnotation
+	}).(pulumi.BoolPtrOutput)
+}
+
+// List of HTML classes to exclude from the parsed content.
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigOutput) ExcludeHtmlClasses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig) []string {
+		return v.ExcludeHtmlClasses
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of HTML elements to exclude from the parsed content.
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigOutput) ExcludeHtmlElements() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig) []string {
+		return v.ExcludeHtmlElements
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of HTML ids to exclude from the parsed content.
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigOutput) ExcludeHtmlIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig) []string {
+		return v.ExcludeHtmlIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains the required structure types to extract from the document. Supported values: `shareholder-structure`.
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigOutput) StructuredContentTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig) []string {
+		return v.StructuredContentTypes
+	}).(pulumi.StringArrayOutput)
+}
+
 type DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutput) ElementType() reflect.Type {
@@ -1775,6 +1837,66 @@ func (o DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig
 		var ret DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig
 		return ret
 	}).(DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigOutput)
+}
+
+// If true, the LLM based annotation is added to the image during parsing.
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutput) EnableImageAnnotation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableImageAnnotation
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, the LLM based annotation is added to the table during parsing.
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutput) EnableTableAnnotation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableTableAnnotation
+	}).(pulumi.BoolPtrOutput)
+}
+
+// List of HTML classes to exclude from the parsed content.
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutput) ExcludeHtmlClasses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeHtmlClasses
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of HTML elements to exclude from the parsed content.
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutput) ExcludeHtmlElements() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeHtmlElements
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of HTML ids to exclude from the parsed content.
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutput) ExcludeHtmlIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeHtmlIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains the required structure types to extract from the document. Supported values: `shareholder-structure`.
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutput) StructuredContentTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.StructuredContentTypes
+	}).(pulumi.StringArrayOutput)
 }
 
 type DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig struct {
@@ -1922,6 +2044,7 @@ type DataStoreDocumentProcessingConfigParsingConfigOverride struct {
 	// The identifier for this object. Format specified above.
 	FileType string `pulumi:"fileType"`
 	// Configurations applied to layout parser.
+	// Structure is documented below.
 	LayoutParsingConfig *DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig `pulumi:"layoutParsingConfig"`
 	// Configurations applied to OCR parser. Currently it only applies to PDFs.
 	// Structure is documented below.
@@ -1945,6 +2068,7 @@ type DataStoreDocumentProcessingConfigParsingConfigOverrideArgs struct {
 	// The identifier for this object. Format specified above.
 	FileType pulumi.StringInput `pulumi:"fileType"`
 	// Configurations applied to layout parser.
+	// Structure is documented below.
 	LayoutParsingConfig DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrInput `pulumi:"layoutParsingConfig"`
 	// Configurations applied to OCR parser. Currently it only applies to PDFs.
 	// Structure is documented below.
@@ -2015,6 +2139,7 @@ func (o DataStoreDocumentProcessingConfigParsingConfigOverrideOutput) FileType()
 }
 
 // Configurations applied to layout parser.
+// Structure is documented below.
 func (o DataStoreDocumentProcessingConfigParsingConfigOverrideOutput) LayoutParsingConfig() DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutput {
 	return o.ApplyT(func(v DataStoreDocumentProcessingConfigParsingConfigOverride) *DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig {
 		return v.LayoutParsingConfig
@@ -2168,6 +2293,18 @@ func (o DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConf
 }
 
 type DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig struct {
+	// If true, the LLM based annotation is added to the image during parsing.
+	EnableImageAnnotation *bool `pulumi:"enableImageAnnotation"`
+	// If true, the LLM based annotation is added to the table during parsing.
+	EnableTableAnnotation *bool `pulumi:"enableTableAnnotation"`
+	// List of HTML classes to exclude from the parsed content.
+	ExcludeHtmlClasses []string `pulumi:"excludeHtmlClasses"`
+	// List of HTML elements to exclude from the parsed content.
+	ExcludeHtmlElements []string `pulumi:"excludeHtmlElements"`
+	// List of HTML ids to exclude from the parsed content.
+	ExcludeHtmlIds []string `pulumi:"excludeHtmlIds"`
+	// Contains the required structure types to extract from the document. Supported values: `shareholder-structure`.
+	StructuredContentTypes []string `pulumi:"structuredContentTypes"`
 }
 
 // DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigInput is an input type that accepts DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigArgs and DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigOutput values.
@@ -2182,6 +2319,18 @@ type DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigIn
 }
 
 type DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigArgs struct {
+	// If true, the LLM based annotation is added to the image during parsing.
+	EnableImageAnnotation pulumi.BoolPtrInput `pulumi:"enableImageAnnotation"`
+	// If true, the LLM based annotation is added to the table during parsing.
+	EnableTableAnnotation pulumi.BoolPtrInput `pulumi:"enableTableAnnotation"`
+	// List of HTML classes to exclude from the parsed content.
+	ExcludeHtmlClasses pulumi.StringArrayInput `pulumi:"excludeHtmlClasses"`
+	// List of HTML elements to exclude from the parsed content.
+	ExcludeHtmlElements pulumi.StringArrayInput `pulumi:"excludeHtmlElements"`
+	// List of HTML ids to exclude from the parsed content.
+	ExcludeHtmlIds pulumi.StringArrayInput `pulumi:"excludeHtmlIds"`
+	// Contains the required structure types to extract from the document. Supported values: `shareholder-structure`.
+	StructuredContentTypes pulumi.StringArrayInput `pulumi:"structuredContentTypes"`
 }
 
 func (DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigArgs) ElementType() reflect.Type {
@@ -2261,6 +2410,48 @@ func (o DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfi
 	}).(DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutput)
 }
 
+// If true, the LLM based annotation is added to the image during parsing.
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigOutput) EnableImageAnnotation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig) *bool {
+		return v.EnableImageAnnotation
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, the LLM based annotation is added to the table during parsing.
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigOutput) EnableTableAnnotation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig) *bool {
+		return v.EnableTableAnnotation
+	}).(pulumi.BoolPtrOutput)
+}
+
+// List of HTML classes to exclude from the parsed content.
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigOutput) ExcludeHtmlClasses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig) []string {
+		return v.ExcludeHtmlClasses
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of HTML elements to exclude from the parsed content.
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigOutput) ExcludeHtmlElements() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig) []string {
+		return v.ExcludeHtmlElements
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of HTML ids to exclude from the parsed content.
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigOutput) ExcludeHtmlIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig) []string {
+		return v.ExcludeHtmlIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains the required structure types to extract from the document. Supported values: `shareholder-structure`.
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigOutput) StructuredContentTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig) []string {
+		return v.StructuredContentTypes
+	}).(pulumi.StringArrayOutput)
+}
+
 type DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutput) ElementType() reflect.Type {
@@ -2283,6 +2474,66 @@ func (o DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfi
 		var ret DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig
 		return ret
 	}).(DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigOutput)
+}
+
+// If true, the LLM based annotation is added to the image during parsing.
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutput) EnableImageAnnotation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableImageAnnotation
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, the LLM based annotation is added to the table during parsing.
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutput) EnableTableAnnotation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableTableAnnotation
+	}).(pulumi.BoolPtrOutput)
+}
+
+// List of HTML classes to exclude from the parsed content.
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutput) ExcludeHtmlClasses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeHtmlClasses
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of HTML elements to exclude from the parsed content.
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutput) ExcludeHtmlElements() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeHtmlElements
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of HTML ids to exclude from the parsed content.
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutput) ExcludeHtmlIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeHtmlIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains the required structure types to extract from the document. Supported values: `shareholder-structure`.
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutput) StructuredContentTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.StructuredContentTypes
+	}).(pulumi.StringArrayOutput)
 }
 
 type DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig struct {
@@ -2564,8 +2815,6 @@ func (o SearchEngineCommonConfigPtrOutput) CompanyName() pulumi.StringPtrOutput 
 type SearchEngineSearchEngineConfig struct {
 	// The add-on that this search engine enables.
 	// Each value may be one of: `SEARCH_ADD_ON_LLM`.
-	//
-	// ***
 	SearchAddOns []string `pulumi:"searchAddOns"`
 	// The search feature tier of this engine. Defaults to SearchTier.SEARCH_TIER_STANDARD if not specified.
 	// Default value is `SEARCH_TIER_STANDARD`.
@@ -2587,8 +2836,6 @@ type SearchEngineSearchEngineConfigInput interface {
 type SearchEngineSearchEngineConfigArgs struct {
 	// The add-on that this search engine enables.
 	// Each value may be one of: `SEARCH_ADD_ON_LLM`.
-	//
-	// ***
 	SearchAddOns pulumi.StringArrayInput `pulumi:"searchAddOns"`
 	// The search feature tier of this engine. Defaults to SearchTier.SEARCH_TIER_STANDARD if not specified.
 	// Default value is `SEARCH_TIER_STANDARD`.
@@ -2675,8 +2922,6 @@ func (o SearchEngineSearchEngineConfigOutput) ToSearchEngineSearchEngineConfigPt
 
 // The add-on that this search engine enables.
 // Each value may be one of: `SEARCH_ADD_ON_LLM`.
-//
-// ***
 func (o SearchEngineSearchEngineConfigOutput) SearchAddOns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SearchEngineSearchEngineConfig) []string { return v.SearchAddOns }).(pulumi.StringArrayOutput)
 }
@@ -2714,8 +2959,6 @@ func (o SearchEngineSearchEngineConfigPtrOutput) Elem() SearchEngineSearchEngine
 
 // The add-on that this search engine enables.
 // Each value may be one of: `SEARCH_ADD_ON_LLM`.
-//
-// ***
 func (o SearchEngineSearchEngineConfigPtrOutput) SearchAddOns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SearchEngineSearchEngineConfig) []string {
 		if v == nil {

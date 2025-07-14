@@ -107,16 +107,12 @@ public class MonitoredProject extends com.pulumi.resources.CustomResource {
     /**
      * Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
      * 
-     * ***
-     * 
      */
     @Export(name="metricsScope", refs={String.class}, tree="[0]")
     private Output<String> metricsScope;
 
     /**
      * @return Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
-     * 
-     * ***
      * 
      */
     public Output<String> metricsScope() {

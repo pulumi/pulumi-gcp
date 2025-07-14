@@ -582,8 +582,6 @@ if not MYPY:
         external_address: NotRequired[pulumi.Input[builtins.str]]
         """
         The name of an `ExternalAddress` resource.
-
-        - - -
         """
         ip_address_range: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -599,8 +597,6 @@ class ExternalAccessRuleDestinationIpRangeArgs:
                  ip_address_range: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.str] external_address: The name of an `ExternalAddress` resource.
-               
-               - - -
         :param pulumi.Input[builtins.str] ip_address_range: An IP address range in the CIDR format.
         """
         if external_address is not None:
@@ -613,8 +609,6 @@ class ExternalAccessRuleDestinationIpRangeArgs:
     def external_address(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The name of an `ExternalAddress` resource.
-
-        - - -
         """
         return pulumi.get(self, "external_address")
 
@@ -1459,8 +1453,6 @@ if not MYPY:
         scale_in: pulumi.Input[builtins.int]
         """
         The utilization triggering the scale-in operation in percent.
-
-        - - -
         """
         scale_out: pulumi.Input[builtins.int]
         """
@@ -1476,8 +1468,6 @@ class PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageTh
                  scale_out: pulumi.Input[builtins.int]):
         """
         :param pulumi.Input[builtins.int] scale_in: The utilization triggering the scale-in operation in percent.
-               
-               - - -
         :param pulumi.Input[builtins.int] scale_out: The utilization triggering the scale-out operation in percent.
         """
         pulumi.set(__self__, "scale_in", scale_in)
@@ -1488,8 +1478,6 @@ class PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageTh
     def scale_in(self) -> pulumi.Input[builtins.int]:
         """
         The utilization triggering the scale-in operation in percent.
-
-        - - -
         """
         return pulumi.get(self, "scale_in")
 

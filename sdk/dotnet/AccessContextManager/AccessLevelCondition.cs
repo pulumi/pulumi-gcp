@@ -133,9 +133,6 @@ namespace Pulumi.Gcp.AccessContextManager
     {
         /// <summary>
         /// The name of the Access Level to add this condition to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("accessLevel")]
         public Output<string> AccessLevel { get; private set; } = null!;
@@ -263,9 +260,6 @@ namespace Pulumi.Gcp.AccessContextManager
     {
         /// <summary>
         /// The name of the Access Level to add this condition to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("accessLevel", required: true)]
         public Input<string> AccessLevel { get; set; } = null!;
@@ -379,9 +373,6 @@ namespace Pulumi.Gcp.AccessContextManager
     {
         /// <summary>
         /// The name of the Access Level to add this condition to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }

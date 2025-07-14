@@ -30,9 +30,6 @@ class RegionTargetHttpProxyArgs:
         The set of arguments for constructing a RegionTargetHttpProxy resource.
         :param pulumi.Input[builtins.str] url_map: A reference to the RegionUrlMap resource that defines the mapping from URL
                to the BackendService.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
         :param pulumi.Input[builtins.int] http_keep_alive_timeout_sec: Specifies how long to keep a connection open, after completing a response,
                while there is no matching traffic (in seconds). If an HTTP keepalive is
@@ -69,9 +66,6 @@ class RegionTargetHttpProxyArgs:
         """
         A reference to the RegionUrlMap resource that defines the mapping from URL
         to the BackendService.
-
-
-        - - -
         """
         return pulumi.get(self, "url_map")
 
@@ -188,9 +182,6 @@ class _RegionTargetHttpProxyState:
         :param pulumi.Input[builtins.str] self_link: The URI of the created resource.
         :param pulumi.Input[builtins.str] url_map: A reference to the RegionUrlMap resource that defines the mapping from URL
                to the BackendService.
-               
-               
-               - - -
         """
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -325,9 +316,6 @@ class _RegionTargetHttpProxyState:
         """
         A reference to the RegionUrlMap resource that defines the mapping from URL
         to the BackendService.
-
-
-        - - -
         """
         return pulumi.get(self, "url_map")
 
@@ -513,9 +501,6 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
                If it is not provided, the provider region is used.
         :param pulumi.Input[builtins.str] url_map: A reference to the RegionUrlMap resource that defines the mapping from URL
                to the BackendService.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -755,9 +740,6 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] self_link: The URI of the created resource.
         :param pulumi.Input[builtins.str] url_map: A reference to the RegionUrlMap resource that defines the mapping from URL
                to the BackendService.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -856,9 +838,6 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
         """
         A reference to the RegionUrlMap resource that defines the mapping from URL
         to the BackendService.
-
-
-        - - -
         """
         return pulumi.get(self, "url_map")
 

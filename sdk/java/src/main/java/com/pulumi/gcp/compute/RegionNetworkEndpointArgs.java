@@ -133,16 +133,12 @@ public final class RegionNetworkEndpointArgs extends com.pulumi.resources.Resour
     /**
      * The network endpoint group this endpoint is part of.
      * 
-     * ***
-     * 
      */
     @Import(name="regionNetworkEndpointGroup", required=true)
     private Output<String> regionNetworkEndpointGroup;
 
     /**
      * @return The network endpoint group this endpoint is part of.
-     * 
-     * ***
      * 
      */
     public Output<String> regionNetworkEndpointGroup() {
@@ -338,8 +334,6 @@ public final class RegionNetworkEndpointArgs extends com.pulumi.resources.Resour
         /**
          * @param regionNetworkEndpointGroup The network endpoint group this endpoint is part of.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -350,8 +344,6 @@ public final class RegionNetworkEndpointArgs extends com.pulumi.resources.Resour
 
         /**
          * @param regionNetworkEndpointGroup The network endpoint group this endpoint is part of.
-         * 
-         * ***
          * 
          * @return builder
          * 

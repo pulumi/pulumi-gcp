@@ -114,9 +114,6 @@ export class ResourcePolicyAttachment extends pulumi.CustomResource {
 
     /**
      * The name of the instance in which the resource policies are attached to.
-     *
-     *
-     * - - -
      */
     public readonly instance!: pulumi.Output<string>;
     /**
@@ -172,9 +169,6 @@ export class ResourcePolicyAttachment extends pulumi.CustomResource {
 export interface ResourcePolicyAttachmentState {
     /**
      * The name of the instance in which the resource policies are attached to.
-     *
-     *
-     * - - -
      */
     instance?: pulumi.Input<string>;
     /**
@@ -199,9 +193,6 @@ export interface ResourcePolicyAttachmentState {
 export interface ResourcePolicyAttachmentArgs {
     /**
      * The name of the instance in which the resource policies are attached to.
-     *
-     *
-     * - - -
      */
     instance: pulumi.Input<string>;
     /**

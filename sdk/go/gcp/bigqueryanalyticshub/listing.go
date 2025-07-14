@@ -362,8 +362,6 @@ type Listing struct {
 	// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
-	//
-	// ***
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Documentation describing the listing.
 	Documentation pulumi.StringPtrOutput `pulumi:"documentation"`
@@ -450,8 +448,6 @@ type listingState struct {
 	// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
 	Description *string `pulumi:"description"`
 	// Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
-	//
-	// ***
 	DisplayName *string `pulumi:"displayName"`
 	// Documentation describing the listing.
 	Documentation *string `pulumi:"documentation"`
@@ -497,8 +493,6 @@ type ListingState struct {
 	// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
 	Description pulumi.StringPtrInput
 	// Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
-	//
-	// ***
 	DisplayName pulumi.StringPtrInput
 	// Documentation describing the listing.
 	Documentation pulumi.StringPtrInput
@@ -548,8 +542,6 @@ type listingArgs struct {
 	// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
 	Description *string `pulumi:"description"`
 	// Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
-	//
-	// ***
 	DisplayName string `pulumi:"displayName"`
 	// Documentation describing the listing.
 	Documentation *string `pulumi:"documentation"`
@@ -594,8 +586,6 @@ type ListingArgs struct {
 	// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
 	Description pulumi.StringPtrInput
 	// Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
-	//
-	// ***
 	DisplayName pulumi.StringInput
 	// Documentation describing the listing.
 	Documentation pulumi.StringPtrInput
@@ -740,8 +730,6 @@ func (o ListingOutput) Description() pulumi.StringPtrOutput {
 }
 
 // Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
-//
-// ***
 func (o ListingOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Listing) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }

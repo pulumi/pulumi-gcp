@@ -234,8 +234,6 @@ public class AppHostingDomain extends com.pulumi.resources.CustomResource {
      * Id of the domain to create.
      * Must be a valid domain name, such as &#34;foo.com&#34;
      * 
-     * ***
-     * 
      */
     @Export(name="domainId", refs={String.class}, tree="[0]")
     private Output<String> domainId;
@@ -243,8 +241,6 @@ public class AppHostingDomain extends com.pulumi.resources.CustomResource {
     /**
      * @return Id of the domain to create.
      * Must be a valid domain name, such as &#34;foo.com&#34;
-     * 
-     * ***
      * 
      */
     public Output<String> domainId() {

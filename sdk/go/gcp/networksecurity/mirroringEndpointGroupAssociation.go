@@ -127,8 +127,6 @@ type MirroringEndpointGroupAssociation struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The cloud location of the association, currently restricted to `global`.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The list of locations where the association is configured. This information
 	// is retrieved from the linked endpoint group.
@@ -235,8 +233,6 @@ type mirroringEndpointGroupAssociationState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The cloud location of the association, currently restricted to `global`.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// The list of locations where the association is configured. This information
 	// is retrieved from the linked endpoint group.
@@ -300,8 +296,6 @@ type MirroringEndpointGroupAssociationState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The cloud location of the association, currently restricted to `global`.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// The list of locations where the association is configured. This information
 	// is retrieved from the linked endpoint group.
@@ -364,8 +358,6 @@ type mirroringEndpointGroupAssociationArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The cloud location of the association, currently restricted to `global`.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// The endpoint group that this association is connected to, for example:
 	// `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
@@ -391,8 +383,6 @@ type MirroringEndpointGroupAssociationArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The cloud location of the association, currently restricted to `global`.
-	//
-	// ***
 	Location pulumi.StringInput
 	// The endpoint group that this association is connected to, for example:
 	// `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
@@ -517,8 +507,6 @@ func (o MirroringEndpointGroupAssociationOutput) Labels() pulumi.StringMapOutput
 }
 
 // The cloud location of the association, currently restricted to `global`.
-//
-// ***
 func (o MirroringEndpointGroupAssociationOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *MirroringEndpointGroupAssociation) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

@@ -99,16 +99,12 @@ public final class EventThreatDetectionCustomModuleState extends com.pulumi.reso
     /**
      * Numerical ID of the parent organization.
      * 
-     * ***
-     * 
      */
     @Import(name="organization")
     private @Nullable Output<String> organization;
 
     /**
      * @return Numerical ID of the parent organization.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> organization() {
@@ -294,8 +290,6 @@ public final class EventThreatDetectionCustomModuleState extends com.pulumi.reso
         /**
          * @param organization Numerical ID of the parent organization.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -306,8 +300,6 @@ public final class EventThreatDetectionCustomModuleState extends com.pulumi.reso
 
         /**
          * @param organization Numerical ID of the parent organization.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -18,16 +18,12 @@ public final class FolderSccBigQueryExportState extends com.pulumi.resources.Res
     /**
      * This must be unique within the organization.
      * 
-     * ***
-     * 
      */
     @Import(name="bigQueryExportId")
     private @Nullable Output<String> bigQueryExportId;
 
     /**
      * @return This must be unique within the organization.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> bigQueryExportId() {
@@ -259,8 +255,6 @@ public final class FolderSccBigQueryExportState extends com.pulumi.resources.Res
         /**
          * @param bigQueryExportId This must be unique within the organization.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -271,8 +265,6 @@ public final class FolderSccBigQueryExportState extends com.pulumi.resources.Res
 
         /**
          * @param bigQueryExportId This must be unique within the organization.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -118,9 +118,6 @@ export class CapacityCommitment extends pulumi.CustomResource {
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
-     *
-     *
-     * - - -
      */
     public readonly plan!: pulumi.Output<string>;
     /**
@@ -230,9 +227,6 @@ export interface CapacityCommitmentState {
     name?: pulumi.Input<string>;
     /**
      * Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
-     *
-     *
-     * - - -
      */
     plan?: pulumi.Input<string>;
     /**
@@ -280,9 +274,6 @@ export interface CapacityCommitmentArgs {
     location?: pulumi.Input<string>;
     /**
      * Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
-     *
-     *
-     * - - -
      */
     plan: pulumi.Input<string>;
     /**

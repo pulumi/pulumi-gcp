@@ -242,8 +242,6 @@ type Connector struct {
 	// The connect cluster name.
 	ConnectCluster pulumi.StringOutput `pulumi:"connectCluster"`
 	// The ID to use for the connector, which will become the final component of the connector's name. This value is structured like: `my-connector-id`.
-	//
-	// ***
 	ConnectorId pulumi.StringOutput `pulumi:"connectorId"`
 	// ID of the location of the Kafka Connect resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -303,8 +301,6 @@ type connectorState struct {
 	// The connect cluster name.
 	ConnectCluster *string `pulumi:"connectCluster"`
 	// The ID to use for the connector, which will become the final component of the connector's name. This value is structured like: `my-connector-id`.
-	//
-	// ***
 	ConnectorId *string `pulumi:"connectorId"`
 	// ID of the location of the Kafka Connect resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
 	Location *string `pulumi:"location"`
@@ -326,8 +322,6 @@ type ConnectorState struct {
 	// The connect cluster name.
 	ConnectCluster pulumi.StringPtrInput
 	// The ID to use for the connector, which will become the final component of the connector's name. This value is structured like: `my-connector-id`.
-	//
-	// ***
 	ConnectorId pulumi.StringPtrInput
 	// ID of the location of the Kafka Connect resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
 	Location pulumi.StringPtrInput
@@ -353,8 +347,6 @@ type connectorArgs struct {
 	// The connect cluster name.
 	ConnectCluster string `pulumi:"connectCluster"`
 	// The ID to use for the connector, which will become the final component of the connector's name. This value is structured like: `my-connector-id`.
-	//
-	// ***
 	ConnectorId string `pulumi:"connectorId"`
 	// ID of the location of the Kafka Connect resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
 	Location string `pulumi:"location"`
@@ -373,8 +365,6 @@ type ConnectorArgs struct {
 	// The connect cluster name.
 	ConnectCluster pulumi.StringInput
 	// The ID to use for the connector, which will become the final component of the connector's name. This value is structured like: `my-connector-id`.
-	//
-	// ***
 	ConnectorId pulumi.StringInput
 	// ID of the location of the Kafka Connect resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
 	Location pulumi.StringInput
@@ -484,8 +474,6 @@ func (o ConnectorOutput) ConnectCluster() pulumi.StringOutput {
 }
 
 // The ID to use for the connector, which will become the final component of the connector's name. This value is structured like: `my-connector-id`.
-//
-// ***
 func (o ConnectorOutput) ConnectorId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connector) pulumi.StringOutput { return v.ConnectorId }).(pulumi.StringOutput)
 }

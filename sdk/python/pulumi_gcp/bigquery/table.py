@@ -33,6 +33,7 @@ class TableArgs:
                  external_catalog_table_options: Optional[pulumi.Input['TableExternalCatalogTableOptionsArgs']] = None,
                  external_data_configuration: Optional[pulumi.Input['TableExternalDataConfigurationArgs']] = None,
                  friendly_name: Optional[pulumi.Input[builtins.str]] = None,
+                 ignore_schema_changes: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  materialized_view: Optional[pulumi.Input['TableMaterializedViewArgs']] = None,
                  max_staleness: Optional[pulumi.Input[builtins.str]] = None,
@@ -74,6 +75,8 @@ class TableArgs:
                By defining these properties, the data source can then be queried as
                if it were a standard BigQuery table. Structure is documented below.
         :param pulumi.Input[builtins.str] friendly_name: A descriptive name for the table.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ignore_schema_changes: A list of fields which should be ignored for each column in schema.
+               **NOTE:** Right now only `dataPolicies` field is supported. We might support others in the future.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: A mapping of labels to assign to the resource.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -134,6 +137,8 @@ class TableArgs:
             pulumi.set(__self__, "external_data_configuration", external_data_configuration)
         if friendly_name is not None:
             pulumi.set(__self__, "friendly_name", friendly_name)
+        if ignore_schema_changes is not None:
+            pulumi.set(__self__, "ignore_schema_changes", ignore_schema_changes)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if materialized_view is not None:
@@ -308,6 +313,19 @@ class TableArgs:
     @friendly_name.setter
     def friendly_name(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "friendly_name", value)
+
+    @property
+    @pulumi.getter(name="ignoreSchemaChanges")
+    def ignore_schema_changes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        A list of fields which should be ignored for each column in schema.
+        **NOTE:** Right now only `dataPolicies` field is supported. We might support others in the future.
+        """
+        return pulumi.get(self, "ignore_schema_changes")
+
+    @ignore_schema_changes.setter
+    def ignore_schema_changes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "ignore_schema_changes", value)
 
     @property
     @pulumi.getter
@@ -519,6 +537,7 @@ class _TableState:
                  external_catalog_table_options: Optional[pulumi.Input['TableExternalCatalogTableOptionsArgs']] = None,
                  external_data_configuration: Optional[pulumi.Input['TableExternalDataConfigurationArgs']] = None,
                  friendly_name: Optional[pulumi.Input[builtins.str]] = None,
+                 ignore_schema_changes: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  last_modified_time: Optional[pulumi.Input[builtins.int]] = None,
                  location: Optional[pulumi.Input[builtins.str]] = None,
@@ -586,6 +605,8 @@ class _TableState:
                By defining these properties, the data source can then be queried as
                if it were a standard BigQuery table. Structure is documented below.
         :param pulumi.Input[builtins.str] friendly_name: A descriptive name for the table.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ignore_schema_changes: A list of fields which should be ignored for each column in schema.
+               **NOTE:** Right now only `dataPolicies` field is supported. We might support others in the future.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: A mapping of labels to assign to the resource.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -662,6 +683,8 @@ class _TableState:
             pulumi.set(__self__, "external_data_configuration", external_data_configuration)
         if friendly_name is not None:
             pulumi.set(__self__, "friendly_name", friendly_name)
+        if ignore_schema_changes is not None:
+            pulumi.set(__self__, "ignore_schema_changes", ignore_schema_changes)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if last_modified_time is not None:
@@ -893,6 +916,19 @@ class _TableState:
     @friendly_name.setter
     def friendly_name(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "friendly_name", value)
+
+    @property
+    @pulumi.getter(name="ignoreSchemaChanges")
+    def ignore_schema_changes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        A list of fields which should be ignored for each column in schema.
+        **NOTE:** Right now only `dataPolicies` field is supported. We might support others in the future.
+        """
+        return pulumi.get(self, "ignore_schema_changes")
+
+    @ignore_schema_changes.setter
+    def ignore_schema_changes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "ignore_schema_changes", value)
 
     @property
     @pulumi.getter
@@ -1213,6 +1249,7 @@ class Table(pulumi.CustomResource):
                  external_catalog_table_options: Optional[pulumi.Input[Union['TableExternalCatalogTableOptionsArgs', 'TableExternalCatalogTableOptionsArgsDict']]] = None,
                  external_data_configuration: Optional[pulumi.Input[Union['TableExternalDataConfigurationArgs', 'TableExternalDataConfigurationArgsDict']]] = None,
                  friendly_name: Optional[pulumi.Input[builtins.str]] = None,
+                 ignore_schema_changes: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  materialized_view: Optional[pulumi.Input[Union['TableMaterializedViewArgs', 'TableMaterializedViewArgsDict']]] = None,
                  max_staleness: Optional[pulumi.Input[builtins.str]] = None,
@@ -1339,6 +1376,8 @@ class Table(pulumi.CustomResource):
                By defining these properties, the data source can then be queried as
                if it were a standard BigQuery table. Structure is documented below.
         :param pulumi.Input[builtins.str] friendly_name: A descriptive name for the table.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ignore_schema_changes: A list of fields which should be ignored for each column in schema.
+               **NOTE:** Right now only `dataPolicies` field is supported. We might support others in the future.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: A mapping of labels to assign to the resource.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -1497,6 +1536,7 @@ class Table(pulumi.CustomResource):
                  external_catalog_table_options: Optional[pulumi.Input[Union['TableExternalCatalogTableOptionsArgs', 'TableExternalCatalogTableOptionsArgsDict']]] = None,
                  external_data_configuration: Optional[pulumi.Input[Union['TableExternalDataConfigurationArgs', 'TableExternalDataConfigurationArgsDict']]] = None,
                  friendly_name: Optional[pulumi.Input[builtins.str]] = None,
+                 ignore_schema_changes: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  materialized_view: Optional[pulumi.Input[Union['TableMaterializedViewArgs', 'TableMaterializedViewArgsDict']]] = None,
                  max_staleness: Optional[pulumi.Input[builtins.str]] = None,
@@ -1533,6 +1573,7 @@ class Table(pulumi.CustomResource):
             __props__.__dict__["external_catalog_table_options"] = external_catalog_table_options
             __props__.__dict__["external_data_configuration"] = external_data_configuration
             __props__.__dict__["friendly_name"] = friendly_name
+            __props__.__dict__["ignore_schema_changes"] = ignore_schema_changes
             __props__.__dict__["labels"] = labels
             __props__.__dict__["materialized_view"] = materialized_view
             __props__.__dict__["max_staleness"] = max_staleness
@@ -1586,6 +1627,7 @@ class Table(pulumi.CustomResource):
             external_catalog_table_options: Optional[pulumi.Input[Union['TableExternalCatalogTableOptionsArgs', 'TableExternalCatalogTableOptionsArgsDict']]] = None,
             external_data_configuration: Optional[pulumi.Input[Union['TableExternalDataConfigurationArgs', 'TableExternalDataConfigurationArgsDict']]] = None,
             friendly_name: Optional[pulumi.Input[builtins.str]] = None,
+            ignore_schema_changes: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             last_modified_time: Optional[pulumi.Input[builtins.int]] = None,
             location: Optional[pulumi.Input[builtins.str]] = None,
@@ -1658,6 +1700,8 @@ class Table(pulumi.CustomResource):
                By defining these properties, the data source can then be queried as
                if it were a standard BigQuery table. Structure is documented below.
         :param pulumi.Input[builtins.str] friendly_name: A descriptive name for the table.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ignore_schema_changes: A list of fields which should be ignored for each column in schema.
+               **NOTE:** Right now only `dataPolicies` field is supported. We might support others in the future.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: A mapping of labels to assign to the resource.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -1725,6 +1769,7 @@ class Table(pulumi.CustomResource):
         __props__.__dict__["external_catalog_table_options"] = external_catalog_table_options
         __props__.__dict__["external_data_configuration"] = external_data_configuration
         __props__.__dict__["friendly_name"] = friendly_name
+        __props__.__dict__["ignore_schema_changes"] = ignore_schema_changes
         __props__.__dict__["labels"] = labels
         __props__.__dict__["last_modified_time"] = last_modified_time
         __props__.__dict__["location"] = location
@@ -1882,6 +1927,15 @@ class Table(pulumi.CustomResource):
         A descriptive name for the table.
         """
         return pulumi.get(self, "friendly_name")
+
+    @property
+    @pulumi.getter(name="ignoreSchemaChanges")
+    def ignore_schema_changes(self) -> pulumi.Output[Optional[Sequence[builtins.str]]]:
+        """
+        A list of fields which should be ignored for each column in schema.
+        **NOTE:** Right now only `dataPolicies` field is supported. We might support others in the future.
+        """
+        return pulumi.get(self, "ignore_schema_changes")
 
     @property
     @pulumi.getter

@@ -42,9 +42,6 @@ class AccessLevelArgs:
         :param pulumi.Input[builtins.str] name: Resource name for the Access Level. The short_name component must begin
                with a letter and only include alphanumeric and '_'.
                Format: accessPolicies/{policy_id}/accessLevels/{short_name}
-               
-               
-               - - -
         """
         pulumi.set(__self__, "parent", parent)
         pulumi.set(__self__, "title", title)
@@ -128,9 +125,6 @@ class AccessLevelArgs:
         Resource name for the Access Level. The short_name component must begin
         with a letter and only include alphanumeric and '_'.
         Format: accessPolicies/{policy_id}/accessLevels/{short_name}
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -159,9 +153,6 @@ class _AccessLevelState:
         :param pulumi.Input[builtins.str] name: Resource name for the Access Level. The short_name component must begin
                with a letter and only include alphanumeric and '_'.
                Format: accessPolicies/{policy_id}/accessLevels/{short_name}
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] parent: The AccessPolicy this AccessLevel lives in.
                Format: accessPolicies/{policy_id}
         :param pulumi.Input[builtins.str] title: Human readable title. Must be unique within the Policy.
@@ -225,9 +216,6 @@ class _AccessLevelState:
         Resource name for the Access Level. The short_name component must begin
         with a letter and only include alphanumeric and '_'.
         Format: accessPolicies/{policy_id}/accessLevels/{short_name}
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -345,9 +333,6 @@ class AccessLevel(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] name: Resource name for the Access Level. The short_name component must begin
                with a letter and only include alphanumeric and '_'.
                Format: accessPolicies/{policy_id}/accessLevels/{short_name}
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] parent: The AccessPolicy this AccessLevel lives in.
                Format: accessPolicies/{policy_id}
         :param pulumi.Input[builtins.str] title: Human readable title. Must be unique within the Policy.
@@ -490,9 +475,6 @@ class AccessLevel(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] name: Resource name for the Access Level. The short_name component must begin
                with a letter and only include alphanumeric and '_'.
                Format: accessPolicies/{policy_id}/accessLevels/{short_name}
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] parent: The AccessPolicy this AccessLevel lives in.
                Format: accessPolicies/{policy_id}
         :param pulumi.Input[builtins.str] title: Human readable title. Must be unique within the Policy.
@@ -543,9 +525,6 @@ class AccessLevel(pulumi.CustomResource):
         Resource name for the Access Level. The short_name component must begin
         with a letter and only include alphanumeric and '_'.
         Format: accessPolicies/{policy_id}/accessLevels/{short_name}
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

@@ -407,8 +407,6 @@ type Service struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The Service identifier.
-	//
-	// ***
 	ServiceId pulumi.StringOutput `pulumi:"serviceId"`
 	// Properties of an underlying cloud resource that can comprise a Service.
 	// Structure is documented below.
@@ -489,8 +487,6 @@ type serviceState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The Service identifier.
-	//
-	// ***
 	ServiceId *string `pulumi:"serviceId"`
 	// Properties of an underlying cloud resource that can comprise a Service.
 	// Structure is documented below.
@@ -530,8 +526,6 @@ type ServiceState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The Service identifier.
-	//
-	// ***
 	ServiceId pulumi.StringPtrInput
 	// Properties of an underlying cloud resource that can comprise a Service.
 	// Structure is documented below.
@@ -570,8 +564,6 @@ type serviceArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The Service identifier.
-	//
-	// ***
 	ServiceId string `pulumi:"serviceId"`
 }
 
@@ -594,8 +586,6 @@ type ServiceArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The Service identifier.
-	//
-	// ***
 	ServiceId pulumi.StringInput
 }
 
@@ -735,8 +725,6 @@ func (o ServiceOutput) Project() pulumi.StringOutput {
 }
 
 // The Service identifier.
-//
-// ***
 func (o ServiceOutput) ServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.ServiceId }).(pulumi.StringOutput)
 }

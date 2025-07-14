@@ -82,16 +82,12 @@ public final class ExternalAddressState extends com.pulumi.resources.ResourceArg
     /**
      * The ID of the external IP Address.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return The ID of the external IP Address.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -289,8 +285,6 @@ public final class ExternalAddressState extends com.pulumi.resources.ResourceArg
         /**
          * @param name The ID of the external IP Address.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -301,8 +295,6 @@ public final class ExternalAddressState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param name The ID of the external IP Address.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.Gemini.Outputs
         public readonly string Key;
         /// <summary>
         /// Value of the configuration item.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string Value;
 

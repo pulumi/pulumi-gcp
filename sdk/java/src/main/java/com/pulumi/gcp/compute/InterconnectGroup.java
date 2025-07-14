@@ -166,18 +166,24 @@ public class InterconnectGroup extends com.pulumi.resources.CustomResource {
         return this.intent;
     }
     /**
-     * (Output)
-     * Interconnects used to explain this blocker in more
-     * detail.
+     * Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
+     * strings. Users are encouraged, but not required, to use their preferred
+     * format for resource links as keys.
+     * Note that there are add-members and remove-members methods in gcloud.
+     * The size of this map is limited by an &#34;Interconnects per group&#34; quota.
+     * Structure is documented below.
      * 
      */
     @Export(name="interconnects", refs={List.class,InterconnectGroupInterconnect.class}, tree="[0,1]")
     private Output</* @Nullable */ List<InterconnectGroupInterconnect>> interconnects;
 
     /**
-     * @return (Output)
-     * Interconnects used to explain this blocker in more
-     * detail.
+     * @return Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
+     * strings. Users are encouraged, but not required, to use their preferred
+     * format for resource links as keys.
+     * Note that there are add-members and remove-members methods in gcloud.
+     * The size of this map is limited by an &#34;Interconnects per group&#34; quota.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<List<InterconnectGroupInterconnect>>> interconnects() {
@@ -223,9 +229,19 @@ public class InterconnectGroup extends com.pulumi.resources.CustomResource {
     public Output<List<InterconnectGroupPhysicalStructure>> physicalStructures() {
         return this.physicalStructures;
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }

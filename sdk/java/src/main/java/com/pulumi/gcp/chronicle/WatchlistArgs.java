@@ -101,38 +101,56 @@ public final class WatchlistArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional. Weight applied to the risk score for entities in this watchlist. The default is 1.0 if it is not specified.
+     * Optional. Weight applied to the risk score for entities
+     * in this watchlist.
+     * The default is 1.0 if it is not specified.
      * 
      */
     @Import(name="multiplyingFactor")
     private @Nullable Output<Double> multiplyingFactor;
 
     /**
-     * @return Optional. Weight applied to the risk score for entities in this watchlist. The default is 1.0 if it is not specified.
+     * @return Optional. Weight applied to the risk score for entities
+     * in this watchlist.
+     * The default is 1.0 if it is not specified.
      * 
      */
     public Optional<Output<Double>> multiplyingFactor() {
         return Optional.ofNullable(this.multiplyingFactor);
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
 
     /**
-     * Optional. The ID to use for the watchlist, which will become the final component of the watchlist&#39;s resource name. This
-     * value should be 4-63 characters, and valid characters are /a-z-/.
+     * Optional. The ID to use for the watchlist,
+     * which will become the final component of the watchlist&#39;s resource name.
+     * This value should be 4-63 characters, and valid characters
+     * are /a-z-/.
      * 
      */
     @Import(name="watchlistId")
     private @Nullable Output<String> watchlistId;
 
     /**
-     * @return Optional. The ID to use for the watchlist, which will become the final component of the watchlist&#39;s resource name. This
-     * value should be 4-63 characters, and valid characters are /a-z-/.
+     * @return Optional. The ID to use for the watchlist,
+     * which will become the final component of the watchlist&#39;s resource name.
+     * This value should be 4-63 characters, and valid characters
+     * are /a-z-/.
      * 
      */
     public Optional<Output<String>> watchlistId() {
@@ -141,6 +159,7 @@ public final class WatchlistArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * A collection of user preferences for watchlist UI configuration.
+     * Structure is documented below.
      * 
      */
     @Import(name="watchlistUserPreferences")
@@ -148,6 +167,7 @@ public final class WatchlistArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return A collection of user preferences for watchlist UI configuration.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<WatchlistWatchlistUserPreferencesArgs>> watchlistUserPreferences() {
@@ -298,7 +318,9 @@ public final class WatchlistArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param multiplyingFactor Optional. Weight applied to the risk score for entities in this watchlist. The default is 1.0 if it is not specified.
+         * @param multiplyingFactor Optional. Weight applied to the risk score for entities
+         * in this watchlist.
+         * The default is 1.0 if it is not specified.
          * 
          * @return builder
          * 
@@ -309,7 +331,9 @@ public final class WatchlistArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param multiplyingFactor Optional. Weight applied to the risk score for entities in this watchlist. The default is 1.0 if it is not specified.
+         * @param multiplyingFactor Optional. Weight applied to the risk score for entities
+         * in this watchlist.
+         * The default is 1.0 if it is not specified.
          * 
          * @return builder
          * 
@@ -318,18 +342,34 @@ public final class WatchlistArgs extends com.pulumi.resources.ResourceArgs {
             return multiplyingFactor(Output.of(multiplyingFactor));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
 
         /**
-         * @param watchlistId Optional. The ID to use for the watchlist, which will become the final component of the watchlist&#39;s resource name. This
-         * value should be 4-63 characters, and valid characters are /a-z-/.
+         * @param watchlistId Optional. The ID to use for the watchlist,
+         * which will become the final component of the watchlist&#39;s resource name.
+         * This value should be 4-63 characters, and valid characters
+         * are /a-z-/.
          * 
          * @return builder
          * 
@@ -340,8 +380,10 @@ public final class WatchlistArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param watchlistId Optional. The ID to use for the watchlist, which will become the final component of the watchlist&#39;s resource name. This
-         * value should be 4-63 characters, and valid characters are /a-z-/.
+         * @param watchlistId Optional. The ID to use for the watchlist,
+         * which will become the final component of the watchlist&#39;s resource name.
+         * This value should be 4-63 characters, and valid characters
+         * are /a-z-/.
          * 
          * @return builder
          * 
@@ -352,6 +394,7 @@ public final class WatchlistArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param watchlistUserPreferences A collection of user preferences for watchlist UI configuration.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -363,6 +406,7 @@ public final class WatchlistArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param watchlistUserPreferences A collection of user preferences for watchlist UI configuration.
+         * Structure is documented below.
          * 
          * @return builder
          * 

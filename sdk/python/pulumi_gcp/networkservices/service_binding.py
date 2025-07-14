@@ -34,9 +34,6 @@ class ServiceBindingArgs:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] name: Name of the ServiceBinding resource.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -94,9 +91,6 @@ class ServiceBindingArgs:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Name of the ServiceBinding resource.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -139,9 +133,6 @@ class _ServiceBindingState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] name: Name of the ServiceBinding resource.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -224,9 +215,6 @@ class _ServiceBindingState:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Name of the ServiceBinding resource.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -364,9 +352,6 @@ class ServiceBinding(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] name: Name of the ServiceBinding resource.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] service: The full Service Directory Service name of the format
@@ -512,9 +497,6 @@ class ServiceBinding(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] name: Name of the ServiceBinding resource.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -577,9 +559,6 @@ class ServiceBinding(pulumi.CustomResource):
     def name(self) -> pulumi.Output[builtins.str]:
         """
         Name of the ServiceBinding resource.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

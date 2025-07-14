@@ -424,9 +424,6 @@ export class ConnectionProfile extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of the location this connection profile is located in.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -584,9 +581,6 @@ export interface ConnectionProfileState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the location this connection profile is located in.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -673,9 +667,6 @@ export interface ConnectionProfileArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the location this connection profile is located in.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

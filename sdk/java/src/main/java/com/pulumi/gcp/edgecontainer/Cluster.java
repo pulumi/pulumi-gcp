@@ -296,6 +296,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * The configuration of the cluster control plane.
+     * Structure is documented below.
      * 
      */
     @Export(name="controlPlane", refs={ClusterControlPlane.class}, tree="[0]")
@@ -303,20 +304,25 @@ public class Cluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The configuration of the cluster control plane.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<ClusterControlPlane>> controlPlane() {
         return Codegen.optional(this.controlPlane);
     }
     /**
-     * Remote control plane disk encryption options. This field is only used when enabling CMEK support.
+     * Remote control plane disk encryption options. This field is only used when
+     * enabling CMEK support.
+     * Structure is documented below.
      * 
      */
     @Export(name="controlPlaneEncryption", refs={ClusterControlPlaneEncryption.class}, tree="[0]")
     private Output<ClusterControlPlaneEncryption> controlPlaneEncryption;
 
     /**
-     * @return Remote control plane disk encryption options. This field is only used when enabling CMEK support.
+     * @return Remote control plane disk encryption options. This field is only used when
+     * enabling CMEK support.
+     * Structure is documented below.
      * 
      */
     public Output<ClusterControlPlaneEncryption> controlPlaneEncryption() {
@@ -353,16 +359,18 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * The default maximum number of pods per node used if a maximum value is not specified explicitly for a node pool in this
-     * cluster. If unspecified, the Kubernetes default value will be used.
+     * The default maximum number of pods per node used if a maximum value is not
+     * specified explicitly for a node pool in this cluster. If unspecified, the
+     * Kubernetes default value will be used.
      * 
      */
     @Export(name="defaultMaxPodsPerNode", refs={Integer.class}, tree="[0]")
     private Output<Integer> defaultMaxPodsPerNode;
 
     /**
-     * @return The default maximum number of pods per node used if a maximum value is not specified explicitly for a node pool in this
-     * cluster. If unspecified, the Kubernetes default value will be used.
+     * @return The default maximum number of pods per node used if a maximum value is not
+     * specified explicitly for a node pool in this cluster. If unspecified, the
+     * Kubernetes default value will be used.
      * 
      */
     public Output<Integer> defaultMaxPodsPerNode() {
@@ -433,18 +441,18 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.fleet;
     }
     /**
-     * User-defined labels for the edgecloud cluster. **Note**: This field is non-authoritative, and will only manage the
-     * labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the
-     * resource.
+     * User-defined labels for the edgecloud cluster.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return User-defined labels for the edgecloud cluster. **Note**: This field is non-authoritative, and will only manage the
-     * labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the
-     * resource.
+     * @return User-defined labels for the edgecloud cluster.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -484,6 +492,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * Cluster-wide maintenance policy configuration.
+     * Structure is documented below.
      * 
      */
     @Export(name="maintenancePolicy", refs={ClusterMaintenancePolicy.class}, tree="[0]")
@@ -491,6 +500,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Cluster-wide maintenance policy configuration.
+     * Structure is documented below.
      * 
      */
     public Output<ClusterMaintenancePolicy> maintenancePolicy() {
@@ -562,9 +572,19 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     public Output<Integer> port() {
         return this.port;
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }
@@ -585,14 +605,16 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.pulumiLabels;
     }
     /**
-     * The release channel a cluster is subscribed to. Possible values: [&#34;RELEASE_CHANNEL_UNSPECIFIED&#34;, &#34;NONE&#34;, &#34;REGULAR&#34;]
+     * The release channel a cluster is subscribed to.
+     * Possible values are: `RELEASE_CHANNEL_UNSPECIFIED`, `NONE`, `REGULAR`.
      * 
      */
     @Export(name="releaseChannel", refs={String.class}, tree="[0]")
     private Output<String> releaseChannel;
 
     /**
-     * @return The release channel a cluster is subscribed to. Possible values: [&#34;RELEASE_CHANNEL_UNSPECIFIED&#34;, &#34;NONE&#34;, &#34;REGULAR&#34;]
+     * @return The release channel a cluster is subscribed to.
+     * Possible values are: `RELEASE_CHANNEL_UNSPECIFIED`, `NONE`, `REGULAR`.
      * 
      */
     public Output<String> releaseChannel() {
@@ -614,6 +636,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * Config that customers are allowed to define for GDCE system add-ons.
+     * Structure is documented below.
      * 
      */
     @Export(name="systemAddonsConfig", refs={ClusterSystemAddonsConfig.class}, tree="[0]")
@@ -621,22 +644,21 @@ public class Cluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Config that customers are allowed to define for GDCE system add-ons.
+     * Structure is documented below.
      * 
      */
     public Output<ClusterSystemAddonsConfig> systemAddonsConfig() {
         return this.systemAddonsConfig;
     }
     /**
-     * (Output)
-     * The target version of the cluster.
+     * The target cluster version. For example: &#34;1.5.0&#34;.
      * 
      */
     @Export(name="targetVersion", refs={String.class}, tree="[0]")
     private Output<String> targetVersion;
 
     /**
-     * @return (Output)
-     * The target version of the cluster.
+     * @return The target cluster version. For example: &#34;1.5.0&#34;.
      * 
      */
     public Output<String> targetVersion() {

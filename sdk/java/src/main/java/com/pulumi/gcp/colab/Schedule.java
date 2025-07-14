@@ -461,16 +461,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:colab/schedule:Schedule")
 public class Schedule extends com.pulumi.resources.CustomResource {
     /**
-     * Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be
-     * queued instead of skipped. Default to false.
+     * Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
      * 
      */
     @Export(name="allowQueueing", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowQueueing;
 
     /**
-     * @return Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be
-     * queued instead of skipped. Default to false.
+     * @return Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
      * 
      */
     public Output<Optional<Boolean>> allowQueueing() {
@@ -507,16 +505,14 @@ public class Schedule extends com.pulumi.resources.CustomResource {
         return this.cron;
     }
     /**
-     * Desired state of the Colab Schedule. Set this field to &#39;ACTIVE&#39; to start/resume the schedule, and &#39;PAUSED&#39; to pause the
-     * schedule.
+     * Desired state of the Colab Schedule. Set this field to `ACTIVE` to start/resume the schedule, and `PAUSED` to pause the schedule.
      * 
      */
     @Export(name="desiredState", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> desiredState;
 
     /**
-     * @return Desired state of the Colab Schedule. Set this field to &#39;ACTIVE&#39; to start/resume the schedule, and &#39;PAUSED&#39; to pause the
-     * schedule.
+     * @return Desired state of the Colab Schedule. Set this field to `ACTIVE` to start/resume the schedule, and `PAUSED` to pause the schedule.
      * 
      */
     public Output<Optional<String>> desiredState() {
@@ -537,18 +533,14 @@ public class Schedule extends com.pulumi.resources.CustomResource {
         return this.displayName;
     }
     /**
-     * Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either end_time is
-     * reached or when scheduled_run_count &gt;= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt)
-     * format.
+     * Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either end_time is reached or when scheduled_run_count &gt;= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
      * 
      */
     @Export(name="endTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> endTime;
 
     /**
-     * @return Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either end_time is
-     * reached or when scheduled_run_count &gt;= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt)
-     * format.
+     * @return Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either end_time is reached or when scheduled_run_count &gt;= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
      * 
      */
     public Output<Optional<String>> endTime() {
@@ -583,18 +575,14 @@ public class Schedule extends com.pulumi.resources.CustomResource {
         return this.maxConcurrentRunCount;
     }
     /**
-     * Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount &gt;=
-     * maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is
-     * paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
+     * Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount &gt;= maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
      * 
      */
     @Export(name="maxRunCount", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> maxRunCount;
 
     /**
-     * @return Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount &gt;=
-     * maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is
-     * paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
+     * @return Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount &gt;= maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
      * 
      */
     public Output<Optional<String>> maxRunCount() {
@@ -614,23 +602,31 @@ public class Schedule extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC
-     * 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
+     * The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
      * 
      */
     @Export(name="startTime", refs={String.class}, tree="[0]")
     private Output<String> startTime;
 
     /**
-     * @return The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC
-     * 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
+     * @return The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
      * 
      */
     public Output<String> startTime() {

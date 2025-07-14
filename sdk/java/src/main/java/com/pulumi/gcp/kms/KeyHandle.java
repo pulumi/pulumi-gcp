@@ -211,8 +211,6 @@ public class KeyHandle extends com.pulumi.resources.CustomResource {
      * The location for the KeyHandle.
      * A full list of valid locations can be found by running `gcloud kms locations list`.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
@@ -220,8 +218,6 @@ public class KeyHandle extends com.pulumi.resources.CustomResource {
     /**
      * @return The location for the KeyHandle.
      * A full list of valid locations can be found by running `gcloud kms locations list`.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

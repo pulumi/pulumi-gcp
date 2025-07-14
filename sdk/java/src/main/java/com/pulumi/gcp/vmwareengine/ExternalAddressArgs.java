@@ -49,16 +49,12 @@ public final class ExternalAddressArgs extends com.pulumi.resources.ResourceArgs
     /**
      * The ID of the external IP Address.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return The ID of the external IP Address.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -156,8 +152,6 @@ public final class ExternalAddressArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param name The ID of the external IP Address.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -168,8 +162,6 @@ public final class ExternalAddressArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param name The ID of the external IP Address.
-         * 
-         * ***
          * 
          * @return builder
          * 

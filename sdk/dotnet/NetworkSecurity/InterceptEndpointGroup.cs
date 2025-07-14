@@ -128,9 +128,6 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// <summary>
         /// The ID to use for the endpoint group, which will become the final component
         /// of the endpoint group's resource name.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("interceptEndpointGroupId")]
         public Output<string> InterceptEndpointGroupId { get; private set; } = null!;
@@ -268,9 +265,6 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// <summary>
         /// The ID to use for the endpoint group, which will become the final component
         /// of the endpoint group's resource name.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("interceptEndpointGroupId", required: true)]
         public Input<string> InterceptEndpointGroupId { get; set; } = null!;
@@ -377,9 +371,6 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// <summary>
         /// The ID to use for the endpoint group, which will become the final component
         /// of the endpoint group's resource name.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("interceptEndpointGroupId")]
         public Input<string>? InterceptEndpointGroupId { get; set; }

@@ -197,16 +197,12 @@ public final class RegionalSecretArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * This must be unique within the project.
      * 
-     * ***
-     * 
      */
     @Import(name="secretId", required=true)
     private Output<String> secretId;
 
     /**
      * @return This must be unique within the project.
-     * 
-     * ***
      * 
      */
     public Output<String> secretId() {
@@ -554,8 +550,6 @@ public final class RegionalSecretArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param secretId This must be unique within the project.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -566,8 +560,6 @@ public final class RegionalSecretArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param secretId This must be unique within the project.
-         * 
-         * ***
          * 
          * @return builder
          * 

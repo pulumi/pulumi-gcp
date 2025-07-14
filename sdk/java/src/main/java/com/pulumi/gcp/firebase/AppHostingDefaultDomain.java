@@ -265,16 +265,12 @@ public class AppHostingDefaultDomain extends com.pulumi.resources.CustomResource
     /**
      * Id of the domain. For default domain, it should be {{backend}}--{{project_id}}.{{location}}.hosted.app
      * 
-     * ***
-     * 
      */
     @Export(name="domainId", refs={String.class}, tree="[0]")
     private Output<String> domainId;
 
     /**
      * @return Id of the domain. For default domain, it should be {{backend}}--{{project_id}}.{{location}}.hosted.app
-     * 
-     * ***
      * 
      */
     public Output<String> domainId() {

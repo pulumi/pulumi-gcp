@@ -153,9 +153,6 @@ namespace Pulumi.Gcp.Iam
         /// * end with an alphanumeric character
         /// 
         /// The prefix `gcp-` will be reserved for future uses.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("workloadIdentityPoolNamespaceId")]
         public Output<string> WorkloadIdentityPoolNamespaceId { get; private set; } = null!;
@@ -243,9 +240,6 @@ namespace Pulumi.Gcp.Iam
         /// * end with an alphanumeric character
         /// 
         /// The prefix `gcp-` will be reserved for future uses.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("workloadIdentityPoolNamespaceId", required: true)]
         public Input<string> WorkloadIdentityPoolNamespaceId { get; set; } = null!;
@@ -327,9 +321,6 @@ namespace Pulumi.Gcp.Iam
         /// * end with an alphanumeric character
         /// 
         /// The prefix `gcp-` will be reserved for future uses.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("workloadIdentityPoolNamespaceId")]
         public Input<string>? WorkloadIdentityPoolNamespaceId { get; set; }

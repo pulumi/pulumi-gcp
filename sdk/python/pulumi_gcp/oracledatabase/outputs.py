@@ -1424,7 +1424,8 @@ class AutonomousDatabasePropertiesConnectionStringProfile(dict):
                LOW
                TP
                TPURGENT
-        :param builtins.str display_name: The display name for the database connection.
+        :param builtins.str display_name: The display name for the Autonomous Database. The name does not have to
+               be unique within your project.
         :param builtins.str host_format: The host name format being currently used in connection string. 
                 Possible values:
                 HOST_FORMAT_UNSPECIFIED
@@ -1493,7 +1494,8 @@ class AutonomousDatabasePropertiesConnectionStringProfile(dict):
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[builtins.str]:
         """
-        The display name for the database connection.
+        The display name for the Autonomous Database. The name does not have to
+        be unique within your project.
         """
         return pulumi.get(self, "display_name")
 

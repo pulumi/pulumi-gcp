@@ -32,9 +32,6 @@ class FieldArgs:
         The set of arguments for constructing a Field resource.
         :param pulumi.Input[builtins.str] collection: The id of the collection group to configure.
         :param pulumi.Input[builtins.str] field: The id of the field to configure.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] database: The Firestore database id. Defaults to `"(default)"`.
         :param pulumi.Input['FieldIndexConfigArgs'] index_config: The single field index configuration for this field.
                Creating an index configuration for this field will override any inherited configuration with the
@@ -74,9 +71,6 @@ class FieldArgs:
     def field(self) -> pulumi.Input[builtins.str]:
         """
         The id of the field to configure.
-
-
-        - - -
         """
         return pulumi.get(self, "field")
 
@@ -154,9 +148,6 @@ class _FieldState:
         :param pulumi.Input[builtins.str] collection: The id of the collection group to configure.
         :param pulumi.Input[builtins.str] database: The Firestore database id. Defaults to `"(default)"`.
         :param pulumi.Input[builtins.str] field: The id of the field to configure.
-               
-               
-               - - -
         :param pulumi.Input['FieldIndexConfigArgs'] index_config: The single field index configuration for this field.
                Creating an index configuration for this field will override any inherited configuration with the
                indexes specified. Configuring the index configuration with an empty block disables all indexes on
@@ -213,9 +204,6 @@ class _FieldState:
     def field(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The id of the field to configure.
-
-
-        - - -
         """
         return pulumi.get(self, "field")
 
@@ -441,9 +429,6 @@ class Field(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] collection: The id of the collection group to configure.
         :param pulumi.Input[builtins.str] database: The Firestore database id. Defaults to `"(default)"`.
         :param pulumi.Input[builtins.str] field: The id of the field to configure.
-               
-               
-               - - -
         :param pulumi.Input[Union['FieldIndexConfigArgs', 'FieldIndexConfigArgsDict']] index_config: The single field index configuration for this field.
                Creating an index configuration for this field will override any inherited configuration with the
                indexes specified. Configuring the index configuration with an empty block disables all indexes on
@@ -672,9 +657,6 @@ class Field(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] collection: The id of the collection group to configure.
         :param pulumi.Input[builtins.str] database: The Firestore database id. Defaults to `"(default)"`.
         :param pulumi.Input[builtins.str] field: The id of the field to configure.
-               
-               
-               - - -
         :param pulumi.Input[Union['FieldIndexConfigArgs', 'FieldIndexConfigArgsDict']] index_config: The single field index configuration for this field.
                Creating an index configuration for this field will override any inherited configuration with the
                indexes specified. Configuring the index configuration with an empty block disables all indexes on
@@ -721,9 +703,6 @@ class Field(pulumi.CustomResource):
     def field(self) -> pulumi.Output[builtins.str]:
         """
         The id of the field to configure.
-
-
-        - - -
         """
         return pulumi.get(self, "field")
 

@@ -6,6 +6,7 @@ package com.pulumi.gcp.container.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfig;
+import com.pulumi.gcp.container.outputs.GetClusterAnonymousAuthenticationConfig;
 import com.pulumi.gcp.container.outputs.GetClusterAuthenticatorGroupsConfig;
 import com.pulumi.gcp.container.outputs.GetClusterBinaryAuthorization;
 import com.pulumi.gcp.container.outputs.GetClusterClusterAutoscaling;
@@ -63,6 +64,7 @@ import javax.annotation.Nullable;
 public final class GetClusterResult {
     private List<GetClusterAddonsConfig> addonsConfigs;
     private Boolean allowNetAdmin;
+    private List<GetClusterAnonymousAuthenticationConfig> anonymousAuthenticationConfigs;
     private List<GetClusterAuthenticatorGroupsConfig> authenticatorGroupsConfigs;
     private List<GetClusterBinaryAuthorization> binaryAuthorizations;
     private List<GetClusterClusterAutoscaling> clusterAutoscalings;
@@ -160,6 +162,9 @@ public final class GetClusterResult {
     }
     public Boolean allowNetAdmin() {
         return this.allowNetAdmin;
+    }
+    public List<GetClusterAnonymousAuthenticationConfig> anonymousAuthenticationConfigs() {
+        return this.anonymousAuthenticationConfigs;
     }
     public List<GetClusterAuthenticatorGroupsConfig> authenticatorGroupsConfigs() {
         return this.authenticatorGroupsConfigs;
@@ -435,6 +440,7 @@ public final class GetClusterResult {
     public static final class Builder {
         private List<GetClusterAddonsConfig> addonsConfigs;
         private Boolean allowNetAdmin;
+        private List<GetClusterAnonymousAuthenticationConfig> anonymousAuthenticationConfigs;
         private List<GetClusterAuthenticatorGroupsConfig> authenticatorGroupsConfigs;
         private List<GetClusterBinaryAuthorization> binaryAuthorizations;
         private List<GetClusterClusterAutoscaling> clusterAutoscalings;
@@ -526,6 +532,7 @@ public final class GetClusterResult {
     	      Objects.requireNonNull(defaults);
     	      this.addonsConfigs = defaults.addonsConfigs;
     	      this.allowNetAdmin = defaults.allowNetAdmin;
+    	      this.anonymousAuthenticationConfigs = defaults.anonymousAuthenticationConfigs;
     	      this.authenticatorGroupsConfigs = defaults.authenticatorGroupsConfigs;
     	      this.binaryAuthorizations = defaults.binaryAuthorizations;
     	      this.clusterAutoscalings = defaults.clusterAutoscalings;
@@ -632,6 +639,17 @@ public final class GetClusterResult {
             }
             this.allowNetAdmin = allowNetAdmin;
             return this;
+        }
+        @CustomType.Setter
+        public Builder anonymousAuthenticationConfigs(List<GetClusterAnonymousAuthenticationConfig> anonymousAuthenticationConfigs) {
+            if (anonymousAuthenticationConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "anonymousAuthenticationConfigs");
+            }
+            this.anonymousAuthenticationConfigs = anonymousAuthenticationConfigs;
+            return this;
+        }
+        public Builder anonymousAuthenticationConfigs(GetClusterAnonymousAuthenticationConfig... anonymousAuthenticationConfigs) {
+            return anonymousAuthenticationConfigs(List.of(anonymousAuthenticationConfigs));
         }
         @CustomType.Setter
         public Builder authenticatorGroupsConfigs(List<GetClusterAuthenticatorGroupsConfig> authenticatorGroupsConfigs) {
@@ -1456,6 +1474,7 @@ public final class GetClusterResult {
             final var _resultValue = new GetClusterResult();
             _resultValue.addonsConfigs = addonsConfigs;
             _resultValue.allowNetAdmin = allowNetAdmin;
+            _resultValue.anonymousAuthenticationConfigs = anonymousAuthenticationConfigs;
             _resultValue.authenticatorGroupsConfigs = authenticatorGroupsConfigs;
             _resultValue.binaryAuthorizations = binaryAuthorizations;
             _resultValue.clusterAutoscalings = clusterAutoscalings;

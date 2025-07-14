@@ -102,16 +102,12 @@ public final class WorkforcePoolArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
      * 
-     * ***
-     * 
      */
     @Import(name="parent", required=true)
     private Output<String> parent;
 
     /**
      * @return Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
-     * 
-     * ***
      * 
      */
     public Output<String> parent() {
@@ -305,8 +301,6 @@ public final class WorkforcePoolArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param parent Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -317,8 +311,6 @@ public final class WorkforcePoolArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param parent Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
-         * 
-         * ***
          * 
          * @return builder
          * 

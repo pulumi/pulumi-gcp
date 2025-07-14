@@ -363,9 +363,6 @@ export class RegionSecurityPolicyRule extends pulumi.CustomResource {
     public readonly region!: pulumi.Output<string>;
     /**
      * The name of the security policy this rule belongs to.
-     *
-     *
-     * - - -
      */
     public readonly securityPolicy!: pulumi.Output<string>;
 
@@ -491,9 +488,6 @@ export interface RegionSecurityPolicyRuleState {
     region?: pulumi.Input<string>;
     /**
      * The name of the security policy this rule belongs to.
-     *
-     *
-     * - - -
      */
     securityPolicy?: pulumi.Input<string>;
 }
@@ -565,9 +559,6 @@ export interface RegionSecurityPolicyRuleArgs {
     region: pulumi.Input<string>;
     /**
      * The name of the security policy this rule belongs to.
-     *
-     *
-     * - - -
      */
     securityPolicy: pulumi.Input<string>;
 }

@@ -35,9 +35,6 @@ class InstanceArgs:
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[builtins.str] location: Part of `parent`. See documentation of `projectsId`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] desired_state: Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
         :param pulumi.Input[builtins.bool] disable_proxy_access: Optional. If true, the workbench instance will not register with the proxy.
         :param pulumi.Input[builtins.bool] enable_third_party_identity: Flag that specifies that a notebook can be accessed with third party
@@ -84,9 +81,6 @@ class InstanceArgs:
     def location(self) -> pulumi.Input[builtins.str]:
         """
         Part of `parent`. See documentation of `projectsId`.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -265,9 +259,6 @@ class _InstanceState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: Part of `parent`. See documentation of `projectsId`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The name of this workbench instance. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -484,9 +475,6 @@ class _InstanceState:
     def location(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Part of `parent`. See documentation of `projectsId`.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -837,9 +825,6 @@ class Instance(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: Part of `parent`. See documentation of `projectsId`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The name of this workbench instance. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1187,9 +1172,6 @@ class Instance(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: Part of `parent`. See documentation of `projectsId`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The name of this workbench instance. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1343,9 +1325,6 @@ class Instance(pulumi.CustomResource):
     def location(self) -> pulumi.Output[builtins.str]:
         """
         Part of `parent`. See documentation of `projectsId`.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

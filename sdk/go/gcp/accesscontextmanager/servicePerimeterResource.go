@@ -108,8 +108,6 @@ type ServicePerimeterResource struct {
 	// The perimeter etag is internally used to prevent overwriting the list of perimeter resources on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of resources. The resource to add or remove is merged into that list and then this etag is sent with the PATCH call along with the updated resource list.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The name of the Service Perimeter to add this resource to.
-	//
-	// ***
 	PerimeterName pulumi.StringOutput `pulumi:"perimeterName"`
 	// A GCP resource that is inside of the service perimeter.
 	// Currently only projects are allowed.
@@ -158,8 +156,6 @@ type servicePerimeterResourceState struct {
 	// The perimeter etag is internally used to prevent overwriting the list of perimeter resources on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of resources. The resource to add or remove is merged into that list and then this etag is sent with the PATCH call along with the updated resource list.
 	Etag *string `pulumi:"etag"`
 	// The name of the Service Perimeter to add this resource to.
-	//
-	// ***
 	PerimeterName *string `pulumi:"perimeterName"`
 	// A GCP resource that is inside of the service perimeter.
 	// Currently only projects are allowed.
@@ -173,8 +169,6 @@ type ServicePerimeterResourceState struct {
 	// The perimeter etag is internally used to prevent overwriting the list of perimeter resources on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of resources. The resource to add or remove is merged into that list and then this etag is sent with the PATCH call along with the updated resource list.
 	Etag pulumi.StringPtrInput
 	// The name of the Service Perimeter to add this resource to.
-	//
-	// ***
 	PerimeterName pulumi.StringPtrInput
 	// A GCP resource that is inside of the service perimeter.
 	// Currently only projects are allowed.
@@ -188,8 +182,6 @@ func (ServicePerimeterResourceState) ElementType() reflect.Type {
 
 type servicePerimeterResourceArgs struct {
 	// The name of the Service Perimeter to add this resource to.
-	//
-	// ***
 	PerimeterName string `pulumi:"perimeterName"`
 	// A GCP resource that is inside of the service perimeter.
 	// Currently only projects are allowed.
@@ -200,8 +192,6 @@ type servicePerimeterResourceArgs struct {
 // The set of arguments for constructing a ServicePerimeterResource resource.
 type ServicePerimeterResourceArgs struct {
 	// The name of the Service Perimeter to add this resource to.
-	//
-	// ***
 	PerimeterName pulumi.StringInput
 	// A GCP resource that is inside of the service perimeter.
 	// Currently only projects are allowed.
@@ -307,8 +297,6 @@ func (o ServicePerimeterResourceOutput) Etag() pulumi.StringOutput {
 }
 
 // The name of the Service Perimeter to add this resource to.
-//
-// ***
 func (o ServicePerimeterResourceOutput) PerimeterName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePerimeterResource) pulumi.StringOutput { return v.PerimeterName }).(pulumi.StringOutput)
 }

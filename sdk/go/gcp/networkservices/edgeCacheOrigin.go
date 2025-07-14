@@ -236,8 +236,6 @@ type EdgeCacheOrigin struct {
 	// Name of the resource; provided by the client when the resource is created.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 	// and all following characters must be a dash, underscore, letter or digit.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A fully qualified domain name (FQDN) or IP address reachable over the public Internet, or the address of a Google Cloud Storage bucket.
 	// This address will be used as the origin for cache requests - e.g. FQDN: media-backend.example.com, IPv4: 35.218.1.1, IPv6: 2607:f8b0:4012:809::200e, Cloud Storage: gs://bucketname
@@ -354,8 +352,6 @@ type edgeCacheOriginState struct {
 	// Name of the resource; provided by the client when the resource is created.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 	// and all following characters must be a dash, underscore, letter or digit.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// A fully qualified domain name (FQDN) or IP address reachable over the public Internet, or the address of a Google Cloud Storage bucket.
 	// This address will be used as the origin for cache requests - e.g. FQDN: media-backend.example.com, IPv4: 35.218.1.1, IPv6: 2607:f8b0:4012:809::200e, Cloud Storage: gs://bucketname
@@ -435,8 +431,6 @@ type EdgeCacheOriginState struct {
 	// Name of the resource; provided by the client when the resource is created.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 	// and all following characters must be a dash, underscore, letter or digit.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// A fully qualified domain name (FQDN) or IP address reachable over the public Internet, or the address of a Google Cloud Storage bucket.
 	// This address will be used as the origin for cache requests - e.g. FQDN: media-backend.example.com, IPv4: 35.218.1.1, IPv6: 2607:f8b0:4012:809::200e, Cloud Storage: gs://bucketname
@@ -518,8 +512,6 @@ type edgeCacheOriginArgs struct {
 	// Name of the resource; provided by the client when the resource is created.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 	// and all following characters must be a dash, underscore, letter or digit.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// A fully qualified domain name (FQDN) or IP address reachable over the public Internet, or the address of a Google Cloud Storage bucket.
 	// This address will be used as the origin for cache requests - e.g. FQDN: media-backend.example.com, IPv4: 35.218.1.1, IPv6: 2607:f8b0:4012:809::200e, Cloud Storage: gs://bucketname
@@ -595,8 +587,6 @@ type EdgeCacheOriginArgs struct {
 	// Name of the resource; provided by the client when the resource is created.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 	// and all following characters must be a dash, underscore, letter or digit.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// A fully qualified domain name (FQDN) or IP address reachable over the public Internet, or the address of a Google Cloud Storage bucket.
 	// This address will be used as the origin for cache requests - e.g. FQDN: media-backend.example.com, IPv4: 35.218.1.1, IPv6: 2607:f8b0:4012:809::200e, Cloud Storage: gs://bucketname
@@ -780,8 +770,6 @@ func (o EdgeCacheOriginOutput) MaxAttempts() pulumi.IntPtrOutput {
 // Name of the resource; provided by the client when the resource is created.
 // The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 // and all following characters must be a dash, underscore, letter or digit.
-//
-// ***
 func (o EdgeCacheOriginOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *EdgeCacheOrigin) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

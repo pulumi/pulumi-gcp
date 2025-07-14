@@ -48,8 +48,7 @@ public final class ServiceStatus {
      */
     private @Nullable Integer observedGeneration;
     /**
-     * @return (Output)
-     * Traffic specifies how to distribute traffic over a collection of Knative Revisions
+     * @return Traffic specifies how to distribute traffic over a collection of Knative Revisions
      * and Configurations
      * Structure is documented below.
      * 
@@ -106,8 +105,7 @@ public final class ServiceStatus {
         return Optional.ofNullable(this.observedGeneration);
     }
     /**
-     * @return (Output)
-     * Traffic specifies how to distribute traffic over a collection of Knative Revisions
+     * @return Traffic specifies how to distribute traffic over a collection of Knative Revisions
      * and Configurations
      * Structure is documented below.
      * 

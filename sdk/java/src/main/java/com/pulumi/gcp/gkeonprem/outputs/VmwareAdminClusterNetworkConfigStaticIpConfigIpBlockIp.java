@@ -15,8 +15,6 @@ public final class VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIp {
     /**
      * @return Hostname of the machine. VM&#39;s name will be used if this field is empty.
      * 
-     * ***
-     * 
      */
     private @Nullable String hostname;
     /**
@@ -28,8 +26,6 @@ public final class VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIp {
     private VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIp() {}
     /**
      * @return Hostname of the machine. VM&#39;s name will be used if this field is empty.
-     * 
-     * ***
      * 
      */
     public Optional<String> hostname() {

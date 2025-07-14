@@ -55,16 +55,12 @@ public final class WireGroupState extends com.pulumi.resources.ResourceArgs {
     /**
      * Required cross site network to which wire group belongs.
      * 
-     * ***
-     * 
      */
     @Import(name="crossSiteNetwork")
     private @Nullable Output<String> crossSiteNetwork;
 
     /**
      * @return Required cross site network to which wire group belongs.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> crossSiteNetwork() {
@@ -290,8 +286,6 @@ public final class WireGroupState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param crossSiteNetwork Required cross site network to which wire group belongs.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -302,8 +296,6 @@ public final class WireGroupState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param crossSiteNetwork Required cross site network to which wire group belongs.
-         * 
-         * ***
          * 
          * @return builder
          * 

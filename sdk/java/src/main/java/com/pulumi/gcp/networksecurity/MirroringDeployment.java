@@ -275,8 +275,6 @@ public class MirroringDeployment extends com.pulumi.resources.CustomResource {
      * The ID to use for the new deployment, which will become the final
      * component of the deployment&#39;s resource name.
      * 
-     * ***
-     * 
      */
     @Export(name="mirroringDeploymentId", refs={String.class}, tree="[0]")
     private Output<String> mirroringDeploymentId;
@@ -284,8 +282,6 @@ public class MirroringDeployment extends com.pulumi.resources.CustomResource {
     /**
      * @return The ID to use for the new deployment, which will become the final
      * component of the deployment&#39;s resource name.
-     * 
-     * ***
      * 
      */
     public Output<String> mirroringDeploymentId() {

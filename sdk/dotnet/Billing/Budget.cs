@@ -388,8 +388,10 @@ namespace Pulumi.Gcp.Billing
     public partial class Budget : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Defines notifications that are sent on every update to the billing account's spend, regardless of the thresholds defined
+        /// Defines notifications that are sent on every update to the
+        /// billing account's spend, regardless of the thresholds defined
         /// using threshold rules.
+        /// Structure is documented below.
         /// </summary>
         [Output("allUpdatesRule")]
         public Output<Outputs.BudgetAllUpdatesRule?> AllUpdatesRule { get; private set; } = null!;
@@ -408,7 +410,9 @@ namespace Pulumi.Gcp.Billing
         public Output<string> BillingAccount { get; private set; } = null!;
 
         /// <summary>
-        /// Filters that define which resources are used to compute the actual spend against the budget.
+        /// Filters that define which resources are used to compute the actual
+        /// spend against the budget.
+        /// Structure is documented below.
         /// </summary>
         [Output("budgetFilter")]
         public Output<Outputs.BudgetBudgetFilter> BudgetFilter { get; private set; } = null!;
@@ -428,15 +432,18 @@ namespace Pulumi.Gcp.Billing
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The ownership scope of the budget. The ownership scope and users' IAM permissions determine who has full access to the
-        /// budget's data. Possible values: ["OWNERSHIP_SCOPE_UNSPECIFIED", "ALL_USERS", "BILLING_ACCOUNT"]
+        /// The ownership scope of the budget. The ownership scope and users'
+        /// IAM permissions determine who has full access to the budget's data.
+        /// Possible values are: `OWNERSHIP_SCOPE_UNSPECIFIED`, `ALL_USERS`, `BILLING_ACCOUNT`.
         /// </summary>
         [Output("ownershipScope")]
         public Output<string?> OwnershipScope { get; private set; } = null!;
 
         /// <summary>
-        /// Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of
-        /// the budget.
+        /// Rules that trigger alerts (notifications of thresholds being
+        /// crossed) when spend exceeds the specified percentages of the
+        /// budget.
+        /// Structure is documented below.
         /// </summary>
         [Output("thresholdRules")]
         public Output<ImmutableArray<Outputs.BudgetThresholdRule>> ThresholdRules { get; private set; } = null!;
@@ -488,8 +495,10 @@ namespace Pulumi.Gcp.Billing
     public sealed class BudgetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Defines notifications that are sent on every update to the billing account's spend, regardless of the thresholds defined
+        /// Defines notifications that are sent on every update to the
+        /// billing account's spend, regardless of the thresholds defined
         /// using threshold rules.
+        /// Structure is documented below.
         /// </summary>
         [Input("allUpdatesRule")]
         public Input<Inputs.BudgetAllUpdatesRuleArgs>? AllUpdatesRule { get; set; }
@@ -508,7 +517,9 @@ namespace Pulumi.Gcp.Billing
         public Input<string> BillingAccount { get; set; } = null!;
 
         /// <summary>
-        /// Filters that define which resources are used to compute the actual spend against the budget.
+        /// Filters that define which resources are used to compute the actual
+        /// spend against the budget.
+        /// Structure is documented below.
         /// </summary>
         [Input("budgetFilter")]
         public Input<Inputs.BudgetBudgetFilterArgs>? BudgetFilter { get; set; }
@@ -520,8 +531,9 @@ namespace Pulumi.Gcp.Billing
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The ownership scope of the budget. The ownership scope and users' IAM permissions determine who has full access to the
-        /// budget's data. Possible values: ["OWNERSHIP_SCOPE_UNSPECIFIED", "ALL_USERS", "BILLING_ACCOUNT"]
+        /// The ownership scope of the budget. The ownership scope and users'
+        /// IAM permissions determine who has full access to the budget's data.
+        /// Possible values are: `OWNERSHIP_SCOPE_UNSPECIFIED`, `ALL_USERS`, `BILLING_ACCOUNT`.
         /// </summary>
         [Input("ownershipScope")]
         public Input<string>? OwnershipScope { get; set; }
@@ -530,8 +542,10 @@ namespace Pulumi.Gcp.Billing
         private InputList<Inputs.BudgetThresholdRuleArgs>? _thresholdRules;
 
         /// <summary>
-        /// Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of
-        /// the budget.
+        /// Rules that trigger alerts (notifications of thresholds being
+        /// crossed) when spend exceeds the specified percentages of the
+        /// budget.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.BudgetThresholdRuleArgs> ThresholdRules
         {
@@ -548,8 +562,10 @@ namespace Pulumi.Gcp.Billing
     public sealed class BudgetState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Defines notifications that are sent on every update to the billing account's spend, regardless of the thresholds defined
+        /// Defines notifications that are sent on every update to the
+        /// billing account's spend, regardless of the thresholds defined
         /// using threshold rules.
+        /// Structure is documented below.
         /// </summary>
         [Input("allUpdatesRule")]
         public Input<Inputs.BudgetAllUpdatesRuleGetArgs>? AllUpdatesRule { get; set; }
@@ -568,7 +584,9 @@ namespace Pulumi.Gcp.Billing
         public Input<string>? BillingAccount { get; set; }
 
         /// <summary>
-        /// Filters that define which resources are used to compute the actual spend against the budget.
+        /// Filters that define which resources are used to compute the actual
+        /// spend against the budget.
+        /// Structure is documented below.
         /// </summary>
         [Input("budgetFilter")]
         public Input<Inputs.BudgetBudgetFilterGetArgs>? BudgetFilter { get; set; }
@@ -588,8 +606,9 @@ namespace Pulumi.Gcp.Billing
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The ownership scope of the budget. The ownership scope and users' IAM permissions determine who has full access to the
-        /// budget's data. Possible values: ["OWNERSHIP_SCOPE_UNSPECIFIED", "ALL_USERS", "BILLING_ACCOUNT"]
+        /// The ownership scope of the budget. The ownership scope and users'
+        /// IAM permissions determine who has full access to the budget's data.
+        /// Possible values are: `OWNERSHIP_SCOPE_UNSPECIFIED`, `ALL_USERS`, `BILLING_ACCOUNT`.
         /// </summary>
         [Input("ownershipScope")]
         public Input<string>? OwnershipScope { get; set; }
@@ -598,8 +617,10 @@ namespace Pulumi.Gcp.Billing
         private InputList<Inputs.BudgetThresholdRuleGetArgs>? _thresholdRules;
 
         /// <summary>
-        /// Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of
-        /// the budget.
+        /// Rules that trigger alerts (notifications of thresholds being
+        /// crossed) when spend exceeds the specified percentages of the
+        /// budget.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.BudgetThresholdRuleGetArgs> ThresholdRules
         {

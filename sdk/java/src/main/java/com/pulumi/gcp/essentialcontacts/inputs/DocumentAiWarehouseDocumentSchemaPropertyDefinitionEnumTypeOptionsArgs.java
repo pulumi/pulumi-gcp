@@ -36,16 +36,12 @@ public final class DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOp
     /**
      * Make sure the enum property value provided in the document is in the possile value list during document creation. The validation check runs by default.
      * 
-     * ***
-     * 
      */
     @Import(name="validationCheckDisabled")
     private @Nullable Output<Boolean> validationCheckDisabled;
 
     /**
      * @return Make sure the enum property value provided in the document is in the possile value list during document creation. The validation check runs by default.
-     * 
-     * ***
      * 
      */
     public Optional<Output<Boolean>> validationCheckDisabled() {
@@ -111,8 +107,6 @@ public final class DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOp
         /**
          * @param validationCheckDisabled Make sure the enum property value provided in the document is in the possile value list during document creation. The validation check runs by default.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -123,8 +117,6 @@ public final class DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOp
 
         /**
          * @param validationCheckDisabled Make sure the enum property value provided in the document is in the possile value list during document creation. The validation check runs by default.
-         * 
-         * ***
          * 
          * @return builder
          * 

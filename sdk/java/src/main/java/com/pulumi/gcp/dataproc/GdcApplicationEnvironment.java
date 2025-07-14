@@ -315,16 +315,12 @@ public class GdcApplicationEnvironment extends com.pulumi.resources.CustomResour
     /**
      * The id of the service instance to which this application environment belongs.
      * 
-     * ***
-     * 
      */
     @Export(name="serviceinstance", refs={String.class}, tree="[0]")
     private Output<String> serviceinstance;
 
     /**
      * @return The id of the service instance to which this application environment belongs.
-     * 
-     * ***
      * 
      */
     public Output<String> serviceinstance() {

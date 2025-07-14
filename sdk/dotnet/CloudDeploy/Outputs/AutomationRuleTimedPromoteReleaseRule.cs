@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
     {
         /// <summary>
         /// Optional. The starting phase of the rollout created by this rule. Default to the first phase.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string? DestinationPhase;
         /// <summary>

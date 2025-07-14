@@ -24,8 +24,6 @@ namespace Pulumi.Gcp.ApiHub.Outputs
         /// `https://integrations.googleapis.com/v1/{name=projects/*/locations/*/integrations/*}:execute`
         /// or
         /// `https://{location}-integrations.googleapis.com/v1/{name=projects/*/locations/*/integrations/*}:execute`
-        /// 
-        /// - - -
         /// </summary>
         public readonly string Uri;
 

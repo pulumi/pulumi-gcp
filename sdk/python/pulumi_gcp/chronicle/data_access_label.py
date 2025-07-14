@@ -32,9 +32,6 @@ class DataAccessLabelArgs:
                display name and the final component of the label's resource name. The
                maximum number of characters should be 63. Regex pattern is as per AIP:
                https://google.aip.dev/122#resource-id-segments
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] instance: The unique identifier for the Chronicle instance, which is the same as the customer ID.
         :param pulumi.Input[builtins.str] location: The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
         :param pulumi.Input[builtins.str] udm_query: A UDM query over event data.
@@ -59,9 +56,6 @@ class DataAccessLabelArgs:
         display name and the final component of the label's resource name. The
         maximum number of characters should be 63. Regex pattern is as per AIP:
         https://google.aip.dev/122#resource-id-segments
-
-
-        - - -
         """
         return pulumi.get(self, "data_access_label_id")
 
@@ -154,9 +148,6 @@ class _DataAccessLabelState:
                display name and the final component of the label's resource name. The
                maximum number of characters should be 63. Regex pattern is as per AIP:
                https://google.aip.dev/122#resource-id-segments
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] description: Optional. A description of the data access label for a human reader.
         :param pulumi.Input[builtins.str] display_name: Output only. The short name displayed for the label as it appears on event data. This is same as data access label id.
         :param pulumi.Input[builtins.str] instance: The unique identifier for the Chronicle instance, which is the same as the customer ID.
@@ -227,9 +218,6 @@ class _DataAccessLabelState:
         display name and the final component of the label's resource name. The
         maximum number of characters should be 63. Regex pattern is as per AIP:
         https://google.aip.dev/122#resource-id-segments
-
-
-        - - -
         """
         return pulumi.get(self, "data_access_label_id")
 
@@ -417,9 +405,6 @@ class DataAccessLabel(pulumi.CustomResource):
                display name and the final component of the label's resource name. The
                maximum number of characters should be 63. Regex pattern is as per AIP:
                https://google.aip.dev/122#resource-id-segments
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] description: Optional. A description of the data access label for a human reader.
         :param pulumi.Input[builtins.str] instance: The unique identifier for the Chronicle instance, which is the same as the customer ID.
         :param pulumi.Input[builtins.str] location: The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
@@ -567,9 +552,6 @@ class DataAccessLabel(pulumi.CustomResource):
                display name and the final component of the label's resource name. The
                maximum number of characters should be 63. Regex pattern is as per AIP:
                https://google.aip.dev/122#resource-id-segments
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] description: Optional. A description of the data access label for a human reader.
         :param pulumi.Input[builtins.str] display_name: Output only. The short name displayed for the label as it appears on event data. This is same as data access label id.
         :param pulumi.Input[builtins.str] instance: The unique identifier for the Chronicle instance, which is the same as the customer ID.
@@ -625,9 +607,6 @@ class DataAccessLabel(pulumi.CustomResource):
         display name and the final component of the label's resource name. The
         maximum number of characters should be 63. Regex pattern is as per AIP:
         https://google.aip.dev/122#resource-id-segments
-
-
-        - - -
         """
         return pulumi.get(self, "data_access_label_id")
 

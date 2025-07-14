@@ -22,16 +22,12 @@ public final class AppHostingTrafficState extends com.pulumi.resources.ResourceA
     /**
      * Id of the backend that this Traffic config applies to
      * 
-     * ***
-     * 
      */
     @Import(name="backend")
     private @Nullable Output<String> backend;
 
     /**
      * @return Id of the backend that this Traffic config applies to
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> backend() {
@@ -261,8 +257,6 @@ public final class AppHostingTrafficState extends com.pulumi.resources.ResourceA
         /**
          * @param backend Id of the backend that this Traffic config applies to
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -273,8 +267,6 @@ public final class AppHostingTrafficState extends com.pulumi.resources.ResourceA
 
         /**
          * @param backend Id of the backend that this Traffic config applies to
-         * 
-         * ***
          * 
          * @return builder
          * 

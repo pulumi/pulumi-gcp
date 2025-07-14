@@ -14,8 +14,6 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
     {
         /// <summary>
         /// The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/services/gpu for configuring GPU.
-        /// 
-        /// - - -
         /// </summary>
         [Input("accelerator", required: true)]
         public Input<string> Accelerator { get; set; } = null!;

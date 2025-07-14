@@ -226,9 +226,6 @@ namespace Pulumi.Gcp.Firebase
         /// <summary>
         /// Required. The ID to use for the service, which will become the final component of the
         /// service's resource name.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("serviceId")]
         public Output<string> ServiceId { get; private set; } = null!;
@@ -356,9 +353,6 @@ namespace Pulumi.Gcp.Firebase
         /// <summary>
         /// Required. The ID to use for the service, which will become the final component of the
         /// service's resource name.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("serviceId", required: true)]
         public Input<string> ServiceId { get; set; } = null!;
@@ -507,9 +501,6 @@ namespace Pulumi.Gcp.Firebase
         /// <summary>
         /// Required. The ID to use for the service, which will become the final component of the
         /// service's resource name.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("serviceId")]
         public Input<string>? ServiceId { get; set; }

@@ -54,16 +54,12 @@ public final class InstancePartitionArgs extends com.pulumi.resources.ResourceAr
     /**
      * The instance to create the instance partition in.
      * 
-     * ***
-     * 
      */
     @Import(name="instance", required=true)
     private Output<String> instance;
 
     /**
      * @return The instance to create the instance partition in.
-     * 
-     * ***
      * 
      */
     public Output<String> instance() {
@@ -221,8 +217,6 @@ public final class InstancePartitionArgs extends com.pulumi.resources.ResourceAr
         /**
          * @param instance The instance to create the instance partition in.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -233,8 +227,6 @@ public final class InstancePartitionArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param instance The instance to create the instance partition in.
-         * 
-         * ***
          * 
          * @return builder
          * 

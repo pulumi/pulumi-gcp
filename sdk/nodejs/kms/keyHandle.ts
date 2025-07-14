@@ -157,9 +157,6 @@ export class KeyHandle extends pulumi.CustomResource {
     /**
      * The location for the KeyHandle.
      * A full list of valid locations can be found by running `gcloud kms locations list`.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -227,9 +224,6 @@ export interface KeyHandleState {
     /**
      * The location for the KeyHandle.
      * A full list of valid locations can be found by running `gcloud kms locations list`.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -255,9 +249,6 @@ export interface KeyHandleArgs {
     /**
      * The location for the KeyHandle.
      * A full list of valid locations can be found by running `gcloud kms locations list`.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

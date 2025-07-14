@@ -17,16 +17,12 @@ public final class OrganizationFeedFeedOutputConfigPubsubDestinationArgs extends
     /**
      * Destination on Cloud Pubsub topic.
      * 
-     * ***
-     * 
      */
     @Import(name="topic", required=true)
     private Output<String> topic;
 
     /**
      * @return Destination on Cloud Pubsub topic.
-     * 
-     * ***
      * 
      */
     public Output<String> topic() {
@@ -60,8 +56,6 @@ public final class OrganizationFeedFeedOutputConfigPubsubDestinationArgs extends
         /**
          * @param topic Destination on Cloud Pubsub topic.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -72,8 +66,6 @@ public final class OrganizationFeedFeedOutputConfigPubsubDestinationArgs extends
 
         /**
          * @param topic Destination on Cloud Pubsub topic.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -120,8 +120,6 @@ public final class CryptoKeyState extends com.pulumi.resources.ResourceArgs {
      * The KeyRing that this key belongs to.
      * Format: `&#39;projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}&#39;`.
      * 
-     * ***
-     * 
      */
     @Import(name="keyRing")
     private @Nullable Output<String> keyRing;
@@ -129,8 +127,6 @@ public final class CryptoKeyState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The KeyRing that this key belongs to.
      * Format: `&#39;projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}&#39;`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> keyRing() {
@@ -453,8 +449,6 @@ public final class CryptoKeyState extends com.pulumi.resources.ResourceArgs {
          * @param keyRing The KeyRing that this key belongs to.
          * Format: `&#39;projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}&#39;`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -466,8 +460,6 @@ public final class CryptoKeyState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param keyRing The KeyRing that this key belongs to.
          * Format: `&#39;projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}&#39;`.
-         * 
-         * ***
          * 
          * @return builder
          * 

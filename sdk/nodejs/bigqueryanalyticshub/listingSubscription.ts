@@ -170,6 +170,10 @@ export class ListingSubscription extends pulumi.CustomResource {
      * Organization of the project this subscription belongs to.
      */
     public /*out*/ readonly organizationId!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * Listing shared asset type.
@@ -311,6 +315,10 @@ export interface ListingSubscriptionState {
      * Organization of the project this subscription belongs to.
      */
     organizationId?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * Listing shared asset type.
@@ -351,5 +359,9 @@ export interface ListingSubscriptionArgs {
      * The name of the location of the data exchange. Distinct from the location of the destination data set.
      */
     location: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
 }

@@ -34,9 +34,6 @@ class AddressGroupArgs:
         :param pulumi.Input[builtins.int] capacity: Capacity of the Address Group.
         :param pulumi.Input[builtins.str] location: The location of the gateway security policy.
                The default value is `global`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] type: The type of the Address Group. Possible values are "IPV4" or "IPV6".
                Possible values are: `IPV4`, `IPV6`.
         :param pulumi.Input[builtins.str] description: Free-text description of the resource.
@@ -85,9 +82,6 @@ class AddressGroupArgs:
         """
         The location of the gateway security policy.
         The default value is `global`.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -218,9 +212,6 @@ class _AddressGroupState:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location of the gateway security policy.
                The default value is `global`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: Name of the AddressGroup resource.
         :param pulumi.Input[builtins.str] parent: The name of the parent this address group belongs to. Format: organizations/{organization_id} or projects/{project_id}.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -344,9 +335,6 @@ class _AddressGroupState:
         """
         The location of the gateway security policy.
         The default value is `global`.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -542,9 +530,6 @@ class AddressGroup(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location of the gateway security policy.
                The default value is `global`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: Name of the AddressGroup resource.
         :param pulumi.Input[builtins.str] parent: The name of the parent this address group belongs to. Format: organizations/{organization_id} or projects/{project_id}.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] purposes: List of supported purposes of the Address Group.
@@ -738,9 +723,6 @@ class AddressGroup(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location of the gateway security policy.
                The default value is `global`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: Name of the AddressGroup resource.
         :param pulumi.Input[builtins.str] parent: The name of the parent this address group belongs to. Format: organizations/{organization_id} or projects/{project_id}.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -832,9 +814,6 @@ class AddressGroup(pulumi.CustomResource):
         """
         The location of the gateway security policy.
         The default value is `global`.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

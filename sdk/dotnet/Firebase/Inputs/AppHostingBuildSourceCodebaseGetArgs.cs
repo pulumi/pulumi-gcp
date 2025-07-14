@@ -57,7 +57,8 @@ namespace Pulumi.Gcp.Firebase.Inputs
         public Input<string>? CommitTime { get; set; }
 
         /// <summary>
-        /// Human-readable name. 63 character limit.
+        /// (Output)
+        /// The 'name' field in a Git user's git.config. Required by Git.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }

@@ -136,8 +136,6 @@ type ClientTlsPolicy struct {
 	// The default value is `global`.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Name of the ClientTlsPolicy resource.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -206,8 +204,6 @@ type clientTlsPolicyState struct {
 	// The default value is `global`.
 	Location *string `pulumi:"location"`
 	// Name of the ClientTlsPolicy resource.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -242,8 +238,6 @@ type ClientTlsPolicyState struct {
 	// The default value is `global`.
 	Location pulumi.StringPtrInput
 	// Name of the ClientTlsPolicy resource.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -278,8 +272,6 @@ type clientTlsPolicyArgs struct {
 	// The default value is `global`.
 	Location *string `pulumi:"location"`
 	// Name of the ClientTlsPolicy resource.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -306,8 +298,6 @@ type ClientTlsPolicyArgs struct {
 	// The default value is `global`.
 	Location pulumi.StringPtrInput
 	// Name of the ClientTlsPolicy resource.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -441,8 +431,6 @@ func (o ClientTlsPolicyOutput) Location() pulumi.StringPtrOutput {
 }
 
 // Name of the ClientTlsPolicy resource.
-//
-// ***
 func (o ClientTlsPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClientTlsPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

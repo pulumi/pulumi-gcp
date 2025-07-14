@@ -152,8 +152,6 @@ type Mesh struct {
 	// Location (region) of the Mesh resource to be created. Only the value 'global' is currently allowed; defaults to 'global' if omitted.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Short name of the Mesh resource to be created.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -221,8 +219,6 @@ type meshState struct {
 	// Location (region) of the Mesh resource to be created. Only the value 'global' is currently allowed; defaults to 'global' if omitted.
 	Location *string `pulumi:"location"`
 	// Short name of the Mesh resource to be created.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -256,8 +252,6 @@ type MeshState struct {
 	// Location (region) of the Mesh resource to be created. Only the value 'global' is currently allowed; defaults to 'global' if omitted.
 	Location pulumi.StringPtrInput
 	// Short name of the Mesh resource to be created.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -291,8 +285,6 @@ type meshArgs struct {
 	// Location (region) of the Mesh resource to be created. Only the value 'global' is currently allowed; defaults to 'global' if omitted.
 	Location *string `pulumi:"location"`
 	// Short name of the Mesh resource to be created.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -316,8 +308,6 @@ type MeshArgs struct {
 	// Location (region) of the Mesh resource to be created. Only the value 'global' is currently allowed; defaults to 'global' if omitted.
 	Location pulumi.StringPtrInput
 	// Short name of the Mesh resource to be created.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -448,8 +438,6 @@ func (o MeshOutput) Location() pulumi.StringPtrOutput {
 }
 
 // Short name of the Mesh resource to be created.
-//
-// ***
 func (o MeshOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Mesh) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

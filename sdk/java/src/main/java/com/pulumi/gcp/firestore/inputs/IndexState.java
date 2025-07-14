@@ -19,16 +19,18 @@ public final class IndexState extends com.pulumi.resources.ResourceArgs {
     public static final IndexState Empty = new IndexState();
 
     /**
-     * The API scope at which a query is run. Default value: &#34;ANY_API&#34; Possible values: [&#34;ANY_API&#34;, &#34;DATASTORE_MODE_API&#34;,
-     * &#34;MONGODB_COMPATIBLE_API&#34;]
+     * The API scope at which a query is run.
+     * Default value is `ANY_API`.
+     * Possible values are: `ANY_API`, `DATASTORE_MODE_API`, `MONGODB_COMPATIBLE_API`.
      * 
      */
     @Import(name="apiScope")
     private @Nullable Output<String> apiScope;
 
     /**
-     * @return The API scope at which a query is run. Default value: &#34;ANY_API&#34; Possible values: [&#34;ANY_API&#34;, &#34;DATASTORE_MODE_API&#34;,
-     * &#34;MONGODB_COMPATIBLE_API&#34;]
+     * @return The API scope at which a query is run.
+     * Default value is `ANY_API`.
+     * Possible values are: `ANY_API`, `DATASTORE_MODE_API`, `MONGODB_COMPATIBLE_API`.
      * 
      */
     public Optional<Output<String>> apiScope() {
@@ -51,14 +53,14 @@ public final class IndexState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Firestore database id. Defaults to &#39;&#34;(default)&#34;&#39;.
+     * The Firestore database id. Defaults to `&#34;(default)&#34;`.
      * 
      */
     @Import(name="database")
     private @Nullable Output<String> database;
 
     /**
-     * @return The Firestore database id. Defaults to &#39;&#34;(default)&#34;&#39;.
+     * @return The Firestore database id. Defaults to `&#34;(default)&#34;`.
      * 
      */
     public Optional<Output<String>> database() {
@@ -66,14 +68,16 @@ public final class IndexState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The density configuration for this index. Possible values: [&#34;SPARSE_ALL&#34;, &#34;SPARSE_ANY&#34;, &#34;DENSE&#34;]
+     * The density configuration for this index.
+     * Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
      * 
      */
     @Import(name="density")
     private @Nullable Output<String> density;
 
     /**
-     * @return The density configuration for this index. Possible values: [&#34;SPARSE_ALL&#34;, &#34;SPARSE_ANY&#34;, &#34;DENSE&#34;]
+     * @return The density configuration for this index.
+     * Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
      * 
      */
     public Optional<Output<String>> density() {
@@ -108,20 +112,14 @@ public final class IndexState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the
-     * paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at
-     * most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations
-     * will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
+     * Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
      * 
      */
     @Import(name="multikey")
     private @Nullable Output<Boolean> multikey;
 
     /**
-     * @return Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the
-     * paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at
-     * most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations
-     * will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
+     * @return Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
      * 
      */
     public Optional<Output<Boolean>> multikey() {
@@ -145,24 +143,36 @@ public final class IndexState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
 
     /**
-     * The scope at which a query is run. Default value: &#34;COLLECTION&#34; Possible values: [&#34;COLLECTION&#34;, &#34;COLLECTION_GROUP&#34;,
-     * &#34;COLLECTION_RECURSIVE&#34;]
+     * The scope at which a query is run.
+     * Default value is `COLLECTION`.
+     * Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
      * 
      */
     @Import(name="queryScope")
     private @Nullable Output<String> queryScope;
 
     /**
-     * @return The scope at which a query is run. Default value: &#34;COLLECTION&#34; Possible values: [&#34;COLLECTION&#34;, &#34;COLLECTION_GROUP&#34;,
-     * &#34;COLLECTION_RECURSIVE&#34;]
+     * @return The scope at which a query is run.
+     * Default value is `COLLECTION`.
+     * Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
      * 
      */
     public Optional<Output<String>> queryScope() {
@@ -202,8 +212,9 @@ public final class IndexState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apiScope The API scope at which a query is run. Default value: &#34;ANY_API&#34; Possible values: [&#34;ANY_API&#34;, &#34;DATASTORE_MODE_API&#34;,
-         * &#34;MONGODB_COMPATIBLE_API&#34;]
+         * @param apiScope The API scope at which a query is run.
+         * Default value is `ANY_API`.
+         * Possible values are: `ANY_API`, `DATASTORE_MODE_API`, `MONGODB_COMPATIBLE_API`.
          * 
          * @return builder
          * 
@@ -214,8 +225,9 @@ public final class IndexState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apiScope The API scope at which a query is run. Default value: &#34;ANY_API&#34; Possible values: [&#34;ANY_API&#34;, &#34;DATASTORE_MODE_API&#34;,
-         * &#34;MONGODB_COMPATIBLE_API&#34;]
+         * @param apiScope The API scope at which a query is run.
+         * Default value is `ANY_API`.
+         * Possible values are: `ANY_API`, `DATASTORE_MODE_API`, `MONGODB_COMPATIBLE_API`.
          * 
          * @return builder
          * 
@@ -246,7 +258,7 @@ public final class IndexState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param database The Firestore database id. Defaults to &#39;&#34;(default)&#34;&#39;.
+         * @param database The Firestore database id. Defaults to `&#34;(default)&#34;`.
          * 
          * @return builder
          * 
@@ -257,7 +269,7 @@ public final class IndexState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param database The Firestore database id. Defaults to &#39;&#34;(default)&#34;&#39;.
+         * @param database The Firestore database id. Defaults to `&#34;(default)&#34;`.
          * 
          * @return builder
          * 
@@ -267,7 +279,8 @@ public final class IndexState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param density The density configuration for this index. Possible values: [&#34;SPARSE_ALL&#34;, &#34;SPARSE_ANY&#34;, &#34;DENSE&#34;]
+         * @param density The density configuration for this index.
+         * Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
          * 
          * @return builder
          * 
@@ -278,7 +291,8 @@ public final class IndexState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param density The density configuration for this index. Possible values: [&#34;SPARSE_ALL&#34;, &#34;SPARSE_ANY&#34;, &#34;DENSE&#34;]
+         * @param density The density configuration for this index.
+         * Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
          * 
          * @return builder
          * 
@@ -337,10 +351,7 @@ public final class IndexState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param multikey Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the
-         * paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at
-         * most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations
-         * will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
+         * @param multikey Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
          * 
          * @return builder
          * 
@@ -351,10 +362,7 @@ public final class IndexState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param multikey Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the
-         * paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at
-         * most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations
-         * will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
+         * @param multikey Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
          * 
          * @return builder
          * 
@@ -386,18 +394,33 @@ public final class IndexState extends com.pulumi.resources.ResourceArgs {
             return name(Output.of(name));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
 
         /**
-         * @param queryScope The scope at which a query is run. Default value: &#34;COLLECTION&#34; Possible values: [&#34;COLLECTION&#34;, &#34;COLLECTION_GROUP&#34;,
-         * &#34;COLLECTION_RECURSIVE&#34;]
+         * @param queryScope The scope at which a query is run.
+         * Default value is `COLLECTION`.
+         * Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
          * 
          * @return builder
          * 
@@ -408,8 +431,9 @@ public final class IndexState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param queryScope The scope at which a query is run. Default value: &#34;COLLECTION&#34; Possible values: [&#34;COLLECTION&#34;, &#34;COLLECTION_GROUP&#34;,
-         * &#34;COLLECTION_RECURSIVE&#34;]
+         * @param queryScope The scope at which a query is run.
+         * Default value is `COLLECTION`.
+         * Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
          * 
          * @return builder
          * 

@@ -280,8 +280,6 @@ public class MessageBus extends com.pulumi.resources.CustomResource {
      * Required. The user-provided ID to be assigned to the MessageBus. It should match the
      * format `^a-z?$`.
      * 
-     * ***
-     * 
      */
     @Export(name="messageBusId", refs={String.class}, tree="[0]")
     private Output<String> messageBusId;
@@ -289,8 +287,6 @@ public class MessageBus extends com.pulumi.resources.CustomResource {
     /**
      * @return Required. The user-provided ID to be assigned to the MessageBus. It should match the
      * format `^a-z?$`.
-     * 
-     * ***
      * 
      */
     public Output<String> messageBusId() {

@@ -31,9 +31,6 @@ class MirroringEndpointGroupAssociationInitArgs:
         """
         The set of arguments for constructing a MirroringEndpointGroupAssociation resource.
         :param pulumi.Input[builtins.str] location: The cloud location of the association, currently restricted to `global`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] mirroring_endpoint_group: The endpoint group that this association is connected to, for example:
                `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
                See https://google.aip.dev/124.
@@ -64,9 +61,6 @@ class MirroringEndpointGroupAssociationInitArgs:
     def location(self) -> pulumi.Input[builtins.str]:
         """
         The cloud location of the association, currently restricted to `global`.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -171,9 +165,6 @@ class _MirroringEndpointGroupAssociationState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The cloud location of the association, currently restricted to `global`.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['MirroringEndpointGroupAssociationLocationArgs']]] locations: The list of locations where the association is configured. This information
                is retrieved from the linked endpoint group.
                Structure is documented below.
@@ -289,9 +280,6 @@ class _MirroringEndpointGroupAssociationState:
     def location(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The cloud location of the association, currently restricted to `global`.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -548,9 +536,6 @@ class MirroringEndpointGroupAssociation(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The cloud location of the association, currently restricted to `global`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] mirroring_endpoint_group: The endpoint group that this association is connected to, for example:
                `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
                See https://google.aip.dev/124.
@@ -732,9 +717,6 @@ class MirroringEndpointGroupAssociation(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The cloud location of the association, currently restricted to `global`.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[Union['MirroringEndpointGroupAssociationLocationArgs', 'MirroringEndpointGroupAssociationLocationArgsDict']]]] locations: The list of locations where the association is configured. This information
                is retrieved from the linked endpoint group.
                Structure is documented below.
@@ -825,9 +807,6 @@ class MirroringEndpointGroupAssociation(pulumi.CustomResource):
     def location(self) -> pulumi.Output[builtins.str]:
         """
         The cloud location of the association, currently restricted to `global`.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

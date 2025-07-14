@@ -29,8 +29,6 @@ namespace Pulumi.Gcp.CloudIdentity.Outputs
         /// If specified, the EntityKey represents an external-identity-mapped group.
         /// The namespace must correspond to an identity source created in Admin Console
         /// and must be in the form of `identitysources/{identity_source_id}`.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string? Namespace;
 

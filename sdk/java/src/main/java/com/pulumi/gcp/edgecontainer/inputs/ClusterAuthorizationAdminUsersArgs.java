@@ -17,16 +17,12 @@ public final class ClusterAuthorizationAdminUsersArgs extends com.pulumi.resourc
     /**
      * An active Google username.
      * 
-     * ***
-     * 
      */
     @Import(name="username", required=true)
     private Output<String> username;
 
     /**
      * @return An active Google username.
-     * 
-     * ***
      * 
      */
     public Output<String> username() {
@@ -60,8 +56,6 @@ public final class ClusterAuthorizationAdminUsersArgs extends com.pulumi.resourc
         /**
          * @param username An active Google username.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -72,8 +66,6 @@ public final class ClusterAuthorizationAdminUsersArgs extends com.pulumi.resourc
 
         /**
          * @param username An active Google username.
-         * 
-         * ***
          * 
          * @return builder
          * 

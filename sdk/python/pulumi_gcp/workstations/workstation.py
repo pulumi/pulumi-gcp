@@ -33,9 +33,6 @@ class WorkstationArgs:
         """
         The set of arguments for constructing a Workstation resource.
         :param pulumi.Input[builtins.str] location: The location where the workstation parent resources reside.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] workstation_cluster_id: The ID of the parent workstation cluster.
         :param pulumi.Input[builtins.str] workstation_config_id: The ID of the parent workstation cluster config.
         :param pulumi.Input[builtins.str] workstation_id: ID to use for the workstation.
@@ -74,9 +71,6 @@ class WorkstationArgs:
     def location(self) -> pulumi.Input[builtins.str]:
         """
         The location where the workstation parent resources reside.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -236,9 +230,6 @@ class _WorkstationState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location where the workstation parent resources reside.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: Full name of this resource.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -393,9 +384,6 @@ class _WorkstationState:
     def location(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The location where the workstation parent resources reside.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -622,9 +610,6 @@ class Workstation(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location where the workstation parent resources reside.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] source_workstation: Full resource name of the source workstation from which the workstation's persistent
@@ -829,9 +814,6 @@ class Workstation(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location where the workstation parent resources reside.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: Full name of this resource.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -941,9 +923,6 @@ class Workstation(pulumi.CustomResource):
     def location(self) -> pulumi.Output[builtins.str]:
         """
         The location where the workstation parent resources reside.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

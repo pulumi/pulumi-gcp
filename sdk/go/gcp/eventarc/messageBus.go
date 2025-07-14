@@ -142,8 +142,6 @@ type MessageBus struct {
 	LoggingConfig MessageBusLoggingConfigOutput `pulumi:"loggingConfig"`
 	// Required. The user-provided ID to be assigned to the MessageBus. It should match the
 	// format `^a-z?$`.
-	//
-	// ***
 	MessageBusId pulumi.StringOutput `pulumi:"messageBusId"`
 	// Identifier. Resource name of the form
 	// projects/{project}/locations/{location}/messageBuses/{message_bus}
@@ -234,8 +232,6 @@ type messageBusState struct {
 	LoggingConfig *MessageBusLoggingConfig `pulumi:"loggingConfig"`
 	// Required. The user-provided ID to be assigned to the MessageBus. It should match the
 	// format `^a-z?$`.
-	//
-	// ***
 	MessageBusId *string `pulumi:"messageBusId"`
 	// Identifier. Resource name of the form
 	// projects/{project}/locations/{location}/messageBuses/{message_bus}
@@ -286,8 +282,6 @@ type MessageBusState struct {
 	LoggingConfig MessageBusLoggingConfigPtrInput
 	// Required. The user-provided ID to be assigned to the MessageBus. It should match the
 	// format `^a-z?$`.
-	//
-	// ***
 	MessageBusId pulumi.StringPtrInput
 	// Identifier. Resource name of the form
 	// projects/{project}/locations/{location}/messageBuses/{message_bus}
@@ -333,8 +327,6 @@ type messageBusArgs struct {
 	LoggingConfig *MessageBusLoggingConfig `pulumi:"loggingConfig"`
 	// Required. The user-provided ID to be assigned to the MessageBus. It should match the
 	// format `^a-z?$`.
-	//
-	// ***
 	MessageBusId string `pulumi:"messageBusId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -366,8 +358,6 @@ type MessageBusArgs struct {
 	LoggingConfig MessageBusLoggingConfigPtrInput
 	// Required. The user-provided ID to be assigned to the MessageBus. It should match the
 	// format `^a-z?$`.
-	//
-	// ***
 	MessageBusId pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -523,8 +513,6 @@ func (o MessageBusOutput) LoggingConfig() MessageBusLoggingConfigOutput {
 
 // Required. The user-provided ID to be assigned to the MessageBus. It should match the
 // format `^a-z?$`.
-//
-// ***
 func (o MessageBusOutput) MessageBusId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MessageBus) pulumi.StringOutput { return v.MessageBusId }).(pulumi.StringOutput)
 }

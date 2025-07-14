@@ -217,16 +217,12 @@ public class Intent extends com.pulumi.resources.CustomResource {
     /**
      * The name of this intent to be displayed on the console.
      * 
-     * ***
-     * 
      */
     @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
      * @return The name of this intent to be displayed on the console.
-     * 
-     * ***
      * 
      */
     public Output<String> displayName() {

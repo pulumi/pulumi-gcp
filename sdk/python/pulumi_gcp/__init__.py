@@ -187,6 +187,8 @@ if typing.TYPE_CHECKING:
     migrationcenter = __migrationcenter
     import pulumi_gcp.ml as __ml
     ml = __ml
+    import pulumi_gcp.modelarmor as __modelarmor
+    modelarmor = __modelarmor
     import pulumi_gcp.monitoring as __monitoring
     monitoring = __monitoring
     import pulumi_gcp.netapp as __netapp
@@ -362,6 +364,7 @@ else:
     memorystore = _utilities.lazy_import('pulumi_gcp.memorystore')
     migrationcenter = _utilities.lazy_import('pulumi_gcp.migrationcenter')
     ml = _utilities.lazy_import('pulumi_gcp.ml')
+    modelarmor = _utilities.lazy_import('pulumi_gcp.modelarmor')
     monitoring = _utilities.lazy_import('pulumi_gcp.monitoring')
     netapp = _utilities.lazy_import('pulumi_gcp.netapp')
     networkconnectivity = _utilities.lazy_import('pulumi_gcp.networkconnectivity')
@@ -3931,6 +3934,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "contactcenterinsights/analysisRule",
+  "fqn": "pulumi_gcp.contactcenterinsights",
+  "classes": {
+   "gcp:contactcenterinsights/analysisRule:AnalysisRule": "AnalysisRule"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "contactcenterinsights/view",
   "fqn": "pulumi_gcp.contactcenterinsights",
   "classes": {
@@ -7247,6 +7258,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.ml",
   "classes": {
    "gcp:ml/engineModel:EngineModel": "EngineModel"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "modelarmor/template",
+  "fqn": "pulumi_gcp.modelarmor",
+  "classes": {
+   "gcp:modelarmor/template:Template": "Template"
   }
  },
  {

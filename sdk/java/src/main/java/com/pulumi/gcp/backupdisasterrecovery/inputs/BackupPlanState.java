@@ -95,14 +95,14 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The description allows for additional details about &#39;BackupPlan&#39; and its use cases to be provided.
+     * The description allows for additional details about `BackupPlan` and its use cases to be provided.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description allows for additional details about &#39;BackupPlan&#39; and its use cases to be provided.
+     * @return The description allows for additional details about `BackupPlan` and its use cases to be provided.
      * 
      */
     public Optional<Output<String>> description() {
@@ -139,9 +139,19 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -347,7 +357,7 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description allows for additional details about &#39;BackupPlan&#39; and its use cases to be provided.
+         * @param description The description allows for additional details about `BackupPlan` and its use cases to be provided.
          * 
          * @return builder
          * 
@@ -358,7 +368,7 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description allows for additional details about &#39;BackupPlan&#39; and its use cases to be provided.
+         * @param description The description allows for additional details about `BackupPlan` and its use cases to be provided.
          * 
          * @return builder
          * 
@@ -409,11 +419,25 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
             return name(Output.of(name));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

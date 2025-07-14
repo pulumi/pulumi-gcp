@@ -121,9 +121,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Represents an Instance Group resource name that the instance belongs to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("instanceGroup")]
         public Output<string> InstanceGroup { get; private set; } = null!;
@@ -195,9 +192,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Represents an Instance Group resource name that the instance belongs to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("instanceGroup", required: true)]
         public Input<string> InstanceGroup { get; set; } = null!;
@@ -231,9 +225,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Represents an Instance Group resource name that the instance belongs to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("instanceGroup")]
         public Input<string>? InstanceGroup { get; set; }

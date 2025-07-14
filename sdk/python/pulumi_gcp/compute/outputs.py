@@ -613,6 +613,7 @@ __all__ = [
     'ResourcePolicySnapshotSchedulePolicySnapshotProperties',
     'ResourcePolicyWorkloadPolicy',
     'RouteAsPath',
+    'RouteParams',
     'RouteWarning',
     'RouteWarningData',
     'RouterBgp',
@@ -632,10 +633,12 @@ __all__ = [
     'RouterRoutePolicyTermMatch',
     'RouterStatusBestRouteResult',
     'RouterStatusBestRouteAsPathResult',
+    'RouterStatusBestRouteParamResult',
     'RouterStatusBestRouteWarningResult',
     'RouterStatusBestRouteWarningDataResult',
     'RouterStatusBestRoutesForRouterResult',
     'RouterStatusBestRoutesForRouterAsPathResult',
+    'RouterStatusBestRoutesForRouterParamResult',
     'RouterStatusBestRoutesForRouterWarningResult',
     'RouterStatusBestRoutesForRouterWarningDataResult',
     'SecurityPolicyAdaptiveProtectionConfig',
@@ -1035,10 +1038,12 @@ __all__ = [
     'GetRouterNatSubnetworkResult',
     'GetRouterStatusBestRouteResult',
     'GetRouterStatusBestRouteAsPathResult',
+    'GetRouterStatusBestRouteParamResult',
     'GetRouterStatusBestRouteWarningResult',
     'GetRouterStatusBestRouteWarningDataResult',
     'GetRouterStatusBestRoutesForRouterResult',
     'GetRouterStatusBestRoutesForRouterAsPathResult',
+    'GetRouterStatusBestRoutesForRouterParamResult',
     'GetRouterStatusBestRoutesForRouterWarningResult',
     'GetRouterStatusBestRoutesForRouterWarningDataResult',
     'GetSecurityPolicyAdaptiveProtectionConfigResult',
@@ -1770,7 +1775,7 @@ class AutoscalerAutoscalingPolicyScalingSchedule(dict):
         :param builtins.int min_required_replicas: Minimum number of VM instances that autoscaler will recommend in time intervals starting according to schedule.
         :param builtins.str name: The identifier for this object. Format specified above.
         :param builtins.str schedule: The start timestamps of time intervals when this scaling schedule should provide a scaling signal. This field uses the extended cron format (with an optional year field).
-        :param builtins.str description: An optional description of this resource.
+        :param builtins.str description: A description of a scaling schedule.
         :param builtins.bool disabled: A boolean value that specifies if a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect.
         :param builtins.str time_zone: The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
         """
@@ -1821,7 +1826,7 @@ class AutoscalerAutoscalingPolicyScalingSchedule(dict):
     @pulumi.getter
     def description(self) -> Optional[builtins.str]:
         """
-        An optional description of this resource.
+        A description of a scaling schedule.
         """
         return pulumi.get(self, "description")
 
@@ -5691,8 +5696,6 @@ class FirewallPolicyRuleMatchSrcSecureTag(dict):
         :param builtins.str name: Name of the secure tag, created with TagManager's TagValue API.
         :param builtins.str state: (Output)
                State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
-               
-               - - -
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -5713,8 +5716,6 @@ class FirewallPolicyRuleMatchSrcSecureTag(dict):
         """
         (Output)
         State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
-
-        - - -
         """
         return pulumi.get(self, "state")
 
@@ -5798,8 +5799,7 @@ class FirewallPolicyWithRulesPredefinedRule(dict):
         :param builtins.str action: (Output)
                The Action to perform when the client connection triggers the rule. Can currently be either
                "allow", "deny", "apply_security_profile_group" or "goto_next".
-        :param builtins.str description: (Output)
-               A description of the rule.
+        :param builtins.str description: An optional description of this resource.
         :param builtins.str direction: (Output)
                The direction in which this rule applies. If unspecified an INGRESS rule is created.
         :param builtins.bool disabled: (Output)
@@ -5877,8 +5877,7 @@ class FirewallPolicyWithRulesPredefinedRule(dict):
     @pulumi.getter
     def description(self) -> Optional[builtins.str]:
         """
-        (Output)
-        A description of the rule.
+        An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
@@ -7395,7 +7394,7 @@ class FutureReservationStatus(dict):
         :param builtins.str lock_time: The lock time of the FutureReservation before an amendment was requested.
         :param builtins.str procurement_status: The status of the last known good state for the Future Reservation
                Possible values are: .
-        :param 'FutureReservationStatusSpecificSkuPropertiesArgs' specific_sku_properties: The previous instance related properties of the Future Reservation.
+        :param 'FutureReservationStatusSpecificSkuPropertiesArgs' specific_sku_properties: Future Reservation configuration to indicate instance properties and total count.
                Structure is documented below.
         """
         if amendment_status is not None:
@@ -7468,7 +7467,7 @@ class FutureReservationStatus(dict):
     @pulumi.getter(name="specificSkuProperties")
     def specific_sku_properties(self) -> Optional['outputs.FutureReservationStatusSpecificSkuProperties']:
         """
-        The previous instance related properties of the Future Reservation.
+        Future Reservation configuration to indicate instance properties and total count.
         Structure is documented below.
         """
         return pulumi.get(self, "specific_sku_properties")
@@ -7509,13 +7508,13 @@ class FutureReservationStatusLastKnownGoodState(dict):
                  name_prefix: Optional[builtins.str] = None,
                  procurement_status: Optional[builtins.str] = None):
         """
-        :param builtins.str description: The description of the FutureReservation before an amendment was requested.
+        :param builtins.str description: An optional description of this resource.
         :param 'FutureReservationStatusLastKnownGoodStateExistingMatchingUsageInfoArgs' existing_matching_usage_info: Represents the matching usage for the future reservation before an amendment was requested.
                Structure is documented below.
         :param 'FutureReservationStatusLastKnownGoodStateFutureReservationSpecsArgs' future_reservation_specs: The previous instance-related properties of the Future Reservation.
                Structure is documented below.
         :param builtins.str lock_time: The lock time of the FutureReservation before an amendment was requested.
-        :param builtins.str name_prefix: The name prefix of the Future Reservation before an amendment was requested.
+        :param builtins.str name_prefix: Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
         :param builtins.str procurement_status: The status of the last known good state for the Future Reservation
                Possible values are: .
         """
@@ -7536,7 +7535,7 @@ class FutureReservationStatusLastKnownGoodState(dict):
     @pulumi.getter
     def description(self) -> Optional[builtins.str]:
         """
-        The description of the FutureReservation before an amendment was requested.
+        An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
@@ -7570,7 +7569,7 @@ class FutureReservationStatusLastKnownGoodState(dict):
     @pulumi.getter(name="namePrefix")
     def name_prefix(self) -> Optional[builtins.str]:
         """
-        The name prefix of the Future Reservation before an amendment was requested.
+        Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
         """
         return pulumi.get(self, "name_prefix")
 
@@ -7660,9 +7659,9 @@ class FutureReservationStatusLastKnownGoodStateFutureReservationSpecs(dict):
                  specific_sku_properties: Optional['outputs.FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuProperties'] = None,
                  time_window: Optional['outputs.FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindow'] = None):
         """
-        :param 'FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsArgs' share_settings: The previous share settings of the Future Reservation.
+        :param 'FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsArgs' share_settings: Settings for sharing the future reservation
                Structure is documented below.
-        :param 'FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesArgs' specific_sku_properties: The previous instance related properties of the Future Reservation.
+        :param 'FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesArgs' specific_sku_properties: Future Reservation configuration to indicate instance properties and total count.
                Structure is documented below.
         :param 'FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindowArgs' time_window: Time window for this Future Reservation.
                Structure is documented below.
@@ -7678,7 +7677,7 @@ class FutureReservationStatusLastKnownGoodStateFutureReservationSpecs(dict):
     @pulumi.getter(name="shareSettings")
     def share_settings(self) -> Optional['outputs.FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettings']:
         """
-        The previous share settings of the Future Reservation.
+        Settings for sharing the future reservation
         Structure is documented below.
         """
         return pulumi.get(self, "share_settings")
@@ -7687,7 +7686,7 @@ class FutureReservationStatusLastKnownGoodStateFutureReservationSpecs(dict):
     @pulumi.getter(name="specificSkuProperties")
     def specific_sku_properties(self) -> Optional['outputs.FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuProperties']:
         """
-        The previous instance related properties of the Future Reservation.
+        Future Reservation configuration to indicate instance properties and total count.
         Structure is documented below.
         """
         return pulumi.get(self, "specific_sku_properties")
@@ -7791,7 +7790,8 @@ class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettin
                  project: builtins.str,
                  project_id: Optional[builtins.str] = None):
         """
-        :param builtins.str project: (Required) The identifier for this object. Format specified above.
+        :param builtins.str project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param builtins.str project_id: The project ID, should be same as the key of this project config in the parent map.
         """
         pulumi.set(__self__, "project", project)
@@ -7802,7 +7802,8 @@ class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettin
     @pulumi.getter
     def project(self) -> builtins.str:
         """
-        (Required) The identifier for this object. Format specified above.
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
@@ -8178,8 +8179,6 @@ class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindowD
                  seconds: Optional[builtins.str] = None):
         """
         :param builtins.int nanos: Span of time that's a fraction of a second at nanosecond resolution.
-               
-               - - -
         :param builtins.str seconds: Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
         """
         if nanos is not None:
@@ -8192,8 +8191,6 @@ class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindowD
     def nanos(self) -> Optional[builtins.int]:
         """
         Span of time that's a fraction of a second at nanosecond resolution.
-
-        - - -
         """
         return pulumi.get(self, "nanos")
 
@@ -8312,8 +8309,6 @@ class FutureReservationTimeWindowDuration(dict):
                  seconds: Optional[builtins.str] = None):
         """
         :param builtins.int nanos: Span of time that's a fraction of a second at nanosecond resolution.
-               
-               - - -
         :param builtins.str seconds: Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
         """
         if nanos is not None:
@@ -8326,8 +8321,6 @@ class FutureReservationTimeWindowDuration(dict):
     def nanos(self) -> Optional[builtins.int]:
         """
         Span of time that's a fraction of a second at nanosecond resolution.
-
-        - - -
         """
         return pulumi.get(self, "nanos")
 
@@ -20815,9 +20808,12 @@ class InterconnectAttachmentGroupConfiguredAvailabilitySlaIntendedSlaBlocker(dic
                  regions: Optional[Sequence[builtins.str]] = None,
                  zones: Optional[Sequence[builtins.str]] = None):
         """
-        :param Sequence[builtins.str] attachments: (Output)
-               URLs of any particular Attachments to explain this
-               blocker in more detail.
+        :param Sequence[builtins.str] attachments: Attachments in the AttachmentGroup. Keys are arbitrary user-specified
+               strings. Users are encouraged, but not required, to use their preferred
+               format for resource links as keys.
+               Note that there are add-members and remove-members methods in gcloud.
+               The size of this map is limited by an "Attachments per group" quota.
+               Structure is documented below.
         :param builtins.str blocker_type: (Output)
                The category of an unmet SLA requirement.
         :param builtins.str documentation_link: (Output)
@@ -20860,9 +20856,12 @@ class InterconnectAttachmentGroupConfiguredAvailabilitySlaIntendedSlaBlocker(dic
     @pulumi.getter
     def attachments(self) -> Optional[Sequence[builtins.str]]:
         """
-        (Output)
-        URLs of any particular Attachments to explain this
-        blocker in more detail.
+        Attachments in the AttachmentGroup. Keys are arbitrary user-specified
+        strings. Users are encouraged, but not required, to use their preferred
+        format for resource links as keys.
+        Note that there are add-members and remove-members methods in gcloud.
+        The size of this map is limited by an "Attachments per group" quota.
+        Structure is documented below.
         """
         return pulumi.get(self, "attachments")
 
@@ -20955,8 +20954,6 @@ class InterconnectAttachmentGroupIntent(dict):
         """
         :param builtins.str availability_sla: Which SLA the user intends this group to support.
                Possible values are: `PRODUCTION_NON_CRITICAL`, `PRODUCTION_CRITICAL`, `NO_SLA`, `AVAILABILITY_SLA_UNSPECIFIED`.
-               
-               - - -
         """
         if availability_sla is not None:
             pulumi.set(__self__, "availability_sla", availability_sla)
@@ -20967,8 +20964,6 @@ class InterconnectAttachmentGroupIntent(dict):
         """
         Which SLA the user intends this group to support.
         Possible values are: `PRODUCTION_NON_CRITICAL`, `PRODUCTION_CRITICAL`, `NO_SLA`, `AVAILABILITY_SLA_UNSPECIFIED`.
-
-        - - -
         """
         return pulumi.get(self, "availability_sla")
 
@@ -21587,9 +21582,12 @@ class InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlocker(dic
                Facilities used to explain this blocker in more detail.
                Like physicalStructure.metros.facilities.facility, this is a numeric
                string like "5467".
-        :param Sequence[builtins.str] interconnects: (Output)
-               Interconnects used to explain this blocker in more
-               detail.
+        :param Sequence[builtins.str] interconnects: Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
+               strings. Users are encouraged, but not required, to use their preferred
+               format for resource links as keys.
+               Note that there are add-members and remove-members methods in gcloud.
+               The size of this map is limited by an "Interconnects per group" quota.
+               Structure is documented below.
         :param Sequence[builtins.str] metros: (Output)
                Metros used to explain this blocker in more detail.
                These are three-letter lowercase strings like "iad". A blocker like
@@ -21660,9 +21658,12 @@ class InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlocker(dic
     @pulumi.getter
     def interconnects(self) -> Optional[Sequence[builtins.str]]:
         """
-        (Output)
-        Interconnects used to explain this blocker in more
-        detail.
+        Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
+        strings. Users are encouraged, but not required, to use their preferred
+        format for resource links as keys.
+        Note that there are add-members and remove-members methods in gcloud.
+        The size of this map is limited by an "Interconnects per group" quota.
+        Structure is documented below.
         """
         return pulumi.get(self, "interconnects")
 
@@ -21714,8 +21715,6 @@ class InterconnectGroupIntent(dict):
         :param builtins.str topology_capability: The reliability the user intends this group to be capable of, in terms
                of the Interconnect product SLAs.
                Possible values are: `PRODUCTION_NON_CRITICAL`, `PRODUCTION_CRITICAL`, `NO_SLA`, `AVAILABILITY_SLA_UNSPECIFIED`.
-               
-               - - -
         """
         if topology_capability is not None:
             pulumi.set(__self__, "topology_capability", topology_capability)
@@ -21727,8 +21726,6 @@ class InterconnectGroupIntent(dict):
         The reliability the user intends this group to be capable of, in terms
         of the Interconnect product SLAs.
         Possible values are: `PRODUCTION_NON_CRITICAL`, `PRODUCTION_CRITICAL`, `NO_SLA`, `AVAILABILITY_SLA_UNSPECIFIED`.
-
-        - - -
         """
         return pulumi.get(self, "topology_capability")
 
@@ -21880,9 +21877,12 @@ class InterconnectGroupPhysicalStructureMetroFacilityZone(dict):
                  interconnects: Optional[Sequence[builtins.str]] = None,
                  zone: Optional[builtins.str] = None):
         """
-        :param Sequence[builtins.str] interconnects: (Output)
-               Interconnects used to explain this blocker in more
-               detail.
+        :param Sequence[builtins.str] interconnects: Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
+               strings. Users are encouraged, but not required, to use their preferred
+               format for resource links as keys.
+               Note that there are add-members and remove-members methods in gcloud.
+               The size of this map is limited by an "Interconnects per group" quota.
+               Structure is documented below.
         :param builtins.str zone: (Output)
                The name of the zone, either "zone1" or "zone2".
                This is the second component of the location of Interconnects in
@@ -21897,9 +21897,12 @@ class InterconnectGroupPhysicalStructureMetroFacilityZone(dict):
     @pulumi.getter
     def interconnects(self) -> Optional[Sequence[builtins.str]]:
         """
-        (Output)
-        Interconnects used to explain this blocker in more
-        detail.
+        Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
+        strings. Users are encouraged, but not required, to use their preferred
+        format for resource links as keys.
+        Note that there are add-members and remove-members methods in gcloud.
+        The size of this map is limited by an "Interconnects per group" quota.
+        Structure is documented below.
         """
         return pulumi.get(self, "interconnects")
 
@@ -22909,8 +22912,6 @@ class NetworkFirewallPolicyRuleMatchSrcSecureTag(dict):
         :param builtins.str name: Name of the secure tag, created with TagManager's TagValue API.
         :param builtins.str state: (Output)
                State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
-               
-               - - -
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -22931,8 +22932,6 @@ class NetworkFirewallPolicyRuleMatchSrcSecureTag(dict):
         """
         (Output)
         State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
-
-        - - -
         """
         return pulumi.get(self, "state")
 
@@ -23016,8 +23015,7 @@ class NetworkFirewallPolicyWithRulesPredefinedRule(dict):
         :param builtins.str action: (Output)
                The Action to perform when the client connection triggers the rule. Can currently be either
                "allow", "deny", "apply_security_profile_group" or "goto_next".
-        :param builtins.str description: (Output)
-               A description of the rule.
+        :param builtins.str description: An optional description of this resource.
         :param builtins.str direction: (Output)
                The direction in which this rule applies. If unspecified an INGRESS rule is created.
         :param builtins.bool disabled: (Output)
@@ -23103,8 +23101,7 @@ class NetworkFirewallPolicyWithRulesPredefinedRule(dict):
     @pulumi.getter
     def description(self) -> Optional[builtins.str]:
         """
-        (Output)
-        A description of the rule.
+        An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
@@ -23581,8 +23578,6 @@ class NetworkFirewallPolicyWithRulesPredefinedRuleTargetSecureTag(dict):
                [Output Only] State of the secure tag, either `EFFECTIVE` or
                `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
                or its network is deleted.
-               
-               - - -
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -23606,8 +23601,6 @@ class NetworkFirewallPolicyWithRulesPredefinedRuleTargetSecureTag(dict):
         [Output Only] State of the secure tag, either `EFFECTIVE` or
         `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
         or its network is deleted.
-
-        - - -
         """
         return pulumi.get(self, "state")
 
@@ -24242,8 +24235,6 @@ class NetworkFirewallPolicyWithRulesRuleTargetSecureTag(dict):
                [Output Only] State of the secure tag, either `EFFECTIVE` or
                `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
                or its network is deleted.
-               
-               - - -
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -24267,8 +24258,6 @@ class NetworkFirewallPolicyWithRulesRuleTargetSecureTag(dict):
         [Output Only] State of the secure tag, either `EFFECTIVE` or
         `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
         or its network is deleted.
-
-        - - -
         """
         return pulumi.get(self, "state")
 
@@ -25093,8 +25082,6 @@ class PacketMirroringMirroredResourcesInstance(dict):
                  url: builtins.str):
         """
         :param builtins.str url: The URL of the instances where this rule should be active.
-               
-               - - -
         """
         pulumi.set(__self__, "url", url)
 
@@ -25103,8 +25090,6 @@ class PacketMirroringMirroredResourcesInstance(dict):
     def url(self) -> builtins.str:
         """
         The URL of the instances where this rule should be active.
-
-        - - -
         """
         return pulumi.get(self, "url")
 
@@ -26185,7 +26170,7 @@ class RegionAutoscalerAutoscalingPolicyScalingSchedule(dict):
         :param builtins.int min_required_replicas: Minimum number of VM instances that autoscaler will recommend in time intervals starting according to schedule.
         :param builtins.str name: The identifier for this object. Format specified above.
         :param builtins.str schedule: The start timestamps of time intervals when this scaling schedule should provide a scaling signal. This field uses the extended cron format (with an optional year field).
-        :param builtins.str description: An optional description of this resource.
+        :param builtins.str description: A description of a scaling schedule.
         :param builtins.bool disabled: A boolean value that specifies if a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect.
         :param builtins.str time_zone: The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
         """
@@ -26236,7 +26221,7 @@ class RegionAutoscalerAutoscalingPolicyScalingSchedule(dict):
     @pulumi.getter
     def description(self) -> Optional[builtins.str]:
         """
-        An optional description of this resource.
+        A description of a scaling schedule.
         """
         return pulumi.get(self, "description")
 
@@ -33394,8 +33379,6 @@ class RegionNetworkFirewallPolicyRuleMatchSrcSecureTag(dict):
         :param builtins.str name: Name of the secure tag, created with TagManager's TagValue API.
         :param builtins.str state: (Output)
                State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
-               
-               - - -
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -33416,8 +33399,6 @@ class RegionNetworkFirewallPolicyRuleMatchSrcSecureTag(dict):
         """
         (Output)
         State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
-
-        - - -
         """
         return pulumi.get(self, "state")
 
@@ -33501,8 +33482,7 @@ class RegionNetworkFirewallPolicyWithRulesPredefinedRule(dict):
         :param builtins.str action: (Output)
                The Action to perform when the client connection triggers the rule. Can currently be either
                "allow", "deny", "apply_security_profile_group" or "goto_next".
-        :param builtins.str description: (Output)
-               A description of the rule.
+        :param builtins.str description: An optional description of this resource.
         :param builtins.str direction: (Output)
                The direction in which this rule applies. If unspecified an INGRESS rule is created.
         :param builtins.bool disabled: (Output)
@@ -33588,8 +33568,7 @@ class RegionNetworkFirewallPolicyWithRulesPredefinedRule(dict):
     @pulumi.getter
     def description(self) -> Optional[builtins.str]:
         """
-        (Output)
-        A description of the rule.
+        An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
@@ -34066,8 +34045,6 @@ class RegionNetworkFirewallPolicyWithRulesPredefinedRuleTargetSecureTag(dict):
                [Output Only] State of the secure tag, either `EFFECTIVE` or
                `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
                or its network is deleted.
-               
-               - - -
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -34091,8 +34068,6 @@ class RegionNetworkFirewallPolicyWithRulesPredefinedRuleTargetSecureTag(dict):
         [Output Only] State of the secure tag, either `EFFECTIVE` or
         `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
         or its network is deleted.
-
-        - - -
         """
         return pulumi.get(self, "state")
 
@@ -34727,8 +34702,6 @@ class RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTag(dict):
                [Output Only] State of the secure tag, either `EFFECTIVE` or
                `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
                or its network is deleted.
-               
-               - - -
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -34752,8 +34725,6 @@ class RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTag(dict):
         [Output Only] State of the secure tag, either `EFFECTIVE` or
         `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
         or its network is deleted.
-
-        - - -
         """
         return pulumi.get(self, "state")
 
@@ -43853,8 +43824,6 @@ class ReservationSpecificReservationInstancePropertiesLocalSsd(dict):
                  interface: Optional[builtins.str] = None):
         """
         :param builtins.int disk_size_gb: The size of the disk in base-2 GB.
-               
-               - - -
         :param builtins.str interface: The disk interface to use for attaching this disk.
                Default value is `SCSI`.
                Possible values are: `SCSI`, `NVME`.
@@ -43868,8 +43837,6 @@ class ReservationSpecificReservationInstancePropertiesLocalSsd(dict):
     def disk_size_gb(self) -> builtins.int:
         """
         The size of the disk in base-2 GB.
-
-        - - -
         """
         return pulumi.get(self, "disk_size_gb")
 
@@ -45761,6 +45728,52 @@ class RouteAsPath(dict):
 
 
 @pulumi.output_type
+class RouteParams(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceManagerTags":
+            suggest = "resource_manager_tags"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RouteParams. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RouteParams.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RouteParams.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resource_manager_tags: Optional[Mapping[str, builtins.str]] = None):
+        """
+        :param Mapping[str, builtins.str] resource_manager_tags: Resource manager tags to be bound to the route. Tag keys and values have the
+               same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+               and values are in the format tagValues/456. The field is ignored when empty.
+               The field is immutable and causes resource replacement when mutated. This field is only
+               set at create time and modifying this field after creation will trigger recreation.
+               To apply tags to an existing resource, see the tags.TagBinding resource.
+        """
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[Mapping[str, builtins.str]]:
+        """
+        Resource manager tags to be bound to the route. Tag keys and values have the
+        same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456. The field is ignored when empty.
+        The field is immutable and causes resource replacement when mutated. This field is only
+        set at create time and modifying this field after creation will trigger recreation.
+        To apply tags to an existing resource, see the tags.TagBinding resource.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+
+@pulumi.output_type
 class RouteWarning(dict):
     def __init__(__self__, *,
                  code: Optional[builtins.str] = None,
@@ -46594,21 +46607,29 @@ class RouterPeerMd5AuthenticationKey(dict):
 @pulumi.output_type
 class RouterRoutePolicyTerm(dict):
     def __init__(__self__, *,
+                 match: 'outputs.RouterRoutePolicyTermMatch',
                  priority: builtins.int,
-                 actions: Optional[Sequence['outputs.RouterRoutePolicyTermAction']] = None,
-                 match: Optional['outputs.RouterRoutePolicyTermMatch'] = None):
+                 actions: Optional[Sequence['outputs.RouterRoutePolicyTermAction']] = None):
         """
+        :param 'RouterRoutePolicyTermMatchArgs' match: CEL expression evaluated against a route to determine if this term applies (see Policy Language).
+               Structure is documented below.
         :param builtins.int priority: The evaluation priority for this term, which must be between 0 (inclusive) and 231 (exclusive), and unique within the list.
         :param Sequence['RouterRoutePolicyTermActionArgs'] actions: 'CEL expressions to evaluate to modify a route when this term matches.'\\
                Structure is documented below.
-        :param 'RouterRoutePolicyTermMatchArgs' match: CEL expression evaluated against a route to determine if this term applies (see Policy Language). When not set, the term applies to all routes.
-               Structure is documented below.
         """
+        pulumi.set(__self__, "match", match)
         pulumi.set(__self__, "priority", priority)
         if actions is not None:
             pulumi.set(__self__, "actions", actions)
-        if match is not None:
-            pulumi.set(__self__, "match", match)
+
+    @property
+    @pulumi.getter
+    def match(self) -> 'outputs.RouterRoutePolicyTermMatch':
+        """
+        CEL expression evaluated against a route to determine if this term applies (see Policy Language).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "match")
 
     @property
     @pulumi.getter
@@ -46627,15 +46648,6 @@ class RouterRoutePolicyTerm(dict):
         """
         return pulumi.get(self, "actions")
 
-    @property
-    @pulumi.getter
-    def match(self) -> Optional['outputs.RouterRoutePolicyTermMatch']:
-        """
-        CEL expression evaluated against a route to determine if this term applies (see Policy Language). When not set, the term applies to all routes.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "match")
-
 
 @pulumi.output_type
 class RouterRoutePolicyTermAction(dict):
@@ -46650,8 +46662,6 @@ class RouterRoutePolicyTermAction(dict):
         :param builtins.str description: Description of the expression
         :param builtins.str location: String indicating the location of the expression for error
                reporting, e.g. a file name and a position in the file
-               
-               - - -
         :param builtins.str title: Title for the expression, i.e. a short string describing its
                purpose.
         """
@@ -46686,8 +46696,6 @@ class RouterRoutePolicyTermAction(dict):
         """
         String indicating the location of the expression for error
         reporting, e.g. a file name and a position in the file
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -46776,6 +46784,7 @@ class RouterStatusBestRouteResult(dict):
                  next_hop_origin: builtins.str,
                  next_hop_peering: builtins.str,
                  next_hop_vpn_tunnel: builtins.str,
+                 params: Sequence['outputs.RouterStatusBestRouteParamResult'],
                  priority: builtins.int,
                  project: builtins.str,
                  route_status: builtins.str,
@@ -46830,6 +46839,7 @@ class RouterStatusBestRouteResult(dict):
         :param builtins.str next_hop_origin: Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
         :param builtins.str next_hop_peering: The network peering name that should handle matching packets, which should conform to RFC1035.
         :param builtins.str next_hop_vpn_tunnel: URL to a VpnTunnel that should handle matching packets.
+        :param Sequence['RouterStatusBestRouteParamArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
         :param builtins.int priority: The priority of this route. Priority is used to break ties in cases
                where there is more than one matching route of equal prefix length.
                
@@ -46868,6 +46878,7 @@ class RouterStatusBestRouteResult(dict):
         pulumi.set(__self__, "next_hop_origin", next_hop_origin)
         pulumi.set(__self__, "next_hop_peering", next_hop_peering)
         pulumi.set(__self__, "next_hop_vpn_tunnel", next_hop_vpn_tunnel)
+        pulumi.set(__self__, "params", params)
         pulumi.set(__self__, "priority", priority)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "route_status", route_status)
@@ -47048,6 +47059,14 @@ class RouterStatusBestRouteResult(dict):
 
     @property
     @pulumi.getter
+    def params(self) -> Sequence['outputs.RouterStatusBestRouteParamResult']:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        """
+        return pulumi.get(self, "params")
+
+    @property
+    @pulumi.getter
     def priority(self) -> builtins.int:
         """
         The priority of this route. Priority is used to break ties in cases
@@ -47151,6 +47170,34 @@ class RouterStatusBestRouteAsPathResult(dict):
 
 
 @pulumi.output_type
+class RouterStatusBestRouteParamResult(dict):
+    def __init__(__self__, *,
+                 resource_manager_tags: Mapping[str, builtins.str]):
+        """
+        :param Mapping[str, builtins.str] resource_manager_tags: Resource manager tags to be bound to the route. Tag keys and values have the
+               same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+               and values are in the format tagValues/456. The field is ignored when empty.
+               The field is immutable and causes resource replacement when mutated. This field is only
+               set at create time and modifying this field after creation will trigger recreation.
+               To apply tags to an existing resource, see the tags.TagBinding resource.
+        """
+        pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Mapping[str, builtins.str]:
+        """
+        Resource manager tags to be bound to the route. Tag keys and values have the
+        same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456. The field is ignored when empty.
+        The field is immutable and causes resource replacement when mutated. This field is only
+        set at create time and modifying this field after creation will trigger recreation.
+        To apply tags to an existing resource, see the tags.TagBinding resource.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+
+@pulumi.output_type
 class RouterStatusBestRouteWarningResult(dict):
     def __init__(__self__, *,
                  code: builtins.str,
@@ -47244,6 +47291,7 @@ class RouterStatusBestRoutesForRouterResult(dict):
                  next_hop_origin: builtins.str,
                  next_hop_peering: builtins.str,
                  next_hop_vpn_tunnel: builtins.str,
+                 params: Sequence['outputs.RouterStatusBestRoutesForRouterParamResult'],
                  priority: builtins.int,
                  project: builtins.str,
                  route_status: builtins.str,
@@ -47298,6 +47346,7 @@ class RouterStatusBestRoutesForRouterResult(dict):
         :param builtins.str next_hop_origin: Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
         :param builtins.str next_hop_peering: The network peering name that should handle matching packets, which should conform to RFC1035.
         :param builtins.str next_hop_vpn_tunnel: URL to a VpnTunnel that should handle matching packets.
+        :param Sequence['RouterStatusBestRoutesForRouterParamArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
         :param builtins.int priority: The priority of this route. Priority is used to break ties in cases
                where there is more than one matching route of equal prefix length.
                
@@ -47336,6 +47385,7 @@ class RouterStatusBestRoutesForRouterResult(dict):
         pulumi.set(__self__, "next_hop_origin", next_hop_origin)
         pulumi.set(__self__, "next_hop_peering", next_hop_peering)
         pulumi.set(__self__, "next_hop_vpn_tunnel", next_hop_vpn_tunnel)
+        pulumi.set(__self__, "params", params)
         pulumi.set(__self__, "priority", priority)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "route_status", route_status)
@@ -47516,6 +47566,14 @@ class RouterStatusBestRoutesForRouterResult(dict):
 
     @property
     @pulumi.getter
+    def params(self) -> Sequence['outputs.RouterStatusBestRoutesForRouterParamResult']:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        """
+        return pulumi.get(self, "params")
+
+    @property
+    @pulumi.getter
     def priority(self) -> builtins.int:
         """
         The priority of this route. Priority is used to break ties in cases
@@ -47616,6 +47674,34 @@ class RouterStatusBestRoutesForRouterAsPathResult(dict):
         - 'AS_CONFED_SET': unordered set of Member Autonomous Systems in the local confederation that the route has traversed
         """
         return pulumi.get(self, "path_segment_type")
+
+
+@pulumi.output_type
+class RouterStatusBestRoutesForRouterParamResult(dict):
+    def __init__(__self__, *,
+                 resource_manager_tags: Mapping[str, builtins.str]):
+        """
+        :param Mapping[str, builtins.str] resource_manager_tags: Resource manager tags to be bound to the route. Tag keys and values have the
+               same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+               and values are in the format tagValues/456. The field is ignored when empty.
+               The field is immutable and causes resource replacement when mutated. This field is only
+               set at create time and modifying this field after creation will trigger recreation.
+               To apply tags to an existing resource, see the tags.TagBinding resource.
+        """
+        pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Mapping[str, builtins.str]:
+        """
+        Resource manager tags to be bound to the route. Tag keys and values have the
+        same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456. The field is ignored when empty.
+        The field is immutable and causes resource replacement when mutated. This field is only
+        set at create time and modifying this field after creation will trigger recreation.
+        To apply tags to an existing resource, see the tags.TagBinding resource.
+        """
+        return pulumi.get(self, "resource_manager_tags")
 
 
 @pulumi.output_type
@@ -49934,8 +50020,6 @@ class SnapshotSettingsStorageLocationLocation(dict):
         :param builtins.str location: The identifier for this object. Format specified above.
         :param builtins.str name: Name of the location. It should be one of the Cloud Storage buckets.
                Only one location can be specified. (should match location)
-               
-               - - -
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "name", name)
@@ -49954,8 +50038,6 @@ class SnapshotSettingsStorageLocationLocation(dict):
         """
         Name of the location. It should be one of the Cloud Storage buckets.
         Only one location can be specified. (should match location)
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -72991,6 +73073,7 @@ class GetRouterStatusBestRouteResult(dict):
                  next_hop_origin: builtins.str,
                  next_hop_peering: builtins.str,
                  next_hop_vpn_tunnel: builtins.str,
+                 params: Sequence['outputs.GetRouterStatusBestRouteParamResult'],
                  priority: builtins.int,
                  project: builtins.str,
                  route_status: builtins.str,
@@ -73045,6 +73128,7 @@ class GetRouterStatusBestRouteResult(dict):
         :param builtins.str next_hop_origin: Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
         :param builtins.str next_hop_peering: The network peering name that should handle matching packets, which should conform to RFC1035.
         :param builtins.str next_hop_vpn_tunnel: URL to a VpnTunnel that should handle matching packets.
+        :param Sequence['GetRouterStatusBestRouteParamArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
         :param builtins.int priority: The priority of this route. Priority is used to break ties in cases
                where there is more than one matching route of equal prefix length.
                
@@ -73083,6 +73167,7 @@ class GetRouterStatusBestRouteResult(dict):
         pulumi.set(__self__, "next_hop_origin", next_hop_origin)
         pulumi.set(__self__, "next_hop_peering", next_hop_peering)
         pulumi.set(__self__, "next_hop_vpn_tunnel", next_hop_vpn_tunnel)
+        pulumi.set(__self__, "params", params)
         pulumi.set(__self__, "priority", priority)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "route_status", route_status)
@@ -73263,6 +73348,14 @@ class GetRouterStatusBestRouteResult(dict):
 
     @property
     @pulumi.getter
+    def params(self) -> Sequence['outputs.GetRouterStatusBestRouteParamResult']:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        """
+        return pulumi.get(self, "params")
+
+    @property
+    @pulumi.getter
     def priority(self) -> builtins.int:
         """
         The priority of this route. Priority is used to break ties in cases
@@ -73366,6 +73459,34 @@ class GetRouterStatusBestRouteAsPathResult(dict):
 
 
 @pulumi.output_type
+class GetRouterStatusBestRouteParamResult(dict):
+    def __init__(__self__, *,
+                 resource_manager_tags: Mapping[str, builtins.str]):
+        """
+        :param Mapping[str, builtins.str] resource_manager_tags: Resource manager tags to be bound to the route. Tag keys and values have the
+               same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+               and values are in the format tagValues/456. The field is ignored when empty.
+               The field is immutable and causes resource replacement when mutated. This field is only
+               set at create time and modifying this field after creation will trigger recreation.
+               To apply tags to an existing resource, see the tags.TagBinding resource.
+        """
+        pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Mapping[str, builtins.str]:
+        """
+        Resource manager tags to be bound to the route. Tag keys and values have the
+        same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456. The field is ignored when empty.
+        The field is immutable and causes resource replacement when mutated. This field is only
+        set at create time and modifying this field after creation will trigger recreation.
+        To apply tags to an existing resource, see the tags.TagBinding resource.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+
+@pulumi.output_type
 class GetRouterStatusBestRouteWarningResult(dict):
     def __init__(__self__, *,
                  code: builtins.str,
@@ -73459,6 +73580,7 @@ class GetRouterStatusBestRoutesForRouterResult(dict):
                  next_hop_origin: builtins.str,
                  next_hop_peering: builtins.str,
                  next_hop_vpn_tunnel: builtins.str,
+                 params: Sequence['outputs.GetRouterStatusBestRoutesForRouterParamResult'],
                  priority: builtins.int,
                  project: builtins.str,
                  route_status: builtins.str,
@@ -73513,6 +73635,7 @@ class GetRouterStatusBestRoutesForRouterResult(dict):
         :param builtins.str next_hop_origin: Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
         :param builtins.str next_hop_peering: The network peering name that should handle matching packets, which should conform to RFC1035.
         :param builtins.str next_hop_vpn_tunnel: URL to a VpnTunnel that should handle matching packets.
+        :param Sequence['GetRouterStatusBestRoutesForRouterParamArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
         :param builtins.int priority: The priority of this route. Priority is used to break ties in cases
                where there is more than one matching route of equal prefix length.
                
@@ -73551,6 +73674,7 @@ class GetRouterStatusBestRoutesForRouterResult(dict):
         pulumi.set(__self__, "next_hop_origin", next_hop_origin)
         pulumi.set(__self__, "next_hop_peering", next_hop_peering)
         pulumi.set(__self__, "next_hop_vpn_tunnel", next_hop_vpn_tunnel)
+        pulumi.set(__self__, "params", params)
         pulumi.set(__self__, "priority", priority)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "route_status", route_status)
@@ -73731,6 +73855,14 @@ class GetRouterStatusBestRoutesForRouterResult(dict):
 
     @property
     @pulumi.getter
+    def params(self) -> Sequence['outputs.GetRouterStatusBestRoutesForRouterParamResult']:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        """
+        return pulumi.get(self, "params")
+
+    @property
+    @pulumi.getter
     def priority(self) -> builtins.int:
         """
         The priority of this route. Priority is used to break ties in cases
@@ -73831,6 +73963,34 @@ class GetRouterStatusBestRoutesForRouterAsPathResult(dict):
         - 'AS_CONFED_SET': unordered set of Member Autonomous Systems in the local confederation that the route has traversed
         """
         return pulumi.get(self, "path_segment_type")
+
+
+@pulumi.output_type
+class GetRouterStatusBestRoutesForRouterParamResult(dict):
+    def __init__(__self__, *,
+                 resource_manager_tags: Mapping[str, builtins.str]):
+        """
+        :param Mapping[str, builtins.str] resource_manager_tags: Resource manager tags to be bound to the route. Tag keys and values have the
+               same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+               and values are in the format tagValues/456. The field is ignored when empty.
+               The field is immutable and causes resource replacement when mutated. This field is only
+               set at create time and modifying this field after creation will trigger recreation.
+               To apply tags to an existing resource, see the tags.TagBinding resource.
+        """
+        pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Mapping[str, builtins.str]:
+        """
+        Resource manager tags to be bound to the route. Tag keys and values have the
+        same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456. The field is ignored when empty.
+        The field is immutable and causes resource replacement when mutated. This field is only
+        set at create time and modifying this field after creation will trigger recreation.
+        To apply tags to an existing resource, see the tags.TagBinding resource.
+        """
+        return pulumi.get(self, "resource_manager_tags")
 
 
 @pulumi.output_type

@@ -147,8 +147,6 @@ type Workstation struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location where the workstation parent resources reside.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Full name of this resource.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -242,8 +240,6 @@ type workstationState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the workstation parent resources reside.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// Full name of this resource.
 	Name *string `pulumi:"name"`
@@ -291,8 +287,6 @@ type WorkstationState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location where the workstation parent resources reside.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// Full name of this resource.
 	Name pulumi.StringPtrInput
@@ -335,8 +329,6 @@ type workstationArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the workstation parent resources reside.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -367,8 +359,6 @@ type WorkstationArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location where the workstation parent resources reside.
-	//
-	// ***
 	Location pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -517,8 +507,6 @@ func (o WorkstationOutput) Labels() pulumi.StringMapOutput {
 }
 
 // The location where the workstation parent resources reside.
-//
-// ***
 func (o WorkstationOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workstation) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

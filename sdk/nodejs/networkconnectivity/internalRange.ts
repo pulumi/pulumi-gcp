@@ -241,9 +241,6 @@ export class InternalRange extends pulumi.CustomResource {
     /**
      * The type of peering set for this internal range.
      * Possible values are: `FOR_SELF`, `FOR_PEER`, `NOT_SHARED`.
-     *
-     *
-     * - - -
      */
     public readonly peering!: pulumi.Output<string>;
     /**
@@ -401,9 +398,6 @@ export interface InternalRangeState {
     /**
      * The type of peering set for this internal range.
      * Possible values are: `FOR_SELF`, `FOR_PEER`, `NOT_SHARED`.
-     *
-     *
-     * - - -
      */
     peering?: pulumi.Input<string>;
     /**
@@ -492,9 +486,6 @@ export interface InternalRangeArgs {
     /**
      * The type of peering set for this internal range.
      * Possible values are: `FOR_SELF`, `FOR_PEER`, `NOT_SHARED`.
-     *
-     *
-     * - - -
      */
     peering: pulumi.Input<string>;
     /**

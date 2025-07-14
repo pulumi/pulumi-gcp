@@ -47,8 +47,12 @@ class SecurityGatewayApplicationArgs:
                Hostname and Ports - ("abc.com" and "22"), ("abc.com" and "22,33") etc
                Structure is documented below.
         :param pulumi.Input[builtins.str] security_gateway_id: ID of the Security Gateway resource this belongs to.
-        :param pulumi.Input[builtins.str] display_name: Optional. An arbitrary user-provided name for the Application resource. Cannot exceed 64 characters.
+        :param pulumi.Input[builtins.str] display_name: Optional. An arbitrary user-provided name for the Application resource.
+               Cannot exceed 64 characters.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input['SecurityGatewayApplicationUpstreamArgs']]] upstreams: Optional. List of which upstream resource(s) to forward traffic to.
+               Structure is documented below.
         """
         pulumi.set(__self__, "application_id", application_id)
         pulumi.set(__self__, "endpoint_matchers", endpoint_matchers)
@@ -114,7 +118,8 @@ class SecurityGatewayApplicationArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Optional. An arbitrary user-provided name for the Application resource. Cannot exceed 64 characters.
+        Optional. An arbitrary user-provided name for the Application resource.
+        Cannot exceed 64 characters.
         """
         return pulumi.get(self, "display_name")
 
@@ -125,6 +130,10 @@ class SecurityGatewayApplicationArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -136,6 +145,7 @@ class SecurityGatewayApplicationArgs:
     def upstreams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGatewayApplicationUpstreamArgs']]]]:
         """
         Optional. List of which upstream resource(s) to forward traffic to.
+        Structure is documented below.
         """
         return pulumi.get(self, "upstreams")
 
@@ -163,7 +173,8 @@ class _SecurityGatewayApplicationState:
                * Must contain between 4-63 characters from `/a-z-/`.
                * Must end with a number or letter.
         :param pulumi.Input[builtins.str] create_time: Output only. Timestamp when the resource was created.
-        :param pulumi.Input[builtins.str] display_name: Optional. An arbitrary user-provided name for the Application resource. Cannot exceed 64 characters.
+        :param pulumi.Input[builtins.str] display_name: Optional. An arbitrary user-provided name for the Application resource.
+               Cannot exceed 64 characters.
         :param pulumi.Input[Sequence[pulumi.Input['SecurityGatewayApplicationEndpointMatcherArgs']]] endpoint_matchers: Required. Endpoint matchers associated with an application.
                A combination of hostname and ports as endpoint matcher is used to match
                the application.
@@ -177,9 +188,12 @@ class _SecurityGatewayApplicationState:
                Hostname and Ports - ("abc.com" and "22"), ("abc.com" and "22,33") etc
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: Identifier. Name of the resource.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] security_gateway_id: ID of the Security Gateway resource this belongs to.
         :param pulumi.Input[builtins.str] update_time: Output only. Timestamp when the resource was last modified.
         :param pulumi.Input[Sequence[pulumi.Input['SecurityGatewayApplicationUpstreamArgs']]] upstreams: Optional. List of which upstream resource(s) to forward traffic to.
+               Structure is documented below.
         """
         if application_id is not None:
             pulumi.set(__self__, "application_id", application_id)
@@ -231,7 +245,8 @@ class _SecurityGatewayApplicationState:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Optional. An arbitrary user-provided name for the Application resource. Cannot exceed 64 characters.
+        Optional. An arbitrary user-provided name for the Application resource.
+        Cannot exceed 64 characters.
         """
         return pulumi.get(self, "display_name")
 
@@ -277,6 +292,10 @@ class _SecurityGatewayApplicationState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -312,6 +331,7 @@ class _SecurityGatewayApplicationState:
     def upstreams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGatewayApplicationUpstreamArgs']]]]:
         """
         Optional. List of which upstream resource(s) to forward traffic to.
+        Structure is documented below.
         """
         return pulumi.get(self, "upstreams")
 
@@ -416,7 +436,8 @@ class SecurityGatewayApplication(pulumi.CustomResource):
                * Must start with a letter.
                * Must contain between 4-63 characters from `/a-z-/`.
                * Must end with a number or letter.
-        :param pulumi.Input[builtins.str] display_name: Optional. An arbitrary user-provided name for the Application resource. Cannot exceed 64 characters.
+        :param pulumi.Input[builtins.str] display_name: Optional. An arbitrary user-provided name for the Application resource.
+               Cannot exceed 64 characters.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityGatewayApplicationEndpointMatcherArgs', 'SecurityGatewayApplicationEndpointMatcherArgsDict']]]] endpoint_matchers: Required. Endpoint matchers associated with an application.
                A combination of hostname and ports as endpoint matcher is used to match
                the application.
@@ -429,8 +450,11 @@ class SecurityGatewayApplication(pulumi.CustomResource):
                Hostname - ("*.abc.com"), ("xyz.abc.com")
                Hostname and Ports - ("abc.com" and "22"), ("abc.com" and "22,33") etc
                Structure is documented below.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] security_gateway_id: ID of the Security Gateway resource this belongs to.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityGatewayApplicationUpstreamArgs', 'SecurityGatewayApplicationUpstreamArgsDict']]]] upstreams: Optional. List of which upstream resource(s) to forward traffic to.
+               Structure is documented below.
         """
         ...
     @overload
@@ -591,7 +615,8 @@ class SecurityGatewayApplication(pulumi.CustomResource):
                * Must contain between 4-63 characters from `/a-z-/`.
                * Must end with a number or letter.
         :param pulumi.Input[builtins.str] create_time: Output only. Timestamp when the resource was created.
-        :param pulumi.Input[builtins.str] display_name: Optional. An arbitrary user-provided name for the Application resource. Cannot exceed 64 characters.
+        :param pulumi.Input[builtins.str] display_name: Optional. An arbitrary user-provided name for the Application resource.
+               Cannot exceed 64 characters.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityGatewayApplicationEndpointMatcherArgs', 'SecurityGatewayApplicationEndpointMatcherArgsDict']]]] endpoint_matchers: Required. Endpoint matchers associated with an application.
                A combination of hostname and ports as endpoint matcher is used to match
                the application.
@@ -605,9 +630,12 @@ class SecurityGatewayApplication(pulumi.CustomResource):
                Hostname and Ports - ("abc.com" and "22"), ("abc.com" and "22,33") etc
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: Identifier. Name of the resource.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] security_gateway_id: ID of the Security Gateway resource this belongs to.
         :param pulumi.Input[builtins.str] update_time: Output only. Timestamp when the resource was last modified.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityGatewayApplicationUpstreamArgs', 'SecurityGatewayApplicationUpstreamArgsDict']]]] upstreams: Optional. List of which upstream resource(s) to forward traffic to.
+               Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -647,7 +675,8 @@ class SecurityGatewayApplication(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Optional. An arbitrary user-provided name for the Application resource. Cannot exceed 64 characters.
+        Optional. An arbitrary user-provided name for the Application resource.
+        Cannot exceed 64 characters.
         """
         return pulumi.get(self, "display_name")
 
@@ -681,6 +710,10 @@ class SecurityGatewayApplication(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property
@@ -704,6 +737,7 @@ class SecurityGatewayApplication(pulumi.CustomResource):
     def upstreams(self) -> pulumi.Output[Optional[Sequence['outputs.SecurityGatewayApplicationUpstream']]]:
         """
         Optional. List of which upstream resource(s) to forward traffic to.
+        Structure is documented below.
         """
         return pulumi.get(self, "upstreams")
 

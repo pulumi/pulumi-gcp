@@ -98,6 +98,7 @@ type SearchEngine struct {
 	// The collection ID.
 	CollectionId pulumi.StringOutput `pulumi:"collectionId"`
 	// Common config spec that specifies the metadata of the engine.
+	// Structure is documented below.
 	CommonConfig SearchEngineCommonConfigPtrOutput `pulumi:"commonConfig"`
 	// Timestamp the Engine was created at.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -107,9 +108,9 @@ type SearchEngine struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Unique ID to use for Search Engine App.
 	EngineId pulumi.StringOutput `pulumi:"engineId"`
-	// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore:
-	// If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
-	// Default value: "GENERIC" Possible values: ["GENERIC", "MEDIA", "HEALTHCARE_FHIR"]
+	// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
+	// Default value is `GENERIC`.
+	// Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
 	IndustryVertical pulumi.StringPtrOutput `pulumi:"industryVertical"`
 	// Location.
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -117,7 +118,9 @@ type SearchEngine struct {
 	// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
 	// This field must be a UTF-8 encoded string with a length limit of 1024
 	// characters.
-	Name    pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Configurations for a Search Engine.
 	// Structure is documented below.
@@ -177,6 +180,7 @@ type searchEngineState struct {
 	// The collection ID.
 	CollectionId *string `pulumi:"collectionId"`
 	// Common config spec that specifies the metadata of the engine.
+	// Structure is documented below.
 	CommonConfig *SearchEngineCommonConfig `pulumi:"commonConfig"`
 	// Timestamp the Engine was created at.
 	CreateTime *string `pulumi:"createTime"`
@@ -186,9 +190,9 @@ type searchEngineState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Unique ID to use for Search Engine App.
 	EngineId *string `pulumi:"engineId"`
-	// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore:
-	// If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
-	// Default value: "GENERIC" Possible values: ["GENERIC", "MEDIA", "HEALTHCARE_FHIR"]
+	// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
+	// Default value is `GENERIC`.
+	// Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
 	IndustryVertical *string `pulumi:"industryVertical"`
 	// Location.
 	Location *string `pulumi:"location"`
@@ -196,7 +200,9 @@ type searchEngineState struct {
 	// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
 	// This field must be a UTF-8 encoded string with a length limit of 1024
 	// characters.
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Configurations for a Search Engine.
 	// Structure is documented below.
@@ -209,6 +215,7 @@ type SearchEngineState struct {
 	// The collection ID.
 	CollectionId pulumi.StringPtrInput
 	// Common config spec that specifies the metadata of the engine.
+	// Structure is documented below.
 	CommonConfig SearchEngineCommonConfigPtrInput
 	// Timestamp the Engine was created at.
 	CreateTime pulumi.StringPtrInput
@@ -218,9 +225,9 @@ type SearchEngineState struct {
 	DisplayName pulumi.StringPtrInput
 	// Unique ID to use for Search Engine App.
 	EngineId pulumi.StringPtrInput
-	// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore:
-	// If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
-	// Default value: "GENERIC" Possible values: ["GENERIC", "MEDIA", "HEALTHCARE_FHIR"]
+	// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
+	// Default value is `GENERIC`.
+	// Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
 	IndustryVertical pulumi.StringPtrInput
 	// Location.
 	Location pulumi.StringPtrInput
@@ -228,7 +235,9 @@ type SearchEngineState struct {
 	// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
 	// This field must be a UTF-8 encoded string with a length limit of 1024
 	// characters.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Configurations for a Search Engine.
 	// Structure is documented below.
@@ -245,6 +254,7 @@ type searchEngineArgs struct {
 	// The collection ID.
 	CollectionId string `pulumi:"collectionId"`
 	// Common config spec that specifies the metadata of the engine.
+	// Structure is documented below.
 	CommonConfig *SearchEngineCommonConfig `pulumi:"commonConfig"`
 	// The data stores associated with this engine. For SOLUTION_TYPE_SEARCH type of engines, they can only associate with at most one data store.
 	DataStoreIds []string `pulumi:"dataStoreIds"`
@@ -252,13 +262,15 @@ type searchEngineArgs struct {
 	DisplayName string `pulumi:"displayName"`
 	// Unique ID to use for Search Engine App.
 	EngineId string `pulumi:"engineId"`
-	// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore:
-	// If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
-	// Default value: "GENERIC" Possible values: ["GENERIC", "MEDIA", "HEALTHCARE_FHIR"]
+	// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
+	// Default value is `GENERIC`.
+	// Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
 	IndustryVertical *string `pulumi:"industryVertical"`
 	// Location.
-	Location string  `pulumi:"location"`
-	Project  *string `pulumi:"project"`
+	Location string `pulumi:"location"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// Configurations for a Search Engine.
 	// Structure is documented below.
 	SearchEngineConfig SearchEngineSearchEngineConfig `pulumi:"searchEngineConfig"`
@@ -269,6 +281,7 @@ type SearchEngineArgs struct {
 	// The collection ID.
 	CollectionId pulumi.StringInput
 	// Common config spec that specifies the metadata of the engine.
+	// Structure is documented below.
 	CommonConfig SearchEngineCommonConfigPtrInput
 	// The data stores associated with this engine. For SOLUTION_TYPE_SEARCH type of engines, they can only associate with at most one data store.
 	DataStoreIds pulumi.StringArrayInput
@@ -276,13 +289,15 @@ type SearchEngineArgs struct {
 	DisplayName pulumi.StringInput
 	// Unique ID to use for Search Engine App.
 	EngineId pulumi.StringInput
-	// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore:
-	// If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
-	// Default value: "GENERIC" Possible values: ["GENERIC", "MEDIA", "HEALTHCARE_FHIR"]
+	// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
+	// Default value is `GENERIC`.
+	// Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
 	IndustryVertical pulumi.StringPtrInput
 	// Location.
 	Location pulumi.StringInput
-	Project  pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// Configurations for a Search Engine.
 	// Structure is documented below.
 	SearchEngineConfig SearchEngineSearchEngineConfigInput
@@ -381,6 +396,7 @@ func (o SearchEngineOutput) CollectionId() pulumi.StringOutput {
 }
 
 // Common config spec that specifies the metadata of the engine.
+// Structure is documented below.
 func (o SearchEngineOutput) CommonConfig() SearchEngineCommonConfigPtrOutput {
 	return o.ApplyT(func(v *SearchEngine) SearchEngineCommonConfigPtrOutput { return v.CommonConfig }).(SearchEngineCommonConfigPtrOutput)
 }
@@ -405,9 +421,9 @@ func (o SearchEngineOutput) EngineId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SearchEngine) pulumi.StringOutput { return v.EngineId }).(pulumi.StringOutput)
 }
 
-// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore:
-// If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
-// Default value: "GENERIC" Possible values: ["GENERIC", "MEDIA", "HEALTHCARE_FHIR"]
+// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
+// Default value is `GENERIC`.
+// Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
 func (o SearchEngineOutput) IndustryVertical() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SearchEngine) pulumi.StringPtrOutput { return v.IndustryVertical }).(pulumi.StringPtrOutput)
 }
@@ -425,6 +441,8 @@ func (o SearchEngineOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SearchEngine) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o SearchEngineOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *SearchEngine) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

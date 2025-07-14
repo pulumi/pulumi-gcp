@@ -167,16 +167,12 @@ public class GcpUserAccessBinding extends com.pulumi.resources.CustomResource {
     /**
      * Required. ID of the parent organization.
      * 
-     * ***
-     * 
      */
     @Export(name="organizationId", refs={String.class}, tree="[0]")
     private Output<String> organizationId;
 
     /**
      * @return Required. ID of the parent organization.
-     * 
-     * ***
      * 
      */
     public Output<String> organizationId() {

@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.GkeOnPrem.Inputs
         /// If true, prevent IP addresses from being automatically assigned.
         /// </summary>
         [Input("manualAssign")]
-        public Input<string>? ManualAssign { get; set; }
+        public Input<bool>? ManualAssign { get; set; }
 
         /// <summary>
         /// The name of the address pool.

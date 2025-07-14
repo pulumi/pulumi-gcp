@@ -14,9 +14,12 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class InterconnectAttachmentGroupConfiguredAvailabilitySlaIntendedSlaBlocker
     {
         /// <summary>
-        /// (Output)
-        /// URLs of any particular Attachments to explain this
-        /// blocker in more detail.
+        /// Attachments in the AttachmentGroup. Keys are arbitrary user-specified
+        /// strings. Users are encouraged, but not required, to use their preferred
+        /// format for resource links as keys.
+        /// Note that there are add-members and remove-members methods in gcloud.
+        /// The size of this map is limited by an "Attachments per group" quota.
+        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<string> Attachments;
         /// <summary>

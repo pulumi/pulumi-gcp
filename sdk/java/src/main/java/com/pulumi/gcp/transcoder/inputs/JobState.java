@@ -103,16 +103,12 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     /**
      * The location of the transcoding job resource.
      * 
-     * ***
-     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
      * @return The location of the transcoding job resource.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> location() {
@@ -366,8 +362,6 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param location The location of the transcoding job resource.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -378,8 +372,6 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location The location of the transcoding job resource.
-         * 
-         * ***
          * 
          * @return builder
          * 

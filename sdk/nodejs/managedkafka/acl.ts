@@ -132,6 +132,10 @@ export class Acl extends pulumi.CustomResource {
      * The acl pattern type derived from the name. One of: LITERAL, PREFIXED.
      */
     public /*out*/ readonly patternType!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The acl resource name derived from the name. For cluster resource_type, this is always "kafka-cluster". Can be the wildcard literal "*".
@@ -237,6 +241,10 @@ export interface AclState {
      * The acl pattern type derived from the name. One of: LITERAL, PREFIXED.
      */
     patternType?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * The acl resource name derived from the name. For cluster resource_type, this is always "kafka-cluster". Can be the wildcard literal "*".
@@ -273,5 +281,9 @@ export interface AclArgs {
      * ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
      */
     location: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
 }

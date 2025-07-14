@@ -87,16 +87,12 @@ public final class NetworkPeeringRoutesConfigState extends com.pulumi.resources.
     /**
      * The name of the primary network for the peering.
      * 
-     * ***
-     * 
      */
     @Import(name="network")
     private @Nullable Output<String> network;
 
     /**
      * @return The name of the primary network for the peering.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> network() {
@@ -260,8 +256,6 @@ public final class NetworkPeeringRoutesConfigState extends com.pulumi.resources.
         /**
          * @param network The name of the primary network for the peering.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -272,8 +266,6 @@ public final class NetworkPeeringRoutesConfigState extends com.pulumi.resources.
 
         /**
          * @param network The name of the primary network for the peering.
-         * 
-         * ***
          * 
          * @return builder
          * 

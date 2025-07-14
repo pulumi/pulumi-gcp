@@ -19,16 +19,12 @@ public final class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob
     /**
      * The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
      * 
-     * ***
-     * 
      */
     @Import(name="generation")
     private @Nullable Output<String> generation;
 
     /**
      * @return The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> generation() {
@@ -78,8 +74,6 @@ public final class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob
         /**
          * @param generation The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -90,8 +84,6 @@ public final class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob
 
         /**
          * @param generation The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
-         * 
-         * ***
          * 
          * @return builder
          * 

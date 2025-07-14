@@ -671,16 +671,12 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
     /**
      * The ID of the migration job.
      * 
-     * ***
-     * 
      */
     @Export(name="migrationJobId", refs={String.class}, tree="[0]")
     private Output<String> migrationJobId;
 
     /**
      * @return The ID of the migration job.
-     * 
-     * ***
      * 
      */
     public Output<String> migrationJobId() {

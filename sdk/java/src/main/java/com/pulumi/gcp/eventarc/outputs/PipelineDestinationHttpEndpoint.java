@@ -166,8 +166,6 @@ public final class PipelineDestinationHttpEndpoint {
      *   standard CloudEvent format. If it doesn&#39;t then the outgoing message
      *   request may fail with a persistent error.
      * 
-     * ***
-     * 
      */
     private @Nullable String messageBindingTemplate;
     /**
@@ -333,8 +331,6 @@ public final class PipelineDestinationHttpEndpoint {
      *   The Pipeline expects that the message it receives adheres to the
      *   standard CloudEvent format. If it doesn&#39;t then the outgoing message
      *   request may fail with a persistent error.
-     * 
-     * ***
      * 
      */
     public Optional<String> messageBindingTemplate() {

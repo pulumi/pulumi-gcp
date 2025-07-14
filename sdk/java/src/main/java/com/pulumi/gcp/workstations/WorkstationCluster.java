@@ -629,16 +629,12 @@ public class WorkstationCluster extends com.pulumi.resources.CustomResource {
     /**
      * ID to use for the workstation cluster.
      * 
-     * ***
-     * 
      */
     @Export(name="workstationClusterId", refs={String.class}, tree="[0]")
     private Output<String> workstationClusterId;
 
     /**
      * @return ID to use for the workstation cluster.
-     * 
-     * ***
      * 
      */
     public Output<String> workstationClusterId() {

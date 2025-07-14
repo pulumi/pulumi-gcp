@@ -1218,8 +1218,6 @@ type PipelineDestinationHttpEndpoint struct {
 	//   The Pipeline expects that the message it receives adheres to the
 	//   standard CloudEvent format. If it doesn't then the outgoing message
 	//   request may fail with a persistent error.
-	//
-	// ***
 	MessageBindingTemplate *string `pulumi:"messageBindingTemplate"`
 	// The URI of the HTTP enpdoint.
 	// The value must be a RFC2396 URI string.
@@ -1392,8 +1390,6 @@ type PipelineDestinationHttpEndpointArgs struct {
 	//   The Pipeline expects that the message it receives adheres to the
 	//   standard CloudEvent format. If it doesn't then the outgoing message
 	//   request may fail with a persistent error.
-	//
-	// ***
 	MessageBindingTemplate pulumi.StringPtrInput `pulumi:"messageBindingTemplate"`
 	// The URI of the HTTP enpdoint.
 	// The value must be a RFC2396 URI string.
@@ -1632,8 +1628,6 @@ func (o PipelineDestinationHttpEndpointOutput) ToPipelineDestinationHttpEndpoint
 //     The Pipeline expects that the message it receives adheres to the
 //     standard CloudEvent format. If it doesn't then the outgoing message
 //     request may fail with a persistent error.
-//
-// ***
 func (o PipelineDestinationHttpEndpointOutput) MessageBindingTemplate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PipelineDestinationHttpEndpoint) *string { return v.MessageBindingTemplate }).(pulumi.StringPtrOutput)
 }
@@ -1823,8 +1817,6 @@ func (o PipelineDestinationHttpEndpointPtrOutput) Elem() PipelineDestinationHttp
 //     The Pipeline expects that the message it receives adheres to the
 //     standard CloudEvent format. If it doesn't then the outgoing message
 //     request may fail with a persistent error.
-//
-// ***
 func (o PipelineDestinationHttpEndpointPtrOutput) MessageBindingTemplate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PipelineDestinationHttpEndpoint) *string {
 		if v == nil {
@@ -4818,8 +4810,6 @@ func (o TriggerDestinationHttpEndpointPtrOutput) Uri() pulumi.StringPtrOutput {
 
 type TriggerDestinationNetworkConfig struct {
 	// Required. Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
-	//
-	// ***
 	NetworkAttachment string `pulumi:"networkAttachment"`
 }
 
@@ -4836,8 +4826,6 @@ type TriggerDestinationNetworkConfigInput interface {
 
 type TriggerDestinationNetworkConfigArgs struct {
 	// Required. Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
-	//
-	// ***
 	NetworkAttachment pulumi.StringInput `pulumi:"networkAttachment"`
 }
 
@@ -4919,8 +4907,6 @@ func (o TriggerDestinationNetworkConfigOutput) ToTriggerDestinationNetworkConfig
 }
 
 // Required. Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
-//
-// ***
 func (o TriggerDestinationNetworkConfigOutput) NetworkAttachment() pulumi.StringOutput {
 	return o.ApplyT(func(v TriggerDestinationNetworkConfig) string { return v.NetworkAttachment }).(pulumi.StringOutput)
 }
@@ -4950,8 +4936,6 @@ func (o TriggerDestinationNetworkConfigPtrOutput) Elem() TriggerDestinationNetwo
 }
 
 // Required. Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
-//
-// ***
 func (o TriggerDestinationNetworkConfigPtrOutput) NetworkAttachment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerDestinationNetworkConfig) *string {
 		if v == nil {

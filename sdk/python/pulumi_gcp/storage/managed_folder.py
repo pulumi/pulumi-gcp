@@ -32,9 +32,6 @@ class ManagedFolderArgs:
                same name.
         :param pulumi.Input[builtins.str] name: The name of the managed folder expressed as a path. Must include
                trailing '/'. For example, `example_dir/example_dir2/`.
-               
-               
-               - - -
         """
         pulumi.set(__self__, "bucket", bucket)
         if force_destroy is not None:
@@ -75,9 +72,6 @@ class ManagedFolderArgs:
         """
         The name of the managed folder expressed as a path. Must include
         trailing '/'. For example, `example_dir/example_dir2/`.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -107,9 +101,6 @@ class _ManagedFolderState:
         :param pulumi.Input[builtins.str] metageneration: The metadata generation of the managed folder.
         :param pulumi.Input[builtins.str] name: The name of the managed folder expressed as a path. Must include
                trailing '/'. For example, `example_dir/example_dir2/`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] self_link: The URI of the created resource.
         :param pulumi.Input[builtins.str] update_time: The timestamp at which this managed folder was most recently updated.
         """
@@ -185,9 +176,6 @@ class _ManagedFolderState:
         """
         The name of the managed folder expressed as a path. Must include
         trailing '/'. For example, `example_dir/example_dir2/`.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -294,9 +282,6 @@ class ManagedFolder(pulumi.CustomResource):
                same name.
         :param pulumi.Input[builtins.str] name: The name of the managed folder expressed as a path. Must include
                trailing '/'. For example, `example_dir/example_dir2/`.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -428,9 +413,6 @@ class ManagedFolder(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] metageneration: The metadata generation of the managed folder.
         :param pulumi.Input[builtins.str] name: The name of the managed folder expressed as a path. Must include
                trailing '/'. For example, `example_dir/example_dir2/`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] self_link: The URI of the created resource.
         :param pulumi.Input[builtins.str] update_time: The timestamp at which this managed folder was most recently updated.
         """
@@ -488,9 +470,6 @@ class ManagedFolder(pulumi.CustomResource):
         """
         The name of the managed folder expressed as a path. Must include
         trailing '/'. For example, `example_dir/example_dir2/`.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

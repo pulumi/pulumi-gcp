@@ -97,9 +97,6 @@ export class ProjectCloudArmorTier extends pulumi.CustomResource {
     /**
      * Managed protection tier to be set.
      * Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`, `CA_ENTERPRISE_ANNUAL`.
-     *
-     *
-     * - - -
      */
     public readonly cloudArmorTier!: pulumi.Output<string>;
     /**
@@ -143,9 +140,6 @@ export interface ProjectCloudArmorTierState {
     /**
      * Managed protection tier to be set.
      * Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`, `CA_ENTERPRISE_ANNUAL`.
-     *
-     *
-     * - - -
      */
     cloudArmorTier?: pulumi.Input<string>;
     /**
@@ -162,9 +156,6 @@ export interface ProjectCloudArmorTierArgs {
     /**
      * Managed protection tier to be set.
      * Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`, `CA_ENTERPRISE_ANNUAL`.
-     *
-     *
-     * - - -
      */
     cloudArmorTier: pulumi.Input<string>;
     /**

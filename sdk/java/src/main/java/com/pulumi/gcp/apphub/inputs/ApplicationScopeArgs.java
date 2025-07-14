@@ -21,8 +21,6 @@ public final class ApplicationScopeArgs extends com.pulumi.resources.ResourceArg
      * GLOBAL
      * Possible values are: `REGIONAL`, `GLOBAL`.
      * 
-     * ***
-     * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
@@ -33,8 +31,6 @@ public final class ApplicationScopeArgs extends com.pulumi.resources.ResourceArg
      * REGIONAL
      * GLOBAL
      * Possible values are: `REGIONAL`, `GLOBAL`.
-     * 
-     * ***
      * 
      */
     public Output<String> type() {
@@ -72,8 +68,6 @@ public final class ApplicationScopeArgs extends com.pulumi.resources.ResourceArg
          * GLOBAL
          * Possible values are: `REGIONAL`, `GLOBAL`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -88,8 +82,6 @@ public final class ApplicationScopeArgs extends com.pulumi.resources.ResourceArg
          * REGIONAL
          * GLOBAL
          * Possible values are: `REGIONAL`, `GLOBAL`.
-         * 
-         * ***
          * 
          * @return builder
          * 

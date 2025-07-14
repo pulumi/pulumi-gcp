@@ -94,16 +94,12 @@ public class BiReservation extends com.pulumi.resources.CustomResource {
     /**
      * LOCATION_DESCRIPTION
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return LOCATION_DESCRIPTION
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

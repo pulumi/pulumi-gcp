@@ -41,14 +41,18 @@ class TaskArgs:
                Structure is documented below.
         :param pulumi.Input[builtins.str] description: User-provided description of the task.
         :param pulumi.Input[builtins.str] display_name: User friendly display name.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: User-defined labels for the task. **Note**: This field is non-authoritative, and will only manage the labels present in
-               your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: User-defined labels for the task.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] lake: The lake in which the task will be created in.
         :param pulumi.Input[builtins.str] location: The location in which the task will be created in.
-        :param pulumi.Input['TaskNotebookArgs'] notebook: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
-               its memory over time.
-        :param pulumi.Input['TaskSparkArgs'] spark: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
-               its memory over time.
+        :param pulumi.Input['TaskNotebookArgs'] notebook: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input['TaskSparkArgs'] spark: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] task_id: The task Id of the task.
         """
         pulumi.set(__self__, "execution_spec", execution_spec)
@@ -126,8 +130,10 @@ class TaskArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        User-defined labels for the task. **Note**: This field is non-authoritative, and will only manage the labels present in
-        your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        User-defined labels for the task.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -163,8 +169,8 @@ class TaskArgs:
     @pulumi.getter
     def notebook(self) -> Optional[pulumi.Input['TaskNotebookArgs']]:
         """
-        A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
-        its memory over time.
+        A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+        Structure is documented below.
         """
         return pulumi.get(self, "notebook")
 
@@ -175,6 +181,10 @@ class TaskArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -185,8 +195,8 @@ class TaskArgs:
     @pulumi.getter
     def spark(self) -> Optional[pulumi.Input['TaskSparkArgs']]:
         """
-        A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
-        its memory over time.
+        A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+        Structure is documented below.
         """
         return pulumi.get(self, "spark")
 
@@ -239,18 +249,22 @@ class _TaskState:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['TaskExecutionStatusArgs']]] execution_statuses: Configuration for the cluster
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: User-defined labels for the task. **Note**: This field is non-authoritative, and will only manage the labels present in
-               your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: User-defined labels for the task.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] lake: The lake in which the task will be created in.
         :param pulumi.Input[builtins.str] location: The location in which the task will be created in.
         :param pulumi.Input[builtins.str] name: (Output)
                The relative resource name of the job, of the form: projects/{project_number}/locations/{locationId}/lakes/{lakeId}/tasks/{taskId}/jobs/{jobId}.
-        :param pulumi.Input['TaskNotebookArgs'] notebook: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
-               its memory over time.
+        :param pulumi.Input['TaskNotebookArgs'] notebook: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input['TaskSparkArgs'] spark: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
-               its memory over time.
+        :param pulumi.Input['TaskSparkArgs'] spark: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] state: (Output)
                Execution state for the job.
         :param pulumi.Input[builtins.str] task_id: The task Id of the task.
@@ -378,8 +392,10 @@ class _TaskState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        User-defined labels for the task. **Note**: This field is non-authoritative, and will only manage the labels present in
-        your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        User-defined labels for the task.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -428,8 +444,8 @@ class _TaskState:
     @pulumi.getter
     def notebook(self) -> Optional[pulumi.Input['TaskNotebookArgs']]:
         """
-        A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
-        its memory over time.
+        A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+        Structure is documented below.
         """
         return pulumi.get(self, "notebook")
 
@@ -440,6 +456,10 @@ class _TaskState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -463,8 +483,8 @@ class _TaskState:
     @pulumi.getter
     def spark(self) -> Optional[pulumi.Input['TaskSparkArgs']]:
         """
-        A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
-        its memory over time.
+        A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+        Structure is documented below.
         """
         return pulumi.get(self, "spark")
 
@@ -747,14 +767,18 @@ class Task(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] display_name: User friendly display name.
         :param pulumi.Input[Union['TaskExecutionSpecArgs', 'TaskExecutionSpecArgsDict']] execution_spec: Configuration for the cluster
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: User-defined labels for the task. **Note**: This field is non-authoritative, and will only manage the labels present in
-               your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: User-defined labels for the task.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] lake: The lake in which the task will be created in.
         :param pulumi.Input[builtins.str] location: The location in which the task will be created in.
-        :param pulumi.Input[Union['TaskNotebookArgs', 'TaskNotebookArgsDict']] notebook: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
-               its memory over time.
-        :param pulumi.Input[Union['TaskSparkArgs', 'TaskSparkArgsDict']] spark: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
-               its memory over time.
+        :param pulumi.Input[Union['TaskNotebookArgs', 'TaskNotebookArgsDict']] notebook: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[Union['TaskSparkArgs', 'TaskSparkArgsDict']] spark: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] task_id: The task Id of the task.
         :param pulumi.Input[Union['TaskTriggerSpecArgs', 'TaskTriggerSpecArgsDict']] trigger_spec: Configuration for the cluster
                Structure is documented below.
@@ -1055,18 +1079,22 @@ class Task(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['TaskExecutionStatusArgs', 'TaskExecutionStatusArgsDict']]]] execution_statuses: Configuration for the cluster
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: User-defined labels for the task. **Note**: This field is non-authoritative, and will only manage the labels present in
-               your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: User-defined labels for the task.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] lake: The lake in which the task will be created in.
         :param pulumi.Input[builtins.str] location: The location in which the task will be created in.
         :param pulumi.Input[builtins.str] name: (Output)
                The relative resource name of the job, of the form: projects/{project_number}/locations/{locationId}/lakes/{lakeId}/tasks/{taskId}/jobs/{jobId}.
-        :param pulumi.Input[Union['TaskNotebookArgs', 'TaskNotebookArgsDict']] notebook: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
-               its memory over time.
+        :param pulumi.Input[Union['TaskNotebookArgs', 'TaskNotebookArgsDict']] notebook: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[Union['TaskSparkArgs', 'TaskSparkArgsDict']] spark: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
-               its memory over time.
+        :param pulumi.Input[Union['TaskSparkArgs', 'TaskSparkArgsDict']] spark: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] state: (Output)
                Execution state for the job.
         :param pulumi.Input[builtins.str] task_id: The task Id of the task.
@@ -1156,8 +1184,10 @@ class Task(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
         """
-        User-defined labels for the task. **Note**: This field is non-authoritative, and will only manage the labels present in
-        your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        User-defined labels for the task.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1190,14 +1220,18 @@ class Task(pulumi.CustomResource):
     @pulumi.getter
     def notebook(self) -> pulumi.Output[Optional['outputs.TaskNotebook']]:
         """
-        A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
-        its memory over time.
+        A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+        Structure is documented below.
         """
         return pulumi.get(self, "notebook")
 
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property
@@ -1213,8 +1247,8 @@ class Task(pulumi.CustomResource):
     @pulumi.getter
     def spark(self) -> pulumi.Output[Optional['outputs.TaskSpark']]:
         """
-        A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
-        its memory over time.
+        A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+        Structure is documented below.
         """
         return pulumi.get(self, "spark")
 

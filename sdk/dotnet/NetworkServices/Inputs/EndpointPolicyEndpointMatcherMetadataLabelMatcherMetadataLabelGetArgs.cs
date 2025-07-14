@@ -20,8 +20,6 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
 
         /// <summary>
         /// Required. Label value presented as value corresponding to the above key, in xDS Node Metadata.
-        /// 
-        /// - - -
         /// </summary>
         [Input("labelValue", required: true)]
         public Input<string> LabelValue { get; set; } = null!;

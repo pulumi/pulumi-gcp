@@ -21,8 +21,6 @@ public final class IndexFieldVectorConfig {
     /**
      * @return Indicates the vector index is a flat index.
      * 
-     * ***
-     * 
      */
     private @Nullable IndexFieldVectorConfigFlat flat;
 
@@ -37,8 +35,6 @@ public final class IndexFieldVectorConfig {
     }
     /**
      * @return Indicates the vector index is a flat index.
-     * 
-     * ***
      * 
      */
     public Optional<IndexFieldVectorConfigFlat> flat() {

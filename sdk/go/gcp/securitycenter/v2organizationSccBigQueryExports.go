@@ -97,8 +97,6 @@ type V2OrganizationSccBigQueryExports struct {
 	pulumi.CustomResourceState
 
 	// This must be unique within the organization.
-	//
-	// ***
 	BigQueryExportId pulumi.StringOutput `pulumi:"bigQueryExportId"`
 	// The time at which the BigQuery export was created. This field is set by the server and will be ignored if provided on export on creation.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -187,8 +185,6 @@ func GetV2OrganizationSccBigQueryExports(ctx *pulumi.Context,
 // Input properties used for looking up and filtering V2OrganizationSccBigQueryExports resources.
 type v2organizationSccBigQueryExportsState struct {
 	// This must be unique within the organization.
-	//
-	// ***
 	BigQueryExportId *string `pulumi:"bigQueryExportId"`
 	// The time at which the BigQuery export was created. This field is set by the server and will be ignored if provided on export on creation.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -242,8 +238,6 @@ type v2organizationSccBigQueryExportsState struct {
 
 type V2OrganizationSccBigQueryExportsState struct {
 	// This must be unique within the organization.
-	//
-	// ***
 	BigQueryExportId pulumi.StringPtrInput
 	// The time at which the BigQuery export was created. This field is set by the server and will be ignored if provided on export on creation.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -301,8 +295,6 @@ func (V2OrganizationSccBigQueryExportsState) ElementType() reflect.Type {
 
 type v2organizationSccBigQueryExportsArgs struct {
 	// This must be unique within the organization.
-	//
-	// ***
 	BigQueryExportId string `pulumi:"bigQueryExportId"`
 	// The dataset to write findings' updates to.
 	// Its format is "projects/[projectId]/datasets/[bigqueryDatasetId]".
@@ -344,8 +336,6 @@ type v2organizationSccBigQueryExportsArgs struct {
 // The set of arguments for constructing a V2OrganizationSccBigQueryExports resource.
 type V2OrganizationSccBigQueryExportsArgs struct {
 	// This must be unique within the organization.
-	//
-	// ***
 	BigQueryExportId pulumi.StringInput
 	// The dataset to write findings' updates to.
 	// Its format is "projects/[projectId]/datasets/[bigqueryDatasetId]".
@@ -472,8 +462,6 @@ func (o V2OrganizationSccBigQueryExportsOutput) ToV2OrganizationSccBigQueryExpor
 }
 
 // This must be unique within the organization.
-//
-// ***
 func (o V2OrganizationSccBigQueryExportsOutput) BigQueryExportId() pulumi.StringOutput {
 	return o.ApplyT(func(v *V2OrganizationSccBigQueryExports) pulumi.StringOutput { return v.BigQueryExportId }).(pulumi.StringOutput)
 }

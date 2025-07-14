@@ -31,9 +31,6 @@ class TargetSiteArgs:
         """
         The set of arguments for constructing a TargetSite resource.
         :param pulumi.Input[builtins.str] data_store_id: The unique id of the data store.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: The geographic location where the data store should reside. The value can
                only be one of "global", "us" and "eu".
         :param pulumi.Input[builtins.str] provided_uri_pattern: The user provided URI pattern from which the `generated_uri_pattern` is
@@ -64,9 +61,6 @@ class TargetSiteArgs:
     def data_store_id(self) -> pulumi.Input[builtins.str]:
         """
         The unique id of the data store.
-
-
-        - - -
         """
         return pulumi.get(self, "data_store_id")
 
@@ -164,9 +158,6 @@ class _TargetSiteState:
         """
         Input properties used for looking up and filtering TargetSite resources.
         :param pulumi.Input[builtins.str] data_store_id: The unique id of the data store.
-               
-               
-               - - -
         :param pulumi.Input[builtins.bool] exact_match: If set to false, a uri_pattern is generated to include all pages whose
                address contains the provided_uri_pattern. If set to true, an uri_pattern
                is generated to try to be an exact match of the provided_uri_pattern or
@@ -229,9 +220,6 @@ class _TargetSiteState:
     def data_store_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The unique id of the data store.
-
-
-        - - -
         """
         return pulumi.get(self, "data_store_id")
 
@@ -505,9 +493,6 @@ class TargetSite(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] data_store_id: The unique id of the data store.
-               
-               
-               - - -
         :param pulumi.Input[builtins.bool] exact_match: If set to false, a uri_pattern is generated to include all pages whose
                address contains the provided_uri_pattern. If set to true, an uri_pattern
                is generated to try to be an exact match of the provided_uri_pattern or
@@ -690,9 +675,6 @@ class TargetSite(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] data_store_id: The unique id of the data store.
-               
-               
-               - - -
         :param pulumi.Input[builtins.bool] exact_match: If set to false, a uri_pattern is generated to include all pages whose
                address contains the provided_uri_pattern. If set to true, an uri_pattern
                is generated to try to be an exact match of the provided_uri_pattern or
@@ -746,9 +728,6 @@ class TargetSite(pulumi.CustomResource):
     def data_store_id(self) -> pulumi.Output[builtins.str]:
         """
         The unique id of the data store.
-
-
-        - - -
         """
         return pulumi.get(self, "data_store_id")
 

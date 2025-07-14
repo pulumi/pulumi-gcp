@@ -18,16 +18,12 @@ public final class WorkspaceSettingsArgs extends com.pulumi.resources.ResourceAr
     /**
      * Project IDs for data projects hosted in a workspace.
      * 
-     * ***
-     * 
      */
     @Import(name="dataProjectIds", required=true)
     private Output<List<String>> dataProjectIds;
 
     /**
      * @return Project IDs for data projects hosted in a workspace.
-     * 
-     * ***
      * 
      */
     public Output<List<String>> dataProjectIds() {
@@ -61,8 +57,6 @@ public final class WorkspaceSettingsArgs extends com.pulumi.resources.ResourceAr
         /**
          * @param dataProjectIds Project IDs for data projects hosted in a workspace.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -74,8 +68,6 @@ public final class WorkspaceSettingsArgs extends com.pulumi.resources.ResourceAr
         /**
          * @param dataProjectIds Project IDs for data projects hosted in a workspace.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -85,8 +77,6 @@ public final class WorkspaceSettingsArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param dataProjectIds Project IDs for data projects hosted in a workspace.
-         * 
-         * ***
          * 
          * @return builder
          * 

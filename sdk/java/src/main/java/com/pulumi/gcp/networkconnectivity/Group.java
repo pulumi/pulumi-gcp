@@ -168,16 +168,12 @@ public class Group extends com.pulumi.resources.CustomResource {
     /**
      * The name of the hub. Hub names must be unique. They use the following form: projects/{projectNumber}/locations/global/hubs/{hubId}
      * 
-     * ***
-     * 
      */
     @Export(name="hub", refs={String.class}, tree="[0]")
     private Output<String> hub;
 
     /**
      * @return The name of the hub. Hub names must be unique. They use the following form: projects/{projectNumber}/locations/global/hubs/{hubId}
-     * 
-     * ***
      * 
      */
     public Output<String> hub() {

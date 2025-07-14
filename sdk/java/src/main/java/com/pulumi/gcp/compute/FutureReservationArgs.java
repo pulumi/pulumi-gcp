@@ -38,18 +38,16 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Specifies the duration of auto-created reservations. It represents relative time to future reservation startTime when
-     * auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count
-     * of seconds and fractions of seconds at nanosecond resolution.
+     * Specifies the duration of auto-created reservations. It represents relative time to future reservation startTime when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
+     * Structure is documented below.
      * 
      */
     @Import(name="autoCreatedReservationsDuration")
     private @Nullable Output<FutureReservationAutoCreatedReservationsDurationArgs> autoCreatedReservationsDuration;
 
     /**
-     * @return Specifies the duration of auto-created reservations. It represents relative time to future reservation startTime when
-     * auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count
-     * of seconds and fractions of seconds at nanosecond resolution.
+     * @return Specifies the duration of auto-created reservations. It represents relative time to future reservation startTime when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<FutureReservationAutoCreatedReservationsDurationArgs>> autoCreatedReservationsDuration() {
@@ -57,20 +55,14 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created
-     * reservations will be deleted at Future Reservation&#39;s end time (default) or at user&#39;s defined timestamp if any of the
-     * [autoCreatedReservationsDeleteTime, autoCreatedReservationsDuration] values is specified. For keeping auto-created
-     * reservation indefinitely, this value should be set to false.
+     * Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created reservations will be deleted at Future Reservation&#39;s end time (default) or at user&#39;s defined timestamp if any of the [autoCreatedReservationsDeleteTime, autoCreatedReservationsDuration] values is specified. For keeping auto-created reservation indefinitely, this value should be set to false.
      * 
      */
     @Import(name="autoDeleteAutoCreatedReservations")
     private @Nullable Output<Boolean> autoDeleteAutoCreatedReservations;
 
     /**
-     * @return Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created
-     * reservations will be deleted at Future Reservation&#39;s end time (default) or at user&#39;s defined timestamp if any of the
-     * [autoCreatedReservationsDeleteTime, autoCreatedReservationsDuration] values is specified. For keeping auto-created
-     * reservation indefinitely, this value should be set to false.
+     * @return Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created reservations will be deleted at Future Reservation&#39;s end time (default) or at user&#39;s defined timestamp if any of the [autoCreatedReservationsDeleteTime, autoCreatedReservationsDuration] values is specified. For keeping auto-created reservation indefinitely, this value should be set to false.
      * 
      */
     public Optional<Output<Boolean>> autoDeleteAutoCreatedReservations() {
@@ -79,6 +71,7 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * If not present, then FR will not deliver a new commitment or update an existing commitment.
+     * Structure is documented below.
      * 
      */
     @Import(name="commitmentInfo")
@@ -86,6 +79,7 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * @return If not present, then FR will not deliver a new commitment or update an existing commitment.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<FutureReservationCommitmentInfoArgs>> commitmentInfo() {
@@ -93,14 +87,16 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Type of the deployment requested as part of future reservation. Possible values: [&#34;DENSE&#34;, &#34;FLEXIBLE&#34;]
+     * Type of the deployment requested as part of future reservation.
+     * Possible values are: `DENSE`, `FLEXIBLE`.
      * 
      */
     @Import(name="deploymentType")
     private @Nullable Output<String> deploymentType;
 
     /**
-     * @return Type of the deployment requested as part of future reservation. Possible values: [&#34;DENSE&#34;, &#34;FLEXIBLE&#34;]
+     * @return Type of the deployment requested as part of future reservation.
+     * Possible values are: `DENSE`, `FLEXIBLE`.
      * 
      */
     public Optional<Output<String>> deploymentType() {
@@ -108,14 +104,14 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The description of the FutureReservation before an amendment was requested.
+     * An optional description of this resource.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the FutureReservation before an amendment was requested.
+     * @return An optional description of this resource.
      * 
      */
     public Optional<Output<String>> description() {
@@ -150,14 +146,14 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The name prefix of the Future Reservation before an amendment was requested.
+     * Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
      * 
      */
     @Import(name="namePrefix")
     private @Nullable Output<String> namePrefix;
 
     /**
-     * @return The name prefix of the Future Reservation before an amendment was requested.
+     * @return Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
      * 
      */
     public Optional<Output<String>> namePrefix() {
@@ -165,14 +161,16 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Planning state before being submitted for evaluation Possible values: [&#34;DRAFT&#34;, &#34;SUBMITTED&#34;]
+     * Planning state before being submitted for evaluation
+     * Possible values are: `DRAFT`, `SUBMITTED`.
      * 
      */
     @Import(name="planningStatus")
     private @Nullable Output<String> planningStatus;
 
     /**
-     * @return Planning state before being submitted for evaluation Possible values: [&#34;DRAFT&#34;, &#34;SUBMITTED&#34;]
+     * @return Planning state before being submitted for evaluation
+     * Possible values are: `DRAFT`, `SUBMITTED`.
      * 
      */
     public Optional<Output<String>> planningStatus() {
@@ -180,14 +178,16 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (Required) The identifier for this object. Format specified above.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return (Required) The identifier for this object. Format specified above.
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     public Optional<Output<String>> project() {
@@ -195,16 +195,16 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The reservation mode which determines reservation-termination behavior and expected pricing. Possible values:
-     * [&#34;CALENDAR&#34;, &#34;DEFAULT&#34;]
+     * The reservation mode which determines reservation-termination behavior and expected pricing.
+     * Possible values are: `CALENDAR`, `DEFAULT`.
      * 
      */
     @Import(name="reservationMode")
     private @Nullable Output<String> reservationMode;
 
     /**
-     * @return The reservation mode which determines reservation-termination behavior and expected pricing. Possible values:
-     * [&#34;CALENDAR&#34;, &#34;DEFAULT&#34;]
+     * @return The reservation mode which determines reservation-termination behavior and expected pricing.
+     * Possible values are: `CALENDAR`, `DEFAULT`.
      * 
      */
     public Optional<Output<String>> reservationMode() {
@@ -212,18 +212,14 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Name of reservations where the capacity is provisioned at the time of delivery of future reservations. If the
-     * reservation with the given name does not exist already, it is created automatically at the time of Approval with
-     * INACTIVE state till specified start-time. Either provide the reservationName or a namePrefix.
+     * Name of reservations where the capacity is provisioned at the time of delivery of future reservations. If the reservation with the given name does not exist already, it is created automatically at the time of Approval with INACTIVE state till specified start-time. Either provide the reservationName or a namePrefix.
      * 
      */
     @Import(name="reservationName")
     private @Nullable Output<String> reservationName;
 
     /**
-     * @return Name of reservations where the capacity is provisioned at the time of delivery of future reservations. If the
-     * reservation with the given name does not exist already, it is created automatically at the time of Approval with
-     * INACTIVE state till specified start-time. Either provide the reservationName or a namePrefix.
+     * @return Name of reservations where the capacity is provisioned at the time of delivery of future reservations. If the reservation with the given name does not exist already, it is created automatically at the time of Approval with INACTIVE state till specified start-time. Either provide the reservationName or a namePrefix.
      * 
      */
     public Optional<Output<String>> reservationName() {
@@ -231,14 +227,16 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Maintenance information for this reservation Possible values: [&#34;GROUPED&#34;, &#34;INDEPENDENT&#34;]
+     * Maintenance information for this reservation
+     * Possible values are: `GROUPED`, `INDEPENDENT`.
      * 
      */
     @Import(name="schedulingType")
     private @Nullable Output<String> schedulingType;
 
     /**
-     * @return Maintenance information for this reservation Possible values: [&#34;GROUPED&#34;, &#34;INDEPENDENT&#34;]
+     * @return Maintenance information for this reservation
+     * Possible values are: `GROUPED`, `INDEPENDENT`.
      * 
      */
     public Optional<Output<String>> schedulingType() {
@@ -246,7 +244,7 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The previous share settings of the Future Reservation.
+     * Settings for sharing the future reservation
      * Structure is documented below.
      * 
      */
@@ -254,7 +252,7 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<FutureReservationShareSettingsArgs> shareSettings;
 
     /**
-     * @return The previous share settings of the Future Reservation.
+     * @return Settings for sharing the future reservation
      * Structure is documented below.
      * 
      */
@@ -263,16 +261,14 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Indicates whether the auto-created reservation can be consumed by VMs with affinity for &#34;any&#34; reservation. If the field
-     * is set, then only VMs that target the reservation by name can consume from the delivered reservation.
+     * Indicates whether the auto-created reservation can be consumed by VMs with affinity for &#34;any&#34; reservation. If the field is set, then only VMs that target the reservation by name can consume from the delivered reservation.
      * 
      */
     @Import(name="specificReservationRequired")
     private @Nullable Output<Boolean> specificReservationRequired;
 
     /**
-     * @return Indicates whether the auto-created reservation can be consumed by VMs with affinity for &#34;any&#34; reservation. If the field
-     * is set, then only VMs that target the reservation by name can consume from the delivered reservation.
+     * @return Indicates whether the auto-created reservation can be consumed by VMs with affinity for &#34;any&#34; reservation. If the field is set, then only VMs that target the reservation by name can consume from the delivered reservation.
      * 
      */
     public Optional<Output<Boolean>> specificReservationRequired() {
@@ -280,7 +276,7 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The previous instance related properties of the Future Reservation.
+     * Future Reservation configuration to indicate instance properties and total count.
      * Structure is documented below.
      * 
      */
@@ -288,7 +284,7 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<FutureReservationSpecificSkuPropertiesArgs> specificSkuProperties;
 
     /**
-     * @return The previous instance related properties of the Future Reservation.
+     * @return Future Reservation configuration to indicate instance properties and total count.
      * Structure is documented below.
      * 
      */
@@ -375,9 +371,8 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param autoCreatedReservationsDuration Specifies the duration of auto-created reservations. It represents relative time to future reservation startTime when
-         * auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count
-         * of seconds and fractions of seconds at nanosecond resolution.
+         * @param autoCreatedReservationsDuration Specifies the duration of auto-created reservations. It represents relative time to future reservation startTime when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -388,9 +383,8 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param autoCreatedReservationsDuration Specifies the duration of auto-created reservations. It represents relative time to future reservation startTime when
-         * auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count
-         * of seconds and fractions of seconds at nanosecond resolution.
+         * @param autoCreatedReservationsDuration Specifies the duration of auto-created reservations. It represents relative time to future reservation startTime when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -400,10 +394,7 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param autoDeleteAutoCreatedReservations Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created
-         * reservations will be deleted at Future Reservation&#39;s end time (default) or at user&#39;s defined timestamp if any of the
-         * [autoCreatedReservationsDeleteTime, autoCreatedReservationsDuration] values is specified. For keeping auto-created
-         * reservation indefinitely, this value should be set to false.
+         * @param autoDeleteAutoCreatedReservations Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created reservations will be deleted at Future Reservation&#39;s end time (default) or at user&#39;s defined timestamp if any of the [autoCreatedReservationsDeleteTime, autoCreatedReservationsDuration] values is specified. For keeping auto-created reservation indefinitely, this value should be set to false.
          * 
          * @return builder
          * 
@@ -414,10 +405,7 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param autoDeleteAutoCreatedReservations Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created
-         * reservations will be deleted at Future Reservation&#39;s end time (default) or at user&#39;s defined timestamp if any of the
-         * [autoCreatedReservationsDeleteTime, autoCreatedReservationsDuration] values is specified. For keeping auto-created
-         * reservation indefinitely, this value should be set to false.
+         * @param autoDeleteAutoCreatedReservations Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created reservations will be deleted at Future Reservation&#39;s end time (default) or at user&#39;s defined timestamp if any of the [autoCreatedReservationsDeleteTime, autoCreatedReservationsDuration] values is specified. For keeping auto-created reservation indefinitely, this value should be set to false.
          * 
          * @return builder
          * 
@@ -428,6 +416,7 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param commitmentInfo If not present, then FR will not deliver a new commitment or update an existing commitment.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -439,6 +428,7 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param commitmentInfo If not present, then FR will not deliver a new commitment or update an existing commitment.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -448,7 +438,8 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param deploymentType Type of the deployment requested as part of future reservation. Possible values: [&#34;DENSE&#34;, &#34;FLEXIBLE&#34;]
+         * @param deploymentType Type of the deployment requested as part of future reservation.
+         * Possible values are: `DENSE`, `FLEXIBLE`.
          * 
          * @return builder
          * 
@@ -459,7 +450,8 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param deploymentType Type of the deployment requested as part of future reservation. Possible values: [&#34;DENSE&#34;, &#34;FLEXIBLE&#34;]
+         * @param deploymentType Type of the deployment requested as part of future reservation.
+         * Possible values are: `DENSE`, `FLEXIBLE`.
          * 
          * @return builder
          * 
@@ -469,7 +461,7 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param description The description of the FutureReservation before an amendment was requested.
+         * @param description An optional description of this resource.
          * 
          * @return builder
          * 
@@ -480,7 +472,7 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param description The description of the FutureReservation before an amendment was requested.
+         * @param description An optional description of this resource.
          * 
          * @return builder
          * 
@@ -523,7 +515,7 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param namePrefix The name prefix of the Future Reservation before an amendment was requested.
+         * @param namePrefix Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
          * 
          * @return builder
          * 
@@ -534,7 +526,7 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param namePrefix The name prefix of the Future Reservation before an amendment was requested.
+         * @param namePrefix Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
          * 
          * @return builder
          * 
@@ -544,7 +536,8 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param planningStatus Planning state before being submitted for evaluation Possible values: [&#34;DRAFT&#34;, &#34;SUBMITTED&#34;]
+         * @param planningStatus Planning state before being submitted for evaluation
+         * Possible values are: `DRAFT`, `SUBMITTED`.
          * 
          * @return builder
          * 
@@ -555,7 +548,8 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param planningStatus Planning state before being submitted for evaluation Possible values: [&#34;DRAFT&#34;, &#34;SUBMITTED&#34;]
+         * @param planningStatus Planning state before being submitted for evaluation
+         * Possible values are: `DRAFT`, `SUBMITTED`.
          * 
          * @return builder
          * 
@@ -565,7 +559,8 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param project (Required) The identifier for this object. Format specified above.
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
          * 
          * @return builder
          * 
@@ -576,7 +571,8 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param project (Required) The identifier for this object. Format specified above.
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
          * 
          * @return builder
          * 
@@ -586,8 +582,8 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param reservationMode The reservation mode which determines reservation-termination behavior and expected pricing. Possible values:
-         * [&#34;CALENDAR&#34;, &#34;DEFAULT&#34;]
+         * @param reservationMode The reservation mode which determines reservation-termination behavior and expected pricing.
+         * Possible values are: `CALENDAR`, `DEFAULT`.
          * 
          * @return builder
          * 
@@ -598,8 +594,8 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param reservationMode The reservation mode which determines reservation-termination behavior and expected pricing. Possible values:
-         * [&#34;CALENDAR&#34;, &#34;DEFAULT&#34;]
+         * @param reservationMode The reservation mode which determines reservation-termination behavior and expected pricing.
+         * Possible values are: `CALENDAR`, `DEFAULT`.
          * 
          * @return builder
          * 
@@ -609,9 +605,7 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param reservationName Name of reservations where the capacity is provisioned at the time of delivery of future reservations. If the
-         * reservation with the given name does not exist already, it is created automatically at the time of Approval with
-         * INACTIVE state till specified start-time. Either provide the reservationName or a namePrefix.
+         * @param reservationName Name of reservations where the capacity is provisioned at the time of delivery of future reservations. If the reservation with the given name does not exist already, it is created automatically at the time of Approval with INACTIVE state till specified start-time. Either provide the reservationName or a namePrefix.
          * 
          * @return builder
          * 
@@ -622,9 +616,7 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param reservationName Name of reservations where the capacity is provisioned at the time of delivery of future reservations. If the
-         * reservation with the given name does not exist already, it is created automatically at the time of Approval with
-         * INACTIVE state till specified start-time. Either provide the reservationName or a namePrefix.
+         * @param reservationName Name of reservations where the capacity is provisioned at the time of delivery of future reservations. If the reservation with the given name does not exist already, it is created automatically at the time of Approval with INACTIVE state till specified start-time. Either provide the reservationName or a namePrefix.
          * 
          * @return builder
          * 
@@ -634,7 +626,8 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param schedulingType Maintenance information for this reservation Possible values: [&#34;GROUPED&#34;, &#34;INDEPENDENT&#34;]
+         * @param schedulingType Maintenance information for this reservation
+         * Possible values are: `GROUPED`, `INDEPENDENT`.
          * 
          * @return builder
          * 
@@ -645,7 +638,8 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param schedulingType Maintenance information for this reservation Possible values: [&#34;GROUPED&#34;, &#34;INDEPENDENT&#34;]
+         * @param schedulingType Maintenance information for this reservation
+         * Possible values are: `GROUPED`, `INDEPENDENT`.
          * 
          * @return builder
          * 
@@ -655,7 +649,7 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param shareSettings The previous share settings of the Future Reservation.
+         * @param shareSettings Settings for sharing the future reservation
          * Structure is documented below.
          * 
          * @return builder
@@ -667,7 +661,7 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param shareSettings The previous share settings of the Future Reservation.
+         * @param shareSettings Settings for sharing the future reservation
          * Structure is documented below.
          * 
          * @return builder
@@ -678,8 +672,7 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param specificReservationRequired Indicates whether the auto-created reservation can be consumed by VMs with affinity for &#34;any&#34; reservation. If the field
-         * is set, then only VMs that target the reservation by name can consume from the delivered reservation.
+         * @param specificReservationRequired Indicates whether the auto-created reservation can be consumed by VMs with affinity for &#34;any&#34; reservation. If the field is set, then only VMs that target the reservation by name can consume from the delivered reservation.
          * 
          * @return builder
          * 
@@ -690,8 +683,7 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param specificReservationRequired Indicates whether the auto-created reservation can be consumed by VMs with affinity for &#34;any&#34; reservation. If the field
-         * is set, then only VMs that target the reservation by name can consume from the delivered reservation.
+         * @param specificReservationRequired Indicates whether the auto-created reservation can be consumed by VMs with affinity for &#34;any&#34; reservation. If the field is set, then only VMs that target the reservation by name can consume from the delivered reservation.
          * 
          * @return builder
          * 
@@ -701,7 +693,7 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param specificSkuProperties The previous instance related properties of the Future Reservation.
+         * @param specificSkuProperties Future Reservation configuration to indicate instance properties and total count.
          * Structure is documented below.
          * 
          * @return builder
@@ -713,7 +705,7 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param specificSkuProperties The previous instance related properties of the Future Reservation.
+         * @param specificSkuProperties Future Reservation configuration to indicate instance properties and total count.
          * Structure is documented below.
          * 
          * @return builder

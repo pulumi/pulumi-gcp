@@ -29,9 +29,6 @@ class GlossaryArgs:
         """
         The set of arguments for constructing a Glossary resource.
         :param pulumi.Input[builtins.str] glossary_id: The glossary id for creation.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: The location where the glossary should reside.
         :param pulumi.Input[builtins.str] description: The user-mutable description of the glossary.
         :param pulumi.Input[builtins.str] display_name: User friendly display name of the glossary. This is user-mutable. This will be same as the glossaryId, if not specified.
@@ -58,9 +55,6 @@ class GlossaryArgs:
     def glossary_id(self) -> pulumi.Input[builtins.str]:
         """
         The glossary id for creation.
-
-
-        - - -
         """
         return pulumi.get(self, "glossary_id")
 
@@ -158,9 +152,6 @@ class _GlossaryState:
         :param pulumi.Input[builtins.str] display_name: User friendly display name of the glossary. This is user-mutable. This will be same as the glossaryId, if not specified.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[builtins.str] glossary_id: The glossary id for creation.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: User-defined labels for the Glossary.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -269,9 +260,6 @@ class _GlossaryState:
     def glossary_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The glossary id for creation.
-
-
-        - - -
         """
         return pulumi.get(self, "glossary_id")
 
@@ -454,9 +442,6 @@ class Glossary(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] description: The user-mutable description of the glossary.
         :param pulumi.Input[builtins.str] display_name: User friendly display name of the glossary. This is user-mutable. This will be same as the glossaryId, if not specified.
         :param pulumi.Input[builtins.str] glossary_id: The glossary id for creation.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: User-defined labels for the Glossary.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -613,9 +598,6 @@ class Glossary(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] display_name: User friendly display name of the glossary. This is user-mutable. This will be same as the glossaryId, if not specified.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[builtins.str] glossary_id: The glossary id for creation.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: User-defined labels for the Glossary.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -695,9 +677,6 @@ class Glossary(pulumi.CustomResource):
     def glossary_id(self) -> pulumi.Output[builtins.str]:
         """
         The glossary id for creation.
-
-
-        - - -
         """
         return pulumi.get(self, "glossary_id")
 

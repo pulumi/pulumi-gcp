@@ -27,10 +27,13 @@ class GetBillingAccountResult:
     """
     A collection of values returned by getBillingAccount.
     """
-    def __init__(__self__, billing_account=None, display_name=None, id=None, lookup_projects=None, name=None, open=None, project_ids=None):
+    def __init__(__self__, billing_account=None, currency_code=None, display_name=None, id=None, lookup_projects=None, name=None, open=None, project_ids=None):
         if billing_account and not isinstance(billing_account, str):
             raise TypeError("Expected argument 'billing_account' to be a str")
         pulumi.set(__self__, "billing_account", billing_account)
+        if currency_code and not isinstance(currency_code, str):
+            raise TypeError("Expected argument 'currency_code' to be a str")
+        pulumi.set(__self__, "currency_code", currency_code)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
@@ -54,6 +57,14 @@ class GetBillingAccountResult:
     @pulumi.getter(name="billingAccount")
     def billing_account(self) -> Optional[builtins.str]:
         return pulumi.get(self, "billing_account")
+
+    @property
+    @pulumi.getter(name="currencyCode")
+    def currency_code(self) -> builtins.str:
+        """
+        The currency code of the billing account, e.g. `USD`.
+        """
+        return pulumi.get(self, "currency_code")
 
     @property
     @pulumi.getter(name="displayName")
@@ -103,6 +114,7 @@ class AwaitableGetBillingAccountResult(GetBillingAccountResult):
             yield self
         return GetBillingAccountResult(
             billing_account=self.billing_account,
+            currency_code=self.currency_code,
             display_name=self.display_name,
             id=self.id,
             lookup_projects=self.lookup_projects,
@@ -151,6 +163,7 @@ def get_billing_account(billing_account: Optional[builtins.str] = None,
 
     return AwaitableGetBillingAccountResult(
         billing_account=pulumi.get(__ret__, 'billing_account'),
+        currency_code=pulumi.get(__ret__, 'currency_code'),
         display_name=pulumi.get(__ret__, 'display_name'),
         id=pulumi.get(__ret__, 'id'),
         lookup_projects=pulumi.get(__ret__, 'lookup_projects'),
@@ -196,6 +209,7 @@ def get_billing_account_output(billing_account: Optional[pulumi.Input[Optional[b
     __ret__ = pulumi.runtime.invoke_output('gcp:organizations/getBillingAccount:getBillingAccount', __args__, opts=opts, typ=GetBillingAccountResult)
     return __ret__.apply(lambda __response__: GetBillingAccountResult(
         billing_account=pulumi.get(__response__, 'billing_account'),
+        currency_code=pulumi.get(__response__, 'currency_code'),
         display_name=pulumi.get(__response__, 'display_name'),
         id=pulumi.get(__response__, 'id'),
         lookup_projects=pulumi.get(__response__, 'lookup_projects'),

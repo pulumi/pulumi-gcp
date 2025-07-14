@@ -40,21 +40,31 @@ class InstanceArgs:
         :param pulumi.Input['InstanceNodeConfigArgs'] node_config: Configuration for memcache nodes.
                Structure is documented below.
         :param pulumi.Input[builtins.int] node_count: Number of nodes in the memcache instance.
-        :param pulumi.Input[builtins.str] authorized_network: The full name of the GCE network to connect the instance to. If not provided, 'default' will be used.
+        :param pulumi.Input[builtins.str] authorized_network: The full name of the GCE network to connect the instance to.  If not provided,
+               'default' will be used.
         :param pulumi.Input[builtins.str] display_name: A user-visible name for the instance.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-               labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-               resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user-provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input['InstanceMaintenancePolicyArgs'] maintenance_policy: Maintenance policy for an instance.
+               Structure is documented below.
         :param pulumi.Input['InstanceMemcacheParametersArgs'] memcache_parameters: User-specified parameters for this memcache instance.
-        :param pulumi.Input[builtins.str] memcache_version: The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest
-               supported major version is MEMCACHE_1_5. The minor version will be automatically determined by our system based on the
-               latest supported minor version. Default value: "MEMCACHE_1_5" Possible values: ["MEMCACHE_1_5", "MEMCACHE_1_6_15"]
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] memcache_version: The major version of Memcached software. If not provided, latest supported version will be used.
+               Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
+               determined by our system based on the latest supported minor version.
+               Default value is `MEMCACHE_1_5`.
+               Possible values are: `MEMCACHE_1_5`, `MEMCACHE_1_6_15`.
         :param pulumi.Input[builtins.str] name: The resource name of the instance.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] region: The region of the Memcache instance. If it is not provided, the provider region is used.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] reserved_ip_range_ids: Contains the name of allocated IP address ranges associated with the private service access connection for example,
-               "test-default" associated with IP range 10.0.0.0/29.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] zones: Zones where memcache nodes should be provisioned. If not provided, all zones will be used.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] reserved_ip_range_ids: Contains the name of allocated IP address ranges associated with
+               the private service access connection for example, "test-default"
+               associated with IP range 10.0.0.0/29.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] zones: Zones where memcache nodes should be provisioned.  If not
+               provided, all zones will be used.
         """
         pulumi.set(__self__, "node_config", node_config)
         pulumi.set(__self__, "node_count", node_count)
@@ -110,7 +120,8 @@ class InstanceArgs:
     @pulumi.getter(name="authorizedNetwork")
     def authorized_network(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The full name of the GCE network to connect the instance to. If not provided, 'default' will be used.
+        The full name of the GCE network to connect the instance to.  If not provided,
+        'default' will be used.
         """
         return pulumi.get(self, "authorized_network")
 
@@ -134,9 +145,10 @@ class InstanceArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-        labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-        resource.
+        Resource labels to represent user-provided metadata.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -149,6 +161,7 @@ class InstanceArgs:
     def maintenance_policy(self) -> Optional[pulumi.Input['InstanceMaintenancePolicyArgs']]:
         """
         Maintenance policy for an instance.
+        Structure is documented below.
         """
         return pulumi.get(self, "maintenance_policy")
 
@@ -161,6 +174,7 @@ class InstanceArgs:
     def memcache_parameters(self) -> Optional[pulumi.Input['InstanceMemcacheParametersArgs']]:
         """
         User-specified parameters for this memcache instance.
+        Structure is documented below.
         """
         return pulumi.get(self, "memcache_parameters")
 
@@ -172,9 +186,11 @@ class InstanceArgs:
     @pulumi.getter(name="memcacheVersion")
     def memcache_version(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest
-        supported major version is MEMCACHE_1_5. The minor version will be automatically determined by our system based on the
-        latest supported minor version. Default value: "MEMCACHE_1_5" Possible values: ["MEMCACHE_1_5", "MEMCACHE_1_6_15"]
+        The major version of Memcached software. If not provided, latest supported version will be used.
+        Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
+        determined by our system based on the latest supported minor version.
+        Default value is `MEMCACHE_1_5`.
+        Possible values are: `MEMCACHE_1_5`, `MEMCACHE_1_6_15`.
         """
         return pulumi.get(self, "memcache_version")
 
@@ -197,6 +213,10 @@ class InstanceArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -219,8 +239,9 @@ class InstanceArgs:
     @pulumi.getter(name="reservedIpRangeIds")
     def reserved_ip_range_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        Contains the name of allocated IP address ranges associated with the private service access connection for example,
-        "test-default" associated with IP range 10.0.0.0/29.
+        Contains the name of allocated IP address ranges associated with
+        the private service access connection for example, "test-default"
+        associated with IP range 10.0.0.0/29.
         """
         return pulumi.get(self, "reserved_ip_range_ids")
 
@@ -232,7 +253,8 @@ class InstanceArgs:
     @pulumi.getter
     def zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        Zones where memcache nodes should be provisioned. If not provided, all zones will be used.
+        Zones where memcache nodes should be provisioned.  If not
+        provided, all zones will be used.
         """
         return pulumi.get(self, "zones")
 
@@ -266,34 +288,44 @@ class _InstanceState:
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
-        :param pulumi.Input[builtins.str] authorized_network: The full name of the GCE network to connect the instance to. If not provided, 'default' will be used.
+        :param pulumi.Input[builtins.str] authorized_network: The full name of the GCE network to connect the instance to.  If not provided,
+               'default' will be used.
         :param pulumi.Input[builtins.str] create_time: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[builtins.str] discovery_endpoint: Endpoint for Discovery API
         :param pulumi.Input[builtins.str] display_name: A user-visible name for the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-               labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-               resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user-provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input['InstanceMaintenancePolicyArgs'] maintenance_policy: Maintenance policy for an instance.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]] maintenance_schedules: Output only. Published maintenance schedule.
                Structure is documented below.
         :param pulumi.Input[builtins.str] memcache_full_version: The full version of memcached server running on this instance.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceMemcacheNodeArgs']]] memcache_nodes: Additional information about the instance state, if available.
                Structure is documented below.
         :param pulumi.Input['InstanceMemcacheParametersArgs'] memcache_parameters: User-specified parameters for this memcache instance.
-        :param pulumi.Input[builtins.str] memcache_version: The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest
-               supported major version is MEMCACHE_1_5. The minor version will be automatically determined by our system based on the
-               latest supported minor version. Default value: "MEMCACHE_1_5" Possible values: ["MEMCACHE_1_5", "MEMCACHE_1_6_15"]
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] memcache_version: The major version of Memcached software. If not provided, latest supported version will be used.
+               Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
+               determined by our system based on the latest supported minor version.
+               Default value is `MEMCACHE_1_5`.
+               Possible values are: `MEMCACHE_1_5`, `MEMCACHE_1_6_15`.
         :param pulumi.Input[builtins.str] name: The resource name of the instance.
         :param pulumi.Input['InstanceNodeConfigArgs'] node_config: Configuration for memcache nodes.
                Structure is documented below.
         :param pulumi.Input[builtins.int] node_count: Number of nodes in the memcache instance.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[builtins.str] region: The region of the Memcache instance. If it is not provided, the provider region is used.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] reserved_ip_range_ids: Contains the name of allocated IP address ranges associated with the private service access connection for example,
-               "test-default" associated with IP range 10.0.0.0/29.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] zones: Zones where memcache nodes should be provisioned. If not provided, all zones will be used.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] reserved_ip_range_ids: Contains the name of allocated IP address ranges associated with
+               the private service access connection for example, "test-default"
+               associated with IP range 10.0.0.0/29.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] zones: Zones where memcache nodes should be provisioned.  If not
+               provided, all zones will be used.
         """
         if authorized_network is not None:
             pulumi.set(__self__, "authorized_network", authorized_network)
@@ -340,7 +372,8 @@ class _InstanceState:
     @pulumi.getter(name="authorizedNetwork")
     def authorized_network(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The full name of the GCE network to connect the instance to. If not provided, 'default' will be used.
+        The full name of the GCE network to connect the instance to.  If not provided,
+        'default' will be used.
         """
         return pulumi.get(self, "authorized_network")
 
@@ -400,9 +433,10 @@ class _InstanceState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-        labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-        resource.
+        Resource labels to represent user-provided metadata.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -415,6 +449,7 @@ class _InstanceState:
     def maintenance_policy(self) -> Optional[pulumi.Input['InstanceMaintenancePolicyArgs']]:
         """
         Maintenance policy for an instance.
+        Structure is documented below.
         """
         return pulumi.get(self, "maintenance_policy")
 
@@ -465,6 +500,7 @@ class _InstanceState:
     def memcache_parameters(self) -> Optional[pulumi.Input['InstanceMemcacheParametersArgs']]:
         """
         User-specified parameters for this memcache instance.
+        Structure is documented below.
         """
         return pulumi.get(self, "memcache_parameters")
 
@@ -476,9 +512,11 @@ class _InstanceState:
     @pulumi.getter(name="memcacheVersion")
     def memcache_version(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest
-        supported major version is MEMCACHE_1_5. The minor version will be automatically determined by our system based on the
-        latest supported minor version. Default value: "MEMCACHE_1_5" Possible values: ["MEMCACHE_1_5", "MEMCACHE_1_6_15"]
+        The major version of Memcached software. If not provided, latest supported version will be used.
+        Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
+        determined by our system based on the latest supported minor version.
+        Default value is `MEMCACHE_1_5`.
+        Possible values are: `MEMCACHE_1_5`, `MEMCACHE_1_6_15`.
         """
         return pulumi.get(self, "memcache_version")
 
@@ -526,6 +564,10 @@ class _InstanceState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -561,8 +603,9 @@ class _InstanceState:
     @pulumi.getter(name="reservedIpRangeIds")
     def reserved_ip_range_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        Contains the name of allocated IP address ranges associated with the private service access connection for example,
-        "test-default" associated with IP range 10.0.0.0/29.
+        Contains the name of allocated IP address ranges associated with
+        the private service access connection for example, "test-default"
+        associated with IP range 10.0.0.0/29.
         """
         return pulumi.get(self, "reserved_ip_range_ids")
 
@@ -574,7 +617,8 @@ class _InstanceState:
     @pulumi.getter
     def zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        Zones where memcache nodes should be provisioned. If not provided, all zones will be used.
+        Zones where memcache nodes should be provisioned.  If not
+        provided, all zones will be used.
         """
         return pulumi.get(self, "zones")
 
@@ -697,24 +741,34 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] authorized_network: The full name of the GCE network to connect the instance to. If not provided, 'default' will be used.
+        :param pulumi.Input[builtins.str] authorized_network: The full name of the GCE network to connect the instance to.  If not provided,
+               'default' will be used.
         :param pulumi.Input[builtins.str] display_name: A user-visible name for the instance.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-               labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-               resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user-provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']] maintenance_policy: Maintenance policy for an instance.
+               Structure is documented below.
         :param pulumi.Input[Union['InstanceMemcacheParametersArgs', 'InstanceMemcacheParametersArgsDict']] memcache_parameters: User-specified parameters for this memcache instance.
-        :param pulumi.Input[builtins.str] memcache_version: The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest
-               supported major version is MEMCACHE_1_5. The minor version will be automatically determined by our system based on the
-               latest supported minor version. Default value: "MEMCACHE_1_5" Possible values: ["MEMCACHE_1_5", "MEMCACHE_1_6_15"]
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] memcache_version: The major version of Memcached software. If not provided, latest supported version will be used.
+               Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
+               determined by our system based on the latest supported minor version.
+               Default value is `MEMCACHE_1_5`.
+               Possible values are: `MEMCACHE_1_5`, `MEMCACHE_1_6_15`.
         :param pulumi.Input[builtins.str] name: The resource name of the instance.
         :param pulumi.Input[Union['InstanceNodeConfigArgs', 'InstanceNodeConfigArgsDict']] node_config: Configuration for memcache nodes.
                Structure is documented below.
         :param pulumi.Input[builtins.int] node_count: Number of nodes in the memcache instance.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] region: The region of the Memcache instance. If it is not provided, the provider region is used.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] reserved_ip_range_ids: Contains the name of allocated IP address ranges associated with the private service access connection for example,
-               "test-default" associated with IP range 10.0.0.0/29.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] zones: Zones where memcache nodes should be provisioned. If not provided, all zones will be used.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] reserved_ip_range_ids: Contains the name of allocated IP address ranges associated with
+               the private service access connection for example, "test-default"
+               associated with IP range 10.0.0.0/29.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] zones: Zones where memcache nodes should be provisioned.  If not
+               provided, all zones will be used.
         """
         ...
     @overload
@@ -914,34 +968,44 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] authorized_network: The full name of the GCE network to connect the instance to. If not provided, 'default' will be used.
+        :param pulumi.Input[builtins.str] authorized_network: The full name of the GCE network to connect the instance to.  If not provided,
+               'default' will be used.
         :param pulumi.Input[builtins.str] create_time: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[builtins.str] discovery_endpoint: Endpoint for Discovery API
         :param pulumi.Input[builtins.str] display_name: A user-visible name for the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-               labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-               resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user-provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']] maintenance_policy: Maintenance policy for an instance.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceMaintenanceScheduleArgs', 'InstanceMaintenanceScheduleArgsDict']]]] maintenance_schedules: Output only. Published maintenance schedule.
                Structure is documented below.
         :param pulumi.Input[builtins.str] memcache_full_version: The full version of memcached server running on this instance.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceMemcacheNodeArgs', 'InstanceMemcacheNodeArgsDict']]]] memcache_nodes: Additional information about the instance state, if available.
                Structure is documented below.
         :param pulumi.Input[Union['InstanceMemcacheParametersArgs', 'InstanceMemcacheParametersArgsDict']] memcache_parameters: User-specified parameters for this memcache instance.
-        :param pulumi.Input[builtins.str] memcache_version: The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest
-               supported major version is MEMCACHE_1_5. The minor version will be automatically determined by our system based on the
-               latest supported minor version. Default value: "MEMCACHE_1_5" Possible values: ["MEMCACHE_1_5", "MEMCACHE_1_6_15"]
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] memcache_version: The major version of Memcached software. If not provided, latest supported version will be used.
+               Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
+               determined by our system based on the latest supported minor version.
+               Default value is `MEMCACHE_1_5`.
+               Possible values are: `MEMCACHE_1_5`, `MEMCACHE_1_6_15`.
         :param pulumi.Input[builtins.str] name: The resource name of the instance.
         :param pulumi.Input[Union['InstanceNodeConfigArgs', 'InstanceNodeConfigArgsDict']] node_config: Configuration for memcache nodes.
                Structure is documented below.
         :param pulumi.Input[builtins.int] node_count: Number of nodes in the memcache instance.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[builtins.str] region: The region of the Memcache instance. If it is not provided, the provider region is used.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] reserved_ip_range_ids: Contains the name of allocated IP address ranges associated with the private service access connection for example,
-               "test-default" associated with IP range 10.0.0.0/29.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] zones: Zones where memcache nodes should be provisioned. If not provided, all zones will be used.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] reserved_ip_range_ids: Contains the name of allocated IP address ranges associated with
+               the private service access connection for example, "test-default"
+               associated with IP range 10.0.0.0/29.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] zones: Zones where memcache nodes should be provisioned.  If not
+               provided, all zones will be used.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -973,7 +1037,8 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="authorizedNetwork")
     def authorized_network(self) -> pulumi.Output[builtins.str]:
         """
-        The full name of the GCE network to connect the instance to. If not provided, 'default' will be used.
+        The full name of the GCE network to connect the instance to.  If not provided,
+        'default' will be used.
         """
         return pulumi.get(self, "authorized_network")
 
@@ -1013,9 +1078,10 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
         """
-        Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-        labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-        resource.
+        Resource labels to represent user-provided metadata.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1024,6 +1090,7 @@ class Instance(pulumi.CustomResource):
     def maintenance_policy(self) -> pulumi.Output[Optional['outputs.InstanceMaintenancePolicy']]:
         """
         Maintenance policy for an instance.
+        Structure is documented below.
         """
         return pulumi.get(self, "maintenance_policy")
 
@@ -1058,6 +1125,7 @@ class Instance(pulumi.CustomResource):
     def memcache_parameters(self) -> pulumi.Output[Optional['outputs.InstanceMemcacheParameters']]:
         """
         User-specified parameters for this memcache instance.
+        Structure is documented below.
         """
         return pulumi.get(self, "memcache_parameters")
 
@@ -1065,9 +1133,11 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="memcacheVersion")
     def memcache_version(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest
-        supported major version is MEMCACHE_1_5. The minor version will be automatically determined by our system based on the
-        latest supported minor version. Default value: "MEMCACHE_1_5" Possible values: ["MEMCACHE_1_5", "MEMCACHE_1_6_15"]
+        The major version of Memcached software. If not provided, latest supported version will be used.
+        Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
+        determined by our system based on the latest supported minor version.
+        Default value is `MEMCACHE_1_5`.
+        Possible values are: `MEMCACHE_1_5`, `MEMCACHE_1_6_15`.
         """
         return pulumi.get(self, "memcache_version")
 
@@ -1099,6 +1169,10 @@ class Instance(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property
@@ -1122,8 +1196,9 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="reservedIpRangeIds")
     def reserved_ip_range_ids(self) -> pulumi.Output[Optional[Sequence[builtins.str]]]:
         """
-        Contains the name of allocated IP address ranges associated with the private service access connection for example,
-        "test-default" associated with IP range 10.0.0.0/29.
+        Contains the name of allocated IP address ranges associated with
+        the private service access connection for example, "test-default"
+        associated with IP range 10.0.0.0/29.
         """
         return pulumi.get(self, "reserved_ip_range_ids")
 
@@ -1131,7 +1206,8 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def zones(self) -> pulumi.Output[Sequence[builtins.str]]:
         """
-        Zones where memcache nodes should be provisioned. If not provided, all zones will be used.
+        Zones where memcache nodes should be provisioned.  If not
+        provided, all zones will be used.
         """
         return pulumi.get(self, "zones")
 

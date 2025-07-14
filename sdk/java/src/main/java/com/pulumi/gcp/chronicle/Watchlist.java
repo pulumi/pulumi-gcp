@@ -262,14 +262,18 @@ public class Watchlist extends com.pulumi.resources.CustomResource {
         return this.location;
     }
     /**
-     * Optional. Weight applied to the risk score for entities in this watchlist. The default is 1.0 if it is not specified.
+     * Optional. Weight applied to the risk score for entities
+     * in this watchlist.
+     * The default is 1.0 if it is not specified.
      * 
      */
     @Export(name="multiplyingFactor", refs={Double.class}, tree="[0]")
     private Output</* @Nullable */ Double> multiplyingFactor;
 
     /**
-     * @return Optional. Weight applied to the risk score for entities in this watchlist. The default is 1.0 if it is not specified.
+     * @return Optional. Weight applied to the risk score for entities
+     * in this watchlist.
+     * The default is 1.0 if it is not specified.
      * 
      */
     public Output<Optional<Double>> multiplyingFactor() {
@@ -293,9 +297,19 @@ public class Watchlist extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }
@@ -314,16 +328,20 @@ public class Watchlist extends com.pulumi.resources.CustomResource {
         return this.updateTime;
     }
     /**
-     * Optional. The ID to use for the watchlist, which will become the final component of the watchlist&#39;s resource name. This
-     * value should be 4-63 characters, and valid characters are /a-z-/.
+     * Optional. The ID to use for the watchlist,
+     * which will become the final component of the watchlist&#39;s resource name.
+     * This value should be 4-63 characters, and valid characters
+     * are /a-z-/.
      * 
      */
     @Export(name="watchlistId", refs={String.class}, tree="[0]")
     private Output<String> watchlistId;
 
     /**
-     * @return Optional. The ID to use for the watchlist, which will become the final component of the watchlist&#39;s resource name. This
-     * value should be 4-63 characters, and valid characters are /a-z-/.
+     * @return Optional. The ID to use for the watchlist,
+     * which will become the final component of the watchlist&#39;s resource name.
+     * This value should be 4-63 characters, and valid characters
+     * are /a-z-/.
      * 
      */
     public Output<String> watchlistId() {
@@ -331,6 +349,7 @@ public class Watchlist extends com.pulumi.resources.CustomResource {
     }
     /**
      * A collection of user preferences for watchlist UI configuration.
+     * Structure is documented below.
      * 
      */
     @Export(name="watchlistUserPreferences", refs={WatchlistWatchlistUserPreferences.class}, tree="[0]")
@@ -338,6 +357,7 @@ public class Watchlist extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A collection of user preferences for watchlist UI configuration.
+     * Structure is documented below.
      * 
      */
     public Output<WatchlistWatchlistUserPreferences> watchlistUserPreferences() {

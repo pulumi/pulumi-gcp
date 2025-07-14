@@ -149,8 +149,6 @@ type BackupSchedule struct {
 	// At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
 	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
 	// You can set this to a value up to 14 weeks.
-	//
-	// ***
 	Retention pulumi.StringOutput `pulumi:"retention"`
 	// For a schedule that runs weekly on a specific day.
 	// Structure is documented below.
@@ -203,8 +201,6 @@ type backupScheduleState struct {
 	// At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
 	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
 	// You can set this to a value up to 14 weeks.
-	//
-	// ***
 	Retention *string `pulumi:"retention"`
 	// For a schedule that runs weekly on a specific day.
 	// Structure is documented below.
@@ -225,8 +221,6 @@ type BackupScheduleState struct {
 	// At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
 	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
 	// You can set this to a value up to 14 weeks.
-	//
-	// ***
 	Retention pulumi.StringPtrInput
 	// For a schedule that runs weekly on a specific day.
 	// Structure is documented below.
@@ -248,8 +242,6 @@ type backupScheduleArgs struct {
 	// At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
 	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
 	// You can set this to a value up to 14 weeks.
-	//
-	// ***
 	Retention string `pulumi:"retention"`
 	// For a schedule that runs weekly on a specific day.
 	// Structure is documented below.
@@ -268,8 +260,6 @@ type BackupScheduleArgs struct {
 	// At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
 	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
 	// You can set this to a value up to 14 weeks.
-	//
-	// ***
 	Retention pulumi.StringInput
 	// For a schedule that runs weekly on a specific day.
 	// Structure is documented below.
@@ -388,8 +378,6 @@ func (o BackupScheduleOutput) Project() pulumi.StringOutput {
 // At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
 // A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
 // You can set this to a value up to 14 weeks.
-//
-// ***
 func (o BackupScheduleOutput) Retention() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupSchedule) pulumi.StringOutput { return v.Retention }).(pulumi.StringOutput)
 }

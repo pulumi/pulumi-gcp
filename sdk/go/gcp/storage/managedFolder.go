@@ -101,8 +101,6 @@ type ManagedFolder struct {
 	Metageneration pulumi.StringOutput `pulumi:"metageneration"`
 	// The name of the managed folder expressed as a path. Must include
 	// trailing '/'. For example, `example_dir/example_dir2/`.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -156,8 +154,6 @@ type managedFolderState struct {
 	Metageneration *string `pulumi:"metageneration"`
 	// The name of the managed folder expressed as a path. Must include
 	// trailing '/'. For example, `example_dir/example_dir2/`.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -179,8 +175,6 @@ type ManagedFolderState struct {
 	Metageneration pulumi.StringPtrInput
 	// The name of the managed folder expressed as a path. Must include
 	// trailing '/'. For example, `example_dir/example_dir2/`.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
@@ -202,8 +196,6 @@ type managedFolderArgs struct {
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// The name of the managed folder expressed as a path. Must include
 	// trailing '/'. For example, `example_dir/example_dir2/`.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 }
 
@@ -218,8 +210,6 @@ type ManagedFolderArgs struct {
 	ForceDestroy pulumi.BoolPtrInput
 	// The name of the managed folder expressed as a path. Must include
 	// trailing '/'. For example, `example_dir/example_dir2/`.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 }
 
@@ -335,8 +325,6 @@ func (o ManagedFolderOutput) Metageneration() pulumi.StringOutput {
 
 // The name of the managed folder expressed as a path. Must include
 // trailing '/'. For example, `example_dir/example_dir2/`.
-//
-// ***
 func (o ManagedFolderOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedFolder) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

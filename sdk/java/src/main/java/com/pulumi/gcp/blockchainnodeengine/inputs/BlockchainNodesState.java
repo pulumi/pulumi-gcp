@@ -22,16 +22,12 @@ public final class BlockchainNodesState extends com.pulumi.resources.ResourceArg
     /**
      * ID of the requesting object.
      * 
-     * ***
-     * 
      */
     @Import(name="blockchainNodeId")
     private @Nullable Output<String> blockchainNodeId;
 
     /**
      * @return ID of the requesting object.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> blockchainNodeId() {
@@ -257,8 +253,6 @@ public final class BlockchainNodesState extends com.pulumi.resources.ResourceArg
         /**
          * @param blockchainNodeId ID of the requesting object.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -269,8 +263,6 @@ public final class BlockchainNodesState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param blockchainNodeId ID of the requesting object.
-         * 
-         * ***
          * 
          * @return builder
          * 

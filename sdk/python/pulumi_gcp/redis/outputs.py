@@ -55,6 +55,34 @@ __all__ = [
     'InstanceNode',
     'InstancePersistenceConfig',
     'InstanceServerCaCert',
+    'GetClusterAutomatedBackupConfigResult',
+    'GetClusterAutomatedBackupConfigFixedFrequencyScheduleResult',
+    'GetClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeResult',
+    'GetClusterCrossClusterReplicationConfigResult',
+    'GetClusterCrossClusterReplicationConfigMembershipResult',
+    'GetClusterCrossClusterReplicationConfigMembershipPrimaryClusterResult',
+    'GetClusterCrossClusterReplicationConfigMembershipSecondaryClusterResult',
+    'GetClusterCrossClusterReplicationConfigPrimaryClusterResult',
+    'GetClusterCrossClusterReplicationConfigSecondaryClusterResult',
+    'GetClusterDiscoveryEndpointResult',
+    'GetClusterDiscoveryEndpointPscConfigResult',
+    'GetClusterGcsSourceResult',
+    'GetClusterMaintenancePolicyResult',
+    'GetClusterMaintenancePolicyWeeklyMaintenanceWindowResult',
+    'GetClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeResult',
+    'GetClusterMaintenanceScheduleResult',
+    'GetClusterManagedBackupSourceResult',
+    'GetClusterManagedServerCaResult',
+    'GetClusterManagedServerCaCaCertResult',
+    'GetClusterPersistenceConfigResult',
+    'GetClusterPersistenceConfigAofConfigResult',
+    'GetClusterPersistenceConfigRdbConfigResult',
+    'GetClusterPscConfigResult',
+    'GetClusterPscConnectionResult',
+    'GetClusterPscServiceAttachmentResult',
+    'GetClusterStateInfoResult',
+    'GetClusterStateInfoUpdateInfoResult',
+    'GetClusterZoneDistributionConfigResult',
     'GetInstanceMaintenancePolicyResult',
     'GetInstanceMaintenancePolicyWeeklyMaintenanceWindowResult',
     'GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeResult',
@@ -2213,6 +2241,971 @@ class InstanceServerCaCert(dict):
         Sha1 Fingerprint of the certificate.
         """
         return pulumi.get(self, "sha1_fingerprint")
+
+
+@pulumi.output_type
+class GetClusterAutomatedBackupConfigResult(dict):
+    def __init__(__self__, *,
+                 fixed_frequency_schedules: Sequence['outputs.GetClusterAutomatedBackupConfigFixedFrequencyScheduleResult'],
+                 retention: builtins.str):
+        """
+        :param Sequence['GetClusterAutomatedBackupConfigFixedFrequencyScheduleArgs'] fixed_frequency_schedules: Trigger automated backups at a fixed frequency.
+        :param builtins.str retention: How long to keep automated backups before the backups are deleted.
+               The value should be between 1 day and 365 days. If not specified, the default value is 35 days.
+               A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        """
+        pulumi.set(__self__, "fixed_frequency_schedules", fixed_frequency_schedules)
+        pulumi.set(__self__, "retention", retention)
+
+    @property
+    @pulumi.getter(name="fixedFrequencySchedules")
+    def fixed_frequency_schedules(self) -> Sequence['outputs.GetClusterAutomatedBackupConfigFixedFrequencyScheduleResult']:
+        """
+        Trigger automated backups at a fixed frequency.
+        """
+        return pulumi.get(self, "fixed_frequency_schedules")
+
+    @property
+    @pulumi.getter
+    def retention(self) -> builtins.str:
+        """
+        How long to keep automated backups before the backups are deleted.
+        The value should be between 1 day and 365 days. If not specified, the default value is 35 days.
+        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "retention")
+
+
+@pulumi.output_type
+class GetClusterAutomatedBackupConfigFixedFrequencyScheduleResult(dict):
+    def __init__(__self__, *,
+                 start_times: Sequence['outputs.GetClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeResult']):
+        """
+        :param Sequence['GetClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs'] start_times: The start time of every automated backup in UTC.
+               It must be set to the start of an hour. This field is required.
+        """
+        pulumi.set(__self__, "start_times", start_times)
+
+    @property
+    @pulumi.getter(name="startTimes")
+    def start_times(self) -> Sequence['outputs.GetClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeResult']:
+        """
+        The start time of every automated backup in UTC.
+        It must be set to the start of an hour. This field is required.
+        """
+        return pulumi.get(self, "start_times")
+
+
+@pulumi.output_type
+class GetClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeResult(dict):
+    def __init__(__self__, *,
+                 hours: builtins.int):
+        """
+        :param builtins.int hours: Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23.
+               An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        """
+        pulumi.set(__self__, "hours", hours)
+
+    @property
+    @pulumi.getter
+    def hours(self) -> builtins.int:
+        """
+        Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23.
+        An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        """
+        return pulumi.get(self, "hours")
+
+
+@pulumi.output_type
+class GetClusterCrossClusterReplicationConfigResult(dict):
+    def __init__(__self__, *,
+                 cluster_role: builtins.str,
+                 memberships: Sequence['outputs.GetClusterCrossClusterReplicationConfigMembershipResult'],
+                 primary_clusters: Sequence['outputs.GetClusterCrossClusterReplicationConfigPrimaryClusterResult'],
+                 secondary_clusters: Sequence['outputs.GetClusterCrossClusterReplicationConfigSecondaryClusterResult'],
+                 update_time: builtins.str):
+        """
+        :param builtins.str cluster_role: The role of the cluster in cross cluster replication. Supported values are:
+               
+               1. 'CLUSTER_ROLE_UNSPECIFIED': This is an independent cluster that has never participated in cross cluster replication. It allows both reads and writes.
+               
+               1. 'NONE': This is an independent cluster that previously participated in cross cluster replication(either as a 'PRIMARY' or 'SECONDARY' cluster). It allows both reads and writes.
+               
+               1. 'PRIMARY': This cluster serves as the replication source for secondary clusters that are replicating from it. Any data written to it is automatically replicated to its secondary clusters. It allows both reads and writes.
+               
+               1. 'SECONDARY': This cluster replicates data from the primary cluster. It allows only reads. Possible values: ["CLUSTER_ROLE_UNSPECIFIED", "NONE", "PRIMARY", "SECONDARY"]
+        :param Sequence['GetClusterCrossClusterReplicationConfigMembershipArgs'] memberships: An output only view of all the member clusters participating in cross cluster replication. This field is populated for all the member clusters irrespective of their cluster role.
+        :param Sequence['GetClusterCrossClusterReplicationConfigPrimaryClusterArgs'] primary_clusters: Details of the primary cluster that is used as the replication source for this secondary cluster. This is allowed to be set only for clusters whose cluster role is of type 'SECONDARY'.
+        :param Sequence['GetClusterCrossClusterReplicationConfigSecondaryClusterArgs'] secondary_clusters: List of secondary clusters that are replicating from this primary cluster. This is allowed to be set only for clusters whose cluster role is of type 'PRIMARY'.
+        :param builtins.str update_time: The last time cross cluster replication config was updated.
+        """
+        pulumi.set(__self__, "cluster_role", cluster_role)
+        pulumi.set(__self__, "memberships", memberships)
+        pulumi.set(__self__, "primary_clusters", primary_clusters)
+        pulumi.set(__self__, "secondary_clusters", secondary_clusters)
+        pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="clusterRole")
+    def cluster_role(self) -> builtins.str:
+        """
+        The role of the cluster in cross cluster replication. Supported values are:
+
+        1. 'CLUSTER_ROLE_UNSPECIFIED': This is an independent cluster that has never participated in cross cluster replication. It allows both reads and writes.
+
+        1. 'NONE': This is an independent cluster that previously participated in cross cluster replication(either as a 'PRIMARY' or 'SECONDARY' cluster). It allows both reads and writes.
+
+        1. 'PRIMARY': This cluster serves as the replication source for secondary clusters that are replicating from it. Any data written to it is automatically replicated to its secondary clusters. It allows both reads and writes.
+
+        1. 'SECONDARY': This cluster replicates data from the primary cluster. It allows only reads. Possible values: ["CLUSTER_ROLE_UNSPECIFIED", "NONE", "PRIMARY", "SECONDARY"]
+        """
+        return pulumi.get(self, "cluster_role")
+
+    @property
+    @pulumi.getter
+    def memberships(self) -> Sequence['outputs.GetClusterCrossClusterReplicationConfigMembershipResult']:
+        """
+        An output only view of all the member clusters participating in cross cluster replication. This field is populated for all the member clusters irrespective of their cluster role.
+        """
+        return pulumi.get(self, "memberships")
+
+    @property
+    @pulumi.getter(name="primaryClusters")
+    def primary_clusters(self) -> Sequence['outputs.GetClusterCrossClusterReplicationConfigPrimaryClusterResult']:
+        """
+        Details of the primary cluster that is used as the replication source for this secondary cluster. This is allowed to be set only for clusters whose cluster role is of type 'SECONDARY'.
+        """
+        return pulumi.get(self, "primary_clusters")
+
+    @property
+    @pulumi.getter(name="secondaryClusters")
+    def secondary_clusters(self) -> Sequence['outputs.GetClusterCrossClusterReplicationConfigSecondaryClusterResult']:
+        """
+        List of secondary clusters that are replicating from this primary cluster. This is allowed to be set only for clusters whose cluster role is of type 'PRIMARY'.
+        """
+        return pulumi.get(self, "secondary_clusters")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> builtins.str:
+        """
+        The last time cross cluster replication config was updated.
+        """
+        return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class GetClusterCrossClusterReplicationConfigMembershipResult(dict):
+    def __init__(__self__, *,
+                 primary_clusters: Sequence['outputs.GetClusterCrossClusterReplicationConfigMembershipPrimaryClusterResult'],
+                 secondary_clusters: Sequence['outputs.GetClusterCrossClusterReplicationConfigMembershipSecondaryClusterResult']):
+        """
+        :param Sequence['GetClusterCrossClusterReplicationConfigMembershipPrimaryClusterArgs'] primary_clusters: Details of the primary cluster that is used as the replication source for all the secondary clusters.
+        :param Sequence['GetClusterCrossClusterReplicationConfigMembershipSecondaryClusterArgs'] secondary_clusters: List of secondary clusters that are replicating from the primary cluster.
+        """
+        pulumi.set(__self__, "primary_clusters", primary_clusters)
+        pulumi.set(__self__, "secondary_clusters", secondary_clusters)
+
+    @property
+    @pulumi.getter(name="primaryClusters")
+    def primary_clusters(self) -> Sequence['outputs.GetClusterCrossClusterReplicationConfigMembershipPrimaryClusterResult']:
+        """
+        Details of the primary cluster that is used as the replication source for all the secondary clusters.
+        """
+        return pulumi.get(self, "primary_clusters")
+
+    @property
+    @pulumi.getter(name="secondaryClusters")
+    def secondary_clusters(self) -> Sequence['outputs.GetClusterCrossClusterReplicationConfigMembershipSecondaryClusterResult']:
+        """
+        List of secondary clusters that are replicating from the primary cluster.
+        """
+        return pulumi.get(self, "secondary_clusters")
+
+
+@pulumi.output_type
+class GetClusterCrossClusterReplicationConfigMembershipPrimaryClusterResult(dict):
+    def __init__(__self__, *,
+                 cluster: builtins.str,
+                 uid: builtins.str):
+        """
+        :param builtins.str cluster: The full resource path of the primary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
+        :param builtins.str uid: The unique id of the primary cluster.
+        """
+        pulumi.set(__self__, "cluster", cluster)
+        pulumi.set(__self__, "uid", uid)
+
+    @property
+    @pulumi.getter
+    def cluster(self) -> builtins.str:
+        """
+        The full resource path of the primary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
+        """
+        return pulumi.get(self, "cluster")
+
+    @property
+    @pulumi.getter
+    def uid(self) -> builtins.str:
+        """
+        The unique id of the primary cluster.
+        """
+        return pulumi.get(self, "uid")
+
+
+@pulumi.output_type
+class GetClusterCrossClusterReplicationConfigMembershipSecondaryClusterResult(dict):
+    def __init__(__self__, *,
+                 cluster: builtins.str,
+                 uid: builtins.str):
+        """
+        :param builtins.str cluster: The full resource path of the secondary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
+        :param builtins.str uid: The unique id of the secondary cluster.
+        """
+        pulumi.set(__self__, "cluster", cluster)
+        pulumi.set(__self__, "uid", uid)
+
+    @property
+    @pulumi.getter
+    def cluster(self) -> builtins.str:
+        """
+        The full resource path of the secondary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
+        """
+        return pulumi.get(self, "cluster")
+
+    @property
+    @pulumi.getter
+    def uid(self) -> builtins.str:
+        """
+        The unique id of the secondary cluster.
+        """
+        return pulumi.get(self, "uid")
+
+
+@pulumi.output_type
+class GetClusterCrossClusterReplicationConfigPrimaryClusterResult(dict):
+    def __init__(__self__, *,
+                 cluster: builtins.str,
+                 uid: builtins.str):
+        """
+        :param builtins.str cluster: The full resource path of the primary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
+        :param builtins.str uid: The unique id of the primary cluster.
+        """
+        pulumi.set(__self__, "cluster", cluster)
+        pulumi.set(__self__, "uid", uid)
+
+    @property
+    @pulumi.getter
+    def cluster(self) -> builtins.str:
+        """
+        The full resource path of the primary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
+        """
+        return pulumi.get(self, "cluster")
+
+    @property
+    @pulumi.getter
+    def uid(self) -> builtins.str:
+        """
+        The unique id of the primary cluster.
+        """
+        return pulumi.get(self, "uid")
+
+
+@pulumi.output_type
+class GetClusterCrossClusterReplicationConfigSecondaryClusterResult(dict):
+    def __init__(__self__, *,
+                 cluster: builtins.str,
+                 uid: builtins.str):
+        """
+        :param builtins.str cluster: The full resource path of the secondary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
+        :param builtins.str uid: The unique id of the secondary cluster.
+        """
+        pulumi.set(__self__, "cluster", cluster)
+        pulumi.set(__self__, "uid", uid)
+
+    @property
+    @pulumi.getter
+    def cluster(self) -> builtins.str:
+        """
+        The full resource path of the secondary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
+        """
+        return pulumi.get(self, "cluster")
+
+    @property
+    @pulumi.getter
+    def uid(self) -> builtins.str:
+        """
+        The unique id of the secondary cluster.
+        """
+        return pulumi.get(self, "uid")
+
+
+@pulumi.output_type
+class GetClusterDiscoveryEndpointResult(dict):
+    def __init__(__self__, *,
+                 address: builtins.str,
+                 port: builtins.int,
+                 psc_configs: Sequence['outputs.GetClusterDiscoveryEndpointPscConfigResult']):
+        """
+        :param builtins.str address: Output only. Network address of the exposed Redis endpoint used by clients to connect to the service.
+        :param builtins.int port: Output only. The port number of the exposed Redis endpoint.
+        :param Sequence['GetClusterDiscoveryEndpointPscConfigArgs'] psc_configs: Output only. Customer configuration for where the endpoint
+               is created and accessed from.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "psc_configs", psc_configs)
+
+    @property
+    @pulumi.getter
+    def address(self) -> builtins.str:
+        """
+        Output only. Network address of the exposed Redis endpoint used by clients to connect to the service.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter
+    def port(self) -> builtins.int:
+        """
+        Output only. The port number of the exposed Redis endpoint.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="pscConfigs")
+    def psc_configs(self) -> Sequence['outputs.GetClusterDiscoveryEndpointPscConfigResult']:
+        """
+        Output only. Customer configuration for where the endpoint
+        is created and accessed from.
+        """
+        return pulumi.get(self, "psc_configs")
+
+
+@pulumi.output_type
+class GetClusterDiscoveryEndpointPscConfigResult(dict):
+    def __init__(__self__, *,
+                 network: builtins.str):
+        """
+        :param builtins.str network: The consumer network where the network address of the discovery
+               endpoint will be reserved, in the form of
+               projects/{network_project_id}/global/networks/{network_id}.
+        """
+        pulumi.set(__self__, "network", network)
+
+    @property
+    @pulumi.getter
+    def network(self) -> builtins.str:
+        """
+        The consumer network where the network address of the discovery
+        endpoint will be reserved, in the form of
+        projects/{network_project_id}/global/networks/{network_id}.
+        """
+        return pulumi.get(self, "network")
+
+
+@pulumi.output_type
+class GetClusterGcsSourceResult(dict):
+    def __init__(__self__, *,
+                 uris: Sequence[builtins.str]):
+        """
+        :param Sequence[builtins.str] uris: URIs of the GCS objects to import. Example: gs://bucket1/object1, gs://bucket2/folder2/object2
+        """
+        pulumi.set(__self__, "uris", uris)
+
+    @property
+    @pulumi.getter
+    def uris(self) -> Sequence[builtins.str]:
+        """
+        URIs of the GCS objects to import. Example: gs://bucket1/object1, gs://bucket2/folder2/object2
+        """
+        return pulumi.get(self, "uris")
+
+
+@pulumi.output_type
+class GetClusterMaintenancePolicyResult(dict):
+    def __init__(__self__, *,
+                 create_time: builtins.str,
+                 update_time: builtins.str,
+                 weekly_maintenance_windows: Sequence['outputs.GetClusterMaintenancePolicyWeeklyMaintenanceWindowResult']):
+        """
+        :param builtins.str create_time: Output only. The time when the policy was created.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+               resolution and up to nine fractional digits.
+        :param builtins.str update_time: Output only. The time when the policy was last updated.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+               resolution and up to nine fractional digits.
+        :param Sequence['GetClusterMaintenancePolicyWeeklyMaintenanceWindowArgs'] weekly_maintenance_windows: Optional. Maintenance window that is applied to resources covered by this policy.
+               Minimum 1. For the current version, the maximum number
+               of weekly_window is expected to be one.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "update_time", update_time)
+        pulumi.set(__self__, "weekly_maintenance_windows", weekly_maintenance_windows)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> builtins.str:
+        """
+        Output only. The time when the policy was created.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> builtins.str:
+        """
+        Output only. The time when the policy was last updated.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits.
+        """
+        return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="weeklyMaintenanceWindows")
+    def weekly_maintenance_windows(self) -> Sequence['outputs.GetClusterMaintenancePolicyWeeklyMaintenanceWindowResult']:
+        """
+        Optional. Maintenance window that is applied to resources covered by this policy.
+        Minimum 1. For the current version, the maximum number
+        of weekly_window is expected to be one.
+        """
+        return pulumi.get(self, "weekly_maintenance_windows")
+
+
+@pulumi.output_type
+class GetClusterMaintenancePolicyWeeklyMaintenanceWindowResult(dict):
+    def __init__(__self__, *,
+                 day: builtins.str,
+                 duration: builtins.str,
+                 start_times: Sequence['outputs.GetClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeResult']):
+        """
+        :param builtins.str day: Required. The day of week that maintenance updates occur.
+               
+               - DAY_OF_WEEK_UNSPECIFIED: The day of the week is unspecified.
+               - MONDAY: Monday
+               - TUESDAY: Tuesday
+               - WEDNESDAY: Wednesday
+               - THURSDAY: Thursday
+               - FRIDAY: Friday
+               - SATURDAY: Saturday
+               - SUNDAY: Sunday Possible values: ["DAY_OF_WEEK_UNSPECIFIED", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
+        :param builtins.str duration: Output only. Duration of the maintenance window.
+               The current window is fixed at 1 hour.
+               A duration in seconds with up to nine fractional digits,
+               terminated by 's'. Example: "3.5s".
+        :param Sequence['GetClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs'] start_times: Required. Start time of the window in UTC time.
+        """
+        pulumi.set(__self__, "day", day)
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "start_times", start_times)
+
+    @property
+    @pulumi.getter
+    def day(self) -> builtins.str:
+        """
+        Required. The day of week that maintenance updates occur.
+
+        - DAY_OF_WEEK_UNSPECIFIED: The day of the week is unspecified.
+        - MONDAY: Monday
+        - TUESDAY: Tuesday
+        - WEDNESDAY: Wednesday
+        - THURSDAY: Thursday
+        - FRIDAY: Friday
+        - SATURDAY: Saturday
+        - SUNDAY: Sunday Possible values: ["DAY_OF_WEEK_UNSPECIFIED", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
+        """
+        return pulumi.get(self, "day")
+
+    @property
+    @pulumi.getter
+    def duration(self) -> builtins.str:
+        """
+        Output only. Duration of the maintenance window.
+        The current window is fixed at 1 hour.
+        A duration in seconds with up to nine fractional digits,
+        terminated by 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "duration")
+
+    @property
+    @pulumi.getter(name="startTimes")
+    def start_times(self) -> Sequence['outputs.GetClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeResult']:
+        """
+        Required. Start time of the window in UTC time.
+        """
+        return pulumi.get(self, "start_times")
+
+
+@pulumi.output_type
+class GetClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeResult(dict):
+    def __init__(__self__, *,
+                 hours: builtins.int,
+                 minutes: builtins.int,
+                 nanos: builtins.int,
+                 seconds: builtins.int):
+        """
+        :param builtins.int hours: Hours of day in 24 hour format. Should be from 0 to 23.
+               An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        :param builtins.int minutes: Minutes of hour of day. Must be from 0 to 59.
+        :param builtins.int nanos: Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        :param builtins.int seconds: Seconds of minutes of the time. Must normally be from 0 to 59.
+               An API may allow the value 60 if it allows leap-seconds.
+        """
+        pulumi.set(__self__, "hours", hours)
+        pulumi.set(__self__, "minutes", minutes)
+        pulumi.set(__self__, "nanos", nanos)
+        pulumi.set(__self__, "seconds", seconds)
+
+    @property
+    @pulumi.getter
+    def hours(self) -> builtins.int:
+        """
+        Hours of day in 24 hour format. Should be from 0 to 23.
+        An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        """
+        return pulumi.get(self, "hours")
+
+    @property
+    @pulumi.getter
+    def minutes(self) -> builtins.int:
+        """
+        Minutes of hour of day. Must be from 0 to 59.
+        """
+        return pulumi.get(self, "minutes")
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> builtins.int:
+        """
+        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        """
+        return pulumi.get(self, "nanos")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> builtins.int:
+        """
+        Seconds of minutes of the time. Must normally be from 0 to 59.
+        An API may allow the value 60 if it allows leap-seconds.
+        """
+        return pulumi.get(self, "seconds")
+
+
+@pulumi.output_type
+class GetClusterMaintenanceScheduleResult(dict):
+    def __init__(__self__, *,
+                 end_time: builtins.str,
+                 schedule_deadline_time: builtins.str,
+                 start_time: builtins.str):
+        """
+        :param builtins.str end_time: Output only. The end time of any upcoming scheduled maintenance for this cluster.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+               resolution and up to nine fractional digits.
+        :param builtins.str schedule_deadline_time: Output only. The deadline that the maintenance schedule start time
+               can not go beyond, including reschedule.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+               resolution and up to nine fractional digits.
+        :param builtins.str start_time: Output only. The start time of any upcoming scheduled maintenance for this cluster.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+               resolution and up to nine fractional digits.
+        """
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "schedule_deadline_time", schedule_deadline_time)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> builtins.str:
+        """
+        Output only. The end time of any upcoming scheduled maintenance for this cluster.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits.
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="scheduleDeadlineTime")
+    def schedule_deadline_time(self) -> builtins.str:
+        """
+        Output only. The deadline that the maintenance schedule start time
+        can not go beyond, including reschedule.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits.
+        """
+        return pulumi.get(self, "schedule_deadline_time")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> builtins.str:
+        """
+        Output only. The start time of any upcoming scheduled maintenance for this cluster.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits.
+        """
+        return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class GetClusterManagedBackupSourceResult(dict):
+    def __init__(__self__, *,
+                 backup: builtins.str):
+        """
+        :param builtins.str backup: Example: 'projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}'.
+        """
+        pulumi.set(__self__, "backup", backup)
+
+    @property
+    @pulumi.getter
+    def backup(self) -> builtins.str:
+        """
+        Example: 'projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}'.
+        """
+        return pulumi.get(self, "backup")
+
+
+@pulumi.output_type
+class GetClusterManagedServerCaResult(dict):
+    def __init__(__self__, *,
+                 ca_certs: Sequence['outputs.GetClusterManagedServerCaCaCertResult']):
+        """
+        :param Sequence['GetClusterManagedServerCaCaCertArgs'] ca_certs: The PEM encoded CA certificate chains for redis managed server authentication
+        """
+        pulumi.set(__self__, "ca_certs", ca_certs)
+
+    @property
+    @pulumi.getter(name="caCerts")
+    def ca_certs(self) -> Sequence['outputs.GetClusterManagedServerCaCaCertResult']:
+        """
+        The PEM encoded CA certificate chains for redis managed server authentication
+        """
+        return pulumi.get(self, "ca_certs")
+
+
+@pulumi.output_type
+class GetClusterManagedServerCaCaCertResult(dict):
+    def __init__(__self__, *,
+                 certificates: Sequence[builtins.str]):
+        """
+        :param Sequence[builtins.str] certificates: The certificates that form the CA chain, from leaf to root order
+        """
+        pulumi.set(__self__, "certificates", certificates)
+
+    @property
+    @pulumi.getter
+    def certificates(self) -> Sequence[builtins.str]:
+        """
+        The certificates that form the CA chain, from leaf to root order
+        """
+        return pulumi.get(self, "certificates")
+
+
+@pulumi.output_type
+class GetClusterPersistenceConfigResult(dict):
+    def __init__(__self__, *,
+                 aof_configs: Sequence['outputs.GetClusterPersistenceConfigAofConfigResult'],
+                 mode: builtins.str,
+                 rdb_configs: Sequence['outputs.GetClusterPersistenceConfigRdbConfigResult']):
+        """
+        :param Sequence['GetClusterPersistenceConfigAofConfigArgs'] aof_configs: AOF configuration. This field will be ignored if mode is not AOF.
+        :param builtins.str mode: Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
+               
+               - DISABLED: 	Persistence (both backup and restore) is disabled for the cluster.
+               - RDB: RDB based Persistence is enabled.
+               - AOF: AOF based Persistence is enabled. Possible values: ["PERSISTENCE_MODE_UNSPECIFIED", "DISABLED", "RDB", "AOF"]
+        :param Sequence['GetClusterPersistenceConfigRdbConfigArgs'] rdb_configs: RDB configuration. This field will be ignored if mode is not RDB.
+        """
+        pulumi.set(__self__, "aof_configs", aof_configs)
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "rdb_configs", rdb_configs)
+
+    @property
+    @pulumi.getter(name="aofConfigs")
+    def aof_configs(self) -> Sequence['outputs.GetClusterPersistenceConfigAofConfigResult']:
+        """
+        AOF configuration. This field will be ignored if mode is not AOF.
+        """
+        return pulumi.get(self, "aof_configs")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> builtins.str:
+        """
+        Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
+
+        - DISABLED: 	Persistence (both backup and restore) is disabled for the cluster.
+        - RDB: RDB based Persistence is enabled.
+        - AOF: AOF based Persistence is enabled. Possible values: ["PERSISTENCE_MODE_UNSPECIFIED", "DISABLED", "RDB", "AOF"]
+        """
+        return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter(name="rdbConfigs")
+    def rdb_configs(self) -> Sequence['outputs.GetClusterPersistenceConfigRdbConfigResult']:
+        """
+        RDB configuration. This field will be ignored if mode is not RDB.
+        """
+        return pulumi.get(self, "rdb_configs")
+
+
+@pulumi.output_type
+class GetClusterPersistenceConfigAofConfigResult(dict):
+    def __init__(__self__, *,
+                 append_fsync: builtins.str):
+        """
+        :param builtins.str append_fsync: Optional. Available fsync modes.
+               
+               - NO - Do not explicitly call fsync(). Rely on OS defaults.
+               - EVERYSEC - Call fsync() once per second in a background thread. A balance between performance and durability.
+               - ALWAYS - Call fsync() for earch write command. Possible values: ["APPEND_FSYNC_UNSPECIFIED", "NO", "EVERYSEC", "ALWAYS"]
+        """
+        pulumi.set(__self__, "append_fsync", append_fsync)
+
+    @property
+    @pulumi.getter(name="appendFsync")
+    def append_fsync(self) -> builtins.str:
+        """
+        Optional. Available fsync modes.
+
+        - NO - Do not explicitly call fsync(). Rely on OS defaults.
+        - EVERYSEC - Call fsync() once per second in a background thread. A balance between performance and durability.
+        - ALWAYS - Call fsync() for earch write command. Possible values: ["APPEND_FSYNC_UNSPECIFIED", "NO", "EVERYSEC", "ALWAYS"]
+        """
+        return pulumi.get(self, "append_fsync")
+
+
+@pulumi.output_type
+class GetClusterPersistenceConfigRdbConfigResult(dict):
+    def __init__(__self__, *,
+                 rdb_snapshot_period: builtins.str,
+                 rdb_snapshot_start_time: builtins.str):
+        """
+        :param builtins.str rdb_snapshot_period: Optional. Available snapshot periods for scheduling.
+               
+               - ONE_HOUR:	Snapshot every 1 hour.
+               - SIX_HOURS:	Snapshot every 6 hours.
+               - TWELVE_HOURS:	Snapshot every 12 hours.
+               - TWENTY_FOUR_HOURS:	Snapshot every 24 hours. Possible values: ["SNAPSHOT_PERIOD_UNSPECIFIED", "ONE_HOUR", "SIX_HOURS", "TWELVE_HOURS", "TWENTY_FOUR_HOURS"]
+        :param builtins.str rdb_snapshot_start_time: The time that the first snapshot was/will be attempted, and to which
+               future snapshots will be aligned.
+               If not provided, the current time will be used.
+        """
+        pulumi.set(__self__, "rdb_snapshot_period", rdb_snapshot_period)
+        pulumi.set(__self__, "rdb_snapshot_start_time", rdb_snapshot_start_time)
+
+    @property
+    @pulumi.getter(name="rdbSnapshotPeriod")
+    def rdb_snapshot_period(self) -> builtins.str:
+        """
+        Optional. Available snapshot periods for scheduling.
+
+        - ONE_HOUR:	Snapshot every 1 hour.
+        - SIX_HOURS:	Snapshot every 6 hours.
+        - TWELVE_HOURS:	Snapshot every 12 hours.
+        - TWENTY_FOUR_HOURS:	Snapshot every 24 hours. Possible values: ["SNAPSHOT_PERIOD_UNSPECIFIED", "ONE_HOUR", "SIX_HOURS", "TWELVE_HOURS", "TWENTY_FOUR_HOURS"]
+        """
+        return pulumi.get(self, "rdb_snapshot_period")
+
+    @property
+    @pulumi.getter(name="rdbSnapshotStartTime")
+    def rdb_snapshot_start_time(self) -> builtins.str:
+        """
+        The time that the first snapshot was/will be attempted, and to which
+        future snapshots will be aligned.
+        If not provided, the current time will be used.
+        """
+        return pulumi.get(self, "rdb_snapshot_start_time")
+
+
+@pulumi.output_type
+class GetClusterPscConfigResult(dict):
+    def __init__(__self__, *,
+                 network: builtins.str):
+        """
+        :param builtins.str network: Required. The consumer network where the network address of
+               the discovery endpoint will be reserved, in the form of
+               projects/{network_project_id_or_number}/global/networks/{network_id}.
+        """
+        pulumi.set(__self__, "network", network)
+
+    @property
+    @pulumi.getter
+    def network(self) -> builtins.str:
+        """
+        Required. The consumer network where the network address of
+        the discovery endpoint will be reserved, in the form of
+        projects/{network_project_id_or_number}/global/networks/{network_id}.
+        """
+        return pulumi.get(self, "network")
+
+
+@pulumi.output_type
+class GetClusterPscConnectionResult(dict):
+    def __init__(__self__, *,
+                 address: builtins.str,
+                 forwarding_rule: builtins.str,
+                 network: builtins.str,
+                 project_id: builtins.str,
+                 psc_connection_id: builtins.str):
+        """
+        :param builtins.str address: Output only. The IP allocated on the consumer network for the PSC forwarding rule.
+        :param builtins.str forwarding_rule: Output only. The URI of the consumer side forwarding rule. Example: projects/{projectNumOrId}/regions/us-east1/forwardingRules/{resourceId}.
+        :param builtins.str network: The consumer network where the IP address resides, in the form of projects/{projectId}/global/networks/{network_id}.
+        :param builtins.str project_id: Output only. The consumer projectId where the forwarding rule is created from.
+        :param builtins.str psc_connection_id: Output only. The PSC connection id of the forwarding rule connected to the service attachment.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "forwarding_rule", forwarding_rule)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "psc_connection_id", psc_connection_id)
+
+    @property
+    @pulumi.getter
+    def address(self) -> builtins.str:
+        """
+        Output only. The IP allocated on the consumer network for the PSC forwarding rule.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter(name="forwardingRule")
+    def forwarding_rule(self) -> builtins.str:
+        """
+        Output only. The URI of the consumer side forwarding rule. Example: projects/{projectNumOrId}/regions/us-east1/forwardingRules/{resourceId}.
+        """
+        return pulumi.get(self, "forwarding_rule")
+
+    @property
+    @pulumi.getter
+    def network(self) -> builtins.str:
+        """
+        The consumer network where the IP address resides, in the form of projects/{projectId}/global/networks/{network_id}.
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> builtins.str:
+        """
+        Output only. The consumer projectId where the forwarding rule is created from.
+        """
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter(name="pscConnectionId")
+    def psc_connection_id(self) -> builtins.str:
+        """
+        Output only. The PSC connection id of the forwarding rule connected to the service attachment.
+        """
+        return pulumi.get(self, "psc_connection_id")
+
+
+@pulumi.output_type
+class GetClusterPscServiceAttachmentResult(dict):
+    def __init__(__self__, *,
+                 connection_type: builtins.str,
+                 service_attachment: builtins.str):
+        """
+        :param builtins.str connection_type: Type of a PSC connection targeting this service attachment.
+        :param builtins.str service_attachment: Service attachment URI which your self-created PscConnection should use as
+        """
+        pulumi.set(__self__, "connection_type", connection_type)
+        pulumi.set(__self__, "service_attachment", service_attachment)
+
+    @property
+    @pulumi.getter(name="connectionType")
+    def connection_type(self) -> builtins.str:
+        """
+        Type of a PSC connection targeting this service attachment.
+        """
+        return pulumi.get(self, "connection_type")
+
+    @property
+    @pulumi.getter(name="serviceAttachment")
+    def service_attachment(self) -> builtins.str:
+        """
+        Service attachment URI which your self-created PscConnection should use as
+        """
+        return pulumi.get(self, "service_attachment")
+
+
+@pulumi.output_type
+class GetClusterStateInfoResult(dict):
+    def __init__(__self__, *,
+                 update_infos: Sequence['outputs.GetClusterStateInfoUpdateInfoResult']):
+        """
+        :param Sequence['GetClusterStateInfoUpdateInfoArgs'] update_infos: A nested object resource.
+        """
+        pulumi.set(__self__, "update_infos", update_infos)
+
+    @property
+    @pulumi.getter(name="updateInfos")
+    def update_infos(self) -> Sequence['outputs.GetClusterStateInfoUpdateInfoResult']:
+        """
+        A nested object resource.
+        """
+        return pulumi.get(self, "update_infos")
+
+
+@pulumi.output_type
+class GetClusterStateInfoUpdateInfoResult(dict):
+    def __init__(__self__, *,
+                 target_replica_count: builtins.int,
+                 target_shard_count: builtins.int):
+        """
+        :param builtins.int target_replica_count: Target number of replica nodes per shard.
+        :param builtins.int target_shard_count: Target number of shards for redis cluster.
+        """
+        pulumi.set(__self__, "target_replica_count", target_replica_count)
+        pulumi.set(__self__, "target_shard_count", target_shard_count)
+
+    @property
+    @pulumi.getter(name="targetReplicaCount")
+    def target_replica_count(self) -> builtins.int:
+        """
+        Target number of replica nodes per shard.
+        """
+        return pulumi.get(self, "target_replica_count")
+
+    @property
+    @pulumi.getter(name="targetShardCount")
+    def target_shard_count(self) -> builtins.int:
+        """
+        Target number of shards for redis cluster.
+        """
+        return pulumi.get(self, "target_shard_count")
+
+
+@pulumi.output_type
+class GetClusterZoneDistributionConfigResult(dict):
+    def __init__(__self__, *,
+                 mode: builtins.str,
+                 zone: builtins.str):
+        """
+        :param builtins.str mode: Immutable. The mode for zone distribution for Memorystore Redis cluster.
+               If not provided, MULTI_ZONE will be used as default Possible values: ["MULTI_ZONE", "SINGLE_ZONE"]
+        :param builtins.str zone: Immutable. The zone for single zone Memorystore Redis cluster.
+        """
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> builtins.str:
+        """
+        Immutable. The mode for zone distribution for Memorystore Redis cluster.
+        If not provided, MULTI_ZONE will be used as default Possible values: ["MULTI_ZONE", "SINGLE_ZONE"]
+        """
+        return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> builtins.str:
+        """
+        Immutable. The zone for single zone Memorystore Redis cluster.
+        """
+        return pulumi.get(self, "zone")
 
 
 @pulumi.output_type

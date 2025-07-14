@@ -121,9 +121,9 @@ export class AccessApprovalSettings extends pulumi.CustomResource {
     }
 
     /**
-     * The asymmetric crypto key version to use for signing approval requests. Empty activeKeyVersion indicates that a
-     * Google-managed key should be used for signing. This property will be ignored if set by an ancestor of the resource, and
-     * new non-empty values may not be set.
+     * The asymmetric crypto key version to use for signing approval requests.
+     * Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
+     * This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
      */
     public readonly activeKeyVersion!: pulumi.Output<string | undefined>;
     /**
@@ -154,13 +154,16 @@ export class AccessApprovalSettings extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
-     * a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
-     * addresses are allowed.
+     * A list of email addresses to which notifications relating to approval requests should be sent.
+     * Notifications relating to a resource will be sent to all emails in the settings of ancestor
+     * resources of that resource. A maximum of 50 email addresses are allowed.
      */
     public readonly notificationEmails!: pulumi.Output<string[]>;
     /**
+     * (Optional, Deprecated)
      * Project id.
+     *
+     * > **Warning:** `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
      *
      * @deprecated `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
      */
@@ -220,9 +223,9 @@ export class AccessApprovalSettings extends pulumi.CustomResource {
  */
 export interface AccessApprovalSettingsState {
     /**
-     * The asymmetric crypto key version to use for signing approval requests. Empty activeKeyVersion indicates that a
-     * Google-managed key should be used for signing. This property will be ignored if set by an ancestor of the resource, and
-     * new non-empty values may not be set.
+     * The asymmetric crypto key version to use for signing approval requests.
+     * Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
+     * This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
      */
     activeKeyVersion?: pulumi.Input<string>;
     /**
@@ -253,13 +256,16 @@ export interface AccessApprovalSettingsState {
      */
     name?: pulumi.Input<string>;
     /**
-     * A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
-     * a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
-     * addresses are allowed.
+     * A list of email addresses to which notifications relating to approval requests should be sent.
+     * Notifications relating to a resource will be sent to all emails in the settings of ancestor
+     * resources of that resource. A maximum of 50 email addresses are allowed.
      */
     notificationEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * (Optional, Deprecated)
      * Project id.
+     *
+     * > **Warning:** `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
      *
      * @deprecated `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
      */
@@ -275,9 +281,9 @@ export interface AccessApprovalSettingsState {
  */
 export interface AccessApprovalSettingsArgs {
     /**
-     * The asymmetric crypto key version to use for signing approval requests. Empty activeKeyVersion indicates that a
-     * Google-managed key should be used for signing. This property will be ignored if set by an ancestor of the resource, and
-     * new non-empty values may not be set.
+     * The asymmetric crypto key version to use for signing approval requests.
+     * Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
+     * This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
      */
     activeKeyVersion?: pulumi.Input<string>;
     /**
@@ -289,13 +295,16 @@ export interface AccessApprovalSettingsArgs {
      */
     enrolledServices: pulumi.Input<pulumi.Input<inputs.projects.AccessApprovalSettingsEnrolledService>[]>;
     /**
-     * A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
-     * a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
-     * addresses are allowed.
+     * A list of email addresses to which notifications relating to approval requests should be sent.
+     * Notifications relating to a resource will be sent to all emails in the settings of ancestor
+     * resources of that resource. A maximum of 50 email addresses are allowed.
      */
     notificationEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * (Optional, Deprecated)
      * Project id.
+     *
+     * > **Warning:** `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
      *
      * @deprecated `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
      */

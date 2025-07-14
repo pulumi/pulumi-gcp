@@ -51,16 +51,12 @@ public final class AiDeploymentResourcePoolState extends com.pulumi.resources.Re
     /**
      * The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -174,8 +170,6 @@ public final class AiDeploymentResourcePoolState extends com.pulumi.resources.Re
         /**
          * @param name The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -186,8 +180,6 @@ public final class AiDeploymentResourcePoolState extends com.pulumi.resources.Re
 
         /**
          * @param name The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
-         * 
-         * ***
          * 
          * @return builder
          * 

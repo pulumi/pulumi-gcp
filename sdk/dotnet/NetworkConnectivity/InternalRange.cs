@@ -302,9 +302,6 @@ namespace Pulumi.Gcp.NetworkConnectivity
         /// <summary>
         /// The type of peering set for this internal range.
         /// Possible values are: `FOR_SELF`, `FOR_PEER`, `NOT_SHARED`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("peering")]
         public Output<string> Peering { get; private set; } = null!;
@@ -488,9 +485,6 @@ namespace Pulumi.Gcp.NetworkConnectivity
         /// <summary>
         /// The type of peering set for this internal range.
         /// Possible values are: `FOR_SELF`, `FOR_PEER`, `NOT_SHARED`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("peering", required: true)]
         public Input<string> Peering { get; set; } = null!;
@@ -638,9 +632,6 @@ namespace Pulumi.Gcp.NetworkConnectivity
         /// <summary>
         /// The type of peering set for this internal range.
         /// Possible values are: `FOR_SELF`, `FOR_PEER`, `NOT_SHARED`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("peering")]
         public Input<string>? Peering { get; set; }

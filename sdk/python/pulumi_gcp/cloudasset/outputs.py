@@ -133,8 +133,6 @@ class FolderFeedFeedOutputConfigPubsubDestination(dict):
                  topic: builtins.str):
         """
         :param builtins.str topic: Destination on Cloud Pubsub topic.
-               
-               - - -
         """
         pulumi.set(__self__, "topic", topic)
 
@@ -143,8 +141,6 @@ class FolderFeedFeedOutputConfigPubsubDestination(dict):
     def topic(self) -> builtins.str:
         """
         Destination on Cloud Pubsub topic.
-
-        - - -
         """
         return pulumi.get(self, "topic")
 
@@ -252,8 +248,6 @@ class OrganizationFeedFeedOutputConfigPubsubDestination(dict):
                  topic: builtins.str):
         """
         :param builtins.str topic: Destination on Cloud Pubsub topic.
-               
-               - - -
         """
         pulumi.set(__self__, "topic", topic)
 
@@ -262,8 +256,6 @@ class OrganizationFeedFeedOutputConfigPubsubDestination(dict):
     def topic(self) -> builtins.str:
         """
         Destination on Cloud Pubsub topic.
-
-        - - -
         """
         return pulumi.get(self, "topic")
 
@@ -371,8 +363,6 @@ class ProjectFeedFeedOutputConfigPubsubDestination(dict):
                  topic: builtins.str):
         """
         :param builtins.str topic: Destination on Cloud Pubsub topic.
-               
-               - - -
         """
         pulumi.set(__self__, "topic", topic)
 
@@ -381,8 +371,6 @@ class ProjectFeedFeedOutputConfigPubsubDestination(dict):
     def topic(self) -> builtins.str:
         """
         Destination on Cloud Pubsub topic.
-
-        - - -
         """
         return pulumi.get(self, "topic")
 

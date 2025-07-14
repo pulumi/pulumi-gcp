@@ -664,8 +664,6 @@ type JobTemplate struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location of the transcoding job template resource.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the job template.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -731,8 +729,6 @@ type jobTemplateState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location of the transcoding job template resource.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// The resource name of the job template.
 	Name *string `pulumi:"name"`
@@ -758,8 +754,6 @@ type JobTemplateState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location of the transcoding job template resource.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// The resource name of the job template.
 	Name pulumi.StringPtrInput
@@ -787,8 +781,6 @@ type jobTemplateArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location of the transcoding job template resource.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -808,8 +800,6 @@ type JobTemplateArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location of the transcoding job template resource.
-	//
-	// ***
 	Location pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -928,8 +918,6 @@ func (o JobTemplateOutput) Labels() pulumi.StringMapOutput {
 }
 
 // The location of the transcoding job template resource.
-//
-// ***
 func (o JobTemplateOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *JobTemplate) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

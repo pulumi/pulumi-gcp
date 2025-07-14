@@ -48,9 +48,6 @@ class RegionSslPolicyArgs:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] profile: Profile specifies the set of SSL features that can be used by the
                load balancer when negotiating SSL with clients. If using `CUSTOM`,
                the set of SSL features to enable must be specified in the
@@ -135,9 +132,6 @@ class RegionSslPolicyArgs:
         first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -230,9 +224,6 @@ class _RegionSslPolicyState:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] profile: Profile specifies the set of SSL features that can be used by the
                load balancer when negotiating SSL with clients. If using `CUSTOM`,
                the set of SSL features to enable must be specified in the
@@ -363,9 +354,6 @@ class _RegionSslPolicyState:
         first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -506,9 +494,6 @@ class RegionSslPolicy(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] profile: Profile specifies the set of SSL features that can be used by the
                load balancer when negotiating SSL with clients. If using `CUSTOM`,
                the set of SSL features to enable must be specified in the
@@ -661,9 +646,6 @@ class RegionSslPolicy(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] profile: Profile specifies the set of SSL features that can be used by the
                load balancer when negotiating SSL with clients. If using `CUSTOM`,
                the set of SSL features to enable must be specified in the
@@ -764,9 +746,6 @@ class RegionSslPolicy(pulumi.CustomResource):
         first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

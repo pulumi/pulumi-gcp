@@ -127,8 +127,6 @@ type MirroringEndpointGroup struct {
 	MirroringDeploymentGroup pulumi.StringOutput `pulumi:"mirroringDeploymentGroup"`
 	// The ID to use for the endpoint group, which will become the final component
 	// of the endpoint group's resource name.
-	//
-	// ***
 	MirroringEndpointGroupId pulumi.StringOutput `pulumi:"mirroringEndpointGroupId"`
 	// (Output)
 	// The connected deployment group's resource name, for example:
@@ -229,8 +227,6 @@ type mirroringEndpointGroupState struct {
 	MirroringDeploymentGroup *string `pulumi:"mirroringDeploymentGroup"`
 	// The ID to use for the endpoint group, which will become the final component
 	// of the endpoint group's resource name.
-	//
-	// ***
 	MirroringEndpointGroupId *string `pulumi:"mirroringEndpointGroupId"`
 	// (Output)
 	// The connected deployment group's resource name, for example:
@@ -288,8 +284,6 @@ type MirroringEndpointGroupState struct {
 	MirroringDeploymentGroup pulumi.StringPtrInput
 	// The ID to use for the endpoint group, which will become the final component
 	// of the endpoint group's resource name.
-	//
-	// ***
 	MirroringEndpointGroupId pulumi.StringPtrInput
 	// (Output)
 	// The connected deployment group's resource name, for example:
@@ -339,8 +333,6 @@ type mirroringEndpointGroupArgs struct {
 	MirroringDeploymentGroup string `pulumi:"mirroringDeploymentGroup"`
 	// The ID to use for the endpoint group, which will become the final component
 	// of the endpoint group's resource name.
-	//
-	// ***
 	MirroringEndpointGroupId string `pulumi:"mirroringEndpointGroupId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -364,8 +356,6 @@ type MirroringEndpointGroupArgs struct {
 	MirroringDeploymentGroup pulumi.StringInput
 	// The ID to use for the endpoint group, which will become the final component
 	// of the endpoint group's resource name.
-	//
-	// ***
 	MirroringEndpointGroupId pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -514,8 +504,6 @@ func (o MirroringEndpointGroupOutput) MirroringDeploymentGroup() pulumi.StringOu
 
 // The ID to use for the endpoint group, which will become the final component
 // of the endpoint group's resource name.
-//
-// ***
 func (o MirroringEndpointGroupOutput) MirroringEndpointGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MirroringEndpointGroup) pulumi.StringOutput { return v.MirroringEndpointGroupId }).(pulumi.StringOutput)
 }

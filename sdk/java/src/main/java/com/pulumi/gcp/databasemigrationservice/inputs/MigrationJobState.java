@@ -194,16 +194,12 @@ public final class MigrationJobState extends com.pulumi.resources.ResourceArgs {
     /**
      * The ID of the migration job.
      * 
-     * ***
-     * 
      */
     @Import(name="migrationJobId")
     private @Nullable Output<String> migrationJobId;
 
     /**
      * @return The ID of the migration job.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> migrationJobId() {
@@ -680,8 +676,6 @@ public final class MigrationJobState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param migrationJobId The ID of the migration job.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -692,8 +686,6 @@ public final class MigrationJobState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param migrationJobId The ID of the migration job.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -174,8 +174,6 @@ type MachineImage struct {
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
-	//
-	// ***
 	SourceInstance pulumi.StringOutput `pulumi:"sourceInstance"`
 	// The regional or multi-regional Cloud Storage bucket location where the machine image is stored.
 	StorageLocations pulumi.StringArrayOutput `pulumi:"storageLocations"`
@@ -233,8 +231,6 @@ type machineImageState struct {
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
-	//
-	// ***
 	SourceInstance *string `pulumi:"sourceInstance"`
 	// The regional or multi-regional Cloud Storage bucket location where the machine image is stored.
 	StorageLocations []string `pulumi:"storageLocations"`
@@ -260,8 +256,6 @@ type MachineImageState struct {
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
 	// The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
-	//
-	// ***
 	SourceInstance pulumi.StringPtrInput
 	// The regional or multi-regional Cloud Storage bucket location where the machine image is stored.
 	StorageLocations pulumi.StringArrayInput
@@ -289,8 +283,6 @@ type machineImageArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
-	//
-	// ***
 	SourceInstance string `pulumi:"sourceInstance"`
 }
 
@@ -313,8 +305,6 @@ type MachineImageArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
-	//
-	// ***
 	SourceInstance pulumi.StringInput
 }
 
@@ -444,8 +434,6 @@ func (o MachineImageOutput) SelfLink() pulumi.StringOutput {
 }
 
 // The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
-//
-// ***
 func (o MachineImageOutput) SourceInstance() pulumi.StringOutput {
 	return o.ApplyT(func(v *MachineImage) pulumi.StringOutput { return v.SourceInstance }).(pulumi.StringOutput)
 }

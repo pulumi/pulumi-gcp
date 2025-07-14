@@ -28,9 +28,6 @@ class KeyHandleArgs:
         The set of arguments for constructing a KeyHandle resource.
         :param pulumi.Input[builtins.str] location: The location for the KeyHandle.
                A full list of valid locations can be found by running `gcloud kms locations list`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] resource_type_selector: Selector of the resource type where we want to protect resources.
                For example, `storage.googleapis.com/Bucket`.
         :param pulumi.Input[builtins.str] name: The resource name for the KeyHandle.
@@ -50,9 +47,6 @@ class KeyHandleArgs:
         """
         The location for the KeyHandle.
         A full list of valid locations can be found by running `gcloud kms locations list`.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -114,9 +108,6 @@ class _KeyHandleState:
                `projects/1/locations/us-east1/keyRings/foo/cryptoKeys/bar-ffffff`
         :param pulumi.Input[builtins.str] location: The location for the KeyHandle.
                A full list of valid locations can be found by running `gcloud kms locations list`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The resource name for the KeyHandle.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -154,9 +145,6 @@ class _KeyHandleState:
         """
         The location for the KeyHandle.
         A full list of valid locations can be found by running `gcloud kms locations list`.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -315,9 +303,6 @@ class KeyHandle(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] location: The location for the KeyHandle.
                A full list of valid locations can be found by running `gcloud kms locations list`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The resource name for the KeyHandle.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -491,9 +476,6 @@ class KeyHandle(pulumi.CustomResource):
                `projects/1/locations/us-east1/keyRings/foo/cryptoKeys/bar-ffffff`
         :param pulumi.Input[builtins.str] location: The location for the KeyHandle.
                A full list of valid locations can be found by running `gcloud kms locations list`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The resource name for the KeyHandle.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -527,9 +509,6 @@ class KeyHandle(pulumi.CustomResource):
         """
         The location for the KeyHandle.
         A full list of valid locations can be found by running `gcloud kms locations list`.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

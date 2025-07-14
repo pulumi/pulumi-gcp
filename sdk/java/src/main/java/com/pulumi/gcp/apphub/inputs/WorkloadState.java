@@ -206,16 +206,12 @@ public final class WorkloadState extends com.pulumi.resources.ResourceArgs {
     /**
      * The Workload identifier.
      * 
-     * ***
-     * 
      */
     @Import(name="workloadId")
     private @Nullable Output<String> workloadId;
 
     /**
      * @return The Workload identifier.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> workloadId() {
@@ -553,8 +549,6 @@ public final class WorkloadState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param workloadId The Workload identifier.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -565,8 +559,6 @@ public final class WorkloadState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param workloadId The Workload identifier.
-         * 
-         * ***
          * 
          * @return builder
          * 

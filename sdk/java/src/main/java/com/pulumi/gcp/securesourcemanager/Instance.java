@@ -811,16 +811,12 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The name for the Instance.
      * 
-     * ***
-     * 
      */
     @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
      * @return The name for the Instance.
-     * 
-     * ***
      * 
      */
     public Output<String> instanceId() {

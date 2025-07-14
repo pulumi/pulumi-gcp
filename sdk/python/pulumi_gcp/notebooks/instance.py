@@ -58,9 +58,6 @@ class InstanceArgs:
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[builtins.str] location: A reference to the zone where the machine resides.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] machine_type: A reference to a machine type which defines VM kind.
         :param pulumi.Input['InstanceAcceleratorConfigArgs'] accelerator_config: The hardware accelerator used on this instance. If you use accelerators,
                make sure that your configuration has enough vCPUs and memory to support the
@@ -206,9 +203,6 @@ class InstanceArgs:
     def location(self) -> pulumi.Input[builtins.str]:
         """
         A reference to the zone where the machine resides.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -725,9 +719,6 @@ class _InstanceState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: A reference to the zone where the machine resides.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] machine_type: A reference to a machine type which defines VM kind.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] metadata: Custom metadata to apply to this instance.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -1056,9 +1047,6 @@ class _InstanceState:
     def location(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         A reference to the zone where the machine resides.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -1579,9 +1567,6 @@ class Instance(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: A reference to the zone where the machine resides.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] machine_type: A reference to a machine type which defines VM kind.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] metadata: Custom metadata to apply to this instance.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -1976,9 +1961,6 @@ class Instance(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: A reference to the zone where the machine resides.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] machine_type: A reference to a machine type which defines VM kind.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] metadata: Custom metadata to apply to this instance.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -2215,9 +2197,6 @@ class Instance(pulumi.CustomResource):
     def location(self) -> pulumi.Output[builtins.str]:
         """
         A reference to the zone where the machine resides.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

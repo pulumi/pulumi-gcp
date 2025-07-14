@@ -131,8 +131,6 @@ type ControlPlaneAccess struct {
 	// You might specify multiple service accounts, for example, if you have multiple environments and wish to assign a unique service account to each one.
 	AnalyticsPublisherIdentities pulumi.StringArrayOutput `pulumi:"analyticsPublisherIdentities"`
 	// Name of the Apigee organization.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Array of service accounts to grant access to control plane resources (for the Synchronizer component), each specified using the following format: `serviceAccount:service-account-name`.
 	// The `service-account-name` is formatted like an email address. For example: serviceAccount@my_project_id.iam.gserviceaccount.com
@@ -176,8 +174,6 @@ type controlPlaneAccessState struct {
 	// You might specify multiple service accounts, for example, if you have multiple environments and wish to assign a unique service account to each one.
 	AnalyticsPublisherIdentities []string `pulumi:"analyticsPublisherIdentities"`
 	// Name of the Apigee organization.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// Array of service accounts to grant access to control plane resources (for the Synchronizer component), each specified using the following format: `serviceAccount:service-account-name`.
 	// The `service-account-name` is formatted like an email address. For example: serviceAccount@my_project_id.iam.gserviceaccount.com
@@ -192,8 +188,6 @@ type ControlPlaneAccessState struct {
 	// You might specify multiple service accounts, for example, if you have multiple environments and wish to assign a unique service account to each one.
 	AnalyticsPublisherIdentities pulumi.StringArrayInput
 	// Name of the Apigee organization.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// Array of service accounts to grant access to control plane resources (for the Synchronizer component), each specified using the following format: `serviceAccount:service-account-name`.
 	// The `service-account-name` is formatted like an email address. For example: serviceAccount@my_project_id.iam.gserviceaccount.com
@@ -212,8 +206,6 @@ type controlPlaneAccessArgs struct {
 	// You might specify multiple service accounts, for example, if you have multiple environments and wish to assign a unique service account to each one.
 	AnalyticsPublisherIdentities []string `pulumi:"analyticsPublisherIdentities"`
 	// Name of the Apigee organization.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// Array of service accounts to grant access to control plane resources (for the Synchronizer component), each specified using the following format: `serviceAccount:service-account-name`.
 	// The `service-account-name` is formatted like an email address. For example: serviceAccount@my_project_id.iam.gserviceaccount.com
@@ -229,8 +221,6 @@ type ControlPlaneAccessArgs struct {
 	// You might specify multiple service accounts, for example, if you have multiple environments and wish to assign a unique service account to each one.
 	AnalyticsPublisherIdentities pulumi.StringArrayInput
 	// Name of the Apigee organization.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// Array of service accounts to grant access to control plane resources (for the Synchronizer component), each specified using the following format: `serviceAccount:service-account-name`.
 	// The `service-account-name` is formatted like an email address. For example: serviceAccount@my_project_id.iam.gserviceaccount.com
@@ -334,8 +324,6 @@ func (o ControlPlaneAccessOutput) AnalyticsPublisherIdentities() pulumi.StringAr
 }
 
 // Name of the Apigee organization.
-//
-// ***
 func (o ControlPlaneAccessOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ControlPlaneAccess) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

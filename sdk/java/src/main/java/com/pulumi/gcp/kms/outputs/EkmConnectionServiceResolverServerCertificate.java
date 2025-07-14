@@ -67,8 +67,6 @@ public final class EkmConnectionServiceResolverServerCertificate {
      * @return (Output)
      * Output only. The subject Alternative DNS names. Only present if parsed is true.
      * 
-     * ***
-     * 
      */
     private @Nullable List<String> subjectAlternativeDnsNames;
 
@@ -141,8 +139,6 @@ public final class EkmConnectionServiceResolverServerCertificate {
     /**
      * @return (Output)
      * Output only. The subject Alternative DNS names. Only present if parsed is true.
-     * 
-     * ***
      * 
      */
     public List<String> subjectAlternativeDnsNames() {

@@ -31,9 +31,6 @@ class LoggingSettingBindingArgs:
         The set of arguments for constructing a LoggingSettingBinding resource.
         :param pulumi.Input[builtins.str] logging_setting_id: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[builtins.str] setting_binding_id: Id of the setting binding.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] target: Target of the binding.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -73,9 +70,6 @@ class LoggingSettingBindingArgs:
     def setting_binding_id(self) -> pulumi.Input[builtins.str]:
         """
         Id of the setting binding.
-
-
-        - - -
         """
         return pulumi.get(self, "setting_binding_id")
 
@@ -181,9 +175,6 @@ class _LoggingSettingBindingState:
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[builtins.str] setting_binding_id: Id of the setting binding.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] target: Target of the binding.
         :param pulumi.Input[builtins.str] update_time: Update time stamp.
         """
@@ -331,9 +322,6 @@ class _LoggingSettingBindingState:
     def setting_binding_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Id of the setting binding.
-
-
-        - - -
         """
         return pulumi.get(self, "setting_binding_id")
 
@@ -445,9 +433,6 @@ class LoggingSettingBinding(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] setting_binding_id: Id of the setting binding.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] target: Target of the binding.
         """
         ...
@@ -605,9 +590,6 @@ class LoggingSettingBinding(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[builtins.str] setting_binding_id: Id of the setting binding.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] target: Target of the binding.
         :param pulumi.Input[builtins.str] update_time: Update time stamp.
         """
@@ -712,9 +694,6 @@ class LoggingSettingBinding(pulumi.CustomResource):
     def setting_binding_id(self) -> pulumi.Output[builtins.str]:
         """
         Id of the setting binding.
-
-
-        - - -
         """
         return pulumi.get(self, "setting_binding_id")
 

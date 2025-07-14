@@ -20,8 +20,6 @@ public final class BackupPlanBackupRuleStandardScheduleBackupWindowArgs extends 
      * The hour of the day (1-24) when the window ends, for example, if the value of end hour of the day is 10, that means the backup window end time is 10:00.
      * The end hour of the day should be greater than the start
      * 
-     * ***
-     * 
      */
     @Import(name="endHourOfDay")
     private @Nullable Output<Integer> endHourOfDay;
@@ -29,8 +27,6 @@ public final class BackupPlanBackupRuleStandardScheduleBackupWindowArgs extends 
     /**
      * @return The hour of the day (1-24) when the window ends, for example, if the value of end hour of the day is 10, that means the backup window end time is 10:00.
      * The end hour of the day should be greater than the start
-     * 
-     * ***
      * 
      */
     public Optional<Output<Integer>> endHourOfDay() {
@@ -81,8 +77,6 @@ public final class BackupPlanBackupRuleStandardScheduleBackupWindowArgs extends 
          * @param endHourOfDay The hour of the day (1-24) when the window ends, for example, if the value of end hour of the day is 10, that means the backup window end time is 10:00.
          * The end hour of the day should be greater than the start
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -94,8 +88,6 @@ public final class BackupPlanBackupRuleStandardScheduleBackupWindowArgs extends 
         /**
          * @param endHourOfDay The hour of the day (1-24) when the window ends, for example, if the value of end hour of the day is 10, that means the backup window end time is 10:00.
          * The end hour of the day should be greater than the start
-         * 
-         * ***
          * 
          * @return builder
          * 

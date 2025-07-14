@@ -28,7 +28,7 @@ class GetTableResult:
     """
     A collection of values returned by getTable.
     """
-    def __init__(__self__, biglake_configurations=None, clusterings=None, creation_time=None, dataset_id=None, deletion_protection=None, description=None, effective_labels=None, encryption_configurations=None, etag=None, expiration_time=None, external_catalog_table_options=None, external_data_configurations=None, friendly_name=None, id=None, labels=None, last_modified_time=None, location=None, materialized_views=None, max_staleness=None, num_bytes=None, num_long_term_bytes=None, num_rows=None, project=None, pulumi_labels=None, range_partitionings=None, require_partition_filter=None, resource_tags=None, schema=None, schema_foreign_type_infos=None, self_link=None, table_constraints=None, table_id=None, table_metadata_view=None, table_replication_infos=None, time_partitionings=None, type=None, views=None):
+    def __init__(__self__, biglake_configurations=None, clusterings=None, creation_time=None, dataset_id=None, deletion_protection=None, description=None, effective_labels=None, encryption_configurations=None, etag=None, expiration_time=None, external_catalog_table_options=None, external_data_configurations=None, friendly_name=None, id=None, ignore_schema_changes=None, labels=None, last_modified_time=None, location=None, materialized_views=None, max_staleness=None, num_bytes=None, num_long_term_bytes=None, num_rows=None, project=None, pulumi_labels=None, range_partitionings=None, require_partition_filter=None, resource_tags=None, schema=None, schema_foreign_type_infos=None, self_link=None, table_constraints=None, table_id=None, table_metadata_view=None, table_replication_infos=None, time_partitionings=None, type=None, views=None):
         if biglake_configurations and not isinstance(biglake_configurations, list):
             raise TypeError("Expected argument 'biglake_configurations' to be a list")
         pulumi.set(__self__, "biglake_configurations", biglake_configurations)
@@ -71,6 +71,9 @@ class GetTableResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if ignore_schema_changes and not isinstance(ignore_schema_changes, list):
+            raise TypeError("Expected argument 'ignore_schema_changes' to be a list")
+        pulumi.set(__self__, "ignore_schema_changes", ignore_schema_changes)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
@@ -215,6 +218,11 @@ class GetTableResult:
         return pulumi.get(self, "id")
 
     @property
+    @pulumi.getter(name="ignoreSchemaChanges")
+    def ignore_schema_changes(self) -> Sequence[builtins.str]:
+        return pulumi.get(self, "ignore_schema_changes")
+
+    @property
     @pulumi.getter
     def labels(self) -> Mapping[str, builtins.str]:
         return pulumi.get(self, "labels")
@@ -350,6 +358,7 @@ class AwaitableGetTableResult(GetTableResult):
             external_data_configurations=self.external_data_configurations,
             friendly_name=self.friendly_name,
             id=self.id,
+            ignore_schema_changes=self.ignore_schema_changes,
             labels=self.labels,
             last_modified_time=self.last_modified_time,
             location=self.location,
@@ -423,6 +432,7 @@ def get_table(dataset_id: Optional[builtins.str] = None,
         external_data_configurations=pulumi.get(__ret__, 'external_data_configurations'),
         friendly_name=pulumi.get(__ret__, 'friendly_name'),
         id=pulumi.get(__ret__, 'id'),
+        ignore_schema_changes=pulumi.get(__ret__, 'ignore_schema_changes'),
         labels=pulumi.get(__ret__, 'labels'),
         last_modified_time=pulumi.get(__ret__, 'last_modified_time'),
         location=pulumi.get(__ret__, 'location'),
@@ -493,6 +503,7 @@ def get_table_output(dataset_id: Optional[pulumi.Input[builtins.str]] = None,
         external_data_configurations=pulumi.get(__response__, 'external_data_configurations'),
         friendly_name=pulumi.get(__response__, 'friendly_name'),
         id=pulumi.get(__response__, 'id'),
+        ignore_schema_changes=pulumi.get(__response__, 'ignore_schema_changes'),
         labels=pulumi.get(__response__, 'labels'),
         last_modified_time=pulumi.get(__response__, 'last_modified_time'),
         location=pulumi.get(__response__, 'location'),

@@ -173,16 +173,12 @@ public class PerInstanceConfig extends com.pulumi.resources.CustomResource {
     /**
      * The instance group manager this instance config is part of.
      * 
-     * ***
-     * 
      */
     @Export(name="instanceGroupManager", refs={String.class}, tree="[0]")
     private Output<String> instanceGroupManager;
 
     /**
      * @return The instance group manager this instance config is part of.
-     * 
-     * ***
      * 
      */
     public Output<String> instanceGroupManager() {

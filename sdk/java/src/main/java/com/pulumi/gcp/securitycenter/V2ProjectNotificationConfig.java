@@ -160,21 +160,33 @@ public class V2ProjectNotificationConfig extends com.pulumi.resources.CustomReso
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * The Pub/Sub topic to send notifications to. Its format is &#34;projects/[project_id]/topics/[topic]&#34;.
+     * The Pub/Sub topic to send notifications to. Its format is
+     * &#34;projects/[project_id]/topics/[topic]&#34;.
      * 
      */
     @Export(name="pubsubTopic", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> pubsubTopic;
 
     /**
-     * @return The Pub/Sub topic to send notifications to. Its format is &#34;projects/[project_id]/topics/[topic]&#34;.
+     * @return The Pub/Sub topic to send notifications to. Its format is
+     * &#34;projects/[project_id]/topics/[topic]&#34;.
      * 
      */
     public Output<Optional<String>> pubsubTopic() {

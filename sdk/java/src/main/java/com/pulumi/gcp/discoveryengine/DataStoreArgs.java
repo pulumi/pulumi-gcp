@@ -76,16 +76,12 @@ public final class DataStoreArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The unique id of the data store.
      * 
-     * ***
-     * 
      */
     @Import(name="dataStoreId", required=true)
     private Output<String> dataStoreId;
 
     /**
      * @return The unique id of the data store.
-     * 
-     * ***
      * 
      */
     public Output<String> dataStoreId() {
@@ -141,6 +137,31 @@ public final class DataStoreArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Output<String> industryVertical() {
         return this.industryVertical;
+    }
+
+    /**
+     * KMS key resource name which will be used to encrypt resources:
+     * `/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`
+     * The KMS key to be used to protect this DataStore at creation time. Must be
+     * set for requests that need to comply with CMEK Org Policy protections.
+     * If this field is set and processed successfully, the DataStore will be
+     * protected by the KMS key, as indicated in the cmek_config field.
+     * 
+     */
+    @Import(name="kmsKeyName")
+    private @Nullable Output<String> kmsKeyName;
+
+    /**
+     * @return KMS key resource name which will be used to encrypt resources:
+     * `/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`
+     * The KMS key to be used to protect this DataStore at creation time. Must be
+     * set for requests that need to comply with CMEK Org Policy protections.
+     * If this field is set and processed successfully, the DataStore will be
+     * protected by the KMS key, as indicated in the cmek_config field.
+     * 
+     */
+    public Optional<Output<String>> kmsKeyName() {
+        return Optional.ofNullable(this.kmsKeyName);
     }
 
     /**
@@ -231,6 +252,7 @@ public final class DataStoreArgs extends com.pulumi.resources.ResourceArgs {
         this.displayName = $.displayName;
         this.documentProcessingConfig = $.documentProcessingConfig;
         this.industryVertical = $.industryVertical;
+        this.kmsKeyName = $.kmsKeyName;
         this.location = $.location;
         this.project = $.project;
         this.skipDefaultSchemaCreation = $.skipDefaultSchemaCreation;
@@ -329,8 +351,6 @@ public final class DataStoreArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param dataStoreId The unique id of the data store.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -341,8 +361,6 @@ public final class DataStoreArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dataStoreId The unique id of the data store.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -418,6 +436,37 @@ public final class DataStoreArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder industryVertical(String industryVertical) {
             return industryVertical(Output.of(industryVertical));
+        }
+
+        /**
+         * @param kmsKeyName KMS key resource name which will be used to encrypt resources:
+         * `/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`
+         * The KMS key to be used to protect this DataStore at creation time. Must be
+         * set for requests that need to comply with CMEK Org Policy protections.
+         * If this field is set and processed successfully, the DataStore will be
+         * protected by the KMS key, as indicated in the cmek_config field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKeyName(@Nullable Output<String> kmsKeyName) {
+            $.kmsKeyName = kmsKeyName;
+            return this;
+        }
+
+        /**
+         * @param kmsKeyName KMS key resource name which will be used to encrypt resources:
+         * `/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`
+         * The KMS key to be used to protect this DataStore at creation time. Must be
+         * set for requests that need to comply with CMEK Org Policy protections.
+         * If this field is set and processed successfully, the DataStore will be
+         * protected by the KMS key, as indicated in the cmek_config field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKeyName(String kmsKeyName) {
+            return kmsKeyName(Output.of(kmsKeyName));
         }
 
         /**

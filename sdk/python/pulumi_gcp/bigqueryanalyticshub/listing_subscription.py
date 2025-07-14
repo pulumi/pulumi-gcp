@@ -34,6 +34,8 @@ class ListingSubscriptionArgs:
                Structure is documented below.
         :param pulumi.Input[builtins.str] listing_id: The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input[builtins.str] location: The name of the location of the data exchange. Distinct from the location of the destination data set.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "data_exchange_id", data_exchange_id)
         pulumi.set(__self__, "destination_dataset", destination_dataset)
@@ -94,6 +96,10 @@ class ListingSubscriptionArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -139,6 +145,8 @@ class _ListingSubscriptionState:
         :param pulumi.Input[builtins.str] name: The resource name of the subscription. e.g. "projects/myproject/locations/US/subscriptions/123"
         :param pulumi.Input[builtins.str] organization_display_name: Display name of the project of this subscription.
         :param pulumi.Input[builtins.str] organization_id: Organization of the project this subscription belongs to.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] resource_type: Listing shared asset type.
         :param pulumi.Input[builtins.str] state: Current state of the subscription.
         :param pulumi.Input[builtins.str] subscriber_contact: Email of the subscriber.
@@ -330,6 +338,10 @@ class _ListingSubscriptionState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -484,6 +496,8 @@ class ListingSubscription(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[builtins.str] listing_id: The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input[builtins.str] location: The name of the location of the data exchange. Distinct from the location of the destination data set.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         ...
     @overload
@@ -675,6 +689,8 @@ class ListingSubscription(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] name: The resource name of the subscription. e.g. "projects/myproject/locations/US/subscriptions/123"
         :param pulumi.Input[builtins.str] organization_display_name: Display name of the project of this subscription.
         :param pulumi.Input[builtins.str] organization_id: Organization of the project this subscription belongs to.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] resource_type: Listing shared asset type.
         :param pulumi.Input[builtins.str] state: Current state of the subscription.
         :param pulumi.Input[builtins.str] subscriber_contact: Email of the subscriber.
@@ -806,6 +822,10 @@ class ListingSubscription(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property

@@ -36,6 +36,24 @@ import * as utilities from "../utilities";
  *     skipDefaultSchemaCreation: false,
  * });
  * ```
+ * ### Discoveryengine Datastore Kms Key Name
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const kmsKeyName = new gcp.discoveryengine.DataStore("kms_key_name", {
+ *     location: "us",
+ *     dataStoreId: "data-store-id",
+ *     displayName: "tf-test-structured-datastore",
+ *     industryVertical: "GENERIC",
+ *     contentConfig: "NO_CONTENT",
+ *     solutionTypes: ["SOLUTION_TYPE_SEARCH"],
+ *     kmsKeyName: "kms-key",
+ *     createAdvancedSiteSearch: false,
+ *     skipDefaultSchemaCreation: false,
+ * });
+ * ```
  * ### Discoveryengine Datastore Document Processing Config
  *
  * ```typescript
@@ -159,9 +177,6 @@ export class DataStore extends pulumi.CustomResource {
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * The unique id of the data store.
-     *
-     *
-     * - - -
      */
     public readonly dataStoreId!: pulumi.Output<string>;
     /**
@@ -183,6 +198,15 @@ export class DataStore extends pulumi.CustomResource {
      * Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
      */
     public readonly industryVertical!: pulumi.Output<string>;
+    /**
+     * KMS key resource name which will be used to encrypt resources:
+     * `/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`
+     * The KMS key to be used to protect this DataStore at creation time. Must be
+     * set for requests that need to comply with CMEK Org Policy protections.
+     * If this field is set and processed successfully, the DataStore will be
+     * protected by the KMS key, as indicated in the cmekConfig field.
+     */
+    public readonly kmsKeyName!: pulumi.Output<string | undefined>;
     /**
      * The geographic location where the data store should reside. The value can
      * only be one of "global", "us" and "eu".
@@ -238,6 +262,7 @@ export class DataStore extends pulumi.CustomResource {
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["documentProcessingConfig"] = state ? state.documentProcessingConfig : undefined;
             resourceInputs["industryVertical"] = state ? state.industryVertical : undefined;
+            resourceInputs["kmsKeyName"] = state ? state.kmsKeyName : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -267,6 +292,7 @@ export class DataStore extends pulumi.CustomResource {
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["documentProcessingConfig"] = args ? args.documentProcessingConfig : undefined;
             resourceInputs["industryVertical"] = args ? args.industryVertical : undefined;
+            resourceInputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["skipDefaultSchemaCreation"] = args ? args.skipDefaultSchemaCreation : undefined;
@@ -306,9 +332,6 @@ export interface DataStoreState {
     createTime?: pulumi.Input<string>;
     /**
      * The unique id of the data store.
-     *
-     *
-     * - - -
      */
     dataStoreId?: pulumi.Input<string>;
     /**
@@ -330,6 +353,15 @@ export interface DataStoreState {
      * Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
      */
     industryVertical?: pulumi.Input<string>;
+    /**
+     * KMS key resource name which will be used to encrypt resources:
+     * `/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`
+     * The KMS key to be used to protect this DataStore at creation time. Must be
+     * set for requests that need to comply with CMEK Org Policy protections.
+     * If this field is set and processed successfully, the DataStore will be
+     * protected by the KMS key, as indicated in the cmekConfig field.
+     */
+    kmsKeyName?: pulumi.Input<string>;
     /**
      * The geographic location where the data store should reside. The value can
      * only be one of "global", "us" and "eu".
@@ -386,9 +418,6 @@ export interface DataStoreArgs {
     createAdvancedSiteSearch?: pulumi.Input<boolean>;
     /**
      * The unique id of the data store.
-     *
-     *
-     * - - -
      */
     dataStoreId: pulumi.Input<string>;
     /**
@@ -406,6 +435,15 @@ export interface DataStoreArgs {
      * Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
      */
     industryVertical: pulumi.Input<string>;
+    /**
+     * KMS key resource name which will be used to encrypt resources:
+     * `/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`
+     * The KMS key to be used to protect this DataStore at creation time. Must be
+     * set for requests that need to comply with CMEK Org Policy protections.
+     * If this field is set and processed successfully, the DataStore will be
+     * protected by the KMS key, as indicated in the cmekConfig field.
+     */
+    kmsKeyName?: pulumi.Input<string>;
     /**
      * The geographic location where the data store should reside. The value can
      * only be one of "global", "us" and "eu".

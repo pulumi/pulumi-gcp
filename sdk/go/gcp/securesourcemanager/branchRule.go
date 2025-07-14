@@ -170,8 +170,6 @@ type BranchRule struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The ID for the Repository.
-	//
-	// ***
 	RepositoryId pulumi.StringOutput `pulumi:"repositoryId"`
 	// Determines if require comments resolved before merging to the branch.
 	RequireCommentsResolved pulumi.BoolPtrOutput `pulumi:"requireCommentsResolved"`
@@ -249,8 +247,6 @@ type branchRuleState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The ID for the Repository.
-	//
-	// ***
 	RepositoryId *string `pulumi:"repositoryId"`
 	// Determines if require comments resolved before merging to the branch.
 	RequireCommentsResolved *bool `pulumi:"requireCommentsResolved"`
@@ -287,8 +283,6 @@ type BranchRuleState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The ID for the Repository.
-	//
-	// ***
 	RepositoryId pulumi.StringPtrInput
 	// Determines if require comments resolved before merging to the branch.
 	RequireCommentsResolved pulumi.BoolPtrInput
@@ -325,8 +319,6 @@ type branchRuleArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The ID for the Repository.
-	//
-	// ***
 	RepositoryId string `pulumi:"repositoryId"`
 	// Determines if require comments resolved before merging to the branch.
 	RequireCommentsResolved *bool `pulumi:"requireCommentsResolved"`
@@ -356,8 +348,6 @@ type BranchRuleArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The ID for the Repository.
-	//
-	// ***
 	RepositoryId pulumi.StringInput
 	// Determines if require comments resolved before merging to the branch.
 	RequireCommentsResolved pulumi.BoolPtrInput
@@ -506,8 +496,6 @@ func (o BranchRuleOutput) Project() pulumi.StringOutput {
 }
 
 // The ID for the Repository.
-//
-// ***
 func (o BranchRuleOutput) RepositoryId() pulumi.StringOutput {
 	return o.ApplyT(func(v *BranchRule) pulumi.StringOutput { return v.RepositoryId }).(pulumi.StringOutput)
 }

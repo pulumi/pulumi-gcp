@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.BackupDisasterRecovery.Inputs
         /// <summary>
         /// The hour of the day (1-24) when the window ends, for example, if the value of end hour of the day is 10, that means the backup window end time is 10:00.
         /// The end hour of the day should be greater than the start
-        /// 
-        /// - - -
         /// </summary>
         [Input("endHourOfDay")]
         public Input<int>? EndHourOfDay { get; set; }

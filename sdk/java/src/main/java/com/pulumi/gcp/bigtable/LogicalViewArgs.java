@@ -50,16 +50,12 @@ public final class LogicalViewArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The unique name of the logical view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
      * 
-     * ***
-     * 
      */
     @Import(name="logicalViewId", required=true)
     private Output<String> logicalViewId;
 
     /**
      * @return The unique name of the logical view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-     * 
-     * ***
      * 
      */
     public Output<String> logicalViewId() {
@@ -171,8 +167,6 @@ public final class LogicalViewArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param logicalViewId The unique name of the logical view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -183,8 +177,6 @@ public final class LogicalViewArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param logicalViewId The unique name of the logical view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -163,8 +163,6 @@ public class GitRepositoryLink extends com.pulumi.resources.CustomResource {
      * the repository&#39;s resource name. This ID should be unique in the connection.
      * Allows alphanumeric characters and any of -._~%!$&amp;&#39;()*+,;={@literal @}.
      * 
-     * ***
-     * 
      */
     @Export(name="gitRepositoryLinkId", refs={String.class}, tree="[0]")
     private Output<String> gitRepositoryLinkId;
@@ -173,8 +171,6 @@ public class GitRepositoryLink extends com.pulumi.resources.CustomResource {
      * @return Required. The ID to use for the repository, which will become the final component of
      * the repository&#39;s resource name. This ID should be unique in the connection.
      * Allows alphanumeric characters and any of -._~%!$&amp;&#39;()*+,;={@literal @}.
-     * 
-     * ***
      * 
      */
     public Output<String> gitRepositoryLinkId() {

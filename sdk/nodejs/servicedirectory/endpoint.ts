@@ -128,9 +128,6 @@ export class Endpoint extends pulumi.CustomResource {
     /**
      * The Resource ID must be 1-63 characters long, including digits,
      * lowercase letters or the hyphen character.
-     *
-     *
-     * - - -
      */
     public readonly endpointId!: pulumi.Output<string>;
     /**
@@ -211,9 +208,6 @@ export interface EndpointState {
     /**
      * The Resource ID must be 1-63 characters long, including digits,
      * lowercase letters or the hyphen character.
-     *
-     *
-     * - - -
      */
     endpointId?: pulumi.Input<string>;
     /**
@@ -254,9 +248,6 @@ export interface EndpointArgs {
     /**
      * The Resource ID must be 1-63 characters long, including digits,
      * lowercase letters or the hyphen character.
-     *
-     *
-     * - - -
      */
     endpointId: pulumi.Input<string>;
     /**

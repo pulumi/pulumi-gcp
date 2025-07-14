@@ -168,9 +168,6 @@ export class BranchRule extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * The ID for the Repository.
-     *
-     *
-     * - - -
      */
     public readonly repositoryId!: pulumi.Output<string>;
     /**
@@ -306,9 +303,6 @@ export interface BranchRuleState {
     project?: pulumi.Input<string>;
     /**
      * The ID for the Repository.
-     *
-     *
-     * - - -
      */
     repositoryId?: pulumi.Input<string>;
     /**
@@ -372,9 +366,6 @@ export interface BranchRuleArgs {
     project?: pulumi.Input<string>;
     /**
      * The ID for the Repository.
-     *
-     *
-     * - - -
      */
     repositoryId: pulumi.Input<string>;
     /**

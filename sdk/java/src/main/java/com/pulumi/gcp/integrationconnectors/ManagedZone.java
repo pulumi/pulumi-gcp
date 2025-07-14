@@ -235,16 +235,12 @@ public class ManagedZone extends com.pulumi.resources.CustomResource {
     /**
      * Name of Managed Zone needs to be created.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return Name of Managed Zone needs to be created.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

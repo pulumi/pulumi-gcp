@@ -27,9 +27,6 @@ class AddonsConfigArgs:
         """
         The set of arguments for constructing a AddonsConfig resource.
         :param pulumi.Input[builtins.str] org: Name of the Apigee organization.
-               
-               
-               - - -
         :param pulumi.Input['AddonsConfigAddonsConfigArgs'] addons_config: Addon configurations of the Apigee organization.
                Structure is documented below.
         """
@@ -42,9 +39,6 @@ class AddonsConfigArgs:
     def org(self) -> pulumi.Input[builtins.str]:
         """
         Name of the Apigee organization.
-
-
-        - - -
         """
         return pulumi.get(self, "org")
 
@@ -76,9 +70,6 @@ class _AddonsConfigState:
         :param pulumi.Input['AddonsConfigAddonsConfigArgs'] addons_config: Addon configurations of the Apigee organization.
                Structure is documented below.
         :param pulumi.Input[builtins.str] org: Name of the Apigee organization.
-               
-               
-               - - -
         """
         if addons_config is not None:
             pulumi.set(__self__, "addons_config", addons_config)
@@ -103,9 +94,6 @@ class _AddonsConfigState:
     def org(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Name of the Apigee organization.
-
-
-        - - -
         """
         return pulumi.get(self, "org")
 
@@ -235,9 +223,6 @@ class AddonsConfig(pulumi.CustomResource):
         :param pulumi.Input[Union['AddonsConfigAddonsConfigArgs', 'AddonsConfigAddonsConfigArgsDict']] addons_config: Addon configurations of the Apigee organization.
                Structure is documented below.
         :param pulumi.Input[builtins.str] org: Name of the Apigee organization.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -404,9 +389,6 @@ class AddonsConfig(pulumi.CustomResource):
         :param pulumi.Input[Union['AddonsConfigAddonsConfigArgs', 'AddonsConfigAddonsConfigArgsDict']] addons_config: Addon configurations of the Apigee organization.
                Structure is documented below.
         :param pulumi.Input[builtins.str] org: Name of the Apigee organization.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -430,9 +412,6 @@ class AddonsConfig(pulumi.CustomResource):
     def org(self) -> pulumi.Output[builtins.str]:
         """
         Name of the Apigee organization.
-
-
-        - - -
         """
         return pulumi.get(self, "org")
 

@@ -83,9 +83,10 @@ type Workspace struct {
 	Dataset pulumi.StringOutput `pulumi:"dataset"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
-	// The user labels. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg",
-	// "count": "3" } **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
+	// The user labels. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the workspace, in the format 'projects/{projectId}/locations/{location}/datasets/{datasetId}/dataMapperWorkspaces/{workspaceId}'
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -143,9 +144,10 @@ type workspaceState struct {
 	Dataset *string `pulumi:"dataset"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
-	// The user labels. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg",
-	// "count": "3" } **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
+	// The user labels. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the workspace, in the format 'projects/{projectId}/locations/{location}/datasets/{datasetId}/dataMapperWorkspaces/{workspaceId}'
 	Name *string `pulumi:"name"`
@@ -163,9 +165,10 @@ type WorkspaceState struct {
 	Dataset pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
-	// The user labels. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg",
-	// "count": "3" } **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
+	// The user labels. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The name of the workspace, in the format 'projects/{projectId}/locations/{location}/datasets/{datasetId}/dataMapperWorkspaces/{workspaceId}'
 	Name pulumi.StringPtrInput
@@ -185,9 +188,10 @@ type workspaceArgs struct {
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
 	Dataset string `pulumi:"dataset"`
-	// The user labels. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg",
-	// "count": "3" } **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
+	// The user labels. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the workspace, in the format 'projects/{projectId}/locations/{location}/datasets/{datasetId}/dataMapperWorkspaces/{workspaceId}'
 	Name *string `pulumi:"name"`
@@ -201,9 +205,10 @@ type WorkspaceArgs struct {
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
 	Dataset pulumi.StringInput
-	// The user labels. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg",
-	// "count": "3" } **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
+	// The user labels. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The name of the workspace, in the format 'projects/{projectId}/locations/{location}/datasets/{datasetId}/dataMapperWorkspaces/{workspaceId}'
 	Name pulumi.StringPtrInput
@@ -310,9 +315,10 @@ func (o WorkspaceOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
-// The user labels. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg",
-// "count": "3" } **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-// Please refer to the field 'effective_labels' for all of the labels present on the resource.
+// The user labels. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o WorkspaceOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }

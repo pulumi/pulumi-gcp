@@ -32,6 +32,7 @@ public final class VmwareAdminClusterState extends com.pulumi.resources.Resource
 
     /**
      * The VMware admin cluster addon node configuration.
+     * Structure is documented below.
      * 
      */
     @Import(name="addonNode")
@@ -39,6 +40,7 @@ public final class VmwareAdminClusterState extends com.pulumi.resources.Resource
 
     /**
      * @return The VMware admin cluster addon node configuration.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<VmwareAdminClusterAddonNodeArgs>> addonNode() {
@@ -46,24 +48,34 @@ public final class VmwareAdminClusterState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Annotations on the VMware Admin Cluster. This field has the same restrictions as Kubernetes annotations. The total size
-     * of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-     * &#39;effective_annotations&#39; for all of the annotations present on the resource.
+     * Annotations on the VMware Admin Cluster.
+     * This field has the same restrictions as Kubernetes annotations.
+     * The total size of all keys and values combined is limited to 256k.
+     * Key can have 2 segments: prefix (optional) and name (required),
+     * separated by a slash (/).
+     * Prefix must be a DNS subdomain.
+     * Name must be 63 characters or less, begin and end with alphanumerics,
+     * with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     @Import(name="annotations")
     private @Nullable Output<Map<String,String>> annotations;
 
     /**
-     * @return Annotations on the VMware Admin Cluster. This field has the same restrictions as Kubernetes annotations. The total size
-     * of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-     * &#39;effective_annotations&#39; for all of the annotations present on the resource.
+     * @return Annotations on the VMware Admin Cluster.
+     * This field has the same restrictions as Kubernetes annotations.
+     * The total size of all keys and values combined is limited to 256k.
+     * Key can have 2 segments: prefix (optional) and name (required),
+     * separated by a slash (/).
+     * Prefix must be a DNS subdomain.
+     * Name must be 63 characters or less, begin and end with alphanumerics,
+     * with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -71,14 +83,18 @@ public final class VmwareAdminClusterState extends com.pulumi.resources.Resource
     }
 
     /**
-     * AAGConfig specifies whether to spread VMware Admin Cluster nodes across at least three physical hosts in the datacenter.
+     * AAGConfig specifies whether to spread VMware Admin Cluster nodes across at
+     * least three physical hosts in the datacenter.
+     * Structure is documented below.
      * 
      */
     @Import(name="antiAffinityGroups")
     private @Nullable Output<VmwareAdminClusterAntiAffinityGroupsArgs> antiAffinityGroups;
 
     /**
-     * @return AAGConfig specifies whether to spread VMware Admin Cluster nodes across at least three physical hosts in the datacenter.
+     * @return AAGConfig specifies whether to spread VMware Admin Cluster nodes across at
+     * least three physical hosts in the datacenter.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<VmwareAdminClusterAntiAffinityGroupsArgs>> antiAffinityGroups() {
@@ -87,6 +103,7 @@ public final class VmwareAdminClusterState extends com.pulumi.resources.Resource
 
     /**
      * The VMware admin cluster authorization configuration.
+     * Structure is documented below.
      * 
      */
     @Import(name="authorization")
@@ -94,6 +111,7 @@ public final class VmwareAdminClusterState extends com.pulumi.resources.Resource
 
     /**
      * @return The VMware admin cluster authorization configuration.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<VmwareAdminClusterAuthorizationArgs>> authorization() {
@@ -102,6 +120,7 @@ public final class VmwareAdminClusterState extends com.pulumi.resources.Resource
 
     /**
      * Configuration for auto repairing.
+     * Structure is documented below.
      * 
      */
     @Import(name="autoRepairConfig")
@@ -109,6 +128,7 @@ public final class VmwareAdminClusterState extends com.pulumi.resources.Resource
 
     /**
      * @return Configuration for auto repairing.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<VmwareAdminClusterAutoRepairConfigArgs>> autoRepairConfig() {
@@ -132,6 +152,7 @@ public final class VmwareAdminClusterState extends com.pulumi.resources.Resource
 
     /**
      * The VMware admin cluster control plane node configuration.
+     * Structure is documented below.
      * 
      */
     @Import(name="controlPlaneNode")
@@ -139,6 +160,7 @@ public final class VmwareAdminClusterState extends com.pulumi.resources.Resource
 
     /**
      * @return The VMware admin cluster control plane node configuration.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<VmwareAdminClusterControlPlaneNodeArgs>> controlPlaneNode() {
@@ -269,6 +291,7 @@ public final class VmwareAdminClusterState extends com.pulumi.resources.Resource
 
     /**
      * Specifies the load balancer configuration for VMware admin cluster.
+     * Structure is documented below.
      * 
      */
     @Import(name="loadBalancer")
@@ -276,6 +299,7 @@ public final class VmwareAdminClusterState extends com.pulumi.resources.Resource
 
     /**
      * @return Specifies the load balancer configuration for VMware admin cluster.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<VmwareAdminClusterLoadBalancerArgs>> loadBalancer() {
@@ -379,6 +403,7 @@ public final class VmwareAdminClusterState extends com.pulumi.resources.Resource
 
     /**
      * The VMware platform configuration.
+     * Structure is documented below.
      * 
      */
     @Import(name="platformConfig")
@@ -386,6 +411,7 @@ public final class VmwareAdminClusterState extends com.pulumi.resources.Resource
 
     /**
      * @return The VMware platform configuration.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<VmwareAdminClusterPlatformConfigArgs>> platformConfig() {
@@ -394,6 +420,7 @@ public final class VmwareAdminClusterState extends com.pulumi.resources.Resource
 
     /**
      * Configuration for private registry.
+     * Structure is documented below.
      * 
      */
     @Import(name="privateRegistryConfig")
@@ -401,15 +428,26 @@ public final class VmwareAdminClusterState extends com.pulumi.resources.Resource
 
     /**
      * @return Configuration for private registry.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<VmwareAdminClusterPrivateRegistryConfigArgs>> privateRegistryConfig() {
         return Optional.ofNullable(this.privateRegistryConfig);
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -495,6 +533,7 @@ public final class VmwareAdminClusterState extends com.pulumi.resources.Resource
 
     /**
      * Specifies vCenter config for the admin cluster.
+     * Structure is documented below.
      * 
      */
     @Import(name="vcenter")
@@ -502,6 +541,7 @@ public final class VmwareAdminClusterState extends com.pulumi.resources.Resource
 
     /**
      * @return Specifies vCenter config for the admin cluster.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<VmwareAdminClusterVcenterArgs>> vcenter() {
@@ -563,6 +603,7 @@ public final class VmwareAdminClusterState extends com.pulumi.resources.Resource
 
         /**
          * @param addonNode The VMware admin cluster addon node configuration.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -574,6 +615,7 @@ public final class VmwareAdminClusterState extends com.pulumi.resources.Resource
 
         /**
          * @param addonNode The VMware admin cluster addon node configuration.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -583,12 +625,17 @@ public final class VmwareAdminClusterState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param annotations Annotations on the VMware Admin Cluster. This field has the same restrictions as Kubernetes annotations. The total size
-         * of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-         * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-         * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-         * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-         * &#39;effective_annotations&#39; for all of the annotations present on the resource.
+         * @param annotations Annotations on the VMware Admin Cluster.
+         * This field has the same restrictions as Kubernetes annotations.
+         * The total size of all keys and values combined is limited to 256k.
+         * Key can have 2 segments: prefix (optional) and name (required),
+         * separated by a slash (/).
+         * Prefix must be a DNS subdomain.
+         * Name must be 63 characters or less, begin and end with alphanumerics,
+         * with dashes (-), underscores (_), dots (.), and alphanumerics between.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -599,12 +646,17 @@ public final class VmwareAdminClusterState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param annotations Annotations on the VMware Admin Cluster. This field has the same restrictions as Kubernetes annotations. The total size
-         * of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-         * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-         * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-         * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-         * &#39;effective_annotations&#39; for all of the annotations present on the resource.
+         * @param annotations Annotations on the VMware Admin Cluster.
+         * This field has the same restrictions as Kubernetes annotations.
+         * The total size of all keys and values combined is limited to 256k.
+         * Key can have 2 segments: prefix (optional) and name (required),
+         * separated by a slash (/).
+         * Prefix must be a DNS subdomain.
+         * Name must be 63 characters or less, begin and end with alphanumerics,
+         * with dashes (-), underscores (_), dots (.), and alphanumerics between.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -614,7 +666,9 @@ public final class VmwareAdminClusterState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param antiAffinityGroups AAGConfig specifies whether to spread VMware Admin Cluster nodes across at least three physical hosts in the datacenter.
+         * @param antiAffinityGroups AAGConfig specifies whether to spread VMware Admin Cluster nodes across at
+         * least three physical hosts in the datacenter.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -625,7 +679,9 @@ public final class VmwareAdminClusterState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param antiAffinityGroups AAGConfig specifies whether to spread VMware Admin Cluster nodes across at least three physical hosts in the datacenter.
+         * @param antiAffinityGroups AAGConfig specifies whether to spread VMware Admin Cluster nodes across at
+         * least three physical hosts in the datacenter.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -636,6 +692,7 @@ public final class VmwareAdminClusterState extends com.pulumi.resources.Resource
 
         /**
          * @param authorization The VMware admin cluster authorization configuration.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -647,6 +704,7 @@ public final class VmwareAdminClusterState extends com.pulumi.resources.Resource
 
         /**
          * @param authorization The VMware admin cluster authorization configuration.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -657,6 +715,7 @@ public final class VmwareAdminClusterState extends com.pulumi.resources.Resource
 
         /**
          * @param autoRepairConfig Configuration for auto repairing.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -668,6 +727,7 @@ public final class VmwareAdminClusterState extends com.pulumi.resources.Resource
 
         /**
          * @param autoRepairConfig Configuration for auto repairing.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -699,6 +759,7 @@ public final class VmwareAdminClusterState extends com.pulumi.resources.Resource
 
         /**
          * @param controlPlaneNode The VMware admin cluster control plane node configuration.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -710,6 +771,7 @@ public final class VmwareAdminClusterState extends com.pulumi.resources.Resource
 
         /**
          * @param controlPlaneNode The VMware admin cluster control plane node configuration.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -897,6 +959,7 @@ public final class VmwareAdminClusterState extends com.pulumi.resources.Resource
 
         /**
          * @param loadBalancer Specifies the load balancer configuration for VMware admin cluster.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -908,6 +971,7 @@ public final class VmwareAdminClusterState extends com.pulumi.resources.Resource
 
         /**
          * @param loadBalancer Specifies the load balancer configuration for VMware admin cluster.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -1043,6 +1107,7 @@ public final class VmwareAdminClusterState extends com.pulumi.resources.Resource
 
         /**
          * @param platformConfig The VMware platform configuration.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -1054,6 +1119,7 @@ public final class VmwareAdminClusterState extends com.pulumi.resources.Resource
 
         /**
          * @param platformConfig The VMware platform configuration.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -1064,6 +1130,7 @@ public final class VmwareAdminClusterState extends com.pulumi.resources.Resource
 
         /**
          * @param privateRegistryConfig Configuration for private registry.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -1075,6 +1142,7 @@ public final class VmwareAdminClusterState extends com.pulumi.resources.Resource
 
         /**
          * @param privateRegistryConfig Configuration for private registry.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -1083,11 +1151,25 @@ public final class VmwareAdminClusterState extends com.pulumi.resources.Resource
             return privateRegistryConfig(Output.of(privateRegistryConfig));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
@@ -1214,6 +1296,7 @@ public final class VmwareAdminClusterState extends com.pulumi.resources.Resource
 
         /**
          * @param vcenter Specifies vCenter config for the admin cluster.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -1225,6 +1308,7 @@ public final class VmwareAdminClusterState extends com.pulumi.resources.Resource
 
         /**
          * @param vcenter Specifies vCenter config for the admin cluster.
+         * Structure is documented below.
          * 
          * @return builder
          * 

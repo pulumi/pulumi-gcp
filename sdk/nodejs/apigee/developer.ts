@@ -188,9 +188,6 @@ export class Developer extends pulumi.CustomResource {
     /**
      * The Apigee Organization associated with the Apigee instance,
      * in the format `organizations/{{org_name}}`.
-     *
-     *
-     * - - -
      */
     public readonly orgId!: pulumi.Output<string>;
     /**
@@ -294,9 +291,6 @@ export interface DeveloperState {
     /**
      * The Apigee Organization associated with the Apigee instance,
      * in the format `organizations/{{org_name}}`.
-     *
-     *
-     * - - -
      */
     orgId?: pulumi.Input<string>;
     /**
@@ -337,9 +331,6 @@ export interface DeveloperArgs {
     /**
      * The Apigee Organization associated with the Apigee instance,
      * in the format `organizations/{{org_name}}`.
-     *
-     *
-     * - - -
      */
     orgId: pulumi.Input<string>;
     /**

@@ -77,8 +77,6 @@ type ControlProjectIntelligenceConfig struct {
 	// Structure is documented below.
 	Filter ControlProjectIntelligenceConfigFilterPtrOutput `pulumi:"filter"`
 	// Identifier of the GCP project. For GCP project, this field can be project name or project number.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The trial configuration of the Storage Intelligence resource.
 	// Structure is documented below.
@@ -126,8 +124,6 @@ type controlProjectIntelligenceConfigState struct {
 	// Structure is documented below.
 	Filter *ControlProjectIntelligenceConfigFilter `pulumi:"filter"`
 	// Identifier of the GCP project. For GCP project, this field can be project name or project number.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The trial configuration of the Storage Intelligence resource.
 	// Structure is documented below.
@@ -146,8 +142,6 @@ type ControlProjectIntelligenceConfigState struct {
 	// Structure is documented below.
 	Filter ControlProjectIntelligenceConfigFilterPtrInput
 	// Identifier of the GCP project. For GCP project, this field can be project name or project number.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The trial configuration of the Storage Intelligence resource.
 	// Structure is documented below.
@@ -167,8 +161,6 @@ type controlProjectIntelligenceConfigArgs struct {
 	// Structure is documented below.
 	Filter *ControlProjectIntelligenceConfigFilter `pulumi:"filter"`
 	// Identifier of the GCP project. For GCP project, this field can be project name or project number.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 }
 
@@ -180,8 +172,6 @@ type ControlProjectIntelligenceConfigArgs struct {
 	// Structure is documented below.
 	Filter ControlProjectIntelligenceConfigFilterPtrInput
 	// Identifier of the GCP project. For GCP project, this field can be project name or project number.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 }
 
@@ -294,8 +284,6 @@ func (o ControlProjectIntelligenceConfigOutput) Filter() ControlProjectIntellige
 }
 
 // Identifier of the GCP project. For GCP project, this field can be project name or project number.
-//
-// ***
 func (o ControlProjectIntelligenceConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ControlProjectIntelligenceConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

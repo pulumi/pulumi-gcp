@@ -32,9 +32,6 @@ class V2OrganizationSourceArgs:
                and underscores, and can be no longer than 32 characters.
         :param pulumi.Input[builtins.str] organization: The organization whose Cloud Security Command Center the Source
                lives in.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] description: The description of the source (max of 1024 characters).
         """
         pulumi.set(__self__, "display_name", display_name)
@@ -64,9 +61,6 @@ class V2OrganizationSourceArgs:
         """
         The organization whose Cloud Security Command Center the Source
         lives in.
-
-
-        - - -
         """
         return pulumi.get(self, "organization")
 
@@ -106,9 +100,6 @@ class _V2OrganizationSourceState:
                `organizations/{{organization}}/sources/{{source}}`.
         :param pulumi.Input[builtins.str] organization: The organization whose Cloud Security Command Center the Source
                lives in.
-               
-               
-               - - -
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -166,9 +157,6 @@ class _V2OrganizationSourceState:
         """
         The organization whose Cloud Security Command Center the Source
         lives in.
-
-
-        - - -
         """
         return pulumi.get(self, "organization")
 
@@ -241,9 +229,6 @@ class V2OrganizationSource(pulumi.CustomResource):
                and underscores, and can be no longer than 32 characters.
         :param pulumi.Input[builtins.str] organization: The organization whose Cloud Security Command Center the Source
                lives in.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -361,9 +346,6 @@ class V2OrganizationSource(pulumi.CustomResource):
                `organizations/{{organization}}/sources/{{source}}`.
         :param pulumi.Input[builtins.str] organization: The organization whose Cloud Security Command Center the Source
                lives in.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -410,9 +392,6 @@ class V2OrganizationSource(pulumi.CustomResource):
         """
         The organization whose Cloud Security Command Center the Source
         lives in.
-
-
-        - - -
         """
         return pulumi.get(self, "organization")
 

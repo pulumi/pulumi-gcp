@@ -31,9 +31,6 @@ class MachineImageArgs:
         """
         The set of arguments for constructing a MachineImage resource.
         :param pulumi.Input[builtins.str] source_instance: The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] description: A text description of the resource.
         :param pulumi.Input[builtins.bool] guest_flush: Specify this to create an application consistent machine image by informing the OS to prepare for the snapshot process.
                Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
@@ -63,9 +60,6 @@ class MachineImageArgs:
     def source_instance(self) -> pulumi.Input[builtins.str]:
         """
         The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
-
-
-        - - -
         """
         return pulumi.get(self, "source_instance")
 
@@ -166,9 +160,6 @@ class _MachineImageState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] self_link: The URI of the created resource.
         :param pulumi.Input[builtins.str] source_instance: The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] storage_locations: The regional or multi-regional Cloud Storage bucket location where the machine image is stored.
         """
         if description is not None:
@@ -271,9 +262,6 @@ class _MachineImageState:
     def source_instance(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
-
-
-        - - -
         """
         return pulumi.get(self, "source_instance")
 
@@ -410,9 +398,6 @@ class MachineImage(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] source_instance: The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -587,9 +572,6 @@ class MachineImage(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] self_link: The URI of the created resource.
         :param pulumi.Input[builtins.str] source_instance: The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] storage_locations: The regional or multi-regional Cloud Storage bucket location where the machine image is stored.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -665,9 +647,6 @@ class MachineImage(pulumi.CustomResource):
     def source_instance(self) -> pulumi.Output[builtins.str]:
         """
         The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
-
-
-        - - -
         """
         return pulumi.get(self, "source_instance")
 

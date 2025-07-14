@@ -56,16 +56,12 @@ public final class BackupArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
      * 
-     * ***
-     * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
      * @return The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {
@@ -249,8 +245,6 @@ public final class BackupArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param location The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -261,8 +255,6 @@ public final class BackupArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
-         * 
-         * ***
          * 
          * @return builder
          * 

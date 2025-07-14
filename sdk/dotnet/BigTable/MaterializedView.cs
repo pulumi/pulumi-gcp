@@ -118,9 +118,6 @@ namespace Pulumi.Gcp.BigTable
 
         /// <summary>
         /// The unique name of the materialized view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("materializedViewId")]
         public Output<string> MaterializedViewId { get; private set; } = null!;
@@ -204,9 +201,6 @@ namespace Pulumi.Gcp.BigTable
 
         /// <summary>
         /// The unique name of the materialized view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("materializedViewId", required: true)]
         public Input<string> MaterializedViewId { get; set; } = null!;
@@ -246,9 +240,6 @@ namespace Pulumi.Gcp.BigTable
 
         /// <summary>
         /// The unique name of the materialized view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("materializedViewId")]
         public Input<string>? MaterializedViewId { get; set; }

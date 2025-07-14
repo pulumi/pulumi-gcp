@@ -228,9 +228,6 @@ namespace Pulumi.Gcp.SecretManager
 
         /// <summary>
         /// Secret Manager secret resource
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("secret")]
         public Output<string> Secret { get; private set; } = null!;
@@ -329,9 +326,6 @@ namespace Pulumi.Gcp.SecretManager
 
         /// <summary>
         /// Secret Manager secret resource
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("secret", required: true)]
         public Input<string> Secret { get; set; } = null!;
@@ -411,9 +405,6 @@ namespace Pulumi.Gcp.SecretManager
 
         /// <summary>
         /// Secret Manager secret resource
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("secret")]
         public Input<string>? Secret { get; set; }

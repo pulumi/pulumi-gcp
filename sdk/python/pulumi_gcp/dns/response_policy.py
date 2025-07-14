@@ -30,9 +30,6 @@ class ResponsePolicyArgs:
         """
         The set of arguments for constructing a ResponsePolicy resource.
         :param pulumi.Input[builtins.str] response_policy_name: The user assigned name for this Response Policy, such as `myresponsepolicy`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] description: The description of the response policy, such as `My new response policy`.
         :param pulumi.Input[Sequence[pulumi.Input['ResponsePolicyGkeClusterArgs']]] gke_clusters: The list of Google Kubernetes Engine clusters that can see this zone.
                Structure is documented below.
@@ -56,9 +53,6 @@ class ResponsePolicyArgs:
     def response_policy_name(self) -> pulumi.Input[builtins.str]:
         """
         The user assigned name for this Response Policy, such as `myresponsepolicy`.
-
-
-        - - -
         """
         return pulumi.get(self, "response_policy_name")
 
@@ -136,9 +130,6 @@ class _ResponsePolicyState:
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] response_policy_name: The user assigned name for this Response Policy, such as `myresponsepolicy`.
-               
-               
-               - - -
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -207,9 +198,6 @@ class _ResponsePolicyState:
     def response_policy_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The user assigned name for this Response Policy, such as `myresponsepolicy`.
-
-
-        - - -
         """
         return pulumi.get(self, "response_policy_name")
 
@@ -337,9 +325,6 @@ class ResponsePolicy(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] response_policy_name: The user assigned name for this Response Policy, such as `myresponsepolicy`.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -510,9 +495,6 @@ class ResponsePolicy(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] response_policy_name: The user assigned name for this Response Policy, such as `myresponsepolicy`.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -565,9 +547,6 @@ class ResponsePolicy(pulumi.CustomResource):
     def response_policy_name(self) -> pulumi.Output[builtins.str]:
         """
         The user assigned name for this Response Policy, such as `myresponsepolicy`.
-
-
-        - - -
         """
         return pulumi.get(self, "response_policy_name")
 

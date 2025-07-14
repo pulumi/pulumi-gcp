@@ -33,9 +33,19 @@ public final class RouterRoutePolicyArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -88,16 +98,16 @@ public final class RouterRoutePolicyArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * This is policy&#39;s type, which is one of IMPORT or EXPORT Possible values: [&#34;ROUTE_POLICY_TYPE_IMPORT&#34;,
-     * &#34;ROUTE_POLICY_TYPE_EXPORT&#34;]
+     * This is policy&#39;s type, which is one of IMPORT or EXPORT
+     * Possible values are: `ROUTE_POLICY_TYPE_IMPORT`, `ROUTE_POLICY_TYPE_EXPORT`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return This is policy&#39;s type, which is one of IMPORT or EXPORT Possible values: [&#34;ROUTE_POLICY_TYPE_IMPORT&#34;,
-     * &#34;ROUTE_POLICY_TYPE_EXPORT&#34;]
+     * @return This is policy&#39;s type, which is one of IMPORT or EXPORT
+     * Possible values are: `ROUTE_POLICY_TYPE_IMPORT`, `ROUTE_POLICY_TYPE_EXPORT`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -154,11 +164,25 @@ public final class RouterRoutePolicyArgs extends com.pulumi.resources.ResourceAr
             return name(Output.of(name));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
@@ -240,8 +264,8 @@ public final class RouterRoutePolicyArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param type This is policy&#39;s type, which is one of IMPORT or EXPORT Possible values: [&#34;ROUTE_POLICY_TYPE_IMPORT&#34;,
-         * &#34;ROUTE_POLICY_TYPE_EXPORT&#34;]
+         * @param type This is policy&#39;s type, which is one of IMPORT or EXPORT
+         * Possible values are: `ROUTE_POLICY_TYPE_IMPORT`, `ROUTE_POLICY_TYPE_EXPORT`.
          * 
          * @return builder
          * 
@@ -252,8 +276,8 @@ public final class RouterRoutePolicyArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param type This is policy&#39;s type, which is one of IMPORT or EXPORT Possible values: [&#34;ROUTE_POLICY_TYPE_IMPORT&#34;,
-         * &#34;ROUTE_POLICY_TYPE_EXPORT&#34;]
+         * @param type This is policy&#39;s type, which is one of IMPORT or EXPORT
+         * Possible values are: `ROUTE_POLICY_TYPE_IMPORT`, `ROUTE_POLICY_TYPE_EXPORT`.
          * 
          * @return builder
          * 

@@ -106,16 +106,12 @@ public final class RegionalParameterArgs extends com.pulumi.resources.ResourceAr
     /**
      * This must be unique within the project.
      * 
-     * ***
-     * 
      */
     @Import(name="parameterId", required=true)
     private Output<String> parameterId;
 
     /**
      * @return This must be unique within the project.
-     * 
-     * ***
      * 
      */
     public Output<String> parameterId() {
@@ -281,8 +277,6 @@ public final class RegionalParameterArgs extends com.pulumi.resources.ResourceAr
         /**
          * @param parameterId This must be unique within the project.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -293,8 +287,6 @@ public final class RegionalParameterArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param parameterId This must be unique within the project.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -990,9 +990,6 @@ export class ForwardingRule extends pulumi.CustomResource {
      * For Private Service Connect forwarding rules that forward traffic to Google
      * APIs, the forwarding rule name must be a 1-20 characters string with
      * lowercase letters and numbers and must start with a letter.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -1415,9 +1412,6 @@ export interface ForwardingRuleState {
      * For Private Service Connect forwarding rules that forward traffic to Google
      * APIs, the forwarding rule name must be a 1-20 characters string with
      * lowercase letters and numbers and must start with a letter.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -1725,9 +1719,6 @@ export interface ForwardingRuleArgs {
      * For Private Service Connect forwarding rules that forward traffic to Google
      * APIs, the forwarding rule name must be a 1-20 characters string with
      * lowercase letters and numbers and must start with a letter.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

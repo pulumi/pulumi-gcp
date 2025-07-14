@@ -98,8 +98,6 @@ type ReleaseChannelSetting struct {
 	// EXPERIMENTAL
 	ReleaseChannel pulumi.StringPtrOutput `pulumi:"releaseChannel"`
 	// Id of the Release Channel Setting.
-	//
-	// ***
 	ReleaseChannelSettingId pulumi.StringOutput `pulumi:"releaseChannelSettingId"`
 	// Update time stamp.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -171,8 +169,6 @@ type releaseChannelSettingState struct {
 	// EXPERIMENTAL
 	ReleaseChannel *string `pulumi:"releaseChannel"`
 	// Id of the Release Channel Setting.
-	//
-	// ***
 	ReleaseChannelSettingId *string `pulumi:"releaseChannelSettingId"`
 	// Update time stamp.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -204,8 +200,6 @@ type ReleaseChannelSettingState struct {
 	// EXPERIMENTAL
 	ReleaseChannel pulumi.StringPtrInput
 	// Id of the Release Channel Setting.
-	//
-	// ***
 	ReleaseChannelSettingId pulumi.StringPtrInput
 	// Update time stamp.
 	UpdateTime pulumi.StringPtrInput
@@ -231,8 +225,6 @@ type releaseChannelSettingArgs struct {
 	// EXPERIMENTAL
 	ReleaseChannel *string `pulumi:"releaseChannel"`
 	// Id of the Release Channel Setting.
-	//
-	// ***
 	ReleaseChannelSettingId string `pulumi:"releaseChannelSettingId"`
 }
 
@@ -253,8 +245,6 @@ type ReleaseChannelSettingArgs struct {
 	// EXPERIMENTAL
 	ReleaseChannel pulumi.StringPtrInput
 	// Id of the Release Channel Setting.
-	//
-	// ***
 	ReleaseChannelSettingId pulumi.StringInput
 }
 
@@ -394,8 +384,6 @@ func (o ReleaseChannelSettingOutput) ReleaseChannel() pulumi.StringPtrOutput {
 }
 
 // Id of the Release Channel Setting.
-//
-// ***
 func (o ReleaseChannelSettingOutput) ReleaseChannelSettingId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReleaseChannelSetting) pulumi.StringOutput { return v.ReleaseChannelSettingId }).(pulumi.StringOutput)
 }

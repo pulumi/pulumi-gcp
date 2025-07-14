@@ -220,9 +220,6 @@ namespace Pulumi.Gcp.EdgeNetwork
 
         /// <summary>
         /// A unique ID that identifies this subnet.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("subnetId")]
         public Output<string> SubnetId { get; private set; } = null!;
@@ -365,9 +362,6 @@ namespace Pulumi.Gcp.EdgeNetwork
 
         /// <summary>
         /// A unique ID that identifies this subnet.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("subnetId", required: true)]
         public Input<string> SubnetId { get; set; } = null!;
@@ -513,9 +507,6 @@ namespace Pulumi.Gcp.EdgeNetwork
 
         /// <summary>
         /// A unique ID that identifies this subnet.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("subnetId")]
         public Input<string>? SubnetId { get; set; }

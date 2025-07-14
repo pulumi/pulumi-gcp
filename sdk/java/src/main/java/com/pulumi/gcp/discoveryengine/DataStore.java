@@ -72,6 +72,48 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Discoveryengine Datastore Kms Key Name
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.discoveryengine.DataStore;
+ * import com.pulumi.gcp.discoveryengine.DataStoreArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var kmsKeyName = new DataStore("kmsKeyName", DataStoreArgs.builder()
+ *             .location("us")
+ *             .dataStoreId("data-store-id")
+ *             .displayName("tf-test-structured-datastore")
+ *             .industryVertical("GENERIC")
+ *             .contentConfig("NO_CONTENT")
+ *             .solutionTypes("SOLUTION_TYPE_SEARCH")
+ *             .kmsKeyName("kms-key")
+ *             .createAdvancedSiteSearch(false)
+ *             .skipDefaultSchemaCreation(false)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Discoveryengine Datastore Document Processing Config
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -268,16 +310,12 @@ public class DataStore extends com.pulumi.resources.CustomResource {
     /**
      * The unique id of the data store.
      * 
-     * ***
-     * 
      */
     @Export(name="dataStoreId", refs={String.class}, tree="[0]")
     private Output<String> dataStoreId;
 
     /**
      * @return The unique id of the data store.
-     * 
-     * ***
      * 
      */
     public Output<String> dataStoreId() {
@@ -344,6 +382,30 @@ public class DataStore extends com.pulumi.resources.CustomResource {
      */
     public Output<String> industryVertical() {
         return this.industryVertical;
+    }
+    /**
+     * KMS key resource name which will be used to encrypt resources:
+     * `/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`
+     * The KMS key to be used to protect this DataStore at creation time. Must be
+     * set for requests that need to comply with CMEK Org Policy protections.
+     * If this field is set and processed successfully, the DataStore will be
+     * protected by the KMS key, as indicated in the cmek_config field.
+     * 
+     */
+    @Export(name="kmsKeyName", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> kmsKeyName;
+
+    /**
+     * @return KMS key resource name which will be used to encrypt resources:
+     * `/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`
+     * The KMS key to be used to protect this DataStore at creation time. Must be
+     * set for requests that need to comply with CMEK Org Policy protections.
+     * If this field is set and processed successfully, the DataStore will be
+     * protected by the KMS key, as indicated in the cmek_config field.
+     * 
+     */
+    public Output<Optional<String>> kmsKeyName() {
+        return Codegen.optional(this.kmsKeyName);
     }
     /**
      * The geographic location where the data store should reside. The value can

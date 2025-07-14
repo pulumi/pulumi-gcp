@@ -87,9 +87,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The firewall policy of the resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("firewallPolicy")]
         public Output<string> FirewallPolicy { get; private set; } = null!;
@@ -167,9 +164,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The firewall policy of the resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("firewallPolicy", required: true)]
         public Input<string> FirewallPolicy { get; set; } = null!;
@@ -203,9 +197,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The firewall policy of the resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("firewallPolicy")]
         public Input<string>? FirewallPolicy { get; set; }

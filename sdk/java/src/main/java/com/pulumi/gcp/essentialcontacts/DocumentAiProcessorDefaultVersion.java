@@ -80,16 +80,12 @@ public class DocumentAiProcessorDefaultVersion extends com.pulumi.resources.Cust
     /**
      * The processor to set the version on.
      * 
-     * ***
-     * 
      */
     @Export(name="processor", refs={String.class}, tree="[0]")
     private Output<String> processor;
 
     /**
      * @return The processor to set the version on.
-     * 
-     * ***
      * 
      */
     public Output<String> processor() {

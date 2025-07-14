@@ -398,9 +398,6 @@ export class WorkforcePoolProvider extends pulumi.CustomResource {
      * The ID for the provider, which becomes the final component of the resource name.
      * This value must be 4-32 characters, and may contain the characters [a-z0-9-].
      * The prefix `gcp-` is reserved for use by Google, and may not be specified.
-     *
-     *
-     * - - -
      */
     public readonly providerId!: pulumi.Output<string>;
     /**
@@ -577,9 +574,6 @@ export interface WorkforcePoolProviderState {
      * The ID for the provider, which becomes the final component of the resource name.
      * This value must be 4-32 characters, and may contain the characters [a-z0-9-].
      * The prefix `gcp-` is reserved for use by Google, and may not be specified.
-     *
-     *
-     * - - -
      */
     providerId?: pulumi.Input<string>;
     /**
@@ -696,9 +690,6 @@ export interface WorkforcePoolProviderArgs {
      * The ID for the provider, which becomes the final component of the resource name.
      * This value must be 4-32 characters, and may contain the characters [a-z0-9-].
      * The prefix `gcp-` is reserved for use by Google, and may not be specified.
-     *
-     *
-     * - - -
      */
     providerId: pulumi.Input<string>;
     /**

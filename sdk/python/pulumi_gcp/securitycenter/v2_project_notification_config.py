@@ -35,7 +35,10 @@ class V2ProjectNotificationConfigArgs:
                Structure is documented below.
         :param pulumi.Input[builtins.str] description: The description of the notification config (max of 1024 characters).
         :param pulumi.Input[builtins.str] location: Location ID of the parent organization. Only global is supported at the moment.
-        :param pulumi.Input[builtins.str] pubsub_topic: The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[builtins.str] pubsub_topic: The Pub/Sub topic to send notifications to. Its format is
+               "projects/[project_id]/topics/[topic]".
         """
         pulumi.set(__self__, "config_id", config_id)
         pulumi.set(__self__, "streaming_config", streaming_config)
@@ -100,6 +103,10 @@ class V2ProjectNotificationConfigArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -110,7 +117,8 @@ class V2ProjectNotificationConfigArgs:
     @pulumi.getter(name="pubsubTopic")
     def pubsub_topic(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
+        The Pub/Sub topic to send notifications to. Its format is
+        "projects/[project_id]/topics/[topic]".
         """
         return pulumi.get(self, "pubsub_topic")
 
@@ -137,7 +145,10 @@ class _V2ProjectNotificationConfigState:
         :param pulumi.Input[builtins.str] location: Location ID of the parent organization. Only global is supported at the moment.
         :param pulumi.Input[builtins.str] name: The resource name of this notification config, in the format
                `projects/{{projectId}}/locations/{{location}}/notificationConfigs/{{config_id}}`.
-        :param pulumi.Input[builtins.str] pubsub_topic: The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[builtins.str] pubsub_topic: The Pub/Sub topic to send notifications to. Its format is
+               "projects/[project_id]/topics/[topic]".
         :param pulumi.Input[builtins.str] service_account: The service account that needs "pubsub.topics.publish" permission to
                publish to the Pub/Sub topic.
         :param pulumi.Input['V2ProjectNotificationConfigStreamingConfigArgs'] streaming_config: The config for triggering streaming-based notifications.
@@ -212,6 +223,10 @@ class _V2ProjectNotificationConfigState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -222,7 +237,8 @@ class _V2ProjectNotificationConfigState:
     @pulumi.getter(name="pubsubTopic")
     def pubsub_topic(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
+        The Pub/Sub topic to send notifications to. Its format is
+        "projects/[project_id]/topics/[topic]".
         """
         return pulumi.get(self, "pubsub_topic")
 
@@ -328,7 +344,10 @@ class V2ProjectNotificationConfig(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] config_id: This must be unique within the project.
         :param pulumi.Input[builtins.str] description: The description of the notification config (max of 1024 characters).
         :param pulumi.Input[builtins.str] location: Location ID of the parent organization. Only global is supported at the moment.
-        :param pulumi.Input[builtins.str] pubsub_topic: The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[builtins.str] pubsub_topic: The Pub/Sub topic to send notifications to. Its format is
+               "projects/[project_id]/topics/[topic]".
         :param pulumi.Input[Union['V2ProjectNotificationConfigStreamingConfigArgs', 'V2ProjectNotificationConfigStreamingConfigArgsDict']] streaming_config: The config for triggering streaming-based notifications.
                Structure is documented below.
         """
@@ -463,7 +482,10 @@ class V2ProjectNotificationConfig(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] location: Location ID of the parent organization. Only global is supported at the moment.
         :param pulumi.Input[builtins.str] name: The resource name of this notification config, in the format
                `projects/{{projectId}}/locations/{{location}}/notificationConfigs/{{config_id}}`.
-        :param pulumi.Input[builtins.str] pubsub_topic: The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[builtins.str] pubsub_topic: The Pub/Sub topic to send notifications to. Its format is
+               "projects/[project_id]/topics/[topic]".
         :param pulumi.Input[builtins.str] service_account: The service account that needs "pubsub.topics.publish" permission to
                publish to the Pub/Sub topic.
         :param pulumi.Input[Union['V2ProjectNotificationConfigStreamingConfigArgs', 'V2ProjectNotificationConfigStreamingConfigArgsDict']] streaming_config: The config for triggering streaming-based notifications.
@@ -519,13 +541,18 @@ class V2ProjectNotificationConfig(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="pubsubTopic")
     def pubsub_topic(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
+        The Pub/Sub topic to send notifications to. Its format is
+        "projects/[project_id]/topics/[topic]".
         """
         return pulumi.get(self, "pubsub_topic")
 

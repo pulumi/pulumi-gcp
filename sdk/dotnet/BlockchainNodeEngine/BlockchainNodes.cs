@@ -134,9 +134,6 @@ namespace Pulumi.Gcp.BlockchainNodeEngine
     {
         /// <summary>
         /// ID of the requesting object.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("blockchainNodeId")]
         public Output<string> BlockchainNodeId { get; private set; } = null!;
@@ -268,9 +265,6 @@ namespace Pulumi.Gcp.BlockchainNodeEngine
     {
         /// <summary>
         /// ID of the requesting object.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("blockchainNodeId", required: true)]
         public Input<string> BlockchainNodeId { get; set; } = null!;
@@ -327,9 +321,6 @@ namespace Pulumi.Gcp.BlockchainNodeEngine
     {
         /// <summary>
         /// ID of the requesting object.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("blockchainNodeId")]
         public Input<string>? BlockchainNodeId { get; set; }

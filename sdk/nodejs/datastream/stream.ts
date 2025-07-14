@@ -1017,6 +1017,7 @@ export class Stream extends pulumi.CustomResource {
 
     /**
      * Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
+     * Structure is documented below.
      */
     public readonly backfillAll!: pulumi.Output<outputs.datastream.StreamBackfillAll | undefined>;
     /**
@@ -1028,14 +1029,15 @@ export class Stream extends pulumi.CustomResource {
      */
     public readonly createWithoutValidation!: pulumi.Output<boolean | undefined>;
     /**
-     * A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
-     * encrypted using an internal Stream-specific encryption key provisioned through KMS.
+     * A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
+     * will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
      */
     public readonly customerManagedEncryptionKey!: pulumi.Output<string | undefined>;
     /**
-     * Desired state of the Stream. Set this field to 'RUNNING' to start the stream, 'NOT_STARTED' to create the stream without
-     * starting and 'PAUSED' to pause the stream from a 'RUNNING' state. Possible values: NOT_STARTED, RUNNING, PAUSED.
-     * Default: NOT_STARTED
+     * Desired state of the Stream. Set this field to `RUNNING` to start the stream,
+     * `NOT_STARTED` to create the stream without starting and `PAUSED` to pause
+     * the stream from a `RUNNING` state.
+     * Possible values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
      */
     public readonly desiredState!: pulumi.Output<string | undefined>;
     /**
@@ -1052,8 +1054,9 @@ export class Stream extends pulumi.CustomResource {
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
-     * refer to the field 'effective_labels' for all of the labels present on the resource.
+     * Labels.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -1064,6 +1067,10 @@ export class Stream extends pulumi.CustomResource {
      * The stream's name.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
@@ -1160,6 +1167,7 @@ export class Stream extends pulumi.CustomResource {
 export interface StreamState {
     /**
      * Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
+     * Structure is documented below.
      */
     backfillAll?: pulumi.Input<inputs.datastream.StreamBackfillAll>;
     /**
@@ -1171,14 +1179,15 @@ export interface StreamState {
      */
     createWithoutValidation?: pulumi.Input<boolean>;
     /**
-     * A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
-     * encrypted using an internal Stream-specific encryption key provisioned through KMS.
+     * A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
+     * will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
      */
     customerManagedEncryptionKey?: pulumi.Input<string>;
     /**
-     * Desired state of the Stream. Set this field to 'RUNNING' to start the stream, 'NOT_STARTED' to create the stream without
-     * starting and 'PAUSED' to pause the stream from a 'RUNNING' state. Possible values: NOT_STARTED, RUNNING, PAUSED.
-     * Default: NOT_STARTED
+     * Desired state of the Stream. Set this field to `RUNNING` to start the stream,
+     * `NOT_STARTED` to create the stream without starting and `PAUSED` to pause
+     * the stream from a `RUNNING` state.
+     * Possible values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
      */
     desiredState?: pulumi.Input<string>;
     /**
@@ -1195,8 +1204,9 @@ export interface StreamState {
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
-     * refer to the field 'effective_labels' for all of the labels present on the resource.
+     * Labels.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -1207,6 +1217,10 @@ export interface StreamState {
      * The stream's name.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
@@ -1234,6 +1248,7 @@ export interface StreamState {
 export interface StreamArgs {
     /**
      * Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
+     * Structure is documented below.
      */
     backfillAll?: pulumi.Input<inputs.datastream.StreamBackfillAll>;
     /**
@@ -1245,14 +1260,15 @@ export interface StreamArgs {
      */
     createWithoutValidation?: pulumi.Input<boolean>;
     /**
-     * A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
-     * encrypted using an internal Stream-specific encryption key provisioned through KMS.
+     * A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
+     * will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
      */
     customerManagedEncryptionKey?: pulumi.Input<string>;
     /**
-     * Desired state of the Stream. Set this field to 'RUNNING' to start the stream, 'NOT_STARTED' to create the stream without
-     * starting and 'PAUSED' to pause the stream from a 'RUNNING' state. Possible values: NOT_STARTED, RUNNING, PAUSED.
-     * Default: NOT_STARTED
+     * Desired state of the Stream. Set this field to `RUNNING` to start the stream,
+     * `NOT_STARTED` to create the stream without starting and `PAUSED` to pause
+     * the stream from a `RUNNING` state.
+     * Possible values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
      */
     desiredState?: pulumi.Input<string>;
     /**
@@ -1265,14 +1281,19 @@ export interface StreamArgs {
      */
     displayName: pulumi.Input<string>;
     /**
-     * Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
-     * refer to the field 'effective_labels' for all of the labels present on the resource.
+     * Labels.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the location this stream is located in.
      */
     location: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * Source connection profile configuration.

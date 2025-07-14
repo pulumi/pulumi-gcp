@@ -154,9 +154,6 @@ namespace Pulumi.Gcp.Firebase
         /// <summary>
         /// Id of the domain to create.
         /// Must be a valid domain name, such as "foo.com"
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("domainId")]
         public Output<string> DomainId { get; private set; } = null!;
@@ -270,9 +267,6 @@ namespace Pulumi.Gcp.Firebase
         /// <summary>
         /// Id of the domain to create.
         /// Must be a valid domain name, such as "foo.com"
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("domainId", required: true)]
         public Input<string> DomainId { get; set; } = null!;
@@ -340,9 +334,6 @@ namespace Pulumi.Gcp.Firebase
         /// <summary>
         /// Id of the domain to create.
         /// Must be a valid domain name, such as "foo.com"
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("domainId")]
         public Input<string>? DomainId { get; set; }

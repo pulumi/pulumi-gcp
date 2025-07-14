@@ -22,8 +22,7 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<string>? Membership { get; set; }
 
         /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
+        /// The number of the Fleet host project where this cluster will be registered.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;

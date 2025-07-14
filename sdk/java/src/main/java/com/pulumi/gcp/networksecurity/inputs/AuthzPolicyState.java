@@ -67,16 +67,16 @@ public final class AuthzPolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One
-     * of cloudIap or authzExtension must be specified.
+     * Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One of cloudIap or authzExtension must be specified.
+     * Structure is documented below.
      * 
      */
     @Import(name="customProvider")
     private @Nullable Output<AuthzPolicyCustomProviderArgs> customProvider;
 
     /**
-     * @return Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One
-     * of cloudIap or authzExtension must be specified.
+     * @return Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One of cloudIap or authzExtension must be specified.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<AuthzPolicyCustomProviderArgs>> customProvider() {
@@ -114,18 +114,18 @@ public final class AuthzPolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP
-     * rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow
-     * or Deny Action. Limited to 5 rules.
+     * A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+     * Limited to 5 rules.
+     * Structure is documented below.
      * 
      */
     @Import(name="httpRules")
     private @Nullable Output<List<AuthzPolicyHttpRuleArgs>> httpRules;
 
     /**
-     * @return A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP
-     * rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow
-     * or Deny Action. Limited to 5 rules.
+     * @return A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+     * Limited to 5 rules.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<AuthzPolicyHttpRuleArgs>>> httpRules() {
@@ -133,18 +133,20 @@ public final class AuthzPolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Set of labels associated with the AuthzExtension resource. **Note**: This field is non-authoritative, and will only
-     * manage the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels
-     * present on the resource.
+     * Set of labels associated with the AuthzExtension resource.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Set of labels associated with the AuthzExtension resource. **Note**: This field is non-authoritative, and will only
-     * manage the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels
-     * present on the resource.
+     * @return Set of labels associated with the AuthzExtension resource.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -181,9 +183,19 @@ public final class AuthzPolicyState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -332,8 +344,8 @@ public final class AuthzPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customProvider Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One
-         * of cloudIap or authzExtension must be specified.
+         * @param customProvider Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One of cloudIap or authzExtension must be specified.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -344,8 +356,8 @@ public final class AuthzPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customProvider Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One
-         * of cloudIap or authzExtension must be specified.
+         * @param customProvider Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One of cloudIap or authzExtension must be specified.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -397,9 +409,9 @@ public final class AuthzPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param httpRules A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP
-         * rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow
-         * or Deny Action. Limited to 5 rules.
+         * @param httpRules A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+         * Limited to 5 rules.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -410,9 +422,9 @@ public final class AuthzPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param httpRules A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP
-         * rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow
-         * or Deny Action. Limited to 5 rules.
+         * @param httpRules A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+         * Limited to 5 rules.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -422,9 +434,9 @@ public final class AuthzPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param httpRules A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP
-         * rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow
-         * or Deny Action. Limited to 5 rules.
+         * @param httpRules A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+         * Limited to 5 rules.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -434,9 +446,10 @@ public final class AuthzPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Set of labels associated with the AuthzExtension resource. **Note**: This field is non-authoritative, and will only
-         * manage the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels
-         * present on the resource.
+         * @param labels Set of labels associated with the AuthzExtension resource.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -447,9 +460,10 @@ public final class AuthzPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Set of labels associated with the AuthzExtension resource. **Note**: This field is non-authoritative, and will only
-         * manage the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels
-         * present on the resource.
+         * @param labels Set of labels associated with the AuthzExtension resource.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -500,11 +514,25 @@ public final class AuthzPolicyState extends com.pulumi.resources.ResourceArgs {
             return name(Output.of(name));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

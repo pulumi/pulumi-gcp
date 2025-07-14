@@ -127,7 +127,9 @@ type Curation struct {
 	// multiple actions in a plugin instance.
 	// Structure is documented below.
 	PluginInstanceActions CurationPluginInstanceActionArrayOutput `pulumi:"pluginInstanceActions"`
-	Project               pulumi.StringOutput                     `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The time at which the curation was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -223,7 +225,9 @@ type curationState struct {
 	// multiple actions in a plugin instance.
 	// Structure is documented below.
 	PluginInstanceActions []CurationPluginInstanceAction `pulumi:"pluginInstanceActions"`
-	Project               *string                        `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// The time at which the curation was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -278,7 +282,9 @@ type CurationState struct {
 	// multiple actions in a plugin instance.
 	// Structure is documented below.
 	PluginInstanceActions CurationPluginInstanceActionArrayInput
-	Project               pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// The time at which the curation was last updated.
 	UpdateTime pulumi.StringPtrInput
 }
@@ -309,8 +315,10 @@ type curationArgs struct {
 	// Structure is documented below.
 	Endpoint CurationEndpoint `pulumi:"endpoint"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-	Location string  `pulumi:"location"`
-	Project  *string `pulumi:"project"`
+	Location string `pulumi:"location"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Curation resource.
@@ -337,7 +345,9 @@ type CurationArgs struct {
 	Endpoint CurationEndpointInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringInput
-	Project  pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 }
 
 func (CurationArgs) ElementType() reflect.Type {
@@ -509,6 +519,8 @@ func (o CurationOutput) PluginInstanceActions() CurationPluginInstanceActionArra
 	return o.ApplyT(func(v *Curation) CurationPluginInstanceActionArrayOutput { return v.PluginInstanceActions }).(CurationPluginInstanceActionArrayOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o CurationOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Curation) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

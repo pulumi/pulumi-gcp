@@ -192,8 +192,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * * Must not end with a hyphen
      * * Must be unique within a location
      * 
-     * ***
-     * 
      */
     @Import(name="instanceId", required=true)
     private Output<String> instanceId;
@@ -207,8 +205,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * * Must contain only lowercase letters, digits, and hyphens
      * * Must not end with a hyphen
      * * Must be unique within a location
-     * 
-     * ***
      * 
      */
     public Output<String> instanceId() {
@@ -735,8 +731,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * * Must not end with a hyphen
          * * Must be unique within a location
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -754,8 +748,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * * Must contain only lowercase letters, digits, and hyphens
          * * Must not end with a hyphen
          * * Must be unique within a location
-         * 
-         * ***
          * 
          * @return builder
          * 

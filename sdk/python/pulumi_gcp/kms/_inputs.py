@@ -914,8 +914,6 @@ if not MYPY:
         """
         (Output)
         Output only. The subject Alternative DNS names. Only present if parsed is true.
-
-        - - -
         """
 elif False:
     EkmConnectionServiceResolverServerCertificateArgsDict: TypeAlias = Mapping[str, Any]
@@ -952,8 +950,6 @@ class EkmConnectionServiceResolverServerCertificateArgs:
                Output only. The subject distinguished name in RFC 2253 format. Only present if parsed is true.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] subject_alternative_dns_names: (Output)
                Output only. The subject Alternative DNS names. Only present if parsed is true.
-               
-               - - -
         """
         pulumi.set(__self__, "raw_der", raw_der)
         if issuer is not None:
@@ -1084,8 +1080,6 @@ class EkmConnectionServiceResolverServerCertificateArgs:
         """
         (Output)
         Output only. The subject Alternative DNS names. Only present if parsed is true.
-
-        - - -
         """
         return pulumi.get(self, "subject_alternative_dns_names")
 

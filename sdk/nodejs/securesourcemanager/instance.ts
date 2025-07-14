@@ -506,9 +506,6 @@ export class Instance extends pulumi.CustomResource {
     public /*out*/ readonly hostConfigs!: pulumi.Output<outputs.securesourcemanager.InstanceHostConfig[]>;
     /**
      * The name for the Instance.
-     *
-     *
-     * - - -
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
@@ -642,9 +639,6 @@ export interface InstanceState {
     hostConfigs?: pulumi.Input<pulumi.Input<inputs.securesourcemanager.InstanceHostConfig>[]>;
     /**
      * The name for the Instance.
-     *
-     *
-     * - - -
      */
     instanceId?: pulumi.Input<string>;
     /**
@@ -707,9 +701,6 @@ export interface InstanceState {
 export interface InstanceArgs {
     /**
      * The name for the Instance.
-     *
-     *
-     * - - -
      */
     instanceId: pulumi.Input<string>;
     /**

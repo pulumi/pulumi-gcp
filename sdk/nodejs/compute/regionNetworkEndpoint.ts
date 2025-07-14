@@ -212,9 +212,6 @@ export class RegionNetworkEndpoint extends pulumi.CustomResource {
     public readonly region!: pulumi.Output<string>;
     /**
      * The network endpoint group this endpoint is part of.
-     *
-     *
-     * - - -
      */
     public readonly regionNetworkEndpointGroup!: pulumi.Output<string>;
 
@@ -305,9 +302,6 @@ export interface RegionNetworkEndpointState {
     region?: pulumi.Input<string>;
     /**
      * The network endpoint group this endpoint is part of.
-     *
-     *
-     * - - -
      */
     regionNetworkEndpointGroup?: pulumi.Input<string>;
 }
@@ -350,9 +344,6 @@ export interface RegionNetworkEndpointArgs {
     region?: pulumi.Input<string>;
     /**
      * The network endpoint group this endpoint is part of.
-     *
-     *
-     * - - -
      */
     regionNetworkEndpointGroup: pulumi.Input<string>;
 }

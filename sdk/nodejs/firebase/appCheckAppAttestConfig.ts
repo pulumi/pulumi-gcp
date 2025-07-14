@@ -123,9 +123,6 @@ export class AppCheckAppAttestConfig extends pulumi.CustomResource {
     /**
      * The ID of an
      * [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
-     *
-     *
-     * - - -
      */
     public readonly appId!: pulumi.Output<string>;
     /**
@@ -183,9 +180,6 @@ export interface AppCheckAppAttestConfigState {
     /**
      * The ID of an
      * [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
-     *
-     *
-     * - - -
      */
     appId?: pulumi.Input<string>;
     /**
@@ -212,9 +206,6 @@ export interface AppCheckAppAttestConfigArgs {
     /**
      * The ID of an
      * [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
-     *
-     *
-     * - - -
      */
     appId: pulumi.Input<string>;
     /**

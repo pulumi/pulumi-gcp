@@ -52,25 +52,43 @@ class InstanceArgs:
         :param pulumi.Input[builtins.bool] deletion_protection_enabled: Indicates whether the instance is protected against deletion.
         :param pulumi.Input[builtins.str] deletion_protection_reason: The reason for enabling deletion protection.
         :param pulumi.Input[builtins.str] description: A description of the instance.
-        :param pulumi.Input['InstanceDirectoryServicesArgs'] directory_services: Directory Services configuration. Should only be set if protocol is "NFS_V4_1".
-        :param pulumi.Input['InstanceInitialReplicationArgs'] initial_replication: Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
-               instance only, indicating the active as the peer_instance
+        :param pulumi.Input['InstanceDirectoryServicesArgs'] directory_services: Directory Services configuration.
+               Should only be set if protocol is "NFS_V4_1".
+               Structure is documented below.
+        :param pulumi.Input['InstanceInitialReplicationArgs'] initial_replication: Replication configuration, once set, this cannot be updated.
+               Additionally this should be specified on the replica instance only, indicating the active as the peer_instance
+               Structure is documented below.
         :param pulumi.Input[builtins.str] kms_key_name: KMS key name used for data encryption.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-               labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-               resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user-provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
         :param pulumi.Input[builtins.str] name: The resource name of the instance.
-        :param pulumi.Input['InstancePerformanceConfigArgs'] performance_config: Performance configuration for the instance. If not provided, the default performance settings will be used.
-        :param pulumi.Input[builtins.str] protocol: Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
-               protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
-               "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags.
-               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when
-               empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and
-               modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the
-               'google_tags_tag_value' resource.
-        :param pulumi.Input[builtins.str] zone: The name of the Filestore zone of the instance.
+        :param pulumi.Input['InstancePerformanceConfigArgs'] performance_config: Performance configuration for the instance. If not provided,
+               the default performance settings will be used.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[builtins.str] protocol: Either NFSv3, for using NFS version 3 as file sharing protocol,
+               or NFSv4.1, for using NFS version 4.1 as file sharing protocol.
+               NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE.
+               The default is NFSv3.
+               Default value is `NFS_V3`.
+               Possible values are: `NFS_V3`, `NFS_V4_1`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A map of resource manager tags. Resource manager tag keys
+               and values have the same definition as resource manager
+               tags. Keys must be in the format tagKeys/{tag_key_id},
+               and values are in the format tagValues/456. The field is
+               ignored when empty. The field is immutable and causes
+               resource replacement when mutated. This field is only set
+               at create time and modifying this field after creation
+               will trigger recreation. To apply tags to an existing
+               resource, see the `tags.TagValue` resource.
+        :param pulumi.Input[builtins.str] zone: (Optional, Deprecated)
+               The name of the Filestore zone of the instance.
+               
+               > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
         """
         pulumi.set(__self__, "file_shares", file_shares)
         pulumi.set(__self__, "networks", networks)
@@ -188,7 +206,9 @@ class InstanceArgs:
     @pulumi.getter(name="directoryServices")
     def directory_services(self) -> Optional[pulumi.Input['InstanceDirectoryServicesArgs']]:
         """
-        Directory Services configuration. Should only be set if protocol is "NFS_V4_1".
+        Directory Services configuration.
+        Should only be set if protocol is "NFS_V4_1".
+        Structure is documented below.
         """
         return pulumi.get(self, "directory_services")
 
@@ -200,8 +220,9 @@ class InstanceArgs:
     @pulumi.getter(name="initialReplication")
     def initial_replication(self) -> Optional[pulumi.Input['InstanceInitialReplicationArgs']]:
         """
-        Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
-        instance only, indicating the active as the peer_instance
+        Replication configuration, once set, this cannot be updated.
+        Additionally this should be specified on the replica instance only, indicating the active as the peer_instance
+        Structure is documented below.
         """
         return pulumi.get(self, "initial_replication")
 
@@ -225,9 +246,10 @@ class InstanceArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-        labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-        resource.
+        Resource labels to represent user-provided metadata.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -263,7 +285,9 @@ class InstanceArgs:
     @pulumi.getter(name="performanceConfig")
     def performance_config(self) -> Optional[pulumi.Input['InstancePerformanceConfigArgs']]:
         """
-        Performance configuration for the instance. If not provided, the default performance settings will be used.
+        Performance configuration for the instance. If not provided,
+        the default performance settings will be used.
+        Structure is documented below.
         """
         return pulumi.get(self, "performance_config")
 
@@ -274,6 +298,10 @@ class InstanceArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -284,9 +312,12 @@ class InstanceArgs:
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
-        protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
-        "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
+        Either NFSv3, for using NFS version 3 as file sharing protocol,
+        or NFSv4.1, for using NFS version 4.1 as file sharing protocol.
+        NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE.
+        The default is NFSv3.
+        Default value is `NFS_V3`.
+        Possible values are: `NFS_V3`, `NFS_V4_1`.
         """
         return pulumi.get(self, "protocol")
 
@@ -298,11 +329,15 @@ class InstanceArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags.
-        Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when
-        empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and
-        modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the
-        'google_tags_tag_value' resource.
+        A map of resource manager tags. Resource manager tag keys
+        and values have the same definition as resource manager
+        tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456. The field is
+        ignored when empty. The field is immutable and causes
+        resource replacement when mutated. This field is only set
+        at create time and modifying this field after creation
+        will trigger recreation. To apply tags to an existing
+        resource, see the `tags.TagValue` resource.
         """
         return pulumi.get(self, "tags")
 
@@ -315,7 +350,10 @@ class InstanceArgs:
     @_utilities.deprecated("""`zone` is deprecated and will be removed in a future major release. Use `location` instead.""")
     def zone(self) -> Optional[pulumi.Input[builtins.str]]:
         """
+        (Optional, Deprecated)
         The name of the Filestore zone of the instance.
+
+        > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
         """
         return pulumi.get(self, "zone")
 
@@ -355,7 +393,9 @@ class _InstanceState:
         :param pulumi.Input[builtins.bool] deletion_protection_enabled: Indicates whether the instance is protected against deletion.
         :param pulumi.Input[builtins.str] deletion_protection_reason: The reason for enabling deletion protection.
         :param pulumi.Input[builtins.str] description: A description of the instance.
-        :param pulumi.Input['InstanceDirectoryServicesArgs'] directory_services: Directory Services configuration. Should only be set if protocol is "NFS_V4_1".
+        :param pulumi.Input['InstanceDirectoryServicesArgs'] directory_services: Directory Services configuration.
+               Should only be set if protocol is "NFS_V4_1".
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceEffectiveReplicationArgs']]] effective_replications: Output only fields for replication configuration.
                Structure is documented below.
@@ -364,31 +404,47 @@ class _InstanceState:
         :param pulumi.Input['InstanceFileSharesArgs'] file_shares: File system shares on the instance. For this version, only a
                single file share is supported.
                Structure is documented below.
-        :param pulumi.Input['InstanceInitialReplicationArgs'] initial_replication: Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
-               instance only, indicating the active as the peer_instance
+        :param pulumi.Input['InstanceInitialReplicationArgs'] initial_replication: Replication configuration, once set, this cannot be updated.
+               Additionally this should be specified on the replica instance only, indicating the active as the peer_instance
+               Structure is documented below.
         :param pulumi.Input[builtins.str] kms_key_name: KMS key name used for data encryption.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-               labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-               resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user-provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
         :param pulumi.Input[builtins.str] name: The resource name of the instance.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]] networks: VPC networks to which the instance is connected. For this version,
                only a single network is supported.
                Structure is documented below.
-        :param pulumi.Input['InstancePerformanceConfigArgs'] performance_config: Performance configuration for the instance. If not provided, the default performance settings will be used.
-        :param pulumi.Input[builtins.str] protocol: Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
-               protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
-               "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
+        :param pulumi.Input['InstancePerformanceConfigArgs'] performance_config: Performance configuration for the instance. If not provided,
+               the default performance settings will be used.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[builtins.str] protocol: Either NFSv3, for using NFS version 3 as file sharing protocol,
+               or NFSv4.1, for using NFS version 4.1 as file sharing protocol.
+               NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE.
+               The default is NFSv3.
+               Default value is `NFS_V3`.
+               Possible values are: `NFS_V3`, `NFS_V4_1`.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags.
-               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when
-               empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and
-               modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the
-               'google_tags_tag_value' resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A map of resource manager tags. Resource manager tag keys
+               and values have the same definition as resource manager
+               tags. Keys must be in the format tagKeys/{tag_key_id},
+               and values are in the format tagValues/456. The field is
+               ignored when empty. The field is immutable and causes
+               resource replacement when mutated. This field is only set
+               at create time and modifying this field after creation
+               will trigger recreation. To apply tags to an existing
+               resource, see the `tags.TagValue` resource.
         :param pulumi.Input[builtins.str] tier: The service tier of the instance.
                Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
-        :param pulumi.Input[builtins.str] zone: The name of the Filestore zone of the instance.
+        :param pulumi.Input[builtins.str] zone: (Optional, Deprecated)
+               The name of the Filestore zone of the instance.
+               
+               > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -490,7 +546,9 @@ class _InstanceState:
     @pulumi.getter(name="directoryServices")
     def directory_services(self) -> Optional[pulumi.Input['InstanceDirectoryServicesArgs']]:
         """
-        Directory Services configuration. Should only be set if protocol is "NFS_V4_1".
+        Directory Services configuration.
+        Should only be set if protocol is "NFS_V4_1".
+        Structure is documented below.
         """
         return pulumi.get(self, "directory_services")
 
@@ -554,8 +612,9 @@ class _InstanceState:
     @pulumi.getter(name="initialReplication")
     def initial_replication(self) -> Optional[pulumi.Input['InstanceInitialReplicationArgs']]:
         """
-        Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
-        instance only, indicating the active as the peer_instance
+        Replication configuration, once set, this cannot be updated.
+        Additionally this should be specified on the replica instance only, indicating the active as the peer_instance
+        Structure is documented below.
         """
         return pulumi.get(self, "initial_replication")
 
@@ -579,9 +638,10 @@ class _InstanceState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-        labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-        resource.
+        Resource labels to represent user-provided metadata.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -631,7 +691,9 @@ class _InstanceState:
     @pulumi.getter(name="performanceConfig")
     def performance_config(self) -> Optional[pulumi.Input['InstancePerformanceConfigArgs']]:
         """
-        Performance configuration for the instance. If not provided, the default performance settings will be used.
+        Performance configuration for the instance. If not provided,
+        the default performance settings will be used.
+        Structure is documented below.
         """
         return pulumi.get(self, "performance_config")
 
@@ -642,6 +704,10 @@ class _InstanceState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -652,9 +718,12 @@ class _InstanceState:
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
-        protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
-        "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
+        Either NFSv3, for using NFS version 3 as file sharing protocol,
+        or NFSv4.1, for using NFS version 4.1 as file sharing protocol.
+        NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE.
+        The default is NFSv3.
+        Default value is `NFS_V3`.
+        Possible values are: `NFS_V3`, `NFS_V4_1`.
         """
         return pulumi.get(self, "protocol")
 
@@ -679,11 +748,15 @@ class _InstanceState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags.
-        Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when
-        empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and
-        modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the
-        'google_tags_tag_value' resource.
+        A map of resource manager tags. Resource manager tag keys
+        and values have the same definition as resource manager
+        tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456. The field is
+        ignored when empty. The field is immutable and causes
+        resource replacement when mutated. This field is only set
+        at create time and modifying this field after creation
+        will trigger recreation. To apply tags to an existing
+        resource, see the `tags.TagValue` resource.
         """
         return pulumi.get(self, "tags")
 
@@ -709,7 +782,10 @@ class _InstanceState:
     @_utilities.deprecated("""`zone` is deprecated and will be removed in a future major release. Use `location` instead.""")
     def zone(self) -> Optional[pulumi.Input[builtins.str]]:
         """
+        (Optional, Deprecated)
         The name of the Filestore zone of the instance.
+
+        > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
         """
         return pulumi.get(self, "zone")
 
@@ -884,33 +960,51 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] deletion_protection_enabled: Indicates whether the instance is protected against deletion.
         :param pulumi.Input[builtins.str] deletion_protection_reason: The reason for enabling deletion protection.
         :param pulumi.Input[builtins.str] description: A description of the instance.
-        :param pulumi.Input[Union['InstanceDirectoryServicesArgs', 'InstanceDirectoryServicesArgsDict']] directory_services: Directory Services configuration. Should only be set if protocol is "NFS_V4_1".
+        :param pulumi.Input[Union['InstanceDirectoryServicesArgs', 'InstanceDirectoryServicesArgsDict']] directory_services: Directory Services configuration.
+               Should only be set if protocol is "NFS_V4_1".
+               Structure is documented below.
         :param pulumi.Input[Union['InstanceFileSharesArgs', 'InstanceFileSharesArgsDict']] file_shares: File system shares on the instance. For this version, only a
                single file share is supported.
                Structure is documented below.
-        :param pulumi.Input[Union['InstanceInitialReplicationArgs', 'InstanceInitialReplicationArgsDict']] initial_replication: Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
-               instance only, indicating the active as the peer_instance
+        :param pulumi.Input[Union['InstanceInitialReplicationArgs', 'InstanceInitialReplicationArgsDict']] initial_replication: Replication configuration, once set, this cannot be updated.
+               Additionally this should be specified on the replica instance only, indicating the active as the peer_instance
+               Structure is documented below.
         :param pulumi.Input[builtins.str] kms_key_name: KMS key name used for data encryption.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-               labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-               resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user-provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
         :param pulumi.Input[builtins.str] name: The resource name of the instance.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]] networks: VPC networks to which the instance is connected. For this version,
                only a single network is supported.
                Structure is documented below.
-        :param pulumi.Input[Union['InstancePerformanceConfigArgs', 'InstancePerformanceConfigArgsDict']] performance_config: Performance configuration for the instance. If not provided, the default performance settings will be used.
-        :param pulumi.Input[builtins.str] protocol: Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
-               protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
-               "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags.
-               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when
-               empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and
-               modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the
-               'google_tags_tag_value' resource.
+        :param pulumi.Input[Union['InstancePerformanceConfigArgs', 'InstancePerformanceConfigArgsDict']] performance_config: Performance configuration for the instance. If not provided,
+               the default performance settings will be used.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[builtins.str] protocol: Either NFSv3, for using NFS version 3 as file sharing protocol,
+               or NFSv4.1, for using NFS version 4.1 as file sharing protocol.
+               NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE.
+               The default is NFSv3.
+               Default value is `NFS_V3`.
+               Possible values are: `NFS_V3`, `NFS_V4_1`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A map of resource manager tags. Resource manager tag keys
+               and values have the same definition as resource manager
+               tags. Keys must be in the format tagKeys/{tag_key_id},
+               and values are in the format tagValues/456. The field is
+               ignored when empty. The field is immutable and causes
+               resource replacement when mutated. This field is only set
+               at create time and modifying this field after creation
+               will trigger recreation. To apply tags to an existing
+               resource, see the `tags.TagValue` resource.
         :param pulumi.Input[builtins.str] tier: The service tier of the instance.
                Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
-        :param pulumi.Input[builtins.str] zone: The name of the Filestore zone of the instance.
+        :param pulumi.Input[builtins.str] zone: (Optional, Deprecated)
+               The name of the Filestore zone of the instance.
+               
+               > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
         """
         ...
     @overload
@@ -1169,7 +1263,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] deletion_protection_enabled: Indicates whether the instance is protected against deletion.
         :param pulumi.Input[builtins.str] deletion_protection_reason: The reason for enabling deletion protection.
         :param pulumi.Input[builtins.str] description: A description of the instance.
-        :param pulumi.Input[Union['InstanceDirectoryServicesArgs', 'InstanceDirectoryServicesArgsDict']] directory_services: Directory Services configuration. Should only be set if protocol is "NFS_V4_1".
+        :param pulumi.Input[Union['InstanceDirectoryServicesArgs', 'InstanceDirectoryServicesArgsDict']] directory_services: Directory Services configuration.
+               Should only be set if protocol is "NFS_V4_1".
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceEffectiveReplicationArgs', 'InstanceEffectiveReplicationArgsDict']]]] effective_replications: Output only fields for replication configuration.
                Structure is documented below.
@@ -1178,31 +1274,47 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Union['InstanceFileSharesArgs', 'InstanceFileSharesArgsDict']] file_shares: File system shares on the instance. For this version, only a
                single file share is supported.
                Structure is documented below.
-        :param pulumi.Input[Union['InstanceInitialReplicationArgs', 'InstanceInitialReplicationArgsDict']] initial_replication: Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
-               instance only, indicating the active as the peer_instance
+        :param pulumi.Input[Union['InstanceInitialReplicationArgs', 'InstanceInitialReplicationArgsDict']] initial_replication: Replication configuration, once set, this cannot be updated.
+               Additionally this should be specified on the replica instance only, indicating the active as the peer_instance
+               Structure is documented below.
         :param pulumi.Input[builtins.str] kms_key_name: KMS key name used for data encryption.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-               labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-               resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user-provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
         :param pulumi.Input[builtins.str] name: The resource name of the instance.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]] networks: VPC networks to which the instance is connected. For this version,
                only a single network is supported.
                Structure is documented below.
-        :param pulumi.Input[Union['InstancePerformanceConfigArgs', 'InstancePerformanceConfigArgsDict']] performance_config: Performance configuration for the instance. If not provided, the default performance settings will be used.
-        :param pulumi.Input[builtins.str] protocol: Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
-               protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
-               "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
+        :param pulumi.Input[Union['InstancePerformanceConfigArgs', 'InstancePerformanceConfigArgsDict']] performance_config: Performance configuration for the instance. If not provided,
+               the default performance settings will be used.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[builtins.str] protocol: Either NFSv3, for using NFS version 3 as file sharing protocol,
+               or NFSv4.1, for using NFS version 4.1 as file sharing protocol.
+               NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE.
+               The default is NFSv3.
+               Default value is `NFS_V3`.
+               Possible values are: `NFS_V3`, `NFS_V4_1`.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags.
-               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when
-               empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and
-               modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the
-               'google_tags_tag_value' resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: A map of resource manager tags. Resource manager tag keys
+               and values have the same definition as resource manager
+               tags. Keys must be in the format tagKeys/{tag_key_id},
+               and values are in the format tagValues/456. The field is
+               ignored when empty. The field is immutable and causes
+               resource replacement when mutated. This field is only set
+               at create time and modifying this field after creation
+               will trigger recreation. To apply tags to an existing
+               resource, see the `tags.TagValue` resource.
         :param pulumi.Input[builtins.str] tier: The service tier of the instance.
                Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
-        :param pulumi.Input[builtins.str] zone: The name of the Filestore zone of the instance.
+        :param pulumi.Input[builtins.str] zone: (Optional, Deprecated)
+               The name of the Filestore zone of the instance.
+               
+               > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1268,7 +1380,9 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="directoryServices")
     def directory_services(self) -> pulumi.Output[Optional['outputs.InstanceDirectoryServices']]:
         """
-        Directory Services configuration. Should only be set if protocol is "NFS_V4_1".
+        Directory Services configuration.
+        Should only be set if protocol is "NFS_V4_1".
+        Structure is documented below.
         """
         return pulumi.get(self, "directory_services")
 
@@ -1312,8 +1426,9 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="initialReplication")
     def initial_replication(self) -> pulumi.Output[Optional['outputs.InstanceInitialReplication']]:
         """
-        Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
-        instance only, indicating the active as the peer_instance
+        Replication configuration, once set, this cannot be updated.
+        Additionally this should be specified on the replica instance only, indicating the active as the peer_instance
+        Structure is documented below.
         """
         return pulumi.get(self, "initial_replication")
 
@@ -1329,9 +1444,10 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
         """
-        Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-        labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-        resource.
+        Resource labels to represent user-provided metadata.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1365,22 +1481,31 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="performanceConfig")
     def performance_config(self) -> pulumi.Output[Optional['outputs.InstancePerformanceConfig']]:
         """
-        Performance configuration for the instance. If not provided, the default performance settings will be used.
+        Performance configuration for the instance. If not provided,
+        the default performance settings will be used.
+        Structure is documented below.
         """
         return pulumi.get(self, "performance_config")
 
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter
     def protocol(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
-        protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
-        "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
+        Either NFSv3, for using NFS version 3 as file sharing protocol,
+        or NFSv4.1, for using NFS version 4.1 as file sharing protocol.
+        NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE.
+        The default is NFSv3.
+        Default value is `NFS_V3`.
+        Possible values are: `NFS_V3`, `NFS_V4_1`.
         """
         return pulumi.get(self, "protocol")
 
@@ -1397,11 +1522,15 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
         """
-        A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags.
-        Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when
-        empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and
-        modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the
-        'google_tags_tag_value' resource.
+        A map of resource manager tags. Resource manager tag keys
+        and values have the same definition as resource manager
+        tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456. The field is
+        ignored when empty. The field is immutable and causes
+        resource replacement when mutated. This field is only set
+        at create time and modifying this field after creation
+        will trigger recreation. To apply tags to an existing
+        resource, see the `tags.TagValue` resource.
         """
         return pulumi.get(self, "tags")
 
@@ -1419,7 +1548,10 @@ class Instance(pulumi.CustomResource):
     @_utilities.deprecated("""`zone` is deprecated and will be removed in a future major release. Use `location` instead.""")
     def zone(self) -> pulumi.Output[builtins.str]:
         """
+        (Optional, Deprecated)
         The name of the Filestore zone of the instance.
+
+        > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
         """
         return pulumi.get(self, "zone")
 

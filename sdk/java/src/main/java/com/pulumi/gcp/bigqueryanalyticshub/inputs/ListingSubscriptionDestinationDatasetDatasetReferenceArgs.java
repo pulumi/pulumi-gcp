@@ -32,16 +32,12 @@ public final class ListingSubscriptionDestinationDatasetDatasetReferenceArgs ext
     /**
      * The ID of the project containing this dataset.
      * 
-     * ***
-     * 
      */
     @Import(name="projectId", required=true)
     private Output<String> projectId;
 
     /**
      * @return The ID of the project containing this dataset.
-     * 
-     * ***
      * 
      */
     public Output<String> projectId() {
@@ -97,8 +93,6 @@ public final class ListingSubscriptionDestinationDatasetDatasetReferenceArgs ext
         /**
          * @param projectId The ID of the project containing this dataset.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -109,8 +103,6 @@ public final class ListingSubscriptionDestinationDatasetDatasetReferenceArgs ext
 
         /**
          * @param projectId The ID of the project containing this dataset.
-         * 
-         * ***
          * 
          * @return builder
          * 

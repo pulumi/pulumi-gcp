@@ -41,8 +41,6 @@ public final class ApiHubInstanceConfig {
     /**
      * @return Optional. The name of the Vertex AI location where the data store is stored.
      * 
-     * ***
-     * 
      */
     private @Nullable String vertexLocation;
 
@@ -81,8 +79,6 @@ public final class ApiHubInstanceConfig {
     }
     /**
      * @return Optional. The name of the Vertex AI location where the data store is stored.
-     * 
-     * ***
      * 
      */
     public Optional<String> vertexLocation() {

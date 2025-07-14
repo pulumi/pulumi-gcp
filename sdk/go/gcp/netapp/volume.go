@@ -156,8 +156,6 @@ type Volume struct {
 	// Only the volume with largeCapacity will be allowed to have multiple endpoints.
 	MultipleEndpoints pulumi.BoolPtrOutput `pulumi:"multipleEndpoints"`
 	// The name of the volume. Needs to be unique per location.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// VPC network name with format: `projects/{{project}}/global/networks/{{network}}`. Inherited from storage pool.
 	Network pulumi.StringOutput `pulumi:"network"`
@@ -316,8 +314,6 @@ type volumeState struct {
 	// Only the volume with largeCapacity will be allowed to have multiple endpoints.
 	MultipleEndpoints *bool `pulumi:"multipleEndpoints"`
 	// The name of the volume. Needs to be unique per location.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// VPC network name with format: `projects/{{project}}/global/networks/{{network}}`. Inherited from storage pool.
 	Network *string `pulumi:"network"`
@@ -427,8 +423,6 @@ type VolumeState struct {
 	// Only the volume with largeCapacity will be allowed to have multiple endpoints.
 	MultipleEndpoints pulumi.BoolPtrInput
 	// The name of the volume. Needs to be unique per location.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// VPC network name with format: `projects/{{project}}/global/networks/{{network}}`. Inherited from storage pool.
 	Network pulumi.StringPtrInput
@@ -523,8 +517,6 @@ type volumeArgs struct {
 	// Only the volume with largeCapacity will be allowed to have multiple endpoints.
 	MultipleEndpoints *bool `pulumi:"multipleEndpoints"`
 	// The name of the volume. Needs to be unique per location.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -597,8 +589,6 @@ type VolumeArgs struct {
 	// Only the volume with largeCapacity will be allowed to have multiple endpoints.
 	MultipleEndpoints pulumi.BoolPtrInput
 	// The name of the volume. Needs to be unique per location.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -835,8 +825,6 @@ func (o VolumeOutput) MultipleEndpoints() pulumi.BoolPtrOutput {
 }
 
 // The name of the volume. Needs to be unique per location.
-//
-// ***
 func (o VolumeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

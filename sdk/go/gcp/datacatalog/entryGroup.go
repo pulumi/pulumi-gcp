@@ -97,8 +97,6 @@ type EntryGroup struct {
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// The id of the entry group to create. The id must begin with a letter or underscore,
 	// contain only English letters, numbers and underscores, and be at most 64 characters.
-	//
-	// ***
 	EntryGroupId pulumi.StringOutput `pulumi:"entryGroupId"`
 	// The resource name of the entry group in URL format. Example: projects/{project}/locations/{location}/entryGroups/{entryGroupId}
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -148,8 +146,6 @@ type entryGroupState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// The id of the entry group to create. The id must begin with a letter or underscore,
 	// contain only English letters, numbers and underscores, and be at most 64 characters.
-	//
-	// ***
 	EntryGroupId *string `pulumi:"entryGroupId"`
 	// The resource name of the entry group in URL format. Example: projects/{project}/locations/{location}/entryGroups/{entryGroupId}
 	Name *string `pulumi:"name"`
@@ -167,8 +163,6 @@ type EntryGroupState struct {
 	DisplayName pulumi.StringPtrInput
 	// The id of the entry group to create. The id must begin with a letter or underscore,
 	// contain only English letters, numbers and underscores, and be at most 64 characters.
-	//
-	// ***
 	EntryGroupId pulumi.StringPtrInput
 	// The resource name of the entry group in URL format. Example: projects/{project}/locations/{location}/entryGroups/{entryGroupId}
 	Name pulumi.StringPtrInput
@@ -190,8 +184,6 @@ type entryGroupArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// The id of the entry group to create. The id must begin with a letter or underscore,
 	// contain only English letters, numbers and underscores, and be at most 64 characters.
-	//
-	// ***
 	EntryGroupId string `pulumi:"entryGroupId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -208,8 +200,6 @@ type EntryGroupArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// The id of the entry group to create. The id must begin with a letter or underscore,
 	// contain only English letters, numbers and underscores, and be at most 64 characters.
-	//
-	// ***
 	EntryGroupId pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -317,8 +307,6 @@ func (o EntryGroupOutput) DisplayName() pulumi.StringPtrOutput {
 
 // The id of the entry group to create. The id must begin with a letter or underscore,
 // contain only English letters, numbers and underscores, and be at most 64 characters.
-//
-// ***
 func (o EntryGroupOutput) EntryGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EntryGroup) pulumi.StringOutput { return v.EntryGroupId }).(pulumi.StringOutput)
 }

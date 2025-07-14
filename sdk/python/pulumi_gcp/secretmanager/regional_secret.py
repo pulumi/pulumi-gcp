@@ -39,9 +39,6 @@ class RegionalSecretArgs:
         The set of arguments for constructing a RegionalSecret resource.
         :param pulumi.Input[builtins.str] location: The location of the regional secret. eg us-central1
         :param pulumi.Input[builtins.str] secret_id: This must be unique within the project.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Custom metadata about the regional secret.
                Annotations are distinct from various forms of labels. Annotations exist to allow
                client tools to store their own state information without requiring a database.
@@ -138,9 +135,6 @@ class RegionalSecretArgs:
     def secret_id(self) -> pulumi.Input[builtins.str]:
         """
         This must be unique within the project.
-
-
-        - - -
         """
         return pulumi.get(self, "secret_id")
 
@@ -388,9 +382,6 @@ class _RegionalSecretState:
                set to configure rotation.
                Structure is documented below.
         :param pulumi.Input[builtins.str] secret_id: This must be unique within the project.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['RegionalSecretTopicArgs']]] topics: A list of up to 10 Pub/Sub topics to which messages are published when control plane
                operations are called on the regional secret or its versions.
                Structure is documented below.
@@ -633,9 +624,6 @@ class _RegionalSecretState:
     def secret_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         This must be unique within the project.
-
-
-        - - -
         """
         return pulumi.get(self, "secret_id")
 
@@ -920,9 +908,6 @@ class RegionalSecret(pulumi.CustomResource):
                set to configure rotation.
                Structure is documented below.
         :param pulumi.Input[builtins.str] secret_id: This must be unique within the project.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegionalSecretTopicArgs', 'RegionalSecretTopicArgsDict']]]] topics: A list of up to 10 Pub/Sub topics to which messages are published when control plane
                operations are called on the regional secret or its versions.
                Structure is documented below.
@@ -1242,9 +1227,6 @@ class RegionalSecret(pulumi.CustomResource):
                set to configure rotation.
                Structure is documented below.
         :param pulumi.Input[builtins.str] secret_id: This must be unique within the project.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegionalSecretTopicArgs', 'RegionalSecretTopicArgsDict']]]] topics: A list of up to 10 Pub/Sub topics to which messages are published when control plane
                operations are called on the regional secret or its versions.
                Structure is documented below.
@@ -1422,9 +1404,6 @@ class RegionalSecret(pulumi.CustomResource):
     def secret_id(self) -> pulumi.Output[builtins.str]:
         """
         This must be unique within the project.
-
-
-        - - -
         """
         return pulumi.get(self, "secret_id")
 

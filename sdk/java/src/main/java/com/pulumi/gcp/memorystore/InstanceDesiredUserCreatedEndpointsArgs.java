@@ -70,16 +70,12 @@ public final class InstanceDesiredUserCreatedEndpointsArgs extends com.pulumi.re
     /**
      * The name of the region of the Memorystore instance these endpoints should be added to.
      * 
-     * ***
-     * 
      */
     @Import(name="region", required=true)
     private Output<String> region;
 
     /**
      * @return The name of the region of the Memorystore instance these endpoints should be added to.
-     * 
-     * ***
      * 
      */
     public Output<String> region() {
@@ -194,8 +190,6 @@ public final class InstanceDesiredUserCreatedEndpointsArgs extends com.pulumi.re
         /**
          * @param region The name of the region of the Memorystore instance these endpoints should be added to.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -206,8 +200,6 @@ public final class InstanceDesiredUserCreatedEndpointsArgs extends com.pulumi.re
 
         /**
          * @param region The name of the region of the Memorystore instance these endpoints should be added to.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -103,9 +103,6 @@ export class TagValue extends pulumi.CustomResource {
     /**
      * Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
      * The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\), and forward slashes (/).
-     *
-     *
-     * - - -
      */
     public readonly shortName!: pulumi.Output<string>;
     /**
@@ -183,9 +180,6 @@ export interface TagValueState {
     /**
      * Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
      * The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\), and forward slashes (/).
-     *
-     *
-     * - - -
      */
     shortName?: pulumi.Input<string>;
     /**
@@ -210,9 +204,6 @@ export interface TagValueArgs {
     /**
      * Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
      * The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\), and forward slashes (/).
-     *
-     *
-     * - - -
      */
     shortName: pulumi.Input<string>;
 }

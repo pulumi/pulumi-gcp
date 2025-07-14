@@ -319,16 +319,12 @@ public class Parameter extends com.pulumi.resources.CustomResource {
     /**
      * This must be unique within the project.
      * 
-     * ***
-     * 
      */
     @Export(name="parameterId", refs={String.class}, tree="[0]")
     private Output<String> parameterId;
 
     /**
      * @return This must be unique within the project.
-     * 
-     * ***
      * 
      */
     public Output<String> parameterId() {

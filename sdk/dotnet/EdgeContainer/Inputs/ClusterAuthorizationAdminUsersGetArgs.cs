@@ -14,8 +14,6 @@ namespace Pulumi.Gcp.EdgeContainer.Inputs
     {
         /// <summary>
         /// An active Google username.
-        /// 
-        /// - - -
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;

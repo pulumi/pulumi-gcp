@@ -61,6 +61,13 @@ import java.util.concurrent.CompletableFuture;
 
 public final class KmsFunctions {
     /**
+     * Provides access to Google Cloud Platform KMS AutokeyConfig. A AutokeyConfig is a Cloud KMS resource that helps you safely span the separation of duties to create new Cloud KMS keys for CMEK using Autokey.
+     * 
+     * For more information see
+     * [the official documentation](https://cloud.google.com/kms/docs/reference/rest/v1/folders)
+     * and
+     * [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyHandles).
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -101,6 +108,13 @@ public final class KmsFunctions {
         return getAutokeyConfig(args, InvokeOptions.Empty);
     }
     /**
+     * Provides access to Google Cloud Platform KMS AutokeyConfig. A AutokeyConfig is a Cloud KMS resource that helps you safely span the separation of duties to create new Cloud KMS keys for CMEK using Autokey.
+     * 
+     * For more information see
+     * [the official documentation](https://cloud.google.com/kms/docs/reference/rest/v1/folders)
+     * and
+     * [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyHandles).
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -141,6 +155,13 @@ public final class KmsFunctions {
         return getAutokeyConfigPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Provides access to Google Cloud Platform KMS AutokeyConfig. A AutokeyConfig is a Cloud KMS resource that helps you safely span the separation of duties to create new Cloud KMS keys for CMEK using Autokey.
+     * 
+     * For more information see
+     * [the official documentation](https://cloud.google.com/kms/docs/reference/rest/v1/folders)
+     * and
+     * [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyHandles).
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -181,6 +202,13 @@ public final class KmsFunctions {
         return Deployment.getInstance().invoke("gcp:kms/getAutokeyConfig:getAutokeyConfig", TypeShape.of(GetAutokeyConfigResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Provides access to Google Cloud Platform KMS AutokeyConfig. A AutokeyConfig is a Cloud KMS resource that helps you safely span the separation of duties to create new Cloud KMS keys for CMEK using Autokey.
+     * 
+     * For more information see
+     * [the official documentation](https://cloud.google.com/kms/docs/reference/rest/v1/folders)
+     * and
+     * [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyHandles).
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -221,6 +249,13 @@ public final class KmsFunctions {
         return Deployment.getInstance().invoke("gcp:kms/getAutokeyConfig:getAutokeyConfig", TypeShape.of(GetAutokeyConfigResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Provides access to Google Cloud Platform KMS AutokeyConfig. A AutokeyConfig is a Cloud KMS resource that helps you safely span the separation of duties to create new Cloud KMS keys for CMEK using Autokey.
+     * 
+     * For more information see
+     * [the official documentation](https://cloud.google.com/kms/docs/reference/rest/v1/folders)
+     * and
+     * [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyHandles).
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -4121,6 +4156,13 @@ public final class KmsFunctions {
         return Deployment.getInstance().invokeAsync("gcp:kms/getKMSSecretCiphertext:getKMSSecretCiphertext", TypeShape.of(GetKMSSecretCiphertextResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Provides access to Google Cloud Platform KMS KeyHandle. A key handle is a Cloud KMS resource that helps you safely span the separation of duties to create new Cloud KMS keys for CMEK using Autokey.
+     * 
+     * For more information see
+     * [the official documentation](https://cloud.google.com/kms/docs/resource-hierarchy#key_handles)
+     * and
+     * [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyHandles).
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -4162,6 +4204,13 @@ public final class KmsFunctions {
         return getKeyHandle(args, InvokeOptions.Empty);
     }
     /**
+     * Provides access to Google Cloud Platform KMS KeyHandle. A key handle is a Cloud KMS resource that helps you safely span the separation of duties to create new Cloud KMS keys for CMEK using Autokey.
+     * 
+     * For more information see
+     * [the official documentation](https://cloud.google.com/kms/docs/resource-hierarchy#key_handles)
+     * and
+     * [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyHandles).
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -4203,6 +4252,13 @@ public final class KmsFunctions {
         return getKeyHandlePlain(args, InvokeOptions.Empty);
     }
     /**
+     * Provides access to Google Cloud Platform KMS KeyHandle. A key handle is a Cloud KMS resource that helps you safely span the separation of duties to create new Cloud KMS keys for CMEK using Autokey.
+     * 
+     * For more information see
+     * [the official documentation](https://cloud.google.com/kms/docs/resource-hierarchy#key_handles)
+     * and
+     * [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyHandles).
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -4244,6 +4300,13 @@ public final class KmsFunctions {
         return Deployment.getInstance().invoke("gcp:kms/getKeyHandle:getKeyHandle", TypeShape.of(GetKeyHandleResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Provides access to Google Cloud Platform KMS KeyHandle. A key handle is a Cloud KMS resource that helps you safely span the separation of duties to create new Cloud KMS keys for CMEK using Autokey.
+     * 
+     * For more information see
+     * [the official documentation](https://cloud.google.com/kms/docs/resource-hierarchy#key_handles)
+     * and
+     * [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyHandles).
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -4285,6 +4348,13 @@ public final class KmsFunctions {
         return Deployment.getInstance().invoke("gcp:kms/getKeyHandle:getKeyHandle", TypeShape.of(GetKeyHandleResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Provides access to Google Cloud Platform KMS KeyHandle. A key handle is a Cloud KMS resource that helps you safely span the separation of duties to create new Cloud KMS keys for CMEK using Autokey.
+     * 
+     * For more information see
+     * [the official documentation](https://cloud.google.com/kms/docs/resource-hierarchy#key_handles)
+     * and
+     * [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyHandles).
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -4326,6 +4396,13 @@ public final class KmsFunctions {
         return Deployment.getInstance().invokeAsync("gcp:kms/getKeyHandle:getKeyHandle", TypeShape.of(GetKeyHandleResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Provides access to Google Cloud Platform KMS KeyHandle. A key handle is a Cloud KMS resource that helps you safely span the separation of duties to create new Cloud KMS keys for CMEK using Autokey.
+     * 
+     * For more information see
+     * [the official documentation](https://cloud.google.com/kms/docs/resource-hierarchy#key_handles)
+     * and
+     * [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyHandles/list).
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -4368,6 +4445,13 @@ public final class KmsFunctions {
         return getKeyHandles(args, InvokeOptions.Empty);
     }
     /**
+     * Provides access to Google Cloud Platform KMS KeyHandle. A key handle is a Cloud KMS resource that helps you safely span the separation of duties to create new Cloud KMS keys for CMEK using Autokey.
+     * 
+     * For more information see
+     * [the official documentation](https://cloud.google.com/kms/docs/resource-hierarchy#key_handles)
+     * and
+     * [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyHandles/list).
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -4410,6 +4494,13 @@ public final class KmsFunctions {
         return getKeyHandlesPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Provides access to Google Cloud Platform KMS KeyHandle. A key handle is a Cloud KMS resource that helps you safely span the separation of duties to create new Cloud KMS keys for CMEK using Autokey.
+     * 
+     * For more information see
+     * [the official documentation](https://cloud.google.com/kms/docs/resource-hierarchy#key_handles)
+     * and
+     * [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyHandles/list).
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -4452,6 +4543,13 @@ public final class KmsFunctions {
         return Deployment.getInstance().invoke("gcp:kms/getKeyHandles:getKeyHandles", TypeShape.of(GetKeyHandlesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Provides access to Google Cloud Platform KMS KeyHandle. A key handle is a Cloud KMS resource that helps you safely span the separation of duties to create new Cloud KMS keys for CMEK using Autokey.
+     * 
+     * For more information see
+     * [the official documentation](https://cloud.google.com/kms/docs/resource-hierarchy#key_handles)
+     * and
+     * [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyHandles/list).
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -4494,6 +4592,13 @@ public final class KmsFunctions {
         return Deployment.getInstance().invoke("gcp:kms/getKeyHandles:getKeyHandles", TypeShape.of(GetKeyHandlesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Provides access to Google Cloud Platform KMS KeyHandle. A key handle is a Cloud KMS resource that helps you safely span the separation of duties to create new Cloud KMS keys for CMEK using Autokey.
+     * 
+     * For more information see
+     * [the official documentation](https://cloud.google.com/kms/docs/resource-hierarchy#key_handles)
+     * and
+     * [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyHandles/list).
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;

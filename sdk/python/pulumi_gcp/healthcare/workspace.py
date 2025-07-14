@@ -32,9 +32,10 @@ class WorkspaceArgs:
                'projects/{project}/locations/{location}/datasets/{dataset}'
         :param pulumi.Input['WorkspaceSettingsArgs'] settings: Settings associated with this workspace.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: The user labels. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg",
-               "count": "3" } **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: The user labels. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] name: The name of the workspace, in the format 'projects/{projectId}/locations/{location}/datasets/{datasetId}/dataMapperWorkspaces/{workspaceId}'
         """
         pulumi.set(__self__, "dataset", dataset)
@@ -74,9 +75,10 @@ class WorkspaceArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        The user labels. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg",
-        "count": "3" } **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        The user labels. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -111,9 +113,10 @@ class _WorkspaceState:
         :param pulumi.Input[builtins.str] dataset: Identifies the dataset addressed by this request. Must be in the format
                'projects/{project}/locations/{location}/datasets/{dataset}'
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: The user labels. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg",
-               "count": "3" } **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: The user labels. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] name: The name of the workspace, in the format 'projects/{projectId}/locations/{location}/datasets/{datasetId}/dataMapperWorkspaces/{workspaceId}'
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
@@ -162,9 +165,10 @@ class _WorkspaceState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        The user labels. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg",
-        "count": "3" } **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        The user labels. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -269,9 +273,10 @@ class Workspace(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] dataset: Identifies the dataset addressed by this request. Must be in the format
                'projects/{project}/locations/{location}/datasets/{dataset}'
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: The user labels. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg",
-               "count": "3" } **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: The user labels. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] name: The name of the workspace, in the format 'projects/{projectId}/locations/{location}/datasets/{datasetId}/dataMapperWorkspaces/{workspaceId}'
         :param pulumi.Input[Union['WorkspaceSettingsArgs', 'WorkspaceSettingsArgsDict']] settings: Settings associated with this workspace.
                Structure is documented below.
@@ -391,9 +396,10 @@ class Workspace(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] dataset: Identifies the dataset addressed by this request. Must be in the format
                'projects/{project}/locations/{location}/datasets/{dataset}'
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: The user labels. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg",
-               "count": "3" } **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: The user labels. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] name: The name of the workspace, in the format 'projects/{projectId}/locations/{location}/datasets/{datasetId}/dataMapperWorkspaces/{workspaceId}'
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
@@ -433,9 +439,10 @@ class Workspace(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
         """
-        The user labels. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg",
-        "count": "3" } **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        The user labels. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 

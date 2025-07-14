@@ -121,9 +121,6 @@ export class Dataset extends pulumi.CustomResource {
     public readonly encryptionSpec!: pulumi.Output<outputs.healthcare.DatasetEncryptionSpec>;
     /**
      * The location for the Dataset.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -193,9 +190,6 @@ export interface DatasetState {
     encryptionSpec?: pulumi.Input<inputs.healthcare.DatasetEncryptionSpec>;
     /**
      * The location for the Dataset.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -230,9 +224,6 @@ export interface DatasetArgs {
     encryptionSpec?: pulumi.Input<inputs.healthcare.DatasetEncryptionSpec>;
     /**
      * The location for the Dataset.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

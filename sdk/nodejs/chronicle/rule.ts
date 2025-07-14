@@ -178,9 +178,6 @@ export class Rule extends pulumi.CustomResource {
     public readonly etag!: pulumi.Output<string>;
     /**
      * The unique identifier for the Chronicle instance, which is the same as the customer ID.
-     *
-     *
-     * - - -
      */
     public readonly instance!: pulumi.Output<string>;
     /**
@@ -399,9 +396,6 @@ export interface RuleState {
     etag?: pulumi.Input<string>;
     /**
      * The unique identifier for the Chronicle instance, which is the same as the customer ID.
-     *
-     *
-     * - - -
      */
     instance?: pulumi.Input<string>;
     /**
@@ -508,9 +502,6 @@ export interface RuleArgs {
     etag?: pulumi.Input<string>;
     /**
      * The unique identifier for the Chronicle instance, which is the same as the customer ID.
-     *
-     *
-     * - - -
      */
     instance: pulumi.Input<string>;
     /**

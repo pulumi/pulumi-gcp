@@ -41,6 +41,8 @@ __all__ = [
     'InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime',
     'InstanceMaintenanceSchedule',
     'InstanceManagedBackupSource',
+    'InstanceManagedServerCa',
+    'InstanceManagedServerCaCaCert',
     'InstanceNodeConfig',
     'InstancePersistenceConfig',
     'InstancePersistenceConfigAofConfig',
@@ -71,6 +73,8 @@ __all__ = [
     'GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeResult',
     'GetInstanceMaintenanceScheduleResult',
     'GetInstanceManagedBackupSourceResult',
+    'GetInstanceManagedServerCaResult',
+    'GetInstanceManagedServerCaCaCertResult',
     'GetInstanceNodeConfigResult',
     'GetInstancePersistenceConfigResult',
     'GetInstancePersistenceConfigAofConfigResult',
@@ -1420,6 +1424,67 @@ class InstanceManagedBackupSource(dict):
         Example: `projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}`.
         """
         return pulumi.get(self, "backup")
+
+
+@pulumi.output_type
+class InstanceManagedServerCa(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "caCerts":
+            suggest = "ca_certs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceManagedServerCa. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceManagedServerCa.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceManagedServerCa.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ca_certs: Optional[Sequence['outputs.InstanceManagedServerCaCaCert']] = None):
+        """
+        :param Sequence['InstanceManagedServerCaCaCertArgs'] ca_certs: (Output)
+               The PEM encoded CA certificate chains for managed server authentication
+               Structure is documented below.
+        """
+        if ca_certs is not None:
+            pulumi.set(__self__, "ca_certs", ca_certs)
+
+    @property
+    @pulumi.getter(name="caCerts")
+    def ca_certs(self) -> Optional[Sequence['outputs.InstanceManagedServerCaCaCert']]:
+        """
+        (Output)
+        The PEM encoded CA certificate chains for managed server authentication
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ca_certs")
+
+
+@pulumi.output_type
+class InstanceManagedServerCaCaCert(dict):
+    def __init__(__self__, *,
+                 certificates: Optional[Sequence[builtins.str]] = None):
+        """
+        :param Sequence[builtins.str] certificates: (Output)
+               The certificates that form the CA chain, from leaf to root order
+        """
+        if certificates is not None:
+            pulumi.set(__self__, "certificates", certificates)
+
+    @property
+    @pulumi.getter
+    def certificates(self) -> Optional[Sequence[builtins.str]]:
+        """
+        (Output)
+        The certificates that form the CA chain, from leaf to root order
+        """
+        return pulumi.get(self, "certificates")
 
 
 @pulumi.output_type
@@ -2859,6 +2924,42 @@ class GetInstanceManagedBackupSourceResult(dict):
         Example: 'projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}'.
         """
         return pulumi.get(self, "backup")
+
+
+@pulumi.output_type
+class GetInstanceManagedServerCaResult(dict):
+    def __init__(__self__, *,
+                 ca_certs: Sequence['outputs.GetInstanceManagedServerCaCaCertResult']):
+        """
+        :param Sequence['GetInstanceManagedServerCaCaCertArgs'] ca_certs: The PEM encoded CA certificate chains for managed server authentication
+        """
+        pulumi.set(__self__, "ca_certs", ca_certs)
+
+    @property
+    @pulumi.getter(name="caCerts")
+    def ca_certs(self) -> Sequence['outputs.GetInstanceManagedServerCaCaCertResult']:
+        """
+        The PEM encoded CA certificate chains for managed server authentication
+        """
+        return pulumi.get(self, "ca_certs")
+
+
+@pulumi.output_type
+class GetInstanceManagedServerCaCaCertResult(dict):
+    def __init__(__self__, *,
+                 certificates: Sequence[builtins.str]):
+        """
+        :param Sequence[builtins.str] certificates: The certificates that form the CA chain, from leaf to root order
+        """
+        pulumi.set(__self__, "certificates", certificates)
+
+    @property
+    @pulumi.getter
+    def certificates(self) -> Sequence[builtins.str]:
+        """
+        The certificates that form the CA chain, from leaf to root order
+        """
+        return pulumi.get(self, "certificates")
 
 
 @pulumi.output_type

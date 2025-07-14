@@ -30,9 +30,6 @@ class LoggingSettingArgs:
         The set of arguments for constructing a LoggingSetting resource.
         :param pulumi.Input[builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[builtins.str] logging_setting_id: Id of the Logging Setting.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -69,9 +66,6 @@ class LoggingSettingArgs:
     def logging_setting_id(self) -> pulumi.Input[builtins.str]:
         """
         Id of the Logging Setting.
-
-
-        - - -
         """
         return pulumi.get(self, "logging_setting_id")
 
@@ -156,9 +150,6 @@ class _LoggingSettingState:
         :param pulumi.Input[builtins.bool] log_metadata: Whether to log metadata.
         :param pulumi.Input[builtins.bool] log_prompts_and_responses: Whether to log prompts and responses.
         :param pulumi.Input[builtins.str] logging_setting_id: Id of the Logging Setting.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: Identifier. Name of the resource.
                Format:projects/{project}/locations/{location}/loggingsettings/{loggingsetting}
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -269,9 +260,6 @@ class _LoggingSettingState:
     def logging_setting_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Id of the Logging Setting.
-
-
-        - - -
         """
         return pulumi.get(self, "logging_setting_id")
 
@@ -398,9 +386,6 @@ class LoggingSetting(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] log_metadata: Whether to log metadata.
         :param pulumi.Input[builtins.bool] log_prompts_and_responses: Whether to log prompts and responses.
         :param pulumi.Input[builtins.str] logging_setting_id: Id of the Logging Setting.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -539,9 +524,6 @@ class LoggingSetting(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] log_metadata: Whether to log metadata.
         :param pulumi.Input[builtins.bool] log_prompts_and_responses: Whether to log prompts and responses.
         :param pulumi.Input[builtins.str] logging_setting_id: Id of the Logging Setting.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: Identifier. Name of the resource.
                Format:projects/{project}/locations/{location}/loggingsettings/{loggingsetting}
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -622,9 +604,6 @@ class LoggingSetting(pulumi.CustomResource):
     def logging_setting_id(self) -> pulumi.Output[builtins.str]:
         """
         Id of the Logging Setting.
-
-
-        - - -
         """
         return pulumi.get(self, "logging_setting_id")
 

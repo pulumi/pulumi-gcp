@@ -162,12 +162,14 @@ type BackupPlan struct {
 	BackupVaultServiceAccount pulumi.StringOutput `pulumi:"backupVaultServiceAccount"`
 	// When the `BackupPlan` was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The description allows for additional details about 'BackupPlan' and its use cases to be provided.
+	// The description allows for additional details about `BackupPlan` and its use cases to be provided.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The location for the backup plan
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of backup plan resource created
-	Name    pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The resource type to which the `BackupPlan` will be applied.
 	// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", and "storage.googleapis.com/Bucket".
@@ -234,12 +236,14 @@ type backupPlanState struct {
 	BackupVaultServiceAccount *string `pulumi:"backupVaultServiceAccount"`
 	// When the `BackupPlan` was created.
 	CreateTime *string `pulumi:"createTime"`
-	// The description allows for additional details about 'BackupPlan' and its use cases to be provided.
+	// The description allows for additional details about `BackupPlan` and its use cases to be provided.
 	Description *string `pulumi:"description"`
 	// The location for the backup plan
 	Location *string `pulumi:"location"`
 	// The name of backup plan resource created
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The resource type to which the `BackupPlan` will be applied.
 	// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", and "storage.googleapis.com/Bucket".
@@ -262,12 +266,14 @@ type BackupPlanState struct {
 	BackupVaultServiceAccount pulumi.StringPtrInput
 	// When the `BackupPlan` was created.
 	CreateTime pulumi.StringPtrInput
-	// The description allows for additional details about 'BackupPlan' and its use cases to be provided.
+	// The description allows for additional details about `BackupPlan` and its use cases to be provided.
 	Description pulumi.StringPtrInput
 	// The location for the backup plan
 	Location pulumi.StringPtrInput
 	// The name of backup plan resource created
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The resource type to which the `BackupPlan` will be applied.
 	// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", and "storage.googleapis.com/Bucket".
@@ -290,11 +296,13 @@ type backupPlanArgs struct {
 	BackupRules []BackupPlanBackupRule `pulumi:"backupRules"`
 	// Backup vault where the backups gets stored using this Backup plan.
 	BackupVault string `pulumi:"backupVault"`
-	// The description allows for additional details about 'BackupPlan' and its use cases to be provided.
+	// The description allows for additional details about `BackupPlan` and its use cases to be provided.
 	Description *string `pulumi:"description"`
 	// The location for the backup plan
-	Location string  `pulumi:"location"`
-	Project  *string `pulumi:"project"`
+	Location string `pulumi:"location"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// The resource type to which the `BackupPlan` will be applied.
 	// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", and "storage.googleapis.com/Bucket".
 	ResourceType string `pulumi:"resourceType"`
@@ -309,11 +317,13 @@ type BackupPlanArgs struct {
 	BackupRules BackupPlanBackupRuleArrayInput
 	// Backup vault where the backups gets stored using this Backup plan.
 	BackupVault pulumi.StringInput
-	// The description allows for additional details about 'BackupPlan' and its use cases to be provided.
+	// The description allows for additional details about `BackupPlan` and its use cases to be provided.
 	Description pulumi.StringPtrInput
 	// The location for the backup plan
 	Location pulumi.StringInput
-	Project  pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// The resource type to which the `BackupPlan` will be applied.
 	// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", and "storage.googleapis.com/Bucket".
 	ResourceType pulumi.StringInput
@@ -432,7 +442,7 @@ func (o BackupPlanOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupPlan) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The description allows for additional details about 'BackupPlan' and its use cases to be provided.
+// The description allows for additional details about `BackupPlan` and its use cases to be provided.
 func (o BackupPlanOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BackupPlan) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -447,6 +457,8 @@ func (o BackupPlanOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupPlan) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o BackupPlanOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupPlan) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

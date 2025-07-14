@@ -314,16 +314,12 @@ public class AppHostingTraffic extends com.pulumi.resources.CustomResource {
     /**
      * Id of the backend that this Traffic config applies to
      * 
-     * ***
-     * 
      */
     @Export(name="backend", refs={String.class}, tree="[0]")
     private Output<String> backend;
 
     /**
      * @return Id of the backend that this Traffic config applies to
-     * 
-     * ***
      * 
      */
     public Output<String> backend() {

@@ -44,9 +44,6 @@ class InstanceArgs:
                [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
         :param pulumi.Input[builtins.str] display_name: The descriptive name for this instance as it appears in UIs. Must be
                unique per project and between 4 and 30 characters in length.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] default_backup_schedule_type: Controls the default backup behavior for new databases within the instance.
                Note that `AUTOMATIC` is not permitted for free instances, as backups and backup schedules are not allowed for free instances.
                if unset or NONE, no default backup schedule will be created for new databases within the instance.
@@ -117,9 +114,6 @@ class InstanceArgs:
         """
         The descriptive name for this instance as it appears in UIs. Must be
         unique per project and between 4 and 30 characters in length.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -287,9 +281,6 @@ class _InstanceState:
                Possible values are: `NONE`, `AUTOMATIC`.
         :param pulumi.Input[builtins.str] display_name: The descriptive name for this instance as it appears in UIs. Must be
                unique per project and between 4 and 30 characters in length.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] edition: The edition selected for this instance. Different editions provide different capabilities at different price points.
                Possible values are: `EDITION_UNSPECIFIED`, `STANDARD`, `ENTERPRISE`, `ENTERPRISE_PLUS`.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -392,9 +383,6 @@ class _InstanceState:
         """
         The descriptive name for this instance as it appears in UIs. Must be
         unique per project and between 4 and 30 characters in length.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -657,9 +645,6 @@ class Instance(pulumi.CustomResource):
                Possible values are: `NONE`, `AUTOMATIC`.
         :param pulumi.Input[builtins.str] display_name: The descriptive name for this instance as it appears in UIs. Must be
                unique per project and between 4 and 30 characters in length.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] edition: The edition selected for this instance. Different editions provide different capabilities at different price points.
                Possible values are: `EDITION_UNSPECIFIED`, `STANDARD`, `ENTERPRISE`, `ENTERPRISE_PLUS`.
         :param pulumi.Input[builtins.bool] force_destroy: When deleting a spanner instance, this boolean option will delete all backups of this instance.
@@ -868,9 +853,6 @@ class Instance(pulumi.CustomResource):
                Possible values are: `NONE`, `AUTOMATIC`.
         :param pulumi.Input[builtins.str] display_name: The descriptive name for this instance as it appears in UIs. Must be
                unique per project and between 4 and 30 characters in length.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] edition: The edition selected for this instance. Different editions provide different capabilities at different price points.
                Possible values are: `EDITION_UNSPECIFIED`, `STANDARD`, `ENTERPRISE`, `ENTERPRISE_PLUS`.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -951,9 +933,6 @@ class Instance(pulumi.CustomResource):
         """
         The descriptive name for this instance as it appears in UIs. Must be
         unique per project and between 4 and 30 characters in length.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 

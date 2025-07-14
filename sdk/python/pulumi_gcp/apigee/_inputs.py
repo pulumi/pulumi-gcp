@@ -598,8 +598,6 @@ if not MYPY:
         target_network_id: pulumi.Input[builtins.str]
         """
         The name of the producer VPC network.
-
-        - - -
         """
         target_project_id: pulumi.Input[builtins.str]
         """
@@ -615,8 +613,6 @@ class DnsZonePeeringConfigArgs:
                  target_project_id: pulumi.Input[builtins.str]):
         """
         :param pulumi.Input[builtins.str] target_network_id: The name of the producer VPC network.
-               
-               - - -
         :param pulumi.Input[builtins.str] target_project_id: The ID of the project that contains the producer VPC network.
         """
         pulumi.set(__self__, "target_network_id", target_network_id)
@@ -627,8 +623,6 @@ class DnsZonePeeringConfigArgs:
     def target_network_id(self) -> pulumi.Input[builtins.str]:
         """
         The name of the producer VPC network.
-
-        - - -
         """
         return pulumi.get(self, "target_network_id")
 
@@ -1936,8 +1930,6 @@ if not MYPY:
         email: NotRequired[pulumi.Input[builtins.str]]
         """
         Email address. Max 255 characters.
-
-        - - -
         """
         locality: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -1972,8 +1964,6 @@ class KeystoresAliasesSelfSignedCertSubjectArgs:
         :param pulumi.Input[builtins.str] common_name: Common name of the organization. Maximum length is 64 characters.
         :param pulumi.Input[builtins.str] country_code: Two-letter country code. Example, IN for India, US for United States of America.
         :param pulumi.Input[builtins.str] email: Email address. Max 255 characters.
-               
-               - - -
         :param pulumi.Input[builtins.str] locality: City or town name. Maximum length is 128 characters.
         :param pulumi.Input[builtins.str] org: Organization name. Maximum length is 64 characters.
         :param pulumi.Input[builtins.str] org_unit: Organization team name. Maximum length is 64 characters.
@@ -2023,8 +2013,6 @@ class KeystoresAliasesSelfSignedCertSubjectArgs:
     def email(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Email address. Max 255 characters.
-
-        - - -
         """
         return pulumi.get(self, "email")
 
@@ -2222,8 +2210,6 @@ if not MYPY:
         """
         The weight of the assessment.
         Possible values are: `MINOR`, `MODERATE`, `MAJOR`.
-
-        - - -
         """
 elif False:
     SecurityProfileV2ProfileAssessmentConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -2237,8 +2223,6 @@ class SecurityProfileV2ProfileAssessmentConfigArgs:
         :param pulumi.Input[builtins.str] assessment: The identifier for this object. Format specified above.
         :param pulumi.Input[builtins.str] weight: The weight of the assessment.
                Possible values are: `MINOR`, `MODERATE`, `MAJOR`.
-               
-               - - -
         """
         pulumi.set(__self__, "assessment", assessment)
         pulumi.set(__self__, "weight", weight)
@@ -2261,8 +2245,6 @@ class SecurityProfileV2ProfileAssessmentConfigArgs:
         """
         The weight of the assessment.
         Possible values are: `MINOR`, `MODERATE`, `MAJOR`.
-
-        - - -
         """
         return pulumi.get(self, "weight")
 

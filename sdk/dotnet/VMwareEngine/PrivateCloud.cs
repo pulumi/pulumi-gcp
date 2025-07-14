@@ -169,8 +169,7 @@ namespace Pulumi.Gcp.VMwareEngine
     public partial class PrivateCloud : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0
-        /// starts the deletion request immediately. If no value is set, a default value is set at the API Level.
+        /// The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
         /// </summary>
         [Output("deletionDelayHours")]
         public Output<int?> DeletionDelayHours { get; private set; } = null!;
@@ -221,13 +220,15 @@ namespace Pulumi.Gcp.VMwareEngine
         [Output("nsxes")]
         public Output<ImmutableArray<Outputs.PrivateCloudNsx>> Nsxes { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is
-        /// only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with
-        /// deletion_delay_hours.
+        /// While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with deletion_delay_hours.
         /// </summary>
         [Output("sendDeletionDelayHoursIfZero")]
         public Output<bool?> SendDeletionDelayHoursIfZero { get; private set; } = null!;
@@ -240,7 +241,8 @@ namespace Pulumi.Gcp.VMwareEngine
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
+        /// Initial type of the private cloud.
+        /// Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -305,8 +307,7 @@ namespace Pulumi.Gcp.VMwareEngine
     public sealed class PrivateCloudArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0
-        /// starts the deletion request immediately. If no value is set, a default value is set at the API Level.
+        /// The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
         /// </summary>
         [Input("deletionDelayHours")]
         public Input<int>? DeletionDelayHours { get; set; }
@@ -343,19 +344,22 @@ namespace Pulumi.Gcp.VMwareEngine
         [Input("networkConfig", required: true)]
         public Input<Inputs.PrivateCloudNetworkConfigArgs> NetworkConfig { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is
-        /// only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with
-        /// deletion_delay_hours.
+        /// While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with deletion_delay_hours.
         /// </summary>
         [Input("sendDeletionDelayHoursIfZero")]
         public Input<bool>? SendDeletionDelayHoursIfZero { get; set; }
 
         /// <summary>
-        /// Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
+        /// Initial type of the private cloud.
+        /// Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -369,8 +373,7 @@ namespace Pulumi.Gcp.VMwareEngine
     public sealed class PrivateCloudState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0
-        /// starts the deletion request immediately. If no value is set, a default value is set at the API Level.
+        /// The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
         /// </summary>
         [Input("deletionDelayHours")]
         public Input<int>? DeletionDelayHours { get; set; }
@@ -433,13 +436,15 @@ namespace Pulumi.Gcp.VMwareEngine
             set => _nsxes = value;
         }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is
-        /// only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with
-        /// deletion_delay_hours.
+        /// While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with deletion_delay_hours.
         /// </summary>
         [Input("sendDeletionDelayHoursIfZero")]
         public Input<bool>? SendDeletionDelayHoursIfZero { get; set; }
@@ -452,7 +457,8 @@ namespace Pulumi.Gcp.VMwareEngine
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// Initial type of the private cloud. Possible values: ["STANDARD", "TIME_LIMITED", "STRETCHED"]
+        /// Initial type of the private cloud.
+        /// Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

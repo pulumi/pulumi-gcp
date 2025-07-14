@@ -13,8 +13,6 @@ public final class PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPo
     /**
      * @return The utilization triggering the scale-in operation in percent.
      * 
-     * ***
-     * 
      */
     private Integer scaleIn;
     /**
@@ -26,8 +24,6 @@ public final class PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPo
     private PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds() {}
     /**
      * @return The utilization triggering the scale-in operation in percent.
-     * 
-     * ***
      * 
      */
     public Integer scaleIn() {

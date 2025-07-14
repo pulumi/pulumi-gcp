@@ -20,8 +20,6 @@ public final class TlsRouteRuleActionDestination {
     /**
      * @return Specifies the proportion of requests forwarded to the backend referenced by the serviceName field.
      * 
-     * ***
-     * 
      */
     private @Nullable Integer weight;
 
@@ -35,8 +33,6 @@ public final class TlsRouteRuleActionDestination {
     }
     /**
      * @return Specifies the proportion of requests forwarded to the backend referenced by the serviceName field.
-     * 
-     * ***
      * 
      */
     public Optional<Integer> weight() {

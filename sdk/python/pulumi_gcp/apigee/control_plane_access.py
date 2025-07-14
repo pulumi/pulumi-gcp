@@ -29,9 +29,6 @@ class ControlPlaneAccessArgs:
                The `service-account-name` is formatted like an email address. For example: serviceAccount@my_project_id.iam.gserviceaccount.com
                You might specify multiple service accounts, for example, if you have multiple environments and wish to assign a unique service account to each one.
         :param pulumi.Input[builtins.str] name: Name of the Apigee organization.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] synchronizer_identities: Array of service accounts to grant access to control plane resources (for the Synchronizer component), each specified using the following format: `serviceAccount:service-account-name`.
                The `service-account-name` is formatted like an email address. For example: serviceAccount@my_project_id.iam.gserviceaccount.com
                You might specify multiple service accounts, for example, if you have multiple environments and wish to assign a unique service account to each one.
@@ -63,9 +60,6 @@ class ControlPlaneAccessArgs:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Name of the Apigee organization.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -101,9 +95,6 @@ class _ControlPlaneAccessState:
                The `service-account-name` is formatted like an email address. For example: serviceAccount@my_project_id.iam.gserviceaccount.com
                You might specify multiple service accounts, for example, if you have multiple environments and wish to assign a unique service account to each one.
         :param pulumi.Input[builtins.str] name: Name of the Apigee organization.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] synchronizer_identities: Array of service accounts to grant access to control plane resources (for the Synchronizer component), each specified using the following format: `serviceAccount:service-account-name`.
                The `service-account-name` is formatted like an email address. For example: serviceAccount@my_project_id.iam.gserviceaccount.com
                You might specify multiple service accounts, for example, if you have multiple environments and wish to assign a unique service account to each one.
@@ -135,9 +126,6 @@ class _ControlPlaneAccessState:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Name of the Apigee organization.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -239,9 +227,6 @@ class ControlPlaneAccess(pulumi.CustomResource):
                The `service-account-name` is formatted like an email address. For example: serviceAccount@my_project_id.iam.gserviceaccount.com
                You might specify multiple service accounts, for example, if you have multiple environments and wish to assign a unique service account to each one.
         :param pulumi.Input[builtins.str] name: Name of the Apigee organization.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] synchronizer_identities: Array of service accounts to grant access to control plane resources (for the Synchronizer component), each specified using the following format: `serviceAccount:service-account-name`.
                The `service-account-name` is formatted like an email address. For example: serviceAccount@my_project_id.iam.gserviceaccount.com
                You might specify multiple service accounts, for example, if you have multiple environments and wish to assign a unique service account to each one.
@@ -369,9 +354,6 @@ class ControlPlaneAccess(pulumi.CustomResource):
                The `service-account-name` is formatted like an email address. For example: serviceAccount@my_project_id.iam.gserviceaccount.com
                You might specify multiple service accounts, for example, if you have multiple environments and wish to assign a unique service account to each one.
         :param pulumi.Input[builtins.str] name: Name of the Apigee organization.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] synchronizer_identities: Array of service accounts to grant access to control plane resources (for the Synchronizer component), each specified using the following format: `serviceAccount:service-account-name`.
                The `service-account-name` is formatted like an email address. For example: serviceAccount@my_project_id.iam.gserviceaccount.com
                You might specify multiple service accounts, for example, if you have multiple environments and wish to assign a unique service account to each one.
@@ -401,9 +383,6 @@ class ControlPlaneAccess(pulumi.CustomResource):
     def name(self) -> pulumi.Output[builtins.str]:
         """
         Name of the Apigee organization.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

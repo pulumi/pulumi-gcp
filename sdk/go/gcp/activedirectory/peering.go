@@ -28,7 +28,7 @@ type Peering struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Unique name of the peering in this scope including projects and location using the form: projects/{projectId}/locations/global/peerings/{peeringId}.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// ***
+	// (Required)
 	PeeringId pulumi.StringOutput `pulumi:"peeringId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -98,7 +98,7 @@ type peeringState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Unique name of the peering in this scope including projects and location using the form: projects/{projectId}/locations/global/peerings/{peeringId}.
 	Name *string `pulumi:"name"`
-	// ***
+	// (Required)
 	PeeringId *string `pulumi:"peeringId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -125,7 +125,7 @@ type PeeringState struct {
 	Labels pulumi.StringMapInput
 	// Unique name of the peering in this scope including projects and location using the form: projects/{projectId}/locations/global/peerings/{peeringId}.
 	Name pulumi.StringPtrInput
-	// ***
+	// (Required)
 	PeeringId pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -152,7 +152,7 @@ type peeringArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// ***
+	// (Required)
 	PeeringId string `pulumi:"peeringId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -173,7 +173,7 @@ type PeeringArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// ***
+	// (Required)
 	PeeringId pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -298,7 +298,7 @@ func (o PeeringOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Peering) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// ***
+// (Required)
 func (o PeeringOutput) PeeringId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Peering) pulumi.StringOutput { return v.PeeringId }).(pulumi.StringOutput)
 }

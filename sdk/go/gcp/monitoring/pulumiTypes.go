@@ -2838,8 +2838,6 @@ func (o AlertPolicyConditionConditionSqlPtrOutput) RowCountTest() AlertPolicyCon
 type AlertPolicyConditionConditionSqlBooleanTest struct {
 	// The name of the column containing the boolean value. If the value in a row is
 	// NULL, that row is ignored.
-	//
-	// ***
 	Column string `pulumi:"column"`
 }
 
@@ -2857,8 +2855,6 @@ type AlertPolicyConditionConditionSqlBooleanTestInput interface {
 type AlertPolicyConditionConditionSqlBooleanTestArgs struct {
 	// The name of the column containing the boolean value. If the value in a row is
 	// NULL, that row is ignored.
-	//
-	// ***
 	Column pulumi.StringInput `pulumi:"column"`
 }
 
@@ -2941,8 +2937,6 @@ func (o AlertPolicyConditionConditionSqlBooleanTestOutput) ToAlertPolicyConditio
 
 // The name of the column containing the boolean value. If the value in a row is
 // NULL, that row is ignored.
-//
-// ***
 func (o AlertPolicyConditionConditionSqlBooleanTestOutput) Column() pulumi.StringOutput {
 	return o.ApplyT(func(v AlertPolicyConditionConditionSqlBooleanTest) string { return v.Column }).(pulumi.StringOutput)
 }
@@ -2973,8 +2967,6 @@ func (o AlertPolicyConditionConditionSqlBooleanTestPtrOutput) Elem() AlertPolicy
 
 // The name of the column containing the boolean value. If the value in a row is
 // NULL, that row is ignored.
-//
-// ***
 func (o AlertPolicyConditionConditionSqlBooleanTestPtrOutput) Column() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertPolicyConditionConditionSqlBooleanTest) *string {
 		if v == nil {

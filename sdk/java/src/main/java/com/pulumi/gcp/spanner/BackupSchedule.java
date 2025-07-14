@@ -212,16 +212,12 @@ public class BackupSchedule extends com.pulumi.resources.CustomResource {
     /**
      * The database to create the backup schedule on.
      * 
-     * ***
-     * 
      */
     @Export(name="database", refs={String.class}, tree="[0]")
     private Output<String> database;
 
     /**
      * @return The database to create the backup schedule on.
-     * 
-     * ***
      * 
      */
     public Output<String> database() {

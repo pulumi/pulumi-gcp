@@ -127,16 +127,12 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
     /**
      * The ID to use for the topic, which will become the final component of the topic&#39;s name. This value is structured like: `my-topic-name`.
      * 
-     * ***
-     * 
      */
     @Import(name="topicId")
     private @Nullable Output<String> topicId;
 
     /**
      * @return The ID to use for the topic, which will become the final component of the topic&#39;s name. This value is structured like: `my-topic-name`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> topicId() {
@@ -326,8 +322,6 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param topicId The ID to use for the topic, which will become the final component of the topic&#39;s name. This value is structured like: `my-topic-name`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -338,8 +332,6 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param topicId The ID to use for the topic, which will become the final component of the topic&#39;s name. This value is structured like: `my-topic-name`.
-         * 
-         * ***
          * 
          * @return builder
          * 

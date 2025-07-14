@@ -96,8 +96,6 @@ public final class WorkloadIdentityPoolNamespaceArgs extends com.pulumi.resource
      * 
      * The prefix `gcp-` will be reserved for future uses.
      * 
-     * ***
-     * 
      */
     @Import(name="workloadIdentityPoolNamespaceId", required=true)
     private Output<String> workloadIdentityPoolNamespaceId;
@@ -110,8 +108,6 @@ public final class WorkloadIdentityPoolNamespaceArgs extends com.pulumi.resource
      * * end with an alphanumeric character
      * 
      * The prefix `gcp-` will be reserved for future uses.
-     * 
-     * ***
      * 
      */
     public Output<String> workloadIdentityPoolNamespaceId() {
@@ -249,8 +245,6 @@ public final class WorkloadIdentityPoolNamespaceArgs extends com.pulumi.resource
          * 
          * The prefix `gcp-` will be reserved for future uses.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -267,8 +261,6 @@ public final class WorkloadIdentityPoolNamespaceArgs extends com.pulumi.resource
          * * end with an alphanumeric character
          * 
          * The prefix `gcp-` will be reserved for future uses.
-         * 
-         * ***
          * 
          * @return builder
          * 

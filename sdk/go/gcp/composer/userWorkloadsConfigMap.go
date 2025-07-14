@@ -100,8 +100,6 @@ type UserWorkloadsConfigMap struct {
 	// For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
 	Data pulumi.StringMapOutput `pulumi:"data"`
 	// Environment where the Kubernetes ConfigMap will be stored and used.
-	//
-	// ***
 	Environment pulumi.StringOutput `pulumi:"environment"`
 	// Name of the Kubernetes ConfigMap.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -149,8 +147,6 @@ type userWorkloadsConfigMapState struct {
 	// For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
 	Data map[string]string `pulumi:"data"`
 	// Environment where the Kubernetes ConfigMap will be stored and used.
-	//
-	// ***
 	Environment *string `pulumi:"environment"`
 	// Name of the Kubernetes ConfigMap.
 	Name *string `pulumi:"name"`
@@ -166,8 +162,6 @@ type UserWorkloadsConfigMapState struct {
 	// For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
 	Data pulumi.StringMapInput
 	// Environment where the Kubernetes ConfigMap will be stored and used.
-	//
-	// ***
 	Environment pulumi.StringPtrInput
 	// Name of the Kubernetes ConfigMap.
 	Name pulumi.StringPtrInput
@@ -187,8 +181,6 @@ type userWorkloadsConfigMapArgs struct {
 	// For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
 	Data map[string]string `pulumi:"data"`
 	// Environment where the Kubernetes ConfigMap will be stored and used.
-	//
-	// ***
 	Environment string `pulumi:"environment"`
 	// Name of the Kubernetes ConfigMap.
 	Name *string `pulumi:"name"`
@@ -205,8 +197,6 @@ type UserWorkloadsConfigMapArgs struct {
 	// For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
 	Data pulumi.StringMapInput
 	// Environment where the Kubernetes ConfigMap will be stored and used.
-	//
-	// ***
 	Environment pulumi.StringInput
 	// Name of the Kubernetes ConfigMap.
 	Name pulumi.StringPtrInput
@@ -311,8 +301,6 @@ func (o UserWorkloadsConfigMapOutput) Data() pulumi.StringMapOutput {
 }
 
 // Environment where the Kubernetes ConfigMap will be stored and used.
-//
-// ***
 func (o UserWorkloadsConfigMapOutput) Environment() pulumi.StringOutput {
 	return o.ApplyT(func(v *UserWorkloadsConfigMap) pulumi.StringOutput { return v.Environment }).(pulumi.StringOutput)
 }

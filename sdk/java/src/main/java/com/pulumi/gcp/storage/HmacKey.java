@@ -147,16 +147,12 @@ public class HmacKey extends com.pulumi.resources.CustomResource {
     /**
      * The email address of the key&#39;s associated service account.
      * 
-     * ***
-     * 
      */
     @Export(name="serviceAccountEmail", refs={String.class}, tree="[0]")
     private Output<String> serviceAccountEmail;
 
     /**
      * @return The email address of the key&#39;s associated service account.
-     * 
-     * ***
      * 
      */
     public Output<String> serviceAccountEmail() {

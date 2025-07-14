@@ -33,9 +33,6 @@ class AiIndexEndpointArgs:
         """
         The set of arguments for constructing a AiIndexEndpoint resource.
         :param pulumi.Input[builtins.str] display_name: The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] description: The description of the Index.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: The labels with user-defined metadata to organize your Indexes.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -72,9 +69,6 @@ class AiIndexEndpointArgs:
     def display_name(self) -> pulumi.Input[builtins.str]:
         """
         The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -197,9 +191,6 @@ class _AiIndexEndpointState:
         :param pulumi.Input[builtins.str] create_time: The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[builtins.str] description: The description of the Index.
         :param pulumi.Input[builtins.str] display_name: The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[builtins.str] etag: Used to perform consistent read-modify-write updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: The labels with user-defined metadata to organize your Indexes.
@@ -281,9 +272,6 @@ class _AiIndexEndpointState:
     def display_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -565,9 +553,6 @@ class AiIndexEndpoint(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] description: The description of the Index.
         :param pulumi.Input[builtins.str] display_name: The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: The labels with user-defined metadata to organize your Indexes.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -776,9 +761,6 @@ class AiIndexEndpoint(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] create_time: The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[builtins.str] description: The description of the Index.
         :param pulumi.Input[builtins.str] display_name: The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[builtins.str] etag: Used to perform consistent read-modify-write updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: The labels with user-defined metadata to organize your Indexes.
@@ -842,9 +824,6 @@ class AiIndexEndpoint(pulumi.CustomResource):
     def display_name(self) -> pulumi.Output[builtins.str]:
         """
         The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 

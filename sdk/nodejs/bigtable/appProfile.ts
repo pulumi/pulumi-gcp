@@ -203,9 +203,6 @@ export class AppProfile extends pulumi.CustomResource {
 
     /**
      * The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-     *
-     *
-     * - - -
      */
     public readonly appProfileId!: pulumi.Output<string>;
     /**
@@ -320,9 +317,6 @@ export class AppProfile extends pulumi.CustomResource {
 export interface AppProfileState {
     /**
      * The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-     *
-     *
-     * - - -
      */
     appProfileId?: pulumi.Input<string>;
     /**
@@ -388,9 +382,6 @@ export interface AppProfileState {
 export interface AppProfileArgs {
     /**
      * The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-     *
-     *
-     * - - -
      */
     appProfileId: pulumi.Input<string>;
     /**

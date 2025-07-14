@@ -33,9 +33,6 @@ class RuleArgs:
         """
         The set of arguments for constructing a Rule resource.
         :param pulumi.Input[builtins.str] instance: The unique identifier for the Chronicle instance, which is the same as the customer ID.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
         :param pulumi.Input[builtins.str] deletion_policy: Policy to determine if the rule should be deleted forcefully.
                If deletion_policy = "FORCE", any retrohunts and any detections associated with the rule
@@ -82,9 +79,6 @@ class RuleArgs:
     def instance(self) -> pulumi.Input[builtins.str]:
         """
         The unique identifier for the Chronicle instance, which is the same as the customer ID.
-
-
-        - - -
         """
         return pulumi.get(self, "instance")
 
@@ -255,9 +249,6 @@ class _RuleState:
                otherwise.
                Populated in BASIC view and FULL view.
         :param pulumi.Input[builtins.str] instance: The unique identifier for the Chronicle instance, which is the same as the customer ID.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] metadata: Output only. Additional metadata specified in the meta section of text.
                Populated in FULL view.
@@ -480,9 +471,6 @@ class _RuleState:
     def instance(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The unique identifier for the Chronicle instance, which is the same as the customer ID.
-
-
-        - - -
         """
         return pulumi.get(self, "instance")
 
@@ -783,9 +771,6 @@ class Rule(pulumi.CustomResource):
                otherwise.
                Populated in BASIC view and FULL view.
         :param pulumi.Input[builtins.str] instance: The unique identifier for the Chronicle instance, which is the same as the customer ID.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1017,9 +1002,6 @@ class Rule(pulumi.CustomResource):
                otherwise.
                Populated in BASIC view and FULL view.
         :param pulumi.Input[builtins.str] instance: The unique identifier for the Chronicle instance, which is the same as the customer ID.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] metadata: Output only. Additional metadata specified in the meta section of text.
                Populated in FULL view.
@@ -1188,9 +1170,6 @@ class Rule(pulumi.CustomResource):
     def instance(self) -> pulumi.Output[builtins.str]:
         """
         The unique identifier for the Chronicle instance, which is the same as the customer ID.
-
-
-        - - -
         """
         return pulumi.get(self, "instance")
 

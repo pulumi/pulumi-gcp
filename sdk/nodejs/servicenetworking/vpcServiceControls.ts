@@ -146,9 +146,6 @@ export class VpcServiceControls extends pulumi.CustomResource {
      * The service that is managing peering connectivity for a service
      * producer's organization. For Google services that support this
      * functionality, this value is `servicenetworking.googleapis.com`.
-     *
-     *
-     * - - -
      */
     public readonly service!: pulumi.Output<string>;
 
@@ -211,9 +208,6 @@ export interface VpcServiceControlsState {
      * The service that is managing peering connectivity for a service
      * producer's organization. For Google services that support this
      * functionality, this value is `servicenetworking.googleapis.com`.
-     *
-     *
-     * - - -
      */
     service?: pulumi.Input<string>;
 }
@@ -239,9 +233,6 @@ export interface VpcServiceControlsArgs {
      * The service that is managing peering connectivity for a service
      * producer's organization. For Google services that support this
      * functionality, this value is `servicenetworking.googleapis.com`.
-     *
-     *
-     * - - -
      */
     service: pulumi.Input<string>;
 }

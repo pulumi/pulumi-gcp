@@ -233,16 +233,12 @@ public class GatewaySecurityPolicyRule extends com.pulumi.resources.CustomResour
     /**
      * The name of the gatewat security policy this rule belongs to.
      * 
-     * ***
-     * 
      */
     @Export(name="gatewaySecurityPolicy", refs={String.class}, tree="[0]")
     private Output<String> gatewaySecurityPolicy;
 
     /**
      * @return The name of the gatewat security policy this rule belongs to.
-     * 
-     * ***
      * 
      */
     public Output<String> gatewaySecurityPolicy() {

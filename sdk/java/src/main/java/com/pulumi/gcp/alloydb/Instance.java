@@ -441,16 +441,12 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The ID of the alloydb instance.
      * 
-     * ***
-     * 
      */
     @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
      * @return The ID of the alloydb instance.
-     * 
-     * ***
      * 
      */
     public Output<String> instanceId() {

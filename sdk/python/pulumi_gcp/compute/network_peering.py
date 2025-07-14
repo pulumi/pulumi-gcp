@@ -27,7 +27,8 @@ class NetworkPeeringArgs:
                  import_custom_routes: Optional[pulumi.Input[builtins.bool]] = None,
                  import_subnet_routes_with_public_ip: Optional[pulumi.Input[builtins.bool]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
-                 stack_type: Optional[pulumi.Input[builtins.str]] = None):
+                 stack_type: Optional[pulumi.Input[builtins.str]] = None,
+                 update_strategy: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a NetworkPeering resource.
         :param pulumi.Input[builtins.str] network: The primary network of the peering.
@@ -39,6 +40,7 @@ class NetworkPeeringArgs:
         :param pulumi.Input[builtins.bool] import_subnet_routes_with_public_ip: Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
         :param pulumi.Input[builtins.str] name: Name of the peering.
         :param pulumi.Input[builtins.str] stack_type: Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY. Possible values: ["IPV4_ONLY", "IPV4_IPV6"].
+        :param pulumi.Input[builtins.str] update_strategy: The update strategy determines the semantics for updates and deletes to the peering connection configuration. The default value is INDEPENDENT. Possible values: ["INDEPENDENT", "CONSENSUS"]
         """
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "peer_network", peer_network)
@@ -54,6 +56,8 @@ class NetworkPeeringArgs:
             pulumi.set(__self__, "name", name)
         if stack_type is not None:
             pulumi.set(__self__, "stack_type", stack_type)
+        if update_strategy is not None:
+            pulumi.set(__self__, "update_strategy", update_strategy)
 
     @property
     @pulumi.getter
@@ -152,6 +156,18 @@ class NetworkPeeringArgs:
     def stack_type(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "stack_type", value)
 
+    @property
+    @pulumi.getter(name="updateStrategy")
+    def update_strategy(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The update strategy determines the semantics for updates and deletes to the peering connection configuration. The default value is INDEPENDENT. Possible values: ["INDEPENDENT", "CONSENSUS"]
+        """
+        return pulumi.get(self, "update_strategy")
+
+    @update_strategy.setter
+    def update_strategy(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "update_strategy", value)
+
 
 @pulumi.input_type
 class _NetworkPeeringState:
@@ -165,7 +181,8 @@ class _NetworkPeeringState:
                  peer_network: Optional[pulumi.Input[builtins.str]] = None,
                  stack_type: Optional[pulumi.Input[builtins.str]] = None,
                  state: Optional[pulumi.Input[builtins.str]] = None,
-                 state_details: Optional[pulumi.Input[builtins.str]] = None):
+                 state_details: Optional[pulumi.Input[builtins.str]] = None,
+                 update_strategy: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering NetworkPeering resources.
         :param pulumi.Input[builtins.bool] export_custom_routes: Whether to export the custom routes to the peer network. Defaults to `false`.
@@ -180,6 +197,7 @@ class _NetworkPeeringState:
         :param pulumi.Input[builtins.str] state: State for the peering, either `ACTIVE` or `INACTIVE`. The peering is
                `ACTIVE` when there's a matching configuration in the peer network.
         :param pulumi.Input[builtins.str] state_details: Details about the current state of the peering.
+        :param pulumi.Input[builtins.str] update_strategy: The update strategy determines the semantics for updates and deletes to the peering connection configuration. The default value is INDEPENDENT. Possible values: ["INDEPENDENT", "CONSENSUS"]
         """
         if export_custom_routes is not None:
             pulumi.set(__self__, "export_custom_routes", export_custom_routes)
@@ -201,6 +219,8 @@ class _NetworkPeeringState:
             pulumi.set(__self__, "state", state)
         if state_details is not None:
             pulumi.set(__self__, "state_details", state_details)
+        if update_strategy is not None:
+            pulumi.set(__self__, "update_strategy", update_strategy)
 
     @property
     @pulumi.getter(name="exportCustomRoutes")
@@ -324,6 +344,18 @@ class _NetworkPeeringState:
     def state_details(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "state_details", value)
 
+    @property
+    @pulumi.getter(name="updateStrategy")
+    def update_strategy(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The update strategy determines the semantics for updates and deletes to the peering connection configuration. The default value is INDEPENDENT. Possible values: ["INDEPENDENT", "CONSENSUS"]
+        """
+        return pulumi.get(self, "update_strategy")
+
+    @update_strategy.setter
+    def update_strategy(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "update_strategy", value)
+
 
 @pulumi.type_token("gcp:compute/networkPeering:NetworkPeering")
 class NetworkPeering(pulumi.CustomResource):
@@ -339,6 +371,7 @@ class NetworkPeering(pulumi.CustomResource):
                  network: Optional[pulumi.Input[builtins.str]] = None,
                  peer_network: Optional[pulumi.Input[builtins.str]] = None,
                  stack_type: Optional[pulumi.Input[builtins.str]] = None,
+                 update_strategy: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
         Manages a network peering within GCE. For more information see
@@ -396,6 +429,7 @@ class NetworkPeering(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] peer_network: The peer network in the peering. The peer network
                may belong to a different project.
         :param pulumi.Input[builtins.str] stack_type: Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY. Possible values: ["IPV4_ONLY", "IPV4_IPV6"].
+        :param pulumi.Input[builtins.str] update_strategy: The update strategy determines the semantics for updates and deletes to the peering connection configuration. The default value is INDEPENDENT. Possible values: ["INDEPENDENT", "CONSENSUS"]
         """
         ...
     @overload
@@ -471,6 +505,7 @@ class NetworkPeering(pulumi.CustomResource):
                  network: Optional[pulumi.Input[builtins.str]] = None,
                  peer_network: Optional[pulumi.Input[builtins.str]] = None,
                  stack_type: Optional[pulumi.Input[builtins.str]] = None,
+                 update_strategy: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -492,6 +527,7 @@ class NetworkPeering(pulumi.CustomResource):
                 raise TypeError("Missing required property 'peer_network'")
             __props__.__dict__["peer_network"] = peer_network
             __props__.__dict__["stack_type"] = stack_type
+            __props__.__dict__["update_strategy"] = update_strategy
             __props__.__dict__["state"] = None
             __props__.__dict__["state_details"] = None
         super(NetworkPeering, __self__).__init__(
@@ -513,7 +549,8 @@ class NetworkPeering(pulumi.CustomResource):
             peer_network: Optional[pulumi.Input[builtins.str]] = None,
             stack_type: Optional[pulumi.Input[builtins.str]] = None,
             state: Optional[pulumi.Input[builtins.str]] = None,
-            state_details: Optional[pulumi.Input[builtins.str]] = None) -> 'NetworkPeering':
+            state_details: Optional[pulumi.Input[builtins.str]] = None,
+            update_strategy: Optional[pulumi.Input[builtins.str]] = None) -> 'NetworkPeering':
         """
         Get an existing NetworkPeering resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -533,6 +570,7 @@ class NetworkPeering(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] state: State for the peering, either `ACTIVE` or `INACTIVE`. The peering is
                `ACTIVE` when there's a matching configuration in the peer network.
         :param pulumi.Input[builtins.str] state_details: Details about the current state of the peering.
+        :param pulumi.Input[builtins.str] update_strategy: The update strategy determines the semantics for updates and deletes to the peering connection configuration. The default value is INDEPENDENT. Possible values: ["INDEPENDENT", "CONSENSUS"]
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -548,6 +586,7 @@ class NetworkPeering(pulumi.CustomResource):
         __props__.__dict__["stack_type"] = stack_type
         __props__.__dict__["state"] = state
         __props__.__dict__["state_details"] = state_details
+        __props__.__dict__["update_strategy"] = update_strategy
         return NetworkPeering(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -631,4 +670,12 @@ class NetworkPeering(pulumi.CustomResource):
         Details about the current state of the peering.
         """
         return pulumi.get(self, "state_details")
+
+    @property
+    @pulumi.getter(name="updateStrategy")
+    def update_strategy(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        The update strategy determines the semantics for updates and deletes to the peering connection configuration. The default value is INDEPENDENT. Possible values: ["INDEPENDENT", "CONSENSUS"]
+        """
+        return pulumi.get(self, "update_strategy")
 

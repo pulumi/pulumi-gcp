@@ -41,16 +41,12 @@ public final class MembershipBindingArgs extends com.pulumi.resources.ResourceAr
     /**
      * Location of the membership
      * 
-     * ***
-     * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
      * @return Location of the membership
-     * 
-     * ***
      * 
      */
     public Output<String> location() {
@@ -180,8 +176,6 @@ public final class MembershipBindingArgs extends com.pulumi.resources.ResourceAr
         /**
          * @param location Location of the membership
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -192,8 +186,6 @@ public final class MembershipBindingArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param location Location of the membership
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -120,9 +120,6 @@ export class GenericService extends pulumi.CustomResource {
     /**
      * An optional service ID to use. If not given, the server will generate a
      * service ID.
-     *
-     *
-     * - - -
      */
     public readonly serviceId!: pulumi.Output<string>;
     /**
@@ -206,9 +203,6 @@ export interface GenericServiceState {
     /**
      * An optional service ID to use. If not given, the server will generate a
      * service ID.
-     *
-     *
-     * - - -
      */
     serviceId?: pulumi.Input<string>;
     /**
@@ -250,9 +244,6 @@ export interface GenericServiceArgs {
     /**
      * An optional service ID to use. If not given, the server will generate a
      * service ID.
-     *
-     *
-     * - - -
      */
     serviceId: pulumi.Input<string>;
     /**

@@ -101,16 +101,12 @@ public final class GlossaryCategoryArgs extends com.pulumi.resources.ResourceArg
     /**
      * The location where the glossary category should reside.
      * 
-     * ***
-     * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
      * @return The location where the glossary category should reside.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {
@@ -294,8 +290,6 @@ public final class GlossaryCategoryArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param location The location where the glossary category should reside.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -306,8 +300,6 @@ public final class GlossaryCategoryArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param location The location where the glossary category should reside.
-         * 
-         * ***
          * 
          * @return builder
          * 

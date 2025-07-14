@@ -37,14 +37,16 @@ public final class ConnectivityTestArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The user-supplied description of the Connectivity Test. Maximum of 512 characters.
+     * The user-supplied description of the Connectivity Test.
+     * Maximum of 512 characters.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The user-supplied description of the Connectivity Test. Maximum of 512 characters.
+     * @return The user-supplied description of the Connectivity Test.
+     * Maximum of 512 characters.
      * 
      */
     public Optional<Output<String>> description() {
@@ -79,18 +81,20 @@ public final class ConnectivityTestArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-     * labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the
-     * resource.
+     * Resource labels to represent user-provided metadata.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-     * labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the
-     * resource.
+     * @return Resource labels to represent user-provided metadata.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -112,9 +116,19 @@ public final class ConnectivityTestArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -135,16 +149,18 @@ public final class ConnectivityTestArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross
-     * project boundaries.
+     * Other projects that may be relevant for reachability analysis.
+     * This is applicable to scenarios where a test can cross project
+     * boundaries.
      * 
      */
     @Import(name="relatedProjects")
     private @Nullable Output<List<String>> relatedProjects;
 
     /**
-     * @return Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross
-     * project boundaries.
+     * @return Other projects that may be relevant for reachability analysis.
+     * This is applicable to scenarios where a test can cross project
+     * boundaries.
      * 
      */
     public Optional<Output<List<String>>> relatedProjects() {
@@ -152,14 +168,16 @@ public final class ConnectivityTestArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Whether run analysis for the return path from destination to source. Default value is false.
+     * Whether run analysis for the return path from destination to source.
+     * Default value is false.
      * 
      */
     @Import(name="roundTrip")
     private @Nullable Output<Boolean> roundTrip;
 
     /**
-     * @return Whether run analysis for the return path from destination to source. Default value is false.
+     * @return Whether run analysis for the return path from destination to source.
+     * Default value is false.
      * 
      */
     public Optional<Output<Boolean>> roundTrip() {
@@ -248,7 +266,8 @@ public final class ConnectivityTestArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param description The user-supplied description of the Connectivity Test. Maximum of 512 characters.
+         * @param description The user-supplied description of the Connectivity Test.
+         * Maximum of 512 characters.
          * 
          * @return builder
          * 
@@ -259,7 +278,8 @@ public final class ConnectivityTestArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param description The user-supplied description of the Connectivity Test. Maximum of 512 characters.
+         * @param description The user-supplied description of the Connectivity Test.
+         * Maximum of 512 characters.
          * 
          * @return builder
          * 
@@ -302,9 +322,10 @@ public final class ConnectivityTestArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param labels Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-         * labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the
-         * resource.
+         * @param labels Resource labels to represent user-provided metadata.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -315,9 +336,10 @@ public final class ConnectivityTestArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param labels Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-         * labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the
-         * resource.
+         * @param labels Resource labels to represent user-provided metadata.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -347,11 +369,25 @@ public final class ConnectivityTestArgs extends com.pulumi.resources.ResourceArg
             return name(Output.of(name));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
@@ -378,8 +414,9 @@ public final class ConnectivityTestArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param relatedProjects Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross
-         * project boundaries.
+         * @param relatedProjects Other projects that may be relevant for reachability analysis.
+         * This is applicable to scenarios where a test can cross project
+         * boundaries.
          * 
          * @return builder
          * 
@@ -390,8 +427,9 @@ public final class ConnectivityTestArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param relatedProjects Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross
-         * project boundaries.
+         * @param relatedProjects Other projects that may be relevant for reachability analysis.
+         * This is applicable to scenarios where a test can cross project
+         * boundaries.
          * 
          * @return builder
          * 
@@ -401,8 +439,9 @@ public final class ConnectivityTestArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param relatedProjects Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross
-         * project boundaries.
+         * @param relatedProjects Other projects that may be relevant for reachability analysis.
+         * This is applicable to scenarios where a test can cross project
+         * boundaries.
          * 
          * @return builder
          * 
@@ -412,7 +451,8 @@ public final class ConnectivityTestArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param roundTrip Whether run analysis for the return path from destination to source. Default value is false.
+         * @param roundTrip Whether run analysis for the return path from destination to source.
+         * Default value is false.
          * 
          * @return builder
          * 
@@ -423,7 +463,8 @@ public final class ConnectivityTestArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param roundTrip Whether run analysis for the return path from destination to source. Default value is false.
+         * @param roundTrip Whether run analysis for the return path from destination to source.
+         * Default value is false.
          * 
          * @return builder
          * 

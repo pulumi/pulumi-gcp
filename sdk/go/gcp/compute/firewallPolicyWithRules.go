@@ -213,8 +213,7 @@ type FirewallPolicyWithRules struct {
 
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
-	// (Output)
-	// A description of the rule.
+	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Fingerprint of the resource. This field is used internally during updates of this resource.
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
@@ -280,8 +279,7 @@ func GetFirewallPolicyWithRules(ctx *pulumi.Context,
 type firewallPolicyWithRulesState struct {
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
-	// (Output)
-	// A description of the rule.
+	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// Fingerprint of the resource. This field is used internally during updates of this resource.
 	Fingerprint *string `pulumi:"fingerprint"`
@@ -309,8 +307,7 @@ type firewallPolicyWithRulesState struct {
 type FirewallPolicyWithRulesState struct {
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
-	// (Output)
-	// A description of the rule.
+	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// Fingerprint of the resource. This field is used internally during updates of this resource.
 	Fingerprint pulumi.StringPtrInput
@@ -340,8 +337,7 @@ func (FirewallPolicyWithRulesState) ElementType() reflect.Type {
 }
 
 type firewallPolicyWithRulesArgs struct {
-	// (Output)
-	// A description of the rule.
+	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// The parent of this FirewallPolicy in the Cloud Resource Hierarchy.
 	// Format: organizations/{organization_id} or folders/{folder_id}
@@ -355,8 +351,7 @@ type firewallPolicyWithRulesArgs struct {
 
 // The set of arguments for constructing a FirewallPolicyWithRules resource.
 type FirewallPolicyWithRulesArgs struct {
-	// (Output)
-	// A description of the rule.
+	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// The parent of this FirewallPolicy in the Cloud Resource Hierarchy.
 	// Format: organizations/{organization_id} or folders/{folder_id}
@@ -460,8 +455,7 @@ func (o FirewallPolicyWithRulesOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallPolicyWithRules) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
 }
 
-// (Output)
-// A description of the rule.
+// An optional description of this resource.
 func (o FirewallPolicyWithRulesOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FirewallPolicyWithRules) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }

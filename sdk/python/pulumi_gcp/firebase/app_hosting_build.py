@@ -37,14 +37,18 @@ class AppHostingBuildArgs:
         :param pulumi.Input[builtins.str] location: The location of the Backend that this Build applies to
         :param pulumi.Input['AppHostingBuildSourceArgs'] source: The source for the build.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
-               should be preserved when modifying objects. **Note**: This field is non-authoritative, and will only manage the
-               annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
-               present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Unstructured key value map that may be set by external tools to
+               store and arbitrary metadata. They are not queryable and should be
+               preserved when modifying objects.
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[builtins.str] display_name: Human-readable name. 63 character limit.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Unstructured key value map that can be used to organize and categorize objects. **Note**: This field is
-               non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-               'effective_labels' for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Unstructured key value map that can be used to organize and categorize
+               objects.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "backend", backend)
         pulumi.set(__self__, "build_id", build_id)
@@ -112,10 +116,11 @@ class AppHostingBuildArgs:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
-        should be preserved when modifying objects. **Note**: This field is non-authoritative, and will only manage the
-        annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
-        present on the resource.
+        Unstructured key value map that may be set by external tools to
+        store and arbitrary metadata. They are not queryable and should be
+        preserved when modifying objects.
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -139,9 +144,10 @@ class AppHostingBuildArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Unstructured key value map that can be used to organize and categorize objects. **Note**: This field is
-        non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-        'effective_labels' for all of the labels present on the resource.
+        Unstructured key value map that can be used to organize and categorize
+        objects.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -152,6 +158,10 @@ class AppHostingBuildArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -186,10 +196,11 @@ class _AppHostingBuildState:
                  update_time: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering AppHostingBuild resources.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
-               should be preserved when modifying objects. **Note**: This field is non-authoritative, and will only manage the
-               annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
-               present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Unstructured key value map that may be set by external tools to
+               store and arbitrary metadata. They are not queryable and should be
+               preserved when modifying objects.
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[builtins.str] backend: The ID of the Backend that this Build applies to
         :param pulumi.Input[builtins.str] build_id: The user-specified ID of the build being created.
         :param pulumi.Input[builtins.str] build_logs_uri: The location of the [Cloud Build
@@ -218,13 +229,16 @@ class _AppHostingBuildState:
                URI, used by the Cloud Run
                [`revision`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services.revisions)
                for this build.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Unstructured key value map that can be used to organize and categorize objects. **Note**: This field is
-               non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-               'effective_labels' for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Unstructured key value map that can be used to organize and categorize
+               objects.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location of the Backend that this Build applies to
         :param pulumi.Input[builtins.str] name: Identifier. The resource name of the build.
                Format:
                `projects/{project}/locations/{locationId}/backends/{backendId}/builds/{buildId}`.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input['AppHostingBuildSourceArgs'] source: The source for the build.
@@ -288,10 +302,11 @@ class _AppHostingBuildState:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
-        should be preserved when modifying objects. **Note**: This field is non-authoritative, and will only manage the
-        annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
-        present on the resource.
+        Unstructured key value map that may be set by external tools to
+        store and arbitrary metadata. They are not queryable and should be
+        preserved when modifying objects.
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -461,9 +476,10 @@ class _AppHostingBuildState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Unstructured key value map that can be used to organize and categorize objects. **Note**: This field is
-        non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-        'effective_labels' for all of the labels present on the resource.
+        Unstructured key value map that can be used to organize and categorize
+        objects.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -500,6 +516,10 @@ class _AppHostingBuildState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -709,17 +729,21 @@ class AppHostingBuild(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
-               should be preserved when modifying objects. **Note**: This field is non-authoritative, and will only manage the
-               annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
-               present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Unstructured key value map that may be set by external tools to
+               store and arbitrary metadata. They are not queryable and should be
+               preserved when modifying objects.
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[builtins.str] backend: The ID of the Backend that this Build applies to
         :param pulumi.Input[builtins.str] build_id: The user-specified ID of the build being created.
         :param pulumi.Input[builtins.str] display_name: Human-readable name. 63 character limit.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Unstructured key value map that can be used to organize and categorize objects. **Note**: This field is
-               non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-               'effective_labels' for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Unstructured key value map that can be used to organize and categorize
+               objects.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location of the Backend that this Build applies to
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Union['AppHostingBuildSourceArgs', 'AppHostingBuildSourceArgsDict']] source: The source for the build.
                Structure is documented below.
         """
@@ -949,10 +973,11 @@ class AppHostingBuild(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
-               should be preserved when modifying objects. **Note**: This field is non-authoritative, and will only manage the
-               annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
-               present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Unstructured key value map that may be set by external tools to
+               store and arbitrary metadata. They are not queryable and should be
+               preserved when modifying objects.
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[builtins.str] backend: The ID of the Backend that this Build applies to
         :param pulumi.Input[builtins.str] build_id: The user-specified ID of the build being created.
         :param pulumi.Input[builtins.str] build_logs_uri: The location of the [Cloud Build
@@ -981,13 +1006,16 @@ class AppHostingBuild(pulumi.CustomResource):
                URI, used by the Cloud Run
                [`revision`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services.revisions)
                for this build.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Unstructured key value map that can be used to organize and categorize objects. **Note**: This field is
-               non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-               'effective_labels' for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Unstructured key value map that can be used to organize and categorize
+               objects.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location of the Backend that this Build applies to
         :param pulumi.Input[builtins.str] name: Identifier. The resource name of the build.
                Format:
                `projects/{project}/locations/{locationId}/backends/{backendId}/builds/{buildId}`.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[Union['AppHostingBuildSourceArgs', 'AppHostingBuildSourceArgsDict']] source: The source for the build.
@@ -1034,10 +1062,11 @@ class AppHostingBuild(pulumi.CustomResource):
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
         """
-        Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
-        should be preserved when modifying objects. **Note**: This field is non-authoritative, and will only manage the
-        annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
-        present on the resource.
+        Unstructured key value map that may be set by external tools to
+        store and arbitrary metadata. They are not queryable and should be
+        preserved when modifying objects.
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -1155,9 +1184,10 @@ class AppHostingBuild(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
         """
-        Unstructured key value map that can be used to organize and categorize objects. **Note**: This field is
-        non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-        'effective_labels' for all of the labels present on the resource.
+        Unstructured key value map that can be used to organize and categorize
+        objects.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1182,6 +1212,10 @@ class AppHostingBuild(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property

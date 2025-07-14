@@ -79,9 +79,6 @@ class MetastoreServiceArgs:
         :param pulumi.Input[builtins.str] service_id: The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
                and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
                3 and 63 characters.
-               
-               
-               - - -
         :param pulumi.Input['MetastoreServiceTelemetryConfigArgs'] telemetry_config: The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
                Structure is documented below.
         :param pulumi.Input[builtins.str] tier: The tier of the service.
@@ -330,9 +327,6 @@ class MetastoreServiceArgs:
         The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
         and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
         3 and 63 characters.
-
-
-        - - -
         """
         return pulumi.get(self, "service_id")
 
@@ -444,9 +438,6 @@ class _MetastoreServiceState:
         :param pulumi.Input[builtins.str] service_id: The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
                and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
                3 and 63 characters.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] state: The current state of the metastore service.
         :param pulumi.Input[builtins.str] state_message: Additional information about the current state of the metastore service, if available.
         :param pulumi.Input['MetastoreServiceTelemetryConfigArgs'] telemetry_config: The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
@@ -792,9 +783,6 @@ class _MetastoreServiceState:
         The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
         and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
         3 and 63 characters.
-
-
-        - - -
         """
         return pulumi.get(self, "service_id")
 
@@ -1252,9 +1240,6 @@ class MetastoreService(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] service_id: The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
                and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
                3 and 63 characters.
-               
-               
-               - - -
         :param pulumi.Input[Union['MetastoreServiceTelemetryConfigArgs', 'MetastoreServiceTelemetryConfigArgsDict']] telemetry_config: The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
                Structure is documented below.
         :param pulumi.Input[builtins.str] tier: The tier of the service.
@@ -1738,9 +1723,6 @@ class MetastoreService(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] service_id: The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
                and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
                3 and 63 characters.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] state: The current state of the metastore service.
         :param pulumi.Input[builtins.str] state_message: Additional information about the current state of the metastore service, if available.
         :param pulumi.Input[Union['MetastoreServiceTelemetryConfigArgs', 'MetastoreServiceTelemetryConfigArgsDict']] telemetry_config: The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
@@ -1979,9 +1961,6 @@ class MetastoreService(pulumi.CustomResource):
         The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
         and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
         3 and 63 characters.
-
-
-        - - -
         """
         return pulumi.get(self, "service_id")
 

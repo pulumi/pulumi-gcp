@@ -178,9 +178,6 @@ namespace Pulumi.Gcp.ParameterManager
 
         /// <summary>
         /// This must be unique within the project.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("parameterId")]
         public Output<string> ParameterId { get; private set; } = null!;
@@ -302,9 +299,6 @@ namespace Pulumi.Gcp.ParameterManager
 
         /// <summary>
         /// This must be unique within the project.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("parameterId", required: true)]
         public Input<string> ParameterId { get; set; } = null!;
@@ -392,9 +386,6 @@ namespace Pulumi.Gcp.ParameterManager
 
         /// <summary>
         /// This must be unique within the project.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("parameterId")]
         public Input<string>? ParameterId { get; set; }

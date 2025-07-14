@@ -119,16 +119,14 @@ public class EkmConnection extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if
-     * KeyManagementMode is CLOUD_KMS.
+     * Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
      * 
      */
     @Export(name="cryptoSpacePath", refs={String.class}, tree="[0]")
     private Output<String> cryptoSpacePath;
 
     /**
-     * @return Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if
-     * KeyManagementMode is CLOUD_KMS.
+     * @return Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
      * 
      */
     public Output<String> cryptoSpacePath() {
@@ -149,16 +147,18 @@ public class EkmConnection extends com.pulumi.resources.CustomResource {
         return this.etag;
     }
     /**
-     * Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL Default
-     * value: &#34;MANUAL&#34; Possible values: [&#34;MANUAL&#34;, &#34;CLOUD_KMS&#34;]
+     * Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL
+     * Default value is `MANUAL`.
+     * Possible values are: `MANUAL`, `CLOUD_KMS`.
      * 
      */
     @Export(name="keyManagementMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> keyManagementMode;
 
     /**
-     * @return Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL Default
-     * value: &#34;MANUAL&#34; Possible values: [&#34;MANUAL&#34;, &#34;CLOUD_KMS&#34;]
+     * @return Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL
+     * Default value is `MANUAL`.
+     * Possible values are: `MANUAL`, `CLOUD_KMS`.
      * 
      */
     public Output<Optional<String>> keyManagementMode() {
@@ -194,9 +194,19 @@ public class EkmConnection extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }

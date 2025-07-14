@@ -117,16 +117,12 @@ public final class BackendAuthenticationConfigState extends com.pulumi.resources
     /**
      * Name of the BackendAuthenticationConfig resource.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return Name of the BackendAuthenticationConfig resource.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -392,8 +388,6 @@ public final class BackendAuthenticationConfigState extends com.pulumi.resources
         /**
          * @param name Name of the BackendAuthenticationConfig resource.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -404,8 +398,6 @@ public final class BackendAuthenticationConfigState extends com.pulumi.resources
 
         /**
          * @param name Name of the BackendAuthenticationConfig resource.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -255,7 +255,8 @@ namespace Pulumi.Gcp.NetworkManagement
         public Output<bool?> BypassFirewallChecks { get; private set; } = null!;
 
         /// <summary>
-        /// The user-supplied description of the Connectivity Test. Maximum of 512 characters.
+        /// The user-supplied description of the Connectivity Test.
+        /// Maximum of 512 characters.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -279,9 +280,10 @@ namespace Pulumi.Gcp.NetworkManagement
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-        /// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-        /// resource.
+        /// Resource labels to represent user-provided metadata.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -292,6 +294,10 @@ namespace Pulumi.Gcp.NetworkManagement
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -309,14 +315,16 @@ namespace Pulumi.Gcp.NetworkManagement
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross
-        /// project boundaries.
+        /// Other projects that may be relevant for reachability analysis.
+        /// This is applicable to scenarios where a test can cross project
+        /// boundaries.
         /// </summary>
         [Output("relatedProjects")]
         public Output<ImmutableArray<string>> RelatedProjects { get; private set; } = null!;
 
         /// <summary>
-        /// Whether run analysis for the return path from destination to source. Default value is false.
+        /// Whether run analysis for the return path from destination to source.
+        /// Default value is false.
         /// </summary>
         [Output("roundTrip")]
         public Output<bool?> RoundTrip { get; private set; } = null!;
@@ -391,7 +399,8 @@ namespace Pulumi.Gcp.NetworkManagement
         public Input<bool>? BypassFirewallChecks { get; set; }
 
         /// <summary>
-        /// The user-supplied description of the Connectivity Test. Maximum of 512 characters.
+        /// The user-supplied description of the Connectivity Test.
+        /// Maximum of 512 characters.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -412,9 +421,10 @@ namespace Pulumi.Gcp.NetworkManagement
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-        /// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-        /// resource.
+        /// Resource labels to represent user-provided metadata.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -428,6 +438,10 @@ namespace Pulumi.Gcp.NetworkManagement
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -441,8 +455,9 @@ namespace Pulumi.Gcp.NetworkManagement
         private InputList<string>? _relatedProjects;
 
         /// <summary>
-        /// Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross
-        /// project boundaries.
+        /// Other projects that may be relevant for reachability analysis.
+        /// This is applicable to scenarios where a test can cross project
+        /// boundaries.
         /// </summary>
         public InputList<string> RelatedProjects
         {
@@ -451,7 +466,8 @@ namespace Pulumi.Gcp.NetworkManagement
         }
 
         /// <summary>
-        /// Whether run analysis for the return path from destination to source. Default value is false.
+        /// Whether run analysis for the return path from destination to source.
+        /// Default value is false.
         /// </summary>
         [Input("roundTrip")]
         public Input<bool>? RoundTrip { get; set; }
@@ -483,7 +499,8 @@ namespace Pulumi.Gcp.NetworkManagement
         public Input<bool>? BypassFirewallChecks { get; set; }
 
         /// <summary>
-        /// The user-supplied description of the Connectivity Test. Maximum of 512 characters.
+        /// The user-supplied description of the Connectivity Test.
+        /// Maximum of 512 characters.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -520,9 +537,10 @@ namespace Pulumi.Gcp.NetworkManagement
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-        /// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-        /// resource.
+        /// Resource labels to represent user-provided metadata.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -536,6 +554,10 @@ namespace Pulumi.Gcp.NetworkManagement
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -566,8 +588,9 @@ namespace Pulumi.Gcp.NetworkManagement
         private InputList<string>? _relatedProjects;
 
         /// <summary>
-        /// Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross
-        /// project boundaries.
+        /// Other projects that may be relevant for reachability analysis.
+        /// This is applicable to scenarios where a test can cross project
+        /// boundaries.
         /// </summary>
         public InputList<string> RelatedProjects
         {
@@ -576,7 +599,8 @@ namespace Pulumi.Gcp.NetworkManagement
         }
 
         /// <summary>
-        /// Whether run analysis for the return path from destination to source. Default value is false.
+        /// Whether run analysis for the return path from destination to source.
+        /// Default value is false.
         /// </summary>
         [Input("roundTrip")]
         public Input<bool>? RoundTrip { get; set; }

@@ -189,7 +189,9 @@ type RouterRoutePolicy struct {
 	// internally during updates.
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
 	// Name of the route policy. This policy's name, which must be a resource ID segment and unique within all policies owned by the Router
-	Name    pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Region where the router and NAT reside.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -198,8 +200,8 @@ type RouterRoutePolicy struct {
 	// List of terms (the order in the list is not important, they are evaluated in order of priority).
 	// Structure is documented below.
 	Terms RouterRoutePolicyTermArrayOutput `pulumi:"terms"`
-	// This is policy's type, which is one of IMPORT or EXPORT Possible values: ["ROUTE_POLICY_TYPE_IMPORT",
-	// "ROUTE_POLICY_TYPE_EXPORT"]
+	// This is policy's type, which is one of IMPORT or EXPORT
+	// Possible values are: `ROUTE_POLICY_TYPE_IMPORT`, `ROUTE_POLICY_TYPE_EXPORT`.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 }
 
@@ -243,7 +245,9 @@ type routerRoutePolicyState struct {
 	// internally during updates.
 	Fingerprint *string `pulumi:"fingerprint"`
 	// Name of the route policy. This policy's name, which must be a resource ID segment and unique within all policies owned by the Router
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Region where the router and NAT reside.
 	Region *string `pulumi:"region"`
@@ -252,8 +256,8 @@ type routerRoutePolicyState struct {
 	// List of terms (the order in the list is not important, they are evaluated in order of priority).
 	// Structure is documented below.
 	Terms []RouterRoutePolicyTerm `pulumi:"terms"`
-	// This is policy's type, which is one of IMPORT or EXPORT Possible values: ["ROUTE_POLICY_TYPE_IMPORT",
-	// "ROUTE_POLICY_TYPE_EXPORT"]
+	// This is policy's type, which is one of IMPORT or EXPORT
+	// Possible values are: `ROUTE_POLICY_TYPE_IMPORT`, `ROUTE_POLICY_TYPE_EXPORT`.
 	Type *string `pulumi:"type"`
 }
 
@@ -262,7 +266,9 @@ type RouterRoutePolicyState struct {
 	// internally during updates.
 	Fingerprint pulumi.StringPtrInput
 	// Name of the route policy. This policy's name, which must be a resource ID segment and unique within all policies owned by the Router
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Region where the router and NAT reside.
 	Region pulumi.StringPtrInput
@@ -271,8 +277,8 @@ type RouterRoutePolicyState struct {
 	// List of terms (the order in the list is not important, they are evaluated in order of priority).
 	// Structure is documented below.
 	Terms RouterRoutePolicyTermArrayInput
-	// This is policy's type, which is one of IMPORT or EXPORT Possible values: ["ROUTE_POLICY_TYPE_IMPORT",
-	// "ROUTE_POLICY_TYPE_EXPORT"]
+	// This is policy's type, which is one of IMPORT or EXPORT
+	// Possible values are: `ROUTE_POLICY_TYPE_IMPORT`, `ROUTE_POLICY_TYPE_EXPORT`.
 	Type pulumi.StringPtrInput
 }
 
@@ -282,7 +288,9 @@ func (RouterRoutePolicyState) ElementType() reflect.Type {
 
 type routerRoutePolicyArgs struct {
 	// Name of the route policy. This policy's name, which must be a resource ID segment and unique within all policies owned by the Router
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Region where the router and NAT reside.
 	Region *string `pulumi:"region"`
@@ -291,15 +299,17 @@ type routerRoutePolicyArgs struct {
 	// List of terms (the order in the list is not important, they are evaluated in order of priority).
 	// Structure is documented below.
 	Terms []RouterRoutePolicyTerm `pulumi:"terms"`
-	// This is policy's type, which is one of IMPORT or EXPORT Possible values: ["ROUTE_POLICY_TYPE_IMPORT",
-	// "ROUTE_POLICY_TYPE_EXPORT"]
+	// This is policy's type, which is one of IMPORT or EXPORT
+	// Possible values are: `ROUTE_POLICY_TYPE_IMPORT`, `ROUTE_POLICY_TYPE_EXPORT`.
 	Type *string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a RouterRoutePolicy resource.
 type RouterRoutePolicyArgs struct {
 	// Name of the route policy. This policy's name, which must be a resource ID segment and unique within all policies owned by the Router
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Region where the router and NAT reside.
 	Region pulumi.StringPtrInput
@@ -308,8 +318,8 @@ type RouterRoutePolicyArgs struct {
 	// List of terms (the order in the list is not important, they are evaluated in order of priority).
 	// Structure is documented below.
 	Terms RouterRoutePolicyTermArrayInput
-	// This is policy's type, which is one of IMPORT or EXPORT Possible values: ["ROUTE_POLICY_TYPE_IMPORT",
-	// "ROUTE_POLICY_TYPE_EXPORT"]
+	// This is policy's type, which is one of IMPORT or EXPORT
+	// Possible values are: `ROUTE_POLICY_TYPE_IMPORT`, `ROUTE_POLICY_TYPE_EXPORT`.
 	Type pulumi.StringPtrInput
 }
 
@@ -411,6 +421,8 @@ func (o RouterRoutePolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterRoutePolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o RouterRoutePolicyOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterRoutePolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -431,8 +443,8 @@ func (o RouterRoutePolicyOutput) Terms() RouterRoutePolicyTermArrayOutput {
 	return o.ApplyT(func(v *RouterRoutePolicy) RouterRoutePolicyTermArrayOutput { return v.Terms }).(RouterRoutePolicyTermArrayOutput)
 }
 
-// This is policy's type, which is one of IMPORT or EXPORT Possible values: ["ROUTE_POLICY_TYPE_IMPORT",
-// "ROUTE_POLICY_TYPE_EXPORT"]
+// This is policy's type, which is one of IMPORT or EXPORT
+// Possible values are: `ROUTE_POLICY_TYPE_IMPORT`, `ROUTE_POLICY_TYPE_EXPORT`.
 func (o RouterRoutePolicyOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RouterRoutePolicy) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

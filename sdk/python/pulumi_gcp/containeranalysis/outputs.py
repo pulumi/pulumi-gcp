@@ -84,8 +84,6 @@ class NoteAttestationAuthorityHint(dict):
         """
         :param builtins.str human_readable_name: The human readable name of this Attestation Authority, for
                example "qa".
-               
-               - - -
         """
         pulumi.set(__self__, "human_readable_name", human_readable_name)
 
@@ -95,8 +93,6 @@ class NoteAttestationAuthorityHint(dict):
         """
         The human readable name of this Attestation Authority, for
         example "qa".
-
-        - - -
         """
         return pulumi.get(self, "human_readable_name")
 
@@ -276,8 +272,6 @@ class OccurenceAttestationSignature(dict):
                * `openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA`
                * RFC6920 digest-named SubjectPublicKeyInfo (digest of the DER serialization):
                * "ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU"
-               
-               - - -
         :param builtins.str signature: The content of the signature, an opaque bytestring.
                The payload that this signature verifies MUST be
                unambiguously provided with the Signature during
@@ -304,8 +298,6 @@ class OccurenceAttestationSignature(dict):
         * `openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA`
         * RFC6920 digest-named SubjectPublicKeyInfo (digest of the DER serialization):
         * "ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU"
-
-        - - -
         """
         return pulumi.get(self, "public_key_id")
 

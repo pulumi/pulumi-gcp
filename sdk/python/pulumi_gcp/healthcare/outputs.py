@@ -1511,8 +1511,6 @@ class WorkspaceSettings(dict):
                  data_project_ids: Sequence[builtins.str]):
         """
         :param Sequence[builtins.str] data_project_ids: Project IDs for data projects hosted in a workspace.
-               
-               - - -
         """
         pulumi.set(__self__, "data_project_ids", data_project_ids)
 
@@ -1521,8 +1519,6 @@ class WorkspaceSettings(dict):
     def data_project_ids(self) -> Sequence[builtins.str]:
         """
         Project IDs for data projects hosted in a workspace.
-
-        - - -
         """
         return pulumi.get(self, "data_project_ids")
 

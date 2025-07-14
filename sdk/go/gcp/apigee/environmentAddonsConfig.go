@@ -40,8 +40,6 @@ type EnvironmentAddonsConfig struct {
 	AnalyticsEnabled pulumi.BoolPtrOutput `pulumi:"analyticsEnabled"`
 	// The Apigee environment group associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-	//
-	// ***
 	EnvId pulumi.StringOutput `pulumi:"envId"`
 }
 
@@ -82,8 +80,6 @@ type environmentAddonsConfigState struct {
 	AnalyticsEnabled *bool `pulumi:"analyticsEnabled"`
 	// The Apigee environment group associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-	//
-	// ***
 	EnvId *string `pulumi:"envId"`
 }
 
@@ -92,8 +88,6 @@ type EnvironmentAddonsConfigState struct {
 	AnalyticsEnabled pulumi.BoolPtrInput
 	// The Apigee environment group associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-	//
-	// ***
 	EnvId pulumi.StringPtrInput
 }
 
@@ -106,8 +100,6 @@ type environmentAddonsConfigArgs struct {
 	AnalyticsEnabled *bool `pulumi:"analyticsEnabled"`
 	// The Apigee environment group associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-	//
-	// ***
 	EnvId string `pulumi:"envId"`
 }
 
@@ -117,8 +109,6 @@ type EnvironmentAddonsConfigArgs struct {
 	AnalyticsEnabled pulumi.BoolPtrInput
 	// The Apigee environment group associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-	//
-	// ***
 	EnvId pulumi.StringInput
 }
 
@@ -216,8 +206,6 @@ func (o EnvironmentAddonsConfigOutput) AnalyticsEnabled() pulumi.BoolPtrOutput {
 
 // The Apigee environment group associated with the Apigee environment,
 // in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-//
-// ***
 func (o EnvironmentAddonsConfigOutput) EnvId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EnvironmentAddonsConfig) pulumi.StringOutput { return v.EnvId }).(pulumi.StringOutput)
 }

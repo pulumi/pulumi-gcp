@@ -33,9 +33,6 @@ class AppGroupArgs:
         The set of arguments for constructing a AppGroup resource.
         :param pulumi.Input[builtins.str] org_id: The Apigee Organization associated with the Apigee app group,
                in the format `organizations/{{org_name}}`.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['AppGroupAttributeArgs']]] attributes: A list of attributes
                Structure is documented below.
         :param pulumi.Input[builtins.str] channel_id: Channel identifier identifies the owner maintaining this grouping.
@@ -65,9 +62,6 @@ class AppGroupArgs:
         """
         The Apigee Organization associated with the Apigee app group,
         in the format `organizations/{{org_name}}`.
-
-
-        - - -
         """
         return pulumi.get(self, "org_id")
 
@@ -177,9 +171,6 @@ class _AppGroupState:
         :param pulumi.Input[builtins.str] name: Name of the AppGroup. Characters you can use in the name are restricted to: A-Z0-9._-$ %.
         :param pulumi.Input[builtins.str] org_id: The Apigee Organization associated with the Apigee app group,
                in the format `organizations/{{org_name}}`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] organization: App group name displayed in the UI
         :param pulumi.Input[builtins.str] status: Valid values are active or inactive. Note that the status of the AppGroup should be updated via UpdateAppGroupRequest by setting the action as active or inactive.
                Possible values are: `active`, `inactive`.
@@ -310,9 +301,6 @@ class _AppGroupState:
         """
         The Apigee Organization associated with the Apigee app group,
         in the format `organizations/{{org_name}}`.
-
-
-        - - -
         """
         return pulumi.get(self, "org_id")
 
@@ -484,9 +472,6 @@ class AppGroup(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] name: Name of the AppGroup. Characters you can use in the name are restricted to: A-Z0-9._-$ %.
         :param pulumi.Input[builtins.str] org_id: The Apigee Organization associated with the Apigee app group,
                in the format `organizations/{{org_name}}`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] status: Valid values are active or inactive. Note that the status of the AppGroup should be updated via UpdateAppGroupRequest by setting the action as active or inactive.
                Possible values are: `active`, `inactive`.
         """
@@ -693,9 +678,6 @@ class AppGroup(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] name: Name of the AppGroup. Characters you can use in the name are restricted to: A-Z0-9._-$ %.
         :param pulumi.Input[builtins.str] org_id: The Apigee Organization associated with the Apigee app group,
                in the format `organizations/{{org_name}}`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] organization: App group name displayed in the UI
         :param pulumi.Input[builtins.str] status: Valid values are active or inactive. Note that the status of the AppGroup should be updated via UpdateAppGroupRequest by setting the action as active or inactive.
                Possible values are: `active`, `inactive`.
@@ -788,9 +770,6 @@ class AppGroup(pulumi.CustomResource):
         """
         The Apigee Organization associated with the Apigee app group,
         in the format `organizations/{{org_name}}`.
-
-
-        - - -
         """
         return pulumi.get(self, "org_id")
 

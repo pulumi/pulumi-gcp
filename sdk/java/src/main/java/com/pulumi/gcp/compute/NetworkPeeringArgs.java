@@ -139,6 +139,21 @@ public final class NetworkPeeringArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.stackType);
     }
 
+    /**
+     * The update strategy determines the semantics for updates and deletes to the peering connection configuration. The default value is INDEPENDENT. Possible values: [&#34;INDEPENDENT&#34;, &#34;CONSENSUS&#34;]
+     * 
+     */
+    @Import(name="updateStrategy")
+    private @Nullable Output<String> updateStrategy;
+
+    /**
+     * @return The update strategy determines the semantics for updates and deletes to the peering connection configuration. The default value is INDEPENDENT. Possible values: [&#34;INDEPENDENT&#34;, &#34;CONSENSUS&#34;]
+     * 
+     */
+    public Optional<Output<String>> updateStrategy() {
+        return Optional.ofNullable(this.updateStrategy);
+    }
+
     private NetworkPeeringArgs() {}
 
     private NetworkPeeringArgs(NetworkPeeringArgs $) {
@@ -150,6 +165,7 @@ public final class NetworkPeeringArgs extends com.pulumi.resources.ResourceArgs 
         this.network = $.network;
         this.peerNetwork = $.peerNetwork;
         this.stackType = $.stackType;
+        this.updateStrategy = $.updateStrategy;
     }
 
     public static Builder builder() {
@@ -338,6 +354,27 @@ public final class NetworkPeeringArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder stackType(String stackType) {
             return stackType(Output.of(stackType));
+        }
+
+        /**
+         * @param updateStrategy The update strategy determines the semantics for updates and deletes to the peering connection configuration. The default value is INDEPENDENT. Possible values: [&#34;INDEPENDENT&#34;, &#34;CONSENSUS&#34;]
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateStrategy(@Nullable Output<String> updateStrategy) {
+            $.updateStrategy = updateStrategy;
+            return this;
+        }
+
+        /**
+         * @param updateStrategy The update strategy determines the semantics for updates and deletes to the peering connection configuration. The default value is INDEPENDENT. Possible values: [&#34;INDEPENDENT&#34;, &#34;CONSENSUS&#34;]
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateStrategy(String updateStrategy) {
+            return updateStrategy(Output.of(updateStrategy));
         }
 
         public NetworkPeeringArgs build() {

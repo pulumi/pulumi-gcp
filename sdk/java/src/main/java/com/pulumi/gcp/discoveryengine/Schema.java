@@ -186,16 +186,12 @@ public class Schema extends com.pulumi.resources.CustomResource {
     /**
      * The unique id of the schema.
      * 
-     * ***
-     * 
      */
     @Export(name="schemaId", refs={String.class}, tree="[0]")
     private Output<String> schemaId;
 
     /**
      * @return The unique id of the schema.
-     * 
-     * ***
      * 
      */
     public Output<String> schemaId() {

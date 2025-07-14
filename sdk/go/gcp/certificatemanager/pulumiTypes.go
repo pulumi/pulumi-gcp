@@ -160,8 +160,6 @@ type CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServ
 	// A CA pool resource used to issue a certificate.
 	// The CA pool string has a relative resource path following the form
 	// "projects/{project}/locations/{location}/caPools/{caPool}".
-	//
-	// ***
 	CaPool string `pulumi:"caPool"`
 }
 
@@ -180,8 +178,6 @@ type CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServ
 	// A CA pool resource used to issue a certificate.
 	// The CA pool string has a relative resource path following the form
 	// "projects/{project}/locations/{location}/caPools/{caPool}".
-	//
-	// ***
 	CaPool pulumi.StringInput `pulumi:"caPool"`
 }
 
@@ -265,8 +261,6 @@ func (o CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityS
 // A CA pool resource used to issue a certificate.
 // The CA pool string has a relative resource path following the form
 // "projects/{project}/locations/{location}/caPools/{caPool}".
-//
-// ***
 func (o CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigOutput) CaPool() pulumi.StringOutput {
 	return o.ApplyT(func(v CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig) string {
 		return v.CaPool
@@ -300,8 +294,6 @@ func (o CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityS
 // A CA pool resource used to issue a certificate.
 // The CA pool string has a relative resource path following the form
 // "projects/{project}/locations/{location}/caPools/{caPool}".
-//
-// ***
 func (o CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrOutput) CaPool() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig) *string {
 		if v == nil {
@@ -1332,8 +1324,6 @@ type DnsAuthorizationDnsResourceRecord struct {
 	// Name of the resource; provided by the client when the resource is created.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 	// and all following characters must be a dash, underscore, letter or digit.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
 	// be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
@@ -1363,8 +1353,6 @@ type DnsAuthorizationDnsResourceRecordArgs struct {
 	// Name of the resource; provided by the client when the resource is created.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 	// and all following characters must be a dash, underscore, letter or digit.
-	//
-	// ***
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
 	// be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
@@ -1436,8 +1424,6 @@ func (o DnsAuthorizationDnsResourceRecordOutput) Data() pulumi.StringPtrOutput {
 // Name of the resource; provided by the client when the resource is created.
 // The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 // and all following characters must be a dash, underscore, letter or digit.
-//
-// ***
 func (o DnsAuthorizationDnsResourceRecordOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DnsAuthorizationDnsResourceRecord) *string { return v.Name }).(pulumi.StringPtrOutput)
 }

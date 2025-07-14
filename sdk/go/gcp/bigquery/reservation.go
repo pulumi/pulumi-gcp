@@ -97,8 +97,6 @@ type Reservation struct {
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The name of the reservation. This field must only contain alphanumeric characters or dash.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The location where the reservation was originally created. This is set only during the
 	// failover reservation's creation. All billing charges for the failover reservation will be
@@ -176,8 +174,6 @@ type reservationState struct {
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location *string `pulumi:"location"`
 	// The name of the reservation. This field must only contain alphanumeric characters or dash.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The location where the reservation was originally created. This is set only during the
 	// failover reservation's creation. All billing charges for the failover reservation will be
@@ -223,8 +219,6 @@ type ReservationState struct {
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location pulumi.StringPtrInput
 	// The name of the reservation. This field must only contain alphanumeric characters or dash.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The location where the reservation was originally created. This is set only during the
 	// failover reservation's creation. All billing charges for the failover reservation will be
@@ -274,8 +268,6 @@ type reservationArgs struct {
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location *string `pulumi:"location"`
 	// The name of the reservation. This field must only contain alphanumeric characters or dash.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -307,8 +299,6 @@ type ReservationArgs struct {
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location pulumi.StringPtrInput
 	// The name of the reservation. This field must only contain alphanumeric characters or dash.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -440,8 +430,6 @@ func (o ReservationOutput) Location() pulumi.StringPtrOutput {
 }
 
 // The name of the reservation. This field must only contain alphanumeric characters or dash.
-//
-// ***
 func (o ReservationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

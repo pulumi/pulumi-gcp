@@ -152,16 +152,12 @@ public class InstanceGroupMembership extends com.pulumi.resources.CustomResource
     /**
      * Represents an Instance Group resource name that the instance belongs to.
      * 
-     * ***
-     * 
      */
     @Export(name="instanceGroup", refs={String.class}, tree="[0]")
     private Output<String> instanceGroup;
 
     /**
      * @return Represents an Instance Group resource name that the instance belongs to.
-     * 
-     * ***
      * 
      */
     public Output<String> instanceGroup() {

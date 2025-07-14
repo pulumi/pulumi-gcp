@@ -30,9 +30,6 @@ class AppHostingTrafficArgs:
         """
         The set of arguments for constructing a AppHostingTraffic resource.
         :param pulumi.Input[builtins.str] backend: Id of the backend that this Traffic config applies to
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: The location the Backend that this Traffic config applies to
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -57,9 +54,6 @@ class AppHostingTrafficArgs:
     def backend(self) -> pulumi.Input[builtins.str]:
         """
         Id of the backend that this Traffic config applies to
-
-
-        - - -
         """
         return pulumi.get(self, "backend")
 
@@ -139,9 +133,6 @@ class _AppHostingTrafficState:
         """
         Input properties used for looking up and filtering AppHostingTraffic resources.
         :param pulumi.Input[builtins.str] backend: Id of the backend that this Traffic config applies to
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] create_time: Time at which the backend was created.
         :param pulumi.Input[Sequence[pulumi.Input['AppHostingTrafficCurrentArgs']]] currents: Current state of traffic allocation for the backend.
                When setting `target`, this field may differ for some time until the desired state is reached.
@@ -194,9 +185,6 @@ class _AppHostingTrafficState:
     def backend(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Id of the backend that this Traffic config applies to
-
-
-        - - -
         """
         return pulumi.get(self, "backend")
 
@@ -514,9 +502,6 @@ class AppHostingTraffic(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] backend: Id of the backend that this Traffic config applies to
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: The location the Backend that this Traffic config applies to
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -760,9 +745,6 @@ class AppHostingTraffic(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] backend: Id of the backend that this Traffic config applies to
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] create_time: Time at which the backend was created.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AppHostingTrafficCurrentArgs', 'AppHostingTrafficCurrentArgsDict']]]] currents: Current state of traffic allocation for the backend.
                When setting `target`, this field may differ for some time until the desired state is reached.
@@ -808,9 +790,6 @@ class AppHostingTraffic(pulumi.CustomResource):
     def backend(self) -> pulumi.Output[builtins.str]:
         """
         Id of the backend that this Traffic config applies to
-
-
-        - - -
         """
         return pulumi.get(self, "backend")
 

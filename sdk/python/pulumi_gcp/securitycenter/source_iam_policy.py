@@ -27,9 +27,6 @@ class SourceIamPolicyArgs:
         The set of arguments for constructing a SourceIamPolicy resource.
         :param pulumi.Input[builtins.str] organization: The organization whose Cloud Security Command Center the Source
                lives in.
-               
-               
-               - - -
         """
         pulumi.set(__self__, "organization", organization)
         pulumi.set(__self__, "policy_data", policy_data)
@@ -41,9 +38,6 @@ class SourceIamPolicyArgs:
         """
         The organization whose Cloud Security Command Center the Source
         lives in.
-
-
-        - - -
         """
         return pulumi.get(self, "organization")
 
@@ -81,9 +75,6 @@ class _SourceIamPolicyState:
         Input properties used for looking up and filtering SourceIamPolicy resources.
         :param pulumi.Input[builtins.str] organization: The organization whose Cloud Security Command Center the Source
                lives in.
-               
-               
-               - - -
         """
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
@@ -109,9 +100,6 @@ class _SourceIamPolicyState:
         """
         The organization whose Cloud Security Command Center the Source
         lives in.
-
-
-        - - -
         """
         return pulumi.get(self, "organization")
 
@@ -196,9 +184,6 @@ class SourceIamPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] organization: The organization whose Cloud Security Command Center the Source
                lives in.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -310,9 +295,6 @@ class SourceIamPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] organization: The organization whose Cloud Security Command Center the Source
                lives in.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -335,9 +317,6 @@ class SourceIamPolicy(pulumi.CustomResource):
         """
         The organization whose Cloud Security Command Center the Source
         lives in.
-
-
-        - - -
         """
         return pulumi.get(self, "organization")
 

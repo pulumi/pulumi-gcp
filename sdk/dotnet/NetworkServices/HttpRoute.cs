@@ -462,9 +462,8 @@ namespace Pulumi.Gcp.NetworkServices
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Gateways defines a list of gateways this HttpRoute is attached to, as one of the routing rules to route the requests
-        /// served by the gateway. Each gateway reference should match the pattern:
-        /// projects/*/locations/global/gateways/&lt;gateway_name&gt;
+        /// Gateways defines a list of gateways this HttpRoute is attached to, as one of the routing rules to route the requests served by the gateway.
+        /// Each gateway reference should match the pattern: projects/*/locations/global/gateways/&lt;gateway_name&gt;
         /// </summary>
         [Output("gateways")]
         public Output<ImmutableArray<string>> Gateways { get; private set; } = null!;
@@ -476,17 +475,17 @@ namespace Pulumi.Gcp.NetworkServices
         public Output<ImmutableArray<string>> Hostnames { get; private set; } = null!;
 
         /// <summary>
-        /// Set of label tags associated with the HttpRoute resource. **Note**: This field is non-authoritative, and will only
-        /// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-        /// present on the resource.
+        /// Set of label tags associated with the HttpRoute resource.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Meshes defines a list of meshes this HttpRoute is attached to, as one of the routing rules to route the requests served
-        /// by the mesh. Each mesh reference should match the pattern: projects/*/locations/global/meshes/&lt;mesh_name&gt;. The attached
-        /// Mesh should be of a type SIDECAR.
+        /// Meshes defines a list of meshes this HttpRoute is attached to, as one of the routing rules to route the requests served by the mesh.
+        /// Each mesh reference should match the pattern: projects/*/locations/global/meshes/&lt;mesh_name&gt;.
+        /// The attached Mesh should be of a type SIDECAR.
         /// </summary>
         [Output("meshes")]
         public Output<ImmutableArray<string>> Meshes { get; private set; } = null!;
@@ -497,6 +496,10 @@ namespace Pulumi.Gcp.NetworkServices
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -587,9 +590,8 @@ namespace Pulumi.Gcp.NetworkServices
         private InputList<string>? _gateways;
 
         /// <summary>
-        /// Gateways defines a list of gateways this HttpRoute is attached to, as one of the routing rules to route the requests
-        /// served by the gateway. Each gateway reference should match the pattern:
-        /// projects/*/locations/global/gateways/&lt;gateway_name&gt;
+        /// Gateways defines a list of gateways this HttpRoute is attached to, as one of the routing rules to route the requests served by the gateway.
+        /// Each gateway reference should match the pattern: projects/*/locations/global/gateways/&lt;gateway_name&gt;
         /// </summary>
         public InputList<string> Gateways
         {
@@ -613,9 +615,9 @@ namespace Pulumi.Gcp.NetworkServices
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Set of label tags associated with the HttpRoute resource. **Note**: This field is non-authoritative, and will only
-        /// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-        /// present on the resource.
+        /// Set of label tags associated with the HttpRoute resource.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -627,9 +629,9 @@ namespace Pulumi.Gcp.NetworkServices
         private InputList<string>? _meshes;
 
         /// <summary>
-        /// Meshes defines a list of meshes this HttpRoute is attached to, as one of the routing rules to route the requests served
-        /// by the mesh. Each mesh reference should match the pattern: projects/*/locations/global/meshes/&lt;mesh_name&gt;. The attached
-        /// Mesh should be of a type SIDECAR.
+        /// Meshes defines a list of meshes this HttpRoute is attached to, as one of the routing rules to route the requests served by the mesh.
+        /// Each mesh reference should match the pattern: projects/*/locations/global/meshes/&lt;mesh_name&gt;.
+        /// The attached Mesh should be of a type SIDECAR.
         /// </summary>
         public InputList<string> Meshes
         {
@@ -643,6 +645,10 @@ namespace Pulumi.Gcp.NetworkServices
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -699,9 +705,8 @@ namespace Pulumi.Gcp.NetworkServices
         private InputList<string>? _gateways;
 
         /// <summary>
-        /// Gateways defines a list of gateways this HttpRoute is attached to, as one of the routing rules to route the requests
-        /// served by the gateway. Each gateway reference should match the pattern:
-        /// projects/*/locations/global/gateways/&lt;gateway_name&gt;
+        /// Gateways defines a list of gateways this HttpRoute is attached to, as one of the routing rules to route the requests served by the gateway.
+        /// Each gateway reference should match the pattern: projects/*/locations/global/gateways/&lt;gateway_name&gt;
         /// </summary>
         public InputList<string> Gateways
         {
@@ -725,9 +730,9 @@ namespace Pulumi.Gcp.NetworkServices
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Set of label tags associated with the HttpRoute resource. **Note**: This field is non-authoritative, and will only
-        /// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-        /// present on the resource.
+        /// Set of label tags associated with the HttpRoute resource.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -739,9 +744,9 @@ namespace Pulumi.Gcp.NetworkServices
         private InputList<string>? _meshes;
 
         /// <summary>
-        /// Meshes defines a list of meshes this HttpRoute is attached to, as one of the routing rules to route the requests served
-        /// by the mesh. Each mesh reference should match the pattern: projects/*/locations/global/meshes/&lt;mesh_name&gt;. The attached
-        /// Mesh should be of a type SIDECAR.
+        /// Meshes defines a list of meshes this HttpRoute is attached to, as one of the routing rules to route the requests served by the mesh.
+        /// Each mesh reference should match the pattern: projects/*/locations/global/meshes/&lt;mesh_name&gt;.
+        /// The attached Mesh should be of a type SIDECAR.
         /// </summary>
         public InputList<string> Meshes
         {
@@ -755,6 +760,10 @@ namespace Pulumi.Gcp.NetworkServices
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

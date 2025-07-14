@@ -33,9 +33,6 @@ class TableArgs:
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: Output only. The name of the Table. Format:
                projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}/databases/{databaseId}/tables/{tableId}
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] type: The database type.
                Possible values are: `HIVE`.
         """
@@ -79,9 +76,6 @@ class TableArgs:
         """
         Output only. The name of the Table. Format:
         projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}/databases/{databaseId}/tables/{tableId}
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -138,9 +132,6 @@ class _TableState:
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: Output only. The name of the Table. Format:
                projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}/databases/{databaseId}/tables/{tableId}
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] type: The database type.
                Possible values are: `HIVE`.
         :param pulumi.Input[builtins.str] update_time: Output only. The last modification time of the table. A timestamp in
@@ -258,9 +249,6 @@ class _TableState:
         """
         Output only. The name of the Table. Format:
         projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}/databases/{databaseId}/tables/{tableId}
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -402,9 +390,6 @@ class Table(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: Output only. The name of the Table. Format:
                projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}/databases/{databaseId}/tables/{tableId}
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] type: The database type.
                Possible values are: `HIVE`.
         """
@@ -585,9 +570,6 @@ class Table(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: Output only. The name of the Table. Format:
                projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}/databases/{databaseId}/tables/{tableId}
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] type: The database type.
                Possible values are: `HIVE`.
         :param pulumi.Input[builtins.str] update_time: Output only. The last modification time of the table. A timestamp in
@@ -677,9 +659,6 @@ class Table(pulumi.CustomResource):
         """
         Output only. The name of the Table. Format:
         projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}/databases/{databaseId}/tables/{tableId}
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

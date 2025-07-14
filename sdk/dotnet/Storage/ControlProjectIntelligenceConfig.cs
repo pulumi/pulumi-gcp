@@ -85,9 +85,6 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// Identifier of the GCP project. For GCP project, this field can be project name or project number.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -166,9 +163,6 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// Identifier of the GCP project. For GCP project, this field can be project name or project number.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -209,9 +203,6 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// Identifier of the GCP project. For GCP project, this field can be project name or project number.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

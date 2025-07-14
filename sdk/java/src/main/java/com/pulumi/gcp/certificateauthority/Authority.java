@@ -650,16 +650,16 @@ public class Authority extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.deletionProtection);
     }
     /**
-     * Desired state of the CertificateAuthority. Set this field to &#39;STAGED&#39; to create a &#39;STAGED&#39; root CA. Possible values:
-     * ENABLED, DISABLED, STAGED.
+     * Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
+     * Possible values: ENABLED, DISABLED, STAGED.
      * 
      */
     @Export(name="desiredState", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> desiredState;
 
     /**
-     * @return Desired state of the CertificateAuthority. Set this field to &#39;STAGED&#39; to create a &#39;STAGED&#39; root CA. Possible values:
-     * ENABLED, DISABLED, STAGED.
+     * @return Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
+     * Possible values: ENABLED, DISABLED, STAGED.
      * 
      */
     public Output<Optional<String>> desiredState() {
@@ -680,36 +680,38 @@ public class Authority extends com.pulumi.resources.CustomResource {
         return this.effectiveLabels;
     }
     /**
-     * The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and
-     * CRLs. This must be a bucket name, without any prefixes (such as &#39;gs://&#39;) or suffixes (such as &#39;.googleapis.com&#39;). For
-     * example, to use a bucket named my-bucket, you would simply specify &#39;my-bucket&#39;. If not specified, a managed bucket will
-     * be created.
+     * The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
+     * such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
+     * (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
+     * my-bucket, you would simply specify `my-bucket`. If not specified, a managed bucket will be
+     * created.
      * 
      */
     @Export(name="gcsBucket", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> gcsBucket;
 
     /**
-     * @return The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and
-     * CRLs. This must be a bucket name, without any prefixes (such as &#39;gs://&#39;) or suffixes (such as &#39;.googleapis.com&#39;). For
-     * example, to use a bucket named my-bucket, you would simply specify &#39;my-bucket&#39;. If not specified, a managed bucket will
-     * be created.
+     * @return The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
+     * such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
+     * (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
+     * my-bucket, you would simply specify `my-bucket`. If not specified, a managed bucket will be
+     * created.
      * 
      */
     public Output<Optional<String>> gcsBucket() {
         return Codegen.optional(this.gcsBucket);
     }
     /**
-     * This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and
-     * unexpired certs. Use with care. Defaults to &#39;false&#39;.
+     * This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and unexpired certs.
+     * Use with care. Defaults to `false`.
      * 
      */
     @Export(name="ignoreActiveCertificatesOnDeletion", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> ignoreActiveCertificatesOnDeletion;
 
     /**
-     * @return This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and
-     * unexpired certs. Use with care. Defaults to &#39;false&#39;.
+     * @return This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and unexpired certs.
+     * Use with care. Defaults to `false`.
      * 
      */
     public Output<Optional<Boolean>> ignoreActiveCertificatesOnDeletion() {
@@ -736,34 +738,42 @@ public class Authority extends com.pulumi.resources.CustomResource {
         return this.keySpec;
     }
     /**
-     * Labels with user-defined metadata. An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;,
-     * &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }. **Note**: This field is non-authoritative, and will only manage the labels present in
-     * your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+     * Labels with user-defined metadata.
+     * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;:
+     * &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return Labels with user-defined metadata. An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;,
-     * &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }. **Note**: This field is non-authoritative, and will only manage the labels present in
-     * your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+     * @return Labels with user-defined metadata.
+     * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;:
+     * &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
         return Codegen.optional(this.labels);
     }
     /**
-     * The desired lifetime of the CA certificate. Used to create the &#34;notBeforeTime&#34; and &#34;notAfterTime&#34; fields inside an X.509
-     * certificate. A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * The desired lifetime of the CA certificate. Used to create the &#34;notBeforeTime&#34; and
+     * &#34;notAfterTime&#34; fields inside an X.509 certificate. A duration in seconds with up to nine
+     * fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
      */
     @Export(name="lifetime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> lifetime;
 
     /**
-     * @return The desired lifetime of the CA certificate. Used to create the &#34;notBeforeTime&#34; and &#34;notAfterTime&#34; fields inside an X.509
-     * certificate. A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * @return The desired lifetime of the CA certificate. Used to create the &#34;notBeforeTime&#34; and
+     * &#34;notAfterTime&#34; fields inside an X.509 certificate. A duration in seconds with up to nine
+     * fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
      */
     public Output<Optional<String>> lifetime() {
@@ -802,16 +812,14 @@ public class Authority extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The signed CA certificate issued from the subordinated CA&#39;s CSR. This is needed when activating the subordiante CA with
-     * a third party issuer.
+     * The signed CA certificate issued from the subordinated CA&#39;s CSR. This is needed when activating the subordiante CA with a third party issuer.
      * 
      */
     @Export(name="pemCaCertificate", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> pemCaCertificate;
 
     /**
-     * @return The signed CA certificate issued from the subordinated CA&#39;s CSR. This is needed when activating the subordiante CA with
-     * a third party issuer.
+     * @return The signed CA certificate issued from the subordinated CA&#39;s CSR. This is needed when activating the subordiante CA with a third party issuer.
      * 
      */
     public Output<Optional<String>> pemCaCertificate() {
@@ -851,9 +859,19 @@ public class Authority extends com.pulumi.resources.CustomResource {
     public Output<String> pool() {
         return this.pool;
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }
@@ -874,18 +892,20 @@ public class Authority extends com.pulumi.resources.CustomResource {
         return this.pulumiLabels;
     }
     /**
-     * If this flag is set, the Certificate Authority will be deleted as soon as possible without a 30-day grace period where
-     * undeletion would have been allowed. If you proceed, there will be no way to recover this CA. Use with care. Defaults to
-     * &#39;false&#39;.
+     * If this flag is set, the Certificate Authority will be deleted as soon as
+     * possible without a 30-day grace period where undeletion would have been
+     * allowed. If you proceed, there will be no way to recover this CA.
+     * Use with care. Defaults to `false`.
      * 
      */
     @Export(name="skipGracePeriod", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> skipGracePeriod;
 
     /**
-     * @return If this flag is set, the Certificate Authority will be deleted as soon as possible without a 30-day grace period where
-     * undeletion would have been allowed. If you proceed, there will be no way to recover this CA. Use with care. Defaults to
-     * &#39;false&#39;.
+     * @return If this flag is set, the Certificate Authority will be deleted as soon as
+     * possible without a 30-day grace period where undeletion would have been
+     * allowed. If you proceed, there will be no way to recover this CA.
+     * Use with care. Defaults to `false`.
      * 
      */
     public Output<Optional<Boolean>> skipGracePeriod() {
@@ -906,32 +926,40 @@ public class Authority extends com.pulumi.resources.CustomResource {
         return this.state;
     }
     /**
-     * If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which
-     * describes its issuers.
+     * If this is a subordinate CertificateAuthority, this field will be set
+     * with the subordinate configuration, which describes its issuers.
+     * Structure is documented below.
      * 
      */
     @Export(name="subordinateConfig", refs={AuthoritySubordinateConfig.class}, tree="[0]")
     private Output</* @Nullable */ AuthoritySubordinateConfig> subordinateConfig;
 
     /**
-     * @return If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which
-     * describes its issuers.
+     * @return If this is a subordinate CertificateAuthority, this field will be set
+     * with the subordinate configuration, which describes its issuers.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<AuthoritySubordinateConfig>> subordinateConfig() {
         return Codegen.optional(this.subordinateConfig);
     }
     /**
-     * The Type of this CertificateAuthority. &gt; **Note:** For &#39;SUBORDINATE&#39; Certificate Authorities, they need to be activated
-     * before they can issue certificates. Default value: &#34;SELF_SIGNED&#34; Possible values: [&#34;SELF_SIGNED&#34;, &#34;SUBORDINATE&#34;]
+     * The Type of this CertificateAuthority.
+     * &gt; **Note:** For `SUBORDINATE` Certificate Authorities, they need to
+     * be activated before they can issue certificates.
+     * Default value is `SELF_SIGNED`.
+     * Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
-     * @return The Type of this CertificateAuthority. &gt; **Note:** For &#39;SUBORDINATE&#39; Certificate Authorities, they need to be activated
-     * before they can issue certificates. Default value: &#34;SELF_SIGNED&#34; Possible values: [&#34;SELF_SIGNED&#34;, &#34;SUBORDINATE&#34;]
+     * @return The Type of this CertificateAuthority.
+     * &gt; **Note:** For `SUBORDINATE` Certificate Authorities, they need to
+     * be activated before they can issue certificates.
+     * Default value is `SELF_SIGNED`.
+     * Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
      * 
      */
     public Output<Optional<String>> type() {
@@ -956,16 +984,18 @@ public class Authority extends com.pulumi.resources.CustomResource {
         return this.updateTime;
     }
     /**
-     * Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs, that can be specified by
-     * users.
+     * Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs,
+     * that can be specified by users.
+     * Structure is documented below.
      * 
      */
     @Export(name="userDefinedAccessUrls", refs={AuthorityUserDefinedAccessUrls.class}, tree="[0]")
     private Output</* @Nullable */ AuthorityUserDefinedAccessUrls> userDefinedAccessUrls;
 
     /**
-     * @return Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs, that can be specified by
-     * users.
+     * @return Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs,
+     * that can be specified by users.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<AuthorityUserDefinedAccessUrls>> userDefinedAccessUrls() {

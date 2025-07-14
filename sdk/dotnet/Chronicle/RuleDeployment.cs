@@ -144,9 +144,6 @@ namespace Pulumi.Gcp.Chronicle
 
         /// <summary>
         /// The Rule ID of the rule.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("rule")]
         public Output<string> Rule { get; private set; } = null!;
@@ -253,9 +250,6 @@ namespace Pulumi.Gcp.Chronicle
 
         /// <summary>
         /// The Rule ID of the rule.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("rule", required: true)]
         public Input<string> Rule { get; set; } = null!;
@@ -387,9 +381,6 @@ namespace Pulumi.Gcp.Chronicle
 
         /// <summary>
         /// The Rule ID of the rule.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("rule")]
         public Input<string>? Rule { get; set; }

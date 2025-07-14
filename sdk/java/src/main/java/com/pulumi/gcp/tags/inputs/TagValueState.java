@@ -96,8 +96,6 @@ public final class TagValueState extends com.pulumi.resources.ResourceArgs {
      * Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
      * The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes (&#39;), double quotes (&#34;), backslashes (\\), and forward slashes (/).
      * 
-     * ***
-     * 
      */
     @Import(name="shortName")
     private @Nullable Output<String> shortName;
@@ -105,8 +103,6 @@ public final class TagValueState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
      * The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes (&#39;), double quotes (&#34;), backslashes (\\), and forward slashes (/).
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> shortName() {
@@ -271,8 +267,6 @@ public final class TagValueState extends com.pulumi.resources.ResourceArgs {
          * @param shortName Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
          * The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes (&#39;), double quotes (&#34;), backslashes (\\), and forward slashes (/).
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -284,8 +278,6 @@ public final class TagValueState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param shortName Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
          * The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes (&#39;), double quotes (&#34;), backslashes (\\), and forward slashes (/).
-         * 
-         * ***
          * 
          * @return builder
          * 

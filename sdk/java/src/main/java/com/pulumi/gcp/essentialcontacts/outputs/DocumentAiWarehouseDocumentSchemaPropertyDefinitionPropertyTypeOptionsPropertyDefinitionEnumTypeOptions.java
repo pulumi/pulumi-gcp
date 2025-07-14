@@ -22,8 +22,6 @@ public final class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTy
     /**
      * @return Make sure the enum property value provided in the document is in the possile value list during document creation. The validation check runs by default.
      * 
-     * ***
-     * 
      */
     private @Nullable Boolean validationCheckDisabled;
 
@@ -37,8 +35,6 @@ public final class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTy
     }
     /**
      * @return Make sure the enum property value provided in the document is in the possile value list during document creation. The validation check runs by default.
-     * 
-     * ***
      * 
      */
     public Optional<Boolean> validationCheckDisabled() {

@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
     public sealed class JobStatusErrorResult
     {
         /// <summary>
-        /// Specifies where the error occurred, if present.
+        /// The geographic location of the job. The default value is US.
         /// </summary>
         public readonly string? Location;
         /// <summary>

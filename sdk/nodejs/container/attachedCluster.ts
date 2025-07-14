@@ -190,20 +190,25 @@ export class AttachedCluster extends pulumi.CustomResource {
     }
 
     /**
-     * Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
-     * all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-     * 'effective_annotations' for all of the annotations present on the resource.
+     * Optional. Annotations on the cluster. This field has the same
+     * restrictions as Kubernetes annotations. The total size of all keys and
+     * values combined is limited to 256k. Key can have 2 segments: prefix (optional)
+     * and name (required), separated by a slash (/). Prefix must be a DNS subdomain.
+     * Name must be 63 characters or less, begin and end with alphanumerics,
+     * with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Configuration related to the cluster RBAC settings.
+     * Structure is documented below.
      */
     public readonly authorization!: pulumi.Output<outputs.container.AttachedClusterAuthorization | undefined>;
     /**
      * Binary Authorization configuration.
+     * Structure is documented below.
      */
     public readonly binaryAuthorization!: pulumi.Output<outputs.container.AttachedClusterBinaryAuthorization>;
     /**
@@ -221,7 +226,8 @@ export class AttachedCluster extends pulumi.CustomResource {
      */
     public readonly deletionPolicy!: pulumi.Output<string | undefined>;
     /**
-     * A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
+     * A human readable description of this attached cluster. Cannot be longer
+     * than 255 UTF-8 encoded bytes.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -251,10 +257,12 @@ export class AttachedCluster extends pulumi.CustomResource {
     public readonly location!: pulumi.Output<string>;
     /**
      * Logging configuration.
+     * Structure is documented below.
      */
     public readonly loggingConfig!: pulumi.Output<outputs.container.AttachedClusterLoggingConfig | undefined>;
     /**
      * Monitoring configuration.
+     * Structure is documented below.
      */
     public readonly monitoringConfig!: pulumi.Output<outputs.container.AttachedClusterMonitoringConfig>;
     /**
@@ -278,9 +286,14 @@ export class AttachedCluster extends pulumi.CustomResource {
      * The platform version for the cluster (e.g. `1.23.0-gke.1`).
      */
     public readonly platformVersion!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * Support for proxy configuration.
+     * Structure is documented below.
      */
     public readonly proxyConfig!: pulumi.Output<outputs.container.AttachedClusterProxyConfig | undefined>;
     /**
@@ -288,7 +301,11 @@ export class AttachedCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
     /**
+     * (Optional, Deprecated)
      * Enable/Disable Security Posture API features for the cluster.
+     * Structure is documented below.
+     *
+     * > **Warning:** `securityPostureConfig` is deprecated and will be removed in a future major release.
      *
      * @deprecated `securityPostureConfig` is deprecated and will be removed in a future major release.
      */
@@ -406,20 +423,25 @@ export class AttachedCluster extends pulumi.CustomResource {
  */
 export interface AttachedClusterState {
     /**
-     * Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
-     * all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-     * 'effective_annotations' for all of the annotations present on the resource.
+     * Optional. Annotations on the cluster. This field has the same
+     * restrictions as Kubernetes annotations. The total size of all keys and
+     * values combined is limited to 256k. Key can have 2 segments: prefix (optional)
+     * and name (required), separated by a slash (/). Prefix must be a DNS subdomain.
+     * Name must be 63 characters or less, begin and end with alphanumerics,
+     * with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Configuration related to the cluster RBAC settings.
+     * Structure is documented below.
      */
     authorization?: pulumi.Input<inputs.container.AttachedClusterAuthorization>;
     /**
      * Binary Authorization configuration.
+     * Structure is documented below.
      */
     binaryAuthorization?: pulumi.Input<inputs.container.AttachedClusterBinaryAuthorization>;
     /**
@@ -437,7 +459,8 @@ export interface AttachedClusterState {
      */
     deletionPolicy?: pulumi.Input<string>;
     /**
-     * A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
+     * A human readable description of this attached cluster. Cannot be longer
+     * than 255 UTF-8 encoded bytes.
      */
     description?: pulumi.Input<string>;
     /**
@@ -467,10 +490,12 @@ export interface AttachedClusterState {
     location?: pulumi.Input<string>;
     /**
      * Logging configuration.
+     * Structure is documented below.
      */
     loggingConfig?: pulumi.Input<inputs.container.AttachedClusterLoggingConfig>;
     /**
      * Monitoring configuration.
+     * Structure is documented below.
      */
     monitoringConfig?: pulumi.Input<inputs.container.AttachedClusterMonitoringConfig>;
     /**
@@ -494,9 +519,14 @@ export interface AttachedClusterState {
      * The platform version for the cluster (e.g. `1.23.0-gke.1`).
      */
     platformVersion?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * Support for proxy configuration.
+     * Structure is documented below.
      */
     proxyConfig?: pulumi.Input<inputs.container.AttachedClusterProxyConfig>;
     /**
@@ -504,7 +534,11 @@ export interface AttachedClusterState {
      */
     reconciling?: pulumi.Input<boolean>;
     /**
+     * (Optional, Deprecated)
      * Enable/Disable Security Posture API features for the cluster.
+     * Structure is documented below.
+     *
+     * > **Warning:** `securityPostureConfig` is deprecated and will be removed in a future major release.
      *
      * @deprecated `securityPostureConfig` is deprecated and will be removed in a future major release.
      */
@@ -535,20 +569,25 @@ export interface AttachedClusterState {
  */
 export interface AttachedClusterArgs {
     /**
-     * Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of
-     * all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-     * 'effective_annotations' for all of the annotations present on the resource.
+     * Optional. Annotations on the cluster. This field has the same
+     * restrictions as Kubernetes annotations. The total size of all keys and
+     * values combined is limited to 256k. Key can have 2 segments: prefix (optional)
+     * and name (required), separated by a slash (/). Prefix must be a DNS subdomain.
+     * Name must be 63 characters or less, begin and end with alphanumerics,
+     * with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Configuration related to the cluster RBAC settings.
+     * Structure is documented below.
      */
     authorization?: pulumi.Input<inputs.container.AttachedClusterAuthorization>;
     /**
      * Binary Authorization configuration.
+     * Structure is documented below.
      */
     binaryAuthorization?: pulumi.Input<inputs.container.AttachedClusterBinaryAuthorization>;
     /**
@@ -556,7 +595,8 @@ export interface AttachedClusterArgs {
      */
     deletionPolicy?: pulumi.Input<string>;
     /**
-     * A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
+     * A human readable description of this attached cluster. Cannot be longer
+     * than 255 UTF-8 encoded bytes.
      */
     description?: pulumi.Input<string>;
     /**
@@ -576,10 +616,12 @@ export interface AttachedClusterArgs {
     location: pulumi.Input<string>;
     /**
      * Logging configuration.
+     * Structure is documented below.
      */
     loggingConfig?: pulumi.Input<inputs.container.AttachedClusterLoggingConfig>;
     /**
      * Monitoring configuration.
+     * Structure is documented below.
      */
     monitoringConfig?: pulumi.Input<inputs.container.AttachedClusterMonitoringConfig>;
     /**
@@ -603,13 +645,22 @@ export interface AttachedClusterArgs {
      * The platform version for the cluster (e.g. `1.23.0-gke.1`).
      */
     platformVersion: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * Support for proxy configuration.
+     * Structure is documented below.
      */
     proxyConfig?: pulumi.Input<inputs.container.AttachedClusterProxyConfig>;
     /**
+     * (Optional, Deprecated)
      * Enable/Disable Security Posture API features for the cluster.
+     * Structure is documented below.
+     *
+     * > **Warning:** `securityPostureConfig` is deprecated and will be removed in a future major release.
      *
      * @deprecated `securityPostureConfig` is deprecated and will be removed in a future major release.
      */

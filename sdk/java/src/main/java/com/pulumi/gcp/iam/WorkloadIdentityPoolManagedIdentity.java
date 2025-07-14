@@ -291,8 +291,6 @@ public class WorkloadIdentityPoolManagedIdentity extends com.pulumi.resources.Cu
      * 
      * The prefix `gcp-` will be reserved for future uses.
      * 
-     * ***
-     * 
      */
     @Export(name="workloadIdentityPoolManagedIdentityId", refs={String.class}, tree="[0]")
     private Output<String> workloadIdentityPoolManagedIdentityId;
@@ -305,8 +303,6 @@ public class WorkloadIdentityPoolManagedIdentity extends com.pulumi.resources.Cu
      * * end with an alphanumeric character
      * 
      * The prefix `gcp-` will be reserved for future uses.
-     * 
-     * ***
      * 
      */
     public Output<String> workloadIdentityPoolManagedIdentityId() {

@@ -35,9 +35,6 @@ class DatabaseArgs:
         """
         The set of arguments for constructing a Database resource.
         :param pulumi.Input[builtins.str] instance: The instance to create the database on.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] database_dialect: The dialect of the Cloud Spanner Database.
                If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
                Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
@@ -82,9 +79,6 @@ class DatabaseArgs:
     def instance(self) -> pulumi.Input[builtins.str]:
         """
         The instance to create the database on.
-
-
-        - - -
         """
         return pulumi.get(self, "instance")
 
@@ -232,9 +226,6 @@ class _DatabaseState:
         :param pulumi.Input['DatabaseEncryptionConfigArgs'] encryption_config: Encryption configuration for the database
                Structure is documented below.
         :param pulumi.Input[builtins.str] instance: The instance to create the database on.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: A unique identifier for the database, which cannot be changed after the
                instance is created. Values are of the form `[a-z][-_a-z0-9]*[a-z0-9]`.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -345,9 +336,6 @@ class _DatabaseState:
     def instance(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The instance to create the database on.
-
-
-        - - -
         """
         return pulumi.get(self, "instance")
 
@@ -508,9 +496,6 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[Union['DatabaseEncryptionConfigArgs', 'DatabaseEncryptionConfigArgsDict']] encryption_config: Encryption configuration for the database
                Structure is documented below.
         :param pulumi.Input[builtins.str] instance: The instance to create the database on.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: A unique identifier for the database, which cannot be changed after the
                instance is created. Values are of the form `[a-z][-_a-z0-9]*[a-z0-9]`.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -681,9 +666,6 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[Union['DatabaseEncryptionConfigArgs', 'DatabaseEncryptionConfigArgsDict']] encryption_config: Encryption configuration for the database
                Structure is documented below.
         :param pulumi.Input[builtins.str] instance: The instance to create the database on.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: A unique identifier for the database, which cannot be changed after the
                instance is created. Values are of the form `[a-z][-_a-z0-9]*[a-z0-9]`.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -764,9 +746,6 @@ class Database(pulumi.CustomResource):
     def instance(self) -> pulumi.Output[builtins.str]:
         """
         The instance to create the database on.
-
-
-        - - -
         """
         return pulumi.get(self, "instance")
 

@@ -108,9 +108,6 @@ export class ManagementServer extends pulumi.CustomResource {
     public /*out*/ readonly managementUris!: pulumi.Output<outputs.backupdisasterrecovery.ManagementServerManagementUri[]>;
     /**
      * The name of management server (management console)
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -187,9 +184,6 @@ export interface ManagementServerState {
     managementUris?: pulumi.Input<pulumi.Input<inputs.backupdisasterrecovery.ManagementServerManagementUri>[]>;
     /**
      * The name of management server (management console)
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -224,9 +218,6 @@ export interface ManagementServerArgs {
     location: pulumi.Input<string>;
     /**
      * The name of management server (management console)
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

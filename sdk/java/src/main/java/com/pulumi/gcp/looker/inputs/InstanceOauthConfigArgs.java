@@ -32,16 +32,12 @@ public final class InstanceOauthConfigArgs extends com.pulumi.resources.Resource
     /**
      * The client secret for the Oauth config.
      * 
-     * ***
-     * 
      */
     @Import(name="clientSecret", required=true)
     private Output<String> clientSecret;
 
     /**
      * @return The client secret for the Oauth config.
-     * 
-     * ***
      * 
      */
     public Output<String> clientSecret() {
@@ -97,8 +93,6 @@ public final class InstanceOauthConfigArgs extends com.pulumi.resources.Resource
         /**
          * @param clientSecret The client secret for the Oauth config.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -109,8 +103,6 @@ public final class InstanceOauthConfigArgs extends com.pulumi.resources.Resource
 
         /**
          * @param clientSecret The client secret for the Oauth config.
-         * 
-         * ***
          * 
          * @return builder
          * 

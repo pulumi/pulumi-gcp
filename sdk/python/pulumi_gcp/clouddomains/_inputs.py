@@ -298,8 +298,6 @@ if not MYPY:
         """
         The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
         it might contain "care of" information.
-
-        - - -
         """
 elif False:
     RegistrationContactSettingsAdminContactPostalAddressArgsDict: TypeAlias = Mapping[str, Any]
@@ -335,8 +333,6 @@ class RegistrationContactSettingsAdminContactPostalAddressArgs:
                they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] recipients: The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
                it might contain "care of" information.
-               
-               - - -
         """
         pulumi.set(__self__, "region_code", region_code)
         if address_lines is not None:
@@ -442,8 +438,6 @@ class RegistrationContactSettingsAdminContactPostalAddressArgs:
         """
         The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
         it might contain "care of" information.
-
-        - - -
         """
         return pulumi.get(self, "recipients")
 
@@ -586,8 +580,6 @@ if not MYPY:
         """
         The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
         it might contain "care of" information.
-
-        - - -
         """
 elif False:
     RegistrationContactSettingsRegistrantContactPostalAddressArgsDict: TypeAlias = Mapping[str, Any]
@@ -623,8 +615,6 @@ class RegistrationContactSettingsRegistrantContactPostalAddressArgs:
                they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] recipients: The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
                it might contain "care of" information.
-               
-               - - -
         """
         pulumi.set(__self__, "region_code", region_code)
         if address_lines is not None:
@@ -730,8 +720,6 @@ class RegistrationContactSettingsRegistrantContactPostalAddressArgs:
         """
         The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
         it might contain "care of" information.
-
-        - - -
         """
         return pulumi.get(self, "recipients")
 
@@ -874,8 +862,6 @@ if not MYPY:
         """
         The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
         it might contain "care of" information.
-
-        - - -
         """
 elif False:
     RegistrationContactSettingsTechnicalContactPostalAddressArgsDict: TypeAlias = Mapping[str, Any]
@@ -911,8 +897,6 @@ class RegistrationContactSettingsTechnicalContactPostalAddressArgs:
                they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] recipients: The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
                it might contain "care of" information.
-               
-               - - -
         """
         pulumi.set(__self__, "region_code", region_code)
         if address_lines is not None:
@@ -1018,8 +1002,6 @@ class RegistrationContactSettingsTechnicalContactPostalAddressArgs:
         """
         The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
         it might contain "care of" information.
-
-        - - -
         """
         return pulumi.get(self, "recipients")
 

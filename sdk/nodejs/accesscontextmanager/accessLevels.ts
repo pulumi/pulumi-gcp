@@ -118,9 +118,6 @@ export class AccessLevels extends pulumi.CustomResource {
     /**
      * The AccessPolicy this AccessLevel lives in.
      * Format: accessPolicies/{policy_id}
-     *
-     *
-     * - - -
      */
     public readonly parent!: pulumi.Output<string>;
 
@@ -164,9 +161,6 @@ export interface AccessLevelsState {
     /**
      * The AccessPolicy this AccessLevel lives in.
      * Format: accessPolicies/{policy_id}
-     *
-     *
-     * - - -
      */
     parent?: pulumi.Input<string>;
 }
@@ -183,9 +177,6 @@ export interface AccessLevelsArgs {
     /**
      * The AccessPolicy this AccessLevel lives in.
      * Format: accessPolicies/{policy_id}
-     *
-     *
-     * - - -
      */
     parent: pulumi.Input<string>;
 }

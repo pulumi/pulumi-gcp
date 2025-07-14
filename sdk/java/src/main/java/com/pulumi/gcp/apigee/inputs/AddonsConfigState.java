@@ -36,16 +36,12 @@ public final class AddonsConfigState extends com.pulumi.resources.ResourceArgs {
     /**
      * Name of the Apigee organization.
      * 
-     * ***
-     * 
      */
     @Import(name="org")
     private @Nullable Output<String> org;
 
     /**
      * @return Name of the Apigee organization.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> org() {
@@ -103,8 +99,6 @@ public final class AddonsConfigState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param org Name of the Apigee organization.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -115,8 +109,6 @@ public final class AddonsConfigState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param org Name of the Apigee organization.
-         * 
-         * ***
          * 
          * @return builder
          * 

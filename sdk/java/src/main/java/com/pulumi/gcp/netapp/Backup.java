@@ -267,16 +267,12 @@ public class Backup extends com.pulumi.resources.CustomResource {
     /**
      * The resource name of the backup. Needs to be unique per location.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return The resource name of the backup. Needs to be unique per location.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

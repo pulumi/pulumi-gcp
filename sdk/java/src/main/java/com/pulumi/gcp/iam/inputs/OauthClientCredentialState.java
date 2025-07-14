@@ -115,8 +115,6 @@ public final class OauthClientCredentialState extends com.pulumi.resources.Resou
      * and may contain the characters [a-z0-9-]. The prefix `gcp-` is
      * reserved for use by Google, and may not be specified.
      * 
-     * ***
-     * 
      */
     @Import(name="oauthClientCredentialId")
     private @Nullable Output<String> oauthClientCredentialId;
@@ -126,8 +124,6 @@ public final class OauthClientCredentialState extends com.pulumi.resources.Resou
      * final component of the resource name. This value should be 4-32 characters,
      * and may contain the characters [a-z0-9-]. The prefix `gcp-` is
      * reserved for use by Google, and may not be specified.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> oauthClientCredentialId() {
@@ -326,8 +322,6 @@ public final class OauthClientCredentialState extends com.pulumi.resources.Resou
          * and may contain the characters [a-z0-9-]. The prefix `gcp-` is
          * reserved for use by Google, and may not be specified.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -341,8 +335,6 @@ public final class OauthClientCredentialState extends com.pulumi.resources.Resou
          * final component of the resource name. This value should be 4-32 characters,
          * and may contain the characters [a-z0-9-]. The prefix `gcp-` is
          * reserved for use by Google, and may not be specified.
-         * 
-         * ***
          * 
          * @return builder
          * 

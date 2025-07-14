@@ -38,9 +38,6 @@ class BackupVaultArgs:
         The set of arguments for constructing a BackupVault resource.
         :param pulumi.Input[builtins.str] backup_minimum_enforced_retention_duration: Required. The default and minimum enforced retention for each backup within the backup vault. The enforced retention for each backup can be extended.
         :param pulumi.Input[builtins.str] backup_vault_id: Required. ID of the requesting object.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: The GCP location for the backup vault.
         :param pulumi.Input[builtins.str] access_restriction: Access restriction for the backup vault. Default value is `WITHIN_ORGANIZATION` if not provided during creation.
                Default value is `WITHIN_ORGANIZATION`.
@@ -118,9 +115,6 @@ class BackupVaultArgs:
     def backup_vault_id(self) -> pulumi.Input[builtins.str]:
         """
         Required. ID of the requesting object.
-
-
-        - - -
         """
         return pulumi.get(self, "backup_vault_id")
 
@@ -335,9 +329,6 @@ class _BackupVaultState:
         :param pulumi.Input[builtins.str] backup_count: Output only. The number of backups in this backup vault.
         :param pulumi.Input[builtins.str] backup_minimum_enforced_retention_duration: Required. The default and minimum enforced retention for each backup within the backup vault. The enforced retention for each backup can be extended.
         :param pulumi.Input[builtins.str] backup_vault_id: Required. ID of the requesting object.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] create_time: Output only. The time when the instance was created.
         :param pulumi.Input[builtins.bool] deletable: Output only. Set to true when there are no backups nested under this resource.
         :param pulumi.Input[builtins.str] description: Optional. The description of the BackupVault instance (2048 characters or less).
@@ -507,9 +498,6 @@ class _BackupVaultState:
     def backup_vault_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Required. ID of the requesting object.
-
-
-        - - -
         """
         return pulumi.get(self, "backup_vault_id")
 
@@ -876,9 +864,6 @@ class BackupVault(pulumi.CustomResource):
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[builtins.str] backup_minimum_enforced_retention_duration: Required. The default and minimum enforced retention for each backup within the backup vault. The enforced retention for each backup can be extended.
         :param pulumi.Input[builtins.str] backup_vault_id: Required. ID of the requesting object.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] description: Optional. The description of the BackupVault instance (2048 characters or less).
         :param pulumi.Input[builtins.str] effective_time: Optional. Time after which the BackupVault resource is locked.
         :param pulumi.Input[builtins.bool] force_delete: (Optional, Deprecated)
@@ -1091,9 +1076,6 @@ class BackupVault(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] backup_count: Output only. The number of backups in this backup vault.
         :param pulumi.Input[builtins.str] backup_minimum_enforced_retention_duration: Required. The default and minimum enforced retention for each backup within the backup vault. The enforced retention for each backup can be extended.
         :param pulumi.Input[builtins.str] backup_vault_id: Required. ID of the requesting object.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] create_time: Output only. The time when the instance was created.
         :param pulumi.Input[builtins.bool] deletable: Output only. Set to true when there are no backups nested under this resource.
         :param pulumi.Input[builtins.str] description: Optional. The description of the BackupVault instance (2048 characters or less).
@@ -1218,9 +1200,6 @@ class BackupVault(pulumi.CustomResource):
     def backup_vault_id(self) -> pulumi.Output[builtins.str]:
         """
         Required. ID of the requesting object.
-
-
-        - - -
         """
         return pulumi.get(self, "backup_vault_id")
 

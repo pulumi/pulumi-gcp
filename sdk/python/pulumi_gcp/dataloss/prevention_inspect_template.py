@@ -34,9 +34,6 @@ class PreventionInspectTemplateArgs:
                * `projects/{{project}}/locations/{{location}}`
                * `organizations/{{organization_id}}`
                * `organizations/{{organization_id}}/locations/{{location}}`
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] description: A description of the inspect template.
         :param pulumi.Input[builtins.str] display_name: User set display name of the inspect template.
         :param pulumi.Input['PreventionInspectTemplateInspectConfigArgs'] inspect_config: The core content of the template.
@@ -64,9 +61,6 @@ class PreventionInspectTemplateArgs:
         * `projects/{{project}}/locations/{{location}}`
         * `organizations/{{organization_id}}`
         * `organizations/{{organization_id}}/locations/{{location}}`
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 
@@ -147,9 +141,6 @@ class _PreventionInspectTemplateState:
                * `projects/{{project}}/locations/{{location}}`
                * `organizations/{{organization_id}}`
                * `organizations/{{organization_id}}/locations/{{location}}`
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] template_id: The template id can contain uppercase and lowercase letters, numbers, and hyphens;
                that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is
                100 characters. Can be empty to allow the system to generate one.
@@ -225,9 +216,6 @@ class _PreventionInspectTemplateState:
         * `projects/{{project}}/locations/{{location}}`
         * `organizations/{{organization_id}}`
         * `organizations/{{organization_id}}/locations/{{location}}`
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 
@@ -568,9 +556,6 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                * `projects/{{project}}/locations/{{location}}`
                * `organizations/{{organization_id}}`
                * `organizations/{{organization_id}}/locations/{{location}}`
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] template_id: The template id can contain uppercase and lowercase letters, numbers, and hyphens;
                that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is
                100 characters. Can be empty to allow the system to generate one.
@@ -946,9 +931,6 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                * `projects/{{project}}/locations/{{location}}`
                * `organizations/{{organization_id}}`
                * `organizations/{{organization_id}}/locations/{{location}}`
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] template_id: The template id can contain uppercase and lowercase letters, numbers, and hyphens;
                that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is
                100 characters. Can be empty to allow the system to generate one.
@@ -1007,9 +989,6 @@ class PreventionInspectTemplate(pulumi.CustomResource):
         * `projects/{{project}}/locations/{{location}}`
         * `organizations/{{organization_id}}`
         * `organizations/{{organization_id}}/locations/{{location}}`
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 

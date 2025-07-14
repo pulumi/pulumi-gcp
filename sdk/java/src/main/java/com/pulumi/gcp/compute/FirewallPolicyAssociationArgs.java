@@ -38,8 +38,6 @@ public final class FirewallPolicyAssociationArgs extends com.pulumi.resources.Re
      * **Note** Due to potential risks with this operation it is *highly* recommended to use the `create_before_destroy` life cycle option
      * on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
      * 
-     * ***
-     * 
      */
     @Import(name="firewallPolicy", required=true)
     private Output<String> firewallPolicy;
@@ -50,8 +48,6 @@ public final class FirewallPolicyAssociationArgs extends com.pulumi.resources.Re
      * firewall policy with the flag to override the existing attachmentTarget&#39;s policy association.
      * **Note** Due to potential risks with this operation it is *highly* recommended to use the `create_before_destroy` life cycle option
      * on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
-     * 
-     * ***
      * 
      */
     public Output<String> firewallPolicy() {
@@ -127,8 +123,6 @@ public final class FirewallPolicyAssociationArgs extends com.pulumi.resources.Re
          * **Note** Due to potential risks with this operation it is *highly* recommended to use the `create_before_destroy` life cycle option
          * on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -143,8 +137,6 @@ public final class FirewallPolicyAssociationArgs extends com.pulumi.resources.Re
          * firewall policy with the flag to override the existing attachmentTarget&#39;s policy association.
          * **Note** Due to potential risks with this operation it is *highly* recommended to use the `create_before_destroy` life cycle option
          * on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
-         * 
-         * ***
          * 
          * @return builder
          * 

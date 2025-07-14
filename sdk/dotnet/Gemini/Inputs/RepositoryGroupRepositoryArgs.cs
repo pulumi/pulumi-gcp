@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.Gemini.Inputs
         /// <summary>
         /// Required. The Git branch pattern used for indexing in RE2 syntax.
         /// See https://github.com/google/re2/wiki/syntax for syntax.
-        /// 
-        /// - - -
         /// </summary>
         [Input("branchPattern", required: true)]
         public Input<string> BranchPattern { get; set; } = null!;

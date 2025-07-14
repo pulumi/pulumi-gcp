@@ -25,8 +25,6 @@ namespace Pulumi.Gcp.Iam.Outputs
         /// <summary>
         /// String indicating the location of the expression for error reporting,
         /// e.g. a file name and a position in the file.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string? Location;
         /// <summary>

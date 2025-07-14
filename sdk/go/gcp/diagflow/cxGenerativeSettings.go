@@ -121,8 +121,6 @@ type CxGenerativeSettings struct {
 	// Structure is documented below.
 	KnowledgeConnectorSettings CxGenerativeSettingsKnowledgeConnectorSettingsPtrOutput `pulumi:"knowledgeConnectorSettings"`
 	// Language for this settings.
-	//
-	// ***
 	LanguageCode pulumi.StringOutput `pulumi:"languageCode"`
 	// LLM model settings.
 	// Structure is documented below.
@@ -179,8 +177,6 @@ type cxGenerativeSettingsState struct {
 	// Structure is documented below.
 	KnowledgeConnectorSettings *CxGenerativeSettingsKnowledgeConnectorSettings `pulumi:"knowledgeConnectorSettings"`
 	// Language for this settings.
-	//
-	// ***
 	LanguageCode *string `pulumi:"languageCode"`
 	// LLM model settings.
 	// Structure is documented below.
@@ -205,8 +201,6 @@ type CxGenerativeSettingsState struct {
 	// Structure is documented below.
 	KnowledgeConnectorSettings CxGenerativeSettingsKnowledgeConnectorSettingsPtrInput
 	// Language for this settings.
-	//
-	// ***
 	LanguageCode pulumi.StringPtrInput
 	// LLM model settings.
 	// Structure is documented below.
@@ -235,8 +229,6 @@ type cxGenerativeSettingsArgs struct {
 	// Structure is documented below.
 	KnowledgeConnectorSettings *CxGenerativeSettingsKnowledgeConnectorSettings `pulumi:"knowledgeConnectorSettings"`
 	// Language for this settings.
-	//
-	// ***
 	LanguageCode string `pulumi:"languageCode"`
 	// LLM model settings.
 	// Structure is documented below.
@@ -259,8 +251,6 @@ type CxGenerativeSettingsArgs struct {
 	// Structure is documented below.
 	KnowledgeConnectorSettings CxGenerativeSettingsKnowledgeConnectorSettingsPtrInput
 	// Language for this settings.
-	//
-	// ***
 	LanguageCode pulumi.StringInput
 	// LLM model settings.
 	// Structure is documented below.
@@ -381,8 +371,6 @@ func (o CxGenerativeSettingsOutput) KnowledgeConnectorSettings() CxGenerativeSet
 }
 
 // Language for this settings.
-//
-// ***
 func (o CxGenerativeSettingsOutput) LanguageCode() pulumi.StringOutput {
 	return o.ApplyT(func(v *CxGenerativeSettings) pulumi.StringOutput { return v.LanguageCode }).(pulumi.StringOutput)
 }

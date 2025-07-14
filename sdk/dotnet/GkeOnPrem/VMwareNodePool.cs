@@ -12,6 +12,10 @@ namespace Pulumi.Gcp.GkeOnPrem
     /// <summary>
     /// A Google Vmware Node Pool.
     /// 
+    /// To get more information about VmwareNodePool, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/kubernetes-engine/distributed-cloud/reference/on-prem-api/rest/v1/projects.locations.vmwareClusters.vmwareNodePools)
+    /// 
     /// ## Example Usage
     /// 
     /// ### Gkeonprem Vmware Node Pool Basic
@@ -264,12 +268,17 @@ namespace Pulumi.Gcp.GkeOnPrem
     public partial class VMwareNodePool : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Annotations on the node Pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys
-        /// and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a
-        /// slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with
-        /// dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is non-authoritative, and will
-        /// only manage the annotations present in your configuration. Please refer to the field 'effective_annotations' for all of
-        /// the annotations present on the resource.
+        /// Annotations on the node Pool.
+        /// This field has the same restrictions as Kubernetes annotations.
+        /// The total size of all keys and values combined is limited to 256k.
+        /// Key can have 2 segments: prefix (optional) and name (required),
+        /// separated by a slash (/).
+        /// Prefix must be a DNS subdomain.
+        /// Name must be 63 characters or less, begin and end with alphanumerics,
+        /// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
@@ -326,6 +335,7 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// Node Pool autoscaling config for the node pool.
+        /// Structure is documented below.
         /// </summary>
         [Output("nodePoolAutoscaling")]
         public Output<Outputs.VMwareNodePoolNodePoolAutoscaling?> NodePoolAutoscaling { get; private set; } = null!;
@@ -336,6 +346,10 @@ namespace Pulumi.Gcp.GkeOnPrem
         [Output("onPremVersion")]
         public Output<string> OnPremVersion { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -427,12 +441,17 @@ namespace Pulumi.Gcp.GkeOnPrem
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// Annotations on the node Pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys
-        /// and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a
-        /// slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with
-        /// dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is non-authoritative, and will
-        /// only manage the annotations present in your configuration. Please refer to the field 'effective_annotations' for all of
-        /// the annotations present on the resource.
+        /// Annotations on the node Pool.
+        /// This field has the same restrictions as Kubernetes annotations.
+        /// The total size of all keys and values combined is limited to 256k.
+        /// Key can have 2 segments: prefix (optional) and name (required),
+        /// separated by a slash (/).
+        /// Prefix must be a DNS subdomain.
+        /// Name must be 63 characters or less, begin and end with alphanumerics,
+        /// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -467,10 +486,15 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// Node Pool autoscaling config for the node pool.
+        /// Structure is documented below.
         /// </summary>
         [Input("nodePoolAutoscaling")]
         public Input<Inputs.VMwareNodePoolNodePoolAutoscalingArgs>? NodePoolAutoscaling { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -492,12 +516,17 @@ namespace Pulumi.Gcp.GkeOnPrem
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// Annotations on the node Pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys
-        /// and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a
-        /// slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with
-        /// dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is non-authoritative, and will
-        /// only manage the annotations present in your configuration. Please refer to the field 'effective_annotations' for all of
-        /// the annotations present on the resource.
+        /// Annotations on the node Pool.
+        /// This field has the same restrictions as Kubernetes annotations.
+        /// The total size of all keys and values combined is limited to 256k.
+        /// Key can have 2 segments: prefix (optional) and name (required),
+        /// separated by a slash (/).
+        /// Prefix must be a DNS subdomain.
+        /// Name must be 63 characters or less, begin and end with alphanumerics,
+        /// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -562,6 +591,7 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// Node Pool autoscaling config for the node pool.
+        /// Structure is documented below.
         /// </summary>
         [Input("nodePoolAutoscaling")]
         public Input<Inputs.VMwareNodePoolNodePoolAutoscalingGetArgs>? NodePoolAutoscaling { get; set; }
@@ -572,6 +602,10 @@ namespace Pulumi.Gcp.GkeOnPrem
         [Input("onPremVersion")]
         public Input<string>? OnPremVersion { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

@@ -150,8 +150,6 @@ type NetworkPolicy struct {
 	// For example: projects/my-project/locations/us-central1
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The ID of the Network Policy.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -232,8 +230,6 @@ type networkPolicyState struct {
 	// For example: projects/my-project/locations/us-central1
 	Location *string `pulumi:"location"`
 	// The ID of the Network Policy.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -276,8 +272,6 @@ type NetworkPolicyState struct {
 	// For example: projects/my-project/locations/us-central1
 	Location pulumi.StringPtrInput
 	// The ID of the Network Policy.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -320,8 +314,6 @@ type networkPolicyArgs struct {
 	// For example: projects/my-project/locations/us-central1
 	Location string `pulumi:"location"`
 	// The ID of the Network Policy.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -352,8 +344,6 @@ type NetworkPolicyArgs struct {
 	// For example: projects/my-project/locations/us-central1
 	Location pulumi.StringInput
 	// The ID of the Network Policy.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -491,8 +481,6 @@ func (o NetworkPolicyOutput) Location() pulumi.StringOutput {
 }
 
 // The ID of the Network Policy.
-//
-// ***
 func (o NetworkPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

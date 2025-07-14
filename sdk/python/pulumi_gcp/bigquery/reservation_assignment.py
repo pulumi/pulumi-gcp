@@ -30,9 +30,6 @@ class ReservationAssignmentArgs:
         :param pulumi.Input[builtins.str] assignee: The resource which will use the reservation. E.g. projects/myproject, folders/123, organizations/456.
         :param pulumi.Input[builtins.str] job_type: Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
         :param pulumi.Input[builtins.str] reservation: The reservation for the resource
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: The location for the resource
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -74,9 +71,6 @@ class ReservationAssignmentArgs:
     def reservation(self) -> pulumi.Input[builtins.str]:
         """
         The reservation for the resource
-
-
-        - - -
         """
         return pulumi.get(self, "reservation")
 
@@ -129,9 +123,6 @@ class _ReservationAssignmentState:
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] reservation: The reservation for the resource
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] state: Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active.
                Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
         """
@@ -216,9 +207,6 @@ class _ReservationAssignmentState:
     def reservation(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The reservation for the resource
-
-
-        - - -
         """
         return pulumi.get(self, "reservation")
 
@@ -313,9 +301,6 @@ class ReservationAssignment(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] reservation: The reservation for the resource
-               
-               
-               - - -
         """
         ...
     @overload
@@ -449,9 +434,6 @@ class ReservationAssignment(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] reservation: The reservation for the resource
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] state: Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active.
                Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
         """
@@ -514,9 +496,6 @@ class ReservationAssignment(pulumi.CustomResource):
     def reservation(self) -> pulumi.Output[builtins.str]:
         """
         The reservation for the resource
-
-
-        - - -
         """
         return pulumi.get(self, "reservation")
 

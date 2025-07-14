@@ -529,8 +529,6 @@ class InstanceOauthConfig(dict):
         """
         :param builtins.str client_id: The client ID for the Oauth config.
         :param builtins.str client_secret: The client secret for the Oauth config.
-               
-               - - -
         """
         pulumi.set(__self__, "client_id", client_id)
         pulumi.set(__self__, "client_secret", client_secret)
@@ -548,8 +546,6 @@ class InstanceOauthConfig(dict):
     def client_secret(self) -> builtins.str:
         """
         The client secret for the Oauth config.
-
-        - - -
         """
         return pulumi.get(self, "client_secret")
 

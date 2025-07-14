@@ -24,8 +24,6 @@ public final class AccountConnectorArgs extends com.pulumi.resources.ResourceArg
      * to https://google.aip.dev/122#resource-id-segments Names must be unique
      * per-project per-location.
      * 
-     * ***
-     * 
      */
     @Import(name="accountConnectorId", required=true)
     private Output<String> accountConnectorId;
@@ -35,8 +33,6 @@ public final class AccountConnectorArgs extends com.pulumi.resources.ResourceArg
      * component of the AccountConnector&#39;s resource name. Its format should adhere
      * to https://google.aip.dev/122#resource-id-segments Names must be unique
      * per-project per-location.
-     * 
-     * ***
      * 
      */
     public Output<String> accountConnectorId() {
@@ -165,8 +161,6 @@ public final class AccountConnectorArgs extends com.pulumi.resources.ResourceArg
          * to https://google.aip.dev/122#resource-id-segments Names must be unique
          * per-project per-location.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -180,8 +174,6 @@ public final class AccountConnectorArgs extends com.pulumi.resources.ResourceArg
          * component of the AccountConnector&#39;s resource name. Its format should adhere
          * to https://google.aip.dev/122#resource-id-segments Names must be unique
          * per-project per-location.
-         * 
-         * ***
          * 
          * @return builder
          * 

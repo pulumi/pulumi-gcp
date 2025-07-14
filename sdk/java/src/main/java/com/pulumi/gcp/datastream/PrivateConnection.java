@@ -253,16 +253,12 @@ public class PrivateConnection extends com.pulumi.resources.CustomResource {
     /**
      * The name of the location this private connection is located in.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return The name of the location this private connection is located in.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

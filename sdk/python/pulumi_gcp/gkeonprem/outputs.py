@@ -2222,13 +2222,13 @@ class BareMetalClusterLoadBalancerBgpLbConfigAddressPool(dict):
                  addresses: Sequence[builtins.str],
                  pool: builtins.str,
                  avoid_buggy_ips: Optional[builtins.bool] = None,
-                 manual_assign: Optional[builtins.str] = None):
+                 manual_assign: Optional[builtins.bool] = None):
         """
         :param Sequence[builtins.str] addresses: The addresses that are part of this pool. Each address must be either in the CIDR form (1.2.3.0/24) or range form (1.2.3.1-1.2.3.5).
         :param builtins.str pool: The name of the address pool.
         :param builtins.bool avoid_buggy_ips: If true, avoid using IPs ending in .0 or .255.
                This avoids buggy consumer devices mistakenly dropping IPv4 traffic for those special IP addresses.
-        :param builtins.str manual_assign: If true, prevent IP addresses from being automatically assigned.
+        :param builtins.bool manual_assign: If true, prevent IP addresses from being automatically assigned.
         """
         pulumi.set(__self__, "addresses", addresses)
         pulumi.set(__self__, "pool", pool)
@@ -2264,7 +2264,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigAddressPool(dict):
 
     @property
     @pulumi.getter(name="manualAssign")
-    def manual_assign(self) -> Optional[builtins.str]:
+    def manual_assign(self) -> Optional[builtins.bool]:
         """
         If true, prevent IP addresses from being automatically assigned.
         """
@@ -3893,8 +3893,6 @@ class BareMetalClusterStorageLvpNodeMountsConfig(dict):
         """
         :param builtins.str path: The host machine path.
         :param builtins.str storage_class: The StorageClass name that PVs will be created with.
-               
-               - - -
         """
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "storage_class", storage_class)
@@ -3912,8 +3910,6 @@ class BareMetalClusterStorageLvpNodeMountsConfig(dict):
     def storage_class(self) -> builtins.str:
         """
         The StorageClass name that PVs will be created with.
-
-        - - -
         """
         return pulumi.get(self, "storage_class")
 
@@ -4121,8 +4117,7 @@ class BareMetalClusterValidationCheckStatusResult(dict):
         """
         :param builtins.str category: (Output)
                The category of the validation.
-        :param builtins.str description: (Output)
-               The description of the validation check.
+        :param builtins.str description: A human readable description of this Bare Metal User Cluster.
         :param builtins.str details: (Output)
                Detailed failure information, which might be unformatted.
         :param builtins.str options: (Output)
@@ -4154,8 +4149,7 @@ class BareMetalClusterValidationCheckStatusResult(dict):
     @pulumi.getter
     def description(self) -> Optional[builtins.str]:
         """
-        (Output)
-        The description of the validation check.
+        A human readable description of this Bare Metal User Cluster.
         """
         return pulumi.get(self, "description")
 
@@ -4359,8 +4353,6 @@ class BareMetalNodePoolNodePoolConfigTaint(dict):
         """
         :param builtins.str effect: Specifies the nodes operating system (default: LINUX).
                Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
-               
-               - - -
         :param builtins.str key: Key associated with the effect.
         :param builtins.str value: Value associated with the effect.
         """
@@ -4377,8 +4369,6 @@ class BareMetalNodePoolNodePoolConfigTaint(dict):
         """
         Specifies the nodes operating system (default: LINUX).
         Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
-
-        - - -
         """
         return pulumi.get(self, "effect")
 
@@ -6095,8 +6085,7 @@ class VMwareClusterValidationCheckStatusResult(dict):
         """
         :param builtins.str category: (Output)
                The category of the validation.
-        :param builtins.str description: (Output)
-               The description of the validation check.
+        :param builtins.str description: A human readable description of this VMware User Cluster.
         :param builtins.str details: (Output)
                Detailed failure information, which might be unformatted.
         :param builtins.str options: (Output)
@@ -6128,8 +6117,7 @@ class VMwareClusterValidationCheckStatusResult(dict):
     @pulumi.getter
     def description(self) -> Optional[builtins.str]:
         """
-        (Output)
-        The description of the validation check.
+        A human readable description of this VMware User Cluster.
         """
         return pulumi.get(self, "description")
 
@@ -6569,8 +6557,6 @@ class VMwareNodePoolConfigVsphereConfigTag(dict):
         """
         :param builtins.str category: The Vsphere tag category.
         :param builtins.str tag: The Vsphere tag name.
-               
-               - - -
         """
         if category is not None:
             pulumi.set(__self__, "category", category)
@@ -6590,8 +6576,6 @@ class VMwareNodePoolConfigVsphereConfigTag(dict):
     def tag(self) -> Optional[builtins.str]:
         """
         The Vsphere tag name.
-
-        - - -
         """
         return pulumi.get(self, "tag")
 
@@ -7604,8 +7588,6 @@ class VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIp(d
         """
         :param builtins.str ip: IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
         :param builtins.str hostname: Hostname of the machine. VM's name will be used if this field is empty.
-               
-               - - -
         """
         pulumi.set(__self__, "ip", ip)
         if hostname is not None:
@@ -7624,8 +7606,6 @@ class VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIp(d
     def hostname(self) -> Optional[builtins.str]:
         """
         Hostname of the machine. VM's name will be used if this field is empty.
-
-        - - -
         """
         return pulumi.get(self, "hostname")
 
@@ -7782,8 +7762,6 @@ class VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIp(dict):
         """
         :param builtins.str ip: IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
         :param builtins.str hostname: Hostname of the machine. VM's name will be used if this field is empty.
-               
-               - - -
         """
         pulumi.set(__self__, "ip", ip)
         if hostname is not None:
@@ -7802,8 +7780,6 @@ class VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIp(dict):
     def hostname(self) -> Optional[builtins.str]:
         """
         Hostname of the machine. VM's name will be used if this field is empty.
-
-        - - -
         """
         return pulumi.get(self, "hostname")
 

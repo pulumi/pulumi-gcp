@@ -133,16 +133,12 @@ public final class NotebookExecutionArgs extends com.pulumi.resources.ResourceAr
     /**
      * The location for the resource: https://cloud.google.com/colab/docs/locations
      * 
-     * ***
-     * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
      * @return The location for the resource: https://cloud.google.com/colab/docs/locations
-     * 
-     * ***
      * 
      */
     public Output<String> location() {
@@ -402,8 +398,6 @@ public final class NotebookExecutionArgs extends com.pulumi.resources.ResourceAr
         /**
          * @param location The location for the resource: https://cloud.google.com/colab/docs/locations
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -414,8 +408,6 @@ public final class NotebookExecutionArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param location The location for the resource: https://cloud.google.com/colab/docs/locations
-         * 
-         * ***
          * 
          * @return builder
          * 

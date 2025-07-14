@@ -106,9 +106,6 @@ export class LoggingSetting extends pulumi.CustomResource {
     public readonly logPromptsAndResponses!: pulumi.Output<boolean | undefined>;
     /**
      * Id of the Logging Setting.
-     *
-     *
-     * - - -
      */
     public readonly loggingSettingId!: pulumi.Output<string>;
     /**
@@ -214,9 +211,6 @@ export interface LoggingSettingState {
     logPromptsAndResponses?: pulumi.Input<boolean>;
     /**
      * Id of the Logging Setting.
-     *
-     *
-     * - - -
      */
     loggingSettingId?: pulumi.Input<string>;
     /**
@@ -264,9 +258,6 @@ export interface LoggingSettingArgs {
     logPromptsAndResponses?: pulumi.Input<boolean>;
     /**
      * Id of the Logging Setting.
-     *
-     *
-     * - - -
      */
     loggingSettingId: pulumi.Input<string>;
     /**

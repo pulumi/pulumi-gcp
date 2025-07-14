@@ -207,9 +207,6 @@ export class AppHostingTraffic extends pulumi.CustomResource {
 
     /**
      * Id of the backend that this Traffic config applies to
-     *
-     *
-     * - - -
      */
     public readonly backend!: pulumi.Output<string>;
     /**
@@ -324,9 +321,6 @@ export class AppHostingTraffic extends pulumi.CustomResource {
 export interface AppHostingTrafficState {
     /**
      * Id of the backend that this Traffic config applies to
-     *
-     *
-     * - - -
      */
     backend?: pulumi.Input<string>;
     /**
@@ -391,9 +385,6 @@ export interface AppHostingTrafficState {
 export interface AppHostingTrafficArgs {
     /**
      * Id of the backend that this Traffic config applies to
-     *
-     *
-     * - - -
      */
     backend: pulumi.Input<string>;
     /**

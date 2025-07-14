@@ -144,9 +144,6 @@ export class InsightsReportConfig extends pulumi.CustomResource {
     /**
      * The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
      * must be in the same location.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -229,9 +226,6 @@ export interface InsightsReportConfigState {
     /**
      * The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
      * must be in the same location.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -275,9 +269,6 @@ export interface InsightsReportConfigArgs {
     /**
      * The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
      * must be in the same location.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

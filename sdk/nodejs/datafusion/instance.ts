@@ -385,9 +385,6 @@ export class Instance extends pulumi.CustomResource {
      * with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
      * pipelines at low cost.
      * Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
-     *
-     *
-     * - - -
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -646,9 +643,6 @@ export interface InstanceState {
      * with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
      * pipelines at low cost.
      * Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
-     *
-     *
-     * - - -
      */
     type?: pulumi.Input<string>;
     /**
@@ -765,9 +759,6 @@ export interface InstanceArgs {
      * with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
      * pipelines at low cost.
      * Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
-     *
-     *
-     * - - -
      */
     type: pulumi.Input<string>;
     /**

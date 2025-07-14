@@ -161,9 +161,6 @@ namespace Pulumi.Gcp.SecureSourceManager
 
         /// <summary>
         /// The ID for the Repository.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("repositoryId")]
         public Output<string> RepositoryId { get; private set; } = null!;
@@ -267,9 +264,6 @@ namespace Pulumi.Gcp.SecureSourceManager
 
         /// <summary>
         /// The ID for the Repository.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("repositoryId", required: true)]
         public Input<string> RepositoryId { get; set; } = null!;
@@ -328,9 +322,6 @@ namespace Pulumi.Gcp.SecureSourceManager
 
         /// <summary>
         /// The ID for the Repository.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("repositoryId")]
         public Input<string>? RepositoryId { get; set; }

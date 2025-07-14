@@ -20,18 +20,20 @@ public final class ProjectsPolicyBindingArgs extends com.pulumi.resources.Resour
     public static final ProjectsPolicyBindingArgs Empty = new ProjectsPolicyBindingArgs();
 
     /**
-     * Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size
-     * limitations **Note**: This field is non-authoritative, and will only manage the annotations present in your
-     * configuration. Please refer to the field &#39;effective_annotations&#39; for all of the annotations present on the resource.
+     * Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     @Import(name="annotations")
     private @Nullable Output<Map<String,String>> annotations;
 
     /**
-     * @return Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size
-     * limitations **Note**: This field is non-authoritative, and will only manage the annotations present in your
-     * configuration. Please refer to the field &#39;effective_annotations&#39; for all of the annotations present on the resource.
+     * @return Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -39,32 +41,60 @@ public final class ProjectsPolicyBindingArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The
-     * syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: \&#34;Summary
-     * size limit\&#34; description: \&#34;Determines if a summary is less than 100 chars\&#34; expression: \&#34;document.summary.size() &lt;
-     * 100\&#34; Example (Equality): title: \&#34;Requestor is owner\&#34; description: \&#34;Determines if requestor is the document owner\&#34;
-     * expression: \&#34;document.owner == request.auth.claims.email\&#34; Example (Logic): title: \&#34;Public documents\&#34; description:
-     * \&#34;Determine whether the document should be publicly visible\&#34; expression: \&#34;document.type != &#39;private&#39; &amp;&amp; document.type
-     * != &#39;internal&#39;\&#34; Example (Data Manipulation): title: \&#34;Notification string\&#34; description: \&#34;Create a notification string
-     * with a timestamp.\&#34; expression: \&#34;&#39;New message received at &#39; + string(document.create_time)\&#34; The exact variables and
-     * functions that may be referenced within an expression are determined by the service that evaluates it. See the service
-     * documentation for additional information.
+     * Represents a textual expression in the Common Expression Language
+     * (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of
+     * CEL are documented at https://github.com/google/cel-spec.
+     * Example (Comparison):
+     * title: \&#34;Summary size limit\&#34;
+     * description: \&#34;Determines if a summary is less than 100 chars\&#34;
+     * expression: \&#34;document.summary.size() &lt; 100\&#34;
+     * Example
+     * (Equality):
+     * title: \&#34;Requestor is owner\&#34;
+     * description: \&#34;Determines if requestor is the document owner\&#34;
+     * expression: \&#34;document.owner == request.auth.claims.email\&#34;  Example
+     * (Logic):
+     * title: \&#34;Public documents\&#34;
+     * description: \&#34;Determine whether the document should be publicly visible\&#34;
+     * expression: \&#34;document.type != &#39;private&#39; &amp;&amp; document.type != &#39;internal&#39;\&#34;
+     * Example (Data Manipulation):
+     * title: \&#34;Notification string\&#34;
+     * description: \&#34;Create a notification string with a timestamp.\&#34;
+     * expression: \&#34;&#39;New message received at &#39; + string(document.create_time)\&#34;
+     * The exact variables and functions that may be referenced within an expression are
+     * determined by the service that evaluates it. See the service documentation for
+     * additional information.
+     * Structure is documented below.
      * 
      */
     @Import(name="condition")
     private @Nullable Output<ProjectsPolicyBindingConditionArgs> condition;
 
     /**
-     * @return Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The
-     * syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: \&#34;Summary
-     * size limit\&#34; description: \&#34;Determines if a summary is less than 100 chars\&#34; expression: \&#34;document.summary.size() &lt;
-     * 100\&#34; Example (Equality): title: \&#34;Requestor is owner\&#34; description: \&#34;Determines if requestor is the document owner\&#34;
-     * expression: \&#34;document.owner == request.auth.claims.email\&#34; Example (Logic): title: \&#34;Public documents\&#34; description:
-     * \&#34;Determine whether the document should be publicly visible\&#34; expression: \&#34;document.type != &#39;private&#39; &amp;&amp; document.type
-     * != &#39;internal&#39;\&#34; Example (Data Manipulation): title: \&#34;Notification string\&#34; description: \&#34;Create a notification string
-     * with a timestamp.\&#34; expression: \&#34;&#39;New message received at &#39; + string(document.create_time)\&#34; The exact variables and
-     * functions that may be referenced within an expression are determined by the service that evaluates it. See the service
-     * documentation for additional information.
+     * @return Represents a textual expression in the Common Expression Language
+     * (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of
+     * CEL are documented at https://github.com/google/cel-spec.
+     * Example (Comparison):
+     * title: \&#34;Summary size limit\&#34;
+     * description: \&#34;Determines if a summary is less than 100 chars\&#34;
+     * expression: \&#34;document.summary.size() &lt; 100\&#34;
+     * Example
+     * (Equality):
+     * title: \&#34;Requestor is owner\&#34;
+     * description: \&#34;Determines if requestor is the document owner\&#34;
+     * expression: \&#34;document.owner == request.auth.claims.email\&#34;  Example
+     * (Logic):
+     * title: \&#34;Public documents\&#34;
+     * description: \&#34;Determine whether the document should be publicly visible\&#34;
+     * expression: \&#34;document.type != &#39;private&#39; &amp;&amp; document.type != &#39;internal&#39;\&#34;
+     * Example (Data Manipulation):
+     * title: \&#34;Notification string\&#34;
+     * description: \&#34;Create a notification string with a timestamp.\&#34;
+     * expression: \&#34;&#39;New message received at &#39; + string(document.create_time)\&#34;
+     * The exact variables and functions that may be referenced within an expression are
+     * determined by the service that evaluates it. See the service documentation for
+     * additional information.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<ProjectsPolicyBindingConditionArgs>> condition() {
@@ -132,27 +162,37 @@ public final class ProjectsPolicyBindingArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Immutable. The kind of the policy to attach in this binding. This field must be one of the following: - Left empty (will
-     * be automatically set to the policy kind) - The input policy kind Possible values: POLICY_KIND_UNSPECIFIED
-     * PRINCIPAL_ACCESS_BOUNDARY ACCESS
+     * Immutable. The kind of the policy to attach in this binding. This
+     * field must be one of the following:  - Left empty (will be automatically set
+     * to the policy kind) - The input policy kind   Possible values:  POLICY_KIND_UNSPECIFIED PRINCIPAL_ACCESS_BOUNDARY ACCESS
      * 
      */
     @Import(name="policyKind")
     private @Nullable Output<String> policyKind;
 
     /**
-     * @return Immutable. The kind of the policy to attach in this binding. This field must be one of the following: - Left empty (will
-     * be automatically set to the policy kind) - The input policy kind Possible values: POLICY_KIND_UNSPECIFIED
-     * PRINCIPAL_ACCESS_BOUNDARY ACCESS
+     * @return Immutable. The kind of the policy to attach in this binding. This
+     * field must be one of the following:  - Left empty (will be automatically set
+     * to the policy kind) - The input policy kind   Possible values:  POLICY_KIND_UNSPECIFIED PRINCIPAL_ACCESS_BOUNDARY ACCESS
      * 
      */
     public Optional<Output<String>> policyKind() {
         return Optional.ofNullable(this.policyKind);
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -207,9 +247,10 @@ public final class ProjectsPolicyBindingArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param annotations Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size
-         * limitations **Note**: This field is non-authoritative, and will only manage the annotations present in your
-         * configuration. Please refer to the field &#39;effective_annotations&#39; for all of the annotations present on the resource.
+         * @param annotations Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -220,9 +261,10 @@ public final class ProjectsPolicyBindingArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param annotations Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size
-         * limitations **Note**: This field is non-authoritative, and will only manage the annotations present in your
-         * configuration. Please refer to the field &#39;effective_annotations&#39; for all of the annotations present on the resource.
+         * @param annotations Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -232,16 +274,30 @@ public final class ProjectsPolicyBindingArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param condition Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The
-         * syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: \&#34;Summary
-         * size limit\&#34; description: \&#34;Determines if a summary is less than 100 chars\&#34; expression: \&#34;document.summary.size() &lt;
-         * 100\&#34; Example (Equality): title: \&#34;Requestor is owner\&#34; description: \&#34;Determines if requestor is the document owner\&#34;
-         * expression: \&#34;document.owner == request.auth.claims.email\&#34; Example (Logic): title: \&#34;Public documents\&#34; description:
-         * \&#34;Determine whether the document should be publicly visible\&#34; expression: \&#34;document.type != &#39;private&#39; &amp;&amp; document.type
-         * != &#39;internal&#39;\&#34; Example (Data Manipulation): title: \&#34;Notification string\&#34; description: \&#34;Create a notification string
-         * with a timestamp.\&#34; expression: \&#34;&#39;New message received at &#39; + string(document.create_time)\&#34; The exact variables and
-         * functions that may be referenced within an expression are determined by the service that evaluates it. See the service
-         * documentation for additional information.
+         * @param condition Represents a textual expression in the Common Expression Language
+         * (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of
+         * CEL are documented at https://github.com/google/cel-spec.
+         * Example (Comparison):
+         * title: \&#34;Summary size limit\&#34;
+         * description: \&#34;Determines if a summary is less than 100 chars\&#34;
+         * expression: \&#34;document.summary.size() &lt; 100\&#34;
+         * Example
+         * (Equality):
+         * title: \&#34;Requestor is owner\&#34;
+         * description: \&#34;Determines if requestor is the document owner\&#34;
+         * expression: \&#34;document.owner == request.auth.claims.email\&#34;  Example
+         * (Logic):
+         * title: \&#34;Public documents\&#34;
+         * description: \&#34;Determine whether the document should be publicly visible\&#34;
+         * expression: \&#34;document.type != &#39;private&#39; &amp;&amp; document.type != &#39;internal&#39;\&#34;
+         * Example (Data Manipulation):
+         * title: \&#34;Notification string\&#34;
+         * description: \&#34;Create a notification string with a timestamp.\&#34;
+         * expression: \&#34;&#39;New message received at &#39; + string(document.create_time)\&#34;
+         * The exact variables and functions that may be referenced within an expression are
+         * determined by the service that evaluates it. See the service documentation for
+         * additional information.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -252,16 +308,30 @@ public final class ProjectsPolicyBindingArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param condition Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The
-         * syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: \&#34;Summary
-         * size limit\&#34; description: \&#34;Determines if a summary is less than 100 chars\&#34; expression: \&#34;document.summary.size() &lt;
-         * 100\&#34; Example (Equality): title: \&#34;Requestor is owner\&#34; description: \&#34;Determines if requestor is the document owner\&#34;
-         * expression: \&#34;document.owner == request.auth.claims.email\&#34; Example (Logic): title: \&#34;Public documents\&#34; description:
-         * \&#34;Determine whether the document should be publicly visible\&#34; expression: \&#34;document.type != &#39;private&#39; &amp;&amp; document.type
-         * != &#39;internal&#39;\&#34; Example (Data Manipulation): title: \&#34;Notification string\&#34; description: \&#34;Create a notification string
-         * with a timestamp.\&#34; expression: \&#34;&#39;New message received at &#39; + string(document.create_time)\&#34; The exact variables and
-         * functions that may be referenced within an expression are determined by the service that evaluates it. See the service
-         * documentation for additional information.
+         * @param condition Represents a textual expression in the Common Expression Language
+         * (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of
+         * CEL are documented at https://github.com/google/cel-spec.
+         * Example (Comparison):
+         * title: \&#34;Summary size limit\&#34;
+         * description: \&#34;Determines if a summary is less than 100 chars\&#34;
+         * expression: \&#34;document.summary.size() &lt; 100\&#34;
+         * Example
+         * (Equality):
+         * title: \&#34;Requestor is owner\&#34;
+         * description: \&#34;Determines if requestor is the document owner\&#34;
+         * expression: \&#34;document.owner == request.auth.claims.email\&#34;  Example
+         * (Logic):
+         * title: \&#34;Public documents\&#34;
+         * description: \&#34;Determine whether the document should be publicly visible\&#34;
+         * expression: \&#34;document.type != &#39;private&#39; &amp;&amp; document.type != &#39;internal&#39;\&#34;
+         * Example (Data Manipulation):
+         * title: \&#34;Notification string\&#34;
+         * description: \&#34;Create a notification string with a timestamp.\&#34;
+         * expression: \&#34;&#39;New message received at &#39; + string(document.create_time)\&#34;
+         * The exact variables and functions that may be referenced within an expression are
+         * determined by the service that evaluates it. See the service documentation for
+         * additional information.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -355,9 +425,9 @@ public final class ProjectsPolicyBindingArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param policyKind Immutable. The kind of the policy to attach in this binding. This field must be one of the following: - Left empty (will
-         * be automatically set to the policy kind) - The input policy kind Possible values: POLICY_KIND_UNSPECIFIED
-         * PRINCIPAL_ACCESS_BOUNDARY ACCESS
+         * @param policyKind Immutable. The kind of the policy to attach in this binding. This
+         * field must be one of the following:  - Left empty (will be automatically set
+         * to the policy kind) - The input policy kind   Possible values:  POLICY_KIND_UNSPECIFIED PRINCIPAL_ACCESS_BOUNDARY ACCESS
          * 
          * @return builder
          * 
@@ -368,9 +438,9 @@ public final class ProjectsPolicyBindingArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param policyKind Immutable. The kind of the policy to attach in this binding. This field must be one of the following: - Left empty (will
-         * be automatically set to the policy kind) - The input policy kind Possible values: POLICY_KIND_UNSPECIFIED
-         * PRINCIPAL_ACCESS_BOUNDARY ACCESS
+         * @param policyKind Immutable. The kind of the policy to attach in this binding. This
+         * field must be one of the following:  - Left empty (will be automatically set
+         * to the policy kind) - The input policy kind   Possible values:  POLICY_KIND_UNSPECIFIED PRINCIPAL_ACCESS_BOUNDARY ACCESS
          * 
          * @return builder
          * 
@@ -379,11 +449,25 @@ public final class ProjectsPolicyBindingArgs extends com.pulumi.resources.Resour
             return policyKind(Output.of(policyKind));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

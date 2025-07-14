@@ -61,8 +61,6 @@ class AclAclEntry(dict):
                for valid combinations of resource_type and operation for different Kafka API requests.
         :param builtins.str principal: The principal. Specified as Google Cloud account, with the Kafka StandardAuthorizer prefix User:". For example: "User:test-kafka-client@test-project.iam.gserviceaccount.com". Can be the wildcard "User:*" to refer to all users.
         :param builtins.str host: The host. Must be set to "*" for Managed Service for Apache Kafka.
-               
-               - - -
         :param builtins.str permission_type: The permission type. Accepted values are (case insensitive): ALLOW, DENY.
         """
         pulumi.set(__self__, "operation", operation)
@@ -96,8 +94,6 @@ class AclAclEntry(dict):
     def host(self) -> Optional[builtins.str]:
         """
         The host. Must be set to "*" for Managed Service for Apache Kafka.
-
-        - - -
         """
         return pulumi.get(self, "host")
 
@@ -136,8 +132,6 @@ class ClusterCapacityConfig(dict):
                  vcpu_count: builtins.str):
         """
         :param builtins.str memory_bytes: The memory to provision for the cluster in bytes. The value must be between 1 GiB and 8 GiB per vCPU. Ex. 1024Mi, 4Gi.
-               
-               - - -
         :param builtins.str vcpu_count: The number of vCPUs to provision for the cluster. The minimum is 3.
         """
         pulumi.set(__self__, "memory_bytes", memory_bytes)
@@ -148,8 +142,6 @@ class ClusterCapacityConfig(dict):
     def memory_bytes(self) -> builtins.str:
         """
         The memory to provision for the cluster in bytes. The value must be between 1 GiB and 8 GiB per vCPU. Ex. 1024Mi, 4Gi.
-
-        - - -
         """
         return pulumi.get(self, "memory_bytes")
 
@@ -440,8 +432,6 @@ class ConnectClusterGcpConfigAccessConfigNetworkConfig(dict):
         :param builtins.str primary_subnet: VPC subnet to make available to the Kafka Connect cluster. Structured like: projects/{project}/regions/{region}/subnetworks/{subnet_id}. It is used to create a Private Service Connect (PSC) interface for the Kafka Connect workers. It must be located in the same region as the Kafka Connect cluster. The CIDR range of the subnet must be within the IPv4 address ranges for private networks, as specified in RFC 1918. The primary subnet CIDR range must have a minimum size of /22 (1024 addresses).
         :param Sequence[builtins.str] additional_subnets: Additional subnets may be specified. They may be in another region, but must be in the same VPC network. The Connect workers can communicate with network endpoints in either the primary or additional subnets.
         :param Sequence[builtins.str] dns_domain_names: Additional DNS domain names from the subnet's network to be made visible to the Connect Cluster. When using MirrorMaker2, it's necessary to add the bootstrap address's dns domain name of the target cluster to make it visible to the connector. For example: my-kafka-cluster.us-central1.managedkafka.my-project.cloud.goog
-               
-               - - -
         """
         pulumi.set(__self__, "primary_subnet", primary_subnet)
         if additional_subnets is not None:
@@ -470,8 +460,6 @@ class ConnectClusterGcpConfigAccessConfigNetworkConfig(dict):
     def dns_domain_names(self) -> Optional[Sequence[builtins.str]]:
         """
         Additional DNS domain names from the subnet's network to be made visible to the Connect Cluster. When using MirrorMaker2, it's necessary to add the bootstrap address's dns domain name of the target cluster to make it visible to the connector. For example: my-kafka-cluster.us-central1.managedkafka.my-project.cloud.goog
-
-        - - -
         """
         return pulumi.get(self, "dns_domain_names")
 

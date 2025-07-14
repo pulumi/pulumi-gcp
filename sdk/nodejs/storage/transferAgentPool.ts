@@ -112,9 +112,6 @@ export class TransferAgentPool extends pulumi.CustomResource {
      * * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
      * * One or more numerals or lowercase ASCII characters.
      * As expressed by the regular expression: ^(?!goog)a-z?$.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -180,9 +177,6 @@ export interface TransferAgentPoolState {
      * * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
      * * One or more numerals or lowercase ASCII characters.
      * As expressed by the regular expression: ^(?!goog)a-z?$.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -218,9 +212,6 @@ export interface TransferAgentPoolArgs {
      * * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
      * * One or more numerals or lowercase ASCII characters.
      * As expressed by the regular expression: ^(?!goog)a-z?$.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

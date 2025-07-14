@@ -1520,6 +1520,7 @@ import javax.annotation.Nullable;
 public class Stream extends com.pulumi.resources.CustomResource {
     /**
      * Backfill strategy to automatically backfill the Stream&#39;s objects. Specific objects can be excluded.
+     * Structure is documented below.
      * 
      */
     @Export(name="backfillAll", refs={StreamBackfillAll.class}, tree="[0]")
@@ -1527,6 +1528,7 @@ public class Stream extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Backfill strategy to automatically backfill the Stream&#39;s objects. Specific objects can be excluded.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<StreamBackfillAll>> backfillAll() {
@@ -1561,34 +1563,36 @@ public class Stream extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.createWithoutValidation);
     }
     /**
-     * A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
-     * encrypted using an internal Stream-specific encryption key provisioned through KMS.
+     * A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
+     * will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
      * 
      */
     @Export(name="customerManagedEncryptionKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customerManagedEncryptionKey;
 
     /**
-     * @return A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
-     * encrypted using an internal Stream-specific encryption key provisioned through KMS.
+     * @return A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
+     * will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
      * 
      */
     public Output<Optional<String>> customerManagedEncryptionKey() {
         return Codegen.optional(this.customerManagedEncryptionKey);
     }
     /**
-     * Desired state of the Stream. Set this field to &#39;RUNNING&#39; to start the stream, &#39;NOT_STARTED&#39; to create the stream without
-     * starting and &#39;PAUSED&#39; to pause the stream from a &#39;RUNNING&#39; state. Possible values: NOT_STARTED, RUNNING, PAUSED.
-     * Default: NOT_STARTED
+     * Desired state of the Stream. Set this field to `RUNNING` to start the stream,
+     * `NOT_STARTED` to create the stream without starting and `PAUSED` to pause
+     * the stream from a `RUNNING` state.
+     * Possible values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
      * 
      */
     @Export(name="desiredState", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> desiredState;
 
     /**
-     * @return Desired state of the Stream. Set this field to &#39;RUNNING&#39; to start the stream, &#39;NOT_STARTED&#39; to create the stream without
-     * starting and &#39;PAUSED&#39; to pause the stream from a &#39;RUNNING&#39; state. Possible values: NOT_STARTED, RUNNING, PAUSED.
-     * Default: NOT_STARTED
+     * @return Desired state of the Stream. Set this field to `RUNNING` to start the stream,
+     * `NOT_STARTED` to create the stream without starting and `PAUSED` to pause
+     * the stream from a `RUNNING` state.
+     * Possible values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
      * 
      */
     public Output<Optional<String>> desiredState() {
@@ -1639,16 +1643,18 @@ public class Stream extends com.pulumi.resources.CustomResource {
         return this.effectiveLabels;
     }
     /**
-     * Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
-     * refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+     * Labels.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
-     * refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+     * @return Labels.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -1682,9 +1688,19 @@ public class Stream extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }

@@ -63,8 +63,6 @@ public class DomainTrust extends com.pulumi.resources.CustomResource {
      * The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
      * of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
      * 
-     * ***
-     * 
      */
     @Export(name="domain", refs={String.class}, tree="[0]")
     private Output<String> domain;
@@ -72,8 +70,6 @@ public class DomainTrust extends com.pulumi.resources.CustomResource {
     /**
      * @return The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
      * of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-     * 
-     * ***
      * 
      */
     public Output<String> domain() {

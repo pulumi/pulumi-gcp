@@ -335,14 +335,18 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Directory Services configuration. Should only be set if protocol is &#34;NFS_V4_1&#34;.
+     * Directory Services configuration.
+     * Should only be set if protocol is &#34;NFS_V4_1&#34;.
+     * Structure is documented below.
      * 
      */
     @Export(name="directoryServices", refs={InstanceDirectoryServices.class}, tree="[0]")
     private Output</* @Nullable */ InstanceDirectoryServices> directoryServices;
 
     /**
-     * @return Directory Services configuration. Should only be set if protocol is &#34;NFS_V4_1&#34;.
+     * @return Directory Services configuration.
+     * Should only be set if protocol is &#34;NFS_V4_1&#34;.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<InstanceDirectoryServices>> directoryServices() {
@@ -413,16 +417,18 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.fileShares;
     }
     /**
-     * Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
-     * instance only, indicating the active as the peer_instance
+     * Replication configuration, once set, this cannot be updated.
+     * Additionally this should be specified on the replica instance only, indicating the active as the peer_instance
+     * Structure is documented below.
      * 
      */
     @Export(name="initialReplication", refs={InstanceInitialReplication.class}, tree="[0]")
     private Output</* @Nullable */ InstanceInitialReplication> initialReplication;
 
     /**
-     * @return Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
-     * instance only, indicating the active as the peer_instance
+     * @return Replication configuration, once set, this cannot be updated.
+     * Additionally this should be specified on the replica instance only, indicating the active as the peer_instance
+     * Structure is documented below.
      * 
      */
     public Output<Optional<InstanceInitialReplication>> initialReplication() {
@@ -443,18 +449,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.kmsKeyName);
     }
     /**
-     * Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-     * labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the
-     * resource.
+     * Resource labels to represent user-provided metadata.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-     * labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the
-     * resource.
+     * @return Resource labels to represent user-provided metadata.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -507,38 +515,58 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.networks;
     }
     /**
-     * Performance configuration for the instance. If not provided, the default performance settings will be used.
+     * Performance configuration for the instance. If not provided,
+     * the default performance settings will be used.
+     * Structure is documented below.
      * 
      */
     @Export(name="performanceConfig", refs={InstancePerformanceConfig.class}, tree="[0]")
     private Output</* @Nullable */ InstancePerformanceConfig> performanceConfig;
 
     /**
-     * @return Performance configuration for the instance. If not provided, the default performance settings will be used.
+     * @return Performance configuration for the instance. If not provided,
+     * the default performance settings will be used.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<InstancePerformanceConfig>> performanceConfig() {
         return Codegen.optional(this.performanceConfig);
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
-     * protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
-     * &#34;NFS_V3&#34; Possible values: [&#34;NFS_V3&#34;, &#34;NFS_V4_1&#34;]
+     * Either NFSv3, for using NFS version 3 as file sharing protocol,
+     * or NFSv4.1, for using NFS version 4.1 as file sharing protocol.
+     * NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE.
+     * The default is NFSv3.
+     * Default value is `NFS_V3`.
+     * Possible values are: `NFS_V3`, `NFS_V4_1`.
      * 
      */
     @Export(name="protocol", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> protocol;
 
     /**
-     * @return Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
-     * protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
-     * &#34;NFS_V3&#34; Possible values: [&#34;NFS_V3&#34;, &#34;NFS_V4_1&#34;]
+     * @return Either NFSv3, for using NFS version 3 as file sharing protocol,
+     * or NFSv4.1, for using NFS version 4.1 as file sharing protocol.
+     * NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE.
+     * The default is NFSv3.
+     * Default value is `NFS_V3`.
+     * Possible values are: `NFS_V3`, `NFS_V4_1`.
      * 
      */
     public Output<Optional<String>> protocol() {
@@ -561,22 +589,30 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.pulumiLabels;
     }
     /**
-     * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags.
-     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when
-     * empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and
-     * modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the
-     * &#39;google_tags_tag_value&#39; resource.
+     * A map of resource manager tags. Resource manager tag keys
+     * and values have the same definition as resource manager
+     * tags. Keys must be in the format tagKeys/{tag_key_id},
+     * and values are in the format tagValues/456. The field is
+     * ignored when empty. The field is immutable and causes
+     * resource replacement when mutated. This field is only set
+     * at create time and modifying this field after creation
+     * will trigger recreation. To apply tags to an existing
+     * resource, see the `gcp.tags.TagValue` resource.
      * 
      */
     @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;
 
     /**
-     * @return A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags.
-     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when
-     * empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and
-     * modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the
-     * &#39;google_tags_tag_value&#39; resource.
+     * @return A map of resource manager tags. Resource manager tag keys
+     * and values have the same definition as resource manager
+     * tags. Keys must be in the format tagKeys/{tag_key_id},
+     * and values are in the format tagValues/456. The field is
+     * ignored when empty. The field is immutable and causes
+     * resource replacement when mutated. This field is only set
+     * at create time and modifying this field after creation
+     * will trigger recreation. To apply tags to an existing
+     * resource, see the `gcp.tags.TagValue` resource.
      * 
      */
     public Output<Optional<Map<String,String>>> tags() {
@@ -599,7 +635,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.tier;
     }
     /**
+     * (Optional, Deprecated)
      * The name of the Filestore zone of the instance.
+     * 
+     * &gt; **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
      * 
      * @deprecated
      * `zone` is deprecated and will be removed in a future major release. Use `location` instead.
@@ -610,7 +649,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<String> zone;
 
     /**
-     * @return The name of the Filestore zone of the instance.
+     * @return (Optional, Deprecated)
+     * The name of the Filestore zone of the instance.
+     * 
+     * &gt; **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
      * 
      */
     public Output<String> zone() {

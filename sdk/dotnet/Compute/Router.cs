@@ -173,9 +173,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A reference to the network to which this router belongs.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
@@ -285,9 +282,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A reference to the network to which this router belongs.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("network", required: true)]
         public Input<string> Network { get; set; } = null!;
@@ -359,9 +353,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A reference to the network to which this router belongs.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }

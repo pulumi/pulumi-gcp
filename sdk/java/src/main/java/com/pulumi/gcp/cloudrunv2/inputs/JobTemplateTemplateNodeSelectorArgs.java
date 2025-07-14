@@ -17,16 +17,12 @@ public final class JobTemplateTemplateNodeSelectorArgs extends com.pulumi.resour
     /**
      * The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/jobs/gpu for configuring GPU.
      * 
-     * ***
-     * 
      */
     @Import(name="accelerator", required=true)
     private Output<String> accelerator;
 
     /**
      * @return The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/jobs/gpu for configuring GPU.
-     * 
-     * ***
      * 
      */
     public Output<String> accelerator() {
@@ -60,8 +56,6 @@ public final class JobTemplateTemplateNodeSelectorArgs extends com.pulumi.resour
         /**
          * @param accelerator The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/jobs/gpu for configuring GPU.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -72,8 +66,6 @@ public final class JobTemplateTemplateNodeSelectorArgs extends com.pulumi.resour
 
         /**
          * @param accelerator The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/jobs/gpu for configuring GPU.
-         * 
-         * ***
          * 
          * @return builder
          * 

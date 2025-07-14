@@ -275,9 +275,6 @@ namespace Pulumi.Gcp.ManagedKafka
 
         /// <summary>
         /// The ID to use for the connector, which will become the final component of the connector's name. This value is structured like: `my-connector-id`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("connectorId")]
         public Output<string> ConnectorId { get; private set; } = null!;
@@ -380,9 +377,6 @@ namespace Pulumi.Gcp.ManagedKafka
 
         /// <summary>
         /// The ID to use for the connector, which will become the final component of the connector's name. This value is structured like: `my-connector-id`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("connectorId", required: true)]
         public Input<string> ConnectorId { get; set; } = null!;
@@ -435,9 +429,6 @@ namespace Pulumi.Gcp.ManagedKafka
 
         /// <summary>
         /// The ID to use for the connector, which will become the final component of the connector's name. This value is structured like: `my-connector-id`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("connectorId")]
         public Input<string>? ConnectorId { get; set; }

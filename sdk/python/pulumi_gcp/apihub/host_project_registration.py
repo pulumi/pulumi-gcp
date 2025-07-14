@@ -33,9 +33,6 @@ class HostProjectRegistrationArgs:
                final component of the host project registration's resource name. The ID
                must be the same as the Google cloud project specified in the
                host_project_registration.gcp_project field.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: Part of `parent`. See documentation of `projectsId`.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -68,9 +65,6 @@ class HostProjectRegistrationArgs:
         final component of the host project registration's resource name. The ID
         must be the same as the Google cloud project specified in the
         host_project_registration.gcp_project field.
-
-
-        - - -
         """
         return pulumi.get(self, "host_project_registration_id")
 
@@ -123,9 +117,6 @@ class _HostProjectRegistrationState:
                final component of the host project registration's resource name. The ID
                must be the same as the Google cloud project specified in the
                host_project_registration.gcp_project field.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: Part of `parent`. See documentation of `projectsId`.
         :param pulumi.Input[builtins.str] name: Identifier. The name of the host project registration.
                Format:
@@ -180,9 +171,6 @@ class _HostProjectRegistrationState:
         final component of the host project registration's resource name. The ID
         must be the same as the Google cloud project specified in the
         host_project_registration.gcp_project field.
-
-
-        - - -
         """
         return pulumi.get(self, "host_project_registration_id")
 
@@ -310,9 +298,6 @@ class HostProjectRegistration(pulumi.CustomResource):
                final component of the host project registration's resource name. The ID
                must be the same as the Google cloud project specified in the
                host_project_registration.gcp_project field.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: Part of `parent`. See documentation of `projectsId`.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -454,9 +439,6 @@ class HostProjectRegistration(pulumi.CustomResource):
                final component of the host project registration's resource name. The ID
                must be the same as the Google cloud project specified in the
                host_project_registration.gcp_project field.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: Part of `parent`. See documentation of `projectsId`.
         :param pulumi.Input[builtins.str] name: Identifier. The name of the host project registration.
                Format:
@@ -502,9 +484,6 @@ class HostProjectRegistration(pulumi.CustomResource):
         final component of the host project registration's resource name. The ID
         must be the same as the Google cloud project specified in the
         host_project_registration.gcp_project field.
-
-
-        - - -
         """
         return pulumi.get(self, "host_project_registration_id")
 

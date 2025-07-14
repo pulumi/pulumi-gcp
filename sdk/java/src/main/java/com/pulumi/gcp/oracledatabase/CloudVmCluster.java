@@ -268,8 +268,6 @@ public class CloudVmCluster extends com.pulumi.resources.CustomResource {
      * characters in length. The value must start with a letter and end with
      * a letter or a number.
      * 
-     * ***
-     * 
      */
     @Export(name="cloudVmClusterId", refs={String.class}, tree="[0]")
     private Output<String> cloudVmClusterId;
@@ -279,8 +277,6 @@ public class CloudVmCluster extends com.pulumi.resources.CustomResource {
      * to (^a-z?$) and must be a maximum of 63
      * characters in length. The value must start with a letter and end with
      * a letter or a number.
-     * 
-     * ***
      * 
      */
     public Output<String> cloudVmClusterId() {

@@ -165,8 +165,6 @@ type VolumeReplication struct {
 	// currently receives an update. Updated every 5 minutes.
 	MirrorState pulumi.StringOutput `pulumi:"mirrorState"`
 	// The name of the replication. Needs to be unique per location.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -283,8 +281,6 @@ type volumeReplicationState struct {
 	// currently receives an update. Updated every 5 minutes.
 	MirrorState *string `pulumi:"mirrorState"`
 	// The name of the replication. Needs to be unique per location.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -358,8 +354,6 @@ type VolumeReplicationState struct {
 	// currently receives an update. Updated every 5 minutes.
 	MirrorState pulumi.StringPtrInput
 	// The name of the replication. Needs to be unique per location.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -417,8 +411,6 @@ type volumeReplicationArgs struct {
 	// Name of region for this resource. The resource needs to be created in the region of the destination volume.
 	Location string `pulumi:"location"`
 	// The name of the replication. Needs to be unique per location.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -457,8 +449,6 @@ type VolumeReplicationArgs struct {
 	// Name of region for this resource. The resource needs to be created in the region of the destination volume.
 	Location pulumi.StringInput
 	// The name of the replication. Needs to be unique per location.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -645,8 +635,6 @@ func (o VolumeReplicationOutput) MirrorState() pulumi.StringOutput {
 }
 
 // The name of the replication. Needs to be unique per location.
-//
-// ***
 func (o VolumeReplicationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *VolumeReplication) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

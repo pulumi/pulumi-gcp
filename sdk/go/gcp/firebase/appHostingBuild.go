@@ -200,10 +200,11 @@ import (
 type AppHostingBuild struct {
 	pulumi.CustomResourceState
 
-	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
-	// should be preserved when modifying objects. **Note**: This field is non-authoritative, and will only manage the
-	// annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
-	// present on the resource.
+	// Unstructured key value map that may be set by external tools to
+	// store and arbitrary metadata. They are not queryable and should be
+	// preserved when modifying objects.
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// The ID of the Backend that this Build applies to
 	Backend pulumi.StringOutput `pulumi:"backend"`
@@ -245,16 +246,19 @@ type AppHostingBuild struct {
 	// [`revision`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services.revisions)
 	// for this build.
 	Image pulumi.StringOutput `pulumi:"image"`
-	// Unstructured key value map that can be used to organize and categorize objects. **Note**: This field is
-	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-	// 'effective_labels' for all of the labels present on the resource.
+	// Unstructured key value map that can be used to organize and categorize
+	// objects.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location of the Backend that this Build applies to
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Identifier. The resource name of the build.
 	// Format:
 	// `projects/{project}/locations/{locationId}/backends/{backendId}/builds/{buildId}`.
-	Name    pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -323,10 +327,11 @@ func GetAppHostingBuild(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AppHostingBuild resources.
 type appHostingBuildState struct {
-	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
-	// should be preserved when modifying objects. **Note**: This field is non-authoritative, and will only manage the
-	// annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
-	// present on the resource.
+	// Unstructured key value map that may be set by external tools to
+	// store and arbitrary metadata. They are not queryable and should be
+	// preserved when modifying objects.
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// The ID of the Backend that this Build applies to
 	Backend *string `pulumi:"backend"`
@@ -368,16 +373,19 @@ type appHostingBuildState struct {
 	// [`revision`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services.revisions)
 	// for this build.
 	Image *string `pulumi:"image"`
-	// Unstructured key value map that can be used to organize and categorize objects. **Note**: This field is
-	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-	// 'effective_labels' for all of the labels present on the resource.
+	// Unstructured key value map that can be used to organize and categorize
+	// objects.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location of the Backend that this Build applies to
 	Location *string `pulumi:"location"`
 	// Identifier. The resource name of the build.
 	// Format:
 	// `projects/{project}/locations/{locationId}/backends/{backendId}/builds/{buildId}`.
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -400,10 +408,11 @@ type appHostingBuildState struct {
 }
 
 type AppHostingBuildState struct {
-	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
-	// should be preserved when modifying objects. **Note**: This field is non-authoritative, and will only manage the
-	// annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
-	// present on the resource.
+	// Unstructured key value map that may be set by external tools to
+	// store and arbitrary metadata. They are not queryable and should be
+	// preserved when modifying objects.
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// The ID of the Backend that this Build applies to
 	Backend pulumi.StringPtrInput
@@ -445,16 +454,19 @@ type AppHostingBuildState struct {
 	// [`revision`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services.revisions)
 	// for this build.
 	Image pulumi.StringPtrInput
-	// Unstructured key value map that can be used to organize and categorize objects. **Note**: This field is
-	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-	// 'effective_labels' for all of the labels present on the resource.
+	// Unstructured key value map that can be used to organize and categorize
+	// objects.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location of the Backend that this Build applies to
 	Location pulumi.StringPtrInput
 	// Identifier. The resource name of the build.
 	// Format:
 	// `projects/{project}/locations/{locationId}/backends/{backendId}/builds/{buildId}`.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -481,10 +493,11 @@ func (AppHostingBuildState) ElementType() reflect.Type {
 }
 
 type appHostingBuildArgs struct {
-	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
-	// should be preserved when modifying objects. **Note**: This field is non-authoritative, and will only manage the
-	// annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
-	// present on the resource.
+	// Unstructured key value map that may be set by external tools to
+	// store and arbitrary metadata. They are not queryable and should be
+	// preserved when modifying objects.
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// The ID of the Backend that this Build applies to
 	Backend string `pulumi:"backend"`
@@ -492,13 +505,16 @@ type appHostingBuildArgs struct {
 	BuildId string `pulumi:"buildId"`
 	// Human-readable name. 63 character limit.
 	DisplayName *string `pulumi:"displayName"`
-	// Unstructured key value map that can be used to organize and categorize objects. **Note**: This field is
-	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-	// 'effective_labels' for all of the labels present on the resource.
+	// Unstructured key value map that can be used to organize and categorize
+	// objects.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location of the Backend that this Build applies to
-	Location string  `pulumi:"location"`
-	Project  *string `pulumi:"project"`
+	Location string `pulumi:"location"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// The source for the build.
 	// Structure is documented below.
 	Source AppHostingBuildSource `pulumi:"source"`
@@ -506,10 +522,11 @@ type appHostingBuildArgs struct {
 
 // The set of arguments for constructing a AppHostingBuild resource.
 type AppHostingBuildArgs struct {
-	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
-	// should be preserved when modifying objects. **Note**: This field is non-authoritative, and will only manage the
-	// annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
-	// present on the resource.
+	// Unstructured key value map that may be set by external tools to
+	// store and arbitrary metadata. They are not queryable and should be
+	// preserved when modifying objects.
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// The ID of the Backend that this Build applies to
 	Backend pulumi.StringInput
@@ -517,13 +534,16 @@ type AppHostingBuildArgs struct {
 	BuildId pulumi.StringInput
 	// Human-readable name. 63 character limit.
 	DisplayName pulumi.StringPtrInput
-	// Unstructured key value map that can be used to organize and categorize objects. **Note**: This field is
-	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-	// 'effective_labels' for all of the labels present on the resource.
+	// Unstructured key value map that can be used to organize and categorize
+	// objects.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location of the Backend that this Build applies to
 	Location pulumi.StringInput
-	Project  pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// The source for the build.
 	// Structure is documented below.
 	Source AppHostingBuildSourceInput
@@ -616,10 +636,11 @@ func (o AppHostingBuildOutput) ToAppHostingBuildOutputWithContext(ctx context.Co
 	return o
 }
 
-// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
-// should be preserved when modifying objects. **Note**: This field is non-authoritative, and will only manage the
-// annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
-// present on the resource.
+// Unstructured key value map that may be set by external tools to
+// store and arbitrary metadata. They are not queryable and should be
+// preserved when modifying objects.
+// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 func (o AppHostingBuildOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AppHostingBuild) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -700,9 +721,10 @@ func (o AppHostingBuildOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppHostingBuild) pulumi.StringOutput { return v.Image }).(pulumi.StringOutput)
 }
 
-// Unstructured key value map that can be used to organize and categorize objects. **Note**: This field is
-// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-// 'effective_labels' for all of the labels present on the resource.
+// Unstructured key value map that can be used to organize and categorize
+// objects.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o AppHostingBuildOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AppHostingBuild) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -719,6 +741,8 @@ func (o AppHostingBuildOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppHostingBuild) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o AppHostingBuildOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppHostingBuild) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

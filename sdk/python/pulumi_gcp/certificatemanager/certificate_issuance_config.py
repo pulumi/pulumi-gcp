@@ -44,13 +44,16 @@ class CertificateIssuanceConfigArgs:
                You must set the rotation window percentage in relation to the certificate lifetime so that certificate renewal occurs at least 7 days after
                the certificate has been issued and at least 7 days before it expires.
         :param pulumi.Input[builtins.str] description: One or more paragraphs of text description of a CertificateIssuanceConfig.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: 'Set of label tags associated with the CertificateIssuanceConfig resource. An object containing a list of "key": value
-               pairs. Example: { "name": "wrench", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the
-               labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-               resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: 'Set of label tags associated with the CertificateIssuanceConfig resource.
+               An object containing a list of "key": value pairs. Example: { "name": "wrench", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The Certificate Manager location. If not specified, "global" is used.
         :param pulumi.Input[builtins.str] name: A user-defined name of the certificate issuance config.
                CertificateIssuanceConfig names must be unique globally.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "certificate_authority_config", certificate_authority_config)
         pulumi.set(__self__, "key_algorithm", key_algorithm)
@@ -137,10 +140,11 @@ class CertificateIssuanceConfigArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        'Set of label tags associated with the CertificateIssuanceConfig resource. An object containing a list of "key": value
-        pairs. Example: { "name": "wrench", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the
-        labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-        resource.
+        'Set of label tags associated with the CertificateIssuanceConfig resource.
+        An object containing a list of "key": value pairs. Example: { "name": "wrench", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -176,6 +180,10 @@ class CertificateIssuanceConfigArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -210,15 +218,18 @@ class _CertificateIssuanceConfigState:
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[builtins.str] key_algorithm: Key algorithm to use when generating the private key.
                Possible values are: `RSA_2048`, `ECDSA_P256`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: 'Set of label tags associated with the CertificateIssuanceConfig resource. An object containing a list of "key": value
-               pairs. Example: { "name": "wrench", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the
-               labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-               resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: 'Set of label tags associated with the CertificateIssuanceConfig resource.
+               An object containing a list of "key": value pairs. Example: { "name": "wrench", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] lifetime: Lifetime of issued certificates. A duration in seconds with up to nine fractional digits, ending with 's'.
                Example: "1814400s". Valid values are from 21 days (1814400s) to 30 days (2592000s)
         :param pulumi.Input[builtins.str] location: The Certificate Manager location. If not specified, "global" is used.
         :param pulumi.Input[builtins.str] name: A user-defined name of the certificate issuance config.
                CertificateIssuanceConfig names must be unique globally.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[builtins.int] rotation_window_percentage: It specifies the percentage of elapsed time of the certificate lifetime to wait before renewing the certificate.
@@ -324,10 +335,11 @@ class _CertificateIssuanceConfigState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        'Set of label tags associated with the CertificateIssuanceConfig resource. An object containing a list of "key": value
-        pairs. Example: { "name": "wrench", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the
-        labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-        resource.
+        'Set of label tags associated with the CertificateIssuanceConfig resource.
+        An object containing a list of "key": value pairs. Example: { "name": "wrench", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -376,6 +388,10 @@ class _CertificateIssuanceConfigState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -546,15 +562,18 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] description: One or more paragraphs of text description of a CertificateIssuanceConfig.
         :param pulumi.Input[builtins.str] key_algorithm: Key algorithm to use when generating the private key.
                Possible values are: `RSA_2048`, `ECDSA_P256`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: 'Set of label tags associated with the CertificateIssuanceConfig resource. An object containing a list of "key": value
-               pairs. Example: { "name": "wrench", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the
-               labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-               resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: 'Set of label tags associated with the CertificateIssuanceConfig resource.
+               An object containing a list of "key": value pairs. Example: { "name": "wrench", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] lifetime: Lifetime of issued certificates. A duration in seconds with up to nine fractional digits, ending with 's'.
                Example: "1814400s". Valid values are from 21 days (1814400s) to 30 days (2592000s)
         :param pulumi.Input[builtins.str] location: The Certificate Manager location. If not specified, "global" is used.
         :param pulumi.Input[builtins.str] name: A user-defined name of the certificate issuance config.
                CertificateIssuanceConfig names must be unique globally.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.int] rotation_window_percentage: It specifies the percentage of elapsed time of the certificate lifetime to wait before renewing the certificate.
                Must be a number between 1-99, inclusive.
                You must set the rotation window percentage in relation to the certificate lifetime so that certificate renewal occurs at least 7 days after
@@ -759,15 +778,18 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[builtins.str] key_algorithm: Key algorithm to use when generating the private key.
                Possible values are: `RSA_2048`, `ECDSA_P256`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: 'Set of label tags associated with the CertificateIssuanceConfig resource. An object containing a list of "key": value
-               pairs. Example: { "name": "wrench", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the
-               labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-               resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: 'Set of label tags associated with the CertificateIssuanceConfig resource.
+               An object containing a list of "key": value pairs. Example: { "name": "wrench", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] lifetime: Lifetime of issued certificates. A duration in seconds with up to nine fractional digits, ending with 's'.
                Example: "1814400s". Valid values are from 21 days (1814400s) to 30 days (2592000s)
         :param pulumi.Input[builtins.str] location: The Certificate Manager location. If not specified, "global" is used.
         :param pulumi.Input[builtins.str] name: A user-defined name of the certificate issuance config.
                CertificateIssuanceConfig names must be unique globally.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[builtins.int] rotation_window_percentage: It specifies the percentage of elapsed time of the certificate lifetime to wait before renewing the certificate.
@@ -845,10 +867,11 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
         """
-        'Set of label tags associated with the CertificateIssuanceConfig resource. An object containing a list of "key": value
-        pairs. Example: { "name": "wrench", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the
-        labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-        resource.
+        'Set of label tags associated with the CertificateIssuanceConfig resource.
+        An object containing a list of "key": value pairs. Example: { "name": "wrench", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -881,6 +904,10 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property

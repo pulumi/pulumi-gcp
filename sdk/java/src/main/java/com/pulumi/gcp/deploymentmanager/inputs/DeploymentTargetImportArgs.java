@@ -34,8 +34,6 @@ public final class DeploymentTargetImportArgs extends com.pulumi.resources.Resou
      * The name of the template to import, as declared in the YAML
      * configuration.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
@@ -43,8 +41,6 @@ public final class DeploymentTargetImportArgs extends com.pulumi.resources.Resou
     /**
      * @return The name of the template to import, as declared in the YAML
      * configuration.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -101,8 +97,6 @@ public final class DeploymentTargetImportArgs extends com.pulumi.resources.Resou
          * @param name The name of the template to import, as declared in the YAML
          * configuration.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -114,8 +108,6 @@ public final class DeploymentTargetImportArgs extends com.pulumi.resources.Resou
         /**
          * @param name The name of the template to import, as declared in the YAML
          * configuration.
-         * 
-         * ***
          * 
          * @return builder
          * 

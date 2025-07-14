@@ -168,16 +168,12 @@ public final class PostureDeploymentState extends com.pulumi.resources.ResourceA
     /**
      * ID of the posture deployment.
      * 
-     * ***
-     * 
      */
     @Import(name="postureDeploymentId")
     private @Nullable Output<String> postureDeploymentId;
 
     /**
      * @return ID of the posture deployment.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> postureDeploymentId() {
@@ -529,8 +525,6 @@ public final class PostureDeploymentState extends com.pulumi.resources.ResourceA
         /**
          * @param postureDeploymentId ID of the posture deployment.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -541,8 +535,6 @@ public final class PostureDeploymentState extends com.pulumi.resources.ResourceA
 
         /**
          * @param postureDeploymentId ID of the posture deployment.
-         * 
-         * ***
          * 
          * @return builder
          * 

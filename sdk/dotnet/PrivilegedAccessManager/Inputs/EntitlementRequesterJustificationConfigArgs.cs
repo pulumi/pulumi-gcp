@@ -20,8 +20,6 @@ namespace Pulumi.Gcp.PrivilegedAccessManager.Inputs
 
         /// <summary>
         /// The requester has to provide a justification in the form of free flowing text.
-        /// 
-        /// - - -
         /// </summary>
         [Input("unstructured")]
         public Input<Inputs.EntitlementRequesterJustificationConfigUnstructuredArgs>? Unstructured { get; set; }

@@ -111,8 +111,6 @@ type ReleaseChannelSettingBinding struct {
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	ReleaseChannelSettingId pulumi.StringOutput `pulumi:"releaseChannelSettingId"`
 	// Id of the setting binding.
-	//
-	// ***
 	SettingBindingId pulumi.StringOutput `pulumi:"settingBindingId"`
 	// Target of the binding.
 	Target pulumi.StringOutput `pulumi:"target"`
@@ -189,8 +187,6 @@ type releaseChannelSettingBindingState struct {
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	ReleaseChannelSettingId *string `pulumi:"releaseChannelSettingId"`
 	// Id of the setting binding.
-	//
-	// ***
 	SettingBindingId *string `pulumi:"settingBindingId"`
 	// Target of the binding.
 	Target *string `pulumi:"target"`
@@ -224,8 +220,6 @@ type ReleaseChannelSettingBindingState struct {
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	ReleaseChannelSettingId pulumi.StringPtrInput
 	// Id of the setting binding.
-	//
-	// ***
 	SettingBindingId pulumi.StringPtrInput
 	// Target of the binding.
 	Target pulumi.StringPtrInput
@@ -253,8 +247,6 @@ type releaseChannelSettingBindingArgs struct {
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	ReleaseChannelSettingId string `pulumi:"releaseChannelSettingId"`
 	// Id of the setting binding.
-	//
-	// ***
 	SettingBindingId string `pulumi:"settingBindingId"`
 	// Target of the binding.
 	Target string `pulumi:"target"`
@@ -277,8 +269,6 @@ type ReleaseChannelSettingBindingArgs struct {
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	ReleaseChannelSettingId pulumi.StringInput
 	// Id of the setting binding.
-	//
-	// ***
 	SettingBindingId pulumi.StringInput
 	// Target of the binding.
 	Target pulumi.StringInput
@@ -423,8 +413,6 @@ func (o ReleaseChannelSettingBindingOutput) ReleaseChannelSettingId() pulumi.Str
 }
 
 // Id of the setting binding.
-//
-// ***
 func (o ReleaseChannelSettingBindingOutput) SettingBindingId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReleaseChannelSettingBinding) pulumi.StringOutput { return v.SettingBindingId }).(pulumi.StringOutput)
 }

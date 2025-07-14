@@ -32,9 +32,6 @@ class InstanceArgs:
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[builtins.str] instance_id: The name for the Instance.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: The location for the Instance.
         :param pulumi.Input[builtins.str] kms_key: Customer-managed encryption key name, in the format projects/*/locations/*/keyRings/*/cryptoKeys/*.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels as key value pairs.
@@ -67,9 +64,6 @@ class InstanceArgs:
     def instance_id(self) -> pulumi.Input[builtins.str]:
         """
         The name for the Instance.
-
-
-        - - -
         """
         return pulumi.get(self, "instance_id")
 
@@ -182,9 +176,6 @@ class _InstanceState:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceHostConfigArgs']]] host_configs: A list of hostnames for this instance.
                Structure is documented below.
         :param pulumi.Input[builtins.str] instance_id: The name for the Instance.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] kms_key: Customer-managed encryption key name, in the format projects/*/locations/*/keyRings/*/cryptoKeys/*.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels as key value pairs.
                
@@ -278,9 +269,6 @@ class _InstanceState:
     def instance_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The name for the Instance.
-
-
-        - - -
         """
         return pulumi.get(self, "instance_id")
 
@@ -860,9 +848,6 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] instance_id: The name for the Instance.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] kms_key: Customer-managed encryption key name, in the format projects/*/locations/*/keyRings/*/cryptoKeys/*.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels as key value pairs.
                
@@ -1386,9 +1371,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceHostConfigArgs', 'InstanceHostConfigArgsDict']]]] host_configs: A list of hostnames for this instance.
                Structure is documented below.
         :param pulumi.Input[builtins.str] instance_id: The name for the Instance.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] kms_key: Customer-managed encryption key name, in the format projects/*/locations/*/keyRings/*/cryptoKeys/*.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels as key value pairs.
                
@@ -1460,9 +1442,6 @@ class Instance(pulumi.CustomResource):
     def instance_id(self) -> pulumi.Output[builtins.str]:
         """
         The name for the Instance.
-
-
-        - - -
         """
         return pulumi.get(self, "instance_id")
 

@@ -183,16 +183,12 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The ID of the alloydb instance.
      * 
-     * ***
-     * 
      */
     @Import(name="instanceId", required=true)
     private Output<String> instanceId;
 
     /**
      * @return The ID of the alloydb instance.
-     * 
-     * ***
      * 
      */
     public Output<String> instanceId() {
@@ -574,8 +570,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param instanceId The ID of the alloydb instance.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -586,8 +580,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param instanceId The ID of the alloydb instance.
-         * 
-         * ***
          * 
          * @return builder
          * 

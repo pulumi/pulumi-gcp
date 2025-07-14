@@ -207,8 +207,6 @@ type Hub struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Optional. The policy mode of this hub. This field can be either PRESET or CUSTOM. If unspecified, the policyMode defaults to PRESET.
 	// Possible values are: `CUSTOM`, `PRESET`.
@@ -281,8 +279,6 @@ type hubState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// Optional. The policy mode of this hub. This field can be either PRESET or CUSTOM. If unspecified, the policyMode defaults to PRESET.
 	// Possible values are: `CUSTOM`, `PRESET`.
@@ -321,8 +317,6 @@ type HubState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// Optional. The policy mode of this hub. This field can be either PRESET or CUSTOM. If unspecified, the policyMode defaults to PRESET.
 	// Possible values are: `CUSTOM`, `PRESET`.
@@ -361,8 +355,6 @@ type hubArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// Optional. The policy mode of this hub. This field can be either PRESET or CUSTOM. If unspecified, the policyMode defaults to PRESET.
 	// Possible values are: `CUSTOM`, `PRESET`.
@@ -386,8 +378,6 @@ type HubArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// Optional. The policy mode of this hub. This field can be either PRESET or CUSTOM. If unspecified, the policyMode defaults to PRESET.
 	// Possible values are: `CUSTOM`, `PRESET`.
@@ -515,8 +505,6 @@ func (o HubOutput) Labels() pulumi.StringMapOutput {
 }
 
 // Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
-//
-// ***
 func (o HubOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Hub) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

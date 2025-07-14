@@ -30,9 +30,6 @@ class ContactArgs:
         :param pulumi.Input[builtins.str] language_tag: The preferred language for notifications, as a ISO 639-1 language code. See Supported languages for a list of supported languages.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] notification_category_subscriptions: The categories of notifications that the contact will receive communications for.
         :param pulumi.Input[builtins.str] parent: The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
-               
-               
-               - - -
         """
         pulumi.set(__self__, "email", email)
         pulumi.set(__self__, "language_tag", language_tag)
@@ -80,9 +77,6 @@ class ContactArgs:
     def parent(self) -> pulumi.Input[builtins.str]:
         """
         The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 
@@ -106,9 +100,6 @@ class _ContactState:
         :param pulumi.Input[builtins.str] name: The identifier for the contact. Format: {resourceType}/{resource_id}/contacts/{contact_id}
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] notification_category_subscriptions: The categories of notifications that the contact will receive communications for.
         :param pulumi.Input[builtins.str] parent: The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
-               
-               
-               - - -
         """
         if email is not None:
             pulumi.set(__self__, "email", email)
@@ -174,9 +165,6 @@ class _ContactState:
     def parent(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 
@@ -245,9 +233,6 @@ class Contact(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] language_tag: The preferred language for notifications, as a ISO 639-1 language code. See Supported languages for a list of supported languages.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] notification_category_subscriptions: The categories of notifications that the contact will receive communications for.
         :param pulumi.Input[builtins.str] parent: The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
-               
-               
-               - - -
         """
         ...
     @overload
@@ -366,9 +351,6 @@ class Contact(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] name: The identifier for the contact. Format: {resourceType}/{resource_id}/contacts/{contact_id}
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] notification_category_subscriptions: The categories of notifications that the contact will receive communications for.
         :param pulumi.Input[builtins.str] parent: The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -418,9 +400,6 @@ class Contact(pulumi.CustomResource):
     def parent(self) -> pulumi.Output[builtins.str]:
         """
         The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 

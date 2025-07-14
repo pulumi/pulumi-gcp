@@ -133,9 +133,6 @@ export class BlockchainNodes extends pulumi.CustomResource {
 
     /**
      * ID of the requesting object.
-     *
-     *
-     * - - -
      */
     public readonly blockchainNodeId!: pulumi.Output<string>;
     /**
@@ -250,9 +247,6 @@ export class BlockchainNodes extends pulumi.CustomResource {
 export interface BlockchainNodesState {
     /**
      * ID of the requesting object.
-     *
-     *
-     * - - -
      */
     blockchainNodeId?: pulumi.Input<string>;
     /**
@@ -315,9 +309,6 @@ export interface BlockchainNodesState {
 export interface BlockchainNodesArgs {
     /**
      * ID of the requesting object.
-     *
-     *
-     * - - -
      */
     blockchainNodeId: pulumi.Input<string>;
     /**

@@ -127,9 +127,6 @@ export class InterconnectAttachment extends pulumi.CustomResource {
     public readonly interconnect!: pulumi.Output<string>;
     /**
      * A unique ID that identifies this interconnect attachment.
-     *
-     *
-     * - - -
      */
     public readonly interconnectAttachmentId!: pulumi.Output<string>;
     /**
@@ -277,9 +274,6 @@ export interface InterconnectAttachmentState {
     interconnect?: pulumi.Input<string>;
     /**
      * A unique ID that identifies this interconnect attachment.
-     *
-     *
-     * - - -
      */
     interconnectAttachmentId?: pulumi.Input<string>;
     /**
@@ -347,9 +341,6 @@ export interface InterconnectAttachmentArgs {
     interconnect: pulumi.Input<string>;
     /**
      * A unique ID that identifies this interconnect attachment.
-     *
-     *
-     * - - -
      */
     interconnectAttachmentId: pulumi.Input<string>;
     /**

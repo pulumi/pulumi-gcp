@@ -88,16 +88,12 @@ public final class ServicePerimeterIngressPolicyState extends com.pulumi.resourc
     /**
      * The name of the Service Perimeter to add this resource to.
      * 
-     * ***
-     * 
      */
     @Import(name="perimeter")
     private @Nullable Output<String> perimeter;
 
     /**
      * @return The name of the Service Perimeter to add this resource to.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> perimeter() {
@@ -243,8 +239,6 @@ public final class ServicePerimeterIngressPolicyState extends com.pulumi.resourc
         /**
          * @param perimeter The name of the Service Perimeter to add this resource to.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -255,8 +249,6 @@ public final class ServicePerimeterIngressPolicyState extends com.pulumi.resourc
 
         /**
          * @param perimeter The name of the Service Perimeter to add this resource to.
-         * 
-         * ***
          * 
          * @return builder
          * 

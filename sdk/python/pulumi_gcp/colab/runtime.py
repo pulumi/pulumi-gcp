@@ -35,9 +35,6 @@ class RuntimeArgs:
         The set of arguments for constructing a Runtime resource.
         :param pulumi.Input[builtins.str] display_name: Required. The display name of the Runtime.
         :param pulumi.Input[builtins.str] location: The location for the resource: https://cloud.google.com/colab/docs/locations
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] runtime_user: The user email of the NotebookRuntime.
         :param pulumi.Input[builtins.bool] auto_upgrade: Triggers an upgrade anytime the runtime is started if it is upgradable.
         :param pulumi.Input[builtins.str] description: The description of the Runtime.
@@ -81,9 +78,6 @@ class RuntimeArgs:
     def location(self) -> pulumi.Input[builtins.str]:
         """
         The location for the resource: https://cloud.google.com/colab/docs/locations
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -203,9 +197,6 @@ class _RuntimeState:
         :param pulumi.Input[builtins.str] expiration_time: Output only. Timestamp when this NotebookRuntime will be expired.
         :param pulumi.Input[builtins.bool] is_upgradable: Output only. Checks if the NotebookRuntime is upgradable.
         :param pulumi.Input[builtins.str] location: The location for the resource: https://cloud.google.com/colab/docs/locations
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The resource name of the Runtime
         :param pulumi.Input['RuntimeNotebookRuntimeTemplateRefArgs'] notebook_runtime_template_ref: 'Runtime specific information used for NotebookRuntime creation.'
                Structure is documented below.
@@ -319,9 +310,6 @@ class _RuntimeState:
     def location(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The location for the resource: https://cloud.google.com/colab/docs/locations
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -571,9 +559,6 @@ class Runtime(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] desired_state: Desired state of the Colab Runtime. Set this field to `RUNNING` to start the runtime, and `STOPPED` to stop it.
         :param pulumi.Input[builtins.str] display_name: Required. The display name of the Runtime.
         :param pulumi.Input[builtins.str] location: The location for the resource: https://cloud.google.com/colab/docs/locations
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The resource name of the Runtime
         :param pulumi.Input[Union['RuntimeNotebookRuntimeTemplateRefArgs', 'RuntimeNotebookRuntimeTemplateRefArgsDict']] notebook_runtime_template_ref: 'Runtime specific information used for NotebookRuntime creation.'
                Structure is documented below.
@@ -820,9 +805,6 @@ class Runtime(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] expiration_time: Output only. Timestamp when this NotebookRuntime will be expired.
         :param pulumi.Input[builtins.bool] is_upgradable: Output only. Checks if the NotebookRuntime is upgradable.
         :param pulumi.Input[builtins.str] location: The location for the resource: https://cloud.google.com/colab/docs/locations
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The resource name of the Runtime
         :param pulumi.Input[Union['RuntimeNotebookRuntimeTemplateRefArgs', 'RuntimeNotebookRuntimeTemplateRefArgsDict']] notebook_runtime_template_ref: 'Runtime specific information used for NotebookRuntime creation.'
                Structure is documented below.
@@ -904,9 +886,6 @@ class Runtime(pulumi.CustomResource):
     def location(self) -> pulumi.Output[builtins.str]:
         """
         The location for the resource: https://cloud.google.com/colab/docs/locations
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

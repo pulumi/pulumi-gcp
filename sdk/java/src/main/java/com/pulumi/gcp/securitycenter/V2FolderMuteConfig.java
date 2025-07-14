@@ -197,16 +197,12 @@ public class V2FolderMuteConfig extends com.pulumi.resources.CustomResource {
     /**
      * Unique identifier provided by the client within the parent scope.
      * 
-     * ***
-     * 
      */
     @Export(name="muteConfigId", refs={String.class}, tree="[0]")
     private Output<String> muteConfigId;
 
     /**
      * @return Unique identifier provided by the client within the parent scope.
-     * 
-     * ***
      * 
      */
     public Output<String> muteConfigId() {

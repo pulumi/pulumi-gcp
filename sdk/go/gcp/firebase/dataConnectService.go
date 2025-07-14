@@ -184,8 +184,6 @@ type DataConnectService struct {
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
 	// Required. The ID to use for the service, which will become the final component of the
 	// service's resource name.
-	//
-	// ***
 	ServiceId pulumi.StringOutput `pulumi:"serviceId"`
 	// Output only. System-assigned, unique identifier.
 	Uid pulumi.StringOutput `pulumi:"uid"`
@@ -280,8 +278,6 @@ type dataConnectServiceState struct {
 	Reconciling *bool `pulumi:"reconciling"`
 	// Required. The ID to use for the service, which will become the final component of the
 	// service's resource name.
-	//
-	// ***
 	ServiceId *string `pulumi:"serviceId"`
 	// Output only. System-assigned, unique identifier.
 	Uid *string `pulumi:"uid"`
@@ -336,8 +332,6 @@ type DataConnectServiceState struct {
 	Reconciling pulumi.BoolPtrInput
 	// Required. The ID to use for the service, which will become the final component of the
 	// service's resource name.
-	//
-	// ***
 	ServiceId pulumi.StringPtrInput
 	// Output only. System-assigned, unique identifier.
 	Uid pulumi.StringPtrInput
@@ -373,8 +367,6 @@ type dataConnectServiceArgs struct {
 	Project *string `pulumi:"project"`
 	// Required. The ID to use for the service, which will become the final component of the
 	// service's resource name.
-	//
-	// ***
 	ServiceId string `pulumi:"serviceId"`
 }
 
@@ -403,8 +395,6 @@ type DataConnectServiceArgs struct {
 	Project pulumi.StringPtrInput
 	// Required. The ID to use for the service, which will become the final component of the
 	// service's resource name.
-	//
-	// ***
 	ServiceId pulumi.StringInput
 }
 
@@ -580,8 +570,6 @@ func (o DataConnectServiceOutput) Reconciling() pulumi.BoolOutput {
 
 // Required. The ID to use for the service, which will become the final component of the
 // service's resource name.
-//
-// ***
 func (o DataConnectServiceOutput) ServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataConnectService) pulumi.StringOutput { return v.ServiceId }).(pulumi.StringOutput)
 }

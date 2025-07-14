@@ -35,6 +35,7 @@ public final class SearchEngineState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Common config spec that specifies the metadata of the engine.
+     * Structure is documented below.
      * 
      */
     @Import(name="commonConfig")
@@ -42,6 +43,7 @@ public final class SearchEngineState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Common config spec that specifies the metadata of the engine.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<SearchEngineCommonConfigArgs>> commonConfig() {
@@ -109,18 +111,18 @@ public final class SearchEngineState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore:
-     * If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
-     * Default value: &#34;GENERIC&#34; Possible values: [&#34;GENERIC&#34;, &#34;MEDIA&#34;, &#34;HEALTHCARE_FHIR&#34;]
+     * The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
+     * Default value is `GENERIC`.
+     * Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
      * 
      */
     @Import(name="industryVertical")
     private @Nullable Output<String> industryVertical;
 
     /**
-     * @return The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore:
-     * If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
-     * Default value: &#34;GENERIC&#34; Possible values: [&#34;GENERIC&#34;, &#34;MEDIA&#34;, &#34;HEALTHCARE_FHIR&#34;]
+     * @return The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
+     * Default value is `GENERIC`.
+     * Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
      * 
      */
     public Optional<Output<String>> industryVertical() {
@@ -163,9 +165,19 @@ public final class SearchEngineState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -260,6 +272,7 @@ public final class SearchEngineState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param commonConfig Common config spec that specifies the metadata of the engine.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -271,6 +284,7 @@ public final class SearchEngineState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param commonConfig Common config spec that specifies the metadata of the engine.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -374,9 +388,9 @@ public final class SearchEngineState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param industryVertical The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore:
-         * If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
-         * Default value: &#34;GENERIC&#34; Possible values: [&#34;GENERIC&#34;, &#34;MEDIA&#34;, &#34;HEALTHCARE_FHIR&#34;]
+         * @param industryVertical The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
+         * Default value is `GENERIC`.
+         * Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
          * 
          * @return builder
          * 
@@ -387,9 +401,9 @@ public final class SearchEngineState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param industryVertical The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore:
-         * If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
-         * Default value: &#34;GENERIC&#34; Possible values: [&#34;GENERIC&#34;, &#34;MEDIA&#34;, &#34;HEALTHCARE_FHIR&#34;]
+         * @param industryVertical The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
+         * Default value is `GENERIC`.
+         * Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
          * 
          * @return builder
          * 
@@ -446,11 +460,25 @@ public final class SearchEngineState extends com.pulumi.resources.ResourceArgs {
             return name(Output.of(name));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

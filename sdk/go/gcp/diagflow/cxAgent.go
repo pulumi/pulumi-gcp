@@ -214,8 +214,6 @@ type CxAgent struct {
 	TextToSpeechSettings CxAgentTextToSpeechSettingsPtrOutput `pulumi:"textToSpeechSettings"`
 	// The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
 	// Europe/Paris.
-	//
-	// ***
 	TimeZone pulumi.StringOutput `pulumi:"timeZone"`
 }
 
@@ -314,8 +312,6 @@ type cxAgentState struct {
 	TextToSpeechSettings *CxAgentTextToSpeechSettings `pulumi:"textToSpeechSettings"`
 	// The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
 	// Europe/Paris.
-	//
-	// ***
 	TimeZone *string `pulumi:"timeZone"`
 }
 
@@ -373,8 +369,6 @@ type CxAgentState struct {
 	TextToSpeechSettings CxAgentTextToSpeechSettingsPtrInput
 	// The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
 	// Europe/Paris.
-	//
-	// ***
 	TimeZone pulumi.StringPtrInput
 }
 
@@ -432,8 +426,6 @@ type cxAgentArgs struct {
 	TextToSpeechSettings *CxAgentTextToSpeechSettings `pulumi:"textToSpeechSettings"`
 	// The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
 	// Europe/Paris.
-	//
-	// ***
 	TimeZone string `pulumi:"timeZone"`
 }
 
@@ -488,8 +480,6 @@ type CxAgentArgs struct {
 	TextToSpeechSettings CxAgentTextToSpeechSettingsPtrInput
 	// The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
 	// Europe/Paris.
-	//
-	// ***
 	TimeZone pulumi.StringInput
 }
 
@@ -687,8 +677,6 @@ func (o CxAgentOutput) TextToSpeechSettings() CxAgentTextToSpeechSettingsPtrOutp
 
 // The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
 // Europe/Paris.
-//
-// ***
 func (o CxAgentOutput) TimeZone() pulumi.StringOutput {
 	return o.ApplyT(func(v *CxAgent) pulumi.StringOutput { return v.TimeZone }).(pulumi.StringOutput)
 }

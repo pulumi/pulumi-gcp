@@ -416,8 +416,6 @@ type Topic struct {
 	// Structure is documented below.
 	MessageTransforms TopicMessageTransformArrayOutput `pulumi:"messageTransforms"`
 	// Name of the topic.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -500,8 +498,6 @@ type topicState struct {
 	// Structure is documented below.
 	MessageTransforms []TopicMessageTransform `pulumi:"messageTransforms"`
 	// Name of the topic.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -550,8 +546,6 @@ type TopicState struct {
 	// Structure is documented below.
 	MessageTransforms TopicMessageTransformArrayInput
 	// Name of the topic.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -602,8 +596,6 @@ type topicArgs struct {
 	// Structure is documented below.
 	MessageTransforms []TopicMessageTransform `pulumi:"messageTransforms"`
 	// Name of the topic.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -648,8 +640,6 @@ type TopicArgs struct {
 	// Structure is documented below.
 	MessageTransforms TopicMessageTransformArrayInput
 	// Name of the topic.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -802,8 +792,6 @@ func (o TopicOutput) MessageTransforms() TopicMessageTransformArrayOutput {
 }
 
 // Name of the topic.
-//
-// ***
 func (o TopicOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

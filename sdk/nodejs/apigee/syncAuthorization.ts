@@ -116,9 +116,6 @@ export class SyncAuthorization extends pulumi.CustomResource {
     public readonly identities!: pulumi.Output<string[]>;
     /**
      * Name of the Apigee organization.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
 
@@ -170,9 +167,6 @@ export interface SyncAuthorizationState {
     identities?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Name of the Apigee organization.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
 }
@@ -190,9 +184,6 @@ export interface SyncAuthorizationArgs {
     identities: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Name of the Apigee organization.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
 }

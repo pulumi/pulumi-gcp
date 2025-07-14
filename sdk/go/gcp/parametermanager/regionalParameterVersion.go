@@ -172,8 +172,6 @@ type RegionalParameterVersion struct {
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	ParameterData pulumi.StringOutput `pulumi:"parameterData"`
 	// Version ID of the Regional Parameter Version Resource. This must be unique within the Regional Parameter.
-	//
-	// ***
 	ParameterVersionId pulumi.StringOutput `pulumi:"parameterVersionId"`
 	// The time at which the Regional Parameter Version was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -243,8 +241,6 @@ type regionalParameterVersionState struct {
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	ParameterData *string `pulumi:"parameterData"`
 	// Version ID of the Regional Parameter Version Resource. This must be unique within the Regional Parameter.
-	//
-	// ***
 	ParameterVersionId *string `pulumi:"parameterVersionId"`
 	// The time at which the Regional Parameter Version was updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -269,8 +265,6 @@ type RegionalParameterVersionState struct {
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	ParameterData pulumi.StringPtrInput
 	// Version ID of the Regional Parameter Version Resource. This must be unique within the Regional Parameter.
-	//
-	// ***
 	ParameterVersionId pulumi.StringPtrInput
 	// The time at which the Regional Parameter Version was updated.
 	UpdateTime pulumi.StringPtrInput
@@ -289,8 +283,6 @@ type regionalParameterVersionArgs struct {
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	ParameterData string `pulumi:"parameterData"`
 	// Version ID of the Regional Parameter Version Resource. This must be unique within the Regional Parameter.
-	//
-	// ***
 	ParameterVersionId string `pulumi:"parameterVersionId"`
 }
 
@@ -304,8 +296,6 @@ type RegionalParameterVersionArgs struct {
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	ParameterData pulumi.StringInput
 	// Version ID of the Regional Parameter Version Resource. This must be unique within the Regional Parameter.
-	//
-	// ***
 	ParameterVersionId pulumi.StringInput
 }
 
@@ -435,8 +425,6 @@ func (o RegionalParameterVersionOutput) ParameterData() pulumi.StringOutput {
 }
 
 // Version ID of the Regional Parameter Version Resource. This must be unique within the Regional Parameter.
-//
-// ***
 func (o RegionalParameterVersionOutput) ParameterVersionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionalParameterVersion) pulumi.StringOutput { return v.ParameterVersionId }).(pulumi.StringOutput)
 }

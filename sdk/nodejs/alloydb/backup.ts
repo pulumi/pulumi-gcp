@@ -234,9 +234,6 @@ export class Backup extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location where the alloydb backup should reside.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -446,9 +443,6 @@ export interface BackupState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location where the alloydb backup should reside.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -536,9 +530,6 @@ export interface BackupArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location where the alloydb backup should reside.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

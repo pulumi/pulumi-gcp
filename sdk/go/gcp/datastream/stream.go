@@ -1398,17 +1398,19 @@ type Stream struct {
 	pulumi.CustomResourceState
 
 	// Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
+	// Structure is documented below.
 	BackfillAll StreamBackfillAllPtrOutput `pulumi:"backfillAll"`
 	// Backfill strategy to disable automatic backfill for the Stream's objects.
 	BackfillNone StreamBackfillNonePtrOutput `pulumi:"backfillNone"`
 	// Create the stream without validating it.
 	CreateWithoutValidation pulumi.BoolPtrOutput `pulumi:"createWithoutValidation"`
-	// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
-	// encrypted using an internal Stream-specific encryption key provisioned through KMS.
+	// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
+	// will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
 	CustomerManagedEncryptionKey pulumi.StringPtrOutput `pulumi:"customerManagedEncryptionKey"`
-	// Desired state of the Stream. Set this field to 'RUNNING' to start the stream, 'NOT_STARTED' to create the stream without
-	// starting and 'PAUSED' to pause the stream from a 'RUNNING' state. Possible values: NOT_STARTED, RUNNING, PAUSED.
-	// Default: NOT_STARTED
+	// Desired state of the Stream. Set this field to `RUNNING` to start the stream,
+	// `NOT_STARTED` to create the stream without starting and `PAUSED` to pause
+	// the stream from a `RUNNING` state.
+	// Possible values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
 	DesiredState pulumi.StringPtrOutput `pulumi:"desiredState"`
 	// Destination connection profile configuration.
 	// Structure is documented below.
@@ -1417,13 +1419,16 @@ type Stream struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
-	// Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
-	// refer to the field 'effective_labels' for all of the labels present on the resource.
+	// Labels.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the location this stream is located in.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The stream's name.
-	Name    pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -1488,17 +1493,19 @@ func GetStream(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Stream resources.
 type streamState struct {
 	// Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
+	// Structure is documented below.
 	BackfillAll *StreamBackfillAll `pulumi:"backfillAll"`
 	// Backfill strategy to disable automatic backfill for the Stream's objects.
 	BackfillNone *StreamBackfillNone `pulumi:"backfillNone"`
 	// Create the stream without validating it.
 	CreateWithoutValidation *bool `pulumi:"createWithoutValidation"`
-	// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
-	// encrypted using an internal Stream-specific encryption key provisioned through KMS.
+	// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
+	// will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
 	CustomerManagedEncryptionKey *string `pulumi:"customerManagedEncryptionKey"`
-	// Desired state of the Stream. Set this field to 'RUNNING' to start the stream, 'NOT_STARTED' to create the stream without
-	// starting and 'PAUSED' to pause the stream from a 'RUNNING' state. Possible values: NOT_STARTED, RUNNING, PAUSED.
-	// Default: NOT_STARTED
+	// Desired state of the Stream. Set this field to `RUNNING` to start the stream,
+	// `NOT_STARTED` to create the stream without starting and `PAUSED` to pause
+	// the stream from a `RUNNING` state.
+	// Possible values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
 	DesiredState *string `pulumi:"desiredState"`
 	// Destination connection profile configuration.
 	// Structure is documented below.
@@ -1507,13 +1514,16 @@ type streamState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
-	// Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
-	// refer to the field 'effective_labels' for all of the labels present on the resource.
+	// Labels.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the location this stream is located in.
 	Location *string `pulumi:"location"`
 	// The stream's name.
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -1529,17 +1539,19 @@ type streamState struct {
 
 type StreamState struct {
 	// Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
+	// Structure is documented below.
 	BackfillAll StreamBackfillAllPtrInput
 	// Backfill strategy to disable automatic backfill for the Stream's objects.
 	BackfillNone StreamBackfillNonePtrInput
 	// Create the stream without validating it.
 	CreateWithoutValidation pulumi.BoolPtrInput
-	// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
-	// encrypted using an internal Stream-specific encryption key provisioned through KMS.
+	// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
+	// will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
 	CustomerManagedEncryptionKey pulumi.StringPtrInput
-	// Desired state of the Stream. Set this field to 'RUNNING' to start the stream, 'NOT_STARTED' to create the stream without
-	// starting and 'PAUSED' to pause the stream from a 'RUNNING' state. Possible values: NOT_STARTED, RUNNING, PAUSED.
-	// Default: NOT_STARTED
+	// Desired state of the Stream. Set this field to `RUNNING` to start the stream,
+	// `NOT_STARTED` to create the stream without starting and `PAUSED` to pause
+	// the stream from a `RUNNING` state.
+	// Possible values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
 	DesiredState pulumi.StringPtrInput
 	// Destination connection profile configuration.
 	// Structure is documented below.
@@ -1548,13 +1560,16 @@ type StreamState struct {
 	DisplayName pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
-	// Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
-	// refer to the field 'effective_labels' for all of the labels present on the resource.
+	// Labels.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The name of the location this stream is located in.
 	Location pulumi.StringPtrInput
 	// The stream's name.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -1574,29 +1589,34 @@ func (StreamState) ElementType() reflect.Type {
 
 type streamArgs struct {
 	// Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
+	// Structure is documented below.
 	BackfillAll *StreamBackfillAll `pulumi:"backfillAll"`
 	// Backfill strategy to disable automatic backfill for the Stream's objects.
 	BackfillNone *StreamBackfillNone `pulumi:"backfillNone"`
 	// Create the stream without validating it.
 	CreateWithoutValidation *bool `pulumi:"createWithoutValidation"`
-	// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
-	// encrypted using an internal Stream-specific encryption key provisioned through KMS.
+	// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
+	// will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
 	CustomerManagedEncryptionKey *string `pulumi:"customerManagedEncryptionKey"`
-	// Desired state of the Stream. Set this field to 'RUNNING' to start the stream, 'NOT_STARTED' to create the stream without
-	// starting and 'PAUSED' to pause the stream from a 'RUNNING' state. Possible values: NOT_STARTED, RUNNING, PAUSED.
-	// Default: NOT_STARTED
+	// Desired state of the Stream. Set this field to `RUNNING` to start the stream,
+	// `NOT_STARTED` to create the stream without starting and `PAUSED` to pause
+	// the stream from a `RUNNING` state.
+	// Possible values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
 	DesiredState *string `pulumi:"desiredState"`
 	// Destination connection profile configuration.
 	// Structure is documented below.
 	DestinationConfig StreamDestinationConfig `pulumi:"destinationConfig"`
 	// Display name.
 	DisplayName string `pulumi:"displayName"`
-	// Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
-	// refer to the field 'effective_labels' for all of the labels present on the resource.
+	// Labels.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the location this stream is located in.
-	Location string  `pulumi:"location"`
-	Project  *string `pulumi:"project"`
+	Location string `pulumi:"location"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// Source connection profile configuration.
 	// Structure is documented below.
 	SourceConfig StreamSourceConfig `pulumi:"sourceConfig"`
@@ -1607,29 +1627,34 @@ type streamArgs struct {
 // The set of arguments for constructing a Stream resource.
 type StreamArgs struct {
 	// Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
+	// Structure is documented below.
 	BackfillAll StreamBackfillAllPtrInput
 	// Backfill strategy to disable automatic backfill for the Stream's objects.
 	BackfillNone StreamBackfillNonePtrInput
 	// Create the stream without validating it.
 	CreateWithoutValidation pulumi.BoolPtrInput
-	// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
-	// encrypted using an internal Stream-specific encryption key provisioned through KMS.
+	// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
+	// will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
 	CustomerManagedEncryptionKey pulumi.StringPtrInput
-	// Desired state of the Stream. Set this field to 'RUNNING' to start the stream, 'NOT_STARTED' to create the stream without
-	// starting and 'PAUSED' to pause the stream from a 'RUNNING' state. Possible values: NOT_STARTED, RUNNING, PAUSED.
-	// Default: NOT_STARTED
+	// Desired state of the Stream. Set this field to `RUNNING` to start the stream,
+	// `NOT_STARTED` to create the stream without starting and `PAUSED` to pause
+	// the stream from a `RUNNING` state.
+	// Possible values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
 	DesiredState pulumi.StringPtrInput
 	// Destination connection profile configuration.
 	// Structure is documented below.
 	DestinationConfig StreamDestinationConfigInput
 	// Display name.
 	DisplayName pulumi.StringInput
-	// Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
-	// refer to the field 'effective_labels' for all of the labels present on the resource.
+	// Labels.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The name of the location this stream is located in.
 	Location pulumi.StringInput
-	Project  pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// Source connection profile configuration.
 	// Structure is documented below.
 	SourceConfig StreamSourceConfigInput
@@ -1725,6 +1750,7 @@ func (o StreamOutput) ToStreamOutputWithContext(ctx context.Context) StreamOutpu
 }
 
 // Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
+// Structure is documented below.
 func (o StreamOutput) BackfillAll() StreamBackfillAllPtrOutput {
 	return o.ApplyT(func(v *Stream) StreamBackfillAllPtrOutput { return v.BackfillAll }).(StreamBackfillAllPtrOutput)
 }
@@ -1739,15 +1765,16 @@ func (o StreamOutput) CreateWithoutValidation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Stream) pulumi.BoolPtrOutput { return v.CreateWithoutValidation }).(pulumi.BoolPtrOutput)
 }
 
-// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
-// encrypted using an internal Stream-specific encryption key provisioned through KMS.
+// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
+// will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
 func (o StreamOutput) CustomerManagedEncryptionKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringPtrOutput { return v.CustomerManagedEncryptionKey }).(pulumi.StringPtrOutput)
 }
 
-// Desired state of the Stream. Set this field to 'RUNNING' to start the stream, 'NOT_STARTED' to create the stream without
-// starting and 'PAUSED' to pause the stream from a 'RUNNING' state. Possible values: NOT_STARTED, RUNNING, PAUSED.
-// Default: NOT_STARTED
+// Desired state of the Stream. Set this field to `RUNNING` to start the stream,
+// `NOT_STARTED` to create the stream without starting and `PAUSED` to pause
+// the stream from a `RUNNING` state.
+// Possible values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
 func (o StreamOutput) DesiredState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringPtrOutput { return v.DesiredState }).(pulumi.StringPtrOutput)
 }
@@ -1768,8 +1795,9 @@ func (o StreamOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
-// Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
-// refer to the field 'effective_labels' for all of the labels present on the resource.
+// Labels.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o StreamOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -1784,6 +1812,8 @@ func (o StreamOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o StreamOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

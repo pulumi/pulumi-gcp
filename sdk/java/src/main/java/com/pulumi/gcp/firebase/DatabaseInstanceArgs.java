@@ -35,8 +35,6 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
      * The globally unique identifier of the Firebase Realtime Database instance.
      * Instance IDs cannot be reused after deletion.
      * 
-     * ***
-     * 
      */
     @Import(name="instanceId", required=true)
     private Output<String> instanceId;
@@ -44,8 +42,6 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
     /**
      * @return The globally unique identifier of the Firebase Realtime Database instance.
      * Instance IDs cannot be reused after deletion.
-     * 
-     * ***
      * 
      */
     public Output<String> instanceId() {
@@ -164,8 +160,6 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
          * @param instanceId The globally unique identifier of the Firebase Realtime Database instance.
          * Instance IDs cannot be reused after deletion.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -177,8 +171,6 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param instanceId The globally unique identifier of the Firebase Realtime Database instance.
          * Instance IDs cannot be reused after deletion.
-         * 
-         * ***
          * 
          * @return builder
          * 

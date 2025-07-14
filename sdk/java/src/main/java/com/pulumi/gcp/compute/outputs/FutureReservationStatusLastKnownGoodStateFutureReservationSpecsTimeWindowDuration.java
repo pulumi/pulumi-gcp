@@ -15,8 +15,6 @@ public final class FutureReservationStatusLastKnownGoodStateFutureReservationSpe
     /**
      * @return Span of time that&#39;s a fraction of a second at nanosecond resolution.
      * 
-     * ***
-     * 
      */
     private @Nullable Integer nanos;
     /**
@@ -28,8 +26,6 @@ public final class FutureReservationStatusLastKnownGoodStateFutureReservationSpe
     private FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindowDuration() {}
     /**
      * @return Span of time that&#39;s a fraction of a second at nanosecond resolution.
-     * 
-     * ***
      * 
      */
     public Optional<Integer> nanos() {

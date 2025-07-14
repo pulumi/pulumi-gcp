@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.DataCatalog.Inputs
     public sealed class TagTemplateFieldTypeEnumTypeAllowedValueGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The display name for this template.
+        /// The display name of the enum value.
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;

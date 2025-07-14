@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.RouterStatusBestRouteAsPath;
+import com.pulumi.gcp.compute.outputs.RouterStatusBestRouteParam;
 import com.pulumi.gcp.compute.outputs.RouterStatusBestRouteWarning;
 import java.lang.Integer;
 import java.lang.String;
@@ -129,6 +130,11 @@ public final class RouterStatusBestRoute {
      * 
      */
     private String nextHopVpnTunnel;
+    /**
+     * @return Additional params passed with the request, but not persisted as part of resource payload
+     * 
+     */
+    private List<RouterStatusBestRouteParam> params;
     /**
      * @return The priority of this route. Priority is used to break ties in cases
      * where there is more than one matching route of equal prefix length.
@@ -327,6 +333,13 @@ public final class RouterStatusBestRoute {
         return this.nextHopVpnTunnel;
     }
     /**
+     * @return Additional params passed with the request, but not persisted as part of resource payload
+     * 
+     */
+    public List<RouterStatusBestRouteParam> params() {
+        return this.params;
+    }
+    /**
      * @return The priority of this route. Priority is used to break ties in cases
      * where there is more than one matching route of equal prefix length.
      * 
@@ -412,6 +425,7 @@ public final class RouterStatusBestRoute {
         private String nextHopOrigin;
         private String nextHopPeering;
         private String nextHopVpnTunnel;
+        private List<RouterStatusBestRouteParam> params;
         private Integer priority;
         private String project;
         private String routeStatus;
@@ -440,6 +454,7 @@ public final class RouterStatusBestRoute {
     	      this.nextHopOrigin = defaults.nextHopOrigin;
     	      this.nextHopPeering = defaults.nextHopPeering;
     	      this.nextHopVpnTunnel = defaults.nextHopVpnTunnel;
+    	      this.params = defaults.params;
     	      this.priority = defaults.priority;
     	      this.project = defaults.project;
     	      this.routeStatus = defaults.routeStatus;
@@ -597,6 +612,17 @@ public final class RouterStatusBestRoute {
             return this;
         }
         @CustomType.Setter
+        public Builder params(List<RouterStatusBestRouteParam> params) {
+            if (params == null) {
+              throw new MissingRequiredPropertyException("RouterStatusBestRoute", "params");
+            }
+            this.params = params;
+            return this;
+        }
+        public Builder params(RouterStatusBestRouteParam... params) {
+            return params(List.of(params));
+        }
+        @CustomType.Setter
         public Builder priority(Integer priority) {
             if (priority == null) {
               throw new MissingRequiredPropertyException("RouterStatusBestRoute", "priority");
@@ -678,6 +704,7 @@ public final class RouterStatusBestRoute {
             _resultValue.nextHopOrigin = nextHopOrigin;
             _resultValue.nextHopPeering = nextHopPeering;
             _resultValue.nextHopVpnTunnel = nextHopVpnTunnel;
+            _resultValue.params = params;
             _resultValue.priority = priority;
             _resultValue.project = project;
             _resultValue.routeStatus = routeStatus;

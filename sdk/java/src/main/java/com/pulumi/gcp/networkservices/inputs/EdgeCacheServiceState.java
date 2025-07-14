@@ -36,20 +36,18 @@ public final class EdgeCacheServiceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Disables HTTP/2. HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use
-     * and reduces connection setup overhead by sending multiple streams over the same connection. Some legacy HTTP clients may
-     * have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from
-     * being advertised and negotiated.
+     * Disables HTTP/2.
+     * HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
+     * Some legacy HTTP clients may have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from being advertised and negotiated.
      * 
      */
     @Import(name="disableHttp2")
     private @Nullable Output<Boolean> disableHttp2;
 
     /**
-     * @return Disables HTTP/2. HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use
-     * and reduces connection setup overhead by sending multiple streams over the same connection. Some legacy HTTP clients may
-     * have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from
-     * being advertised and negotiated.
+     * @return Disables HTTP/2.
+     * HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
+     * Some legacy HTTP clients may have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from being advertised and negotiated.
      * 
      */
     public Optional<Output<Boolean>> disableHttp2() {
@@ -72,16 +70,14 @@ public final class EdgeCacheServiceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the
-     * EdgeCacheService.
+     * Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the EdgeCacheService.
      * 
      */
     @Import(name="edgeSecurityPolicy")
     private @Nullable Output<String> edgeSecurityPolicy;
 
     /**
-     * @return Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the
-     * EdgeCacheService.
+     * @return Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the EdgeCacheService.
      * 
      */
     public Optional<Output<String>> edgeSecurityPolicy() {
@@ -89,16 +85,16 @@ public final class EdgeCacheServiceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService. Note
-     * that only &#34;global&#34; certificates with a &#34;scope&#34; of &#34;EDGE_CACHE&#34; can be attached to an EdgeCacheService.
+     * URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService.
+     * Note that only &#34;global&#34; certificates with a &#34;scope&#34; of &#34;EDGE_CACHE&#34; can be attached to an EdgeCacheService.
      * 
      */
     @Import(name="edgeSslCertificates")
     private @Nullable Output<List<String>> edgeSslCertificates;
 
     /**
-     * @return URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService. Note
-     * that only &#34;global&#34; certificates with a &#34;scope&#34; of &#34;EDGE_CACHE&#34; can be attached to an EdgeCacheService.
+     * @return URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService.
+     * Note that only &#34;global&#34; certificates with a &#34;scope&#34; of &#34;EDGE_CACHE&#34; can be attached to an EdgeCacheService.
      * 
      */
     public Optional<Output<List<String>>> edgeSslCertificates() {
@@ -151,18 +147,18 @@ public final class EdgeCacheServiceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Set of label tags associated with the EdgeCache resource. **Note**: This field is non-authoritative, and will only
-     * manage the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels
-     * present on the resource.
+     * Set of label tags associated with the EdgeCache resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Set of label tags associated with the EdgeCache resource. **Note**: This field is non-authoritative, and will only
-     * manage the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels
-     * present on the resource.
+     * @return Set of label tags associated with the EdgeCache resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -170,16 +166,16 @@ public final class EdgeCacheServiceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to
-     * Cloud Logging.
+     * Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
+     * Structure is documented below.
      * 
      */
     @Import(name="logConfig")
     private @Nullable Output<EdgeCacheServiceLogConfigArgs> logConfig;
 
     /**
-     * @return Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to
-     * Cloud Logging.
+     * @return Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<EdgeCacheServiceLogConfigArgs>> logConfig() {
@@ -205,9 +201,19 @@ public final class EdgeCacheServiceState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -230,18 +236,18 @@ public final class EdgeCacheServiceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Require TLS (HTTPS) for all clients connecting to this service. Clients who connect over HTTP (port 80) will receive a
-     * HTTP 301 to the same URL over HTTPS (port 443). You must have at least one (1) edgeSslCertificate specified to enable
-     * this.
+     * Require TLS (HTTPS) for all clients connecting to this service.
+     * Clients who connect over HTTP (port 80) will receive a HTTP 301 to the same URL over HTTPS (port 443).
+     * You must have at least one (1) edgeSslCertificate specified to enable this.
      * 
      */
     @Import(name="requireTls")
     private @Nullable Output<Boolean> requireTls;
 
     /**
-     * @return Require TLS (HTTPS) for all clients connecting to this service. Clients who connect over HTTP (port 80) will receive a
-     * HTTP 301 to the same URL over HTTPS (port 443). You must have at least one (1) edgeSslCertificate specified to enable
-     * this.
+     * @return Require TLS (HTTPS) for all clients connecting to this service.
+     * Clients who connect over HTTP (port 80) will receive a HTTP 301 to the same URL over HTTPS (port 443).
+     * You must have at least one (1) edgeSslCertificate specified to enable this.
      * 
      */
     public Optional<Output<Boolean>> requireTls() {
@@ -266,16 +272,16 @@ public final class EdgeCacheServiceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * URL of the SslPolicy resource that will be associated with the EdgeCacheService. If not set, the EdgeCacheService has no
-     * SSL policy configured, and will default to the &#34;COMPATIBLE&#34; policy.
+     * URL of the SslPolicy resource that will be associated with the EdgeCacheService.
+     * If not set, the EdgeCacheService has no SSL policy configured, and will default to the &#34;COMPATIBLE&#34; policy.
      * 
      */
     @Import(name="sslPolicy")
     private @Nullable Output<String> sslPolicy;
 
     /**
-     * @return URL of the SslPolicy resource that will be associated with the EdgeCacheService. If not set, the EdgeCacheService has no
-     * SSL policy configured, and will default to the &#34;COMPATIBLE&#34; policy.
+     * @return URL of the SslPolicy resource that will be associated with the EdgeCacheService.
+     * If not set, the EdgeCacheService has no SSL policy configured, and will default to the &#34;COMPATIBLE&#34; policy.
      * 
      */
     public Optional<Output<String>> sslPolicy() {
@@ -343,10 +349,9 @@ public final class EdgeCacheServiceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param disableHttp2 Disables HTTP/2. HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use
-         * and reduces connection setup overhead by sending multiple streams over the same connection. Some legacy HTTP clients may
-         * have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from
-         * being advertised and negotiated.
+         * @param disableHttp2 Disables HTTP/2.
+         * HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
+         * Some legacy HTTP clients may have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from being advertised and negotiated.
          * 
          * @return builder
          * 
@@ -357,10 +362,9 @@ public final class EdgeCacheServiceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param disableHttp2 Disables HTTP/2. HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use
-         * and reduces connection setup overhead by sending multiple streams over the same connection. Some legacy HTTP clients may
-         * have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from
-         * being advertised and negotiated.
+         * @param disableHttp2 Disables HTTP/2.
+         * HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
+         * Some legacy HTTP clients may have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from being advertised and negotiated.
          * 
          * @return builder
          * 
@@ -391,8 +395,7 @@ public final class EdgeCacheServiceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param edgeSecurityPolicy Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the
-         * EdgeCacheService.
+         * @param edgeSecurityPolicy Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the EdgeCacheService.
          * 
          * @return builder
          * 
@@ -403,8 +406,7 @@ public final class EdgeCacheServiceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param edgeSecurityPolicy Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the
-         * EdgeCacheService.
+         * @param edgeSecurityPolicy Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the EdgeCacheService.
          * 
          * @return builder
          * 
@@ -414,8 +416,8 @@ public final class EdgeCacheServiceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param edgeSslCertificates URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService. Note
-         * that only &#34;global&#34; certificates with a &#34;scope&#34; of &#34;EDGE_CACHE&#34; can be attached to an EdgeCacheService.
+         * @param edgeSslCertificates URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService.
+         * Note that only &#34;global&#34; certificates with a &#34;scope&#34; of &#34;EDGE_CACHE&#34; can be attached to an EdgeCacheService.
          * 
          * @return builder
          * 
@@ -426,8 +428,8 @@ public final class EdgeCacheServiceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param edgeSslCertificates URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService. Note
-         * that only &#34;global&#34; certificates with a &#34;scope&#34; of &#34;EDGE_CACHE&#34; can be attached to an EdgeCacheService.
+         * @param edgeSslCertificates URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService.
+         * Note that only &#34;global&#34; certificates with a &#34;scope&#34; of &#34;EDGE_CACHE&#34; can be attached to an EdgeCacheService.
          * 
          * @return builder
          * 
@@ -437,8 +439,8 @@ public final class EdgeCacheServiceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param edgeSslCertificates URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService. Note
-         * that only &#34;global&#34; certificates with a &#34;scope&#34; of &#34;EDGE_CACHE&#34; can be attached to an EdgeCacheService.
+         * @param edgeSslCertificates URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService.
+         * Note that only &#34;global&#34; certificates with a &#34;scope&#34; of &#34;EDGE_CACHE&#34; can be attached to an EdgeCacheService.
          * 
          * @return builder
          * 
@@ -531,9 +533,9 @@ public final class EdgeCacheServiceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param labels Set of label tags associated with the EdgeCache resource. **Note**: This field is non-authoritative, and will only
-         * manage the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels
-         * present on the resource.
+         * @param labels Set of label tags associated with the EdgeCache resource.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -544,9 +546,9 @@ public final class EdgeCacheServiceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param labels Set of label tags associated with the EdgeCache resource. **Note**: This field is non-authoritative, and will only
-         * manage the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels
-         * present on the resource.
+         * @param labels Set of label tags associated with the EdgeCache resource.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -556,8 +558,8 @@ public final class EdgeCacheServiceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param logConfig Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to
-         * Cloud Logging.
+         * @param logConfig Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -568,8 +570,8 @@ public final class EdgeCacheServiceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param logConfig Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to
-         * Cloud Logging.
+         * @param logConfig Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -603,11 +605,25 @@ public final class EdgeCacheServiceState extends com.pulumi.resources.ResourceAr
             return name(Output.of(name));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
@@ -636,9 +652,9 @@ public final class EdgeCacheServiceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param requireTls Require TLS (HTTPS) for all clients connecting to this service. Clients who connect over HTTP (port 80) will receive a
-         * HTTP 301 to the same URL over HTTPS (port 443). You must have at least one (1) edgeSslCertificate specified to enable
-         * this.
+         * @param requireTls Require TLS (HTTPS) for all clients connecting to this service.
+         * Clients who connect over HTTP (port 80) will receive a HTTP 301 to the same URL over HTTPS (port 443).
+         * You must have at least one (1) edgeSslCertificate specified to enable this.
          * 
          * @return builder
          * 
@@ -649,9 +665,9 @@ public final class EdgeCacheServiceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param requireTls Require TLS (HTTPS) for all clients connecting to this service. Clients who connect over HTTP (port 80) will receive a
-         * HTTP 301 to the same URL over HTTPS (port 443). You must have at least one (1) edgeSslCertificate specified to enable
-         * this.
+         * @param requireTls Require TLS (HTTPS) for all clients connecting to this service.
+         * Clients who connect over HTTP (port 80) will receive a HTTP 301 to the same URL over HTTPS (port 443).
+         * You must have at least one (1) edgeSslCertificate specified to enable this.
          * 
          * @return builder
          * 
@@ -684,8 +700,8 @@ public final class EdgeCacheServiceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sslPolicy URL of the SslPolicy resource that will be associated with the EdgeCacheService. If not set, the EdgeCacheService has no
-         * SSL policy configured, and will default to the &#34;COMPATIBLE&#34; policy.
+         * @param sslPolicy URL of the SslPolicy resource that will be associated with the EdgeCacheService.
+         * If not set, the EdgeCacheService has no SSL policy configured, and will default to the &#34;COMPATIBLE&#34; policy.
          * 
          * @return builder
          * 
@@ -696,8 +712,8 @@ public final class EdgeCacheServiceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sslPolicy URL of the SslPolicy resource that will be associated with the EdgeCacheService. If not set, the EdgeCacheService has no
-         * SSL policy configured, and will default to the &#34;COMPATIBLE&#34; policy.
+         * @param sslPolicy URL of the SslPolicy resource that will be associated with the EdgeCacheService.
+         * If not set, the EdgeCacheService has no SSL policy configured, and will default to the &#34;COMPATIBLE&#34; policy.
          * 
          * @return builder
          * 

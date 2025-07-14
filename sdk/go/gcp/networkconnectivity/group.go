@@ -105,8 +105,6 @@ type Group struct {
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The name of the hub. Hub names must be unique. They use the following form: projects/{projectNumber}/locations/global/hubs/{hubId}
-	//
-	// ***
 	Hub pulumi.StringOutput `pulumi:"hub"`
 	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -179,8 +177,6 @@ type groupState struct {
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The name of the hub. Hub names must be unique. They use the following form: projects/{projectNumber}/locations/global/hubs/{hubId}
-	//
-	// ***
 	Hub *string `pulumi:"hub"`
 	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -216,8 +212,6 @@ type GroupState struct {
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// The name of the hub. Hub names must be unique. They use the following form: projects/{projectNumber}/locations/global/hubs/{hubId}
-	//
-	// ***
 	Hub pulumi.StringPtrInput
 	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -253,8 +247,6 @@ type groupArgs struct {
 	// An optional description of the group.
 	Description *string `pulumi:"description"`
 	// The name of the hub. Hub names must be unique. They use the following form: projects/{projectNumber}/locations/global/hubs/{hubId}
-	//
-	// ***
 	Hub string `pulumi:"hub"`
 	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -276,8 +268,6 @@ type GroupArgs struct {
 	// An optional description of the group.
 	Description pulumi.StringPtrInput
 	// The name of the hub. Hub names must be unique. They use the following form: projects/{projectNumber}/locations/global/hubs/{hubId}
-	//
-	// ***
 	Hub pulumi.StringInput
 	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -400,8 +390,6 @@ func (o GroupOutput) EffectiveLabels() pulumi.StringMapOutput {
 }
 
 // The name of the hub. Hub names must be unique. They use the following form: projects/{projectNumber}/locations/global/hubs/{hubId}
-//
-// ***
 func (o GroupOutput) Hub() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.Hub }).(pulumi.StringOutput)
 }

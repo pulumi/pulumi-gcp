@@ -33,9 +33,6 @@ class WireGroupArgs:
         """
         The set of arguments for constructing a WireGroup resource.
         :param pulumi.Input[builtins.str] cross_site_network: Required cross site network to which wire group belongs.
-               
-               
-               - - -
         :param pulumi.Input[builtins.bool] admin_enabled: Indicates whether the wire group is administratively enabled.
         :param pulumi.Input[builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Sequence[pulumi.Input['WireGroupEndpointArgs']]] endpoints: Endpoints grouped by location, each mapping to interconnect configurations.
@@ -73,9 +70,6 @@ class WireGroupArgs:
     def cross_site_network(self) -> pulumi.Input[builtins.str]:
         """
         Required cross site network to which wire group belongs.
-
-
-        - - -
         """
         return pulumi.get(self, "cross_site_network")
 
@@ -195,9 +189,6 @@ class _WireGroupState:
         :param pulumi.Input[builtins.bool] admin_enabled: Indicates whether the wire group is administratively enabled.
         :param pulumi.Input[builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[builtins.str] cross_site_network: Required cross site network to which wire group belongs.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Sequence[pulumi.Input['WireGroupEndpointArgs']]] endpoints: Endpoints grouped by location, each mapping to interconnect configurations.
                Structure is documented below.
@@ -269,9 +260,6 @@ class _WireGroupState:
     def cross_site_network(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Required cross site network to which wire group belongs.
-
-
-        - - -
         """
         return pulumi.get(self, "cross_site_network")
 
@@ -457,9 +445,6 @@ class WireGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.bool] admin_enabled: Indicates whether the wire group is administratively enabled.
         :param pulumi.Input[builtins.str] cross_site_network: Required cross site network to which wire group belongs.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WireGroupEndpointArgs', 'WireGroupEndpointArgsDict']]]] endpoints: Endpoints grouped by location, each mapping to interconnect configurations.
                Structure is documented below.
@@ -609,9 +594,6 @@ class WireGroup(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] admin_enabled: Indicates whether the wire group is administratively enabled.
         :param pulumi.Input[builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[builtins.str] cross_site_network: Required cross site network to which wire group belongs.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WireGroupEndpointArgs', 'WireGroupEndpointArgsDict']]]] endpoints: Endpoints grouped by location, each mapping to interconnect configurations.
                Structure is documented below.
@@ -669,9 +651,6 @@ class WireGroup(pulumi.CustomResource):
     def cross_site_network(self) -> pulumi.Output[builtins.str]:
         """
         Required cross site network to which wire group belongs.
-
-
-        - - -
         """
         return pulumi.get(self, "cross_site_network")
 

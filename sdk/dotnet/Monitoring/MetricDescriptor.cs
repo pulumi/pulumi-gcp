@@ -216,9 +216,6 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
         /// Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("valueType")]
         public Output<string> ValueType { get; private set; } = null!;
@@ -353,9 +350,6 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
         /// Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("valueType", required: true)]
         public Input<string> ValueType { get; set; } = null!;
@@ -470,9 +464,6 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
         /// Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("valueType")]
         public Input<string>? ValueType { get; set; }

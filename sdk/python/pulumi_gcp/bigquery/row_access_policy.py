@@ -38,9 +38,6 @@ class RowAccessPolicyArgs:
                date_field = CAST('2019-9-27' as DATE)
                nullable_field is not NULL
                numeric_field BETWEEN 1.0 AND 5.0
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] policy_id: The ID of the row access policy. The ID must contain only
                letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum
                length is 256 characters.
@@ -103,9 +100,6 @@ class RowAccessPolicyArgs:
         date_field = CAST('2019-9-27' as DATE)
         nullable_field is not NULL
         numeric_field BETWEEN 1.0 AND 5.0
-
-
-        - - -
         """
         return pulumi.get(self, "filter_predicate")
 
@@ -210,9 +204,6 @@ class _RowAccessPolicyState:
                date_field = CAST('2019-9-27' as DATE)
                nullable_field is not NULL
                numeric_field BETWEEN 1.0 AND 5.0
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] grantees: Input only. The optional list of iam_member users or groups that specifies the initial
                members that the row-level access policy should be created with.
                grantees types:
@@ -298,9 +289,6 @@ class _RowAccessPolicyState:
         date_field = CAST('2019-9-27' as DATE)
         nullable_field is not NULL
         numeric_field BETWEEN 1.0 AND 5.0
-
-
-        - - -
         """
         return pulumi.get(self, "filter_predicate")
 
@@ -468,9 +456,6 @@ class RowAccessPolicy(pulumi.CustomResource):
                date_field = CAST('2019-9-27' as DATE)
                nullable_field is not NULL
                numeric_field BETWEEN 1.0 AND 5.0
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] grantees: Input only. The optional list of iam_member users or groups that specifies the initial
                members that the row-level access policy should be created with.
                grantees types:
@@ -638,9 +623,6 @@ class RowAccessPolicy(pulumi.CustomResource):
                date_field = CAST('2019-9-27' as DATE)
                nullable_field is not NULL
                numeric_field BETWEEN 1.0 AND 5.0
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] grantees: Input only. The optional list of iam_member users or groups that specifies the initial
                members that the row-level access policy should be created with.
                grantees types:
@@ -715,9 +697,6 @@ class RowAccessPolicy(pulumi.CustomResource):
         date_field = CAST('2019-9-27' as DATE)
         nullable_field is not NULL
         numeric_field BETWEEN 1.0 AND 5.0
-
-
-        - - -
         """
         return pulumi.get(self, "filter_predicate")
 

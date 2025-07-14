@@ -115,16 +115,12 @@ public final class GlossaryTermState extends com.pulumi.resources.ResourceArgs {
     /**
      * The location where the glossary term should reside.
      * 
-     * ***
-     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
      * @return The location where the glossary term should reside.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> location() {
@@ -412,8 +408,6 @@ public final class GlossaryTermState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param location The location where the glossary term should reside.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -424,8 +418,6 @@ public final class GlossaryTermState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location The location where the glossary term should reside.
-         * 
-         * ***
          * 
          * @return builder
          * 

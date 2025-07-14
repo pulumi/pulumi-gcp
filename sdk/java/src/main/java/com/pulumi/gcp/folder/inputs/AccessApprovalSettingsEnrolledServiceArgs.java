@@ -80,8 +80,6 @@ public final class AccessApprovalSettingsEnrolledServiceArgs extends com.pulumi.
      * Default value is `BLOCK_ALL`.
      * Possible values are: `BLOCK_ALL`.
      * 
-     * ***
-     * 
      */
     @Import(name="enrollmentLevel")
     private @Nullable Output<String> enrollmentLevel;
@@ -90,8 +88,6 @@ public final class AccessApprovalSettingsEnrolledServiceArgs extends com.pulumi.
      * @return The enrollment level of the service.
      * Default value is `BLOCK_ALL`.
      * Possible values are: `BLOCK_ALL`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> enrollmentLevel() {
@@ -193,8 +189,6 @@ public final class AccessApprovalSettingsEnrolledServiceArgs extends com.pulumi.
          * Default value is `BLOCK_ALL`.
          * Possible values are: `BLOCK_ALL`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -207,8 +201,6 @@ public final class AccessApprovalSettingsEnrolledServiceArgs extends com.pulumi.
          * @param enrollmentLevel The enrollment level of the service.
          * Default value is `BLOCK_ALL`.
          * Possible values are: `BLOCK_ALL`.
-         * 
-         * ***
          * 
          * @return builder
          * 

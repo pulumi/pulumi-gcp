@@ -204,15 +204,16 @@ type ConnectCluster struct {
 	GcpConfig ConnectClusterGcpConfigOutput `pulumi:"gcpConfig"`
 	// The name of the Kafka cluster this Kafka Connect cluster is attached to. Structured like: `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID`.
 	KafkaCluster pulumi.StringOutput `pulumi:"kafkaCluster"`
-	// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-),
-	// underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase
-	// characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
-	// configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+	// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// ID of the location of the Kafka Connect resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the connect cluster. Structured like: `projects/PROJECT_ID/locations/LOCATION/connectClusters/CONNECT_CLUSTER_ID`.
-	Name    pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -287,15 +288,16 @@ type connectClusterState struct {
 	GcpConfig *ConnectClusterGcpConfig `pulumi:"gcpConfig"`
 	// The name of the Kafka cluster this Kafka Connect cluster is attached to. Structured like: `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID`.
 	KafkaCluster *string `pulumi:"kafkaCluster"`
-	// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-),
-	// underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase
-	// characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
-	// configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+	// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// ID of the location of the Kafka Connect resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
 	Location *string `pulumi:"location"`
 	// The name of the connect cluster. Structured like: `projects/PROJECT_ID/locations/LOCATION/connectClusters/CONNECT_CLUSTER_ID`.
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -321,15 +323,16 @@ type ConnectClusterState struct {
 	GcpConfig ConnectClusterGcpConfigPtrInput
 	// The name of the Kafka cluster this Kafka Connect cluster is attached to. Structured like: `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID`.
 	KafkaCluster pulumi.StringPtrInput
-	// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-),
-	// underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase
-	// characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
-	// configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+	// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// ID of the location of the Kafka Connect resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
 	Location pulumi.StringPtrInput
 	// The name of the connect cluster. Structured like: `projects/PROJECT_ID/locations/LOCATION/connectClusters/CONNECT_CLUSTER_ID`.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -355,14 +358,15 @@ type connectClusterArgs struct {
 	GcpConfig ConnectClusterGcpConfig `pulumi:"gcpConfig"`
 	// The name of the Kafka cluster this Kafka Connect cluster is attached to. Structured like: `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID`.
 	KafkaCluster string `pulumi:"kafkaCluster"`
-	// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-),
-	// underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase
-	// characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
-	// configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+	// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// ID of the location of the Kafka Connect resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
-	Location string  `pulumi:"location"`
-	Project  *string `pulumi:"project"`
+	Location string `pulumi:"location"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a ConnectCluster resource.
@@ -377,14 +381,15 @@ type ConnectClusterArgs struct {
 	GcpConfig ConnectClusterGcpConfigInput
 	// The name of the Kafka cluster this Kafka Connect cluster is attached to. Structured like: `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID`.
 	KafkaCluster pulumi.StringInput
-	// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-),
-	// underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase
-	// characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
-	// configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+	// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// ID of the location of the Kafka Connect resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
 	Location pulumi.StringInput
-	Project  pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 }
 
 func (ConnectClusterArgs) ElementType() reflect.Type {
@@ -506,10 +511,9 @@ func (o ConnectClusterOutput) KafkaCluster() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectCluster) pulumi.StringOutput { return v.KafkaCluster }).(pulumi.StringOutput)
 }
 
-// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-),
-// underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase
-// characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
-// configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o ConnectClusterOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ConnectCluster) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -524,6 +528,8 @@ func (o ConnectClusterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectCluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o ConnectClusterOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectCluster) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

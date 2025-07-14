@@ -209,9 +209,6 @@ namespace Pulumi.Gcp.Netapp
 
         /// <summary>
         /// The name of the replication. Needs to be unique per location.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -387,9 +384,6 @@ namespace Pulumi.Gcp.Netapp
 
         /// <summary>
         /// The name of the replication. Needs to be unique per location.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -546,9 +540,6 @@ namespace Pulumi.Gcp.Netapp
 
         /// <summary>
         /// The name of the replication. Needs to be unique per location.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

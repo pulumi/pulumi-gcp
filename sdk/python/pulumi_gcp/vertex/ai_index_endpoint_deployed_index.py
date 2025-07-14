@@ -39,9 +39,6 @@ class AiIndexEndpointDeployedIndexArgs:
         :param pulumi.Input[builtins.str] index: The name of the Index this is the deployment of.
         :param pulumi.Input[builtins.str] index_endpoint: Identifies the index endpoint. Must be in the format
                'projects/{{project}}/locations/{{region}}/indexEndpoints/{{indexEndpoint}}'
-               
-               
-               - - -
         :param pulumi.Input['AiIndexEndpointDeployedIndexAutomaticResourcesArgs'] automatic_resources: A description of resources that the DeployedIndex uses, which to large degree are decided by Vertex AI, and optionally allows only a modest additional configuration.
                Structure is documented below.
         :param pulumi.Input['AiIndexEndpointDeployedIndexDedicatedResourcesArgs'] dedicated_resources: A description of resources that are dedicated to the DeployedIndex, and that need a higher degree of manual configuration. The field minReplicaCount must be set to a value strictly greater than 0, or else validation will fail. We don't provide SLA when minReplicaCount=1. If maxReplicaCount is not set, the default value is minReplicaCount. The max allowed replica count is 1000.
@@ -113,9 +110,6 @@ class AiIndexEndpointDeployedIndexArgs:
         """
         Identifies the index endpoint. Must be in the format
         'projects/{{project}}/locations/{{region}}/indexEndpoints/{{indexEndpoint}}'
-
-
-        - - -
         """
         return pulumi.get(self, "index_endpoint")
 
@@ -272,9 +266,6 @@ class _AiIndexEndpointDeployedIndexState:
         :param pulumi.Input[builtins.str] index: The name of the Index this is the deployment of.
         :param pulumi.Input[builtins.str] index_endpoint: Identifies the index endpoint. Must be in the format
                'projects/{{project}}/locations/{{region}}/indexEndpoints/{{indexEndpoint}}'
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] index_sync_time: The DeployedIndex may depend on various data on its original Index. Additionally when certain changes to the original Index are being done (e.g. when what the Index contains is being changed) the DeployedIndex may be asynchronously updated in the background to reflect these changes. If this timestamp's value is at least the [Index.update_time](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.indexes#Index.FIELDS.update_time) of the original Index, it means that this DeployedIndex and the original Index are in sync. If this timestamp is older, then to see which updates this DeployedIndex already contains (and which it does not), one must [list](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.operations/list#google.longrunning.Operations.ListOperations) the operations that are running on the original Index. Only the successfully completed Operations with updateTime equal or before this sync time are contained in this DeployedIndex.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[builtins.str] name: The name of the DeployedIndex resource.
@@ -440,9 +431,6 @@ class _AiIndexEndpointDeployedIndexState:
         """
         Identifies the index endpoint. Must be in the format
         'projects/{{project}}/locations/{{region}}/indexEndpoints/{{indexEndpoint}}'
-
-
-        - - -
         """
         return pulumi.get(self, "index_endpoint")
 
@@ -732,9 +720,6 @@ class AiIndexEndpointDeployedIndex(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] index: The name of the Index this is the deployment of.
         :param pulumi.Input[builtins.str] index_endpoint: Identifies the index endpoint. Must be in the format
                'projects/{{project}}/locations/{{region}}/indexEndpoints/{{indexEndpoint}}'
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] region: The region of the index endpoint deployment. eg us-central1
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] reserved_ip_ranges: A list of reserved ip ranges under the VPC network that can be used for this DeployedIndex.
                If set, we will deploy the index within the provided ip ranges. Otherwise, the index might be deployed to any ip ranges under the provided VPC network.
@@ -1032,9 +1017,6 @@ class AiIndexEndpointDeployedIndex(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] index: The name of the Index this is the deployment of.
         :param pulumi.Input[builtins.str] index_endpoint: Identifies the index endpoint. Must be in the format
                'projects/{{project}}/locations/{{region}}/indexEndpoints/{{indexEndpoint}}'
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] index_sync_time: The DeployedIndex may depend on various data on its original Index. Additionally when certain changes to the original Index are being done (e.g. when what the Index contains is being changed) the DeployedIndex may be asynchronously updated in the background to reflect these changes. If this timestamp's value is at least the [Index.update_time](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.indexes#Index.FIELDS.update_time) of the original Index, it means that this DeployedIndex and the original Index are in sync. If this timestamp is older, then to see which updates this DeployedIndex already contains (and which it does not), one must [list](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.operations/list#google.longrunning.Operations.ListOperations) the operations that are running on the original Index. Only the successfully completed Operations with updateTime equal or before this sync time are contained in this DeployedIndex.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[builtins.str] name: The name of the DeployedIndex resource.
@@ -1154,9 +1136,6 @@ class AiIndexEndpointDeployedIndex(pulumi.CustomResource):
         """
         Identifies the index endpoint. Must be in the format
         'projects/{{project}}/locations/{{region}}/indexEndpoints/{{indexEndpoint}}'
-
-
-        - - -
         """
         return pulumi.get(self, "index_endpoint")
 

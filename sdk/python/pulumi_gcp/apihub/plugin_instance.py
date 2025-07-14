@@ -46,7 +46,10 @@ class PluginInstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['PluginInstanceActionArgs']]] actions: The action status for the plugin instance.
                Structure is documented below.
         :param pulumi.Input['PluginInstanceAuthConfigArgs'] auth_config: AuthConfig represents the authentication information.
+               Structure is documented below.
         :param pulumi.Input[builtins.bool] disable: The display name for this plugin instance. Max length is 255 characters.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "location", location)
@@ -134,6 +137,7 @@ class PluginInstanceArgs:
     def auth_config(self) -> Optional[pulumi.Input['PluginInstanceAuthConfigArgs']]:
         """
         AuthConfig represents the authentication information.
+        Structure is documented below.
         """
         return pulumi.get(self, "auth_config")
 
@@ -156,6 +160,10 @@ class PluginInstanceArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -184,6 +192,7 @@ class _PluginInstanceState:
         :param pulumi.Input[Sequence[pulumi.Input['PluginInstanceActionArgs']]] actions: The action status for the plugin instance.
                Structure is documented below.
         :param pulumi.Input['PluginInstanceAuthConfigArgs'] auth_config: AuthConfig represents the authentication information.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] create_time: Timestamp indicating when the plugin instance was created.
         :param pulumi.Input[builtins.bool] disable: The display name for this plugin instance. Max length is 255 characters.
         :param pulumi.Input[builtins.str] display_name: The display name for this plugin instance. Max length is 255 characters.
@@ -203,6 +212,8 @@ class _PluginInstanceState:
                * If not provided, a system generated id will be used.
                This value should be 4-63 characters, and valid characters
                are /a-z[0-9]-_/.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] state: The current state of the plugin instance (e.g., enabled, disabled,
                provisioning).
                Possible values:
@@ -260,6 +271,7 @@ class _PluginInstanceState:
     def auth_config(self) -> Optional[pulumi.Input['PluginInstanceAuthConfigArgs']]:
         """
         AuthConfig represents the authentication information.
+        Structure is documented below.
         """
         return pulumi.get(self, "auth_config")
 
@@ -377,6 +389,10 @@ class _PluginInstanceState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -483,6 +499,7 @@ class PluginInstance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['PluginInstanceActionArgs', 'PluginInstanceActionArgsDict']]]] actions: The action status for the plugin instance.
                Structure is documented below.
         :param pulumi.Input[Union['PluginInstanceAuthConfigArgs', 'PluginInstanceAuthConfigArgsDict']] auth_config: AuthConfig represents the authentication information.
+               Structure is documented below.
         :param pulumi.Input[builtins.bool] disable: The display name for this plugin instance. Max length is 255 characters.
         :param pulumi.Input[builtins.str] display_name: The display name for this plugin instance. Max length is 255 characters.
         :param pulumi.Input[builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -495,6 +512,8 @@ class PluginInstance(pulumi.CustomResource):
                * If not provided, a system generated id will be used.
                This value should be 4-63 characters, and valid characters
                are /a-z[0-9]-_/.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         ...
     @overload
@@ -634,6 +653,7 @@ class PluginInstance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['PluginInstanceActionArgs', 'PluginInstanceActionArgsDict']]]] actions: The action status for the plugin instance.
                Structure is documented below.
         :param pulumi.Input[Union['PluginInstanceAuthConfigArgs', 'PluginInstanceAuthConfigArgsDict']] auth_config: AuthConfig represents the authentication information.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] create_time: Timestamp indicating when the plugin instance was created.
         :param pulumi.Input[builtins.bool] disable: The display name for this plugin instance. Max length is 255 characters.
         :param pulumi.Input[builtins.str] display_name: The display name for this plugin instance. Max length is 255 characters.
@@ -653,6 +673,8 @@ class PluginInstance(pulumi.CustomResource):
                * If not provided, a system generated id will be used.
                This value should be 4-63 characters, and valid characters
                are /a-z[0-9]-_/.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] state: The current state of the plugin instance (e.g., enabled, disabled,
                provisioning).
                Possible values:
@@ -698,6 +720,7 @@ class PluginInstance(pulumi.CustomResource):
     def auth_config(self) -> pulumi.Output[Optional['outputs.PluginInstanceAuthConfig']]:
         """
         AuthConfig represents the authentication information.
+        Structure is documented below.
         """
         return pulumi.get(self, "auth_config")
 
@@ -779,6 +802,10 @@ class PluginInstance(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property

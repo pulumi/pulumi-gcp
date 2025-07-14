@@ -24,18 +24,18 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
     public static final PipelineArgs Empty = new PipelineArgs();
 
     /**
-     * User-defined annotations. See https://google.aip.dev/128#annotations. **Note**: This field is non-authoritative, and
-     * will only manage the annotations present in your configuration. Please refer to the field &#39;effective_annotations&#39; for
-     * all of the annotations present on the resource.
+     * User-defined annotations. See https://google.aip.dev/128#annotations.
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     @Import(name="annotations")
     private @Nullable Output<Map<String,String>> annotations;
 
     /**
-     * @return User-defined annotations. See https://google.aip.dev/128#annotations. **Note**: This field is non-authoritative, and
-     * will only manage the annotations present in your configuration. Please refer to the field &#39;effective_annotations&#39; for
-     * all of the annotations present on the resource.
+     * @return User-defined annotations. See https://google.aip.dev/128#annotations.
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -43,8 +43,9 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt the event data. If not set, an internal
-     * Google-owned key will be used to encrypt messages. It must match the pattern
+     * Resource name of a KMS crypto key (managed by the user) used to
+     * encrypt/decrypt the event data. If not set, an internal Google-owned key
+     * will be used to encrypt messages. It must match the pattern
      * &#34;projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}&#34;.
      * 
      */
@@ -52,8 +53,9 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> cryptoKeyName;
 
     /**
-     * @return Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt the event data. If not set, an internal
-     * Google-owned key will be used to encrypt messages. It must match the pattern
+     * @return Resource name of a KMS crypto key (managed by the user) used to
+     * encrypt/decrypt the event data. If not set, an internal Google-owned key
+     * will be used to encrypt messages. It must match the pattern
      * &#34;projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}&#34;.
      * 
      */
@@ -97,6 +99,7 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Represents the format of message data.
+     * Structure is documented below.
      * 
      */
     @Import(name="inputPayloadFormat")
@@ -104,6 +107,7 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Represents the format of message data.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<PipelineInputPayloadFormatArgs>> inputPayloadFormat() {
@@ -111,20 +115,22 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * User labels attached to the Pipeline that can be used to group resources. An object containing a list of &#34;key&#34;: value
-     * pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }. **Note**: This field is non-authoritative, and will
-     * only manage the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels
-     * present on the resource.
+     * User labels attached to the Pipeline that can be used to group
+     * resources. An object containing a list of &#34;key&#34;: value pairs. Example: {
+     * &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return User labels attached to the Pipeline that can be used to group resources. An object containing a list of &#34;key&#34;: value
-     * pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }. **Note**: This field is non-authoritative, and will
-     * only manage the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels
-     * present on the resource.
+     * @return User labels attached to the Pipeline that can be used to group
+     * resources. An object containing a list of &#34;key&#34;: value pairs. Example: {
+     * &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -147,14 +153,18 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration for Platform Telemetry logging for Eventarc Advanced resources.
+     * The configuration for Platform Telemetry logging for Eventarc Advanced
+     * resources.
+     * Structure is documented below.
      * 
      */
     @Import(name="loggingConfig")
     private @Nullable Output<PipelineLoggingConfigArgs> loggingConfig;
 
     /**
-     * @return The configuration for Platform Telemetry logging for Eventarc Advanced resources.
+     * @return The configuration for Platform Telemetry logging for Eventarc Advanced
+     * resources.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<PipelineLoggingConfigArgs>> loggingConfig() {
@@ -162,16 +172,18 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of mediation operations to be performed on the message. Currently, only one Transformation operation is allowed in
-     * each Pipeline.
+     * List of mediation operations to be performed on the message. Currently,
+     * only one Transformation operation is allowed in each Pipeline.
+     * Structure is documented below.
      * 
      */
     @Import(name="mediations")
     private @Nullable Output<List<PipelineMediationArgs>> mediations;
 
     /**
-     * @return List of mediation operations to be performed on the message. Currently, only one Transformation operation is allowed in
-     * each Pipeline.
+     * @return List of mediation operations to be performed on the message. Currently,
+     * only one Transformation operation is allowed in each Pipeline.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<PipelineMediationArgs>>> mediations() {
@@ -195,30 +207,48 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         return this.pipelineId;
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
 
     /**
-     * The retry policy configuration for the Pipeline. The pipeline exponentially backs off in case the destination is non
-     * responsive or returns a retryable error code. The default semantics are as follows: The backoff starts with a 5 second
-     * delay and doubles the delay after each failed attempt (10 seconds, 20 seconds, 40 seconds, etc.). The delay is capped at
-     * 60 seconds by default. Please note that if you set the min_retry_delay and max_retry_delay fields to the same value this
-     * will make the duration between retries constant.
+     * The retry policy configuration for the Pipeline. The pipeline
+     * exponentially backs off in case the destination is non responsive or
+     * returns a retryable error code. The default semantics are as follows:
+     * The backoff starts with a 5 second delay and doubles the
+     * delay after each failed attempt (10 seconds, 20 seconds, 40 seconds, etc.).
+     * The delay is capped at 60 seconds by default.
+     * Please note that if you set the min_retry_delay and max_retry_delay fields
+     * to the same value this will make the duration between retries constant.
+     * Structure is documented below.
      * 
      */
     @Import(name="retryPolicy")
     private @Nullable Output<PipelineRetryPolicyArgs> retryPolicy;
 
     /**
-     * @return The retry policy configuration for the Pipeline. The pipeline exponentially backs off in case the destination is non
-     * responsive or returns a retryable error code. The default semantics are as follows: The backoff starts with a 5 second
-     * delay and doubles the delay after each failed attempt (10 seconds, 20 seconds, 40 seconds, etc.). The delay is capped at
-     * 60 seconds by default. Please note that if you set the min_retry_delay and max_retry_delay fields to the same value this
-     * will make the duration between retries constant.
+     * @return The retry policy configuration for the Pipeline. The pipeline
+     * exponentially backs off in case the destination is non responsive or
+     * returns a retryable error code. The default semantics are as follows:
+     * The backoff starts with a 5 second delay and doubles the
+     * delay after each failed attempt (10 seconds, 20 seconds, 40 seconds, etc.).
+     * The delay is capped at 60 seconds by default.
+     * Please note that if you set the min_retry_delay and max_retry_delay fields
+     * to the same value this will make the duration between retries constant.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<PipelineRetryPolicyArgs>> retryPolicy() {
@@ -261,9 +291,9 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param annotations User-defined annotations. See https://google.aip.dev/128#annotations. **Note**: This field is non-authoritative, and
-         * will only manage the annotations present in your configuration. Please refer to the field &#39;effective_annotations&#39; for
-         * all of the annotations present on the resource.
+         * @param annotations User-defined annotations. See https://google.aip.dev/128#annotations.
+         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -274,9 +304,9 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param annotations User-defined annotations. See https://google.aip.dev/128#annotations. **Note**: This field is non-authoritative, and
-         * will only manage the annotations present in your configuration. Please refer to the field &#39;effective_annotations&#39; for
-         * all of the annotations present on the resource.
+         * @param annotations User-defined annotations. See https://google.aip.dev/128#annotations.
+         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -286,8 +316,9 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cryptoKeyName Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt the event data. If not set, an internal
-         * Google-owned key will be used to encrypt messages. It must match the pattern
+         * @param cryptoKeyName Resource name of a KMS crypto key (managed by the user) used to
+         * encrypt/decrypt the event data. If not set, an internal Google-owned key
+         * will be used to encrypt messages. It must match the pattern
          * &#34;projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}&#34;.
          * 
          * @return builder
@@ -299,8 +330,9 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cryptoKeyName Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt the event data. If not set, an internal
-         * Google-owned key will be used to encrypt messages. It must match the pattern
+         * @param cryptoKeyName Resource name of a KMS crypto key (managed by the user) used to
+         * encrypt/decrypt the event data. If not set, an internal Google-owned key
+         * will be used to encrypt messages. It must match the pattern
          * &#34;projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}&#34;.
          * 
          * @return builder
@@ -370,6 +402,7 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param inputPayloadFormat Represents the format of message data.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -381,6 +414,7 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param inputPayloadFormat Represents the format of message data.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -390,10 +424,11 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels User labels attached to the Pipeline that can be used to group resources. An object containing a list of &#34;key&#34;: value
-         * pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }. **Note**: This field is non-authoritative, and will
-         * only manage the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels
-         * present on the resource.
+         * @param labels User labels attached to the Pipeline that can be used to group
+         * resources. An object containing a list of &#34;key&#34;: value pairs. Example: {
+         * &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -404,10 +439,11 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels User labels attached to the Pipeline that can be used to group resources. An object containing a list of &#34;key&#34;: value
-         * pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }. **Note**: This field is non-authoritative, and will
-         * only manage the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels
-         * present on the resource.
+         * @param labels User labels attached to the Pipeline that can be used to group
+         * resources. An object containing a list of &#34;key&#34;: value pairs. Example: {
+         * &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -438,7 +474,9 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loggingConfig The configuration for Platform Telemetry logging for Eventarc Advanced resources.
+         * @param loggingConfig The configuration for Platform Telemetry logging for Eventarc Advanced
+         * resources.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -449,7 +487,9 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loggingConfig The configuration for Platform Telemetry logging for Eventarc Advanced resources.
+         * @param loggingConfig The configuration for Platform Telemetry logging for Eventarc Advanced
+         * resources.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -459,8 +499,9 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mediations List of mediation operations to be performed on the message. Currently, only one Transformation operation is allowed in
-         * each Pipeline.
+         * @param mediations List of mediation operations to be performed on the message. Currently,
+         * only one Transformation operation is allowed in each Pipeline.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -471,8 +512,9 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mediations List of mediation operations to be performed on the message. Currently, only one Transformation operation is allowed in
-         * each Pipeline.
+         * @param mediations List of mediation operations to be performed on the message. Currently,
+         * only one Transformation operation is allowed in each Pipeline.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -482,8 +524,9 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mediations List of mediation operations to be performed on the message. Currently, only one Transformation operation is allowed in
-         * each Pipeline.
+         * @param mediations List of mediation operations to be performed on the message. Currently,
+         * only one Transformation operation is allowed in each Pipeline.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -515,21 +558,39 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
             return pipelineId(Output.of(pipelineId));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
 
         /**
-         * @param retryPolicy The retry policy configuration for the Pipeline. The pipeline exponentially backs off in case the destination is non
-         * responsive or returns a retryable error code. The default semantics are as follows: The backoff starts with a 5 second
-         * delay and doubles the delay after each failed attempt (10 seconds, 20 seconds, 40 seconds, etc.). The delay is capped at
-         * 60 seconds by default. Please note that if you set the min_retry_delay and max_retry_delay fields to the same value this
-         * will make the duration between retries constant.
+         * @param retryPolicy The retry policy configuration for the Pipeline. The pipeline
+         * exponentially backs off in case the destination is non responsive or
+         * returns a retryable error code. The default semantics are as follows:
+         * The backoff starts with a 5 second delay and doubles the
+         * delay after each failed attempt (10 seconds, 20 seconds, 40 seconds, etc.).
+         * The delay is capped at 60 seconds by default.
+         * Please note that if you set the min_retry_delay and max_retry_delay fields
+         * to the same value this will make the duration between retries constant.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -540,11 +601,15 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param retryPolicy The retry policy configuration for the Pipeline. The pipeline exponentially backs off in case the destination is non
-         * responsive or returns a retryable error code. The default semantics are as follows: The backoff starts with a 5 second
-         * delay and doubles the delay after each failed attempt (10 seconds, 20 seconds, 40 seconds, etc.). The delay is capped at
-         * 60 seconds by default. Please note that if you set the min_retry_delay and max_retry_delay fields to the same value this
-         * will make the duration between retries constant.
+         * @param retryPolicy The retry policy configuration for the Pipeline. The pipeline
+         * exponentially backs off in case the destination is non responsive or
+         * returns a retryable error code. The default semantics are as follows:
+         * The backoff starts with a 5 second delay and doubles the
+         * delay after each failed attempt (10 seconds, 20 seconds, 40 seconds, etc.).
+         * The delay is capped at 60 seconds by default.
+         * Please note that if you set the min_retry_delay and max_retry_delay fields
+         * to the same value this will make the duration between retries constant.
+         * Structure is documented below.
          * 
          * @return builder
          * 

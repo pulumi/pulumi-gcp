@@ -34,9 +34,6 @@ class InterceptEndpointGroupAssociationInitArgs:
                `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
                See https://google.aip.dev/124.
         :param pulumi.Input[builtins.str] location: The cloud location of the association, currently restricted to `global`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] network: The VPC network that is associated. for example:
                `projects/123456789/global/networks/my-network`.
                See https://google.aip.dev/124.
@@ -78,9 +75,6 @@ class InterceptEndpointGroupAssociationInitArgs:
     def location(self) -> pulumi.Input[builtins.str]:
         """
         The cloud location of the association, currently restricted to `global`.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -177,9 +171,6 @@ class _InterceptEndpointGroupAssociationState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The cloud location of the association, currently restricted to `global`.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['InterceptEndpointGroupAssociationLocationArgs']]] locations: The list of locations where the association is configured. This information
                is retrieved from the linked endpoint group.
                Structure is documented below.
@@ -317,9 +308,6 @@ class _InterceptEndpointGroupAssociationState:
     def location(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The cloud location of the association, currently restricted to `global`.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -548,9 +536,6 @@ class InterceptEndpointGroupAssociation(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The cloud location of the association, currently restricted to `global`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] network: The VPC network that is associated. for example:
                `projects/123456789/global/networks/my-network`.
                See https://google.aip.dev/124.
@@ -726,9 +711,6 @@ class InterceptEndpointGroupAssociation(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The cloud location of the association, currently restricted to `global`.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[Union['InterceptEndpointGroupAssociationLocationArgs', 'InterceptEndpointGroupAssociationLocationArgsDict']]]] locations: The list of locations where the association is configured. This information
                is retrieved from the linked endpoint group.
                Structure is documented below.
@@ -833,9 +815,6 @@ class InterceptEndpointGroupAssociation(pulumi.CustomResource):
     def location(self) -> pulumi.Output[builtins.str]:
         """
         The cloud location of the association, currently restricted to `global`.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

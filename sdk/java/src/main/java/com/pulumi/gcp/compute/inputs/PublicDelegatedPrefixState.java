@@ -50,16 +50,12 @@ public final class PublicDelegatedPrefixState extends com.pulumi.resources.Resou
     /**
      * The IP address range, in CIDR format, represented by this public delegated prefix.
      * 
-     * ***
-     * 
      */
     @Import(name="ipCidrRange")
     private @Nullable Output<String> ipCidrRange;
 
     /**
      * @return The IP address range, in CIDR format, represented by this public delegated prefix.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> ipCidrRange() {
@@ -265,8 +261,6 @@ public final class PublicDelegatedPrefixState extends com.pulumi.resources.Resou
         /**
          * @param ipCidrRange The IP address range, in CIDR format, represented by this public delegated prefix.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -277,8 +271,6 @@ public final class PublicDelegatedPrefixState extends com.pulumi.resources.Resou
 
         /**
          * @param ipCidrRange The IP address range, in CIDR format, represented by this public delegated prefix.
-         * 
-         * ***
          * 
          * @return builder
          * 

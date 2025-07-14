@@ -156,9 +156,6 @@ export class BackupSchedule extends pulumi.CustomResource {
 
     /**
      * The database to create the backup schedule on.
-     *
-     *
-     * - - -
      */
     public readonly database!: pulumi.Output<string>;
     /**
@@ -254,9 +251,6 @@ export class BackupSchedule extends pulumi.CustomResource {
 export interface BackupScheduleState {
     /**
      * The database to create the backup schedule on.
-     *
-     *
-     * - - -
      */
     database?: pulumi.Input<string>;
     /**
@@ -305,9 +299,6 @@ export interface BackupScheduleState {
 export interface BackupScheduleArgs {
     /**
      * The database to create the backup schedule on.
-     *
-     *
-     * - - -
      */
     database: pulumi.Input<string>;
     /**

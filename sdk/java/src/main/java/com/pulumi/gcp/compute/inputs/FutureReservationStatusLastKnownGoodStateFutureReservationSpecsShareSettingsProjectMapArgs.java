@@ -17,14 +17,16 @@ public final class FutureReservationStatusLastKnownGoodStateFutureReservationSpe
     public static final FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMapArgs Empty = new FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMapArgs();
 
     /**
-     * (Required) The identifier for this object. Format specified above.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return (Required) The identifier for this object. Format specified above.
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     public Output<String> project() {
@@ -72,7 +74,8 @@ public final class FutureReservationStatusLastKnownGoodStateFutureReservationSpe
         }
 
         /**
-         * @param project (Required) The identifier for this object. Format specified above.
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
          * 
          * @return builder
          * 
@@ -83,7 +86,8 @@ public final class FutureReservationStatusLastKnownGoodStateFutureReservationSpe
         }
 
         /**
-         * @param project (Required) The identifier for this object. Format specified above.
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
          * 
          * @return builder
          * 

@@ -163,8 +163,6 @@ public class AutoscalingPolicy extends com.pulumi.resources.CustomResource {
      * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
      * 3 and 50 characters.
      * 
-     * ***
-     * 
      */
     @Export(name="policyId", refs={String.class}, tree="[0]")
     private Output<String> policyId;
@@ -173,8 +171,6 @@ public class AutoscalingPolicy extends com.pulumi.resources.CustomResource {
      * @return The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
      * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
      * 3 and 50 characters.
-     * 
-     * ***
      * 
      */
     public Output<String> policyId() {

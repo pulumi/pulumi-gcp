@@ -2838,7 +2838,7 @@ if not MYPY:
         If true, avoid using IPs ending in .0 or .255.
         This avoids buggy consumer devices mistakenly dropping IPv4 traffic for those special IP addresses.
         """
-        manual_assign: NotRequired[pulumi.Input[builtins.str]]
+        manual_assign: NotRequired[pulumi.Input[builtins.bool]]
         """
         If true, prevent IP addresses from being automatically assigned.
         """
@@ -2851,13 +2851,13 @@ class BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArgs:
                  addresses: pulumi.Input[Sequence[pulumi.Input[builtins.str]]],
                  pool: pulumi.Input[builtins.str],
                  avoid_buggy_ips: Optional[pulumi.Input[builtins.bool]] = None,
-                 manual_assign: Optional[pulumi.Input[builtins.str]] = None):
+                 manual_assign: Optional[pulumi.Input[builtins.bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] addresses: The addresses that are part of this pool. Each address must be either in the CIDR form (1.2.3.0/24) or range form (1.2.3.1-1.2.3.5).
         :param pulumi.Input[builtins.str] pool: The name of the address pool.
         :param pulumi.Input[builtins.bool] avoid_buggy_ips: If true, avoid using IPs ending in .0 or .255.
                This avoids buggy consumer devices mistakenly dropping IPv4 traffic for those special IP addresses.
-        :param pulumi.Input[builtins.str] manual_assign: If true, prevent IP addresses from being automatically assigned.
+        :param pulumi.Input[builtins.bool] manual_assign: If true, prevent IP addresses from being automatically assigned.
         """
         pulumi.set(__self__, "addresses", addresses)
         pulumi.set(__self__, "pool", pool)
@@ -2905,14 +2905,14 @@ class BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArgs:
 
     @property
     @pulumi.getter(name="manualAssign")
-    def manual_assign(self) -> Optional[pulumi.Input[builtins.str]]:
+    def manual_assign(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
         If true, prevent IP addresses from being automatically assigned.
         """
         return pulumi.get(self, "manual_assign")
 
     @manual_assign.setter
-    def manual_assign(self, value: Optional[pulumi.Input[builtins.str]]):
+    def manual_assign(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "manual_assign", value)
 
 
@@ -4871,8 +4871,6 @@ if not MYPY:
         storage_class: pulumi.Input[builtins.str]
         """
         The StorageClass name that PVs will be created with.
-
-        - - -
         """
 elif False:
     BareMetalClusterStorageLvpNodeMountsConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -4885,8 +4883,6 @@ class BareMetalClusterStorageLvpNodeMountsConfigArgs:
         """
         :param pulumi.Input[builtins.str] path: The host machine path.
         :param pulumi.Input[builtins.str] storage_class: The StorageClass name that PVs will be created with.
-               
-               - - -
         """
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "storage_class", storage_class)
@@ -4908,8 +4904,6 @@ class BareMetalClusterStorageLvpNodeMountsConfigArgs:
     def storage_class(self) -> pulumi.Input[builtins.str]:
         """
         The StorageClass name that PVs will be created with.
-
-        - - -
         """
         return pulumi.get(self, "storage_class")
 
@@ -5188,8 +5182,7 @@ if not MYPY:
         """
         description: NotRequired[pulumi.Input[builtins.str]]
         """
-        (Output)
-        The description of the validation check.
+        A human readable description of this Bare Metal User Cluster.
         """
         details: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -5220,8 +5213,7 @@ class BareMetalClusterValidationCheckStatusResultArgs:
         """
         :param pulumi.Input[builtins.str] category: (Output)
                The category of the validation.
-        :param pulumi.Input[builtins.str] description: (Output)
-               The description of the validation check.
+        :param pulumi.Input[builtins.str] description: A human readable description of this Bare Metal User Cluster.
         :param pulumi.Input[builtins.str] details: (Output)
                Detailed failure information, which might be unformatted.
         :param pulumi.Input[builtins.str] options: (Output)
@@ -5257,8 +5249,7 @@ class BareMetalClusterValidationCheckStatusResultArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        (Output)
-        The description of the validation check.
+        A human readable description of this Bare Metal User Cluster.
         """
         return pulumi.get(self, "description")
 
@@ -5518,8 +5509,6 @@ if not MYPY:
         """
         Specifies the nodes operating system (default: LINUX).
         Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
-
-        - - -
         """
         key: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -5541,8 +5530,6 @@ class BareMetalNodePoolNodePoolConfigTaintArgs:
         """
         :param pulumi.Input[builtins.str] effect: Specifies the nodes operating system (default: LINUX).
                Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
-               
-               - - -
         :param pulumi.Input[builtins.str] key: Key associated with the effect.
         :param pulumi.Input[builtins.str] value: Value associated with the effect.
         """
@@ -5559,8 +5546,6 @@ class BareMetalNodePoolNodePoolConfigTaintArgs:
         """
         Specifies the nodes operating system (default: LINUX).
         Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
-
-        - - -
         """
         return pulumi.get(self, "effect")
 
@@ -7747,8 +7732,7 @@ if not MYPY:
         """
         description: NotRequired[pulumi.Input[builtins.str]]
         """
-        (Output)
-        The description of the validation check.
+        A human readable description of this VMware User Cluster.
         """
         details: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -7779,8 +7763,7 @@ class VMwareClusterValidationCheckStatusResultArgs:
         """
         :param pulumi.Input[builtins.str] category: (Output)
                The category of the validation.
-        :param pulumi.Input[builtins.str] description: (Output)
-               The description of the validation check.
+        :param pulumi.Input[builtins.str] description: A human readable description of this VMware User Cluster.
         :param pulumi.Input[builtins.str] details: (Output)
                Detailed failure information, which might be unformatted.
         :param pulumi.Input[builtins.str] options: (Output)
@@ -7816,8 +7799,7 @@ class VMwareClusterValidationCheckStatusResultArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        (Output)
-        The description of the validation check.
+        A human readable description of this VMware User Cluster.
         """
         return pulumi.get(self, "description")
 
@@ -8435,8 +8417,6 @@ if not MYPY:
         tag: NotRequired[pulumi.Input[builtins.str]]
         """
         The Vsphere tag name.
-
-        - - -
         """
 elif False:
     VMwareNodePoolConfigVsphereConfigTagArgsDict: TypeAlias = Mapping[str, Any]
@@ -8449,8 +8429,6 @@ class VMwareNodePoolConfigVsphereConfigTagArgs:
         """
         :param pulumi.Input[builtins.str] category: The Vsphere tag category.
         :param pulumi.Input[builtins.str] tag: The Vsphere tag name.
-               
-               - - -
         """
         if category is not None:
             pulumi.set(__self__, "category", category)
@@ -8474,8 +8452,6 @@ class VMwareNodePoolConfigVsphereConfigTagArgs:
     def tag(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The Vsphere tag name.
-
-        - - -
         """
         return pulumi.get(self, "tag")
 
@@ -9771,8 +9747,6 @@ if not MYPY:
         hostname: NotRequired[pulumi.Input[builtins.str]]
         """
         Hostname of the machine. VM's name will be used if this field is empty.
-
-        - - -
         """
 elif False:
     VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArgsDict: TypeAlias = Mapping[str, Any]
@@ -9785,8 +9759,6 @@ class VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpAr
         """
         :param pulumi.Input[builtins.str] ip: IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
         :param pulumi.Input[builtins.str] hostname: Hostname of the machine. VM's name will be used if this field is empty.
-               
-               - - -
         """
         pulumi.set(__self__, "ip", ip)
         if hostname is not None:
@@ -9809,8 +9781,6 @@ class VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpAr
     def hostname(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Hostname of the machine. VM's name will be used if this field is empty.
-
-        - - -
         """
         return pulumi.get(self, "hostname")
 
@@ -10007,8 +9977,6 @@ if not MYPY:
         hostname: NotRequired[pulumi.Input[builtins.str]]
         """
         Hostname of the machine. VM's name will be used if this field is empty.
-
-        - - -
         """
 elif False:
     VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArgsDict: TypeAlias = Mapping[str, Any]
@@ -10021,8 +9989,6 @@ class VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArgs:
         """
         :param pulumi.Input[builtins.str] ip: IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
         :param pulumi.Input[builtins.str] hostname: Hostname of the machine. VM's name will be used if this field is empty.
-               
-               - - -
         """
         pulumi.set(__self__, "ip", ip)
         if hostname is not None:
@@ -10045,8 +10011,6 @@ class VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArgs:
     def hostname(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Hostname of the machine. VM's name will be used if this field is empty.
-
-        - - -
         """
         return pulumi.get(self, "hostname")
 

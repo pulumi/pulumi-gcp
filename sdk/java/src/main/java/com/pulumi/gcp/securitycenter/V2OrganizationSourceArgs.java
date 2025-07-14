@@ -58,8 +58,6 @@ public final class V2OrganizationSourceArgs extends com.pulumi.resources.Resourc
      * The organization whose Cloud Security Command Center the Source
      * lives in.
      * 
-     * ***
-     * 
      */
     @Import(name="organization", required=true)
     private Output<String> organization;
@@ -67,8 +65,6 @@ public final class V2OrganizationSourceArgs extends com.pulumi.resources.Resourc
     /**
      * @return The organization whose Cloud Security Command Center the Source
      * lives in.
-     * 
-     * ***
      * 
      */
     public Output<String> organization() {
@@ -155,8 +151,6 @@ public final class V2OrganizationSourceArgs extends com.pulumi.resources.Resourc
          * @param organization The organization whose Cloud Security Command Center the Source
          * lives in.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -168,8 +162,6 @@ public final class V2OrganizationSourceArgs extends com.pulumi.resources.Resourc
         /**
          * @param organization The organization whose Cloud Security Command Center the Source
          * lives in.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -43,9 +43,6 @@ class BackupPolicyArgs:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] name: The name of the backup policy. Needs to be unique per location.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -157,9 +154,6 @@ class BackupPolicyArgs:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The name of the backup policy. Needs to be unique per location.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -214,9 +208,6 @@ class _BackupPolicyState:
         :param pulumi.Input[builtins.str] location: Name of the region for the policy to apply to.
         :param pulumi.Input[builtins.int] monthly_backup_limit: Number of monthly backups to keep. Note that the sum of daily, weekly and monthly backups should be greater than 1.
         :param pulumi.Input[builtins.str] name: The name of the backup policy. Needs to be unique per location.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -370,9 +361,6 @@ class _BackupPolicyState:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The name of the backup policy. Needs to be unique per location.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -516,9 +504,6 @@ class BackupPolicy(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] location: Name of the region for the policy to apply to.
         :param pulumi.Input[builtins.int] monthly_backup_limit: Number of monthly backups to keep. Note that the sum of daily, weekly and monthly backups should be greater than 1.
         :param pulumi.Input[builtins.str] name: The name of the backup policy. Needs to be unique per location.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.int] weekly_backup_limit: Number of weekly backups to keep. Note that the sum of daily, weekly and monthly backups should be greater than 1.
@@ -687,9 +672,6 @@ class BackupPolicy(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] location: Name of the region for the policy to apply to.
         :param pulumi.Input[builtins.int] monthly_backup_limit: Number of monthly backups to keep. Note that the sum of daily, weekly and monthly backups should be greater than 1.
         :param pulumi.Input[builtins.str] name: The name of the backup policy. Needs to be unique per location.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -798,9 +780,6 @@ class BackupPolicy(pulumi.CustomResource):
     def name(self) -> pulumi.Output[builtins.str]:
         """
         The name of the backup policy. Needs to be unique per location.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

@@ -462,8 +462,6 @@ class DnsZonePeeringConfig(dict):
                  target_project_id: builtins.str):
         """
         :param builtins.str target_network_id: The name of the producer VPC network.
-               
-               - - -
         :param builtins.str target_project_id: The ID of the project that contains the producer VPC network.
         """
         pulumi.set(__self__, "target_network_id", target_network_id)
@@ -474,8 +472,6 @@ class DnsZonePeeringConfig(dict):
     def target_network_id(self) -> builtins.str:
         """
         The name of the producer VPC network.
-
-        - - -
         """
         return pulumi.get(self, "target_network_id")
 
@@ -1493,8 +1489,6 @@ class KeystoresAliasesSelfSignedCertSubject(dict):
         :param builtins.str common_name: Common name of the organization. Maximum length is 64 characters.
         :param builtins.str country_code: Two-letter country code. Example, IN for India, US for United States of America.
         :param builtins.str email: Email address. Max 255 characters.
-               
-               - - -
         :param builtins.str locality: City or town name. Maximum length is 128 characters.
         :param builtins.str org: Organization name. Maximum length is 64 characters.
         :param builtins.str org_unit: Organization team name. Maximum length is 64 characters.
@@ -1536,8 +1530,6 @@ class KeystoresAliasesSelfSignedCertSubject(dict):
     def email(self) -> Optional[builtins.str]:
         """
         Email address. Max 255 characters.
-
-        - - -
         """
         return pulumi.get(self, "email")
 
@@ -1677,8 +1669,6 @@ class SecurityProfileV2ProfileAssessmentConfig(dict):
         :param builtins.str assessment: The identifier for this object. Format specified above.
         :param builtins.str weight: The weight of the assessment.
                Possible values are: `MINOR`, `MODERATE`, `MAJOR`.
-               
-               - - -
         """
         pulumi.set(__self__, "assessment", assessment)
         pulumi.set(__self__, "weight", weight)
@@ -1697,8 +1687,6 @@ class SecurityProfileV2ProfileAssessmentConfig(dict):
         """
         The weight of the assessment.
         Possible values are: `MINOR`, `MODERATE`, `MAJOR`.
-
-        - - -
         """
         return pulumi.get(self, "weight")
 

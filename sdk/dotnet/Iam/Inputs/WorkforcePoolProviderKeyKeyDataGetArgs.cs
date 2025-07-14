@@ -29,8 +29,6 @@ namespace Pulumi.Gcp.Iam.Inputs
         /// <summary>
         /// The specifications for the key.
         /// Possible values are: `RSA_2048`, `RSA_3072`, `RSA_4096`.
-        /// 
-        /// - - -
         /// </summary>
         [Input("keySpec", required: true)]
         public Input<string> KeySpec { get; set; } = null!;

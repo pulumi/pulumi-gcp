@@ -633,9 +633,6 @@ namespace Pulumi.Gcp.Dataproc
         /// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
         /// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
         /// 3 and 63 characters.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("serviceId")]
         public Output<string> ServiceId { get; private set; } = null!;
@@ -848,9 +845,6 @@ namespace Pulumi.Gcp.Dataproc
         /// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
         /// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
         /// 3 and 63 characters.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("serviceId")]
         public Input<string>? ServiceId { get; set; }
@@ -1053,9 +1047,6 @@ namespace Pulumi.Gcp.Dataproc
         /// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
         /// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
         /// 3 and 63 characters.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("serviceId")]
         public Input<string>? ServiceId { get; set; }

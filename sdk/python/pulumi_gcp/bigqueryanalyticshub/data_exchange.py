@@ -36,9 +36,6 @@ class DataExchangeArgs:
         The set of arguments for constructing a DataExchange resource.
         :param pulumi.Input[builtins.str] data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input[builtins.str] display_name: Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: The name of the location this data exchange.
         :param pulumi.Input[builtins.str] description: Description of the data exchange.
         :param pulumi.Input[builtins.str] documentation: Documentation describing the data exchange.
@@ -86,9 +83,6 @@ class DataExchangeArgs:
     def display_name(self) -> pulumi.Input[builtins.str]:
         """
         Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -216,9 +210,6 @@ class _DataExchangeState:
         :param pulumi.Input[builtins.str] data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input[builtins.str] description: Description of the data exchange.
         :param pulumi.Input[builtins.str] display_name: Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] documentation: Documentation describing the data exchange.
         :param pulumi.Input[builtins.str] icon: Base64 encoded image representing the data exchange.
         :param pulumi.Input[builtins.int] listing_count: Number of listings contained in the data exchange.
@@ -287,9 +278,6 @@ class _DataExchangeState:
     def display_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -514,9 +502,6 @@ class DataExchange(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input[builtins.str] description: Description of the data exchange.
         :param pulumi.Input[builtins.str] display_name: Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] documentation: Documentation describing the data exchange.
         :param pulumi.Input[builtins.str] icon: Base64 encoded image representing the data exchange.
         :param pulumi.Input[builtins.str] location: The name of the location this data exchange.
@@ -700,9 +685,6 @@ class DataExchange(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input[builtins.str] description: Description of the data exchange.
         :param pulumi.Input[builtins.str] display_name: Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] documentation: Documentation describing the data exchange.
         :param pulumi.Input[builtins.str] icon: Base64 encoded image representing the data exchange.
         :param pulumi.Input[builtins.int] listing_count: Number of listings contained in the data exchange.
@@ -756,9 +738,6 @@ class DataExchange(pulumi.CustomResource):
     def display_name(self) -> pulumi.Output[builtins.str]:
         """
         Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 

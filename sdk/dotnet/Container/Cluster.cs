@@ -195,6 +195,15 @@ namespace Pulumi.Gcp.Container
         public Output<bool?> AllowNetAdmin { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
+        /// 
+        /// 
+        /// &lt;a name="nested_default_snat_status"&gt;&lt;/a&gt;The `default_snat_status` block supports
+        /// </summary>
+        [Output("anonymousAuthenticationConfig")]
+        public Output<Outputs.ClusterAnonymousAuthenticationConfig> AnonymousAuthenticationConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Configuration for the
         /// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
         /// Structure is documented below.
@@ -395,9 +404,6 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
-        /// 
-        /// 
-        /// &lt;a name="nested_default_snat_status"&gt;&lt;/a&gt;The `default_snat_status` block supports
         /// </summary>
         [Output("enterpriseConfig")]
         public Output<Outputs.ClusterEnterpriseConfig> EnterpriseConfig { get; private set; } = null!;
@@ -911,6 +917,15 @@ namespace Pulumi.Gcp.Container
         public Input<bool>? AllowNetAdmin { get; set; }
 
         /// <summary>
+        /// Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
+        /// 
+        /// 
+        /// &lt;a name="nested_default_snat_status"&gt;&lt;/a&gt;The `default_snat_status` block supports
+        /// </summary>
+        [Input("anonymousAuthenticationConfig")]
+        public Input<Inputs.ClusterAnonymousAuthenticationConfigArgs>? AnonymousAuthenticationConfig { get; set; }
+
+        /// <summary>
         /// Configuration for the
         /// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
         /// Structure is documented below.
@@ -1099,9 +1114,6 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
-        /// 
-        /// 
-        /// &lt;a name="nested_default_snat_status"&gt;&lt;/a&gt;The `default_snat_status` block supports
         /// </summary>
         [Input("enterpriseConfig")]
         public Input<Inputs.ClusterEnterpriseConfigArgs>? EnterpriseConfig { get; set; }
@@ -1544,6 +1556,15 @@ namespace Pulumi.Gcp.Container
         public Input<bool>? AllowNetAdmin { get; set; }
 
         /// <summary>
+        /// Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
+        /// 
+        /// 
+        /// &lt;a name="nested_default_snat_status"&gt;&lt;/a&gt;The `default_snat_status` block supports
+        /// </summary>
+        [Input("anonymousAuthenticationConfig")]
+        public Input<Inputs.ClusterAnonymousAuthenticationConfigGetArgs>? AnonymousAuthenticationConfig { get; set; }
+
+        /// <summary>
         /// Configuration for the
         /// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
         /// Structure is documented below.
@@ -1754,9 +1775,6 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
-        /// 
-        /// 
-        /// &lt;a name="nested_default_snat_status"&gt;&lt;/a&gt;The `default_snat_status` block supports
         /// </summary>
         [Input("enterpriseConfig")]
         public Input<Inputs.ClusterEnterpriseConfigGetArgs>? EnterpriseConfig { get; set; }

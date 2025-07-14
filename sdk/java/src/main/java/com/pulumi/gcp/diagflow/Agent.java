@@ -316,8 +316,6 @@ public class Agent extends com.pulumi.resources.CustomResource {
      * The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
      * Europe/Paris.
      * 
-     * ***
-     * 
      */
     @Export(name="timeZone", refs={String.class}, tree="[0]")
     private Output<String> timeZone;
@@ -325,8 +323,6 @@ public class Agent extends com.pulumi.resources.CustomResource {
     /**
      * @return The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
      * Europe/Paris.
-     * 
-     * ***
      * 
      */
     public Output<String> timeZone() {

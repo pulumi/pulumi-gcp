@@ -140,8 +140,9 @@ export class V2PolicyOrchestratorForOrganization extends pulumi.CustomResource {
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
-     * Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
-     * in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+     * Optional. Labels as key value pairs
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -157,7 +158,9 @@ export class V2PolicyOrchestratorForOrganization extends pulumi.CustomResource {
      */
     public readonly orchestratedResource!: pulumi.Output<outputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResource>;
     /**
-     * Defines a set of selectors which drive which resources are in scope of policy orchestration.
+     * Defines a set of selectors which drive which resources are in scope of policy
+     * orchestration.
+     * Structure is documented below.
      */
     public readonly orchestrationScope!: pulumi.Output<outputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestrationScope | undefined>;
     /**
@@ -193,15 +196,13 @@ export class V2PolicyOrchestratorForOrganization extends pulumi.CustomResource {
      */
     public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
     /**
-     * (Output)
-     * Output only. State of the iteration.
-     * Possible values:
-     * STATE_UNSPECIFIED
-     * PROCESSING
-     * COMPLETED
-     * FAILED
-     * CANCELLED
-     * UNKNOWN
+     * Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+     * Allowed values:
+     * - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+     * - `STOPPED` - orchestrator won't make any changes.
+     * Note: There might be more states added in the future. We use string here
+     * instead of an enum, to avoid the need of propagating new states to all the
+     * client code.
      */
     public readonly state!: pulumi.Output<string | undefined>;
     /**
@@ -307,8 +308,9 @@ export interface V2PolicyOrchestratorForOrganizationState {
      */
     etag?: pulumi.Input<string>;
     /**
-     * Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
-     * in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+     * Optional. Labels as key value pairs
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -324,7 +326,9 @@ export interface V2PolicyOrchestratorForOrganizationState {
      */
     orchestratedResource?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResource>;
     /**
-     * Defines a set of selectors which drive which resources are in scope of policy orchestration.
+     * Defines a set of selectors which drive which resources are in scope of policy
+     * orchestration.
+     * Structure is documented below.
      */
     orchestrationScope?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestrationScope>;
     /**
@@ -360,15 +364,13 @@ export interface V2PolicyOrchestratorForOrganizationState {
      */
     reconciling?: pulumi.Input<boolean>;
     /**
-     * (Output)
-     * Output only. State of the iteration.
-     * Possible values:
-     * STATE_UNSPECIFIED
-     * PROCESSING
-     * COMPLETED
-     * FAILED
-     * CANCELLED
-     * UNKNOWN
+     * Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+     * Allowed values:
+     * - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+     * - `STOPPED` - orchestrator won't make any changes.
+     * Note: There might be more states added in the future. We use string here
+     * instead of an enum, to avoid the need of propagating new states to all the
+     * client code.
      */
     state?: pulumi.Input<string>;
     /**
@@ -394,8 +396,9 @@ export interface V2PolicyOrchestratorForOrganizationArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
-     * in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+     * Optional. Labels as key value pairs
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -404,7 +407,9 @@ export interface V2PolicyOrchestratorForOrganizationArgs {
      */
     orchestratedResource: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestratedResource>;
     /**
-     * Defines a set of selectors which drive which resources are in scope of policy orchestration.
+     * Defines a set of selectors which drive which resources are in scope of policy
+     * orchestration.
+     * Structure is documented below.
      */
     orchestrationScope?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForOrganizationOrchestrationScope>;
     /**
@@ -425,15 +430,13 @@ export interface V2PolicyOrchestratorForOrganizationArgs {
      */
     policyOrchestratorId: pulumi.Input<string>;
     /**
-     * (Output)
-     * Output only. State of the iteration.
-     * Possible values:
-     * STATE_UNSPECIFIED
-     * PROCESSING
-     * COMPLETED
-     * FAILED
-     * CANCELLED
-     * UNKNOWN
+     * Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
+     * Allowed values:
+     * - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+     * - `STOPPED` - orchestrator won't make any changes.
+     * Note: There might be more states added in the future. We use string here
+     * instead of an enum, to avoid the need of propagating new states to all the
+     * client code.
      */
     state?: pulumi.Input<string>;
 }

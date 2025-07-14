@@ -217,16 +217,12 @@ public class VolumeQuotaRule extends com.pulumi.resources.CustomResource {
     /**
      * The resource name of the quotaRule.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return The resource name of the quotaRule.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

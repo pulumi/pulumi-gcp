@@ -91,9 +91,9 @@ export class LbRouteExtension extends pulumi.CustomResource {
      */
     public readonly forwardingRules!: pulumi.Output<string[]>;
     /**
-     * Set of labels associated with the LbRouteExtension resource. **Note**: This field is non-authoritative, and will only
-     * manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-     * present on the resource.
+     * Set of labels associated with the LbRouteExtension resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -111,6 +111,10 @@ export class LbRouteExtension extends pulumi.CustomResource {
      * Name of the LbRouteExtension resource in the following format: projects/{project}/locations/{location}/lbRouteExtensions/{lbRouteExtension}
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
@@ -199,9 +203,9 @@ export interface LbRouteExtensionState {
      */
     forwardingRules?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Set of labels associated with the LbRouteExtension resource. **Note**: This field is non-authoritative, and will only
-     * manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-     * present on the resource.
+     * Set of labels associated with the LbRouteExtension resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -219,6 +223,10 @@ export interface LbRouteExtensionState {
      * Name of the LbRouteExtension resource in the following format: projects/{project}/locations/{location}/lbRouteExtensions/{lbRouteExtension}
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
@@ -249,9 +257,9 @@ export interface LbRouteExtensionArgs {
      */
     forwardingRules: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Set of labels associated with the LbRouteExtension resource. **Note**: This field is non-authoritative, and will only
-     * manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-     * present on the resource.
+     * Set of labels associated with the LbRouteExtension resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -269,5 +277,9 @@ export interface LbRouteExtensionArgs {
      * Name of the LbRouteExtension resource in the following format: projects/{project}/locations/{location}/lbRouteExtensions/{lbRouteExtension}
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
 }

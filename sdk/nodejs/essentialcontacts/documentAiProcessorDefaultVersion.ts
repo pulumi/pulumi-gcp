@@ -68,9 +68,6 @@ export class DocumentAiProcessorDefaultVersion extends pulumi.CustomResource {
 
     /**
      * The processor to set the version on.
-     *
-     *
-     * - - -
      */
     public readonly processor!: pulumi.Output<string>;
     /**
@@ -116,9 +113,6 @@ export class DocumentAiProcessorDefaultVersion extends pulumi.CustomResource {
 export interface DocumentAiProcessorDefaultVersionState {
     /**
      * The processor to set the version on.
-     *
-     *
-     * - - -
      */
     processor?: pulumi.Input<string>;
     /**
@@ -134,9 +128,6 @@ export interface DocumentAiProcessorDefaultVersionState {
 export interface DocumentAiProcessorDefaultVersionArgs {
     /**
      * The processor to set the version on.
-     *
-     *
-     * - - -
      */
     processor: pulumi.Input<string>;
     /**

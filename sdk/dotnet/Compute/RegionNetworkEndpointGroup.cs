@@ -564,9 +564,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A reference to the region where the regional NEGs reside.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -721,9 +718,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A reference to the region where the regional NEGs reside.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
@@ -834,9 +828,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A reference to the region where the regional NEGs reside.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

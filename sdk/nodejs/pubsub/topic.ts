@@ -304,9 +304,6 @@ export class Topic extends pulumi.CustomResource {
     public readonly messageTransforms!: pulumi.Output<outputs.pubsub.TopicMessageTransform[] | undefined>;
     /**
      * Name of the topic.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -424,9 +421,6 @@ export interface TopicState {
     messageTransforms?: pulumi.Input<pulumi.Input<inputs.pubsub.TopicMessageTransform>[]>;
     /**
      * Name of the topic.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -496,9 +490,6 @@ export interface TopicArgs {
     messageTransforms?: pulumi.Input<pulumi.Input<inputs.pubsub.TopicMessageTransform>[]>;
     /**
      * Name of the topic.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

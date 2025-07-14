@@ -26,8 +26,6 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
 
         /// <summary>
         /// Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
-        /// 
-        /// - - -
         /// </summary>
         [Input("nanos")]
         public Input<int>? Nanos { get; set; }

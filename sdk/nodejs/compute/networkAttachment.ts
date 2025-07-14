@@ -209,9 +209,6 @@ export class NetworkAttachment extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * URL of the region where the network attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-     *
-     *
-     * - - -
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -339,9 +336,6 @@ export interface NetworkAttachmentState {
     project?: pulumi.Input<string>;
     /**
      * URL of the region where the network attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-     *
-     *
-     * - - -
      */
     region?: pulumi.Input<string>;
     /**
@@ -390,9 +384,6 @@ export interface NetworkAttachmentArgs {
     project?: pulumi.Input<string>;
     /**
      * URL of the region where the network attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-     *
-     *
-     * - - -
      */
     region?: pulumi.Input<string>;
     /**

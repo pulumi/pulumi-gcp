@@ -560,9 +560,6 @@ export class Spoke extends pulumi.CustomResource {
     public readonly linkedVpnTunnels!: pulumi.Output<outputs.networkconnectivity.SpokeLinkedVpnTunnels | undefined>;
     /**
      * The location for the resource
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -721,9 +718,6 @@ export interface SpokeState {
     linkedVpnTunnels?: pulumi.Input<inputs.networkconnectivity.SpokeLinkedVpnTunnels>;
     /**
      * The location for the resource
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -808,9 +802,6 @@ export interface SpokeArgs {
     linkedVpnTunnels?: pulumi.Input<inputs.networkconnectivity.SpokeLinkedVpnTunnels>;
     /**
      * The location for the resource
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

@@ -111,8 +111,6 @@ type DataSharingWithGoogleSettingBinding struct {
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Required. Id of the setting binding.
-	//
-	// ***
 	SettingBindingId pulumi.StringOutput `pulumi:"settingBindingId"`
 	// Target of the binding.
 	Target pulumi.StringOutput `pulumi:"target"`
@@ -188,8 +186,6 @@ type dataSharingWithGoogleSettingBindingState struct {
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Required. Id of the setting binding.
-	//
-	// ***
 	SettingBindingId *string `pulumi:"settingBindingId"`
 	// Target of the binding.
 	Target *string `pulumi:"target"`
@@ -222,8 +218,6 @@ type DataSharingWithGoogleSettingBindingState struct {
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Required. Id of the setting binding.
-	//
-	// ***
 	SettingBindingId pulumi.StringPtrInput
 	// Target of the binding.
 	Target pulumi.StringPtrInput
@@ -250,8 +244,6 @@ type dataSharingWithGoogleSettingBindingArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Required. Id of the setting binding.
-	//
-	// ***
 	SettingBindingId string `pulumi:"settingBindingId"`
 	// Target of the binding.
 	Target string `pulumi:"target"`
@@ -273,8 +265,6 @@ type DataSharingWithGoogleSettingBindingArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Required. Id of the setting binding.
-	//
-	// ***
 	SettingBindingId pulumi.StringInput
 	// Target of the binding.
 	Target pulumi.StringInput
@@ -420,8 +410,6 @@ func (o DataSharingWithGoogleSettingBindingOutput) PulumiLabels() pulumi.StringM
 }
 
 // Required. Id of the setting binding.
-//
-// ***
 func (o DataSharingWithGoogleSettingBindingOutput) SettingBindingId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataSharingWithGoogleSettingBinding) pulumi.StringOutput { return v.SettingBindingId }).(pulumi.StringOutput)
 }

@@ -114,9 +114,6 @@ export class ServiceBinding extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Name of the ServiceBinding resource.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -207,9 +204,6 @@ export interface ServiceBindingState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the ServiceBinding resource.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -249,9 +243,6 @@ export interface ServiceBindingArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the ServiceBinding resource.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

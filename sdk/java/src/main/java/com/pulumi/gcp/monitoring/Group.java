@@ -153,8 +153,6 @@ public class Group extends com.pulumi.resources.CustomResource {
      * The filter used to determine which monitored resources
      * belong to this group.
      * 
-     * ***
-     * 
      */
     @Export(name="filter", refs={String.class}, tree="[0]")
     private Output<String> filter;
@@ -162,8 +160,6 @@ public class Group extends com.pulumi.resources.CustomResource {
     /**
      * @return The filter used to determine which monitored resources
      * belong to this group.
-     * 
-     * ***
      * 
      */
     public Output<String> filter() {

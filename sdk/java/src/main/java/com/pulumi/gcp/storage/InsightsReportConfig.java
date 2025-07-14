@@ -207,8 +207,6 @@ public class InsightsReportConfig extends com.pulumi.resources.CustomResource {
      * The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
      * must be in the same location.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
@@ -216,8 +214,6 @@ public class InsightsReportConfig extends com.pulumi.resources.CustomResource {
     /**
      * @return The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
      * must be in the same location.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

@@ -39,23 +39,38 @@ class OrganizationsPolicyBindingArgs:
         :param pulumi.Input[builtins.str] policy_binding_id: The Policy Binding ID.
         :param pulumi.Input['OrganizationsPolicyBindingTargetArgs'] target: Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size
-               limitations **Note**: This field is non-authoritative, and will only manage the annotations present in your
-               configuration. Please refer to the field 'effective_annotations' for all of the annotations present on the resource.
-        :param pulumi.Input['OrganizationsPolicyBindingConditionArgs'] condition: Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The
-               syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: \\"Summary
-               size limit\\" description: \\"Determines if a summary is less than 100 chars\\" expression: \\"document.summary.size() <
-               100\\" Example (Equality): title: \\"Requestor is owner\\" description: \\"Determines if requestor is the document owner\\"
-               expression: \\"document.owner == request.auth.claims.email\\" Example (Logic): title: \\"Public documents\\" description:
-               \\"Determine whether the document should be publicly visible\\" expression: \\"document.type != 'private' && document.type
-               != 'internal'\\" Example (Data Manipulation): title: \\"Notification string\\" description: \\"Create a notification string
-               with a timestamp.\\" expression: \\"'New message received at ' + string(document.create_time)\\" The exact variables and
-               functions that may be referenced within an expression are determined by the service that evaluates it. See the service
-               documentation for additional information.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input['OrganizationsPolicyBindingConditionArgs'] condition: Represents a textual expression in the Common Expression Language
+               (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of
+               CEL are documented at https://github.com/google/cel-spec.
+               Example (Comparison):
+               title: \\"Summary size limit\\"
+               description: \\"Determines if a summary is less than 100 chars\\"
+               expression: \\"document.summary.size() < 100\\"
+               Example
+               (Equality):
+               title: \\"Requestor is owner\\"
+               description: \\"Determines if requestor is the document owner\\"
+               expression: \\"document.owner == request.auth.claims.email\\"  Example
+               (Logic):
+               title: \\"Public documents\\"
+               description: \\"Determine whether the document should be publicly visible\\"
+               expression: \\"document.type != 'private' && document.type != 'internal'\\"
+               Example (Data Manipulation):
+               title: \\"Notification string\\"
+               description: \\"Create a notification string with a timestamp.\\"
+               expression: \\"'New message received at ' + string(document.create_time)\\"
+               The exact variables and functions that may be referenced within an expression are
+               determined by the service that evaluates it. See the service documentation for
+               additional information.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] display_name: Optional. The description of the policy binding. Must be less than or equal to 63 characters.
-        :param pulumi.Input[builtins.str] policy_kind: Immutable. The kind of the policy to attach in this binding. This field must be one of the following: - Left empty (will
-               be automatically set to the policy kind) - The input policy kind Possible values: POLICY_KIND_UNSPECIFIED
-               PRINCIPAL_ACCESS_BOUNDARY ACCESS
+        :param pulumi.Input[builtins.str] policy_kind: Immutable. The kind of the policy to attach in this binding. This
+               field must be one of the following:  - Left empty (will be automatically set
+               to the policy kind) - The input policy kind   Possible values:  POLICY_KIND_UNSPECIFIED PRINCIPAL_ACCESS_BOUNDARY ACCESS
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "organization", organization)
@@ -136,9 +151,10 @@ class OrganizationsPolicyBindingArgs:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size
-        limitations **Note**: This field is non-authoritative, and will only manage the annotations present in your
-        configuration. Please refer to the field 'effective_annotations' for all of the annotations present on the resource.
+        Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -150,16 +166,30 @@ class OrganizationsPolicyBindingArgs:
     @pulumi.getter
     def condition(self) -> Optional[pulumi.Input['OrganizationsPolicyBindingConditionArgs']]:
         """
-        Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The
-        syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: \\"Summary
-        size limit\\" description: \\"Determines if a summary is less than 100 chars\\" expression: \\"document.summary.size() <
-        100\\" Example (Equality): title: \\"Requestor is owner\\" description: \\"Determines if requestor is the document owner\\"
-        expression: \\"document.owner == request.auth.claims.email\\" Example (Logic): title: \\"Public documents\\" description:
-        \\"Determine whether the document should be publicly visible\\" expression: \\"document.type != 'private' && document.type
-        != 'internal'\\" Example (Data Manipulation): title: \\"Notification string\\" description: \\"Create a notification string
-        with a timestamp.\\" expression: \\"'New message received at ' + string(document.create_time)\\" The exact variables and
-        functions that may be referenced within an expression are determined by the service that evaluates it. See the service
-        documentation for additional information.
+        Represents a textual expression in the Common Expression Language
+        (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of
+        CEL are documented at https://github.com/google/cel-spec.
+        Example (Comparison):
+        title: \\"Summary size limit\\"
+        description: \\"Determines if a summary is less than 100 chars\\"
+        expression: \\"document.summary.size() < 100\\"
+        Example
+        (Equality):
+        title: \\"Requestor is owner\\"
+        description: \\"Determines if requestor is the document owner\\"
+        expression: \\"document.owner == request.auth.claims.email\\"  Example
+        (Logic):
+        title: \\"Public documents\\"
+        description: \\"Determine whether the document should be publicly visible\\"
+        expression: \\"document.type != 'private' && document.type != 'internal'\\"
+        Example (Data Manipulation):
+        title: \\"Notification string\\"
+        description: \\"Create a notification string with a timestamp.\\"
+        expression: \\"'New message received at ' + string(document.create_time)\\"
+        The exact variables and functions that may be referenced within an expression are
+        determined by the service that evaluates it. See the service documentation for
+        additional information.
+        Structure is documented below.
         """
         return pulumi.get(self, "condition")
 
@@ -183,9 +213,9 @@ class OrganizationsPolicyBindingArgs:
     @pulumi.getter(name="policyKind")
     def policy_kind(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Immutable. The kind of the policy to attach in this binding. This field must be one of the following: - Left empty (will
-        be automatically set to the policy kind) - The input policy kind Possible values: POLICY_KIND_UNSPECIFIED
-        PRINCIPAL_ACCESS_BOUNDARY ACCESS
+        Immutable. The kind of the policy to attach in this binding. This
+        field must be one of the following:  - Left empty (will be automatically set
+        to the policy kind) - The input policy kind   Possible values:  POLICY_KIND_UNSPECIFIED PRINCIPAL_ACCESS_BOUNDARY ACCESS
         """
         return pulumi.get(self, "policy_kind")
 
@@ -215,19 +245,34 @@ class _OrganizationsPolicyBindingState:
                  update_time: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrganizationsPolicyBinding resources.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size
-               limitations **Note**: This field is non-authoritative, and will only manage the annotations present in your
-               configuration. Please refer to the field 'effective_annotations' for all of the annotations present on the resource.
-        :param pulumi.Input['OrganizationsPolicyBindingConditionArgs'] condition: Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The
-               syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: \\"Summary
-               size limit\\" description: \\"Determines if a summary is less than 100 chars\\" expression: \\"document.summary.size() <
-               100\\" Example (Equality): title: \\"Requestor is owner\\" description: \\"Determines if requestor is the document owner\\"
-               expression: \\"document.owner == request.auth.claims.email\\" Example (Logic): title: \\"Public documents\\" description:
-               \\"Determine whether the document should be publicly visible\\" expression: \\"document.type != 'private' && document.type
-               != 'internal'\\" Example (Data Manipulation): title: \\"Notification string\\" description: \\"Create a notification string
-               with a timestamp.\\" expression: \\"'New message received at ' + string(document.create_time)\\" The exact variables and
-               functions that may be referenced within an expression are determined by the service that evaluates it. See the service
-               documentation for additional information.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input['OrganizationsPolicyBindingConditionArgs'] condition: Represents a textual expression in the Common Expression Language
+               (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of
+               CEL are documented at https://github.com/google/cel-spec.
+               Example (Comparison):
+               title: \\"Summary size limit\\"
+               description: \\"Determines if a summary is less than 100 chars\\"
+               expression: \\"document.summary.size() < 100\\"
+               Example
+               (Equality):
+               title: \\"Requestor is owner\\"
+               description: \\"Determines if requestor is the document owner\\"
+               expression: \\"document.owner == request.auth.claims.email\\"  Example
+               (Logic):
+               title: \\"Public documents\\"
+               description: \\"Determine whether the document should be publicly visible\\"
+               expression: \\"document.type != 'private' && document.type != 'internal'\\"
+               Example (Data Manipulation):
+               title: \\"Notification string\\"
+               description: \\"Create a notification string with a timestamp.\\"
+               expression: \\"'New message received at ' + string(document.create_time)\\"
+               The exact variables and functions that may be referenced within an expression are
+               determined by the service that evaluates it. See the service documentation for
+               additional information.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] create_time: Output only. The time when the policy binding was created.
         :param pulumi.Input[builtins.str] display_name: Optional. The description of the policy binding. Must be less than or equal to 63 characters.
         :param pulumi.Input[builtins.str] etag: Optional. The etag for the policy binding. If this is provided on update, it must match the server's etag.
@@ -236,9 +281,9 @@ class _OrganizationsPolicyBindingState:
         :param pulumi.Input[builtins.str] organization: The parent organization of the Policy Binding.
         :param pulumi.Input[builtins.str] policy: Required. Immutable. The resource name of the policy to be bound. The binding parent and policy must belong to the same Organization (or Project).
         :param pulumi.Input[builtins.str] policy_binding_id: The Policy Binding ID.
-        :param pulumi.Input[builtins.str] policy_kind: Immutable. The kind of the policy to attach in this binding. This field must be one of the following: - Left empty (will
-               be automatically set to the policy kind) - The input policy kind Possible values: POLICY_KIND_UNSPECIFIED
-               PRINCIPAL_ACCESS_BOUNDARY ACCESS
+        :param pulumi.Input[builtins.str] policy_kind: Immutable. The kind of the policy to attach in this binding. This
+               field must be one of the following:  - Left empty (will be automatically set
+               to the policy kind) - The input policy kind   Possible values:  POLICY_KIND_UNSPECIFIED PRINCIPAL_ACCESS_BOUNDARY ACCESS
         :param pulumi.Input[builtins.str] policy_uid: Output only. The globally unique ID of the policy to be bound.
         :param pulumi.Input['OrganizationsPolicyBindingTargetArgs'] target: Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
                Structure is documented below.
@@ -282,9 +327,10 @@ class _OrganizationsPolicyBindingState:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size
-        limitations **Note**: This field is non-authoritative, and will only manage the annotations present in your
-        configuration. Please refer to the field 'effective_annotations' for all of the annotations present on the resource.
+        Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -296,16 +342,30 @@ class _OrganizationsPolicyBindingState:
     @pulumi.getter
     def condition(self) -> Optional[pulumi.Input['OrganizationsPolicyBindingConditionArgs']]:
         """
-        Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The
-        syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: \\"Summary
-        size limit\\" description: \\"Determines if a summary is less than 100 chars\\" expression: \\"document.summary.size() <
-        100\\" Example (Equality): title: \\"Requestor is owner\\" description: \\"Determines if requestor is the document owner\\"
-        expression: \\"document.owner == request.auth.claims.email\\" Example (Logic): title: \\"Public documents\\" description:
-        \\"Determine whether the document should be publicly visible\\" expression: \\"document.type != 'private' && document.type
-        != 'internal'\\" Example (Data Manipulation): title: \\"Notification string\\" description: \\"Create a notification string
-        with a timestamp.\\" expression: \\"'New message received at ' + string(document.create_time)\\" The exact variables and
-        functions that may be referenced within an expression are determined by the service that evaluates it. See the service
-        documentation for additional information.
+        Represents a textual expression in the Common Expression Language
+        (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of
+        CEL are documented at https://github.com/google/cel-spec.
+        Example (Comparison):
+        title: \\"Summary size limit\\"
+        description: \\"Determines if a summary is less than 100 chars\\"
+        expression: \\"document.summary.size() < 100\\"
+        Example
+        (Equality):
+        title: \\"Requestor is owner\\"
+        description: \\"Determines if requestor is the document owner\\"
+        expression: \\"document.owner == request.auth.claims.email\\"  Example
+        (Logic):
+        title: \\"Public documents\\"
+        description: \\"Determine whether the document should be publicly visible\\"
+        expression: \\"document.type != 'private' && document.type != 'internal'\\"
+        Example (Data Manipulation):
+        title: \\"Notification string\\"
+        description: \\"Create a notification string with a timestamp.\\"
+        expression: \\"'New message received at ' + string(document.create_time)\\"
+        The exact variables and functions that may be referenced within an expression are
+        determined by the service that evaluates it. See the service documentation for
+        additional information.
+        Structure is documented below.
         """
         return pulumi.get(self, "condition")
 
@@ -422,9 +482,9 @@ class _OrganizationsPolicyBindingState:
     @pulumi.getter(name="policyKind")
     def policy_kind(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Immutable. The kind of the policy to attach in this binding. This field must be one of the following: - Left empty (will
-        be automatically set to the policy kind) - The input policy kind Possible values: POLICY_KIND_UNSPECIFIED
-        PRINCIPAL_ACCESS_BOUNDARY ACCESS
+        Immutable. The kind of the policy to attach in this binding. This
+        field must be one of the following:  - Left empty (will be automatically set
+        to the policy kind) - The input policy kind   Possible values:  POLICY_KIND_UNSPECIFIED PRINCIPAL_ACCESS_BOUNDARY ACCESS
         """
         return pulumi.get(self, "policy_kind")
 
@@ -548,27 +608,42 @@ class OrganizationsPolicyBinding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size
-               limitations **Note**: This field is non-authoritative, and will only manage the annotations present in your
-               configuration. Please refer to the field 'effective_annotations' for all of the annotations present on the resource.
-        :param pulumi.Input[Union['OrganizationsPolicyBindingConditionArgs', 'OrganizationsPolicyBindingConditionArgsDict']] condition: Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The
-               syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: \\"Summary
-               size limit\\" description: \\"Determines if a summary is less than 100 chars\\" expression: \\"document.summary.size() <
-               100\\" Example (Equality): title: \\"Requestor is owner\\" description: \\"Determines if requestor is the document owner\\"
-               expression: \\"document.owner == request.auth.claims.email\\" Example (Logic): title: \\"Public documents\\" description:
-               \\"Determine whether the document should be publicly visible\\" expression: \\"document.type != 'private' && document.type
-               != 'internal'\\" Example (Data Manipulation): title: \\"Notification string\\" description: \\"Create a notification string
-               with a timestamp.\\" expression: \\"'New message received at ' + string(document.create_time)\\" The exact variables and
-               functions that may be referenced within an expression are determined by the service that evaluates it. See the service
-               documentation for additional information.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Union['OrganizationsPolicyBindingConditionArgs', 'OrganizationsPolicyBindingConditionArgsDict']] condition: Represents a textual expression in the Common Expression Language
+               (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of
+               CEL are documented at https://github.com/google/cel-spec.
+               Example (Comparison):
+               title: \\"Summary size limit\\"
+               description: \\"Determines if a summary is less than 100 chars\\"
+               expression: \\"document.summary.size() < 100\\"
+               Example
+               (Equality):
+               title: \\"Requestor is owner\\"
+               description: \\"Determines if requestor is the document owner\\"
+               expression: \\"document.owner == request.auth.claims.email\\"  Example
+               (Logic):
+               title: \\"Public documents\\"
+               description: \\"Determine whether the document should be publicly visible\\"
+               expression: \\"document.type != 'private' && document.type != 'internal'\\"
+               Example (Data Manipulation):
+               title: \\"Notification string\\"
+               description: \\"Create a notification string with a timestamp.\\"
+               expression: \\"'New message received at ' + string(document.create_time)\\"
+               The exact variables and functions that may be referenced within an expression are
+               determined by the service that evaluates it. See the service documentation for
+               additional information.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] display_name: Optional. The description of the policy binding. Must be less than or equal to 63 characters.
         :param pulumi.Input[builtins.str] location: The location of the Policy Binding
         :param pulumi.Input[builtins.str] organization: The parent organization of the Policy Binding.
         :param pulumi.Input[builtins.str] policy: Required. Immutable. The resource name of the policy to be bound. The binding parent and policy must belong to the same Organization (or Project).
         :param pulumi.Input[builtins.str] policy_binding_id: The Policy Binding ID.
-        :param pulumi.Input[builtins.str] policy_kind: Immutable. The kind of the policy to attach in this binding. This field must be one of the following: - Left empty (will
-               be automatically set to the policy kind) - The input policy kind Possible values: POLICY_KIND_UNSPECIFIED
-               PRINCIPAL_ACCESS_BOUNDARY ACCESS
+        :param pulumi.Input[builtins.str] policy_kind: Immutable. The kind of the policy to attach in this binding. This
+               field must be one of the following:  - Left empty (will be automatically set
+               to the policy kind) - The input policy kind   Possible values:  POLICY_KIND_UNSPECIFIED PRINCIPAL_ACCESS_BOUNDARY ACCESS
         :param pulumi.Input[Union['OrganizationsPolicyBindingTargetArgs', 'OrganizationsPolicyBindingTargetArgsDict']] target: Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
                Structure is documented below.
         """
@@ -718,19 +793,34 @@ class OrganizationsPolicyBinding(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size
-               limitations **Note**: This field is non-authoritative, and will only manage the annotations present in your
-               configuration. Please refer to the field 'effective_annotations' for all of the annotations present on the resource.
-        :param pulumi.Input[Union['OrganizationsPolicyBindingConditionArgs', 'OrganizationsPolicyBindingConditionArgsDict']] condition: Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The
-               syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: \\"Summary
-               size limit\\" description: \\"Determines if a summary is less than 100 chars\\" expression: \\"document.summary.size() <
-               100\\" Example (Equality): title: \\"Requestor is owner\\" description: \\"Determines if requestor is the document owner\\"
-               expression: \\"document.owner == request.auth.claims.email\\" Example (Logic): title: \\"Public documents\\" description:
-               \\"Determine whether the document should be publicly visible\\" expression: \\"document.type != 'private' && document.type
-               != 'internal'\\" Example (Data Manipulation): title: \\"Notification string\\" description: \\"Create a notification string
-               with a timestamp.\\" expression: \\"'New message received at ' + string(document.create_time)\\" The exact variables and
-               functions that may be referenced within an expression are determined by the service that evaluates it. See the service
-               documentation for additional information.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Union['OrganizationsPolicyBindingConditionArgs', 'OrganizationsPolicyBindingConditionArgsDict']] condition: Represents a textual expression in the Common Expression Language
+               (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of
+               CEL are documented at https://github.com/google/cel-spec.
+               Example (Comparison):
+               title: \\"Summary size limit\\"
+               description: \\"Determines if a summary is less than 100 chars\\"
+               expression: \\"document.summary.size() < 100\\"
+               Example
+               (Equality):
+               title: \\"Requestor is owner\\"
+               description: \\"Determines if requestor is the document owner\\"
+               expression: \\"document.owner == request.auth.claims.email\\"  Example
+               (Logic):
+               title: \\"Public documents\\"
+               description: \\"Determine whether the document should be publicly visible\\"
+               expression: \\"document.type != 'private' && document.type != 'internal'\\"
+               Example (Data Manipulation):
+               title: \\"Notification string\\"
+               description: \\"Create a notification string with a timestamp.\\"
+               expression: \\"'New message received at ' + string(document.create_time)\\"
+               The exact variables and functions that may be referenced within an expression are
+               determined by the service that evaluates it. See the service documentation for
+               additional information.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] create_time: Output only. The time when the policy binding was created.
         :param pulumi.Input[builtins.str] display_name: Optional. The description of the policy binding. Must be less than or equal to 63 characters.
         :param pulumi.Input[builtins.str] etag: Optional. The etag for the policy binding. If this is provided on update, it must match the server's etag.
@@ -739,9 +829,9 @@ class OrganizationsPolicyBinding(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] organization: The parent organization of the Policy Binding.
         :param pulumi.Input[builtins.str] policy: Required. Immutable. The resource name of the policy to be bound. The binding parent and policy must belong to the same Organization (or Project).
         :param pulumi.Input[builtins.str] policy_binding_id: The Policy Binding ID.
-        :param pulumi.Input[builtins.str] policy_kind: Immutable. The kind of the policy to attach in this binding. This field must be one of the following: - Left empty (will
-               be automatically set to the policy kind) - The input policy kind Possible values: POLICY_KIND_UNSPECIFIED
-               PRINCIPAL_ACCESS_BOUNDARY ACCESS
+        :param pulumi.Input[builtins.str] policy_kind: Immutable. The kind of the policy to attach in this binding. This
+               field must be one of the following:  - Left empty (will be automatically set
+               to the policy kind) - The input policy kind   Possible values:  POLICY_KIND_UNSPECIFIED PRINCIPAL_ACCESS_BOUNDARY ACCESS
         :param pulumi.Input[builtins.str] policy_uid: Output only. The globally unique ID of the policy to be bound.
         :param pulumi.Input[Union['OrganizationsPolicyBindingTargetArgs', 'OrganizationsPolicyBindingTargetArgsDict']] target: Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
                Structure is documented below.
@@ -774,9 +864,10 @@ class OrganizationsPolicyBinding(pulumi.CustomResource):
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
         """
-        Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size
-        limitations **Note**: This field is non-authoritative, and will only manage the annotations present in your
-        configuration. Please refer to the field 'effective_annotations' for all of the annotations present on the resource.
+        Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -784,16 +875,30 @@ class OrganizationsPolicyBinding(pulumi.CustomResource):
     @pulumi.getter
     def condition(self) -> pulumi.Output[Optional['outputs.OrganizationsPolicyBindingCondition']]:
         """
-        Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The
-        syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: \\"Summary
-        size limit\\" description: \\"Determines if a summary is less than 100 chars\\" expression: \\"document.summary.size() <
-        100\\" Example (Equality): title: \\"Requestor is owner\\" description: \\"Determines if requestor is the document owner\\"
-        expression: \\"document.owner == request.auth.claims.email\\" Example (Logic): title: \\"Public documents\\" description:
-        \\"Determine whether the document should be publicly visible\\" expression: \\"document.type != 'private' && document.type
-        != 'internal'\\" Example (Data Manipulation): title: \\"Notification string\\" description: \\"Create a notification string
-        with a timestamp.\\" expression: \\"'New message received at ' + string(document.create_time)\\" The exact variables and
-        functions that may be referenced within an expression are determined by the service that evaluates it. See the service
-        documentation for additional information.
+        Represents a textual expression in the Common Expression Language
+        (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of
+        CEL are documented at https://github.com/google/cel-spec.
+        Example (Comparison):
+        title: \\"Summary size limit\\"
+        description: \\"Determines if a summary is less than 100 chars\\"
+        expression: \\"document.summary.size() < 100\\"
+        Example
+        (Equality):
+        title: \\"Requestor is owner\\"
+        description: \\"Determines if requestor is the document owner\\"
+        expression: \\"document.owner == request.auth.claims.email\\"  Example
+        (Logic):
+        title: \\"Public documents\\"
+        description: \\"Determine whether the document should be publicly visible\\"
+        expression: \\"document.type != 'private' && document.type != 'internal'\\"
+        Example (Data Manipulation):
+        title: \\"Notification string\\"
+        description: \\"Create a notification string with a timestamp.\\"
+        expression: \\"'New message received at ' + string(document.create_time)\\"
+        The exact variables and functions that may be referenced within an expression are
+        determined by the service that evaluates it. See the service documentation for
+        additional information.
+        Structure is documented below.
         """
         return pulumi.get(self, "condition")
 
@@ -870,9 +975,9 @@ class OrganizationsPolicyBinding(pulumi.CustomResource):
     @pulumi.getter(name="policyKind")
     def policy_kind(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Immutable. The kind of the policy to attach in this binding. This field must be one of the following: - Left empty (will
-        be automatically set to the policy kind) - The input policy kind Possible values: POLICY_KIND_UNSPECIFIED
-        PRINCIPAL_ACCESS_BOUNDARY ACCESS
+        Immutable. The kind of the policy to attach in this binding. This
+        field must be one of the following:  - Left empty (will be automatically set
+        to the policy kind) - The input policy kind   Possible values:  POLICY_KIND_UNSPECIFIED PRINCIPAL_ACCESS_BOUNDARY ACCESS
         """
         return pulumi.get(self, "policy_kind")
 

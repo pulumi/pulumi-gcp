@@ -35,9 +35,6 @@ class DeveloperArgs:
         :param pulumi.Input[builtins.str] last_name: Last name of the developer.
         :param pulumi.Input[builtins.str] org_id: The Apigee Organization associated with the Apigee instance,
                in the format `organizations/{{org_name}}`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] user_name: User name of the developer. Not used by Apigee hybrid.
         :param pulumi.Input[Sequence[pulumi.Input['DeveloperAttributeArgs']]] attributes: Developer attributes (name/value pairs). The custom attribute limit is 18.
                Structure is documented below.
@@ -92,9 +89,6 @@ class DeveloperArgs:
         """
         The Apigee Organization associated with the Apigee instance,
         in the format `organizations/{{org_name}}`.
-
-
-        - - -
         """
         return pulumi.get(self, "org_id")
 
@@ -152,9 +146,6 @@ class _DeveloperState:
         :param pulumi.Input[builtins.str] last_name: Last name of the developer.
         :param pulumi.Input[builtins.str] org_id: The Apigee Organization associated with the Apigee instance,
                in the format `organizations/{{org_name}}`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] organizatio_name: Name of the Apigee organization in which the developer resides.
         :param pulumi.Input[builtins.str] status: Status of the developer. Valid values are active and inactive.
         :param pulumi.Input[builtins.str] user_name: User name of the developer. Not used by Apigee hybrid.
@@ -259,9 +250,6 @@ class _DeveloperState:
         """
         The Apigee Organization associated with the Apigee instance,
         in the format `organizations/{{org_name}}`.
-
-
-        - - -
         """
         return pulumi.get(self, "org_id")
 
@@ -440,9 +428,6 @@ class Developer(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] last_name: Last name of the developer.
         :param pulumi.Input[builtins.str] org_id: The Apigee Organization associated with the Apigee instance,
                in the format `organizations/{{org_name}}`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] user_name: User name of the developer. Not used by Apigee hybrid.
         """
         ...
@@ -649,9 +634,6 @@ class Developer(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] last_name: Last name of the developer.
         :param pulumi.Input[builtins.str] org_id: The Apigee Organization associated with the Apigee instance,
                in the format `organizations/{{org_name}}`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] organizatio_name: Name of the Apigee organization in which the developer resides.
         :param pulumi.Input[builtins.str] status: Status of the developer. Valid values are active and inactive.
         :param pulumi.Input[builtins.str] user_name: User name of the developer. Not used by Apigee hybrid.
@@ -727,9 +709,6 @@ class Developer(pulumi.CustomResource):
         """
         The Apigee Organization associated with the Apigee instance,
         in the format `organizations/{{org_name}}`.
-
-
-        - - -
         """
         return pulumi.get(self, "org_id")
 

@@ -28,9 +28,6 @@ class TunnelDestGroupArgs:
         """
         The set of arguments for constructing a TunnelDestGroup resource.
         :param pulumi.Input[builtins.str] group_name: Unique tunnel destination group name.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] cidrs: List of CIDRs that this group applies to.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] fqdns: List of FQDNs that this group applies to.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -52,9 +49,6 @@ class TunnelDestGroupArgs:
     def group_name(self) -> pulumi.Input[builtins.str]:
         """
         Unique tunnel destination group name.
-
-
-        - - -
         """
         return pulumi.get(self, "group_name")
 
@@ -126,9 +120,6 @@ class _TunnelDestGroupState:
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] cidrs: List of CIDRs that this group applies to.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] fqdns: List of FQDNs that this group applies to.
         :param pulumi.Input[builtins.str] group_name: Unique tunnel destination group name.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: Full resource name.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -176,9 +167,6 @@ class _TunnelDestGroupState:
     def group_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Unique tunnel destination group name.
-
-
-        - - -
         """
         return pulumi.get(self, "group_name")
 
@@ -309,9 +297,6 @@ class TunnelDestGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] cidrs: List of CIDRs that this group applies to.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] fqdns: List of FQDNs that this group applies to.
         :param pulumi.Input[builtins.str] group_name: Unique tunnel destination group name.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] region: The region of the tunnel group. Must be the same as the network resources in the group.
@@ -453,9 +438,6 @@ class TunnelDestGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] cidrs: List of CIDRs that this group applies to.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] fqdns: List of FQDNs that this group applies to.
         :param pulumi.Input[builtins.str] group_name: Unique tunnel destination group name.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: Full resource name.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -494,9 +476,6 @@ class TunnelDestGroup(pulumi.CustomResource):
     def group_name(self) -> pulumi.Output[builtins.str]:
         """
         Unique tunnel destination group name.
-
-
-        - - -
         """
         return pulumi.get(self, "group_name")
 

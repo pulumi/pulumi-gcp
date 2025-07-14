@@ -115,8 +115,6 @@ public class AppCheckRecaptchaV3Config extends com.pulumi.resources.CustomResour
      * The ID of an
      * [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id).
      * 
-     * ***
-     * 
      */
     @Export(name="appId", refs={String.class}, tree="[0]")
     private Output<String> appId;
@@ -124,8 +122,6 @@ public class AppCheckRecaptchaV3Config extends com.pulumi.resources.CustomResour
     /**
      * @return The ID of an
      * [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id).
-     * 
-     * ***
      * 
      */
     public Output<String> appId() {

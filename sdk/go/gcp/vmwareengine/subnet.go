@@ -109,8 +109,6 @@ type Subnet struct {
 	IpCidrRange pulumi.StringOutput `pulumi:"ipCidrRange"`
 	// The ID of the subnet. For userDefined subnets, this name should be in the format of "service-n",
 	// where n ranges from 1 to 5.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The resource name of the private cloud to create a new subnet in.
 	// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
@@ -184,8 +182,6 @@ type subnetState struct {
 	IpCidrRange *string `pulumi:"ipCidrRange"`
 	// The ID of the subnet. For userDefined subnets, this name should be in the format of "service-n",
 	// where n ranges from 1 to 5.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The resource name of the private cloud to create a new subnet in.
 	// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
@@ -224,8 +220,6 @@ type SubnetState struct {
 	IpCidrRange pulumi.StringPtrInput
 	// The ID of the subnet. For userDefined subnets, this name should be in the format of "service-n",
 	// where n ranges from 1 to 5.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The resource name of the private cloud to create a new subnet in.
 	// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
@@ -257,8 +251,6 @@ type subnetArgs struct {
 	IpCidrRange string `pulumi:"ipCidrRange"`
 	// The ID of the subnet. For userDefined subnets, this name should be in the format of "service-n",
 	// where n ranges from 1 to 5.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The resource name of the private cloud to create a new subnet in.
 	// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
@@ -272,8 +264,6 @@ type SubnetArgs struct {
 	IpCidrRange pulumi.StringInput
 	// The ID of the subnet. For userDefined subnets, this name should be in the format of "service-n",
 	// where n ranges from 1 to 5.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The resource name of the private cloud to create a new subnet in.
 	// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
@@ -398,8 +388,6 @@ func (o SubnetOutput) IpCidrRange() pulumi.StringOutput {
 
 // The ID of the subnet. For userDefined subnets, this name should be in the format of "service-n",
 // where n ranges from 1 to 5.
-//
-// ***
 func (o SubnetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subnet) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

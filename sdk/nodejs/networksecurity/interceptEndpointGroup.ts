@@ -126,9 +126,6 @@ export class InterceptEndpointGroup extends pulumi.CustomResource {
     /**
      * The ID to use for the endpoint group, which will become the final component
      * of the endpoint group's resource name.
-     *
-     *
-     * - - -
      */
     public readonly interceptEndpointGroupId!: pulumi.Output<string>;
     /**
@@ -279,9 +276,6 @@ export interface InterceptEndpointGroupState {
     /**
      * The ID to use for the endpoint group, which will become the final component
      * of the endpoint group's resource name.
-     *
-     *
-     * - - -
      */
     interceptEndpointGroupId?: pulumi.Input<string>;
     /**
@@ -352,9 +346,6 @@ export interface InterceptEndpointGroupArgs {
     /**
      * The ID to use for the endpoint group, which will become the final component
      * of the endpoint group's resource name.
-     *
-     *
-     * - - -
      */
     interceptEndpointGroupId: pulumi.Input<string>;
     /**

@@ -61,16 +61,12 @@ public class ApiConfig extends com.pulumi.resources.CustomResource {
     /**
      * The API to attach the config to.
      * 
-     * ***
-     * 
      */
     @Export(name="api", refs={String.class}, tree="[0]")
     private Output<String> api;
 
     /**
      * @return The API to attach the config to.
-     * 
-     * ***
      * 
      */
     public Output<String> api() {

@@ -111,9 +111,6 @@ export class ManagedFolder extends pulumi.CustomResource {
     /**
      * The name of the managed folder expressed as a path. Must include
      * trailing '/'. For example, `example_dir/example_dir2/`.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -189,9 +186,6 @@ export interface ManagedFolderState {
     /**
      * The name of the managed folder expressed as a path. Must include
      * trailing '/'. For example, `example_dir/example_dir2/`.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -222,9 +216,6 @@ export interface ManagedFolderArgs {
     /**
      * The name of the managed folder expressed as a path. Must include
      * trailing '/'. For example, `example_dir/example_dir2/`.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
 }

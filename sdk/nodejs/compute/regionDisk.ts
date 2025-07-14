@@ -325,9 +325,6 @@ export class RegionDisk extends pulumi.CustomResource {
     public readonly region!: pulumi.Output<string>;
     /**
      * URLs of the zones where the disk should be replicated to.
-     *
-     *
-     * - - -
      */
     public readonly replicaZones!: pulumi.Output<string[]>;
     /**
@@ -615,9 +612,6 @@ export interface RegionDiskState {
     region?: pulumi.Input<string>;
     /**
      * URLs of the zones where the disk should be replicated to.
-     *
-     *
-     * - - -
      */
     replicaZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -788,9 +782,6 @@ export interface RegionDiskArgs {
     region?: pulumi.Input<string>;
     /**
      * URLs of the zones where the disk should be replicated to.
-     *
-     *
-     * - - -
      */
     replicaZones: pulumi.Input<pulumi.Input<string>[]>;
     /**

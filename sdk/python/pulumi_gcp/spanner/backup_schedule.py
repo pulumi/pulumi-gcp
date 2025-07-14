@@ -34,9 +34,6 @@ class BackupScheduleArgs:
         """
         The set of arguments for constructing a BackupSchedule resource.
         :param pulumi.Input[builtins.str] database: The database to create the backup schedule on.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] instance: The instance to create the database on.
         :param pulumi.Input[builtins.str] retention_duration: At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: '3.5s'.
@@ -73,9 +70,6 @@ class BackupScheduleArgs:
     def database(self) -> pulumi.Input[builtins.str]:
         """
         The database to create the backup schedule on.
-
-
-        - - -
         """
         return pulumi.get(self, "database")
 
@@ -201,9 +195,6 @@ class _BackupScheduleState:
         """
         Input properties used for looking up and filtering BackupSchedule resources.
         :param pulumi.Input[builtins.str] database: The database to create the backup schedule on.
-               
-               
-               - - -
         :param pulumi.Input['BackupScheduleEncryptionConfigArgs'] encryption_config: Configuration for the encryption of the backup schedule.
                Structure is documented below.
         :param pulumi.Input['BackupScheduleFullBackupSpecArgs'] full_backup_spec: The schedule creates only full backups..
@@ -243,9 +234,6 @@ class _BackupScheduleState:
     def database(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The database to create the backup schedule on.
-
-
-        - - -
         """
         return pulumi.get(self, "database")
 
@@ -489,9 +477,6 @@ class BackupSchedule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] database: The database to create the backup schedule on.
-               
-               
-               - - -
         :param pulumi.Input[Union['BackupScheduleEncryptionConfigArgs', 'BackupScheduleEncryptionConfigArgsDict']] encryption_config: Configuration for the encryption of the backup schedule.
                Structure is documented below.
         :param pulumi.Input[Union['BackupScheduleFullBackupSpecArgs', 'BackupScheduleFullBackupSpecArgsDict']] full_backup_spec: The schedule creates only full backups..
@@ -702,9 +687,6 @@ class BackupSchedule(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] database: The database to create the backup schedule on.
-               
-               
-               - - -
         :param pulumi.Input[Union['BackupScheduleEncryptionConfigArgs', 'BackupScheduleEncryptionConfigArgsDict']] encryption_config: Configuration for the encryption of the backup schedule.
                Structure is documented below.
         :param pulumi.Input[Union['BackupScheduleFullBackupSpecArgs', 'BackupScheduleFullBackupSpecArgsDict']] full_backup_spec: The schedule creates only full backups..
@@ -740,9 +722,6 @@ class BackupSchedule(pulumi.CustomResource):
     def database(self) -> pulumi.Output[builtins.str]:
         """
         The database to create the backup schedule on.
-
-
-        - - -
         """
         return pulumi.get(self, "database")
 

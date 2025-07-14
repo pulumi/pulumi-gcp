@@ -830,16 +830,12 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
     /**
      * A reference to the region where the regional NEGs reside.
      * 
-     * ***
-     * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
      * @return A reference to the region where the regional NEGs reside.
-     * 
-     * ***
      * 
      */
     public Output<String> region() {

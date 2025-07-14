@@ -229,8 +229,6 @@ type Instance struct {
 	// * Must be between 1-63 characters.
 	// * Must end with a number or a letter.
 	// * Must be unique within the customer project/ location
-	//
-	// ***
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// Cloud Labels are a flexible and lightweight mechanism for
 	// organizing cloud resources into groups that reflect a customer's organizational
@@ -378,8 +376,6 @@ type instanceState struct {
 	// * Must be between 1-63 characters.
 	// * Must end with a number or a letter.
 	// * Must be unique within the customer project/ location
-	//
-	// ***
 	InstanceId *string `pulumi:"instanceId"`
 	// Cloud Labels are a flexible and lightweight mechanism for
 	// organizing cloud resources into groups that reflect a customer's organizational
@@ -484,8 +480,6 @@ type InstanceState struct {
 	// * Must be between 1-63 characters.
 	// * Must end with a number or a letter.
 	// * Must be unique within the customer project/ location
-	//
-	// ***
 	InstanceId pulumi.StringPtrInput
 	// Cloud Labels are a flexible and lightweight mechanism for
 	// organizing cloud resources into groups that reflect a customer's organizational
@@ -580,8 +574,6 @@ type instanceArgs struct {
 	// * Must be between 1-63 characters.
 	// * Must end with a number or a letter.
 	// * Must be unique within the customer project/ location
-	//
-	// ***
 	InstanceId string `pulumi:"instanceId"`
 	// Cloud Labels are a flexible and lightweight mechanism for
 	// organizing cloud resources into groups that reflect a customer's organizational
@@ -656,8 +648,6 @@ type InstanceArgs struct {
 	// * Must be between 1-63 characters.
 	// * Must end with a number or a letter.
 	// * Must be unique within the customer project/ location
-	//
-	// ***
 	InstanceId pulumi.StringInput
 	// Cloud Labels are a flexible and lightweight mechanism for
 	// organizing cloud resources into groups that reflect a customer's organizational
@@ -861,8 +851,6 @@ func (o InstanceOutput) FileStripeLevel() pulumi.StringPtrOutput {
 // * Must be between 1-63 characters.
 // * Must end with a number or a letter.
 // * Must be unique within the customer project/ location
-//
-// ***
 func (o InstanceOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }

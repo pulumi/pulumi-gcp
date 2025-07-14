@@ -345,16 +345,12 @@ public class CxTool extends com.pulumi.resources.CustomResource {
     /**
      * High level description of the Tool and its usage.
      * 
-     * ***
-     * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
      * @return High level description of the Tool and its usage.
-     * 
-     * ***
      * 
      */
     public Output<String> description() {

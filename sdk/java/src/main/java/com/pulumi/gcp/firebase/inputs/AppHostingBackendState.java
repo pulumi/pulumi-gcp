@@ -65,8 +65,6 @@ public final class AppHostingBackendState extends com.pulumi.resources.ResourceA
      * Id of the backend. Also used as the service ID for Cloud Run, and as part
      * of the default domain name.
      * 
-     * ***
-     * 
      */
     @Import(name="backendId")
     private @Nullable Output<String> backendId;
@@ -74,8 +72,6 @@ public final class AppHostingBackendState extends com.pulumi.resources.ResourceA
     /**
      * @return Id of the backend. Also used as the service ID for Cloud Run, and as part
      * of the default domain name.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> backendId() {
@@ -496,8 +492,6 @@ public final class AppHostingBackendState extends com.pulumi.resources.ResourceA
          * @param backendId Id of the backend. Also used as the service ID for Cloud Run, and as part
          * of the default domain name.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -509,8 +503,6 @@ public final class AppHostingBackendState extends com.pulumi.resources.ResourceA
         /**
          * @param backendId Id of the backend. Also used as the service ID for Cloud Run, and as part
          * of the default domain name.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -149,9 +149,6 @@ namespace Pulumi.Gcp.Apigee
         /// <summary>
         /// The Apigee environment keyvalumaps Id associated with the Apigee environment,
         /// in the format `organizations/{{org_name}}/environments/{{env_name}}/keyvaluemaps/{{keyvaluemap_name}}`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("envKeyvaluemapId")]
         public Output<string> EnvKeyvaluemapId { get; private set; } = null!;
@@ -217,9 +214,6 @@ namespace Pulumi.Gcp.Apigee
         /// <summary>
         /// The Apigee environment keyvalumaps Id associated with the Apigee environment,
         /// in the format `organizations/{{org_name}}/environments/{{env_name}}/keyvaluemaps/{{keyvaluemap_name}}`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("envKeyvaluemapId", required: true)]
         public Input<string> EnvKeyvaluemapId { get; set; } = null!;
@@ -247,9 +241,6 @@ namespace Pulumi.Gcp.Apigee
         /// <summary>
         /// The Apigee environment keyvalumaps Id associated with the Apigee environment,
         /// in the format `organizations/{{org_name}}/environments/{{env_name}}/keyvaluemaps/{{keyvaluemap_name}}`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("envKeyvaluemapId")]
         public Input<string>? EnvKeyvaluemapId { get; set; }

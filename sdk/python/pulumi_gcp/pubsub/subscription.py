@@ -44,9 +44,6 @@ class SubscriptionArgs:
         :param pulumi.Input[builtins.str] topic: A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
                (as in the id property of a google_pubsub_topic), or just a topic name if
                the topic is in the same project as the subscription.
-               
-               
-               - - -
         :param pulumi.Input[builtins.int] ack_deadline_seconds: This value is the maximum time after a subscriber receives a message
                before the subscriber should acknowledge the message. After message
                delivery but before the ack deadline expires and before the message is
@@ -171,9 +168,6 @@ class SubscriptionArgs:
         A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
         (as in the id property of a google_pubsub_topic), or just a topic name if
         the topic is in the same project as the subscription.
-
-
-        - - -
         """
         return pulumi.get(self, "topic")
 
@@ -552,9 +546,6 @@ class _SubscriptionState:
         :param pulumi.Input[builtins.str] topic: A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
                (as in the id property of a google_pubsub_topic), or just a topic name if
                the topic is in the same project as the subscription.
-               
-               
-               - - -
         """
         if ack_deadline_seconds is not None:
             pulumi.set(__self__, "ack_deadline_seconds", ack_deadline_seconds)
@@ -885,9 +876,6 @@ class _SubscriptionState:
         A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
         (as in the id property of a google_pubsub_topic), or just a topic name if
         the topic is in the same project as the subscription.
-
-
-        - - -
         """
         return pulumi.get(self, "topic")
 
@@ -1353,9 +1341,6 @@ class Subscription(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] topic: A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
                (as in the id property of a google_pubsub_topic), or just a topic name if
                the topic is in the same project as the subscription.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -1897,9 +1882,6 @@ class Subscription(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] topic: A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
                (as in the id property of a google_pubsub_topic), or just a topic name if
                the topic is in the same project as the subscription.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -2144,9 +2126,6 @@ class Subscription(pulumi.CustomResource):
         A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
         (as in the id property of a google_pubsub_topic), or just a topic name if
         the topic is in the same project as the subscription.
-
-
-        - - -
         """
         return pulumi.get(self, "topic")
 

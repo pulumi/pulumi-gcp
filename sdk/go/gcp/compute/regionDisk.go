@@ -332,8 +332,6 @@ type RegionDisk struct {
 	// A reference to the region where the disk resides.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// URLs of the zones where the disk should be replicated to.
-	//
-	// ***
 	ReplicaZones pulumi.StringArrayOutput `pulumi:"replicaZones"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -506,8 +504,6 @@ type regionDiskState struct {
 	// A reference to the region where the disk resides.
 	Region *string `pulumi:"region"`
 	// URLs of the zones where the disk should be replicated to.
-	//
-	// ***
 	ReplicaZones []string `pulumi:"replicaZones"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -643,8 +639,6 @@ type RegionDiskState struct {
 	// A reference to the region where the disk resides.
 	Region pulumi.StringPtrInput
 	// URLs of the zones where the disk should be replicated to.
-	//
-	// ***
 	ReplicaZones pulumi.StringArrayInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
@@ -768,8 +762,6 @@ type regionDiskArgs struct {
 	// A reference to the region where the disk resides.
 	Region *string `pulumi:"region"`
 	// URLs of the zones where the disk should be replicated to.
-	//
-	// ***
 	ReplicaZones []string `pulumi:"replicaZones"`
 	// Size of the persistent disk, specified in GB. You can specify this
 	// field when creating a persistent disk using the sourceImage or
@@ -874,8 +866,6 @@ type RegionDiskArgs struct {
 	// A reference to the region where the disk resides.
 	Region pulumi.StringPtrInput
 	// URLs of the zones where the disk should be replicated to.
-	//
-	// ***
 	ReplicaZones pulumi.StringArrayInput
 	// Size of the persistent disk, specified in GB. You can specify this
 	// field when creating a persistent disk using the sourceImage or
@@ -1144,8 +1134,6 @@ func (o RegionDiskOutput) Region() pulumi.StringOutput {
 }
 
 // URLs of the zones where the disk should be replicated to.
-//
-// ***
 func (o RegionDiskOutput) ReplicaZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RegionDisk) pulumi.StringArrayOutput { return v.ReplicaZones }).(pulumi.StringArrayOutput)
 }

@@ -526,18 +526,21 @@ namespace Pulumi.Gcp.DataPlex
 
         /// <summary>
         /// DataDiscoveryScan related setting.
+        /// Structure is documented below.
         /// </summary>
         [Output("dataDiscoverySpec")]
         public Output<Outputs.DatascanDataDiscoverySpec?> DataDiscoverySpec { get; private set; } = null!;
 
         /// <summary>
         /// DataProfileScan related setting.
+        /// Structure is documented below.
         /// </summary>
         [Output("dataProfileSpec")]
         public Output<Outputs.DatascanDataProfileSpec?> DataProfileSpec { get; private set; } = null!;
 
         /// <summary>
         /// DataQualityScan related setting.
+        /// Structure is documented below.
         /// </summary>
         [Output("dataQualitySpec")]
         public Output<Outputs.DatascanDataQualitySpec?> DataQualitySpec { get; private set; } = null!;
@@ -581,9 +584,10 @@ namespace Pulumi.Gcp.DataPlex
         public Output<ImmutableArray<Outputs.DatascanExecutionStatus>> ExecutionStatuses { get; private set; } = null!;
 
         /// <summary>
-        /// User-defined labels for the scan. A list of key-&gt;value pairs. **Note**: This field is non-authoritative, and will only
-        /// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-        /// present on the resource.
+        /// User-defined labels for the scan. A list of key-&gt;value pairs.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -600,6 +604,10 @@ namespace Pulumi.Gcp.DataPlex
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -694,18 +702,21 @@ namespace Pulumi.Gcp.DataPlex
 
         /// <summary>
         /// DataDiscoveryScan related setting.
+        /// Structure is documented below.
         /// </summary>
         [Input("dataDiscoverySpec")]
         public Input<Inputs.DatascanDataDiscoverySpecArgs>? DataDiscoverySpec { get; set; }
 
         /// <summary>
         /// DataProfileScan related setting.
+        /// Structure is documented below.
         /// </summary>
         [Input("dataProfileSpec")]
         public Input<Inputs.DatascanDataProfileSpecArgs>? DataProfileSpec { get; set; }
 
         /// <summary>
         /// DataQualityScan related setting.
+        /// Structure is documented below.
         /// </summary>
         [Input("dataQualitySpec")]
         public Input<Inputs.DatascanDataQualitySpecArgs>? DataQualitySpec { get; set; }
@@ -739,9 +750,10 @@ namespace Pulumi.Gcp.DataPlex
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// User-defined labels for the scan. A list of key-&gt;value pairs. **Note**: This field is non-authoritative, and will only
-        /// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-        /// present on the resource.
+        /// User-defined labels for the scan. A list of key-&gt;value pairs.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -755,6 +767,10 @@ namespace Pulumi.Gcp.DataPlex
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -781,18 +797,21 @@ namespace Pulumi.Gcp.DataPlex
 
         /// <summary>
         /// DataDiscoveryScan related setting.
+        /// Structure is documented below.
         /// </summary>
         [Input("dataDiscoverySpec")]
         public Input<Inputs.DatascanDataDiscoverySpecGetArgs>? DataDiscoverySpec { get; set; }
 
         /// <summary>
         /// DataProfileScan related setting.
+        /// Structure is documented below.
         /// </summary>
         [Input("dataProfileSpec")]
         public Input<Inputs.DatascanDataProfileSpecGetArgs>? DataProfileSpec { get; set; }
 
         /// <summary>
         /// DataQualityScan related setting.
+        /// Structure is documented below.
         /// </summary>
         [Input("dataQualitySpec")]
         public Input<Inputs.DatascanDataQualitySpecGetArgs>? DataQualitySpec { get; set; }
@@ -855,9 +874,10 @@ namespace Pulumi.Gcp.DataPlex
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// User-defined labels for the scan. A list of key-&gt;value pairs. **Note**: This field is non-authoritative, and will only
-        /// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-        /// present on the resource.
+        /// User-defined labels for the scan. A list of key-&gt;value pairs.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -877,6 +897,10 @@ namespace Pulumi.Gcp.DataPlex
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

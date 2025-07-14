@@ -29,9 +29,6 @@ class ClusterUserCreatedConnectionsArgs:
         """
         The set of arguments for constructing a ClusterUserCreatedConnections resource.
         :param pulumi.Input[builtins.str] region: The name of the region of the Redis cluster these endpoints should be added to.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['ClusterUserCreatedConnectionsClusterEndpointArgs']]] cluster_endpoints: A list of cluster endpoints
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: The name of the Redis cluster these endpoints should be added to.
@@ -51,9 +48,6 @@ class ClusterUserCreatedConnectionsArgs:
     def region(self) -> pulumi.Input[builtins.str]:
         """
         The name of the region of the Redis cluster these endpoints should be added to.
-
-
-        - - -
         """
         return pulumi.get(self, "region")
 
@@ -115,9 +109,6 @@ class _ClusterUserCreatedConnectionsState:
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] region: The name of the region of the Redis cluster these endpoints should be added to.
-               
-               
-               - - -
         """
         if cluster_endpoints is not None:
             pulumi.set(__self__, "cluster_endpoints", cluster_endpoints)
@@ -171,9 +162,6 @@ class _ClusterUserCreatedConnectionsState:
     def region(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The name of the region of the Redis cluster these endpoints should be added to.
-
-
-        - - -
         """
         return pulumi.get(self, "region")
 
@@ -462,9 +450,6 @@ class ClusterUserCreatedConnections(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] region: The name of the region of the Redis cluster these endpoints should be added to.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -794,9 +779,6 @@ class ClusterUserCreatedConnections(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] region: The name of the region of the Redis cluster these endpoints should be added to.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -839,9 +821,6 @@ class ClusterUserCreatedConnections(pulumi.CustomResource):
     def region(self) -> pulumi.Output[builtins.str]:
         """
         The name of the region of the Redis cluster these endpoints should be added to.
-
-
-        - - -
         """
         return pulumi.get(self, "region")
 

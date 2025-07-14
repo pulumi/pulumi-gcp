@@ -401,9 +401,6 @@ export class RegionTargetHttpsProxy extends pulumi.CustomResource {
     /**
      * A reference to the RegionUrlMap resource that defines the mapping from URL
      * to the RegionBackendService.
-     *
-     *
-     * - - -
      */
     public readonly urlMap!: pulumi.Output<string>;
 
@@ -542,9 +539,6 @@ export interface RegionTargetHttpsProxyState {
     /**
      * A reference to the RegionUrlMap resource that defines the mapping from URL
      * to the RegionBackendService.
-     *
-     *
-     * - - -
      */
     urlMap?: pulumi.Input<string>;
 }
@@ -622,9 +616,6 @@ export interface RegionTargetHttpsProxyArgs {
     /**
      * A reference to the RegionUrlMap resource that defines the mapping from URL
      * to the RegionBackendService.
-     *
-     *
-     * - - -
      */
     urlMap: pulumi.Input<string>;
 }

@@ -123,8 +123,6 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
      * Location of the Certificate. A full list of valid locations can be found by
      * running `gcloud privateca locations list`.
      * 
-     * ***
-     * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
@@ -132,8 +130,6 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Location of the Certificate. A full list of valid locations can be found by
      * running `gcloud privateca locations list`.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {
@@ -370,8 +366,6 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
          * @param location Location of the Certificate. A full list of valid locations can be found by
          * running `gcloud privateca locations list`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -383,8 +377,6 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param location Location of the Certificate. A full list of valid locations can be found by
          * running `gcloud privateca locations list`.
-         * 
-         * ***
          * 
          * @return builder
          * 

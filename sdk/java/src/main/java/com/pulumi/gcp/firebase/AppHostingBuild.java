@@ -230,20 +230,22 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:firebase/appHostingBuild:AppHostingBuild")
 public class AppHostingBuild extends com.pulumi.resources.CustomResource {
     /**
-     * Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
-     * should be preserved when modifying objects. **Note**: This field is non-authoritative, and will only manage the
-     * annotations present in your configuration. Please refer to the field &#39;effective_annotations&#39; for all of the annotations
-     * present on the resource.
+     * Unstructured key value map that may be set by external tools to
+     * store and arbitrary metadata. They are not queryable and should be
+     * preserved when modifying objects.
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> annotations;
 
     /**
-     * @return Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
-     * should be preserved when modifying objects. **Note**: This field is non-authoritative, and will only manage the
-     * annotations present in your configuration. Please refer to the field &#39;effective_annotations&#39; for all of the annotations
-     * present on the resource.
+     * @return Unstructured key value map that may be set by external tools to
+     * store and arbitrary metadata. They are not queryable and should be
+     * preserved when modifying objects.
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> annotations() {
@@ -444,18 +446,20 @@ public class AppHostingBuild extends com.pulumi.resources.CustomResource {
         return this.image;
     }
     /**
-     * Unstructured key value map that can be used to organize and categorize objects. **Note**: This field is
-     * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-     * &#39;effective_labels&#39; for all of the labels present on the resource.
+     * Unstructured key value map that can be used to organize and categorize
+     * objects.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return Unstructured key value map that can be used to organize and categorize objects. **Note**: This field is
-     * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-     * &#39;effective_labels&#39; for all of the labels present on the resource.
+     * @return Unstructured key value map that can be used to organize and categorize
+     * objects.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -493,9 +497,19 @@ public class AppHostingBuild extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }

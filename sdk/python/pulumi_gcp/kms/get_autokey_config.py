@@ -83,6 +83,13 @@ class AwaitableGetAutokeyConfigResult(GetAutokeyConfigResult):
 def get_autokey_config(folder: Optional[builtins.str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAutokeyConfigResult:
     """
+    Provides access to Google Cloud Platform KMS AutokeyConfig. A AutokeyConfig is a Cloud KMS resource that helps you safely span the separation of duties to create new Cloud KMS keys for CMEK using Autokey.
+
+    For more information see
+    [the official documentation](https://cloud.google.com/kms/docs/reference/rest/v1/folders)
+    and
+    [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyHandles).
+
     ## Example Usage
 
     ```python
@@ -109,6 +116,13 @@ def get_autokey_config(folder: Optional[builtins.str] = None,
 def get_autokey_config_output(folder: Optional[pulumi.Input[builtins.str]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAutokeyConfigResult]:
     """
+    Provides access to Google Cloud Platform KMS AutokeyConfig. A AutokeyConfig is a Cloud KMS resource that helps you safely span the separation of duties to create new Cloud KMS keys for CMEK using Autokey.
+
+    For more information see
+    [the official documentation](https://cloud.google.com/kms/docs/reference/rest/v1/folders)
+    and
+    [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyHandles).
+
     ## Example Usage
 
     ```python

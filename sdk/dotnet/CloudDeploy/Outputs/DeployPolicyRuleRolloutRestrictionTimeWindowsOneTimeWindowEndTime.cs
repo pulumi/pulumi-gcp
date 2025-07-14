@@ -23,8 +23,6 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
         public readonly int? Minutes;
         /// <summary>
         /// Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
-        /// 
-        /// - - -
         /// </summary>
         public readonly int? Nanos;
         /// <summary>

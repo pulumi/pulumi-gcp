@@ -29,9 +29,6 @@ class OrganizationSecurityPolicyArgs:
         :param pulumi.Input[builtins.str] display_name: A textual name of the security policy.
         :param pulumi.Input[builtins.str] parent: The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
                Format: organizations/{organization_id} or folders/{folder_id}
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] description: A textual description for the organization security policy.
         :param pulumi.Input[builtins.str] type: The type indicates the intended use of the security policy.
                For organization security policies, the only supported type
@@ -64,9 +61,6 @@ class OrganizationSecurityPolicyArgs:
         """
         The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
         Format: organizations/{organization_id} or folders/{folder_id}
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 
@@ -120,9 +114,6 @@ class _OrganizationSecurityPolicyState:
                updates of this resource.
         :param pulumi.Input[builtins.str] parent: The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
                Format: organizations/{organization_id} or folders/{folder_id}
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] policy_id: The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[builtins.str] type: The type indicates the intended use of the security policy.
                For organization security policies, the only supported type
@@ -186,9 +177,6 @@ class _OrganizationSecurityPolicyState:
         """
         The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
         Format: organizations/{organization_id} or folders/{folder_id}
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 
@@ -282,9 +270,6 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] display_name: A textual name of the security policy.
         :param pulumi.Input[builtins.str] parent: The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
                Format: organizations/{organization_id} or folders/{folder_id}
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] type: The type indicates the intended use of the security policy.
                For organization security policies, the only supported type
                is "FIREWALL".
@@ -404,9 +389,6 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
                updates of this resource.
         :param pulumi.Input[builtins.str] parent: The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
                Format: organizations/{organization_id} or folders/{folder_id}
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] policy_id: The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[builtins.str] type: The type indicates the intended use of the security policy.
                For organization security policies, the only supported type
@@ -457,9 +439,6 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
         """
         The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
         Format: organizations/{organization_id} or folders/{folder_id}
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 

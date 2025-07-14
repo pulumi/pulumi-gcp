@@ -31,9 +31,6 @@ class CrossSiteNetworkArgs:
                long and match the regular expression `a-z?` which means the first
                character must be a lowercase letter, and all following characters must be a dash,
                lowercase letter, or digit, except the last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -65,9 +62,6 @@ class CrossSiteNetworkArgs:
         long and match the regular expression `a-z?` which means the first
         character must be a lowercase letter, and all following characters must be a dash,
         lowercase letter, or digit, except the last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -103,9 +97,6 @@ class _CrossSiteNetworkState:
                long and match the regular expression `a-z?` which means the first
                character must be a lowercase letter, and all following characters must be a dash,
                lowercase letter, or digit, except the last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -137,9 +128,6 @@ class _CrossSiteNetworkState:
         long and match the regular expression `a-z?` which means the first
         character must be a lowercase letter, and all following characters must be a dash,
         lowercase letter, or digit, except the last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -218,9 +206,6 @@ class CrossSiteNetwork(pulumi.CustomResource):
                long and match the regular expression `a-z?` which means the first
                character must be a lowercase letter, and all following characters must be a dash,
                lowercase letter, or digit, except the last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -325,9 +310,6 @@ class CrossSiteNetwork(pulumi.CustomResource):
                long and match the regular expression `a-z?` which means the first
                character must be a lowercase letter, and all following characters must be a dash,
                lowercase letter, or digit, except the last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -357,9 +339,6 @@ class CrossSiteNetwork(pulumi.CustomResource):
         long and match the regular expression `a-z?` which means the first
         character must be a lowercase letter, and all following characters must be a dash,
         lowercase letter, or digit, except the last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

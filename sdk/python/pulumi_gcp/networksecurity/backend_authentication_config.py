@@ -39,9 +39,6 @@ class BackendAuthenticationConfigArgs:
         :param pulumi.Input[builtins.str] location: The location of the backend authentication config.
                The default value is `global`.
         :param pulumi.Input[builtins.str] name: Name of the BackendAuthenticationConfig resource.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] trust_config: Reference to a TrustConfig resource from the certificatemanager.googleapis.com namespace.
@@ -125,9 +122,6 @@ class BackendAuthenticationConfigArgs:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Name of the BackendAuthenticationConfig resource.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -205,9 +199,6 @@ class _BackendAuthenticationConfigState:
         :param pulumi.Input[builtins.str] location: The location of the backend authentication config.
                The default value is `global`.
         :param pulumi.Input[builtins.str] name: Name of the BackendAuthenticationConfig resource.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -326,9 +317,6 @@ class _BackendAuthenticationConfigState:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Name of the BackendAuthenticationConfig resource.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -547,9 +535,6 @@ class BackendAuthenticationConfig(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] location: The location of the backend authentication config.
                The default value is `global`.
         :param pulumi.Input[builtins.str] name: Name of the BackendAuthenticationConfig resource.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] trust_config: Reference to a TrustConfig resource from the certificatemanager.googleapis.com namespace.
@@ -769,9 +754,6 @@ class BackendAuthenticationConfig(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] location: The location of the backend authentication config.
                The default value is `global`.
         :param pulumi.Input[builtins.str] name: Name of the BackendAuthenticationConfig resource.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -859,9 +841,6 @@ class BackendAuthenticationConfig(pulumi.CustomResource):
     def name(self) -> pulumi.Output[builtins.str]:
         """
         Name of the BackendAuthenticationConfig resource.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

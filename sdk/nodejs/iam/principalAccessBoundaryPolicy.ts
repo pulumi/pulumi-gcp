@@ -141,9 +141,6 @@ export class PrincipalAccessBoundaryPolicy extends pulumi.CustomResource {
     /**
      * The ID to use to create the principal access boundary policy.
      * This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, hyphens, or dots. Pattern, /a-z{2,62}/.
-     *
-     *
-     * - - -
      */
     public readonly principalAccessBoundaryPolicyId!: pulumi.Output<string>;
     /**
@@ -255,9 +252,6 @@ export interface PrincipalAccessBoundaryPolicyState {
     /**
      * The ID to use to create the principal access boundary policy.
      * This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, hyphens, or dots. Pattern, /a-z{2,62}/.
-     *
-     *
-     * - - -
      */
     principalAccessBoundaryPolicyId?: pulumi.Input<string>;
     /**
@@ -302,9 +296,6 @@ export interface PrincipalAccessBoundaryPolicyArgs {
     /**
      * The ID to use to create the principal access boundary policy.
      * This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, hyphens, or dots. Pattern, /a-z{2,62}/.
-     *
-     *
-     * - - -
      */
     principalAccessBoundaryPolicyId: pulumi.Input<string>;
 }

@@ -331,8 +331,10 @@ namespace Pulumi.Gcp.DataPlex
         public Output<ImmutableArray<Outputs.TaskExecutionStatus>> ExecutionStatuses { get; private set; } = null!;
 
         /// <summary>
-        /// User-defined labels for the task. **Note**: This field is non-authoritative, and will only manage the labels present in
-        /// your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        /// User-defined labels for the task.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -357,12 +359,16 @@ namespace Pulumi.Gcp.DataPlex
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
-        /// its memory over time.
+        /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+        /// Structure is documented below.
         /// </summary>
         [Output("notebook")]
         public Output<Outputs.TaskNotebook?> Notebook { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -374,8 +380,8 @@ namespace Pulumi.Gcp.DataPlex
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
-        /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
-        /// its memory over time.
+        /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+        /// Structure is documented below.
         /// </summary>
         [Output("spark")]
         public Output<Outputs.TaskSpark?> Spark { get; private set; } = null!;
@@ -488,8 +494,10 @@ namespace Pulumi.Gcp.DataPlex
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// User-defined labels for the task. **Note**: This field is non-authoritative, and will only manage the labels present in
-        /// your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        /// User-defined labels for the task.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -510,18 +518,22 @@ namespace Pulumi.Gcp.DataPlex
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
-        /// its memory over time.
+        /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+        /// Structure is documented below.
         /// </summary>
         [Input("notebook")]
         public Input<Inputs.TaskNotebookArgs>? Notebook { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
-        /// its memory over time.
+        /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+        /// Structure is documented below.
         /// </summary>
         [Input("spark")]
         public Input<Inputs.TaskSparkArgs>? Spark { get; set; }
@@ -605,8 +617,10 @@ namespace Pulumi.Gcp.DataPlex
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// User-defined labels for the task. **Note**: This field is non-authoritative, and will only manage the labels present in
-        /// your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        /// User-defined labels for the task.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -634,12 +648,16 @@ namespace Pulumi.Gcp.DataPlex
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
-        /// its memory over time.
+        /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+        /// Structure is documented below.
         /// </summary>
         [Input("notebook")]
         public Input<Inputs.TaskNotebookGetArgs>? Notebook { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -661,8 +679,8 @@ namespace Pulumi.Gcp.DataPlex
         }
 
         /// <summary>
-        /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
-        /// its memory over time.
+        /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+        /// Structure is documented below.
         /// </summary>
         [Input("spark")]
         public Input<Inputs.TaskSparkGetArgs>? Spark { get; set; }

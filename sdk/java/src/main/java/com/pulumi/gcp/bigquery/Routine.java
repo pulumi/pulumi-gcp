@@ -609,8 +609,6 @@ public class Routine extends com.pulumi.resources.CustomResource {
      * The body of the routine. For functions, this is the expression in the AS clause.
      * If language=SQL, it is the substring inside (but excluding) the parentheses.
      * 
-     * ***
-     * 
      */
     @Export(name="definitionBody", refs={String.class}, tree="[0]")
     private Output<String> definitionBody;
@@ -618,8 +616,6 @@ public class Routine extends com.pulumi.resources.CustomResource {
     /**
      * @return The body of the routine. For functions, this is the expression in the AS clause.
      * If language=SQL, it is the substring inside (but excluding) the parentheses.
-     * 
-     * ***
      * 
      */
     public Output<String> definitionBody() {

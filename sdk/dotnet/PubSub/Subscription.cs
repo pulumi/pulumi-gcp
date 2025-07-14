@@ -748,9 +748,6 @@ namespace Pulumi.Gcp.PubSub
         /// A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
         /// (as in the id property of a google_pubsub_topic), or just a topic name if
         /// the topic is in the same project as the subscription.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("topic")]
         public Output<string> Topic { get; private set; } = null!;
@@ -984,9 +981,6 @@ namespace Pulumi.Gcp.PubSub
         /// A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
         /// (as in the id property of a google_pubsub_topic), or just a topic name if
         /// the topic is in the same project as the subscription.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("topic", required: true)]
         public Input<string> Topic { get; set; } = null!;
@@ -1210,9 +1204,6 @@ namespace Pulumi.Gcp.PubSub
         /// A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
         /// (as in the id property of a google_pubsub_topic), or just a topic name if
         /// the topic is in the same project as the subscription.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("topic")]
         public Input<string>? Topic { get; set; }

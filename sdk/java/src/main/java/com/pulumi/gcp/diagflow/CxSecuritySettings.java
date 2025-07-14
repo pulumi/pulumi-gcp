@@ -233,16 +233,12 @@ public class CxSecuritySettings extends com.pulumi.resources.CustomResource {
     /**
      * The human-readable name of the security settings, unique within the location.
      * 
-     * ***
-     * 
      */
     @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
      * @return The human-readable name of the security settings, unique within the location.
-     * 
-     * ***
      * 
      */
     public Output<String> displayName() {

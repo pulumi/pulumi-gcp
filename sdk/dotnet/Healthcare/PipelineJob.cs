@@ -417,9 +417,6 @@ namespace Pulumi.Gcp.Healthcare
 
         /// <summary>
         /// Healthcare Dataset under which the Pipeline Job is to run
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("dataset")]
         public Output<string> Dataset { get; private set; } = null!;
@@ -553,9 +550,6 @@ namespace Pulumi.Gcp.Healthcare
 
         /// <summary>
         /// Healthcare Dataset under which the Pipeline Job is to run
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("dataset", required: true)]
         public Input<string> Dataset { get; set; } = null!;
@@ -633,9 +627,6 @@ namespace Pulumi.Gcp.Healthcare
 
         /// <summary>
         /// Healthcare Dataset under which the Pipeline Job is to run
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("dataset")]
         public Input<string>? Dataset { get; set; }

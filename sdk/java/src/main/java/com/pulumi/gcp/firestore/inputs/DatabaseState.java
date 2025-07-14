@@ -268,8 +268,6 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
      * for information about how to choose.
      * Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
      * 
-     * ***
-     * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
@@ -279,8 +277,6 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
      * See https://cloud.google.com/datastore/docs/firestore-or-datastore
      * for information about how to choose.
      * Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> type() {
@@ -707,8 +703,6 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
          * for information about how to choose.
          * Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -722,8 +716,6 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
          * See https://cloud.google.com/datastore/docs/firestore-or-datastore
          * for information about how to choose.
          * Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-         * 
-         * ***
          * 
          * @return builder
          * 

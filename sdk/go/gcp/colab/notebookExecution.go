@@ -415,8 +415,6 @@ type NotebookExecution struct {
 	// The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
 	GcsOutputUri pulumi.StringOutput `pulumi:"gcsOutputUri"`
 	// The location for the resource: https://cloud.google.com/colab/docs/locations
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// User specified ID for the Notebook Execution Job
 	NotebookExecutionJobId pulumi.StringOutput `pulumi:"notebookExecutionJobId"`
@@ -486,8 +484,6 @@ type notebookExecutionState struct {
 	// The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
 	GcsOutputUri *string `pulumi:"gcsOutputUri"`
 	// The location for the resource: https://cloud.google.com/colab/docs/locations
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// User specified ID for the Notebook Execution Job
 	NotebookExecutionJobId *string `pulumi:"notebookExecutionJobId"`
@@ -519,8 +515,6 @@ type NotebookExecutionState struct {
 	// The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
 	GcsOutputUri pulumi.StringPtrInput
 	// The location for the resource: https://cloud.google.com/colab/docs/locations
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// User specified ID for the Notebook Execution Job
 	NotebookExecutionJobId pulumi.StringPtrInput
@@ -556,8 +550,6 @@ type notebookExecutionArgs struct {
 	// The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
 	GcsOutputUri string `pulumi:"gcsOutputUri"`
 	// The location for the resource: https://cloud.google.com/colab/docs/locations
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// User specified ID for the Notebook Execution Job
 	NotebookExecutionJobId *string `pulumi:"notebookExecutionJobId"`
@@ -590,8 +582,6 @@ type NotebookExecutionArgs struct {
 	// The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
 	GcsOutputUri pulumi.StringInput
 	// The location for the resource: https://cloud.google.com/colab/docs/locations
-	//
-	// ***
 	Location pulumi.StringInput
 	// User specified ID for the Notebook Execution Job
 	NotebookExecutionJobId pulumi.StringPtrInput
@@ -734,8 +724,6 @@ func (o NotebookExecutionOutput) GcsOutputUri() pulumi.StringOutput {
 }
 
 // The location for the resource: https://cloud.google.com/colab/docs/locations
-//
-// ***
 func (o NotebookExecutionOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *NotebookExecution) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

@@ -177,8 +177,6 @@ if not MYPY:
         topic: pulumi.Input[builtins.str]
         """
         Destination on Cloud Pubsub topic.
-
-        - - -
         """
 elif False:
     FolderFeedFeedOutputConfigPubsubDestinationArgsDict: TypeAlias = Mapping[str, Any]
@@ -189,8 +187,6 @@ class FolderFeedFeedOutputConfigPubsubDestinationArgs:
                  topic: pulumi.Input[builtins.str]):
         """
         :param pulumi.Input[builtins.str] topic: Destination on Cloud Pubsub topic.
-               
-               - - -
         """
         pulumi.set(__self__, "topic", topic)
 
@@ -199,8 +195,6 @@ class FolderFeedFeedOutputConfigPubsubDestinationArgs:
     def topic(self) -> pulumi.Input[builtins.str]:
         """
         Destination on Cloud Pubsub topic.
-
-        - - -
         """
         return pulumi.get(self, "topic")
 
@@ -348,8 +342,6 @@ if not MYPY:
         topic: pulumi.Input[builtins.str]
         """
         Destination on Cloud Pubsub topic.
-
-        - - -
         """
 elif False:
     OrganizationFeedFeedOutputConfigPubsubDestinationArgsDict: TypeAlias = Mapping[str, Any]
@@ -360,8 +352,6 @@ class OrganizationFeedFeedOutputConfigPubsubDestinationArgs:
                  topic: pulumi.Input[builtins.str]):
         """
         :param pulumi.Input[builtins.str] topic: Destination on Cloud Pubsub topic.
-               
-               - - -
         """
         pulumi.set(__self__, "topic", topic)
 
@@ -370,8 +360,6 @@ class OrganizationFeedFeedOutputConfigPubsubDestinationArgs:
     def topic(self) -> pulumi.Input[builtins.str]:
         """
         Destination on Cloud Pubsub topic.
-
-        - - -
         """
         return pulumi.get(self, "topic")
 
@@ -519,8 +507,6 @@ if not MYPY:
         topic: pulumi.Input[builtins.str]
         """
         Destination on Cloud Pubsub topic.
-
-        - - -
         """
 elif False:
     ProjectFeedFeedOutputConfigPubsubDestinationArgsDict: TypeAlias = Mapping[str, Any]
@@ -531,8 +517,6 @@ class ProjectFeedFeedOutputConfigPubsubDestinationArgs:
                  topic: pulumi.Input[builtins.str]):
         """
         :param pulumi.Input[builtins.str] topic: Destination on Cloud Pubsub topic.
-               
-               - - -
         """
         pulumi.set(__self__, "topic", topic)
 
@@ -541,8 +525,6 @@ class ProjectFeedFeedOutputConfigPubsubDestinationArgs:
     def topic(self) -> pulumi.Input[builtins.str]:
         """
         Destination on Cloud Pubsub topic.
-
-        - - -
         """
         return pulumi.get(self, "topic")
 

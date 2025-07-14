@@ -62,8 +62,6 @@ public final class AndroidAppArgs extends com.pulumi.resources.ResourceArgs {
      * The canonical package name of the Android app as would appear in the Google Play
      * Developer Console.
      * 
-     * ***
-     * 
      */
     @Import(name="packageName", required=true)
     private Output<String> packageName;
@@ -71,8 +69,6 @@ public final class AndroidAppArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The canonical package name of the Android app as would appear in the Google Play
      * Developer Console.
-     * 
-     * ***
      * 
      */
     public Output<String> packageName() {
@@ -215,8 +211,6 @@ public final class AndroidAppArgs extends com.pulumi.resources.ResourceArgs {
          * @param packageName The canonical package name of the Android app as would appear in the Google Play
          * Developer Console.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -228,8 +222,6 @@ public final class AndroidAppArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param packageName The canonical package name of the Android app as would appear in the Google Play
          * Developer Console.
-         * 
-         * ***
          * 
          * @return builder
          * 

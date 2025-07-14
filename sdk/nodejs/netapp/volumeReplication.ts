@@ -181,9 +181,6 @@ export class VolumeReplication extends pulumi.CustomResource {
     public /*out*/ readonly mirrorState!: pulumi.Output<string>;
     /**
      * The name of the replication. Needs to be unique per location.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -387,9 +384,6 @@ export interface VolumeReplicationState {
     mirrorState?: pulumi.Input<string>;
     /**
      * The name of the replication. Needs to be unique per location.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -478,9 +472,6 @@ export interface VolumeReplicationArgs {
     location: pulumi.Input<string>;
     /**
      * The name of the replication. Needs to be unique per location.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

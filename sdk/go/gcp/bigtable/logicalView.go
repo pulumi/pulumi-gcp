@@ -109,8 +109,6 @@ type LogicalView struct {
 	// The name of the instance to create the logical view within.
 	Instance pulumi.StringPtrOutput `pulumi:"instance"`
 	// The unique name of the logical view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-	//
-	// ***
 	LogicalViewId pulumi.StringOutput `pulumi:"logicalViewId"`
 	// The unique name of the requested logical view. Values are of the form `projects/<project>/instances/<instance>/logicalViews/<logicalViewId>`.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -162,8 +160,6 @@ type logicalViewState struct {
 	// The name of the instance to create the logical view within.
 	Instance *string `pulumi:"instance"`
 	// The unique name of the logical view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-	//
-	// ***
 	LogicalViewId *string `pulumi:"logicalViewId"`
 	// The unique name of the requested logical view. Values are of the form `projects/<project>/instances/<instance>/logicalViews/<logicalViewId>`.
 	Name *string `pulumi:"name"`
@@ -180,8 +176,6 @@ type LogicalViewState struct {
 	// The name of the instance to create the logical view within.
 	Instance pulumi.StringPtrInput
 	// The unique name of the logical view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-	//
-	// ***
 	LogicalViewId pulumi.StringPtrInput
 	// The unique name of the requested logical view. Values are of the form `projects/<project>/instances/<instance>/logicalViews/<logicalViewId>`.
 	Name pulumi.StringPtrInput
@@ -202,8 +196,6 @@ type logicalViewArgs struct {
 	// The name of the instance to create the logical view within.
 	Instance *string `pulumi:"instance"`
 	// The unique name of the logical view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-	//
-	// ***
 	LogicalViewId string `pulumi:"logicalViewId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -219,8 +211,6 @@ type LogicalViewArgs struct {
 	// The name of the instance to create the logical view within.
 	Instance pulumi.StringPtrInput
 	// The unique name of the logical view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-	//
-	// ***
 	LogicalViewId pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -327,8 +317,6 @@ func (o LogicalViewOutput) Instance() pulumi.StringPtrOutput {
 }
 
 // The unique name of the logical view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-//
-// ***
 func (o LogicalViewOutput) LogicalViewId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogicalView) pulumi.StringOutput { return v.LogicalViewId }).(pulumi.StringOutput)
 }

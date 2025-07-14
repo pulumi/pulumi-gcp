@@ -351,8 +351,6 @@ class IndexFieldVectorConfig(dict):
         :param builtins.int dimension: The resulting index will only include vectors of this dimension, and can be used for vector search
                with the same dimension.
         :param 'IndexFieldVectorConfigFlatArgs' flat: Indicates the vector index is a flat index.
-               
-               - - -
         """
         if dimension is not None:
             pulumi.set(__self__, "dimension", dimension)
@@ -373,8 +371,6 @@ class IndexFieldVectorConfig(dict):
     def flat(self) -> Optional['outputs.IndexFieldVectorConfigFlat']:
         """
         Indicates the vector index is a flat index.
-
-        - - -
         """
         return pulumi.get(self, "flat")
 

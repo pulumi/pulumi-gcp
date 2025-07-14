@@ -167,8 +167,6 @@ type AutokeyConfig struct {
 	// The etag of the AutokeyConfig for optimistic concurrency control.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The folder for which to retrieve config.
-	//
-	// ***
 	Folder pulumi.StringOutput `pulumi:"folder"`
 	// The target key project for a given folder where KMS Autokey will provision a
 	// CryptoKey for any new KeyHandle the Developer creates. Should have the form
@@ -212,8 +210,6 @@ type autokeyConfigState struct {
 	// The etag of the AutokeyConfig for optimistic concurrency control.
 	Etag *string `pulumi:"etag"`
 	// The folder for which to retrieve config.
-	//
-	// ***
 	Folder *string `pulumi:"folder"`
 	// The target key project for a given folder where KMS Autokey will provision a
 	// CryptoKey for any new KeyHandle the Developer creates. Should have the form
@@ -225,8 +221,6 @@ type AutokeyConfigState struct {
 	// The etag of the AutokeyConfig for optimistic concurrency control.
 	Etag pulumi.StringPtrInput
 	// The folder for which to retrieve config.
-	//
-	// ***
 	Folder pulumi.StringPtrInput
 	// The target key project for a given folder where KMS Autokey will provision a
 	// CryptoKey for any new KeyHandle the Developer creates. Should have the form
@@ -240,8 +234,6 @@ func (AutokeyConfigState) ElementType() reflect.Type {
 
 type autokeyConfigArgs struct {
 	// The folder for which to retrieve config.
-	//
-	// ***
 	Folder string `pulumi:"folder"`
 	// The target key project for a given folder where KMS Autokey will provision a
 	// CryptoKey for any new KeyHandle the Developer creates. Should have the form
@@ -252,8 +244,6 @@ type autokeyConfigArgs struct {
 // The set of arguments for constructing a AutokeyConfig resource.
 type AutokeyConfigArgs struct {
 	// The folder for which to retrieve config.
-	//
-	// ***
 	Folder pulumi.StringInput
 	// The target key project for a given folder where KMS Autokey will provision a
 	// CryptoKey for any new KeyHandle the Developer creates. Should have the form
@@ -354,8 +344,6 @@ func (o AutokeyConfigOutput) Etag() pulumi.StringOutput {
 }
 
 // The folder for which to retrieve config.
-//
-// ***
 func (o AutokeyConfigOutput) Folder() pulumi.StringOutput {
 	return o.ApplyT(func(v *AutokeyConfig) pulumi.StringOutput { return v.Folder }).(pulumi.StringOutput)
 }

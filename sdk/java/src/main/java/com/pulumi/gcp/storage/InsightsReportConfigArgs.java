@@ -73,8 +73,6 @@ public final class InsightsReportConfigArgs extends com.pulumi.resources.Resourc
      * The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
      * must be in the same location.
      * 
-     * ***
-     * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
@@ -82,8 +80,6 @@ public final class InsightsReportConfigArgs extends com.pulumi.resources.Resourc
     /**
      * @return The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
      * must be in the same location.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {
@@ -240,8 +236,6 @@ public final class InsightsReportConfigArgs extends com.pulumi.resources.Resourc
          * @param location The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
          * must be in the same location.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -253,8 +247,6 @@ public final class InsightsReportConfigArgs extends com.pulumi.resources.Resourc
         /**
          * @param location The location of the ReportConfig. The source and destination buckets specified in the ReportConfig
          * must be in the same location.
-         * 
-         * ***
          * 
          * @return builder
          * 

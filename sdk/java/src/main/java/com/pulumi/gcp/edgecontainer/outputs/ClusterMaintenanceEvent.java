@@ -53,8 +53,7 @@ public final class ClusterMaintenanceEvent {
      */
     private @Nullable String state;
     /**
-     * @return (Output)
-     * The target version of the cluster.
+     * @return The target cluster version. For example: &#34;1.5.0&#34;.
      * 
      */
     private @Nullable String targetVersion;
@@ -132,8 +131,7 @@ public final class ClusterMaintenanceEvent {
         return Optional.ofNullable(this.state);
     }
     /**
-     * @return (Output)
-     * The target version of the cluster.
+     * @return The target cluster version. For example: &#34;1.5.0&#34;.
      * 
      */
     public Optional<String> targetVersion() {

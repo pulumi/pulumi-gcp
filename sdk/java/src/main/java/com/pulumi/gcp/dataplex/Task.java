@@ -417,16 +417,20 @@ public class Task extends com.pulumi.resources.CustomResource {
         return this.executionStatuses;
     }
     /**
-     * User-defined labels for the task. **Note**: This field is non-authoritative, and will only manage the labels present in
-     * your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+     * User-defined labels for the task.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return User-defined labels for the task. **Note**: This field is non-authoritative, and will only manage the labels present in
-     * your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+     * @return User-defined labels for the task.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -477,24 +481,34 @@ public class Task extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
-     * its memory over time.
+     * A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+     * Structure is documented below.
      * 
      */
     @Export(name="notebook", refs={TaskNotebook.class}, tree="[0]")
     private Output</* @Nullable */ TaskNotebook> notebook;
 
     /**
-     * @return A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
-     * its memory over time.
+     * @return A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<TaskNotebook>> notebook() {
         return Codegen.optional(this.notebook);
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }
@@ -515,16 +529,16 @@ public class Task extends com.pulumi.resources.CustomResource {
         return this.pulumiLabels;
     }
     /**
-     * A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
-     * its memory over time.
+     * A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+     * Structure is documented below.
      * 
      */
     @Export(name="spark", refs={TaskSpark.class}, tree="[0]")
     private Output</* @Nullable */ TaskSpark> spark;
 
     /**
-     * @return A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
-     * its memory over time.
+     * @return A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<TaskSpark>> spark() {

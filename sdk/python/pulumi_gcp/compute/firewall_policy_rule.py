@@ -47,24 +47,26 @@ class FirewallPolicyRuleArgs:
                The priority must be a positive value between 0 and 2147483647.
                Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
         :param pulumi.Input[builtins.str] description: An optional description for this resource.
-        :param pulumi.Input[builtins.bool] disabled: Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
-               traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
-        :param pulumi.Input[builtins.bool] enable_logging: Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
-               export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
-               "goto_next" rules.
-        :param pulumi.Input[builtins.str] security_profile_group: A fully-qualified URL of a SecurityProfile resource instance. Example:
-               https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+        :param pulumi.Input[builtins.bool] disabled: Denotes whether the firewall policy rule is disabled.
+               When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist.
+               If this is unspecified, the firewall policy rule will be enabled.
+        :param pulumi.Input[builtins.bool] enable_logging: Denotes whether to enable logging for a particular rule.
+               If logging is enabled, logs will be exported to the configured export destination in Stackdriver.
+               Logs may be exported to BigQuery or Pub/Sub.
+               Note: you cannot enable logging on "goto_next" rules.
+        :param pulumi.Input[builtins.str] security_profile_group: A fully-qualified URL of a SecurityProfile resource instance.
+               Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
                Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] target_resources: A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
-               this rule. If this field is left blank, all VMs within the organization will receive the rule.
-        :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleTargetSecureTagArgs']]] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
-               the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
-               targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
-               time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
-               applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] target_resources: A list of network resource URLs to which this rule applies.
+               This field allows you to control which network's VMs get this rule.
+               If this field is left blank, all VMs within the organization will receive the rule.
+        :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleTargetSecureTagArgs']]] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to.
+               If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
+               targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] target_service_accounts: A list of service accounts indicating the sets of instances that are applied with this rule.
-        :param pulumi.Input[builtins.bool] tls_inspect: Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
-               'apply_security_profile_group' and cannot be set for other actions.
+        :param pulumi.Input[builtins.bool] tls_inspect: Boolean flag indicating if the traffic should be TLS decrypted.
+               Can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "direction", direction)
@@ -168,8 +170,9 @@ class FirewallPolicyRuleArgs:
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
-        traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
+        Denotes whether the firewall policy rule is disabled.
+        When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist.
+        If this is unspecified, the firewall policy rule will be enabled.
         """
         return pulumi.get(self, "disabled")
 
@@ -181,9 +184,10 @@ class FirewallPolicyRuleArgs:
     @pulumi.getter(name="enableLogging")
     def enable_logging(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
-        export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
-        "goto_next" rules.
+        Denotes whether to enable logging for a particular rule.
+        If logging is enabled, logs will be exported to the configured export destination in Stackdriver.
+        Logs may be exported to BigQuery or Pub/Sub.
+        Note: you cannot enable logging on "goto_next" rules.
         """
         return pulumi.get(self, "enable_logging")
 
@@ -195,8 +199,8 @@ class FirewallPolicyRuleArgs:
     @pulumi.getter(name="securityProfileGroup")
     def security_profile_group(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        A fully-qualified URL of a SecurityProfile resource instance. Example:
-        https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+        A fully-qualified URL of a SecurityProfile resource instance.
+        Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
         Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
         """
         return pulumi.get(self, "security_profile_group")
@@ -209,8 +213,9 @@ class FirewallPolicyRuleArgs:
     @pulumi.getter(name="targetResources")
     def target_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
-        this rule. If this field is left blank, all VMs within the organization will receive the rule.
+        A list of network resource URLs to which this rule applies.
+        This field allows you to control which network's VMs get this rule.
+        If this field is left blank, all VMs within the organization will receive the rule.
         """
         return pulumi.get(self, "target_resources")
 
@@ -222,11 +227,10 @@ class FirewallPolicyRuleArgs:
     @pulumi.getter(name="targetSecureTags")
     def target_secure_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleTargetSecureTagArgs']]]]:
         """
-        A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
-        the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
-        targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
-        time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
-        applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+        A list of secure tags that controls which instances the firewall rule applies to.
+        If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
+        targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+        Structure is documented below.
         """
         return pulumi.get(self, "target_secure_tags")
 
@@ -250,8 +254,8 @@ class FirewallPolicyRuleArgs:
     @pulumi.getter(name="tlsInspect")
     def tls_inspect(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
-        'apply_security_profile_group' and cannot be set for other actions.
+        Boolean flag indicating if the traffic should be TLS decrypted.
+        Can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
         """
         return pulumi.get(self, "tls_inspect")
 
@@ -286,11 +290,13 @@ class _FirewallPolicyRuleState:
         :param pulumi.Input[builtins.str] description: An optional description for this resource.
         :param pulumi.Input[builtins.str] direction: The direction in which this rule applies.
                Possible values are: `INGRESS`, `EGRESS`.
-        :param pulumi.Input[builtins.bool] disabled: Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
-               traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
-        :param pulumi.Input[builtins.bool] enable_logging: Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
-               export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
-               "goto_next" rules.
+        :param pulumi.Input[builtins.bool] disabled: Denotes whether the firewall policy rule is disabled.
+               When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist.
+               If this is unspecified, the firewall policy rule will be enabled.
+        :param pulumi.Input[builtins.bool] enable_logging: Denotes whether to enable logging for a particular rule.
+               If logging is enabled, logs will be exported to the configured export destination in Stackdriver.
+               Logs may be exported to BigQuery or Pub/Sub.
+               Note: you cannot enable logging on "goto_next" rules.
         :param pulumi.Input[builtins.str] firewall_policy: The firewall policy of the resource.
         :param pulumi.Input[builtins.str] kind: Type of the resource. Always `compute#firewallPolicyRule` for firewall policy rules
         :param pulumi.Input['FirewallPolicyRuleMatchArgs'] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
@@ -299,19 +305,19 @@ class _FirewallPolicyRuleState:
                The priority must be a positive value between 0 and 2147483647.
                Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
         :param pulumi.Input[builtins.int] rule_tuple_count: Calculation of the complexity of a single firewall policy rule.
-        :param pulumi.Input[builtins.str] security_profile_group: A fully-qualified URL of a SecurityProfile resource instance. Example:
-               https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+        :param pulumi.Input[builtins.str] security_profile_group: A fully-qualified URL of a SecurityProfile resource instance.
+               Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
                Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] target_resources: A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
-               this rule. If this field is left blank, all VMs within the organization will receive the rule.
-        :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleTargetSecureTagArgs']]] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
-               the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
-               targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
-               time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
-               applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] target_resources: A list of network resource URLs to which this rule applies.
+               This field allows you to control which network's VMs get this rule.
+               If this field is left blank, all VMs within the organization will receive the rule.
+        :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleTargetSecureTagArgs']]] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to.
+               If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
+               targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] target_service_accounts: A list of service accounts indicating the sets of instances that are applied with this rule.
-        :param pulumi.Input[builtins.bool] tls_inspect: Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
-               'apply_security_profile_group' and cannot be set for other actions.
+        :param pulumi.Input[builtins.bool] tls_inspect: Boolean flag indicating if the traffic should be TLS decrypted.
+               Can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -399,8 +405,9 @@ class _FirewallPolicyRuleState:
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
-        traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
+        Denotes whether the firewall policy rule is disabled.
+        When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist.
+        If this is unspecified, the firewall policy rule will be enabled.
         """
         return pulumi.get(self, "disabled")
 
@@ -412,9 +419,10 @@ class _FirewallPolicyRuleState:
     @pulumi.getter(name="enableLogging")
     def enable_logging(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
-        export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
-        "goto_next" rules.
+        Denotes whether to enable logging for a particular rule.
+        If logging is enabled, logs will be exported to the configured export destination in Stackdriver.
+        Logs may be exported to BigQuery or Pub/Sub.
+        Note: you cannot enable logging on "goto_next" rules.
         """
         return pulumi.get(self, "enable_logging")
 
@@ -489,8 +497,8 @@ class _FirewallPolicyRuleState:
     @pulumi.getter(name="securityProfileGroup")
     def security_profile_group(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        A fully-qualified URL of a SecurityProfile resource instance. Example:
-        https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+        A fully-qualified URL of a SecurityProfile resource instance.
+        Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
         Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
         """
         return pulumi.get(self, "security_profile_group")
@@ -503,8 +511,9 @@ class _FirewallPolicyRuleState:
     @pulumi.getter(name="targetResources")
     def target_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
-        this rule. If this field is left blank, all VMs within the organization will receive the rule.
+        A list of network resource URLs to which this rule applies.
+        This field allows you to control which network's VMs get this rule.
+        If this field is left blank, all VMs within the organization will receive the rule.
         """
         return pulumi.get(self, "target_resources")
 
@@ -516,11 +525,10 @@ class _FirewallPolicyRuleState:
     @pulumi.getter(name="targetSecureTags")
     def target_secure_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleTargetSecureTagArgs']]]]:
         """
-        A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
-        the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
-        targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
-        time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
-        applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+        A list of secure tags that controls which instances the firewall rule applies to.
+        If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
+        targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+        Structure is documented below.
         """
         return pulumi.get(self, "target_secure_tags")
 
@@ -544,8 +552,8 @@ class _FirewallPolicyRuleState:
     @pulumi.getter(name="tlsInspect")
     def tls_inspect(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
-        'apply_security_profile_group' and cannot be set for other actions.
+        Boolean flag indicating if the traffic should be TLS decrypted.
+        Can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
         """
         return pulumi.get(self, "tls_inspect")
 
@@ -764,30 +772,32 @@ class FirewallPolicyRule(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] description: An optional description for this resource.
         :param pulumi.Input[builtins.str] direction: The direction in which this rule applies.
                Possible values are: `INGRESS`, `EGRESS`.
-        :param pulumi.Input[builtins.bool] disabled: Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
-               traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
-        :param pulumi.Input[builtins.bool] enable_logging: Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
-               export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
-               "goto_next" rules.
+        :param pulumi.Input[builtins.bool] disabled: Denotes whether the firewall policy rule is disabled.
+               When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist.
+               If this is unspecified, the firewall policy rule will be enabled.
+        :param pulumi.Input[builtins.bool] enable_logging: Denotes whether to enable logging for a particular rule.
+               If logging is enabled, logs will be exported to the configured export destination in Stackdriver.
+               Logs may be exported to BigQuery or Pub/Sub.
+               Note: you cannot enable logging on "goto_next" rules.
         :param pulumi.Input[builtins.str] firewall_policy: The firewall policy of the resource.
         :param pulumi.Input[Union['FirewallPolicyRuleMatchArgs', 'FirewallPolicyRuleMatchArgsDict']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
                Structure is documented below.
         :param pulumi.Input[builtins.int] priority: An integer indicating the priority of a rule in the list.
                The priority must be a positive value between 0 and 2147483647.
                Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
-        :param pulumi.Input[builtins.str] security_profile_group: A fully-qualified URL of a SecurityProfile resource instance. Example:
-               https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+        :param pulumi.Input[builtins.str] security_profile_group: A fully-qualified URL of a SecurityProfile resource instance.
+               Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
                Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] target_resources: A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
-               this rule. If this field is left blank, all VMs within the organization will receive the rule.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallPolicyRuleTargetSecureTagArgs', 'FirewallPolicyRuleTargetSecureTagArgsDict']]]] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
-               the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
-               targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
-               time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
-               applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] target_resources: A list of network resource URLs to which this rule applies.
+               This field allows you to control which network's VMs get this rule.
+               If this field is left blank, all VMs within the organization will receive the rule.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallPolicyRuleTargetSecureTagArgs', 'FirewallPolicyRuleTargetSecureTagArgsDict']]]] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to.
+               If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
+               targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] target_service_accounts: A list of service accounts indicating the sets of instances that are applied with this rule.
-        :param pulumi.Input[builtins.bool] tls_inspect: Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
-               'apply_security_profile_group' and cannot be set for other actions.
+        :param pulumi.Input[builtins.bool] tls_inspect: Boolean flag indicating if the traffic should be TLS decrypted.
+               Can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
         """
         ...
     @overload
@@ -1080,11 +1090,13 @@ class FirewallPolicyRule(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] description: An optional description for this resource.
         :param pulumi.Input[builtins.str] direction: The direction in which this rule applies.
                Possible values are: `INGRESS`, `EGRESS`.
-        :param pulumi.Input[builtins.bool] disabled: Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
-               traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
-        :param pulumi.Input[builtins.bool] enable_logging: Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
-               export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
-               "goto_next" rules.
+        :param pulumi.Input[builtins.bool] disabled: Denotes whether the firewall policy rule is disabled.
+               When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist.
+               If this is unspecified, the firewall policy rule will be enabled.
+        :param pulumi.Input[builtins.bool] enable_logging: Denotes whether to enable logging for a particular rule.
+               If logging is enabled, logs will be exported to the configured export destination in Stackdriver.
+               Logs may be exported to BigQuery or Pub/Sub.
+               Note: you cannot enable logging on "goto_next" rules.
         :param pulumi.Input[builtins.str] firewall_policy: The firewall policy of the resource.
         :param pulumi.Input[builtins.str] kind: Type of the resource. Always `compute#firewallPolicyRule` for firewall policy rules
         :param pulumi.Input[Union['FirewallPolicyRuleMatchArgs', 'FirewallPolicyRuleMatchArgsDict']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
@@ -1093,19 +1105,19 @@ class FirewallPolicyRule(pulumi.CustomResource):
                The priority must be a positive value between 0 and 2147483647.
                Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
         :param pulumi.Input[builtins.int] rule_tuple_count: Calculation of the complexity of a single firewall policy rule.
-        :param pulumi.Input[builtins.str] security_profile_group: A fully-qualified URL of a SecurityProfile resource instance. Example:
-               https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+        :param pulumi.Input[builtins.str] security_profile_group: A fully-qualified URL of a SecurityProfile resource instance.
+               Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
                Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] target_resources: A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
-               this rule. If this field is left blank, all VMs within the organization will receive the rule.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallPolicyRuleTargetSecureTagArgs', 'FirewallPolicyRuleTargetSecureTagArgsDict']]]] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
-               the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
-               targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
-               time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
-               applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] target_resources: A list of network resource URLs to which this rule applies.
+               This field allows you to control which network's VMs get this rule.
+               If this field is left blank, all VMs within the organization will receive the rule.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallPolicyRuleTargetSecureTagArgs', 'FirewallPolicyRuleTargetSecureTagArgsDict']]]] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to.
+               If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
+               targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] target_service_accounts: A list of service accounts indicating the sets of instances that are applied with this rule.
-        :param pulumi.Input[builtins.bool] tls_inspect: Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
-               'apply_security_profile_group' and cannot be set for other actions.
+        :param pulumi.Input[builtins.bool] tls_inspect: Boolean flag indicating if the traffic should be TLS decrypted.
+               Can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1166,8 +1178,9 @@ class FirewallPolicyRule(pulumi.CustomResource):
     @pulumi.getter
     def disabled(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
-        Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
-        traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
+        Denotes whether the firewall policy rule is disabled.
+        When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist.
+        If this is unspecified, the firewall policy rule will be enabled.
         """
         return pulumi.get(self, "disabled")
 
@@ -1175,9 +1188,10 @@ class FirewallPolicyRule(pulumi.CustomResource):
     @pulumi.getter(name="enableLogging")
     def enable_logging(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
-        Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured
-        export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on
-        "goto_next" rules.
+        Denotes whether to enable logging for a particular rule.
+        If logging is enabled, logs will be exported to the configured export destination in Stackdriver.
+        Logs may be exported to BigQuery or Pub/Sub.
+        Note: you cannot enable logging on "goto_next" rules.
         """
         return pulumi.get(self, "enable_logging")
 
@@ -1228,8 +1242,8 @@ class FirewallPolicyRule(pulumi.CustomResource):
     @pulumi.getter(name="securityProfileGroup")
     def security_profile_group(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        A fully-qualified URL of a SecurityProfile resource instance. Example:
-        https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+        A fully-qualified URL of a SecurityProfile resource instance.
+        Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
         Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
         """
         return pulumi.get(self, "security_profile_group")
@@ -1238,8 +1252,9 @@ class FirewallPolicyRule(pulumi.CustomResource):
     @pulumi.getter(name="targetResources")
     def target_resources(self) -> pulumi.Output[Optional[Sequence[builtins.str]]]:
         """
-        A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
-        this rule. If this field is left blank, all VMs within the organization will receive the rule.
+        A list of network resource URLs to which this rule applies.
+        This field allows you to control which network's VMs get this rule.
+        If this field is left blank, all VMs within the organization will receive the rule.
         """
         return pulumi.get(self, "target_resources")
 
@@ -1247,11 +1262,10 @@ class FirewallPolicyRule(pulumi.CustomResource):
     @pulumi.getter(name="targetSecureTags")
     def target_secure_tags(self) -> pulumi.Output[Optional[Sequence['outputs.FirewallPolicyRuleTargetSecureTag']]]:
         """
-        A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
-        the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
-        targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
-        time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
-        applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+        A list of secure tags that controls which instances the firewall rule applies to.
+        If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
+        targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.
+        Structure is documented below.
         """
         return pulumi.get(self, "target_secure_tags")
 
@@ -1267,8 +1281,8 @@ class FirewallPolicyRule(pulumi.CustomResource):
     @pulumi.getter(name="tlsInspect")
     def tls_inspect(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
-        Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
-        'apply_security_profile_group' and cannot be set for other actions.
+        Boolean flag indicating if the traffic should be TLS decrypted.
+        Can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
         """
         return pulumi.get(self, "tls_inspect")
 

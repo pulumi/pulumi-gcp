@@ -245,16 +245,12 @@ public final class GdcServiceInstanceState extends com.pulumi.resources.Resource
     /**
      * Id of the service instance.
      * 
-     * ***
-     * 
      */
     @Import(name="serviceInstanceId")
     private @Nullable Output<String> serviceInstanceId;
 
     /**
      * @return Id of the service instance.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> serviceInstanceId() {
@@ -700,8 +696,6 @@ public final class GdcServiceInstanceState extends com.pulumi.resources.Resource
         /**
          * @param serviceInstanceId Id of the service instance.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -712,8 +706,6 @@ public final class GdcServiceInstanceState extends com.pulumi.resources.Resource
 
         /**
          * @param serviceInstanceId Id of the service instance.
-         * 
-         * ***
          * 
          * @return builder
          * 

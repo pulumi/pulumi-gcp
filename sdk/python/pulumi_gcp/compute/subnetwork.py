@@ -46,9 +46,6 @@ class SubnetworkArgs:
         The set of arguments for constructing a Subnetwork resource.
         :param pulumi.Input[builtins.str] network: The network this subnet belongs to.
                Only networks that are in the distributed mode can have subnetworks.
-               
-               
-               - - -
         :param pulumi.Input[builtins.bool] allow_subnet_cidr_routes_overlap: Typically packets destined to IPs within the subnetwork range that do not match
                existing resources are dropped and prevented from leaving the VPC.
                Setting this field to true will allow these packets to match dynamic routes injected
@@ -180,9 +177,6 @@ class SubnetworkArgs:
         """
         The network this subnet belongs to.
         Only networks that are in the distributed mode can have subnetworks.
-
-
-        - - -
         """
         return pulumi.get(self, "network")
 
@@ -574,9 +568,6 @@ class _SubnetworkState:
                except the last character, which cannot be a dash.
         :param pulumi.Input[builtins.str] network: The network this subnet belongs to.
                Only networks that are in the distributed mode can have subnetworks.
-               
-               
-               - - -
         :param pulumi.Input[builtins.bool] private_ip_google_access: When enabled, VMs in this subnetwork without external IP addresses can
                access Google APIs and services by using Private Google Access.
         :param pulumi.Input[builtins.str] private_ipv6_google_access: The private IPv6 google access type for the VMs in this subnet.
@@ -914,9 +905,6 @@ class _SubnetworkState:
         """
         The network this subnet belongs to.
         Only networks that are in the distributed mode can have subnetworks.
-
-
-        - - -
         """
         return pulumi.get(self, "network")
 
@@ -1428,9 +1416,6 @@ class Subnetwork(pulumi.CustomResource):
                except the last character, which cannot be a dash.
         :param pulumi.Input[builtins.str] network: The network this subnet belongs to.
                Only networks that are in the distributed mode can have subnetworks.
-               
-               
-               - - -
         :param pulumi.Input[builtins.bool] private_ip_google_access: When enabled, VMs in this subnetwork without external IP addresses can
                access Google APIs and services by using Private Google Access.
         :param pulumi.Input[builtins.str] private_ipv6_google_access: The private IPv6 google access type for the VMs in this subnet.
@@ -1895,9 +1880,6 @@ class Subnetwork(pulumi.CustomResource):
                except the last character, which cannot be a dash.
         :param pulumi.Input[builtins.str] network: The network this subnet belongs to.
                Only networks that are in the distributed mode can have subnetworks.
-               
-               
-               - - -
         :param pulumi.Input[builtins.bool] private_ip_google_access: When enabled, VMs in this subnetwork without external IP addresses can
                access Google APIs and services by using Private Google Access.
         :param pulumi.Input[builtins.str] private_ipv6_google_access: The private IPv6 google access type for the VMs in this subnet.
@@ -2145,9 +2127,6 @@ class Subnetwork(pulumi.CustomResource):
         """
         The network this subnet belongs to.
         Only networks that are in the distributed mode can have subnetworks.
-
-
-        - - -
         """
         return pulumi.get(self, "network")
 

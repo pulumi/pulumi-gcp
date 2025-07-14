@@ -71,7 +71,9 @@ type Occurence struct {
 	// projects/[PROJECT]/notes/[NOTE_ID]. This field can be used as a
 	// filter in list requests.
 	NoteName pulumi.StringOutput `pulumi:"noteName"`
-	Project  pulumi.StringOutput `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringOutput `pulumi:"project"`
 	// A description of actions that can be taken to remedy the note.
 	Remediation pulumi.StringPtrOutput `pulumi:"remediation"`
 	// Required. Immutable. A URI that represents the resource for which
@@ -143,7 +145,9 @@ type occurenceState struct {
 	// projects/[PROJECT]/notes/[NOTE_ID]. This field can be used as a
 	// filter in list requests.
 	NoteName *string `pulumi:"noteName"`
-	Project  *string `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// A description of actions that can be taken to remedy the note.
 	Remediation *string `pulumi:"remediation"`
 	// Required. Immutable. A URI that represents the resource for which
@@ -177,7 +181,9 @@ type OccurenceState struct {
 	// projects/[PROJECT]/notes/[NOTE_ID]. This field can be used as a
 	// filter in list requests.
 	NoteName pulumi.StringPtrInput
-	Project  pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// A description of actions that can be taken to remedy the note.
 	Remediation pulumi.StringPtrInput
 	// Required. Immutable. A URI that represents the resource for which
@@ -206,8 +212,10 @@ type occurenceArgs struct {
 	// The analysis note associated with this occurrence, in the form of
 	// projects/[PROJECT]/notes/[NOTE_ID]. This field can be used as a
 	// filter in list requests.
-	NoteName string  `pulumi:"noteName"`
-	Project  *string `pulumi:"project"`
+	NoteName string `pulumi:"noteName"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// A description of actions that can be taken to remedy the note.
 	Remediation *string `pulumi:"remediation"`
 	// Required. Immutable. A URI that represents the resource for which
@@ -232,7 +240,9 @@ type OccurenceArgs struct {
 	// projects/[PROJECT]/notes/[NOTE_ID]. This field can be used as a
 	// filter in list requests.
 	NoteName pulumi.StringInput
-	Project  pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// A description of actions that can be taken to remedy the note.
 	Remediation pulumi.StringPtrInput
 	// Required. Immutable. A URI that represents the resource for which
@@ -365,6 +375,8 @@ func (o OccurenceOutput) NoteName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Occurence) pulumi.StringOutput { return v.NoteName }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o OccurenceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Occurence) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

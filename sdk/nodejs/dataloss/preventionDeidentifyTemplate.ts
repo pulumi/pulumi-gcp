@@ -230,8 +230,9 @@ export class PreventionDeidentifyTemplate extends pulumi.CustomResource {
      */
     public readonly parent!: pulumi.Output<string>;
     /**
-     * The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
-     * expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+     * The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+     * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
+     * 100 characters. Can be empty to allow the system to generate one.
      */
     public readonly templateId!: pulumi.Output<string>;
     /**
@@ -316,8 +317,9 @@ export interface PreventionDeidentifyTemplateState {
      */
     parent?: pulumi.Input<string>;
     /**
-     * The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
-     * expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+     * The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+     * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
+     * 100 characters. Can be empty to allow the system to generate one.
      */
     templateId?: pulumi.Input<string>;
     /**
@@ -352,8 +354,9 @@ export interface PreventionDeidentifyTemplateArgs {
      */
     parent: pulumi.Input<string>;
     /**
-     * The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
-     * expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+     * The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+     * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
+     * 100 characters. Can be empty to allow the system to generate one.
      */
     templateId?: pulumi.Input<string>;
 }

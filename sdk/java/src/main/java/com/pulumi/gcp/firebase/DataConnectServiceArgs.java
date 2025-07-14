@@ -129,8 +129,6 @@ public final class DataConnectServiceArgs extends com.pulumi.resources.ResourceA
      * Required. The ID to use for the service, which will become the final component of the
      * service&#39;s resource name.
      * 
-     * ***
-     * 
      */
     @Import(name="serviceId", required=true)
     private Output<String> serviceId;
@@ -138,8 +136,6 @@ public final class DataConnectServiceArgs extends com.pulumi.resources.ResourceA
     /**
      * @return Required. The ID to use for the service, which will become the final component of the
      * service&#39;s resource name.
-     * 
-     * ***
      * 
      */
     public Output<String> serviceId() {
@@ -324,8 +320,6 @@ public final class DataConnectServiceArgs extends com.pulumi.resources.ResourceA
          * @param serviceId Required. The ID to use for the service, which will become the final component of the
          * service&#39;s resource name.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -337,8 +331,6 @@ public final class DataConnectServiceArgs extends com.pulumi.resources.ResourceA
         /**
          * @param serviceId Required. The ID to use for the service, which will become the final component of the
          * service&#39;s resource name.
-         * 
-         * ***
          * 
          * @return builder
          * 

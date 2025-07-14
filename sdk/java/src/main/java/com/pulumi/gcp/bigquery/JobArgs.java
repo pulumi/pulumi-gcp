@@ -23,6 +23,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Copies a table.
+     * Structure is documented below.
      * 
      */
     @Import(name="copy")
@@ -30,6 +31,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Copies a table.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<JobCopyArgs>> copy() {
@@ -38,6 +40,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Configures an extract job.
+     * Structure is documented below.
      * 
      */
     @Import(name="extract")
@@ -45,6 +48,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Configures an extract job.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<JobExtractArgs>> extract() {
@@ -82,18 +86,20 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The labels associated with this job. You can use these to organize and group your jobs. **Note**: This field is
-     * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-     * &#39;effective_labels&#39; for all of the labels present on the resource.
+     * The labels associated with this job. You can use these to organize and group your jobs.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return The labels associated with this job. You can use these to organize and group your jobs. **Note**: This field is
-     * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-     * &#39;effective_labels&#39; for all of the labels present on the resource.
+     * @return The labels associated with this job. You can use these to organize and group your jobs.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -102,6 +108,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Configures a load job.
+     * Structure is documented below.
      * 
      */
     @Import(name="load")
@@ -109,6 +116,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Configures a load job.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<JobLoadArgs>> load() {
@@ -116,29 +124,40 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies where the error occurred, if present.
+     * The geographic location of the job. The default value is US.
      * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
-     * @return Specifies where the error occurred, if present.
+     * @return The geographic location of the job. The default value is US.
      * 
      */
     public Optional<Output<String>> location() {
         return Optional.ofNullable(this.location);
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
 
     /**
      * Configures a query job.
+     * Structure is documented below.
      * 
      */
     @Import(name="query")
@@ -146,6 +165,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Configures a query job.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<JobQueryArgs>> query() {
@@ -186,6 +206,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param copy Copies a table.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -197,6 +218,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param copy Copies a table.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -207,6 +229,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param extract Configures an extract job.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -218,6 +241,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param extract Configures an extract job.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -269,9 +293,10 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels The labels associated with this job. You can use these to organize and group your jobs. **Note**: This field is
-         * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-         * &#39;effective_labels&#39; for all of the labels present on the resource.
+         * @param labels The labels associated with this job. You can use these to organize and group your jobs.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -282,9 +307,10 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels The labels associated with this job. You can use these to organize and group your jobs. **Note**: This field is
-         * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-         * &#39;effective_labels&#39; for all of the labels present on the resource.
+         * @param labels The labels associated with this job. You can use these to organize and group your jobs.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -295,6 +321,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param load Configures a load job.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -306,6 +333,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param load Configures a load job.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -315,7 +343,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location Specifies where the error occurred, if present.
+         * @param location The geographic location of the job. The default value is US.
          * 
          * @return builder
          * 
@@ -326,7 +354,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location Specifies where the error occurred, if present.
+         * @param location The geographic location of the job. The default value is US.
          * 
          * @return builder
          * 
@@ -335,17 +363,32 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
             return location(Output.of(location));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
 
         /**
          * @param query Configures a query job.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -357,6 +400,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param query Configures a query job.
+         * Structure is documented below.
          * 
          * @return builder
          * 

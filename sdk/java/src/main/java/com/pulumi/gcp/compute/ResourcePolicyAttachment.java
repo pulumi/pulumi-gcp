@@ -136,16 +136,12 @@ public class ResourcePolicyAttachment extends com.pulumi.resources.CustomResourc
     /**
      * The name of the instance in which the resource policies are attached to.
      * 
-     * ***
-     * 
      */
     @Export(name="instance", refs={String.class}, tree="[0]")
     private Output<String> instance;
 
     /**
      * @return The name of the instance in which the resource policies are attached to.
-     * 
-     * ***
      * 
      */
     public Output<String> instance() {

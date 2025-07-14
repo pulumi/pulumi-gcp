@@ -35,16 +35,12 @@ public final class TaskExecutionSpecArgs extends com.pulumi.resources.ResourceAr
     /**
      * The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{locationId}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
      * 
-     * ***
-     * 
      */
     @Import(name="kmsKey")
     private @Nullable Output<String> kmsKey;
 
     /**
      * @return The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{locationId}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> kmsKey() {
@@ -67,16 +63,14 @@ public final class TaskExecutionSpecArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
+     * The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
+     * @return The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
      * 
      */
     public Optional<Output<String>> project() {
@@ -150,8 +144,6 @@ public final class TaskExecutionSpecArgs extends com.pulumi.resources.ResourceAr
         /**
          * @param kmsKey The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{locationId}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -162,8 +154,6 @@ public final class TaskExecutionSpecArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param kmsKey The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{locationId}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -194,8 +184,7 @@ public final class TaskExecutionSpecArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
+         * @param project The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
          * 
          * @return builder
          * 
@@ -206,8 +195,7 @@ public final class TaskExecutionSpecArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param project The ID of the project in which the resource belongs.
-         * If it is not provided, the provider project is used.
+         * @param project The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
          * 
          * @return builder
          * 

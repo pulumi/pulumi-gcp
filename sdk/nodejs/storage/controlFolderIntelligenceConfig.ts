@@ -97,9 +97,6 @@ export class ControlFolderIntelligenceConfig extends pulumi.CustomResource {
     public readonly filter!: pulumi.Output<outputs.storage.ControlFolderIntelligenceConfigFilter | undefined>;
     /**
      * Identifier of the GCP Folder. For GCP Folder, this field can be folder number.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -165,9 +162,6 @@ export interface ControlFolderIntelligenceConfigState {
     filter?: pulumi.Input<inputs.storage.ControlFolderIntelligenceConfigFilter>;
     /**
      * Identifier of the GCP Folder. For GCP Folder, this field can be folder number.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -196,9 +190,6 @@ export interface ControlFolderIntelligenceConfigArgs {
     filter?: pulumi.Input<inputs.storage.ControlFolderIntelligenceConfigFilter>;
     /**
      * Identifier of the GCP Folder. For GCP Folder, this field can be folder number.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
 }

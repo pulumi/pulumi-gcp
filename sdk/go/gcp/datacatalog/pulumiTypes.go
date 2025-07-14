@@ -1461,8 +1461,6 @@ type TagField struct {
 	// Holds the value for a tag field with double type.
 	DoubleValue *float64 `pulumi:"doubleValue"`
 	// Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.
-	//
-	// ***
 	EnumValue *string `pulumi:"enumValue"`
 	// The identifier for this object. Format specified above.
 	FieldName string `pulumi:"fieldName"`
@@ -1497,8 +1495,6 @@ type TagFieldArgs struct {
 	// Holds the value for a tag field with double type.
 	DoubleValue pulumi.Float64PtrInput `pulumi:"doubleValue"`
 	// Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.
-	//
-	// ***
 	EnumValue pulumi.StringPtrInput `pulumi:"enumValue"`
 	// The identifier for this object. Format specified above.
 	FieldName pulumi.StringInput `pulumi:"fieldName"`
@@ -1581,8 +1577,6 @@ func (o TagFieldOutput) DoubleValue() pulumi.Float64PtrOutput {
 }
 
 // Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.
-//
-// ***
 func (o TagFieldOutput) EnumValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TagField) *string { return v.EnumValue }).(pulumi.StringPtrOutput)
 }
@@ -2026,7 +2020,7 @@ func (o TagTemplateFieldTypeEnumTypePtrOutput) AllowedValues() TagTemplateFieldT
 }
 
 type TagTemplateFieldTypeEnumTypeAllowedValue struct {
-	// The display name for this template.
+	// The display name of the enum value.
 	DisplayName string `pulumi:"displayName"`
 }
 
@@ -2042,7 +2036,7 @@ type TagTemplateFieldTypeEnumTypeAllowedValueInput interface {
 }
 
 type TagTemplateFieldTypeEnumTypeAllowedValueArgs struct {
-	// The display name for this template.
+	// The display name of the enum value.
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
 }
 
@@ -2097,7 +2091,7 @@ func (o TagTemplateFieldTypeEnumTypeAllowedValueOutput) ToTagTemplateFieldTypeEn
 	return o
 }
 
-// The display name for this template.
+// The display name of the enum value.
 func (o TagTemplateFieldTypeEnumTypeAllowedValueOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v TagTemplateFieldTypeEnumTypeAllowedValue) string { return v.DisplayName }).(pulumi.StringOutput)
 }

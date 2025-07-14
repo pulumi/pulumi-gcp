@@ -155,8 +155,6 @@ public final class ConnectivityTestDestinationArgs extends com.pulumi.resources.
      *    from the service project. In this case, the network that the IP address
      *    resides in is defined in the host project.
      * 
-     * ***
-     * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
@@ -171,8 +169,6 @@ public final class ConnectivityTestDestinationArgs extends com.pulumi.resources.
      * 2. When you are using Shared VPC and the IP address that you provide is
      *    from the service project. In this case, the network that the IP address
      *    resides in is defined in the host project.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -430,8 +426,6 @@ public final class ConnectivityTestDestinationArgs extends com.pulumi.resources.
          *    from the service project. In this case, the network that the IP address
          *    resides in is defined in the host project.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -450,8 +444,6 @@ public final class ConnectivityTestDestinationArgs extends com.pulumi.resources.
          * 2. When you are using Shared VPC and the IP address that you provide is
          *    from the service project. In this case, the network that the IP address
          *    resides in is defined in the host project.
-         * 
-         * ***
          * 
          * @return builder
          * 

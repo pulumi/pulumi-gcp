@@ -35,16 +35,12 @@ public final class DataSharingWithGoogleSettingState extends com.pulumi.resource
     /**
      * Id of the Data Sharing With Google Setting.
      * 
-     * ***
-     * 
      */
     @Import(name="dataSharingWithGoogleSettingId")
     private @Nullable Output<String> dataSharingWithGoogleSettingId;
 
     /**
      * @return Id of the Data Sharing With Google Setting.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> dataSharingWithGoogleSettingId() {
@@ -254,8 +250,6 @@ public final class DataSharingWithGoogleSettingState extends com.pulumi.resource
         /**
          * @param dataSharingWithGoogleSettingId Id of the Data Sharing With Google Setting.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -266,8 +260,6 @@ public final class DataSharingWithGoogleSettingState extends com.pulumi.resource
 
         /**
          * @param dataSharingWithGoogleSettingId Id of the Data Sharing With Google Setting.
-         * 
-         * ***
          * 
          * @return builder
          * 

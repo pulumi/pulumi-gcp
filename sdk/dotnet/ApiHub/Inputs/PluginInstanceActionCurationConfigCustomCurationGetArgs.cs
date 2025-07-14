@@ -16,8 +16,6 @@ namespace Pulumi.Gcp.ApiHub.Inputs
         /// The unique name of the curation resource. This will be the name of the
         /// curation resource in the format:
         /// `projects/{project}/locations/{location}/curations/{curation}`
-        /// 
-        /// - - -
         /// </summary>
         [Input("curation", required: true)]
         public Input<string> Curation { get; set; } = null!;

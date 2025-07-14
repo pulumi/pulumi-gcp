@@ -91,8 +91,6 @@ public final class MetricState extends com.pulumi.resources.ResourceArgs {
      * An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
      * is used to match log entries.
      * 
-     * ***
-     * 
      */
     @Import(name="filter")
     private @Nullable Output<String> filter;
@@ -100,8 +98,6 @@ public final class MetricState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
      * is used to match log entries.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> filter() {
@@ -348,8 +344,6 @@ public final class MetricState extends com.pulumi.resources.ResourceArgs {
          * @param filter An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
          * is used to match log entries.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -361,8 +355,6 @@ public final class MetricState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param filter An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
          * is used to match log entries.
-         * 
-         * ***
          * 
          * @return builder
          * 

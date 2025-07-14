@@ -552,8 +552,6 @@ type ServiceAttachment struct {
 	// If true, enable the proxy protocol which is for supplying client TCP/IP
 	// address data in TCP connections that traverse proxies on their way to
 	// destination servers.
-	//
-	// ***
 	EnableProxyProtocol pulumi.BoolOutput `pulumi:"enableProxyProtocol"`
 	// Fingerprint of this resource. This field is used internally during
 	// updates of this resource.
@@ -659,8 +657,6 @@ type serviceAttachmentState struct {
 	// If true, enable the proxy protocol which is for supplying client TCP/IP
 	// address data in TCP connections that traverse proxies on their way to
 	// destination servers.
-	//
-	// ***
 	EnableProxyProtocol *bool `pulumi:"enableProxyProtocol"`
 	// Fingerprint of this resource. This field is used internally during
 	// updates of this resource.
@@ -725,8 +721,6 @@ type ServiceAttachmentState struct {
 	// If true, enable the proxy protocol which is for supplying client TCP/IP
 	// address data in TCP connections that traverse proxies on their way to
 	// destination servers.
-	//
-	// ***
 	EnableProxyProtocol pulumi.BoolPtrInput
 	// Fingerprint of this resource. This field is used internally during
 	// updates of this resource.
@@ -791,8 +785,6 @@ type serviceAttachmentArgs struct {
 	// If true, enable the proxy protocol which is for supplying client TCP/IP
 	// address data in TCP connections that traverse proxies on their way to
 	// destination servers.
-	//
-	// ***
 	EnableProxyProtocol bool `pulumi:"enableProxyProtocol"`
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -849,8 +841,6 @@ type ServiceAttachmentArgs struct {
 	// If true, enable the proxy protocol which is for supplying client TCP/IP
 	// address data in TCP connections that traverse proxies on their way to
 	// destination servers.
-	//
-	// ***
 	EnableProxyProtocol pulumi.BoolInput
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -1016,8 +1006,6 @@ func (o ServiceAttachmentOutput) DomainNames() pulumi.StringArrayOutput {
 // If true, enable the proxy protocol which is for supplying client TCP/IP
 // address data in TCP connections that traverse proxies on their way to
 // destination servers.
-//
-// ***
 func (o ServiceAttachmentOutput) EnableProxyProtocol() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ServiceAttachment) pulumi.BoolOutput { return v.EnableProxyProtocol }).(pulumi.BoolOutput)
 }

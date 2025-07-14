@@ -219,8 +219,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * * Must end with a number or a letter.
      * * Must be unique within the customer project/ location
      * 
-     * ***
-     * 
      */
     @Import(name="instanceId")
     private @Nullable Output<String> instanceId;
@@ -232,8 +230,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * * Must be between 1-63 characters.
      * * Must end with a number or a letter.
      * * Must be unique within the customer project/ location
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> instanceId() {
@@ -759,8 +755,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * * Must end with a number or a letter.
          * * Must be unique within the customer project/ location
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -776,8 +770,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * * Must be between 1-63 characters.
          * * Must end with a number or a letter.
          * * Must be unique within the customer project/ location
-         * 
-         * ***
          * 
          * @return builder
          * 

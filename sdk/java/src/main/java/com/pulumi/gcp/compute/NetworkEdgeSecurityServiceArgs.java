@@ -33,16 +33,12 @@ public final class NetworkEdgeSecurityServiceArgs extends com.pulumi.resources.R
     /**
      * Name of the resource. Provided by the client when the resource is created.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return Name of the resource. Provided by the client when the resource is created.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -148,8 +144,6 @@ public final class NetworkEdgeSecurityServiceArgs extends com.pulumi.resources.R
         /**
          * @param name Name of the resource. Provided by the client when the resource is created.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -160,8 +154,6 @@ public final class NetworkEdgeSecurityServiceArgs extends com.pulumi.resources.R
 
         /**
          * @param name Name of the resource. Provided by the client when the resource is created.
-         * 
-         * ***
          * 
          * @return builder
          * 

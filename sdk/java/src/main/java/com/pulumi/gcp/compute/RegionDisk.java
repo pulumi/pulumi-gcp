@@ -666,16 +666,12 @@ public class RegionDisk extends com.pulumi.resources.CustomResource {
     /**
      * URLs of the zones where the disk should be replicated to.
      * 
-     * ***
-     * 
      */
     @Export(name="replicaZones", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> replicaZones;
 
     /**
      * @return URLs of the zones where the disk should be replicated to.
-     * 
-     * ***
      * 
      */
     public Output<List<String>> replicaZones() {

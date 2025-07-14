@@ -33,16 +33,14 @@ public final class VMwareClusterValidationCheckStatusResultArgs extends com.pulu
     }
 
     /**
-     * (Output)
-     * The description of the validation check.
+     * A human readable description of this VMware User Cluster.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return (Output)
-     * The description of the validation check.
+     * @return A human readable description of this VMware User Cluster.
      * 
      */
     public Optional<Output<String>> description() {
@@ -152,8 +150,7 @@ public final class VMwareClusterValidationCheckStatusResultArgs extends com.pulu
         }
 
         /**
-         * @param description (Output)
-         * The description of the validation check.
+         * @param description A human readable description of this VMware User Cluster.
          * 
          * @return builder
          * 
@@ -164,8 +161,7 @@ public final class VMwareClusterValidationCheckStatusResultArgs extends com.pulu
         }
 
         /**
-         * @param description (Output)
-         * The description of the validation check.
+         * @param description A human readable description of this VMware User Cluster.
          * 
          * @return builder
          * 

@@ -421,18 +421,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:datacatalog/tag:Tag")
 public class Tag extends com.pulumi.resources.CustomResource {
     /**
-     * Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an individual
-     * column based on that schema. For attaching a tag to a nested column, use &#39;.&#39; to separate the column names. Example:
-     * &#39;outer_column.inner_column&#39;
+     * Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an
+     * individual column based on that schema.
+     * For attaching a tag to a nested column, use `.` to separate the column names. Example:
+     * `outer_column.inner_column`
      * 
      */
     @Export(name="column", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> column;
 
     /**
-     * @return Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an individual
-     * column based on that schema. For attaching a tag to a nested column, use &#39;.&#39; to separate the column names. Example:
-     * &#39;outer_column.inner_column&#39;
+     * @return Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an
+     * individual column based on that schema.
+     * For attaching a tag to a nested column, use `.` to separate the column names. Example:
+     * `outer_column.inner_column`
      * 
      */
     public Output<Optional<String>> column() {
@@ -477,16 +479,16 @@ public class Tag extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group,
-     * the tag will be attached to all entries in that group.
+     * The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
+     * all entries in that group.
      * 
      */
     @Export(name="parent", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> parent;
 
     /**
-     * @return The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group,
-     * the tag will be attached to all entries in that group.
+     * @return The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
+     * all entries in that group.
      * 
      */
     public Output<Optional<String>> parent() {

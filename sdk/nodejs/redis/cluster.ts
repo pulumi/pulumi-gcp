@@ -552,9 +552,6 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Unique name of the resource in this scope including project and location using the form:
      * projects/{projectId}/locations/{locationId}/clusters/{clusterId}
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -804,9 +801,6 @@ export interface ClusterState {
     /**
      * Unique name of the resource in this scope including project and location using the form:
      * projects/{projectId}/locations/{locationId}/clusters/{clusterId}
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -943,9 +937,6 @@ export interface ClusterArgs {
     /**
      * Unique name of the resource in this scope including project and location using the form:
      * projects/{projectId}/locations/{locationId}/clusters/{clusterId}
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

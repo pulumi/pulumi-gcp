@@ -27,8 +27,6 @@ namespace Pulumi.Gcp.AppEngine.Outputs
         public readonly string? Host;
         /// <summary>
         /// The initial delay before starting to execute the checks. Default: "300s"
-        /// 
-        /// - - -
         /// </summary>
         public readonly string? InitialDelay;
         /// <summary>

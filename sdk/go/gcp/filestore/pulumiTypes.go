@@ -1471,8 +1471,6 @@ type InstanceNetworkPscConfig struct {
 	// would be set up. This is optional, and only relevant in case the network
 	// is a shared VPC. If this is not specified, the endpoint would be set up
 	// in the VPC host project.
-	//
-	// ***
 	EndpointProject *string `pulumi:"endpointProject"`
 }
 
@@ -1492,8 +1490,6 @@ type InstanceNetworkPscConfigArgs struct {
 	// would be set up. This is optional, and only relevant in case the network
 	// is a shared VPC. If this is not specified, the endpoint would be set up
 	// in the VPC host project.
-	//
-	// ***
 	EndpointProject pulumi.StringPtrInput `pulumi:"endpointProject"`
 }
 
@@ -1578,8 +1574,6 @@ func (o InstanceNetworkPscConfigOutput) ToInstanceNetworkPscConfigPtrOutputWithC
 // would be set up. This is optional, and only relevant in case the network
 // is a shared VPC. If this is not specified, the endpoint would be set up
 // in the VPC host project.
-//
-// ***
 func (o InstanceNetworkPscConfigOutput) EndpointProject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceNetworkPscConfig) *string { return v.EndpointProject }).(pulumi.StringPtrOutput)
 }
@@ -1612,8 +1606,6 @@ func (o InstanceNetworkPscConfigPtrOutput) Elem() InstanceNetworkPscConfigOutput
 // would be set up. This is optional, and only relevant in case the network
 // is a shared VPC. If this is not specified, the endpoint would be set up
 // in the VPC host project.
-//
-// ***
 func (o InstanceNetworkPscConfigPtrOutput) EndpointProject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceNetworkPscConfig) *string {
 		if v == nil {

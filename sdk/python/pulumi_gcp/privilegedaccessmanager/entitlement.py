@@ -48,8 +48,10 @@ class EntitlementArgs:
         :param pulumi.Input['EntitlementRequesterJustificationConfigArgs'] requester_justification_config: Defines the ways in which a requester should provide the justification while requesting for access.
                Structure is documented below.
         :param pulumi.Input['EntitlementAdditionalNotificationTargetsArgs'] additional_notification_targets: AdditionalNotificationTargets includes email addresses to be notified.
-        :param pulumi.Input['EntitlementApprovalWorkflowArgs'] approval_workflow: The approvals needed before access will be granted to a requester. No approvals will be needed if this field is null.
-               Different types of approval workflows that can be used to gate privileged access granting.
+               Structure is documented below.
+        :param pulumi.Input['EntitlementApprovalWorkflowArgs'] approval_workflow: The approvals needed before access will be granted to a requester.
+               No approvals will be needed if this field is null. Different types of approval workflows that can be used to gate privileged access granting.
+               Structure is documented below.
         """
         pulumi.set(__self__, "eligible_users", eligible_users)
         pulumi.set(__self__, "entitlement_id", entitlement_id)
@@ -159,6 +161,7 @@ class EntitlementArgs:
     def additional_notification_targets(self) -> Optional[pulumi.Input['EntitlementAdditionalNotificationTargetsArgs']]:
         """
         AdditionalNotificationTargets includes email addresses to be notified.
+        Structure is documented below.
         """
         return pulumi.get(self, "additional_notification_targets")
 
@@ -170,8 +173,9 @@ class EntitlementArgs:
     @pulumi.getter(name="approvalWorkflow")
     def approval_workflow(self) -> Optional[pulumi.Input['EntitlementApprovalWorkflowArgs']]:
         """
-        The approvals needed before access will be granted to a requester. No approvals will be needed if this field is null.
-        Different types of approval workflows that can be used to gate privileged access granting.
+        The approvals needed before access will be granted to a requester.
+        No approvals will be needed if this field is null. Different types of approval workflows that can be used to gate privileged access granting.
+        Structure is documented below.
         """
         return pulumi.get(self, "approval_workflow")
 
@@ -200,8 +204,10 @@ class _EntitlementState:
         """
         Input properties used for looking up and filtering Entitlement resources.
         :param pulumi.Input['EntitlementAdditionalNotificationTargetsArgs'] additional_notification_targets: AdditionalNotificationTargets includes email addresses to be notified.
-        :param pulumi.Input['EntitlementApprovalWorkflowArgs'] approval_workflow: The approvals needed before access will be granted to a requester. No approvals will be needed if this field is null.
-               Different types of approval workflows that can be used to gate privileged access granting.
+               Structure is documented below.
+        :param pulumi.Input['EntitlementApprovalWorkflowArgs'] approval_workflow: The approvals needed before access will be granted to a requester.
+               No approvals will be needed if this field is null. Different types of approval workflows that can be used to gate privileged access granting.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] create_time: Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
         :param pulumi.Input[Sequence[pulumi.Input['EntitlementEligibleUserArgs']]] eligible_users: Who can create Grants using Entitlement. This list should contain at most one entry
@@ -259,6 +265,7 @@ class _EntitlementState:
     def additional_notification_targets(self) -> Optional[pulumi.Input['EntitlementAdditionalNotificationTargetsArgs']]:
         """
         AdditionalNotificationTargets includes email addresses to be notified.
+        Structure is documented below.
         """
         return pulumi.get(self, "additional_notification_targets")
 
@@ -270,8 +277,9 @@ class _EntitlementState:
     @pulumi.getter(name="approvalWorkflow")
     def approval_workflow(self) -> Optional[pulumi.Input['EntitlementApprovalWorkflowArgs']]:
         """
-        The approvals needed before access will be granted to a requester. No approvals will be needed if this field is null.
-        Different types of approval workflows that can be used to gate privileged access granting.
+        The approvals needed before access will be granted to a requester.
+        No approvals will be needed if this field is null. Different types of approval workflows that can be used to gate privileged access granting.
+        Structure is documented below.
         """
         return pulumi.get(self, "approval_workflow")
 
@@ -522,8 +530,10 @@ class Entitlement(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['EntitlementAdditionalNotificationTargetsArgs', 'EntitlementAdditionalNotificationTargetsArgsDict']] additional_notification_targets: AdditionalNotificationTargets includes email addresses to be notified.
-        :param pulumi.Input[Union['EntitlementApprovalWorkflowArgs', 'EntitlementApprovalWorkflowArgsDict']] approval_workflow: The approvals needed before access will be granted to a requester. No approvals will be needed if this field is null.
-               Different types of approval workflows that can be used to gate privileged access granting.
+               Structure is documented below.
+        :param pulumi.Input[Union['EntitlementApprovalWorkflowArgs', 'EntitlementApprovalWorkflowArgsDict']] approval_workflow: The approvals needed before access will be granted to a requester.
+               No approvals will be needed if this field is null. Different types of approval workflows that can be used to gate privileged access granting.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['EntitlementEligibleUserArgs', 'EntitlementEligibleUserArgsDict']]]] eligible_users: Who can create Grants using Entitlement. This list should contain at most one entry
                Structure is documented below.
         :param pulumi.Input[builtins.str] entitlement_id: The ID to use for this Entitlement. This will become the last part of the resource name.
@@ -707,8 +717,10 @@ class Entitlement(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['EntitlementAdditionalNotificationTargetsArgs', 'EntitlementAdditionalNotificationTargetsArgsDict']] additional_notification_targets: AdditionalNotificationTargets includes email addresses to be notified.
-        :param pulumi.Input[Union['EntitlementApprovalWorkflowArgs', 'EntitlementApprovalWorkflowArgsDict']] approval_workflow: The approvals needed before access will be granted to a requester. No approvals will be needed if this field is null.
-               Different types of approval workflows that can be used to gate privileged access granting.
+               Structure is documented below.
+        :param pulumi.Input[Union['EntitlementApprovalWorkflowArgs', 'EntitlementApprovalWorkflowArgsDict']] approval_workflow: The approvals needed before access will be granted to a requester.
+               No approvals will be needed if this field is null. Different types of approval workflows that can be used to gate privileged access granting.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] create_time: Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
         :param pulumi.Input[Sequence[pulumi.Input[Union['EntitlementEligibleUserArgs', 'EntitlementEligibleUserArgsDict']]]] eligible_users: Who can create Grants using Entitlement. This list should contain at most one entry
@@ -757,6 +769,7 @@ class Entitlement(pulumi.CustomResource):
     def additional_notification_targets(self) -> pulumi.Output[Optional['outputs.EntitlementAdditionalNotificationTargets']]:
         """
         AdditionalNotificationTargets includes email addresses to be notified.
+        Structure is documented below.
         """
         return pulumi.get(self, "additional_notification_targets")
 
@@ -764,8 +777,9 @@ class Entitlement(pulumi.CustomResource):
     @pulumi.getter(name="approvalWorkflow")
     def approval_workflow(self) -> pulumi.Output[Optional['outputs.EntitlementApprovalWorkflow']]:
         """
-        The approvals needed before access will be granted to a requester. No approvals will be needed if this field is null.
-        Different types of approval workflows that can be used to gate privileged access granting.
+        The approvals needed before access will be granted to a requester.
+        No approvals will be needed if this field is null. Different types of approval workflows that can be used to gate privileged access granting.
+        Structure is documented below.
         """
         return pulumi.get(self, "approval_workflow")
 

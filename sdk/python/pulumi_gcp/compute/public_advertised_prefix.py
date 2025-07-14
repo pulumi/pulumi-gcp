@@ -30,9 +30,6 @@ class PublicAdvertisedPrefixArgs:
         The set of arguments for constructing a PublicAdvertisedPrefix resource.
         :param pulumi.Input[builtins.str] dns_verification_ip: The IPv4 address to be used for reverse DNS verification.
         :param pulumi.Input[builtins.str] ip_cidr_range: The address range, in CIDR format, represented by this public advertised prefix.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
         :param pulumi.Input[builtins.str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -78,9 +75,6 @@ class PublicAdvertisedPrefixArgs:
     def ip_cidr_range(self) -> pulumi.Input[builtins.str]:
         """
         The address range, in CIDR format, represented by this public advertised prefix.
-
-
-        - - -
         """
         return pulumi.get(self, "ip_cidr_range")
 
@@ -165,9 +159,6 @@ class _PublicAdvertisedPrefixState:
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
         :param pulumi.Input[builtins.str] dns_verification_ip: The IPv4 address to be used for reverse DNS verification.
         :param pulumi.Input[builtins.str] ip_cidr_range: The address range, in CIDR format, represented by this public advertised prefix.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?`
@@ -232,9 +223,6 @@ class _PublicAdvertisedPrefixState:
     def ip_cidr_range(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The address range, in CIDR format, represented by this public advertised prefix.
-
-
-        - - -
         """
         return pulumi.get(self, "ip_cidr_range")
 
@@ -394,9 +382,6 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
         :param pulumi.Input[builtins.str] dns_verification_ip: The IPv4 address to be used for reverse DNS verification.
         :param pulumi.Input[builtins.str] ip_cidr_range: The address range, in CIDR format, represented by this public advertised prefix.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?`
@@ -550,9 +535,6 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
         :param pulumi.Input[builtins.str] dns_verification_ip: The IPv4 address to be used for reverse DNS verification.
         :param pulumi.Input[builtins.str] ip_cidr_range: The address range, in CIDR format, represented by this public advertised prefix.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?`
@@ -606,9 +588,6 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
     def ip_cidr_range(self) -> pulumi.Output[builtins.str]:
         """
         The address range, in CIDR format, represented by this public advertised prefix.
-
-
-        - - -
         """
         return pulumi.get(self, "ip_cidr_range")
 

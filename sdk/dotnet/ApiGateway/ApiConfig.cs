@@ -49,9 +49,6 @@ namespace Pulumi.Gcp.ApiGateway
     {
         /// <summary>
         /// The API to attach the config to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("api")]
         public Output<string> Api { get; private set; } = null!;
@@ -199,9 +196,6 @@ namespace Pulumi.Gcp.ApiGateway
     {
         /// <summary>
         /// The API to attach the config to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("api", required: true)]
         public Input<string> Api { get; set; } = null!;
@@ -305,9 +299,6 @@ namespace Pulumi.Gcp.ApiGateway
     {
         /// <summary>
         /// The API to attach the config to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("api")]
         public Input<string>? Api { get; set; }

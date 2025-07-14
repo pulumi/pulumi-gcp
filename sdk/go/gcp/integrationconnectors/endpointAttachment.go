@@ -98,8 +98,6 @@ type EndpointAttachment struct {
 	// Location in which Endpoint Attachment needs to be created.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Name of Endpoint Attachment needs to be created.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -172,8 +170,6 @@ type endpointAttachmentState struct {
 	// Location in which Endpoint Attachment needs to be created.
 	Location *string `pulumi:"location"`
 	// Name of Endpoint Attachment needs to be created.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -206,8 +202,6 @@ type EndpointAttachmentState struct {
 	// Location in which Endpoint Attachment needs to be created.
 	Location pulumi.StringPtrInput
 	// Name of Endpoint Attachment needs to be created.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -238,8 +232,6 @@ type endpointAttachmentArgs struct {
 	// Location in which Endpoint Attachment needs to be created.
 	Location string `pulumi:"location"`
 	// Name of Endpoint Attachment needs to be created.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -262,8 +254,6 @@ type EndpointAttachmentArgs struct {
 	// Location in which Endpoint Attachment needs to be created.
 	Location pulumi.StringInput
 	// Name of Endpoint Attachment needs to be created.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -398,8 +388,6 @@ func (o EndpointAttachmentOutput) Location() pulumi.StringOutput {
 }
 
 // Name of Endpoint Attachment needs to be created.
-//
-// ***
 func (o EndpointAttachmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *EndpointAttachment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

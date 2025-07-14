@@ -32,9 +32,6 @@ class PreferenceSetArgs:
         The set of arguments for constructing a PreferenceSet resource.
         :param pulumi.Input[builtins.str] location: Part of `parent`. See documentation of `projectsId`.
         :param pulumi.Input[builtins.str] preference_set_id: Required. User specified ID for the preference set. It will become the last component of the preference set name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression `a-z?`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] description: A description of the preference set.
         :param pulumi.Input[builtins.str] display_name: User-friendly display name. Maximum length is 63 characters.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -70,9 +67,6 @@ class PreferenceSetArgs:
     def preference_set_id(self) -> pulumi.Input[builtins.str]:
         """
         Required. User specified ID for the preference set. It will become the last component of the preference set name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression `a-z?`.
-
-
-        - - -
         """
         return pulumi.get(self, "preference_set_id")
 
@@ -151,9 +145,6 @@ class _PreferenceSetState:
         :param pulumi.Input[builtins.str] location: Part of `parent`. See documentation of `projectsId`.
         :param pulumi.Input[builtins.str] name: Output only. Name of the preference set.
         :param pulumi.Input[builtins.str] preference_set_id: Required. User specified ID for the preference set. It will become the last component of the preference set name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression `a-z?`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] update_time: Output only. The timestamp when the preference set was last updated.
@@ -244,9 +235,6 @@ class _PreferenceSetState:
     def preference_set_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Required. User specified ID for the preference set. It will become the last component of the preference set name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression `a-z?`.
-
-
-        - - -
         """
         return pulumi.get(self, "preference_set_id")
 
@@ -408,9 +396,6 @@ class PreferenceSet(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] display_name: User-friendly display name. Maximum length is 63 characters.
         :param pulumi.Input[builtins.str] location: Part of `parent`. See documentation of `projectsId`.
         :param pulumi.Input[builtins.str] preference_set_id: Required. User specified ID for the preference set. It will become the last component of the preference set name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression `a-z?`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Union['PreferenceSetVirtualMachinePreferencesArgs', 'PreferenceSetVirtualMachinePreferencesArgsDict']] virtual_machine_preferences: VirtualMachinePreferences enables you to create sets of assumptions, for example, a geographical location and pricing track, for your migrated virtual machines. The set of preferences influence recommendations for migrating virtual machine assets.
@@ -593,9 +578,6 @@ class PreferenceSet(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] location: Part of `parent`. See documentation of `projectsId`.
         :param pulumi.Input[builtins.str] name: Output only. Name of the preference set.
         :param pulumi.Input[builtins.str] preference_set_id: Required. User specified ID for the preference set. It will become the last component of the preference set name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression `a-z?`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] update_time: Output only. The timestamp when the preference set was last updated.
@@ -662,9 +644,6 @@ class PreferenceSet(pulumi.CustomResource):
     def preference_set_id(self) -> pulumi.Output[builtins.str]:
         """
         Required. User specified ID for the preference set. It will become the last component of the preference set name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression `a-z?`.
-
-
-        - - -
         """
         return pulumi.get(self, "preference_set_id")
 

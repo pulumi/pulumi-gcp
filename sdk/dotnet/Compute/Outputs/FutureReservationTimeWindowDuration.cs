@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.Compute.Outputs
     {
         /// <summary>
         /// Span of time that's a fraction of a second at nanosecond resolution.
-        /// 
-        /// - - -
         /// </summary>
         public readonly int? Nanos;
         /// <summary>

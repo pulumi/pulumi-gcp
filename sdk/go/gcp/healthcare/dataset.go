@@ -145,8 +145,6 @@ type Dataset struct {
 	// Structure is documented below.
 	EncryptionSpec DatasetEncryptionSpecOutput `pulumi:"encryptionSpec"`
 	// The location for the Dataset.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name for the Dataset.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -198,8 +196,6 @@ type datasetState struct {
 	// Structure is documented below.
 	EncryptionSpec *DatasetEncryptionSpec `pulumi:"encryptionSpec"`
 	// The location for the Dataset.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// The resource name for the Dataset.
 	Name *string `pulumi:"name"`
@@ -219,8 +215,6 @@ type DatasetState struct {
 	// Structure is documented below.
 	EncryptionSpec DatasetEncryptionSpecPtrInput
 	// The location for the Dataset.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// The resource name for the Dataset.
 	Name pulumi.StringPtrInput
@@ -244,8 +238,6 @@ type datasetArgs struct {
 	// Structure is documented below.
 	EncryptionSpec *DatasetEncryptionSpec `pulumi:"encryptionSpec"`
 	// The location for the Dataset.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// The resource name for the Dataset.
 	Name *string `pulumi:"name"`
@@ -264,8 +256,6 @@ type DatasetArgs struct {
 	// Structure is documented below.
 	EncryptionSpec DatasetEncryptionSpecPtrInput
 	// The location for the Dataset.
-	//
-	// ***
 	Location pulumi.StringInput
 	// The resource name for the Dataset.
 	Name pulumi.StringPtrInput
@@ -372,8 +362,6 @@ func (o DatasetOutput) EncryptionSpec() DatasetEncryptionSpecOutput {
 }
 
 // The location for the Dataset.
-//
-// ***
 func (o DatasetOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

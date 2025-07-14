@@ -14,8 +14,6 @@ public final class ScopeRbacRoleBindingRole {
     /**
      * @return CustomRole is the custom Kubernetes ClusterRole to be used. The custom role format must be allowlisted in the rbacrolebindingactuation feature and RFC 1123 compliant.
      * 
-     * ***
-     * 
      */
     private @Nullable String customRole;
     /**
@@ -28,8 +26,6 @@ public final class ScopeRbacRoleBindingRole {
     private ScopeRbacRoleBindingRole() {}
     /**
      * @return CustomRole is the custom Kubernetes ClusterRole to be used. The custom role format must be allowlisted in the rbacrolebindingactuation feature and RFC 1123 compliant.
-     * 
-     * ***
      * 
      */
     public Optional<String> customRole() {

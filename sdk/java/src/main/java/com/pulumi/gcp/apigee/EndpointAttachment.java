@@ -60,16 +60,12 @@ public class EndpointAttachment extends com.pulumi.resources.CustomResource {
     /**
      * ID of the endpoint attachment.
      * 
-     * ***
-     * 
      */
     @Export(name="endpointAttachmentId", refs={String.class}, tree="[0]")
     private Output<String> endpointAttachmentId;
 
     /**
      * @return ID of the endpoint attachment.
-     * 
-     * ***
      * 
      */
     public Output<String> endpointAttachmentId() {

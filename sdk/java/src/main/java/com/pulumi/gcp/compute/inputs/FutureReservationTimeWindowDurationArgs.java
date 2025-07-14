@@ -19,16 +19,12 @@ public final class FutureReservationTimeWindowDurationArgs extends com.pulumi.re
     /**
      * Span of time that&#39;s a fraction of a second at nanosecond resolution.
      * 
-     * ***
-     * 
      */
     @Import(name="nanos")
     private @Nullable Output<Integer> nanos;
 
     /**
      * @return Span of time that&#39;s a fraction of a second at nanosecond resolution.
-     * 
-     * ***
      * 
      */
     public Optional<Output<Integer>> nanos() {
@@ -78,8 +74,6 @@ public final class FutureReservationTimeWindowDurationArgs extends com.pulumi.re
         /**
          * @param nanos Span of time that&#39;s a fraction of a second at nanosecond resolution.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -90,8 +84,6 @@ public final class FutureReservationTimeWindowDurationArgs extends com.pulumi.re
 
         /**
          * @param nanos Span of time that&#39;s a fraction of a second at nanosecond resolution.
-         * 
-         * ***
          * 
          * @return builder
          * 

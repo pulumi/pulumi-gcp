@@ -75,8 +75,6 @@ public final class GitRepositoryLinkArgs extends com.pulumi.resources.ResourceAr
      * the repository&#39;s resource name. This ID should be unique in the connection.
      * Allows alphanumeric characters and any of -._~%!$&amp;&#39;()*+,;={@literal @}.
      * 
-     * ***
-     * 
      */
     @Import(name="gitRepositoryLinkId", required=true)
     private Output<String> gitRepositoryLinkId;
@@ -85,8 +83,6 @@ public final class GitRepositoryLinkArgs extends com.pulumi.resources.ResourceAr
      * @return Required. The ID to use for the repository, which will become the final component of
      * the repository&#39;s resource name. This ID should be unique in the connection.
      * Allows alphanumeric characters and any of -._~%!$&amp;&#39;()*+,;={@literal @}.
-     * 
-     * ***
      * 
      */
     public Output<String> gitRepositoryLinkId() {
@@ -266,8 +262,6 @@ public final class GitRepositoryLinkArgs extends com.pulumi.resources.ResourceAr
          * the repository&#39;s resource name. This ID should be unique in the connection.
          * Allows alphanumeric characters and any of -._~%!$&amp;&#39;()*+,;={@literal @}.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -280,8 +274,6 @@ public final class GitRepositoryLinkArgs extends com.pulumi.resources.ResourceAr
          * @param gitRepositoryLinkId Required. The ID to use for the repository, which will become the final component of
          * the repository&#39;s resource name. This ID should be unique in the connection.
          * Allows alphanumeric characters and any of -._~%!$&amp;&#39;()*+,;={@literal @}.
-         * 
-         * ***
          * 
          * @return builder
          * 

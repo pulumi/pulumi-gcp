@@ -125,18 +125,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:diagflow/cxEntityType:CxEntityType")
 public class CxEntityType extends com.pulumi.resources.CustomResource {
     /**
-     * Represents kinds of entities. * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity. *
-     * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
-     * Possible values: [&#34;AUTO_EXPANSION_MODE_DEFAULT&#34;, &#34;AUTO_EXPANSION_MODE_UNSPECIFIED&#34;]
+     * Represents kinds of entities.
+     * * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity.
+     * * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
+     *   Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
      * 
      */
     @Export(name="autoExpansionMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> autoExpansionMode;
 
     /**
-     * @return Represents kinds of entities. * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity. *
-     * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
-     * Possible values: [&#34;AUTO_EXPANSION_MODE_DEFAULT&#34;, &#34;AUTO_EXPANSION_MODE_UNSPECIFIED&#34;]
+     * @return Represents kinds of entities.
+     * * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity.
+     * * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
+     *   Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
      * 
      */
     public Output<Optional<String>> autoExpansionMode() {
@@ -187,18 +189,18 @@ public class CxEntityType extends com.pulumi.resources.CustomResource {
         return this.entities;
     }
     /**
-     * Collection of exceptional words and phrases that shouldn&#39;t be matched. For example, if you have a size entity type with
-     * entry giant(an adjective), you might consider adding giants(a noun) as an exclusion. If the kind of entity type is
-     * KIND_MAP, then the phrases specified by entities and excluded phrases should be mutually exclusive.
+     * Collection of exceptional words and phrases that shouldn&#39;t be matched. For example, if you have a size entity type with entry giant(an adjective), you might consider adding giants(a noun) as an exclusion.
+     * If the kind of entity type is KIND_MAP, then the phrases specified by entities and excluded phrases should be mutually exclusive.
+     * Structure is documented below.
      * 
      */
     @Export(name="excludedPhrases", refs={List.class,CxEntityTypeExcludedPhrase.class}, tree="[0,1]")
     private Output</* @Nullable */ List<CxEntityTypeExcludedPhrase>> excludedPhrases;
 
     /**
-     * @return Collection of exceptional words and phrases that shouldn&#39;t be matched. For example, if you have a size entity type with
-     * entry giant(an adjective), you might consider adding giants(a noun) as an exclusion. If the kind of entity type is
-     * KIND_MAP, then the phrases specified by entities and excluded phrases should be mutually exclusive.
+     * @return Collection of exceptional words and phrases that shouldn&#39;t be matched. For example, if you have a size entity type with entry giant(an adjective), you might consider adding giants(a noun) as an exclusion.
+     * If the kind of entity type is KIND_MAP, then the phrases specified by entities and excluded phrases should be mutually exclusive.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<List<CxEntityTypeExcludedPhrase>>> excludedPhrases() {
@@ -227,18 +229,22 @@ public class CxEntityType extends com.pulumi.resources.CustomResource {
         return this.kind;
     }
     /**
-     * The language of the following fields in entityType: EntityType.entities.value EntityType.entities.synonyms
-     * EntityType.excluded_phrases.value If not specified, the agent&#39;s default language is used. Many languages are supported.
-     * Note: languages must be enabled in the agent before they can be used.
+     * The language of the following fields in entityType:
+     * EntityType.entities.value
+     * EntityType.entities.synonyms
+     * EntityType.excluded_phrases.value
+     * If not specified, the agent&#39;s default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
      * 
      */
     @Export(name="languageCode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> languageCode;
 
     /**
-     * @return The language of the following fields in entityType: EntityType.entities.value EntityType.entities.synonyms
-     * EntityType.excluded_phrases.value If not specified, the agent&#39;s default language is used. Many languages are supported.
-     * Note: languages must be enabled in the agent before they can be used.
+     * @return The language of the following fields in entityType:
+     * EntityType.entities.value
+     * EntityType.entities.synonyms
+     * EntityType.excluded_phrases.value
+     * If not specified, the agent&#39;s default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
      * 
      */
     public Output<Optional<String>> languageCode() {
@@ -261,30 +267,30 @@ public class CxEntityType extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The agent to create a entity type for. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
+     * The agent to create a entity type for.
+     * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
      * 
      */
     @Export(name="parent", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> parent;
 
     /**
-     * @return The agent to create a entity type for. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
+     * @return The agent to create a entity type for.
+     * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
      * 
      */
     public Output<Optional<String>> parent() {
         return Codegen.optional(this.parent);
     }
     /**
-     * Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and
-     * intent parameters referring to the entity type will be replaced by parameter name when logging.
+     * Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and intent parameters referring to the entity type will be replaced by parameter name when logging.
      * 
      */
     @Export(name="redact", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> redact;
 
     /**
-     * @return Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and
-     * intent parameters referring to the entity type will be replaced by parameter name when logging.
+     * @return Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and intent parameters referring to the entity type will be replaced by parameter name when logging.
      * 
      */
     public Output<Optional<Boolean>> redact() {

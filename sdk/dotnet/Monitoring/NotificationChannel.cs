@@ -169,9 +169,6 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of valid values such as "email", "slack", etc...
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -300,9 +297,6 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of valid values such as "email", "slack", etc...
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -401,9 +395,6 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of valid values such as "email", "slack", etc...
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

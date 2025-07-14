@@ -38,8 +38,6 @@ namespace Pulumi.Gcp.ApiHub.Outputs
         public readonly string? EncryptionType;
         /// <summary>
         /// Optional. The name of the Vertex AI location where the data store is stored.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string? VertexLocation;
 

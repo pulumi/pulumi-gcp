@@ -127,9 +127,6 @@ export class Client extends pulumi.CustomResource {
     public readonly createSampleIntegrations!: pulumi.Output<boolean | undefined>;
     /**
      * Location in which client needs to be provisioned.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -196,9 +193,6 @@ export interface ClientState {
     createSampleIntegrations?: pulumi.Input<boolean>;
     /**
      * Location in which client needs to be provisioned.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -232,9 +226,6 @@ export interface ClientArgs {
     createSampleIntegrations?: pulumi.Input<boolean>;
     /**
      * Location in which client needs to be provisioned.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

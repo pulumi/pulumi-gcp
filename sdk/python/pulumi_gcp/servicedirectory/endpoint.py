@@ -30,9 +30,6 @@ class EndpointArgs:
         The set of arguments for constructing a Endpoint resource.
         :param pulumi.Input[builtins.str] endpoint_id: The Resource ID must be 1-63 characters long, including digits,
                lowercase letters or the hyphen character.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] service: The resource name of the service that this endpoint provides.
         :param pulumi.Input[builtins.str] address: IPv4 or IPv6 address of the endpoint.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] metadata: Metadata for the endpoint. This data can be consumed
@@ -60,9 +57,6 @@ class EndpointArgs:
         """
         The Resource ID must be 1-63 characters long, including digits,
         lowercase letters or the hyphen character.
-
-
-        - - -
         """
         return pulumi.get(self, "endpoint_id")
 
@@ -150,9 +144,6 @@ class _EndpointState:
         :param pulumi.Input[builtins.str] address: IPv4 or IPv6 address of the endpoint.
         :param pulumi.Input[builtins.str] endpoint_id: The Resource ID must be 1-63 characters long, including digits,
                lowercase letters or the hyphen character.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] metadata: Metadata for the endpoint. This data can be consumed
                by service clients. The entire metadata dictionary may contain
                up to 512 characters, spread across all key-value pairs.
@@ -197,9 +188,6 @@ class _EndpointState:
         """
         The Resource ID must be 1-63 characters long, including digits,
         lowercase letters or the hyphen character.
-
-
-        - - -
         """
         return pulumi.get(self, "endpoint_id")
 
@@ -374,9 +362,6 @@ class Endpoint(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] address: IPv4 or IPv6 address of the endpoint.
         :param pulumi.Input[builtins.str] endpoint_id: The Resource ID must be 1-63 characters long, including digits,
                lowercase letters or the hyphen character.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] metadata: Metadata for the endpoint. This data can be consumed
                by service clients. The entire metadata dictionary may contain
                up to 512 characters, spread across all key-value pairs.
@@ -543,9 +528,6 @@ class Endpoint(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] address: IPv4 or IPv6 address of the endpoint.
         :param pulumi.Input[builtins.str] endpoint_id: The Resource ID must be 1-63 characters long, including digits,
                lowercase letters or the hyphen character.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] metadata: Metadata for the endpoint. This data can be consumed
                by service clients. The entire metadata dictionary may contain
                up to 512 characters, spread across all key-value pairs.
@@ -584,9 +566,6 @@ class Endpoint(pulumi.CustomResource):
         """
         The Resource ID must be 1-63 characters long, including digits,
         lowercase letters or the hyphen character.
-
-
-        - - -
         """
         return pulumi.get(self, "endpoint_id")
 

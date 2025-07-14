@@ -101,9 +101,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Managed protection tier to be set.
         /// Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`, `CA_ENTERPRISE_ANNUAL`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("cloudArmorTier")]
         public Output<string> CloudArmorTier { get; private set; } = null!;
@@ -164,9 +161,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Managed protection tier to be set.
         /// Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`, `CA_ENTERPRISE_ANNUAL`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("cloudArmorTier", required: true)]
         public Input<string> CloudArmorTier { get; set; } = null!;
@@ -189,9 +183,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Managed protection tier to be set.
         /// Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`, `CA_ENTERPRISE_ANNUAL`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("cloudArmorTier")]
         public Input<string>? CloudArmorTier { get; set; }

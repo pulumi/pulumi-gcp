@@ -162,9 +162,6 @@ class ForwardingRuleArgs:
                For Private Service Connect forwarding rules that forward traffic to Google
                APIs, the forwarding rule name must be a 1-20 characters string with
                lowercase letters and numbers and must start with a letter.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] network: This field is not used for external load balancing.
                For Internal TCP/UDP Load Balancing, this field identifies the network that
                the load balanced IP should belong to for this Forwarding Rule.
@@ -558,9 +555,6 @@ class ForwardingRuleArgs:
         For Private Service Connect forwarding rules that forward traffic to Google
         APIs, the forwarding rule name must be a 1-20 characters string with
         lowercase letters and numbers and must start with a letter.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -960,9 +954,6 @@ class _ForwardingRuleState:
                For Private Service Connect forwarding rules that forward traffic to Google
                APIs, the forwarding rule name must be a 1-20 characters string with
                lowercase letters and numbers and must start with a letter.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] network: This field is not used for external load balancing.
                For Internal TCP/UDP Load Balancing, this field identifies the network that
                the load balanced IP should belong to for this Forwarding Rule.
@@ -1444,9 +1435,6 @@ class _ForwardingRuleState:
         For Private Service Connect forwarding rules that forward traffic to Google
         APIs, the forwarding rule name must be a 1-20 characters string with
         lowercase letters and numbers and must start with a letter.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -2590,9 +2578,6 @@ class ForwardingRule(pulumi.CustomResource):
                For Private Service Connect forwarding rules that forward traffic to Google
                APIs, the forwarding rule name must be a 1-20 characters string with
                lowercase letters and numbers and must start with a letter.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] network: This field is not used for external load balancing.
                For Internal TCP/UDP Load Balancing, this field identifies the network that
                the load balanced IP should belong to for this Forwarding Rule.
@@ -3644,9 +3629,6 @@ class ForwardingRule(pulumi.CustomResource):
                For Private Service Connect forwarding rules that forward traffic to Google
                APIs, the forwarding rule name must be a 1-20 characters string with
                lowercase letters and numbers and must start with a letter.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] network: This field is not used for external load balancing.
                For Internal TCP/UDP Load Balancing, this field identifies the network that
                the load balanced IP should belong to for this Forwarding Rule.
@@ -4029,9 +4011,6 @@ class ForwardingRule(pulumi.CustomResource):
         For Private Service Connect forwarding rules that forward traffic to Google
         APIs, the forwarding rule name must be a 1-20 characters string with
         lowercase letters and numbers and must start with a letter.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

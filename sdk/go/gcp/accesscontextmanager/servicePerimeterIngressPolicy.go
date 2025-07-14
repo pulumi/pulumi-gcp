@@ -52,8 +52,6 @@ type ServicePerimeterIngressPolicy struct {
 	// Structure is documented below.
 	IngressTo ServicePerimeterIngressPolicyIngressToPtrOutput `pulumi:"ingressTo"`
 	// The name of the Service Perimeter to add this resource to.
-	//
-	// ***
 	Perimeter pulumi.StringOutput `pulumi:"perimeter"`
 	// Human readable title. Must be unique within the perimeter. Does not affect behavior.
 	Title pulumi.StringPtrOutput `pulumi:"title"`
@@ -105,8 +103,6 @@ type servicePerimeterIngressPolicyState struct {
 	// Structure is documented below.
 	IngressTo *ServicePerimeterIngressPolicyIngressTo `pulumi:"ingressTo"`
 	// The name of the Service Perimeter to add this resource to.
-	//
-	// ***
 	Perimeter *string `pulumi:"perimeter"`
 	// Human readable title. Must be unique within the perimeter. Does not affect behavior.
 	Title *string `pulumi:"title"`
@@ -126,8 +122,6 @@ type ServicePerimeterIngressPolicyState struct {
 	// Structure is documented below.
 	IngressTo ServicePerimeterIngressPolicyIngressToPtrInput
 	// The name of the Service Perimeter to add this resource to.
-	//
-	// ***
 	Perimeter pulumi.StringPtrInput
 	// Human readable title. Must be unique within the perimeter. Does not affect behavior.
 	Title pulumi.StringPtrInput
@@ -147,8 +141,6 @@ type servicePerimeterIngressPolicyArgs struct {
 	// Structure is documented below.
 	IngressTo *ServicePerimeterIngressPolicyIngressTo `pulumi:"ingressTo"`
 	// The name of the Service Perimeter to add this resource to.
-	//
-	// ***
 	Perimeter string `pulumi:"perimeter"`
 	// Human readable title. Must be unique within the perimeter. Does not affect behavior.
 	Title *string `pulumi:"title"`
@@ -165,8 +157,6 @@ type ServicePerimeterIngressPolicyArgs struct {
 	// Structure is documented below.
 	IngressTo ServicePerimeterIngressPolicyIngressToPtrInput
 	// The name of the Service Perimeter to add this resource to.
-	//
-	// ***
 	Perimeter pulumi.StringInput
 	// Human readable title. Must be unique within the perimeter. Does not affect behavior.
 	Title pulumi.StringPtrInput
@@ -288,8 +278,6 @@ func (o ServicePerimeterIngressPolicyOutput) IngressTo() ServicePerimeterIngress
 }
 
 // The name of the Service Perimeter to add this resource to.
-//
-// ***
 func (o ServicePerimeterIngressPolicyOutput) Perimeter() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePerimeterIngressPolicy) pulumi.StringOutput { return v.Perimeter }).(pulumi.StringOutput)
 }

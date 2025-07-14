@@ -60,8 +60,7 @@ namespace Pulumi.Gcp.EdgeContainer.Inputs
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// (Output)
-        /// The target version of the cluster.
+        /// The target cluster version. For example: "1.5.0".
         /// </summary>
         [Input("targetVersion")]
         public Input<string>? TargetVersion { get; set; }

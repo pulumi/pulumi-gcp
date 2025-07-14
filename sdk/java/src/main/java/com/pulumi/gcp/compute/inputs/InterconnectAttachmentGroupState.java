@@ -21,18 +21,24 @@ public final class InterconnectAttachmentGroupState extends com.pulumi.resources
     public static final InterconnectAttachmentGroupState Empty = new InterconnectAttachmentGroupState();
 
     /**
-     * (Output)
-     * URLs of any particular Attachments to explain this
-     * blocker in more detail.
+     * Attachments in the AttachmentGroup. Keys are arbitrary user-specified
+     * strings. Users are encouraged, but not required, to use their preferred
+     * format for resource links as keys.
+     * Note that there are add-members and remove-members methods in gcloud.
+     * The size of this map is limited by an &#34;Attachments per group&#34; quota.
+     * Structure is documented below.
      * 
      */
     @Import(name="attachments")
     private @Nullable Output<List<InterconnectAttachmentGroupAttachmentArgs>> attachments;
 
     /**
-     * @return (Output)
-     * URLs of any particular Attachments to explain this
-     * blocker in more detail.
+     * @return Attachments in the AttachmentGroup. Keys are arbitrary user-specified
+     * strings. Users are encouraged, but not required, to use their preferred
+     * format for resource links as keys.
+     * Note that there are add-members and remove-members methods in gcloud.
+     * The size of this map is limited by an &#34;Attachments per group&#34; quota.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<InterconnectAttachmentGroupAttachmentArgs>>> attachments() {
@@ -110,16 +116,18 @@ public final class InterconnectAttachmentGroupState extends com.pulumi.resources
     }
 
     /**
-     * The URL of an InterconnectGroup that groups these Attachments&#39; Interconnects. Customers do not need to set this unless
-     * directed by Google Support.
+     * The URL of an InterconnectGroup that groups these Attachments&#39;
+     * Interconnects. Customers do not need to set this unless directed by
+     * Google Support.
      * 
      */
     @Import(name="interconnectGroup")
     private @Nullable Output<String> interconnectGroup;
 
     /**
-     * @return The URL of an InterconnectGroup that groups these Attachments&#39; Interconnects. Customers do not need to set this unless
-     * directed by Google Support.
+     * @return The URL of an InterconnectGroup that groups these Attachments&#39;
+     * Interconnects. Customers do not need to set this unless directed by
+     * Google Support.
      * 
      */
     public Optional<Output<String>> interconnectGroup() {
@@ -168,9 +176,19 @@ public final class InterconnectAttachmentGroupState extends com.pulumi.resources
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -208,9 +226,12 @@ public final class InterconnectAttachmentGroupState extends com.pulumi.resources
         }
 
         /**
-         * @param attachments (Output)
-         * URLs of any particular Attachments to explain this
-         * blocker in more detail.
+         * @param attachments Attachments in the AttachmentGroup. Keys are arbitrary user-specified
+         * strings. Users are encouraged, but not required, to use their preferred
+         * format for resource links as keys.
+         * Note that there are add-members and remove-members methods in gcloud.
+         * The size of this map is limited by an &#34;Attachments per group&#34; quota.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -221,9 +242,12 @@ public final class InterconnectAttachmentGroupState extends com.pulumi.resources
         }
 
         /**
-         * @param attachments (Output)
-         * URLs of any particular Attachments to explain this
-         * blocker in more detail.
+         * @param attachments Attachments in the AttachmentGroup. Keys are arbitrary user-specified
+         * strings. Users are encouraged, but not required, to use their preferred
+         * format for resource links as keys.
+         * Note that there are add-members and remove-members methods in gcloud.
+         * The size of this map is limited by an &#34;Attachments per group&#34; quota.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -233,9 +257,12 @@ public final class InterconnectAttachmentGroupState extends com.pulumi.resources
         }
 
         /**
-         * @param attachments (Output)
-         * URLs of any particular Attachments to explain this
-         * blocker in more detail.
+         * @param attachments Attachments in the AttachmentGroup. Keys are arbitrary user-specified
+         * strings. Users are encouraged, but not required, to use their preferred
+         * format for resource links as keys.
+         * Note that there are add-members and remove-members methods in gcloud.
+         * The size of this map is limited by an &#34;Attachments per group&#34; quota.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -352,8 +379,9 @@ public final class InterconnectAttachmentGroupState extends com.pulumi.resources
         }
 
         /**
-         * @param interconnectGroup The URL of an InterconnectGroup that groups these Attachments&#39; Interconnects. Customers do not need to set this unless
-         * directed by Google Support.
+         * @param interconnectGroup The URL of an InterconnectGroup that groups these Attachments&#39;
+         * Interconnects. Customers do not need to set this unless directed by
+         * Google Support.
          * 
          * @return builder
          * 
@@ -364,8 +392,9 @@ public final class InterconnectAttachmentGroupState extends com.pulumi.resources
         }
 
         /**
-         * @param interconnectGroup The URL of an InterconnectGroup that groups these Attachments&#39; Interconnects. Customers do not need to set this unless
-         * directed by Google Support.
+         * @param interconnectGroup The URL of an InterconnectGroup that groups these Attachments&#39;
+         * Interconnects. Customers do not need to set this unless directed by
+         * Google Support.
          * 
          * @return builder
          * 
@@ -440,11 +469,25 @@ public final class InterconnectAttachmentGroupState extends com.pulumi.resources
             return name(Output.of(name));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

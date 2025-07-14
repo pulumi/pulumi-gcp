@@ -135,16 +135,12 @@ public final class RestoreChannelState extends com.pulumi.resources.ResourceArgs
     /**
      * The region of the Restore Channel.
      * 
-     * ***
-     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
      * @return The region of the Restore Channel.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> location() {
@@ -404,8 +400,6 @@ public final class RestoreChannelState extends com.pulumi.resources.ResourceArgs
         /**
          * @param location The region of the Restore Channel.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -416,8 +410,6 @@ public final class RestoreChannelState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param location The region of the Restore Channel.
-         * 
-         * ***
          * 
          * @return builder
          * 

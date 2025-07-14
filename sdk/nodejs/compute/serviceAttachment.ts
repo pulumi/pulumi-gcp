@@ -410,9 +410,6 @@ export class ServiceAttachment extends pulumi.CustomResource {
      * If true, enable the proxy protocol which is for supplying client TCP/IP
      * address data in TCP connections that traverse proxies on their way to
      * destination servers.
-     *
-     *
-     * - - -
      */
     public readonly enableProxyProtocol!: pulumi.Output<boolean>;
     /**
@@ -580,9 +577,6 @@ export interface ServiceAttachmentState {
      * If true, enable the proxy protocol which is for supplying client TCP/IP
      * address data in TCP connections that traverse proxies on their way to
      * destination servers.
-     *
-     *
-     * - - -
      */
     enableProxyProtocol?: pulumi.Input<boolean>;
     /**
@@ -678,9 +672,6 @@ export interface ServiceAttachmentArgs {
      * If true, enable the proxy protocol which is for supplying client TCP/IP
      * address data in TCP connections that traverse proxies on their way to
      * destination servers.
-     *
-     *
-     * - - -
      */
     enableProxyProtocol: pulumi.Input<boolean>;
     /**

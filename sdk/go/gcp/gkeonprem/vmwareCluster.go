@@ -14,6 +14,10 @@ import (
 
 // A Google VMware User Cluster.
 //
+// To get more information about VmwareCluster, see:
+//
+// * [API documentation](https://cloud.google.com/kubernetes-engine/distributed-cloud/reference/on-prem-api/rest/v1/projects.locations.vmwareClusters)
+//
 // ## Example Usage
 //
 // ### Gkeonprem Vmware Cluster Basic
@@ -345,18 +349,27 @@ type VMwareCluster struct {
 	// In the future, references to other resource types might be allowed if
 	// admin clusters are modeled as their own resources.
 	AdminClusterMembership pulumi.StringOutput `pulumi:"adminClusterMembership"`
-	// Annotations on the VMware User Cluster. This field has the same restrictions as Kubernetes annotations. The total size
-	// of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// 'effective_annotations' for all of the annotations present on the resource.
+	// Annotations on the VMware User Cluster.
+	// This field has the same restrictions as Kubernetes annotations.
+	// The total size of all keys and values combined is limited to 256k.
+	// Key can have 2 segments: prefix (optional) and name (required),
+	// separated by a slash (/).
+	// Prefix must be a DNS subdomain.
+	// Name must be 63 characters or less, begin and end with alphanumerics,
+	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
-	// AAGConfig specifies whether to spread VMware User Cluster nodes across at least three physical hosts in the datacenter.
+	// AAGConfig specifies whether to spread VMware User Cluster nodes across at
+	// least three physical hosts in the datacenter.
+	// Structure is documented below.
 	AntiAffinityGroups VMwareClusterAntiAffinityGroupsOutput `pulumi:"antiAffinityGroups"`
 	// RBAC policy that will be applied and managed by GKE On-Prem.
+	// Structure is documented below.
 	Authorization VMwareClusterAuthorizationPtrOutput `pulumi:"authorization"`
 	// Configuration for auto repairing.
+	// Structure is documented below.
 	AutoRepairConfig VMwareClusterAutoRepairConfigOutput `pulumi:"autoRepairConfig"`
 	// VMware User Cluster control plane nodes must have either 1 or 3 replicas.
 	// Structure is documented below.
@@ -364,11 +377,11 @@ type VMwareCluster struct {
 	// The time at which VMware User Cluster was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// VmwareDataplaneV2Config specifies configuration for Dataplane V2.
+	// Structure is documented below.
 	DataplaneV2 VMwareClusterDataplaneV2Output `pulumi:"dataplaneV2"`
 	// The time at which VMware User Cluster was deleted.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
-	// (Output)
-	// The description of the validation check.
+	// A human readable description of this VMware User Cluster.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Disable bundled ingress.
 	DisableBundledIngress pulumi.BoolPtrOutput   `pulumi:"disableBundledIngress"`
@@ -389,6 +402,7 @@ type VMwareCluster struct {
 	// Structure is documented below.
 	Fleets VMwareClusterFleetArrayOutput `pulumi:"fleets"`
 	// Load Balancer configuration.
+	// Structure is documented below.
 	LoadBalancer VMwareClusterLoadBalancerPtrOutput `pulumi:"loadBalancer"`
 	// The object name of the VMware OnPremUserCluster custom resource on the
 	// associated admin cluster. This field is used to support conflicting
@@ -406,10 +420,13 @@ type VMwareCluster struct {
 	// The VMware cluster name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The VMware User Cluster network configuration.
+	// Structure is documented below.
 	NetworkConfig VMwareClusterNetworkConfigPtrOutput `pulumi:"networkConfig"`
 	// The Anthos clusters on the VMware version for your user cluster.
 	OnPremVersion pulumi.StringOutput `pulumi:"onPremVersion"`
-	Project       pulumi.StringOutput `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringOutput `pulumi:"project"`
 	// If set, there are currently changes in flight to the VMware User Cluster.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
 	// (Output)
@@ -420,17 +437,21 @@ type VMwareCluster struct {
 	// Structure is documented below.
 	Statuses VMwareClusterStatusArrayOutput `pulumi:"statuses"`
 	// Storage configuration.
+	// Structure is documented below.
 	Storage VMwareClusterStorageOutput `pulumi:"storage"`
 	// The unique identifier of the VMware User Cluster.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// The time at which VMware User Cluster was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Specifies upgrade policy for the cluster.
+	// Structure is documented below.
 	UpgradePolicy VMwareClusterUpgradePolicyPtrOutput `pulumi:"upgradePolicy"`
 	// ValidationCheck represents the result of the preflight check job.
 	// Structure is documented below.
 	ValidationChecks VMwareClusterValidationCheckArrayOutput `pulumi:"validationChecks"`
-	// VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
+	// VmwareVCenterConfig specifies vCenter config for the user cluster.
+	// Inherited from the admin cluster.
+	// Structure is documented below.
 	Vcenter VMwareClusterVcenterOutput `pulumi:"vcenter"`
 	// Enable VM tracking.
 	VmTrackingEnabled pulumi.BoolOutput `pulumi:"vmTrackingEnabled"`
@@ -483,18 +504,27 @@ type vmwareClusterState struct {
 	// In the future, references to other resource types might be allowed if
 	// admin clusters are modeled as their own resources.
 	AdminClusterMembership *string `pulumi:"adminClusterMembership"`
-	// Annotations on the VMware User Cluster. This field has the same restrictions as Kubernetes annotations. The total size
-	// of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// 'effective_annotations' for all of the annotations present on the resource.
+	// Annotations on the VMware User Cluster.
+	// This field has the same restrictions as Kubernetes annotations.
+	// The total size of all keys and values combined is limited to 256k.
+	// Key can have 2 segments: prefix (optional) and name (required),
+	// separated by a slash (/).
+	// Prefix must be a DNS subdomain.
+	// Name must be 63 characters or less, begin and end with alphanumerics,
+	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
-	// AAGConfig specifies whether to spread VMware User Cluster nodes across at least three physical hosts in the datacenter.
+	// AAGConfig specifies whether to spread VMware User Cluster nodes across at
+	// least three physical hosts in the datacenter.
+	// Structure is documented below.
 	AntiAffinityGroups *VMwareClusterAntiAffinityGroups `pulumi:"antiAffinityGroups"`
 	// RBAC policy that will be applied and managed by GKE On-Prem.
+	// Structure is documented below.
 	Authorization *VMwareClusterAuthorization `pulumi:"authorization"`
 	// Configuration for auto repairing.
+	// Structure is documented below.
 	AutoRepairConfig *VMwareClusterAutoRepairConfig `pulumi:"autoRepairConfig"`
 	// VMware User Cluster control plane nodes must have either 1 or 3 replicas.
 	// Structure is documented below.
@@ -502,11 +532,11 @@ type vmwareClusterState struct {
 	// The time at which VMware User Cluster was created.
 	CreateTime *string `pulumi:"createTime"`
 	// VmwareDataplaneV2Config specifies configuration for Dataplane V2.
+	// Structure is documented below.
 	DataplaneV2 *VMwareClusterDataplaneV2 `pulumi:"dataplaneV2"`
 	// The time at which VMware User Cluster was deleted.
 	DeleteTime *string `pulumi:"deleteTime"`
-	// (Output)
-	// The description of the validation check.
+	// A human readable description of this VMware User Cluster.
 	Description *string `pulumi:"description"`
 	// Disable bundled ingress.
 	DisableBundledIngress *bool             `pulumi:"disableBundledIngress"`
@@ -527,6 +557,7 @@ type vmwareClusterState struct {
 	// Structure is documented below.
 	Fleets []VMwareClusterFleet `pulumi:"fleets"`
 	// Load Balancer configuration.
+	// Structure is documented below.
 	LoadBalancer *VMwareClusterLoadBalancer `pulumi:"loadBalancer"`
 	// The object name of the VMware OnPremUserCluster custom resource on the
 	// associated admin cluster. This field is used to support conflicting
@@ -544,10 +575,13 @@ type vmwareClusterState struct {
 	// The VMware cluster name.
 	Name *string `pulumi:"name"`
 	// The VMware User Cluster network configuration.
+	// Structure is documented below.
 	NetworkConfig *VMwareClusterNetworkConfig `pulumi:"networkConfig"`
 	// The Anthos clusters on the VMware version for your user cluster.
 	OnPremVersion *string `pulumi:"onPremVersion"`
-	Project       *string `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// If set, there are currently changes in flight to the VMware User Cluster.
 	Reconciling *bool `pulumi:"reconciling"`
 	// (Output)
@@ -558,17 +592,21 @@ type vmwareClusterState struct {
 	// Structure is documented below.
 	Statuses []VMwareClusterStatus `pulumi:"statuses"`
 	// Storage configuration.
+	// Structure is documented below.
 	Storage *VMwareClusterStorage `pulumi:"storage"`
 	// The unique identifier of the VMware User Cluster.
 	Uid *string `pulumi:"uid"`
 	// The time at which VMware User Cluster was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
 	// Specifies upgrade policy for the cluster.
+	// Structure is documented below.
 	UpgradePolicy *VMwareClusterUpgradePolicy `pulumi:"upgradePolicy"`
 	// ValidationCheck represents the result of the preflight check job.
 	// Structure is documented below.
 	ValidationChecks []VMwareClusterValidationCheck `pulumi:"validationChecks"`
-	// VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
+	// VmwareVCenterConfig specifies vCenter config for the user cluster.
+	// Inherited from the admin cluster.
+	// Structure is documented below.
 	Vcenter *VMwareClusterVcenter `pulumi:"vcenter"`
 	// Enable VM tracking.
 	VmTrackingEnabled *bool `pulumi:"vmTrackingEnabled"`
@@ -580,18 +618,27 @@ type VMwareClusterState struct {
 	// In the future, references to other resource types might be allowed if
 	// admin clusters are modeled as their own resources.
 	AdminClusterMembership pulumi.StringPtrInput
-	// Annotations on the VMware User Cluster. This field has the same restrictions as Kubernetes annotations. The total size
-	// of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// 'effective_annotations' for all of the annotations present on the resource.
+	// Annotations on the VMware User Cluster.
+	// This field has the same restrictions as Kubernetes annotations.
+	// The total size of all keys and values combined is limited to 256k.
+	// Key can have 2 segments: prefix (optional) and name (required),
+	// separated by a slash (/).
+	// Prefix must be a DNS subdomain.
+	// Name must be 63 characters or less, begin and end with alphanumerics,
+	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
-	// AAGConfig specifies whether to spread VMware User Cluster nodes across at least three physical hosts in the datacenter.
+	// AAGConfig specifies whether to spread VMware User Cluster nodes across at
+	// least three physical hosts in the datacenter.
+	// Structure is documented below.
 	AntiAffinityGroups VMwareClusterAntiAffinityGroupsPtrInput
 	// RBAC policy that will be applied and managed by GKE On-Prem.
+	// Structure is documented below.
 	Authorization VMwareClusterAuthorizationPtrInput
 	// Configuration for auto repairing.
+	// Structure is documented below.
 	AutoRepairConfig VMwareClusterAutoRepairConfigPtrInput
 	// VMware User Cluster control plane nodes must have either 1 or 3 replicas.
 	// Structure is documented below.
@@ -599,11 +646,11 @@ type VMwareClusterState struct {
 	// The time at which VMware User Cluster was created.
 	CreateTime pulumi.StringPtrInput
 	// VmwareDataplaneV2Config specifies configuration for Dataplane V2.
+	// Structure is documented below.
 	DataplaneV2 VMwareClusterDataplaneV2PtrInput
 	// The time at which VMware User Cluster was deleted.
 	DeleteTime pulumi.StringPtrInput
-	// (Output)
-	// The description of the validation check.
+	// A human readable description of this VMware User Cluster.
 	Description pulumi.StringPtrInput
 	// Disable bundled ingress.
 	DisableBundledIngress pulumi.BoolPtrInput
@@ -624,6 +671,7 @@ type VMwareClusterState struct {
 	// Structure is documented below.
 	Fleets VMwareClusterFleetArrayInput
 	// Load Balancer configuration.
+	// Structure is documented below.
 	LoadBalancer VMwareClusterLoadBalancerPtrInput
 	// The object name of the VMware OnPremUserCluster custom resource on the
 	// associated admin cluster. This field is used to support conflicting
@@ -641,10 +689,13 @@ type VMwareClusterState struct {
 	// The VMware cluster name.
 	Name pulumi.StringPtrInput
 	// The VMware User Cluster network configuration.
+	// Structure is documented below.
 	NetworkConfig VMwareClusterNetworkConfigPtrInput
 	// The Anthos clusters on the VMware version for your user cluster.
 	OnPremVersion pulumi.StringPtrInput
-	Project       pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// If set, there are currently changes in flight to the VMware User Cluster.
 	Reconciling pulumi.BoolPtrInput
 	// (Output)
@@ -655,17 +706,21 @@ type VMwareClusterState struct {
 	// Structure is documented below.
 	Statuses VMwareClusterStatusArrayInput
 	// Storage configuration.
+	// Structure is documented below.
 	Storage VMwareClusterStoragePtrInput
 	// The unique identifier of the VMware User Cluster.
 	Uid pulumi.StringPtrInput
 	// The time at which VMware User Cluster was last updated.
 	UpdateTime pulumi.StringPtrInput
 	// Specifies upgrade policy for the cluster.
+	// Structure is documented below.
 	UpgradePolicy VMwareClusterUpgradePolicyPtrInput
 	// ValidationCheck represents the result of the preflight check job.
 	// Structure is documented below.
 	ValidationChecks VMwareClusterValidationCheckArrayInput
-	// VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
+	// VmwareVCenterConfig specifies vCenter config for the user cluster.
+	// Inherited from the admin cluster.
+	// Structure is documented below.
 	Vcenter VMwareClusterVcenterPtrInput
 	// Enable VM tracking.
 	VmTrackingEnabled pulumi.BoolPtrInput
@@ -681,26 +736,35 @@ type vmwareClusterArgs struct {
 	// In the future, references to other resource types might be allowed if
 	// admin clusters are modeled as their own resources.
 	AdminClusterMembership string `pulumi:"adminClusterMembership"`
-	// Annotations on the VMware User Cluster. This field has the same restrictions as Kubernetes annotations. The total size
-	// of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// 'effective_annotations' for all of the annotations present on the resource.
+	// Annotations on the VMware User Cluster.
+	// This field has the same restrictions as Kubernetes annotations.
+	// The total size of all keys and values combined is limited to 256k.
+	// Key can have 2 segments: prefix (optional) and name (required),
+	// separated by a slash (/).
+	// Prefix must be a DNS subdomain.
+	// Name must be 63 characters or less, begin and end with alphanumerics,
+	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
-	// AAGConfig specifies whether to spread VMware User Cluster nodes across at least three physical hosts in the datacenter.
+	// AAGConfig specifies whether to spread VMware User Cluster nodes across at
+	// least three physical hosts in the datacenter.
+	// Structure is documented below.
 	AntiAffinityGroups *VMwareClusterAntiAffinityGroups `pulumi:"antiAffinityGroups"`
 	// RBAC policy that will be applied and managed by GKE On-Prem.
+	// Structure is documented below.
 	Authorization *VMwareClusterAuthorization `pulumi:"authorization"`
 	// Configuration for auto repairing.
+	// Structure is documented below.
 	AutoRepairConfig *VMwareClusterAutoRepairConfig `pulumi:"autoRepairConfig"`
 	// VMware User Cluster control plane nodes must have either 1 or 3 replicas.
 	// Structure is documented below.
 	ControlPlaneNode VMwareClusterControlPlaneNode `pulumi:"controlPlaneNode"`
 	// VmwareDataplaneV2Config specifies configuration for Dataplane V2.
+	// Structure is documented below.
 	DataplaneV2 *VMwareClusterDataplaneV2 `pulumi:"dataplaneV2"`
-	// (Output)
-	// The description of the validation check.
+	// A human readable description of this VMware User Cluster.
 	Description *string `pulumi:"description"`
 	// Disable bundled ingress.
 	DisableBundledIngress *bool `pulumi:"disableBundledIngress"`
@@ -709,21 +773,29 @@ type vmwareClusterArgs struct {
 	// Enable control plane V2. Default to false.
 	EnableControlPlaneV2 *bool `pulumi:"enableControlPlaneV2"`
 	// Load Balancer configuration.
+	// Structure is documented below.
 	LoadBalancer *VMwareClusterLoadBalancer `pulumi:"loadBalancer"`
 	// The location of the resource.
 	Location string `pulumi:"location"`
 	// The VMware cluster name.
 	Name *string `pulumi:"name"`
 	// The VMware User Cluster network configuration.
+	// Structure is documented below.
 	NetworkConfig *VMwareClusterNetworkConfig `pulumi:"networkConfig"`
 	// The Anthos clusters on the VMware version for your user cluster.
-	OnPremVersion string  `pulumi:"onPremVersion"`
-	Project       *string `pulumi:"project"`
+	OnPremVersion string `pulumi:"onPremVersion"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// Storage configuration.
+	// Structure is documented below.
 	Storage *VMwareClusterStorage `pulumi:"storage"`
 	// Specifies upgrade policy for the cluster.
+	// Structure is documented below.
 	UpgradePolicy *VMwareClusterUpgradePolicy `pulumi:"upgradePolicy"`
-	// VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
+	// VmwareVCenterConfig specifies vCenter config for the user cluster.
+	// Inherited from the admin cluster.
+	// Structure is documented below.
 	Vcenter *VMwareClusterVcenter `pulumi:"vcenter"`
 	// Enable VM tracking.
 	VmTrackingEnabled *bool `pulumi:"vmTrackingEnabled"`
@@ -736,26 +808,35 @@ type VMwareClusterArgs struct {
 	// In the future, references to other resource types might be allowed if
 	// admin clusters are modeled as their own resources.
 	AdminClusterMembership pulumi.StringInput
-	// Annotations on the VMware User Cluster. This field has the same restrictions as Kubernetes annotations. The total size
-	// of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-	// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-	// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-	// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-	// 'effective_annotations' for all of the annotations present on the resource.
+	// Annotations on the VMware User Cluster.
+	// This field has the same restrictions as Kubernetes annotations.
+	// The total size of all keys and values combined is limited to 256k.
+	// Key can have 2 segments: prefix (optional) and name (required),
+	// separated by a slash (/).
+	// Prefix must be a DNS subdomain.
+	// Name must be 63 characters or less, begin and end with alphanumerics,
+	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
-	// AAGConfig specifies whether to spread VMware User Cluster nodes across at least three physical hosts in the datacenter.
+	// AAGConfig specifies whether to spread VMware User Cluster nodes across at
+	// least three physical hosts in the datacenter.
+	// Structure is documented below.
 	AntiAffinityGroups VMwareClusterAntiAffinityGroupsPtrInput
 	// RBAC policy that will be applied and managed by GKE On-Prem.
+	// Structure is documented below.
 	Authorization VMwareClusterAuthorizationPtrInput
 	// Configuration for auto repairing.
+	// Structure is documented below.
 	AutoRepairConfig VMwareClusterAutoRepairConfigPtrInput
 	// VMware User Cluster control plane nodes must have either 1 or 3 replicas.
 	// Structure is documented below.
 	ControlPlaneNode VMwareClusterControlPlaneNodeInput
 	// VmwareDataplaneV2Config specifies configuration for Dataplane V2.
+	// Structure is documented below.
 	DataplaneV2 VMwareClusterDataplaneV2PtrInput
-	// (Output)
-	// The description of the validation check.
+	// A human readable description of this VMware User Cluster.
 	Description pulumi.StringPtrInput
 	// Disable bundled ingress.
 	DisableBundledIngress pulumi.BoolPtrInput
@@ -764,21 +845,29 @@ type VMwareClusterArgs struct {
 	// Enable control plane V2. Default to false.
 	EnableControlPlaneV2 pulumi.BoolPtrInput
 	// Load Balancer configuration.
+	// Structure is documented below.
 	LoadBalancer VMwareClusterLoadBalancerPtrInput
 	// The location of the resource.
 	Location pulumi.StringInput
 	// The VMware cluster name.
 	Name pulumi.StringPtrInput
 	// The VMware User Cluster network configuration.
+	// Structure is documented below.
 	NetworkConfig VMwareClusterNetworkConfigPtrInput
 	// The Anthos clusters on the VMware version for your user cluster.
 	OnPremVersion pulumi.StringInput
-	Project       pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// Storage configuration.
+	// Structure is documented below.
 	Storage VMwareClusterStoragePtrInput
 	// Specifies upgrade policy for the cluster.
+	// Structure is documented below.
 	UpgradePolicy VMwareClusterUpgradePolicyPtrInput
-	// VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
+	// VmwareVCenterConfig specifies vCenter config for the user cluster.
+	// Inherited from the admin cluster.
+	// Structure is documented below.
 	Vcenter VMwareClusterVcenterPtrInput
 	// Enable VM tracking.
 	VmTrackingEnabled pulumi.BoolPtrInput
@@ -879,27 +968,36 @@ func (o VMwareClusterOutput) AdminClusterMembership() pulumi.StringOutput {
 	return o.ApplyT(func(v *VMwareCluster) pulumi.StringOutput { return v.AdminClusterMembership }).(pulumi.StringOutput)
 }
 
-// Annotations on the VMware User Cluster. This field has the same restrictions as Kubernetes annotations. The total size
-// of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-// 'effective_annotations' for all of the annotations present on the resource.
+// Annotations on the VMware User Cluster.
+// This field has the same restrictions as Kubernetes annotations.
+// The total size of all keys and values combined is limited to 256k.
+// Key can have 2 segments: prefix (optional) and name (required),
+// separated by a slash (/).
+// Prefix must be a DNS subdomain.
+// Name must be 63 characters or less, begin and end with alphanumerics,
+// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+//
+// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 func (o VMwareClusterOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *VMwareCluster) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
-// AAGConfig specifies whether to spread VMware User Cluster nodes across at least three physical hosts in the datacenter.
+// AAGConfig specifies whether to spread VMware User Cluster nodes across at
+// least three physical hosts in the datacenter.
+// Structure is documented below.
 func (o VMwareClusterOutput) AntiAffinityGroups() VMwareClusterAntiAffinityGroupsOutput {
 	return o.ApplyT(func(v *VMwareCluster) VMwareClusterAntiAffinityGroupsOutput { return v.AntiAffinityGroups }).(VMwareClusterAntiAffinityGroupsOutput)
 }
 
 // RBAC policy that will be applied and managed by GKE On-Prem.
+// Structure is documented below.
 func (o VMwareClusterOutput) Authorization() VMwareClusterAuthorizationPtrOutput {
 	return o.ApplyT(func(v *VMwareCluster) VMwareClusterAuthorizationPtrOutput { return v.Authorization }).(VMwareClusterAuthorizationPtrOutput)
 }
 
 // Configuration for auto repairing.
+// Structure is documented below.
 func (o VMwareClusterOutput) AutoRepairConfig() VMwareClusterAutoRepairConfigOutput {
 	return o.ApplyT(func(v *VMwareCluster) VMwareClusterAutoRepairConfigOutput { return v.AutoRepairConfig }).(VMwareClusterAutoRepairConfigOutput)
 }
@@ -916,6 +1014,7 @@ func (o VMwareClusterOutput) CreateTime() pulumi.StringOutput {
 }
 
 // VmwareDataplaneV2Config specifies configuration for Dataplane V2.
+// Structure is documented below.
 func (o VMwareClusterOutput) DataplaneV2() VMwareClusterDataplaneV2Output {
 	return o.ApplyT(func(v *VMwareCluster) VMwareClusterDataplaneV2Output { return v.DataplaneV2 }).(VMwareClusterDataplaneV2Output)
 }
@@ -925,8 +1024,7 @@ func (o VMwareClusterOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *VMwareCluster) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
 }
 
-// (Output)
-// The description of the validation check.
+// A human readable description of this VMware User Cluster.
 func (o VMwareClusterOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VMwareCluster) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -971,6 +1069,7 @@ func (o VMwareClusterOutput) Fleets() VMwareClusterFleetArrayOutput {
 }
 
 // Load Balancer configuration.
+// Structure is documented below.
 func (o VMwareClusterOutput) LoadBalancer() VMwareClusterLoadBalancerPtrOutput {
 	return o.ApplyT(func(v *VMwareCluster) VMwareClusterLoadBalancerPtrOutput { return v.LoadBalancer }).(VMwareClusterLoadBalancerPtrOutput)
 }
@@ -1000,6 +1099,7 @@ func (o VMwareClusterOutput) Name() pulumi.StringOutput {
 }
 
 // The VMware User Cluster network configuration.
+// Structure is documented below.
 func (o VMwareClusterOutput) NetworkConfig() VMwareClusterNetworkConfigPtrOutput {
 	return o.ApplyT(func(v *VMwareCluster) VMwareClusterNetworkConfigPtrOutput { return v.NetworkConfig }).(VMwareClusterNetworkConfigPtrOutput)
 }
@@ -1009,6 +1109,8 @@ func (o VMwareClusterOutput) OnPremVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *VMwareCluster) pulumi.StringOutput { return v.OnPremVersion }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o VMwareClusterOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *VMwareCluster) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -1032,6 +1134,7 @@ func (o VMwareClusterOutput) Statuses() VMwareClusterStatusArrayOutput {
 }
 
 // Storage configuration.
+// Structure is documented below.
 func (o VMwareClusterOutput) Storage() VMwareClusterStorageOutput {
 	return o.ApplyT(func(v *VMwareCluster) VMwareClusterStorageOutput { return v.Storage }).(VMwareClusterStorageOutput)
 }
@@ -1047,6 +1150,7 @@ func (o VMwareClusterOutput) UpdateTime() pulumi.StringOutput {
 }
 
 // Specifies upgrade policy for the cluster.
+// Structure is documented below.
 func (o VMwareClusterOutput) UpgradePolicy() VMwareClusterUpgradePolicyPtrOutput {
 	return o.ApplyT(func(v *VMwareCluster) VMwareClusterUpgradePolicyPtrOutput { return v.UpgradePolicy }).(VMwareClusterUpgradePolicyPtrOutput)
 }
@@ -1057,7 +1161,9 @@ func (o VMwareClusterOutput) ValidationChecks() VMwareClusterValidationCheckArra
 	return o.ApplyT(func(v *VMwareCluster) VMwareClusterValidationCheckArrayOutput { return v.ValidationChecks }).(VMwareClusterValidationCheckArrayOutput)
 }
 
-// VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
+// VmwareVCenterConfig specifies vCenter config for the user cluster.
+// Inherited from the admin cluster.
+// Structure is documented below.
 func (o VMwareClusterOutput) Vcenter() VMwareClusterVcenterOutput {
 	return o.ApplyT(func(v *VMwareCluster) VMwareClusterVcenterOutput { return v.Vcenter }).(VMwareClusterVcenterOutput)
 }

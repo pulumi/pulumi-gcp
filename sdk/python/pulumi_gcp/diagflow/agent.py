@@ -39,9 +39,6 @@ class AgentArgs:
         :param pulumi.Input[builtins.str] display_name: The name of this agent.
         :param pulumi.Input[builtins.str] time_zone: The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
                Europe/Paris.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] api_version: API version displayed in Dialogflow console. If not specified, V2 API is assumed. Clients are free to query
                different service endpoints for different API versions. However, bots connectors and webhook calls will follow
                the specified API version.
@@ -128,9 +125,6 @@ class AgentArgs:
         """
         The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
         Europe/Paris.
-
-
-        - - -
         """
         return pulumi.get(self, "time_zone")
 
@@ -327,9 +321,6 @@ class _AgentState:
                the the provider state and Dialogflow if the agent tier is changed outside of the provider.
         :param pulumi.Input[builtins.str] time_zone: The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
                Europe/Paris.
-               
-               
-               - - -
         """
         if api_version is not None:
             pulumi.set(__self__, "api_version", api_version)
@@ -533,9 +524,6 @@ class _AgentState:
         """
         The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
         Europe/Paris.
-
-
-        - - -
         """
         return pulumi.get(self, "time_zone")
 
@@ -652,9 +640,6 @@ class Agent(pulumi.CustomResource):
                the the provider state and Dialogflow if the agent tier is changed outside of the provider.
         :param pulumi.Input[builtins.str] time_zone: The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
                Europe/Paris.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -836,9 +821,6 @@ class Agent(pulumi.CustomResource):
                the the provider state and Dialogflow if the agent tier is changed outside of the provider.
         :param pulumi.Input[builtins.str] time_zone: The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
                Europe/Paris.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -986,9 +968,6 @@ class Agent(pulumi.CustomResource):
         """
         The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
         Europe/Paris.
-
-
-        - - -
         """
         return pulumi.get(self, "time_zone")
 

@@ -13,9 +13,51 @@ namespace Pulumi.Gcp.DiscoveryEngine.Outputs
     [OutputType]
     public sealed class DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig
     {
+        /// <summary>
+        /// If true, the LLM based annotation is added to the image during parsing.
+        /// </summary>
+        public readonly bool? EnableImageAnnotation;
+        /// <summary>
+        /// If true, the LLM based annotation is added to the table during parsing.
+        /// </summary>
+        public readonly bool? EnableTableAnnotation;
+        /// <summary>
+        /// List of HTML classes to exclude from the parsed content.
+        /// </summary>
+        public readonly ImmutableArray<string> ExcludeHtmlClasses;
+        /// <summary>
+        /// List of HTML elements to exclude from the parsed content.
+        /// </summary>
+        public readonly ImmutableArray<string> ExcludeHtmlElements;
+        /// <summary>
+        /// List of HTML ids to exclude from the parsed content.
+        /// </summary>
+        public readonly ImmutableArray<string> ExcludeHtmlIds;
+        /// <summary>
+        /// Contains the required structure types to extract from the document. Supported values: `shareholder-structure`.
+        /// </summary>
+        public readonly ImmutableArray<string> StructuredContentTypes;
+
         [OutputConstructor]
-        private DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig()
+        private DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig(
+            bool? enableImageAnnotation,
+
+            bool? enableTableAnnotation,
+
+            ImmutableArray<string> excludeHtmlClasses,
+
+            ImmutableArray<string> excludeHtmlElements,
+
+            ImmutableArray<string> excludeHtmlIds,
+
+            ImmutableArray<string> structuredContentTypes)
         {
+            EnableImageAnnotation = enableImageAnnotation;
+            EnableTableAnnotation = enableTableAnnotation;
+            ExcludeHtmlClasses = excludeHtmlClasses;
+            ExcludeHtmlElements = excludeHtmlElements;
+            ExcludeHtmlIds = excludeHtmlIds;
+            StructuredContentTypes = structuredContentTypes;
         }
     }
 }

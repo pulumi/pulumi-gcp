@@ -1691,8 +1691,6 @@ public class ForwardingRule extends com.pulumi.resources.CustomResource {
      * APIs, the forwarding rule name must be a 1-20 characters string with
      * lowercase letters and numbers and must start with a letter.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -1709,8 +1707,6 @@ public class ForwardingRule extends com.pulumi.resources.CustomResource {
      * For Private Service Connect forwarding rules that forward traffic to Google
      * APIs, the forwarding rule name must be a 1-20 characters string with
      * lowercase letters and numbers and must start with a letter.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

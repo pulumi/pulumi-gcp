@@ -61,9 +61,9 @@ type LbRouteExtension struct {
 	// A list of references to the forwarding rules to which this service extension is attached to.
 	// At least one forwarding rule is required. There can be only one LbRouteExtension resource per forwarding rule.
 	ForwardingRules pulumi.StringArrayOutput `pulumi:"forwardingRules"`
-	// Set of labels associated with the LbRouteExtension resource. **Note**: This field is non-authoritative, and will only
-	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-	// present on the resource.
+	// Set of labels associated with the LbRouteExtension resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// All backend services and forwarding rules referenced by this extension must share the same load balancing scheme.
 	// For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
@@ -73,7 +73,9 @@ type LbRouteExtension struct {
 	// The location of the route extension
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Name of the LbRouteExtension resource in the following format: projects/{project}/locations/{location}/lbRouteExtensions/{lbRouteExtension}
-	Name    pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -140,9 +142,9 @@ type lbRouteExtensionState struct {
 	// A list of references to the forwarding rules to which this service extension is attached to.
 	// At least one forwarding rule is required. There can be only one LbRouteExtension resource per forwarding rule.
 	ForwardingRules []string `pulumi:"forwardingRules"`
-	// Set of labels associated with the LbRouteExtension resource. **Note**: This field is non-authoritative, and will only
-	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-	// present on the resource.
+	// Set of labels associated with the LbRouteExtension resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// All backend services and forwarding rules referenced by this extension must share the same load balancing scheme.
 	// For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
@@ -152,7 +154,9 @@ type lbRouteExtensionState struct {
 	// The location of the route extension
 	Location *string `pulumi:"location"`
 	// Name of the LbRouteExtension resource in the following format: projects/{project}/locations/{location}/lbRouteExtensions/{lbRouteExtension}
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -173,9 +177,9 @@ type LbRouteExtensionState struct {
 	// A list of references to the forwarding rules to which this service extension is attached to.
 	// At least one forwarding rule is required. There can be only one LbRouteExtension resource per forwarding rule.
 	ForwardingRules pulumi.StringArrayInput
-	// Set of labels associated with the LbRouteExtension resource. **Note**: This field is non-authoritative, and will only
-	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-	// present on the resource.
+	// Set of labels associated with the LbRouteExtension resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// All backend services and forwarding rules referenced by this extension must share the same load balancing scheme.
 	// For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
@@ -185,7 +189,9 @@ type LbRouteExtensionState struct {
 	// The location of the route extension
 	Location pulumi.StringPtrInput
 	// Name of the LbRouteExtension resource in the following format: projects/{project}/locations/{location}/lbRouteExtensions/{lbRouteExtension}
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -208,9 +214,9 @@ type lbRouteExtensionArgs struct {
 	// A list of references to the forwarding rules to which this service extension is attached to.
 	// At least one forwarding rule is required. There can be only one LbRouteExtension resource per forwarding rule.
 	ForwardingRules []string `pulumi:"forwardingRules"`
-	// Set of labels associated with the LbRouteExtension resource. **Note**: This field is non-authoritative, and will only
-	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-	// present on the resource.
+	// Set of labels associated with the LbRouteExtension resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// All backend services and forwarding rules referenced by this extension must share the same load balancing scheme.
 	// For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
@@ -220,7 +226,9 @@ type lbRouteExtensionArgs struct {
 	// The location of the route extension
 	Location string `pulumi:"location"`
 	// Name of the LbRouteExtension resource in the following format: projects/{project}/locations/{location}/lbRouteExtensions/{lbRouteExtension}
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 }
 
@@ -237,9 +245,9 @@ type LbRouteExtensionArgs struct {
 	// A list of references to the forwarding rules to which this service extension is attached to.
 	// At least one forwarding rule is required. There can be only one LbRouteExtension resource per forwarding rule.
 	ForwardingRules pulumi.StringArrayInput
-	// Set of labels associated with the LbRouteExtension resource. **Note**: This field is non-authoritative, and will only
-	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-	// present on the resource.
+	// Set of labels associated with the LbRouteExtension resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// All backend services and forwarding rules referenced by this extension must share the same load balancing scheme.
 	// For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
@@ -249,7 +257,9 @@ type LbRouteExtensionArgs struct {
 	// The location of the route extension
 	Location pulumi.StringInput
 	// Name of the LbRouteExtension resource in the following format: projects/{project}/locations/{location}/lbRouteExtensions/{lbRouteExtension}
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 }
 
@@ -365,9 +375,9 @@ func (o LbRouteExtensionOutput) ForwardingRules() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *LbRouteExtension) pulumi.StringArrayOutput { return v.ForwardingRules }).(pulumi.StringArrayOutput)
 }
 
-// Set of labels associated with the LbRouteExtension resource. **Note**: This field is non-authoritative, and will only
-// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-// present on the resource.
+// Set of labels associated with the LbRouteExtension resource.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o LbRouteExtensionOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *LbRouteExtension) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -390,6 +400,8 @@ func (o LbRouteExtensionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *LbRouteExtension) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o LbRouteExtensionOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *LbRouteExtension) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

@@ -20,16 +20,12 @@ public final class DomainMappingArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Relative name of the domain serving the application. Example: example.com.
      * 
-     * ***
-     * 
      */
     @Import(name="domainName", required=true)
     private Output<String> domainName;
 
     /**
      * @return Relative name of the domain serving the application. Example: example.com.
-     * 
-     * ***
      * 
      */
     public Output<String> domainName() {
@@ -121,8 +117,6 @@ public final class DomainMappingArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param domainName Relative name of the domain serving the application. Example: example.com.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -133,8 +127,6 @@ public final class DomainMappingArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param domainName Relative name of the domain serving the application. Example: example.com.
-         * 
-         * ***
          * 
          * @return builder
          * 

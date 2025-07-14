@@ -109,11 +109,12 @@ type TagTemplate struct {
 	// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of fieldId will be resulting in re-creating of field. The change of primitiveType will be resulting in re-creating of field, however if the field is a required, you cannot update it.
 	// Structure is documented below.
 	Fields TagTemplateFieldArrayOutput `pulumi:"fields"`
-	// This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag
-	// template.
+	// This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
 	ForceDelete pulumi.BoolPtrOutput `pulumi:"forceDelete"`
 	// The resource name of the tag template in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}
-	Name    pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Template location region.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -162,11 +163,12 @@ type tagTemplateState struct {
 	// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of fieldId will be resulting in re-creating of field. The change of primitiveType will be resulting in re-creating of field, however if the field is a required, you cannot update it.
 	// Structure is documented below.
 	Fields []TagTemplateField `pulumi:"fields"`
-	// This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag
-	// template.
+	// This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
 	ForceDelete *bool `pulumi:"forceDelete"`
 	// The resource name of the tag template in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Template location region.
 	Region *string `pulumi:"region"`
@@ -180,11 +182,12 @@ type TagTemplateState struct {
 	// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of fieldId will be resulting in re-creating of field. The change of primitiveType will be resulting in re-creating of field, however if the field is a required, you cannot update it.
 	// Structure is documented below.
 	Fields TagTemplateFieldArrayInput
-	// This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag
-	// template.
+	// This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
 	ForceDelete pulumi.BoolPtrInput
 	// The resource name of the tag template in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Template location region.
 	Region pulumi.StringPtrInput
@@ -202,10 +205,11 @@ type tagTemplateArgs struct {
 	// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of fieldId will be resulting in re-creating of field. The change of primitiveType will be resulting in re-creating of field, however if the field is a required, you cannot update it.
 	// Structure is documented below.
 	Fields []TagTemplateField `pulumi:"fields"`
-	// This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag
-	// template.
-	ForceDelete *bool   `pulumi:"forceDelete"`
-	Project     *string `pulumi:"project"`
+	// This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
+	ForceDelete *bool `pulumi:"forceDelete"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// Template location region.
 	Region *string `pulumi:"region"`
 	// The id of the tag template to create.
@@ -219,10 +223,11 @@ type TagTemplateArgs struct {
 	// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of fieldId will be resulting in re-creating of field. The change of primitiveType will be resulting in re-creating of field, however if the field is a required, you cannot update it.
 	// Structure is documented below.
 	Fields TagTemplateFieldArrayInput
-	// This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag
-	// template.
+	// This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
 	ForceDelete pulumi.BoolPtrInput
-	Project     pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// Template location region.
 	Region pulumi.StringPtrInput
 	// The id of the tag template to create.
@@ -327,8 +332,7 @@ func (o TagTemplateOutput) Fields() TagTemplateFieldArrayOutput {
 	return o.ApplyT(func(v *TagTemplate) TagTemplateFieldArrayOutput { return v.Fields }).(TagTemplateFieldArrayOutput)
 }
 
-// This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag
-// template.
+// This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
 func (o TagTemplateOutput) ForceDelete() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TagTemplate) pulumi.BoolPtrOutput { return v.ForceDelete }).(pulumi.BoolPtrOutput)
 }
@@ -338,6 +342,8 @@ func (o TagTemplateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TagTemplate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o TagTemplateOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *TagTemplate) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

@@ -20,6 +20,7 @@ import com.pulumi.gcp.memorystore.outputs.InstanceGcsSource;
 import com.pulumi.gcp.memorystore.outputs.InstanceMaintenancePolicy;
 import com.pulumi.gcp.memorystore.outputs.InstanceMaintenanceSchedule;
 import com.pulumi.gcp.memorystore.outputs.InstanceManagedBackupSource;
+import com.pulumi.gcp.memorystore.outputs.InstanceManagedServerCa;
 import com.pulumi.gcp.memorystore.outputs.InstanceNodeConfig;
 import com.pulumi.gcp.memorystore.outputs.InstancePersistenceConfig;
 import com.pulumi.gcp.memorystore.outputs.InstancePscAttachmentDetail;
@@ -765,8 +766,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * * Must not end with a hyphen
      * * Must be unique within a location
      * 
-     * ***
-     * 
      */
     @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
@@ -780,8 +779,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * * Must contain only lowercase letters, digits, and hyphens
      * * Must not end with a hyphen
      * * Must be unique within a location
-     * 
-     * ***
      * 
      */
     public Output<String> instanceId() {
@@ -880,6 +877,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<InstanceManagedBackupSource>> managedBackupSource() {
         return Codegen.optional(this.managedBackupSource);
+    }
+    /**
+     * Instance&#39;s Certificate Authority. This field will only be populated if instance&#39;s transit_encryption_mode is SERVER_AUTHENTICATION
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="managedServerCas", refs={List.class,InstanceManagedServerCa.class}, tree="[0,1]")
+    private Output<List<InstanceManagedServerCa>> managedServerCas;
+
+    /**
+     * @return Instance&#39;s Certificate Authority. This field will only be populated if instance&#39;s transit_encryption_mode is SERVER_AUTHENTICATION
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<InstanceManagedServerCa>> managedServerCas() {
+        return this.managedServerCas;
     }
     /**
      * Optional. cluster or cluster-disabled.

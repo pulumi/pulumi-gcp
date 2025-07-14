@@ -109,9 +109,6 @@ export class ControlPlaneAccess extends pulumi.CustomResource {
     public readonly analyticsPublisherIdentities!: pulumi.Output<string[] | undefined>;
     /**
      * Name of the Apigee organization.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -161,9 +158,6 @@ export interface ControlPlaneAccessState {
     analyticsPublisherIdentities?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Name of the Apigee organization.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -187,9 +181,6 @@ export interface ControlPlaneAccessArgs {
     analyticsPublisherIdentities?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Name of the Apigee organization.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

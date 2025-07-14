@@ -27,8 +27,6 @@ namespace Pulumi.Gcp.Datastream.Outputs
         public readonly string FileFormat;
         /// <summary>
         /// The root path inside the Cloud Storage bucket.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string? RootPath;
         /// <summary>

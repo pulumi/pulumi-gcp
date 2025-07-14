@@ -215,8 +215,9 @@ type V2PolicyOrchestratorForFolder struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The parent resource name in the form of `folders/{folder_id}/locations/global`.
 	FolderId pulumi.StringOutput `pulumi:"folderId"`
-	// Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present in your
-	// configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+	// Labels as key value pairs
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Identifier. In form of
 	// * `organizations/{organization_id}/locations/global/policyOrchestrators/{orchestrator_id}`
@@ -226,7 +227,9 @@ type V2PolicyOrchestratorForFolder struct {
 	// Represents a resource that is being orchestrated by the policy orchestrator.
 	// Structure is documented below.
 	OrchestratedResource V2PolicyOrchestratorForFolderOrchestratedResourceOutput `pulumi:"orchestratedResource"`
-	// Defines a set of selectors which drive which resources are in scope of policy orchestration.
+	// Defines a set of selectors which drive which resources are in scope of policy
+	// orchestration.
+	// Structure is documented below.
 	OrchestrationScope V2PolicyOrchestratorForFolderOrchestrationScopePtrOutput `pulumi:"orchestrationScope"`
 	// Describes the state of the orchestration process.
 	// Structure is documented below.
@@ -245,14 +248,13 @@ type V2PolicyOrchestratorForFolder struct {
 	// Set to true, if the there are ongoing changes being applied by the
 	// orchestrator.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
-	// (Output)
-	// State of the iteration.
-	// Possible values:
-	// PROCESSING
-	// COMPLETED
-	// FAILED
-	// CANCELLED
-	// UNKNOWN
+	// State of the orchestrator. Can be updated to change orchestrator behaviour.
+	// Allowed values:
+	// - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+	// - `STOPPED` - orchestrator won't make any changes.
+	//   Note: There might be more states added in the future. We use string here
+	//   instead of an enum, to avoid the need of propagating new states to all the
+	//   client code.
 	State pulumi.StringPtrOutput `pulumi:"state"`
 	// Timestamp when the policy orchestrator resource was last modified.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -323,8 +325,9 @@ type v2policyOrchestratorForFolderState struct {
 	Etag *string `pulumi:"etag"`
 	// The parent resource name in the form of `folders/{folder_id}/locations/global`.
 	FolderId *string `pulumi:"folderId"`
-	// Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present in your
-	// configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+	// Labels as key value pairs
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Identifier. In form of
 	// * `organizations/{organization_id}/locations/global/policyOrchestrators/{orchestrator_id}`
@@ -334,7 +337,9 @@ type v2policyOrchestratorForFolderState struct {
 	// Represents a resource that is being orchestrated by the policy orchestrator.
 	// Structure is documented below.
 	OrchestratedResource *V2PolicyOrchestratorForFolderOrchestratedResource `pulumi:"orchestratedResource"`
-	// Defines a set of selectors which drive which resources are in scope of policy orchestration.
+	// Defines a set of selectors which drive which resources are in scope of policy
+	// orchestration.
+	// Structure is documented below.
 	OrchestrationScope *V2PolicyOrchestratorForFolderOrchestrationScope `pulumi:"orchestrationScope"`
 	// Describes the state of the orchestration process.
 	// Structure is documented below.
@@ -353,14 +358,13 @@ type v2policyOrchestratorForFolderState struct {
 	// Set to true, if the there are ongoing changes being applied by the
 	// orchestrator.
 	Reconciling *bool `pulumi:"reconciling"`
-	// (Output)
-	// State of the iteration.
-	// Possible values:
-	// PROCESSING
-	// COMPLETED
-	// FAILED
-	// CANCELLED
-	// UNKNOWN
+	// State of the orchestrator. Can be updated to change orchestrator behaviour.
+	// Allowed values:
+	// - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+	// - `STOPPED` - orchestrator won't make any changes.
+	//   Note: There might be more states added in the future. We use string here
+	//   instead of an enum, to avoid the need of propagating new states to all the
+	//   client code.
 	State *string `pulumi:"state"`
 	// Timestamp when the policy orchestrator resource was last modified.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -385,8 +389,9 @@ type V2PolicyOrchestratorForFolderState struct {
 	Etag pulumi.StringPtrInput
 	// The parent resource name in the form of `folders/{folder_id}/locations/global`.
 	FolderId pulumi.StringPtrInput
-	// Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present in your
-	// configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+	// Labels as key value pairs
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Identifier. In form of
 	// * `organizations/{organization_id}/locations/global/policyOrchestrators/{orchestrator_id}`
@@ -396,7 +401,9 @@ type V2PolicyOrchestratorForFolderState struct {
 	// Represents a resource that is being orchestrated by the policy orchestrator.
 	// Structure is documented below.
 	OrchestratedResource V2PolicyOrchestratorForFolderOrchestratedResourcePtrInput
-	// Defines a set of selectors which drive which resources are in scope of policy orchestration.
+	// Defines a set of selectors which drive which resources are in scope of policy
+	// orchestration.
+	// Structure is documented below.
 	OrchestrationScope V2PolicyOrchestratorForFolderOrchestrationScopePtrInput
 	// Describes the state of the orchestration process.
 	// Structure is documented below.
@@ -415,14 +422,13 @@ type V2PolicyOrchestratorForFolderState struct {
 	// Set to true, if the there are ongoing changes being applied by the
 	// orchestrator.
 	Reconciling pulumi.BoolPtrInput
-	// (Output)
-	// State of the iteration.
-	// Possible values:
-	// PROCESSING
-	// COMPLETED
-	// FAILED
-	// CANCELLED
-	// UNKNOWN
+	// State of the orchestrator. Can be updated to change orchestrator behaviour.
+	// Allowed values:
+	// - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+	// - `STOPPED` - orchestrator won't make any changes.
+	//   Note: There might be more states added in the future. We use string here
+	//   instead of an enum, to avoid the need of propagating new states to all the
+	//   client code.
 	State pulumi.StringPtrInput
 	// Timestamp when the policy orchestrator resource was last modified.
 	UpdateTime pulumi.StringPtrInput
@@ -443,13 +449,16 @@ type v2policyOrchestratorForFolderArgs struct {
 	Description *string `pulumi:"description"`
 	// The parent resource name in the form of `folders/{folder_id}/locations/global`.
 	FolderId string `pulumi:"folderId"`
-	// Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present in your
-	// configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+	// Labels as key value pairs
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Represents a resource that is being orchestrated by the policy orchestrator.
 	// Structure is documented below.
 	OrchestratedResource V2PolicyOrchestratorForFolderOrchestratedResource `pulumi:"orchestratedResource"`
-	// Defines a set of selectors which drive which resources are in scope of policy orchestration.
+	// Defines a set of selectors which drive which resources are in scope of policy
+	// orchestration.
+	// Structure is documented below.
 	OrchestrationScope *V2PolicyOrchestratorForFolderOrchestrationScope `pulumi:"orchestrationScope"`
 	// The logical identifier of the policy orchestrator, with the following
 	// restrictions:
@@ -459,14 +468,13 @@ type v2policyOrchestratorForFolderArgs struct {
 	// * Must end with a number or a letter.
 	// * Must be unique within the parent.
 	PolicyOrchestratorId string `pulumi:"policyOrchestratorId"`
-	// (Output)
-	// State of the iteration.
-	// Possible values:
-	// PROCESSING
-	// COMPLETED
-	// FAILED
-	// CANCELLED
-	// UNKNOWN
+	// State of the orchestrator. Can be updated to change orchestrator behaviour.
+	// Allowed values:
+	// - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+	// - `STOPPED` - orchestrator won't make any changes.
+	//   Note: There might be more states added in the future. We use string here
+	//   instead of an enum, to avoid the need of propagating new states to all the
+	//   client code.
 	State *string `pulumi:"state"`
 }
 
@@ -482,13 +490,16 @@ type V2PolicyOrchestratorForFolderArgs struct {
 	Description pulumi.StringPtrInput
 	// The parent resource name in the form of `folders/{folder_id}/locations/global`.
 	FolderId pulumi.StringInput
-	// Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present in your
-	// configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+	// Labels as key value pairs
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Represents a resource that is being orchestrated by the policy orchestrator.
 	// Structure is documented below.
 	OrchestratedResource V2PolicyOrchestratorForFolderOrchestratedResourceInput
-	// Defines a set of selectors which drive which resources are in scope of policy orchestration.
+	// Defines a set of selectors which drive which resources are in scope of policy
+	// orchestration.
+	// Structure is documented below.
 	OrchestrationScope V2PolicyOrchestratorForFolderOrchestrationScopePtrInput
 	// The logical identifier of the policy orchestrator, with the following
 	// restrictions:
@@ -498,14 +509,13 @@ type V2PolicyOrchestratorForFolderArgs struct {
 	// * Must end with a number or a letter.
 	// * Must be unique within the parent.
 	PolicyOrchestratorId pulumi.StringInput
-	// (Output)
-	// State of the iteration.
-	// Possible values:
-	// PROCESSING
-	// COMPLETED
-	// FAILED
-	// CANCELLED
-	// UNKNOWN
+	// State of the orchestrator. Can be updated to change orchestrator behaviour.
+	// Allowed values:
+	// - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+	// - `STOPPED` - orchestrator won't make any changes.
+	//   Note: There might be more states added in the future. We use string here
+	//   instead of an enum, to avoid the need of propagating new states to all the
+	//   client code.
 	State pulumi.StringPtrInput
 }
 
@@ -632,8 +642,9 @@ func (o V2PolicyOrchestratorForFolderOutput) FolderId() pulumi.StringOutput {
 	return o.ApplyT(func(v *V2PolicyOrchestratorForFolder) pulumi.StringOutput { return v.FolderId }).(pulumi.StringOutput)
 }
 
-// Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present in your
-// configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+// Labels as key value pairs
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o V2PolicyOrchestratorForFolderOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *V2PolicyOrchestratorForFolder) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -654,7 +665,9 @@ func (o V2PolicyOrchestratorForFolderOutput) OrchestratedResource() V2PolicyOrch
 	}).(V2PolicyOrchestratorForFolderOrchestratedResourceOutput)
 }
 
-// Defines a set of selectors which drive which resources are in scope of policy orchestration.
+// Defines a set of selectors which drive which resources are in scope of policy
+// orchestration.
+// Structure is documented below.
 func (o V2PolicyOrchestratorForFolderOutput) OrchestrationScope() V2PolicyOrchestratorForFolderOrchestrationScopePtrOutput {
 	return o.ApplyT(func(v *V2PolicyOrchestratorForFolder) V2PolicyOrchestratorForFolderOrchestrationScopePtrOutput {
 		return v.OrchestrationScope
@@ -692,14 +705,13 @@ func (o V2PolicyOrchestratorForFolderOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v *V2PolicyOrchestratorForFolder) pulumi.BoolOutput { return v.Reconciling }).(pulumi.BoolOutput)
 }
 
-// (Output)
-// State of the iteration.
-// Possible values:
-// PROCESSING
-// COMPLETED
-// FAILED
-// CANCELLED
-// UNKNOWN
+// State of the orchestrator. Can be updated to change orchestrator behaviour.
+// Allowed values:
+//   - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+//   - `STOPPED` - orchestrator won't make any changes.
+//     Note: There might be more states added in the future. We use string here
+//     instead of an enum, to avoid the need of propagating new states to all the
+//     client code.
 func (o V2PolicyOrchestratorForFolderOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *V2PolicyOrchestratorForFolder) pulumi.StringPtrOutput { return v.State }).(pulumi.StringPtrOutput)
 }

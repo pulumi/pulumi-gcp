@@ -148,8 +148,6 @@ type ServiceProjectAttachment struct {
 	// are accepted. As output, this field will contain project number."
 	ServiceProject pulumi.StringPtrOutput `pulumi:"serviceProject"`
 	// Required. The service project attachment identifier must contain the projectId of the service project specified in the service_project_attachment.service_project field. Hint: "projects/{project_id}"
-	//
-	// ***
 	ServiceProjectAttachmentId pulumi.StringOutput `pulumi:"serviceProjectAttachmentId"`
 	// ServiceProjectAttachment state.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -202,8 +200,6 @@ type serviceProjectAttachmentState struct {
 	// are accepted. As output, this field will contain project number."
 	ServiceProject *string `pulumi:"serviceProject"`
 	// Required. The service project attachment identifier must contain the projectId of the service project specified in the service_project_attachment.service_project field. Hint: "projects/{project_id}"
-	//
-	// ***
 	ServiceProjectAttachmentId *string `pulumi:"serviceProjectAttachmentId"`
 	// ServiceProjectAttachment state.
 	State *string `pulumi:"state"`
@@ -224,8 +220,6 @@ type ServiceProjectAttachmentState struct {
 	// are accepted. As output, this field will contain project number."
 	ServiceProject pulumi.StringPtrInput
 	// Required. The service project attachment identifier must contain the projectId of the service project specified in the service_project_attachment.service_project field. Hint: "projects/{project_id}"
-	//
-	// ***
 	ServiceProjectAttachmentId pulumi.StringPtrInput
 	// ServiceProjectAttachment state.
 	State pulumi.StringPtrInput
@@ -246,8 +240,6 @@ type serviceProjectAttachmentArgs struct {
 	// are accepted. As output, this field will contain project number."
 	ServiceProject *string `pulumi:"serviceProject"`
 	// Required. The service project attachment identifier must contain the projectId of the service project specified in the service_project_attachment.service_project field. Hint: "projects/{project_id}"
-	//
-	// ***
 	ServiceProjectAttachmentId string `pulumi:"serviceProjectAttachmentId"`
 }
 
@@ -261,8 +253,6 @@ type ServiceProjectAttachmentArgs struct {
 	// are accepted. As output, this field will contain project number."
 	ServiceProject pulumi.StringPtrInput
 	// Required. The service project attachment identifier must contain the projectId of the service project specified in the service_project_attachment.service_project field. Hint: "projects/{project_id}"
-	//
-	// ***
 	ServiceProjectAttachmentId pulumi.StringInput
 }
 
@@ -377,8 +367,6 @@ func (o ServiceProjectAttachmentOutput) ServiceProject() pulumi.StringPtrOutput 
 }
 
 // Required. The service project attachment identifier must contain the projectId of the service project specified in the service_project_attachment.service_project field. Hint: "projects/{project_id}"
-//
-// ***
 func (o ServiceProjectAttachmentOutput) ServiceProjectAttachmentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceProjectAttachment) pulumi.StringOutput { return v.ServiceProjectAttachmentId }).(pulumi.StringOutput)
 }

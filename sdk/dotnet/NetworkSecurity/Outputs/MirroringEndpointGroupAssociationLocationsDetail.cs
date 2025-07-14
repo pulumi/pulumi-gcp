@@ -15,9 +15,6 @@ namespace Pulumi.Gcp.NetworkSecurity.Outputs
     {
         /// <summary>
         /// The cloud location of the association, currently restricted to `global`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         public readonly string? Location;
         /// <summary>

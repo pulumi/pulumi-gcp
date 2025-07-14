@@ -20,8 +20,6 @@ namespace Pulumi.Gcp.CloudRun.Inputs
 
         /// <summary>
         /// If true, mount the NFS volume as read only in all mounts. Defaults to false.
-        /// 
-        /// - - -
         /// </summary>
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }

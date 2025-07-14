@@ -435,9 +435,6 @@ namespace Pulumi.Gcp.BigQuery
         /// <summary>
         /// The body of the routine. For functions, this is the expression in the AS clause.
         /// If language=SQL, it is the substring inside (but excluding) the parentheses.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("definitionBody")]
         public Output<string> DefinitionBody { get; private set; } = null!;
@@ -615,9 +612,6 @@ namespace Pulumi.Gcp.BigQuery
         /// <summary>
         /// The body of the routine. For functions, this is the expression in the AS clause.
         /// If language=SQL, it is the substring inside (but excluding) the parentheses.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("definitionBody", required: true)]
         public Input<string> DefinitionBody { get; set; } = null!;
@@ -763,9 +757,6 @@ namespace Pulumi.Gcp.BigQuery
         /// <summary>
         /// The body of the routine. For functions, this is the expression in the AS clause.
         /// If language=SQL, it is the substring inside (but excluding) the parentheses.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("definitionBody")]
         public Input<string>? DefinitionBody { get; set; }

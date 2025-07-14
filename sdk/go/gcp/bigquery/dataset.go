@@ -382,8 +382,6 @@ type Dataset struct {
 	// A unique ID for this dataset, without the project name. The ID
 	// must contain only letters (a-z, A-Z), numbers (0-9), or
 	// underscores (_). The maximum length is 1,024 characters.
-	//
-	// ***
 	DatasetId pulumi.StringOutput `pulumi:"datasetId"`
 	// Defines the default collation specification of future tables created
 	// in the dataset. If a table is created in this dataset without table-level
@@ -537,8 +535,6 @@ type datasetState struct {
 	// A unique ID for this dataset, without the project name. The ID
 	// must contain only letters (a-z, A-Z), numbers (0-9), or
 	// underscores (_). The maximum length is 1,024 characters.
-	//
-	// ***
 	DatasetId *string `pulumi:"datasetId"`
 	// Defines the default collation specification of future tables created
 	// in the dataset. If a table is created in this dataset without table-level
@@ -655,8 +651,6 @@ type DatasetState struct {
 	// A unique ID for this dataset, without the project name. The ID
 	// must contain only letters (a-z, A-Z), numbers (0-9), or
 	// underscores (_). The maximum length is 1,024 characters.
-	//
-	// ***
 	DatasetId pulumi.StringPtrInput
 	// Defines the default collation specification of future tables created
 	// in the dataset. If a table is created in this dataset without table-level
@@ -774,8 +768,6 @@ type datasetArgs struct {
 	// A unique ID for this dataset, without the project name. The ID
 	// must contain only letters (a-z, A-Z), numbers (0-9), or
 	// underscores (_). The maximum length is 1,024 characters.
-	//
-	// ***
 	DatasetId string `pulumi:"datasetId"`
 	// Defines the default collation specification of future tables created
 	// in the dataset. If a table is created in this dataset without table-level
@@ -878,8 +870,6 @@ type DatasetArgs struct {
 	// A unique ID for this dataset, without the project name. The ID
 	// must contain only letters (a-z, A-Z), numbers (0-9), or
 	// underscores (_). The maximum length is 1,024 characters.
-	//
-	// ***
 	DatasetId pulumi.StringInput
 	// Defines the default collation specification of future tables created
 	// in the dataset. If a table is created in this dataset without table-level
@@ -1076,8 +1066,6 @@ func (o DatasetOutput) CreationTime() pulumi.IntOutput {
 // A unique ID for this dataset, without the project name. The ID
 // must contain only letters (a-z, A-Z), numbers (0-9), or
 // underscores (_). The maximum length is 1,024 characters.
-//
-// ***
 func (o DatasetOutput) DatasetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.DatasetId }).(pulumi.StringOutput)
 }

@@ -14,8 +14,6 @@ namespace Pulumi.Gcp.Chronicle.Inputs
     {
         /// <summary>
         /// Entities are added manually.
-        /// 
-        /// - - -
         /// </summary>
         [Input("manual")]
         public Input<Inputs.WatchlistEntityPopulationMechanismManualArgs>? Manual { get; set; }

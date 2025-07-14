@@ -103,8 +103,6 @@ type RowAccessPolicy struct {
 	// dateField = CAST('2019-9-27' as DATE)
 	// nullableField is not NULL
 	// numericField BETWEEN 1.0 AND 5.0
-	//
-	// ***
 	FilterPredicate pulumi.StringOutput `pulumi:"filterPredicate"`
 	// Input only. The optional list of iamMember users or groups that specifies the initial
 	// members that the row-level access policy should be created with.
@@ -198,8 +196,6 @@ type rowAccessPolicyState struct {
 	// dateField = CAST('2019-9-27' as DATE)
 	// nullableField is not NULL
 	// numericField BETWEEN 1.0 AND 5.0
-	//
-	// ***
 	FilterPredicate *string `pulumi:"filterPredicate"`
 	// Input only. The optional list of iamMember users or groups that specifies the initial
 	// members that the row-level access policy should be created with.
@@ -252,8 +248,6 @@ type RowAccessPolicyState struct {
 	// dateField = CAST('2019-9-27' as DATE)
 	// nullableField is not NULL
 	// numericField BETWEEN 1.0 AND 5.0
-	//
-	// ***
 	FilterPredicate pulumi.StringPtrInput
 	// Input only. The optional list of iamMember users or groups that specifies the initial
 	// members that the row-level access policy should be created with.
@@ -307,8 +301,6 @@ type rowAccessPolicyArgs struct {
 	// dateField = CAST('2019-9-27' as DATE)
 	// nullableField is not NULL
 	// numericField BETWEEN 1.0 AND 5.0
-	//
-	// ***
 	FilterPredicate string `pulumi:"filterPredicate"`
 	// Input only. The optional list of iamMember users or groups that specifies the initial
 	// members that the row-level access policy should be created with.
@@ -356,8 +348,6 @@ type RowAccessPolicyArgs struct {
 	// dateField = CAST('2019-9-27' as DATE)
 	// nullableField is not NULL
 	// numericField BETWEEN 1.0 AND 5.0
-	//
-	// ***
 	FilterPredicate pulumi.StringInput
 	// Input only. The optional list of iamMember users or groups that specifies the initial
 	// members that the row-level access policy should be created with.
@@ -499,8 +489,6 @@ func (o RowAccessPolicyOutput) DatasetId() pulumi.StringOutput {
 // dateField = CAST('2019-9-27' as DATE)
 // nullableField is not NULL
 // numericField BETWEEN 1.0 AND 5.0
-//
-// ***
 func (o RowAccessPolicyOutput) FilterPredicate() pulumi.StringOutput {
 	return o.ApplyT(func(v *RowAccessPolicy) pulumi.StringOutput { return v.FilterPredicate }).(pulumi.StringOutput)
 }

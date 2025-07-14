@@ -236,8 +236,6 @@ public class AppCheckServiceConfig extends com.pulumi.resources.CustomResource {
      * firestore.googleapis.com (Cloud Firestore)
      * identitytoolkit.googleapis.com (Authentication)
      * 
-     * ***
-     * 
      */
     @Export(name="serviceId", refs={String.class}, tree="[0]")
     private Output<String> serviceId;
@@ -248,8 +246,6 @@ public class AppCheckServiceConfig extends com.pulumi.resources.CustomResource {
      * firebasedatabase.googleapis.com (Firebase Realtime Database)
      * firestore.googleapis.com (Cloud Firestore)
      * identitytoolkit.googleapis.com (Authentication)
-     * 
-     * ***
      * 
      */
     public Output<String> serviceId() {

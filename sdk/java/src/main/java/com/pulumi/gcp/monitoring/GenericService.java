@@ -176,8 +176,6 @@ public class GenericService extends com.pulumi.resources.CustomResource {
      * An optional service ID to use. If not given, the server will generate a
      * service ID.
      * 
-     * ***
-     * 
      */
     @Export(name="serviceId", refs={String.class}, tree="[0]")
     private Output<String> serviceId;
@@ -185,8 +183,6 @@ public class GenericService extends com.pulumi.resources.CustomResource {
     /**
      * @return An optional service ID to use. If not given, the server will generate a
      * service ID.
-     * 
-     * ***
      * 
      */
     public Output<String> serviceId() {

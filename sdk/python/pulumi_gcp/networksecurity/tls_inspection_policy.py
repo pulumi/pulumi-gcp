@@ -41,9 +41,6 @@ class TlsInspectionPolicyArgs:
                Default value is `TLS_VERSION_UNSPECIFIED`.
                Possible values are: `TLS_VERSION_UNSPECIFIED`, `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
         :param pulumi.Input[builtins.str] name: Short name of the TlsInspectionPolicy resource to be created.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] tls_feature_profile: The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers (\\"PROFILE_COMPATIBLE\\"). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
@@ -150,9 +147,6 @@ class TlsInspectionPolicyArgs:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Short name of the TlsInspectionPolicy resource to be created.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -227,9 +221,6 @@ class _TlsInspectionPolicyState:
                Default value is `TLS_VERSION_UNSPECIFIED`.
                Possible values are: `TLS_VERSION_UNSPECIFIED`, `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
         :param pulumi.Input[builtins.str] name: Short name of the TlsInspectionPolicy resource to be created.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] tls_feature_profile: The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers (\\"PROFILE_COMPATIBLE\\"). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
@@ -354,9 +345,6 @@ class _TlsInspectionPolicyState:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Short name of the TlsInspectionPolicy resource to be created.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -668,9 +656,6 @@ class TlsInspectionPolicy(pulumi.CustomResource):
                Default value is `TLS_VERSION_UNSPECIFIED`.
                Possible values are: `TLS_VERSION_UNSPECIFIED`, `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
         :param pulumi.Input[builtins.str] name: Short name of the TlsInspectionPolicy resource to be created.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] tls_feature_profile: The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers (\\"PROFILE_COMPATIBLE\\"). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
@@ -995,9 +980,6 @@ class TlsInspectionPolicy(pulumi.CustomResource):
                Default value is `TLS_VERSION_UNSPECIFIED`.
                Possible values are: `TLS_VERSION_UNSPECIFIED`, `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
         :param pulumi.Input[builtins.str] name: Short name of the TlsInspectionPolicy resource to be created.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] tls_feature_profile: The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers (\\"PROFILE_COMPATIBLE\\"). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
@@ -1087,9 +1069,6 @@ class TlsInspectionPolicy(pulumi.CustomResource):
     def name(self) -> pulumi.Output[builtins.str]:
         """
         Short name of the TlsInspectionPolicy resource to be created.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

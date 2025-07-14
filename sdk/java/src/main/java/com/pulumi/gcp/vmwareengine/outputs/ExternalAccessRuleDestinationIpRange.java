@@ -14,8 +14,6 @@ public final class ExternalAccessRuleDestinationIpRange {
     /**
      * @return The name of an `ExternalAddress` resource.
      * 
-     * ***
-     * 
      */
     private @Nullable String externalAddress;
     /**
@@ -27,8 +25,6 @@ public final class ExternalAccessRuleDestinationIpRange {
     private ExternalAccessRuleDestinationIpRange() {}
     /**
      * @return The name of an `ExternalAddress` resource.
-     * 
-     * ***
      * 
      */
     public Optional<String> externalAddress() {

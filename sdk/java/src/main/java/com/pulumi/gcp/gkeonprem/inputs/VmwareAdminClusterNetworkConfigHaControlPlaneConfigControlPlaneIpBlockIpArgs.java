@@ -19,16 +19,12 @@ public final class VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPla
     /**
      * Hostname of the machine. VM&#39;s name will be used if this field is empty.
      * 
-     * ***
-     * 
      */
     @Import(name="hostname")
     private @Nullable Output<String> hostname;
 
     /**
      * @return Hostname of the machine. VM&#39;s name will be used if this field is empty.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> hostname() {
@@ -78,8 +74,6 @@ public final class VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPla
         /**
          * @param hostname Hostname of the machine. VM&#39;s name will be used if this field is empty.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -90,8 +84,6 @@ public final class VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPla
 
         /**
          * @param hostname Hostname of the machine. VM&#39;s name will be used if this field is empty.
-         * 
-         * ***
          * 
          * @return builder
          * 

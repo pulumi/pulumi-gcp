@@ -567,18 +567,16 @@ type EdgeCacheService struct {
 
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Disables HTTP/2. HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use
-	// and reduces connection setup overhead by sending multiple streams over the same connection. Some legacy HTTP clients may
-	// have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from
-	// being advertised and negotiated.
+	// Disables HTTP/2.
+	// HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
+	// Some legacy HTTP clients may have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from being advertised and negotiated.
 	DisableHttp2 pulumi.BoolPtrOutput `pulumi:"disableHttp2"`
 	// HTTP/3 (IETF QUIC) and Google QUIC are enabled by default.
 	DisableQuic pulumi.BoolOutput `pulumi:"disableQuic"`
-	// Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the
-	// EdgeCacheService.
+	// Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the EdgeCacheService.
 	EdgeSecurityPolicy pulumi.StringPtrOutput `pulumi:"edgeSecurityPolicy"`
-	// URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService. Note
-	// that only "global" certificates with a "scope" of "EDGE_CACHE" can be attached to an EdgeCacheService.
+	// URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService.
+	// Note that only "global" certificates with a "scope" of "EDGE_CACHE" can be attached to an EdgeCacheService.
 	EdgeSslCertificates pulumi.StringArrayOutput `pulumi:"edgeSslCertificates"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -586,30 +584,32 @@ type EdgeCacheService struct {
 	Ipv4Addresses pulumi.StringArrayOutput `pulumi:"ipv4Addresses"`
 	// The IPv6 addresses associated with this service. Addresses are static for the lifetime of the service.
 	Ipv6Addresses pulumi.StringArrayOutput `pulumi:"ipv6Addresses"`
-	// Set of label tags associated with the EdgeCache resource. **Note**: This field is non-authoritative, and will only
-	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-	// present on the resource.
+	// Set of label tags associated with the EdgeCache resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to
-	// Cloud Logging.
+	// Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
+	// Structure is documented below.
 	LogConfig EdgeCacheServiceLogConfigPtrOutput `pulumi:"logConfig"`
 	// Name of the resource; provided by the client when the resource is created.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 	// and all following characters must be a dash, underscore, letter or digit.
-	Name    pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
-	// Require TLS (HTTPS) for all clients connecting to this service. Clients who connect over HTTP (port 80) will receive a
-	// HTTP 301 to the same URL over HTTPS (port 443). You must have at least one (1) edgeSslCertificate specified to enable
-	// this.
+	// Require TLS (HTTPS) for all clients connecting to this service.
+	// Clients who connect over HTTP (port 80) will receive a HTTP 301 to the same URL over HTTPS (port 443).
+	// You must have at least one (1) edgeSslCertificate specified to enable this.
 	RequireTls pulumi.BoolOutput `pulumi:"requireTls"`
 	// Defines how requests are routed, modified, cached and/or which origin content is filled from.
 	// Structure is documented below.
 	Routing EdgeCacheServiceRoutingOutput `pulumi:"routing"`
-	// URL of the SslPolicy resource that will be associated with the EdgeCacheService. If not set, the EdgeCacheService has no
-	// SSL policy configured, and will default to the "COMPATIBLE" policy.
+	// URL of the SslPolicy resource that will be associated with the EdgeCacheService.
+	// If not set, the EdgeCacheService has no SSL policy configured, and will default to the "COMPATIBLE" policy.
 	SslPolicy pulumi.StringPtrOutput `pulumi:"sslPolicy"`
 }
 
@@ -653,18 +653,16 @@ func GetEdgeCacheService(ctx *pulumi.Context,
 type edgeCacheServiceState struct {
 	// A human-readable description of the resource.
 	Description *string `pulumi:"description"`
-	// Disables HTTP/2. HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use
-	// and reduces connection setup overhead by sending multiple streams over the same connection. Some legacy HTTP clients may
-	// have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from
-	// being advertised and negotiated.
+	// Disables HTTP/2.
+	// HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
+	// Some legacy HTTP clients may have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from being advertised and negotiated.
 	DisableHttp2 *bool `pulumi:"disableHttp2"`
 	// HTTP/3 (IETF QUIC) and Google QUIC are enabled by default.
 	DisableQuic *bool `pulumi:"disableQuic"`
-	// Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the
-	// EdgeCacheService.
+	// Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the EdgeCacheService.
 	EdgeSecurityPolicy *string `pulumi:"edgeSecurityPolicy"`
-	// URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService. Note
-	// that only "global" certificates with a "scope" of "EDGE_CACHE" can be attached to an EdgeCacheService.
+	// URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService.
+	// Note that only "global" certificates with a "scope" of "EDGE_CACHE" can be attached to an EdgeCacheService.
 	EdgeSslCertificates []string `pulumi:"edgeSslCertificates"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -672,48 +670,48 @@ type edgeCacheServiceState struct {
 	Ipv4Addresses []string `pulumi:"ipv4Addresses"`
 	// The IPv6 addresses associated with this service. Addresses are static for the lifetime of the service.
 	Ipv6Addresses []string `pulumi:"ipv6Addresses"`
-	// Set of label tags associated with the EdgeCache resource. **Note**: This field is non-authoritative, and will only
-	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-	// present on the resource.
+	// Set of label tags associated with the EdgeCache resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to
-	// Cloud Logging.
+	// Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
+	// Structure is documented below.
 	LogConfig *EdgeCacheServiceLogConfig `pulumi:"logConfig"`
 	// Name of the resource; provided by the client when the resource is created.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 	// and all following characters must be a dash, underscore, letter or digit.
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
-	// Require TLS (HTTPS) for all clients connecting to this service. Clients who connect over HTTP (port 80) will receive a
-	// HTTP 301 to the same URL over HTTPS (port 443). You must have at least one (1) edgeSslCertificate specified to enable
-	// this.
+	// Require TLS (HTTPS) for all clients connecting to this service.
+	// Clients who connect over HTTP (port 80) will receive a HTTP 301 to the same URL over HTTPS (port 443).
+	// You must have at least one (1) edgeSslCertificate specified to enable this.
 	RequireTls *bool `pulumi:"requireTls"`
 	// Defines how requests are routed, modified, cached and/or which origin content is filled from.
 	// Structure is documented below.
 	Routing *EdgeCacheServiceRouting `pulumi:"routing"`
-	// URL of the SslPolicy resource that will be associated with the EdgeCacheService. If not set, the EdgeCacheService has no
-	// SSL policy configured, and will default to the "COMPATIBLE" policy.
+	// URL of the SslPolicy resource that will be associated with the EdgeCacheService.
+	// If not set, the EdgeCacheService has no SSL policy configured, and will default to the "COMPATIBLE" policy.
 	SslPolicy *string `pulumi:"sslPolicy"`
 }
 
 type EdgeCacheServiceState struct {
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrInput
-	// Disables HTTP/2. HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use
-	// and reduces connection setup overhead by sending multiple streams over the same connection. Some legacy HTTP clients may
-	// have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from
-	// being advertised and negotiated.
+	// Disables HTTP/2.
+	// HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
+	// Some legacy HTTP clients may have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from being advertised and negotiated.
 	DisableHttp2 pulumi.BoolPtrInput
 	// HTTP/3 (IETF QUIC) and Google QUIC are enabled by default.
 	DisableQuic pulumi.BoolPtrInput
-	// Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the
-	// EdgeCacheService.
+	// Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the EdgeCacheService.
 	EdgeSecurityPolicy pulumi.StringPtrInput
-	// URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService. Note
-	// that only "global" certificates with a "scope" of "EDGE_CACHE" can be attached to an EdgeCacheService.
+	// URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService.
+	// Note that only "global" certificates with a "scope" of "EDGE_CACHE" can be attached to an EdgeCacheService.
 	EdgeSslCertificates pulumi.StringArrayInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -721,30 +719,32 @@ type EdgeCacheServiceState struct {
 	Ipv4Addresses pulumi.StringArrayInput
 	// The IPv6 addresses associated with this service. Addresses are static for the lifetime of the service.
 	Ipv6Addresses pulumi.StringArrayInput
-	// Set of label tags associated with the EdgeCache resource. **Note**: This field is non-authoritative, and will only
-	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-	// present on the resource.
+	// Set of label tags associated with the EdgeCache resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to
-	// Cloud Logging.
+	// Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
+	// Structure is documented below.
 	LogConfig EdgeCacheServiceLogConfigPtrInput
 	// Name of the resource; provided by the client when the resource is created.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 	// and all following characters must be a dash, underscore, letter or digit.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
-	// Require TLS (HTTPS) for all clients connecting to this service. Clients who connect over HTTP (port 80) will receive a
-	// HTTP 301 to the same URL over HTTPS (port 443). You must have at least one (1) edgeSslCertificate specified to enable
-	// this.
+	// Require TLS (HTTPS) for all clients connecting to this service.
+	// Clients who connect over HTTP (port 80) will receive a HTTP 301 to the same URL over HTTPS (port 443).
+	// You must have at least one (1) edgeSslCertificate specified to enable this.
 	RequireTls pulumi.BoolPtrInput
 	// Defines how requests are routed, modified, cached and/or which origin content is filled from.
 	// Structure is documented below.
 	Routing EdgeCacheServiceRoutingPtrInput
-	// URL of the SslPolicy resource that will be associated with the EdgeCacheService. If not set, the EdgeCacheService has no
-	// SSL policy configured, and will default to the "COMPATIBLE" policy.
+	// URL of the SslPolicy resource that will be associated with the EdgeCacheService.
+	// If not set, the EdgeCacheService has no SSL policy configured, and will default to the "COMPATIBLE" policy.
 	SslPolicy pulumi.StringPtrInput
 }
 
@@ -755,40 +755,40 @@ func (EdgeCacheServiceState) ElementType() reflect.Type {
 type edgeCacheServiceArgs struct {
 	// A human-readable description of the resource.
 	Description *string `pulumi:"description"`
-	// Disables HTTP/2. HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use
-	// and reduces connection setup overhead by sending multiple streams over the same connection. Some legacy HTTP clients may
-	// have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from
-	// being advertised and negotiated.
+	// Disables HTTP/2.
+	// HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
+	// Some legacy HTTP clients may have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from being advertised and negotiated.
 	DisableHttp2 *bool `pulumi:"disableHttp2"`
 	// HTTP/3 (IETF QUIC) and Google QUIC are enabled by default.
 	DisableQuic *bool `pulumi:"disableQuic"`
-	// Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the
-	// EdgeCacheService.
+	// Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the EdgeCacheService.
 	EdgeSecurityPolicy *string `pulumi:"edgeSecurityPolicy"`
-	// URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService. Note
-	// that only "global" certificates with a "scope" of "EDGE_CACHE" can be attached to an EdgeCacheService.
+	// URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService.
+	// Note that only "global" certificates with a "scope" of "EDGE_CACHE" can be attached to an EdgeCacheService.
 	EdgeSslCertificates []string `pulumi:"edgeSslCertificates"`
-	// Set of label tags associated with the EdgeCache resource. **Note**: This field is non-authoritative, and will only
-	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-	// present on the resource.
+	// Set of label tags associated with the EdgeCache resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to
-	// Cloud Logging.
+	// Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
+	// Structure is documented below.
 	LogConfig *EdgeCacheServiceLogConfig `pulumi:"logConfig"`
 	// Name of the resource; provided by the client when the resource is created.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 	// and all following characters must be a dash, underscore, letter or digit.
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Require TLS (HTTPS) for all clients connecting to this service. Clients who connect over HTTP (port 80) will receive a
-	// HTTP 301 to the same URL over HTTPS (port 443). You must have at least one (1) edgeSslCertificate specified to enable
-	// this.
+	// Require TLS (HTTPS) for all clients connecting to this service.
+	// Clients who connect over HTTP (port 80) will receive a HTTP 301 to the same URL over HTTPS (port 443).
+	// You must have at least one (1) edgeSslCertificate specified to enable this.
 	RequireTls *bool `pulumi:"requireTls"`
 	// Defines how requests are routed, modified, cached and/or which origin content is filled from.
 	// Structure is documented below.
 	Routing EdgeCacheServiceRouting `pulumi:"routing"`
-	// URL of the SslPolicy resource that will be associated with the EdgeCacheService. If not set, the EdgeCacheService has no
-	// SSL policy configured, and will default to the "COMPATIBLE" policy.
+	// URL of the SslPolicy resource that will be associated with the EdgeCacheService.
+	// If not set, the EdgeCacheService has no SSL policy configured, and will default to the "COMPATIBLE" policy.
 	SslPolicy *string `pulumi:"sslPolicy"`
 }
 
@@ -796,40 +796,40 @@ type edgeCacheServiceArgs struct {
 type EdgeCacheServiceArgs struct {
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrInput
-	// Disables HTTP/2. HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use
-	// and reduces connection setup overhead by sending multiple streams over the same connection. Some legacy HTTP clients may
-	// have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from
-	// being advertised and negotiated.
+	// Disables HTTP/2.
+	// HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
+	// Some legacy HTTP clients may have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from being advertised and negotiated.
 	DisableHttp2 pulumi.BoolPtrInput
 	// HTTP/3 (IETF QUIC) and Google QUIC are enabled by default.
 	DisableQuic pulumi.BoolPtrInput
-	// Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the
-	// EdgeCacheService.
+	// Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the EdgeCacheService.
 	EdgeSecurityPolicy pulumi.StringPtrInput
-	// URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService. Note
-	// that only "global" certificates with a "scope" of "EDGE_CACHE" can be attached to an EdgeCacheService.
+	// URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService.
+	// Note that only "global" certificates with a "scope" of "EDGE_CACHE" can be attached to an EdgeCacheService.
 	EdgeSslCertificates pulumi.StringArrayInput
-	// Set of label tags associated with the EdgeCache resource. **Note**: This field is non-authoritative, and will only
-	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-	// present on the resource.
+	// Set of label tags associated with the EdgeCache resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to
-	// Cloud Logging.
+	// Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
+	// Structure is documented below.
 	LogConfig EdgeCacheServiceLogConfigPtrInput
 	// Name of the resource; provided by the client when the resource is created.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 	// and all following characters must be a dash, underscore, letter or digit.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Require TLS (HTTPS) for all clients connecting to this service. Clients who connect over HTTP (port 80) will receive a
-	// HTTP 301 to the same URL over HTTPS (port 443). You must have at least one (1) edgeSslCertificate specified to enable
-	// this.
+	// Require TLS (HTTPS) for all clients connecting to this service.
+	// Clients who connect over HTTP (port 80) will receive a HTTP 301 to the same URL over HTTPS (port 443).
+	// You must have at least one (1) edgeSslCertificate specified to enable this.
 	RequireTls pulumi.BoolPtrInput
 	// Defines how requests are routed, modified, cached and/or which origin content is filled from.
 	// Structure is documented below.
 	Routing EdgeCacheServiceRoutingInput
-	// URL of the SslPolicy resource that will be associated with the EdgeCacheService. If not set, the EdgeCacheService has no
-	// SSL policy configured, and will default to the "COMPATIBLE" policy.
+	// URL of the SslPolicy resource that will be associated with the EdgeCacheService.
+	// If not set, the EdgeCacheService has no SSL policy configured, and will default to the "COMPATIBLE" policy.
 	SslPolicy pulumi.StringPtrInput
 }
 
@@ -925,10 +925,9 @@ func (o EdgeCacheServiceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeCacheService) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Disables HTTP/2. HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use
-// and reduces connection setup overhead by sending multiple streams over the same connection. Some legacy HTTP clients may
-// have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from
-// being advertised and negotiated.
+// Disables HTTP/2.
+// HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
+// Some legacy HTTP clients may have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from being advertised and negotiated.
 func (o EdgeCacheServiceOutput) DisableHttp2() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EdgeCacheService) pulumi.BoolPtrOutput { return v.DisableHttp2 }).(pulumi.BoolPtrOutput)
 }
@@ -938,14 +937,13 @@ func (o EdgeCacheServiceOutput) DisableQuic() pulumi.BoolOutput {
 	return o.ApplyT(func(v *EdgeCacheService) pulumi.BoolOutput { return v.DisableQuic }).(pulumi.BoolOutput)
 }
 
-// Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the
-// EdgeCacheService.
+// Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the EdgeCacheService.
 func (o EdgeCacheServiceOutput) EdgeSecurityPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeCacheService) pulumi.StringPtrOutput { return v.EdgeSecurityPolicy }).(pulumi.StringPtrOutput)
 }
 
-// URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService. Note
-// that only "global" certificates with a "scope" of "EDGE_CACHE" can be attached to an EdgeCacheService.
+// URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService.
+// Note that only "global" certificates with a "scope" of "EDGE_CACHE" can be attached to an EdgeCacheService.
 func (o EdgeCacheServiceOutput) EdgeSslCertificates() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EdgeCacheService) pulumi.StringArrayOutput { return v.EdgeSslCertificates }).(pulumi.StringArrayOutput)
 }
@@ -965,15 +963,15 @@ func (o EdgeCacheServiceOutput) Ipv6Addresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EdgeCacheService) pulumi.StringArrayOutput { return v.Ipv6Addresses }).(pulumi.StringArrayOutput)
 }
 
-// Set of label tags associated with the EdgeCache resource. **Note**: This field is non-authoritative, and will only
-// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-// present on the resource.
+// Set of label tags associated with the EdgeCache resource.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o EdgeCacheServiceOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *EdgeCacheService) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to
-// Cloud Logging.
+// Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
+// Structure is documented below.
 func (o EdgeCacheServiceOutput) LogConfig() EdgeCacheServiceLogConfigPtrOutput {
 	return o.ApplyT(func(v *EdgeCacheService) EdgeCacheServiceLogConfigPtrOutput { return v.LogConfig }).(EdgeCacheServiceLogConfigPtrOutput)
 }
@@ -985,6 +983,8 @@ func (o EdgeCacheServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *EdgeCacheService) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o EdgeCacheServiceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *EdgeCacheService) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -995,9 +995,9 @@ func (o EdgeCacheServiceOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *EdgeCacheService) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
-// Require TLS (HTTPS) for all clients connecting to this service. Clients who connect over HTTP (port 80) will receive a
-// HTTP 301 to the same URL over HTTPS (port 443). You must have at least one (1) edgeSslCertificate specified to enable
-// this.
+// Require TLS (HTTPS) for all clients connecting to this service.
+// Clients who connect over HTTP (port 80) will receive a HTTP 301 to the same URL over HTTPS (port 443).
+// You must have at least one (1) edgeSslCertificate specified to enable this.
 func (o EdgeCacheServiceOutput) RequireTls() pulumi.BoolOutput {
 	return o.ApplyT(func(v *EdgeCacheService) pulumi.BoolOutput { return v.RequireTls }).(pulumi.BoolOutput)
 }
@@ -1008,8 +1008,8 @@ func (o EdgeCacheServiceOutput) Routing() EdgeCacheServiceRoutingOutput {
 	return o.ApplyT(func(v *EdgeCacheService) EdgeCacheServiceRoutingOutput { return v.Routing }).(EdgeCacheServiceRoutingOutput)
 }
 
-// URL of the SslPolicy resource that will be associated with the EdgeCacheService. If not set, the EdgeCacheService has no
-// SSL policy configured, and will default to the "COMPATIBLE" policy.
+// URL of the SslPolicy resource that will be associated with the EdgeCacheService.
+// If not set, the EdgeCacheService has no SSL policy configured, and will default to the "COMPATIBLE" policy.
 func (o EdgeCacheServiceOutput) SslPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeCacheService) pulumi.StringPtrOutput { return v.SslPolicy }).(pulumi.StringPtrOutput)
 }

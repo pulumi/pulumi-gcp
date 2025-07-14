@@ -126,9 +126,6 @@ export class VolumeSnapshot extends pulumi.CustomResource {
     public readonly location!: pulumi.Output<string>;
     /**
      * The name of the snapshot.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -222,9 +219,6 @@ export interface VolumeSnapshotState {
     location?: pulumi.Input<string>;
     /**
      * The name of the snapshot.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -268,9 +262,6 @@ export interface VolumeSnapshotArgs {
     location: pulumi.Input<string>;
     /**
      * The name of the snapshot.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

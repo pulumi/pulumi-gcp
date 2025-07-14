@@ -77,6 +77,7 @@ export interface GetInstanceResult {
     readonly maintenancePolicies: outputs.memorystore.GetInstanceMaintenancePolicy[];
     readonly maintenanceSchedules: outputs.memorystore.GetInstanceMaintenanceSchedule[];
     readonly managedBackupSources: outputs.memorystore.GetInstanceManagedBackupSource[];
+    readonly managedServerCas: outputs.memorystore.GetInstanceManagedServerCa[];
     readonly mode: string;
     readonly name: string;
     readonly nodeConfigs: outputs.memorystore.GetInstanceNodeConfig[];

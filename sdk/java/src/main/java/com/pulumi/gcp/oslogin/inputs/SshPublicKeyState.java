@@ -78,16 +78,12 @@ public final class SshPublicKeyState extends com.pulumi.resources.ResourceArgs {
     /**
      * The user email.
      * 
-     * ***
-     * 
      */
     @Import(name="user")
     private @Nullable Output<String> user;
 
     /**
      * @return The user email.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> user() {
@@ -209,8 +205,6 @@ public final class SshPublicKeyState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param user The user email.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -221,8 +215,6 @@ public final class SshPublicKeyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param user The user email.
-         * 
-         * ***
          * 
          * @return builder
          * 

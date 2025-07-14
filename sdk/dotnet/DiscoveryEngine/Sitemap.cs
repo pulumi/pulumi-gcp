@@ -77,9 +77,6 @@ namespace Pulumi.Gcp.DiscoveryEngine
 
         /// <summary>
         /// The unique id of the data store.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("dataStoreId")]
         public Output<string> DataStoreId { get; private set; } = null!;
@@ -167,9 +164,6 @@ namespace Pulumi.Gcp.DiscoveryEngine
     {
         /// <summary>
         /// The unique id of the data store.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("dataStoreId", required: true)]
         public Input<string> DataStoreId { get; set; } = null!;
@@ -210,9 +204,6 @@ namespace Pulumi.Gcp.DiscoveryEngine
 
         /// <summary>
         /// The unique id of the data store.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("dataStoreId")]
         public Input<string>? DataStoreId { get; set; }

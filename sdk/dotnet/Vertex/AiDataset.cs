@@ -87,9 +87,6 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// Points to a YAML file stored on Google Cloud Storage describing additional information about the Dataset. The schema is defined as an OpenAPI 3.0.2 Schema Object. The schema files that can be used here are found in gs://google-cloud-aiplatform/schema/dataset/metadata/.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("metadataSchemaUri")]
         public Output<string> MetadataSchemaUri { get; private set; } = null!;
@@ -207,9 +204,6 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// Points to a YAML file stored on Google Cloud Storage describing additional information about the Dataset. The schema is defined as an OpenAPI 3.0.2 Schema Object. The schema files that can be used here are found in gs://google-cloud-aiplatform/schema/dataset/metadata/.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("metadataSchemaUri", required: true)]
         public Input<string> MetadataSchemaUri { get; set; } = null!;
@@ -287,9 +281,6 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// Points to a YAML file stored on Google Cloud Storage describing additional information about the Dataset. The schema is defined as an OpenAPI 3.0.2 Schema Object. The schema files that can be used here are found in gs://google-cloud-aiplatform/schema/dataset/metadata/.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("metadataSchemaUri")]
         public Input<string>? MetadataSchemaUri { get; set; }

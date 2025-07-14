@@ -92,9 +92,6 @@ namespace Pulumi.Gcp.Gemini
 
         /// <summary>
         /// Id of the Gemini Gcp Enablement setting.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("geminiGcpEnablementSettingId")]
         public Output<string> GeminiGcpEnablementSettingId { get; private set; } = null!;
@@ -205,9 +202,6 @@ namespace Pulumi.Gcp.Gemini
 
         /// <summary>
         /// Id of the Gemini Gcp Enablement setting.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("geminiGcpEnablementSettingId", required: true)]
         public Input<string> GeminiGcpEnablementSettingId { get; set; } = null!;
@@ -283,9 +277,6 @@ namespace Pulumi.Gcp.Gemini
 
         /// <summary>
         /// Id of the Gemini Gcp Enablement setting.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("geminiGcpEnablementSettingId")]
         public Input<string>? GeminiGcpEnablementSettingId { get; set; }

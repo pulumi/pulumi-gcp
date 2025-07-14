@@ -98,8 +98,6 @@ type FirewallRule struct {
 
 	// The action to take if this rule matches.
 	// Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.
-	//
-	// ***
 	Action pulumi.StringOutput `pulumi:"action"`
 	// An optional string description of this rule.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -154,8 +152,6 @@ func GetFirewallRule(ctx *pulumi.Context,
 type firewallRuleState struct {
 	// The action to take if this rule matches.
 	// Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.
-	//
-	// ***
 	Action *string `pulumi:"action"`
 	// An optional string description of this rule.
 	Description *string `pulumi:"description"`
@@ -175,8 +171,6 @@ type firewallRuleState struct {
 type FirewallRuleState struct {
 	// The action to take if this rule matches.
 	// Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.
-	//
-	// ***
 	Action pulumi.StringPtrInput
 	// An optional string description of this rule.
 	Description pulumi.StringPtrInput
@@ -200,8 +194,6 @@ func (FirewallRuleState) ElementType() reflect.Type {
 type firewallRuleArgs struct {
 	// The action to take if this rule matches.
 	// Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.
-	//
-	// ***
 	Action string `pulumi:"action"`
 	// An optional string description of this rule.
 	Description *string `pulumi:"description"`
@@ -222,8 +214,6 @@ type firewallRuleArgs struct {
 type FirewallRuleArgs struct {
 	// The action to take if this rule matches.
 	// Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.
-	//
-	// ***
 	Action pulumi.StringInput
 	// An optional string description of this rule.
 	Description pulumi.StringPtrInput
@@ -329,8 +319,6 @@ func (o FirewallRuleOutput) ToFirewallRuleOutputWithContext(ctx context.Context)
 
 // The action to take if this rule matches.
 // Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.
-//
-// ***
 func (o FirewallRuleOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
 }

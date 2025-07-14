@@ -92,9 +92,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name of the Nat service in which this address will be configured.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("routerNat")]
         public Output<string> RouterNat { get; private set; } = null!;
@@ -192,9 +189,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name of the Nat service in which this address will be configured.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("routerNat", required: true)]
         public Input<string> RouterNat { get; set; } = null!;
@@ -254,9 +248,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name of the Nat service in which this address will be configured.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("routerNat")]
         public Input<string>? RouterNat { get; set; }

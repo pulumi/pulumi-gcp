@@ -117,9 +117,6 @@ export class ExternalAddress extends pulumi.CustomResource {
     public readonly internalIp!: pulumi.Output<string>;
     /**
      * The ID of the external IP Address.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -212,9 +209,6 @@ export interface ExternalAddressState {
     internalIp?: pulumi.Input<string>;
     /**
      * The ID of the external IP Address.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -253,9 +247,6 @@ export interface ExternalAddressArgs {
     internalIp: pulumi.Input<string>;
     /**
      * The ID of the external IP Address.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

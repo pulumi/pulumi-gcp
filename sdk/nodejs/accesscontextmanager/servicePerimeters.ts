@@ -120,9 +120,6 @@ export class ServicePerimeters extends pulumi.CustomResource {
     /**
      * The AccessPolicy this ServicePerimeter lives in.
      * Format: accessPolicies/{policy_id}
-     *
-     *
-     * - - -
      */
     public readonly parent!: pulumi.Output<string>;
     /**
@@ -166,9 +163,6 @@ export interface ServicePerimetersState {
     /**
      * The AccessPolicy this ServicePerimeter lives in.
      * Format: accessPolicies/{policy_id}
-     *
-     *
-     * - - -
      */
     parent?: pulumi.Input<string>;
     /**
@@ -185,9 +179,6 @@ export interface ServicePerimetersArgs {
     /**
      * The AccessPolicy this ServicePerimeter lives in.
      * Format: accessPolicies/{policy_id}
-     *
-     *
-     * - - -
      */
     parent: pulumi.Input<string>;
     /**

@@ -153,8 +153,6 @@ class ChatEngineChatEngineConfigAgentCreationConfig(dict):
         :param builtins.str time_zone: The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
         :param builtins.str business: Name of the company, organization or other entity that the agent represents. Used for knowledge connector LLM prompt and for knowledge search.
         :param builtins.str location: Agent location for Agent creation, currently supported values: global/us/eu, it needs to be the same region as the Chat Engine.
-               
-               - - -
         """
         pulumi.set(__self__, "default_language_code", default_language_code)
         pulumi.set(__self__, "time_zone", time_zone)
@@ -192,8 +190,6 @@ class ChatEngineChatEngineConfigAgentCreationConfig(dict):
     def location(self) -> Optional[builtins.str]:
         """
         Agent location for Agent creation, currently supported values: global/us/eu, it needs to be the same region as the Chat Engine.
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -532,6 +528,7 @@ class DataStoreDocumentProcessingConfigDefaultParsingConfig(dict):
         """
         :param 'DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgs' digital_parsing_config: Configurations applied to digital parser.
         :param 'DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigArgs' layout_parsing_config: Configurations applied to layout parser.
+               Structure is documented below.
         :param 'DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigArgs' ocr_parsing_config: Configurations applied to OCR parser. Currently it only applies to PDFs.
                Structure is documented below.
         """
@@ -555,6 +552,7 @@ class DataStoreDocumentProcessingConfigDefaultParsingConfig(dict):
     def layout_parsing_config(self) -> Optional['outputs.DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig']:
         """
         Configurations applied to layout parser.
+        Structure is documented below.
         """
         return pulumi.get(self, "layout_parsing_config")
 
@@ -576,8 +574,108 @@ class DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfig(
 
 @pulumi.output_type
 class DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig(dict):
-    def __init__(__self__):
-        pass
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableImageAnnotation":
+            suggest = "enable_image_annotation"
+        elif key == "enableTableAnnotation":
+            suggest = "enable_table_annotation"
+        elif key == "excludeHtmlClasses":
+            suggest = "exclude_html_classes"
+        elif key == "excludeHtmlElements":
+            suggest = "exclude_html_elements"
+        elif key == "excludeHtmlIds":
+            suggest = "exclude_html_ids"
+        elif key == "structuredContentTypes":
+            suggest = "structured_content_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_image_annotation: Optional[builtins.bool] = None,
+                 enable_table_annotation: Optional[builtins.bool] = None,
+                 exclude_html_classes: Optional[Sequence[builtins.str]] = None,
+                 exclude_html_elements: Optional[Sequence[builtins.str]] = None,
+                 exclude_html_ids: Optional[Sequence[builtins.str]] = None,
+                 structured_content_types: Optional[Sequence[builtins.str]] = None):
+        """
+        :param builtins.bool enable_image_annotation: If true, the LLM based annotation is added to the image during parsing.
+        :param builtins.bool enable_table_annotation: If true, the LLM based annotation is added to the table during parsing.
+        :param Sequence[builtins.str] exclude_html_classes: List of HTML classes to exclude from the parsed content.
+        :param Sequence[builtins.str] exclude_html_elements: List of HTML elements to exclude from the parsed content.
+        :param Sequence[builtins.str] exclude_html_ids: List of HTML ids to exclude from the parsed content.
+        :param Sequence[builtins.str] structured_content_types: Contains the required structure types to extract from the document. Supported values: `shareholder-structure`.
+        """
+        if enable_image_annotation is not None:
+            pulumi.set(__self__, "enable_image_annotation", enable_image_annotation)
+        if enable_table_annotation is not None:
+            pulumi.set(__self__, "enable_table_annotation", enable_table_annotation)
+        if exclude_html_classes is not None:
+            pulumi.set(__self__, "exclude_html_classes", exclude_html_classes)
+        if exclude_html_elements is not None:
+            pulumi.set(__self__, "exclude_html_elements", exclude_html_elements)
+        if exclude_html_ids is not None:
+            pulumi.set(__self__, "exclude_html_ids", exclude_html_ids)
+        if structured_content_types is not None:
+            pulumi.set(__self__, "structured_content_types", structured_content_types)
+
+    @property
+    @pulumi.getter(name="enableImageAnnotation")
+    def enable_image_annotation(self) -> Optional[builtins.bool]:
+        """
+        If true, the LLM based annotation is added to the image during parsing.
+        """
+        return pulumi.get(self, "enable_image_annotation")
+
+    @property
+    @pulumi.getter(name="enableTableAnnotation")
+    def enable_table_annotation(self) -> Optional[builtins.bool]:
+        """
+        If true, the LLM based annotation is added to the table during parsing.
+        """
+        return pulumi.get(self, "enable_table_annotation")
+
+    @property
+    @pulumi.getter(name="excludeHtmlClasses")
+    def exclude_html_classes(self) -> Optional[Sequence[builtins.str]]:
+        """
+        List of HTML classes to exclude from the parsed content.
+        """
+        return pulumi.get(self, "exclude_html_classes")
+
+    @property
+    @pulumi.getter(name="excludeHtmlElements")
+    def exclude_html_elements(self) -> Optional[Sequence[builtins.str]]:
+        """
+        List of HTML elements to exclude from the parsed content.
+        """
+        return pulumi.get(self, "exclude_html_elements")
+
+    @property
+    @pulumi.getter(name="excludeHtmlIds")
+    def exclude_html_ids(self) -> Optional[Sequence[builtins.str]]:
+        """
+        List of HTML ids to exclude from the parsed content.
+        """
+        return pulumi.get(self, "exclude_html_ids")
+
+    @property
+    @pulumi.getter(name="structuredContentTypes")
+    def structured_content_types(self) -> Optional[Sequence[builtins.str]]:
+        """
+        Contains the required structure types to extract from the document. Supported values: `shareholder-structure`.
+        """
+        return pulumi.get(self, "structured_content_types")
 
 
 @pulumi.output_type
@@ -650,6 +748,7 @@ class DataStoreDocumentProcessingConfigParsingConfigOverride(dict):
         :param builtins.str file_type: The identifier for this object. Format specified above.
         :param 'DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigArgs' digital_parsing_config: Configurations applied to digital parser.
         :param 'DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigArgs' layout_parsing_config: Configurations applied to layout parser.
+               Structure is documented below.
         :param 'DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs' ocr_parsing_config: Configurations applied to OCR parser. Currently it only applies to PDFs.
                Structure is documented below.
         """
@@ -682,6 +781,7 @@ class DataStoreDocumentProcessingConfigParsingConfigOverride(dict):
     def layout_parsing_config(self) -> Optional['outputs.DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig']:
         """
         Configurations applied to layout parser.
+        Structure is documented below.
         """
         return pulumi.get(self, "layout_parsing_config")
 
@@ -703,8 +803,108 @@ class DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfig
 
 @pulumi.output_type
 class DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig(dict):
-    def __init__(__self__):
-        pass
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableImageAnnotation":
+            suggest = "enable_image_annotation"
+        elif key == "enableTableAnnotation":
+            suggest = "enable_table_annotation"
+        elif key == "excludeHtmlClasses":
+            suggest = "exclude_html_classes"
+        elif key == "excludeHtmlElements":
+            suggest = "exclude_html_elements"
+        elif key == "excludeHtmlIds":
+            suggest = "exclude_html_ids"
+        elif key == "structuredContentTypes":
+            suggest = "structured_content_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_image_annotation: Optional[builtins.bool] = None,
+                 enable_table_annotation: Optional[builtins.bool] = None,
+                 exclude_html_classes: Optional[Sequence[builtins.str]] = None,
+                 exclude_html_elements: Optional[Sequence[builtins.str]] = None,
+                 exclude_html_ids: Optional[Sequence[builtins.str]] = None,
+                 structured_content_types: Optional[Sequence[builtins.str]] = None):
+        """
+        :param builtins.bool enable_image_annotation: If true, the LLM based annotation is added to the image during parsing.
+        :param builtins.bool enable_table_annotation: If true, the LLM based annotation is added to the table during parsing.
+        :param Sequence[builtins.str] exclude_html_classes: List of HTML classes to exclude from the parsed content.
+        :param Sequence[builtins.str] exclude_html_elements: List of HTML elements to exclude from the parsed content.
+        :param Sequence[builtins.str] exclude_html_ids: List of HTML ids to exclude from the parsed content.
+        :param Sequence[builtins.str] structured_content_types: Contains the required structure types to extract from the document. Supported values: `shareholder-structure`.
+        """
+        if enable_image_annotation is not None:
+            pulumi.set(__self__, "enable_image_annotation", enable_image_annotation)
+        if enable_table_annotation is not None:
+            pulumi.set(__self__, "enable_table_annotation", enable_table_annotation)
+        if exclude_html_classes is not None:
+            pulumi.set(__self__, "exclude_html_classes", exclude_html_classes)
+        if exclude_html_elements is not None:
+            pulumi.set(__self__, "exclude_html_elements", exclude_html_elements)
+        if exclude_html_ids is not None:
+            pulumi.set(__self__, "exclude_html_ids", exclude_html_ids)
+        if structured_content_types is not None:
+            pulumi.set(__self__, "structured_content_types", structured_content_types)
+
+    @property
+    @pulumi.getter(name="enableImageAnnotation")
+    def enable_image_annotation(self) -> Optional[builtins.bool]:
+        """
+        If true, the LLM based annotation is added to the image during parsing.
+        """
+        return pulumi.get(self, "enable_image_annotation")
+
+    @property
+    @pulumi.getter(name="enableTableAnnotation")
+    def enable_table_annotation(self) -> Optional[builtins.bool]:
+        """
+        If true, the LLM based annotation is added to the table during parsing.
+        """
+        return pulumi.get(self, "enable_table_annotation")
+
+    @property
+    @pulumi.getter(name="excludeHtmlClasses")
+    def exclude_html_classes(self) -> Optional[Sequence[builtins.str]]:
+        """
+        List of HTML classes to exclude from the parsed content.
+        """
+        return pulumi.get(self, "exclude_html_classes")
+
+    @property
+    @pulumi.getter(name="excludeHtmlElements")
+    def exclude_html_elements(self) -> Optional[Sequence[builtins.str]]:
+        """
+        List of HTML elements to exclude from the parsed content.
+        """
+        return pulumi.get(self, "exclude_html_elements")
+
+    @property
+    @pulumi.getter(name="excludeHtmlIds")
+    def exclude_html_ids(self) -> Optional[Sequence[builtins.str]]:
+        """
+        List of HTML ids to exclude from the parsed content.
+        """
+        return pulumi.get(self, "exclude_html_ids")
+
+    @property
+    @pulumi.getter(name="structuredContentTypes")
+    def structured_content_types(self) -> Optional[Sequence[builtins.str]]:
+        """
+        Contains the required structure types to extract from the document. Supported values: `shareholder-structure`.
+        """
+        return pulumi.get(self, "structured_content_types")
 
 
 @pulumi.output_type
@@ -806,8 +1006,6 @@ class SearchEngineSearchEngineConfig(dict):
         """
         :param Sequence[builtins.str] search_add_ons: The add-on that this search engine enables.
                Each value may be one of: `SEARCH_ADD_ON_LLM`.
-               
-               - - -
         :param builtins.str search_tier: The search feature tier of this engine. Defaults to SearchTier.SEARCH_TIER_STANDARD if not specified.
                Default value is `SEARCH_TIER_STANDARD`.
                Possible values are: `SEARCH_TIER_STANDARD`, `SEARCH_TIER_ENTERPRISE`.
@@ -823,8 +1021,6 @@ class SearchEngineSearchEngineConfig(dict):
         """
         The add-on that this search engine enables.
         Each value may be one of: `SEARCH_ADD_ON_LLM`.
-
-        - - -
         """
         return pulumi.get(self, "search_add_ons")
 

@@ -333,16 +333,12 @@ public final class GdcSparkApplicationState extends com.pulumi.resources.Resourc
     /**
      * The id of the application
      * 
-     * ***
-     * 
      */
     @Import(name="sparkApplicationId")
     private @Nullable Output<String> sparkApplicationId;
 
     /**
      * @return The id of the application
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> sparkApplicationId() {
@@ -962,8 +958,6 @@ public final class GdcSparkApplicationState extends com.pulumi.resources.Resourc
         /**
          * @param sparkApplicationId The id of the application
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -974,8 +968,6 @@ public final class GdcSparkApplicationState extends com.pulumi.resources.Resourc
 
         /**
          * @param sparkApplicationId The id of the application
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.compute.inputs.RouteParamsArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -82,16 +83,12 @@ public final class RouteArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The network that this route applies to.
      * 
-     * ***
-     * 
      */
     @Import(name="network", required=true)
     private Output<String> network;
 
     /**
      * @return The network that this route applies to.
-     * 
-     * ***
      * 
      */
     public Output<String> network() {
@@ -241,6 +238,23 @@ public final class RouteArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="params")
+    private @Nullable Output<RouteParamsArgs> params;
+
+    /**
+     * @return Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<RouteParamsArgs>> params() {
+        return Optional.ofNullable(this.params);
+    }
+
+    /**
      * The priority of this route. Priority is used to break ties in cases
      * where there is more than one matching route of equal prefix length.
      * In the case of two routes with equal prefix length, the one with the
@@ -308,6 +322,7 @@ public final class RouteArgs extends com.pulumi.resources.ResourceArgs {
         this.nextHopInstanceZone = $.nextHopInstanceZone;
         this.nextHopIp = $.nextHopIp;
         this.nextHopVpnTunnel = $.nextHopVpnTunnel;
+        this.params = $.params;
         this.priority = $.priority;
         this.project = $.project;
         this.tags = $.tags;
@@ -413,8 +428,6 @@ public final class RouteArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param network The network that this route applies to.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -425,8 +438,6 @@ public final class RouteArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param network The network that this route applies to.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -611,6 +622,29 @@ public final class RouteArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder nextHopVpnTunnel(String nextHopVpnTunnel) {
             return nextHopVpnTunnel(Output.of(nextHopVpnTunnel));
+        }
+
+        /**
+         * @param params Additional params passed with the request, but not persisted as part of resource payload
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(@Nullable Output<RouteParamsArgs> params) {
+            $.params = params;
+            return this;
+        }
+
+        /**
+         * @param params Additional params passed with the request, but not persisted as part of resource payload
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(RouteParamsArgs params) {
+            return params(Output.of(params));
         }
 
         /**

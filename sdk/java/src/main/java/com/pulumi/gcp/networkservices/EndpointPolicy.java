@@ -156,32 +156,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:networkservices/endpointPolicy:EndpointPolicy")
 public class EndpointPolicy extends com.pulumi.resources.CustomResource {
     /**
-     * This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic
-     * at the matched endpoints.
+     * This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints.
      * 
      */
     @Export(name="authorizationPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> authorizationPolicy;
 
     /**
-     * @return This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic
-     * at the matched endpoints.
+     * @return This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints.
      * 
      */
     public Output<Optional<String>> authorizationPolicy() {
         return Codegen.optional(this.authorizationPolicy);
     }
     /**
-     * A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from
-     * the proxy to the actual endpoints.
+     * A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from the proxy to the actual endpoints.
      * 
      */
     @Export(name="clientTlsPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientTlsPolicy;
 
     /**
-     * @return A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from
-     * the proxy to the actual endpoints.
+     * @return A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from the proxy to the actual endpoints.
      * 
      */
     public Output<Optional<String>> clientTlsPolicy() {
@@ -246,18 +242,18 @@ public class EndpointPolicy extends com.pulumi.resources.CustomResource {
         return this.endpointMatcher;
     }
     /**
-     * Set of label tags associated with the TcpRoute resource. **Note**: This field is non-authoritative, and will only manage
-     * the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on
-     * the resource.
+     * Set of label tags associated with the TcpRoute resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return Set of label tags associated with the TcpRoute resource. **Note**: This field is non-authoritative, and will only manage
-     * the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on
-     * the resource.
+     * @return Set of label tags associated with the TcpRoute resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -277,9 +273,19 @@ public class EndpointPolicy extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }
@@ -300,16 +306,14 @@ public class EndpointPolicy extends com.pulumi.resources.CustomResource {
         return this.pulumiLabels;
     }
     /**
-     * A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be
-     * applied to terminate the inbound traffic at the identified backends.
+     * A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
      * 
      */
     @Export(name="serverTlsPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serverTlsPolicy;
 
     /**
-     * @return A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be
-     * applied to terminate the inbound traffic at the identified backends.
+     * @return A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
      * 
      */
     public Output<Optional<String>> serverTlsPolicy() {
@@ -317,6 +321,7 @@ public class EndpointPolicy extends com.pulumi.resources.CustomResource {
     }
     /**
      * Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
+     * Structure is documented below.
      * 
      */
     @Export(name="trafficPortSelector", refs={EndpointPolicyTrafficPortSelector.class}, tree="[0]")
@@ -324,6 +329,7 @@ public class EndpointPolicy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<EndpointPolicyTrafficPortSelector>> trafficPortSelector() {

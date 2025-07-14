@@ -211,6 +211,10 @@ type Cluster struct {
 	// `false`. This field should only be enabled for Autopilot clusters (`enableAutopilot`
 	// set to `true`).
 	AllowNetAdmin pulumi.BoolPtrOutput `pulumi:"allowNetAdmin"`
+	// Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
+	//
+	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+	AnonymousAuthenticationConfig ClusterAnonymousAuthenticationConfigOutput `pulumi:"anonymousAuthenticationConfig"`
 	// Configuration for the
 	// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
 	// Structure is documented below.
@@ -297,8 +301,6 @@ type Cluster struct {
 	// The IP address of this cluster's Kubernetes master.
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
 	// Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
-	//
-	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
 	EnterpriseConfig ClusterEnterpriseConfigOutput `pulumi:"enterpriseConfig"`
 	// Fleet configuration for the cluster. Structure is documented below.
 	Fleet ClusterFleetPtrOutput `pulumi:"fleet"`
@@ -568,6 +570,10 @@ type clusterState struct {
 	// `false`. This field should only be enabled for Autopilot clusters (`enableAutopilot`
 	// set to `true`).
 	AllowNetAdmin *bool `pulumi:"allowNetAdmin"`
+	// Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
+	//
+	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+	AnonymousAuthenticationConfig *ClusterAnonymousAuthenticationConfig `pulumi:"anonymousAuthenticationConfig"`
 	// Configuration for the
 	// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
 	// Structure is documented below.
@@ -654,8 +660,6 @@ type clusterState struct {
 	// The IP address of this cluster's Kubernetes master.
 	Endpoint *string `pulumi:"endpoint"`
 	// Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
-	//
-	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
 	EnterpriseConfig *ClusterEnterpriseConfig `pulumi:"enterpriseConfig"`
 	// Fleet configuration for the cluster. Structure is documented below.
 	Fleet *ClusterFleet `pulumi:"fleet"`
@@ -891,6 +895,10 @@ type ClusterState struct {
 	// `false`. This field should only be enabled for Autopilot clusters (`enableAutopilot`
 	// set to `true`).
 	AllowNetAdmin pulumi.BoolPtrInput
+	// Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
+	//
+	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+	AnonymousAuthenticationConfig ClusterAnonymousAuthenticationConfigPtrInput
 	// Configuration for the
 	// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
 	// Structure is documented below.
@@ -977,8 +985,6 @@ type ClusterState struct {
 	// The IP address of this cluster's Kubernetes master.
 	Endpoint pulumi.StringPtrInput
 	// Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
-	//
-	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
 	EnterpriseConfig ClusterEnterpriseConfigPtrInput
 	// Fleet configuration for the cluster. Structure is documented below.
 	Fleet ClusterFleetPtrInput
@@ -1218,6 +1224,10 @@ type clusterArgs struct {
 	// `false`. This field should only be enabled for Autopilot clusters (`enableAutopilot`
 	// set to `true`).
 	AllowNetAdmin *bool `pulumi:"allowNetAdmin"`
+	// Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
+	//
+	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+	AnonymousAuthenticationConfig *ClusterAnonymousAuthenticationConfig `pulumi:"anonymousAuthenticationConfig"`
 	// Configuration for the
 	// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
 	// Structure is documented below.
@@ -1300,8 +1310,6 @@ type clusterArgs struct {
 	// See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
 	EnableTpu *bool `pulumi:"enableTpu"`
 	// Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
-	//
-	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
 	EnterpriseConfig *ClusterEnterpriseConfig `pulumi:"enterpriseConfig"`
 	// Fleet configuration for the cluster. Structure is documented below.
 	Fleet *ClusterFleet `pulumi:"fleet"`
@@ -1518,6 +1526,10 @@ type ClusterArgs struct {
 	// `false`. This field should only be enabled for Autopilot clusters (`enableAutopilot`
 	// set to `true`).
 	AllowNetAdmin pulumi.BoolPtrInput
+	// Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
+	//
+	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+	AnonymousAuthenticationConfig ClusterAnonymousAuthenticationConfigPtrInput
 	// Configuration for the
 	// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
 	// Structure is documented below.
@@ -1600,8 +1612,6 @@ type ClusterArgs struct {
 	// See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
 	EnableTpu pulumi.BoolPtrInput
 	// Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
-	//
-	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
 	EnterpriseConfig ClusterEnterpriseConfigPtrInput
 	// Fleet configuration for the cluster. Structure is documented below.
 	Fleet ClusterFleetPtrInput
@@ -1909,6 +1919,13 @@ func (o ClusterOutput) AllowNetAdmin() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.AllowNetAdmin }).(pulumi.BoolPtrOutput)
 }
 
+// Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
+//
+// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+func (o ClusterOutput) AnonymousAuthenticationConfig() ClusterAnonymousAuthenticationConfigOutput {
+	return o.ApplyT(func(v *Cluster) ClusterAnonymousAuthenticationConfigOutput { return v.AnonymousAuthenticationConfig }).(ClusterAnonymousAuthenticationConfigOutput)
+}
+
 // Configuration for the
 // [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
 // Structure is documented below.
@@ -2082,8 +2099,6 @@ func (o ClusterOutput) Endpoint() pulumi.StringOutput {
 }
 
 // Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
-//
-// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
 func (o ClusterOutput) EnterpriseConfig() ClusterEnterpriseConfigOutput {
 	return o.ApplyT(func(v *Cluster) ClusterEnterpriseConfigOutput { return v.EnterpriseConfig }).(ClusterEnterpriseConfigOutput)
 }

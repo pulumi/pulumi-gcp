@@ -1033,8 +1033,6 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
      * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
      * 3 and 63 characters.
      * 
-     * ***
-     * 
      */
     @Export(name="serviceId", refs={String.class}, tree="[0]")
     private Output<String> serviceId;
@@ -1043,8 +1041,6 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
      * @return The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
      * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
      * 3 and 63 characters.
-     * 
-     * ***
      * 
      */
     public Output<String> serviceId() {

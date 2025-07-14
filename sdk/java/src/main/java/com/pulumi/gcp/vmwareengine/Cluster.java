@@ -243,16 +243,12 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * The ID of the Cluster.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return The ID of the Cluster.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

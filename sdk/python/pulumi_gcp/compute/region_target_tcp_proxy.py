@@ -30,9 +30,6 @@ class RegionTargetTcpProxyArgs:
         """
         The set of arguments for constructing a RegionTargetTcpProxy resource.
         :param pulumi.Input[builtins.str] backend_service: A reference to the BackendService resource.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
         :param pulumi.Input[builtins.str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -71,9 +68,6 @@ class RegionTargetTcpProxyArgs:
     def backend_service(self) -> pulumi.Input[builtins.str]:
         """
         A reference to the BackendService resource.
-
-
-        - - -
         """
         return pulumi.get(self, "backend_service")
 
@@ -182,9 +176,6 @@ class _RegionTargetTcpProxyState:
         """
         Input properties used for looking up and filtering RegionTargetTcpProxy resources.
         :param pulumi.Input[builtins.str] backend_service: A reference to the BackendService resource.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
         :param pulumi.Input[builtins.str] name: Name of the resource. Provided by the client when the resource is
@@ -233,9 +224,6 @@ class _RegionTargetTcpProxyState:
     def backend_service(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         A reference to the BackendService resource.
-
-
-        - - -
         """
         return pulumi.get(self, "backend_service")
 
@@ -451,9 +439,6 @@ class RegionTargetTcpProxy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] backend_service: A reference to the BackendService resource.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
         :param pulumi.Input[builtins.str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -620,9 +605,6 @@ class RegionTargetTcpProxy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] backend_service: A reference to the BackendService resource.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
         :param pulumi.Input[builtins.str] name: Name of the resource. Provided by the client when the resource is
@@ -666,9 +648,6 @@ class RegionTargetTcpProxy(pulumi.CustomResource):
     def backend_service(self) -> pulumi.Output[builtins.str]:
         """
         A reference to the BackendService resource.
-
-
-        - - -
         """
         return pulumi.get(self, "backend_service")
 

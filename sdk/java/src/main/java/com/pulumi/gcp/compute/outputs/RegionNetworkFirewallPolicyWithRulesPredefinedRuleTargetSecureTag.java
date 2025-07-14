@@ -23,8 +23,6 @@ public final class RegionNetworkFirewallPolicyWithRulesPredefinedRuleTargetSecur
      * `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
      * or its network is deleted.
      * 
-     * ***
-     * 
      */
     private @Nullable String state;
 
@@ -42,8 +40,6 @@ public final class RegionNetworkFirewallPolicyWithRulesPredefinedRuleTargetSecur
      * [Output Only] State of the secure tag, either `EFFECTIVE` or
      * `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
      * or its network is deleted.
-     * 
-     * ***
      * 
      */
     public Optional<String> state() {

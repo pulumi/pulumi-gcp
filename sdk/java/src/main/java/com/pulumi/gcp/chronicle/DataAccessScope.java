@@ -390,8 +390,6 @@ public class DataAccessScope extends com.pulumi.resources.CustomResource {
      * of the scope resource.
      * Needs to be compliant with https://google.aip.dev/122
      * 
-     * ***
-     * 
      */
     @Export(name="dataAccessScopeId", refs={String.class}, tree="[0]")
     private Output<String> dataAccessScopeId;
@@ -400,8 +398,6 @@ public class DataAccessScope extends com.pulumi.resources.CustomResource {
      * @return Required. The user provided scope id which will become the last part of the name
      * of the scope resource.
      * Needs to be compliant with https://google.aip.dev/122
-     * 
-     * ***
      * 
      */
     public Output<String> dataAccessScopeId() {

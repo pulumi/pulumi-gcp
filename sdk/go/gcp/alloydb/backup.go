@@ -254,8 +254,6 @@ type Backup struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location where the alloydb backup should reside.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Output only. The name of the backup resource with the format: * projects/{project}/locations/{region}/backups/{backupId}
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -372,8 +370,6 @@ type backupState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the alloydb backup should reside.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// Output only. The name of the backup resource with the format: * projects/{project}/locations/{region}/backups/{backupId}
 	Name *string `pulumi:"name"`
@@ -447,8 +443,6 @@ type BackupState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location where the alloydb backup should reside.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// Output only. The name of the backup resource with the format: * projects/{project}/locations/{region}/backups/{backupId}
 	Name pulumi.StringPtrInput
@@ -503,8 +497,6 @@ type backupArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the alloydb backup should reside.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -539,8 +531,6 @@ type BackupArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location where the alloydb backup should reside.
-	//
-	// ***
 	Location pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -731,8 +721,6 @@ func (o BackupOutput) Labels() pulumi.StringMapOutput {
 }
 
 // The location where the alloydb backup should reside.
-//
-// ***
 func (o BackupOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

@@ -187,8 +187,6 @@ type DatabaseInstance struct {
 	DesiredState pulumi.StringPtrOutput `pulumi:"desiredState"`
 	// The globally unique identifier of the Firebase Realtime Database instance.
 	// Instance IDs cannot be reused after deletion.
-	//
-	// ***
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// The fully-qualified resource name of the Firebase Realtime Database, in
 	// the format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
@@ -255,8 +253,6 @@ type databaseInstanceState struct {
 	DesiredState *string `pulumi:"desiredState"`
 	// The globally unique identifier of the Firebase Realtime Database instance.
 	// Instance IDs cannot be reused after deletion.
-	//
-	// ***
 	InstanceId *string `pulumi:"instanceId"`
 	// The fully-qualified resource name of the Firebase Realtime Database, in
 	// the format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
@@ -288,8 +284,6 @@ type DatabaseInstanceState struct {
 	DesiredState pulumi.StringPtrInput
 	// The globally unique identifier of the Firebase Realtime Database instance.
 	// Instance IDs cannot be reused after deletion.
-	//
-	// ***
 	InstanceId pulumi.StringPtrInput
 	// The fully-qualified resource name of the Firebase Realtime Database, in
 	// the format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
@@ -322,8 +316,6 @@ type databaseInstanceArgs struct {
 	DesiredState *string `pulumi:"desiredState"`
 	// The globally unique identifier of the Firebase Realtime Database instance.
 	// Instance IDs cannot be reused after deletion.
-	//
-	// ***
 	InstanceId string `pulumi:"instanceId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -346,8 +338,6 @@ type DatabaseInstanceArgs struct {
 	DesiredState pulumi.StringPtrInput
 	// The globally unique identifier of the Firebase Realtime Database instance.
 	// Instance IDs cannot be reused after deletion.
-	//
-	// ***
 	InstanceId pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -464,8 +454,6 @@ func (o DatabaseInstanceOutput) DesiredState() pulumi.StringPtrOutput {
 
 // The globally unique identifier of the Firebase Realtime Database instance.
 // Instance IDs cannot be reused after deletion.
-//
-// ***
 func (o DatabaseInstanceOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }

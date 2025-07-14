@@ -419,8 +419,6 @@ type Connection struct {
 	// Structure is documented below.
 	LogConfig ConnectionLogConfigPtrOutput `pulumi:"logConfig"`
 	// Name of Connection needs to be created.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Node configuration for the connection.
 	// Structure is documented below.
@@ -539,8 +537,6 @@ type connectionState struct {
 	// Structure is documented below.
 	LogConfig *ConnectionLogConfig `pulumi:"logConfig"`
 	// Name of Connection needs to be created.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// Node configuration for the connection.
 	// Structure is documented below.
@@ -619,8 +615,6 @@ type ConnectionState struct {
 	// Structure is documented below.
 	LogConfig ConnectionLogConfigPtrInput
 	// Name of Connection needs to be created.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// Node configuration for the connection.
 	// Structure is documented below.
@@ -689,8 +683,6 @@ type connectionArgs struct {
 	// Structure is documented below.
 	LogConfig *ConnectionLogConfig `pulumi:"logConfig"`
 	// Name of Connection needs to be created.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// Node configuration for the connection.
 	// Structure is documented below.
@@ -742,8 +734,6 @@ type ConnectionArgs struct {
 	// Structure is documented below.
 	LogConfig ConnectionLogConfigPtrInput
 	// Name of Connection needs to be created.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// Node configuration for the connection.
 	// Structure is documented below.
@@ -947,8 +937,6 @@ func (o ConnectionOutput) LogConfig() ConnectionLogConfigPtrOutput {
 }
 
 // Name of Connection needs to be created.
-//
-// ***
 func (o ConnectionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

@@ -710,9 +710,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// A reference to the UrlMap resource that defines the mapping from URL
         /// to the BackendService.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("urlMap")]
         public Output<string> UrlMap { get; private set; } = null!;
@@ -898,9 +895,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// A reference to the UrlMap resource that defines the mapping from URL
         /// to the BackendService.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("urlMap", required: true)]
         public Input<string> UrlMap { get; set; } = null!;
@@ -1076,9 +1070,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// A reference to the UrlMap resource that defines the mapping from URL
         /// to the BackendService.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("urlMap")]
         public Input<string>? UrlMap { get; set; }

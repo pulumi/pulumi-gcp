@@ -221,9 +221,6 @@ export class NodeGroup extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The URL of the node template to which this node group belongs.
-     *
-     *
-     * - - -
      */
     public readonly nodeTemplate!: pulumi.Output<string>;
     /**
@@ -346,9 +343,6 @@ export interface NodeGroupState {
     name?: pulumi.Input<string>;
     /**
      * The URL of the node template to which this node group belongs.
-     *
-     *
-     * - - -
      */
     nodeTemplate?: pulumi.Input<string>;
     /**
@@ -416,9 +410,6 @@ export interface NodeGroupArgs {
     name?: pulumi.Input<string>;
     /**
      * The URL of the node template to which this node group belongs.
-     *
-     *
-     * - - -
      */
     nodeTemplate: pulumi.Input<string>;
     /**

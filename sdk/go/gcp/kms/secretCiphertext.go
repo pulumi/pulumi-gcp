@@ -107,8 +107,6 @@ type SecretCiphertext struct {
 	Ciphertext pulumi.StringOutput `pulumi:"ciphertext"`
 	// The full name of the CryptoKey that will be used to encrypt the provided plaintext.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
-	//
-	// ***
 	CryptoKey pulumi.StringOutput `pulumi:"cryptoKey"`
 	// The plaintext to be encrypted.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -169,8 +167,6 @@ type secretCiphertextState struct {
 	Ciphertext *string `pulumi:"ciphertext"`
 	// The full name of the CryptoKey that will be used to encrypt the provided plaintext.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
-	//
-	// ***
 	CryptoKey *string `pulumi:"cryptoKey"`
 	// The plaintext to be encrypted.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -185,8 +181,6 @@ type SecretCiphertextState struct {
 	Ciphertext pulumi.StringPtrInput
 	// The full name of the CryptoKey that will be used to encrypt the provided plaintext.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
-	//
-	// ***
 	CryptoKey pulumi.StringPtrInput
 	// The plaintext to be encrypted.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -203,8 +197,6 @@ type secretCiphertextArgs struct {
 	AdditionalAuthenticatedData *string `pulumi:"additionalAuthenticatedData"`
 	// The full name of the CryptoKey that will be used to encrypt the provided plaintext.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
-	//
-	// ***
 	CryptoKey string `pulumi:"cryptoKey"`
 	// The plaintext to be encrypted.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -218,8 +210,6 @@ type SecretCiphertextArgs struct {
 	AdditionalAuthenticatedData pulumi.StringPtrInput
 	// The full name of the CryptoKey that will be used to encrypt the provided plaintext.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
-	//
-	// ***
 	CryptoKey pulumi.StringInput
 	// The plaintext to be encrypted.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -326,8 +316,6 @@ func (o SecretCiphertextOutput) Ciphertext() pulumi.StringOutput {
 
 // The full name of the CryptoKey that will be used to encrypt the provided plaintext.
 // Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
-//
-// ***
 func (o SecretCiphertextOutput) CryptoKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecretCiphertext) pulumi.StringOutput { return v.CryptoKey }).(pulumi.StringOutput)
 }

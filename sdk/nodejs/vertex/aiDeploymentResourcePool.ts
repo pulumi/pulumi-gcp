@@ -110,9 +110,6 @@ export class AiDeploymentResourcePool extends pulumi.CustomResource {
     public readonly dedicatedResources!: pulumi.Output<outputs.vertex.AiDeploymentResourcePoolDedicatedResources | undefined>;
     /**
      * The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -171,9 +168,6 @@ export interface AiDeploymentResourcePoolState {
     dedicatedResources?: pulumi.Input<inputs.vertex.AiDeploymentResourcePoolDedicatedResources>;
     /**
      * The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -198,9 +192,6 @@ export interface AiDeploymentResourcePoolArgs {
     dedicatedResources?: pulumi.Input<inputs.vertex.AiDeploymentResourcePoolDedicatedResources>;
     /**
      * The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

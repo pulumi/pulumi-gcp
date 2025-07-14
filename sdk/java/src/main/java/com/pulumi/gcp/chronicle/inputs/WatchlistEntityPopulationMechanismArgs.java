@@ -18,16 +18,12 @@ public final class WatchlistEntityPopulationMechanismArgs extends com.pulumi.res
     /**
      * Entities are added manually.
      * 
-     * ***
-     * 
      */
     @Import(name="manual")
     private @Nullable Output<WatchlistEntityPopulationMechanismManualArgs> manual;
 
     /**
      * @return Entities are added manually.
-     * 
-     * ***
      * 
      */
     public Optional<Output<WatchlistEntityPopulationMechanismManualArgs>> manual() {
@@ -61,8 +57,6 @@ public final class WatchlistEntityPopulationMechanismArgs extends com.pulumi.res
         /**
          * @param manual Entities are added manually.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -73,8 +67,6 @@ public final class WatchlistEntityPopulationMechanismArgs extends com.pulumi.res
 
         /**
          * @param manual Entities are added manually.
-         * 
-         * ***
          * 
          * @return builder
          * 

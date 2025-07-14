@@ -220,8 +220,6 @@ public class Enrollment extends com.pulumi.resources.CustomResource {
      * The user-provided ID to be assigned to the Enrollment. It should match the
      * format `^a-z?$`.
      * 
-     * ***
-     * 
      */
     @Export(name="enrollmentId", refs={String.class}, tree="[0]")
     private Output<String> enrollmentId;
@@ -229,8 +227,6 @@ public class Enrollment extends com.pulumi.resources.CustomResource {
     /**
      * @return The user-provided ID to be assigned to the Enrollment. It should match the
      * format `^a-z?$`.
-     * 
-     * ***
      * 
      */
     public Output<String> enrollmentId() {

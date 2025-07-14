@@ -38,9 +38,6 @@ class BranchRuleArgs:
         :param pulumi.Input[builtins.str] include_pattern: The BranchRule matches branches based on the specified regular expression. Use .* to match all branches.
         :param pulumi.Input[builtins.str] location: The location for the Repository.
         :param pulumi.Input[builtins.str] repository_id: The ID for the Repository.
-               
-               
-               - - -
         :param pulumi.Input[builtins.bool] allow_stale_reviews: Determines if allow stale reviews or approvals before merging to the branch.
         :param pulumi.Input[builtins.bool] disabled: Determines if the branch rule is disabled or not.
         :param pulumi.Input[builtins.int] minimum_approvals_count: The minimum number of approvals required for the branch rule to be matched.
@@ -113,9 +110,6 @@ class BranchRuleArgs:
     def repository_id(self) -> pulumi.Input[builtins.str]:
         """
         The ID for the Repository.
-
-
-        - - -
         """
         return pulumi.get(self, "repository_id")
 
@@ -254,9 +248,6 @@ class _BranchRuleState:
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] repository_id: The ID for the Repository.
-               
-               
-               - - -
         :param pulumi.Input[builtins.bool] require_comments_resolved: Determines if require comments resolved before merging to the branch.
         :param pulumi.Input[builtins.bool] require_linear_history: Determines if require linear history before merging to the branch.
         :param pulumi.Input[builtins.bool] require_pull_request: Determines if the branch rule requires a pull request or not.
@@ -422,9 +413,6 @@ class _BranchRuleState:
     def repository_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The ID for the Repository.
-
-
-        - - -
         """
         return pulumi.get(self, "repository_id")
 
@@ -611,9 +599,6 @@ class BranchRule(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] repository_id: The ID for the Repository.
-               
-               
-               - - -
         :param pulumi.Input[builtins.bool] require_comments_resolved: Determines if require comments resolved before merging to the branch.
         :param pulumi.Input[builtins.bool] require_linear_history: Determines if require linear history before merging to the branch.
         :param pulumi.Input[builtins.bool] require_pull_request: Determines if the branch rule requires a pull request or not.
@@ -816,9 +801,6 @@ class BranchRule(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] repository_id: The ID for the Repository.
-               
-               
-               - - -
         :param pulumi.Input[builtins.bool] require_comments_resolved: Determines if require comments resolved before merging to the branch.
         :param pulumi.Input[builtins.bool] require_linear_history: Determines if require linear history before merging to the branch.
         :param pulumi.Input[builtins.bool] require_pull_request: Determines if the branch rule requires a pull request or not.
@@ -933,9 +915,6 @@ class BranchRule(pulumi.CustomResource):
     def repository_id(self) -> pulumi.Output[builtins.str]:
         """
         The ID for the Repository.
-
-
-        - - -
         """
         return pulumi.get(self, "repository_id")
 

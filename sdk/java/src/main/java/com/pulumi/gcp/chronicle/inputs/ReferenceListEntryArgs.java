@@ -17,16 +17,12 @@ public final class ReferenceListEntryArgs extends com.pulumi.resources.ResourceA
     /**
      * Required. The value of the entry. Maximum length is 512 characters.
      * 
-     * ***
-     * 
      */
     @Import(name="value", required=true)
     private Output<String> value;
 
     /**
      * @return Required. The value of the entry. Maximum length is 512 characters.
-     * 
-     * ***
      * 
      */
     public Output<String> value() {
@@ -60,8 +56,6 @@ public final class ReferenceListEntryArgs extends com.pulumi.resources.ResourceA
         /**
          * @param value Required. The value of the entry. Maximum length is 512 characters.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -72,8 +66,6 @@ public final class ReferenceListEntryArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param value Required. The value of the entry. Maximum length is 512 characters.
-         * 
-         * ***
          * 
          * @return builder
          * 

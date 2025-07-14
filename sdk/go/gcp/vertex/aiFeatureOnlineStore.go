@@ -204,8 +204,6 @@ type AiFeatureOnlineStore struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
 	Optimized AiFeatureOnlineStoreOptimizedPtrOutput `pulumi:"optimized"`
@@ -284,8 +282,6 @@ type aiFeatureOnlineStoreState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
 	Optimized *AiFeatureOnlineStoreOptimized `pulumi:"optimized"`
@@ -330,8 +326,6 @@ type AiFeatureOnlineStoreState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
 	Optimized AiFeatureOnlineStoreOptimizedPtrInput
@@ -374,8 +368,6 @@ type aiFeatureOnlineStoreArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
 	Optimized *AiFeatureOnlineStoreOptimized `pulumi:"optimized"`
@@ -408,8 +400,6 @@ type AiFeatureOnlineStoreArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
 	Optimized AiFeatureOnlineStoreOptimizedPtrInput
@@ -561,8 +551,6 @@ func (o AiFeatureOnlineStoreOutput) Labels() pulumi.StringMapOutput {
 }
 
 // The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
-//
-// ***
 func (o AiFeatureOnlineStoreOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiFeatureOnlineStore) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

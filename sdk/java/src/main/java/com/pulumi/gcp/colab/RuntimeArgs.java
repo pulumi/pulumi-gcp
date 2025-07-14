@@ -81,16 +81,12 @@ public final class RuntimeArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The location for the resource: https://cloud.google.com/colab/docs/locations
      * 
-     * ***
-     * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
      * @return The location for the resource: https://cloud.google.com/colab/docs/locations
-     * 
-     * ***
      * 
      */
     public Output<String> location() {
@@ -280,8 +276,6 @@ public final class RuntimeArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param location The location for the resource: https://cloud.google.com/colab/docs/locations
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -292,8 +286,6 @@ public final class RuntimeArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location The location for the resource: https://cloud.google.com/colab/docs/locations
-         * 
-         * ***
          * 
          * @return builder
          * 

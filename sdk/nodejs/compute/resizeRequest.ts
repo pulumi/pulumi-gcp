@@ -154,9 +154,6 @@ export class ResizeRequest extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The reference of the instance group manager this ResizeRequest is a part of.
-     *
-     *
-     * - - -
      */
     public readonly instanceGroupManager!: pulumi.Output<string>;
     /**
@@ -252,9 +249,6 @@ export interface ResizeRequestState {
     description?: pulumi.Input<string>;
     /**
      * The reference of the instance group manager this ResizeRequest is a part of.
-     *
-     *
-     * - - -
      */
     instanceGroupManager?: pulumi.Input<string>;
     /**
@@ -300,9 +294,6 @@ export interface ResizeRequestArgs {
     description?: pulumi.Input<string>;
     /**
      * The reference of the instance group manager this ResizeRequest is a part of.
-     *
-     *
-     * - - -
      */
     instanceGroupManager: pulumi.Input<string>;
     /**

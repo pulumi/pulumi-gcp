@@ -21,8 +21,6 @@ public final class InstanceNetworkPscConfigArgs extends com.pulumi.resources.Res
      * is a shared VPC. If this is not specified, the endpoint would be set up
      * in the VPC host project.
      * 
-     * ***
-     * 
      */
     @Import(name="endpointProject")
     private @Nullable Output<String> endpointProject;
@@ -32,8 +30,6 @@ public final class InstanceNetworkPscConfigArgs extends com.pulumi.resources.Res
      * would be set up. This is optional, and only relevant in case the network
      * is a shared VPC. If this is not specified, the endpoint would be set up
      * in the VPC host project.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> endpointProject() {
@@ -70,8 +66,6 @@ public final class InstanceNetworkPscConfigArgs extends com.pulumi.resources.Res
          * is a shared VPC. If this is not specified, the endpoint would be set up
          * in the VPC host project.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -85,8 +79,6 @@ public final class InstanceNetworkPscConfigArgs extends com.pulumi.resources.Res
          * would be set up. This is optional, and only relevant in case the network
          * is a shared VPC. If this is not specified, the endpoint would be set up
          * in the VPC host project.
-         * 
-         * ***
          * 
          * @return builder
          * 

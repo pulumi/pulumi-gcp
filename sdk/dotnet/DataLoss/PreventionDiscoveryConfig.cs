@@ -81,9 +81,6 @@ namespace Pulumi.Gcp.DataLoss
 
         /// <summary>
         /// Location to create the discovery config in.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -208,9 +205,6 @@ namespace Pulumi.Gcp.DataLoss
 
         /// <summary>
         /// Location to create the discovery config in.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -316,9 +310,6 @@ namespace Pulumi.Gcp.DataLoss
 
         /// <summary>
         /// Location to create the discovery config in.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

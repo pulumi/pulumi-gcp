@@ -53,16 +53,12 @@ public final class AnywhereCacheState extends com.pulumi.resources.ResourceArgs 
     /**
      * A reference to Bucket resource
      * 
-     * ***
-     * 
      */
     @Import(name="bucket")
     private @Nullable Output<String> bucket;
 
     /**
      * @return A reference to Bucket resource
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> bucket() {
@@ -240,8 +236,6 @@ public final class AnywhereCacheState extends com.pulumi.resources.ResourceArgs 
         /**
          * @param bucket A reference to Bucket resource
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -252,8 +246,6 @@ public final class AnywhereCacheState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param bucket A reference to Bucket resource
-         * 
-         * ***
          * 
          * @return builder
          * 

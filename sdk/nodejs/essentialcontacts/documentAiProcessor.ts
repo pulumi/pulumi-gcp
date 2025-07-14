@@ -90,9 +90,6 @@ export class DocumentAiProcessor extends pulumi.CustomResource {
     public readonly kmsKeyName!: pulumi.Output<string | undefined>;
     /**
      * The location of the resource.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -165,9 +162,6 @@ export interface DocumentAiProcessorState {
     kmsKeyName?: pulumi.Input<string>;
     /**
      * The location of the resource.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -199,9 +193,6 @@ export interface DocumentAiProcessorArgs {
     kmsKeyName?: pulumi.Input<string>;
     /**
      * The location of the resource.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

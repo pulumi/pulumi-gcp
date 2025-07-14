@@ -137,9 +137,6 @@ export class CloudExadataInfrastructure extends pulumi.CustomResource {
      * to (^a-z?$) and must be a maximum of 63
      * characters in length. The value must start with a letter and end with
      * a letter or a number.
-     *
-     *
-     * - - -
      */
     public readonly cloudExadataInfrastructureId!: pulumi.Output<string>;
     /**
@@ -259,9 +256,6 @@ export interface CloudExadataInfrastructureState {
      * to (^a-z?$) and must be a maximum of 63
      * characters in length. The value must start with a letter and end with
      * a letter or a number.
-     *
-     *
-     * - - -
      */
     cloudExadataInfrastructureId?: pulumi.Input<string>;
     /**
@@ -327,9 +321,6 @@ export interface CloudExadataInfrastructureArgs {
      * to (^a-z?$) and must be a maximum of 63
      * characters in length. The value must start with a letter and end with
      * a letter or a number.
-     *
-     *
-     * - - -
      */
     cloudExadataInfrastructureId: pulumi.Input<string>;
     deletionProtection?: pulumi.Input<boolean>;

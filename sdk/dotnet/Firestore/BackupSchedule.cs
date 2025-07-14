@@ -148,9 +148,6 @@ namespace Pulumi.Gcp.Firestore
         /// At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
         /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         /// You can set this to a value up to 14 weeks.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("retention")]
         public Output<string> Retention { get; private set; } = null!;
@@ -231,9 +228,6 @@ namespace Pulumi.Gcp.Firestore
         /// At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
         /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         /// You can set this to a value up to 14 weeks.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("retention", required: true)]
         public Input<string> Retention { get; set; } = null!;
@@ -283,9 +277,6 @@ namespace Pulumi.Gcp.Firestore
         /// At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
         /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         /// You can set this to a value up to 14 weeks.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("retention")]
         public Input<string>? Retention { get; set; }

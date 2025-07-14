@@ -69,9 +69,6 @@ class URLMapArgs:
                `a-z?` which means the first character must be a lowercase
                letter, and all following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherArgs']]] path_matchers: The list of named PathMatchers to use against the URL.
                Structure is documented below.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -219,9 +216,6 @@ class URLMapArgs:
         `a-z?` which means the first character must be a lowercase
         letter, and all following characters must be a dash, lowercase letter, or digit,
         except the last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -329,9 +323,6 @@ class _URLMapState:
                `a-z?` which means the first character must be a lowercase
                letter, and all following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherArgs']]] path_matchers: The list of named PathMatchers to use against the URL.
                Structure is documented below.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -525,9 +516,6 @@ class _URLMapState:
         `a-z?` which means the first character must be a lowercase
         letter, and all following characters must be a dash, lowercase letter, or digit,
         except the last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -1854,9 +1842,6 @@ class URLMap(pulumi.CustomResource):
                `a-z?` which means the first character must be a lowercase
                letter, and all following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[Union['URLMapPathMatcherArgs', 'URLMapPathMatcherArgsDict']]]] path_matchers: The list of named PathMatchers to use against the URL.
                Structure is documented below.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -3203,9 +3188,6 @@ class URLMap(pulumi.CustomResource):
                `a-z?` which means the first character must be a lowercase
                letter, and all following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[Union['URLMapPathMatcherArgs', 'URLMapPathMatcherArgsDict']]]] path_matchers: The list of named PathMatchers to use against the URL.
                Structure is documented below.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -3349,9 +3331,6 @@ class URLMap(pulumi.CustomResource):
         `a-z?` which means the first character must be a lowercase
         letter, and all following characters must be a dash, lowercase letter, or digit,
         except the last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

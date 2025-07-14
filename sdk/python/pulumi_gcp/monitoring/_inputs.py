@@ -1839,8 +1839,6 @@ if not MYPY:
         """
         The name of the column containing the boolean value. If the value in a row is
         NULL, that row is ignored.
-
-        - - -
         """
 elif False:
     AlertPolicyConditionConditionSqlBooleanTestArgsDict: TypeAlias = Mapping[str, Any]
@@ -1852,8 +1850,6 @@ class AlertPolicyConditionConditionSqlBooleanTestArgs:
         """
         :param pulumi.Input[builtins.str] column: The name of the column containing the boolean value. If the value in a row is
                NULL, that row is ignored.
-               
-               - - -
         """
         pulumi.set(__self__, "column", column)
 
@@ -1863,8 +1859,6 @@ class AlertPolicyConditionConditionSqlBooleanTestArgs:
         """
         The name of the column containing the boolean value. If the value in a row is
         NULL, that row is ignored.
-
-        - - -
         """
         return pulumi.get(self, "column")
 

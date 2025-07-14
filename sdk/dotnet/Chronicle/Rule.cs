@@ -204,9 +204,6 @@ namespace Pulumi.Gcp.Chronicle
 
         /// <summary>
         /// The unique identifier for the Chronicle instance, which is the same as the customer ID.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("instance")]
         public Output<string> Instance { get; private set; } = null!;
@@ -385,9 +382,6 @@ namespace Pulumi.Gcp.Chronicle
 
         /// <summary>
         /// The unique identifier for the Chronicle instance, which is the same as the customer ID.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("instance", required: true)]
         public Input<string> Instance { get; set; } = null!;
@@ -534,9 +528,6 @@ namespace Pulumi.Gcp.Chronicle
 
         /// <summary>
         /// The unique identifier for the Chronicle instance, which is the same as the customer ID.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("instance")]
         public Input<string>? Instance { get; set; }

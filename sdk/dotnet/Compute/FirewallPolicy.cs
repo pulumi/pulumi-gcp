@@ -95,9 +95,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The parent of the firewall policy.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
@@ -182,9 +179,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The parent of the firewall policy.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
@@ -237,9 +231,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The parent of the firewall policy.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }

@@ -861,6 +861,7 @@ type PreventionJobTrigger struct {
 	// User set display name of the job trigger.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// Controls what and how to inspect for findings.
+	// Structure is documented below.
 	InspectJob PreventionJobTriggerInspectJobPtrOutput `pulumi:"inspectJob"`
 	// The timestamp of the last time this trigger executed.
 	LastRunTime pulumi.StringOutput `pulumi:"lastRunTime"`
@@ -869,10 +870,13 @@ type PreventionJobTrigger struct {
 	// The parent of the trigger, either in the format `projects/{{project}}`
 	// or `projects/{{project}}/locations/{{location}}`
 	Parent pulumi.StringOutput `pulumi:"parent"`
-	// Whether the trigger is currently active. Default value: "HEALTHY" Possible values: ["PAUSED", "HEALTHY", "CANCELLED"]
+	// Whether the trigger is currently active.
+	// Default value is `HEALTHY`.
+	// Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
 	Status pulumi.StringPtrOutput `pulumi:"status"`
-	// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
-	// expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+	// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
+	// that is, it must match the regular expression: [a-zA-Z\d-_]+.
+	// The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	TriggerId pulumi.StringOutput `pulumi:"triggerId"`
 	// What event needs to occur for a new job to be started.
 	// Structure is documented below.
@@ -924,6 +928,7 @@ type preventionJobTriggerState struct {
 	// User set display name of the job trigger.
 	DisplayName *string `pulumi:"displayName"`
 	// Controls what and how to inspect for findings.
+	// Structure is documented below.
 	InspectJob *PreventionJobTriggerInspectJob `pulumi:"inspectJob"`
 	// The timestamp of the last time this trigger executed.
 	LastRunTime *string `pulumi:"lastRunTime"`
@@ -932,10 +937,13 @@ type preventionJobTriggerState struct {
 	// The parent of the trigger, either in the format `projects/{{project}}`
 	// or `projects/{{project}}/locations/{{location}}`
 	Parent *string `pulumi:"parent"`
-	// Whether the trigger is currently active. Default value: "HEALTHY" Possible values: ["PAUSED", "HEALTHY", "CANCELLED"]
+	// Whether the trigger is currently active.
+	// Default value is `HEALTHY`.
+	// Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
 	Status *string `pulumi:"status"`
-	// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
-	// expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+	// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
+	// that is, it must match the regular expression: [a-zA-Z\d-_]+.
+	// The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	TriggerId *string `pulumi:"triggerId"`
 	// What event needs to occur for a new job to be started.
 	// Structure is documented below.
@@ -952,6 +960,7 @@ type PreventionJobTriggerState struct {
 	// User set display name of the job trigger.
 	DisplayName pulumi.StringPtrInput
 	// Controls what and how to inspect for findings.
+	// Structure is documented below.
 	InspectJob PreventionJobTriggerInspectJobPtrInput
 	// The timestamp of the last time this trigger executed.
 	LastRunTime pulumi.StringPtrInput
@@ -960,10 +969,13 @@ type PreventionJobTriggerState struct {
 	// The parent of the trigger, either in the format `projects/{{project}}`
 	// or `projects/{{project}}/locations/{{location}}`
 	Parent pulumi.StringPtrInput
-	// Whether the trigger is currently active. Default value: "HEALTHY" Possible values: ["PAUSED", "HEALTHY", "CANCELLED"]
+	// Whether the trigger is currently active.
+	// Default value is `HEALTHY`.
+	// Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
 	Status pulumi.StringPtrInput
-	// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
-	// expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+	// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
+	// that is, it must match the regular expression: [a-zA-Z\d-_]+.
+	// The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	TriggerId pulumi.StringPtrInput
 	// What event needs to occur for a new job to be started.
 	// Structure is documented below.
@@ -982,14 +994,18 @@ type preventionJobTriggerArgs struct {
 	// User set display name of the job trigger.
 	DisplayName *string `pulumi:"displayName"`
 	// Controls what and how to inspect for findings.
+	// Structure is documented below.
 	InspectJob *PreventionJobTriggerInspectJob `pulumi:"inspectJob"`
 	// The parent of the trigger, either in the format `projects/{{project}}`
 	// or `projects/{{project}}/locations/{{location}}`
 	Parent string `pulumi:"parent"`
-	// Whether the trigger is currently active. Default value: "HEALTHY" Possible values: ["PAUSED", "HEALTHY", "CANCELLED"]
+	// Whether the trigger is currently active.
+	// Default value is `HEALTHY`.
+	// Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
 	Status *string `pulumi:"status"`
-	// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
-	// expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+	// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
+	// that is, it must match the regular expression: [a-zA-Z\d-_]+.
+	// The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	TriggerId *string `pulumi:"triggerId"`
 	// What event needs to occur for a new job to be started.
 	// Structure is documented below.
@@ -1003,14 +1019,18 @@ type PreventionJobTriggerArgs struct {
 	// User set display name of the job trigger.
 	DisplayName pulumi.StringPtrInput
 	// Controls what and how to inspect for findings.
+	// Structure is documented below.
 	InspectJob PreventionJobTriggerInspectJobPtrInput
 	// The parent of the trigger, either in the format `projects/{{project}}`
 	// or `projects/{{project}}/locations/{{location}}`
 	Parent pulumi.StringInput
-	// Whether the trigger is currently active. Default value: "HEALTHY" Possible values: ["PAUSED", "HEALTHY", "CANCELLED"]
+	// Whether the trigger is currently active.
+	// Default value is `HEALTHY`.
+	// Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
 	Status pulumi.StringPtrInput
-	// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
-	// expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+	// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
+	// that is, it must match the regular expression: [a-zA-Z\d-_]+.
+	// The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	TriggerId pulumi.StringPtrInput
 	// What event needs to occur for a new job to be started.
 	// Structure is documented below.
@@ -1120,6 +1140,7 @@ func (o PreventionJobTriggerOutput) DisplayName() pulumi.StringPtrOutput {
 }
 
 // Controls what and how to inspect for findings.
+// Structure is documented below.
 func (o PreventionJobTriggerOutput) InspectJob() PreventionJobTriggerInspectJobPtrOutput {
 	return o.ApplyT(func(v *PreventionJobTrigger) PreventionJobTriggerInspectJobPtrOutput { return v.InspectJob }).(PreventionJobTriggerInspectJobPtrOutput)
 }
@@ -1140,13 +1161,16 @@ func (o PreventionJobTriggerOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *PreventionJobTrigger) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }
 
-// Whether the trigger is currently active. Default value: "HEALTHY" Possible values: ["PAUSED", "HEALTHY", "CANCELLED"]
+// Whether the trigger is currently active.
+// Default value is `HEALTHY`.
+// Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
 func (o PreventionJobTriggerOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionJobTrigger) pulumi.StringPtrOutput { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
-// expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
+// that is, it must match the regular expression: [a-zA-Z\d-_]+.
+// The maximum length is 100 characters. Can be empty to allow the system to generate one.
 func (o PreventionJobTriggerOutput) TriggerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PreventionJobTrigger) pulumi.StringOutput { return v.TriggerId }).(pulumi.StringOutput)
 }

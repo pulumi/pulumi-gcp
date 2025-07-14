@@ -217,16 +217,12 @@ public class ReleaseChannelSetting extends com.pulumi.resources.CustomResource {
     /**
      * Id of the Release Channel Setting.
      * 
-     * ***
-     * 
      */
     @Export(name="releaseChannelSettingId", refs={String.class}, tree="[0]")
     private Output<String> releaseChannelSettingId;
 
     /**
      * @return Id of the Release Channel Setting.
-     * 
-     * ***
      * 
      */
     public Output<String> releaseChannelSettingId() {

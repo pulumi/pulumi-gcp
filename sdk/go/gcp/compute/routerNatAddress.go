@@ -72,8 +72,6 @@ type RouterNatAddress struct {
 	// The name of the Cloud Router in which the referenced NAT service is configured.
 	Router pulumi.StringOutput `pulumi:"router"`
 	// The name of the Nat service in which this address will be configured.
-	//
-	// ***
 	RouterNat pulumi.StringOutput `pulumi:"routerNat"`
 }
 
@@ -130,8 +128,6 @@ type routerNatAddressState struct {
 	// The name of the Cloud Router in which the referenced NAT service is configured.
 	Router *string `pulumi:"router"`
 	// The name of the Nat service in which this address will be configured.
-	//
-	// ***
 	RouterNat *string `pulumi:"routerNat"`
 }
 
@@ -150,8 +146,6 @@ type RouterNatAddressState struct {
 	// The name of the Cloud Router in which the referenced NAT service is configured.
 	Router pulumi.StringPtrInput
 	// The name of the Nat service in which this address will be configured.
-	//
-	// ***
 	RouterNat pulumi.StringPtrInput
 }
 
@@ -174,8 +168,6 @@ type routerNatAddressArgs struct {
 	// The name of the Cloud Router in which the referenced NAT service is configured.
 	Router string `pulumi:"router"`
 	// The name of the Nat service in which this address will be configured.
-	//
-	// ***
 	RouterNat string `pulumi:"routerNat"`
 }
 
@@ -195,8 +187,6 @@ type RouterNatAddressArgs struct {
 	// The name of the Cloud Router in which the referenced NAT service is configured.
 	Router pulumi.StringInput
 	// The name of the Nat service in which this address will be configured.
-	//
-	// ***
 	RouterNat pulumi.StringInput
 }
 
@@ -316,8 +306,6 @@ func (o RouterNatAddressOutput) Router() pulumi.StringOutput {
 }
 
 // The name of the Nat service in which this address will be configured.
-//
-// ***
 func (o RouterNatAddressOutput) RouterNat() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterNatAddress) pulumi.StringOutput { return v.RouterNat }).(pulumi.StringOutput)
 }

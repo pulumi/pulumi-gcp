@@ -94,9 +94,6 @@ namespace Pulumi.Gcp.SecurityCenter
         /// This must be unique within the organization.  It must consist of only lowercase letters,
         /// numbers, and hyphens, must start with a letter, must end with either a letter or a number,
         /// and must be 63 characters or less.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("bigQueryExportId")]
         public Output<string> BigQueryExportId { get; private set; } = null!;
@@ -239,9 +236,6 @@ namespace Pulumi.Gcp.SecurityCenter
         /// This must be unique within the organization.  It must consist of only lowercase letters,
         /// numbers, and hyphens, must start with a letter, must end with either a letter or a number,
         /// and must be 63 characters or less.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("bigQueryExportId", required: true)]
         public Input<string> BigQueryExportId { get; set; } = null!;
@@ -309,9 +303,6 @@ namespace Pulumi.Gcp.SecurityCenter
         /// This must be unique within the organization.  It must consist of only lowercase letters,
         /// numbers, and hyphens, must start with a letter, must end with either a letter or a number,
         /// and must be 63 characters or less.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("bigQueryExportId")]
         public Input<string>? BigQueryExportId { get; set; }

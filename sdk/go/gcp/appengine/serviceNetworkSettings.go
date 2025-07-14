@@ -120,7 +120,9 @@ type ServiceNetworkSettings struct {
 	// Ingress settings for this service. Will apply to all versions.
 	// Structure is documented below.
 	NetworkSettings ServiceNetworkSettingsNetworkSettingsOutput `pulumi:"networkSettings"`
-	Project         pulumi.StringOutput                         `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The name of the service these settings apply to.
 	Service pulumi.StringOutput `pulumi:"service"`
 }
@@ -164,7 +166,9 @@ type serviceNetworkSettingsState struct {
 	// Ingress settings for this service. Will apply to all versions.
 	// Structure is documented below.
 	NetworkSettings *ServiceNetworkSettingsNetworkSettings `pulumi:"networkSettings"`
-	Project         *string                                `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// The name of the service these settings apply to.
 	Service *string `pulumi:"service"`
 }
@@ -173,7 +177,9 @@ type ServiceNetworkSettingsState struct {
 	// Ingress settings for this service. Will apply to all versions.
 	// Structure is documented below.
 	NetworkSettings ServiceNetworkSettingsNetworkSettingsPtrInput
-	Project         pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// The name of the service these settings apply to.
 	Service pulumi.StringPtrInput
 }
@@ -186,7 +192,9 @@ type serviceNetworkSettingsArgs struct {
 	// Ingress settings for this service. Will apply to all versions.
 	// Structure is documented below.
 	NetworkSettings ServiceNetworkSettingsNetworkSettings `pulumi:"networkSettings"`
-	Project         *string                               `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// The name of the service these settings apply to.
 	Service string `pulumi:"service"`
 }
@@ -196,7 +204,9 @@ type ServiceNetworkSettingsArgs struct {
 	// Ingress settings for this service. Will apply to all versions.
 	// Structure is documented below.
 	NetworkSettings ServiceNetworkSettingsNetworkSettingsInput
-	Project         pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// The name of the service these settings apply to.
 	Service pulumi.StringInput
 }
@@ -294,6 +304,8 @@ func (o ServiceNetworkSettingsOutput) NetworkSettings() ServiceNetworkSettingsNe
 	return o.ApplyT(func(v *ServiceNetworkSettings) ServiceNetworkSettingsNetworkSettingsOutput { return v.NetworkSettings }).(ServiceNetworkSettingsNetworkSettingsOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o ServiceNetworkSettingsOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceNetworkSettings) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

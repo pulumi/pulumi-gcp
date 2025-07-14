@@ -237,16 +237,12 @@ public final class ActiveDirectoryState extends com.pulumi.resources.ResourceArg
     /**
      * The resource name of the Active Directory pool. Needs to be unique per location.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return The resource name of the Active Directory pool. Needs to be unique per location.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -796,8 +792,6 @@ public final class ActiveDirectoryState extends com.pulumi.resources.ResourceArg
         /**
          * @param name The resource name of the Active Directory pool. Needs to be unique per location.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -808,8 +802,6 @@ public final class ActiveDirectoryState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param name The resource name of the Active Directory pool. Needs to be unique per location.
-         * 
-         * ***
          * 
          * @return builder
          * 

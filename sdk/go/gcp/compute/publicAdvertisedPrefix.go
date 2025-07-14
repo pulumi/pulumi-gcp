@@ -111,8 +111,6 @@ type PublicAdvertisedPrefix struct {
 	// The IPv4 address to be used for reverse DNS verification.
 	DnsVerificationIp pulumi.StringOutput `pulumi:"dnsVerificationIp"`
 	// The address range, in CIDR format, represented by this public advertised prefix.
-	//
-	// ***
 	IpCidrRange pulumi.StringOutput `pulumi:"ipCidrRange"`
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -179,8 +177,6 @@ type publicAdvertisedPrefixState struct {
 	// The IPv4 address to be used for reverse DNS verification.
 	DnsVerificationIp *string `pulumi:"dnsVerificationIp"`
 	// The address range, in CIDR format, represented by this public advertised prefix.
-	//
-	// ***
 	IpCidrRange *string `pulumi:"ipCidrRange"`
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -212,8 +208,6 @@ type PublicAdvertisedPrefixState struct {
 	// The IPv4 address to be used for reverse DNS verification.
 	DnsVerificationIp pulumi.StringPtrInput
 	// The address range, in CIDR format, represented by this public advertised prefix.
-	//
-	// ***
 	IpCidrRange pulumi.StringPtrInput
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -249,8 +243,6 @@ type publicAdvertisedPrefixArgs struct {
 	// The IPv4 address to be used for reverse DNS verification.
 	DnsVerificationIp string `pulumi:"dnsVerificationIp"`
 	// The address range, in CIDR format, represented by this public advertised prefix.
-	//
-	// ***
 	IpCidrRange string `pulumi:"ipCidrRange"`
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -279,8 +271,6 @@ type PublicAdvertisedPrefixArgs struct {
 	// The IPv4 address to be used for reverse DNS verification.
 	DnsVerificationIp pulumi.StringInput
 	// The address range, in CIDR format, represented by this public advertised prefix.
-	//
-	// ***
 	IpCidrRange pulumi.StringInput
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -400,8 +390,6 @@ func (o PublicAdvertisedPrefixOutput) DnsVerificationIp() pulumi.StringOutput {
 }
 
 // The address range, in CIDR format, represented by this public advertised prefix.
-//
-// ***
 func (o PublicAdvertisedPrefixOutput) IpCidrRange() pulumi.StringOutput {
 	return o.ApplyT(func(v *PublicAdvertisedPrefix) pulumi.StringOutput { return v.IpCidrRange }).(pulumi.StringOutput)
 }

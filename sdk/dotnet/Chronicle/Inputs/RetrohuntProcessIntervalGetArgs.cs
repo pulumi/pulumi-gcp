@@ -14,8 +14,6 @@ namespace Pulumi.Gcp.Chronicle.Inputs
     {
         /// <summary>
         /// Exclusive end of the interval.
-        /// 
-        /// - - -
         /// </summary>
         [Input("endTime", required: true)]
         public Input<string> EndTime { get; set; } = null!;

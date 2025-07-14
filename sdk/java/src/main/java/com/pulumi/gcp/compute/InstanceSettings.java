@@ -143,16 +143,12 @@ public class InstanceSettings extends com.pulumi.resources.CustomResource {
     /**
      * A reference to the zone where the machine resides.
      * 
-     * ***
-     * 
      */
     @Export(name="zone", refs={String.class}, tree="[0]")
     private Output<String> zone;
 
     /**
      * @return A reference to the zone where the machine resides.
-     * 
-     * ***
      * 
      */
     public Output<String> zone() {

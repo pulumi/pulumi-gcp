@@ -771,9 +771,6 @@ namespace Pulumi.Gcp.NetworkConnectivity
 
         /// <summary>
         /// The location for the resource
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -943,9 +940,6 @@ namespace Pulumi.Gcp.NetworkConnectivity
 
         /// <summary>
         /// The location for the resource
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -1062,9 +1056,6 @@ namespace Pulumi.Gcp.NetworkConnectivity
 
         /// <summary>
         /// The location for the resource
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

@@ -265,9 +265,6 @@ namespace Pulumi.Gcp.Chronicle
         /// Required. The user provided scope id which will become the last part of the name
         /// of the scope resource.
         /// Needs to be compliant with https://google.aip.dev/122
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("dataAccessScopeId")]
         public Output<string> DataAccessScopeId { get; private set; } = null!;
@@ -415,9 +412,6 @@ namespace Pulumi.Gcp.Chronicle
         /// Required. The user provided scope id which will become the last part of the name
         /// of the scope resource.
         /// Needs to be compliant with https://google.aip.dev/122
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("dataAccessScopeId", required: true)]
         public Input<string> DataAccessScopeId { get; set; } = null!;
@@ -519,9 +513,6 @@ namespace Pulumi.Gcp.Chronicle
         /// Required. The user provided scope id which will become the last part of the name
         /// of the scope resource.
         /// Needs to be compliant with https://google.aip.dev/122
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("dataAccessScopeId")]
         public Input<string>? DataAccessScopeId { get; set; }

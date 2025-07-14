@@ -96,8 +96,6 @@ type RuleDeployment struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The Rule ID of the rule.
-	//
-	// ***
 	Rule pulumi.StringOutput `pulumi:"rule"`
 	// The run frequency of the rule deployment.
 	// Possible values:
@@ -194,8 +192,6 @@ type ruleDeploymentState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The Rule ID of the rule.
-	//
-	// ***
 	Rule *string `pulumi:"rule"`
 	// The run frequency of the rule deployment.
 	// Possible values:
@@ -254,8 +250,6 @@ type RuleDeploymentState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The Rule ID of the rule.
-	//
-	// ***
 	Rule pulumi.StringPtrInput
 	// The run frequency of the rule deployment.
 	// Possible values:
@@ -291,8 +285,6 @@ type ruleDeploymentArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The Rule ID of the rule.
-	//
-	// ***
 	Rule string `pulumi:"rule"`
 	// The run frequency of the rule deployment.
 	// Possible values:
@@ -325,8 +317,6 @@ type RuleDeploymentArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The Rule ID of the rule.
-	//
-	// ***
 	Rule pulumi.StringInput
 	// The run frequency of the rule deployment.
 	// Possible values:
@@ -507,8 +497,6 @@ func (o RuleDeploymentOutput) Project() pulumi.StringOutput {
 }
 
 // The Rule ID of the rule.
-//
-// ***
 func (o RuleDeploymentOutput) Rule() pulumi.StringOutput {
 	return o.ApplyT(func(v *RuleDeployment) pulumi.StringOutput { return v.Rule }).(pulumi.StringOutput)
 }

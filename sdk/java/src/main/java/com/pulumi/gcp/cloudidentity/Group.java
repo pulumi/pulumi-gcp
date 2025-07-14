@@ -123,14 +123,16 @@ public class Group extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * An extended description to help users determine the purpose of a Group. Must not be longer than 4,096 characters.
+     * An extended description to help users determine the purpose of a Group.
+     * Must not be longer than 4,096 characters.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return An extended description to help users determine the purpose of a Group. Must not be longer than 4,096 characters.
+     * @return An extended description to help users determine the purpose of a Group.
+     * Must not be longer than 4,096 characters.
      * 
      */
     public Output<Optional<String>> description() {
@@ -167,18 +169,24 @@ public class Group extends com.pulumi.resources.CustomResource {
         return this.groupKey;
     }
     /**
-     * The initial configuration options for creating a Group. See the [API
-     * reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig) for possible
-     * values. Default value: &#34;EMPTY&#34; Possible values: [&#34;INITIAL_GROUP_CONFIG_UNSPECIFIED&#34;, &#34;WITH_INITIAL_OWNER&#34;, &#34;EMPTY&#34;]
+     * The initial configuration options for creating a Group.
+     * See the
+     * [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
+     * for possible values.
+     * Default value is `EMPTY`.
+     * Possible values are: `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, `EMPTY`.
      * 
      */
     @Export(name="initialGroupConfig", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> initialGroupConfig;
 
     /**
-     * @return The initial configuration options for creating a Group. See the [API
-     * reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig) for possible
-     * values. Default value: &#34;EMPTY&#34; Possible values: [&#34;INITIAL_GROUP_CONFIG_UNSPECIFIED&#34;, &#34;WITH_INITIAL_OWNER&#34;, &#34;EMPTY&#34;]
+     * @return The initial configuration options for creating a Group.
+     * See the
+     * [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
+     * for possible values.
+     * Default value is `EMPTY`.
+     * Possible values are: `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, `EMPTY`.
      * 
      */
     public Output<Optional<String>> initialGroupConfig() {

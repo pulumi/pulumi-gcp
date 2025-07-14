@@ -19,8 +19,6 @@ public final class InterconnectAttachmentGroupIntentArgs extends com.pulumi.reso
      * Which SLA the user intends this group to support.
      * Possible values are: `PRODUCTION_NON_CRITICAL`, `PRODUCTION_CRITICAL`, `NO_SLA`, `AVAILABILITY_SLA_UNSPECIFIED`.
      * 
-     * ***
-     * 
      */
     @Import(name="availabilitySla")
     private @Nullable Output<String> availabilitySla;
@@ -28,8 +26,6 @@ public final class InterconnectAttachmentGroupIntentArgs extends com.pulumi.reso
     /**
      * @return Which SLA the user intends this group to support.
      * Possible values are: `PRODUCTION_NON_CRITICAL`, `PRODUCTION_CRITICAL`, `NO_SLA`, `AVAILABILITY_SLA_UNSPECIFIED`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> availabilitySla() {
@@ -64,8 +60,6 @@ public final class InterconnectAttachmentGroupIntentArgs extends com.pulumi.reso
          * @param availabilitySla Which SLA the user intends this group to support.
          * Possible values are: `PRODUCTION_NON_CRITICAL`, `PRODUCTION_CRITICAL`, `NO_SLA`, `AVAILABILITY_SLA_UNSPECIFIED`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -77,8 +71,6 @@ public final class InterconnectAttachmentGroupIntentArgs extends com.pulumi.reso
         /**
          * @param availabilitySla Which SLA the user intends this group to support.
          * Possible values are: `PRODUCTION_NON_CRITICAL`, `PRODUCTION_CRITICAL`, `NO_SLA`, `AVAILABILITY_SLA_UNSPECIFIED`.
-         * 
-         * ***
          * 
          * @return builder
          * 

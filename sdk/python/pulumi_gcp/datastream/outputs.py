@@ -2607,8 +2607,6 @@ class StreamDestinationConfigBigqueryDestinationConfigBlmtConfig(dict):
         :param builtins.str file_format: The file format.
         :param builtins.str table_format: The table format.
         :param builtins.str root_path: The root path inside the Cloud Storage bucket.
-               
-               - - -
         """
         pulumi.set(__self__, "bucket", bucket)
         pulumi.set(__self__, "connection_name", connection_name)
@@ -2654,8 +2652,6 @@ class StreamDestinationConfigBigqueryDestinationConfigBlmtConfig(dict):
     def root_path(self) -> Optional[builtins.str]:
         """
         The root path inside the Cloud Storage bucket.
-
-        - - -
         """
         return pulumi.get(self, "root_path")
 

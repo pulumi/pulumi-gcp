@@ -134,9 +134,6 @@ export class Backup extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -290,9 +287,6 @@ export interface BackupState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -361,9 +355,6 @@ export interface BackupArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

@@ -31,9 +31,6 @@ class AiDeploymentResourcePoolArgs:
         :param pulumi.Input['AiDeploymentResourcePoolDedicatedResourcesArgs'] dedicated_resources: The underlying dedicated resources that the deployment resource pool uses.
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] region: The region of deployment resource pool. eg us-central1
@@ -65,9 +62,6 @@ class AiDeploymentResourcePoolArgs:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -115,9 +109,6 @@ class _AiDeploymentResourcePoolState:
         :param pulumi.Input['AiDeploymentResourcePoolDedicatedResourcesArgs'] dedicated_resources: The underlying dedicated resources that the deployment resource pool uses.
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] region: The region of deployment resource pool. eg us-central1
@@ -163,9 +154,6 @@ class _AiDeploymentResourcePoolState:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -279,9 +267,6 @@ class AiDeploymentResourcePool(pulumi.CustomResource):
         :param pulumi.Input[Union['AiDeploymentResourcePoolDedicatedResourcesArgs', 'AiDeploymentResourcePoolDedicatedResourcesArgsDict']] dedicated_resources: The underlying dedicated resources that the deployment resource pool uses.
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] region: The region of deployment resource pool. eg us-central1
@@ -415,9 +400,6 @@ class AiDeploymentResourcePool(pulumi.CustomResource):
         :param pulumi.Input[Union['AiDeploymentResourcePoolDedicatedResourcesArgs', 'AiDeploymentResourcePoolDedicatedResourcesArgsDict']] dedicated_resources: The underlying dedicated resources that the deployment resource pool uses.
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] region: The region of deployment resource pool. eg us-central1
@@ -455,9 +437,6 @@ class AiDeploymentResourcePool(pulumi.CustomResource):
     def name(self) -> pulumi.Output[builtins.str]:
         """
         The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

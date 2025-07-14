@@ -24,6 +24,7 @@ class SecretArgs:
     def __init__(__self__, *,
                  replication: pulumi.Input['SecretReplicationArgs'],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+                 deletion_protection: Optional[pulumi.Input[builtins.bool]] = None,
                  expire_time: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
@@ -38,43 +39,61 @@ class SecretArgs:
         :param pulumi.Input['SecretReplicationArgs'] replication: The replication policy of the secret data attached to the Secret. It cannot be changed
                after the Secret has been created.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Custom metadata about the secret. Annotations are distinct from various forms of labels. Annotations exist to allow
-               client tools to store their own state information without requiring a database. Annotation keys must be between 1 and 63
-               characters long, have a UTF-8 encoding of maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]),
-               and may have dashes (-), underscores (_), dots (.), and alphanumerics in between these symbols. The total size of
-               annotation keys and values must be less than 16KiB. An object containing a list of "key": value pairs. Example: {
-               "name": "wrench", "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the
-               annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
-               present on the resource.
-        :param pulumi.Input[builtins.str] expire_time: Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent
-               on input. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-               Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z". Only one of 'expire_time' or 'ttl' can be
-               provided.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
-               maximum 128 bytes, and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}][\\p{Ll}\\p{Lo}\\p{N}_-]{0,62}
-               Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to
-               the following PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63} No more than 64 labels can be assigned to a given
-               resource. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3"
-               }. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
-               refer to the field 'effective_labels' for all of the labels present on the resource.
-        :param pulumi.Input['SecretRotationArgs'] rotation: The rotation time and period for a Secret. At 'next_rotation_time', Secret Manager will send a Pub/Sub notification to
-               the topics configured on the Secret. 'topics' must be set to configure rotation.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Custom metadata about the secret.
+               Annotations are distinct from various forms of labels. Annotations exist to allow
+               client tools to store their own state information without requiring a database.
+               Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+               maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and
+               may have dashes (-), underscores (_), dots (.), and alphanumerics in between these
+               symbols.
+               The total size of annotation keys and values must be less than 16KiB.
+               An object containing a list of "key": value pairs. Example:
+               { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[builtins.str] expire_time: Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+               Only one of `expire_time` or `ttl` can be provided.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: The labels assigned to this Secret.
+               Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+               and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}][\\p{Ll}\\p{Lo}\\p{N}_-]{0,62}
+               Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+               and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63}
+               No more than 64 labels can be assigned to a given resource.
+               An object containing a list of "key": value pairs. Example:
+               { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input['SecretRotationArgs'] rotation: The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] secret_id: This must be unique within the project.
-        :param pulumi.Input[Sequence[pulumi.Input['SecretTopicArgs']]] topics: A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret
-               or its versions.
-        :param pulumi.Input[builtins.str] ttl: The TTL for the Secret. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-               Only one of 'ttl' or 'expire_time' can be provided.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] version_aliases: Mapping from version alias to version name. A version alias is a string with a maximum length of 63 characters and can
-               contain uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_') characters. An alias string
-               must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given
-               secret. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-        :param pulumi.Input[builtins.str] version_destroy_ttl: Secret Version TTL after destruction request. This is a part of the delayed delete feature on Secret Version. For secret
-               with versionDestroyTtl>0, version destruction doesn't happen immediately on calling destroy instead the version goes to
-               a disabled state and the actual destruction happens after this TTL expires.
+        :param pulumi.Input[Sequence[pulumi.Input['SecretTopicArgs']]] topics: A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] ttl: The TTL for the Secret.
+               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+               Only one of `ttl` or `expire_time` can be provided.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] version_aliases: Mapping from version alias to version name.
+               A version alias is a string with a maximum length of 63 characters and can contain
+               uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_')
+               characters. An alias string must start with a letter and cannot be the string
+               'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret.
+               An object containing a list of "key": value pairs. Example:
+               { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        :param pulumi.Input[builtins.str] version_destroy_ttl: Secret Version TTL after destruction request.
+               This is a part of the delayed delete feature on Secret Version.
+               For secret with versionDestroyTtl>0, version destruction doesn't happen immediately
+               on calling destroy instead the version goes to a disabled state and
+               the actual destruction happens after this TTL expires.
         """
         pulumi.set(__self__, "replication", replication)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if expire_time is not None:
             pulumi.set(__self__, "expire_time", expire_time)
         if labels is not None:
@@ -112,14 +131,19 @@ class SecretArgs:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Custom metadata about the secret. Annotations are distinct from various forms of labels. Annotations exist to allow
-        client tools to store their own state information without requiring a database. Annotation keys must be between 1 and 63
-        characters long, have a UTF-8 encoding of maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]),
-        and may have dashes (-), underscores (_), dots (.), and alphanumerics in between these symbols. The total size of
-        annotation keys and values must be less than 16KiB. An object containing a list of "key": value pairs. Example: {
-        "name": "wrench", "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the
-        annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
-        present on the resource.
+        Custom metadata about the secret.
+        Annotations are distinct from various forms of labels. Annotations exist to allow
+        client tools to store their own state information without requiring a database.
+        Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+        maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and
+        may have dashes (-), underscores (_), dots (.), and alphanumerics in between these
+        symbols.
+        The total size of annotation keys and values must be less than 16KiB.
+        An object containing a list of "key": value pairs. Example:
+        { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -128,13 +152,21 @@ class SecretArgs:
         pulumi.set(self, "annotations", value)
 
     @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[builtins.bool]]:
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "deletion_protection", value)
+
+    @property
     @pulumi.getter(name="expireTime")
     def expire_time(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent
-        on input. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z". Only one of 'expire_time' or 'ttl' can be
-        provided.
+        Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        Only one of `expire_time` or `ttl` can be provided.
         """
         return pulumi.get(self, "expire_time")
 
@@ -146,13 +178,17 @@ class SecretArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
-        maximum 128 bytes, and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}][\\p{Ll}\\p{Lo}\\p{N}_-]{0,62}
-        Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to
-        the following PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63} No more than 64 labels can be assigned to a given
-        resource. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3"
-        }. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
-        refer to the field 'effective_labels' for all of the labels present on the resource.
+        The labels assigned to this Secret.
+        Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+        and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}][\\p{Ll}\\p{Lo}\\p{N}_-]{0,62}
+        Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+        and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63}
+        No more than 64 labels can be assigned to a given resource.
+        An object containing a list of "key": value pairs. Example:
+        { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -163,6 +199,10 @@ class SecretArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -173,8 +213,8 @@ class SecretArgs:
     @pulumi.getter
     def rotation(self) -> Optional[pulumi.Input['SecretRotationArgs']]:
         """
-        The rotation time and period for a Secret. At 'next_rotation_time', Secret Manager will send a Pub/Sub notification to
-        the topics configured on the Secret. 'topics' must be set to configure rotation.
+        The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
+        Structure is documented below.
         """
         return pulumi.get(self, "rotation")
 
@@ -198,8 +238,8 @@ class SecretArgs:
     @pulumi.getter
     def topics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecretTopicArgs']]]]:
         """
-        A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret
-        or its versions.
+        A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
+        Structure is documented below.
         """
         return pulumi.get(self, "topics")
 
@@ -211,8 +251,9 @@ class SecretArgs:
     @pulumi.getter
     def ttl(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The TTL for the Secret. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-        Only one of 'ttl' or 'expire_time' can be provided.
+        The TTL for the Secret.
+        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        Only one of `ttl` or `expire_time` can be provided.
         """
         return pulumi.get(self, "ttl")
 
@@ -224,10 +265,13 @@ class SecretArgs:
     @pulumi.getter(name="versionAliases")
     def version_aliases(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Mapping from version alias to version name. A version alias is a string with a maximum length of 63 characters and can
-        contain uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_') characters. An alias string
-        must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given
-        secret. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        Mapping from version alias to version name.
+        A version alias is a string with a maximum length of 63 characters and can contain
+        uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_')
+        characters. An alias string must start with a letter and cannot be the string
+        'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret.
+        An object containing a list of "key": value pairs. Example:
+        { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
         return pulumi.get(self, "version_aliases")
 
@@ -239,9 +283,11 @@ class SecretArgs:
     @pulumi.getter(name="versionDestroyTtl")
     def version_destroy_ttl(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Secret Version TTL after destruction request. This is a part of the delayed delete feature on Secret Version. For secret
-        with versionDestroyTtl>0, version destruction doesn't happen immediately on calling destroy instead the version goes to
-        a disabled state and the actual destruction happens after this TTL expires.
+        Secret Version TTL after destruction request.
+        This is a part of the delayed delete feature on Secret Version.
+        For secret with versionDestroyTtl>0, version destruction doesn't happen immediately
+        on calling destroy instead the version goes to a disabled state and
+        the actual destruction happens after this TTL expires.
         """
         return pulumi.get(self, "version_destroy_ttl")
 
@@ -255,6 +301,7 @@ class _SecretState:
     def __init__(__self__, *,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  create_time: Optional[pulumi.Input[builtins.str]] = None,
+                 deletion_protection: Optional[pulumi.Input[builtins.bool]] = None,
                  effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  expire_time: Optional[pulumi.Input[builtins.str]] = None,
@@ -271,53 +318,71 @@ class _SecretState:
                  version_destroy_ttl: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering Secret resources.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Custom metadata about the secret. Annotations are distinct from various forms of labels. Annotations exist to allow
-               client tools to store their own state information without requiring a database. Annotation keys must be between 1 and 63
-               characters long, have a UTF-8 encoding of maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]),
-               and may have dashes (-), underscores (_), dots (.), and alphanumerics in between these symbols. The total size of
-               annotation keys and values must be less than 16KiB. An object containing a list of "key": value pairs. Example: {
-               "name": "wrench", "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the
-               annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
-               present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Custom metadata about the secret.
+               Annotations are distinct from various forms of labels. Annotations exist to allow
+               client tools to store their own state information without requiring a database.
+               Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+               maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and
+               may have dashes (-), underscores (_), dots (.), and alphanumerics in between these
+               symbols.
+               The total size of annotation keys and values must be less than 16KiB.
+               An object containing a list of "key": value pairs. Example:
+               { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[builtins.str] create_time: The time at which the Secret was created.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[builtins.str] expire_time: Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent
-               on input. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-               Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z". Only one of 'expire_time' or 'ttl' can be
-               provided.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
-               maximum 128 bytes, and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}][\\p{Ll}\\p{Lo}\\p{N}_-]{0,62}
-               Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to
-               the following PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63} No more than 64 labels can be assigned to a given
-               resource. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3"
-               }. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
-               refer to the field 'effective_labels' for all of the labels present on the resource.
+        :param pulumi.Input[builtins.str] expire_time: Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+               Only one of `expire_time` or `ttl` can be provided.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: The labels assigned to this Secret.
+               Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+               and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}][\\p{Ll}\\p{Lo}\\p{N}_-]{0,62}
+               Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+               and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63}
+               No more than 64 labels can be assigned to a given resource.
+               An object containing a list of "key": value pairs. Example:
+               { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] name: The resource name of the Secret. Format:
                `projects/{{project}}/secrets/{{secret_id}}`
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input['SecretReplicationArgs'] replication: The replication policy of the secret data attached to the Secret. It cannot be changed
                after the Secret has been created.
                Structure is documented below.
-        :param pulumi.Input['SecretRotationArgs'] rotation: The rotation time and period for a Secret. At 'next_rotation_time', Secret Manager will send a Pub/Sub notification to
-               the topics configured on the Secret. 'topics' must be set to configure rotation.
+        :param pulumi.Input['SecretRotationArgs'] rotation: The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] secret_id: This must be unique within the project.
-        :param pulumi.Input[Sequence[pulumi.Input['SecretTopicArgs']]] topics: A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret
-               or its versions.
-        :param pulumi.Input[builtins.str] ttl: The TTL for the Secret. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-               Only one of 'ttl' or 'expire_time' can be provided.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] version_aliases: Mapping from version alias to version name. A version alias is a string with a maximum length of 63 characters and can
-               contain uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_') characters. An alias string
-               must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given
-               secret. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-        :param pulumi.Input[builtins.str] version_destroy_ttl: Secret Version TTL after destruction request. This is a part of the delayed delete feature on Secret Version. For secret
-               with versionDestroyTtl>0, version destruction doesn't happen immediately on calling destroy instead the version goes to
-               a disabled state and the actual destruction happens after this TTL expires.
+        :param pulumi.Input[Sequence[pulumi.Input['SecretTopicArgs']]] topics: A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] ttl: The TTL for the Secret.
+               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+               Only one of `ttl` or `expire_time` can be provided.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] version_aliases: Mapping from version alias to version name.
+               A version alias is a string with a maximum length of 63 characters and can contain
+               uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_')
+               characters. An alias string must start with a letter and cannot be the string
+               'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret.
+               An object containing a list of "key": value pairs. Example:
+               { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        :param pulumi.Input[builtins.str] version_destroy_ttl: Secret Version TTL after destruction request.
+               This is a part of the delayed delete feature on Secret Version.
+               For secret with versionDestroyTtl>0, version destruction doesn't happen immediately
+               on calling destroy instead the version goes to a disabled state and
+               the actual destruction happens after this TTL expires.
         """
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if effective_annotations is not None:
             pulumi.set(__self__, "effective_annotations", effective_annotations)
         if effective_labels is not None:
@@ -351,14 +416,19 @@ class _SecretState:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Custom metadata about the secret. Annotations are distinct from various forms of labels. Annotations exist to allow
-        client tools to store their own state information without requiring a database. Annotation keys must be between 1 and 63
-        characters long, have a UTF-8 encoding of maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]),
-        and may have dashes (-), underscores (_), dots (.), and alphanumerics in between these symbols. The total size of
-        annotation keys and values must be less than 16KiB. An object containing a list of "key": value pairs. Example: {
-        "name": "wrench", "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the
-        annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
-        present on the resource.
+        Custom metadata about the secret.
+        Annotations are distinct from various forms of labels. Annotations exist to allow
+        client tools to store their own state information without requiring a database.
+        Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+        maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and
+        may have dashes (-), underscores (_), dots (.), and alphanumerics in between these
+        symbols.
+        The total size of annotation keys and values must be less than 16KiB.
+        An object containing a list of "key": value pairs. Example:
+        { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -377,6 +447,15 @@ class _SecretState:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[builtins.bool]]:
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @property
     @pulumi.getter(name="effectiveAnnotations")
@@ -403,10 +482,9 @@ class _SecretState:
     @pulumi.getter(name="expireTime")
     def expire_time(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent
-        on input. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z". Only one of 'expire_time' or 'ttl' can be
-        provided.
+        Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        Only one of `expire_time` or `ttl` can be provided.
         """
         return pulumi.get(self, "expire_time")
 
@@ -418,13 +496,17 @@ class _SecretState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
-        maximum 128 bytes, and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}][\\p{Ll}\\p{Lo}\\p{N}_-]{0,62}
-        Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to
-        the following PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63} No more than 64 labels can be assigned to a given
-        resource. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3"
-        }. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
-        refer to the field 'effective_labels' for all of the labels present on the resource.
+        The labels assigned to this Secret.
+        Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+        and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}][\\p{Ll}\\p{Lo}\\p{N}_-]{0,62}
+        Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+        and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63}
+        No more than 64 labels can be assigned to a given resource.
+        An object containing a list of "key": value pairs. Example:
+        { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -448,6 +530,10 @@ class _SecretState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -485,8 +571,8 @@ class _SecretState:
     @pulumi.getter
     def rotation(self) -> Optional[pulumi.Input['SecretRotationArgs']]:
         """
-        The rotation time and period for a Secret. At 'next_rotation_time', Secret Manager will send a Pub/Sub notification to
-        the topics configured on the Secret. 'topics' must be set to configure rotation.
+        The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
+        Structure is documented below.
         """
         return pulumi.get(self, "rotation")
 
@@ -510,8 +596,8 @@ class _SecretState:
     @pulumi.getter
     def topics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecretTopicArgs']]]]:
         """
-        A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret
-        or its versions.
+        A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
+        Structure is documented below.
         """
         return pulumi.get(self, "topics")
 
@@ -523,8 +609,9 @@ class _SecretState:
     @pulumi.getter
     def ttl(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The TTL for the Secret. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-        Only one of 'ttl' or 'expire_time' can be provided.
+        The TTL for the Secret.
+        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        Only one of `ttl` or `expire_time` can be provided.
         """
         return pulumi.get(self, "ttl")
 
@@ -536,10 +623,13 @@ class _SecretState:
     @pulumi.getter(name="versionAliases")
     def version_aliases(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Mapping from version alias to version name. A version alias is a string with a maximum length of 63 characters and can
-        contain uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_') characters. An alias string
-        must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given
-        secret. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        Mapping from version alias to version name.
+        A version alias is a string with a maximum length of 63 characters and can contain
+        uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_')
+        characters. An alias string must start with a letter and cannot be the string
+        'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret.
+        An object containing a list of "key": value pairs. Example:
+        { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
         return pulumi.get(self, "version_aliases")
 
@@ -551,9 +641,11 @@ class _SecretState:
     @pulumi.getter(name="versionDestroyTtl")
     def version_destroy_ttl(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Secret Version TTL after destruction request. This is a part of the delayed delete feature on Secret Version. For secret
-        with versionDestroyTtl>0, version destruction doesn't happen immediately on calling destroy instead the version goes to
-        a disabled state and the actual destruction happens after this TTL expires.
+        Secret Version TTL after destruction request.
+        This is a part of the delayed delete feature on Secret Version.
+        For secret with versionDestroyTtl>0, version destruction doesn't happen immediately
+        on calling destroy instead the version goes to a disabled state and
+        the actual destruction happens after this TTL expires.
         """
         return pulumi.get(self, "version_destroy_ttl")
 
@@ -569,6 +661,7 @@ class Secret(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+                 deletion_protection: Optional[pulumi.Input[builtins.bool]] = None,
                  expire_time: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
@@ -613,7 +706,8 @@ class Secret(pulumi.CustomResource):
                         },
                     ],
                 },
-            })
+            },
+            deletion_protection=False)
         ```
         ### Secret With Annotations
 
@@ -699,42 +793,58 @@ class Secret(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Custom metadata about the secret. Annotations are distinct from various forms of labels. Annotations exist to allow
-               client tools to store their own state information without requiring a database. Annotation keys must be between 1 and 63
-               characters long, have a UTF-8 encoding of maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]),
-               and may have dashes (-), underscores (_), dots (.), and alphanumerics in between these symbols. The total size of
-               annotation keys and values must be less than 16KiB. An object containing a list of "key": value pairs. Example: {
-               "name": "wrench", "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the
-               annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
-               present on the resource.
-        :param pulumi.Input[builtins.str] expire_time: Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent
-               on input. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-               Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z". Only one of 'expire_time' or 'ttl' can be
-               provided.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
-               maximum 128 bytes, and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}][\\p{Ll}\\p{Lo}\\p{N}_-]{0,62}
-               Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to
-               the following PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63} No more than 64 labels can be assigned to a given
-               resource. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3"
-               }. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
-               refer to the field 'effective_labels' for all of the labels present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Custom metadata about the secret.
+               Annotations are distinct from various forms of labels. Annotations exist to allow
+               client tools to store their own state information without requiring a database.
+               Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+               maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and
+               may have dashes (-), underscores (_), dots (.), and alphanumerics in between these
+               symbols.
+               The total size of annotation keys and values must be less than 16KiB.
+               An object containing a list of "key": value pairs. Example:
+               { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[builtins.str] expire_time: Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+               Only one of `expire_time` or `ttl` can be provided.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: The labels assigned to this Secret.
+               Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+               and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}][\\p{Ll}\\p{Lo}\\p{N}_-]{0,62}
+               Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+               and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63}
+               No more than 64 labels can be assigned to a given resource.
+               An object containing a list of "key": value pairs. Example:
+               { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Union['SecretReplicationArgs', 'SecretReplicationArgsDict']] replication: The replication policy of the secret data attached to the Secret. It cannot be changed
                after the Secret has been created.
                Structure is documented below.
-        :param pulumi.Input[Union['SecretRotationArgs', 'SecretRotationArgsDict']] rotation: The rotation time and period for a Secret. At 'next_rotation_time', Secret Manager will send a Pub/Sub notification to
-               the topics configured on the Secret. 'topics' must be set to configure rotation.
+        :param pulumi.Input[Union['SecretRotationArgs', 'SecretRotationArgsDict']] rotation: The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] secret_id: This must be unique within the project.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SecretTopicArgs', 'SecretTopicArgsDict']]]] topics: A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret
-               or its versions.
-        :param pulumi.Input[builtins.str] ttl: The TTL for the Secret. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-               Only one of 'ttl' or 'expire_time' can be provided.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] version_aliases: Mapping from version alias to version name. A version alias is a string with a maximum length of 63 characters and can
-               contain uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_') characters. An alias string
-               must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given
-               secret. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-        :param pulumi.Input[builtins.str] version_destroy_ttl: Secret Version TTL after destruction request. This is a part of the delayed delete feature on Secret Version. For secret
-               with versionDestroyTtl>0, version destruction doesn't happen immediately on calling destroy instead the version goes to
-               a disabled state and the actual destruction happens after this TTL expires.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SecretTopicArgs', 'SecretTopicArgsDict']]]] topics: A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] ttl: The TTL for the Secret.
+               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+               Only one of `ttl` or `expire_time` can be provided.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] version_aliases: Mapping from version alias to version name.
+               A version alias is a string with a maximum length of 63 characters and can contain
+               uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_')
+               characters. An alias string must start with a letter and cannot be the string
+               'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret.
+               An object containing a list of "key": value pairs. Example:
+               { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        :param pulumi.Input[builtins.str] version_destroy_ttl: Secret Version TTL after destruction request.
+               This is a part of the delayed delete feature on Secret Version.
+               For secret with versionDestroyTtl>0, version destruction doesn't happen immediately
+               on calling destroy instead the version goes to a disabled state and
+               the actual destruction happens after this TTL expires.
         """
         ...
     @overload
@@ -775,7 +885,8 @@ class Secret(pulumi.CustomResource):
                         },
                     ],
                 },
-            })
+            },
+            deletion_protection=False)
         ```
         ### Secret With Annotations
 
@@ -875,6 +986,7 @@ class Secret(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+                 deletion_protection: Optional[pulumi.Input[builtins.bool]] = None,
                  expire_time: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
@@ -895,6 +1007,7 @@ class Secret(pulumi.CustomResource):
             __props__ = SecretArgs.__new__(SecretArgs)
 
             __props__.__dict__["annotations"] = annotations
+            __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["expire_time"] = expire_time
             __props__.__dict__["labels"] = labels
             __props__.__dict__["project"] = project
@@ -926,6 +1039,7 @@ class Secret(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             create_time: Optional[pulumi.Input[builtins.str]] = None,
+            deletion_protection: Optional[pulumi.Input[builtins.bool]] = None,
             effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             expire_time: Optional[pulumi.Input[builtins.str]] = None,
@@ -947,48 +1061,64 @@ class Secret(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Custom metadata about the secret. Annotations are distinct from various forms of labels. Annotations exist to allow
-               client tools to store their own state information without requiring a database. Annotation keys must be between 1 and 63
-               characters long, have a UTF-8 encoding of maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]),
-               and may have dashes (-), underscores (_), dots (.), and alphanumerics in between these symbols. The total size of
-               annotation keys and values must be less than 16KiB. An object containing a list of "key": value pairs. Example: {
-               "name": "wrench", "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the
-               annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
-               present on the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Custom metadata about the secret.
+               Annotations are distinct from various forms of labels. Annotations exist to allow
+               client tools to store their own state information without requiring a database.
+               Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+               maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and
+               may have dashes (-), underscores (_), dots (.), and alphanumerics in between these
+               symbols.
+               The total size of annotation keys and values must be less than 16KiB.
+               An object containing a list of "key": value pairs. Example:
+               { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[builtins.str] create_time: The time at which the Secret was created.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[builtins.str] expire_time: Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent
-               on input. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-               Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z". Only one of 'expire_time' or 'ttl' can be
-               provided.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
-               maximum 128 bytes, and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}][\\p{Ll}\\p{Lo}\\p{N}_-]{0,62}
-               Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to
-               the following PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63} No more than 64 labels can be assigned to a given
-               resource. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3"
-               }. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
-               refer to the field 'effective_labels' for all of the labels present on the resource.
+        :param pulumi.Input[builtins.str] expire_time: Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+               Only one of `expire_time` or `ttl` can be provided.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: The labels assigned to this Secret.
+               Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+               and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}][\\p{Ll}\\p{Lo}\\p{N}_-]{0,62}
+               Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+               and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63}
+               No more than 64 labels can be assigned to a given resource.
+               An object containing a list of "key": value pairs. Example:
+               { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] name: The resource name of the Secret. Format:
                `projects/{{project}}/secrets/{{secret_id}}`
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[Union['SecretReplicationArgs', 'SecretReplicationArgsDict']] replication: The replication policy of the secret data attached to the Secret. It cannot be changed
                after the Secret has been created.
                Structure is documented below.
-        :param pulumi.Input[Union['SecretRotationArgs', 'SecretRotationArgsDict']] rotation: The rotation time and period for a Secret. At 'next_rotation_time', Secret Manager will send a Pub/Sub notification to
-               the topics configured on the Secret. 'topics' must be set to configure rotation.
+        :param pulumi.Input[Union['SecretRotationArgs', 'SecretRotationArgsDict']] rotation: The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] secret_id: This must be unique within the project.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SecretTopicArgs', 'SecretTopicArgsDict']]]] topics: A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret
-               or its versions.
-        :param pulumi.Input[builtins.str] ttl: The TTL for the Secret. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-               Only one of 'ttl' or 'expire_time' can be provided.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] version_aliases: Mapping from version alias to version name. A version alias is a string with a maximum length of 63 characters and can
-               contain uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_') characters. An alias string
-               must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given
-               secret. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-        :param pulumi.Input[builtins.str] version_destroy_ttl: Secret Version TTL after destruction request. This is a part of the delayed delete feature on Secret Version. For secret
-               with versionDestroyTtl>0, version destruction doesn't happen immediately on calling destroy instead the version goes to
-               a disabled state and the actual destruction happens after this TTL expires.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SecretTopicArgs', 'SecretTopicArgsDict']]]] topics: A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] ttl: The TTL for the Secret.
+               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+               Only one of `ttl` or `expire_time` can be provided.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] version_aliases: Mapping from version alias to version name.
+               A version alias is a string with a maximum length of 63 characters and can contain
+               uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_')
+               characters. An alias string must start with a letter and cannot be the string
+               'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret.
+               An object containing a list of "key": value pairs. Example:
+               { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        :param pulumi.Input[builtins.str] version_destroy_ttl: Secret Version TTL after destruction request.
+               This is a part of the delayed delete feature on Secret Version.
+               For secret with versionDestroyTtl>0, version destruction doesn't happen immediately
+               on calling destroy instead the version goes to a disabled state and
+               the actual destruction happens after this TTL expires.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -996,6 +1126,7 @@ class Secret(pulumi.CustomResource):
 
         __props__.__dict__["annotations"] = annotations
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["effective_annotations"] = effective_annotations
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["expire_time"] = expire_time
@@ -1016,14 +1147,19 @@ class Secret(pulumi.CustomResource):
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
         """
-        Custom metadata about the secret. Annotations are distinct from various forms of labels. Annotations exist to allow
-        client tools to store their own state information without requiring a database. Annotation keys must be between 1 and 63
-        characters long, have a UTF-8 encoding of maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]),
-        and may have dashes (-), underscores (_), dots (.), and alphanumerics in between these symbols. The total size of
-        annotation keys and values must be less than 16KiB. An object containing a list of "key": value pairs. Example: {
-        "name": "wrench", "mass": "1.3kg", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the
-        annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
-        present on the resource.
+        Custom metadata about the secret.
+        Annotations are distinct from various forms of labels. Annotations exist to allow
+        client tools to store their own state information without requiring a database.
+        Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+        maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and
+        may have dashes (-), underscores (_), dots (.), and alphanumerics in between these
+        symbols.
+        The total size of annotation keys and values must be less than 16KiB.
+        An object containing a list of "key": value pairs. Example:
+        { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -1034,6 +1170,11 @@ class Secret(pulumi.CustomResource):
         The time at which the Secret was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> pulumi.Output[Optional[builtins.bool]]:
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter(name="effectiveAnnotations")
@@ -1052,10 +1193,9 @@ class Secret(pulumi.CustomResource):
     @pulumi.getter(name="expireTime")
     def expire_time(self) -> pulumi.Output[builtins.str]:
         """
-        Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent
-        on input. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z". Only one of 'expire_time' or 'ttl' can be
-        provided.
+        Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        Only one of `expire_time` or `ttl` can be provided.
         """
         return pulumi.get(self, "expire_time")
 
@@ -1063,13 +1203,17 @@ class Secret(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
         """
-        The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
-        maximum 128 bytes, and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}][\\p{Ll}\\p{Lo}\\p{N}_-]{0,62}
-        Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to
-        the following PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63} No more than 64 labels can be assigned to a given
-        resource. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3"
-        }. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
-        refer to the field 'effective_labels' for all of the labels present on the resource.
+        The labels assigned to this Secret.
+        Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+        and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}][\\p{Ll}\\p{Lo}\\p{N}_-]{0,62}
+        Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+        and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63}
+        No more than 64 labels can be assigned to a given resource.
+        An object containing a list of "key": value pairs. Example:
+        { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1085,6 +1229,10 @@ class Secret(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property
@@ -1110,8 +1258,8 @@ class Secret(pulumi.CustomResource):
     @pulumi.getter
     def rotation(self) -> pulumi.Output[Optional['outputs.SecretRotation']]:
         """
-        The rotation time and period for a Secret. At 'next_rotation_time', Secret Manager will send a Pub/Sub notification to
-        the topics configured on the Secret. 'topics' must be set to configure rotation.
+        The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
+        Structure is documented below.
         """
         return pulumi.get(self, "rotation")
 
@@ -1127,8 +1275,8 @@ class Secret(pulumi.CustomResource):
     @pulumi.getter
     def topics(self) -> pulumi.Output[Optional[Sequence['outputs.SecretTopic']]]:
         """
-        A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret
-        or its versions.
+        A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
+        Structure is documented below.
         """
         return pulumi.get(self, "topics")
 
@@ -1136,8 +1284,9 @@ class Secret(pulumi.CustomResource):
     @pulumi.getter
     def ttl(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The TTL for the Secret. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-        Only one of 'ttl' or 'expire_time' can be provided.
+        The TTL for the Secret.
+        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        Only one of `ttl` or `expire_time` can be provided.
         """
         return pulumi.get(self, "ttl")
 
@@ -1145,10 +1294,13 @@ class Secret(pulumi.CustomResource):
     @pulumi.getter(name="versionAliases")
     def version_aliases(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
         """
-        Mapping from version alias to version name. A version alias is a string with a maximum length of 63 characters and can
-        contain uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_') characters. An alias string
-        must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given
-        secret. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        Mapping from version alias to version name.
+        A version alias is a string with a maximum length of 63 characters and can contain
+        uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_')
+        characters. An alias string must start with a letter and cannot be the string
+        'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret.
+        An object containing a list of "key": value pairs. Example:
+        { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
         return pulumi.get(self, "version_aliases")
 
@@ -1156,9 +1308,11 @@ class Secret(pulumi.CustomResource):
     @pulumi.getter(name="versionDestroyTtl")
     def version_destroy_ttl(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Secret Version TTL after destruction request. This is a part of the delayed delete feature on Secret Version. For secret
-        with versionDestroyTtl>0, version destruction doesn't happen immediately on calling destroy instead the version goes to
-        a disabled state and the actual destruction happens after this TTL expires.
+        Secret Version TTL after destruction request.
+        This is a part of the delayed delete feature on Secret Version.
+        For secret with versionDestroyTtl>0, version destruction doesn't happen immediately
+        on calling destroy instead the version goes to a disabled state and
+        the actual destruction happens after this TTL expires.
         """
         return pulumi.get(self, "version_destroy_ttl")
 

@@ -193,9 +193,6 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// The region for the resource. It should be the same as the feature group's region.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -304,9 +301,6 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// The region for the resource. It should be the same as the feature group's region.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
@@ -405,9 +399,6 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// The region for the resource. It should be the same as the feature group's region.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

@@ -485,9 +485,6 @@ export class BackupPlan extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The region of the Backup Plan.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -642,9 +639,6 @@ export interface BackupPlanState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The region of the Backup Plan.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -724,9 +718,6 @@ export interface BackupPlanArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The region of the Backup Plan.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

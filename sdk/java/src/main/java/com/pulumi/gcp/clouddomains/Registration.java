@@ -195,6 +195,7 @@ public class Registration extends com.pulumi.resources.CustomResource {
     }
     /**
      * Settings controlling the DNS configuration of the Registration.
+     * Structure is documented below.
      * 
      */
     @Export(name="dnsSettings", refs={RegistrationDnsSettings.class}, tree="[0]")
@@ -202,6 +203,7 @@ public class Registration extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Settings controlling the DNS configuration of the Registration.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<RegistrationDnsSettings>> dnsSettings() {
@@ -278,18 +280,18 @@ public class Registration extends com.pulumi.resources.CustomResource {
         return this.issues;
     }
     /**
-     * Set of labels associated with the Registration. **Note**: This field is non-authoritative, and will only manage the
-     * labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the
-     * resource.
+     * Set of labels associated with the Registration.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return Set of labels associated with the Registration. **Note**: This field is non-authoritative, and will only manage the
-     * labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the
-     * resource.
+     * @return Set of labels associated with the Registration.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -311,6 +313,7 @@ public class Registration extends com.pulumi.resources.CustomResource {
     }
     /**
      * Settings for management of the Registration, including renewal, billing, and transfer
+     * Structure is documented below.
      * 
      */
     @Export(name="managementSettings", refs={RegistrationManagementSettings.class}, tree="[0]")
@@ -318,6 +321,7 @@ public class Registration extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Settings for management of the Registration, including renewal, billing, and transfer
+     * Structure is documented below.
      * 
      */
     public Output<RegistrationManagementSettings> managementSettings() {
@@ -337,9 +341,19 @@ public class Registration extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }

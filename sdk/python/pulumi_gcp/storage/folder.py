@@ -29,9 +29,6 @@ class FolderArgs:
         :param pulumi.Input[builtins.bool] force_destroy: If set to true, items within folder if any will be force destroyed.
         :param pulumi.Input[builtins.str] name: The name of the folder expressed as a path. Must include
                trailing '/'. For example, `example_dir/example_dir2/`, `example@#/`, `a-b/d-f/`.
-               
-               
-               - - -
         """
         pulumi.set(__self__, "bucket", bucket)
         if force_destroy is not None:
@@ -69,9 +66,6 @@ class FolderArgs:
         """
         The name of the folder expressed as a path. Must include
         trailing '/'. For example, `example_dir/example_dir2/`, `example@#/`, `a-b/d-f/`.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -98,9 +92,6 @@ class _FolderState:
         :param pulumi.Input[builtins.str] metageneration: The metadata generation of the folder.
         :param pulumi.Input[builtins.str] name: The name of the folder expressed as a path. Must include
                trailing '/'. For example, `example_dir/example_dir2/`, `example@#/`, `a-b/d-f/`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] self_link: The URI of the created resource.
         :param pulumi.Input[builtins.str] update_time: The timestamp at which this folder was most recently updated.
         """
@@ -173,9 +164,6 @@ class _FolderState:
         """
         The name of the folder expressed as a path. Must include
         trailing '/'. For example, `example_dir/example_dir2/`, `example@#/`, `a-b/d-f/`.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -276,9 +264,6 @@ class Folder(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] force_destroy: If set to true, items within folder if any will be force destroyed.
         :param pulumi.Input[builtins.str] name: The name of the folder expressed as a path. Must include
                trailing '/'. For example, `example_dir/example_dir2/`, `example@#/`, `a-b/d-f/`.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -404,9 +389,6 @@ class Folder(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] metageneration: The metadata generation of the folder.
         :param pulumi.Input[builtins.str] name: The name of the folder expressed as a path. Must include
                trailing '/'. For example, `example_dir/example_dir2/`, `example@#/`, `a-b/d-f/`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] self_link: The URI of the created resource.
         :param pulumi.Input[builtins.str] update_time: The timestamp at which this folder was most recently updated.
         """
@@ -461,9 +443,6 @@ class Folder(pulumi.CustomResource):
         """
         The name of the folder expressed as a path. Must include
         trailing '/'. For example, `example_dir/example_dir2/`, `example@#/`, `a-b/d-f/`.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

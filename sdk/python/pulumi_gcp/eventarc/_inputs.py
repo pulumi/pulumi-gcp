@@ -741,8 +741,6 @@ if not MYPY:
         The Pipeline expects that the message it receives adheres to the
         standard CloudEvent format. If it doesn't then the outgoing message
         request may fail with a persistent error.
-
-        - - -
         """
 elif False:
     PipelineDestinationHttpEndpointArgsDict: TypeAlias = Mapping[str, Any]
@@ -915,8 +913,6 @@ class PipelineDestinationHttpEndpointArgs:
                The Pipeline expects that the message it receives adheres to the
                standard CloudEvent format. If it doesn't then the outgoing message
                request may fail with a persistent error.
-               
-               - - -
         """
         pulumi.set(__self__, "uri", uri)
         if message_binding_template is not None:
@@ -1099,8 +1095,6 @@ class PipelineDestinationHttpEndpointArgs:
         The Pipeline expects that the message it receives adheres to the
         standard CloudEvent format. If it doesn't then the outgoing message
         request may fail with a persistent error.
-
-        - - -
         """
         return pulumi.get(self, "message_binding_template")
 
@@ -2243,8 +2237,6 @@ if not MYPY:
         network_attachment: pulumi.Input[builtins.str]
         """
         Required. Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
-
-        - - -
         """
 elif False:
     TriggerDestinationNetworkConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -2255,8 +2247,6 @@ class TriggerDestinationNetworkConfigArgs:
                  network_attachment: pulumi.Input[builtins.str]):
         """
         :param pulumi.Input[builtins.str] network_attachment: Required. Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
-               
-               - - -
         """
         pulumi.set(__self__, "network_attachment", network_attachment)
 
@@ -2265,8 +2255,6 @@ class TriggerDestinationNetworkConfigArgs:
     def network_attachment(self) -> pulumi.Input[builtins.str]:
         """
         Required. Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
-
-        - - -
         """
         return pulumi.get(self, "network_attachment")
 

@@ -103,8 +103,6 @@ type Folder struct {
 	Metageneration pulumi.StringOutput `pulumi:"metageneration"`
 	// The name of the folder expressed as a path. Must include
 	// trailing '/'. For example, `example_dir/example_dir2/`, `example@#/`, `a-b/d-f/`.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -155,8 +153,6 @@ type folderState struct {
 	Metageneration *string `pulumi:"metageneration"`
 	// The name of the folder expressed as a path. Must include
 	// trailing '/'. For example, `example_dir/example_dir2/`, `example@#/`, `a-b/d-f/`.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -175,8 +171,6 @@ type FolderState struct {
 	Metageneration pulumi.StringPtrInput
 	// The name of the folder expressed as a path. Must include
 	// trailing '/'. For example, `example_dir/example_dir2/`, `example@#/`, `a-b/d-f/`.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
@@ -195,8 +189,6 @@ type folderArgs struct {
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// The name of the folder expressed as a path. Must include
 	// trailing '/'. For example, `example_dir/example_dir2/`, `example@#/`, `a-b/d-f/`.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 }
 
@@ -208,8 +200,6 @@ type FolderArgs struct {
 	ForceDestroy pulumi.BoolPtrInput
 	// The name of the folder expressed as a path. Must include
 	// trailing '/'. For example, `example_dir/example_dir2/`, `example@#/`, `a-b/d-f/`.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 }
 
@@ -322,8 +312,6 @@ func (o FolderOutput) Metageneration() pulumi.StringOutput {
 
 // The name of the folder expressed as a path. Must include
 // trailing '/'. For example, `example_dir/example_dir2/`, `example@#/`, `a-b/d-f/`.
-//
-// ***
 func (o FolderOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Folder) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

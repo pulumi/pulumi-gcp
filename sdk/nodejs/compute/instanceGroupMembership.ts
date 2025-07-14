@@ -116,9 +116,6 @@ export class InstanceGroupMembership extends pulumi.CustomResource {
     public readonly instance!: pulumi.Output<string>;
     /**
      * Represents an Instance Group resource name that the instance belongs to.
-     *
-     *
-     * - - -
      */
     public readonly instanceGroup!: pulumi.Output<string>;
     /**
@@ -176,9 +173,6 @@ export interface InstanceGroupMembershipState {
     instance?: pulumi.Input<string>;
     /**
      * Represents an Instance Group resource name that the instance belongs to.
-     *
-     *
-     * - - -
      */
     instanceGroup?: pulumi.Input<string>;
     /**
@@ -202,9 +196,6 @@ export interface InstanceGroupMembershipArgs {
     instance: pulumi.Input<string>;
     /**
      * Represents an Instance Group resource name that the instance belongs to.
-     *
-     *
-     * - - -
      */
     instanceGroup: pulumi.Input<string>;
     /**

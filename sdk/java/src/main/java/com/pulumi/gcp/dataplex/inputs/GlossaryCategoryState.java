@@ -130,16 +130,12 @@ public final class GlossaryCategoryState extends com.pulumi.resources.ResourceAr
     /**
      * The location where the glossary category should reside.
      * 
-     * ***
-     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
      * @return The location where the glossary category should reside.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> location() {
@@ -433,8 +429,6 @@ public final class GlossaryCategoryState extends com.pulumi.resources.ResourceAr
         /**
          * @param location The location where the glossary category should reside.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -445,8 +439,6 @@ public final class GlossaryCategoryState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param location The location where the glossary category should reside.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -82,9 +82,6 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// The location (zone) of the firewall endpoint association.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -227,9 +224,6 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// The location (zone) of the firewall endpoint association.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -320,9 +314,6 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// The location (zone) of the firewall endpoint association.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

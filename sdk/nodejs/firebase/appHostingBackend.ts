@@ -224,9 +224,6 @@ export class AppHostingBackend extends pulumi.CustomResource {
     /**
      * Id of the backend. Also used as the service ID for Cloud Run, and as part
      * of the default domain name.
-     *
-     *
-     * - - -
      */
     public readonly backendId!: pulumi.Output<string>;
     /**
@@ -423,9 +420,6 @@ export interface AppHostingBackendState {
     /**
      * Id of the backend. Also used as the service ID for Cloud Run, and as part
      * of the default domain name.
-     *
-     *
-     * - - -
      */
     backendId?: pulumi.Input<string>;
     /**
@@ -541,9 +535,6 @@ export interface AppHostingBackendArgs {
     /**
      * Id of the backend. Also used as the service ID for Cloud Run, and as part
      * of the default domain name.
-     *
-     *
-     * - - -
      */
     backendId: pulumi.Input<string>;
     /**

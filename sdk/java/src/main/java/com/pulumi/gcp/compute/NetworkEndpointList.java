@@ -189,16 +189,12 @@ public class NetworkEndpointList extends com.pulumi.resources.CustomResource {
     /**
      * The network endpoint group these endpoints are part of.
      * 
-     * ***
-     * 
      */
     @Export(name="networkEndpointGroup", refs={String.class}, tree="[0]")
     private Output<String> networkEndpointGroup;
 
     /**
      * @return The network endpoint group these endpoints are part of.
-     * 
-     * ***
      * 
      */
     public Output<String> networkEndpointGroup() {

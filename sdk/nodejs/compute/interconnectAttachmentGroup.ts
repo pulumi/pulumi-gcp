@@ -85,9 +85,12 @@ export class InterconnectAttachmentGroup extends pulumi.CustomResource {
     }
 
     /**
-     * (Output)
-     * URLs of any particular Attachments to explain this
-     * blocker in more detail.
+     * Attachments in the AttachmentGroup. Keys are arbitrary user-specified
+     * strings. Users are encouraged, but not required, to use their preferred
+     * format for resource links as keys.
+     * Note that there are add-members and remove-members methods in gcloud.
+     * The size of this map is limited by an "Attachments per group" quota.
+     * Structure is documented below.
      */
     public readonly attachments!: pulumi.Output<outputs.compute.InterconnectAttachmentGroupAttachment[] | undefined>;
     /**
@@ -112,8 +115,9 @@ export class InterconnectAttachmentGroup extends pulumi.CustomResource {
      */
     public readonly intent!: pulumi.Output<outputs.compute.InterconnectAttachmentGroupIntent>;
     /**
-     * The URL of an InterconnectGroup that groups these Attachments' Interconnects. Customers do not need to set this unless
-     * directed by Google Support.
+     * The URL of an InterconnectGroup that groups these Attachments'
+     * Interconnects. Customers do not need to set this unless directed by
+     * Google Support.
      */
     public readonly interconnectGroup!: pulumi.Output<string | undefined>;
     /**
@@ -130,6 +134,10 @@ export class InterconnectAttachmentGroup extends pulumi.CustomResource {
      * lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
 
     /**
@@ -179,9 +187,12 @@ export class InterconnectAttachmentGroup extends pulumi.CustomResource {
  */
 export interface InterconnectAttachmentGroupState {
     /**
-     * (Output)
-     * URLs of any particular Attachments to explain this
-     * blocker in more detail.
+     * Attachments in the AttachmentGroup. Keys are arbitrary user-specified
+     * strings. Users are encouraged, but not required, to use their preferred
+     * format for resource links as keys.
+     * Note that there are add-members and remove-members methods in gcloud.
+     * The size of this map is limited by an "Attachments per group" quota.
+     * Structure is documented below.
      */
     attachments?: pulumi.Input<pulumi.Input<inputs.compute.InterconnectAttachmentGroupAttachment>[]>;
     /**
@@ -206,8 +217,9 @@ export interface InterconnectAttachmentGroupState {
      */
     intent?: pulumi.Input<inputs.compute.InterconnectAttachmentGroupIntent>;
     /**
-     * The URL of an InterconnectGroup that groups these Attachments' Interconnects. Customers do not need to set this unless
-     * directed by Google Support.
+     * The URL of an InterconnectGroup that groups these Attachments'
+     * Interconnects. Customers do not need to set this unless directed by
+     * Google Support.
      */
     interconnectGroup?: pulumi.Input<string>;
     /**
@@ -224,6 +236,10 @@ export interface InterconnectAttachmentGroupState {
      * lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
 }
 
@@ -232,9 +248,12 @@ export interface InterconnectAttachmentGroupState {
  */
 export interface InterconnectAttachmentGroupArgs {
     /**
-     * (Output)
-     * URLs of any particular Attachments to explain this
-     * blocker in more detail.
+     * Attachments in the AttachmentGroup. Keys are arbitrary user-specified
+     * strings. Users are encouraged, but not required, to use their preferred
+     * format for resource links as keys.
+     * Note that there are add-members and remove-members methods in gcloud.
+     * The size of this map is limited by an "Attachments per group" quota.
+     * Structure is documented below.
      */
     attachments?: pulumi.Input<pulumi.Input<inputs.compute.InterconnectAttachmentGroupAttachment>[]>;
     /**
@@ -248,8 +267,9 @@ export interface InterconnectAttachmentGroupArgs {
      */
     intent: pulumi.Input<inputs.compute.InterconnectAttachmentGroupIntent>;
     /**
-     * The URL of an InterconnectGroup that groups these Attachments' Interconnects. Customers do not need to set this unless
-     * directed by Google Support.
+     * The URL of an InterconnectGroup that groups these Attachments'
+     * Interconnects. Customers do not need to set this unless directed by
+     * Google Support.
      */
     interconnectGroup?: pulumi.Input<string>;
     /**
@@ -260,5 +280,9 @@ export interface InterconnectAttachmentGroupArgs {
      * lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
 }

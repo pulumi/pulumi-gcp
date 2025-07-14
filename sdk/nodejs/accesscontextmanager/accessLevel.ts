@@ -115,9 +115,6 @@ export class AccessLevel extends pulumi.CustomResource {
      * Resource name for the Access Level. The shortName component must begin
      * with a letter and only include alphanumeric and '_'.
      * Format: accessPolicies/{policy_id}/accessLevels/{short_name}
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -192,9 +189,6 @@ export interface AccessLevelState {
      * Resource name for the Access Level. The shortName component must begin
      * with a letter and only include alphanumeric and '_'.
      * Format: accessPolicies/{policy_id}/accessLevels/{short_name}
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -231,9 +225,6 @@ export interface AccessLevelArgs {
      * Resource name for the Access Level. The shortName component must begin
      * with a letter and only include alphanumeric and '_'.
      * Format: accessPolicies/{policy_id}/accessLevels/{short_name}
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

@@ -64,6 +64,10 @@ export interface GetBillingAccountArgs {
  */
 export interface GetBillingAccountResult {
     readonly billingAccount?: string;
+    /**
+     * The currency code of the billing account, e.g. `USD`.
+     */
+    readonly currencyCode: string;
     readonly displayName: string;
     /**
      * The provider-assigned unique ID for this managed resource.

@@ -43,9 +43,6 @@ class ServiceAttachmentArgs:
         :param pulumi.Input[builtins.bool] enable_proxy_protocol: If true, enable the proxy protocol which is for supplying client TCP/IP
                address data in TCP connections that traverse proxies on their way to
                destination servers.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] nat_subnets: An array of subnets that is provided for NAT in this service attachment.
         :param pulumi.Input[builtins.str] target_service: The URL of a service serving the endpoint identified by this service attachment.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConsumerAcceptListArgs']]] consumer_accept_lists: An array of projects that are allowed to connect to this service
@@ -125,9 +122,6 @@ class ServiceAttachmentArgs:
         If true, enable the proxy protocol which is for supplying client TCP/IP
         address data in TCP connections that traverse proxies on their way to
         destination servers.
-
-
-        - - -
         """
         return pulumi.get(self, "enable_proxy_protocol")
 
@@ -341,9 +335,6 @@ class _ServiceAttachmentState:
         :param pulumi.Input[builtins.bool] enable_proxy_protocol: If true, enable the proxy protocol which is for supplying client TCP/IP
                address data in TCP connections that traverse proxies on their way to
                destination servers.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] fingerprint: Fingerprint of this resource. This field is used internally during
                updates of this resource.
         :param pulumi.Input[builtins.str] name: Name of the resource. The name must be 1-63 characters long, and
@@ -494,9 +485,6 @@ class _ServiceAttachmentState:
         If true, enable the proxy protocol which is for supplying client TCP/IP
         address data in TCP connections that traverse proxies on their way to
         destination servers.
-
-
-        - - -
         """
         return pulumi.get(self, "enable_proxy_protocol")
 
@@ -982,9 +970,6 @@ class ServiceAttachment(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] enable_proxy_protocol: If true, enable the proxy protocol which is for supplying client TCP/IP
                address data in TCP connections that traverse proxies on their way to
                destination servers.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?`
@@ -1433,9 +1418,6 @@ class ServiceAttachment(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] enable_proxy_protocol: If true, enable the proxy protocol which is for supplying client TCP/IP
                address data in TCP connections that traverse proxies on their way to
                destination servers.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] fingerprint: Fingerprint of this resource. This field is used internally during
                updates of this resource.
         :param pulumi.Input[builtins.str] name: Name of the resource. The name must be 1-63 characters long, and
@@ -1550,9 +1532,6 @@ class ServiceAttachment(pulumi.CustomResource):
         If true, enable the proxy protocol which is for supplying client TCP/IP
         address data in TCP connections that traverse proxies on their way to
         destination servers.
-
-
-        - - -
         """
         return pulumi.get(self, "enable_proxy_protocol")
 

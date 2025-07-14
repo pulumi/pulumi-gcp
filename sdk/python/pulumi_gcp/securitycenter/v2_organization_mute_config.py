@@ -34,9 +34,6 @@ class V2OrganizationMuteConfigArgs:
                If a filter contains project = X but is created under the
                project = Y scope, it might not match any findings.
         :param pulumi.Input[builtins.str] mute_config_id: Unique identifier provided by the client within the parent scope.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] organization: The organization whose Cloud Security Command Center the Mute
                Config lives in.
         :param pulumi.Input[builtins.str] type: The type of the mute config.
@@ -73,9 +70,6 @@ class V2OrganizationMuteConfigArgs:
     def mute_config_id(self) -> pulumi.Input[builtins.str]:
         """
         Unique identifier provided by the client within the parent scope.
-
-
-        - - -
         """
         return pulumi.get(self, "mute_config_id")
 
@@ -161,9 +155,6 @@ class _V2OrganizationMuteConfigState:
                field is set by the server and will be ignored if provided on
                config creation or update.
         :param pulumi.Input[builtins.str] mute_config_id: Unique identifier provided by the client within the parent scope.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: Name of the mute config. Its format is
                organizations/{organization}/locations/global/muteConfigs/{configId},
                folders/{folder}/locations/global/muteConfigs/{configId},
@@ -268,9 +259,6 @@ class _V2OrganizationMuteConfigState:
     def mute_config_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Unique identifier provided by the client within the parent scope.
-
-
-        - - -
         """
         return pulumi.get(self, "mute_config_id")
 
@@ -401,9 +389,6 @@ class V2OrganizationMuteConfig(pulumi.CustomResource):
                project = Y scope, it might not match any findings.
         :param pulumi.Input[builtins.str] location: location Id is provided by organization. If not provided, Use global as default.
         :param pulumi.Input[builtins.str] mute_config_id: Unique identifier provided by the client within the parent scope.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] organization: The organization whose Cloud Security Command Center the Mute
                Config lives in.
         :param pulumi.Input[builtins.str] type: The type of the mute config.
@@ -547,9 +532,6 @@ class V2OrganizationMuteConfig(pulumi.CustomResource):
                field is set by the server and will be ignored if provided on
                config creation or update.
         :param pulumi.Input[builtins.str] mute_config_id: Unique identifier provided by the client within the parent scope.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: Name of the mute config. Its format is
                organizations/{organization}/locations/global/muteConfigs/{configId},
                folders/{folder}/locations/global/muteConfigs/{configId},
@@ -629,9 +611,6 @@ class V2OrganizationMuteConfig(pulumi.CustomResource):
     def mute_config_id(self) -> pulumi.Output[builtins.str]:
         """
         Unique identifier provided by the client within the parent scope.
-
-
-        - - -
         """
         return pulumi.get(self, "mute_config_id")
 

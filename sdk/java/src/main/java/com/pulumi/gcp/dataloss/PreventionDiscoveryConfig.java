@@ -142,16 +142,12 @@ public class PreventionDiscoveryConfig extends com.pulumi.resources.CustomResour
     /**
      * Location to create the discovery config in.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return Location to create the discovery config in.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

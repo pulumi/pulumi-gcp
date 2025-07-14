@@ -29,9 +29,6 @@ class RepositoryArgs:
         """
         The set of arguments for constructing a Repository resource.
         :param pulumi.Input[builtins.str] parent_connection: The connection for the resource
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] remote_uri: Required. Git Clone HTTPS URI.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Allows clients to store small amounts of arbitrary data.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -57,9 +54,6 @@ class RepositoryArgs:
     def parent_connection(self) -> pulumi.Input[builtins.str]:
         """
         The connection for the resource
-
-
-        - - -
         """
         return pulumi.get(self, "parent_connection")
 
@@ -154,9 +148,6 @@ class _RepositoryState:
         :param pulumi.Input[builtins.str] location: The location for the resource
         :param pulumi.Input[builtins.str] name: Name of the repository.
         :param pulumi.Input[builtins.str] parent_connection: The connection for the resource
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] remote_uri: Required. Git Clone HTTPS URI.
@@ -259,9 +250,6 @@ class _RepositoryState:
     def parent_connection(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The connection for the resource
-
-
-        - - -
         """
         return pulumi.get(self, "parent_connection")
 
@@ -455,9 +443,6 @@ class Repository(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] location: The location for the resource
         :param pulumi.Input[builtins.str] name: Name of the repository.
         :param pulumi.Input[builtins.str] parent_connection: The connection for the resource
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] remote_uri: Required. Git Clone HTTPS URI.
@@ -674,9 +659,6 @@ class Repository(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] location: The location for the resource
         :param pulumi.Input[builtins.str] name: Name of the repository.
         :param pulumi.Input[builtins.str] parent_connection: The connection for the resource
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] remote_uri: Required. Git Clone HTTPS URI.
@@ -750,9 +732,6 @@ class Repository(pulumi.CustomResource):
     def parent_connection(self) -> pulumi.Output[builtins.str]:
         """
         The connection for the resource
-
-
-        - - -
         """
         return pulumi.get(self, "parent_connection")
 

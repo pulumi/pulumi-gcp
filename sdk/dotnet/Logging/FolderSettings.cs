@@ -95,9 +95,6 @@ namespace Pulumi.Gcp.Logging
 
         /// <summary>
         /// The folder for which to retrieve settings.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("folder")]
         public Output<string> Folder { get; private set; } = null!;
@@ -186,9 +183,6 @@ namespace Pulumi.Gcp.Logging
 
         /// <summary>
         /// The folder for which to retrieve settings.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("folder", required: true)]
         public Input<string> Folder { get; set; } = null!;
@@ -221,9 +215,6 @@ namespace Pulumi.Gcp.Logging
 
         /// <summary>
         /// The folder for which to retrieve settings.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("folder")]
         public Input<string>? Folder { get; set; }

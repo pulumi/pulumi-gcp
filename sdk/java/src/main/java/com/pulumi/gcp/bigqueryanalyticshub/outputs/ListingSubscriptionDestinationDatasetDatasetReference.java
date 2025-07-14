@@ -18,8 +18,6 @@ public final class ListingSubscriptionDestinationDatasetDatasetReference {
     /**
      * @return The ID of the project containing this dataset.
      * 
-     * ***
-     * 
      */
     private String projectId;
 
@@ -33,8 +31,6 @@ public final class ListingSubscriptionDestinationDatasetDatasetReference {
     }
     /**
      * @return The ID of the project containing this dataset.
-     * 
-     * ***
      * 
      */
     public String projectId() {

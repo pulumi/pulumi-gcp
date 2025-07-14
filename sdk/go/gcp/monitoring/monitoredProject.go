@@ -82,8 +82,6 @@ type MonitoredProject struct {
 	// Output only. The time when this `MonitoredProject` was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
-	//
-	// ***
 	MetricsScope pulumi.StringOutput `pulumi:"metricsScope"`
 	// Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -125,8 +123,6 @@ type monitoredProjectState struct {
 	// Output only. The time when this `MonitoredProject` was created.
 	CreateTime *string `pulumi:"createTime"`
 	// Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
-	//
-	// ***
 	MetricsScope *string `pulumi:"metricsScope"`
 	// Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
 	Name *string `pulumi:"name"`
@@ -136,8 +132,6 @@ type MonitoredProjectState struct {
 	// Output only. The time when this `MonitoredProject` was created.
 	CreateTime pulumi.StringPtrInput
 	// Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
-	//
-	// ***
 	MetricsScope pulumi.StringPtrInput
 	// Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
 	Name pulumi.StringPtrInput
@@ -149,8 +143,6 @@ func (MonitoredProjectState) ElementType() reflect.Type {
 
 type monitoredProjectArgs struct {
 	// Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
-	//
-	// ***
 	MetricsScope string `pulumi:"metricsScope"`
 	// Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
 	Name *string `pulumi:"name"`
@@ -159,8 +151,6 @@ type monitoredProjectArgs struct {
 // The set of arguments for constructing a MonitoredProject resource.
 type MonitoredProjectArgs struct {
 	// Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
-	//
-	// ***
 	MetricsScope pulumi.StringInput
 	// Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
 	Name pulumi.StringPtrInput
@@ -259,8 +249,6 @@ func (o MonitoredProjectOutput) CreateTime() pulumi.StringOutput {
 }
 
 // Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
-//
-// ***
 func (o MonitoredProjectOutput) MetricsScope() pulumi.StringOutput {
 	return o.ApplyT(func(v *MonitoredProject) pulumi.StringOutput { return v.MetricsScope }).(pulumi.StringOutput)
 }

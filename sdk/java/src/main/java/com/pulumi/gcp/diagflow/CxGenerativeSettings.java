@@ -180,16 +180,12 @@ public class CxGenerativeSettings extends com.pulumi.resources.CustomResource {
     /**
      * Language for this settings.
      * 
-     * ***
-     * 
      */
     @Export(name="languageCode", refs={String.class}, tree="[0]")
     private Output<String> languageCode;
 
     /**
      * @return Language for this settings.
-     * 
-     * ***
      * 
      */
     public Output<String> languageCode() {

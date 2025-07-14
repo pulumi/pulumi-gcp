@@ -36,16 +36,12 @@ public final class SecurityGatewayApplicationEndpointMatcherArgs extends com.pul
     /**
      * Optional. Ports of the application.
      * 
-     * ***
-     * 
      */
     @Import(name="ports")
     private @Nullable Output<List<Integer>> ports;
 
     /**
      * @return Optional. Ports of the application.
-     * 
-     * ***
      * 
      */
     public Optional<Output<List<Integer>>> ports() {
@@ -101,8 +97,6 @@ public final class SecurityGatewayApplicationEndpointMatcherArgs extends com.pul
         /**
          * @param ports Optional. Ports of the application.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -114,8 +108,6 @@ public final class SecurityGatewayApplicationEndpointMatcherArgs extends com.pul
         /**
          * @param ports Optional. Ports of the application.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -125,8 +117,6 @@ public final class SecurityGatewayApplicationEndpointMatcherArgs extends com.pul
 
         /**
          * @param ports Optional. Ports of the application.
-         * 
-         * ***
          * 
          * @return builder
          * 

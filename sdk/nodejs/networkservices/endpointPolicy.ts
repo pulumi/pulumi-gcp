@@ -119,13 +119,11 @@ export class EndpointPolicy extends pulumi.CustomResource {
     }
 
     /**
-     * This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic
-     * at the matched endpoints.
+     * This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints.
      */
     public readonly authorizationPolicy!: pulumi.Output<string | undefined>;
     /**
-     * A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from
-     * the proxy to the actual endpoints.
+     * A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from the proxy to the actual endpoints.
      */
     public readonly clientTlsPolicy!: pulumi.Output<string | undefined>;
     /**
@@ -146,15 +144,19 @@ export class EndpointPolicy extends pulumi.CustomResource {
      */
     public readonly endpointMatcher!: pulumi.Output<outputs.networkservices.EndpointPolicyEndpointMatcher>;
     /**
-     * Set of label tags associated with the TcpRoute resource. **Note**: This field is non-authoritative, and will only manage
-     * the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
-     * the resource.
+     * Set of label tags associated with the TcpRoute resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Name of the EndpointPolicy resource.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
@@ -162,12 +164,12 @@ export class EndpointPolicy extends pulumi.CustomResource {
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be
-     * applied to terminate the inbound traffic at the identified backends.
+     * A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
      */
     public readonly serverTlsPolicy!: pulumi.Output<string | undefined>;
     /**
      * Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
+     * Structure is documented below.
      */
     public readonly trafficPortSelector!: pulumi.Output<outputs.networkservices.EndpointPolicyTrafficPortSelector | undefined>;
     /**
@@ -242,13 +244,11 @@ export class EndpointPolicy extends pulumi.CustomResource {
  */
 export interface EndpointPolicyState {
     /**
-     * This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic
-     * at the matched endpoints.
+     * This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints.
      */
     authorizationPolicy?: pulumi.Input<string>;
     /**
-     * A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from
-     * the proxy to the actual endpoints.
+     * A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from the proxy to the actual endpoints.
      */
     clientTlsPolicy?: pulumi.Input<string>;
     /**
@@ -269,15 +269,19 @@ export interface EndpointPolicyState {
      */
     endpointMatcher?: pulumi.Input<inputs.networkservices.EndpointPolicyEndpointMatcher>;
     /**
-     * Set of label tags associated with the TcpRoute resource. **Note**: This field is non-authoritative, and will only manage
-     * the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
-     * the resource.
+     * Set of label tags associated with the TcpRoute resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the EndpointPolicy resource.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
@@ -285,12 +289,12 @@ export interface EndpointPolicyState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be
-     * applied to terminate the inbound traffic at the identified backends.
+     * A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
      */
     serverTlsPolicy?: pulumi.Input<string>;
     /**
      * Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
+     * Structure is documented below.
      */
     trafficPortSelector?: pulumi.Input<inputs.networkservices.EndpointPolicyTrafficPortSelector>;
     /**
@@ -309,13 +313,11 @@ export interface EndpointPolicyState {
  */
 export interface EndpointPolicyArgs {
     /**
-     * This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic
-     * at the matched endpoints.
+     * This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints.
      */
     authorizationPolicy?: pulumi.Input<string>;
     /**
-     * A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from
-     * the proxy to the actual endpoints.
+     * A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from the proxy to the actual endpoints.
      */
     clientTlsPolicy?: pulumi.Input<string>;
     /**
@@ -328,23 +330,27 @@ export interface EndpointPolicyArgs {
      */
     endpointMatcher: pulumi.Input<inputs.networkservices.EndpointPolicyEndpointMatcher>;
     /**
-     * Set of label tags associated with the TcpRoute resource. **Note**: This field is non-authoritative, and will only manage
-     * the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
-     * the resource.
+     * Set of label tags associated with the TcpRoute resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the EndpointPolicy resource.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
-     * A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be
-     * applied to terminate the inbound traffic at the identified backends.
+     * A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
      */
     serverTlsPolicy?: pulumi.Input<string>;
     /**
      * Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
+     * Structure is documented below.
      */
     trafficPortSelector?: pulumi.Input<inputs.networkservices.EndpointPolicyTrafficPortSelector>;
     /**

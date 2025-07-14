@@ -708,9 +708,6 @@ namespace Pulumi.Gcp.SecureSourceManager
 
         /// <summary>
         /// The name for the Instance.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
@@ -842,9 +839,6 @@ namespace Pulumi.Gcp.SecureSourceManager
     {
         /// <summary>
         /// The name for the Instance.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
@@ -943,9 +937,6 @@ namespace Pulumi.Gcp.SecureSourceManager
 
         /// <summary>
         /// The name for the Instance.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }

@@ -96,9 +96,6 @@ export class FolderSettings extends pulumi.CustomResource {
     public readonly disableDefaultSink!: pulumi.Output<boolean>;
     /**
      * The folder for which to retrieve settings.
-     *
-     *
-     * - - -
      */
     public readonly folder!: pulumi.Output<string>;
     /**
@@ -170,9 +167,6 @@ export interface FolderSettingsState {
     disableDefaultSink?: pulumi.Input<boolean>;
     /**
      * The folder for which to retrieve settings.
-     *
-     *
-     * - - -
      */
     folder?: pulumi.Input<string>;
     /**
@@ -207,9 +201,6 @@ export interface FolderSettingsArgs {
     disableDefaultSink?: pulumi.Input<boolean>;
     /**
      * The folder for which to retrieve settings.
-     *
-     *
-     * - - -
      */
     folder: pulumi.Input<string>;
     /**

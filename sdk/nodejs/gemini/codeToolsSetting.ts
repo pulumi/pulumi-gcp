@@ -106,13 +106,13 @@ export class CodeToolsSetting extends pulumi.CustomResource {
      */
     public readonly enabledTools!: pulumi.Output<outputs.gemini.CodeToolsSettingEnabledTool[]>;
     /**
-     * Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present in your
-     * configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+     * Labels as key value pairs.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in
-     * https://google.aip.dev/122.
+     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
     public readonly location!: pulumi.Output<string | undefined>;
     /**
@@ -120,6 +120,10 @@ export class CodeToolsSetting extends pulumi.CustomResource {
      * Format:projects/{project}/locations/{location}/codeToolsSettings/{codeToolsSetting}
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
@@ -202,13 +206,13 @@ export interface CodeToolsSettingState {
      */
     enabledTools?: pulumi.Input<pulumi.Input<inputs.gemini.CodeToolsSettingEnabledTool>[]>;
     /**
-     * Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present in your
-     * configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+     * Labels as key value pairs.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in
-     * https://google.aip.dev/122.
+     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
     location?: pulumi.Input<string>;
     /**
@@ -216,6 +220,10 @@ export interface CodeToolsSettingState {
      * Format:projects/{project}/locations/{location}/codeToolsSettings/{codeToolsSetting}
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
@@ -242,14 +250,18 @@ export interface CodeToolsSettingArgs {
      */
     enabledTools: pulumi.Input<pulumi.Input<inputs.gemini.CodeToolsSettingEnabledTool>[]>;
     /**
-     * Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present in your
-     * configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+     * Labels as key value pairs.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in
-     * https://google.aip.dev/122.
+     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
     location?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
 }

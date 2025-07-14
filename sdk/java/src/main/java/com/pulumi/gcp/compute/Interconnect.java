@@ -304,8 +304,6 @@ public class Interconnect extends com.pulumi.resources.CustomResource {
      * - DEDICATED: A dedicated physical interconnection with the customer.
      *   Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
      * 
-     * ***
-     * 
      */
     @Export(name="interconnectType", refs={String.class}, tree="[0]")
     private Output<String> interconnectType;
@@ -316,8 +314,6 @@ public class Interconnect extends com.pulumi.resources.CustomResource {
      * - PARTNER: A partner-managed interconnection shared between customers though a partner.
      * - DEDICATED: A dedicated physical interconnection with the customer.
      *   Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
-     * 
-     * ***
      * 
      */
     public Output<String> interconnectType() {

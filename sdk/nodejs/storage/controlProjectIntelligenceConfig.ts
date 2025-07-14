@@ -91,9 +91,6 @@ export class ControlProjectIntelligenceConfig extends pulumi.CustomResource {
     public readonly filter!: pulumi.Output<outputs.storage.ControlProjectIntelligenceConfigFilter | undefined>;
     /**
      * Identifier of the GCP project. For GCP project, this field can be project name or project number.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -159,9 +156,6 @@ export interface ControlProjectIntelligenceConfigState {
     filter?: pulumi.Input<inputs.storage.ControlProjectIntelligenceConfigFilter>;
     /**
      * Identifier of the GCP project. For GCP project, this field can be project name or project number.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -190,9 +184,6 @@ export interface ControlProjectIntelligenceConfigArgs {
     filter?: pulumi.Input<inputs.storage.ControlProjectIntelligenceConfigFilter>;
     /**
      * Identifier of the GCP project. For GCP project, this field can be project name or project number.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
 }

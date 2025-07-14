@@ -88,9 +88,6 @@ export class EventThreatDetectionCustomModule extends pulumi.CustomResource {
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * Numerical ID of the parent organization.
-     *
-     *
-     * - - -
      */
     public readonly organization!: pulumi.Output<string>;
     /**
@@ -182,9 +179,6 @@ export interface EventThreatDetectionCustomModuleState {
     name?: pulumi.Input<string>;
     /**
      * Numerical ID of the parent organization.
-     *
-     *
-     * - - -
      */
     organization?: pulumi.Input<string>;
     /**
@@ -219,9 +213,6 @@ export interface EventThreatDetectionCustomModuleArgs {
     enablementState: pulumi.Input<string>;
     /**
      * Numerical ID of the parent organization.
-     *
-     *
-     * - - -
      */
     organization: pulumi.Input<string>;
     /**

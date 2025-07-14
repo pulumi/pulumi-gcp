@@ -17,8 +17,6 @@ namespace Pulumi.Gcp.ApiHub.Outputs
         /// The unique name of the curation resource. This will be the name of the
         /// curation resource in the format:
         /// `projects/{project}/locations/{location}/curations/{curation}`
-        /// 
-        /// - - -
         /// </summary>
         public readonly string Curation;
 

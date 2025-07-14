@@ -118,9 +118,6 @@ export class FirewallEndpoint extends pulumi.CustomResource {
     /**
      * The name of the parent this firewall endpoint belongs to.
      * Format: organizations/{organization_id}.
-     *
-     *
-     * - - -
      */
     public readonly parent!: pulumi.Output<string>;
     /**
@@ -244,9 +241,6 @@ export interface FirewallEndpointState {
     /**
      * The name of the parent this firewall endpoint belongs to.
      * Format: organizations/{organization_id}.
-     *
-     *
-     * - - -
      */
     parent?: pulumi.Input<string>;
     /**
@@ -298,9 +292,6 @@ export interface FirewallEndpointArgs {
     /**
      * The name of the parent this firewall endpoint belongs to.
      * Format: organizations/{organization_id}.
-     *
-     *
-     * - - -
      */
     parent: pulumi.Input<string>;
 }

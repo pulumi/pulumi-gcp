@@ -1452,8 +1452,6 @@ class AuthorityKeySpec(dict):
         :param builtins.str algorithm: The algorithm to use for creating a managed Cloud KMS key for a for a simplified
                experience. All managed keys will be have their ProtectionLevel as HSM.
                Possible values are: `SIGN_HASH_ALGORITHM_UNSPECIFIED`, `RSA_PSS_2048_SHA256`, `RSA_PSS_3072_SHA256`, `RSA_PSS_4096_SHA256`, `RSA_PKCS1_2048_SHA256`, `RSA_PKCS1_3072_SHA256`, `RSA_PKCS1_4096_SHA256`, `EC_P256_SHA256`, `EC_P384_SHA384`.
-               
-               - - -
         :param builtins.str cloud_kms_key_version: The resource name for an existing Cloud KMS CryptoKeyVersion in the format
                `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
         """
@@ -1469,8 +1467,6 @@ class AuthorityKeySpec(dict):
         The algorithm to use for creating a managed Cloud KMS key for a for a simplified
         experience. All managed keys will be have their ProtectionLevel as HSM.
         Possible values are: `SIGN_HASH_ALGORITHM_UNSPECIFIED`, `RSA_PSS_2048_SHA256`, `RSA_PSS_3072_SHA256`, `RSA_PSS_4096_SHA256`, `RSA_PKCS1_2048_SHA256`, `RSA_PKCS1_3072_SHA256`, `RSA_PKCS1_4096_SHA256`, `EC_P256_SHA256`, `EC_P384_SHA384`.
-
-        - - -
         """
         return pulumi.get(self, "algorithm")
 

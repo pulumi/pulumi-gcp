@@ -899,8 +899,6 @@ public class WorkloadIdentityPoolProvider extends com.pulumi.resources.CustomRes
      * value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
      * `gcp-` is reserved for use by Google, and may not be specified.
      * 
-     * ***
-     * 
      */
     @Export(name="workloadIdentityPoolProviderId", refs={String.class}, tree="[0]")
     private Output<String> workloadIdentityPoolProviderId;
@@ -909,8 +907,6 @@ public class WorkloadIdentityPoolProvider extends com.pulumi.resources.CustomRes
      * @return The ID for the provider, which becomes the final component of the resource name. This
      * value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
      * `gcp-` is reserved for use by Google, and may not be specified.
-     * 
-     * ***
      * 
      */
     public Output<String> workloadIdentityPoolProviderId() {

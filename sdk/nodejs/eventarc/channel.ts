@@ -95,9 +95,6 @@ export class Channel extends pulumi.CustomResource {
     public readonly cryptoKeyName!: pulumi.Output<string | undefined>;
     /**
      * The location for the resource
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -194,9 +191,6 @@ export interface ChannelState {
     cryptoKeyName?: pulumi.Input<string>;
     /**
      * The location for the resource
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -240,9 +234,6 @@ export interface ChannelArgs {
     cryptoKeyName?: pulumi.Input<string>;
     /**
      * The location for the resource
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

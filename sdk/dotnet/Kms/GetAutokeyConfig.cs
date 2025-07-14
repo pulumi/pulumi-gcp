@@ -12,6 +12,13 @@ namespace Pulumi.Gcp.Kms
     public static class GetAutokeyConfig
     {
         /// <summary>
+        /// Provides access to Google Cloud Platform KMS AutokeyConfig. A AutokeyConfig is a Cloud KMS resource that helps you safely span the separation of duties to create new Cloud KMS keys for CMEK using Autokey.
+        /// 
+        /// For more information see
+        /// [the official documentation](https://cloud.google.com/kms/docs/reference/rest/v1/folders)
+        /// and
+        /// [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyHandles).
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -34,6 +41,13 @@ namespace Pulumi.Gcp.Kms
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAutokeyConfigResult>("gcp:kms/getAutokeyConfig:getAutokeyConfig", args ?? new GetAutokeyConfigArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Provides access to Google Cloud Platform KMS AutokeyConfig. A AutokeyConfig is a Cloud KMS resource that helps you safely span the separation of duties to create new Cloud KMS keys for CMEK using Autokey.
+        /// 
+        /// For more information see
+        /// [the official documentation](https://cloud.google.com/kms/docs/reference/rest/v1/folders)
+        /// and
+        /// [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyHandles).
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -56,6 +70,13 @@ namespace Pulumi.Gcp.Kms
             => global::Pulumi.Deployment.Instance.Invoke<GetAutokeyConfigResult>("gcp:kms/getAutokeyConfig:getAutokeyConfig", args ?? new GetAutokeyConfigInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Provides access to Google Cloud Platform KMS AutokeyConfig. A AutokeyConfig is a Cloud KMS resource that helps you safely span the separation of duties to create new Cloud KMS keys for CMEK using Autokey.
+        /// 
+        /// For more information see
+        /// [the official documentation](https://cloud.google.com/kms/docs/reference/rest/v1/folders)
+        /// and
+        /// [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyHandles).
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

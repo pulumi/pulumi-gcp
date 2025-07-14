@@ -111,8 +111,6 @@ type Glossary struct {
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The glossary id for creation.
-	//
-	// ***
 	GlossaryId pulumi.StringOutput `pulumi:"glossaryId"`
 	// User-defined labels for the Glossary.
 	//
@@ -189,8 +187,6 @@ type glossaryState struct {
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The glossary id for creation.
-	//
-	// ***
 	GlossaryId *string `pulumi:"glossaryId"`
 	// User-defined labels for the Glossary.
 	//
@@ -227,8 +223,6 @@ type GlossaryState struct {
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// The glossary id for creation.
-	//
-	// ***
 	GlossaryId pulumi.StringPtrInput
 	// User-defined labels for the Glossary.
 	//
@@ -263,8 +257,6 @@ type glossaryArgs struct {
 	// User friendly display name of the glossary. This is user-mutable. This will be same as the glossaryId, if not specified.
 	DisplayName *string `pulumi:"displayName"`
 	// The glossary id for creation.
-	//
-	// ***
 	GlossaryId string `pulumi:"glossaryId"`
 	// User-defined labels for the Glossary.
 	//
@@ -285,8 +277,6 @@ type GlossaryArgs struct {
 	// User friendly display name of the glossary. This is user-mutable. This will be same as the glossaryId, if not specified.
 	DisplayName pulumi.StringPtrInput
 	// The glossary id for creation.
-	//
-	// ***
 	GlossaryId pulumi.StringInput
 	// User-defined labels for the Glossary.
 	//
@@ -413,8 +403,6 @@ func (o GlossaryOutput) EffectiveLabels() pulumi.StringMapOutput {
 }
 
 // The glossary id for creation.
-//
-// ***
 func (o GlossaryOutput) GlossaryId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Glossary) pulumi.StringOutput { return v.GlossaryId }).(pulumi.StringOutput)
 }

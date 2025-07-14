@@ -29,6 +29,7 @@ class BackendBucketArgs:
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  edge_security_policy: Optional[pulumi.Input[builtins.str]] = None,
                  enable_cdn: Optional[pulumi.Input[builtins.bool]] = None,
+                 load_balancing_scheme: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None):
         """
@@ -43,6 +44,9 @@ class BackendBucketArgs:
                client when the resource is created.
         :param pulumi.Input[builtins.str] edge_security_policy: The security policy associated with this backend bucket.
         :param pulumi.Input[builtins.bool] enable_cdn: If true, enable Cloud CDN for this BackendBucket.
+        :param pulumi.Input[builtins.str] load_balancing_scheme: The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
+               If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+               Possible values are: `INTERNAL_MANAGED`.
         :param pulumi.Input[builtins.str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -50,9 +54,6 @@ class BackendBucketArgs:
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -69,6 +70,8 @@ class BackendBucketArgs:
             pulumi.set(__self__, "edge_security_policy", edge_security_policy)
         if enable_cdn is not None:
             pulumi.set(__self__, "enable_cdn", enable_cdn)
+        if load_balancing_scheme is not None:
+            pulumi.set(__self__, "load_balancing_scheme", load_balancing_scheme)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -162,6 +165,20 @@ class BackendBucketArgs:
         pulumi.set(self, "enable_cdn", value)
 
     @property
+    @pulumi.getter(name="loadBalancingScheme")
+    def load_balancing_scheme(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
+        If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+        Possible values are: `INTERNAL_MANAGED`.
+        """
+        return pulumi.get(self, "load_balancing_scheme")
+
+    @load_balancing_scheme.setter
+    def load_balancing_scheme(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "load_balancing_scheme", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -172,9 +189,6 @@ class BackendBucketArgs:
         the first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the
         last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -207,6 +221,7 @@ class _BackendBucketState:
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  edge_security_policy: Optional[pulumi.Input[builtins.str]] = None,
                  enable_cdn: Optional[pulumi.Input[builtins.bool]] = None,
+                 load_balancing_scheme: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  self_link: Optional[pulumi.Input[builtins.str]] = None):
@@ -223,6 +238,9 @@ class _BackendBucketState:
                client when the resource is created.
         :param pulumi.Input[builtins.str] edge_security_policy: The security policy associated with this backend bucket.
         :param pulumi.Input[builtins.bool] enable_cdn: If true, enable Cloud CDN for this BackendBucket.
+        :param pulumi.Input[builtins.str] load_balancing_scheme: The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
+               If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+               Possible values are: `INTERNAL_MANAGED`.
         :param pulumi.Input[builtins.str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -230,9 +248,6 @@ class _BackendBucketState:
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] self_link: The URI of the created resource.
@@ -253,6 +268,8 @@ class _BackendBucketState:
             pulumi.set(__self__, "edge_security_policy", edge_security_policy)
         if enable_cdn is not None:
             pulumi.set(__self__, "enable_cdn", enable_cdn)
+        if load_balancing_scheme is not None:
+            pulumi.set(__self__, "load_balancing_scheme", load_balancing_scheme)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -360,6 +377,20 @@ class _BackendBucketState:
         pulumi.set(self, "enable_cdn", value)
 
     @property
+    @pulumi.getter(name="loadBalancingScheme")
+    def load_balancing_scheme(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
+        If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+        Possible values are: `INTERNAL_MANAGED`.
+        """
+        return pulumi.get(self, "load_balancing_scheme")
+
+    @load_balancing_scheme.setter
+    def load_balancing_scheme(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "load_balancing_scheme", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -370,9 +401,6 @@ class _BackendBucketState:
         the first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the
         last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -419,6 +447,7 @@ class BackendBucket(pulumi.CustomResource):
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  edge_security_policy: Optional[pulumi.Input[builtins.str]] = None,
                  enable_cdn: Optional[pulumi.Input[builtins.bool]] = None,
+                 load_balancing_scheme: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
@@ -551,6 +580,9 @@ class BackendBucket(pulumi.CustomResource):
                client when the resource is created.
         :param pulumi.Input[builtins.str] edge_security_policy: The security policy associated with this backend bucket.
         :param pulumi.Input[builtins.bool] enable_cdn: If true, enable Cloud CDN for this BackendBucket.
+        :param pulumi.Input[builtins.str] load_balancing_scheme: The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
+               If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+               Possible values are: `INTERNAL_MANAGED`.
         :param pulumi.Input[builtins.str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -558,9 +590,6 @@ class BackendBucket(pulumi.CustomResource):
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -709,6 +738,7 @@ class BackendBucket(pulumi.CustomResource):
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  edge_security_policy: Optional[pulumi.Input[builtins.str]] = None,
                  enable_cdn: Optional[pulumi.Input[builtins.bool]] = None,
+                 load_balancing_scheme: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
@@ -729,6 +759,7 @@ class BackendBucket(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["edge_security_policy"] = edge_security_policy
             __props__.__dict__["enable_cdn"] = enable_cdn
+            __props__.__dict__["load_balancing_scheme"] = load_balancing_scheme
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["creation_timestamp"] = None
@@ -751,6 +782,7 @@ class BackendBucket(pulumi.CustomResource):
             description: Optional[pulumi.Input[builtins.str]] = None,
             edge_security_policy: Optional[pulumi.Input[builtins.str]] = None,
             enable_cdn: Optional[pulumi.Input[builtins.bool]] = None,
+            load_balancing_scheme: Optional[pulumi.Input[builtins.str]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
             project: Optional[pulumi.Input[builtins.str]] = None,
             self_link: Optional[pulumi.Input[builtins.str]] = None) -> 'BackendBucket':
@@ -772,6 +804,9 @@ class BackendBucket(pulumi.CustomResource):
                client when the resource is created.
         :param pulumi.Input[builtins.str] edge_security_policy: The security policy associated with this backend bucket.
         :param pulumi.Input[builtins.bool] enable_cdn: If true, enable Cloud CDN for this BackendBucket.
+        :param pulumi.Input[builtins.str] load_balancing_scheme: The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
+               If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+               Possible values are: `INTERNAL_MANAGED`.
         :param pulumi.Input[builtins.str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -779,9 +814,6 @@ class BackendBucket(pulumi.CustomResource):
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] self_link: The URI of the created resource.
@@ -798,6 +830,7 @@ class BackendBucket(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["edge_security_policy"] = edge_security_policy
         __props__.__dict__["enable_cdn"] = enable_cdn
+        __props__.__dict__["load_balancing_scheme"] = load_balancing_scheme
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["self_link"] = self_link
@@ -871,6 +904,16 @@ class BackendBucket(pulumi.CustomResource):
         return pulumi.get(self, "enable_cdn")
 
     @property
+    @pulumi.getter(name="loadBalancingScheme")
+    def load_balancing_scheme(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
+        If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+        Possible values are: `INTERNAL_MANAGED`.
+        """
+        return pulumi.get(self, "load_balancing_scheme")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[builtins.str]:
         """
@@ -881,9 +924,6 @@ class BackendBucket(pulumi.CustomResource):
         the first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the
         last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

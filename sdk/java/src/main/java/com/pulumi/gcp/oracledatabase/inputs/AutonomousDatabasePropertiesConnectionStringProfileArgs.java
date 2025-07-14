@@ -46,14 +46,16 @@ public final class AutonomousDatabasePropertiesConnectionStringProfileArgs exten
     }
 
     /**
-     * The display name for the database connection.
+     * The display name for the Autonomous Database. The name does not have to
+     * be unique within your project.
      * 
      */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
 
     /**
-     * @return The display name for the database connection.
+     * @return The display name for the Autonomous Database. The name does not have to
+     * be unique within your project.
      * 
      */
     public Optional<Output<String>> displayName() {
@@ -277,7 +279,8 @@ public final class AutonomousDatabasePropertiesConnectionStringProfileArgs exten
         }
 
         /**
-         * @param displayName The display name for the database connection.
+         * @param displayName The display name for the Autonomous Database. The name does not have to
+         * be unique within your project.
          * 
          * @return builder
          * 
@@ -288,7 +291,8 @@ public final class AutonomousDatabasePropertiesConnectionStringProfileArgs exten
         }
 
         /**
-         * @param displayName The display name for the database connection.
+         * @param displayName The display name for the Autonomous Database. The name does not have to
+         * be unique within your project.
          * 
          * @return builder
          * 

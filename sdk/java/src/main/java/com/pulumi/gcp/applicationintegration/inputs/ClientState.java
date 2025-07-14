@@ -52,16 +52,12 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     /**
      * Location in which client needs to be provisioned.
      * 
-     * ***
-     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
      * @return Location in which client needs to be provisioned.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> location() {
@@ -189,8 +185,6 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param location Location in which client needs to be provisioned.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -201,8 +195,6 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location Location in which client needs to be provisioned.
-         * 
-         * ***
          * 
          * @return builder
          * 

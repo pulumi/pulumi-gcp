@@ -38,9 +38,6 @@ class EndpointAttachmentArgs:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] name: Name of Endpoint Attachment needs to be created.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -125,9 +122,6 @@ class EndpointAttachmentArgs:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Name of Endpoint Attachment needs to be created.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -177,9 +171,6 @@ class _EndpointAttachmentState:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: Location in which Endpoint Attachment needs to be created.
         :param pulumi.Input[builtins.str] name: Name of Endpoint Attachment needs to be created.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -304,9 +295,6 @@ class _EndpointAttachmentState:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Name of Endpoint Attachment needs to be created.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -440,9 +428,6 @@ class EndpointAttachment(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: Location in which Endpoint Attachment needs to be created.
         :param pulumi.Input[builtins.str] name: Name of Endpoint Attachment needs to be created.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] service_attachment: The path of the service attachment.
@@ -593,9 +578,6 @@ class EndpointAttachment(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: Location in which Endpoint Attachment needs to be created.
         :param pulumi.Input[builtins.str] name: Name of Endpoint Attachment needs to be created.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -685,9 +667,6 @@ class EndpointAttachment(pulumi.CustomResource):
     def name(self) -> pulumi.Output[builtins.str]:
         """
         Name of Endpoint Attachment needs to be created.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

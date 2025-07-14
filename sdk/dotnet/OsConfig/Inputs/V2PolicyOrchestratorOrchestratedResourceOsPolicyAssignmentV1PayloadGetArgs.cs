@@ -29,8 +29,7 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public Input<bool>? Deleted { get; set; }
 
         /// <summary>
-        /// OS policy assignment description.
-        /// Length of the description is limited to 1024 characters.
+        /// Optional. Freeform text describing the purpose of the resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

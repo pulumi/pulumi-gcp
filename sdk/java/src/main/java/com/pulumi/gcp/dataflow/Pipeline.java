@@ -306,8 +306,6 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#state
      * Possible values are: `STATE_UNSPECIFIED`, `STATE_RESUMING`, `STATE_ACTIVE`, `STATE_STOPPING`, `STATE_ARCHIVED`, `STATE_PAUSED`.
      * 
-     * ***
-     * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
@@ -316,8 +314,6 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      * @return The state of the pipeline. When the pipeline is created, the state is set to &#39;PIPELINE_STATE_ACTIVE&#39; by default. State changes can be requested by setting the state to stopping, paused, or resuming. State cannot be changed through pipelines.patch requests.
      * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#state
      * Possible values are: `STATE_UNSPECIFIED`, `STATE_RESUMING`, `STATE_ACTIVE`, `STATE_STOPPING`, `STATE_ARCHIVED`, `STATE_PAUSED`.
-     * 
-     * ***
      * 
      */
     public Output<String> state() {

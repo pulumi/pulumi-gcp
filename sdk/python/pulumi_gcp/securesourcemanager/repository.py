@@ -33,9 +33,6 @@ class RepositoryArgs:
         :param pulumi.Input[builtins.str] instance: The name of the instance in which the repository is hosted.
         :param pulumi.Input[builtins.str] location: The location for the Repository.
         :param pulumi.Input[builtins.str] repository_id: The ID for the Repository.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] description: Description of the repository, which cannot exceed 500 characters.
         :param pulumi.Input['RepositoryInitialConfigArgs'] initial_config: Initial configurations for the repository.
                Structure is documented below.
@@ -81,9 +78,6 @@ class RepositoryArgs:
     def repository_id(self) -> pulumi.Input[builtins.str]:
         """
         The ID for the Repository.
-
-
-        - - -
         """
         return pulumi.get(self, "repository_id")
 
@@ -156,9 +150,6 @@ class _RepositoryState:
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] repository_id: The ID for the Repository.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] uid: Unique identifier of the repository.
         :param pulumi.Input[builtins.str] update_time: Time the repository was updated in UTC.
         :param pulumi.Input[Sequence[pulumi.Input['RepositoryUriArgs']]] uris: URIs for the repository.
@@ -278,9 +269,6 @@ class _RepositoryState:
     def repository_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The ID for the Repository.
-
-
-        - - -
         """
         return pulumi.get(self, "repository_id")
 
@@ -426,9 +414,6 @@ class Repository(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] repository_id: The ID for the Repository.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -598,9 +583,6 @@ class Repository(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] repository_id: The ID for the Repository.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] uid: Unique identifier of the repository.
         :param pulumi.Input[builtins.str] update_time: Time the repository was updated in UTC.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RepositoryUriArgs', 'RepositoryUriArgsDict']]]] uris: URIs for the repository.
@@ -686,9 +668,6 @@ class Repository(pulumi.CustomResource):
     def repository_id(self) -> pulumi.Output[builtins.str]:
         """
         The ID for the Repository.
-
-
-        - - -
         """
         return pulumi.get(self, "repository_id")
 

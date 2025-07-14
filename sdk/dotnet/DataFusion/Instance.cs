@@ -512,9 +512,6 @@ namespace Pulumi.Gcp.DataFusion
         /// with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
         /// pipelines at low cost.
         /// Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -742,9 +739,6 @@ namespace Pulumi.Gcp.DataFusion
         /// with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
         /// pipelines at low cost.
         /// Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -1016,9 +1010,6 @@ namespace Pulumi.Gcp.DataFusion
         /// with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
         /// pipelines at low cost.
         /// Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

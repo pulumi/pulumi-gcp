@@ -578,9 +578,6 @@ namespace Pulumi.Gcp.DatabaseMigrationService
 
         /// <summary>
         /// The ID of the migration job.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("migrationJobId")]
         public Output<string> MigrationJobId { get; private set; } = null!;
@@ -769,9 +766,6 @@ namespace Pulumi.Gcp.DatabaseMigrationService
 
         /// <summary>
         /// The ID of the migration job.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("migrationJobId", required: true)]
         public Input<string> MigrationJobId { get; set; } = null!;
@@ -927,9 +921,6 @@ namespace Pulumi.Gcp.DatabaseMigrationService
 
         /// <summary>
         /// The ID of the migration job.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("migrationJobId")]
         public Input<string>? MigrationJobId { get; set; }

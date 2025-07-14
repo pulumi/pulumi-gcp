@@ -36,16 +36,12 @@ public final class ResizeRequestArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The reference of the instance group manager this ResizeRequest is a part of.
      * 
-     * ***
-     * 
      */
     @Import(name="instanceGroupManager", required=true)
     private Output<String> instanceGroupManager;
 
     /**
      * @return The reference of the instance group manager this ResizeRequest is a part of.
-     * 
-     * ***
      * 
      */
     public Output<String> instanceGroupManager() {
@@ -185,8 +181,6 @@ public final class ResizeRequestArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param instanceGroupManager The reference of the instance group manager this ResizeRequest is a part of.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -197,8 +191,6 @@ public final class ResizeRequestArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param instanceGroupManager The reference of the instance group manager this ResizeRequest is a part of.
-         * 
-         * ***
          * 
          * @return builder
          * 

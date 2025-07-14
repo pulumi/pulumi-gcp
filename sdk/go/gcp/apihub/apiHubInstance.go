@@ -110,9 +110,11 @@ import (
 type ApiHubInstance struct {
 	pulumi.CustomResourceState
 
-	// Optional. Identifier to assign to the Api Hub instance. Must be unique within scope of the parent resource. If the field
-	// is not provided, system generated id will be used. This value should be 4-40 characters, and valid characters are
-	// '/a-z[0-9]-_/'.
+	// Optional. Identifier to assign to the Api Hub instance. Must be unique within
+	// scope of the parent resource. If the field is not provided,
+	// system generated id will be used.
+	// This value should be 4-40 characters, and valid characters
+	// are `/a-z[0-9]-_/`.
 	ApiHubInstanceId pulumi.StringPtrOutput `pulumi:"apiHubInstanceId"`
 	// Available configurations to provision an ApiHub Instance.
 	// Structure is documented below.
@@ -123,16 +125,19 @@ type ApiHubInstance struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
-	// Optional. Instance labels to represent user-provided metadata. Refer to cloud documentation on labels for more details.
-	// https://cloud.google.com/compute/docs/labeling-resources **Note**: This field is non-authoritative, and will only manage
-	// the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
-	// the resource.
+	// Optional. Instance labels to represent user-provided metadata.
+	// Refer to cloud documentation on labels for more details.
+	// https://cloud.google.com/compute/docs/labeling-resources
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Identifier. Format:
 	// `projects/{project}/locations/{location}/apiHubInstances/{apiHubInstance}`.
-	Name    pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -195,9 +200,11 @@ func GetApiHubInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ApiHubInstance resources.
 type apiHubInstanceState struct {
-	// Optional. Identifier to assign to the Api Hub instance. Must be unique within scope of the parent resource. If the field
-	// is not provided, system generated id will be used. This value should be 4-40 characters, and valid characters are
-	// '/a-z[0-9]-_/'.
+	// Optional. Identifier to assign to the Api Hub instance. Must be unique within
+	// scope of the parent resource. If the field is not provided,
+	// system generated id will be used.
+	// This value should be 4-40 characters, and valid characters
+	// are `/a-z[0-9]-_/`.
 	ApiHubInstanceId *string `pulumi:"apiHubInstanceId"`
 	// Available configurations to provision an ApiHub Instance.
 	// Structure is documented below.
@@ -208,16 +215,19 @@ type apiHubInstanceState struct {
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
-	// Optional. Instance labels to represent user-provided metadata. Refer to cloud documentation on labels for more details.
-	// https://cloud.google.com/compute/docs/labeling-resources **Note**: This field is non-authoritative, and will only manage
-	// the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
-	// the resource.
+	// Optional. Instance labels to represent user-provided metadata.
+	// Refer to cloud documentation on labels for more details.
+	// https://cloud.google.com/compute/docs/labeling-resources
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location *string `pulumi:"location"`
 	// Identifier. Format:
 	// `projects/{project}/locations/{location}/apiHubInstances/{apiHubInstance}`.
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -240,9 +250,11 @@ type apiHubInstanceState struct {
 }
 
 type ApiHubInstanceState struct {
-	// Optional. Identifier to assign to the Api Hub instance. Must be unique within scope of the parent resource. If the field
-	// is not provided, system generated id will be used. This value should be 4-40 characters, and valid characters are
-	// '/a-z[0-9]-_/'.
+	// Optional. Identifier to assign to the Api Hub instance. Must be unique within
+	// scope of the parent resource. If the field is not provided,
+	// system generated id will be used.
+	// This value should be 4-40 characters, and valid characters
+	// are `/a-z[0-9]-_/`.
 	ApiHubInstanceId pulumi.StringPtrInput
 	// Available configurations to provision an ApiHub Instance.
 	// Structure is documented below.
@@ -253,16 +265,19 @@ type ApiHubInstanceState struct {
 	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
-	// Optional. Instance labels to represent user-provided metadata. Refer to cloud documentation on labels for more details.
-	// https://cloud.google.com/compute/docs/labeling-resources **Note**: This field is non-authoritative, and will only manage
-	// the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
-	// the resource.
+	// Optional. Instance labels to represent user-provided metadata.
+	// Refer to cloud documentation on labels for more details.
+	// https://cloud.google.com/compute/docs/labeling-resources
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringPtrInput
 	// Identifier. Format:
 	// `projects/{project}/locations/{location}/apiHubInstances/{apiHubInstance}`.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -289,44 +304,54 @@ func (ApiHubInstanceState) ElementType() reflect.Type {
 }
 
 type apiHubInstanceArgs struct {
-	// Optional. Identifier to assign to the Api Hub instance. Must be unique within scope of the parent resource. If the field
-	// is not provided, system generated id will be used. This value should be 4-40 characters, and valid characters are
-	// '/a-z[0-9]-_/'.
+	// Optional. Identifier to assign to the Api Hub instance. Must be unique within
+	// scope of the parent resource. If the field is not provided,
+	// system generated id will be used.
+	// This value should be 4-40 characters, and valid characters
+	// are `/a-z[0-9]-_/`.
 	ApiHubInstanceId *string `pulumi:"apiHubInstanceId"`
 	// Available configurations to provision an ApiHub Instance.
 	// Structure is documented below.
 	Config ApiHubInstanceConfig `pulumi:"config"`
 	// Optional. Description of the ApiHub instance.
 	Description *string `pulumi:"description"`
-	// Optional. Instance labels to represent user-provided metadata. Refer to cloud documentation on labels for more details.
-	// https://cloud.google.com/compute/docs/labeling-resources **Note**: This field is non-authoritative, and will only manage
-	// the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
-	// the resource.
+	// Optional. Instance labels to represent user-provided metadata.
+	// Refer to cloud documentation on labels for more details.
+	// https://cloud.google.com/compute/docs/labeling-resources
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-	Location string  `pulumi:"location"`
-	Project  *string `pulumi:"project"`
+	Location string `pulumi:"location"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a ApiHubInstance resource.
 type ApiHubInstanceArgs struct {
-	// Optional. Identifier to assign to the Api Hub instance. Must be unique within scope of the parent resource. If the field
-	// is not provided, system generated id will be used. This value should be 4-40 characters, and valid characters are
-	// '/a-z[0-9]-_/'.
+	// Optional. Identifier to assign to the Api Hub instance. Must be unique within
+	// scope of the parent resource. If the field is not provided,
+	// system generated id will be used.
+	// This value should be 4-40 characters, and valid characters
+	// are `/a-z[0-9]-_/`.
 	ApiHubInstanceId pulumi.StringPtrInput
 	// Available configurations to provision an ApiHub Instance.
 	// Structure is documented below.
 	Config ApiHubInstanceConfigInput
 	// Optional. Description of the ApiHub instance.
 	Description pulumi.StringPtrInput
-	// Optional. Instance labels to represent user-provided metadata. Refer to cloud documentation on labels for more details.
-	// https://cloud.google.com/compute/docs/labeling-resources **Note**: This field is non-authoritative, and will only manage
-	// the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
-	// the resource.
+	// Optional. Instance labels to represent user-provided metadata.
+	// Refer to cloud documentation on labels for more details.
+	// https://cloud.google.com/compute/docs/labeling-resources
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringInput
-	Project  pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 }
 
 func (ApiHubInstanceArgs) ElementType() reflect.Type {
@@ -416,9 +441,11 @@ func (o ApiHubInstanceOutput) ToApiHubInstanceOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Optional. Identifier to assign to the Api Hub instance. Must be unique within scope of the parent resource. If the field
-// is not provided, system generated id will be used. This value should be 4-40 characters, and valid characters are
-// '/a-z[0-9]-_/'.
+// Optional. Identifier to assign to the Api Hub instance. Must be unique within
+// scope of the parent resource. If the field is not provided,
+// system generated id will be used.
+// This value should be 4-40 characters, and valid characters
+// are `/a-z[0-9]-_/`.
 func (o ApiHubInstanceOutput) ApiHubInstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiHubInstance) pulumi.StringPtrOutput { return v.ApiHubInstanceId }).(pulumi.StringPtrOutput)
 }
@@ -444,10 +471,11 @@ func (o ApiHubInstanceOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ApiHubInstance) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
-// Optional. Instance labels to represent user-provided metadata. Refer to cloud documentation on labels for more details.
-// https://cloud.google.com/compute/docs/labeling-resources **Note**: This field is non-authoritative, and will only manage
-// the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
-// the resource.
+// Optional. Instance labels to represent user-provided metadata.
+// Refer to cloud documentation on labels for more details.
+// https://cloud.google.com/compute/docs/labeling-resources
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o ApiHubInstanceOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ApiHubInstance) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -463,6 +491,8 @@ func (o ApiHubInstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiHubInstance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o ApiHubInstanceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiHubInstance) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

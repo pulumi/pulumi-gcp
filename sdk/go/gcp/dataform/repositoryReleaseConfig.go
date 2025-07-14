@@ -137,8 +137,6 @@ type RepositoryReleaseConfig struct {
 	// Optional. Optional schedule (in cron format) for automatic creation of compilation results.
 	CronSchedule pulumi.StringPtrOutput `pulumi:"cronSchedule"`
 	// Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
-	//
-	// ***
 	GitCommitish pulumi.StringOutput `pulumi:"gitCommitish"`
 	// The release's name.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -195,8 +193,6 @@ type repositoryReleaseConfigState struct {
 	// Optional. Optional schedule (in cron format) for automatic creation of compilation results.
 	CronSchedule *string `pulumi:"cronSchedule"`
 	// Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
-	//
-	// ***
 	GitCommitish *string `pulumi:"gitCommitish"`
 	// The release's name.
 	Name *string `pulumi:"name"`
@@ -221,8 +217,6 @@ type RepositoryReleaseConfigState struct {
 	// Optional. Optional schedule (in cron format) for automatic creation of compilation results.
 	CronSchedule pulumi.StringPtrInput
 	// Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
-	//
-	// ***
 	GitCommitish pulumi.StringPtrInput
 	// The release's name.
 	Name pulumi.StringPtrInput
@@ -251,8 +245,6 @@ type repositoryReleaseConfigArgs struct {
 	// Optional. Optional schedule (in cron format) for automatic creation of compilation results.
 	CronSchedule *string `pulumi:"cronSchedule"`
 	// Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
-	//
-	// ***
 	GitCommitish string `pulumi:"gitCommitish"`
 	// The release's name.
 	Name *string `pulumi:"name"`
@@ -275,8 +267,6 @@ type RepositoryReleaseConfigArgs struct {
 	// Optional. Optional schedule (in cron format) for automatic creation of compilation results.
 	CronSchedule pulumi.StringPtrInput
 	// Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
-	//
-	// ***
 	GitCommitish pulumi.StringInput
 	// The release's name.
 	Name pulumi.StringPtrInput
@@ -392,8 +382,6 @@ func (o RepositoryReleaseConfigOutput) CronSchedule() pulumi.StringPtrOutput {
 }
 
 // Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
-//
-// ***
 func (o RepositoryReleaseConfigOutput) GitCommitish() pulumi.StringOutput {
 	return o.ApplyT(func(v *RepositoryReleaseConfig) pulumi.StringOutput { return v.GitCommitish }).(pulumi.StringOutput)
 }

@@ -93,9 +93,6 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// Identifier of the GCP Organization. For GCP org, this field should be organization number.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -174,9 +171,6 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// Identifier of the GCP Organization. For GCP org, this field should be organization number.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -217,9 +211,6 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// Identifier of the GCP Organization. For GCP org, this field should be organization number.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

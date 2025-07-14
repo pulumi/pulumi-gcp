@@ -141,9 +141,6 @@ namespace Pulumi.Gcp.Eventarc
         /// <summary>
         /// The user-provided ID to be assigned to the Enrollment. It should match the
         /// format `^a-z?$`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("enrollmentId")]
         public Output<string> EnrollmentId { get; private set; } = null!;
@@ -300,9 +297,6 @@ namespace Pulumi.Gcp.Eventarc
         /// <summary>
         /// The user-provided ID to be assigned to the Enrollment. It should match the
         /// format `^a-z?$`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("enrollmentId", required: true)]
         public Input<string> EnrollmentId { get; set; } = null!;
@@ -417,9 +411,6 @@ namespace Pulumi.Gcp.Eventarc
         /// <summary>
         /// The user-provided ID to be assigned to the Enrollment. It should match the
         /// format `^a-z?$`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("enrollmentId")]
         public Input<string>? EnrollmentId { get; set; }

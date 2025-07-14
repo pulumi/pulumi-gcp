@@ -23,6 +23,7 @@ namespace Pulumi.Gcp.DiscoveryEngine.Outputs
         public readonly string FileType;
         /// <summary>
         /// Configurations applied to layout parser.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig? LayoutParsingConfig;
         /// <summary>

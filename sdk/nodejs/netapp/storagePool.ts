@@ -165,9 +165,6 @@ export class StoragePool extends pulumi.CustomResource {
     public readonly location!: pulumi.Output<string>;
     /**
      * The resource name of the storage pool. Needs to be unique per location/region.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -367,9 +364,6 @@ export interface StoragePoolState {
     location?: pulumi.Input<string>;
     /**
      * The resource name of the storage pool. Needs to be unique per location/region.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -479,9 +473,6 @@ export interface StoragePoolArgs {
     location: pulumi.Input<string>;
     /**
      * The resource name of the storage pool. Needs to be unique per location/region.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

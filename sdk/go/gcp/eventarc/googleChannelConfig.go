@@ -113,8 +113,6 @@ type GoogleChannelConfig struct {
 	// Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
 	CryptoKeyName pulumi.StringPtrOutput `pulumi:"cryptoKeyName"`
 	// The location for the resource
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -161,8 +159,6 @@ type googleChannelConfigState struct {
 	// Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
 	CryptoKeyName *string `pulumi:"cryptoKeyName"`
 	// The location for the resource
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
 	Name *string `pulumi:"name"`
@@ -177,8 +173,6 @@ type GoogleChannelConfigState struct {
 	// Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
 	CryptoKeyName pulumi.StringPtrInput
 	// The location for the resource
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
 	Name pulumi.StringPtrInput
@@ -197,8 +191,6 @@ type googleChannelConfigArgs struct {
 	// Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
 	CryptoKeyName *string `pulumi:"cryptoKeyName"`
 	// The location for the resource
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
 	Name *string `pulumi:"name"`
@@ -212,8 +204,6 @@ type GoogleChannelConfigArgs struct {
 	// Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
 	CryptoKeyName pulumi.StringPtrInput
 	// The location for the resource
-	//
-	// ***
 	Location pulumi.StringInput
 	// Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
 	Name pulumi.StringPtrInput
@@ -315,8 +305,6 @@ func (o GoogleChannelConfigOutput) CryptoKeyName() pulumi.StringPtrOutput {
 }
 
 // The location for the resource
-//
-// ***
 func (o GoogleChannelConfigOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *GoogleChannelConfig) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

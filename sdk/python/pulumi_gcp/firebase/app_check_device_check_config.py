@@ -29,9 +29,6 @@ class AppCheckDeviceCheckConfigArgs:
         The set of arguments for constructing a AppCheckDeviceCheckConfig resource.
         :param pulumi.Input[builtins.str] app_id: The ID of an
                [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] key_id: The key identifier of a private key enabled with DeviceCheck, created in your Apple Developer account.
         :param pulumi.Input[builtins.str] private_key: The contents of the private key (.p8) file associated with the key specified by keyId.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -55,9 +52,6 @@ class AppCheckDeviceCheckConfigArgs:
         """
         The ID of an
         [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
-
-
-        - - -
         """
         return pulumi.get(self, "app_id")
 
@@ -132,9 +126,6 @@ class _AppCheckDeviceCheckConfigState:
         Input properties used for looking up and filtering AppCheckDeviceCheckConfig resources.
         :param pulumi.Input[builtins.str] app_id: The ID of an
                [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] key_id: The key identifier of a private key enabled with DeviceCheck, created in your Apple Developer account.
         :param pulumi.Input[builtins.str] name: The relative resource name of the DeviceCheck configuration object
         :param pulumi.Input[builtins.str] private_key: The contents of the private key (.p8) file associated with the key specified by keyId.
@@ -168,9 +159,6 @@ class _AppCheckDeviceCheckConfigState:
         """
         The ID of an
         [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
-
-
-        - - -
         """
         return pulumi.get(self, "app_id")
 
@@ -334,9 +322,6 @@ class AppCheckDeviceCheckConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] app_id: The ID of an
                [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] key_id: The key identifier of a private key enabled with DeviceCheck, created in your Apple Developer account.
         :param pulumi.Input[builtins.str] private_key: The contents of the private key (.p8) file associated with the key specified by keyId.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -484,9 +469,6 @@ class AppCheckDeviceCheckConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] app_id: The ID of an
                [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] key_id: The key identifier of a private key enabled with DeviceCheck, created in your Apple Developer account.
         :param pulumi.Input[builtins.str] name: The relative resource name of the DeviceCheck configuration object
         :param pulumi.Input[builtins.str] private_key: The contents of the private key (.p8) file associated with the key specified by keyId.
@@ -518,9 +500,6 @@ class AppCheckDeviceCheckConfig(pulumi.CustomResource):
         """
         The ID of an
         [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
-
-
-        - - -
         """
         return pulumi.get(self, "app_id")
 

@@ -138,16 +138,12 @@ public class InstancePartition extends com.pulumi.resources.CustomResource {
     /**
      * The instance to create the instance partition in.
      * 
-     * ***
-     * 
      */
     @Export(name="instance", refs={String.class}, tree="[0]")
     private Output<String> instance;
 
     /**
      * @return The instance to create the instance partition in.
-     * 
-     * ***
      * 
      */
     public Output<String> instance() {

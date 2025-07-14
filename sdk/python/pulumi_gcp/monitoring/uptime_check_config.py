@@ -40,9 +40,6 @@ class UptimeCheckConfigArgs:
         The set of arguments for constructing a UptimeCheckConfig resource.
         :param pulumi.Input[builtins.str] display_name: A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
         :param pulumi.Input[builtins.str] timeout: The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] checker_type: The checker type to use for the check. If the monitored resource type is `servicedirectory_service`, `checker_type` must be set to `VPC_CHECKERS`.
                Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
         :param pulumi.Input[Sequence[pulumi.Input['UptimeCheckConfigContentMatcherArgs']]] content_matchers: The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
@@ -110,9 +107,6 @@ class UptimeCheckConfigArgs:
     def timeout(self) -> pulumi.Input[builtins.str]:
         """
         The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
-
-
-        - - -
         """
         return pulumi.get(self, "timeout")
 
@@ -320,9 +314,6 @@ class _UptimeCheckConfigState:
         :param pulumi.Input['UptimeCheckConfigTcpCheckArgs'] tcp_check: Contains information needed to make a TCP check.
                Structure is documented below.
         :param pulumi.Input[builtins.str] timeout: The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] uptime_check_id: The id of the uptime check
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] user_labels: User-supplied key/value data to be used for organizing and identifying the `UptimeCheckConfig` objects. The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
         """
@@ -530,9 +521,6 @@ class _UptimeCheckConfigState:
     def timeout(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
-
-
-        - - -
         """
         return pulumi.get(self, "timeout")
 
@@ -834,9 +822,6 @@ class UptimeCheckConfig(pulumi.CustomResource):
         :param pulumi.Input[Union['UptimeCheckConfigTcpCheckArgs', 'UptimeCheckConfigTcpCheckArgsDict']] tcp_check: Contains information needed to make a TCP check.
                Structure is documented below.
         :param pulumi.Input[builtins.str] timeout: The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] user_labels: User-supplied key/value data to be used for organizing and identifying the `UptimeCheckConfig` objects. The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
         """
         ...
@@ -1183,9 +1168,6 @@ class UptimeCheckConfig(pulumi.CustomResource):
         :param pulumi.Input[Union['UptimeCheckConfigTcpCheckArgs', 'UptimeCheckConfigTcpCheckArgsDict']] tcp_check: Contains information needed to make a TCP check.
                Structure is documented below.
         :param pulumi.Input[builtins.str] timeout: The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] uptime_check_id: The id of the uptime check
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] user_labels: User-supplied key/value data to be used for organizing and identifying the `UptimeCheckConfig` objects. The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
         """
@@ -1330,9 +1312,6 @@ class UptimeCheckConfig(pulumi.CustomResource):
     def timeout(self) -> pulumi.Output[builtins.str]:
         """
         The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
-
-
-        - - -
         """
         return pulumi.get(self, "timeout")
 

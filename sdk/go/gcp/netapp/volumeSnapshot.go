@@ -125,8 +125,6 @@ type VolumeSnapshot struct {
 	// Name of the snapshot location. Snapshots are child resources of volumes and live in the same location.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the snapshot.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -193,8 +191,6 @@ type volumeSnapshotState struct {
 	// Name of the snapshot location. Snapshots are child resources of volumes and live in the same location.
 	Location *string `pulumi:"location"`
 	// The name of the snapshot.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -221,8 +217,6 @@ type VolumeSnapshotState struct {
 	// Name of the snapshot location. Snapshots are child resources of volumes and live in the same location.
 	Location pulumi.StringPtrInput
 	// The name of the snapshot.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -251,8 +245,6 @@ type volumeSnapshotArgs struct {
 	// Name of the snapshot location. Snapshots are child resources of volumes and live in the same location.
 	Location string `pulumi:"location"`
 	// The name of the snapshot.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -273,8 +265,6 @@ type VolumeSnapshotArgs struct {
 	// Name of the snapshot location. Snapshots are child resources of volumes and live in the same location.
 	Location pulumi.StringInput
 	// The name of the snapshot.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -394,8 +384,6 @@ func (o VolumeSnapshotOutput) Location() pulumi.StringOutput {
 }
 
 // The name of the snapshot.
-//
-// ***
 func (o VolumeSnapshotOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *VolumeSnapshot) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

@@ -70,6 +70,7 @@ public final class RegistrationState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Settings controlling the DNS configuration of the Registration.
+     * Structure is documented below.
      * 
      */
     @Import(name="dnsSettings")
@@ -77,6 +78,7 @@ public final class RegistrationState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Settings controlling the DNS configuration of the Registration.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<RegistrationDnsSettingsArgs>> dnsSettings() {
@@ -159,18 +161,18 @@ public final class RegistrationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Set of labels associated with the Registration. **Note**: This field is non-authoritative, and will only manage the
-     * labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the
-     * resource.
+     * Set of labels associated with the Registration.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Set of labels associated with the Registration. **Note**: This field is non-authoritative, and will only manage the
-     * labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the
-     * resource.
+     * @return Set of labels associated with the Registration.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -194,6 +196,7 @@ public final class RegistrationState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Settings for management of the Registration, including renewal, billing, and transfer
+     * Structure is documented below.
      * 
      */
     @Import(name="managementSettings")
@@ -201,6 +204,7 @@ public final class RegistrationState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Settings for management of the Registration, including renewal, billing, and transfer
+     * Structure is documented below.
      * 
      */
     public Optional<Output<RegistrationManagementSettingsArgs>> managementSettings() {
@@ -222,9 +226,19 @@ public final class RegistrationState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -429,6 +443,7 @@ public final class RegistrationState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dnsSettings Settings controlling the DNS configuration of the Registration.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -440,6 +455,7 @@ public final class RegistrationState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dnsSettings Settings controlling the DNS configuration of the Registration.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -574,9 +590,9 @@ public final class RegistrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Set of labels associated with the Registration. **Note**: This field is non-authoritative, and will only manage the
-         * labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the
-         * resource.
+         * @param labels Set of labels associated with the Registration.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -587,9 +603,9 @@ public final class RegistrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Set of labels associated with the Registration. **Note**: This field is non-authoritative, and will only manage the
-         * labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the
-         * resource.
+         * @param labels Set of labels associated with the Registration.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -621,6 +637,7 @@ public final class RegistrationState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param managementSettings Settings for management of the Registration, including renewal, billing, and transfer
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -632,6 +649,7 @@ public final class RegistrationState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param managementSettings Settings for management of the Registration, including renewal, billing, and transfer
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -661,11 +679,25 @@ public final class RegistrationState extends com.pulumi.resources.ResourceArgs {
             return name(Output.of(name));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

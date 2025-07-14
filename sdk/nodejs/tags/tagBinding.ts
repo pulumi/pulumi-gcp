@@ -99,9 +99,6 @@ export class TagBinding extends pulumi.CustomResource {
     public readonly parent!: pulumi.Output<string>;
     /**
      * The TagValue of the TagBinding. Must be of the form tagValues/456.
-     *
-     *
-     * - - -
      */
     public readonly tagValue!: pulumi.Output<string>;
 
@@ -152,9 +149,6 @@ export interface TagBindingState {
     parent?: pulumi.Input<string>;
     /**
      * The TagValue of the TagBinding. Must be of the form tagValues/456.
-     *
-     *
-     * - - -
      */
     tagValue?: pulumi.Input<string>;
 }
@@ -169,9 +163,6 @@ export interface TagBindingArgs {
     parent: pulumi.Input<string>;
     /**
      * The TagValue of the TagBinding. Must be of the form tagValues/456.
-     *
-     *
-     * - - -
      */
     tagValue: pulumi.Input<string>;
 }

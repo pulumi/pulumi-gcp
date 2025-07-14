@@ -131,6 +131,25 @@ public final class BackendBucketArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
+     * If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+     * Possible values are: `INTERNAL_MANAGED`.
+     * 
+     */
+    @Import(name="loadBalancingScheme")
+    private @Nullable Output<String> loadBalancingScheme;
+
+    /**
+     * @return The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
+     * If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+     * Possible values are: `INTERNAL_MANAGED`.
+     * 
+     */
+    public Optional<Output<String>> loadBalancingScheme() {
+        return Optional.ofNullable(this.loadBalancingScheme);
+    }
+
+    /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
      * RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -138,8 +157,6 @@ public final class BackendBucketArgs extends com.pulumi.resources.ResourceArgs {
      * the first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the
      * last character, which cannot be a dash.
-     * 
-     * ***
      * 
      */
     @Import(name="name")
@@ -153,8 +170,6 @@ public final class BackendBucketArgs extends com.pulumi.resources.ResourceArgs {
      * the first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the
      * last character, which cannot be a dash.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -188,6 +203,7 @@ public final class BackendBucketArgs extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.edgeSecurityPolicy = $.edgeSecurityPolicy;
         this.enableCdn = $.enableCdn;
+        this.loadBalancingScheme = $.loadBalancingScheme;
         this.name = $.name;
         this.project = $.project;
     }
@@ -374,6 +390,31 @@ public final class BackendBucketArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param loadBalancingScheme The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
+         * If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+         * Possible values are: `INTERNAL_MANAGED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loadBalancingScheme(@Nullable Output<String> loadBalancingScheme) {
+            $.loadBalancingScheme = loadBalancingScheme;
+            return this;
+        }
+
+        /**
+         * @param loadBalancingScheme The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
+         * If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+         * Possible values are: `INTERNAL_MANAGED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loadBalancingScheme(String loadBalancingScheme) {
+            return loadBalancingScheme(Output.of(loadBalancingScheme));
+        }
+
+        /**
          * @param name Name of the resource. Provided by the client when the resource is
          * created. The name must be 1-63 characters long, and comply with
          * RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -381,8 +422,6 @@ public final class BackendBucketArgs extends com.pulumi.resources.ResourceArgs {
          * the first character must be a lowercase letter, and all following
          * characters must be a dash, lowercase letter, or digit, except the
          * last character, which cannot be a dash.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -400,8 +439,6 @@ public final class BackendBucketArgs extends com.pulumi.resources.ResourceArgs {
          * the first character must be a lowercase letter, and all following
          * characters must be a dash, lowercase letter, or digit, except the
          * last character, which cannot be a dash.
-         * 
-         * ***
          * 
          * @return builder
          * 

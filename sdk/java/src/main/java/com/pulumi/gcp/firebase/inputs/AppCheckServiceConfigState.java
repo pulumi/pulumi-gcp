@@ -61,8 +61,6 @@ public final class AppCheckServiceConfigState extends com.pulumi.resources.Resou
      * firestore.googleapis.com (Cloud Firestore)
      * identitytoolkit.googleapis.com (Authentication)
      * 
-     * ***
-     * 
      */
     @Import(name="serviceId")
     private @Nullable Output<String> serviceId;
@@ -73,8 +71,6 @@ public final class AppCheckServiceConfigState extends com.pulumi.resources.Resou
      * firebasedatabase.googleapis.com (Firebase Realtime Database)
      * firestore.googleapis.com (Cloud Firestore)
      * identitytoolkit.googleapis.com (Authentication)
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> serviceId() {
@@ -168,8 +164,6 @@ public final class AppCheckServiceConfigState extends com.pulumi.resources.Resou
          * firestore.googleapis.com (Cloud Firestore)
          * identitytoolkit.googleapis.com (Authentication)
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -184,8 +178,6 @@ public final class AppCheckServiceConfigState extends com.pulumi.resources.Resou
          * firebasedatabase.googleapis.com (Firebase Realtime Database)
          * firestore.googleapis.com (Cloud Firestore)
          * identitytoolkit.googleapis.com (Authentication)
-         * 
-         * ***
          * 
          * @return builder
          * 

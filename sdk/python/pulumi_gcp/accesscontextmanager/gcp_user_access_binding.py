@@ -31,9 +31,6 @@ class GcpUserAccessBindingArgs:
         The set of arguments for constructing a GcpUserAccessBinding resource.
         :param pulumi.Input[builtins.str] group_key: Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
         :param pulumi.Input[builtins.str] organization_id: Required. ID of the parent organization.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] access_levels: Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
         :param pulumi.Input[Sequence[pulumi.Input['GcpUserAccessBindingScopedAccessSettingArgs']]] scoped_access_settings: Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
                Structure is documented below.
@@ -66,9 +63,6 @@ class GcpUserAccessBindingArgs:
     def organization_id(self) -> pulumi.Input[builtins.str]:
         """
         Required. ID of the parent organization.
-
-
-        - - -
         """
         return pulumi.get(self, "organization_id")
 
@@ -130,9 +124,6 @@ class _GcpUserAccessBindingState:
         :param pulumi.Input[builtins.str] group_key: Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
         :param pulumi.Input[builtins.str] name: Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by RFC 3986 Section 2.3). Should not be specified by the client during creation. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
         :param pulumi.Input[builtins.str] organization_id: Required. ID of the parent organization.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['GcpUserAccessBindingScopedAccessSettingArgs']]] scoped_access_settings: Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
                Structure is documented below.
         :param pulumi.Input['GcpUserAccessBindingSessionSettingsArgs'] session_settings: Optional. The Google Cloud session length (GCSL) policy for the group key.
@@ -192,9 +183,6 @@ class _GcpUserAccessBindingState:
     def organization_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Required. ID of the parent organization.
-
-
-        - - -
         """
         return pulumi.get(self, "organization_id")
 
@@ -308,9 +296,6 @@ class GcpUserAccessBinding(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] access_levels: Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
         :param pulumi.Input[builtins.str] group_key: Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
         :param pulumi.Input[builtins.str] organization_id: Required. ID of the parent organization.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[Union['GcpUserAccessBindingScopedAccessSettingArgs', 'GcpUserAccessBindingScopedAccessSettingArgsDict']]]] scoped_access_settings: Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
                Structure is documented below.
         :param pulumi.Input[Union['GcpUserAccessBindingSessionSettingsArgs', 'GcpUserAccessBindingSessionSettingsArgsDict']] session_settings: Optional. The Google Cloud session length (GCSL) policy for the group key.
@@ -450,9 +435,6 @@ class GcpUserAccessBinding(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] group_key: Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
         :param pulumi.Input[builtins.str] name: Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by RFC 3986 Section 2.3). Should not be specified by the client during creation. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
         :param pulumi.Input[builtins.str] organization_id: Required. ID of the parent organization.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[Union['GcpUserAccessBindingScopedAccessSettingArgs', 'GcpUserAccessBindingScopedAccessSettingArgsDict']]]] scoped_access_settings: Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
                Structure is documented below.
         :param pulumi.Input[Union['GcpUserAccessBindingSessionSettingsArgs', 'GcpUserAccessBindingSessionSettingsArgsDict']] session_settings: Optional. The Google Cloud session length (GCSL) policy for the group key.
@@ -499,9 +481,6 @@ class GcpUserAccessBinding(pulumi.CustomResource):
     def organization_id(self) -> pulumi.Output[builtins.str]:
         """
         Required. ID of the parent organization.
-
-
-        - - -
         """
         return pulumi.get(self, "organization_id")
 

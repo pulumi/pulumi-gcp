@@ -125,38 +125,30 @@ public class FutureReservation extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoCreatedReservationsDeleteTime);
     }
     /**
-     * Specifies the duration of auto-created reservations. It represents relative time to future reservation startTime when
-     * auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count
-     * of seconds and fractions of seconds at nanosecond resolution.
+     * Specifies the duration of auto-created reservations. It represents relative time to future reservation startTime when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
+     * Structure is documented below.
      * 
      */
     @Export(name="autoCreatedReservationsDuration", refs={FutureReservationAutoCreatedReservationsDuration.class}, tree="[0]")
     private Output</* @Nullable */ FutureReservationAutoCreatedReservationsDuration> autoCreatedReservationsDuration;
 
     /**
-     * @return Specifies the duration of auto-created reservations. It represents relative time to future reservation startTime when
-     * auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count
-     * of seconds and fractions of seconds at nanosecond resolution.
+     * @return Specifies the duration of auto-created reservations. It represents relative time to future reservation startTime when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<FutureReservationAutoCreatedReservationsDuration>> autoCreatedReservationsDuration() {
         return Codegen.optional(this.autoCreatedReservationsDuration);
     }
     /**
-     * Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created
-     * reservations will be deleted at Future Reservation&#39;s end time (default) or at user&#39;s defined timestamp if any of the
-     * [autoCreatedReservationsDeleteTime, autoCreatedReservationsDuration] values is specified. For keeping auto-created
-     * reservation indefinitely, this value should be set to false.
+     * Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created reservations will be deleted at Future Reservation&#39;s end time (default) or at user&#39;s defined timestamp if any of the [autoCreatedReservationsDeleteTime, autoCreatedReservationsDuration] values is specified. For keeping auto-created reservation indefinitely, this value should be set to false.
      * 
      */
     @Export(name="autoDeleteAutoCreatedReservations", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoDeleteAutoCreatedReservations;
 
     /**
-     * @return Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created
-     * reservations will be deleted at Future Reservation&#39;s end time (default) or at user&#39;s defined timestamp if any of the
-     * [autoCreatedReservationsDeleteTime, autoCreatedReservationsDuration] values is specified. For keeping auto-created
-     * reservation indefinitely, this value should be set to false.
+     * @return Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created reservations will be deleted at Future Reservation&#39;s end time (default) or at user&#39;s defined timestamp if any of the [autoCreatedReservationsDeleteTime, autoCreatedReservationsDuration] values is specified. For keeping auto-created reservation indefinitely, this value should be set to false.
      * 
      */
     public Output<Optional<Boolean>> autoDeleteAutoCreatedReservations() {
@@ -164,6 +156,7 @@ public class FutureReservation extends com.pulumi.resources.CustomResource {
     }
     /**
      * If not present, then FR will not deliver a new commitment or update an existing commitment.
+     * Structure is documented below.
      * 
      */
     @Export(name="commitmentInfo", refs={FutureReservationCommitmentInfo.class}, tree="[0]")
@@ -171,6 +164,7 @@ public class FutureReservation extends com.pulumi.resources.CustomResource {
 
     /**
      * @return If not present, then FR will not deliver a new commitment or update an existing commitment.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<FutureReservationCommitmentInfo>> commitmentInfo() {
@@ -191,28 +185,30 @@ public class FutureReservation extends com.pulumi.resources.CustomResource {
         return this.creationTimestamp;
     }
     /**
-     * Type of the deployment requested as part of future reservation. Possible values: [&#34;DENSE&#34;, &#34;FLEXIBLE&#34;]
+     * Type of the deployment requested as part of future reservation.
+     * Possible values are: `DENSE`, `FLEXIBLE`.
      * 
      */
     @Export(name="deploymentType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deploymentType;
 
     /**
-     * @return Type of the deployment requested as part of future reservation. Possible values: [&#34;DENSE&#34;, &#34;FLEXIBLE&#34;]
+     * @return Type of the deployment requested as part of future reservation.
+     * Possible values are: `DENSE`, `FLEXIBLE`.
      * 
      */
     public Output<Optional<String>> deploymentType() {
         return Codegen.optional(this.deploymentType);
     }
     /**
-     * The description of the FutureReservation before an amendment was requested.
+     * An optional description of this resource.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the FutureReservation before an amendment was requested.
+     * @return An optional description of this resource.
      * 
      */
     public Output<Optional<String>> description() {
@@ -245,90 +241,92 @@ public class FutureReservation extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The name prefix of the Future Reservation before an amendment was requested.
+     * Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
      * 
      */
     @Export(name="namePrefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> namePrefix;
 
     /**
-     * @return The name prefix of the Future Reservation before an amendment was requested.
+     * @return Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
      * 
      */
     public Output<Optional<String>> namePrefix() {
         return Codegen.optional(this.namePrefix);
     }
     /**
-     * Planning state before being submitted for evaluation Possible values: [&#34;DRAFT&#34;, &#34;SUBMITTED&#34;]
+     * Planning state before being submitted for evaluation
+     * Possible values are: `DRAFT`, `SUBMITTED`.
      * 
      */
     @Export(name="planningStatus", refs={String.class}, tree="[0]")
     private Output<String> planningStatus;
 
     /**
-     * @return Planning state before being submitted for evaluation Possible values: [&#34;DRAFT&#34;, &#34;SUBMITTED&#34;]
+     * @return Planning state before being submitted for evaluation
+     * Possible values are: `DRAFT`, `SUBMITTED`.
      * 
      */
     public Output<String> planningStatus() {
         return this.planningStatus;
     }
     /**
-     * (Required) The identifier for this object. Format specified above.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return (Required) The identifier for this object. Format specified above.
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * The reservation mode which determines reservation-termination behavior and expected pricing. Possible values:
-     * [&#34;CALENDAR&#34;, &#34;DEFAULT&#34;]
+     * The reservation mode which determines reservation-termination behavior and expected pricing.
+     * Possible values are: `CALENDAR`, `DEFAULT`.
      * 
      */
     @Export(name="reservationMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> reservationMode;
 
     /**
-     * @return The reservation mode which determines reservation-termination behavior and expected pricing. Possible values:
-     * [&#34;CALENDAR&#34;, &#34;DEFAULT&#34;]
+     * @return The reservation mode which determines reservation-termination behavior and expected pricing.
+     * Possible values are: `CALENDAR`, `DEFAULT`.
      * 
      */
     public Output<Optional<String>> reservationMode() {
         return Codegen.optional(this.reservationMode);
     }
     /**
-     * Name of reservations where the capacity is provisioned at the time of delivery of future reservations. If the
-     * reservation with the given name does not exist already, it is created automatically at the time of Approval with
-     * INACTIVE state till specified start-time. Either provide the reservationName or a namePrefix.
+     * Name of reservations where the capacity is provisioned at the time of delivery of future reservations. If the reservation with the given name does not exist already, it is created automatically at the time of Approval with INACTIVE state till specified start-time. Either provide the reservationName or a namePrefix.
      * 
      */
     @Export(name="reservationName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> reservationName;
 
     /**
-     * @return Name of reservations where the capacity is provisioned at the time of delivery of future reservations. If the
-     * reservation with the given name does not exist already, it is created automatically at the time of Approval with
-     * INACTIVE state till specified start-time. Either provide the reservationName or a namePrefix.
+     * @return Name of reservations where the capacity is provisioned at the time of delivery of future reservations. If the reservation with the given name does not exist already, it is created automatically at the time of Approval with INACTIVE state till specified start-time. Either provide the reservationName or a namePrefix.
      * 
      */
     public Output<Optional<String>> reservationName() {
         return Codegen.optional(this.reservationName);
     }
     /**
-     * Maintenance information for this reservation Possible values: [&#34;GROUPED&#34;, &#34;INDEPENDENT&#34;]
+     * Maintenance information for this reservation
+     * Possible values are: `GROUPED`, `INDEPENDENT`.
      * 
      */
     @Export(name="schedulingType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> schedulingType;
 
     /**
-     * @return Maintenance information for this reservation Possible values: [&#34;GROUPED&#34;, &#34;INDEPENDENT&#34;]
+     * @return Maintenance information for this reservation
+     * Possible values are: `GROUPED`, `INDEPENDENT`.
      * 
      */
     public Output<Optional<String>> schedulingType() {
@@ -363,7 +361,7 @@ public class FutureReservation extends com.pulumi.resources.CustomResource {
         return this.selfLinkWithId;
     }
     /**
-     * The previous share settings of the Future Reservation.
+     * Settings for sharing the future reservation
      * Structure is documented below.
      * 
      */
@@ -371,7 +369,7 @@ public class FutureReservation extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ FutureReservationShareSettings> shareSettings;
 
     /**
-     * @return The previous share settings of the Future Reservation.
+     * @return Settings for sharing the future reservation
      * Structure is documented below.
      * 
      */
@@ -379,23 +377,21 @@ public class FutureReservation extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.shareSettings);
     }
     /**
-     * Indicates whether the auto-created reservation can be consumed by VMs with affinity for &#34;any&#34; reservation. If the field
-     * is set, then only VMs that target the reservation by name can consume from the delivered reservation.
+     * Indicates whether the auto-created reservation can be consumed by VMs with affinity for &#34;any&#34; reservation. If the field is set, then only VMs that target the reservation by name can consume from the delivered reservation.
      * 
      */
     @Export(name="specificReservationRequired", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> specificReservationRequired;
 
     /**
-     * @return Indicates whether the auto-created reservation can be consumed by VMs with affinity for &#34;any&#34; reservation. If the field
-     * is set, then only VMs that target the reservation by name can consume from the delivered reservation.
+     * @return Indicates whether the auto-created reservation can be consumed by VMs with affinity for &#34;any&#34; reservation. If the field is set, then only VMs that target the reservation by name can consume from the delivered reservation.
      * 
      */
     public Output<Optional<Boolean>> specificReservationRequired() {
         return Codegen.optional(this.specificReservationRequired);
     }
     /**
-     * The previous instance related properties of the Future Reservation.
+     * Future Reservation configuration to indicate instance properties and total count.
      * Structure is documented below.
      * 
      */
@@ -403,7 +399,7 @@ public class FutureReservation extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ FutureReservationSpecificSkuProperties> specificSkuProperties;
 
     /**
-     * @return The previous instance related properties of the Future Reservation.
+     * @return Future Reservation configuration to indicate instance properties and total count.
      * Structure is documented below.
      * 
      */

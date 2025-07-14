@@ -78,6 +78,10 @@ export class SnapshotSettings extends pulumi.CustomResource {
         return obj['__pulumiType'] === SnapshotSettings.__pulumiType;
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * Policy of which storage location is going to be resolved, and additional data
@@ -118,6 +122,10 @@ export class SnapshotSettings extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SnapshotSettings resources.
  */
 export interface SnapshotSettingsState {
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * Policy of which storage location is going to be resolved, and additional data
@@ -131,6 +139,10 @@ export interface SnapshotSettingsState {
  * The set of arguments for constructing a SnapshotSettings resource.
  */
 export interface SnapshotSettingsArgs {
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * Policy of which storage location is going to be resolved, and additional data

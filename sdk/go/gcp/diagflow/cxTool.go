@@ -303,8 +303,6 @@ type CxTool struct {
 	// Structure is documented below.
 	DataStoreSpec CxToolDataStoreSpecPtrOutput `pulumi:"dataStoreSpec"`
 	// High level description of the Tool and its usage.
-	//
-	// ***
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The human-readable name of the tool, unique within the agent.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
@@ -367,8 +365,6 @@ type cxToolState struct {
 	// Structure is documented below.
 	DataStoreSpec *CxToolDataStoreSpec `pulumi:"dataStoreSpec"`
 	// High level description of the Tool and its usage.
-	//
-	// ***
 	Description *string `pulumi:"description"`
 	// The human-readable name of the tool, unique within the agent.
 	DisplayName *string `pulumi:"displayName"`
@@ -396,8 +392,6 @@ type CxToolState struct {
 	// Structure is documented below.
 	DataStoreSpec CxToolDataStoreSpecPtrInput
 	// High level description of the Tool and its usage.
-	//
-	// ***
 	Description pulumi.StringPtrInput
 	// The human-readable name of the tool, unique within the agent.
 	DisplayName pulumi.StringPtrInput
@@ -429,8 +423,6 @@ type cxToolArgs struct {
 	// Structure is documented below.
 	DataStoreSpec *CxToolDataStoreSpec `pulumi:"dataStoreSpec"`
 	// High level description of the Tool and its usage.
-	//
-	// ***
 	Description string `pulumi:"description"`
 	// The human-readable name of the tool, unique within the agent.
 	DisplayName string `pulumi:"displayName"`
@@ -454,8 +446,6 @@ type CxToolArgs struct {
 	// Structure is documented below.
 	DataStoreSpec CxToolDataStoreSpecPtrInput
 	// High level description of the Tool and its usage.
-	//
-	// ***
 	Description pulumi.StringInput
 	// The human-readable name of the tool, unique within the agent.
 	DisplayName pulumi.StringInput
@@ -567,8 +557,6 @@ func (o CxToolOutput) DataStoreSpec() CxToolDataStoreSpecPtrOutput {
 }
 
 // High level description of the Tool and its usage.
-//
-// ***
 func (o CxToolOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *CxTool) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }

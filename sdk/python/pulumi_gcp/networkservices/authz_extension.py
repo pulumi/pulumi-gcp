@@ -40,9 +40,6 @@ class AuthzExtensionArgs:
                For more information, refer to [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
                Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
         :param pulumi.Input[builtins.str] location: The location of the resource.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] service: The reference to the service that runs the extension.
                To configure a callout extension, service must be a fully-qualified reference to a [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices) in the format:
                https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/backendServices/{backendService} or https://www.googleapis.com/compute/v1/projects/{project}/global/backendServices/{backendService}.
@@ -118,9 +115,6 @@ class AuthzExtensionArgs:
     def location(self) -> pulumi.Input[builtins.str]:
         """
         The location of the resource.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -299,9 +293,6 @@ class _AuthzExtensionState:
                For more information, refer to [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
                Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
         :param pulumi.Input[builtins.str] location: The location of the resource.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] metadata: The metadata provided here is included as part of the metadata_context (of type google.protobuf.Struct) in the ProcessingRequest message sent to the extension server. The metadata is available under the namespace com.google.authz_extension.<resourceName>. The following variables are supported in the metadata Struct:
                {forwarding_rule_id} - substituted with the forwarding rule's fully qualified resource name.
         :param pulumi.Input[builtins.str] name: Identifier. Name of the AuthzExtension resource.
@@ -461,9 +452,6 @@ class _AuthzExtensionState:
     def location(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The location of the resource.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -676,9 +664,6 @@ class AuthzExtension(pulumi.CustomResource):
                For more information, refer to [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
                Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
         :param pulumi.Input[builtins.str] location: The location of the resource.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] metadata: The metadata provided here is included as part of the metadata_context (of type google.protobuf.Struct) in the ProcessingRequest message sent to the extension server. The metadata is available under the namespace com.google.authz_extension.<resourceName>. The following variables are supported in the metadata Struct:
                {forwarding_rule_id} - substituted with the forwarding rule's fully qualified resource name.
         :param pulumi.Input[builtins.str] name: Identifier. Name of the AuthzExtension resource.
@@ -879,9 +864,6 @@ class AuthzExtension(pulumi.CustomResource):
                For more information, refer to [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
                Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
         :param pulumi.Input[builtins.str] location: The location of the resource.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] metadata: The metadata provided here is included as part of the metadata_context (of type google.protobuf.Struct) in the ProcessingRequest message sent to the extension server. The metadata is available under the namespace com.google.authz_extension.<resourceName>. The following variables are supported in the metadata Struct:
                {forwarding_rule_id} - substituted with the forwarding rule's fully qualified resource name.
         :param pulumi.Input[builtins.str] name: Identifier. Name of the AuthzExtension resource.
@@ -997,9 +979,6 @@ class AuthzExtension(pulumi.CustomResource):
     def location(self) -> pulumi.Output[builtins.str]:
         """
         The location of the resource.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

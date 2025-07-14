@@ -96,9 +96,6 @@ export class Group extends pulumi.CustomResource {
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Required. User specified ID for the group. It will become the last component of the group name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression: `a-z?`.
-     *
-     *
-     * - - -
      */
     public readonly groupId!: pulumi.Output<string>;
     /**
@@ -203,9 +200,6 @@ export interface GroupState {
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Required. User specified ID for the group. It will become the last component of the group name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression: `a-z?`.
-     *
-     *
-     * - - -
      */
     groupId?: pulumi.Input<string>;
     /**
@@ -252,9 +246,6 @@ export interface GroupArgs {
     displayName?: pulumi.Input<string>;
     /**
      * Required. User specified ID for the group. It will become the last component of the group name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression: `a-z?`.
-     *
-     *
-     * - - -
      */
     groupId: pulumi.Input<string>;
     /**

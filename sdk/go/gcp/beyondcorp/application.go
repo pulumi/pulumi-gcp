@@ -157,7 +157,8 @@ type Application struct {
 	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
 	// Output only. Timestamp when the resource was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Optional. An arbitrary user-provided name for the Application resource. Cannot exceed 64 characters.
+	// Optional. An arbitrary user-provided name for the Application resource.
+	// Cannot exceed 64 characters.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// Required. Endpoint matchers associated with an application.
 	// A combination of hostname and ports as endpoint matcher is used to match
@@ -173,13 +174,16 @@ type Application struct {
 	// Structure is documented below.
 	EndpointMatchers ApplicationEndpointMatcherArrayOutput `pulumi:"endpointMatchers"`
 	// Identifier. Name of the resource.
-	Name    pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Part of `parent`. See documentation of `projectsId`.
 	SecurityGatewaysId pulumi.StringOutput `pulumi:"securityGatewaysId"`
 	// Output only. Timestamp when the resource was last modified.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Optional. List of which upstream resource(s) to forward traffic to.
+	// Structure is documented below.
 	Upstreams ApplicationUpstreamArrayOutput `pulumi:"upstreams"`
 }
 
@@ -229,7 +233,8 @@ type applicationState struct {
 	ApplicationId *string `pulumi:"applicationId"`
 	// Output only. Timestamp when the resource was created.
 	CreateTime *string `pulumi:"createTime"`
-	// Optional. An arbitrary user-provided name for the Application resource. Cannot exceed 64 characters.
+	// Optional. An arbitrary user-provided name for the Application resource.
+	// Cannot exceed 64 characters.
 	DisplayName *string `pulumi:"displayName"`
 	// Required. Endpoint matchers associated with an application.
 	// A combination of hostname and ports as endpoint matcher is used to match
@@ -245,13 +250,16 @@ type applicationState struct {
 	// Structure is documented below.
 	EndpointMatchers []ApplicationEndpointMatcher `pulumi:"endpointMatchers"`
 	// Identifier. Name of the resource.
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Part of `parent`. See documentation of `projectsId`.
 	SecurityGatewaysId *string `pulumi:"securityGatewaysId"`
 	// Output only. Timestamp when the resource was last modified.
 	UpdateTime *string `pulumi:"updateTime"`
 	// Optional. List of which upstream resource(s) to forward traffic to.
+	// Structure is documented below.
 	Upstreams []ApplicationUpstream `pulumi:"upstreams"`
 }
 
@@ -263,7 +271,8 @@ type ApplicationState struct {
 	ApplicationId pulumi.StringPtrInput
 	// Output only. Timestamp when the resource was created.
 	CreateTime pulumi.StringPtrInput
-	// Optional. An arbitrary user-provided name for the Application resource. Cannot exceed 64 characters.
+	// Optional. An arbitrary user-provided name for the Application resource.
+	// Cannot exceed 64 characters.
 	DisplayName pulumi.StringPtrInput
 	// Required. Endpoint matchers associated with an application.
 	// A combination of hostname and ports as endpoint matcher is used to match
@@ -279,13 +288,16 @@ type ApplicationState struct {
 	// Structure is documented below.
 	EndpointMatchers ApplicationEndpointMatcherArrayInput
 	// Identifier. Name of the resource.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Part of `parent`. See documentation of `projectsId`.
 	SecurityGatewaysId pulumi.StringPtrInput
 	// Output only. Timestamp when the resource was last modified.
 	UpdateTime pulumi.StringPtrInput
 	// Optional. List of which upstream resource(s) to forward traffic to.
+	// Structure is documented below.
 	Upstreams ApplicationUpstreamArrayInput
 }
 
@@ -299,7 +311,8 @@ type applicationArgs struct {
 	// * Must contain between 4-63 characters from `/a-z-/`.
 	// * Must end with a number or letter.
 	ApplicationId string `pulumi:"applicationId"`
-	// Optional. An arbitrary user-provided name for the Application resource. Cannot exceed 64 characters.
+	// Optional. An arbitrary user-provided name for the Application resource.
+	// Cannot exceed 64 characters.
 	DisplayName *string `pulumi:"displayName"`
 	// Required. Endpoint matchers associated with an application.
 	// A combination of hostname and ports as endpoint matcher is used to match
@@ -314,10 +327,13 @@ type applicationArgs struct {
 	// Hostname and Ports - ("abc.com" and "22"), ("abc.com" and "22,33") etc
 	// Structure is documented below.
 	EndpointMatchers []ApplicationEndpointMatcher `pulumi:"endpointMatchers"`
-	Project          *string                      `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// Part of `parent`. See documentation of `projectsId`.
 	SecurityGatewaysId string `pulumi:"securityGatewaysId"`
 	// Optional. List of which upstream resource(s) to forward traffic to.
+	// Structure is documented below.
 	Upstreams []ApplicationUpstream `pulumi:"upstreams"`
 }
 
@@ -328,7 +344,8 @@ type ApplicationArgs struct {
 	// * Must contain between 4-63 characters from `/a-z-/`.
 	// * Must end with a number or letter.
 	ApplicationId pulumi.StringInput
-	// Optional. An arbitrary user-provided name for the Application resource. Cannot exceed 64 characters.
+	// Optional. An arbitrary user-provided name for the Application resource.
+	// Cannot exceed 64 characters.
 	DisplayName pulumi.StringPtrInput
 	// Required. Endpoint matchers associated with an application.
 	// A combination of hostname and ports as endpoint matcher is used to match
@@ -343,10 +360,13 @@ type ApplicationArgs struct {
 	// Hostname and Ports - ("abc.com" and "22"), ("abc.com" and "22,33") etc
 	// Structure is documented below.
 	EndpointMatchers ApplicationEndpointMatcherArrayInput
-	Project          pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// Part of `parent`. See documentation of `projectsId`.
 	SecurityGatewaysId pulumi.StringInput
 	// Optional. List of which upstream resource(s) to forward traffic to.
+	// Structure is documented below.
 	Upstreams ApplicationUpstreamArrayInput
 }
 
@@ -450,7 +470,8 @@ func (o ApplicationOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Optional. An arbitrary user-provided name for the Application resource. Cannot exceed 64 characters.
+// Optional. An arbitrary user-provided name for the Application resource.
+// Cannot exceed 64 characters.
 func (o ApplicationOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Application) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
@@ -476,6 +497,8 @@ func (o ApplicationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o ApplicationOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -491,6 +514,7 @@ func (o ApplicationOutput) UpdateTime() pulumi.StringOutput {
 }
 
 // Optional. List of which upstream resource(s) to forward traffic to.
+// Structure is documented below.
 func (o ApplicationOutput) Upstreams() ApplicationUpstreamArrayOutput {
 	return o.ApplyT(func(v *Application) ApplicationUpstreamArrayOutput { return v.Upstreams }).(ApplicationUpstreamArrayOutput)
 }

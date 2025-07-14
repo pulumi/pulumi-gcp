@@ -257,9 +257,6 @@ export class Route extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The network that this route applies to.
-     *
-     *
-     * - - -
      */
     public readonly network!: pulumi.Output<string>;
     /**
@@ -337,6 +334,11 @@ export class Route extends pulumi.CustomResource {
      */
     public readonly nextHopVpnTunnel!: pulumi.Output<string | undefined>;
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    public readonly params!: pulumi.Output<outputs.compute.RouteParams | undefined>;
+    /**
      * The priority of this route. Priority is used to break ties in cases
      * where there is more than one matching route of equal prefix length.
      * In the case of two routes with equal prefix length, the one with the
@@ -408,6 +410,7 @@ export class Route extends pulumi.CustomResource {
             resourceInputs["nextHopOrigin"] = state ? state.nextHopOrigin : undefined;
             resourceInputs["nextHopPeering"] = state ? state.nextHopPeering : undefined;
             resourceInputs["nextHopVpnTunnel"] = state ? state.nextHopVpnTunnel : undefined;
+            resourceInputs["params"] = state ? state.params : undefined;
             resourceInputs["priority"] = state ? state.priority : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["routeStatus"] = state ? state.routeStatus : undefined;
@@ -433,6 +436,7 @@ export class Route extends pulumi.CustomResource {
             resourceInputs["nextHopInstanceZone"] = args ? args.nextHopInstanceZone : undefined;
             resourceInputs["nextHopIp"] = args ? args.nextHopIp : undefined;
             resourceInputs["nextHopVpnTunnel"] = args ? args.nextHopVpnTunnel : undefined;
+            resourceInputs["params"] = args ? args.params : undefined;
             resourceInputs["priority"] = args ? args.priority : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -488,9 +492,6 @@ export interface RouteState {
     name?: pulumi.Input<string>;
     /**
      * The network that this route applies to.
-     *
-     *
-     * - - -
      */
     network?: pulumi.Input<string>;
     /**
@@ -568,6 +569,11 @@ export interface RouteState {
      */
     nextHopVpnTunnel?: pulumi.Input<string>;
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.RouteParams>;
+    /**
      * The priority of this route. Priority is used to break ties in cases
      * where there is more than one matching route of equal prefix length.
      * In the case of two routes with equal prefix length, the one with the
@@ -635,9 +641,6 @@ export interface RouteArgs {
     name?: pulumi.Input<string>;
     /**
      * The network that this route applies to.
-     *
-     *
-     * - - -
      */
     network: pulumi.Input<string>;
     /**
@@ -690,6 +693,11 @@ export interface RouteArgs {
      * URL to a VpnTunnel that should handle matching packets.
      */
     nextHopVpnTunnel?: pulumi.Input<string>;
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.RouteParams>;
     /**
      * The priority of this route. Priority is used to break ties in cases
      * where there is more than one matching route of equal prefix length.

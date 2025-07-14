@@ -333,8 +333,6 @@ type AiIndexEndpointDeployedIndex struct {
 	Index pulumi.StringOutput `pulumi:"index"`
 	// Identifies the index endpoint. Must be in the format
 	// 'projects/{{project}}/locations/{{region}}/indexEndpoints/{{indexEndpoint}}'
-	//
-	// ***
 	IndexEndpoint pulumi.StringOutput `pulumi:"indexEndpoint"`
 	// The DeployedIndex may depend on various data on its original Index. Additionally when certain changes to the original Index are being done (e.g. when what the Index contains is being changed) the DeployedIndex may be asynchronously updated in the background to reflect these changes. If this timestamp's value is at least the [Index.update_time](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.indexes#Index.FIELDS.update_time) of the original Index, it means that this DeployedIndex and the original Index are in sync. If this timestamp is older, then to see which updates this DeployedIndex already contains (and which it does not), one must [list](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.operations/list#google.longrunning.Operations.ListOperations) the operations that are running on the original Index. Only the successfully completed Operations with updateTime equal or before this sync time are contained in this DeployedIndex.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -421,8 +419,6 @@ type aiIndexEndpointDeployedIndexState struct {
 	Index *string `pulumi:"index"`
 	// Identifies the index endpoint. Must be in the format
 	// 'projects/{{project}}/locations/{{region}}/indexEndpoints/{{indexEndpoint}}'
-	//
-	// ***
 	IndexEndpoint *string `pulumi:"indexEndpoint"`
 	// The DeployedIndex may depend on various data on its original Index. Additionally when certain changes to the original Index are being done (e.g. when what the Index contains is being changed) the DeployedIndex may be asynchronously updated in the background to reflect these changes. If this timestamp's value is at least the [Index.update_time](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.indexes#Index.FIELDS.update_time) of the original Index, it means that this DeployedIndex and the original Index are in sync. If this timestamp is older, then to see which updates this DeployedIndex already contains (and which it does not), one must [list](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.operations/list#google.longrunning.Operations.ListOperations) the operations that are running on the original Index. Only the successfully completed Operations with updateTime equal or before this sync time are contained in this DeployedIndex.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -471,8 +467,6 @@ type AiIndexEndpointDeployedIndexState struct {
 	Index pulumi.StringPtrInput
 	// Identifies the index endpoint. Must be in the format
 	// 'projects/{{project}}/locations/{{region}}/indexEndpoints/{{indexEndpoint}}'
-	//
-	// ***
 	IndexEndpoint pulumi.StringPtrInput
 	// The DeployedIndex may depend on various data on its original Index. Additionally when certain changes to the original Index are being done (e.g. when what the Index contains is being changed) the DeployedIndex may be asynchronously updated in the background to reflect these changes. If this timestamp's value is at least the [Index.update_time](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.indexes#Index.FIELDS.update_time) of the original Index, it means that this DeployedIndex and the original Index are in sync. If this timestamp is older, then to see which updates this DeployedIndex already contains (and which it does not), one must [list](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.operations/list#google.longrunning.Operations.ListOperations) the operations that are running on the original Index. Only the successfully completed Operations with updateTime equal or before this sync time are contained in this DeployedIndex.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -523,8 +517,6 @@ type aiIndexEndpointDeployedIndexArgs struct {
 	Index string `pulumi:"index"`
 	// Identifies the index endpoint. Must be in the format
 	// 'projects/{{project}}/locations/{{region}}/indexEndpoints/{{indexEndpoint}}'
-	//
-	// ***
 	IndexEndpoint string `pulumi:"indexEndpoint"`
 	// The region of the index endpoint deployment. eg us-central1
 	Region *string `pulumi:"region"`
@@ -564,8 +556,6 @@ type AiIndexEndpointDeployedIndexArgs struct {
 	Index pulumi.StringInput
 	// Identifies the index endpoint. Must be in the format
 	// 'projects/{{project}}/locations/{{region}}/indexEndpoints/{{indexEndpoint}}'
-	//
-	// ***
 	IndexEndpoint pulumi.StringInput
 	// The region of the index endpoint deployment. eg us-central1
 	Region pulumi.StringPtrInput
@@ -725,8 +715,6 @@ func (o AiIndexEndpointDeployedIndexOutput) Index() pulumi.StringOutput {
 
 // Identifies the index endpoint. Must be in the format
 // 'projects/{{project}}/locations/{{region}}/indexEndpoints/{{indexEndpoint}}'
-//
-// ***
 func (o AiIndexEndpointDeployedIndexOutput) IndexEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiIndexEndpointDeployedIndex) pulumi.StringOutput { return v.IndexEndpoint }).(pulumi.StringOutput)
 }

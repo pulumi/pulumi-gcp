@@ -32,9 +32,6 @@ class RegionNetworkEndpointArgs:
         The set of arguments for constructing a RegionNetworkEndpoint resource.
         :param pulumi.Input[builtins.int] port: Port number of network endpoint.
         :param pulumi.Input[builtins.str] region_network_endpoint_group: The network endpoint group this endpoint is part of.
-               
-               
-               - - -
         :param pulumi.Input[builtins.int] client_destination_port: Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
         :param pulumi.Input[builtins.str] fqdn: Fully qualified domain name of network endpoint.
                This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
@@ -78,9 +75,6 @@ class RegionNetworkEndpointArgs:
     def region_network_endpoint_group(self) -> pulumi.Input[builtins.str]:
         """
         The network endpoint group this endpoint is part of.
-
-
-        - - -
         """
         return pulumi.get(self, "region_network_endpoint_group")
 
@@ -192,9 +186,6 @@ class _RegionNetworkEndpointState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] region: Region where the containing network endpoint group is located.
         :param pulumi.Input[builtins.str] region_network_endpoint_group: The network endpoint group this endpoint is part of.
-               
-               
-               - - -
         """
         if client_destination_port is not None:
             pulumi.set(__self__, "client_destination_port", client_destination_port)
@@ -320,9 +311,6 @@ class _RegionNetworkEndpointState:
     def region_network_endpoint_group(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The network endpoint group this endpoint is part of.
-
-
-        - - -
         """
         return pulumi.get(self, "region_network_endpoint_group")
 
@@ -489,9 +477,6 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] region: Region where the containing network endpoint group is located.
         :param pulumi.Input[builtins.str] region_network_endpoint_group: The network endpoint group this endpoint is part of.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -712,9 +697,6 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] region: Region where the containing network endpoint group is located.
         :param pulumi.Input[builtins.str] region_network_endpoint_group: The network endpoint group this endpoint is part of.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -804,9 +786,6 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
     def region_network_endpoint_group(self) -> pulumi.Output[builtins.str]:
         """
         The network endpoint group this endpoint is part of.
-
-
-        - - -
         """
         return pulumi.get(self, "region_network_endpoint_group")
 

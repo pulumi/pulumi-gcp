@@ -41,9 +41,12 @@ class SearchEngineArgs:
         :param pulumi.Input['SearchEngineSearchEngineConfigArgs'] search_engine_config: Configurations for a Search Engine.
                Structure is documented below.
         :param pulumi.Input['SearchEngineCommonConfigArgs'] common_config: Common config spec that specifies the metadata of the engine.
-        :param pulumi.Input[builtins.str] industry_vertical: The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore:
-               If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
-               Default value: "GENERIC" Possible values: ["GENERIC", "MEDIA", "HEALTHCARE_FHIR"]
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] industry_vertical: The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
+               Default value is `GENERIC`.
+               Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "collection_id", collection_id)
         pulumi.set(__self__, "data_store_ids", data_store_ids)
@@ -136,6 +139,7 @@ class SearchEngineArgs:
     def common_config(self) -> Optional[pulumi.Input['SearchEngineCommonConfigArgs']]:
         """
         Common config spec that specifies the metadata of the engine.
+        Structure is documented below.
         """
         return pulumi.get(self, "common_config")
 
@@ -147,9 +151,9 @@ class SearchEngineArgs:
     @pulumi.getter(name="industryVertical")
     def industry_vertical(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore:
-        If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
-        Default value: "GENERIC" Possible values: ["GENERIC", "MEDIA", "HEALTHCARE_FHIR"]
+        The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
+        Default value is `GENERIC`.
+        Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
         """
         return pulumi.get(self, "industry_vertical")
 
@@ -160,6 +164,10 @@ class SearchEngineArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -186,18 +194,21 @@ class _SearchEngineState:
         Input properties used for looking up and filtering SearchEngine resources.
         :param pulumi.Input[builtins.str] collection_id: The collection ID.
         :param pulumi.Input['SearchEngineCommonConfigArgs'] common_config: Common config spec that specifies the metadata of the engine.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] create_time: Timestamp the Engine was created at.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] data_store_ids: The data stores associated with this engine. For SOLUTION_TYPE_SEARCH type of engines, they can only associate with at most one data store.
         :param pulumi.Input[builtins.str] display_name: Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
         :param pulumi.Input[builtins.str] engine_id: Unique ID to use for Search Engine App.
-        :param pulumi.Input[builtins.str] industry_vertical: The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore:
-               If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
-               Default value: "GENERIC" Possible values: ["GENERIC", "MEDIA", "HEALTHCARE_FHIR"]
+        :param pulumi.Input[builtins.str] industry_vertical: The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
+               Default value is `GENERIC`.
+               Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
         :param pulumi.Input[builtins.str] location: Location.
         :param pulumi.Input[builtins.str] name: The unique full resource name of the search engine. Values are of the format
                `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
                This field must be a UTF-8 encoded string with a length limit of 1024
                characters.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input['SearchEngineSearchEngineConfigArgs'] search_engine_config: Configurations for a Search Engine.
                Structure is documented below.
         :param pulumi.Input[builtins.str] update_time: Timestamp the Engine was last updated.
@@ -244,6 +255,7 @@ class _SearchEngineState:
     def common_config(self) -> Optional[pulumi.Input['SearchEngineCommonConfigArgs']]:
         """
         Common config spec that specifies the metadata of the engine.
+        Structure is documented below.
         """
         return pulumi.get(self, "common_config")
 
@@ -303,9 +315,9 @@ class _SearchEngineState:
     @pulumi.getter(name="industryVertical")
     def industry_vertical(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore:
-        If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
-        Default value: "GENERIC" Possible values: ["GENERIC", "MEDIA", "HEALTHCARE_FHIR"]
+        The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
+        Default value is `GENERIC`.
+        Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
         """
         return pulumi.get(self, "industry_vertical")
 
@@ -343,6 +355,10 @@ class _SearchEngineState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -453,13 +469,16 @@ class SearchEngine(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] collection_id: The collection ID.
         :param pulumi.Input[Union['SearchEngineCommonConfigArgs', 'SearchEngineCommonConfigArgsDict']] common_config: Common config spec that specifies the metadata of the engine.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] data_store_ids: The data stores associated with this engine. For SOLUTION_TYPE_SEARCH type of engines, they can only associate with at most one data store.
         :param pulumi.Input[builtins.str] display_name: Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
         :param pulumi.Input[builtins.str] engine_id: Unique ID to use for Search Engine App.
-        :param pulumi.Input[builtins.str] industry_vertical: The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore:
-               If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
-               Default value: "GENERIC" Possible values: ["GENERIC", "MEDIA", "HEALTHCARE_FHIR"]
+        :param pulumi.Input[builtins.str] industry_vertical: The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
+               Default value is `GENERIC`.
+               Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
         :param pulumi.Input[builtins.str] location: Location.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Union['SearchEngineSearchEngineConfigArgs', 'SearchEngineSearchEngineConfigArgsDict']] search_engine_config: Configurations for a Search Engine.
                Structure is documented below.
         """
@@ -615,18 +634,21 @@ class SearchEngine(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] collection_id: The collection ID.
         :param pulumi.Input[Union['SearchEngineCommonConfigArgs', 'SearchEngineCommonConfigArgsDict']] common_config: Common config spec that specifies the metadata of the engine.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] create_time: Timestamp the Engine was created at.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] data_store_ids: The data stores associated with this engine. For SOLUTION_TYPE_SEARCH type of engines, they can only associate with at most one data store.
         :param pulumi.Input[builtins.str] display_name: Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
         :param pulumi.Input[builtins.str] engine_id: Unique ID to use for Search Engine App.
-        :param pulumi.Input[builtins.str] industry_vertical: The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore:
-               If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
-               Default value: "GENERIC" Possible values: ["GENERIC", "MEDIA", "HEALTHCARE_FHIR"]
+        :param pulumi.Input[builtins.str] industry_vertical: The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
+               Default value is `GENERIC`.
+               Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
         :param pulumi.Input[builtins.str] location: Location.
         :param pulumi.Input[builtins.str] name: The unique full resource name of the search engine. Values are of the format
                `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
                This field must be a UTF-8 encoded string with a length limit of 1024
                characters.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Union['SearchEngineSearchEngineConfigArgs', 'SearchEngineSearchEngineConfigArgsDict']] search_engine_config: Configurations for a Search Engine.
                Structure is documented below.
         :param pulumi.Input[builtins.str] update_time: Timestamp the Engine was last updated.
@@ -662,6 +684,7 @@ class SearchEngine(pulumi.CustomResource):
     def common_config(self) -> pulumi.Output[Optional['outputs.SearchEngineCommonConfig']]:
         """
         Common config spec that specifies the metadata of the engine.
+        Structure is documented below.
         """
         return pulumi.get(self, "common_config")
 
@@ -701,9 +724,9 @@ class SearchEngine(pulumi.CustomResource):
     @pulumi.getter(name="industryVertical")
     def industry_vertical(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore:
-        If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
-        Default value: "GENERIC" Possible values: ["GENERIC", "MEDIA", "HEALTHCARE_FHIR"]
+        The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
+        Default value is `GENERIC`.
+        Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
         """
         return pulumi.get(self, "industry_vertical")
 
@@ -729,6 +752,10 @@ class SearchEngine(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property

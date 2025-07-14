@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.Diagflow.Outputs
     {
         /// <summary>
         /// Format: projects/{{project}}/locations/{{location}}/agents/{{agent}}/flows/{{flow}}/versions/{{version}}.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string Version;
 

@@ -379,16 +379,12 @@ public class NetworkAttachment extends com.pulumi.resources.CustomResource {
     /**
      * URL of the region where the network attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      * 
-     * ***
-     * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
      * @return URL of the region where the network attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-     * 
-     * ***
      * 
      */
     public Output<String> region() {

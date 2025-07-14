@@ -153,6 +153,7 @@ namespace Pulumi.Gcp.Apphub
 
         /// <summary>
         /// Consumer provided attributes.
+        /// Structure is documented below.
         /// </summary>
         [Output("attributes")]
         public Output<Outputs.ApplicationAttributes?> Attributes { get; private set; } = null!;
@@ -188,6 +189,10 @@ namespace Pulumi.Gcp.Apphub
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -275,6 +280,7 @@ namespace Pulumi.Gcp.Apphub
 
         /// <summary>
         /// Consumer provided attributes.
+        /// Structure is documented below.
         /// </summary>
         [Input("attributes")]
         public Input<Inputs.ApplicationAttributesArgs>? Attributes { get; set; }
@@ -297,6 +303,10 @@ namespace Pulumi.Gcp.Apphub
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -323,6 +333,7 @@ namespace Pulumi.Gcp.Apphub
 
         /// <summary>
         /// Consumer provided attributes.
+        /// Structure is documented below.
         /// </summary>
         [Input("attributes")]
         public Input<Inputs.ApplicationAttributesGetArgs>? Attributes { get; set; }
@@ -358,6 +369,10 @@ namespace Pulumi.Gcp.Apphub
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

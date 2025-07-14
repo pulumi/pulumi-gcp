@@ -209,16 +209,12 @@ public class BackupChannel extends com.pulumi.resources.CustomResource {
     /**
      * The region of the Backup Channel.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return The region of the Backup Channel.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

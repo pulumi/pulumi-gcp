@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class JobStatusErrorResult {
     /**
-     * @return Specifies where the error occurred, if present.
+     * @return The geographic location of the job. The default value is US.
      * 
      */
     private @Nullable String location;
@@ -29,7 +29,7 @@ public final class JobStatusErrorResult {
 
     private JobStatusErrorResult() {}
     /**
-     * @return Specifies where the error occurred, if present.
+     * @return The geographic location of the job. The default value is US.
      * 
      */
     public Optional<String> location() {

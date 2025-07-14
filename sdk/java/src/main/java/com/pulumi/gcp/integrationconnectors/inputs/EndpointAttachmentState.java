@@ -131,16 +131,12 @@ public final class EndpointAttachmentState extends com.pulumi.resources.Resource
     /**
      * Name of Endpoint Attachment needs to be created.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return Name of Endpoint Attachment needs to be created.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -402,8 +398,6 @@ public final class EndpointAttachmentState extends com.pulumi.resources.Resource
         /**
          * @param name Name of Endpoint Attachment needs to be created.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -414,8 +408,6 @@ public final class EndpointAttachmentState extends com.pulumi.resources.Resource
 
         /**
          * @param name Name of Endpoint Attachment needs to be created.
-         * 
-         * ***
          * 
          * @return builder
          * 

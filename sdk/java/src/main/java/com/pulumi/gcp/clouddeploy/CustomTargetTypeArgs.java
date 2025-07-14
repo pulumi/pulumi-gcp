@@ -91,16 +91,12 @@ public final class CustomTargetTypeArgs extends com.pulumi.resources.ResourceArg
     /**
      * The location of the source.
      * 
-     * ***
-     * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
      * @return The location of the source.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {
@@ -266,8 +262,6 @@ public final class CustomTargetTypeArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param location The location of the source.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -278,8 +272,6 @@ public final class CustomTargetTypeArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param location The location of the source.
-         * 
-         * ***
          * 
          * @return builder
          * 

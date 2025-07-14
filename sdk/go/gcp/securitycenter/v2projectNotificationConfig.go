@@ -96,9 +96,12 @@ type V2ProjectNotificationConfig struct {
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The resource name of this notification config, in the format
 	// `projects/{{projectId}}/locations/{{location}}/notificationConfigs/{{config_id}}`.
-	Name    pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The Pub/Sub topic to send notifications to. Its format is "projects/[projectId]/topics/[topic]".
+	// The Pub/Sub topic to send notifications to. Its format is
+	// "projects/[projectId]/topics/[topic]".
 	PubsubTopic pulumi.StringPtrOutput `pulumi:"pubsubTopic"`
 	// The service account that needs "pubsub.topics.publish" permission to
 	// publish to the Pub/Sub topic.
@@ -152,9 +155,12 @@ type v2projectNotificationConfigState struct {
 	Location *string `pulumi:"location"`
 	// The resource name of this notification config, in the format
 	// `projects/{{projectId}}/locations/{{location}}/notificationConfigs/{{config_id}}`.
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The Pub/Sub topic to send notifications to. Its format is "projects/[projectId]/topics/[topic]".
+	// The Pub/Sub topic to send notifications to. Its format is
+	// "projects/[projectId]/topics/[topic]".
 	PubsubTopic *string `pulumi:"pubsubTopic"`
 	// The service account that needs "pubsub.topics.publish" permission to
 	// publish to the Pub/Sub topic.
@@ -173,9 +179,12 @@ type V2ProjectNotificationConfigState struct {
 	Location pulumi.StringPtrInput
 	// The resource name of this notification config, in the format
 	// `projects/{{projectId}}/locations/{{location}}/notificationConfigs/{{config_id}}`.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The Pub/Sub topic to send notifications to. Its format is "projects/[projectId]/topics/[topic]".
+	// The Pub/Sub topic to send notifications to. Its format is
+	// "projects/[projectId]/topics/[topic]".
 	PubsubTopic pulumi.StringPtrInput
 	// The service account that needs "pubsub.topics.publish" permission to
 	// publish to the Pub/Sub topic.
@@ -196,8 +205,11 @@ type v2projectNotificationConfigArgs struct {
 	Description *string `pulumi:"description"`
 	// Location ID of the parent organization. Only global is supported at the moment.
 	Location *string `pulumi:"location"`
-	Project  *string `pulumi:"project"`
-	// The Pub/Sub topic to send notifications to. Its format is "projects/[projectId]/topics/[topic]".
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
+	// The Pub/Sub topic to send notifications to. Its format is
+	// "projects/[projectId]/topics/[topic]".
 	PubsubTopic *string `pulumi:"pubsubTopic"`
 	// The config for triggering streaming-based notifications.
 	// Structure is documented below.
@@ -212,8 +224,11 @@ type V2ProjectNotificationConfigArgs struct {
 	Description pulumi.StringPtrInput
 	// Location ID of the parent organization. Only global is supported at the moment.
 	Location pulumi.StringPtrInput
-	Project  pulumi.StringPtrInput
-	// The Pub/Sub topic to send notifications to. Its format is "projects/[projectId]/topics/[topic]".
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
+	// The Pub/Sub topic to send notifications to. Its format is
+	// "projects/[projectId]/topics/[topic]".
 	PubsubTopic pulumi.StringPtrInput
 	// The config for triggering streaming-based notifications.
 	// Structure is documented below.
@@ -328,11 +343,14 @@ func (o V2ProjectNotificationConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *V2ProjectNotificationConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o V2ProjectNotificationConfigOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *V2ProjectNotificationConfig) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The Pub/Sub topic to send notifications to. Its format is "projects/[projectId]/topics/[topic]".
+// The Pub/Sub topic to send notifications to. Its format is
+// "projects/[projectId]/topics/[topic]".
 func (o V2ProjectNotificationConfigOutput) PubsubTopic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *V2ProjectNotificationConfig) pulumi.StringPtrOutput { return v.PubsubTopic }).(pulumi.StringPtrOutput)
 }

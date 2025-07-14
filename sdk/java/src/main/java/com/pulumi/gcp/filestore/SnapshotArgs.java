@@ -35,16 +35,12 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The resource name of the filestore instance.
      * 
-     * ***
-     * 
      */
     @Import(name="instance", required=true)
     private Output<String> instance;
 
     /**
      * @return The resource name of the filestore instance.
-     * 
-     * ***
      * 
      */
     public Output<String> instance() {
@@ -184,8 +180,6 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param instance The resource name of the filestore instance.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -196,8 +190,6 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param instance The resource name of the filestore instance.
-         * 
-         * ***
          * 
          * @return builder
          * 

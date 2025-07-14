@@ -648,8 +648,6 @@ class PipelineDestinationHttpEndpoint(dict):
                The Pipeline expects that the message it receives adheres to the
                standard CloudEvent format. If it doesn't then the outgoing message
                request may fail with a persistent error.
-               
-               - - -
         """
         pulumi.set(__self__, "uri", uri)
         if message_binding_template is not None:
@@ -828,8 +826,6 @@ class PipelineDestinationHttpEndpoint(dict):
         The Pipeline expects that the message it receives adheres to the
         standard CloudEvent format. If it doesn't then the outgoing message
         request may fail with a persistent error.
-
-        - - -
         """
         return pulumi.get(self, "message_binding_template")
 
@@ -1709,8 +1705,6 @@ class TriggerDestinationNetworkConfig(dict):
                  network_attachment: builtins.str):
         """
         :param builtins.str network_attachment: Required. Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
-               
-               - - -
         """
         pulumi.set(__self__, "network_attachment", network_attachment)
 
@@ -1719,8 +1713,6 @@ class TriggerDestinationNetworkConfig(dict):
     def network_attachment(self) -> builtins.str:
         """
         Required. Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
-
-        - - -
         """
         return pulumi.get(self, "network_attachment")
 

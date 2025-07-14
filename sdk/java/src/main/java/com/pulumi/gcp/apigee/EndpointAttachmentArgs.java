@@ -17,16 +17,12 @@ public final class EndpointAttachmentArgs extends com.pulumi.resources.ResourceA
     /**
      * ID of the endpoint attachment.
      * 
-     * ***
-     * 
      */
     @Import(name="endpointAttachmentId", required=true)
     private Output<String> endpointAttachmentId;
 
     /**
      * @return ID of the endpoint attachment.
-     * 
-     * ***
      * 
      */
     public Output<String> endpointAttachmentId() {
@@ -110,8 +106,6 @@ public final class EndpointAttachmentArgs extends com.pulumi.resources.ResourceA
         /**
          * @param endpointAttachmentId ID of the endpoint attachment.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -122,8 +116,6 @@ public final class EndpointAttachmentArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param endpointAttachmentId ID of the endpoint attachment.
-         * 
-         * ***
          * 
          * @return builder
          * 

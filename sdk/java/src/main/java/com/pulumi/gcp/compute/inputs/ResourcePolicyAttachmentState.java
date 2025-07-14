@@ -18,16 +18,12 @@ public final class ResourcePolicyAttachmentState extends com.pulumi.resources.Re
     /**
      * The name of the instance in which the resource policies are attached to.
      * 
-     * ***
-     * 
      */
     @Import(name="instance")
     private @Nullable Output<String> instance;
 
     /**
      * @return The name of the instance in which the resource policies are attached to.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> instance() {
@@ -113,8 +109,6 @@ public final class ResourcePolicyAttachmentState extends com.pulumi.resources.Re
         /**
          * @param instance The name of the instance in which the resource policies are attached to.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -125,8 +119,6 @@ public final class ResourcePolicyAttachmentState extends com.pulumi.resources.Re
 
         /**
          * @param instance The name of the instance in which the resource policies are attached to.
-         * 
-         * ***
          * 
          * @return builder
          * 

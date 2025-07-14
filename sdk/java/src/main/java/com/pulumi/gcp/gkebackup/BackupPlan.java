@@ -804,16 +804,12 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
     /**
      * The region of the Backup Plan.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return The region of the Backup Plan.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

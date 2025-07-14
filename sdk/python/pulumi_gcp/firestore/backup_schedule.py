@@ -32,9 +32,6 @@ class BackupScheduleArgs:
         :param pulumi.Input[builtins.str] retention: At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
                You can set this to a value up to 14 weeks.
-               
-               
-               - - -
         :param pulumi.Input['BackupScheduleDailyRecurrenceArgs'] daily_recurrence: For a schedule that runs daily.
         :param pulumi.Input[builtins.str] database: The Firestore database id. Defaults to `"(default)"`.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -59,9 +56,6 @@ class BackupScheduleArgs:
         At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
         A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         You can set this to a value up to 14 weeks.
-
-
-        - - -
         """
         return pulumi.get(self, "retention")
 
@@ -140,9 +134,6 @@ class _BackupScheduleState:
         :param pulumi.Input[builtins.str] retention: At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
                You can set this to a value up to 14 weeks.
-               
-               
-               - - -
         :param pulumi.Input['BackupScheduleWeeklyRecurrenceArgs'] weekly_recurrence: For a schedule that runs weekly on a specific day.
                Structure is documented below.
         """
@@ -216,9 +207,6 @@ class _BackupScheduleState:
         At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
         A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         You can set this to a value up to 14 weeks.
-
-
-        - - -
         """
         return pulumi.get(self, "retention")
 
@@ -344,9 +332,6 @@ class BackupSchedule(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] retention: At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
                You can set this to a value up to 14 weeks.
-               
-               
-               - - -
         :param pulumi.Input[Union['BackupScheduleWeeklyRecurrenceArgs', 'BackupScheduleWeeklyRecurrenceArgsDict']] weekly_recurrence: For a schedule that runs weekly on a specific day.
                Structure is documented below.
         """
@@ -508,9 +493,6 @@ class BackupSchedule(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] retention: At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
                You can set this to a value up to 14 weeks.
-               
-               
-               - - -
         :param pulumi.Input[Union['BackupScheduleWeeklyRecurrenceArgs', 'BackupScheduleWeeklyRecurrenceArgsDict']] weekly_recurrence: For a schedule that runs weekly on a specific day.
                Structure is documented below.
         """
@@ -567,9 +549,6 @@ class BackupSchedule(pulumi.CustomResource):
         At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
         A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         You can set this to a value up to 14 weeks.
-
-
-        - - -
         """
         return pulumi.get(self, "retention")
 

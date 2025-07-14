@@ -36,9 +36,6 @@ class VolumeSnapshotArgs:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] name: The name of the snapshot.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -109,9 +106,6 @@ class VolumeSnapshotArgs:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The name of the snapshot.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -155,9 +149,6 @@ class _VolumeSnapshotState:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: Name of the snapshot location. Snapshots are child resources of volumes and live in the same location.
         :param pulumi.Input[builtins.str] name: The name of the snapshot.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -240,9 +231,6 @@ class _VolumeSnapshotState:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The name of the snapshot.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -390,9 +378,6 @@ class VolumeSnapshot(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: Name of the snapshot location. Snapshots are child resources of volumes and live in the same location.
         :param pulumi.Input[builtins.str] name: The name of the snapshot.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] volume_name: The name of the volume to create the snapshot in.
@@ -549,9 +534,6 @@ class VolumeSnapshot(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: Name of the snapshot location. Snapshots are child resources of volumes and live in the same location.
         :param pulumi.Input[builtins.str] name: The name of the snapshot.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -614,9 +596,6 @@ class VolumeSnapshot(pulumi.CustomResource):
     def name(self) -> pulumi.Output[builtins.str]:
         """
         The name of the snapshot.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

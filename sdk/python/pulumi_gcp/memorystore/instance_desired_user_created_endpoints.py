@@ -29,9 +29,6 @@ class InstanceDesiredUserCreatedEndpointsArgs:
         """
         The set of arguments for constructing a InstanceDesiredUserCreatedEndpoints resource.
         :param pulumi.Input[builtins.str] region: The name of the region of the Memorystore instance these endpoints should be added to.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs']]] desired_user_created_endpoints: A list of desired user endpoints
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: The name of the Memorystore instance these endpoints should be added to.
@@ -51,9 +48,6 @@ class InstanceDesiredUserCreatedEndpointsArgs:
     def region(self) -> pulumi.Input[builtins.str]:
         """
         The name of the region of the Memorystore instance these endpoints should be added to.
-
-
-        - - -
         """
         return pulumi.get(self, "region")
 
@@ -115,9 +109,6 @@ class _InstanceDesiredUserCreatedEndpointsState:
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] region: The name of the region of the Memorystore instance these endpoints should be added to.
-               
-               
-               - - -
         """
         if desired_user_created_endpoints is not None:
             pulumi.set(__self__, "desired_user_created_endpoints", desired_user_created_endpoints)
@@ -171,9 +162,6 @@ class _InstanceDesiredUserCreatedEndpointsState:
     def region(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The name of the region of the Memorystore instance these endpoints should be added to.
-
-
-        - - -
         """
         return pulumi.get(self, "region")
 
@@ -461,9 +449,6 @@ class InstanceDesiredUserCreatedEndpoints(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] region: The name of the region of the Memorystore instance these endpoints should be added to.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -792,9 +777,6 @@ class InstanceDesiredUserCreatedEndpoints(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] region: The name of the region of the Memorystore instance these endpoints should be added to.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -837,9 +819,6 @@ class InstanceDesiredUserCreatedEndpoints(pulumi.CustomResource):
     def region(self) -> pulumi.Output[builtins.str]:
         """
         The name of the region of the Memorystore instance these endpoints should be added to.
-
-
-        - - -
         """
         return pulumi.get(self, "region")
 

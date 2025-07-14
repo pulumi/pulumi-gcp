@@ -85,9 +85,6 @@ namespace Pulumi.Gcp.EssentialContacts
 
         /// <summary>
         /// The location in which the instance is to be provisioned. It takes the form projects/{projectNumber}/locations/{location}.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -177,9 +174,6 @@ namespace Pulumi.Gcp.EssentialContacts
 
         /// <summary>
         /// The location in which the instance is to be provisioned. It takes the form projects/{projectNumber}/locations/{location}.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -231,9 +225,6 @@ namespace Pulumi.Gcp.EssentialContacts
 
         /// <summary>
         /// The location in which the instance is to be provisioned. It takes the form projects/{projectNumber}/locations/{location}.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

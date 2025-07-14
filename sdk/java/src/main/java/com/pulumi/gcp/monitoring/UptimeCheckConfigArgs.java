@@ -228,16 +228,12 @@ public final class UptimeCheckConfigArgs extends com.pulumi.resources.ResourceAr
     /**
      * The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
      * 
-     * ***
-     * 
      */
     @Import(name="timeout", required=true)
     private Output<String> timeout;
 
     /**
      * @return The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
-     * 
-     * ***
      * 
      */
     public Output<String> timeout() {
@@ -592,8 +588,6 @@ public final class UptimeCheckConfigArgs extends com.pulumi.resources.ResourceAr
         /**
          * @param timeout The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -604,8 +598,6 @@ public final class UptimeCheckConfigArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param timeout The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
-         * 
-         * ***
          * 
          * @return builder
          * 

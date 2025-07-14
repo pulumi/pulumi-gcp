@@ -624,16 +624,12 @@ public class RegionSecurityPolicyRule extends com.pulumi.resources.CustomResourc
     /**
      * The name of the security policy this rule belongs to.
      * 
-     * ***
-     * 
      */
     @Export(name="securityPolicy", refs={String.class}, tree="[0]")
     private Output<String> securityPolicy;
 
     /**
      * @return The name of the security policy this rule belongs to.
-     * 
-     * ***
      * 
      */
     public Output<String> securityPolicy() {

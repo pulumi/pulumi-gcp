@@ -5,8 +5,11 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.container.outputs.ClusterSecretManagerConfigRotationConfig;
 import java.lang.Boolean;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterSecretManagerConfig {
@@ -15,6 +18,11 @@ public final class ClusterSecretManagerConfig {
      * 
      */
     private Boolean enabled;
+    /**
+     * @return config for secret manager auto rotation. Structure is docuemented below
+     * 
+     */
+    private @Nullable ClusterSecretManagerConfigRotationConfig rotationConfig;
 
     private ClusterSecretManagerConfig() {}
     /**
@@ -23,6 +31,13 @@ public final class ClusterSecretManagerConfig {
      */
     public Boolean enabled() {
         return this.enabled;
+    }
+    /**
+     * @return config for secret manager auto rotation. Structure is docuemented below
+     * 
+     */
+    public Optional<ClusterSecretManagerConfigRotationConfig> rotationConfig() {
+        return Optional.ofNullable(this.rotationConfig);
     }
 
     public static Builder builder() {
@@ -35,10 +50,12 @@ public final class ClusterSecretManagerConfig {
     @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
+        private @Nullable ClusterSecretManagerConfigRotationConfig rotationConfig;
         public Builder() {}
         public Builder(ClusterSecretManagerConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
+    	      this.rotationConfig = defaults.rotationConfig;
         }
 
         @CustomType.Setter
@@ -49,9 +66,16 @@ public final class ClusterSecretManagerConfig {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
+        public Builder rotationConfig(@Nullable ClusterSecretManagerConfigRotationConfig rotationConfig) {
+
+            this.rotationConfig = rotationConfig;
+            return this;
+        }
         public ClusterSecretManagerConfig build() {
             final var _resultValue = new ClusterSecretManagerConfig();
             _resultValue.enabled = enabled;
+            _resultValue.rotationConfig = rotationConfig;
             return _resultValue;
         }
     }

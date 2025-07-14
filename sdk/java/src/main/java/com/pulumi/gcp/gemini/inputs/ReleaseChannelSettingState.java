@@ -155,16 +155,12 @@ public final class ReleaseChannelSettingState extends com.pulumi.resources.Resou
     /**
      * Id of the Release Channel Setting.
      * 
-     * ***
-     * 
      */
     @Import(name="releaseChannelSettingId")
     private @Nullable Output<String> releaseChannelSettingId;
 
     /**
      * @return Id of the Release Channel Setting.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> releaseChannelSettingId() {
@@ -406,8 +402,6 @@ public final class ReleaseChannelSettingState extends com.pulumi.resources.Resou
         /**
          * @param releaseChannelSettingId Id of the Release Channel Setting.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -418,8 +412,6 @@ public final class ReleaseChannelSettingState extends com.pulumi.resources.Resou
 
         /**
          * @param releaseChannelSettingId Id of the Release Channel Setting.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -415,16 +415,18 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:firestore/index:Index")
 public class Index extends com.pulumi.resources.CustomResource {
     /**
-     * The API scope at which a query is run. Default value: &#34;ANY_API&#34; Possible values: [&#34;ANY_API&#34;, &#34;DATASTORE_MODE_API&#34;,
-     * &#34;MONGODB_COMPATIBLE_API&#34;]
+     * The API scope at which a query is run.
+     * Default value is `ANY_API`.
+     * Possible values are: `ANY_API`, `DATASTORE_MODE_API`, `MONGODB_COMPATIBLE_API`.
      * 
      */
     @Export(name="apiScope", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> apiScope;
 
     /**
-     * @return The API scope at which a query is run. Default value: &#34;ANY_API&#34; Possible values: [&#34;ANY_API&#34;, &#34;DATASTORE_MODE_API&#34;,
-     * &#34;MONGODB_COMPATIBLE_API&#34;]
+     * @return The API scope at which a query is run.
+     * Default value is `ANY_API`.
+     * Possible values are: `ANY_API`, `DATASTORE_MODE_API`, `MONGODB_COMPATIBLE_API`.
      * 
      */
     public Output<Optional<String>> apiScope() {
@@ -445,28 +447,30 @@ public class Index extends com.pulumi.resources.CustomResource {
         return this.collection;
     }
     /**
-     * The Firestore database id. Defaults to &#39;&#34;(default)&#34;&#39;.
+     * The Firestore database id. Defaults to `&#34;(default)&#34;`.
      * 
      */
     @Export(name="database", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> database;
 
     /**
-     * @return The Firestore database id. Defaults to &#39;&#34;(default)&#34;&#39;.
+     * @return The Firestore database id. Defaults to `&#34;(default)&#34;`.
      * 
      */
     public Output<Optional<String>> database() {
         return Codegen.optional(this.database);
     }
     /**
-     * The density configuration for this index. Possible values: [&#34;SPARSE_ALL&#34;, &#34;SPARSE_ANY&#34;, &#34;DENSE&#34;]
+     * The density configuration for this index.
+     * Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
      * 
      */
     @Export(name="density", refs={String.class}, tree="[0]")
     private Output<String> density;
 
     /**
-     * @return The density configuration for this index. Possible values: [&#34;SPARSE_ALL&#34;, &#34;SPARSE_ANY&#34;, &#34;DENSE&#34;]
+     * @return The density configuration for this index.
+     * Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
      * 
      */
     public Output<String> density() {
@@ -499,20 +503,14 @@ public class Index extends com.pulumi.resources.CustomResource {
         return this.fields;
     }
     /**
-     * Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the
-     * paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at
-     * most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations
-     * will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
+     * Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
      * 
      */
     @Export(name="multikey", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> multikey;
 
     /**
-     * @return Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the
-     * paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at
-     * most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations
-     * will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
+     * @return Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
      * 
      */
     public Output<Optional<Boolean>> multikey() {
@@ -534,23 +532,35 @@ public class Index extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * The scope at which a query is run. Default value: &#34;COLLECTION&#34; Possible values: [&#34;COLLECTION&#34;, &#34;COLLECTION_GROUP&#34;,
-     * &#34;COLLECTION_RECURSIVE&#34;]
+     * The scope at which a query is run.
+     * Default value is `COLLECTION`.
+     * Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
      * 
      */
     @Export(name="queryScope", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> queryScope;
 
     /**
-     * @return The scope at which a query is run. Default value: &#34;COLLECTION&#34; Possible values: [&#34;COLLECTION&#34;, &#34;COLLECTION_GROUP&#34;,
-     * &#34;COLLECTION_RECURSIVE&#34;]
+     * @return The scope at which a query is run.
+     * Default value is `COLLECTION`.
+     * Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
      * 
      */
     public Output<Optional<String>> queryScope() {

@@ -542,20 +542,18 @@ public class EdgeCacheService extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Disables HTTP/2. HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use
-     * and reduces connection setup overhead by sending multiple streams over the same connection. Some legacy HTTP clients may
-     * have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from
-     * being advertised and negotiated.
+     * Disables HTTP/2.
+     * HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
+     * Some legacy HTTP clients may have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from being advertised and negotiated.
      * 
      */
     @Export(name="disableHttp2", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disableHttp2;
 
     /**
-     * @return Disables HTTP/2. HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use
-     * and reduces connection setup overhead by sending multiple streams over the same connection. Some legacy HTTP clients may
-     * have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from
-     * being advertised and negotiated.
+     * @return Disables HTTP/2.
+     * HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
+     * Some legacy HTTP clients may have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from being advertised and negotiated.
      * 
      */
     public Output<Optional<Boolean>> disableHttp2() {
@@ -576,32 +574,30 @@ public class EdgeCacheService extends com.pulumi.resources.CustomResource {
         return this.disableQuic;
     }
     /**
-     * Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the
-     * EdgeCacheService.
+     * Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the EdgeCacheService.
      * 
      */
     @Export(name="edgeSecurityPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> edgeSecurityPolicy;
 
     /**
-     * @return Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the
-     * EdgeCacheService.
+     * @return Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the EdgeCacheService.
      * 
      */
     public Output<Optional<String>> edgeSecurityPolicy() {
         return Codegen.optional(this.edgeSecurityPolicy);
     }
     /**
-     * URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService. Note
-     * that only &#34;global&#34; certificates with a &#34;scope&#34; of &#34;EDGE_CACHE&#34; can be attached to an EdgeCacheService.
+     * URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService.
+     * Note that only &#34;global&#34; certificates with a &#34;scope&#34; of &#34;EDGE_CACHE&#34; can be attached to an EdgeCacheService.
      * 
      */
     @Export(name="edgeSslCertificates", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> edgeSslCertificates;
 
     /**
-     * @return URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService. Note
-     * that only &#34;global&#34; certificates with a &#34;scope&#34; of &#34;EDGE_CACHE&#34; can be attached to an EdgeCacheService.
+     * @return URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService.
+     * Note that only &#34;global&#34; certificates with a &#34;scope&#34; of &#34;EDGE_CACHE&#34; can be attached to an EdgeCacheService.
      * 
      */
     public Output<Optional<List<String>>> edgeSslCertificates() {
@@ -650,34 +646,34 @@ public class EdgeCacheService extends com.pulumi.resources.CustomResource {
         return this.ipv6Addresses;
     }
     /**
-     * Set of label tags associated with the EdgeCache resource. **Note**: This field is non-authoritative, and will only
-     * manage the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels
-     * present on the resource.
+     * Set of label tags associated with the EdgeCache resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return Set of label tags associated with the EdgeCache resource. **Note**: This field is non-authoritative, and will only
-     * manage the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels
-     * present on the resource.
+     * @return Set of label tags associated with the EdgeCache resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
         return Codegen.optional(this.labels);
     }
     /**
-     * Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to
-     * Cloud Logging.
+     * Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
+     * Structure is documented below.
      * 
      */
     @Export(name="logConfig", refs={EdgeCacheServiceLogConfig.class}, tree="[0]")
     private Output</* @Nullable */ EdgeCacheServiceLogConfig> logConfig;
 
     /**
-     * @return Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to
-     * Cloud Logging.
+     * @return Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<EdgeCacheServiceLogConfig>> logConfig() {
@@ -701,9 +697,19 @@ public class EdgeCacheService extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }
@@ -724,18 +730,18 @@ public class EdgeCacheService extends com.pulumi.resources.CustomResource {
         return this.pulumiLabels;
     }
     /**
-     * Require TLS (HTTPS) for all clients connecting to this service. Clients who connect over HTTP (port 80) will receive a
-     * HTTP 301 to the same URL over HTTPS (port 443). You must have at least one (1) edgeSslCertificate specified to enable
-     * this.
+     * Require TLS (HTTPS) for all clients connecting to this service.
+     * Clients who connect over HTTP (port 80) will receive a HTTP 301 to the same URL over HTTPS (port 443).
+     * You must have at least one (1) edgeSslCertificate specified to enable this.
      * 
      */
     @Export(name="requireTls", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> requireTls;
 
     /**
-     * @return Require TLS (HTTPS) for all clients connecting to this service. Clients who connect over HTTP (port 80) will receive a
-     * HTTP 301 to the same URL over HTTPS (port 443). You must have at least one (1) edgeSslCertificate specified to enable
-     * this.
+     * @return Require TLS (HTTPS) for all clients connecting to this service.
+     * Clients who connect over HTTP (port 80) will receive a HTTP 301 to the same URL over HTTPS (port 443).
+     * You must have at least one (1) edgeSslCertificate specified to enable this.
      * 
      */
     public Output<Boolean> requireTls() {
@@ -758,16 +764,16 @@ public class EdgeCacheService extends com.pulumi.resources.CustomResource {
         return this.routing;
     }
     /**
-     * URL of the SslPolicy resource that will be associated with the EdgeCacheService. If not set, the EdgeCacheService has no
-     * SSL policy configured, and will default to the &#34;COMPATIBLE&#34; policy.
+     * URL of the SslPolicy resource that will be associated with the EdgeCacheService.
+     * If not set, the EdgeCacheService has no SSL policy configured, and will default to the &#34;COMPATIBLE&#34; policy.
      * 
      */
     @Export(name="sslPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sslPolicy;
 
     /**
-     * @return URL of the SslPolicy resource that will be associated with the EdgeCacheService. If not set, the EdgeCacheService has no
-     * SSL policy configured, and will default to the &#34;COMPATIBLE&#34; policy.
+     * @return URL of the SslPolicy resource that will be associated with the EdgeCacheService.
+     * If not set, the EdgeCacheService has no SSL policy configured, and will default to the &#34;COMPATIBLE&#34; policy.
      * 
      */
     public Output<Optional<String>> sslPolicy() {

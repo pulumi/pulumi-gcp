@@ -14,8 +14,6 @@ namespace Pulumi.Gcp.ManagedKafka.Inputs
     {
         /// <summary>
         /// The host. Must be set to "*" for Managed Service for Apache Kafka.
-        /// 
-        /// - - -
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }

@@ -135,16 +135,12 @@ public class Channel extends com.pulumi.resources.CustomResource {
     /**
      * The location for the resource
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return The location for the resource
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

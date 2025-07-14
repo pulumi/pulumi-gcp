@@ -164,6 +164,10 @@ namespace Pulumi.Gcp.ApiHub
         [Output("pluginInstanceActions")]
         public Output<ImmutableArray<Outputs.CurationPluginInstanceAction>> PluginInstanceActions { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -261,6 +265,10 @@ namespace Pulumi.Gcp.ApiHub
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -371,6 +379,10 @@ namespace Pulumi.Gcp.ApiHub
             set => _pluginInstanceActions = value;
         }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

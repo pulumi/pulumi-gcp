@@ -171,7 +171,8 @@ export class AutonomousDatabase extends pulumi.CustomResource {
     public readonly database!: pulumi.Output<string>;
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
-     * The display name for the Autonomous Database. The name does not have to be unique within your project.
+     * The display name for the Autonomous Database. The name does not have to
+     * be unique within your project.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -184,9 +185,9 @@ export class AutonomousDatabase extends pulumi.CustomResource {
      */
     public /*out*/ readonly entitlementId!: pulumi.Output<string>;
     /**
-     * The labels or tags associated with the Autonomous Database. **Note**: This field is non-authoritative, and will only
-     * manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-     * present on the resource.
+     * The labels or tags associated with the Autonomous Database.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -203,6 +204,10 @@ export class AutonomousDatabase extends pulumi.CustomResource {
      * Format: projects/{project}/global/networks/{network}
      */
     public readonly network!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The properties of an Autonomous Database.
@@ -319,7 +324,8 @@ export interface AutonomousDatabaseState {
     database?: pulumi.Input<string>;
     deletionProtection?: pulumi.Input<boolean>;
     /**
-     * The display name for the Autonomous Database. The name does not have to be unique within your project.
+     * The display name for the Autonomous Database. The name does not have to
+     * be unique within your project.
      */
     displayName?: pulumi.Input<string>;
     /**
@@ -332,9 +338,9 @@ export interface AutonomousDatabaseState {
      */
     entitlementId?: pulumi.Input<string>;
     /**
-     * The labels or tags associated with the Autonomous Database. **Note**: This field is non-authoritative, and will only
-     * manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-     * present on the resource.
+     * The labels or tags associated with the Autonomous Database.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -351,6 +357,10 @@ export interface AutonomousDatabaseState {
      * Format: projects/{project}/global/networks/{network}
      */
     network?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * The properties of an Autonomous Database.
@@ -391,13 +401,14 @@ export interface AutonomousDatabaseArgs {
     database: pulumi.Input<string>;
     deletionProtection?: pulumi.Input<boolean>;
     /**
-     * The display name for the Autonomous Database. The name does not have to be unique within your project.
+     * The display name for the Autonomous Database. The name does not have to
+     * be unique within your project.
      */
     displayName?: pulumi.Input<string>;
     /**
-     * The labels or tags associated with the Autonomous Database. **Note**: This field is non-authoritative, and will only
-     * manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-     * present on the resource.
+     * The labels or tags associated with the Autonomous Database.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -409,6 +420,10 @@ export interface AutonomousDatabaseArgs {
      * Format: projects/{project}/global/networks/{network}
      */
     network: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * The properties of an Autonomous Database.

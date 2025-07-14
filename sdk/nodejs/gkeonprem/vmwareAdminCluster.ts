@@ -262,27 +262,37 @@ export class VmwareAdminCluster extends pulumi.CustomResource {
 
     /**
      * The VMware admin cluster addon node configuration.
+     * Structure is documented below.
      */
     public readonly addonNode!: pulumi.Output<outputs.gkeonprem.VmwareAdminClusterAddonNode>;
     /**
-     * Annotations on the VMware Admin Cluster. This field has the same restrictions as Kubernetes annotations. The total size
-     * of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-     * 'effective_annotations' for all of the annotations present on the resource.
+     * Annotations on the VMware Admin Cluster.
+     * This field has the same restrictions as Kubernetes annotations.
+     * The total size of all keys and values combined is limited to 256k.
+     * Key can have 2 segments: prefix (optional) and name (required),
+     * separated by a slash (/).
+     * Prefix must be a DNS subdomain.
+     * Name must be 63 characters or less, begin and end with alphanumerics,
+     * with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
-     * AAGConfig specifies whether to spread VMware Admin Cluster nodes across at least three physical hosts in the datacenter.
+     * AAGConfig specifies whether to spread VMware Admin Cluster nodes across at
+     * least three physical hosts in the datacenter.
+     * Structure is documented below.
      */
     public readonly antiAffinityGroups!: pulumi.Output<outputs.gkeonprem.VmwareAdminClusterAntiAffinityGroups>;
     /**
      * The VMware admin cluster authorization configuration.
+     * Structure is documented below.
      */
     public readonly authorization!: pulumi.Output<outputs.gkeonprem.VmwareAdminClusterAuthorization | undefined>;
     /**
      * Configuration for auto repairing.
+     * Structure is documented below.
      */
     public readonly autoRepairConfig!: pulumi.Output<outputs.gkeonprem.VmwareAdminClusterAutoRepairConfig>;
     /**
@@ -291,6 +301,7 @@ export class VmwareAdminCluster extends pulumi.CustomResource {
     public readonly bootstrapClusterMembership!: pulumi.Output<string>;
     /**
      * The VMware admin cluster control plane node configuration.
+     * Structure is documented below.
      */
     public readonly controlPlaneNode!: pulumi.Output<outputs.gkeonprem.VmwareAdminClusterControlPlaneNode | undefined>;
     /**
@@ -329,6 +340,7 @@ export class VmwareAdminCluster extends pulumi.CustomResource {
     public readonly imageType!: pulumi.Output<string>;
     /**
      * Specifies the load balancer configuration for VMware admin cluster.
+     * Structure is documented below.
      */
     public readonly loadBalancer!: pulumi.Output<outputs.gkeonprem.VmwareAdminClusterLoadBalancer | undefined>;
     /**
@@ -363,12 +375,18 @@ export class VmwareAdminCluster extends pulumi.CustomResource {
     public readonly onPremVersion!: pulumi.Output<string | undefined>;
     /**
      * The VMware platform configuration.
+     * Structure is documented below.
      */
     public readonly platformConfig!: pulumi.Output<outputs.gkeonprem.VmwareAdminClusterPlatformConfig | undefined>;
     /**
      * Configuration for private registry.
+     * Structure is documented below.
      */
     public readonly privateRegistryConfig!: pulumi.Output<outputs.gkeonprem.VmwareAdminClusterPrivateRegistryConfig | undefined>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * If set, there are currently changes in flight to the VMware admin cluster.
@@ -394,6 +412,7 @@ export class VmwareAdminCluster extends pulumi.CustomResource {
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
      * Specifies vCenter config for the admin cluster.
+     * Structure is documented below.
      */
     public readonly vcenter!: pulumi.Output<outputs.gkeonprem.VmwareAdminClusterVcenter | undefined>;
 
@@ -490,27 +509,37 @@ export class VmwareAdminCluster extends pulumi.CustomResource {
 export interface VmwareAdminClusterState {
     /**
      * The VMware admin cluster addon node configuration.
+     * Structure is documented below.
      */
     addonNode?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterAddonNode>;
     /**
-     * Annotations on the VMware Admin Cluster. This field has the same restrictions as Kubernetes annotations. The total size
-     * of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-     * 'effective_annotations' for all of the annotations present on the resource.
+     * Annotations on the VMware Admin Cluster.
+     * This field has the same restrictions as Kubernetes annotations.
+     * The total size of all keys and values combined is limited to 256k.
+     * Key can have 2 segments: prefix (optional) and name (required),
+     * separated by a slash (/).
+     * Prefix must be a DNS subdomain.
+     * Name must be 63 characters or less, begin and end with alphanumerics,
+     * with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * AAGConfig specifies whether to spread VMware Admin Cluster nodes across at least three physical hosts in the datacenter.
+     * AAGConfig specifies whether to spread VMware Admin Cluster nodes across at
+     * least three physical hosts in the datacenter.
+     * Structure is documented below.
      */
     antiAffinityGroups?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterAntiAffinityGroups>;
     /**
      * The VMware admin cluster authorization configuration.
+     * Structure is documented below.
      */
     authorization?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterAuthorization>;
     /**
      * Configuration for auto repairing.
+     * Structure is documented below.
      */
     autoRepairConfig?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterAutoRepairConfig>;
     /**
@@ -519,6 +548,7 @@ export interface VmwareAdminClusterState {
     bootstrapClusterMembership?: pulumi.Input<string>;
     /**
      * The VMware admin cluster control plane node configuration.
+     * Structure is documented below.
      */
     controlPlaneNode?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterControlPlaneNode>;
     /**
@@ -557,6 +587,7 @@ export interface VmwareAdminClusterState {
     imageType?: pulumi.Input<string>;
     /**
      * Specifies the load balancer configuration for VMware admin cluster.
+     * Structure is documented below.
      */
     loadBalancer?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterLoadBalancer>;
     /**
@@ -591,12 +622,18 @@ export interface VmwareAdminClusterState {
     onPremVersion?: pulumi.Input<string>;
     /**
      * The VMware platform configuration.
+     * Structure is documented below.
      */
     platformConfig?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterPlatformConfig>;
     /**
      * Configuration for private registry.
+     * Structure is documented below.
      */
     privateRegistryConfig?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterPrivateRegistryConfig>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * If set, there are currently changes in flight to the VMware admin cluster.
@@ -622,6 +659,7 @@ export interface VmwareAdminClusterState {
     updateTime?: pulumi.Input<string>;
     /**
      * Specifies vCenter config for the admin cluster.
+     * Structure is documented below.
      */
     vcenter?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterVcenter>;
 }
@@ -632,27 +670,37 @@ export interface VmwareAdminClusterState {
 export interface VmwareAdminClusterArgs {
     /**
      * The VMware admin cluster addon node configuration.
+     * Structure is documented below.
      */
     addonNode?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterAddonNode>;
     /**
-     * Annotations on the VMware Admin Cluster. This field has the same restrictions as Kubernetes annotations. The total size
-     * of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-     * 'effective_annotations' for all of the annotations present on the resource.
+     * Annotations on the VMware Admin Cluster.
+     * This field has the same restrictions as Kubernetes annotations.
+     * The total size of all keys and values combined is limited to 256k.
+     * Key can have 2 segments: prefix (optional) and name (required),
+     * separated by a slash (/).
+     * Prefix must be a DNS subdomain.
+     * Name must be 63 characters or less, begin and end with alphanumerics,
+     * with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * AAGConfig specifies whether to spread VMware Admin Cluster nodes across at least three physical hosts in the datacenter.
+     * AAGConfig specifies whether to spread VMware Admin Cluster nodes across at
+     * least three physical hosts in the datacenter.
+     * Structure is documented below.
      */
     antiAffinityGroups?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterAntiAffinityGroups>;
     /**
      * The VMware admin cluster authorization configuration.
+     * Structure is documented below.
      */
     authorization?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterAuthorization>;
     /**
      * Configuration for auto repairing.
+     * Structure is documented below.
      */
     autoRepairConfig?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterAutoRepairConfig>;
     /**
@@ -661,6 +709,7 @@ export interface VmwareAdminClusterArgs {
     bootstrapClusterMembership?: pulumi.Input<string>;
     /**
      * The VMware admin cluster control plane node configuration.
+     * Structure is documented below.
      */
     controlPlaneNode?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterControlPlaneNode>;
     /**
@@ -673,6 +722,7 @@ export interface VmwareAdminClusterArgs {
     imageType?: pulumi.Input<string>;
     /**
      * Specifies the load balancer configuration for VMware admin cluster.
+     * Structure is documented below.
      */
     loadBalancer?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterLoadBalancer>;
     /**
@@ -694,15 +744,22 @@ export interface VmwareAdminClusterArgs {
     onPremVersion?: pulumi.Input<string>;
     /**
      * The VMware platform configuration.
+     * Structure is documented below.
      */
     platformConfig?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterPlatformConfig>;
     /**
      * Configuration for private registry.
+     * Structure is documented below.
      */
     privateRegistryConfig?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterPrivateRegistryConfig>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * Specifies vCenter config for the admin cluster.
+     * Structure is documented below.
      */
     vcenter?: pulumi.Input<inputs.gkeonprem.VmwareAdminClusterVcenter>;
 }

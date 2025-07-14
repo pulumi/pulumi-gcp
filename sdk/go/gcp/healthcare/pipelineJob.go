@@ -469,8 +469,6 @@ type PipelineJob struct {
 	// Structure is documented below.
 	BackfillPipelineJob PipelineJobBackfillPipelineJobPtrOutput `pulumi:"backfillPipelineJob"`
 	// Healthcare Dataset under which the Pipeline Job is to run
-	//
-	// ***
 	Dataset pulumi.StringOutput `pulumi:"dataset"`
 	// If true, disables writing lineage for the pipeline.
 	DisableLineage pulumi.BoolPtrOutput `pulumi:"disableLineage"`
@@ -552,8 +550,6 @@ type pipelineJobState struct {
 	// Structure is documented below.
 	BackfillPipelineJob *PipelineJobBackfillPipelineJob `pulumi:"backfillPipelineJob"`
 	// Healthcare Dataset under which the Pipeline Job is to run
-	//
-	// ***
 	Dataset *string `pulumi:"dataset"`
 	// If true, disables writing lineage for the pipeline.
 	DisableLineage *bool `pulumi:"disableLineage"`
@@ -595,8 +591,6 @@ type PipelineJobState struct {
 	// Structure is documented below.
 	BackfillPipelineJob PipelineJobBackfillPipelineJobPtrInput
 	// Healthcare Dataset under which the Pipeline Job is to run
-	//
-	// ***
 	Dataset pulumi.StringPtrInput
 	// If true, disables writing lineage for the pipeline.
 	DisableLineage pulumi.BoolPtrInput
@@ -642,8 +636,6 @@ type pipelineJobArgs struct {
 	// Structure is documented below.
 	BackfillPipelineJob *PipelineJobBackfillPipelineJob `pulumi:"backfillPipelineJob"`
 	// Healthcare Dataset under which the Pipeline Job is to run
-	//
-	// ***
 	Dataset string `pulumi:"dataset"`
 	// If true, disables writing lineage for the pipeline.
 	DisableLineage *bool `pulumi:"disableLineage"`
@@ -679,8 +671,6 @@ type PipelineJobArgs struct {
 	// Structure is documented below.
 	BackfillPipelineJob PipelineJobBackfillPipelineJobPtrInput
 	// Healthcare Dataset under which the Pipeline Job is to run
-	//
-	// ***
 	Dataset pulumi.StringInput
 	// If true, disables writing lineage for the pipeline.
 	DisableLineage pulumi.BoolPtrInput
@@ -804,8 +794,6 @@ func (o PipelineJobOutput) BackfillPipelineJob() PipelineJobBackfillPipelineJobP
 }
 
 // Healthcare Dataset under which the Pipeline Job is to run
-//
-// ***
 func (o PipelineJobOutput) Dataset() pulumi.StringOutput {
 	return o.ApplyT(func(v *PipelineJob) pulumi.StringOutput { return v.Dataset }).(pulumi.StringOutput)
 }

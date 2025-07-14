@@ -45,9 +45,6 @@ class DatasetArgs:
         :param pulumi.Input[builtins.str] dataset_id: A unique ID for this dataset, without the project name. The ID
                must contain only letters (a-z, A-Z), numbers (0-9), or
                underscores (_). The maximum length is 1,024 characters.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['DatasetAccessArgs']]] accesses: An array of objects that define dataset access for one or more entities.
                Structure is documented below.
         :param pulumi.Input[builtins.str] default_collation: Defines the default collation specification of future tables created
@@ -169,9 +166,6 @@ class DatasetArgs:
         A unique ID for this dataset, without the project name. The ID
         must contain only letters (a-z, A-Z), numbers (0-9), or
         underscores (_). The maximum length is 1,024 characters.
-
-
-        - - -
         """
         return pulumi.get(self, "dataset_id")
 
@@ -480,9 +474,6 @@ class _DatasetState:
         :param pulumi.Input[builtins.str] dataset_id: A unique ID for this dataset, without the project name. The ID
                must contain only letters (a-z, A-Z), numbers (0-9), or
                underscores (_). The maximum length is 1,024 characters.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] default_collation: Defines the default collation specification of future tables created
                in the dataset. If a table is created in this dataset without table-level
                default collation, then the table inherits the dataset default collation,
@@ -648,9 +639,6 @@ class _DatasetState:
         A unique ID for this dataset, without the project name. The ID
         must contain only letters (a-z, A-Z), numbers (0-9), or
         underscores (_). The maximum length is 1,024 characters.
-
-
-        - - -
         """
         return pulumi.get(self, "dataset_id")
 
@@ -1218,9 +1206,6 @@ class Dataset(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] dataset_id: A unique ID for this dataset, without the project name. The ID
                must contain only letters (a-z, A-Z), numbers (0-9), or
                underscores (_). The maximum length is 1,024 characters.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] default_collation: Defines the default collation specification of future tables created
                in the dataset. If a table is created in this dataset without table-level
                default collation, then the table inherits the dataset default collation,
@@ -1635,9 +1620,6 @@ class Dataset(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] dataset_id: A unique ID for this dataset, without the project name. The ID
                must contain only letters (a-z, A-Z), numbers (0-9), or
                underscores (_). The maximum length is 1,024 characters.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] default_collation: Defines the default collation specification of future tables created
                in the dataset. If a table is created in this dataset without table-level
                default collation, then the table inherits the dataset default collation,
@@ -1776,9 +1758,6 @@ class Dataset(pulumi.CustomResource):
         A unique ID for this dataset, without the project name. The ID
         must contain only letters (a-z, A-Z), numbers (0-9), or
         underscores (_). The maximum length is 1,024 characters.
-
-
-        - - -
         """
         return pulumi.get(self, "dataset_id")
 

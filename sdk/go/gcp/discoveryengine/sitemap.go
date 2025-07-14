@@ -81,8 +81,6 @@ type Sitemap struct {
 	// Timestamp when the sitemap was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The unique id of the data store.
-	//
-	// ***
 	DataStoreId pulumi.StringOutput `pulumi:"dataStoreId"`
 	// The geographic location where the data store should reside. The value can
 	// only be one of "global", "us" and "eu".
@@ -140,8 +138,6 @@ type sitemapState struct {
 	// Timestamp when the sitemap was created.
 	CreateTime *string `pulumi:"createTime"`
 	// The unique id of the data store.
-	//
-	// ***
 	DataStoreId *string `pulumi:"dataStoreId"`
 	// The geographic location where the data store should reside. The value can
 	// only be one of "global", "us" and "eu".
@@ -164,8 +160,6 @@ type SitemapState struct {
 	// Timestamp when the sitemap was created.
 	CreateTime pulumi.StringPtrInput
 	// The unique id of the data store.
-	//
-	// ***
 	DataStoreId pulumi.StringPtrInput
 	// The geographic location where the data store should reside. The value can
 	// only be one of "global", "us" and "eu".
@@ -190,8 +184,6 @@ func (SitemapState) ElementType() reflect.Type {
 
 type sitemapArgs struct {
 	// The unique id of the data store.
-	//
-	// ***
 	DataStoreId string `pulumi:"dataStoreId"`
 	// The geographic location where the data store should reside. The value can
 	// only be one of "global", "us" and "eu".
@@ -206,8 +198,6 @@ type sitemapArgs struct {
 // The set of arguments for constructing a Sitemap resource.
 type SitemapArgs struct {
 	// The unique id of the data store.
-	//
-	// ***
 	DataStoreId pulumi.StringInput
 	// The geographic location where the data store should reside. The value can
 	// only be one of "global", "us" and "eu".
@@ -312,8 +302,6 @@ func (o SitemapOutput) CreateTime() pulumi.StringOutput {
 }
 
 // The unique id of the data store.
-//
-// ***
 func (o SitemapOutput) DataStoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Sitemap) pulumi.StringOutput { return v.DataStoreId }).(pulumi.StringOutput)
 }

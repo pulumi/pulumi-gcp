@@ -116,16 +116,12 @@ public final class VolumeQuotaRuleState extends com.pulumi.resources.ResourceArg
     /**
      * The resource name of the quotaRule.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return The resource name of the quotaRule.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -427,8 +423,6 @@ public final class VolumeQuotaRuleState extends com.pulumi.resources.ResourceArg
         /**
          * @param name The resource name of the quotaRule.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -439,8 +433,6 @@ public final class VolumeQuotaRuleState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param name The resource name of the quotaRule.
-         * 
-         * ***
          * 
          * @return builder
          * 

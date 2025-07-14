@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class FutureReservationStatusLastKnownGoodState
     {
         /// <summary>
-        /// The description of the FutureReservation before an amendment was requested.
+        /// An optional description of this resource.
         /// </summary>
         public readonly string? Description;
         /// <summary>
@@ -32,7 +32,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? LockTime;
         /// <summary>
-        /// The name prefix of the Future Reservation before an amendment was requested.
+        /// Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
         /// </summary>
         public readonly string? NamePrefix;
         /// <summary>

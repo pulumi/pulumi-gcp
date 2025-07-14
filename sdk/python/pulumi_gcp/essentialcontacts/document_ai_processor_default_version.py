@@ -25,9 +25,6 @@ class DocumentAiProcessorDefaultVersionArgs:
         """
         The set of arguments for constructing a DocumentAiProcessorDefaultVersion resource.
         :param pulumi.Input[builtins.str] processor: The processor to set the version on.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] version: The version to set. Using `stable` or `rc` will cause the API to return the latest version in that release channel.
                Apply `lifecycle.ignore_changes` to the `version` field to suppress this diff.
         """
@@ -39,9 +36,6 @@ class DocumentAiProcessorDefaultVersionArgs:
     def processor(self) -> pulumi.Input[builtins.str]:
         """
         The processor to set the version on.
-
-
-        - - -
         """
         return pulumi.get(self, "processor")
 
@@ -71,9 +65,6 @@ class _DocumentAiProcessorDefaultVersionState:
         """
         Input properties used for looking up and filtering DocumentAiProcessorDefaultVersion resources.
         :param pulumi.Input[builtins.str] processor: The processor to set the version on.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] version: The version to set. Using `stable` or `rc` will cause the API to return the latest version in that release channel.
                Apply `lifecycle.ignore_changes` to the `version` field to suppress this diff.
         """
@@ -87,9 +78,6 @@ class _DocumentAiProcessorDefaultVersionState:
     def processor(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The processor to set the version on.
-
-
-        - - -
         """
         return pulumi.get(self, "processor")
 
@@ -155,9 +143,6 @@ class DocumentAiProcessorDefaultVersion(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] processor: The processor to set the version on.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] version: The version to set. Using `stable` or `rc` will cause the API to return the latest version in that release channel.
                Apply `lifecycle.ignore_changes` to the `version` field to suppress this diff.
         """
@@ -251,9 +236,6 @@ class DocumentAiProcessorDefaultVersion(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] processor: The processor to set the version on.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] version: The version to set. Using `stable` or `rc` will cause the API to return the latest version in that release channel.
                Apply `lifecycle.ignore_changes` to the `version` field to suppress this diff.
         """
@@ -270,9 +252,6 @@ class DocumentAiProcessorDefaultVersion(pulumi.CustomResource):
     def processor(self) -> pulumi.Output[builtins.str]:
         """
         The processor to set the version on.
-
-
-        - - -
         """
         return pulumi.get(self, "processor")
 

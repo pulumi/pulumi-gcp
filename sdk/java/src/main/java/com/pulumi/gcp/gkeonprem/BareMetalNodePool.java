@@ -22,6 +22,10 @@ import javax.annotation.Nullable;
 /**
  * A Google Bare Metal Node Pool.
  * 
+ * To get more information about BareMetalNodePool, see:
+ * 
+ * * [API documentation](https://cloud.google.com/kubernetes-engine/distributed-cloud/reference/on-prem-api/rest/v1/projects.locations.bareMetalClusters.bareMetalNodePools)
+ * 
  * ## Example Usage
  * 
  * ### Gkeonprem Bare Metal Node Pool Basic
@@ -327,24 +331,34 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool")
 public class BareMetalNodePool extends com.pulumi.resources.CustomResource {
     /**
-     * Annotations on the Bare Metal Node Pool. This field has the same restrictions as Kubernetes annotations. The total size
-     * of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-     * &#39;effective_annotations&#39; for all of the annotations present on the resource.
+     * Annotations on the Bare Metal Node Pool.
+     * This field has the same restrictions as Kubernetes annotations.
+     * The total size of all keys and values combined is limited to 256k.
+     * Key can have 2 segments: prefix (optional) and name (required),
+     * separated by a slash (/).
+     * Prefix must be a DNS subdomain.
+     * Name must be 63 characters or less, begin and end with alphanumerics,
+     * with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> annotations;
 
     /**
-     * @return Annotations on the Bare Metal Node Pool. This field has the same restrictions as Kubernetes annotations. The total size
-     * of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-     * separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-     * alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-     * non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-     * &#39;effective_annotations&#39; for all of the annotations present on the resource.
+     * @return Annotations on the Bare Metal Node Pool.
+     * This field has the same restrictions as Kubernetes annotations.
+     * The total size of all keys and values combined is limited to 256k.
+     * Key can have 2 segments: prefix (optional) and name (required),
+     * separated by a slash (/).
+     * Prefix must be a DNS subdomain.
+     * Name must be 63 characters or less, begin and end with alphanumerics,
+     * with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> annotations() {
@@ -478,9 +492,19 @@ public class BareMetalNodePool extends com.pulumi.resources.CustomResource {
     public Output<BareMetalNodePoolNodePoolConfig> nodePoolConfig() {
         return this.nodePoolConfig;
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }

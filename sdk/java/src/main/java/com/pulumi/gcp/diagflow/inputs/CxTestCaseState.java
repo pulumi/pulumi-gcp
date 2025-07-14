@@ -37,16 +37,12 @@ public final class CxTestCaseState extends com.pulumi.resources.ResourceArgs {
     /**
      * The human-readable name of the test case, unique within the agent. Limit of 200 characters.
      * 
-     * ***
-     * 
      */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
 
     /**
      * @return The human-readable name of the test case, unique within the agent. Limit of 200 characters.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> displayName() {
@@ -226,8 +222,6 @@ public final class CxTestCaseState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param displayName The human-readable name of the test case, unique within the agent. Limit of 200 characters.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -238,8 +232,6 @@ public final class CxTestCaseState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param displayName The human-readable name of the test case, unique within the agent. Limit of 200 characters.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -35,8 +35,6 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
         public readonly ImmutableArray<string> AllowOrigins;
         /// <summary>
         /// If true, the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
-        /// 
-        /// - - -
         /// </summary>
         public readonly bool? Disabled;
         /// <summary>

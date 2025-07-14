@@ -60,6 +60,7 @@ type LookupSecretArgs struct {
 type LookupSecretResult struct {
 	Annotations          map[string]string `pulumi:"annotations"`
 	CreateTime           string            `pulumi:"createTime"`
+	DeletionProtection   bool              `pulumi:"deletionProtection"`
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	EffectiveLabels      map[string]string `pulumi:"effectiveLabels"`
 	ExpireTime           string            `pulumi:"expireTime"`
@@ -120,6 +121,10 @@ func (o LookupSecretResultOutput) Annotations() pulumi.StringMapOutput {
 
 func (o LookupSecretResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o LookupSecretResultOutput) DeletionProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupSecretResult) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
 }
 
 func (o LookupSecretResultOutput) EffectiveAnnotations() pulumi.StringMapOutput {

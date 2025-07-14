@@ -158,8 +158,6 @@ public final class WorkloadIdentityPoolNamespaceState extends com.pulumi.resourc
      * 
      * The prefix `gcp-` will be reserved for future uses.
      * 
-     * ***
-     * 
      */
     @Import(name="workloadIdentityPoolNamespaceId")
     private @Nullable Output<String> workloadIdentityPoolNamespaceId;
@@ -172,8 +170,6 @@ public final class WorkloadIdentityPoolNamespaceState extends com.pulumi.resourc
      * * end with an alphanumeric character
      * 
      * The prefix `gcp-` will be reserved for future uses.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> workloadIdentityPoolNamespaceId() {
@@ -405,8 +401,6 @@ public final class WorkloadIdentityPoolNamespaceState extends com.pulumi.resourc
          * 
          * The prefix `gcp-` will be reserved for future uses.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -423,8 +417,6 @@ public final class WorkloadIdentityPoolNamespaceState extends com.pulumi.resourc
          * * end with an alphanumeric character
          * 
          * The prefix `gcp-` will be reserved for future uses.
-         * 
-         * ***
          * 
          * @return builder
          * 

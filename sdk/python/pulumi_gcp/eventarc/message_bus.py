@@ -35,9 +35,6 @@ class MessageBusArgs:
         :param pulumi.Input[builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[builtins.str] message_bus_id: Required. The user-provided ID to be assigned to the MessageBus. It should match the
                format `^a-z?$`.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Optional. Resource annotations.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -88,9 +85,6 @@ class MessageBusArgs:
         """
         Required. The user-provided ID to be assigned to the MessageBus. It should match the
         format `^a-z?$`.
-
-
-        - - -
         """
         return pulumi.get(self, "message_bus_id")
 
@@ -224,9 +218,6 @@ class _MessageBusState:
                Structure is documented below.
         :param pulumi.Input[builtins.str] message_bus_id: Required. The user-provided ID to be assigned to the MessageBus. It should match the
                format `^a-z?$`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: Identifier. Resource name of the form
                projects/{project}/locations/{location}/messageBuses/{message_bus}
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -404,9 +395,6 @@ class _MessageBusState:
         """
         Required. The user-provided ID to be assigned to the MessageBus. It should match the
         format `^a-z?$`.
-
-
-        - - -
         """
         return pulumi.get(self, "message_bus_id")
 
@@ -570,9 +558,6 @@ class MessageBus(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[builtins.str] message_bus_id: Required. The user-provided ID to be assigned to the MessageBus. It should match the
                format `^a-z?$`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -748,9 +733,6 @@ class MessageBus(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[builtins.str] message_bus_id: Required. The user-provided ID to be assigned to the MessageBus. It should match the
                format `^a-z?$`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: Identifier. Resource name of the form
                projects/{project}/locations/{location}/messageBuses/{message_bus}
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -877,9 +859,6 @@ class MessageBus(pulumi.CustomResource):
         """
         Required. The user-provided ID to be assigned to the MessageBus. It should match the
         format `^a-z?$`.
-
-
-        - - -
         """
         return pulumi.get(self, "message_bus_id")
 

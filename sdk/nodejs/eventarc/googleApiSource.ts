@@ -146,9 +146,6 @@ export class GoogleApiSource extends pulumi.CustomResource {
     /**
      * The user-provided ID to be assigned to the GoogleApiSource. It should match
      * the format `^a-z?$`.
-     *
-     *
-     * - - -
      */
     public readonly googleApiSourceId!: pulumi.Output<string>;
     /**
@@ -303,9 +300,6 @@ export interface GoogleApiSourceState {
     /**
      * The user-provided ID to be assigned to the GoogleApiSource. It should match
      * the format `^a-z?$`.
-     *
-     *
-     * - - -
      */
     googleApiSourceId?: pulumi.Input<string>;
     /**
@@ -380,9 +374,6 @@ export interface GoogleApiSourceArgs {
     /**
      * The user-provided ID to be assigned to the GoogleApiSource. It should match
      * the format `^a-z?$`.
-     *
-     *
-     * - - -
      */
     googleApiSourceId: pulumi.Input<string>;
     /**

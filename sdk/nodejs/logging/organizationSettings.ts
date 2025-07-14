@@ -107,9 +107,6 @@ export class OrganizationSettings extends pulumi.CustomResource {
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * The organization for which to retrieve or configure settings.
-     *
-     *
-     * - - -
      */
     public readonly organization!: pulumi.Output<string>;
     /**
@@ -181,9 +178,6 @@ export interface OrganizationSettingsState {
     name?: pulumi.Input<string>;
     /**
      * The organization for which to retrieve or configure settings.
-     *
-     *
-     * - - -
      */
     organization?: pulumi.Input<string>;
     /**
@@ -206,9 +200,6 @@ export interface OrganizationSettingsArgs {
     kmsKeyName?: pulumi.Input<string>;
     /**
      * The organization for which to retrieve or configure settings.
-     *
-     *
-     * - - -
      */
     organization: pulumi.Input<string>;
     /**

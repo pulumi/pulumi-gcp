@@ -42,12 +42,18 @@ class PatchDeploymentArgs:
                * Must end with a number or a letter.
                * Must be unique within the project.
         :param pulumi.Input[builtins.str] description: Description of the patch deployment. Length of the description is limited to 1024 characters.
-        :param pulumi.Input[builtins.str] duration: Duration of the patch. After the duration ends, the patch times out. A duration in seconds with up to nine fractional
-               digits, terminated by 's'. Example: "3.5s"
+        :param pulumi.Input[builtins.str] duration: Duration of the patch. After the duration ends, the patch times out.
+               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
         :param pulumi.Input['PatchDeploymentOneTimeScheduleArgs'] one_time_schedule: Schedule a one-time execution.
+               Structure is documented below.
         :param pulumi.Input['PatchDeploymentPatchConfigArgs'] patch_config: Patch configuration that is applied.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input['PatchDeploymentRecurringScheduleArgs'] recurring_schedule: Schedule recurring executions.
+               Structure is documented below.
         :param pulumi.Input['PatchDeploymentRolloutArgs'] rollout: Rollout strategy of the patch job.
+               Structure is documented below.
         """
         pulumi.set(__self__, "instance_filter", instance_filter)
         pulumi.set(__self__, "patch_deployment_id", patch_deployment_id)
@@ -112,8 +118,8 @@ class PatchDeploymentArgs:
     @pulumi.getter
     def duration(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Duration of the patch. After the duration ends, the patch times out. A duration in seconds with up to nine fractional
-        digits, terminated by 's'. Example: "3.5s"
+        Duration of the patch. After the duration ends, the patch times out.
+        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
         """
         return pulumi.get(self, "duration")
 
@@ -126,6 +132,7 @@ class PatchDeploymentArgs:
     def one_time_schedule(self) -> Optional[pulumi.Input['PatchDeploymentOneTimeScheduleArgs']]:
         """
         Schedule a one-time execution.
+        Structure is documented below.
         """
         return pulumi.get(self, "one_time_schedule")
 
@@ -138,6 +145,7 @@ class PatchDeploymentArgs:
     def patch_config(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigArgs']]:
         """
         Patch configuration that is applied.
+        Structure is documented below.
         """
         return pulumi.get(self, "patch_config")
 
@@ -148,6 +156,10 @@ class PatchDeploymentArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -159,6 +171,7 @@ class PatchDeploymentArgs:
     def recurring_schedule(self) -> Optional[pulumi.Input['PatchDeploymentRecurringScheduleArgs']]:
         """
         Schedule recurring executions.
+        Structure is documented below.
         """
         return pulumi.get(self, "recurring_schedule")
 
@@ -171,6 +184,7 @@ class PatchDeploymentArgs:
     def rollout(self) -> Optional[pulumi.Input['PatchDeploymentRolloutArgs']]:
         """
         Rollout strategy of the patch job.
+        Structure is documented below.
         """
         return pulumi.get(self, "rollout")
 
@@ -200,8 +214,8 @@ class _PatchDeploymentState:
         :param pulumi.Input[builtins.str] create_time: Time the patch deployment was created. Timestamp is in RFC3339 text format.
                A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[builtins.str] description: Description of the patch deployment. Length of the description is limited to 1024 characters.
-        :param pulumi.Input[builtins.str] duration: Duration of the patch. After the duration ends, the patch times out. A duration in seconds with up to nine fractional
-               digits, terminated by 's'. Example: "3.5s"
+        :param pulumi.Input[builtins.str] duration: Duration of the patch. After the duration ends, the patch times out.
+               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
         :param pulumi.Input['PatchDeploymentInstanceFilterArgs'] instance_filter: VM instances to patch.
                Structure is documented below.
         :param pulumi.Input[builtins.str] last_execute_time: The last time a patch job was started by this deployment. Timestamp is in RFC3339 text format.
@@ -209,15 +223,21 @@ class _PatchDeploymentState:
         :param pulumi.Input[builtins.str] name: Unique name for the patch deployment resource in a project.
                The patch deployment name is in the form: projects/{project_id}/patchDeployments/{patchDeploymentId}.
         :param pulumi.Input['PatchDeploymentOneTimeScheduleArgs'] one_time_schedule: Schedule a one-time execution.
+               Structure is documented below.
         :param pulumi.Input['PatchDeploymentPatchConfigArgs'] patch_config: Patch configuration that is applied.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] patch_deployment_id: A name for the patch deployment in the project. When creating a name the following rules apply:
                * Must contain only lowercase letters, numbers, and hyphens.
                * Must start with a letter.
                * Must be between 1-63 characters.
                * Must end with a number or a letter.
                * Must be unique within the project.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input['PatchDeploymentRecurringScheduleArgs'] recurring_schedule: Schedule recurring executions.
+               Structure is documented below.
         :param pulumi.Input['PatchDeploymentRolloutArgs'] rollout: Rollout strategy of the patch job.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] update_time: Time the patch deployment was last updated. Timestamp is in RFC3339 text format.
                A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         """
@@ -277,8 +297,8 @@ class _PatchDeploymentState:
     @pulumi.getter
     def duration(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Duration of the patch. After the duration ends, the patch times out. A duration in seconds with up to nine fractional
-        digits, terminated by 's'. Example: "3.5s"
+        Duration of the patch. After the duration ends, the patch times out.
+        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
         """
         return pulumi.get(self, "duration")
 
@@ -330,6 +350,7 @@ class _PatchDeploymentState:
     def one_time_schedule(self) -> Optional[pulumi.Input['PatchDeploymentOneTimeScheduleArgs']]:
         """
         Schedule a one-time execution.
+        Structure is documented below.
         """
         return pulumi.get(self, "one_time_schedule")
 
@@ -342,6 +363,7 @@ class _PatchDeploymentState:
     def patch_config(self) -> Optional[pulumi.Input['PatchDeploymentPatchConfigArgs']]:
         """
         Patch configuration that is applied.
+        Structure is documented below.
         """
         return pulumi.get(self, "patch_config")
 
@@ -369,6 +391,10 @@ class _PatchDeploymentState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -380,6 +406,7 @@ class _PatchDeploymentState:
     def recurring_schedule(self) -> Optional[pulumi.Input['PatchDeploymentRecurringScheduleArgs']]:
         """
         Schedule recurring executions.
+        Structure is documented below.
         """
         return pulumi.get(self, "recurring_schedule")
 
@@ -392,6 +419,7 @@ class _PatchDeploymentState:
     def rollout(self) -> Optional[pulumi.Input['PatchDeploymentRolloutArgs']]:
         """
         Rollout strategy of the patch job.
+        Structure is documented below.
         """
         return pulumi.get(self, "rollout")
 
@@ -693,20 +721,26 @@ class PatchDeployment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] description: Description of the patch deployment. Length of the description is limited to 1024 characters.
-        :param pulumi.Input[builtins.str] duration: Duration of the patch. After the duration ends, the patch times out. A duration in seconds with up to nine fractional
-               digits, terminated by 's'. Example: "3.5s"
+        :param pulumi.Input[builtins.str] duration: Duration of the patch. After the duration ends, the patch times out.
+               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
         :param pulumi.Input[Union['PatchDeploymentInstanceFilterArgs', 'PatchDeploymentInstanceFilterArgsDict']] instance_filter: VM instances to patch.
                Structure is documented below.
         :param pulumi.Input[Union['PatchDeploymentOneTimeScheduleArgs', 'PatchDeploymentOneTimeScheduleArgsDict']] one_time_schedule: Schedule a one-time execution.
+               Structure is documented below.
         :param pulumi.Input[Union['PatchDeploymentPatchConfigArgs', 'PatchDeploymentPatchConfigArgsDict']] patch_config: Patch configuration that is applied.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] patch_deployment_id: A name for the patch deployment in the project. When creating a name the following rules apply:
                * Must contain only lowercase letters, numbers, and hyphens.
                * Must start with a letter.
                * Must be between 1-63 characters.
                * Must end with a number or a letter.
                * Must be unique within the project.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Union['PatchDeploymentRecurringScheduleArgs', 'PatchDeploymentRecurringScheduleArgsDict']] recurring_schedule: Schedule recurring executions.
+               Structure is documented below.
         :param pulumi.Input[Union['PatchDeploymentRolloutArgs', 'PatchDeploymentRolloutArgsDict']] rollout: Rollout strategy of the patch job.
+               Structure is documented below.
         """
         ...
     @overload
@@ -1058,8 +1092,8 @@ class PatchDeployment(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] create_time: Time the patch deployment was created. Timestamp is in RFC3339 text format.
                A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[builtins.str] description: Description of the patch deployment. Length of the description is limited to 1024 characters.
-        :param pulumi.Input[builtins.str] duration: Duration of the patch. After the duration ends, the patch times out. A duration in seconds with up to nine fractional
-               digits, terminated by 's'. Example: "3.5s"
+        :param pulumi.Input[builtins.str] duration: Duration of the patch. After the duration ends, the patch times out.
+               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
         :param pulumi.Input[Union['PatchDeploymentInstanceFilterArgs', 'PatchDeploymentInstanceFilterArgsDict']] instance_filter: VM instances to patch.
                Structure is documented below.
         :param pulumi.Input[builtins.str] last_execute_time: The last time a patch job was started by this deployment. Timestamp is in RFC3339 text format.
@@ -1067,15 +1101,21 @@ class PatchDeployment(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] name: Unique name for the patch deployment resource in a project.
                The patch deployment name is in the form: projects/{project_id}/patchDeployments/{patchDeploymentId}.
         :param pulumi.Input[Union['PatchDeploymentOneTimeScheduleArgs', 'PatchDeploymentOneTimeScheduleArgsDict']] one_time_schedule: Schedule a one-time execution.
+               Structure is documented below.
         :param pulumi.Input[Union['PatchDeploymentPatchConfigArgs', 'PatchDeploymentPatchConfigArgsDict']] patch_config: Patch configuration that is applied.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] patch_deployment_id: A name for the patch deployment in the project. When creating a name the following rules apply:
                * Must contain only lowercase letters, numbers, and hyphens.
                * Must start with a letter.
                * Must be between 1-63 characters.
                * Must end with a number or a letter.
                * Must be unique within the project.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Union['PatchDeploymentRecurringScheduleArgs', 'PatchDeploymentRecurringScheduleArgsDict']] recurring_schedule: Schedule recurring executions.
+               Structure is documented below.
         :param pulumi.Input[Union['PatchDeploymentRolloutArgs', 'PatchDeploymentRolloutArgsDict']] rollout: Rollout strategy of the patch job.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] update_time: Time the patch deployment was last updated. Timestamp is in RFC3339 text format.
                A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         """
@@ -1119,8 +1159,8 @@ class PatchDeployment(pulumi.CustomResource):
     @pulumi.getter
     def duration(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Duration of the patch. After the duration ends, the patch times out. A duration in seconds with up to nine fractional
-        digits, terminated by 's'. Example: "3.5s"
+        Duration of the patch. After the duration ends, the patch times out.
+        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
         """
         return pulumi.get(self, "duration")
 
@@ -1156,6 +1196,7 @@ class PatchDeployment(pulumi.CustomResource):
     def one_time_schedule(self) -> pulumi.Output[Optional['outputs.PatchDeploymentOneTimeSchedule']]:
         """
         Schedule a one-time execution.
+        Structure is documented below.
         """
         return pulumi.get(self, "one_time_schedule")
 
@@ -1164,6 +1205,7 @@ class PatchDeployment(pulumi.CustomResource):
     def patch_config(self) -> pulumi.Output[Optional['outputs.PatchDeploymentPatchConfig']]:
         """
         Patch configuration that is applied.
+        Structure is documented below.
         """
         return pulumi.get(self, "patch_config")
 
@@ -1183,6 +1225,10 @@ class PatchDeployment(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property
@@ -1190,6 +1236,7 @@ class PatchDeployment(pulumi.CustomResource):
     def recurring_schedule(self) -> pulumi.Output[Optional['outputs.PatchDeploymentRecurringSchedule']]:
         """
         Schedule recurring executions.
+        Structure is documented below.
         """
         return pulumi.get(self, "recurring_schedule")
 
@@ -1198,6 +1245,7 @@ class PatchDeployment(pulumi.CustomResource):
     def rollout(self) -> pulumi.Output[Optional['outputs.PatchDeploymentRollout']]:
         """
         Rollout strategy of the patch job.
+        Structure is documented below.
         """
         return pulumi.get(self, "rollout")
 

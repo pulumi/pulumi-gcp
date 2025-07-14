@@ -267,9 +267,6 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The Apigee Organization associated with the Apigee instance,
      * in the format `organizations/{{org_name}}`.
-     *
-     *
-     * - - -
      */
     public readonly orgId!: pulumi.Output<string>;
     /**
@@ -388,9 +385,6 @@ export interface InstanceState {
     /**
      * The Apigee Organization associated with the Apigee instance,
      * in the format `organizations/{{org_name}}`.
-     *
-     *
-     * - - -
      */
     orgId?: pulumi.Input<string>;
     /**
@@ -455,9 +449,6 @@ export interface InstanceArgs {
     /**
      * The Apigee Organization associated with the Apigee instance,
      * in the format `organizations/{{org_name}}`.
-     *
-     *
-     * - - -
      */
     orgId: pulumi.Input<string>;
     /**

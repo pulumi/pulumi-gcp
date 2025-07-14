@@ -134,9 +134,6 @@ namespace Pulumi.Gcp.Iam
         /// final component of the resource name. This value should be 4-32 characters,
         /// and may contain the characters [a-z0-9-]. The prefix `gcp-` is
         /// reserved for use by Google, and may not be specified.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("oauthClientCredentialId")]
         public Output<string> OauthClientCredentialId { get; private set; } = null!;
@@ -229,9 +226,6 @@ namespace Pulumi.Gcp.Iam
         /// final component of the resource name. This value should be 4-32 characters,
         /// and may contain the characters [a-z0-9-]. The prefix `gcp-` is
         /// reserved for use by Google, and may not be specified.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("oauthClientCredentialId", required: true)]
         public Input<string> OauthClientCredentialId { get; set; } = null!;
@@ -311,9 +305,6 @@ namespace Pulumi.Gcp.Iam
         /// final component of the resource name. This value should be 4-32 characters,
         /// and may contain the characters [a-z0-9-]. The prefix `gcp-` is
         /// reserved for use by Google, and may not be specified.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("oauthClientCredentialId")]
         public Input<string>? OauthClientCredentialId { get; set; }

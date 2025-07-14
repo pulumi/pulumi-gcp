@@ -162,8 +162,6 @@ public class Folder extends com.pulumi.resources.CustomResource {
      * The name of the folder expressed as a path. Must include
      * trailing &#39;/&#39;. For example, `example_dir/example_dir2/`, `example{@literal @}#/`, `a-b/d-f/`.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -171,8 +169,6 @@ public class Folder extends com.pulumi.resources.CustomResource {
     /**
      * @return The name of the folder expressed as a path. Must include
      * trailing &#39;/&#39;. For example, `example_dir/example_dir2/`, `example{@literal @}#/`, `a-b/d-f/`.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

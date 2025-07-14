@@ -115,9 +115,6 @@ export class Workload extends pulumi.CustomResource {
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
      * The Workload identifier.
-     *
-     *
-     * - - -
      */
     public readonly workloadId!: pulumi.Output<string>;
     /**
@@ -250,9 +247,6 @@ export interface WorkloadState {
     updateTime?: pulumi.Input<string>;
     /**
      * The Workload identifier.
-     *
-     *
-     * - - -
      */
     workloadId?: pulumi.Input<string>;
     /**
@@ -303,9 +297,6 @@ export interface WorkloadArgs {
     project?: pulumi.Input<string>;
     /**
      * The Workload identifier.
-     *
-     *
-     * - - -
      */
     workloadId: pulumi.Input<string>;
 }

@@ -214,9 +214,6 @@ namespace Pulumi.Gcp.OracleDatabase
         /// to (^a-z?$) and must be a maximum of 63
         /// characters in length. The value must start with a letter and end with
         /// a letter or a number.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("cloudVmClusterId")]
         public Output<string> CloudVmClusterId { get; private set; } = null!;
@@ -374,9 +371,6 @@ namespace Pulumi.Gcp.OracleDatabase
         /// to (^a-z?$) and must be a maximum of 63
         /// characters in length. The value must start with a letter and end with
         /// a letter or a number.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("cloudVmClusterId", required: true)]
         public Input<string> CloudVmClusterId { get; set; } = null!;
@@ -464,9 +458,6 @@ namespace Pulumi.Gcp.OracleDatabase
         /// to (^a-z?$) and must be a maximum of 63
         /// characters in length. The value must start with a letter and end with
         /// a letter or a number.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("cloudVmClusterId")]
         public Input<string>? CloudVmClusterId { get; set; }

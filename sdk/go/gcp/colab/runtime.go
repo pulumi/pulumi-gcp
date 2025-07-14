@@ -233,8 +233,6 @@ type Runtime struct {
 	// Output only. Checks if the NotebookRuntime is upgradable.
 	IsUpgradable pulumi.BoolOutput `pulumi:"isUpgradable"`
 	// The location for the resource: https://cloud.google.com/colab/docs/locations
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the Runtime
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -304,8 +302,6 @@ type runtimeState struct {
 	// Output only. Checks if the NotebookRuntime is upgradable.
 	IsUpgradable *bool `pulumi:"isUpgradable"`
 	// The location for the resource: https://cloud.google.com/colab/docs/locations
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// The resource name of the Runtime
 	Name *string `pulumi:"name"`
@@ -337,8 +333,6 @@ type RuntimeState struct {
 	// Output only. Checks if the NotebookRuntime is upgradable.
 	IsUpgradable pulumi.BoolPtrInput
 	// The location for the resource: https://cloud.google.com/colab/docs/locations
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// The resource name of the Runtime
 	Name pulumi.StringPtrInput
@@ -370,8 +364,6 @@ type runtimeArgs struct {
 	// Required. The display name of the Runtime.
 	DisplayName string `pulumi:"displayName"`
 	// The location for the resource: https://cloud.google.com/colab/docs/locations
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// The resource name of the Runtime
 	Name *string `pulumi:"name"`
@@ -396,8 +388,6 @@ type RuntimeArgs struct {
 	// Required. The display name of the Runtime.
 	DisplayName pulumi.StringInput
 	// The location for the resource: https://cloud.google.com/colab/docs/locations
-	//
-	// ***
 	Location pulumi.StringInput
 	// The resource name of the Runtime
 	Name pulumi.StringPtrInput
@@ -529,8 +519,6 @@ func (o RuntimeOutput) IsUpgradable() pulumi.BoolOutput {
 }
 
 // The location for the resource: https://cloud.google.com/colab/docs/locations
-//
-// ***
 func (o RuntimeOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Runtime) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

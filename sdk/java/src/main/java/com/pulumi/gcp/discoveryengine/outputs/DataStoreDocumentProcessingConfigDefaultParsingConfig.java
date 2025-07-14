@@ -20,6 +20,7 @@ public final class DataStoreDocumentProcessingConfigDefaultParsingConfig {
     private @Nullable DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfig digitalParsingConfig;
     /**
      * @return Configurations applied to layout parser.
+     * Structure is documented below.
      * 
      */
     private @Nullable DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig layoutParsingConfig;
@@ -40,6 +41,7 @@ public final class DataStoreDocumentProcessingConfigDefaultParsingConfig {
     }
     /**
      * @return Configurations applied to layout parser.
+     * Structure is documented below.
      * 
      */
     public Optional<DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig> layoutParsingConfig() {

@@ -271,16 +271,12 @@ public class RuleDeployment extends com.pulumi.resources.CustomResource {
     /**
      * The Rule ID of the rule.
      * 
-     * ***
-     * 
      */
     @Export(name="rule", refs={String.class}, tree="[0]")
     private Output<String> rule;
 
     /**
      * @return The Rule ID of the rule.
-     * 
-     * ***
      * 
      */
     public Output<String> rule() {

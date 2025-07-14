@@ -534,16 +534,12 @@ public class NotebookExecution extends com.pulumi.resources.CustomResource {
     /**
      * The location for the resource: https://cloud.google.com/colab/docs/locations
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return The location for the resource: https://cloud.google.com/colab/docs/locations
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

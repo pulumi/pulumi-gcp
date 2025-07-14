@@ -229,14 +229,16 @@ public class PacketMirroring extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * A filter for mirrored traffic. If unset, all traffic is mirrored.
+     * A filter for mirrored traffic.  If unset, all traffic is mirrored.
+     * Structure is documented below.
      * 
      */
     @Export(name="filter", refs={PacketMirroringFilter.class}, tree="[0]")
     private Output</* @Nullable */ PacketMirroringFilter> filter;
 
     /**
-     * @return A filter for mirrored traffic. If unset, all traffic is mirrored.
+     * @return A filter for mirrored traffic.  If unset, all traffic is mirrored.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<PacketMirroringFilter>> filter() {
@@ -293,36 +295,50 @@ public class PacketMirroring extends com.pulumi.resources.CustomResource {
         return this.network;
     }
     /**
-     * Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to the
-     * same instances.
+     * Since only one rule can be active at a time, priority is
+     * used to break ties in the case of two rules that apply to
+     * the same instances.
      * 
      */
     @Export(name="priority", refs={Integer.class}, tree="[0]")
     private Output<Integer> priority;
 
     /**
-     * @return Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to the
-     * same instances.
+     * @return Since only one rule can be active at a time, priority is
+     * used to break ties in the case of two rules that apply to
+     * the same instances.
      * 
      */
     public Output<Integer> priority() {
         return this.priority;
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * The Region in which the created address should reside. If it is not provided, the provider region is used.
+     * The Region in which the created address should reside.
+     * If it is not provided, the provider region is used.
      * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
-     * @return The Region in which the created address should reside. If it is not provided, the provider region is used.
+     * @return The Region in which the created address should reside.
+     * If it is not provided, the provider region is used.
      * 
      */
     public Output<String> region() {

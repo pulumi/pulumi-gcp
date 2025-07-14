@@ -271,8 +271,6 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
      * The last part of the repository name, for example:
      * &#34;repo1&#34;
      * 
-     * ***
-     * 
      */
     @Import(name="repositoryId", required=true)
     private Output<String> repositoryId;
@@ -280,8 +278,6 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The last part of the repository name, for example:
      * &#34;repo1&#34;
-     * 
-     * ***
      * 
      */
     public Output<String> repositoryId() {
@@ -692,8 +688,6 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
          * @param repositoryId The last part of the repository name, for example:
          * &#34;repo1&#34;
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -705,8 +699,6 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param repositoryId The last part of the repository name, for example:
          * &#34;repo1&#34;
-         * 
-         * ***
          * 
          * @return builder
          * 

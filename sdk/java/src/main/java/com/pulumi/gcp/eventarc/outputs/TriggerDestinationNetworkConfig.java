@@ -13,16 +13,12 @@ public final class TriggerDestinationNetworkConfig {
     /**
      * @return Required. Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
      * 
-     * ***
-     * 
      */
     private String networkAttachment;
 
     private TriggerDestinationNetworkConfig() {}
     /**
      * @return Required. Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
-     * 
-     * ***
      * 
      */
     public String networkAttachment() {

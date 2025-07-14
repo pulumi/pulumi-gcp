@@ -435,8 +435,6 @@ type Instance struct {
 	// The self service update maintenance version.
 	MaintenanceVersion pulumi.StringOutput `pulumi:"maintenanceVersion"`
 	// Redis memory size in GiB.
-	//
-	// ***
 	MemorySizeGb pulumi.IntOutput `pulumi:"memorySizeGb"`
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -618,8 +616,6 @@ type instanceState struct {
 	// The self service update maintenance version.
 	MaintenanceVersion *string `pulumi:"maintenanceVersion"`
 	// Redis memory size in GiB.
-	//
-	// ***
 	MemorySizeGb *int `pulumi:"memorySizeGb"`
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name *string `pulumi:"name"`
@@ -763,8 +759,6 @@ type InstanceState struct {
 	// The self service update maintenance version.
 	MaintenanceVersion pulumi.StringPtrInput
 	// Redis memory size in GiB.
-	//
-	// ***
 	MemorySizeGb pulumi.IntPtrInput
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name pulumi.StringPtrInput
@@ -887,8 +881,6 @@ type instanceArgs struct {
 	// The self service update maintenance version.
 	MaintenanceVersion *string `pulumi:"maintenanceVersion"`
 	// Redis memory size in GiB.
-	//
-	// ***
 	MemorySizeGb int `pulumi:"memorySizeGb"`
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name *string `pulumi:"name"`
@@ -985,8 +977,6 @@ type InstanceArgs struct {
 	// The self service update maintenance version.
 	MaintenanceVersion pulumi.StringPtrInput
 	// Redis memory size in GiB.
-	//
-	// ***
 	MemorySizeGb pulumi.IntInput
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name pulumi.StringPtrInput
@@ -1244,8 +1234,6 @@ func (o InstanceOutput) MaintenanceVersion() pulumi.StringOutput {
 }
 
 // Redis memory size in GiB.
-//
-// ***
 func (o InstanceOutput) MemorySizeGb() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.MemorySizeGb }).(pulumi.IntOutput)
 }

@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.ManagedKafka.Outputs
     {
         /// <summary>
         /// The host. Must be set to "*" for Managed Service for Apache Kafka.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string? Host;
         /// <summary>

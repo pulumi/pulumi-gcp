@@ -194,9 +194,6 @@ export class Volume extends pulumi.CustomResource {
     public readonly multipleEndpoints!: pulumi.Output<boolean | undefined>;
     /**
      * The name of the volume. Needs to be unique per location.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -514,9 +511,6 @@ export interface VolumeState {
     multipleEndpoints?: pulumi.Input<boolean>;
     /**
      * The name of the volume. Needs to be unique per location.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -676,9 +670,6 @@ export interface VolumeArgs {
     multipleEndpoints?: pulumi.Input<boolean>;
     /**
      * The name of the volume. Needs to be unique per location.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

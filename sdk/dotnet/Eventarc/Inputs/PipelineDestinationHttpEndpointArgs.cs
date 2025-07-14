@@ -171,8 +171,6 @@ namespace Pulumi.Gcp.Eventarc.Inputs
         /// The Pipeline expects that the message it receives adheres to the
         /// standard CloudEvent format. If it doesn't then the outgoing message
         /// request may fail with a persistent error.
-        /// 
-        /// - - -
         /// </summary>
         [Input("messageBindingTemplate")]
         public Input<string>? MessageBindingTemplate { get; set; }

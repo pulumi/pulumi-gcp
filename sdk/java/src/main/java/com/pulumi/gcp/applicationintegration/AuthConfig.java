@@ -278,16 +278,12 @@ public class AuthConfig extends com.pulumi.resources.CustomResource {
     /**
      * Location in which client needs to be provisioned.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return Location in which client needs to be provisioned.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

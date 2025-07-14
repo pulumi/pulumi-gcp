@@ -228,8 +228,6 @@ public class BackupSchedule extends com.pulumi.resources.CustomResource {
      * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
      * You can set this to a value up to 14 weeks.
      * 
-     * ***
-     * 
      */
     @Export(name="retention", refs={String.class}, tree="[0]")
     private Output<String> retention;
@@ -238,8 +236,6 @@ public class BackupSchedule extends com.pulumi.resources.CustomResource {
      * @return At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
      * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
      * You can set this to a value up to 14 weeks.
-     * 
-     * ***
      * 
      */
     public Output<String> retention() {

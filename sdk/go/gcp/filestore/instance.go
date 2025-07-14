@@ -251,7 +251,9 @@ type Instance struct {
 	DeletionProtectionReason pulumi.StringPtrOutput `pulumi:"deletionProtectionReason"`
 	// A description of the instance.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Directory Services configuration. Should only be set if protocol is "NFS_V4_1".
+	// Directory Services configuration.
+	// Should only be set if protocol is "NFS_V4_1".
+	// Structure is documented below.
 	DirectoryServices InstanceDirectoryServicesPtrOutput `pulumi:"directoryServices"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -265,14 +267,16 @@ type Instance struct {
 	// single file share is supported.
 	// Structure is documented below.
 	FileShares InstanceFileSharesOutput `pulumi:"fileShares"`
-	// Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
-	// instance only, indicating the active as the peer_instance
+	// Replication configuration, once set, this cannot be updated.
+	// Additionally this should be specified on the replica instance only, indicating the active as the peerInstance
+	// Structure is documented below.
 	InitialReplication InstanceInitialReplicationPtrOutput `pulumi:"initialReplication"`
 	// KMS key name used for data encryption.
 	KmsKeyName pulumi.StringPtrOutput `pulumi:"kmsKeyName"`
-	// Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-	// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-	// resource.
+	// Resource labels to represent user-provided metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -282,26 +286,40 @@ type Instance struct {
 	// only a single network is supported.
 	// Structure is documented below.
 	Networks InstanceNetworkArrayOutput `pulumi:"networks"`
-	// Performance configuration for the instance. If not provided, the default performance settings will be used.
+	// Performance configuration for the instance. If not provided,
+	// the default performance settings will be used.
+	// Structure is documented below.
 	PerformanceConfig InstancePerformanceConfigPtrOutput `pulumi:"performanceConfig"`
-	Project           pulumi.StringOutput                `pulumi:"project"`
-	// Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
-	// protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
-	// "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Either NFSv3, for using NFS version 3 as file sharing protocol,
+	// or NFSv4.1, for using NFS version 4.1 as file sharing protocol.
+	// NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE.
+	// The default is NFSv3.
+	// Default value is `NFS_V3`.
+	// Possible values are: `NFS_V3`, `NFS_V4_1`.
 	Protocol pulumi.StringPtrOutput `pulumi:"protocol"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
-	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags.
-	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when
-	// empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and
-	// modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the
-	// 'google_tags_tag_value' resource.
+	// A map of resource manager tags. Resource manager tag keys
+	// and values have the same definition as resource manager
+	// tags. Keys must be in the format tagKeys/{tag_key_id},
+	// and values are in the format tagValues/456. The field is
+	// ignored when empty. The field is immutable and causes
+	// resource replacement when mutated. This field is only set
+	// at create time and modifying this field after creation
+	// will trigger recreation. To apply tags to an existing
+	// resource, see the `tags.TagValue` resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The service tier of the instance.
 	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
 	Tier pulumi.StringOutput `pulumi:"tier"`
+	// (Optional, Deprecated)
 	// The name of the Filestore zone of the instance.
+	//
+	// > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
 	//
 	// Deprecated: `zone` is deprecated and will be removed in a future major release. Use `location` instead.
 	Zone pulumi.StringOutput `pulumi:"zone"`
@@ -359,7 +377,9 @@ type instanceState struct {
 	DeletionProtectionReason *string `pulumi:"deletionProtectionReason"`
 	// A description of the instance.
 	Description *string `pulumi:"description"`
-	// Directory Services configuration. Should only be set if protocol is "NFS_V4_1".
+	// Directory Services configuration.
+	// Should only be set if protocol is "NFS_V4_1".
+	// Structure is documented below.
 	DirectoryServices *InstanceDirectoryServices `pulumi:"directoryServices"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -373,14 +393,16 @@ type instanceState struct {
 	// single file share is supported.
 	// Structure is documented below.
 	FileShares *InstanceFileShares `pulumi:"fileShares"`
-	// Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
-	// instance only, indicating the active as the peer_instance
+	// Replication configuration, once set, this cannot be updated.
+	// Additionally this should be specified on the replica instance only, indicating the active as the peerInstance
+	// Structure is documented below.
 	InitialReplication *InstanceInitialReplication `pulumi:"initialReplication"`
 	// KMS key name used for data encryption.
 	KmsKeyName *string `pulumi:"kmsKeyName"`
-	// Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-	// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-	// resource.
+	// Resource labels to represent user-provided metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
 	Location *string `pulumi:"location"`
@@ -390,26 +412,40 @@ type instanceState struct {
 	// only a single network is supported.
 	// Structure is documented below.
 	Networks []InstanceNetwork `pulumi:"networks"`
-	// Performance configuration for the instance. If not provided, the default performance settings will be used.
+	// Performance configuration for the instance. If not provided,
+	// the default performance settings will be used.
+	// Structure is documented below.
 	PerformanceConfig *InstancePerformanceConfig `pulumi:"performanceConfig"`
-	Project           *string                    `pulumi:"project"`
-	// Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
-	// protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
-	// "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
+	// Either NFSv3, for using NFS version 3 as file sharing protocol,
+	// or NFSv4.1, for using NFS version 4.1 as file sharing protocol.
+	// NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE.
+	// The default is NFSv3.
+	// Default value is `NFS_V3`.
+	// Possible values are: `NFS_V3`, `NFS_V4_1`.
 	Protocol *string `pulumi:"protocol"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
-	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags.
-	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when
-	// empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and
-	// modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the
-	// 'google_tags_tag_value' resource.
+	// A map of resource manager tags. Resource manager tag keys
+	// and values have the same definition as resource manager
+	// tags. Keys must be in the format tagKeys/{tag_key_id},
+	// and values are in the format tagValues/456. The field is
+	// ignored when empty. The field is immutable and causes
+	// resource replacement when mutated. This field is only set
+	// at create time and modifying this field after creation
+	// will trigger recreation. To apply tags to an existing
+	// resource, see the `tags.TagValue` resource.
 	Tags map[string]string `pulumi:"tags"`
 	// The service tier of the instance.
 	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
 	Tier *string `pulumi:"tier"`
+	// (Optional, Deprecated)
 	// The name of the Filestore zone of the instance.
+	//
+	// > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
 	//
 	// Deprecated: `zone` is deprecated and will be removed in a future major release. Use `location` instead.
 	Zone *string `pulumi:"zone"`
@@ -424,7 +460,9 @@ type InstanceState struct {
 	DeletionProtectionReason pulumi.StringPtrInput
 	// A description of the instance.
 	Description pulumi.StringPtrInput
-	// Directory Services configuration. Should only be set if protocol is "NFS_V4_1".
+	// Directory Services configuration.
+	// Should only be set if protocol is "NFS_V4_1".
+	// Structure is documented below.
 	DirectoryServices InstanceDirectoryServicesPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -438,14 +476,16 @@ type InstanceState struct {
 	// single file share is supported.
 	// Structure is documented below.
 	FileShares InstanceFileSharesPtrInput
-	// Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
-	// instance only, indicating the active as the peer_instance
+	// Replication configuration, once set, this cannot be updated.
+	// Additionally this should be specified on the replica instance only, indicating the active as the peerInstance
+	// Structure is documented below.
 	InitialReplication InstanceInitialReplicationPtrInput
 	// KMS key name used for data encryption.
 	KmsKeyName pulumi.StringPtrInput
-	// Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-	// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-	// resource.
+	// Resource labels to represent user-provided metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
 	Location pulumi.StringPtrInput
@@ -455,26 +495,40 @@ type InstanceState struct {
 	// only a single network is supported.
 	// Structure is documented below.
 	Networks InstanceNetworkArrayInput
-	// Performance configuration for the instance. If not provided, the default performance settings will be used.
+	// Performance configuration for the instance. If not provided,
+	// the default performance settings will be used.
+	// Structure is documented below.
 	PerformanceConfig InstancePerformanceConfigPtrInput
-	Project           pulumi.StringPtrInput
-	// Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
-	// protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
-	// "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
+	// Either NFSv3, for using NFS version 3 as file sharing protocol,
+	// or NFSv4.1, for using NFS version 4.1 as file sharing protocol.
+	// NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE.
+	// The default is NFSv3.
+	// Default value is `NFS_V3`.
+	// Possible values are: `NFS_V3`, `NFS_V4_1`.
 	Protocol pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
-	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags.
-	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when
-	// empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and
-	// modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the
-	// 'google_tags_tag_value' resource.
+	// A map of resource manager tags. Resource manager tag keys
+	// and values have the same definition as resource manager
+	// tags. Keys must be in the format tagKeys/{tag_key_id},
+	// and values are in the format tagValues/456. The field is
+	// ignored when empty. The field is immutable and causes
+	// resource replacement when mutated. This field is only set
+	// at create time and modifying this field after creation
+	// will trigger recreation. To apply tags to an existing
+	// resource, see the `tags.TagValue` resource.
 	Tags pulumi.StringMapInput
 	// The service tier of the instance.
 	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
 	Tier pulumi.StringPtrInput
+	// (Optional, Deprecated)
 	// The name of the Filestore zone of the instance.
+	//
+	// > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
 	//
 	// Deprecated: `zone` is deprecated and will be removed in a future major release. Use `location` instead.
 	Zone pulumi.StringPtrInput
@@ -491,20 +545,24 @@ type instanceArgs struct {
 	DeletionProtectionReason *string `pulumi:"deletionProtectionReason"`
 	// A description of the instance.
 	Description *string `pulumi:"description"`
-	// Directory Services configuration. Should only be set if protocol is "NFS_V4_1".
+	// Directory Services configuration.
+	// Should only be set if protocol is "NFS_V4_1".
+	// Structure is documented below.
 	DirectoryServices *InstanceDirectoryServices `pulumi:"directoryServices"`
 	// File system shares on the instance. For this version, only a
 	// single file share is supported.
 	// Structure is documented below.
 	FileShares InstanceFileShares `pulumi:"fileShares"`
-	// Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
-	// instance only, indicating the active as the peer_instance
+	// Replication configuration, once set, this cannot be updated.
+	// Additionally this should be specified on the replica instance only, indicating the active as the peerInstance
+	// Structure is documented below.
 	InitialReplication *InstanceInitialReplication `pulumi:"initialReplication"`
 	// KMS key name used for data encryption.
 	KmsKeyName *string `pulumi:"kmsKeyName"`
-	// Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-	// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-	// resource.
+	// Resource labels to represent user-provided metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
 	Location *string `pulumi:"location"`
@@ -514,23 +572,37 @@ type instanceArgs struct {
 	// only a single network is supported.
 	// Structure is documented below.
 	Networks []InstanceNetwork `pulumi:"networks"`
-	// Performance configuration for the instance. If not provided, the default performance settings will be used.
+	// Performance configuration for the instance. If not provided,
+	// the default performance settings will be used.
+	// Structure is documented below.
 	PerformanceConfig *InstancePerformanceConfig `pulumi:"performanceConfig"`
-	Project           *string                    `pulumi:"project"`
-	// Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
-	// protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
-	// "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
+	// Either NFSv3, for using NFS version 3 as file sharing protocol,
+	// or NFSv4.1, for using NFS version 4.1 as file sharing protocol.
+	// NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE.
+	// The default is NFSv3.
+	// Default value is `NFS_V3`.
+	// Possible values are: `NFS_V3`, `NFS_V4_1`.
 	Protocol *string `pulumi:"protocol"`
-	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags.
-	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when
-	// empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and
-	// modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the
-	// 'google_tags_tag_value' resource.
+	// A map of resource manager tags. Resource manager tag keys
+	// and values have the same definition as resource manager
+	// tags. Keys must be in the format tagKeys/{tag_key_id},
+	// and values are in the format tagValues/456. The field is
+	// ignored when empty. The field is immutable and causes
+	// resource replacement when mutated. This field is only set
+	// at create time and modifying this field after creation
+	// will trigger recreation. To apply tags to an existing
+	// resource, see the `tags.TagValue` resource.
 	Tags map[string]string `pulumi:"tags"`
 	// The service tier of the instance.
 	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
 	Tier string `pulumi:"tier"`
+	// (Optional, Deprecated)
 	// The name of the Filestore zone of the instance.
+	//
+	// > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
 	//
 	// Deprecated: `zone` is deprecated and will be removed in a future major release. Use `location` instead.
 	Zone *string `pulumi:"zone"`
@@ -544,20 +616,24 @@ type InstanceArgs struct {
 	DeletionProtectionReason pulumi.StringPtrInput
 	// A description of the instance.
 	Description pulumi.StringPtrInput
-	// Directory Services configuration. Should only be set if protocol is "NFS_V4_1".
+	// Directory Services configuration.
+	// Should only be set if protocol is "NFS_V4_1".
+	// Structure is documented below.
 	DirectoryServices InstanceDirectoryServicesPtrInput
 	// File system shares on the instance. For this version, only a
 	// single file share is supported.
 	// Structure is documented below.
 	FileShares InstanceFileSharesInput
-	// Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
-	// instance only, indicating the active as the peer_instance
+	// Replication configuration, once set, this cannot be updated.
+	// Additionally this should be specified on the replica instance only, indicating the active as the peerInstance
+	// Structure is documented below.
 	InitialReplication InstanceInitialReplicationPtrInput
 	// KMS key name used for data encryption.
 	KmsKeyName pulumi.StringPtrInput
-	// Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-	// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-	// resource.
+	// Resource labels to represent user-provided metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
 	Location pulumi.StringPtrInput
@@ -567,23 +643,37 @@ type InstanceArgs struct {
 	// only a single network is supported.
 	// Structure is documented below.
 	Networks InstanceNetworkArrayInput
-	// Performance configuration for the instance. If not provided, the default performance settings will be used.
+	// Performance configuration for the instance. If not provided,
+	// the default performance settings will be used.
+	// Structure is documented below.
 	PerformanceConfig InstancePerformanceConfigPtrInput
-	Project           pulumi.StringPtrInput
-	// Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
-	// protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
-	// "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
+	// Either NFSv3, for using NFS version 3 as file sharing protocol,
+	// or NFSv4.1, for using NFS version 4.1 as file sharing protocol.
+	// NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE.
+	// The default is NFSv3.
+	// Default value is `NFS_V3`.
+	// Possible values are: `NFS_V3`, `NFS_V4_1`.
 	Protocol pulumi.StringPtrInput
-	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags.
-	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when
-	// empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and
-	// modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the
-	// 'google_tags_tag_value' resource.
+	// A map of resource manager tags. Resource manager tag keys
+	// and values have the same definition as resource manager
+	// tags. Keys must be in the format tagKeys/{tag_key_id},
+	// and values are in the format tagValues/456. The field is
+	// ignored when empty. The field is immutable and causes
+	// resource replacement when mutated. This field is only set
+	// at create time and modifying this field after creation
+	// will trigger recreation. To apply tags to an existing
+	// resource, see the `tags.TagValue` resource.
 	Tags pulumi.StringMapInput
 	// The service tier of the instance.
 	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
 	Tier pulumi.StringInput
+	// (Optional, Deprecated)
 	// The name of the Filestore zone of the instance.
+	//
+	// > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
 	//
 	// Deprecated: `zone` is deprecated and will be removed in a future major release. Use `location` instead.
 	Zone pulumi.StringPtrInput
@@ -696,7 +786,9 @@ func (o InstanceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Directory Services configuration. Should only be set if protocol is "NFS_V4_1".
+// Directory Services configuration.
+// Should only be set if protocol is "NFS_V4_1".
+// Structure is documented below.
 func (o InstanceOutput) DirectoryServices() InstanceDirectoryServicesPtrOutput {
 	return o.ApplyT(func(v *Instance) InstanceDirectoryServicesPtrOutput { return v.DirectoryServices }).(InstanceDirectoryServicesPtrOutput)
 }
@@ -725,8 +817,9 @@ func (o InstanceOutput) FileShares() InstanceFileSharesOutput {
 	return o.ApplyT(func(v *Instance) InstanceFileSharesOutput { return v.FileShares }).(InstanceFileSharesOutput)
 }
 
-// Replication configuration, once set, this cannot be updated. Additionally this should be specified on the replica
-// instance only, indicating the active as the peer_instance
+// Replication configuration, once set, this cannot be updated.
+// Additionally this should be specified on the replica instance only, indicating the active as the peerInstance
+// Structure is documented below.
 func (o InstanceOutput) InitialReplication() InstanceInitialReplicationPtrOutput {
 	return o.ApplyT(func(v *Instance) InstanceInitialReplicationPtrOutput { return v.InitialReplication }).(InstanceInitialReplicationPtrOutput)
 }
@@ -736,9 +829,10 @@ func (o InstanceOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.KmsKeyName }).(pulumi.StringPtrOutput)
 }
 
-// Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-// resource.
+// Resource labels to represent user-provided metadata.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o InstanceOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -760,18 +854,25 @@ func (o InstanceOutput) Networks() InstanceNetworkArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceNetworkArrayOutput { return v.Networks }).(InstanceNetworkArrayOutput)
 }
 
-// Performance configuration for the instance. If not provided, the default performance settings will be used.
+// Performance configuration for the instance. If not provided,
+// the default performance settings will be used.
+// Structure is documented below.
 func (o InstanceOutput) PerformanceConfig() InstancePerformanceConfigPtrOutput {
 	return o.ApplyT(func(v *Instance) InstancePerformanceConfigPtrOutput { return v.PerformanceConfig }).(InstancePerformanceConfigPtrOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o InstanceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
-// protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
-// "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
+// Either NFSv3, for using NFS version 3 as file sharing protocol,
+// or NFSv4.1, for using NFS version 4.1 as file sharing protocol.
+// NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE.
+// The default is NFSv3.
+// Default value is `NFS_V3`.
+// Possible values are: `NFS_V3`, `NFS_V4_1`.
 func (o InstanceOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Protocol }).(pulumi.StringPtrOutput)
 }
@@ -782,11 +883,15 @@ func (o InstanceOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
-// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags.
-// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when
-// empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and
-// modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the
-// 'google_tags_tag_value' resource.
+// A map of resource manager tags. Resource manager tag keys
+// and values have the same definition as resource manager
+// tags. Keys must be in the format tagKeys/{tag_key_id},
+// and values are in the format tagValues/456. The field is
+// ignored when empty. The field is immutable and causes
+// resource replacement when mutated. This field is only set
+// at create time and modifying this field after creation
+// will trigger recreation. To apply tags to an existing
+// resource, see the `tags.TagValue` resource.
 func (o InstanceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -797,7 +902,10 @@ func (o InstanceOutput) Tier() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Tier }).(pulumi.StringOutput)
 }
 
+// (Optional, Deprecated)
 // The name of the Filestore zone of the instance.
+//
+// > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
 //
 // Deprecated: `zone` is deprecated and will be removed in a future major release. Use `location` instead.
 func (o InstanceOutput) Zone() pulumi.StringOutput {

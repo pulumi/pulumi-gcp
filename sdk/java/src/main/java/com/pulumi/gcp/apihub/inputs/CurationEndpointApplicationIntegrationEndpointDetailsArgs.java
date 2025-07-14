@@ -37,8 +37,6 @@ public final class CurationEndpointApplicationIntegrationEndpointDetailsArgs ext
      * or
      * `https://{location}-integrations.googleapis.com/v1/{name=projects/*&#47;locations/*&#47;integrations/*}:execute`
      * 
-     * ***
-     * 
      */
     @Import(name="uri", required=true)
     private Output<String> uri;
@@ -50,8 +48,6 @@ public final class CurationEndpointApplicationIntegrationEndpointDetailsArgs ext
      * `https://integrations.googleapis.com/v1/{name=projects/*&#47;locations/*&#47;integrations/*}:execute`
      * or
      * `https://{location}-integrations.googleapis.com/v1/{name=projects/*&#47;locations/*&#47;integrations/*}:execute`
-     * 
-     * ***
      * 
      */
     public Output<String> uri() {
@@ -112,8 +108,6 @@ public final class CurationEndpointApplicationIntegrationEndpointDetailsArgs ext
          * or
          * `https://{location}-integrations.googleapis.com/v1/{name=projects/*&#47;locations/*&#47;integrations/*}:execute`
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -129,8 +123,6 @@ public final class CurationEndpointApplicationIntegrationEndpointDetailsArgs ext
          * `https://integrations.googleapis.com/v1/{name=projects/*&#47;locations/*&#47;integrations/*}:execute`
          * or
          * `https://{location}-integrations.googleapis.com/v1/{name=projects/*&#47;locations/*&#47;integrations/*}:execute`
-         * 
-         * ***
          * 
          * @return builder
          * 

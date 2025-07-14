@@ -292,8 +292,9 @@ namespace Pulumi.Gcp.DataLoss
         public Output<string> Parent { get; private set; } = null!;
 
         /// <summary>
-        /// The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
-        /// expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+        /// The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+        /// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
+        /// 100 characters. Can be empty to allow the system to generate one.
         /// </summary>
         [Output("templateId")]
         public Output<string> TemplateId { get; private set; } = null!;
@@ -380,8 +381,9 @@ namespace Pulumi.Gcp.DataLoss
         public Input<string> Parent { get; set; } = null!;
 
         /// <summary>
-        /// The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
-        /// expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+        /// The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+        /// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
+        /// 100 characters. Can be empty to allow the system to generate one.
         /// </summary>
         [Input("templateId")]
         public Input<string>? TemplateId { get; set; }
@@ -436,8 +438,9 @@ namespace Pulumi.Gcp.DataLoss
         public Input<string>? Parent { get; set; }
 
         /// <summary>
-        /// The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular
-        /// expression: [a-zA-Z\d-_]+. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+        /// The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+        /// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
+        /// 100 characters. Can be empty to allow the system to generate one.
         /// </summary>
         [Input("templateId")]
         public Input<string>? TemplateId { get; set; }

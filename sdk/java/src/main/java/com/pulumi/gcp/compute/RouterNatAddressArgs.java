@@ -101,16 +101,12 @@ public final class RouterNatAddressArgs extends com.pulumi.resources.ResourceArg
     /**
      * The name of the Nat service in which this address will be configured.
      * 
-     * ***
-     * 
      */
     @Import(name="routerNat", required=true)
     private Output<String> routerNat;
 
     /**
      * @return The name of the Nat service in which this address will be configured.
-     * 
-     * ***
      * 
      */
     public Output<String> routerNat() {
@@ -282,8 +278,6 @@ public final class RouterNatAddressArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param routerNat The name of the Nat service in which this address will be configured.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -294,8 +288,6 @@ public final class RouterNatAddressArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param routerNat The name of the Nat service in which this address will be configured.
-         * 
-         * ***
          * 
          * @return builder
          * 

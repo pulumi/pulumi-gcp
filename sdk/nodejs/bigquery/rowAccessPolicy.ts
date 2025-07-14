@@ -104,9 +104,6 @@ export class RowAccessPolicy extends pulumi.CustomResource {
      * dateField = CAST('2019-9-27' as DATE)
      * nullableField is not NULL
      * numericField BETWEEN 1.0 AND 5.0
-     *
-     *
-     * - - -
      */
     public readonly filterPredicate!: pulumi.Output<string>;
     /**
@@ -226,9 +223,6 @@ export interface RowAccessPolicyState {
      * dateField = CAST('2019-9-27' as DATE)
      * nullableField is not NULL
      * numericField BETWEEN 1.0 AND 5.0
-     *
-     *
-     * - - -
      */
     filterPredicate?: pulumi.Input<string>;
     /**
@@ -295,9 +289,6 @@ export interface RowAccessPolicyArgs {
      * dateField = CAST('2019-9-27' as DATE)
      * nullableField is not NULL
      * numericField BETWEEN 1.0 AND 5.0
-     *
-     *
-     * - - -
      */
     filterPredicate: pulumi.Input<string>;
     /**

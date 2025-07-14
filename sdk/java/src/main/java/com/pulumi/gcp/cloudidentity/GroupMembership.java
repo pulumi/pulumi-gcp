@@ -217,6 +217,7 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
     }
     /**
      * EntityKey of the member.
+     * Structure is documented below.
      * 
      */
     @Export(name="memberKey", refs={GroupMembershipMemberKey.class}, tree="[0]")
@@ -224,6 +225,7 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
 
     /**
      * @return EntityKey of the member.
+     * Structure is documented below.
      * 
      */
     public Output<GroupMembershipMemberKey> memberKey() {
@@ -245,6 +247,7 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
     }
     /**
      * EntityKey of the member.
+     * Structure is documented below.
      * 
      */
     @Export(name="preferredMemberKey", refs={GroupMembershipPreferredMemberKey.class}, tree="[0]")
@@ -252,6 +255,7 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
 
     /**
      * @return EntityKey of the member.
+     * Structure is documented below.
      * 
      */
     public Output<GroupMembershipPreferredMemberKey> preferredMemberKey() {

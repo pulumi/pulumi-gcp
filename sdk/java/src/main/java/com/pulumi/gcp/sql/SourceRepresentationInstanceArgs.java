@@ -95,16 +95,12 @@ public final class SourceRepresentationInstanceArgs extends com.pulumi.resources
     /**
      * The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
      * 
-     * ***
-     * 
      */
     @Import(name="host", required=true)
     private Output<String> host;
 
     /**
      * @return The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
-     * 
-     * ***
      * 
      */
     public Output<String> host() {
@@ -352,8 +348,6 @@ public final class SourceRepresentationInstanceArgs extends com.pulumi.resources
         /**
          * @param host The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -364,8 +358,6 @@ public final class SourceRepresentationInstanceArgs extends com.pulumi.resources
 
         /**
          * @param host The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
-         * 
-         * ***
          * 
          * @return builder
          * 

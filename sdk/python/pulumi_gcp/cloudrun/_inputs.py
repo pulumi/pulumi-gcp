@@ -404,8 +404,6 @@ if not MYPY:
         The mode of the certificate.
         Default value is `AUTOMATIC`.
         Possible values are: `NONE`, `AUTOMATIC`.
-
-        - - -
         """
         force_override: NotRequired[pulumi.Input[builtins.bool]]
         """
@@ -429,8 +427,6 @@ class DomainMappingSpecArgs:
         :param pulumi.Input[builtins.str] certificate_mode: The mode of the certificate.
                Default value is `AUTOMATIC`.
                Possible values are: `NONE`, `AUTOMATIC`.
-               
-               - - -
         :param pulumi.Input[builtins.bool] force_override: If set, the mapping will override any mapping set before this spec was set.
                It is recommended that the user leaves this empty to receive an error
                warning about a potential conflict and only set it once the respective UI
@@ -462,8 +458,6 @@ class DomainMappingSpecArgs:
         The mode of the certificate.
         Default value is `AUTOMATIC`.
         Possible values are: `NONE`, `AUTOMATIC`.
-
-        - - -
         """
         return pulumi.get(self, "certificate_mode")
 
@@ -1239,7 +1233,6 @@ if not MYPY:
         """
         traffics: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceStatusTrafficArgsDict']]]]
         """
-        (Output)
         Traffic specifies how to distribute traffic over a collection of Knative Revisions
         and Configurations
         Structure is documented below.
@@ -1280,8 +1273,7 @@ class ServiceStatusArgs:
                controller.
                Clients polling for completed reconciliation should poll until observedGeneration =
                metadata.generation and the Ready condition's status is True or False.
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceStatusTrafficArgs']]] traffics: (Output)
-               Traffic specifies how to distribute traffic over a collection of Knative Revisions
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceStatusTrafficArgs']]] traffics: Traffic specifies how to distribute traffic over a collection of Knative Revisions
                and Configurations
                Structure is documented below.
         :param pulumi.Input[builtins.str] url: (Output)
@@ -1366,7 +1358,6 @@ class ServiceStatusArgs:
     @pulumi.getter
     def traffics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceStatusTrafficArgs']]]]:
         """
-        (Output)
         Traffic specifies how to distribute traffic over a collection of Knative Revisions
         and Configurations
         Structure is documented below.
@@ -4179,8 +4170,6 @@ if not MYPY:
         read_only: NotRequired[pulumi.Input[builtins.bool]]
         """
         If true, mount the NFS volume as read only in all mounts. Defaults to false.
-
-        - - -
         """
 elif False:
     ServiceTemplateSpecVolumeNfsArgsDict: TypeAlias = Mapping[str, Any]
@@ -4195,8 +4184,6 @@ class ServiceTemplateSpecVolumeNfsArgs:
         :param pulumi.Input[builtins.str] path: Path exported by the NFS server
         :param pulumi.Input[builtins.str] server: IP address or hostname of the NFS server
         :param pulumi.Input[builtins.bool] read_only: If true, mount the NFS volume as read only in all mounts. Defaults to false.
-               
-               - - -
         """
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "server", server)
@@ -4232,8 +4219,6 @@ class ServiceTemplateSpecVolumeNfsArgs:
     def read_only(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
         If true, mount the NFS volume as read only in all mounts. Defaults to false.
-
-        - - -
         """
         return pulumi.get(self, "read_only")
 

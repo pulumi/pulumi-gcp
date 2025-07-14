@@ -150,8 +150,6 @@ type GdcApplicationEnvironment struct {
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The id of the service instance to which this application environment belongs.
-	//
-	// ***
 	Serviceinstance pulumi.StringOutput `pulumi:"serviceinstance"`
 	// Represents the SparkApplicationEnvironmentConfig.
 	// Structure is documented below.
@@ -233,8 +231,6 @@ type gdcApplicationEnvironmentState struct {
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The id of the service instance to which this application environment belongs.
-	//
-	// ***
 	Serviceinstance *string `pulumi:"serviceinstance"`
 	// Represents the SparkApplicationEnvironmentConfig.
 	// Structure is documented below.
@@ -276,8 +272,6 @@ type GdcApplicationEnvironmentState struct {
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The id of the service instance to which this application environment belongs.
-	//
-	// ***
 	Serviceinstance pulumi.StringPtrInput
 	// Represents the SparkApplicationEnvironmentConfig.
 	// Structure is documented below.
@@ -313,8 +307,6 @@ type gdcApplicationEnvironmentArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The id of the service instance to which this application environment belongs.
-	//
-	// ***
 	Serviceinstance string `pulumi:"serviceinstance"`
 	// Represents the SparkApplicationEnvironmentConfig.
 	// Structure is documented below.
@@ -343,8 +335,6 @@ type GdcApplicationEnvironmentArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The id of the service instance to which this application environment belongs.
-	//
-	// ***
 	Serviceinstance pulumi.StringInput
 	// Represents the SparkApplicationEnvironmentConfig.
 	// Structure is documented below.
@@ -504,8 +494,6 @@ func (o GdcApplicationEnvironmentOutput) PulumiLabels() pulumi.StringMapOutput {
 }
 
 // The id of the service instance to which this application environment belongs.
-//
-// ***
 func (o GdcApplicationEnvironmentOutput) Serviceinstance() pulumi.StringOutput {
 	return o.ApplyT(func(v *GdcApplicationEnvironment) pulumi.StringOutput { return v.Serviceinstance }).(pulumi.StringOutput)
 }

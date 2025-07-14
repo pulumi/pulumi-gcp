@@ -26,7 +26,8 @@ namespace Pulumi.Gcp.OracleDatabase.Inputs
         public Input<string>? ConsumerGroup { get; set; }
 
         /// <summary>
-        /// The display name for the database connection.
+        /// The display name for the Autonomous Database. The name does not have to
+        /// be unique within your project.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }

@@ -143,6 +143,7 @@ type Registration struct {
 	// Output only. Time at which the automation was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Settings controlling the DNS configuration of the Registration.
+	// Structure is documented below.
 	DnsSettings RegistrationDnsSettingsPtrOutput `pulumi:"dnsSettings"`
 	// Required. The domain name. Unicode domain names must be expressed in Punycode format.
 	DomainName pulumi.StringOutput `pulumi:"domainName"`
@@ -154,16 +155,19 @@ type Registration struct {
 	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
 	// Output only. The set of issues with the Registration that require attention.
 	Issues pulumi.StringArrayOutput `pulumi:"issues"`
-	// Set of labels associated with the Registration. **Note**: This field is non-authoritative, and will only manage the
-	// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-	// resource.
+	// Set of labels associated with the Registration.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Settings for management of the Registration, including renewal, billing, and transfer
+	// Structure is documented below.
 	ManagementSettings RegistrationManagementSettingsOutput `pulumi:"managementSettings"`
 	// Output only. Name of the Registration resource, in the format projects/*/locations/*/registrations/<domain_name>.
-	Name    pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -235,6 +239,7 @@ type registrationState struct {
 	// Output only. Time at which the automation was created.
 	CreateTime *string `pulumi:"createTime"`
 	// Settings controlling the DNS configuration of the Registration.
+	// Structure is documented below.
 	DnsSettings *RegistrationDnsSettings `pulumi:"dnsSettings"`
 	// Required. The domain name. Unicode domain names must be expressed in Punycode format.
 	DomainName *string `pulumi:"domainName"`
@@ -246,16 +251,19 @@ type registrationState struct {
 	ExpireTime *string `pulumi:"expireTime"`
 	// Output only. The set of issues with the Registration that require attention.
 	Issues []string `pulumi:"issues"`
-	// Set of labels associated with the Registration. **Note**: This field is non-authoritative, and will only manage the
-	// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-	// resource.
+	// Set of labels associated with the Registration.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
 	Location *string `pulumi:"location"`
 	// Settings for management of the Registration, including renewal, billing, and transfer
+	// Structure is documented below.
 	ManagementSettings *RegistrationManagementSettings `pulumi:"managementSettings"`
 	// Output only. Name of the Registration resource, in the format projects/*/locations/*/registrations/<domain_name>.
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -281,6 +289,7 @@ type RegistrationState struct {
 	// Output only. Time at which the automation was created.
 	CreateTime pulumi.StringPtrInput
 	// Settings controlling the DNS configuration of the Registration.
+	// Structure is documented below.
 	DnsSettings RegistrationDnsSettingsPtrInput
 	// Required. The domain name. Unicode domain names must be expressed in Punycode format.
 	DomainName pulumi.StringPtrInput
@@ -292,16 +301,19 @@ type RegistrationState struct {
 	ExpireTime pulumi.StringPtrInput
 	// Output only. The set of issues with the Registration that require attention.
 	Issues pulumi.StringArrayInput
-	// Set of labels associated with the Registration. **Note**: This field is non-authoritative, and will only manage the
-	// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-	// resource.
+	// Set of labels associated with the Registration.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location for the resource
 	Location pulumi.StringPtrInput
 	// Settings for management of the Registration, including renewal, billing, and transfer
+	// Structure is documented below.
 	ManagementSettings RegistrationManagementSettingsPtrInput
 	// Output only. Name of the Registration resource, in the format projects/*/locations/*/registrations/<domain_name>.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -329,20 +341,24 @@ type registrationArgs struct {
 	// Structure is documented below.
 	ContactSettings RegistrationContactSettings `pulumi:"contactSettings"`
 	// Settings controlling the DNS configuration of the Registration.
+	// Structure is documented below.
 	DnsSettings *RegistrationDnsSettings `pulumi:"dnsSettings"`
 	// Required. The domain name. Unicode domain names must be expressed in Punycode format.
 	DomainName string `pulumi:"domainName"`
 	// The list of domain notices that you acknowledge. Possible value is HSTS_PRELOADED
 	DomainNotices []string `pulumi:"domainNotices"`
-	// Set of labels associated with the Registration. **Note**: This field is non-authoritative, and will only manage the
-	// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-	// resource.
+	// Set of labels associated with the Registration.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
 	Location string `pulumi:"location"`
 	// Settings for management of the Registration, including renewal, billing, and transfer
+	// Structure is documented below.
 	ManagementSettings *RegistrationManagementSettings `pulumi:"managementSettings"`
-	Project            *string                         `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// Required. Yearly price to register or renew the domain. The value that should be put here can be obtained from
 	// registrations.retrieveRegisterParameters or registrations.searchDomains calls.
 	// Structure is documented below.
@@ -357,20 +373,24 @@ type RegistrationArgs struct {
 	// Structure is documented below.
 	ContactSettings RegistrationContactSettingsInput
 	// Settings controlling the DNS configuration of the Registration.
+	// Structure is documented below.
 	DnsSettings RegistrationDnsSettingsPtrInput
 	// Required. The domain name. Unicode domain names must be expressed in Punycode format.
 	DomainName pulumi.StringInput
 	// The list of domain notices that you acknowledge. Possible value is HSTS_PRELOADED
 	DomainNotices pulumi.StringArrayInput
-	// Set of labels associated with the Registration. **Note**: This field is non-authoritative, and will only manage the
-	// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-	// resource.
+	// Set of labels associated with the Registration.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location for the resource
 	Location pulumi.StringInput
 	// Settings for management of the Registration, including renewal, billing, and transfer
+	// Structure is documented below.
 	ManagementSettings RegistrationManagementSettingsPtrInput
-	Project            pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// Required. Yearly price to register or renew the domain. The value that should be put here can be obtained from
 	// registrations.retrieveRegisterParameters or registrations.searchDomains calls.
 	// Structure is documented below.
@@ -481,6 +501,7 @@ func (o RegistrationOutput) CreateTime() pulumi.StringOutput {
 }
 
 // Settings controlling the DNS configuration of the Registration.
+// Structure is documented below.
 func (o RegistrationOutput) DnsSettings() RegistrationDnsSettingsPtrOutput {
 	return o.ApplyT(func(v *Registration) RegistrationDnsSettingsPtrOutput { return v.DnsSettings }).(RegistrationDnsSettingsPtrOutput)
 }
@@ -510,9 +531,9 @@ func (o RegistrationOutput) Issues() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Registration) pulumi.StringArrayOutput { return v.Issues }).(pulumi.StringArrayOutput)
 }
 
-// Set of labels associated with the Registration. **Note**: This field is non-authoritative, and will only manage the
-// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-// resource.
+// Set of labels associated with the Registration.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o RegistrationOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Registration) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -523,6 +544,7 @@ func (o RegistrationOutput) Location() pulumi.StringOutput {
 }
 
 // Settings for management of the Registration, including renewal, billing, and transfer
+// Structure is documented below.
 func (o RegistrationOutput) ManagementSettings() RegistrationManagementSettingsOutput {
 	return o.ApplyT(func(v *Registration) RegistrationManagementSettingsOutput { return v.ManagementSettings }).(RegistrationManagementSettingsOutput)
 }
@@ -532,6 +554,8 @@ func (o RegistrationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Registration) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o RegistrationOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Registration) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

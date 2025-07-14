@@ -34,6 +34,7 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
 
     /**
      * Serving configuration for Google Cloud Endpoints.
+     * Structure is documented below.
      * 
      */
     @Import(name="apiConfig")
@@ -41,6 +42,7 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return Serving configuration for Google Cloud Endpoints.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<FlexibleAppVersionApiConfigArgs>> apiConfig() {
@@ -49,6 +51,7 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
 
     /**
      * Automatic scaling is based on request rate, response latencies, and other application metrics.
+     * Structure is documented below.
      * 
      */
     @Import(name="automaticScaling")
@@ -56,6 +59,7 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return Automatic scaling is based on request rate, response latencies, and other application metrics.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<FlexibleAppVersionAutomaticScalingArgs>> automaticScaling() {
@@ -78,16 +82,16 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Duration that static files should be cached by web proxies and browsers. Only applicable if the corresponding
-     * StaticFilesHandler does not specify its own expiration time.
+     * Duration that static files should be cached by web proxies and browsers.
+     * Only applicable if the corresponding StaticFilesHandler does not specify its own expiration time.
      * 
      */
     @Import(name="defaultExpiration")
     private @Nullable Output<String> defaultExpiration;
 
     /**
-     * @return Duration that static files should be cached by web proxies and browsers. Only applicable if the corresponding
-     * StaticFilesHandler does not specify its own expiration time.
+     * @return Duration that static files should be cached by web proxies and browsers.
+     * Only applicable if the corresponding StaticFilesHandler does not specify its own expiration time.
      * 
      */
     public Optional<Output<String>> defaultExpiration() {
@@ -95,14 +99,14 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * If set to &#39;true&#39;, the service will be deleted if it is the last version.
+     * If set to `true`, the service will be deleted if it is the last version.
      * 
      */
     @Import(name="deleteServiceOnDestroy")
     private @Nullable Output<Boolean> deleteServiceOnDestroy;
 
     /**
-     * @return If set to &#39;true&#39;, the service will be deleted if it is the last version.
+     * @return If set to `true`, the service will be deleted if it is the last version.
      * 
      */
     public Optional<Output<Boolean>> deleteServiceOnDestroy() {
@@ -111,6 +115,7 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
 
     /**
      * Code and application artifacts that make up this version.
+     * Structure is documented below.
      * 
      */
     @Import(name="deployment")
@@ -118,6 +123,7 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return Code and application artifacts that make up this version.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<FlexibleAppVersionDeploymentArgs>> deployment() {
@@ -126,6 +132,7 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
 
     /**
      * Code and application artifacts that make up this version.
+     * Structure is documented below.
      * 
      */
     @Import(name="endpointsApiService")
@@ -133,6 +140,7 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return Code and application artifacts that make up this version.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<FlexibleAppVersionEndpointsApiServiceArgs>> endpointsApiService() {
@@ -141,6 +149,7 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
 
     /**
      * The entrypoint for the application.
+     * Structure is documented below.
      * 
      */
     @Import(name="entrypoint")
@@ -148,21 +157,31 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return The entrypoint for the application.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<FlexibleAppVersionEntrypointArgs>> entrypoint() {
         return Optional.ofNullable(this.entrypoint);
     }
 
+    /**
+     * Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
+     * 
+     */
     @Import(name="envVariables")
     private @Nullable Output<Map<String,String>> envVariables;
 
+    /**
+     * @return Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
+     * 
+     */
     public Optional<Output<Map<String,String>>> envVariables() {
         return Optional.ofNullable(this.envVariables);
     }
 
     /**
      * Runtime settings for App Engine flexible environment.
+     * Structure is documented below.
      * 
      */
     @Import(name="flexibleRuntimeSettings")
@@ -170,6 +189,7 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return Runtime settings for App Engine flexible environment.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<FlexibleAppVersionFlexibleRuntimeSettingsArgs>> flexibleRuntimeSettings() {
@@ -177,16 +197,18 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
-     * request and other request handlers are not attempted.
+     * An ordered list of URL-matching patterns that should be applied to incoming requests.
+     * The first matching URL handles the request and other request handlers are not attempted.
+     * Structure is documented below.
      * 
      */
     @Import(name="handlers")
     private @Nullable Output<List<FlexibleAppVersionHandlerArgs>> handlers;
 
     /**
-     * @return An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
-     * request and other request handlers are not attempted.
+     * @return An ordered list of URL-matching patterns that should be applied to incoming requests.
+     * The first matching URL handles the request and other request handlers are not attempted.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<FlexibleAppVersionHandlerArgs>>> handlers() {
@@ -194,20 +216,16 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * A list of the types of messages that this application is able to receive. Possible values: [&#34;INBOUND_SERVICE_MAIL&#34;,
-     * &#34;INBOUND_SERVICE_MAIL_BOUNCE&#34;, &#34;INBOUND_SERVICE_XMPP_ERROR&#34;, &#34;INBOUND_SERVICE_XMPP_MESSAGE&#34;,
-     * &#34;INBOUND_SERVICE_XMPP_SUBSCRIBE&#34;, &#34;INBOUND_SERVICE_XMPP_PRESENCE&#34;, &#34;INBOUND_SERVICE_CHANNEL_PRESENCE&#34;,
-     * &#34;INBOUND_SERVICE_WARMUP&#34;]
+     * A list of the types of messages that this application is able to receive.
+     * Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
      * 
      */
     @Import(name="inboundServices")
     private @Nullable Output<List<String>> inboundServices;
 
     /**
-     * @return A list of the types of messages that this application is able to receive. Possible values: [&#34;INBOUND_SERVICE_MAIL&#34;,
-     * &#34;INBOUND_SERVICE_MAIL_BOUNCE&#34;, &#34;INBOUND_SERVICE_XMPP_ERROR&#34;, &#34;INBOUND_SERVICE_XMPP_MESSAGE&#34;,
-     * &#34;INBOUND_SERVICE_XMPP_SUBSCRIBE&#34;, &#34;INBOUND_SERVICE_XMPP_PRESENCE&#34;, &#34;INBOUND_SERVICE_CHANNEL_PRESENCE&#34;,
-     * &#34;INBOUND_SERVICE_WARMUP&#34;]
+     * @return A list of the types of messages that this application is able to receive.
+     * Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
      * 
      */
     public Optional<Output<List<String>>> inboundServices() {
@@ -215,16 +233,20 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Instance class that is used to run this version. Valid values are AutomaticScaling: F1, F2, F4, F4_1G ManualScaling: B1,
-     * B2, B4, B8, B4_1G Defaults to F1 for AutomaticScaling and B1 for ManualScaling.
+     * Instance class that is used to run this version. Valid values are
+     * AutomaticScaling: F1, F2, F4, F4_1G
+     * ManualScaling: B1, B2, B4, B8, B4_1G
+     * Defaults to F1 for AutomaticScaling and B1 for ManualScaling.
      * 
      */
     @Import(name="instanceClass")
     private @Nullable Output<String> instanceClass;
 
     /**
-     * @return Instance class that is used to run this version. Valid values are AutomaticScaling: F1, F2, F4, F4_1G ManualScaling: B1,
-     * B2, B4, B8, B4_1G Defaults to F1 for AutomaticScaling and B1 for ManualScaling.
+     * @return Instance class that is used to run this version. Valid values are
+     * AutomaticScaling: F1, F2, F4, F4_1G
+     * ManualScaling: B1, B2, B4, B8, B4_1G
+     * Defaults to F1 for AutomaticScaling and B1 for ManualScaling.
      * 
      */
     public Optional<Output<String>> instanceClass() {
@@ -249,16 +271,16 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
-     * its memory over time.
+     * A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+     * Structure is documented below.
      * 
      */
     @Import(name="manualScaling")
     private @Nullable Output<FlexibleAppVersionManualScalingArgs> manualScaling;
 
     /**
-     * @return A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
-     * its memory over time.
+     * @return A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<FlexibleAppVersionManualScalingArgs>> manualScaling() {
@@ -267,6 +289,7 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
 
     /**
      * Extra network settings
+     * Structure is documented below.
      * 
      */
     @Import(name="network")
@@ -274,6 +297,7 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return Extra network settings
+     * Structure is documented below.
      * 
      */
     public Optional<Output<FlexibleAppVersionNetworkArgs>> network() {
@@ -296,23 +320,33 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * If set to &#39;true&#39;, the application version will not be deleted.
+     * If set to `true`, the application version will not be deleted.
      * 
      */
     @Import(name="noopOnDestroy")
     private @Nullable Output<Boolean> noopOnDestroy;
 
     /**
-     * @return If set to &#39;true&#39;, the application version will not be deleted.
+     * @return If set to `true`, the application version will not be deleted.
      * 
      */
     public Optional<Output<Boolean>> noopOnDestroy() {
         return Optional.ofNullable(this.noopOnDestroy);
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -336,6 +370,7 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
 
     /**
      * Machine resources for a version.
+     * Structure is documented below.
      * 
      */
     @Import(name="resources")
@@ -343,6 +378,7 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return Machine resources for a version.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<FlexibleAppVersionResourcesArgs>> resources() {
@@ -365,18 +401,18 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at
-     * &#39;https://cloud.google.com/appengine/docs/standard/&lt;language&gt;/config/appref&#39;\ Substitute &#39;&lt;language&gt;&#39; with &#39;python&#39;,
-     * &#39;java&#39;, &#39;php&#39;, &#39;ruby&#39;, &#39;go&#39; or &#39;nodejs&#39;.
+     * The version of the API in the given runtime environment.
+     * Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/&lt;language&gt;/config/appref`\
+     * Substitute `&lt;language&gt;` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
      * 
      */
     @Import(name="runtimeApiVersion")
     private @Nullable Output<String> runtimeApiVersion;
 
     /**
-     * @return The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at
-     * &#39;https://cloud.google.com/appengine/docs/standard/&lt;language&gt;/config/appref&#39;\ Substitute &#39;&lt;language&gt;&#39; with &#39;python&#39;,
-     * &#39;java&#39;, &#39;php&#39;, &#39;ruby&#39;, &#39;go&#39; or &#39;nodejs&#39;.
+     * @return The version of the API in the given runtime environment.
+     * Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/&lt;language&gt;/config/appref`\
+     * Substitute `&lt;language&gt;` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
      * 
      */
     public Optional<Output<String>> runtimeApiVersion() {
@@ -429,16 +465,16 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default
-     * if this field is neither provided in app.yaml file nor through CLI flag.
+     * The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as
+     * default if this field is neither provided in app.yaml file nor through CLI flag.
      * 
      */
     @Import(name="serviceAccount")
     private @Nullable Output<String> serviceAccount;
 
     /**
-     * @return The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default
-     * if this field is neither provided in app.yaml file nor through CLI flag.
+     * @return The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as
+     * default if this field is neither provided in app.yaml file nor through CLI flag.
      * 
      */
     public Optional<Output<String>> serviceAccount() {
@@ -447,7 +483,8 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
 
     /**
      * Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
-     * Default value: &#34;SERVING&#34; Possible values: [&#34;SERVING&#34;, &#34;STOPPED&#34;]
+     * Default value is `SERVING`.
+     * Possible values are: `SERVING`, `STOPPED`.
      * 
      */
     @Import(name="servingStatus")
@@ -455,7 +492,8 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
-     * Default value: &#34;SERVING&#34; Possible values: [&#34;SERVING&#34;, &#34;STOPPED&#34;]
+     * Default value is `SERVING`.
+     * Possible values are: `SERVING`, `STOPPED`.
      * 
      */
     public Optional<Output<String>> servingStatus() {
@@ -463,16 +501,16 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Relative name of the version within the service. For example, &#39;v1&#39;. Version names can contain only lowercase letters,
-     * numbers, or hyphens. Reserved names,&#34;default&#34;, &#34;latest&#34;, and any name with the prefix &#34;ah-&#34;.
+     * Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens.
+     * Reserved names,&#34;default&#34;, &#34;latest&#34;, and any name with the prefix &#34;ah-&#34;.
      * 
      */
     @Import(name="versionId")
     private @Nullable Output<String> versionId;
 
     /**
-     * @return Relative name of the version within the service. For example, &#39;v1&#39;. Version names can contain only lowercase letters,
-     * numbers, or hyphens. Reserved names,&#34;default&#34;, &#34;latest&#34;, and any name with the prefix &#34;ah-&#34;.
+     * @return Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens.
+     * Reserved names,&#34;default&#34;, &#34;latest&#34;, and any name with the prefix &#34;ah-&#34;.
      * 
      */
     public Optional<Output<String>> versionId() {
@@ -481,6 +519,7 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
 
     /**
      * Enables VPC connectivity for standard apps.
+     * Structure is documented below.
      * 
      */
     @Import(name="vpcAccessConnector")
@@ -488,6 +527,7 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return Enables VPC connectivity for standard apps.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<FlexibleAppVersionVpcAccessConnectorArgs>> vpcAccessConnector() {
@@ -549,6 +589,7 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param apiConfig Serving configuration for Google Cloud Endpoints.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -560,6 +601,7 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param apiConfig Serving configuration for Google Cloud Endpoints.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -570,6 +612,7 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param automaticScaling Automatic scaling is based on request rate, response latencies, and other application metrics.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -581,6 +624,7 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param automaticScaling Automatic scaling is based on request rate, response latencies, and other application metrics.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -611,8 +655,8 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param defaultExpiration Duration that static files should be cached by web proxies and browsers. Only applicable if the corresponding
-         * StaticFilesHandler does not specify its own expiration time.
+         * @param defaultExpiration Duration that static files should be cached by web proxies and browsers.
+         * Only applicable if the corresponding StaticFilesHandler does not specify its own expiration time.
          * 
          * @return builder
          * 
@@ -623,8 +667,8 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param defaultExpiration Duration that static files should be cached by web proxies and browsers. Only applicable if the corresponding
-         * StaticFilesHandler does not specify its own expiration time.
+         * @param defaultExpiration Duration that static files should be cached by web proxies and browsers.
+         * Only applicable if the corresponding StaticFilesHandler does not specify its own expiration time.
          * 
          * @return builder
          * 
@@ -634,7 +678,7 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param deleteServiceOnDestroy If set to &#39;true&#39;, the service will be deleted if it is the last version.
+         * @param deleteServiceOnDestroy If set to `true`, the service will be deleted if it is the last version.
          * 
          * @return builder
          * 
@@ -645,7 +689,7 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param deleteServiceOnDestroy If set to &#39;true&#39;, the service will be deleted if it is the last version.
+         * @param deleteServiceOnDestroy If set to `true`, the service will be deleted if it is the last version.
          * 
          * @return builder
          * 
@@ -656,6 +700,7 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param deployment Code and application artifacts that make up this version.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -667,6 +712,7 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param deployment Code and application artifacts that make up this version.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -677,6 +723,7 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param endpointsApiService Code and application artifacts that make up this version.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -688,6 +735,7 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param endpointsApiService Code and application artifacts that make up this version.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -698,6 +746,7 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param entrypoint The entrypoint for the application.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -709,6 +758,7 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param entrypoint The entrypoint for the application.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -717,17 +767,30 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
             return entrypoint(Output.of(entrypoint));
         }
 
+        /**
+         * @param envVariables Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
+         * 
+         * @return builder
+         * 
+         */
         public Builder envVariables(@Nullable Output<Map<String,String>> envVariables) {
             $.envVariables = envVariables;
             return this;
         }
 
+        /**
+         * @param envVariables Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
+         * 
+         * @return builder
+         * 
+         */
         public Builder envVariables(Map<String,String> envVariables) {
             return envVariables(Output.of(envVariables));
         }
 
         /**
          * @param flexibleRuntimeSettings Runtime settings for App Engine flexible environment.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -739,6 +802,7 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param flexibleRuntimeSettings Runtime settings for App Engine flexible environment.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -748,8 +812,9 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param handlers An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
-         * request and other request handlers are not attempted.
+         * @param handlers An ordered list of URL-matching patterns that should be applied to incoming requests.
+         * The first matching URL handles the request and other request handlers are not attempted.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -760,8 +825,9 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param handlers An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
-         * request and other request handlers are not attempted.
+         * @param handlers An ordered list of URL-matching patterns that should be applied to incoming requests.
+         * The first matching URL handles the request and other request handlers are not attempted.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -771,8 +837,9 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param handlers An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
-         * request and other request handlers are not attempted.
+         * @param handlers An ordered list of URL-matching patterns that should be applied to incoming requests.
+         * The first matching URL handles the request and other request handlers are not attempted.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -782,10 +849,8 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param inboundServices A list of the types of messages that this application is able to receive. Possible values: [&#34;INBOUND_SERVICE_MAIL&#34;,
-         * &#34;INBOUND_SERVICE_MAIL_BOUNCE&#34;, &#34;INBOUND_SERVICE_XMPP_ERROR&#34;, &#34;INBOUND_SERVICE_XMPP_MESSAGE&#34;,
-         * &#34;INBOUND_SERVICE_XMPP_SUBSCRIBE&#34;, &#34;INBOUND_SERVICE_XMPP_PRESENCE&#34;, &#34;INBOUND_SERVICE_CHANNEL_PRESENCE&#34;,
-         * &#34;INBOUND_SERVICE_WARMUP&#34;]
+         * @param inboundServices A list of the types of messages that this application is able to receive.
+         * Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
          * 
          * @return builder
          * 
@@ -796,10 +861,8 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param inboundServices A list of the types of messages that this application is able to receive. Possible values: [&#34;INBOUND_SERVICE_MAIL&#34;,
-         * &#34;INBOUND_SERVICE_MAIL_BOUNCE&#34;, &#34;INBOUND_SERVICE_XMPP_ERROR&#34;, &#34;INBOUND_SERVICE_XMPP_MESSAGE&#34;,
-         * &#34;INBOUND_SERVICE_XMPP_SUBSCRIBE&#34;, &#34;INBOUND_SERVICE_XMPP_PRESENCE&#34;, &#34;INBOUND_SERVICE_CHANNEL_PRESENCE&#34;,
-         * &#34;INBOUND_SERVICE_WARMUP&#34;]
+         * @param inboundServices A list of the types of messages that this application is able to receive.
+         * Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
          * 
          * @return builder
          * 
@@ -809,10 +872,8 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param inboundServices A list of the types of messages that this application is able to receive. Possible values: [&#34;INBOUND_SERVICE_MAIL&#34;,
-         * &#34;INBOUND_SERVICE_MAIL_BOUNCE&#34;, &#34;INBOUND_SERVICE_XMPP_ERROR&#34;, &#34;INBOUND_SERVICE_XMPP_MESSAGE&#34;,
-         * &#34;INBOUND_SERVICE_XMPP_SUBSCRIBE&#34;, &#34;INBOUND_SERVICE_XMPP_PRESENCE&#34;, &#34;INBOUND_SERVICE_CHANNEL_PRESENCE&#34;,
-         * &#34;INBOUND_SERVICE_WARMUP&#34;]
+         * @param inboundServices A list of the types of messages that this application is able to receive.
+         * Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
          * 
          * @return builder
          * 
@@ -822,8 +883,10 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param instanceClass Instance class that is used to run this version. Valid values are AutomaticScaling: F1, F2, F4, F4_1G ManualScaling: B1,
-         * B2, B4, B8, B4_1G Defaults to F1 for AutomaticScaling and B1 for ManualScaling.
+         * @param instanceClass Instance class that is used to run this version. Valid values are
+         * AutomaticScaling: F1, F2, F4, F4_1G
+         * ManualScaling: B1, B2, B4, B8, B4_1G
+         * Defaults to F1 for AutomaticScaling and B1 for ManualScaling.
          * 
          * @return builder
          * 
@@ -834,8 +897,10 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param instanceClass Instance class that is used to run this version. Valid values are AutomaticScaling: F1, F2, F4, F4_1G ManualScaling: B1,
-         * B2, B4, B8, B4_1G Defaults to F1 for AutomaticScaling and B1 for ManualScaling.
+         * @param instanceClass Instance class that is used to run this version. Valid values are
+         * AutomaticScaling: F1, F2, F4, F4_1G
+         * ManualScaling: B1, B2, B4, B8, B4_1G
+         * Defaults to F1 for AutomaticScaling and B1 for ManualScaling.
          * 
          * @return builder
          * 
@@ -868,8 +933,8 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param manualScaling A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
-         * its memory over time.
+         * @param manualScaling A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -880,8 +945,8 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param manualScaling A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
-         * its memory over time.
+         * @param manualScaling A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -892,6 +957,7 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param network Extra network settings
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -903,6 +969,7 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param network Extra network settings
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -933,7 +1000,7 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param noopOnDestroy If set to &#39;true&#39;, the application version will not be deleted.
+         * @param noopOnDestroy If set to `true`, the application version will not be deleted.
          * 
          * @return builder
          * 
@@ -944,7 +1011,7 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param noopOnDestroy If set to &#39;true&#39;, the application version will not be deleted.
+         * @param noopOnDestroy If set to `true`, the application version will not be deleted.
          * 
          * @return builder
          * 
@@ -953,11 +1020,25 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
             return noopOnDestroy(Output.of(noopOnDestroy));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
@@ -987,6 +1068,7 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param resources Machine resources for a version.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -998,6 +1080,7 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param resources Machine resources for a version.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -1028,9 +1111,9 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param runtimeApiVersion The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at
-         * &#39;https://cloud.google.com/appengine/docs/standard/&lt;language&gt;/config/appref&#39;\ Substitute &#39;&lt;language&gt;&#39; with &#39;python&#39;,
-         * &#39;java&#39;, &#39;php&#39;, &#39;ruby&#39;, &#39;go&#39; or &#39;nodejs&#39;.
+         * @param runtimeApiVersion The version of the API in the given runtime environment.
+         * Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/&lt;language&gt;/config/appref`\
+         * Substitute `&lt;language&gt;` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
          * 
          * @return builder
          * 
@@ -1041,9 +1124,9 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param runtimeApiVersion The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at
-         * &#39;https://cloud.google.com/appengine/docs/standard/&lt;language&gt;/config/appref&#39;\ Substitute &#39;&lt;language&gt;&#39; with &#39;python&#39;,
-         * &#39;java&#39;, &#39;php&#39;, &#39;ruby&#39;, &#39;go&#39; or &#39;nodejs&#39;.
+         * @param runtimeApiVersion The version of the API in the given runtime environment.
+         * Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/&lt;language&gt;/config/appref`\
+         * Substitute `&lt;language&gt;` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
          * 
          * @return builder
          * 
@@ -1116,8 +1199,8 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param serviceAccount The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default
-         * if this field is neither provided in app.yaml file nor through CLI flag.
+         * @param serviceAccount The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as
+         * default if this field is neither provided in app.yaml file nor through CLI flag.
          * 
          * @return builder
          * 
@@ -1128,8 +1211,8 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param serviceAccount The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default
-         * if this field is neither provided in app.yaml file nor through CLI flag.
+         * @param serviceAccount The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as
+         * default if this field is neither provided in app.yaml file nor through CLI flag.
          * 
          * @return builder
          * 
@@ -1140,7 +1223,8 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param servingStatus Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
-         * Default value: &#34;SERVING&#34; Possible values: [&#34;SERVING&#34;, &#34;STOPPED&#34;]
+         * Default value is `SERVING`.
+         * Possible values are: `SERVING`, `STOPPED`.
          * 
          * @return builder
          * 
@@ -1152,7 +1236,8 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param servingStatus Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
-         * Default value: &#34;SERVING&#34; Possible values: [&#34;SERVING&#34;, &#34;STOPPED&#34;]
+         * Default value is `SERVING`.
+         * Possible values are: `SERVING`, `STOPPED`.
          * 
          * @return builder
          * 
@@ -1162,8 +1247,8 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param versionId Relative name of the version within the service. For example, &#39;v1&#39;. Version names can contain only lowercase letters,
-         * numbers, or hyphens. Reserved names,&#34;default&#34;, &#34;latest&#34;, and any name with the prefix &#34;ah-&#34;.
+         * @param versionId Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens.
+         * Reserved names,&#34;default&#34;, &#34;latest&#34;, and any name with the prefix &#34;ah-&#34;.
          * 
          * @return builder
          * 
@@ -1174,8 +1259,8 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param versionId Relative name of the version within the service. For example, &#39;v1&#39;. Version names can contain only lowercase letters,
-         * numbers, or hyphens. Reserved names,&#34;default&#34;, &#34;latest&#34;, and any name with the prefix &#34;ah-&#34;.
+         * @param versionId Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens.
+         * Reserved names,&#34;default&#34;, &#34;latest&#34;, and any name with the prefix &#34;ah-&#34;.
          * 
          * @return builder
          * 
@@ -1186,6 +1271,7 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param vpcAccessConnector Enables VPC connectivity for standard apps.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -1197,6 +1283,7 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param vpcAccessConnector Enables VPC connectivity for standard apps.
+         * Structure is documented below.
          * 
          * @return builder
          * 

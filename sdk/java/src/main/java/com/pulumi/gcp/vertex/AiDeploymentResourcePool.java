@@ -142,16 +142,12 @@ public class AiDeploymentResourcePool extends com.pulumi.resources.CustomResourc
     /**
      * The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

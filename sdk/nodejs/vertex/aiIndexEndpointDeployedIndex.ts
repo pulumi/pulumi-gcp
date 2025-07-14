@@ -273,9 +273,6 @@ export class AiIndexEndpointDeployedIndex extends pulumi.CustomResource {
     /**
      * Identifies the index endpoint. Must be in the format
      * 'projects/{{project}}/locations/{{region}}/indexEndpoints/{{indexEndpoint}}'
-     *
-     *
-     * - - -
      */
     public readonly indexEndpoint!: pulumi.Output<string>;
     /**
@@ -416,9 +413,6 @@ export interface AiIndexEndpointDeployedIndexState {
     /**
      * Identifies the index endpoint. Must be in the format
      * 'projects/{{project}}/locations/{{region}}/indexEndpoints/{{indexEndpoint}}'
-     *
-     *
-     * - - -
      */
     indexEndpoint?: pulumi.Input<string>;
     /**
@@ -496,9 +490,6 @@ export interface AiIndexEndpointDeployedIndexArgs {
     /**
      * Identifies the index endpoint. Must be in the format
      * 'projects/{{project}}/locations/{{region}}/indexEndpoints/{{indexEndpoint}}'
-     *
-     *
-     * - - -
      */
     indexEndpoint: pulumi.Input<string>;
     /**

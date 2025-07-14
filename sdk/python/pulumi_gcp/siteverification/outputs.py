@@ -27,8 +27,6 @@ class WebResourceSite(dict):
         """
         :param builtins.str identifier: The site identifier. If the type is set to SITE, the identifier is a URL. If the type is
                set to INET_DOMAIN, the identifier is a domain name.
-               
-               - - -
         :param builtins.str type: The type of resource to be verified.
                Possible values are: `INET_DOMAIN`, `SITE`.
         """
@@ -41,8 +39,6 @@ class WebResourceSite(dict):
         """
         The site identifier. If the type is set to SITE, the identifier is a URL. If the type is
         set to INET_DOMAIN, the identifier is a domain name.
-
-        - - -
         """
         return pulumi.get(self, "identifier")
 

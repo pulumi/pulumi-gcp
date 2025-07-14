@@ -729,16 +729,12 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * Redis memory size in GiB.
      * 
-     * ***
-     * 
      */
     @Export(name="memorySizeGb", refs={Integer.class}, tree="[0]")
     private Output<Integer> memorySizeGb;
 
     /**
      * @return Redis memory size in GiB.
-     * 
-     * ***
      * 
      */
     public Output<Integer> memorySizeGb() {

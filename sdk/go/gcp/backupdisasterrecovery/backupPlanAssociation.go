@@ -161,8 +161,6 @@ type BackupPlanAssociation struct {
 	// - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
 	BackupPlan pulumi.StringOutput `pulumi:"backupPlan"`
 	// The id of backupplan association
-	//
-	// ***
 	BackupPlanAssociationId pulumi.StringOutput `pulumi:"backupPlanAssociationId"`
 	// The time when the instance was created
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -240,8 +238,6 @@ type backupPlanAssociationState struct {
 	// - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
 	BackupPlan *string `pulumi:"backupPlan"`
 	// The id of backupplan association
-	//
-	// ***
 	BackupPlanAssociationId *string `pulumi:"backupPlanAssociationId"`
 	// The time when the instance was created
 	CreateTime *string `pulumi:"createTime"`
@@ -275,8 +271,6 @@ type BackupPlanAssociationState struct {
 	// - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
 	BackupPlan pulumi.StringPtrInput
 	// The id of backupplan association
-	//
-	// ***
 	BackupPlanAssociationId pulumi.StringPtrInput
 	// The time when the instance was created
 	CreateTime pulumi.StringPtrInput
@@ -314,8 +308,6 @@ type backupPlanAssociationArgs struct {
 	// - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
 	BackupPlan string `pulumi:"backupPlan"`
 	// The id of backupplan association
-	//
-	// ***
 	BackupPlanAssociationId string `pulumi:"backupPlanAssociationId"`
 	// The location for the backupplan association
 	Location string `pulumi:"location"`
@@ -337,8 +329,6 @@ type BackupPlanAssociationArgs struct {
 	// - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
 	BackupPlan pulumi.StringInput
 	// The id of backupplan association
-	//
-	// ***
 	BackupPlanAssociationId pulumi.StringInput
 	// The location for the backupplan association
 	Location pulumi.StringInput
@@ -448,8 +438,6 @@ func (o BackupPlanAssociationOutput) BackupPlan() pulumi.StringOutput {
 }
 
 // The id of backupplan association
-//
-// ***
 func (o BackupPlanAssociationOutput) BackupPlanAssociationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupPlanAssociation) pulumi.StringOutput { return v.BackupPlanAssociationId }).(pulumi.StringOutput)
 }

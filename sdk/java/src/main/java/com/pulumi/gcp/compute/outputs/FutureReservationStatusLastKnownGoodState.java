@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FutureReservationStatusLastKnownGoodState {
     /**
-     * @return The description of the FutureReservation before an amendment was requested.
+     * @return An optional description of this resource.
      * 
      */
     private @Nullable String description;
@@ -36,7 +36,7 @@ public final class FutureReservationStatusLastKnownGoodState {
      */
     private @Nullable String lockTime;
     /**
-     * @return The name prefix of the Future Reservation before an amendment was requested.
+     * @return Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
      * 
      */
     private @Nullable String namePrefix;
@@ -49,7 +49,7 @@ public final class FutureReservationStatusLastKnownGoodState {
 
     private FutureReservationStatusLastKnownGoodState() {}
     /**
-     * @return The description of the FutureReservation before an amendment was requested.
+     * @return An optional description of this resource.
      * 
      */
     public Optional<String> description() {
@@ -79,7 +79,7 @@ public final class FutureReservationStatusLastKnownGoodState {
         return Optional.ofNullable(this.lockTime);
     }
     /**
-     * @return The name prefix of the Future Reservation before an amendment was requested.
+     * @return Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
      * 
      */
     public Optional<String> namePrefix() {

@@ -161,10 +161,11 @@ export class CertificateIssuanceConfig extends pulumi.CustomResource {
      */
     public readonly keyAlgorithm!: pulumi.Output<string>;
     /**
-     * 'Set of label tags associated with the CertificateIssuanceConfig resource. An object containing a list of "key": value
-     * pairs. Example: { "name": "wrench", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the
-     * labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-     * resource.
+     * 'Set of label tags associated with the CertificateIssuanceConfig resource.
+     * An object containing a list of "key": value pairs. Example: { "name": "wrench", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -181,6 +182,10 @@ export class CertificateIssuanceConfig extends pulumi.CustomResource {
      * CertificateIssuanceConfig names must be unique globally.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The combination of labels configured directly on the resource
@@ -291,10 +296,11 @@ export interface CertificateIssuanceConfigState {
      */
     keyAlgorithm?: pulumi.Input<string>;
     /**
-     * 'Set of label tags associated with the CertificateIssuanceConfig resource. An object containing a list of "key": value
-     * pairs. Example: { "name": "wrench", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the
-     * labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-     * resource.
+     * 'Set of label tags associated with the CertificateIssuanceConfig resource.
+     * An object containing a list of "key": value pairs. Example: { "name": "wrench", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -311,6 +317,10 @@ export interface CertificateIssuanceConfigState {
      * CertificateIssuanceConfig names must be unique globally.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * The combination of labels configured directly on the resource
@@ -351,10 +361,11 @@ export interface CertificateIssuanceConfigArgs {
      */
     keyAlgorithm: pulumi.Input<string>;
     /**
-     * 'Set of label tags associated with the CertificateIssuanceConfig resource. An object containing a list of "key": value
-     * pairs. Example: { "name": "wrench", "count": "3" }. **Note**: This field is non-authoritative, and will only manage the
-     * labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-     * resource.
+     * 'Set of label tags associated with the CertificateIssuanceConfig resource.
+     * An object containing a list of "key": value pairs. Example: { "name": "wrench", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -371,6 +382,10 @@ export interface CertificateIssuanceConfigArgs {
      * CertificateIssuanceConfig names must be unique globally.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * It specifies the percentage of elapsed time of the certificate lifetime to wait before renewing the certificate.

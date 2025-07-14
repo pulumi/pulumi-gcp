@@ -38,14 +38,18 @@ class AppConnectionArgs:
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] connectors: List of AppConnectors that are authorised to be associated with this AppConnection
         :param pulumi.Input[builtins.str] display_name: An arbitrary user-provided name for the AppConnection.
         :param pulumi.Input['AppConnectionGatewayArgs'] gateway: Gateway used by the AppConnection.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user provided metadata. **Note**: This field is non-authoritative, and will only manage the
-               labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-               resource.
+               Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] name: ID of the AppConnection.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] region: The region of the AppConnection.
-        :param pulumi.Input[builtins.str] type: The type of network connectivity used by the AppConnection. Refer to
-               https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type for a list of possible
-               values.
+        :param pulumi.Input[builtins.str] type: The type of network connectivity used by the AppConnection. Refer
+               to https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
+               for a list of possible values.
         """
         pulumi.set(__self__, "application_endpoint", application_endpoint)
         if connectors is not None:
@@ -107,6 +111,7 @@ class AppConnectionArgs:
     def gateway(self) -> Optional[pulumi.Input['AppConnectionGatewayArgs']]:
         """
         Gateway used by the AppConnection.
+        Structure is documented below.
         """
         return pulumi.get(self, "gateway")
 
@@ -118,9 +123,10 @@ class AppConnectionArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Resource labels to represent user provided metadata. **Note**: This field is non-authoritative, and will only manage the
-        labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-        resource.
+        Resource labels to represent user provided metadata.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -143,6 +149,10 @@ class AppConnectionArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -165,9 +175,9 @@ class AppConnectionArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The type of network connectivity used by the AppConnection. Refer to
-        https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type for a list of possible
-        values.
+        The type of network connectivity used by the AppConnection. Refer
+        to https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
+        for a list of possible values.
         """
         return pulumi.get(self, "type")
 
@@ -198,16 +208,20 @@ class _AppConnectionState:
         :param pulumi.Input[builtins.str] display_name: An arbitrary user-provided name for the AppConnection.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input['AppConnectionGatewayArgs'] gateway: Gateway used by the AppConnection.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user provided metadata. **Note**: This field is non-authoritative, and will only manage the
-               labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-               resource.
+               Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] name: ID of the AppConnection.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[builtins.str] region: The region of the AppConnection.
-        :param pulumi.Input[builtins.str] type: The type of network connectivity used by the AppConnection. Refer to
-               https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type for a list of possible
-               values.
+        :param pulumi.Input[builtins.str] type: The type of network connectivity used by the AppConnection. Refer
+               to https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
+               for a list of possible values.
         """
         if application_endpoint is not None:
             pulumi.set(__self__, "application_endpoint", application_endpoint)
@@ -286,6 +300,7 @@ class _AppConnectionState:
     def gateway(self) -> Optional[pulumi.Input['AppConnectionGatewayArgs']]:
         """
         Gateway used by the AppConnection.
+        Structure is documented below.
         """
         return pulumi.get(self, "gateway")
 
@@ -297,9 +312,10 @@ class _AppConnectionState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Resource labels to represent user provided metadata. **Note**: This field is non-authoritative, and will only manage the
-        labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-        resource.
+        Resource labels to represent user provided metadata.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -322,6 +338,10 @@ class _AppConnectionState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -357,9 +377,9 @@ class _AppConnectionState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The type of network connectivity used by the AppConnection. Refer to
-        https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type for a list of possible
-        values.
+        The type of network connectivity used by the AppConnection. Refer
+        to https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
+        for a list of possible values.
         """
         return pulumi.get(self, "type")
 
@@ -497,14 +517,18 @@ class AppConnection(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] connectors: List of AppConnectors that are authorised to be associated with this AppConnection
         :param pulumi.Input[builtins.str] display_name: An arbitrary user-provided name for the AppConnection.
         :param pulumi.Input[Union['AppConnectionGatewayArgs', 'AppConnectionGatewayArgsDict']] gateway: Gateway used by the AppConnection.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user provided metadata. **Note**: This field is non-authoritative, and will only manage the
-               labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-               resource.
+               Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] name: ID of the AppConnection.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] region: The region of the AppConnection.
-        :param pulumi.Input[builtins.str] type: The type of network connectivity used by the AppConnection. Refer to
-               https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type for a list of possible
-               values.
+        :param pulumi.Input[builtins.str] type: The type of network connectivity used by the AppConnection. Refer
+               to https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
+               for a list of possible values.
         """
         ...
     @overload
@@ -700,16 +724,20 @@ class AppConnection(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] display_name: An arbitrary user-provided name for the AppConnection.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Union['AppConnectionGatewayArgs', 'AppConnectionGatewayArgsDict']] gateway: Gateway used by the AppConnection.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user provided metadata. **Note**: This field is non-authoritative, and will only manage the
-               labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-               resource.
+               Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Resource labels to represent user provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] name: ID of the AppConnection.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[builtins.str] region: The region of the AppConnection.
-        :param pulumi.Input[builtins.str] type: The type of network connectivity used by the AppConnection. Refer to
-               https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type for a list of possible
-               values.
+        :param pulumi.Input[builtins.str] type: The type of network connectivity used by the AppConnection. Refer
+               to https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
+               for a list of possible values.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -766,6 +794,7 @@ class AppConnection(pulumi.CustomResource):
     def gateway(self) -> pulumi.Output['outputs.AppConnectionGateway']:
         """
         Gateway used by the AppConnection.
+        Structure is documented below.
         """
         return pulumi.get(self, "gateway")
 
@@ -773,9 +802,10 @@ class AppConnection(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
         """
-        Resource labels to represent user provided metadata. **Note**: This field is non-authoritative, and will only manage the
-        labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-        resource.
+        Resource labels to represent user provided metadata.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -790,6 +820,10 @@ class AppConnection(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property
@@ -813,9 +847,9 @@ class AppConnection(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The type of network connectivity used by the AppConnection. Refer to
-        https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type for a list of possible
-        values.
+        The type of network connectivity used by the AppConnection. Refer
+        to https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
+        for a list of possible values.
         """
         return pulumi.get(self, "type")
 

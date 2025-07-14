@@ -110,8 +110,6 @@ public final class DataAccessScopeState extends com.pulumi.resources.ResourceArg
      * of the scope resource.
      * Needs to be compliant with https://google.aip.dev/122
      * 
-     * ***
-     * 
      */
     @Import(name="dataAccessScopeId")
     private @Nullable Output<String> dataAccessScopeId;
@@ -120,8 +118,6 @@ public final class DataAccessScopeState extends com.pulumi.resources.ResourceArg
      * @return Required. The user provided scope id which will become the last part of the name
      * of the scope resource.
      * Needs to be compliant with https://google.aip.dev/122
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> dataAccessScopeId() {
@@ -447,8 +443,6 @@ public final class DataAccessScopeState extends com.pulumi.resources.ResourceArg
          * of the scope resource.
          * Needs to be compliant with https://google.aip.dev/122
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -461,8 +455,6 @@ public final class DataAccessScopeState extends com.pulumi.resources.ResourceArg
          * @param dataAccessScopeId Required. The user provided scope id which will become the last part of the name
          * of the scope resource.
          * Needs to be compliant with https://google.aip.dev/122
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -26,9 +26,6 @@ class EnvironmentKeyvaluemapsArgs:
         The set of arguments for constructing a EnvironmentKeyvaluemaps resource.
         :param pulumi.Input[builtins.str] env_id: The Apigee environment group associated with the Apigee environment,
                in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: Required. ID of the key value map.
         """
         pulumi.set(__self__, "env_id", env_id)
@@ -41,9 +38,6 @@ class EnvironmentKeyvaluemapsArgs:
         """
         The Apigee environment group associated with the Apigee environment,
         in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-
-
-        - - -
         """
         return pulumi.get(self, "env_id")
 
@@ -73,9 +67,6 @@ class _EnvironmentKeyvaluemapsState:
         Input properties used for looking up and filtering EnvironmentKeyvaluemaps resources.
         :param pulumi.Input[builtins.str] env_id: The Apigee environment group associated with the Apigee environment,
                in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: Required. ID of the key value map.
         """
         if env_id is not None:
@@ -89,9 +80,6 @@ class _EnvironmentKeyvaluemapsState:
         """
         The Apigee environment group associated with the Apigee environment,
         in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-
-
-        - - -
         """
         return pulumi.get(self, "env_id")
 
@@ -200,9 +188,6 @@ class EnvironmentKeyvaluemaps(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] env_id: The Apigee environment group associated with the Apigee environment,
                in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: Required. ID of the key value map.
         """
         ...
@@ -337,9 +322,6 @@ class EnvironmentKeyvaluemaps(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] env_id: The Apigee environment group associated with the Apigee environment,
                in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: Required. ID of the key value map.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -356,9 +338,6 @@ class EnvironmentKeyvaluemaps(pulumi.CustomResource):
         """
         The Apigee environment group associated with the Apigee environment,
         in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-
-
-        - - -
         """
         return pulumi.get(self, "env_id")
 

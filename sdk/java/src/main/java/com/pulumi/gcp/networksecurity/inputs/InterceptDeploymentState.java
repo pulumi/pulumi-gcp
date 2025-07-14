@@ -108,8 +108,6 @@ public final class InterceptDeploymentState extends com.pulumi.resources.Resourc
      * The ID to use for the new deployment, which will become the final
      * component of the deployment&#39;s resource name.
      * 
-     * ***
-     * 
      */
     @Import(name="interceptDeploymentId")
     private @Nullable Output<String> interceptDeploymentId;
@@ -117,8 +115,6 @@ public final class InterceptDeploymentState extends com.pulumi.resources.Resourc
     /**
      * @return The ID to use for the new deployment, which will become the final
      * component of the deployment&#39;s resource name.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> interceptDeploymentId() {
@@ -439,8 +435,6 @@ public final class InterceptDeploymentState extends com.pulumi.resources.Resourc
          * @param interceptDeploymentId The ID to use for the new deployment, which will become the final
          * component of the deployment&#39;s resource name.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -452,8 +446,6 @@ public final class InterceptDeploymentState extends com.pulumi.resources.Resourc
         /**
          * @param interceptDeploymentId The ID to use for the new deployment, which will become the final
          * component of the deployment&#39;s resource name.
-         * 
-         * ***
          * 
          * @return builder
          * 

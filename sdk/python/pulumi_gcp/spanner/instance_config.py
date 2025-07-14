@@ -33,14 +33,18 @@ class InstanceConfigArgs:
         :param pulumi.Input[builtins.str] display_name: The name of this instance configuration as it appears in UIs.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceConfigReplicaArgs']]] replicas: The geographic placement of nodes in this instance configuration and their replication properties.
                Structure is documented below.
-        :param pulumi.Input[builtins.str] base_config: Base configuration name, e.g. nam3, based on which this configuration is created. Only set for user managed
-               configurations. baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this
-               configuration.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
-               to the field 'effective_labels' for all of the labels present on the resource.
-        :param pulumi.Input[builtins.str] name: A unique identifier for the instance configuration. Values are of the form
-               projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
+        :param pulumi.Input[builtins.str] base_config: Base configuration name, e.g. nam3, based on which this configuration is created.
+               Only set for user managed configurations.
+               baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this configuration.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: An object containing a list of "key": value pairs.
+               Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[builtins.str] name: A unique identifier for the instance configuration. Values are of the
+               form projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "replicas", replicas)
@@ -82,9 +86,9 @@ class InstanceConfigArgs:
     @pulumi.getter(name="baseConfig")
     def base_config(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Base configuration name, e.g. nam3, based on which this configuration is created. Only set for user managed
-        configurations. baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this
-        configuration.
+        Base configuration name, e.g. nam3, based on which this configuration is created.
+        Only set for user managed configurations.
+        baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this configuration.
         """
         return pulumi.get(self, "base_config")
 
@@ -96,9 +100,11 @@ class InstanceConfigArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
-        to the field 'effective_labels' for all of the labels present on the resource.
+        An object containing a list of "key": value pairs.
+        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -110,8 +116,8 @@ class InstanceConfigArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        A unique identifier for the instance configuration. Values are of the form
-        projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
+        A unique identifier for the instance configuration. Values are of the
+        form projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
         """
         return pulumi.get(self, "name")
 
@@ -122,6 +128,10 @@ class InstanceConfigArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -143,17 +153,21 @@ class _InstanceConfigState:
                  replicas: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigReplicaArgs']]]] = None):
         """
         Input properties used for looking up and filtering InstanceConfig resources.
-        :param pulumi.Input[builtins.str] base_config: Base configuration name, e.g. nam3, based on which this configuration is created. Only set for user managed
-               configurations. baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this
-               configuration.
+        :param pulumi.Input[builtins.str] base_config: Base configuration name, e.g. nam3, based on which this configuration is created.
+               Only set for user managed configurations.
+               baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this configuration.
         :param pulumi.Input[builtins.str] config_type: Output only. Whether this instance config is a Google or User Managed Configuration.
         :param pulumi.Input[builtins.str] display_name: The name of this instance configuration as it appears in UIs.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
-               to the field 'effective_labels' for all of the labels present on the resource.
-        :param pulumi.Input[builtins.str] name: A unique identifier for the instance configuration. Values are of the form
-               projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: An object containing a list of "key": value pairs.
+               Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[builtins.str] name: A unique identifier for the instance configuration. Values are of the
+               form projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceConfigReplicaArgs']]] replicas: The geographic placement of nodes in this instance configuration and their replication properties.
@@ -182,9 +196,9 @@ class _InstanceConfigState:
     @pulumi.getter(name="baseConfig")
     def base_config(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Base configuration name, e.g. nam3, based on which this configuration is created. Only set for user managed
-        configurations. baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this
-        configuration.
+        Base configuration name, e.g. nam3, based on which this configuration is created.
+        Only set for user managed configurations.
+        baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this configuration.
         """
         return pulumi.get(self, "base_config")
 
@@ -232,9 +246,11 @@ class _InstanceConfigState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
-        to the field 'effective_labels' for all of the labels present on the resource.
+        An object containing a list of "key": value pairs.
+        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -246,8 +262,8 @@ class _InstanceConfigState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        A unique identifier for the instance configuration. Values are of the form
-        projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
+        A unique identifier for the instance configuration. Values are of the
+        form projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
         """
         return pulumi.get(self, "name")
 
@@ -258,6 +274,10 @@ class _InstanceConfigState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -342,15 +362,19 @@ class InstanceConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] base_config: Base configuration name, e.g. nam3, based on which this configuration is created. Only set for user managed
-               configurations. baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this
-               configuration.
+        :param pulumi.Input[builtins.str] base_config: Base configuration name, e.g. nam3, based on which this configuration is created.
+               Only set for user managed configurations.
+               baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this configuration.
         :param pulumi.Input[builtins.str] display_name: The name of this instance configuration as it appears in UIs.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
-               to the field 'effective_labels' for all of the labels present on the resource.
-        :param pulumi.Input[builtins.str] name: A unique identifier for the instance configuration. Values are of the form
-               projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: An object containing a list of "key": value pairs.
+               Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[builtins.str] name: A unique identifier for the instance configuration. Values are of the
+               form projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigReplicaArgs', 'InstanceConfigReplicaArgsDict']]]] replicas: The geographic placement of nodes in this instance configuration and their replication properties.
                Structure is documented below.
         """
@@ -467,17 +491,21 @@ class InstanceConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] base_config: Base configuration name, e.g. nam3, based on which this configuration is created. Only set for user managed
-               configurations. baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this
-               configuration.
+        :param pulumi.Input[builtins.str] base_config: Base configuration name, e.g. nam3, based on which this configuration is created.
+               Only set for user managed configurations.
+               baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this configuration.
         :param pulumi.Input[builtins.str] config_type: Output only. Whether this instance config is a Google or User Managed Configuration.
         :param pulumi.Input[builtins.str] display_name: The name of this instance configuration as it appears in UIs.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
-               to the field 'effective_labels' for all of the labels present on the resource.
-        :param pulumi.Input[builtins.str] name: A unique identifier for the instance configuration. Values are of the form
-               projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: An object containing a list of "key": value pairs.
+               Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[builtins.str] name: A unique identifier for the instance configuration. Values are of the
+               form projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigReplicaArgs', 'InstanceConfigReplicaArgsDict']]]] replicas: The geographic placement of nodes in this instance configuration and their replication properties.
@@ -502,9 +530,9 @@ class InstanceConfig(pulumi.CustomResource):
     @pulumi.getter(name="baseConfig")
     def base_config(self) -> pulumi.Output[builtins.str]:
         """
-        Base configuration name, e.g. nam3, based on which this configuration is created. Only set for user managed
-        configurations. baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this
-        configuration.
+        Base configuration name, e.g. nam3, based on which this configuration is created.
+        Only set for user managed configurations.
+        baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this configuration.
         """
         return pulumi.get(self, "base_config")
 
@@ -536,9 +564,11 @@ class InstanceConfig(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
         """
-        An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
-        to the field 'effective_labels' for all of the labels present on the resource.
+        An object containing a list of "key": value pairs.
+        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -546,14 +576,18 @@ class InstanceConfig(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[builtins.str]:
         """
-        A unique identifier for the instance configuration. Values are of the form
-        projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
+        A unique identifier for the instance configuration. Values are of the
+        form projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property

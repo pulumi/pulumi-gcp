@@ -213,9 +213,6 @@ export class Runtime extends pulumi.CustomResource {
     public /*out*/ readonly isUpgradable!: pulumi.Output<boolean>;
     /**
      * The location for the resource: https://cloud.google.com/colab/docs/locations
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -331,9 +328,6 @@ export interface RuntimeState {
     isUpgradable?: pulumi.Input<boolean>;
     /**
      * The location for the resource: https://cloud.google.com/colab/docs/locations
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -386,9 +380,6 @@ export interface RuntimeArgs {
     displayName: pulumi.Input<string>;
     /**
      * The location for the resource: https://cloud.google.com/colab/docs/locations
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

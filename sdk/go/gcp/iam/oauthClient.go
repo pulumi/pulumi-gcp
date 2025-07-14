@@ -134,8 +134,6 @@ type OauthClient struct {
 	// letters, digits, or hyphens. It must start with a letter, and cannot have a
 	// trailing hyphen. The prefix `gcp-` is reserved for use by Google, and may
 	// not be specified.
-	//
-	// ***
 	OauthClientId pulumi.StringOutput `pulumi:"oauthClientId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -237,8 +235,6 @@ type oauthClientState struct {
 	// letters, digits, or hyphens. It must start with a letter, and cannot have a
 	// trailing hyphen. The prefix `gcp-` is reserved for use by Google, and may
 	// not be specified.
-	//
-	// ***
 	OauthClientId *string `pulumi:"oauthClientId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -296,8 +292,6 @@ type OauthClientState struct {
 	// letters, digits, or hyphens. It must start with a letter, and cannot have a
 	// trailing hyphen. The prefix `gcp-` is reserved for use by Google, and may
 	// not be specified.
-	//
-	// ***
 	OauthClientId pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -351,8 +345,6 @@ type oauthClientArgs struct {
 	// letters, digits, or hyphens. It must start with a letter, and cannot have a
 	// trailing hyphen. The prefix `gcp-` is reserved for use by Google, and may
 	// not be specified.
-	//
-	// ***
 	OauthClientId string `pulumi:"oauthClientId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -397,8 +389,6 @@ type OauthClientArgs struct {
 	// letters, digits, or hyphens. It must start with a letter, and cannot have a
 	// trailing hyphen. The prefix `gcp-` is reserved for use by Google, and may
 	// not be specified.
-	//
-	// ***
 	OauthClientId pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -569,8 +559,6 @@ func (o OauthClientOutput) Name() pulumi.StringOutput {
 // letters, digits, or hyphens. It must start with a letter, and cannot have a
 // trailing hyphen. The prefix `gcp-` is reserved for use by Google, and may
 // not be specified.
-//
-// ***
 func (o OauthClientOutput) OauthClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OauthClient) pulumi.StringOutput { return v.OauthClientId }).(pulumi.StringOutput)
 }

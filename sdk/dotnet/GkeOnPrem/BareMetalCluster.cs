@@ -12,6 +12,10 @@ namespace Pulumi.Gcp.GkeOnPrem
     /// <summary>
     /// A Google Bare Metal User Cluster.
     /// 
+    /// To get more information about BareMetalCluster, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/kubernetes-engine/distributed-cloud/reference/on-prem-api/rest/v1/projects.locations.bareMetalClusters)
+    /// 
     /// ## Example Usage
     /// 
     /// ### Gkeonprem Bare Metal Cluster Basic
@@ -495,12 +499,17 @@ namespace Pulumi.Gcp.GkeOnPrem
         public Output<string> AdminClusterMembership { get; private set; } = null!;
 
         /// <summary>
-        /// Annotations on the Bare Metal User Cluster. This field has the same restrictions as Kubernetes annotations. The total
-        /// size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-        /// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-        /// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-        /// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-        /// 'effective_annotations' for all of the annotations present on the resource.
+        /// Annotations on the Bare Metal User Cluster.
+        /// This field has the same restrictions as Kubernetes annotations.
+        /// The total size of all keys and values combined is limited to 256k.
+        /// Key can have 2 segments: prefix (optional) and name (required),
+        /// separated by a slash (/).
+        /// Prefix must be a DNS subdomain.
+        /// Name must be 63 characters or less, begin and end with alphanumerics,
+        /// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
@@ -513,12 +522,14 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// Binary Authorization related configurations.
+        /// Structure is documented below.
         /// </summary>
         [Output("binaryAuthorization")]
         public Output<Outputs.BareMetalClusterBinaryAuthorization?> BinaryAuthorization { get; private set; } = null!;
 
         /// <summary>
         /// Specifies the User Cluster's observability infrastructure.
+        /// Structure is documented below.
         /// </summary>
         [Output("clusterOperations")]
         public Output<Outputs.BareMetalClusterClusterOperations?> ClusterOperations { get; private set; } = null!;
@@ -543,8 +554,7 @@ namespace Pulumi.Gcp.GkeOnPrem
         public Output<string> DeleteTime { get; private set; } = null!;
 
         /// <summary>
-        /// (Output)
-        /// The description of the validation check.
+        /// A human readable description of this Bare Metal User Cluster.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -610,6 +620,7 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// Specifies the workload node configurations.
+        /// Structure is documented below.
         /// </summary>
         [Output("maintenanceConfig")]
         public Output<Outputs.BareMetalClusterMaintenanceConfig?> MaintenanceConfig { get; private set; } = null!;
@@ -629,27 +640,35 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// Specifies the node access related settings for the bare metal user cluster.
+        /// Structure is documented below.
         /// </summary>
         [Output("nodeAccessConfig")]
         public Output<Outputs.BareMetalClusterNodeAccessConfig?> NodeAccessConfig { get; private set; } = null!;
 
         /// <summary>
         /// Specifies the workload node configurations.
+        /// Structure is documented below.
         /// </summary>
         [Output("nodeConfig")]
         public Output<Outputs.BareMetalClusterNodeConfig?> NodeConfig { get; private set; } = null!;
 
         /// <summary>
         /// OS environment related configurations.
+        /// Structure is documented below.
         /// </summary>
         [Output("osEnvironmentConfig")]
         public Output<Outputs.BareMetalClusterOsEnvironmentConfig?> OsEnvironmentConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Specifies the cluster proxy configuration.
+        /// Structure is documented below.
         /// </summary>
         [Output("proxy")]
         public Output<Outputs.BareMetalClusterProxy?> Proxy { get; private set; } = null!;
@@ -662,6 +681,7 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// Specifies the security related settings for the Bare Metal User Cluster.
+        /// Structure is documented below.
         /// </summary>
         [Output("securityConfig")]
         public Output<Outputs.BareMetalClusterSecurityConfig?> SecurityConfig { get; private set; } = null!;
@@ -702,6 +722,7 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// The cluster upgrade policy.
+        /// Structure is documented below.
         /// </summary>
         [Output("upgradePolicy")]
         public Output<Outputs.BareMetalClusterUpgradePolicy?> UpgradePolicy { get; private set; } = null!;
@@ -770,12 +791,17 @@ namespace Pulumi.Gcp.GkeOnPrem
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// Annotations on the Bare Metal User Cluster. This field has the same restrictions as Kubernetes annotations. The total
-        /// size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-        /// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-        /// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-        /// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-        /// 'effective_annotations' for all of the annotations present on the resource.
+        /// Annotations on the Bare Metal User Cluster.
+        /// This field has the same restrictions as Kubernetes annotations.
+        /// The total size of all keys and values combined is limited to 256k.
+        /// Key can have 2 segments: prefix (optional) and name (required),
+        /// separated by a slash (/).
+        /// Prefix must be a DNS subdomain.
+        /// Name must be 63 characters or less, begin and end with alphanumerics,
+        /// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -791,12 +817,14 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// Binary Authorization related configurations.
+        /// Structure is documented below.
         /// </summary>
         [Input("binaryAuthorization")]
         public Input<Inputs.BareMetalClusterBinaryAuthorizationArgs>? BinaryAuthorization { get; set; }
 
         /// <summary>
         /// Specifies the User Cluster's observability infrastructure.
+        /// Structure is documented below.
         /// </summary>
         [Input("clusterOperations")]
         public Input<Inputs.BareMetalClusterClusterOperationsArgs>? ClusterOperations { get; set; }
@@ -809,8 +837,7 @@ namespace Pulumi.Gcp.GkeOnPrem
         public Input<Inputs.BareMetalClusterControlPlaneArgs> ControlPlane { get; set; } = null!;
 
         /// <summary>
-        /// (Output)
-        /// The description of the validation check.
+        /// A human readable description of this Bare Metal User Cluster.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -830,6 +857,7 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// Specifies the workload node configurations.
+        /// Structure is documented below.
         /// </summary>
         [Input("maintenanceConfig")]
         public Input<Inputs.BareMetalClusterMaintenanceConfigArgs>? MaintenanceConfig { get; set; }
@@ -849,33 +877,42 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// Specifies the node access related settings for the bare metal user cluster.
+        /// Structure is documented below.
         /// </summary>
         [Input("nodeAccessConfig")]
         public Input<Inputs.BareMetalClusterNodeAccessConfigArgs>? NodeAccessConfig { get; set; }
 
         /// <summary>
         /// Specifies the workload node configurations.
+        /// Structure is documented below.
         /// </summary>
         [Input("nodeConfig")]
         public Input<Inputs.BareMetalClusterNodeConfigArgs>? NodeConfig { get; set; }
 
         /// <summary>
         /// OS environment related configurations.
+        /// Structure is documented below.
         /// </summary>
         [Input("osEnvironmentConfig")]
         public Input<Inputs.BareMetalClusterOsEnvironmentConfigArgs>? OsEnvironmentConfig { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Specifies the cluster proxy configuration.
+        /// Structure is documented below.
         /// </summary>
         [Input("proxy")]
         public Input<Inputs.BareMetalClusterProxyArgs>? Proxy { get; set; }
 
         /// <summary>
         /// Specifies the security related settings for the Bare Metal User Cluster.
+        /// Structure is documented below.
         /// </summary>
         [Input("securityConfig")]
         public Input<Inputs.BareMetalClusterSecurityConfigArgs>? SecurityConfig { get; set; }
@@ -889,6 +926,7 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// The cluster upgrade policy.
+        /// Structure is documented below.
         /// </summary>
         [Input("upgradePolicy")]
         public Input<Inputs.BareMetalClusterUpgradePolicyArgs>? UpgradePolicy { get; set; }
@@ -912,12 +950,17 @@ namespace Pulumi.Gcp.GkeOnPrem
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// Annotations on the Bare Metal User Cluster. This field has the same restrictions as Kubernetes annotations. The total
-        /// size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required),
-        /// separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with
-        /// alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
-        /// non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
-        /// 'effective_annotations' for all of the annotations present on the resource.
+        /// Annotations on the Bare Metal User Cluster.
+        /// This field has the same restrictions as Kubernetes annotations.
+        /// The total size of all keys and values combined is limited to 256k.
+        /// Key can have 2 segments: prefix (optional) and name (required),
+        /// separated by a slash (/).
+        /// Prefix must be a DNS subdomain.
+        /// Name must be 63 characters or less, begin and end with alphanumerics,
+        /// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -933,12 +976,14 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// Binary Authorization related configurations.
+        /// Structure is documented below.
         /// </summary>
         [Input("binaryAuthorization")]
         public Input<Inputs.BareMetalClusterBinaryAuthorizationGetArgs>? BinaryAuthorization { get; set; }
 
         /// <summary>
         /// Specifies the User Cluster's observability infrastructure.
+        /// Structure is documented below.
         /// </summary>
         [Input("clusterOperations")]
         public Input<Inputs.BareMetalClusterClusterOperationsGetArgs>? ClusterOperations { get; set; }
@@ -963,8 +1008,7 @@ namespace Pulumi.Gcp.GkeOnPrem
         public Input<string>? DeleteTime { get; set; }
 
         /// <summary>
-        /// (Output)
-        /// The description of the validation check.
+        /// A human readable description of this Bare Metal User Cluster.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -1041,6 +1085,7 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// Specifies the workload node configurations.
+        /// Structure is documented below.
         /// </summary>
         [Input("maintenanceConfig")]
         public Input<Inputs.BareMetalClusterMaintenanceConfigGetArgs>? MaintenanceConfig { get; set; }
@@ -1060,27 +1105,35 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// Specifies the node access related settings for the bare metal user cluster.
+        /// Structure is documented below.
         /// </summary>
         [Input("nodeAccessConfig")]
         public Input<Inputs.BareMetalClusterNodeAccessConfigGetArgs>? NodeAccessConfig { get; set; }
 
         /// <summary>
         /// Specifies the workload node configurations.
+        /// Structure is documented below.
         /// </summary>
         [Input("nodeConfig")]
         public Input<Inputs.BareMetalClusterNodeConfigGetArgs>? NodeConfig { get; set; }
 
         /// <summary>
         /// OS environment related configurations.
+        /// Structure is documented below.
         /// </summary>
         [Input("osEnvironmentConfig")]
         public Input<Inputs.BareMetalClusterOsEnvironmentConfigGetArgs>? OsEnvironmentConfig { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Specifies the cluster proxy configuration.
+        /// Structure is documented below.
         /// </summary>
         [Input("proxy")]
         public Input<Inputs.BareMetalClusterProxyGetArgs>? Proxy { get; set; }
@@ -1093,6 +1146,7 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// Specifies the security related settings for the Bare Metal User Cluster.
+        /// Structure is documented below.
         /// </summary>
         [Input("securityConfig")]
         public Input<Inputs.BareMetalClusterSecurityConfigGetArgs>? SecurityConfig { get; set; }
@@ -1139,6 +1193,7 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// The cluster upgrade policy.
+        /// Structure is documented below.
         /// </summary>
         [Input("upgradePolicy")]
         public Input<Inputs.BareMetalClusterUpgradePolicyGetArgs>? UpgradePolicy { get; set; }

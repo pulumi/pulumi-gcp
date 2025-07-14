@@ -214,8 +214,6 @@ type NetworkPeeringRoutesConfig struct {
 	// are not controlled by this field.
 	ImportSubnetRoutesWithPublicIp pulumi.BoolOutput `pulumi:"importSubnetRoutesWithPublicIp"`
 	// The name of the primary network for the peering.
-	//
-	// ***
 	Network pulumi.StringOutput `pulumi:"network"`
 	// Name of the peering.
 	Peering pulumi.StringOutput `pulumi:"peering"`
@@ -279,8 +277,6 @@ type networkPeeringRoutesConfigState struct {
 	// are not controlled by this field.
 	ImportSubnetRoutesWithPublicIp *bool `pulumi:"importSubnetRoutesWithPublicIp"`
 	// The name of the primary network for the peering.
-	//
-	// ***
 	Network *string `pulumi:"network"`
 	// Name of the peering.
 	Peering *string `pulumi:"peering"`
@@ -303,8 +299,6 @@ type NetworkPeeringRoutesConfigState struct {
 	// are not controlled by this field.
 	ImportSubnetRoutesWithPublicIp pulumi.BoolPtrInput
 	// The name of the primary network for the peering.
-	//
-	// ***
 	Network pulumi.StringPtrInput
 	// Name of the peering.
 	Peering pulumi.StringPtrInput
@@ -331,8 +325,6 @@ type networkPeeringRoutesConfigArgs struct {
 	// are not controlled by this field.
 	ImportSubnetRoutesWithPublicIp *bool `pulumi:"importSubnetRoutesWithPublicIp"`
 	// The name of the primary network for the peering.
-	//
-	// ***
 	Network string `pulumi:"network"`
 	// Name of the peering.
 	Peering string `pulumi:"peering"`
@@ -356,8 +348,6 @@ type NetworkPeeringRoutesConfigArgs struct {
 	// are not controlled by this field.
 	ImportSubnetRoutesWithPublicIp pulumi.BoolPtrInput
 	// The name of the primary network for the peering.
-	//
-	// ***
 	Network pulumi.StringInput
 	// Name of the peering.
 	Peering pulumi.StringInput
@@ -478,8 +468,6 @@ func (o NetworkPeeringRoutesConfigOutput) ImportSubnetRoutesWithPublicIp() pulum
 }
 
 // The name of the primary network for the peering.
-//
-// ***
 func (o NetworkPeeringRoutesConfigOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkPeeringRoutesConfig) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
 }

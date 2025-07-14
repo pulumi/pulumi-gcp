@@ -117,9 +117,6 @@ namespace Pulumi.Gcp.BigTable
 
         /// <summary>
         /// The unique name of the logical view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("logicalViewId")]
         public Output<string> LogicalViewId { get; private set; } = null!;
@@ -203,9 +200,6 @@ namespace Pulumi.Gcp.BigTable
 
         /// <summary>
         /// The unique name of the logical view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("logicalViewId", required: true)]
         public Input<string> LogicalViewId { get; set; } = null!;
@@ -245,9 +239,6 @@ namespace Pulumi.Gcp.BigTable
 
         /// <summary>
         /// The unique name of the logical view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("logicalViewId")]
         public Input<string>? LogicalViewId { get; set; }

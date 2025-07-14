@@ -467,8 +467,6 @@ if not MYPY:
         flat: NotRequired[pulumi.Input['IndexFieldVectorConfigFlatArgsDict']]
         """
         Indicates the vector index is a flat index.
-
-        - - -
         """
 elif False:
     IndexFieldVectorConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -482,8 +480,6 @@ class IndexFieldVectorConfigArgs:
         :param pulumi.Input[builtins.int] dimension: The resulting index will only include vectors of this dimension, and can be used for vector search
                with the same dimension.
         :param pulumi.Input['IndexFieldVectorConfigFlatArgs'] flat: Indicates the vector index is a flat index.
-               
-               - - -
         """
         if dimension is not None:
             pulumi.set(__self__, "dimension", dimension)
@@ -508,8 +504,6 @@ class IndexFieldVectorConfigArgs:
     def flat(self) -> Optional[pulumi.Input['IndexFieldVectorConfigFlatArgs']]:
         """
         Indicates the vector index is a flat index.
-
-        - - -
         """
         return pulumi.get(self, "flat")
 

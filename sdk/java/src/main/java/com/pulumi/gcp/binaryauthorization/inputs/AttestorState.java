@@ -34,14 +34,16 @@ public final class AttestorState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
+     * A descriptive comment. This field may be updated. The field may be
+     * displayed in chooser dialogs.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
+     * @return A descriptive comment. This field may be updated. The field may be
+     * displayed in chooser dialogs.
      * 
      */
     public Optional<Output<String>> description() {
@@ -63,9 +65,19 @@ public final class AttestorState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -121,7 +133,8 @@ public final class AttestorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
+         * @param description A descriptive comment. This field may be updated. The field may be
+         * displayed in chooser dialogs.
          * 
          * @return builder
          * 
@@ -132,7 +145,8 @@ public final class AttestorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
+         * @param description A descriptive comment. This field may be updated. The field may be
+         * displayed in chooser dialogs.
          * 
          * @return builder
          * 
@@ -162,11 +176,25 @@ public final class AttestorState extends com.pulumi.resources.ResourceArgs {
             return name(Output.of(name));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

@@ -312,14 +312,16 @@ public class ConnectivityTest extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.bypassFirewallChecks);
     }
     /**
-     * The user-supplied description of the Connectivity Test. Maximum of 512 characters.
+     * The user-supplied description of the Connectivity Test.
+     * Maximum of 512 characters.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The user-supplied description of the Connectivity Test. Maximum of 512 characters.
+     * @return The user-supplied description of the Connectivity Test.
+     * Maximum of 512 characters.
      * 
      */
     public Output<Optional<String>> description() {
@@ -366,18 +368,20 @@ public class ConnectivityTest extends com.pulumi.resources.CustomResource {
         return this.effectiveLabels;
     }
     /**
-     * Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-     * labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the
-     * resource.
+     * Resource labels to represent user-provided metadata.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-     * labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the
-     * resource.
+     * @return Resource labels to represent user-provided metadata.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -397,9 +401,19 @@ public class ConnectivityTest extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }
@@ -434,30 +448,34 @@ public class ConnectivityTest extends com.pulumi.resources.CustomResource {
         return this.pulumiLabels;
     }
     /**
-     * Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross
-     * project boundaries.
+     * Other projects that may be relevant for reachability analysis.
+     * This is applicable to scenarios where a test can cross project
+     * boundaries.
      * 
      */
     @Export(name="relatedProjects", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> relatedProjects;
 
     /**
-     * @return Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross
-     * project boundaries.
+     * @return Other projects that may be relevant for reachability analysis.
+     * This is applicable to scenarios where a test can cross project
+     * boundaries.
      * 
      */
     public Output<Optional<List<String>>> relatedProjects() {
         return Codegen.optional(this.relatedProjects);
     }
     /**
-     * Whether run analysis for the return path from destination to source. Default value is false.
+     * Whether run analysis for the return path from destination to source.
+     * Default value is false.
      * 
      */
     @Export(name="roundTrip", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> roundTrip;
 
     /**
-     * @return Whether run analysis for the return path from destination to source. Default value is false.
+     * @return Whether run analysis for the return path from destination to source.
+     * Default value is false.
      * 
      */
     public Output<Optional<Boolean>> roundTrip() {

@@ -132,9 +132,6 @@ export class EnvironmentKeyvaluemapsEntries extends pulumi.CustomResource {
     /**
      * The Apigee environment keyvalumaps Id associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}/keyvaluemaps/{{keyvaluemap_name}}`.
-     *
-     *
-     * - - -
      */
     public readonly envKeyvaluemapId!: pulumi.Output<string>;
     /**
@@ -186,9 +183,6 @@ export interface EnvironmentKeyvaluemapsEntriesState {
     /**
      * The Apigee environment keyvalumaps Id associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}/keyvaluemaps/{{keyvaluemap_name}}`.
-     *
-     *
-     * - - -
      */
     envKeyvaluemapId?: pulumi.Input<string>;
     /**
@@ -208,9 +202,6 @@ export interface EnvironmentKeyvaluemapsEntriesArgs {
     /**
      * The Apigee environment keyvalumaps Id associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}/keyvaluemaps/{{keyvaluemap_name}}`.
-     *
-     *
-     * - - -
      */
     envKeyvaluemapId: pulumi.Input<string>;
     /**

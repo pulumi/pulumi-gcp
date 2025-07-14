@@ -60,9 +60,6 @@ class TopicArgs:
                order specified.
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: Name of the topic.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['TopicSchemaSettingsArgs'] schema_settings: Settings for validating messages published against a schema.
@@ -184,9 +181,6 @@ class TopicArgs:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Name of the topic.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -265,9 +259,6 @@ class _TopicState:
                order specified.
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: Name of the topic.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -407,9 +398,6 @@ class _TopicState:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Name of the topic.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -709,9 +697,6 @@ class Topic(pulumi.CustomResource):
                order specified.
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: Name of the topic.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Union['TopicSchemaSettingsArgs', 'TopicSchemaSettingsArgsDict']] schema_settings: Settings for validating messages published against a schema.
@@ -1032,9 +1017,6 @@ class Topic(pulumi.CustomResource):
                order specified.
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: Name of the topic.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -1140,9 +1122,6 @@ class Topic(pulumi.CustomResource):
     def name(self) -> pulumi.Output[builtins.str]:
         """
         Name of the topic.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

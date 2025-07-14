@@ -20,8 +20,6 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// <summary>
         /// Name of the location. It should be one of the Cloud Storage buckets.
         /// Only one location can be specified. (should match location)
-        /// 
-        /// - - -
         /// </summary>
         public readonly string Name;
 

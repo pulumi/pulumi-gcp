@@ -34,9 +34,6 @@ class ClusterArgs:
         :param pulumi.Input['ClusterAutoscalingSettingsArgs'] autoscaling_settings: Configuration of the autoscaling applied to this cluster
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: The ID of the Cluster.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeTypeConfigArgs']]] node_type_configs: The map of cluster node types in this cluster,
                where the key is canonical identifier of the node type (corresponds to the NodeType).
                Structure is documented below.
@@ -81,9 +78,6 @@ class ClusterArgs:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The ID of the Cluster.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -123,9 +117,6 @@ class _ClusterState:
         :param pulumi.Input[builtins.bool] management: True if the cluster is a management cluster; false otherwise.
                There can only be one management cluster in a private cloud and it has to be the first one.
         :param pulumi.Input[builtins.str] name: The ID of the Cluster.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeTypeConfigArgs']]] node_type_configs: The map of cluster node types in this cluster,
                where the key is canonical identifier of the node type (corresponds to the NodeType).
                Structure is documented below.
@@ -181,9 +172,6 @@ class _ClusterState:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The ID of the Cluster.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -374,9 +362,6 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Union['ClusterAutoscalingSettingsArgs', 'ClusterAutoscalingSettingsArgsDict']] autoscaling_settings: Configuration of the autoscaling applied to this cluster
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: The ID of the Cluster.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeTypeConfigArgs', 'ClusterNodeTypeConfigArgsDict']]]] node_type_configs: The map of cluster node types in this cluster,
                where the key is canonical identifier of the node type (corresponds to the NodeType).
                Structure is documented below.
@@ -570,9 +555,6 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] management: True if the cluster is a management cluster; false otherwise.
                There can only be one management cluster in a private cloud and it has to be the first one.
         :param pulumi.Input[builtins.str] name: The ID of the Cluster.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeTypeConfigArgs', 'ClusterNodeTypeConfigArgsDict']]]] node_type_configs: The map of cluster node types in this cluster,
                where the key is canonical identifier of the node type (corresponds to the NodeType).
                Structure is documented below.
@@ -618,9 +600,6 @@ class Cluster(pulumi.CustomResource):
     def name(self) -> pulumi.Output[builtins.str]:
         """
         The ID of the Cluster.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

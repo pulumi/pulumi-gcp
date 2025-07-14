@@ -240,8 +240,6 @@ type CustomTargetType struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location of the source.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Name of the `CustomTargetType`.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -318,8 +316,6 @@ type customTargetTypeState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location of the source.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// Name of the `CustomTargetType`.
 	Name *string `pulumi:"name"`
@@ -359,8 +355,6 @@ type CustomTargetTypeState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location of the source.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// Name of the `CustomTargetType`.
 	Name pulumi.StringPtrInput
@@ -395,8 +389,6 @@ type customTargetTypeArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location of the source.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// Name of the `CustomTargetType`.
 	Name *string `pulumi:"name"`
@@ -421,8 +413,6 @@ type CustomTargetTypeArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location of the source.
-	//
-	// ***
 	Location pulumi.StringInput
 	// Name of the `CustomTargetType`.
 	Name pulumi.StringPtrInput
@@ -568,8 +558,6 @@ func (o CustomTargetTypeOutput) Labels() pulumi.StringMapOutput {
 }
 
 // The location of the source.
-//
-// ***
 func (o CustomTargetTypeOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomTargetType) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

@@ -116,8 +116,6 @@ type WebApp struct {
 	AppUrls        pulumi.StringArrayOutput `pulumi:"appUrls"`
 	DeletionPolicy pulumi.StringPtrOutput   `pulumi:"deletionPolicy"`
 	// The user-assigned display name of the App.
-	//
-	// ***
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The fully qualified resource name of the App, for example:
 	// projects/projectId/webApps/appId
@@ -171,8 +169,6 @@ type webAppState struct {
 	AppUrls        []string `pulumi:"appUrls"`
 	DeletionPolicy *string  `pulumi:"deletionPolicy"`
 	// The user-assigned display name of the App.
-	//
-	// ***
 	DisplayName *string `pulumi:"displayName"`
 	// The fully qualified resource name of the App, for example:
 	// projects/projectId/webApps/appId
@@ -194,8 +190,6 @@ type WebAppState struct {
 	AppUrls        pulumi.StringArrayInput
 	DeletionPolicy pulumi.StringPtrInput
 	// The user-assigned display name of the App.
-	//
-	// ***
 	DisplayName pulumi.StringPtrInput
 	// The fully qualified resource name of the App, for example:
 	// projects/projectId/webApps/appId
@@ -216,8 +210,6 @@ type webAppArgs struct {
 	ApiKeyId       *string `pulumi:"apiKeyId"`
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The user-assigned display name of the App.
-	//
-	// ***
 	DisplayName string `pulumi:"displayName"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -232,8 +224,6 @@ type WebAppArgs struct {
 	ApiKeyId       pulumi.StringPtrInput
 	DeletionPolicy pulumi.StringPtrInput
 	// The user-assigned display name of the App.
-	//
-	// ***
 	DisplayName pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -350,8 +340,6 @@ func (o WebAppOutput) DeletionPolicy() pulumi.StringPtrOutput {
 }
 
 // The user-assigned display name of the App.
-//
-// ***
 func (o WebAppOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebApp) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }

@@ -242,8 +242,6 @@ public final class WorkforcePoolProviderArgs extends com.pulumi.resources.Resour
      * This value must be 4-32 characters, and may contain the characters [a-z0-9-].
      * The prefix `gcp-` is reserved for use by Google, and may not be specified.
      * 
-     * ***
-     * 
      */
     @Import(name="providerId", required=true)
     private Output<String> providerId;
@@ -252,8 +250,6 @@ public final class WorkforcePoolProviderArgs extends com.pulumi.resources.Resour
      * @return The ID for the provider, which becomes the final component of the resource name.
      * This value must be 4-32 characters, and may contain the characters [a-z0-9-].
      * The prefix `gcp-` is reserved for use by Google, and may not be specified.
-     * 
-     * ***
      * 
      */
     public Output<String> providerId() {
@@ -601,8 +597,6 @@ public final class WorkforcePoolProviderArgs extends com.pulumi.resources.Resour
          * This value must be 4-32 characters, and may contain the characters [a-z0-9-].
          * The prefix `gcp-` is reserved for use by Google, and may not be specified.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -615,8 +609,6 @@ public final class WorkforcePoolProviderArgs extends com.pulumi.resources.Resour
          * @param providerId The ID for the provider, which becomes the final component of the resource name.
          * This value must be 4-32 characters, and may contain the characters [a-z0-9-].
          * The prefix `gcp-` is reserved for use by Google, and may not be specified.
-         * 
-         * ***
          * 
          * @return builder
          * 

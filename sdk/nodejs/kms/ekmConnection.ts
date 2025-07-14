@@ -98,8 +98,7 @@ export class EkmConnection extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if
-     * KeyManagementMode is CLOUD_KMS.
+     * Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
      */
     public readonly cryptoSpacePath!: pulumi.Output<string>;
     /**
@@ -107,8 +106,9 @@ export class EkmConnection extends pulumi.CustomResource {
      */
     public readonly etag!: pulumi.Output<string>;
     /**
-     * Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL Default
-     * value: "MANUAL" Possible values: ["MANUAL", "CLOUD_KMS"]
+     * Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL
+     * Default value is `MANUAL`.
+     * Possible values are: `MANUAL`, `CLOUD_KMS`.
      */
     public readonly keyManagementMode!: pulumi.Output<string | undefined>;
     /**
@@ -120,6 +120,10 @@ export class EkmConnection extends pulumi.CustomResource {
      * The resource name for the EkmConnection.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
      * A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported
@@ -180,8 +184,7 @@ export interface EkmConnectionState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if
-     * KeyManagementMode is CLOUD_KMS.
+     * Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
      */
     cryptoSpacePath?: pulumi.Input<string>;
     /**
@@ -189,8 +192,9 @@ export interface EkmConnectionState {
      */
     etag?: pulumi.Input<string>;
     /**
-     * Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL Default
-     * value: "MANUAL" Possible values: ["MANUAL", "CLOUD_KMS"]
+     * Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL
+     * Default value is `MANUAL`.
+     * Possible values are: `MANUAL`, `CLOUD_KMS`.
      */
     keyManagementMode?: pulumi.Input<string>;
     /**
@@ -202,6 +206,10 @@ export interface EkmConnectionState {
      * The resource name for the EkmConnection.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported
@@ -215,8 +223,7 @@ export interface EkmConnectionState {
  */
 export interface EkmConnectionArgs {
     /**
-     * Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if
-     * KeyManagementMode is CLOUD_KMS.
+     * Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
      */
     cryptoSpacePath?: pulumi.Input<string>;
     /**
@@ -224,8 +231,9 @@ export interface EkmConnectionArgs {
      */
     etag?: pulumi.Input<string>;
     /**
-     * Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL Default
-     * value: "MANUAL" Possible values: ["MANUAL", "CLOUD_KMS"]
+     * Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL
+     * Default value is `MANUAL`.
+     * Possible values are: `MANUAL`, `CLOUD_KMS`.
      */
     keyManagementMode?: pulumi.Input<string>;
     /**
@@ -237,6 +245,10 @@ export interface EkmConnectionArgs {
      * The resource name for the EkmConnection.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
      * A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported

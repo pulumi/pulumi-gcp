@@ -184,8 +184,6 @@ if not MYPY:
         """
         The name of the template to import, as declared in the YAML
         configuration.
-
-        - - -
         """
 elif False:
     DeploymentTargetImportArgsDict: TypeAlias = Mapping[str, Any]
@@ -199,8 +197,6 @@ class DeploymentTargetImportArgs:
         :param pulumi.Input[builtins.str] content: The full contents of the template that you want to import.
         :param pulumi.Input[builtins.str] name: The name of the template to import, as declared in the YAML
                configuration.
-               
-               - - -
         """
         if content is not None:
             pulumi.set(__self__, "content", content)
@@ -225,8 +221,6 @@ class DeploymentTargetImportArgs:
         """
         The name of the template to import, as declared in the YAML
         configuration.
-
-        - - -
         """
         return pulumi.get(self, "name")
 

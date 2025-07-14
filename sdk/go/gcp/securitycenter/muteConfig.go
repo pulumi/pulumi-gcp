@@ -98,8 +98,6 @@ type MuteConfig struct {
 	// Resource name of the new mute configs's parent. Its format is
 	// "organizations/[organizationId]", "folders/[folderId]", or
 	// "projects/[projectId]".
-	//
-	// ***
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// The type of the mute config, which determines what type of mute state the config affects.
 	// Default value is `DYNAMIC`.
@@ -180,8 +178,6 @@ type muteConfigState struct {
 	// Resource name of the new mute configs's parent. Its format is
 	// "organizations/[organizationId]", "folders/[folderId]", or
 	// "projects/[projectId]".
-	//
-	// ***
 	Parent *string `pulumi:"parent"`
 	// The type of the mute config, which determines what type of mute state the config affects.
 	// Default value is `DYNAMIC`.
@@ -224,8 +220,6 @@ type MuteConfigState struct {
 	// Resource name of the new mute configs's parent. Its format is
 	// "organizations/[organizationId]", "folders/[folderId]", or
 	// "projects/[projectId]".
-	//
-	// ***
 	Parent pulumi.StringPtrInput
 	// The type of the mute config, which determines what type of mute state the config affects.
 	// Default value is `DYNAMIC`.
@@ -260,8 +254,6 @@ type muteConfigArgs struct {
 	// Resource name of the new mute configs's parent. Its format is
 	// "organizations/[organizationId]", "folders/[folderId]", or
 	// "projects/[projectId]".
-	//
-	// ***
 	Parent string `pulumi:"parent"`
 	// The type of the mute config, which determines what type of mute state the config affects.
 	// Default value is `DYNAMIC`.
@@ -289,8 +281,6 @@ type MuteConfigArgs struct {
 	// Resource name of the new mute configs's parent. Its format is
 	// "organizations/[organizationId]", "folders/[folderId]", or
 	// "projects/[projectId]".
-	//
-	// ***
 	Parent pulumi.StringInput
 	// The type of the mute config, which determines what type of mute state the config affects.
 	// Default value is `DYNAMIC`.
@@ -436,8 +426,6 @@ func (o MuteConfigOutput) Name() pulumi.StringOutput {
 // Resource name of the new mute configs's parent. Its format is
 // "organizations/[organizationId]", "folders/[folderId]", or
 // "projects/[projectId]".
-//
-// ***
 func (o MuteConfigOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *MuteConfig) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }

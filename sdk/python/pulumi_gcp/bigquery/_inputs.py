@@ -3074,8 +3074,6 @@ if not MYPY:
         model_id: pulumi.Input[builtins.str]
         """
         The ID of the model.
-
-        - - -
         """
         project_id: pulumi.Input[builtins.str]
         """
@@ -3093,8 +3091,6 @@ class JobExtractSourceModelArgs:
         """
         :param pulumi.Input[builtins.str] dataset_id: The ID of the dataset containing this model.
         :param pulumi.Input[builtins.str] model_id: The ID of the model.
-               
-               - - -
         :param pulumi.Input[builtins.str] project_id: The ID of the project containing this model.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
@@ -3118,8 +3114,6 @@ class JobExtractSourceModelArgs:
     def model_id(self) -> pulumi.Input[builtins.str]:
         """
         The ID of the model.
-
-        - - -
         """
         return pulumi.get(self, "model_id")
 
@@ -4987,7 +4981,7 @@ if not MYPY:
     class JobStatusErrorArgsDict(TypedDict):
         location: NotRequired[pulumi.Input[builtins.str]]
         """
-        Specifies where the error occurred, if present.
+        The geographic location of the job. The default value is US.
         """
         message: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -5007,7 +5001,7 @@ class JobStatusErrorArgs:
                  message: Optional[pulumi.Input[builtins.str]] = None,
                  reason: Optional[pulumi.Input[builtins.str]] = None):
         """
-        :param pulumi.Input[builtins.str] location: Specifies where the error occurred, if present.
+        :param pulumi.Input[builtins.str] location: The geographic location of the job. The default value is US.
         :param pulumi.Input[builtins.str] message: A human-readable description of the error.
         :param pulumi.Input[builtins.str] reason: A short error code that summarizes the error.
         """
@@ -5022,7 +5016,7 @@ class JobStatusErrorArgs:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Specifies where the error occurred, if present.
+        The geographic location of the job. The default value is US.
         """
         return pulumi.get(self, "location")
 
@@ -5059,7 +5053,7 @@ if not MYPY:
     class JobStatusErrorResultArgsDict(TypedDict):
         location: NotRequired[pulumi.Input[builtins.str]]
         """
-        Specifies where the error occurred, if present.
+        The geographic location of the job. The default value is US.
         """
         message: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -5079,7 +5073,7 @@ class JobStatusErrorResultArgs:
                  message: Optional[pulumi.Input[builtins.str]] = None,
                  reason: Optional[pulumi.Input[builtins.str]] = None):
         """
-        :param pulumi.Input[builtins.str] location: Specifies where the error occurred, if present.
+        :param pulumi.Input[builtins.str] location: The geographic location of the job. The default value is US.
         :param pulumi.Input[builtins.str] message: A human-readable description of the error.
         :param pulumi.Input[builtins.str] reason: A short error code that summarizes the error.
         """
@@ -5094,7 +5088,7 @@ class JobStatusErrorResultArgs:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Specifies where the error occurred, if present.
+        The geographic location of the job. The default value is US.
         """
         return pulumi.get(self, "location")
 

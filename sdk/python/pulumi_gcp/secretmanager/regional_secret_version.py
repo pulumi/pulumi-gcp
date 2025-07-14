@@ -30,9 +30,6 @@ class RegionalSecretVersionArgs:
         """
         The set of arguments for constructing a RegionalSecretVersion resource.
         :param pulumi.Input[builtins.str] secret: Secret Manager regional secret resource.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] secret_data: The secret data. Must be no larger than 64KiB.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[builtins.str] deletion_policy: The deletion policy for the regional secret version. Setting `ABANDON` allows the resource
@@ -58,9 +55,6 @@ class RegionalSecretVersionArgs:
     def secret(self) -> pulumi.Input[builtins.str]:
         """
         Secret Manager regional secret resource.
-
-
-        - - -
         """
         return pulumi.get(self, "secret")
 
@@ -155,9 +149,6 @@ class _RegionalSecretVersionState:
         :param pulumi.Input[builtins.str] name: The resource name of the regional secret version. Format:
                `projects/{{project}}/locations/{{location}}/secrets/{{secret_id}}/versions/{{version}}`
         :param pulumi.Input[builtins.str] secret: Secret Manager regional secret resource.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] secret_data: The secret data. Must be no larger than 64KiB.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[builtins.str] version: The version of the Regional Secret.
@@ -293,9 +284,6 @@ class _RegionalSecretVersionState:
     def secret(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Secret Manager regional secret resource.
-
-
-        - - -
         """
         return pulumi.get(self, "secret")
 
@@ -438,9 +426,6 @@ class RegionalSecretVersion(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] enabled: The current state of the regional secret version.
         :param pulumi.Input[builtins.bool] is_secret_data_base64: If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
         :param pulumi.Input[builtins.str] secret: Secret Manager regional secret resource.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] secret_data: The secret data. Must be no larger than 64KiB.
                **Note**: This property is sensitive and will not be displayed in the plan.
         """
@@ -626,9 +611,6 @@ class RegionalSecretVersion(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] name: The resource name of the regional secret version. Format:
                `projects/{{project}}/locations/{{location}}/secrets/{{secret_id}}/versions/{{version}}`
         :param pulumi.Input[builtins.str] secret: Secret Manager regional secret resource.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] secret_data: The secret data. Must be no larger than 64KiB.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[builtins.str] version: The version of the Regional Secret.
@@ -726,9 +708,6 @@ class RegionalSecretVersion(pulumi.CustomResource):
     def secret(self) -> pulumi.Output[builtins.str]:
         """
         Secret Manager regional secret resource.
-
-
-        - - -
         """
         return pulumi.get(self, "secret")
 

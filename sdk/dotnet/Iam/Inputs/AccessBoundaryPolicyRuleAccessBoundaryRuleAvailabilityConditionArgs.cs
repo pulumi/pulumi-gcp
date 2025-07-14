@@ -28,8 +28,6 @@ namespace Pulumi.Gcp.Iam.Inputs
         /// <summary>
         /// String indicating the location of the expression for error reporting,
         /// e.g. a file name and a position in the file.
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

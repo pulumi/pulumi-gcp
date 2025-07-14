@@ -95,15 +95,17 @@ type CodeToolsSetting struct {
 	// Represents the full set of enabled tools.
 	// Structure is documented below.
 	EnabledTools CodeToolsSettingEnabledToolArrayOutput `pulumi:"enabledTools"`
-	// Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present in your
-	// configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+	// Labels as key value pairs.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in
-	// https://google.aip.dev/122.
+	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Identifier. Name of the resource.
 	// Format:projects/{project}/locations/{location}/codeToolsSettings/{codeToolsSetting}
-	Name    pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -162,15 +164,17 @@ type codeToolsSettingState struct {
 	// Represents the full set of enabled tools.
 	// Structure is documented below.
 	EnabledTools []CodeToolsSettingEnabledTool `pulumi:"enabledTools"`
-	// Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present in your
-	// configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+	// Labels as key value pairs.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in
-	// https://google.aip.dev/122.
+	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location *string `pulumi:"location"`
 	// Identifier. Name of the resource.
 	// Format:projects/{project}/locations/{location}/codeToolsSettings/{codeToolsSetting}
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -189,15 +193,17 @@ type CodeToolsSettingState struct {
 	// Represents the full set of enabled tools.
 	// Structure is documented below.
 	EnabledTools CodeToolsSettingEnabledToolArrayInput
-	// Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present in your
-	// configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+	// Labels as key value pairs.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in
-	// https://google.aip.dev/122.
+	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringPtrInput
 	// Identifier. Name of the resource.
 	// Format:projects/{project}/locations/{location}/codeToolsSettings/{codeToolsSetting}
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -216,13 +222,15 @@ type codeToolsSettingArgs struct {
 	// Represents the full set of enabled tools.
 	// Structure is documented below.
 	EnabledTools []CodeToolsSettingEnabledTool `pulumi:"enabledTools"`
-	// Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present in your
-	// configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+	// Labels as key value pairs.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in
-	// https://google.aip.dev/122.
+	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location *string `pulumi:"location"`
-	Project  *string `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a CodeToolsSetting resource.
@@ -232,13 +240,15 @@ type CodeToolsSettingArgs struct {
 	// Represents the full set of enabled tools.
 	// Structure is documented below.
 	EnabledTools CodeToolsSettingEnabledToolArrayInput
-	// Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present in your
-	// configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+	// Labels as key value pairs.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in
-	// https://google.aip.dev/122.
+	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringPtrInput
-	Project  pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 }
 
 func (CodeToolsSettingArgs) ElementType() reflect.Type {
@@ -349,14 +359,14 @@ func (o CodeToolsSettingOutput) EnabledTools() CodeToolsSettingEnabledToolArrayO
 	return o.ApplyT(func(v *CodeToolsSetting) CodeToolsSettingEnabledToolArrayOutput { return v.EnabledTools }).(CodeToolsSettingEnabledToolArrayOutput)
 }
 
-// Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present in your
-// configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+// Labels as key value pairs.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o CodeToolsSettingOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CodeToolsSetting) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in
-// https://google.aip.dev/122.
+// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 func (o CodeToolsSettingOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CodeToolsSetting) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
@@ -367,6 +377,8 @@ func (o CodeToolsSettingOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CodeToolsSetting) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o CodeToolsSettingOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *CodeToolsSetting) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

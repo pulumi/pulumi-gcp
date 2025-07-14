@@ -411,8 +411,8 @@ namespace Pulumi.Gcp.OsConfig
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Duration of the patch. After the duration ends, the patch times out. A duration in seconds with up to nine fractional
-        /// digits, terminated by 's'. Example: "3.5s"
+        /// Duration of the patch. After the duration ends, the patch times out.
+        /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
         /// </summary>
         [Output("duration")]
         public Output<string?> Duration { get; private set; } = null!;
@@ -440,12 +440,14 @@ namespace Pulumi.Gcp.OsConfig
 
         /// <summary>
         /// Schedule a one-time execution.
+        /// Structure is documented below.
         /// </summary>
         [Output("oneTimeSchedule")]
         public Output<Outputs.PatchDeploymentOneTimeSchedule?> OneTimeSchedule { get; private set; } = null!;
 
         /// <summary>
         /// Patch configuration that is applied.
+        /// Structure is documented below.
         /// </summary>
         [Output("patchConfig")]
         public Output<Outputs.PatchDeploymentPatchConfig?> PatchConfig { get; private set; } = null!;
@@ -461,17 +463,23 @@ namespace Pulumi.Gcp.OsConfig
         [Output("patchDeploymentId")]
         public Output<string> PatchDeploymentId { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Schedule recurring executions.
+        /// Structure is documented below.
         /// </summary>
         [Output("recurringSchedule")]
         public Output<Outputs.PatchDeploymentRecurringSchedule?> RecurringSchedule { get; private set; } = null!;
 
         /// <summary>
         /// Rollout strategy of the patch job.
+        /// Structure is documented below.
         /// </summary>
         [Output("rollout")]
         public Output<Outputs.PatchDeploymentRollout?> Rollout { get; private set; } = null!;
@@ -536,8 +544,8 @@ namespace Pulumi.Gcp.OsConfig
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Duration of the patch. After the duration ends, the patch times out. A duration in seconds with up to nine fractional
-        /// digits, terminated by 's'. Example: "3.5s"
+        /// Duration of the patch. After the duration ends, the patch times out.
+        /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
         /// </summary>
         [Input("duration")]
         public Input<string>? Duration { get; set; }
@@ -551,12 +559,14 @@ namespace Pulumi.Gcp.OsConfig
 
         /// <summary>
         /// Schedule a one-time execution.
+        /// Structure is documented below.
         /// </summary>
         [Input("oneTimeSchedule")]
         public Input<Inputs.PatchDeploymentOneTimeScheduleArgs>? OneTimeSchedule { get; set; }
 
         /// <summary>
         /// Patch configuration that is applied.
+        /// Structure is documented below.
         /// </summary>
         [Input("patchConfig")]
         public Input<Inputs.PatchDeploymentPatchConfigArgs>? PatchConfig { get; set; }
@@ -572,17 +582,23 @@ namespace Pulumi.Gcp.OsConfig
         [Input("patchDeploymentId", required: true)]
         public Input<string> PatchDeploymentId { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Schedule recurring executions.
+        /// Structure is documented below.
         /// </summary>
         [Input("recurringSchedule")]
         public Input<Inputs.PatchDeploymentRecurringScheduleArgs>? RecurringSchedule { get; set; }
 
         /// <summary>
         /// Rollout strategy of the patch job.
+        /// Structure is documented below.
         /// </summary>
         [Input("rollout")]
         public Input<Inputs.PatchDeploymentRolloutArgs>? Rollout { get; set; }
@@ -609,8 +625,8 @@ namespace Pulumi.Gcp.OsConfig
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Duration of the patch. After the duration ends, the patch times out. A duration in seconds with up to nine fractional
-        /// digits, terminated by 's'. Example: "3.5s"
+        /// Duration of the patch. After the duration ends, the patch times out.
+        /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
         /// </summary>
         [Input("duration")]
         public Input<string>? Duration { get; set; }
@@ -638,12 +654,14 @@ namespace Pulumi.Gcp.OsConfig
 
         /// <summary>
         /// Schedule a one-time execution.
+        /// Structure is documented below.
         /// </summary>
         [Input("oneTimeSchedule")]
         public Input<Inputs.PatchDeploymentOneTimeScheduleGetArgs>? OneTimeSchedule { get; set; }
 
         /// <summary>
         /// Patch configuration that is applied.
+        /// Structure is documented below.
         /// </summary>
         [Input("patchConfig")]
         public Input<Inputs.PatchDeploymentPatchConfigGetArgs>? PatchConfig { get; set; }
@@ -659,17 +677,23 @@ namespace Pulumi.Gcp.OsConfig
         [Input("patchDeploymentId")]
         public Input<string>? PatchDeploymentId { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Schedule recurring executions.
+        /// Structure is documented below.
         /// </summary>
         [Input("recurringSchedule")]
         public Input<Inputs.PatchDeploymentRecurringScheduleGetArgs>? RecurringSchedule { get; set; }
 
         /// <summary>
         /// Rollout strategy of the patch job.
+        /// Structure is documented below.
         /// </summary>
         [Input("rollout")]
         public Input<Inputs.PatchDeploymentRolloutGetArgs>? Rollout { get; set; }

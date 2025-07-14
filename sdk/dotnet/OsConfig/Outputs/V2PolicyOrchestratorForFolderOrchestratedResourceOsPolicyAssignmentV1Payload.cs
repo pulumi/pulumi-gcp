@@ -26,8 +26,7 @@ namespace Pulumi.Gcp.OsConfig.Outputs
         /// </summary>
         public readonly bool? Deleted;
         /// <summary>
-        /// OS policy assignment description.
-        /// Length of the description is limited to 1024 characters.
+        /// Freeform text describing the purpose of the resource.
         /// </summary>
         public readonly string? Description;
         /// <summary>

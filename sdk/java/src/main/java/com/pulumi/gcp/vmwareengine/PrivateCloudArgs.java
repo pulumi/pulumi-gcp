@@ -21,16 +21,14 @@ public final class PrivateCloudArgs extends com.pulumi.resources.ResourceArgs {
     public static final PrivateCloudArgs Empty = new PrivateCloudArgs();
 
     /**
-     * The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0
-     * starts the deletion request immediately. If no value is set, a default value is set at the API Level.
+     * The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
      * 
      */
     @Import(name="deletionDelayHours")
     private @Nullable Output<Integer> deletionDelayHours;
 
     /**
-     * @return The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0
-     * starts the deletion request immediately. If no value is set, a default value is set at the API Level.
+     * @return The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
      * 
      */
     public Optional<Output<Integer>> deletionDelayHours() {
@@ -116,26 +114,32 @@ public final class PrivateCloudArgs extends com.pulumi.resources.ResourceArgs {
         return this.networkConfig;
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
 
     /**
-     * While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is
-     * only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with
-     * deletion_delay_hours.
+     * While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with deletion_delay_hours.
      * 
      */
     @Import(name="sendDeletionDelayHoursIfZero")
     private @Nullable Output<Boolean> sendDeletionDelayHoursIfZero;
 
     /**
-     * @return While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is
-     * only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with
-     * deletion_delay_hours.
+     * @return While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with deletion_delay_hours.
      * 
      */
     public Optional<Output<Boolean>> sendDeletionDelayHoursIfZero() {
@@ -143,14 +147,16 @@ public final class PrivateCloudArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Initial type of the private cloud. Possible values: [&#34;STANDARD&#34;, &#34;TIME_LIMITED&#34;, &#34;STRETCHED&#34;]
+     * Initial type of the private cloud.
+     * Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Initial type of the private cloud. Possible values: [&#34;STANDARD&#34;, &#34;TIME_LIMITED&#34;, &#34;STRETCHED&#34;]
+     * @return Initial type of the private cloud.
+     * Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -190,8 +196,7 @@ public final class PrivateCloudArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionDelayHours The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0
-         * starts the deletion request immediately. If no value is set, a default value is set at the API Level.
+         * @param deletionDelayHours The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
          * 
          * @return builder
          * 
@@ -202,8 +207,7 @@ public final class PrivateCloudArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionDelayHours The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0
-         * starts the deletion request immediately. If no value is set, a default value is set at the API Level.
+         * @param deletionDelayHours The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
          * 
          * @return builder
          * 
@@ -321,19 +325,31 @@ public final class PrivateCloudArgs extends com.pulumi.resources.ResourceArgs {
             return networkConfig(Output.of(networkConfig));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
 
         /**
-         * @param sendDeletionDelayHoursIfZero While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is
-         * only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with
-         * deletion_delay_hours.
+         * @param sendDeletionDelayHoursIfZero While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with deletion_delay_hours.
          * 
          * @return builder
          * 
@@ -344,9 +360,7 @@ public final class PrivateCloudArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sendDeletionDelayHoursIfZero While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is
-         * only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with
-         * deletion_delay_hours.
+         * @param sendDeletionDelayHoursIfZero While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with deletion_delay_hours.
          * 
          * @return builder
          * 
@@ -356,7 +370,8 @@ public final class PrivateCloudArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Initial type of the private cloud. Possible values: [&#34;STANDARD&#34;, &#34;TIME_LIMITED&#34;, &#34;STRETCHED&#34;]
+         * @param type Initial type of the private cloud.
+         * Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
          * 
          * @return builder
          * 
@@ -367,7 +382,8 @@ public final class PrivateCloudArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Initial type of the private cloud. Possible values: [&#34;STANDARD&#34;, &#34;TIME_LIMITED&#34;, &#34;STRETCHED&#34;]
+         * @param type Initial type of the private cloud.
+         * Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
          * 
          * @return builder
          * 

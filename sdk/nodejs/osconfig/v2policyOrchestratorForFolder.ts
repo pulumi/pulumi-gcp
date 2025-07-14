@@ -190,8 +190,9 @@ export class V2PolicyOrchestratorForFolder extends pulumi.CustomResource {
      */
     public readonly folderId!: pulumi.Output<string>;
     /**
-     * Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present in your
-     * configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+     * Labels as key value pairs
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -207,7 +208,9 @@ export class V2PolicyOrchestratorForFolder extends pulumi.CustomResource {
      */
     public readonly orchestratedResource!: pulumi.Output<outputs.osconfig.V2PolicyOrchestratorForFolderOrchestratedResource>;
     /**
-     * Defines a set of selectors which drive which resources are in scope of policy orchestration.
+     * Defines a set of selectors which drive which resources are in scope of policy
+     * orchestration.
+     * Structure is documented below.
      */
     public readonly orchestrationScope!: pulumi.Output<outputs.osconfig.V2PolicyOrchestratorForFolderOrchestrationScope | undefined>;
     /**
@@ -236,14 +239,13 @@ export class V2PolicyOrchestratorForFolder extends pulumi.CustomResource {
      */
     public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
     /**
-     * (Output)
-     * State of the iteration.
-     * Possible values:
-     * PROCESSING
-     * COMPLETED
-     * FAILED
-     * CANCELLED
-     * UNKNOWN
+     * State of the orchestrator. Can be updated to change orchestrator behaviour.
+     * Allowed values:
+     * - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+     * - `STOPPED` - orchestrator won't make any changes.
+     * Note: There might be more states added in the future. We use string here
+     * instead of an enum, to avoid the need of propagating new states to all the
+     * client code.
      */
     public readonly state!: pulumi.Output<string | undefined>;
     /**
@@ -353,8 +355,9 @@ export interface V2PolicyOrchestratorForFolderState {
      */
     folderId?: pulumi.Input<string>;
     /**
-     * Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present in your
-     * configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+     * Labels as key value pairs
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -370,7 +373,9 @@ export interface V2PolicyOrchestratorForFolderState {
      */
     orchestratedResource?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForFolderOrchestratedResource>;
     /**
-     * Defines a set of selectors which drive which resources are in scope of policy orchestration.
+     * Defines a set of selectors which drive which resources are in scope of policy
+     * orchestration.
+     * Structure is documented below.
      */
     orchestrationScope?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForFolderOrchestrationScope>;
     /**
@@ -399,14 +404,13 @@ export interface V2PolicyOrchestratorForFolderState {
      */
     reconciling?: pulumi.Input<boolean>;
     /**
-     * (Output)
-     * State of the iteration.
-     * Possible values:
-     * PROCESSING
-     * COMPLETED
-     * FAILED
-     * CANCELLED
-     * UNKNOWN
+     * State of the orchestrator. Can be updated to change orchestrator behaviour.
+     * Allowed values:
+     * - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+     * - `STOPPED` - orchestrator won't make any changes.
+     * Note: There might be more states added in the future. We use string here
+     * instead of an enum, to avoid the need of propagating new states to all the
+     * client code.
      */
     state?: pulumi.Input<string>;
     /**
@@ -436,8 +440,9 @@ export interface V2PolicyOrchestratorForFolderArgs {
      */
     folderId: pulumi.Input<string>;
     /**
-     * Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present in your
-     * configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
+     * Labels as key value pairs
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -446,7 +451,9 @@ export interface V2PolicyOrchestratorForFolderArgs {
      */
     orchestratedResource: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForFolderOrchestratedResource>;
     /**
-     * Defines a set of selectors which drive which resources are in scope of policy orchestration.
+     * Defines a set of selectors which drive which resources are in scope of policy
+     * orchestration.
+     * Structure is documented below.
      */
     orchestrationScope?: pulumi.Input<inputs.osconfig.V2PolicyOrchestratorForFolderOrchestrationScope>;
     /**
@@ -460,14 +467,13 @@ export interface V2PolicyOrchestratorForFolderArgs {
      */
     policyOrchestratorId: pulumi.Input<string>;
     /**
-     * (Output)
-     * State of the iteration.
-     * Possible values:
-     * PROCESSING
-     * COMPLETED
-     * FAILED
-     * CANCELLED
-     * UNKNOWN
+     * State of the orchestrator. Can be updated to change orchestrator behaviour.
+     * Allowed values:
+     * - `ACTIVE` - orchestrator is actively looking for actions to be taken.
+     * - `STOPPED` - orchestrator won't make any changes.
+     * Note: There might be more states added in the future. We use string here
+     * instead of an enum, to avoid the need of propagating new states to all the
+     * client code.
      */
     state?: pulumi.Input<string>;
 }

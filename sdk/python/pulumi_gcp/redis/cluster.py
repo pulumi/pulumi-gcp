@@ -63,9 +63,6 @@ class ClusterArgs:
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: Unique name of the resource in this scope including project and location using the form:
                projects/{projectId}/locations/{locationId}/clusters/{clusterId}
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] node_type: The nodeType for the Redis cluster.
                If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
                Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
@@ -250,9 +247,6 @@ class ClusterArgs:
         """
         Unique name of the resource in this scope including project and location using the form:
         projects/{projectId}/locations/{locationId}/clusters/{clusterId}
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -450,9 +444,6 @@ class _ClusterState:
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: Unique name of the resource in this scope including project and location using the form:
                projects/{projectId}/locations/{locationId}/clusters/{clusterId}
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] node_type: The nodeType for the Redis cluster.
                If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
                Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
@@ -729,9 +720,6 @@ class _ClusterState:
         """
         Unique name of the resource in this scope including project and location using the form:
         projects/{projectId}/locations/{locationId}/clusters/{clusterId}
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -1419,9 +1407,6 @@ class Cluster(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: Unique name of the resource in this scope including project and location using the form:
                projects/{projectId}/locations/{locationId}/clusters/{clusterId}
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] node_type: The nodeType for the Redis cluster.
                If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
                Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
@@ -2020,9 +2005,6 @@ class Cluster(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: Unique name of the resource in this scope including project and location using the form:
                projects/{projectId}/locations/{locationId}/clusters/{clusterId}
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] node_type: The nodeType for the Redis cluster.
                If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
                Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
@@ -2221,9 +2203,6 @@ class Cluster(pulumi.CustomResource):
         """
         Unique name of the resource in this scope including project and location using the form:
         projects/{projectId}/locations/{locationId}/clusters/{clusterId}
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

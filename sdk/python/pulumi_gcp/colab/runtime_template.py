@@ -41,9 +41,6 @@ class RuntimeTemplateArgs:
         The set of arguments for constructing a RuntimeTemplate resource.
         :param pulumi.Input[builtins.str] display_name: Required. The display name of the Runtime Template.
         :param pulumi.Input[builtins.str] location: The location for the resource: https://cloud.google.com/colab/docs/locations
-               
-               
-               - - -
         :param pulumi.Input['RuntimeTemplateDataPersistentDiskSpecArgs'] data_persistent_disk_spec: The configuration for the data disk of the runtime.
                Structure is documented below.
         :param pulumi.Input[builtins.str] description: The description of the Runtime Template.
@@ -115,9 +112,6 @@ class RuntimeTemplateArgs:
     def location(self) -> pulumi.Input[builtins.str]:
         """
         The location for the resource: https://cloud.google.com/colab/docs/locations
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -330,9 +324,6 @@ class _RuntimeTemplateState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location for the resource: https://cloud.google.com/colab/docs/locations
-               
-               
-               - - -
         :param pulumi.Input['RuntimeTemplateMachineSpecArgs'] machine_spec: 'The machine configuration of the runtime.'
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: The resource name of the Runtime Template
@@ -490,9 +481,6 @@ class _RuntimeTemplateState:
     def location(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The location for the resource: https://cloud.google.com/colab/docs/locations
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -765,9 +753,6 @@ class RuntimeTemplate(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location for the resource: https://cloud.google.com/colab/docs/locations
-               
-               
-               - - -
         :param pulumi.Input[Union['RuntimeTemplateMachineSpecArgs', 'RuntimeTemplateMachineSpecArgsDict']] machine_spec: 'The machine configuration of the runtime.'
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: The resource name of the Runtime Template
@@ -1022,9 +1007,6 @@ class RuntimeTemplate(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: The location for the resource: https://cloud.google.com/colab/docs/locations
-               
-               
-               - - -
         :param pulumi.Input[Union['RuntimeTemplateMachineSpecArgs', 'RuntimeTemplateMachineSpecArgsDict']] machine_spec: 'The machine configuration of the runtime.'
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: The resource name of the Runtime Template
@@ -1138,9 +1120,6 @@ class RuntimeTemplate(pulumi.CustomResource):
     def location(self) -> pulumi.Output[builtins.str]:
         """
         The location for the resource: https://cloud.google.com/colab/docs/locations
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

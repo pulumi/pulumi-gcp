@@ -119,9 +119,6 @@ export class ReleaseChannelSetting extends pulumi.CustomResource {
     public readonly releaseChannel!: pulumi.Output<string | undefined>;
     /**
      * Id of the Release Channel Setting.
-     *
-     *
-     * - - -
      */
     public readonly releaseChannelSettingId!: pulumi.Output<string>;
     /**
@@ -224,9 +221,6 @@ export interface ReleaseChannelSettingState {
     releaseChannel?: pulumi.Input<string>;
     /**
      * Id of the Release Channel Setting.
-     *
-     *
-     * - - -
      */
     releaseChannelSettingId?: pulumi.Input<string>;
     /**
@@ -263,9 +257,6 @@ export interface ReleaseChannelSettingArgs {
     releaseChannel?: pulumi.Input<string>;
     /**
      * Id of the Release Channel Setting.
-     *
-     *
-     * - - -
      */
     releaseChannelSettingId: pulumi.Input<string>;
 }

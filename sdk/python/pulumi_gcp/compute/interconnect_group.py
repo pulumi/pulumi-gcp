@@ -33,14 +33,19 @@ class InterconnectGroupArgs:
                the name that must be specified on group creation.
                Structure is documented below.
         :param pulumi.Input[builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['InterconnectGroupInterconnectArgs']]] interconnects: (Output)
-               Interconnects used to explain this blocker in more
-               detail.
+        :param pulumi.Input[Sequence[pulumi.Input['InterconnectGroupInterconnectArgs']]] interconnects: Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
+               strings. Users are encouraged, but not required, to use their preferred
+               format for resource links as keys.
+               Note that there are add-members and remove-members methods in gcloud.
+               The size of this map is limited by an "Interconnects per group" quota.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] name: Name of the resource. Provided by the client when the resource is created. The name must be
                1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?` which means the first
                character must be a lowercase letter, and all following characters must be a dash,
                lowercase letter, or digit, except the last character, which cannot be a dash.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "intent", intent)
         if description is not None:
@@ -82,9 +87,12 @@ class InterconnectGroupArgs:
     @pulumi.getter
     def interconnects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectGroupInterconnectArgs']]]]:
         """
-        (Output)
-        Interconnects used to explain this blocker in more
-        detail.
+        Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
+        strings. Users are encouraged, but not required, to use their preferred
+        format for resource links as keys.
+        Note that there are add-members and remove-members methods in gcloud.
+        The size of this map is limited by an "Interconnects per group" quota.
+        Structure is documented below.
         """
         return pulumi.get(self, "interconnects")
 
@@ -111,6 +119,10 @@ class InterconnectGroupArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -141,9 +153,12 @@ class _InterconnectGroupState:
         :param pulumi.Input['InterconnectGroupIntentArgs'] intent: The user's intent for this group. This is the only required field besides
                the name that must be specified on group creation.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['InterconnectGroupInterconnectArgs']]] interconnects: (Output)
-               Interconnects used to explain this blocker in more
-               detail.
+        :param pulumi.Input[Sequence[pulumi.Input['InterconnectGroupInterconnectArgs']]] interconnects: Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
+               strings. Users are encouraged, but not required, to use their preferred
+               format for resource links as keys.
+               Note that there are add-members and remove-members methods in gcloud.
+               The size of this map is limited by an "Interconnects per group" quota.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] name: Name of the resource. Provided by the client when the resource is created. The name must be
                1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?` which means the first
@@ -152,6 +167,8 @@ class _InterconnectGroupState:
         :param pulumi.Input[Sequence[pulumi.Input['InterconnectGroupPhysicalStructureArgs']]] physical_structures: An analysis of the physical layout of Interconnects in this
                group. Every Interconnect in the group is shown once in this structure.
                Structure is documented below.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         if configureds is not None:
             pulumi.set(__self__, "configureds", configureds)
@@ -228,9 +245,12 @@ class _InterconnectGroupState:
     @pulumi.getter
     def interconnects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectGroupInterconnectArgs']]]]:
         """
-        (Output)
-        Interconnects used to explain this blocker in more
-        detail.
+        Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
+        strings. Users are encouraged, but not required, to use their preferred
+        format for resource links as keys.
+        Note that there are add-members and remove-members methods in gcloud.
+        The size of this map is limited by an "Interconnects per group" quota.
+        Structure is documented below.
         """
         return pulumi.get(self, "interconnects")
 
@@ -271,6 +291,10 @@ class _InterconnectGroupState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -345,14 +369,19 @@ class InterconnectGroup(pulumi.CustomResource):
         :param pulumi.Input[Union['InterconnectGroupIntentArgs', 'InterconnectGroupIntentArgsDict']] intent: The user's intent for this group. This is the only required field besides
                the name that must be specified on group creation.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InterconnectGroupInterconnectArgs', 'InterconnectGroupInterconnectArgsDict']]]] interconnects: (Output)
-               Interconnects used to explain this blocker in more
-               detail.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InterconnectGroupInterconnectArgs', 'InterconnectGroupInterconnectArgsDict']]]] interconnects: Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
+               strings. Users are encouraged, but not required, to use their preferred
+               format for resource links as keys.
+               Note that there are add-members and remove-members methods in gcloud.
+               The size of this map is limited by an "Interconnects per group" quota.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] name: Name of the resource. Provided by the client when the resource is created. The name must be
                1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?` which means the first
                character must be a lowercase letter, and all following characters must be a dash,
                lowercase letter, or digit, except the last character, which cannot be a dash.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         ...
     @overload
@@ -483,9 +512,12 @@ class InterconnectGroup(pulumi.CustomResource):
         :param pulumi.Input[Union['InterconnectGroupIntentArgs', 'InterconnectGroupIntentArgsDict']] intent: The user's intent for this group. This is the only required field besides
                the name that must be specified on group creation.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InterconnectGroupInterconnectArgs', 'InterconnectGroupInterconnectArgsDict']]]] interconnects: (Output)
-               Interconnects used to explain this blocker in more
-               detail.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InterconnectGroupInterconnectArgs', 'InterconnectGroupInterconnectArgsDict']]]] interconnects: Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
+               strings. Users are encouraged, but not required, to use their preferred
+               format for resource links as keys.
+               Note that there are add-members and remove-members methods in gcloud.
+               The size of this map is limited by an "Interconnects per group" quota.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] name: Name of the resource. Provided by the client when the resource is created. The name must be
                1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?` which means the first
@@ -494,6 +526,8 @@ class InterconnectGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['InterconnectGroupPhysicalStructureArgs', 'InterconnectGroupPhysicalStructureArgsDict']]]] physical_structures: An analysis of the physical layout of Interconnects in this
                group. Every Interconnect in the group is shown once in this structure.
                Structure is documented below.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -551,9 +585,12 @@ class InterconnectGroup(pulumi.CustomResource):
     @pulumi.getter
     def interconnects(self) -> pulumi.Output[Optional[Sequence['outputs.InterconnectGroupInterconnect']]]:
         """
-        (Output)
-        Interconnects used to explain this blocker in more
-        detail.
+        Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
+        strings. Users are encouraged, but not required, to use their preferred
+        format for resource links as keys.
+        Note that there are add-members and remove-members methods in gcloud.
+        The size of this map is limited by an "Interconnects per group" quota.
+        Structure is documented below.
         """
         return pulumi.get(self, "interconnects")
 
@@ -582,5 +619,9 @@ class InterconnectGroup(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[builtins.str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 

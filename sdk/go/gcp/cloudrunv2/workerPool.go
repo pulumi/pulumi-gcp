@@ -666,15 +666,15 @@ import (
 type WorkerPool struct {
 	pulumi.CustomResourceState
 
-	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
-	// should be preserved when modifying objects. Cloud Run API v2 does not support annotations with 'run.googleapis.com',
-	// 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected in new
-	// resources. All system annotations in v1 now have a corresponding field in v2 WorkerPool. This field follows Kubernetes
-	// annotations' namespacing, limits, and rules. **Note**: This field is non-authoritative, and will only manage the
-	// annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
-	// present on the resource.
+	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+	// Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected in new resources.
+	// All system annotations in v1 now have a corresponding field in v2 WorkerPool.
+	// This field follows Kubernetes annotations' namespacing, limits, and rules.
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Settings for the Binary Authorization feature.
+	// Structure is documented below.
 	BinaryAuthorization WorkerPoolBinaryAuthorizationPtrOutput `pulumi:"binaryAuthorization"`
 	// Arbitrary identifier for the API client.
 	Client pulumi.StringPtrOutput `pulumi:"client"`
@@ -687,9 +687,8 @@ type WorkerPool struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Email address of the authenticated creator.
 	Creator pulumi.StringOutput `pulumi:"creator"`
-	// One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in
-	// a string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
-	// https://cloud.google.com/run/docs/configuring/custom-audiences.
+	// One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
+	// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
 	CustomAudiences pulumi.StringArrayOutput `pulumi:"customAudiences"`
 	// The deletion time.
 	DeleteTime         pulumi.StringOutput  `pulumi:"deleteTime"`
@@ -708,17 +707,15 @@ type WorkerPool struct {
 	// Detailed status information for corresponding instance splits. See comments in reconciling for additional information on reconciliation process in Cloud Run.
 	// Structure is documented below.
 	InstanceSplitStatuses WorkerPoolInstanceSplitStatusArrayOutput `pulumi:"instanceSplitStatuses"`
-	// Specifies how to distribute instances over a collection of Revisions belonging to the WorkerPool. If instance split is
-	// empty or not provided, defaults to 100% instances assigned to the latest Ready Revision.
+	// Specifies how to distribute instances over a collection of Revisions belonging to the WorkerPool. If instance split is empty or not provided, defaults to 100% instances assigned to the latest Ready Revision.
+	// Structure is documented below.
 	InstanceSplits WorkerPoolInstanceSplitArrayOutput `pulumi:"instanceSplits"`
-	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
-	// Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
-	// state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
-	// https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with
-	// 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they
-	// will be rejected. All system labels in v1 now have a corresponding field in v2 WorkerPool. **Note**: This field is
-	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-	// 'effective_labels' for all of the labels present on the resource.
+	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
+	// environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+	// Cloud Run API v2 does not support labels with  `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+	// All system labels in v1 now have a corresponding field in v2 WorkerPool.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Email address of the last authenticated modifier.
 	LastModifier pulumi.StringOutput `pulumi:"lastModifier"`
@@ -726,12 +723,10 @@ type WorkerPool struct {
 	LatestCreatedRevision pulumi.StringOutput `pulumi:"latestCreatedRevision"`
 	// Name of the latest revision that is serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run.
 	LatestReadyRevision pulumi.StringOutput `pulumi:"latestReadyRevision"`
-	// The launch stage as defined by [Google Cloud Platform Launch
-	// Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA. If no value is
-	// specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that
-	// stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as
-	// input, but only BETA and GA-level features are used, this field will be BETA on output. Possible values:
-	// ["UNIMPLEMENTED", "PRELAUNCH", "EARLY_ACCESS", "ALPHA", "BETA", "GA", "DEPRECATED"]
+	// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+	// If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+	// For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
+	// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
 	LaunchStage pulumi.StringOutput `pulumi:"launchStage"`
 	// The location of the cloud run worker pool
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -739,7 +734,9 @@ type WorkerPool struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The generation of this WorkerPool currently serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
 	ObservedGeneration pulumi.StringOutput `pulumi:"observedGeneration"`
-	Project            pulumi.StringOutput `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
@@ -749,6 +746,7 @@ type WorkerPool struct {
 	// If reconciliation failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision, or empty for newly created WorkerPools. Additional information on the failure can be found in terminalCondition and conditions.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
 	// Scaling settings that apply to the worker pool.
+	// Structure is documented below.
 	Scaling WorkerPoolScalingOutput `pulumi:"scaling"`
 	// The template used to create revisions for this WorkerPool.
 	// Structure is documented below.
@@ -803,15 +801,15 @@ func GetWorkerPool(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkerPool resources.
 type workerPoolState struct {
-	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
-	// should be preserved when modifying objects. Cloud Run API v2 does not support annotations with 'run.googleapis.com',
-	// 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected in new
-	// resources. All system annotations in v1 now have a corresponding field in v2 WorkerPool. This field follows Kubernetes
-	// annotations' namespacing, limits, and rules. **Note**: This field is non-authoritative, and will only manage the
-	// annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
-	// present on the resource.
+	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+	// Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected in new resources.
+	// All system annotations in v1 now have a corresponding field in v2 WorkerPool.
+	// This field follows Kubernetes annotations' namespacing, limits, and rules.
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Settings for the Binary Authorization feature.
+	// Structure is documented below.
 	BinaryAuthorization *WorkerPoolBinaryAuthorization `pulumi:"binaryAuthorization"`
 	// Arbitrary identifier for the API client.
 	Client *string `pulumi:"client"`
@@ -824,9 +822,8 @@ type workerPoolState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Email address of the authenticated creator.
 	Creator *string `pulumi:"creator"`
-	// One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in
-	// a string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
-	// https://cloud.google.com/run/docs/configuring/custom-audiences.
+	// One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
+	// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
 	CustomAudiences []string `pulumi:"customAudiences"`
 	// The deletion time.
 	DeleteTime         *string `pulumi:"deleteTime"`
@@ -845,17 +842,15 @@ type workerPoolState struct {
 	// Detailed status information for corresponding instance splits. See comments in reconciling for additional information on reconciliation process in Cloud Run.
 	// Structure is documented below.
 	InstanceSplitStatuses []WorkerPoolInstanceSplitStatus `pulumi:"instanceSplitStatuses"`
-	// Specifies how to distribute instances over a collection of Revisions belonging to the WorkerPool. If instance split is
-	// empty or not provided, defaults to 100% instances assigned to the latest Ready Revision.
+	// Specifies how to distribute instances over a collection of Revisions belonging to the WorkerPool. If instance split is empty or not provided, defaults to 100% instances assigned to the latest Ready Revision.
+	// Structure is documented below.
 	InstanceSplits []WorkerPoolInstanceSplit `pulumi:"instanceSplits"`
-	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
-	// Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
-	// state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
-	// https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with
-	// 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they
-	// will be rejected. All system labels in v1 now have a corresponding field in v2 WorkerPool. **Note**: This field is
-	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-	// 'effective_labels' for all of the labels present on the resource.
+	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
+	// environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+	// Cloud Run API v2 does not support labels with  `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+	// All system labels in v1 now have a corresponding field in v2 WorkerPool.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Email address of the last authenticated modifier.
 	LastModifier *string `pulumi:"lastModifier"`
@@ -863,12 +858,10 @@ type workerPoolState struct {
 	LatestCreatedRevision *string `pulumi:"latestCreatedRevision"`
 	// Name of the latest revision that is serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run.
 	LatestReadyRevision *string `pulumi:"latestReadyRevision"`
-	// The launch stage as defined by [Google Cloud Platform Launch
-	// Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA. If no value is
-	// specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that
-	// stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as
-	// input, but only BETA and GA-level features are used, this field will be BETA on output. Possible values:
-	// ["UNIMPLEMENTED", "PRELAUNCH", "EARLY_ACCESS", "ALPHA", "BETA", "GA", "DEPRECATED"]
+	// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+	// If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+	// For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
+	// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
 	LaunchStage *string `pulumi:"launchStage"`
 	// The location of the cloud run worker pool
 	Location *string `pulumi:"location"`
@@ -876,7 +869,9 @@ type workerPoolState struct {
 	Name *string `pulumi:"name"`
 	// The generation of this WorkerPool currently serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
 	ObservedGeneration *string `pulumi:"observedGeneration"`
-	Project            *string `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
@@ -886,6 +881,7 @@ type workerPoolState struct {
 	// If reconciliation failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision, or empty for newly created WorkerPools. Additional information on the failure can be found in terminalCondition and conditions.
 	Reconciling *bool `pulumi:"reconciling"`
 	// Scaling settings that apply to the worker pool.
+	// Structure is documented below.
 	Scaling *WorkerPoolScaling `pulumi:"scaling"`
 	// The template used to create revisions for this WorkerPool.
 	// Structure is documented below.
@@ -900,15 +896,15 @@ type workerPoolState struct {
 }
 
 type WorkerPoolState struct {
-	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
-	// should be preserved when modifying objects. Cloud Run API v2 does not support annotations with 'run.googleapis.com',
-	// 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected in new
-	// resources. All system annotations in v1 now have a corresponding field in v2 WorkerPool. This field follows Kubernetes
-	// annotations' namespacing, limits, and rules. **Note**: This field is non-authoritative, and will only manage the
-	// annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
-	// present on the resource.
+	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+	// Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected in new resources.
+	// All system annotations in v1 now have a corresponding field in v2 WorkerPool.
+	// This field follows Kubernetes annotations' namespacing, limits, and rules.
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// Settings for the Binary Authorization feature.
+	// Structure is documented below.
 	BinaryAuthorization WorkerPoolBinaryAuthorizationPtrInput
 	// Arbitrary identifier for the API client.
 	Client pulumi.StringPtrInput
@@ -921,9 +917,8 @@ type WorkerPoolState struct {
 	CreateTime pulumi.StringPtrInput
 	// Email address of the authenticated creator.
 	Creator pulumi.StringPtrInput
-	// One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in
-	// a string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
-	// https://cloud.google.com/run/docs/configuring/custom-audiences.
+	// One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
+	// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
 	CustomAudiences pulumi.StringArrayInput
 	// The deletion time.
 	DeleteTime         pulumi.StringPtrInput
@@ -942,17 +937,15 @@ type WorkerPoolState struct {
 	// Detailed status information for corresponding instance splits. See comments in reconciling for additional information on reconciliation process in Cloud Run.
 	// Structure is documented below.
 	InstanceSplitStatuses WorkerPoolInstanceSplitStatusArrayInput
-	// Specifies how to distribute instances over a collection of Revisions belonging to the WorkerPool. If instance split is
-	// empty or not provided, defaults to 100% instances assigned to the latest Ready Revision.
+	// Specifies how to distribute instances over a collection of Revisions belonging to the WorkerPool. If instance split is empty or not provided, defaults to 100% instances assigned to the latest Ready Revision.
+	// Structure is documented below.
 	InstanceSplits WorkerPoolInstanceSplitArrayInput
-	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
-	// Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
-	// state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
-	// https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with
-	// 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they
-	// will be rejected. All system labels in v1 now have a corresponding field in v2 WorkerPool. **Note**: This field is
-	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-	// 'effective_labels' for all of the labels present on the resource.
+	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
+	// environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+	// Cloud Run API v2 does not support labels with  `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+	// All system labels in v1 now have a corresponding field in v2 WorkerPool.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Email address of the last authenticated modifier.
 	LastModifier pulumi.StringPtrInput
@@ -960,12 +953,10 @@ type WorkerPoolState struct {
 	LatestCreatedRevision pulumi.StringPtrInput
 	// Name of the latest revision that is serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run.
 	LatestReadyRevision pulumi.StringPtrInput
-	// The launch stage as defined by [Google Cloud Platform Launch
-	// Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA. If no value is
-	// specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that
-	// stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as
-	// input, but only BETA and GA-level features are used, this field will be BETA on output. Possible values:
-	// ["UNIMPLEMENTED", "PRELAUNCH", "EARLY_ACCESS", "ALPHA", "BETA", "GA", "DEPRECATED"]
+	// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+	// If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+	// For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
+	// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
 	LaunchStage pulumi.StringPtrInput
 	// The location of the cloud run worker pool
 	Location pulumi.StringPtrInput
@@ -973,7 +964,9 @@ type WorkerPoolState struct {
 	Name pulumi.StringPtrInput
 	// The generation of this WorkerPool currently serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
 	ObservedGeneration pulumi.StringPtrInput
-	Project            pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
@@ -983,6 +976,7 @@ type WorkerPoolState struct {
 	// If reconciliation failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision, or empty for newly created WorkerPools. Additional information on the failure can be found in terminalCondition and conditions.
 	Reconciling pulumi.BoolPtrInput
 	// Scaling settings that apply to the worker pool.
+	// Structure is documented below.
 	Scaling WorkerPoolScalingPtrInput
 	// The template used to create revisions for this WorkerPool.
 	// Structure is documented below.
@@ -1001,52 +995,50 @@ func (WorkerPoolState) ElementType() reflect.Type {
 }
 
 type workerPoolArgs struct {
-	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
-	// should be preserved when modifying objects. Cloud Run API v2 does not support annotations with 'run.googleapis.com',
-	// 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected in new
-	// resources. All system annotations in v1 now have a corresponding field in v2 WorkerPool. This field follows Kubernetes
-	// annotations' namespacing, limits, and rules. **Note**: This field is non-authoritative, and will only manage the
-	// annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
-	// present on the resource.
+	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+	// Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected in new resources.
+	// All system annotations in v1 now have a corresponding field in v2 WorkerPool.
+	// This field follows Kubernetes annotations' namespacing, limits, and rules.
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Settings for the Binary Authorization feature.
+	// Structure is documented below.
 	BinaryAuthorization *WorkerPoolBinaryAuthorization `pulumi:"binaryAuthorization"`
 	// Arbitrary identifier for the API client.
 	Client *string `pulumi:"client"`
 	// Arbitrary version identifier for the API client.
 	ClientVersion *string `pulumi:"clientVersion"`
-	// One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in
-	// a string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
-	// https://cloud.google.com/run/docs/configuring/custom-audiences.
+	// One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
+	// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
 	CustomAudiences    []string `pulumi:"customAudiences"`
 	DeletionProtection *bool    `pulumi:"deletionProtection"`
 	// User-provided description of the WorkerPool. This field currently has a 512-character limit.
 	Description *string `pulumi:"description"`
-	// Specifies how to distribute instances over a collection of Revisions belonging to the WorkerPool. If instance split is
-	// empty or not provided, defaults to 100% instances assigned to the latest Ready Revision.
+	// Specifies how to distribute instances over a collection of Revisions belonging to the WorkerPool. If instance split is empty or not provided, defaults to 100% instances assigned to the latest Ready Revision.
+	// Structure is documented below.
 	InstanceSplits []WorkerPoolInstanceSplit `pulumi:"instanceSplits"`
-	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
-	// Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
-	// state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
-	// https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with
-	// 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they
-	// will be rejected. All system labels in v1 now have a corresponding field in v2 WorkerPool. **Note**: This field is
-	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-	// 'effective_labels' for all of the labels present on the resource.
+	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
+	// environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+	// Cloud Run API v2 does not support labels with  `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+	// All system labels in v1 now have a corresponding field in v2 WorkerPool.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// The launch stage as defined by [Google Cloud Platform Launch
-	// Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA. If no value is
-	// specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that
-	// stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as
-	// input, but only BETA and GA-level features are used, this field will be BETA on output. Possible values:
-	// ["UNIMPLEMENTED", "PRELAUNCH", "EARLY_ACCESS", "ALPHA", "BETA", "GA", "DEPRECATED"]
+	// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+	// If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+	// For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
+	// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
 	LaunchStage *string `pulumi:"launchStage"`
 	// The location of the cloud run worker pool
 	Location string `pulumi:"location"`
 	// Name of the WorkerPool.
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Scaling settings that apply to the worker pool.
+	// Structure is documented below.
 	Scaling *WorkerPoolScaling `pulumi:"scaling"`
 	// The template used to create revisions for this WorkerPool.
 	// Structure is documented below.
@@ -1055,52 +1047,50 @@ type workerPoolArgs struct {
 
 // The set of arguments for constructing a WorkerPool resource.
 type WorkerPoolArgs struct {
-	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
-	// should be preserved when modifying objects. Cloud Run API v2 does not support annotations with 'run.googleapis.com',
-	// 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected in new
-	// resources. All system annotations in v1 now have a corresponding field in v2 WorkerPool. This field follows Kubernetes
-	// annotations' namespacing, limits, and rules. **Note**: This field is non-authoritative, and will only manage the
-	// annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
-	// present on the resource.
+	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+	// Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected in new resources.
+	// All system annotations in v1 now have a corresponding field in v2 WorkerPool.
+	// This field follows Kubernetes annotations' namespacing, limits, and rules.
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// Settings for the Binary Authorization feature.
+	// Structure is documented below.
 	BinaryAuthorization WorkerPoolBinaryAuthorizationPtrInput
 	// Arbitrary identifier for the API client.
 	Client pulumi.StringPtrInput
 	// Arbitrary version identifier for the API client.
 	ClientVersion pulumi.StringPtrInput
-	// One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in
-	// a string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
-	// https://cloud.google.com/run/docs/configuring/custom-audiences.
+	// One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
+	// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
 	CustomAudiences    pulumi.StringArrayInput
 	DeletionProtection pulumi.BoolPtrInput
 	// User-provided description of the WorkerPool. This field currently has a 512-character limit.
 	Description pulumi.StringPtrInput
-	// Specifies how to distribute instances over a collection of Revisions belonging to the WorkerPool. If instance split is
-	// empty or not provided, defaults to 100% instances assigned to the latest Ready Revision.
+	// Specifies how to distribute instances over a collection of Revisions belonging to the WorkerPool. If instance split is empty or not provided, defaults to 100% instances assigned to the latest Ready Revision.
+	// Structure is documented below.
 	InstanceSplits WorkerPoolInstanceSplitArrayInput
-	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
-	// Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
-	// state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
-	// https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with
-	// 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they
-	// will be rejected. All system labels in v1 now have a corresponding field in v2 WorkerPool. **Note**: This field is
-	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-	// 'effective_labels' for all of the labels present on the resource.
+	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
+	// environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+	// Cloud Run API v2 does not support labels with  `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+	// All system labels in v1 now have a corresponding field in v2 WorkerPool.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// The launch stage as defined by [Google Cloud Platform Launch
-	// Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA. If no value is
-	// specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that
-	// stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as
-	// input, but only BETA and GA-level features are used, this field will be BETA on output. Possible values:
-	// ["UNIMPLEMENTED", "PRELAUNCH", "EARLY_ACCESS", "ALPHA", "BETA", "GA", "DEPRECATED"]
+	// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+	// If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+	// For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
+	// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
 	LaunchStage pulumi.StringPtrInput
 	// The location of the cloud run worker pool
 	Location pulumi.StringInput
 	// Name of the WorkerPool.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Scaling settings that apply to the worker pool.
+	// Structure is documented below.
 	Scaling WorkerPoolScalingPtrInput
 	// The template used to create revisions for this WorkerPool.
 	// Structure is documented below.
@@ -1194,18 +1184,18 @@ func (o WorkerPoolOutput) ToWorkerPoolOutputWithContext(ctx context.Context) Wor
 	return o
 }
 
-// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
-// should be preserved when modifying objects. Cloud Run API v2 does not support annotations with 'run.googleapis.com',
-// 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected in new
-// resources. All system annotations in v1 now have a corresponding field in v2 WorkerPool. This field follows Kubernetes
-// annotations' namespacing, limits, and rules. **Note**: This field is non-authoritative, and will only manage the
-// annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
-// present on the resource.
+// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+// Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected in new resources.
+// All system annotations in v1 now have a corresponding field in v2 WorkerPool.
+// This field follows Kubernetes annotations' namespacing, limits, and rules.
+// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 func (o WorkerPoolOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkerPool) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // Settings for the Binary Authorization feature.
+// Structure is documented below.
 func (o WorkerPoolOutput) BinaryAuthorization() WorkerPoolBinaryAuthorizationPtrOutput {
 	return o.ApplyT(func(v *WorkerPool) WorkerPoolBinaryAuthorizationPtrOutput { return v.BinaryAuthorization }).(WorkerPoolBinaryAuthorizationPtrOutput)
 }
@@ -1236,9 +1226,8 @@ func (o WorkerPoolOutput) Creator() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.Creator }).(pulumi.StringOutput)
 }
 
-// One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in
-// a string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
-// https://cloud.google.com/run/docs/configuring/custom-audiences.
+// One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
+// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
 func (o WorkerPoolOutput) CustomAudiences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkerPool) pulumi.StringArrayOutput { return v.CustomAudiences }).(pulumi.StringArrayOutput)
 }
@@ -1287,20 +1276,18 @@ func (o WorkerPoolOutput) InstanceSplitStatuses() WorkerPoolInstanceSplitStatusA
 	return o.ApplyT(func(v *WorkerPool) WorkerPoolInstanceSplitStatusArrayOutput { return v.InstanceSplitStatuses }).(WorkerPoolInstanceSplitStatusArrayOutput)
 }
 
-// Specifies how to distribute instances over a collection of Revisions belonging to the WorkerPool. If instance split is
-// empty or not provided, defaults to 100% instances assigned to the latest Ready Revision.
+// Specifies how to distribute instances over a collection of Revisions belonging to the WorkerPool. If instance split is empty or not provided, defaults to 100% instances assigned to the latest Ready Revision.
+// Structure is documented below.
 func (o WorkerPoolOutput) InstanceSplits() WorkerPoolInstanceSplitArrayOutput {
 	return o.ApplyT(func(v *WorkerPool) WorkerPoolInstanceSplitArrayOutput { return v.InstanceSplits }).(WorkerPoolInstanceSplitArrayOutput)
 }
 
-// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
-// Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
-// state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
-// https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with
-// 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they
-// will be rejected. All system labels in v1 now have a corresponding field in v2 WorkerPool. **Note**: This field is
-// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-// 'effective_labels' for all of the labels present on the resource.
+// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
+// environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+// Cloud Run API v2 does not support labels with  `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+// All system labels in v1 now have a corresponding field in v2 WorkerPool.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o WorkerPoolOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkerPool) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -1320,12 +1307,10 @@ func (o WorkerPoolOutput) LatestReadyRevision() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.LatestReadyRevision }).(pulumi.StringOutput)
 }
 
-// The launch stage as defined by [Google Cloud Platform Launch
-// Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA. If no value is
-// specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that
-// stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as
-// input, but only BETA and GA-level features are used, this field will be BETA on output. Possible values:
-// ["UNIMPLEMENTED", "PRELAUNCH", "EARLY_ACCESS", "ALPHA", "BETA", "GA", "DEPRECATED"]
+// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+// If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+// For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
+// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
 func (o WorkerPoolOutput) LaunchStage() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.LaunchStage }).(pulumi.StringOutput)
 }
@@ -1345,6 +1330,8 @@ func (o WorkerPoolOutput) ObservedGeneration() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.ObservedGeneration }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o WorkerPoolOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -1364,6 +1351,7 @@ func (o WorkerPoolOutput) Reconciling() pulumi.BoolOutput {
 }
 
 // Scaling settings that apply to the worker pool.
+// Structure is documented below.
 func (o WorkerPoolOutput) Scaling() WorkerPoolScalingOutput {
 	return o.ApplyT(func(v *WorkerPool) WorkerPoolScalingOutput { return v.Scaling }).(WorkerPoolScalingOutput)
 }

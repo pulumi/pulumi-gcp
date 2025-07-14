@@ -17,8 +17,6 @@ namespace Pulumi.Gcp.Healthcare.Inputs
 
         /// <summary>
         /// Project IDs for data projects hosted in a workspace.
-        /// 
-        /// - - -
         /// </summary>
         public InputList<string> DataProjectIds
         {

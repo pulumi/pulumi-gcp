@@ -15,6 +15,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetBillingAccountResult {
     private @Nullable String billingAccount;
+    /**
+     * @return The currency code of the billing account, e.g. `USD`.
+     * 
+     */
+    private String currencyCode;
     private String displayName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -38,6 +43,13 @@ public final class GetBillingAccountResult {
     private GetBillingAccountResult() {}
     public Optional<String> billingAccount() {
         return Optional.ofNullable(this.billingAccount);
+    }
+    /**
+     * @return The currency code of the billing account, e.g. `USD`.
+     * 
+     */
+    public String currencyCode() {
+        return this.currencyCode;
     }
     public String displayName() {
         return this.displayName;
@@ -81,6 +93,7 @@ public final class GetBillingAccountResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String billingAccount;
+        private String currencyCode;
         private String displayName;
         private String id;
         private @Nullable Boolean lookupProjects;
@@ -91,6 +104,7 @@ public final class GetBillingAccountResult {
         public Builder(GetBillingAccountResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.billingAccount = defaults.billingAccount;
+    	      this.currencyCode = defaults.currencyCode;
     	      this.displayName = defaults.displayName;
     	      this.id = defaults.id;
     	      this.lookupProjects = defaults.lookupProjects;
@@ -103,6 +117,14 @@ public final class GetBillingAccountResult {
         public Builder billingAccount(@Nullable String billingAccount) {
 
             this.billingAccount = billingAccount;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder currencyCode(String currencyCode) {
+            if (currencyCode == null) {
+              throw new MissingRequiredPropertyException("GetBillingAccountResult", "currencyCode");
+            }
+            this.currencyCode = currencyCode;
             return this;
         }
         @CustomType.Setter
@@ -157,6 +179,7 @@ public final class GetBillingAccountResult {
         public GetBillingAccountResult build() {
             final var _resultValue = new GetBillingAccountResult();
             _resultValue.billingAccount = billingAccount;
+            _resultValue.currencyCode = currencyCode;
             _resultValue.displayName = displayName;
             _resultValue.id = id;
             _resultValue.lookupProjects = lookupProjects;

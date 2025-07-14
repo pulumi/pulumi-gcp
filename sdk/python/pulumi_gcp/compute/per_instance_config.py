@@ -34,9 +34,6 @@ class PerInstanceConfigArgs:
         """
         The set of arguments for constructing a PerInstanceConfig resource.
         :param pulumi.Input[builtins.str] instance_group_manager: The instance group manager this instance config is part of.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] minimal_action: The minimal action to perform on the instance during an update.
                Default is `NONE`. Possible values are:
                * REPLACE
@@ -84,9 +81,6 @@ class PerInstanceConfigArgs:
     def instance_group_manager(self) -> pulumi.Input[builtins.str]:
         """
         The instance group manager this instance config is part of.
-
-
-        - - -
         """
         return pulumi.get(self, "instance_group_manager")
 
@@ -221,9 +215,6 @@ class _PerInstanceConfigState:
         """
         Input properties used for looking up and filtering PerInstanceConfig resources.
         :param pulumi.Input[builtins.str] instance_group_manager: The instance group manager this instance config is part of.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] minimal_action: The minimal action to perform on the instance during an update.
                Default is `NONE`. Possible values are:
                * REPLACE
@@ -272,9 +263,6 @@ class _PerInstanceConfigState:
     def instance_group_manager(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The instance group manager this instance config is part of.
-
-
-        - - -
         """
         return pulumi.get(self, "instance_group_manager")
 
@@ -519,9 +507,6 @@ class PerInstanceConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] instance_group_manager: The instance group manager this instance config is part of.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] minimal_action: The minimal action to perform on the instance during an update.
                Default is `NONE`. Possible values are:
                * REPLACE
@@ -729,9 +714,6 @@ class PerInstanceConfig(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] instance_group_manager: The instance group manager this instance config is part of.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] minimal_action: The minimal action to perform on the instance during an update.
                Default is `NONE`. Possible values are:
                * REPLACE
@@ -776,9 +758,6 @@ class PerInstanceConfig(pulumi.CustomResource):
     def instance_group_manager(self) -> pulumi.Output[builtins.str]:
         """
         The instance group manager this instance config is part of.
-
-
-        - - -
         """
         return pulumi.get(self, "instance_group_manager")
 

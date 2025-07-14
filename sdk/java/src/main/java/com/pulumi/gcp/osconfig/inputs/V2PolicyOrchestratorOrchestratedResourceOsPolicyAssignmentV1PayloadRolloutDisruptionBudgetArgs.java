@@ -34,8 +34,6 @@ public final class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1P
      * Specifies the relative value defined as a percentage, which will be
      * multiplied by a reference value.
      * 
-     * ***
-     * 
      */
     @Import(name="percent")
     private @Nullable Output<Integer> percent;
@@ -43,8 +41,6 @@ public final class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1P
     /**
      * @return Specifies the relative value defined as a percentage, which will be
      * multiplied by a reference value.
-     * 
-     * ***
      * 
      */
     public Optional<Output<Integer>> percent() {
@@ -101,8 +97,6 @@ public final class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1P
          * @param percent Specifies the relative value defined as a percentage, which will be
          * multiplied by a reference value.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -114,8 +108,6 @@ public final class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1P
         /**
          * @param percent Specifies the relative value defined as a percentage, which will be
          * multiplied by a reference value.
-         * 
-         * ***
          * 
          * @return builder
          * 

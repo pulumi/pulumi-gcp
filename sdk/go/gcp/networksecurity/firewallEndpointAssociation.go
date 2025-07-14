@@ -62,8 +62,6 @@ type FirewallEndpointAssociation struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location (zone) of the firewall endpoint association.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the firewall endpoint association resource.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -147,8 +145,6 @@ type firewallEndpointAssociationState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location (zone) of the firewall endpoint association.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// The name of the firewall endpoint association resource.
 	Name *string `pulumi:"name"`
@@ -189,8 +185,6 @@ type FirewallEndpointAssociationState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location (zone) of the firewall endpoint association.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// The name of the firewall endpoint association resource.
 	Name pulumi.StringPtrInput
@@ -231,8 +225,6 @@ type firewallEndpointAssociationArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location (zone) of the firewall endpoint association.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// The name of the firewall endpoint association resource.
 	Name *string `pulumi:"name"`
@@ -259,8 +251,6 @@ type FirewallEndpointAssociationArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location (zone) of the firewall endpoint association.
-	//
-	// ***
 	Location pulumi.StringInput
 	// The name of the firewall endpoint association resource.
 	Name pulumi.StringPtrInput
@@ -391,8 +381,6 @@ func (o FirewallEndpointAssociationOutput) Labels() pulumi.StringMapOutput {
 }
 
 // The location (zone) of the firewall endpoint association.
-//
-// ***
 func (o FirewallEndpointAssociationOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallEndpointAssociation) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

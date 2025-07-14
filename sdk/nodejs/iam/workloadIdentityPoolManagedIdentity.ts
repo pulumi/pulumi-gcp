@@ -161,9 +161,6 @@ export class WorkloadIdentityPoolManagedIdentity extends pulumi.CustomResource {
      * * end with an alphanumeric character
      *
      * The prefix `gcp-` will be reserved for future uses.
-     *
-     *
-     * - - -
      */
     public readonly workloadIdentityPoolManagedIdentityId!: pulumi.Output<string>;
     /**
@@ -278,9 +275,6 @@ export interface WorkloadIdentityPoolManagedIdentityState {
      * * end with an alphanumeric character
      *
      * The prefix `gcp-` will be reserved for future uses.
-     *
-     *
-     * - - -
      */
     workloadIdentityPoolManagedIdentityId?: pulumi.Input<string>;
     /**
@@ -334,9 +328,6 @@ export interface WorkloadIdentityPoolManagedIdentityArgs {
      * * end with an alphanumeric character
      *
      * The prefix `gcp-` will be reserved for future uses.
-     *
-     *
-     * - - -
      */
     workloadIdentityPoolManagedIdentityId: pulumi.Input<string>;
     /**

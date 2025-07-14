@@ -147,18 +147,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:eventarc/trigger:Trigger")
 public class Trigger extends com.pulumi.resources.CustomResource {
     /**
-     * Optional. The name of the channel associated with the trigger in
-     * &#39;projects/{project}/locations/{location}/channels/{channel}&#39; format. You must provide a channel to receive events from
-     * Eventarc SaaS partners.
+     * Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
      * 
      */
     @Export(name="channel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> channel;
 
     /**
-     * @return Optional. The name of the channel associated with the trigger in
-     * &#39;projects/{project}/locations/{location}/channels/{channel}&#39; format. You must provide a channel to receive events from
-     * Eventarc SaaS partners.
+     * @return Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
      * 
      */
     public Output<Optional<String>> channel() {
@@ -237,34 +233,32 @@ public class Trigger extends com.pulumi.resources.CustomResource {
         return this.etag;
     }
     /**
-     * Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data
-     * field. This is set to &#39;application/json&#39; if the value is not defined.
+     * Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
      * 
      */
     @Export(name="eventDataContentType", refs={String.class}, tree="[0]")
     private Output<String> eventDataContentType;
 
     /**
-     * @return Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data
-     * field. This is set to &#39;application/json&#39; if the value is not defined.
+     * @return Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
      * 
      */
     public Output<String> eventDataContentType() {
         return this.eventDataContentType;
     }
     /**
-     * Optional. User labels attached to the triggers that can be used to group resources. **Note**: This field is
-     * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-     * &#39;effective_labels&#39; for all of the labels present on the resource.
+     * Optional. User labels attached to the triggers that can be used to group resources.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return Optional. User labels attached to the triggers that can be used to group resources. **Note**: This field is
-     * non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
-     * &#39;effective_labels&#39; for all of the labels present on the resource.
+     * @return Optional. User labels attached to the triggers that can be used to group resources.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -314,9 +308,19 @@ public class Trigger extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }
@@ -337,42 +341,30 @@ public class Trigger extends com.pulumi.resources.CustomResource {
         return this.pulumiLabels;
     }
     /**
-     * Optional. The IAM service account email associated with the trigger. The service account represents the identity of the
-     * trigger. The principal who calls this API must have &#39;iam.serviceAccounts.actAs&#39; permission in the service account. See
-     * https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run
-     * destinations, this service account is used to generate identity tokens when invoking the service. See
-     * https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke
-     * authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have
-     * &#39;roles/eventarc.eventReceiver&#39; IAM role.
+     * Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
      * 
      */
     @Export(name="serviceAccount", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serviceAccount;
 
     /**
-     * @return Optional. The IAM service account email associated with the trigger. The service account represents the identity of the
-     * trigger. The principal who calls this API must have &#39;iam.serviceAccounts.actAs&#39; permission in the service account. See
-     * https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run
-     * destinations, this service account is used to generate identity tokens when invoking the service. See
-     * https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke
-     * authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have
-     * &#39;roles/eventarc.eventReceiver&#39; IAM role.
+     * @return Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
      * 
      */
     public Output<Optional<String>> serviceAccount() {
         return Codegen.optional(this.serviceAccount);
     }
     /**
-     * Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field
-     * contains a reference to that transport intermediary. This information can be used for debugging purposes.
+     * Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
+     * Structure is documented below.
      * 
      */
     @Export(name="transport", refs={TriggerTransport.class}, tree="[0]")
     private Output<TriggerTransport> transport;
 
     /**
-     * @return Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field
-     * contains a reference to that transport intermediary. This information can be used for debugging purposes.
+     * @return Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
+     * Structure is documented below.
      * 
      */
     public Output<TriggerTransport> transport() {

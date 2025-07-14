@@ -31,9 +31,6 @@ class ReleaseChannelSettingBindingArgs:
         The set of arguments for constructing a ReleaseChannelSettingBinding resource.
         :param pulumi.Input[builtins.str] release_channel_setting_id: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[builtins.str] setting_binding_id: Id of the setting binding.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] target: Target of the binding.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -73,9 +70,6 @@ class ReleaseChannelSettingBindingArgs:
     def setting_binding_id(self) -> pulumi.Input[builtins.str]:
         """
         Id of the setting binding.
-
-
-        - - -
         """
         return pulumi.get(self, "setting_binding_id")
 
@@ -181,9 +175,6 @@ class _ReleaseChannelSettingBindingState:
                and default labels configured on the provider.
         :param pulumi.Input[builtins.str] release_channel_setting_id: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[builtins.str] setting_binding_id: Id of the setting binding.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] target: Target of the binding.
         :param pulumi.Input[builtins.str] update_time: Update time stamp.
         """
@@ -331,9 +322,6 @@ class _ReleaseChannelSettingBindingState:
     def setting_binding_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Id of the setting binding.
-
-
-        - - -
         """
         return pulumi.get(self, "setting_binding_id")
 
@@ -445,9 +433,6 @@ class ReleaseChannelSettingBinding(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] release_channel_setting_id: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[builtins.str] setting_binding_id: Id of the setting binding.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] target: Target of the binding.
         """
         ...
@@ -605,9 +590,6 @@ class ReleaseChannelSettingBinding(pulumi.CustomResource):
                and default labels configured on the provider.
         :param pulumi.Input[builtins.str] release_channel_setting_id: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[builtins.str] setting_binding_id: Id of the setting binding.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] target: Target of the binding.
         :param pulumi.Input[builtins.str] update_time: Update time stamp.
         """
@@ -712,9 +694,6 @@ class ReleaseChannelSettingBinding(pulumi.CustomResource):
     def setting_binding_id(self) -> pulumi.Output[builtins.str]:
         """
         Id of the setting binding.
-
-
-        - - -
         """
         return pulumi.get(self, "setting_binding_id")
 

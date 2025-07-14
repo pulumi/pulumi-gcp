@@ -364,8 +364,6 @@ func (o FolderFeedFeedOutputConfigPtrOutput) PubsubDestination() FolderFeedFeedO
 
 type FolderFeedFeedOutputConfigPubsubDestination struct {
 	// Destination on Cloud Pubsub topic.
-	//
-	// ***
 	Topic string `pulumi:"topic"`
 }
 
@@ -382,8 +380,6 @@ type FolderFeedFeedOutputConfigPubsubDestinationInput interface {
 
 type FolderFeedFeedOutputConfigPubsubDestinationArgs struct {
 	// Destination on Cloud Pubsub topic.
-	//
-	// ***
 	Topic pulumi.StringInput `pulumi:"topic"`
 }
 
@@ -465,8 +461,6 @@ func (o FolderFeedFeedOutputConfigPubsubDestinationOutput) ToFolderFeedFeedOutpu
 }
 
 // Destination on Cloud Pubsub topic.
-//
-// ***
 func (o FolderFeedFeedOutputConfigPubsubDestinationOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v FolderFeedFeedOutputConfigPubsubDestination) string { return v.Topic }).(pulumi.StringOutput)
 }
@@ -496,8 +490,6 @@ func (o FolderFeedFeedOutputConfigPubsubDestinationPtrOutput) Elem() FolderFeedF
 }
 
 // Destination on Cloud Pubsub topic.
-//
-// ***
 func (o FolderFeedFeedOutputConfigPubsubDestinationPtrOutput) Topic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FolderFeedFeedOutputConfigPubsubDestination) *string {
 		if v == nil {
@@ -858,8 +850,6 @@ func (o OrganizationFeedFeedOutputConfigPtrOutput) PubsubDestination() Organizat
 
 type OrganizationFeedFeedOutputConfigPubsubDestination struct {
 	// Destination on Cloud Pubsub topic.
-	//
-	// ***
 	Topic string `pulumi:"topic"`
 }
 
@@ -876,8 +866,6 @@ type OrganizationFeedFeedOutputConfigPubsubDestinationInput interface {
 
 type OrganizationFeedFeedOutputConfigPubsubDestinationArgs struct {
 	// Destination on Cloud Pubsub topic.
-	//
-	// ***
 	Topic pulumi.StringInput `pulumi:"topic"`
 }
 
@@ -959,8 +947,6 @@ func (o OrganizationFeedFeedOutputConfigPubsubDestinationOutput) ToOrganizationF
 }
 
 // Destination on Cloud Pubsub topic.
-//
-// ***
 func (o OrganizationFeedFeedOutputConfigPubsubDestinationOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v OrganizationFeedFeedOutputConfigPubsubDestination) string { return v.Topic }).(pulumi.StringOutput)
 }
@@ -990,8 +976,6 @@ func (o OrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput) Elem() Organ
 }
 
 // Destination on Cloud Pubsub topic.
-//
-// ***
 func (o OrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput) Topic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OrganizationFeedFeedOutputConfigPubsubDestination) *string {
 		if v == nil {
@@ -1352,8 +1336,6 @@ func (o ProjectFeedFeedOutputConfigPtrOutput) PubsubDestination() ProjectFeedFee
 
 type ProjectFeedFeedOutputConfigPubsubDestination struct {
 	// Destination on Cloud Pubsub topic.
-	//
-	// ***
 	Topic string `pulumi:"topic"`
 }
 
@@ -1370,8 +1352,6 @@ type ProjectFeedFeedOutputConfigPubsubDestinationInput interface {
 
 type ProjectFeedFeedOutputConfigPubsubDestinationArgs struct {
 	// Destination on Cloud Pubsub topic.
-	//
-	// ***
 	Topic pulumi.StringInput `pulumi:"topic"`
 }
 
@@ -1453,8 +1433,6 @@ func (o ProjectFeedFeedOutputConfigPubsubDestinationOutput) ToProjectFeedFeedOut
 }
 
 // Destination on Cloud Pubsub topic.
-//
-// ***
 func (o ProjectFeedFeedOutputConfigPubsubDestinationOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v ProjectFeedFeedOutputConfigPubsubDestination) string { return v.Topic }).(pulumi.StringOutput)
 }
@@ -1484,8 +1462,6 @@ func (o ProjectFeedFeedOutputConfigPubsubDestinationPtrOutput) Elem() ProjectFee
 }
 
 // Destination on Cloud Pubsub topic.
-//
-// ***
 func (o ProjectFeedFeedOutputConfigPubsubDestinationPtrOutput) Topic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectFeedFeedOutputConfigPubsubDestination) *string {
 		if v == nil {

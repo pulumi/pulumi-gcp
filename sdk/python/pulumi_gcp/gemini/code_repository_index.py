@@ -29,9 +29,6 @@ class CodeRepositoryIndexArgs:
         """
         The set of arguments for constructing a CodeRepositoryIndex resource.
         :param pulumi.Input[builtins.str] code_repository_index_id: Required. Id of the Code Repository Index.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] location: The location of the Code Repository Index, for example `us-central1`.
         :param pulumi.Input[builtins.bool] force_destroy: If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
         :param pulumi.Input[builtins.str] kms_key: Optional. Immutable. Customer-managed encryption key name, in the format
@@ -58,9 +55,6 @@ class CodeRepositoryIndexArgs:
     def code_repository_index_id(self) -> pulumi.Input[builtins.str]:
         """
         Required. Id of the Code Repository Index.
-
-
-        - - -
         """
         return pulumi.get(self, "code_repository_index_id")
 
@@ -151,9 +145,6 @@ class _CodeRepositoryIndexState:
         """
         Input properties used for looking up and filtering CodeRepositoryIndex resources.
         :param pulumi.Input[builtins.str] code_repository_index_id: Required. Id of the Code Repository Index.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] create_time: Output only. Create time stamp.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[builtins.bool] force_destroy: If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
@@ -202,9 +193,6 @@ class _CodeRepositoryIndexState:
     def code_repository_index_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Required. Id of the Code Repository Index.
-
-
-        - - -
         """
         return pulumi.get(self, "code_repository_index_id")
 
@@ -414,9 +402,6 @@ class CodeRepositoryIndex(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] code_repository_index_id: Required. Id of the Code Repository Index.
-               
-               
-               - - -
         :param pulumi.Input[builtins.bool] force_destroy: If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
         :param pulumi.Input[builtins.str] kms_key: Optional. Immutable. Customer-managed encryption key name, in the format
                `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
@@ -558,9 +543,6 @@ class CodeRepositoryIndex(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] code_repository_index_id: Required. Id of the Code Repository Index.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] create_time: Output only. Create time stamp.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[builtins.bool] force_destroy: If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
@@ -602,9 +584,6 @@ class CodeRepositoryIndex(pulumi.CustomResource):
     def code_repository_index_id(self) -> pulumi.Output[builtins.str]:
         """
         Required. Id of the Code Repository Index.
-
-
-        - - -
         """
         return pulumi.get(self, "code_repository_index_id")
 

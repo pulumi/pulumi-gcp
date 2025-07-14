@@ -32,9 +32,6 @@ class ResizeRequestArgs:
         """
         The set of arguments for constructing a ResizeRequest resource.
         :param pulumi.Input[builtins.str] instance_group_manager: The reference of the instance group manager this ResizeRequest is a part of.
-               
-               
-               - - -
         :param pulumi.Input[builtins.int] resize_by: The number of instances to be created by this resize request. The group's target size will be increased by this number.
         :param pulumi.Input[builtins.str] description: An optional description of this resize-request.
         :param pulumi.Input[builtins.str] name: The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
@@ -62,9 +59,6 @@ class ResizeRequestArgs:
     def instance_group_manager(self) -> pulumi.Input[builtins.str]:
         """
         The reference of the instance group manager this ResizeRequest is a part of.
-
-
-        - - -
         """
         return pulumi.get(self, "instance_group_manager")
 
@@ -165,9 +159,6 @@ class _ResizeRequestState:
         :param pulumi.Input[builtins.str] creation_timestamp: The creation timestamp for this resize request in RFC3339 text format.
         :param pulumi.Input[builtins.str] description: An optional description of this resize-request.
         :param pulumi.Input[builtins.str] instance_group_manager: The reference of the instance group manager this ResizeRequest is a part of.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -229,9 +220,6 @@ class _ResizeRequestState:
     def instance_group_manager(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The reference of the instance group manager this ResizeRequest is a part of.
-
-
-        - - -
         """
         return pulumi.get(self, "instance_group_manager")
 
@@ -452,9 +440,6 @@ class ResizeRequest(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] description: An optional description of this resize-request.
         :param pulumi.Input[builtins.str] instance_group_manager: The reference of the instance group manager this ResizeRequest is a part of.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -651,9 +636,6 @@ class ResizeRequest(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] creation_timestamp: The creation timestamp for this resize request in RFC3339 text format.
         :param pulumi.Input[builtins.str] description: An optional description of this resize-request.
         :param pulumi.Input[builtins.str] instance_group_manager: The reference of the instance group manager this ResizeRequest is a part of.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -702,9 +684,6 @@ class ResizeRequest(pulumi.CustomResource):
     def instance_group_manager(self) -> pulumi.Output[builtins.str]:
         """
         The reference of the instance group manager this ResizeRequest is a part of.
-
-
-        - - -
         """
         return pulumi.get(self, "instance_group_manager")
 

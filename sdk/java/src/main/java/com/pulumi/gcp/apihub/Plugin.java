@@ -357,8 +357,6 @@ public class Plugin extends com.pulumi.resources.CustomResource {
      *   its length is limited to 1000 characters and valid characters are
      *   /a-z[0-9]-_/.
      * 
-     * ***
-     * 
      */
     @Export(name="pluginId", refs={String.class}, tree="[0]")
     private Output<String> pluginId;
@@ -375,8 +373,6 @@ public class Plugin extends com.pulumi.resources.CustomResource {
      *   `projects/{project}/locations/{location}/plugins/{plugin}`,
      *   its length is limited to 1000 characters and valid characters are
      *   /a-z[0-9]-_/.
-     * 
-     * ***
      * 
      */
     public Output<String> pluginId() {

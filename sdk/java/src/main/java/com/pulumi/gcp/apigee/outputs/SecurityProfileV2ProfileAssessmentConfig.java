@@ -19,8 +19,6 @@ public final class SecurityProfileV2ProfileAssessmentConfig {
      * @return The weight of the assessment.
      * Possible values are: `MINOR`, `MODERATE`, `MAJOR`.
      * 
-     * ***
-     * 
      */
     private String weight;
 
@@ -35,8 +33,6 @@ public final class SecurityProfileV2ProfileAssessmentConfig {
     /**
      * @return The weight of the assessment.
      * Possible values are: `MINOR`, `MODERATE`, `MAJOR`.
-     * 
-     * ***
      * 
      */
     public String weight() {

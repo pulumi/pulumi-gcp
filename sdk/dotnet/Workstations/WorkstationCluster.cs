@@ -378,9 +378,6 @@ namespace Pulumi.Gcp.Workstations
 
         /// <summary>
         /// ID to use for the workstation cluster.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("workstationClusterId")]
         public Output<string> WorkstationClusterId { get; private set; } = null!;
@@ -528,9 +525,6 @@ namespace Pulumi.Gcp.Workstations
 
         /// <summary>
         /// ID to use for the workstation cluster.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("workstationClusterId", required: true)]
         public Input<string> WorkstationClusterId { get; set; } = null!;
@@ -728,9 +722,6 @@ namespace Pulumi.Gcp.Workstations
 
         /// <summary>
         /// ID to use for the workstation cluster.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("workstationClusterId")]
         public Input<string>? WorkstationClusterId { get; set; }

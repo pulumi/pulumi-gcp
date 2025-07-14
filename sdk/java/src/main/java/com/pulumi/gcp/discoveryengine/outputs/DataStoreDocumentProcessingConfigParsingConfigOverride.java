@@ -27,6 +27,7 @@ public final class DataStoreDocumentProcessingConfigParsingConfigOverride {
     private String fileType;
     /**
      * @return Configurations applied to layout parser.
+     * Structure is documented below.
      * 
      */
     private @Nullable DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig layoutParsingConfig;
@@ -54,6 +55,7 @@ public final class DataStoreDocumentProcessingConfigParsingConfigOverride {
     }
     /**
      * @return Configurations applied to layout parser.
+     * Structure is documented below.
      * 
      */
     public Optional<DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig> layoutParsingConfig() {

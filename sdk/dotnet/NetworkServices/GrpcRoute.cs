@@ -330,16 +330,15 @@ namespace Pulumi.Gcp.NetworkServices
         public Output<ImmutableArray<string>> Hostnames { get; private set; } = null!;
 
         /// <summary>
-        /// Set of label tags associated with the GrpcRoute resource. **Note**: This field is non-authoritative, and will only
-        /// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-        /// present on the resource.
+        /// Set of label tags associated with the GrpcRoute resource.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Location (region) of the GRPCRoute resource to be created. Only the value 'global' is currently allowed; defaults to
-        /// 'global' if omitted.
+        /// Location (region) of the GRPCRoute resource to be created. Only the value 'global' is currently allowed; defaults to 'global' if omitted.
         /// </summary>
         [Output("location")]
         public Output<string?> Location { get; private set; } = null!;
@@ -356,6 +355,10 @@ namespace Pulumi.Gcp.NetworkServices
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -470,9 +473,9 @@ namespace Pulumi.Gcp.NetworkServices
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Set of label tags associated with the GrpcRoute resource. **Note**: This field is non-authoritative, and will only
-        /// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-        /// present on the resource.
+        /// Set of label tags associated with the GrpcRoute resource.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -481,8 +484,7 @@ namespace Pulumi.Gcp.NetworkServices
         }
 
         /// <summary>
-        /// Location (region) of the GRPCRoute resource to be created. Only the value 'global' is currently allowed; defaults to
-        /// 'global' if omitted.
+        /// Location (region) of the GRPCRoute resource to be created. Only the value 'global' is currently allowed; defaults to 'global' if omitted.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -505,6 +507,10 @@ namespace Pulumi.Gcp.NetworkServices
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -585,9 +591,9 @@ namespace Pulumi.Gcp.NetworkServices
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Set of label tags associated with the GrpcRoute resource. **Note**: This field is non-authoritative, and will only
-        /// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-        /// present on the resource.
+        /// Set of label tags associated with the GrpcRoute resource.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -596,8 +602,7 @@ namespace Pulumi.Gcp.NetworkServices
         }
 
         /// <summary>
-        /// Location (region) of the GRPCRoute resource to be created. Only the value 'global' is currently allowed; defaults to
-        /// 'global' if omitted.
+        /// Location (region) of the GRPCRoute resource to be created. Only the value 'global' is currently allowed; defaults to 'global' if omitted.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -620,6 +625,10 @@ namespace Pulumi.Gcp.NetworkServices
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

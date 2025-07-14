@@ -228,16 +228,12 @@ public class AppGateway extends com.pulumi.resources.CustomResource {
     /**
      * ID of the AppGateway.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return ID of the AppGateway.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

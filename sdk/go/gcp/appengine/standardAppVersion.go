@@ -188,11 +188,12 @@ type StandardAppVersion struct {
 	// Allows App Engine second generation runtimes to access the legacy bundled services.
 	AppEngineApis pulumi.BoolPtrOutput `pulumi:"appEngineApis"`
 	// Automatic scaling is based on request rate, response latencies, and other application metrics.
+	// Structure is documented below.
 	AutomaticScaling StandardAppVersionAutomaticScalingPtrOutput `pulumi:"automaticScaling"`
-	// Basic scaling creates instances when your application receives requests. Each instance will be shut down when the
-	// application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
+	// Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
+	// Structure is documented below.
 	BasicScaling StandardAppVersionBasicScalingPtrOutput `pulumi:"basicScaling"`
-	// If set to 'true', the service will be deleted if it is the last version.
+	// If set to `true`, the service will be deleted if it is the last version.
 	DeleteServiceOnDestroy pulumi.BoolPtrOutput `pulumi:"deleteServiceOnDestroy"`
 	// Code and application artifacts that make up this version.
 	// Structure is documented below.
@@ -202,45 +203,47 @@ type StandardAppVersion struct {
 	Entrypoint StandardAppVersionEntrypointOutput `pulumi:"entrypoint"`
 	// Environment variables available to the application.
 	EnvVariables pulumi.StringMapOutput `pulumi:"envVariables"`
-	// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
-	// request and other request handlers are not attempted.
+	// An ordered list of URL-matching patterns that should be applied to incoming requests.
+	// The first matching URL handles the request and other request handlers are not attempted.
+	// Structure is documented below.
 	Handlers StandardAppVersionHandlerArrayOutput `pulumi:"handlers"`
-	// A list of the types of messages that this application is able to receive. Possible values: ["INBOUND_SERVICE_MAIL",
-	// "INBOUND_SERVICE_MAIL_BOUNCE", "INBOUND_SERVICE_XMPP_ERROR", "INBOUND_SERVICE_XMPP_MESSAGE",
-	// "INBOUND_SERVICE_XMPP_SUBSCRIBE", "INBOUND_SERVICE_XMPP_PRESENCE", "INBOUND_SERVICE_CHANNEL_PRESENCE",
-	// "INBOUND_SERVICE_WARMUP"]
+	// A list of the types of messages that this application is able to receive.
+	// Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
 	InboundServices pulumi.StringArrayOutput `pulumi:"inboundServices"`
-	// Instance class that is used to run this version. Valid values are AutomaticScaling: F1, F2, F4, F4_1G BasicScaling or
-	// ManualScaling: B1, B2, B4, B4_1G, B8 Defaults to F1 for AutomaticScaling and B2 for ManualScaling and BasicScaling. If
-	// no scaling is specified, AutomaticScaling is chosen.
+	// Instance class that is used to run this version. Valid values are
+	// AutomaticScaling: F1, F2, F4, F4_1G
+	// BasicScaling or ManualScaling: B1, B2, B4, B4_1G, B8
+	// Defaults to F1 for AutomaticScaling and B2 for ManualScaling and BasicScaling. If no scaling is specified, AutomaticScaling is chosen.
 	InstanceClass pulumi.StringOutput `pulumi:"instanceClass"`
 	// Configuration for third-party Python runtime libraries that are required by the application.
+	// Structure is documented below.
 	Libraries StandardAppVersionLibraryArrayOutput `pulumi:"libraries"`
-	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
-	// its memory over time.
+	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+	// Structure is documented below.
 	ManualScaling StandardAppVersionManualScalingPtrOutput `pulumi:"manualScaling"`
 	// Full path to the Version resource in the API. Example, "v1".
 	Name pulumi.StringOutput `pulumi:"name"`
-	// If set to 'true', the application version will not be deleted.
+	// If set to `true`, the application version will not be deleted.
 	NoopOnDestroy pulumi.BoolPtrOutput `pulumi:"noopOnDestroy"`
-	Project       pulumi.StringOutput  `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Desired runtime. Example python27.
 	Runtime pulumi.StringOutput `pulumi:"runtime"`
-	// The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at
-	// 'https://cloud.google.com/appengine/docs/standard/<language>/config/appref'\ Substitute '<language>' with 'python',
-	// 'java', 'php', 'ruby', 'go' or 'nodejs'.
+	// The version of the API in the given runtime environment.
+	// Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/<language>/config/appref`\
+	// Substitute `<language>` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
 	RuntimeApiVersion pulumi.StringPtrOutput `pulumi:"runtimeApiVersion"`
 	// AppEngine service resource
 	Service pulumi.StringOutput `pulumi:"service"`
-	// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default
-	// if this field is neither provided in app.yaml file nor through CLI flag.
+	// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
 	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
 	// Whether multiple requests can be dispatched to this version at once.
 	Threadsafe pulumi.BoolPtrOutput `pulumi:"threadsafe"`
-	// Relative name of the version within the service. For example, 'v1'. Version names can contain only lowercase letters,
-	// numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
+	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
 	VersionId pulumi.StringPtrOutput `pulumi:"versionId"`
 	// Enables VPC connectivity for standard apps.
+	// Structure is documented below.
 	VpcAccessConnector StandardAppVersionVpcAccessConnectorPtrOutput `pulumi:"vpcAccessConnector"`
 }
 
@@ -289,11 +292,12 @@ type standardAppVersionState struct {
 	// Allows App Engine second generation runtimes to access the legacy bundled services.
 	AppEngineApis *bool `pulumi:"appEngineApis"`
 	// Automatic scaling is based on request rate, response latencies, and other application metrics.
+	// Structure is documented below.
 	AutomaticScaling *StandardAppVersionAutomaticScaling `pulumi:"automaticScaling"`
-	// Basic scaling creates instances when your application receives requests. Each instance will be shut down when the
-	// application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
+	// Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
+	// Structure is documented below.
 	BasicScaling *StandardAppVersionBasicScaling `pulumi:"basicScaling"`
-	// If set to 'true', the service will be deleted if it is the last version.
+	// If set to `true`, the service will be deleted if it is the last version.
 	DeleteServiceOnDestroy *bool `pulumi:"deleteServiceOnDestroy"`
 	// Code and application artifacts that make up this version.
 	// Structure is documented below.
@@ -303,45 +307,47 @@ type standardAppVersionState struct {
 	Entrypoint *StandardAppVersionEntrypoint `pulumi:"entrypoint"`
 	// Environment variables available to the application.
 	EnvVariables map[string]string `pulumi:"envVariables"`
-	// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
-	// request and other request handlers are not attempted.
+	// An ordered list of URL-matching patterns that should be applied to incoming requests.
+	// The first matching URL handles the request and other request handlers are not attempted.
+	// Structure is documented below.
 	Handlers []StandardAppVersionHandler `pulumi:"handlers"`
-	// A list of the types of messages that this application is able to receive. Possible values: ["INBOUND_SERVICE_MAIL",
-	// "INBOUND_SERVICE_MAIL_BOUNCE", "INBOUND_SERVICE_XMPP_ERROR", "INBOUND_SERVICE_XMPP_MESSAGE",
-	// "INBOUND_SERVICE_XMPP_SUBSCRIBE", "INBOUND_SERVICE_XMPP_PRESENCE", "INBOUND_SERVICE_CHANNEL_PRESENCE",
-	// "INBOUND_SERVICE_WARMUP"]
+	// A list of the types of messages that this application is able to receive.
+	// Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
 	InboundServices []string `pulumi:"inboundServices"`
-	// Instance class that is used to run this version. Valid values are AutomaticScaling: F1, F2, F4, F4_1G BasicScaling or
-	// ManualScaling: B1, B2, B4, B4_1G, B8 Defaults to F1 for AutomaticScaling and B2 for ManualScaling and BasicScaling. If
-	// no scaling is specified, AutomaticScaling is chosen.
+	// Instance class that is used to run this version. Valid values are
+	// AutomaticScaling: F1, F2, F4, F4_1G
+	// BasicScaling or ManualScaling: B1, B2, B4, B4_1G, B8
+	// Defaults to F1 for AutomaticScaling and B2 for ManualScaling and BasicScaling. If no scaling is specified, AutomaticScaling is chosen.
 	InstanceClass *string `pulumi:"instanceClass"`
 	// Configuration for third-party Python runtime libraries that are required by the application.
+	// Structure is documented below.
 	Libraries []StandardAppVersionLibrary `pulumi:"libraries"`
-	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
-	// its memory over time.
+	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+	// Structure is documented below.
 	ManualScaling *StandardAppVersionManualScaling `pulumi:"manualScaling"`
 	// Full path to the Version resource in the API. Example, "v1".
 	Name *string `pulumi:"name"`
-	// If set to 'true', the application version will not be deleted.
-	NoopOnDestroy *bool   `pulumi:"noopOnDestroy"`
-	Project       *string `pulumi:"project"`
+	// If set to `true`, the application version will not be deleted.
+	NoopOnDestroy *bool `pulumi:"noopOnDestroy"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// Desired runtime. Example python27.
 	Runtime *string `pulumi:"runtime"`
-	// The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at
-	// 'https://cloud.google.com/appengine/docs/standard/<language>/config/appref'\ Substitute '<language>' with 'python',
-	// 'java', 'php', 'ruby', 'go' or 'nodejs'.
+	// The version of the API in the given runtime environment.
+	// Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/<language>/config/appref`\
+	// Substitute `<language>` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
 	RuntimeApiVersion *string `pulumi:"runtimeApiVersion"`
 	// AppEngine service resource
 	Service *string `pulumi:"service"`
-	// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default
-	// if this field is neither provided in app.yaml file nor through CLI flag.
+	// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Whether multiple requests can be dispatched to this version at once.
 	Threadsafe *bool `pulumi:"threadsafe"`
-	// Relative name of the version within the service. For example, 'v1'. Version names can contain only lowercase letters,
-	// numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
+	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
 	VersionId *string `pulumi:"versionId"`
 	// Enables VPC connectivity for standard apps.
+	// Structure is documented below.
 	VpcAccessConnector *StandardAppVersionVpcAccessConnector `pulumi:"vpcAccessConnector"`
 }
 
@@ -349,11 +355,12 @@ type StandardAppVersionState struct {
 	// Allows App Engine second generation runtimes to access the legacy bundled services.
 	AppEngineApis pulumi.BoolPtrInput
 	// Automatic scaling is based on request rate, response latencies, and other application metrics.
+	// Structure is documented below.
 	AutomaticScaling StandardAppVersionAutomaticScalingPtrInput
-	// Basic scaling creates instances when your application receives requests. Each instance will be shut down when the
-	// application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
+	// Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
+	// Structure is documented below.
 	BasicScaling StandardAppVersionBasicScalingPtrInput
-	// If set to 'true', the service will be deleted if it is the last version.
+	// If set to `true`, the service will be deleted if it is the last version.
 	DeleteServiceOnDestroy pulumi.BoolPtrInput
 	// Code and application artifacts that make up this version.
 	// Structure is documented below.
@@ -363,45 +370,47 @@ type StandardAppVersionState struct {
 	Entrypoint StandardAppVersionEntrypointPtrInput
 	// Environment variables available to the application.
 	EnvVariables pulumi.StringMapInput
-	// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
-	// request and other request handlers are not attempted.
+	// An ordered list of URL-matching patterns that should be applied to incoming requests.
+	// The first matching URL handles the request and other request handlers are not attempted.
+	// Structure is documented below.
 	Handlers StandardAppVersionHandlerArrayInput
-	// A list of the types of messages that this application is able to receive. Possible values: ["INBOUND_SERVICE_MAIL",
-	// "INBOUND_SERVICE_MAIL_BOUNCE", "INBOUND_SERVICE_XMPP_ERROR", "INBOUND_SERVICE_XMPP_MESSAGE",
-	// "INBOUND_SERVICE_XMPP_SUBSCRIBE", "INBOUND_SERVICE_XMPP_PRESENCE", "INBOUND_SERVICE_CHANNEL_PRESENCE",
-	// "INBOUND_SERVICE_WARMUP"]
+	// A list of the types of messages that this application is able to receive.
+	// Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
 	InboundServices pulumi.StringArrayInput
-	// Instance class that is used to run this version. Valid values are AutomaticScaling: F1, F2, F4, F4_1G BasicScaling or
-	// ManualScaling: B1, B2, B4, B4_1G, B8 Defaults to F1 for AutomaticScaling and B2 for ManualScaling and BasicScaling. If
-	// no scaling is specified, AutomaticScaling is chosen.
+	// Instance class that is used to run this version. Valid values are
+	// AutomaticScaling: F1, F2, F4, F4_1G
+	// BasicScaling or ManualScaling: B1, B2, B4, B4_1G, B8
+	// Defaults to F1 for AutomaticScaling and B2 for ManualScaling and BasicScaling. If no scaling is specified, AutomaticScaling is chosen.
 	InstanceClass pulumi.StringPtrInput
 	// Configuration for third-party Python runtime libraries that are required by the application.
+	// Structure is documented below.
 	Libraries StandardAppVersionLibraryArrayInput
-	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
-	// its memory over time.
+	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+	// Structure is documented below.
 	ManualScaling StandardAppVersionManualScalingPtrInput
 	// Full path to the Version resource in the API. Example, "v1".
 	Name pulumi.StringPtrInput
-	// If set to 'true', the application version will not be deleted.
+	// If set to `true`, the application version will not be deleted.
 	NoopOnDestroy pulumi.BoolPtrInput
-	Project       pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// Desired runtime. Example python27.
 	Runtime pulumi.StringPtrInput
-	// The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at
-	// 'https://cloud.google.com/appengine/docs/standard/<language>/config/appref'\ Substitute '<language>' with 'python',
-	// 'java', 'php', 'ruby', 'go' or 'nodejs'.
+	// The version of the API in the given runtime environment.
+	// Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/<language>/config/appref`\
+	// Substitute `<language>` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
 	RuntimeApiVersion pulumi.StringPtrInput
 	// AppEngine service resource
 	Service pulumi.StringPtrInput
-	// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default
-	// if this field is neither provided in app.yaml file nor through CLI flag.
+	// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
 	ServiceAccount pulumi.StringPtrInput
 	// Whether multiple requests can be dispatched to this version at once.
 	Threadsafe pulumi.BoolPtrInput
-	// Relative name of the version within the service. For example, 'v1'. Version names can contain only lowercase letters,
-	// numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
+	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
 	VersionId pulumi.StringPtrInput
 	// Enables VPC connectivity for standard apps.
+	// Structure is documented below.
 	VpcAccessConnector StandardAppVersionVpcAccessConnectorPtrInput
 }
 
@@ -413,11 +422,12 @@ type standardAppVersionArgs struct {
 	// Allows App Engine second generation runtimes to access the legacy bundled services.
 	AppEngineApis *bool `pulumi:"appEngineApis"`
 	// Automatic scaling is based on request rate, response latencies, and other application metrics.
+	// Structure is documented below.
 	AutomaticScaling *StandardAppVersionAutomaticScaling `pulumi:"automaticScaling"`
-	// Basic scaling creates instances when your application receives requests. Each instance will be shut down when the
-	// application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
+	// Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
+	// Structure is documented below.
 	BasicScaling *StandardAppVersionBasicScaling `pulumi:"basicScaling"`
-	// If set to 'true', the service will be deleted if it is the last version.
+	// If set to `true`, the service will be deleted if it is the last version.
 	DeleteServiceOnDestroy *bool `pulumi:"deleteServiceOnDestroy"`
 	// Code and application artifacts that make up this version.
 	// Structure is documented below.
@@ -427,43 +437,45 @@ type standardAppVersionArgs struct {
 	Entrypoint StandardAppVersionEntrypoint `pulumi:"entrypoint"`
 	// Environment variables available to the application.
 	EnvVariables map[string]string `pulumi:"envVariables"`
-	// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
-	// request and other request handlers are not attempted.
+	// An ordered list of URL-matching patterns that should be applied to incoming requests.
+	// The first matching URL handles the request and other request handlers are not attempted.
+	// Structure is documented below.
 	Handlers []StandardAppVersionHandler `pulumi:"handlers"`
-	// A list of the types of messages that this application is able to receive. Possible values: ["INBOUND_SERVICE_MAIL",
-	// "INBOUND_SERVICE_MAIL_BOUNCE", "INBOUND_SERVICE_XMPP_ERROR", "INBOUND_SERVICE_XMPP_MESSAGE",
-	// "INBOUND_SERVICE_XMPP_SUBSCRIBE", "INBOUND_SERVICE_XMPP_PRESENCE", "INBOUND_SERVICE_CHANNEL_PRESENCE",
-	// "INBOUND_SERVICE_WARMUP"]
+	// A list of the types of messages that this application is able to receive.
+	// Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
 	InboundServices []string `pulumi:"inboundServices"`
-	// Instance class that is used to run this version. Valid values are AutomaticScaling: F1, F2, F4, F4_1G BasicScaling or
-	// ManualScaling: B1, B2, B4, B4_1G, B8 Defaults to F1 for AutomaticScaling and B2 for ManualScaling and BasicScaling. If
-	// no scaling is specified, AutomaticScaling is chosen.
+	// Instance class that is used to run this version. Valid values are
+	// AutomaticScaling: F1, F2, F4, F4_1G
+	// BasicScaling or ManualScaling: B1, B2, B4, B4_1G, B8
+	// Defaults to F1 for AutomaticScaling and B2 for ManualScaling and BasicScaling. If no scaling is specified, AutomaticScaling is chosen.
 	InstanceClass *string `pulumi:"instanceClass"`
 	// Configuration for third-party Python runtime libraries that are required by the application.
+	// Structure is documented below.
 	Libraries []StandardAppVersionLibrary `pulumi:"libraries"`
-	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
-	// its memory over time.
+	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+	// Structure is documented below.
 	ManualScaling *StandardAppVersionManualScaling `pulumi:"manualScaling"`
-	// If set to 'true', the application version will not be deleted.
-	NoopOnDestroy *bool   `pulumi:"noopOnDestroy"`
-	Project       *string `pulumi:"project"`
+	// If set to `true`, the application version will not be deleted.
+	NoopOnDestroy *bool `pulumi:"noopOnDestroy"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// Desired runtime. Example python27.
 	Runtime string `pulumi:"runtime"`
-	// The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at
-	// 'https://cloud.google.com/appengine/docs/standard/<language>/config/appref'\ Substitute '<language>' with 'python',
-	// 'java', 'php', 'ruby', 'go' or 'nodejs'.
+	// The version of the API in the given runtime environment.
+	// Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/<language>/config/appref`\
+	// Substitute `<language>` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
 	RuntimeApiVersion *string `pulumi:"runtimeApiVersion"`
 	// AppEngine service resource
 	Service string `pulumi:"service"`
-	// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default
-	// if this field is neither provided in app.yaml file nor through CLI flag.
+	// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Whether multiple requests can be dispatched to this version at once.
 	Threadsafe *bool `pulumi:"threadsafe"`
-	// Relative name of the version within the service. For example, 'v1'. Version names can contain only lowercase letters,
-	// numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
+	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
 	VersionId *string `pulumi:"versionId"`
 	// Enables VPC connectivity for standard apps.
+	// Structure is documented below.
 	VpcAccessConnector *StandardAppVersionVpcAccessConnector `pulumi:"vpcAccessConnector"`
 }
 
@@ -472,11 +484,12 @@ type StandardAppVersionArgs struct {
 	// Allows App Engine second generation runtimes to access the legacy bundled services.
 	AppEngineApis pulumi.BoolPtrInput
 	// Automatic scaling is based on request rate, response latencies, and other application metrics.
+	// Structure is documented below.
 	AutomaticScaling StandardAppVersionAutomaticScalingPtrInput
-	// Basic scaling creates instances when your application receives requests. Each instance will be shut down when the
-	// application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
+	// Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
+	// Structure is documented below.
 	BasicScaling StandardAppVersionBasicScalingPtrInput
-	// If set to 'true', the service will be deleted if it is the last version.
+	// If set to `true`, the service will be deleted if it is the last version.
 	DeleteServiceOnDestroy pulumi.BoolPtrInput
 	// Code and application artifacts that make up this version.
 	// Structure is documented below.
@@ -486,43 +499,45 @@ type StandardAppVersionArgs struct {
 	Entrypoint StandardAppVersionEntrypointInput
 	// Environment variables available to the application.
 	EnvVariables pulumi.StringMapInput
-	// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
-	// request and other request handlers are not attempted.
+	// An ordered list of URL-matching patterns that should be applied to incoming requests.
+	// The first matching URL handles the request and other request handlers are not attempted.
+	// Structure is documented below.
 	Handlers StandardAppVersionHandlerArrayInput
-	// A list of the types of messages that this application is able to receive. Possible values: ["INBOUND_SERVICE_MAIL",
-	// "INBOUND_SERVICE_MAIL_BOUNCE", "INBOUND_SERVICE_XMPP_ERROR", "INBOUND_SERVICE_XMPP_MESSAGE",
-	// "INBOUND_SERVICE_XMPP_SUBSCRIBE", "INBOUND_SERVICE_XMPP_PRESENCE", "INBOUND_SERVICE_CHANNEL_PRESENCE",
-	// "INBOUND_SERVICE_WARMUP"]
+	// A list of the types of messages that this application is able to receive.
+	// Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
 	InboundServices pulumi.StringArrayInput
-	// Instance class that is used to run this version. Valid values are AutomaticScaling: F1, F2, F4, F4_1G BasicScaling or
-	// ManualScaling: B1, B2, B4, B4_1G, B8 Defaults to F1 for AutomaticScaling and B2 for ManualScaling and BasicScaling. If
-	// no scaling is specified, AutomaticScaling is chosen.
+	// Instance class that is used to run this version. Valid values are
+	// AutomaticScaling: F1, F2, F4, F4_1G
+	// BasicScaling or ManualScaling: B1, B2, B4, B4_1G, B8
+	// Defaults to F1 for AutomaticScaling and B2 for ManualScaling and BasicScaling. If no scaling is specified, AutomaticScaling is chosen.
 	InstanceClass pulumi.StringPtrInput
 	// Configuration for third-party Python runtime libraries that are required by the application.
+	// Structure is documented below.
 	Libraries StandardAppVersionLibraryArrayInput
-	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
-	// its memory over time.
+	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+	// Structure is documented below.
 	ManualScaling StandardAppVersionManualScalingPtrInput
-	// If set to 'true', the application version will not be deleted.
+	// If set to `true`, the application version will not be deleted.
 	NoopOnDestroy pulumi.BoolPtrInput
-	Project       pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// Desired runtime. Example python27.
 	Runtime pulumi.StringInput
-	// The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at
-	// 'https://cloud.google.com/appengine/docs/standard/<language>/config/appref'\ Substitute '<language>' with 'python',
-	// 'java', 'php', 'ruby', 'go' or 'nodejs'.
+	// The version of the API in the given runtime environment.
+	// Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/<language>/config/appref`\
+	// Substitute `<language>` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
 	RuntimeApiVersion pulumi.StringPtrInput
 	// AppEngine service resource
 	Service pulumi.StringInput
-	// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default
-	// if this field is neither provided in app.yaml file nor through CLI flag.
+	// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
 	ServiceAccount pulumi.StringPtrInput
 	// Whether multiple requests can be dispatched to this version at once.
 	Threadsafe pulumi.BoolPtrInput
-	// Relative name of the version within the service. For example, 'v1'. Version names can contain only lowercase letters,
-	// numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
+	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
 	VersionId pulumi.StringPtrInput
 	// Enables VPC connectivity for standard apps.
+	// Structure is documented below.
 	VpcAccessConnector StandardAppVersionVpcAccessConnectorPtrInput
 }
 
@@ -619,17 +634,18 @@ func (o StandardAppVersionOutput) AppEngineApis() pulumi.BoolPtrOutput {
 }
 
 // Automatic scaling is based on request rate, response latencies, and other application metrics.
+// Structure is documented below.
 func (o StandardAppVersionOutput) AutomaticScaling() StandardAppVersionAutomaticScalingPtrOutput {
 	return o.ApplyT(func(v *StandardAppVersion) StandardAppVersionAutomaticScalingPtrOutput { return v.AutomaticScaling }).(StandardAppVersionAutomaticScalingPtrOutput)
 }
 
-// Basic scaling creates instances when your application receives requests. Each instance will be shut down when the
-// application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
+// Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
+// Structure is documented below.
 func (o StandardAppVersionOutput) BasicScaling() StandardAppVersionBasicScalingPtrOutput {
 	return o.ApplyT(func(v *StandardAppVersion) StandardAppVersionBasicScalingPtrOutput { return v.BasicScaling }).(StandardAppVersionBasicScalingPtrOutput)
 }
 
-// If set to 'true', the service will be deleted if it is the last version.
+// If set to `true`, the service will be deleted if it is the last version.
 func (o StandardAppVersionOutput) DeleteServiceOnDestroy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *StandardAppVersion) pulumi.BoolPtrOutput { return v.DeleteServiceOnDestroy }).(pulumi.BoolPtrOutput)
 }
@@ -651,34 +667,35 @@ func (o StandardAppVersionOutput) EnvVariables() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *StandardAppVersion) pulumi.StringMapOutput { return v.EnvVariables }).(pulumi.StringMapOutput)
 }
 
-// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
-// request and other request handlers are not attempted.
+// An ordered list of URL-matching patterns that should be applied to incoming requests.
+// The first matching URL handles the request and other request handlers are not attempted.
+// Structure is documented below.
 func (o StandardAppVersionOutput) Handlers() StandardAppVersionHandlerArrayOutput {
 	return o.ApplyT(func(v *StandardAppVersion) StandardAppVersionHandlerArrayOutput { return v.Handlers }).(StandardAppVersionHandlerArrayOutput)
 }
 
-// A list of the types of messages that this application is able to receive. Possible values: ["INBOUND_SERVICE_MAIL",
-// "INBOUND_SERVICE_MAIL_BOUNCE", "INBOUND_SERVICE_XMPP_ERROR", "INBOUND_SERVICE_XMPP_MESSAGE",
-// "INBOUND_SERVICE_XMPP_SUBSCRIBE", "INBOUND_SERVICE_XMPP_PRESENCE", "INBOUND_SERVICE_CHANNEL_PRESENCE",
-// "INBOUND_SERVICE_WARMUP"]
+// A list of the types of messages that this application is able to receive.
+// Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
 func (o StandardAppVersionOutput) InboundServices() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *StandardAppVersion) pulumi.StringArrayOutput { return v.InboundServices }).(pulumi.StringArrayOutput)
 }
 
-// Instance class that is used to run this version. Valid values are AutomaticScaling: F1, F2, F4, F4_1G BasicScaling or
-// ManualScaling: B1, B2, B4, B4_1G, B8 Defaults to F1 for AutomaticScaling and B2 for ManualScaling and BasicScaling. If
-// no scaling is specified, AutomaticScaling is chosen.
+// Instance class that is used to run this version. Valid values are
+// AutomaticScaling: F1, F2, F4, F4_1G
+// BasicScaling or ManualScaling: B1, B2, B4, B4_1G, B8
+// Defaults to F1 for AutomaticScaling and B2 for ManualScaling and BasicScaling. If no scaling is specified, AutomaticScaling is chosen.
 func (o StandardAppVersionOutput) InstanceClass() pulumi.StringOutput {
 	return o.ApplyT(func(v *StandardAppVersion) pulumi.StringOutput { return v.InstanceClass }).(pulumi.StringOutput)
 }
 
 // Configuration for third-party Python runtime libraries that are required by the application.
+// Structure is documented below.
 func (o StandardAppVersionOutput) Libraries() StandardAppVersionLibraryArrayOutput {
 	return o.ApplyT(func(v *StandardAppVersion) StandardAppVersionLibraryArrayOutput { return v.Libraries }).(StandardAppVersionLibraryArrayOutput)
 }
 
-// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
-// its memory over time.
+// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+// Structure is documented below.
 func (o StandardAppVersionOutput) ManualScaling() StandardAppVersionManualScalingPtrOutput {
 	return o.ApplyT(func(v *StandardAppVersion) StandardAppVersionManualScalingPtrOutput { return v.ManualScaling }).(StandardAppVersionManualScalingPtrOutput)
 }
@@ -688,11 +705,13 @@ func (o StandardAppVersionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *StandardAppVersion) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// If set to 'true', the application version will not be deleted.
+// If set to `true`, the application version will not be deleted.
 func (o StandardAppVersionOutput) NoopOnDestroy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *StandardAppVersion) pulumi.BoolPtrOutput { return v.NoopOnDestroy }).(pulumi.BoolPtrOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o StandardAppVersionOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *StandardAppVersion) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -702,9 +721,9 @@ func (o StandardAppVersionOutput) Runtime() pulumi.StringOutput {
 	return o.ApplyT(func(v *StandardAppVersion) pulumi.StringOutput { return v.Runtime }).(pulumi.StringOutput)
 }
 
-// The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at
-// 'https://cloud.google.com/appengine/docs/standard/<language>/config/appref'\ Substitute '<language>' with 'python',
-// 'java', 'php', 'ruby', 'go' or 'nodejs'.
+// The version of the API in the given runtime environment.
+// Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/<language>/config/appref`\
+// Substitute `<language>` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
 func (o StandardAppVersionOutput) RuntimeApiVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StandardAppVersion) pulumi.StringPtrOutput { return v.RuntimeApiVersion }).(pulumi.StringPtrOutput)
 }
@@ -714,8 +733,7 @@ func (o StandardAppVersionOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v *StandardAppVersion) pulumi.StringOutput { return v.Service }).(pulumi.StringOutput)
 }
 
-// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default
-// if this field is neither provided in app.yaml file nor through CLI flag.
+// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
 func (o StandardAppVersionOutput) ServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v *StandardAppVersion) pulumi.StringOutput { return v.ServiceAccount }).(pulumi.StringOutput)
 }
@@ -725,13 +743,13 @@ func (o StandardAppVersionOutput) Threadsafe() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *StandardAppVersion) pulumi.BoolPtrOutput { return v.Threadsafe }).(pulumi.BoolPtrOutput)
 }
 
-// Relative name of the version within the service. For example, 'v1'. Version names can contain only lowercase letters,
-// numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
+// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
 func (o StandardAppVersionOutput) VersionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StandardAppVersion) pulumi.StringPtrOutput { return v.VersionId }).(pulumi.StringPtrOutput)
 }
 
 // Enables VPC connectivity for standard apps.
+// Structure is documented below.
 func (o StandardAppVersionOutput) VpcAccessConnector() StandardAppVersionVpcAccessConnectorPtrOutput {
 	return o.ApplyT(func(v *StandardAppVersion) StandardAppVersionVpcAccessConnectorPtrOutput { return v.VpcAccessConnector }).(StandardAppVersionVpcAccessConnectorPtrOutput)
 }

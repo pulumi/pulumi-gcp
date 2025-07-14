@@ -507,10 +507,13 @@ type Datascan struct {
 	// Structure is documented below.
 	Data DatascanDataOutput `pulumi:"data"`
 	// DataDiscoveryScan related setting.
+	// Structure is documented below.
 	DataDiscoverySpec DatascanDataDiscoverySpecPtrOutput `pulumi:"dataDiscoverySpec"`
 	// DataProfileScan related setting.
+	// Structure is documented below.
 	DataProfileSpec DatascanDataProfileSpecPtrOutput `pulumi:"dataProfileSpec"`
 	// DataQualityScan related setting.
+	// Structure is documented below.
 	DataQualitySpec DatascanDataQualitySpecPtrOutput `pulumi:"dataQualitySpec"`
 	// DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
 	DataScanId pulumi.StringOutput `pulumi:"dataScanId"`
@@ -526,14 +529,17 @@ type Datascan struct {
 	// Status of the data scan execution.
 	// Structure is documented below.
 	ExecutionStatuses DatascanExecutionStatusArrayOutput `pulumi:"executionStatuses"`
-	// User-defined labels for the scan. A list of key->value pairs. **Note**: This field is non-authoritative, and will only
-	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-	// present on the resource.
+	// User-defined labels for the scan. A list of key->value pairs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location where the data scan should reside.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The relative resource name of the scan, of the form: projects/{project}/locations/{locationId}/dataScans/{datascan_id}, where project refers to a projectId or projectNumber and locationId refers to a GCP region.
-	Name    pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -601,10 +607,13 @@ type datascanState struct {
 	// Structure is documented below.
 	Data *DatascanData `pulumi:"data"`
 	// DataDiscoveryScan related setting.
+	// Structure is documented below.
 	DataDiscoverySpec *DatascanDataDiscoverySpec `pulumi:"dataDiscoverySpec"`
 	// DataProfileScan related setting.
+	// Structure is documented below.
 	DataProfileSpec *DatascanDataProfileSpec `pulumi:"dataProfileSpec"`
 	// DataQualityScan related setting.
+	// Structure is documented below.
 	DataQualitySpec *DatascanDataQualitySpec `pulumi:"dataQualitySpec"`
 	// DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
 	DataScanId *string `pulumi:"dataScanId"`
@@ -620,14 +629,17 @@ type datascanState struct {
 	// Status of the data scan execution.
 	// Structure is documented below.
 	ExecutionStatuses []DatascanExecutionStatus `pulumi:"executionStatuses"`
-	// User-defined labels for the scan. A list of key->value pairs. **Note**: This field is non-authoritative, and will only
-	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-	// present on the resource.
+	// User-defined labels for the scan. A list of key->value pairs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the data scan should reside.
 	Location *string `pulumi:"location"`
 	// The relative resource name of the scan, of the form: projects/{project}/locations/{locationId}/dataScans/{datascan_id}, where project refers to a projectId or projectNumber and locationId refers to a GCP region.
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -649,10 +661,13 @@ type DatascanState struct {
 	// Structure is documented below.
 	Data DatascanDataPtrInput
 	// DataDiscoveryScan related setting.
+	// Structure is documented below.
 	DataDiscoverySpec DatascanDataDiscoverySpecPtrInput
 	// DataProfileScan related setting.
+	// Structure is documented below.
 	DataProfileSpec DatascanDataProfileSpecPtrInput
 	// DataQualityScan related setting.
+	// Structure is documented below.
 	DataQualitySpec DatascanDataQualitySpecPtrInput
 	// DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
 	DataScanId pulumi.StringPtrInput
@@ -668,14 +683,17 @@ type DatascanState struct {
 	// Status of the data scan execution.
 	// Structure is documented below.
 	ExecutionStatuses DatascanExecutionStatusArrayInput
-	// User-defined labels for the scan. A list of key->value pairs. **Note**: This field is non-authoritative, and will only
-	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-	// present on the resource.
+	// User-defined labels for the scan. A list of key->value pairs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location where the data scan should reside.
 	Location pulumi.StringPtrInput
 	// The relative resource name of the scan, of the form: projects/{project}/locations/{locationId}/dataScans/{datascan_id}, where project refers to a projectId or projectNumber and locationId refers to a GCP region.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -699,10 +717,13 @@ type datascanArgs struct {
 	// Structure is documented below.
 	Data DatascanData `pulumi:"data"`
 	// DataDiscoveryScan related setting.
+	// Structure is documented below.
 	DataDiscoverySpec *DatascanDataDiscoverySpec `pulumi:"dataDiscoverySpec"`
 	// DataProfileScan related setting.
+	// Structure is documented below.
 	DataProfileSpec *DatascanDataProfileSpec `pulumi:"dataProfileSpec"`
 	// DataQualityScan related setting.
+	// Structure is documented below.
 	DataQualitySpec *DatascanDataQualitySpec `pulumi:"dataQualitySpec"`
 	// DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
 	DataScanId string `pulumi:"dataScanId"`
@@ -713,13 +734,16 @@ type datascanArgs struct {
 	// DataScan execution settings.
 	// Structure is documented below.
 	ExecutionSpec DatascanExecutionSpec `pulumi:"executionSpec"`
-	// User-defined labels for the scan. A list of key->value pairs. **Note**: This field is non-authoritative, and will only
-	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-	// present on the resource.
+	// User-defined labels for the scan. A list of key->value pairs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the data scan should reside.
-	Location string  `pulumi:"location"`
-	Project  *string `pulumi:"project"`
+	Location string `pulumi:"location"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Datascan resource.
@@ -728,10 +752,13 @@ type DatascanArgs struct {
 	// Structure is documented below.
 	Data DatascanDataInput
 	// DataDiscoveryScan related setting.
+	// Structure is documented below.
 	DataDiscoverySpec DatascanDataDiscoverySpecPtrInput
 	// DataProfileScan related setting.
+	// Structure is documented below.
 	DataProfileSpec DatascanDataProfileSpecPtrInput
 	// DataQualityScan related setting.
+	// Structure is documented below.
 	DataQualitySpec DatascanDataQualitySpecPtrInput
 	// DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
 	DataScanId pulumi.StringInput
@@ -742,13 +769,16 @@ type DatascanArgs struct {
 	// DataScan execution settings.
 	// Structure is documented below.
 	ExecutionSpec DatascanExecutionSpecInput
-	// User-defined labels for the scan. A list of key->value pairs. **Note**: This field is non-authoritative, and will only
-	// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-	// present on the resource.
+	// User-defined labels for the scan. A list of key->value pairs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location where the data scan should reside.
 	Location pulumi.StringInput
-	Project  pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 }
 
 func (DatascanArgs) ElementType() reflect.Type {
@@ -850,16 +880,19 @@ func (o DatascanOutput) Data() DatascanDataOutput {
 }
 
 // DataDiscoveryScan related setting.
+// Structure is documented below.
 func (o DatascanOutput) DataDiscoverySpec() DatascanDataDiscoverySpecPtrOutput {
 	return o.ApplyT(func(v *Datascan) DatascanDataDiscoverySpecPtrOutput { return v.DataDiscoverySpec }).(DatascanDataDiscoverySpecPtrOutput)
 }
 
 // DataProfileScan related setting.
+// Structure is documented below.
 func (o DatascanOutput) DataProfileSpec() DatascanDataProfileSpecPtrOutput {
 	return o.ApplyT(func(v *Datascan) DatascanDataProfileSpecPtrOutput { return v.DataProfileSpec }).(DatascanDataProfileSpecPtrOutput)
 }
 
 // DataQualityScan related setting.
+// Structure is documented below.
 func (o DatascanOutput) DataQualitySpec() DatascanDataQualitySpecPtrOutput {
 	return o.ApplyT(func(v *Datascan) DatascanDataQualitySpecPtrOutput { return v.DataQualitySpec }).(DatascanDataQualitySpecPtrOutput)
 }
@@ -896,9 +929,10 @@ func (o DatascanOutput) ExecutionStatuses() DatascanExecutionStatusArrayOutput {
 	return o.ApplyT(func(v *Datascan) DatascanExecutionStatusArrayOutput { return v.ExecutionStatuses }).(DatascanExecutionStatusArrayOutput)
 }
 
-// User-defined labels for the scan. A list of key->value pairs. **Note**: This field is non-authoritative, and will only
-// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-// present on the resource.
+// User-defined labels for the scan. A list of key->value pairs.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o DatascanOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Datascan) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -913,6 +947,8 @@ func (o DatascanOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Datascan) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o DatascanOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Datascan) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

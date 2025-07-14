@@ -452,9 +452,6 @@ namespace Pulumi.Gcp.NetworkManagement
 
         /// <summary>
         /// Required. ID of the `VpcFlowLogsConfig`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("vpcFlowLogsConfigId")]
         public Output<string> VpcFlowLogsConfigId { get; private set; } = null!;
@@ -611,9 +608,6 @@ namespace Pulumi.Gcp.NetworkManagement
 
         /// <summary>
         /// Required. ID of the `VpcFlowLogsConfig`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("vpcFlowLogsConfigId", required: true)]
         public Input<string> VpcFlowLogsConfigId { get; set; } = null!;
@@ -778,9 +772,6 @@ namespace Pulumi.Gcp.NetworkManagement
 
         /// <summary>
         /// Required. ID of the `VpcFlowLogsConfig`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("vpcFlowLogsConfigId")]
         public Input<string>? VpcFlowLogsConfigId { get; set; }

@@ -125,9 +125,6 @@ export class SecurityGateway extends pulumi.CustomResource {
      * * Must start with a letter.
      * * Must contain between 4-63 characters from `/a-z-/`.
      * * Must end with a number or letter.
-     *
-     *
-     * - - -
      */
     public readonly securityGatewayId!: pulumi.Output<string>;
     /**
@@ -244,9 +241,6 @@ export interface SecurityGatewayState {
      * * Must start with a letter.
      * * Must contain between 4-63 characters from `/a-z-/`.
      * * Must end with a number or letter.
-     *
-     *
-     * - - -
      */
     securityGatewayId?: pulumi.Input<string>;
     /**
@@ -301,9 +295,6 @@ export interface SecurityGatewayArgs {
      * * Must start with a letter.
      * * Must contain between 4-63 characters from `/a-z-/`.
      * * Must end with a number or letter.
-     *
-     *
-     * - - -
      */
     securityGatewayId: pulumi.Input<string>;
 }

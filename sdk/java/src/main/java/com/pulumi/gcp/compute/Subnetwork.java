@@ -842,8 +842,6 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
      * The network this subnet belongs to.
      * Only networks that are in the distributed mode can have subnetworks.
      * 
-     * ***
-     * 
      */
     @Export(name="network", refs={String.class}, tree="[0]")
     private Output<String> network;
@@ -851,8 +849,6 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
     /**
      * @return The network this subnet belongs to.
      * Only networks that are in the distributed mode can have subnetworks.
-     * 
-     * ***
      * 
      */
     public Output<String> network() {

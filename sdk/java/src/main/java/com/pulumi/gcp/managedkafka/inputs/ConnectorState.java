@@ -50,16 +50,12 @@ public final class ConnectorState extends com.pulumi.resources.ResourceArgs {
     /**
      * The ID to use for the connector, which will become the final component of the connector&#39;s name. This value is structured like: `my-connector-id`.
      * 
-     * ***
-     * 
      */
     @Import(name="connectorId")
     private @Nullable Output<String> connectorId;
 
     /**
      * @return The ID to use for the connector, which will become the final component of the connector&#39;s name. This value is structured like: `my-connector-id`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> connectorId() {
@@ -221,8 +217,6 @@ public final class ConnectorState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param connectorId The ID to use for the connector, which will become the final component of the connector&#39;s name. This value is structured like: `my-connector-id`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -233,8 +227,6 @@ public final class ConnectorState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param connectorId The ID to use for the connector, which will become the final component of the connector&#39;s name. This value is structured like: `my-connector-id`.
-         * 
-         * ***
          * 
          * @return builder
          * 

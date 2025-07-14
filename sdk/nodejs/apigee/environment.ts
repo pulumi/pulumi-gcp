@@ -150,9 +150,6 @@ export class Environment extends pulumi.CustomResource {
     /**
      * The Apigee Organization associated with the Apigee environment,
      * in the format `organizations/{{org_name}}`.
-     *
-     *
-     * - - -
      */
     public readonly orgId!: pulumi.Output<string>;
     /**
@@ -265,9 +262,6 @@ export interface EnvironmentState {
     /**
      * The Apigee Organization associated with the Apigee environment,
      * in the format `organizations/{{org_name}}`.
-     *
-     *
-     * - - -
      */
     orgId?: pulumi.Input<string>;
     /**
@@ -335,9 +329,6 @@ export interface EnvironmentArgs {
     /**
      * The Apigee Organization associated with the Apigee environment,
      * in the format `organizations/{{org_name}}`.
-     *
-     *
-     * - - -
      */
     orgId: pulumi.Input<string>;
     /**

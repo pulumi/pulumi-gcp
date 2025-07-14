@@ -57,8 +57,6 @@ type PreventionDiscoveryConfig struct {
 	// Output only. The timestamp of the last time this config was executed
 	LastRunTime pulumi.StringOutput `pulumi:"lastRunTime"`
 	// Location to create the discovery config in.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Unique resource name for the DiscoveryConfig, assigned by the service when the DiscoveryConfig is created.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -130,8 +128,6 @@ type preventionDiscoveryConfigState struct {
 	// Output only. The timestamp of the last time this config was executed
 	LastRunTime *string `pulumi:"lastRunTime"`
 	// Location to create the discovery config in.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// Unique resource name for the DiscoveryConfig, assigned by the service when the DiscoveryConfig is created.
 	Name *string `pulumi:"name"`
@@ -168,8 +164,6 @@ type PreventionDiscoveryConfigState struct {
 	// Output only. The timestamp of the last time this config was executed
 	LastRunTime pulumi.StringPtrInput
 	// Location to create the discovery config in.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// Unique resource name for the DiscoveryConfig, assigned by the service when the DiscoveryConfig is created.
 	Name pulumi.StringPtrInput
@@ -203,8 +197,6 @@ type preventionDiscoveryConfigArgs struct {
 	// Detection logic for profile generation
 	InspectTemplates []string `pulumi:"inspectTemplates"`
 	// Location to create the discovery config in.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// A nested object resource.
 	// Structure is documented below.
@@ -231,8 +223,6 @@ type PreventionDiscoveryConfigArgs struct {
 	// Detection logic for profile generation
 	InspectTemplates pulumi.StringArrayInput
 	// Location to create the discovery config in.
-	//
-	// ***
 	Location pulumi.StringInput
 	// A nested object resource.
 	// Structure is documented below.
@@ -369,8 +359,6 @@ func (o PreventionDiscoveryConfigOutput) LastRunTime() pulumi.StringOutput {
 }
 
 // Location to create the discovery config in.
-//
-// ***
 func (o PreventionDiscoveryConfigOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *PreventionDiscoveryConfig) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

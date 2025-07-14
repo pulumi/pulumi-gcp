@@ -28,9 +28,6 @@ class AppCheckRecaptchaEnterpriseConfigArgs:
         The set of arguments for constructing a AppCheckRecaptchaEnterpriseConfig resource.
         :param pulumi.Input[builtins.str] app_id: The ID of an
                [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id).
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] site_key: The score-based site key created in reCAPTCHA Enterprise used to invoke reCAPTCHA and generate the reCAPTCHA tokens for your application.
                **Important**: This is not the siteSecret (as it is in reCAPTCHA v3), but rather your score-based reCAPTCHA Enterprise site key.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -52,9 +49,6 @@ class AppCheckRecaptchaEnterpriseConfigArgs:
         """
         The ID of an
         [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id).
-
-
-        - - -
         """
         return pulumi.get(self, "app_id")
 
@@ -115,9 +109,6 @@ class _AppCheckRecaptchaEnterpriseConfigState:
         Input properties used for looking up and filtering AppCheckRecaptchaEnterpriseConfig resources.
         :param pulumi.Input[builtins.str] app_id: The ID of an
                [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id).
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The relative resource name of the reCAPTCHA Enterprise configuration object
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -144,9 +135,6 @@ class _AppCheckRecaptchaEnterpriseConfigState:
         """
         The ID of an
         [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id).
-
-
-        - - -
         """
         return pulumi.get(self, "app_id")
 
@@ -284,9 +272,6 @@ class AppCheckRecaptchaEnterpriseConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] app_id: The ID of an
                [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id).
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] site_key: The score-based site key created in reCAPTCHA Enterprise used to invoke reCAPTCHA and generate the reCAPTCHA tokens for your application.
@@ -424,9 +409,6 @@ class AppCheckRecaptchaEnterpriseConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] app_id: The ID of an
                [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id).
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] name: The relative resource name of the reCAPTCHA Enterprise configuration object
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -453,9 +435,6 @@ class AppCheckRecaptchaEnterpriseConfig(pulumi.CustomResource):
         """
         The ID of an
         [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id).
-
-
-        - - -
         """
         return pulumi.get(self, "app_id")
 

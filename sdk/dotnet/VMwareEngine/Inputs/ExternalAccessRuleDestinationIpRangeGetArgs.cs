@@ -14,8 +14,6 @@ namespace Pulumi.Gcp.VMwareEngine.Inputs
     {
         /// <summary>
         /// The name of an `ExternalAddress` resource.
-        /// 
-        /// - - -
         /// </summary>
         [Input("externalAddress")]
         public Input<string>? ExternalAddress { get; set; }

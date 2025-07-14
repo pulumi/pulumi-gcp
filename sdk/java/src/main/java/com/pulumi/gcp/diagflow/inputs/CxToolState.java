@@ -40,16 +40,12 @@ public final class CxToolState extends com.pulumi.resources.ResourceArgs {
     /**
      * High level description of the Tool and its usage.
      * 
-     * ***
-     * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
      * @return High level description of the Tool and its usage.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> description() {
@@ -217,8 +213,6 @@ public final class CxToolState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param description High level description of the Tool and its usage.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -229,8 +223,6 @@ public final class CxToolState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param description High level description of the Tool and its usage.
-         * 
-         * ***
          * 
          * @return builder
          * 

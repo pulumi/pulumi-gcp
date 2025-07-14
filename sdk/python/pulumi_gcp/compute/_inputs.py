@@ -1208,6 +1208,8 @@ __all__ = [
     'ResourcePolicyWorkloadPolicyArgsDict',
     'RouteAsPathArgs',
     'RouteAsPathArgsDict',
+    'RouteParamsArgs',
+    'RouteParamsArgsDict',
     'RouteWarningArgs',
     'RouteWarningArgsDict',
     'RouteWarningDataArgs',
@@ -2483,7 +2485,7 @@ if not MYPY:
         """
         description: NotRequired[pulumi.Input[builtins.str]]
         """
-        An optional description of this resource.
+        A description of a scaling schedule.
         """
         disabled: NotRequired[pulumi.Input[builtins.bool]]
         """
@@ -2511,7 +2513,7 @@ class AutoscalerAutoscalingPolicyScalingScheduleArgs:
         :param pulumi.Input[builtins.int] min_required_replicas: Minimum number of VM instances that autoscaler will recommend in time intervals starting according to schedule.
         :param pulumi.Input[builtins.str] name: The identifier for this object. Format specified above.
         :param pulumi.Input[builtins.str] schedule: The start timestamps of time intervals when this scaling schedule should provide a scaling signal. This field uses the extended cron format (with an optional year field).
-        :param pulumi.Input[builtins.str] description: An optional description of this resource.
+        :param pulumi.Input[builtins.str] description: A description of a scaling schedule.
         :param pulumi.Input[builtins.bool] disabled: A boolean value that specifies if a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect.
         :param pulumi.Input[builtins.str] time_zone: The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
         """
@@ -2578,7 +2580,7 @@ class AutoscalerAutoscalingPolicyScalingScheduleArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        An optional description of this resource.
+        A description of a scaling schedule.
         """
         return pulumi.get(self, "description")
 
@@ -7840,8 +7842,6 @@ if not MYPY:
         """
         (Output)
         State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
-
-        - - -
         """
 elif False:
     FirewallPolicyRuleMatchSrcSecureTagArgsDict: TypeAlias = Mapping[str, Any]
@@ -7855,8 +7855,6 @@ class FirewallPolicyRuleMatchSrcSecureTagArgs:
         :param pulumi.Input[builtins.str] name: Name of the secure tag, created with TagManager's TagValue API.
         :param pulumi.Input[builtins.str] state: (Output)
                State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
-               
-               - - -
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -7881,8 +7879,6 @@ class FirewallPolicyRuleMatchSrcSecureTagArgs:
         """
         (Output)
         State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
-
-        - - -
         """
         return pulumi.get(self, "state")
 
@@ -7956,8 +7952,7 @@ if not MYPY:
         """
         description: NotRequired[pulumi.Input[builtins.str]]
         """
-        (Output)
-        A description of the rule.
+        An optional description of this resource.
         """
         direction: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -8048,8 +8043,7 @@ class FirewallPolicyWithRulesPredefinedRuleArgs:
         :param pulumi.Input[builtins.str] action: (Output)
                The Action to perform when the client connection triggers the rule. Can currently be either
                "allow", "deny", "apply_security_profile_group" or "goto_next".
-        :param pulumi.Input[builtins.str] description: (Output)
-               A description of the rule.
+        :param pulumi.Input[builtins.str] description: An optional description of this resource.
         :param pulumi.Input[builtins.str] direction: (Output)
                The direction in which this rule applies. If unspecified an INGRESS rule is created.
         :param pulumi.Input[builtins.bool] disabled: (Output)
@@ -8131,8 +8125,7 @@ class FirewallPolicyWithRulesPredefinedRuleArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        (Output)
-        A description of the rule.
+        An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
@@ -10085,7 +10078,7 @@ if not MYPY:
         """
         specific_sku_properties: NotRequired[pulumi.Input['FutureReservationStatusSpecificSkuPropertiesArgsDict']]
         """
-        The previous instance related properties of the Future Reservation.
+        Future Reservation configuration to indicate instance properties and total count.
         Structure is documented below.
         """
 elif False:
@@ -10111,7 +10104,7 @@ class FutureReservationStatusArgs:
         :param pulumi.Input[builtins.str] lock_time: The lock time of the FutureReservation before an amendment was requested.
         :param pulumi.Input[builtins.str] procurement_status: The status of the last known good state for the Future Reservation
                Possible values are: .
-        :param pulumi.Input['FutureReservationStatusSpecificSkuPropertiesArgs'] specific_sku_properties: The previous instance related properties of the Future Reservation.
+        :param pulumi.Input['FutureReservationStatusSpecificSkuPropertiesArgs'] specific_sku_properties: Future Reservation configuration to indicate instance properties and total count.
                Structure is documented below.
         """
         if amendment_status is not None:
@@ -10208,7 +10201,7 @@ class FutureReservationStatusArgs:
     @pulumi.getter(name="specificSkuProperties")
     def specific_sku_properties(self) -> Optional[pulumi.Input['FutureReservationStatusSpecificSkuPropertiesArgs']]:
         """
-        The previous instance related properties of the Future Reservation.
+        Future Reservation configuration to indicate instance properties and total count.
         Structure is documented below.
         """
         return pulumi.get(self, "specific_sku_properties")
@@ -10222,7 +10215,7 @@ if not MYPY:
     class FutureReservationStatusLastKnownGoodStateArgsDict(TypedDict):
         description: NotRequired[pulumi.Input[builtins.str]]
         """
-        The description of the FutureReservation before an amendment was requested.
+        An optional description of this resource.
         """
         existing_matching_usage_info: NotRequired[pulumi.Input['FutureReservationStatusLastKnownGoodStateExistingMatchingUsageInfoArgsDict']]
         """
@@ -10240,7 +10233,7 @@ if not MYPY:
         """
         name_prefix: NotRequired[pulumi.Input[builtins.str]]
         """
-        The name prefix of the Future Reservation before an amendment was requested.
+        Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
         """
         procurement_status: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -10260,13 +10253,13 @@ class FutureReservationStatusLastKnownGoodStateArgs:
                  name_prefix: Optional[pulumi.Input[builtins.str]] = None,
                  procurement_status: Optional[pulumi.Input[builtins.str]] = None):
         """
-        :param pulumi.Input[builtins.str] description: The description of the FutureReservation before an amendment was requested.
+        :param pulumi.Input[builtins.str] description: An optional description of this resource.
         :param pulumi.Input['FutureReservationStatusLastKnownGoodStateExistingMatchingUsageInfoArgs'] existing_matching_usage_info: Represents the matching usage for the future reservation before an amendment was requested.
                Structure is documented below.
         :param pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsArgs'] future_reservation_specs: The previous instance-related properties of the Future Reservation.
                Structure is documented below.
         :param pulumi.Input[builtins.str] lock_time: The lock time of the FutureReservation before an amendment was requested.
-        :param pulumi.Input[builtins.str] name_prefix: The name prefix of the Future Reservation before an amendment was requested.
+        :param pulumi.Input[builtins.str] name_prefix: Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
         :param pulumi.Input[builtins.str] procurement_status: The status of the last known good state for the Future Reservation
                Possible values are: .
         """
@@ -10287,7 +10280,7 @@ class FutureReservationStatusLastKnownGoodStateArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The description of the FutureReservation before an amendment was requested.
+        An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
@@ -10337,7 +10330,7 @@ class FutureReservationStatusLastKnownGoodStateArgs:
     @pulumi.getter(name="namePrefix")
     def name_prefix(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The name prefix of the Future Reservation before an amendment was requested.
+        Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
         """
         return pulumi.get(self, "name_prefix")
 
@@ -10415,12 +10408,12 @@ if not MYPY:
     class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsArgsDict(TypedDict):
         share_settings: NotRequired[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsArgsDict']]
         """
-        The previous share settings of the Future Reservation.
+        Settings for sharing the future reservation
         Structure is documented below.
         """
         specific_sku_properties: NotRequired[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesArgsDict']]
         """
-        The previous instance related properties of the Future Reservation.
+        Future Reservation configuration to indicate instance properties and total count.
         Structure is documented below.
         """
         time_window: NotRequired[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindowArgsDict']]
@@ -10438,9 +10431,9 @@ class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsArgs:
                  specific_sku_properties: Optional[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesArgs']] = None,
                  time_window: Optional[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindowArgs']] = None):
         """
-        :param pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsArgs'] share_settings: The previous share settings of the Future Reservation.
+        :param pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsArgs'] share_settings: Settings for sharing the future reservation
                Structure is documented below.
-        :param pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesArgs'] specific_sku_properties: The previous instance related properties of the Future Reservation.
+        :param pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesArgs'] specific_sku_properties: Future Reservation configuration to indicate instance properties and total count.
                Structure is documented below.
         :param pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindowArgs'] time_window: Time window for this Future Reservation.
                Structure is documented below.
@@ -10456,7 +10449,7 @@ class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsArgs:
     @pulumi.getter(name="shareSettings")
     def share_settings(self) -> Optional[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsArgs']]:
         """
-        The previous share settings of the Future Reservation.
+        Settings for sharing the future reservation
         Structure is documented below.
         """
         return pulumi.get(self, "share_settings")
@@ -10469,7 +10462,7 @@ class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsArgs:
     @pulumi.getter(name="specificSkuProperties")
     def specific_sku_properties(self) -> Optional[pulumi.Input['FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesArgs']]:
         """
-        The previous instance related properties of the Future Reservation.
+        Future Reservation configuration to indicate instance properties and total count.
         Structure is documented below.
         """
         return pulumi.get(self, "specific_sku_properties")
@@ -10574,7 +10567,8 @@ if not MYPY:
     class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMapArgsDict(TypedDict):
         project: pulumi.Input[builtins.str]
         """
-        (Required) The identifier for this object. Format specified above.
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         project_id: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -10589,7 +10583,8 @@ class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettin
                  project: pulumi.Input[builtins.str],
                  project_id: Optional[pulumi.Input[builtins.str]] = None):
         """
-        :param pulumi.Input[builtins.str] project: (Required) The identifier for this object. Format specified above.
+        :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[builtins.str] project_id: The project ID, should be same as the key of this project config in the parent map.
         """
         pulumi.set(__self__, "project", project)
@@ -10600,7 +10595,8 @@ class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettin
     @pulumi.getter
     def project(self) -> pulumi.Input[builtins.str]:
         """
-        (Required) The identifier for this object. Format specified above.
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
@@ -11044,8 +11040,6 @@ if not MYPY:
         nanos: NotRequired[pulumi.Input[builtins.int]]
         """
         Span of time that's a fraction of a second at nanosecond resolution.
-
-        - - -
         """
         seconds: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -11061,8 +11055,6 @@ class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindowD
                  seconds: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.int] nanos: Span of time that's a fraction of a second at nanosecond resolution.
-               
-               - - -
         :param pulumi.Input[builtins.str] seconds: Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
         """
         if nanos is not None:
@@ -11075,8 +11067,6 @@ class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindowD
     def nanos(self) -> Optional[pulumi.Input[builtins.int]]:
         """
         Span of time that's a fraction of a second at nanosecond resolution.
-
-        - - -
         """
         return pulumi.get(self, "nanos")
 
@@ -11208,8 +11198,6 @@ if not MYPY:
         nanos: NotRequired[pulumi.Input[builtins.int]]
         """
         Span of time that's a fraction of a second at nanosecond resolution.
-
-        - - -
         """
         seconds: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -11225,8 +11213,6 @@ class FutureReservationTimeWindowDurationArgs:
                  seconds: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.int] nanos: Span of time that's a fraction of a second at nanosecond resolution.
-               
-               - - -
         :param pulumi.Input[builtins.str] seconds: Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
         """
         if nanos is not None:
@@ -11239,8 +11225,6 @@ class FutureReservationTimeWindowDurationArgs:
     def nanos(self) -> Optional[pulumi.Input[builtins.int]]:
         """
         Span of time that's a fraction of a second at nanosecond resolution.
-
-        - - -
         """
         return pulumi.get(self, "nanos")
 
@@ -27669,9 +27653,12 @@ if not MYPY:
     class InterconnectAttachmentGroupConfiguredAvailabilitySlaIntendedSlaBlockerArgsDict(TypedDict):
         attachments: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
         """
-        (Output)
-        URLs of any particular Attachments to explain this
-        blocker in more detail.
+        Attachments in the AttachmentGroup. Keys are arbitrary user-specified
+        strings. Users are encouraged, but not required, to use their preferred
+        format for resource links as keys.
+        Note that there are add-members and remove-members methods in gcloud.
+        The size of this map is limited by an "Attachments per group" quota.
+        Structure is documented below.
         """
         blocker_type: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -27727,9 +27714,12 @@ class InterconnectAttachmentGroupConfiguredAvailabilitySlaIntendedSlaBlockerArgs
                  regions: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] attachments: (Output)
-               URLs of any particular Attachments to explain this
-               blocker in more detail.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] attachments: Attachments in the AttachmentGroup. Keys are arbitrary user-specified
+               strings. Users are encouraged, but not required, to use their preferred
+               format for resource links as keys.
+               Note that there are add-members and remove-members methods in gcloud.
+               The size of this map is limited by an "Attachments per group" quota.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] blocker_type: (Output)
                The category of an unmet SLA requirement.
         :param pulumi.Input[builtins.str] documentation_link: (Output)
@@ -27772,9 +27762,12 @@ class InterconnectAttachmentGroupConfiguredAvailabilitySlaIntendedSlaBlockerArgs
     @pulumi.getter
     def attachments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        (Output)
-        URLs of any particular Attachments to explain this
-        blocker in more detail.
+        Attachments in the AttachmentGroup. Keys are arbitrary user-specified
+        strings. Users are encouraged, but not required, to use their preferred
+        format for resource links as keys.
+        Note that there are add-members and remove-members methods in gcloud.
+        The size of this map is limited by an "Attachments per group" quota.
+        Structure is documented below.
         """
         return pulumi.get(self, "attachments")
 
@@ -27877,8 +27870,6 @@ if not MYPY:
         """
         Which SLA the user intends this group to support.
         Possible values are: `PRODUCTION_NON_CRITICAL`, `PRODUCTION_CRITICAL`, `NO_SLA`, `AVAILABILITY_SLA_UNSPECIFIED`.
-
-        - - -
         """
 elif False:
     InterconnectAttachmentGroupIntentArgsDict: TypeAlias = Mapping[str, Any]
@@ -27890,8 +27881,6 @@ class InterconnectAttachmentGroupIntentArgs:
         """
         :param pulumi.Input[builtins.str] availability_sla: Which SLA the user intends this group to support.
                Possible values are: `PRODUCTION_NON_CRITICAL`, `PRODUCTION_CRITICAL`, `NO_SLA`, `AVAILABILITY_SLA_UNSPECIFIED`.
-               
-               - - -
         """
         if availability_sla is not None:
             pulumi.set(__self__, "availability_sla", availability_sla)
@@ -27902,8 +27891,6 @@ class InterconnectAttachmentGroupIntentArgs:
         """
         Which SLA the user intends this group to support.
         Possible values are: `PRODUCTION_NON_CRITICAL`, `PRODUCTION_CRITICAL`, `NO_SLA`, `AVAILABILITY_SLA_UNSPECIFIED`.
-
-        - - -
         """
         return pulumi.get(self, "availability_sla")
 
@@ -28740,9 +28727,12 @@ if not MYPY:
         """
         interconnects: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
         """
-        (Output)
-        Interconnects used to explain this blocker in more
-        detail.
+        Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
+        strings. Users are encouraged, but not required, to use their preferred
+        format for resource links as keys.
+        Note that there are add-members and remove-members methods in gcloud.
+        The size of this map is limited by an "Interconnects per group" quota.
+        Structure is documented below.
         """
         metros: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
         """
@@ -28786,9 +28776,12 @@ class InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlockerArgs
                Facilities used to explain this blocker in more detail.
                Like physicalStructure.metros.facilities.facility, this is a numeric
                string like "5467".
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] interconnects: (Output)
-               Interconnects used to explain this blocker in more
-               detail.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] interconnects: Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
+               strings. Users are encouraged, but not required, to use their preferred
+               format for resource links as keys.
+               Note that there are add-members and remove-members methods in gcloud.
+               The size of this map is limited by an "Interconnects per group" quota.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] metros: (Output)
                Metros used to explain this blocker in more detail.
                These are three-letter lowercase strings like "iad". A blocker like
@@ -28875,9 +28868,12 @@ class InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlockerArgs
     @pulumi.getter
     def interconnects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        (Output)
-        Interconnects used to explain this blocker in more
-        detail.
+        Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
+        strings. Users are encouraged, but not required, to use their preferred
+        format for resource links as keys.
+        Note that there are add-members and remove-members methods in gcloud.
+        The size of this map is limited by an "Interconnects per group" quota.
+        Structure is documented below.
         """
         return pulumi.get(self, "interconnects")
 
@@ -28923,8 +28919,6 @@ if not MYPY:
         The reliability the user intends this group to be capable of, in terms
         of the Interconnect product SLAs.
         Possible values are: `PRODUCTION_NON_CRITICAL`, `PRODUCTION_CRITICAL`, `NO_SLA`, `AVAILABILITY_SLA_UNSPECIFIED`.
-
-        - - -
         """
 elif False:
     InterconnectGroupIntentArgsDict: TypeAlias = Mapping[str, Any]
@@ -28937,8 +28931,6 @@ class InterconnectGroupIntentArgs:
         :param pulumi.Input[builtins.str] topology_capability: The reliability the user intends this group to be capable of, in terms
                of the Interconnect product SLAs.
                Possible values are: `PRODUCTION_NON_CRITICAL`, `PRODUCTION_CRITICAL`, `NO_SLA`, `AVAILABILITY_SLA_UNSPECIFIED`.
-               
-               - - -
         """
         if topology_capability is not None:
             pulumi.set(__self__, "topology_capability", topology_capability)
@@ -28950,8 +28942,6 @@ class InterconnectGroupIntentArgs:
         The reliability the user intends this group to be capable of, in terms
         of the Interconnect product SLAs.
         Possible values are: `PRODUCTION_NON_CRITICAL`, `PRODUCTION_CRITICAL`, `NO_SLA`, `AVAILABILITY_SLA_UNSPECIFIED`.
-
-        - - -
         """
         return pulumi.get(self, "topology_capability")
 
@@ -29196,9 +29186,12 @@ if not MYPY:
     class InterconnectGroupPhysicalStructureMetroFacilityZoneArgsDict(TypedDict):
         interconnects: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
         """
-        (Output)
-        Interconnects used to explain this blocker in more
-        detail.
+        Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
+        strings. Users are encouraged, but not required, to use their preferred
+        format for resource links as keys.
+        Note that there are add-members and remove-members methods in gcloud.
+        The size of this map is limited by an "Interconnects per group" quota.
+        Structure is documented below.
         """
         zone: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -29216,9 +29209,12 @@ class InterconnectGroupPhysicalStructureMetroFacilityZoneArgs:
                  interconnects: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  zone: Optional[pulumi.Input[builtins.str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] interconnects: (Output)
-               Interconnects used to explain this blocker in more
-               detail.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] interconnects: Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
+               strings. Users are encouraged, but not required, to use their preferred
+               format for resource links as keys.
+               Note that there are add-members and remove-members methods in gcloud.
+               The size of this map is limited by an "Interconnects per group" quota.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] zone: (Output)
                The name of the zone, either "zone1" or "zone2".
                This is the second component of the location of Interconnects in
@@ -29233,9 +29229,12 @@ class InterconnectGroupPhysicalStructureMetroFacilityZoneArgs:
     @pulumi.getter
     def interconnects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        (Output)
-        Interconnects used to explain this blocker in more
-        detail.
+        Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
+        strings. Users are encouraged, but not required, to use their preferred
+        format for resource links as keys.
+        Note that there are add-members and remove-members methods in gcloud.
+        The size of this map is limited by an "Interconnects per group" quota.
+        Structure is documented below.
         """
         return pulumi.get(self, "interconnects")
 
@@ -30579,8 +30578,6 @@ if not MYPY:
         """
         (Output)
         State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
-
-        - - -
         """
 elif False:
     NetworkFirewallPolicyRuleMatchSrcSecureTagArgsDict: TypeAlias = Mapping[str, Any]
@@ -30594,8 +30591,6 @@ class NetworkFirewallPolicyRuleMatchSrcSecureTagArgs:
         :param pulumi.Input[builtins.str] name: Name of the secure tag, created with TagManager's TagValue API.
         :param pulumi.Input[builtins.str] state: (Output)
                State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
-               
-               - - -
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -30620,8 +30615,6 @@ class NetworkFirewallPolicyRuleMatchSrcSecureTagArgs:
         """
         (Output)
         State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
-
-        - - -
         """
         return pulumi.get(self, "state")
 
@@ -30695,8 +30688,7 @@ if not MYPY:
         """
         description: NotRequired[pulumi.Input[builtins.str]]
         """
-        (Output)
-        A description of the rule.
+        An optional description of this resource.
         """
         direction: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -30795,8 +30787,7 @@ class NetworkFirewallPolicyWithRulesPredefinedRuleArgs:
         :param pulumi.Input[builtins.str] action: (Output)
                The Action to perform when the client connection triggers the rule. Can currently be either
                "allow", "deny", "apply_security_profile_group" or "goto_next".
-        :param pulumi.Input[builtins.str] description: (Output)
-               A description of the rule.
+        :param pulumi.Input[builtins.str] description: An optional description of this resource.
         :param pulumi.Input[builtins.str] direction: (Output)
                The direction in which this rule applies. If unspecified an INGRESS rule is created.
         :param pulumi.Input[builtins.bool] disabled: (Output)
@@ -30886,8 +30877,7 @@ class NetworkFirewallPolicyWithRulesPredefinedRuleArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        (Output)
-        A description of the rule.
+        An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
@@ -31534,8 +31524,6 @@ if not MYPY:
         [Output Only] State of the secure tag, either `EFFECTIVE` or
         `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
         or its network is deleted.
-
-        - - -
         """
 elif False:
     NetworkFirewallPolicyWithRulesPredefinedRuleTargetSecureTagArgsDict: TypeAlias = Mapping[str, Any]
@@ -31552,8 +31540,6 @@ class NetworkFirewallPolicyWithRulesPredefinedRuleTargetSecureTagArgs:
                [Output Only] State of the secure tag, either `EFFECTIVE` or
                `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
                or its network is deleted.
-               
-               - - -
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -31581,8 +31567,6 @@ class NetworkFirewallPolicyWithRulesPredefinedRuleTargetSecureTagArgs:
         [Output Only] State of the secure tag, either `EFFECTIVE` or
         `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
         or its network is deleted.
-
-        - - -
         """
         return pulumi.get(self, "state")
 
@@ -32468,8 +32452,6 @@ if not MYPY:
         [Output Only] State of the secure tag, either `EFFECTIVE` or
         `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
         or its network is deleted.
-
-        - - -
         """
 elif False:
     NetworkFirewallPolicyWithRulesRuleTargetSecureTagArgsDict: TypeAlias = Mapping[str, Any]
@@ -32486,8 +32468,6 @@ class NetworkFirewallPolicyWithRulesRuleTargetSecureTagArgs:
                [Output Only] State of the secure tag, either `EFFECTIVE` or
                `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
                or its network is deleted.
-               
-               - - -
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -32515,8 +32495,6 @@ class NetworkFirewallPolicyWithRulesRuleTargetSecureTagArgs:
         [Output Only] State of the secure tag, either `EFFECTIVE` or
         `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
         or its network is deleted.
-
-        - - -
         """
         return pulumi.get(self, "state")
 
@@ -33514,8 +33492,6 @@ if not MYPY:
         url: pulumi.Input[builtins.str]
         """
         The URL of the instances where this rule should be active.
-
-        - - -
         """
 elif False:
     PacketMirroringMirroredResourcesInstanceArgsDict: TypeAlias = Mapping[str, Any]
@@ -33526,8 +33502,6 @@ class PacketMirroringMirroredResourcesInstanceArgs:
                  url: pulumi.Input[builtins.str]):
         """
         :param pulumi.Input[builtins.str] url: The URL of the instances where this rule should be active.
-               
-               - - -
         """
         pulumi.set(__self__, "url", url)
 
@@ -33536,8 +33510,6 @@ class PacketMirroringMirroredResourcesInstanceArgs:
     def url(self) -> pulumi.Input[builtins.str]:
         """
         The URL of the instances where this rule should be active.
-
-        - - -
         """
         return pulumi.get(self, "url")
 
@@ -34969,7 +34941,7 @@ if not MYPY:
         """
         description: NotRequired[pulumi.Input[builtins.str]]
         """
-        An optional description of this resource.
+        A description of a scaling schedule.
         """
         disabled: NotRequired[pulumi.Input[builtins.bool]]
         """
@@ -34997,7 +34969,7 @@ class RegionAutoscalerAutoscalingPolicyScalingScheduleArgs:
         :param pulumi.Input[builtins.int] min_required_replicas: Minimum number of VM instances that autoscaler will recommend in time intervals starting according to schedule.
         :param pulumi.Input[builtins.str] name: The identifier for this object. Format specified above.
         :param pulumi.Input[builtins.str] schedule: The start timestamps of time intervals when this scaling schedule should provide a scaling signal. This field uses the extended cron format (with an optional year field).
-        :param pulumi.Input[builtins.str] description: An optional description of this resource.
+        :param pulumi.Input[builtins.str] description: A description of a scaling schedule.
         :param pulumi.Input[builtins.bool] disabled: A boolean value that specifies if a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect.
         :param pulumi.Input[builtins.str] time_zone: The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
         """
@@ -35064,7 +35036,7 @@ class RegionAutoscalerAutoscalingPolicyScalingScheduleArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        An optional description of this resource.
+        A description of a scaling schedule.
         """
         return pulumi.get(self, "description")
 
@@ -44526,8 +44498,6 @@ if not MYPY:
         """
         (Output)
         State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
-
-        - - -
         """
 elif False:
     RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgsDict: TypeAlias = Mapping[str, Any]
@@ -44541,8 +44511,6 @@ class RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs:
         :param pulumi.Input[builtins.str] name: Name of the secure tag, created with TagManager's TagValue API.
         :param pulumi.Input[builtins.str] state: (Output)
                State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
-               
-               - - -
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -44567,8 +44535,6 @@ class RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs:
         """
         (Output)
         State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
-
-        - - -
         """
         return pulumi.get(self, "state")
 
@@ -44642,8 +44608,7 @@ if not MYPY:
         """
         description: NotRequired[pulumi.Input[builtins.str]]
         """
-        (Output)
-        A description of the rule.
+        An optional description of this resource.
         """
         direction: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -44742,8 +44707,7 @@ class RegionNetworkFirewallPolicyWithRulesPredefinedRuleArgs:
         :param pulumi.Input[builtins.str] action: (Output)
                The Action to perform when the client connection triggers the rule. Can currently be either
                "allow", "deny", "apply_security_profile_group" or "goto_next".
-        :param pulumi.Input[builtins.str] description: (Output)
-               A description of the rule.
+        :param pulumi.Input[builtins.str] description: An optional description of this resource.
         :param pulumi.Input[builtins.str] direction: (Output)
                The direction in which this rule applies. If unspecified an INGRESS rule is created.
         :param pulumi.Input[builtins.bool] disabled: (Output)
@@ -44833,8 +44797,7 @@ class RegionNetworkFirewallPolicyWithRulesPredefinedRuleArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        (Output)
-        A description of the rule.
+        An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
@@ -45481,8 +45444,6 @@ if not MYPY:
         [Output Only] State of the secure tag, either `EFFECTIVE` or
         `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
         or its network is deleted.
-
-        - - -
         """
 elif False:
     RegionNetworkFirewallPolicyWithRulesPredefinedRuleTargetSecureTagArgsDict: TypeAlias = Mapping[str, Any]
@@ -45499,8 +45460,6 @@ class RegionNetworkFirewallPolicyWithRulesPredefinedRuleTargetSecureTagArgs:
                [Output Only] State of the secure tag, either `EFFECTIVE` or
                `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
                or its network is deleted.
-               
-               - - -
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -45528,8 +45487,6 @@ class RegionNetworkFirewallPolicyWithRulesPredefinedRuleTargetSecureTagArgs:
         [Output Only] State of the secure tag, either `EFFECTIVE` or
         `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
         or its network is deleted.
-
-        - - -
         """
         return pulumi.get(self, "state")
 
@@ -46415,8 +46372,6 @@ if not MYPY:
         [Output Only] State of the secure tag, either `EFFECTIVE` or
         `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
         or its network is deleted.
-
-        - - -
         """
 elif False:
     RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTagArgsDict: TypeAlias = Mapping[str, Any]
@@ -46433,8 +46388,6 @@ class RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTagArgs:
                [Output Only] State of the secure tag, either `EFFECTIVE` or
                `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
                or its network is deleted.
-               
-               - - -
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -46462,8 +46415,6 @@ class RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTagArgs:
         [Output Only] State of the secure tag, either `EFFECTIVE` or
         `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
         or its network is deleted.
-
-        - - -
         """
         return pulumi.get(self, "state")
 
@@ -58408,8 +58359,6 @@ if not MYPY:
         disk_size_gb: pulumi.Input[builtins.int]
         """
         The size of the disk in base-2 GB.
-
-        - - -
         """
         interface: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -58427,8 +58376,6 @@ class ReservationSpecificReservationInstancePropertiesLocalSsdArgs:
                  interface: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.int] disk_size_gb: The size of the disk in base-2 GB.
-               
-               - - -
         :param pulumi.Input[builtins.str] interface: The disk interface to use for attaching this disk.
                Default value is `SCSI`.
                Possible values are: `SCSI`, `NVME`.
@@ -58442,8 +58389,6 @@ class ReservationSpecificReservationInstancePropertiesLocalSsdArgs:
     def disk_size_gb(self) -> pulumi.Input[builtins.int]:
         """
         The size of the disk in base-2 GB.
-
-        - - -
         """
         return pulumi.get(self, "disk_size_gb")
 
@@ -60949,6 +60894,53 @@ class RouteAsPathArgs:
 
 
 if not MYPY:
+    class RouteParamsArgsDict(TypedDict):
+        resource_manager_tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]
+        """
+        Resource manager tags to be bound to the route. Tag keys and values have the
+        same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456. The field is ignored when empty.
+        The field is immutable and causes resource replacement when mutated. This field is only
+        set at create time and modifying this field after creation will trigger recreation.
+        To apply tags to an existing resource, see the tags.TagBinding resource.
+        """
+elif False:
+    RouteParamsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RouteParamsArgs:
+    def __init__(__self__, *,
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] resource_manager_tags: Resource manager tags to be bound to the route. Tag keys and values have the
+               same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+               and values are in the format tagValues/456. The field is ignored when empty.
+               The field is immutable and causes resource replacement when mutated. This field is only
+               set at create time and modifying this field after creation will trigger recreation.
+               To apply tags to an existing resource, see the tags.TagBinding resource.
+        """
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
+        """
+        Resource manager tags to be bound to the route. Tag keys and values have the
+        same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456. The field is ignored when empty.
+        The field is immutable and causes resource replacement when mutated. This field is only
+        set at create time and modifying this field after creation will trigger recreation.
+        To apply tags to an existing resource, see the tags.TagBinding resource.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+    @resource_manager_tags.setter
+    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "resource_manager_tags", value)
+
+
+if not MYPY:
     class RouteWarningArgsDict(TypedDict):
         code: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -62144,6 +62136,11 @@ class RouterPeerMd5AuthenticationKeyArgs:
 
 if not MYPY:
     class RouterRoutePolicyTermArgsDict(TypedDict):
+        match: pulumi.Input['RouterRoutePolicyTermMatchArgsDict']
+        """
+        CEL expression evaluated against a route to determine if this term applies (see Policy Language).
+        Structure is documented below.
+        """
         priority: pulumi.Input[builtins.int]
         """
         The evaluation priority for this term, which must be between 0 (inclusive) and 231 (exclusive), and unique within the list.
@@ -62153,32 +62150,39 @@ if not MYPY:
         'CEL expressions to evaluate to modify a route when this term matches.'\\
         Structure is documented below.
         """
-        match: NotRequired[pulumi.Input['RouterRoutePolicyTermMatchArgsDict']]
-        """
-        CEL expression evaluated against a route to determine if this term applies (see Policy Language). When not set, the term applies to all routes.
-        Structure is documented below.
-        """
 elif False:
     RouterRoutePolicyTermArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RouterRoutePolicyTermArgs:
     def __init__(__self__, *,
+                 match: pulumi.Input['RouterRoutePolicyTermMatchArgs'],
                  priority: pulumi.Input[builtins.int],
-                 actions: Optional[pulumi.Input[Sequence[pulumi.Input['RouterRoutePolicyTermActionArgs']]]] = None,
-                 match: Optional[pulumi.Input['RouterRoutePolicyTermMatchArgs']] = None):
+                 actions: Optional[pulumi.Input[Sequence[pulumi.Input['RouterRoutePolicyTermActionArgs']]]] = None):
         """
+        :param pulumi.Input['RouterRoutePolicyTermMatchArgs'] match: CEL expression evaluated against a route to determine if this term applies (see Policy Language).
+               Structure is documented below.
         :param pulumi.Input[builtins.int] priority: The evaluation priority for this term, which must be between 0 (inclusive) and 231 (exclusive), and unique within the list.
         :param pulumi.Input[Sequence[pulumi.Input['RouterRoutePolicyTermActionArgs']]] actions: 'CEL expressions to evaluate to modify a route when this term matches.'\\
                Structure is documented below.
-        :param pulumi.Input['RouterRoutePolicyTermMatchArgs'] match: CEL expression evaluated against a route to determine if this term applies (see Policy Language). When not set, the term applies to all routes.
-               Structure is documented below.
         """
+        pulumi.set(__self__, "match", match)
         pulumi.set(__self__, "priority", priority)
         if actions is not None:
             pulumi.set(__self__, "actions", actions)
-        if match is not None:
-            pulumi.set(__self__, "match", match)
+
+    @property
+    @pulumi.getter
+    def match(self) -> pulumi.Input['RouterRoutePolicyTermMatchArgs']:
+        """
+        CEL expression evaluated against a route to determine if this term applies (see Policy Language).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "match")
+
+    @match.setter
+    def match(self, value: pulumi.Input['RouterRoutePolicyTermMatchArgs']):
+        pulumi.set(self, "match", value)
 
     @property
     @pulumi.getter
@@ -62205,19 +62209,6 @@ class RouterRoutePolicyTermArgs:
     def actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouterRoutePolicyTermActionArgs']]]]):
         pulumi.set(self, "actions", value)
 
-    @property
-    @pulumi.getter
-    def match(self) -> Optional[pulumi.Input['RouterRoutePolicyTermMatchArgs']]:
-        """
-        CEL expression evaluated against a route to determine if this term applies (see Policy Language). When not set, the term applies to all routes.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "match")
-
-    @match.setter
-    def match(self, value: Optional[pulumi.Input['RouterRoutePolicyTermMatchArgs']]):
-        pulumi.set(self, "match", value)
-
 
 if not MYPY:
     class RouterRoutePolicyTermActionArgsDict(TypedDict):
@@ -62234,8 +62225,6 @@ if not MYPY:
         """
         String indicating the location of the expression for error
         reporting, e.g. a file name and a position in the file
-
-        - - -
         """
         title: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -62258,8 +62247,6 @@ class RouterRoutePolicyTermActionArgs:
         :param pulumi.Input[builtins.str] description: Description of the expression
         :param pulumi.Input[builtins.str] location: String indicating the location of the expression for error
                reporting, e.g. a file name and a position in the file
-               
-               - - -
         :param pulumi.Input[builtins.str] title: Title for the expression, i.e. a short string describing its
                purpose.
         """
@@ -62302,8 +62289,6 @@ class RouterRoutePolicyTermActionArgs:
         """
         String indicating the location of the expression for error
         reporting, e.g. a file name and a position in the file
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -65295,8 +65280,6 @@ if not MYPY:
         """
         Name of the location. It should be one of the Cloud Storage buckets.
         Only one location can be specified. (should match location)
-
-        - - -
         """
 elif False:
     SnapshotSettingsStorageLocationLocationArgsDict: TypeAlias = Mapping[str, Any]
@@ -65310,8 +65293,6 @@ class SnapshotSettingsStorageLocationLocationArgs:
         :param pulumi.Input[builtins.str] location: The identifier for this object. Format specified above.
         :param pulumi.Input[builtins.str] name: Name of the location. It should be one of the Cloud Storage buckets.
                Only one location can be specified. (should match location)
-               
-               - - -
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "name", name)
@@ -65334,8 +65315,6 @@ class SnapshotSettingsStorageLocationLocationArgs:
         """
         Name of the location. It should be one of the Cloud Storage buckets.
         Only one location can be specified. (should match location)
-
-        - - -
         """
         return pulumi.get(self, "name")
 

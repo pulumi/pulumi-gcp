@@ -74,9 +74,6 @@ class VolumeArgs:
         :param pulumi.Input[builtins.bool] multiple_endpoints: Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints.
                Only the volume with largeCapacity will be allowed to have multiple endpoints.
         :param pulumi.Input[builtins.str] name: The name of the volume. Needs to be unique per location.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['VolumeRestoreParametersArgs'] restore_parameters: Used to create this volume from a snapshot (= cloning) or an backup.
@@ -324,9 +321,6 @@ class VolumeArgs:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The name of the volume. Needs to be unique per location.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -531,9 +525,6 @@ class _VolumeState:
         :param pulumi.Input[builtins.bool] multiple_endpoints: Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints.
                Only the volume with largeCapacity will be allowed to have multiple endpoints.
         :param pulumi.Input[builtins.str] name: The name of the volume. Needs to be unique per location.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] network: VPC network name with format: `projects/{{project}}/global/networks/{{network}}`. Inherited from storage pool.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -908,9 +899,6 @@ class _VolumeState:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The name of the volume. Needs to be unique per location.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -1300,9 +1288,6 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] multiple_endpoints: Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints.
                Only the volume with largeCapacity will be allowed to have multiple endpoints.
         :param pulumi.Input[builtins.str] name: The name of the volume. Needs to be unique per location.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] protocols: The protocol of the volume. Allowed combinations are `['NFSV3']`, `['NFSV4']`, `['SMB']`, `['NFSV3', 'NFSV4']`, `['SMB', 'NFSV3']` and `['SMB', 'NFSV4']`.
@@ -1588,9 +1573,6 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] multiple_endpoints: Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints.
                Only the volume with largeCapacity will be allowed to have multiple endpoints.
         :param pulumi.Input[builtins.str] name: The name of the volume. Needs to be unique per location.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] network: VPC network name with format: `projects/{{project}}/global/networks/{{network}}`. Inherited from storage pool.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1848,9 +1830,6 @@ class Volume(pulumi.CustomResource):
     def name(self) -> pulumi.Output[builtins.str]:
         """
         The name of the volume. Needs to be unique per location.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

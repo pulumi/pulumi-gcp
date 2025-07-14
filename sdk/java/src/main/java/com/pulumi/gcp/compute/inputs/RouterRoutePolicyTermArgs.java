@@ -37,20 +37,20 @@ public final class RouterRoutePolicyTermArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * CEL expression evaluated against a route to determine if this term applies (see Policy Language). When not set, the term applies to all routes.
+     * CEL expression evaluated against a route to determine if this term applies (see Policy Language).
      * Structure is documented below.
      * 
      */
-    @Import(name="match")
-    private @Nullable Output<RouterRoutePolicyTermMatchArgs> match;
+    @Import(name="match", required=true)
+    private Output<RouterRoutePolicyTermMatchArgs> match;
 
     /**
-     * @return CEL expression evaluated against a route to determine if this term applies (see Policy Language). When not set, the term applies to all routes.
+     * @return CEL expression evaluated against a route to determine if this term applies (see Policy Language).
      * Structure is documented below.
      * 
      */
-    public Optional<Output<RouterRoutePolicyTermMatchArgs>> match() {
-        return Optional.ofNullable(this.match);
+    public Output<RouterRoutePolicyTermMatchArgs> match() {
+        return this.match;
     }
 
     /**
@@ -129,19 +129,19 @@ public final class RouterRoutePolicyTermArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param match CEL expression evaluated against a route to determine if this term applies (see Policy Language). When not set, the term applies to all routes.
+         * @param match CEL expression evaluated against a route to determine if this term applies (see Policy Language).
          * Structure is documented below.
          * 
          * @return builder
          * 
          */
-        public Builder match(@Nullable Output<RouterRoutePolicyTermMatchArgs> match) {
+        public Builder match(Output<RouterRoutePolicyTermMatchArgs> match) {
             $.match = match;
             return this;
         }
 
         /**
-         * @param match CEL expression evaluated against a route to determine if this term applies (see Policy Language). When not set, the term applies to all routes.
+         * @param match CEL expression evaluated against a route to determine if this term applies (see Policy Language).
          * Structure is documented below.
          * 
          * @return builder
@@ -173,6 +173,9 @@ public final class RouterRoutePolicyTermArgs extends com.pulumi.resources.Resour
         }
 
         public RouterRoutePolicyTermArgs build() {
+            if ($.match == null) {
+                throw new MissingRequiredPropertyException("RouterRoutePolicyTermArgs", "match");
+            }
             if ($.priority == null) {
                 throw new MissingRequiredPropertyException("RouterRoutePolicyTermArgs", "priority");
             }

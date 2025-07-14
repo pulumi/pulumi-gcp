@@ -121,9 +121,6 @@ export class WebApp extends pulumi.CustomResource {
     public readonly deletionPolicy!: pulumi.Output<string | undefined>;
     /**
      * The user-assigned display name of the App.
-     *
-     *
-     * - - -
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -197,9 +194,6 @@ export interface WebAppState {
     deletionPolicy?: pulumi.Input<string>;
     /**
      * The user-assigned display name of the App.
-     *
-     *
-     * - - -
      */
     displayName?: pulumi.Input<string>;
     /**
@@ -227,9 +221,6 @@ export interface WebAppArgs {
     deletionPolicy?: pulumi.Input<string>;
     /**
      * The user-assigned display name of the App.
-     *
-     *
-     * - - -
      */
     displayName: pulumi.Input<string>;
     /**

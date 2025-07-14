@@ -39,9 +39,6 @@ class MeshArgs:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: Location (region) of the Mesh resource to be created. Only the value 'global' is currently allowed; defaults to 'global' if omitted.
         :param pulumi.Input[builtins.str] name: Short name of the Mesh resource to be created.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -117,9 +114,6 @@ class MeshArgs:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Short name of the Mesh resource to be created.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -170,9 +164,6 @@ class _MeshState:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: Location (region) of the Mesh resource to be created. Only the value 'global' is currently allowed; defaults to 'global' if omitted.
         :param pulumi.Input[builtins.str] name: Short name of the Mesh resource to be created.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -286,9 +277,6 @@ class _MeshState:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Short name of the Mesh resource to be created.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -446,9 +434,6 @@ class Mesh(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: Location (region) of the Mesh resource to be created. Only the value 'global' is currently allowed; defaults to 'global' if omitted.
         :param pulumi.Input[builtins.str] name: Short name of the Mesh resource to be created.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -615,9 +600,6 @@ class Mesh(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: Location (region) of the Mesh resource to be created. Only the value 'global' is currently allowed; defaults to 'global' if omitted.
         :param pulumi.Input[builtins.str] name: Short name of the Mesh resource to be created.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -701,9 +683,6 @@ class Mesh(pulumi.CustomResource):
     def name(self) -> pulumi.Output[builtins.str]:
         """
         Short name of the Mesh resource to be created.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

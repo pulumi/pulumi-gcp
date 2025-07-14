@@ -199,8 +199,6 @@ type KeyHandle struct {
 	KmsKey pulumi.StringOutput `pulumi:"kmsKey"`
 	// The location for the KeyHandle.
 	// A full list of valid locations can be found by running `gcloud kms locations list`.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name for the KeyHandle.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -254,8 +252,6 @@ type keyHandleState struct {
 	KmsKey *string `pulumi:"kmsKey"`
 	// The location for the KeyHandle.
 	// A full list of valid locations can be found by running `gcloud kms locations list`.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// The resource name for the KeyHandle.
 	Name *string `pulumi:"name"`
@@ -274,8 +270,6 @@ type KeyHandleState struct {
 	KmsKey pulumi.StringPtrInput
 	// The location for the KeyHandle.
 	// A full list of valid locations can be found by running `gcloud kms locations list`.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// The resource name for the KeyHandle.
 	Name pulumi.StringPtrInput
@@ -294,8 +288,6 @@ func (KeyHandleState) ElementType() reflect.Type {
 type keyHandleArgs struct {
 	// The location for the KeyHandle.
 	// A full list of valid locations can be found by running `gcloud kms locations list`.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// The resource name for the KeyHandle.
 	Name *string `pulumi:"name"`
@@ -311,8 +303,6 @@ type keyHandleArgs struct {
 type KeyHandleArgs struct {
 	// The location for the KeyHandle.
 	// A full list of valid locations can be found by running `gcloud kms locations list`.
-	//
-	// ***
 	Location pulumi.StringInput
 	// The resource name for the KeyHandle.
 	Name pulumi.StringPtrInput
@@ -420,8 +410,6 @@ func (o KeyHandleOutput) KmsKey() pulumi.StringOutput {
 
 // The location for the KeyHandle.
 // A full list of valid locations can be found by running `gcloud kms locations list`.
-//
-// ***
 func (o KeyHandleOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *KeyHandle) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

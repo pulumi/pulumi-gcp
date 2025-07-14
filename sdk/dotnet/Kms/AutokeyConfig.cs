@@ -182,9 +182,6 @@ namespace Pulumi.Gcp.Kms
 
         /// <summary>
         /// The folder for which to retrieve config.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("folder")]
         public Output<string> Folder { get; private set; } = null!;
@@ -245,9 +242,6 @@ namespace Pulumi.Gcp.Kms
     {
         /// <summary>
         /// The folder for which to retrieve config.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("folder", required: true)]
         public Input<string> Folder { get; set; } = null!;
@@ -276,9 +270,6 @@ namespace Pulumi.Gcp.Kms
 
         /// <summary>
         /// The folder for which to retrieve config.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("folder")]
         public Input<string>? Folder { get; set; }

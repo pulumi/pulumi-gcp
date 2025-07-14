@@ -105,8 +105,6 @@ type V2FolderSccBigQueryExport struct {
 	// This must be unique within the organization.  It must consist of only lowercase letters,
 	// numbers, and hyphens, must start with a letter, must end with either a letter or a number,
 	// and must be 63 characters or less.
-	//
-	// ***
 	BigQueryExportId pulumi.StringOutput `pulumi:"bigQueryExportId"`
 	// The time at which the BigQuery export was created. This field is set by the server and will be ignored if provided on export on creation.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -197,8 +195,6 @@ type v2folderSccBigQueryExportState struct {
 	// This must be unique within the organization.  It must consist of only lowercase letters,
 	// numbers, and hyphens, must start with a letter, must end with either a letter or a number,
 	// and must be 63 characters or less.
-	//
-	// ***
 	BigQueryExportId *string `pulumi:"bigQueryExportId"`
 	// The time at which the BigQuery export was created. This field is set by the server and will be ignored if provided on export on creation.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -254,8 +250,6 @@ type V2FolderSccBigQueryExportState struct {
 	// This must be unique within the organization.  It must consist of only lowercase letters,
 	// numbers, and hyphens, must start with a letter, must end with either a letter or a number,
 	// and must be 63 characters or less.
-	//
-	// ***
 	BigQueryExportId pulumi.StringPtrInput
 	// The time at which the BigQuery export was created. This field is set by the server and will be ignored if provided on export on creation.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -315,8 +309,6 @@ type v2folderSccBigQueryExportArgs struct {
 	// This must be unique within the organization.  It must consist of only lowercase letters,
 	// numbers, and hyphens, must start with a letter, must end with either a letter or a number,
 	// and must be 63 characters or less.
-	//
-	// ***
 	BigQueryExportId string `pulumi:"bigQueryExportId"`
 	// The dataset to write findings' updates to.
 	// Its format is "projects/[projectId]/datasets/[bigqueryDatasetId]".
@@ -356,8 +348,6 @@ type V2FolderSccBigQueryExportArgs struct {
 	// This must be unique within the organization.  It must consist of only lowercase letters,
 	// numbers, and hyphens, must start with a letter, must end with either a letter or a number,
 	// and must be 63 characters or less.
-	//
-	// ***
 	BigQueryExportId pulumi.StringInput
 	// The dataset to write findings' updates to.
 	// Its format is "projects/[projectId]/datasets/[bigqueryDatasetId]".
@@ -482,8 +472,6 @@ func (o V2FolderSccBigQueryExportOutput) ToV2FolderSccBigQueryExportOutputWithCo
 // This must be unique within the organization.  It must consist of only lowercase letters,
 // numbers, and hyphens, must start with a letter, must end with either a letter or a number,
 // and must be 63 characters or less.
-//
-// ***
 func (o V2FolderSccBigQueryExportOutput) BigQueryExportId() pulumi.StringOutput {
 	return o.ApplyT(func(v *V2FolderSccBigQueryExport) pulumi.StringOutput { return v.BigQueryExportId }).(pulumi.StringOutput)
 }

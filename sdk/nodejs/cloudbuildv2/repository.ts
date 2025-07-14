@@ -206,9 +206,6 @@ export class Repository extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The connection for the resource
-     *
-     *
-     * - - -
      */
     public readonly parentConnection!: pulumi.Output<string>;
     /**
@@ -301,9 +298,6 @@ export interface RepositoryState {
     name?: pulumi.Input<string>;
     /**
      * The connection for the resource
-     *
-     *
-     * - - -
      */
     parentConnection?: pulumi.Input<string>;
     /**
@@ -341,9 +335,6 @@ export interface RepositoryArgs {
     name?: pulumi.Input<string>;
     /**
      * The connection for the resource
-     *
-     *
-     * - - -
      */
     parentConnection: pulumi.Input<string>;
     /**

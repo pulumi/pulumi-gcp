@@ -54,9 +54,6 @@ class GlobalForwardingRuleArgs:
                *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
                *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
                For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
-               
-               
-               - - -
         :param pulumi.Input[builtins.bool] allow_psc_global_access: This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
         :param pulumi.Input[builtins.str] description: An optional description of this resource. Provide this property when
                you create the resource.
@@ -257,9 +254,6 @@ class GlobalForwardingRuleArgs:
         *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
         *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
         For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
-
-
-        - - -
         """
         return pulumi.get(self, "target")
 
@@ -820,9 +814,6 @@ class _GlobalForwardingRuleState:
                *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
                *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
                For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
-               
-               
-               - - -
         """
         if allow_psc_global_access is not None:
             pulumi.set(__self__, "allow_psc_global_access", allow_psc_global_access)
@@ -1347,9 +1338,6 @@ class _GlobalForwardingRuleState:
         *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
         *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
         For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
-
-
-        - - -
         """
         return pulumi.get(self, "target")
 
@@ -1916,9 +1904,6 @@ class GlobalForwardingRule(pulumi.CustomResource):
                *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
                *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
                For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -2586,9 +2571,6 @@ class GlobalForwardingRule(pulumi.CustomResource):
                *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
                *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
                For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -2982,9 +2964,6 @@ class GlobalForwardingRule(pulumi.CustomResource):
         *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
         *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
         For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
-
-
-        - - -
         """
         return pulumi.get(self, "target")
 

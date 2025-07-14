@@ -35,9 +35,6 @@ class ConnectionProfileArgs:
         """
         The set of arguments for constructing a ConnectionProfile resource.
         :param pulumi.Input[builtins.str] connection_profile_id: The ID of the connection profile.
-               
-               
-               - - -
         :param pulumi.Input['ConnectionProfileAlloydbArgs'] alloydb: Specifies required connection parameters, and the parameters required to create an AlloyDB destination cluster.
                Structure is documented below.
         :param pulumi.Input['ConnectionProfileCloudsqlArgs'] cloudsql: Specifies required connection parameters, and, optionally, the parameters required to create a Cloud SQL destination database instance.
@@ -82,9 +79,6 @@ class ConnectionProfileArgs:
     def connection_profile_id(self) -> pulumi.Input[builtins.str]:
         """
         The ID of the connection profile.
-
-
-        - - -
         """
         return pulumi.get(self, "connection_profile_id")
 
@@ -237,9 +231,6 @@ class _ConnectionProfileState:
         :param pulumi.Input['ConnectionProfileCloudsqlArgs'] cloudsql: Specifies required connection parameters, and, optionally, the parameters required to create a Cloud SQL destination database instance.
                Structure is documented below.
         :param pulumi.Input[builtins.str] connection_profile_id: The ID of the connection profile.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] create_time: Output only. The timestamp when the resource was created. A timestamp in RFC3339 UTC 'Zulu' format, accurate to nanoseconds. Example: '2014-10-02T15:01:23.045123456Z'.
         :param pulumi.Input[builtins.str] dbprovider: The database provider.
         :param pulumi.Input[builtins.str] display_name: The connection profile display name.
@@ -330,9 +321,6 @@ class _ConnectionProfileState:
     def connection_profile_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The ID of the connection profile.
-
-
-        - - -
         """
         return pulumi.get(self, "connection_profile_id")
 
@@ -955,9 +943,6 @@ class ConnectionProfile(pulumi.CustomResource):
         :param pulumi.Input[Union['ConnectionProfileCloudsqlArgs', 'ConnectionProfileCloudsqlArgsDict']] cloudsql: Specifies required connection parameters, and, optionally, the parameters required to create a Cloud SQL destination database instance.
                Structure is documented below.
         :param pulumi.Input[builtins.str] connection_profile_id: The ID of the connection profile.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] display_name: The connection profile display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs.
                
@@ -1486,9 +1471,6 @@ class ConnectionProfile(pulumi.CustomResource):
         :param pulumi.Input[Union['ConnectionProfileCloudsqlArgs', 'ConnectionProfileCloudsqlArgsDict']] cloudsql: Specifies required connection parameters, and, optionally, the parameters required to create a Cloud SQL destination database instance.
                Structure is documented below.
         :param pulumi.Input[builtins.str] connection_profile_id: The ID of the connection profile.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] create_time: Output only. The timestamp when the resource was created. A timestamp in RFC3339 UTC 'Zulu' format, accurate to nanoseconds. Example: '2014-10-02T15:01:23.045123456Z'.
         :param pulumi.Input[builtins.str] dbprovider: The database provider.
         :param pulumi.Input[builtins.str] display_name: The connection profile display name.
@@ -1559,9 +1541,6 @@ class ConnectionProfile(pulumi.CustomResource):
     def connection_profile_id(self) -> pulumi.Output[builtins.str]:
         """
         The ID of the connection profile.
-
-
-        - - -
         """
         return pulumi.get(self, "connection_profile_id")
 

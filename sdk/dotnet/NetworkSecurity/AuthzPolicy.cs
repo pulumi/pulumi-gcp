@@ -72,8 +72,8 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One
-        /// of cloudIap or authzExtension must be specified.
+        /// Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One of cloudIap or authzExtension must be specified.
+        /// Structure is documented below.
         /// </summary>
         [Output("customProvider")]
         public Output<Outputs.AuthzPolicyCustomProvider?> CustomProvider { get; private set; } = null!;
@@ -91,17 +91,18 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
-        /// A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP
-        /// rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow
-        /// or Deny Action. Limited to 5 rules.
+        /// A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+        /// Limited to 5 rules.
+        /// Structure is documented below.
         /// </summary>
         [Output("httpRules")]
         public Output<ImmutableArray<Outputs.AuthzPolicyHttpRule>> HttpRules { get; private set; } = null!;
 
         /// <summary>
-        /// Set of labels associated with the AuthzExtension resource. **Note**: This field is non-authoritative, and will only
-        /// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-        /// present on the resource.
+        /// Set of labels associated with the AuthzExtension resource.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -118,6 +119,10 @@ namespace Pulumi.Gcp.NetworkSecurity
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -207,8 +212,8 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Input<string> Action { get; set; } = null!;
 
         /// <summary>
-        /// Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One
-        /// of cloudIap or authzExtension must be specified.
+        /// Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One of cloudIap or authzExtension must be specified.
+        /// Structure is documented below.
         /// </summary>
         [Input("customProvider")]
         public Input<Inputs.AuthzPolicyCustomProviderArgs>? CustomProvider { get; set; }
@@ -223,9 +228,9 @@ namespace Pulumi.Gcp.NetworkSecurity
         private InputList<Inputs.AuthzPolicyHttpRuleArgs>? _httpRules;
 
         /// <summary>
-        /// A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP
-        /// rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow
-        /// or Deny Action. Limited to 5 rules.
+        /// A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+        /// Limited to 5 rules.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.AuthzPolicyHttpRuleArgs> HttpRules
         {
@@ -237,9 +242,10 @@ namespace Pulumi.Gcp.NetworkSecurity
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Set of labels associated with the AuthzExtension resource. **Note**: This field is non-authoritative, and will only
-        /// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-        /// present on the resource.
+        /// Set of labels associated with the AuthzExtension resource.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -259,6 +265,10 @@ namespace Pulumi.Gcp.NetworkSecurity
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -298,8 +308,8 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One
-        /// of cloudIap or authzExtension must be specified.
+        /// Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One of cloudIap or authzExtension must be specified.
+        /// Structure is documented below.
         /// </summary>
         [Input("customProvider")]
         public Input<Inputs.AuthzPolicyCustomProviderGetArgs>? CustomProvider { get; set; }
@@ -330,9 +340,9 @@ namespace Pulumi.Gcp.NetworkSecurity
         private InputList<Inputs.AuthzPolicyHttpRuleGetArgs>? _httpRules;
 
         /// <summary>
-        /// A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP
-        /// rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow
-        /// or Deny Action. Limited to 5 rules.
+        /// A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+        /// Limited to 5 rules.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.AuthzPolicyHttpRuleGetArgs> HttpRules
         {
@@ -344,9 +354,10 @@ namespace Pulumi.Gcp.NetworkSecurity
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Set of labels associated with the AuthzExtension resource. **Note**: This field is non-authoritative, and will only
-        /// manage the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels
-        /// present on the resource.
+        /// Set of labels associated with the AuthzExtension resource.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -366,6 +377,10 @@ namespace Pulumi.Gcp.NetworkSecurity
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

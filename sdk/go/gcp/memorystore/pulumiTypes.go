@@ -3642,6 +3642,209 @@ func (o InstanceManagedBackupSourcePtrOutput) Backup() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type InstanceManagedServerCa struct {
+	// (Output)
+	// The PEM encoded CA certificate chains for managed server authentication
+	// Structure is documented below.
+	CaCerts []InstanceManagedServerCaCaCert `pulumi:"caCerts"`
+}
+
+// InstanceManagedServerCaInput is an input type that accepts InstanceManagedServerCaArgs and InstanceManagedServerCaOutput values.
+// You can construct a concrete instance of `InstanceManagedServerCaInput` via:
+//
+//	InstanceManagedServerCaArgs{...}
+type InstanceManagedServerCaInput interface {
+	pulumi.Input
+
+	ToInstanceManagedServerCaOutput() InstanceManagedServerCaOutput
+	ToInstanceManagedServerCaOutputWithContext(context.Context) InstanceManagedServerCaOutput
+}
+
+type InstanceManagedServerCaArgs struct {
+	// (Output)
+	// The PEM encoded CA certificate chains for managed server authentication
+	// Structure is documented below.
+	CaCerts InstanceManagedServerCaCaCertArrayInput `pulumi:"caCerts"`
+}
+
+func (InstanceManagedServerCaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceManagedServerCa)(nil)).Elem()
+}
+
+func (i InstanceManagedServerCaArgs) ToInstanceManagedServerCaOutput() InstanceManagedServerCaOutput {
+	return i.ToInstanceManagedServerCaOutputWithContext(context.Background())
+}
+
+func (i InstanceManagedServerCaArgs) ToInstanceManagedServerCaOutputWithContext(ctx context.Context) InstanceManagedServerCaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceManagedServerCaOutput)
+}
+
+// InstanceManagedServerCaArrayInput is an input type that accepts InstanceManagedServerCaArray and InstanceManagedServerCaArrayOutput values.
+// You can construct a concrete instance of `InstanceManagedServerCaArrayInput` via:
+//
+//	InstanceManagedServerCaArray{ InstanceManagedServerCaArgs{...} }
+type InstanceManagedServerCaArrayInput interface {
+	pulumi.Input
+
+	ToInstanceManagedServerCaArrayOutput() InstanceManagedServerCaArrayOutput
+	ToInstanceManagedServerCaArrayOutputWithContext(context.Context) InstanceManagedServerCaArrayOutput
+}
+
+type InstanceManagedServerCaArray []InstanceManagedServerCaInput
+
+func (InstanceManagedServerCaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceManagedServerCa)(nil)).Elem()
+}
+
+func (i InstanceManagedServerCaArray) ToInstanceManagedServerCaArrayOutput() InstanceManagedServerCaArrayOutput {
+	return i.ToInstanceManagedServerCaArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceManagedServerCaArray) ToInstanceManagedServerCaArrayOutputWithContext(ctx context.Context) InstanceManagedServerCaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceManagedServerCaArrayOutput)
+}
+
+type InstanceManagedServerCaOutput struct{ *pulumi.OutputState }
+
+func (InstanceManagedServerCaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceManagedServerCa)(nil)).Elem()
+}
+
+func (o InstanceManagedServerCaOutput) ToInstanceManagedServerCaOutput() InstanceManagedServerCaOutput {
+	return o
+}
+
+func (o InstanceManagedServerCaOutput) ToInstanceManagedServerCaOutputWithContext(ctx context.Context) InstanceManagedServerCaOutput {
+	return o
+}
+
+// (Output)
+// The PEM encoded CA certificate chains for managed server authentication
+// Structure is documented below.
+func (o InstanceManagedServerCaOutput) CaCerts() InstanceManagedServerCaCaCertArrayOutput {
+	return o.ApplyT(func(v InstanceManagedServerCa) []InstanceManagedServerCaCaCert { return v.CaCerts }).(InstanceManagedServerCaCaCertArrayOutput)
+}
+
+type InstanceManagedServerCaArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceManagedServerCaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceManagedServerCa)(nil)).Elem()
+}
+
+func (o InstanceManagedServerCaArrayOutput) ToInstanceManagedServerCaArrayOutput() InstanceManagedServerCaArrayOutput {
+	return o
+}
+
+func (o InstanceManagedServerCaArrayOutput) ToInstanceManagedServerCaArrayOutputWithContext(ctx context.Context) InstanceManagedServerCaArrayOutput {
+	return o
+}
+
+func (o InstanceManagedServerCaArrayOutput) Index(i pulumi.IntInput) InstanceManagedServerCaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceManagedServerCa {
+		return vs[0].([]InstanceManagedServerCa)[vs[1].(int)]
+	}).(InstanceManagedServerCaOutput)
+}
+
+type InstanceManagedServerCaCaCert struct {
+	// (Output)
+	// The certificates that form the CA chain, from leaf to root order
+	Certificates []string `pulumi:"certificates"`
+}
+
+// InstanceManagedServerCaCaCertInput is an input type that accepts InstanceManagedServerCaCaCertArgs and InstanceManagedServerCaCaCertOutput values.
+// You can construct a concrete instance of `InstanceManagedServerCaCaCertInput` via:
+//
+//	InstanceManagedServerCaCaCertArgs{...}
+type InstanceManagedServerCaCaCertInput interface {
+	pulumi.Input
+
+	ToInstanceManagedServerCaCaCertOutput() InstanceManagedServerCaCaCertOutput
+	ToInstanceManagedServerCaCaCertOutputWithContext(context.Context) InstanceManagedServerCaCaCertOutput
+}
+
+type InstanceManagedServerCaCaCertArgs struct {
+	// (Output)
+	// The certificates that form the CA chain, from leaf to root order
+	Certificates pulumi.StringArrayInput `pulumi:"certificates"`
+}
+
+func (InstanceManagedServerCaCaCertArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceManagedServerCaCaCert)(nil)).Elem()
+}
+
+func (i InstanceManagedServerCaCaCertArgs) ToInstanceManagedServerCaCaCertOutput() InstanceManagedServerCaCaCertOutput {
+	return i.ToInstanceManagedServerCaCaCertOutputWithContext(context.Background())
+}
+
+func (i InstanceManagedServerCaCaCertArgs) ToInstanceManagedServerCaCaCertOutputWithContext(ctx context.Context) InstanceManagedServerCaCaCertOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceManagedServerCaCaCertOutput)
+}
+
+// InstanceManagedServerCaCaCertArrayInput is an input type that accepts InstanceManagedServerCaCaCertArray and InstanceManagedServerCaCaCertArrayOutput values.
+// You can construct a concrete instance of `InstanceManagedServerCaCaCertArrayInput` via:
+//
+//	InstanceManagedServerCaCaCertArray{ InstanceManagedServerCaCaCertArgs{...} }
+type InstanceManagedServerCaCaCertArrayInput interface {
+	pulumi.Input
+
+	ToInstanceManagedServerCaCaCertArrayOutput() InstanceManagedServerCaCaCertArrayOutput
+	ToInstanceManagedServerCaCaCertArrayOutputWithContext(context.Context) InstanceManagedServerCaCaCertArrayOutput
+}
+
+type InstanceManagedServerCaCaCertArray []InstanceManagedServerCaCaCertInput
+
+func (InstanceManagedServerCaCaCertArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceManagedServerCaCaCert)(nil)).Elem()
+}
+
+func (i InstanceManagedServerCaCaCertArray) ToInstanceManagedServerCaCaCertArrayOutput() InstanceManagedServerCaCaCertArrayOutput {
+	return i.ToInstanceManagedServerCaCaCertArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceManagedServerCaCaCertArray) ToInstanceManagedServerCaCaCertArrayOutputWithContext(ctx context.Context) InstanceManagedServerCaCaCertArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceManagedServerCaCaCertArrayOutput)
+}
+
+type InstanceManagedServerCaCaCertOutput struct{ *pulumi.OutputState }
+
+func (InstanceManagedServerCaCaCertOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceManagedServerCaCaCert)(nil)).Elem()
+}
+
+func (o InstanceManagedServerCaCaCertOutput) ToInstanceManagedServerCaCaCertOutput() InstanceManagedServerCaCaCertOutput {
+	return o
+}
+
+func (o InstanceManagedServerCaCaCertOutput) ToInstanceManagedServerCaCaCertOutputWithContext(ctx context.Context) InstanceManagedServerCaCaCertOutput {
+	return o
+}
+
+// (Output)
+// The certificates that form the CA chain, from leaf to root order
+func (o InstanceManagedServerCaCaCertOutput) Certificates() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstanceManagedServerCaCaCert) []string { return v.Certificates }).(pulumi.StringArrayOutput)
+}
+
+type InstanceManagedServerCaCaCertArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceManagedServerCaCaCertArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceManagedServerCaCaCert)(nil)).Elem()
+}
+
+func (o InstanceManagedServerCaCaCertArrayOutput) ToInstanceManagedServerCaCaCertArrayOutput() InstanceManagedServerCaCaCertArrayOutput {
+	return o
+}
+
+func (o InstanceManagedServerCaCaCertArrayOutput) ToInstanceManagedServerCaCaCertArrayOutputWithContext(ctx context.Context) InstanceManagedServerCaCaCertArrayOutput {
+	return o
+}
+
+func (o InstanceManagedServerCaCaCertArrayOutput) Index(i pulumi.IntInput) InstanceManagedServerCaCaCertOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceManagedServerCaCaCert {
+		return vs[0].([]InstanceManagedServerCaCaCert)[vs[1].(int)]
+	}).(InstanceManagedServerCaCaCertOutput)
+}
+
 type InstanceNodeConfig struct {
 	// (Output)
 	// Output only. Memory size in GB of the node.
@@ -7522,6 +7725,200 @@ func (o GetInstanceManagedBackupSourceArrayOutput) Index(i pulumi.IntInput) GetI
 	}).(GetInstanceManagedBackupSourceOutput)
 }
 
+type GetInstanceManagedServerCa struct {
+	// The PEM encoded CA certificate chains for managed server authentication
+	CaCerts []GetInstanceManagedServerCaCaCert `pulumi:"caCerts"`
+}
+
+// GetInstanceManagedServerCaInput is an input type that accepts GetInstanceManagedServerCaArgs and GetInstanceManagedServerCaOutput values.
+// You can construct a concrete instance of `GetInstanceManagedServerCaInput` via:
+//
+//	GetInstanceManagedServerCaArgs{...}
+type GetInstanceManagedServerCaInput interface {
+	pulumi.Input
+
+	ToGetInstanceManagedServerCaOutput() GetInstanceManagedServerCaOutput
+	ToGetInstanceManagedServerCaOutputWithContext(context.Context) GetInstanceManagedServerCaOutput
+}
+
+type GetInstanceManagedServerCaArgs struct {
+	// The PEM encoded CA certificate chains for managed server authentication
+	CaCerts GetInstanceManagedServerCaCaCertArrayInput `pulumi:"caCerts"`
+}
+
+func (GetInstanceManagedServerCaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceManagedServerCa)(nil)).Elem()
+}
+
+func (i GetInstanceManagedServerCaArgs) ToGetInstanceManagedServerCaOutput() GetInstanceManagedServerCaOutput {
+	return i.ToGetInstanceManagedServerCaOutputWithContext(context.Background())
+}
+
+func (i GetInstanceManagedServerCaArgs) ToGetInstanceManagedServerCaOutputWithContext(ctx context.Context) GetInstanceManagedServerCaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceManagedServerCaOutput)
+}
+
+// GetInstanceManagedServerCaArrayInput is an input type that accepts GetInstanceManagedServerCaArray and GetInstanceManagedServerCaArrayOutput values.
+// You can construct a concrete instance of `GetInstanceManagedServerCaArrayInput` via:
+//
+//	GetInstanceManagedServerCaArray{ GetInstanceManagedServerCaArgs{...} }
+type GetInstanceManagedServerCaArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceManagedServerCaArrayOutput() GetInstanceManagedServerCaArrayOutput
+	ToGetInstanceManagedServerCaArrayOutputWithContext(context.Context) GetInstanceManagedServerCaArrayOutput
+}
+
+type GetInstanceManagedServerCaArray []GetInstanceManagedServerCaInput
+
+func (GetInstanceManagedServerCaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceManagedServerCa)(nil)).Elem()
+}
+
+func (i GetInstanceManagedServerCaArray) ToGetInstanceManagedServerCaArrayOutput() GetInstanceManagedServerCaArrayOutput {
+	return i.ToGetInstanceManagedServerCaArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceManagedServerCaArray) ToGetInstanceManagedServerCaArrayOutputWithContext(ctx context.Context) GetInstanceManagedServerCaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceManagedServerCaArrayOutput)
+}
+
+type GetInstanceManagedServerCaOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceManagedServerCaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceManagedServerCa)(nil)).Elem()
+}
+
+func (o GetInstanceManagedServerCaOutput) ToGetInstanceManagedServerCaOutput() GetInstanceManagedServerCaOutput {
+	return o
+}
+
+func (o GetInstanceManagedServerCaOutput) ToGetInstanceManagedServerCaOutputWithContext(ctx context.Context) GetInstanceManagedServerCaOutput {
+	return o
+}
+
+// The PEM encoded CA certificate chains for managed server authentication
+func (o GetInstanceManagedServerCaOutput) CaCerts() GetInstanceManagedServerCaCaCertArrayOutput {
+	return o.ApplyT(func(v GetInstanceManagedServerCa) []GetInstanceManagedServerCaCaCert { return v.CaCerts }).(GetInstanceManagedServerCaCaCertArrayOutput)
+}
+
+type GetInstanceManagedServerCaArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceManagedServerCaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceManagedServerCa)(nil)).Elem()
+}
+
+func (o GetInstanceManagedServerCaArrayOutput) ToGetInstanceManagedServerCaArrayOutput() GetInstanceManagedServerCaArrayOutput {
+	return o
+}
+
+func (o GetInstanceManagedServerCaArrayOutput) ToGetInstanceManagedServerCaArrayOutputWithContext(ctx context.Context) GetInstanceManagedServerCaArrayOutput {
+	return o
+}
+
+func (o GetInstanceManagedServerCaArrayOutput) Index(i pulumi.IntInput) GetInstanceManagedServerCaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceManagedServerCa {
+		return vs[0].([]GetInstanceManagedServerCa)[vs[1].(int)]
+	}).(GetInstanceManagedServerCaOutput)
+}
+
+type GetInstanceManagedServerCaCaCert struct {
+	// The certificates that form the CA chain, from leaf to root order
+	Certificates []string `pulumi:"certificates"`
+}
+
+// GetInstanceManagedServerCaCaCertInput is an input type that accepts GetInstanceManagedServerCaCaCertArgs and GetInstanceManagedServerCaCaCertOutput values.
+// You can construct a concrete instance of `GetInstanceManagedServerCaCaCertInput` via:
+//
+//	GetInstanceManagedServerCaCaCertArgs{...}
+type GetInstanceManagedServerCaCaCertInput interface {
+	pulumi.Input
+
+	ToGetInstanceManagedServerCaCaCertOutput() GetInstanceManagedServerCaCaCertOutput
+	ToGetInstanceManagedServerCaCaCertOutputWithContext(context.Context) GetInstanceManagedServerCaCaCertOutput
+}
+
+type GetInstanceManagedServerCaCaCertArgs struct {
+	// The certificates that form the CA chain, from leaf to root order
+	Certificates pulumi.StringArrayInput `pulumi:"certificates"`
+}
+
+func (GetInstanceManagedServerCaCaCertArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceManagedServerCaCaCert)(nil)).Elem()
+}
+
+func (i GetInstanceManagedServerCaCaCertArgs) ToGetInstanceManagedServerCaCaCertOutput() GetInstanceManagedServerCaCaCertOutput {
+	return i.ToGetInstanceManagedServerCaCaCertOutputWithContext(context.Background())
+}
+
+func (i GetInstanceManagedServerCaCaCertArgs) ToGetInstanceManagedServerCaCaCertOutputWithContext(ctx context.Context) GetInstanceManagedServerCaCaCertOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceManagedServerCaCaCertOutput)
+}
+
+// GetInstanceManagedServerCaCaCertArrayInput is an input type that accepts GetInstanceManagedServerCaCaCertArray and GetInstanceManagedServerCaCaCertArrayOutput values.
+// You can construct a concrete instance of `GetInstanceManagedServerCaCaCertArrayInput` via:
+//
+//	GetInstanceManagedServerCaCaCertArray{ GetInstanceManagedServerCaCaCertArgs{...} }
+type GetInstanceManagedServerCaCaCertArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceManagedServerCaCaCertArrayOutput() GetInstanceManagedServerCaCaCertArrayOutput
+	ToGetInstanceManagedServerCaCaCertArrayOutputWithContext(context.Context) GetInstanceManagedServerCaCaCertArrayOutput
+}
+
+type GetInstanceManagedServerCaCaCertArray []GetInstanceManagedServerCaCaCertInput
+
+func (GetInstanceManagedServerCaCaCertArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceManagedServerCaCaCert)(nil)).Elem()
+}
+
+func (i GetInstanceManagedServerCaCaCertArray) ToGetInstanceManagedServerCaCaCertArrayOutput() GetInstanceManagedServerCaCaCertArrayOutput {
+	return i.ToGetInstanceManagedServerCaCaCertArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceManagedServerCaCaCertArray) ToGetInstanceManagedServerCaCaCertArrayOutputWithContext(ctx context.Context) GetInstanceManagedServerCaCaCertArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceManagedServerCaCaCertArrayOutput)
+}
+
+type GetInstanceManagedServerCaCaCertOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceManagedServerCaCaCertOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceManagedServerCaCaCert)(nil)).Elem()
+}
+
+func (o GetInstanceManagedServerCaCaCertOutput) ToGetInstanceManagedServerCaCaCertOutput() GetInstanceManagedServerCaCaCertOutput {
+	return o
+}
+
+func (o GetInstanceManagedServerCaCaCertOutput) ToGetInstanceManagedServerCaCaCertOutputWithContext(ctx context.Context) GetInstanceManagedServerCaCaCertOutput {
+	return o
+}
+
+// The certificates that form the CA chain, from leaf to root order
+func (o GetInstanceManagedServerCaCaCertOutput) Certificates() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstanceManagedServerCaCaCert) []string { return v.Certificates }).(pulumi.StringArrayOutput)
+}
+
+type GetInstanceManagedServerCaCaCertArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceManagedServerCaCaCertArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceManagedServerCaCaCert)(nil)).Elem()
+}
+
+func (o GetInstanceManagedServerCaCaCertArrayOutput) ToGetInstanceManagedServerCaCaCertArrayOutput() GetInstanceManagedServerCaCaCertArrayOutput {
+	return o
+}
+
+func (o GetInstanceManagedServerCaCaCertArrayOutput) ToGetInstanceManagedServerCaCaCertArrayOutputWithContext(ctx context.Context) GetInstanceManagedServerCaCaCertArrayOutput {
+	return o
+}
+
+func (o GetInstanceManagedServerCaCaCertArrayOutput) Index(i pulumi.IntInput) GetInstanceManagedServerCaCaCertOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceManagedServerCaCaCert {
+		return vs[0].([]GetInstanceManagedServerCaCaCert)[vs[1].(int)]
+	}).(GetInstanceManagedServerCaCaCertOutput)
+}
+
 type GetInstanceNodeConfig struct {
 	// Output only. Memory size in GB of the node.
 	SizeGb float64 `pulumi:"sizeGb"`
@@ -8687,6 +9084,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenanceScheduleArrayInput)(nil)).Elem(), InstanceMaintenanceScheduleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceManagedBackupSourceInput)(nil)).Elem(), InstanceManagedBackupSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceManagedBackupSourcePtrInput)(nil)).Elem(), InstanceManagedBackupSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceManagedServerCaInput)(nil)).Elem(), InstanceManagedServerCaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceManagedServerCaArrayInput)(nil)).Elem(), InstanceManagedServerCaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceManagedServerCaCaCertInput)(nil)).Elem(), InstanceManagedServerCaCaCertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceManagedServerCaCaCertArrayInput)(nil)).Elem(), InstanceManagedServerCaCaCertArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNodeConfigInput)(nil)).Elem(), InstanceNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNodeConfigArrayInput)(nil)).Elem(), InstanceNodeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePersistenceConfigInput)(nil)).Elem(), InstancePersistenceConfigArgs{})
@@ -8747,6 +9148,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceMaintenanceScheduleArrayInput)(nil)).Elem(), GetInstanceMaintenanceScheduleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceManagedBackupSourceInput)(nil)).Elem(), GetInstanceManagedBackupSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceManagedBackupSourceArrayInput)(nil)).Elem(), GetInstanceManagedBackupSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceManagedServerCaInput)(nil)).Elem(), GetInstanceManagedServerCaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceManagedServerCaArrayInput)(nil)).Elem(), GetInstanceManagedServerCaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceManagedServerCaCaCertInput)(nil)).Elem(), GetInstanceManagedServerCaCaCertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceManagedServerCaCaCertArrayInput)(nil)).Elem(), GetInstanceManagedServerCaCaCertArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNodeConfigInput)(nil)).Elem(), GetInstanceNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNodeConfigArrayInput)(nil)).Elem(), GetInstanceNodeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePersistenceConfigInput)(nil)).Elem(), GetInstancePersistenceConfigArgs{})
@@ -8812,6 +9217,10 @@ func init() {
 	pulumi.RegisterOutputType(InstanceMaintenanceScheduleArrayOutput{})
 	pulumi.RegisterOutputType(InstanceManagedBackupSourceOutput{})
 	pulumi.RegisterOutputType(InstanceManagedBackupSourcePtrOutput{})
+	pulumi.RegisterOutputType(InstanceManagedServerCaOutput{})
+	pulumi.RegisterOutputType(InstanceManagedServerCaArrayOutput{})
+	pulumi.RegisterOutputType(InstanceManagedServerCaCaCertOutput{})
+	pulumi.RegisterOutputType(InstanceManagedServerCaCaCertArrayOutput{})
 	pulumi.RegisterOutputType(InstanceNodeConfigOutput{})
 	pulumi.RegisterOutputType(InstanceNodeConfigArrayOutput{})
 	pulumi.RegisterOutputType(InstancePersistenceConfigOutput{})
@@ -8872,6 +9281,10 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceMaintenanceScheduleArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceManagedBackupSourceOutput{})
 	pulumi.RegisterOutputType(GetInstanceManagedBackupSourceArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceManagedServerCaOutput{})
+	pulumi.RegisterOutputType(GetInstanceManagedServerCaArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceManagedServerCaCaCertOutput{})
+	pulumi.RegisterOutputType(GetInstanceManagedServerCaCaCertArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceNodeConfigOutput{})
 	pulumi.RegisterOutputType(GetInstanceNodeConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancePersistenceConfigOutput{})

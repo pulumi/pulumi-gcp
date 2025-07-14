@@ -44,9 +44,6 @@ class BackupVaultArgs:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] name: The resource name of the backup vault. Needs to be unique per location.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -148,9 +145,6 @@ class BackupVaultArgs:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The resource name of the backup vault. Needs to be unique per location.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -207,9 +201,6 @@ class _BackupVaultState:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: Location (region) of the backup vault.
         :param pulumi.Input[builtins.str] name: The resource name of the backup vault. Needs to be unique per location.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -367,9 +358,6 @@ class _BackupVaultState:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The resource name of the backup vault. Needs to be unique per location.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -520,9 +508,6 @@ class BackupVault(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: Location (region) of the backup vault.
         :param pulumi.Input[builtins.str] name: The resource name of the backup vault. Needs to be unique per location.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -681,9 +666,6 @@ class BackupVault(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[builtins.str] location: Location (region) of the backup vault.
         :param pulumi.Input[builtins.str] name: The resource name of the backup vault. Needs to be unique per location.
-               
-               
-               - - -
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -795,9 +777,6 @@ class BackupVault(pulumi.CustomResource):
     def name(self) -> pulumi.Output[builtins.str]:
         """
         The resource name of the backup vault. Needs to be unique per location.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

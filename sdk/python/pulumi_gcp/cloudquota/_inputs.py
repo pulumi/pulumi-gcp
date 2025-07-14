@@ -42,8 +42,6 @@ if not MYPY:
         """
         (Output)
         The origin of the quota preference request.
-
-        - - -
         """
         state_detail: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -75,8 +73,6 @@ class SQuotaPreferenceQuotaConfigArgs:
                Granted quota value.
         :param pulumi.Input[builtins.str] request_origin: (Output)
                The origin of the quota preference request.
-               
-               - - -
         :param pulumi.Input[builtins.str] state_detail: (Output)
                Optional details about the state of this quota preference.
         :param pulumi.Input[builtins.str] trace_id: (Output)
@@ -138,8 +134,6 @@ class SQuotaPreferenceQuotaConfigArgs:
         """
         (Output)
         The origin of the quota preference request.
-
-        - - -
         """
         return pulumi.get(self, "request_origin")
 

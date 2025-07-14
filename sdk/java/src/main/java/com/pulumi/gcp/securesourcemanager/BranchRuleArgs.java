@@ -143,16 +143,12 @@ public final class BranchRuleArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The ID for the Repository.
      * 
-     * ***
-     * 
      */
     @Import(name="repositoryId", required=true)
     private Output<String> repositoryId;
 
     /**
      * @return The ID for the Repository.
-     * 
-     * ***
      * 
      */
     public Output<String> repositoryId() {
@@ -412,8 +408,6 @@ public final class BranchRuleArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param repositoryId The ID for the Repository.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -424,8 +418,6 @@ public final class BranchRuleArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param repositoryId The ID for the Repository.
-         * 
-         * ***
          * 
          * @return builder
          * 

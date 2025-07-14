@@ -14,8 +14,6 @@ public final class MirroringEndpointGroupAssociationLocation {
     /**
      * @return The cloud location of the association, currently restricted to `global`.
      * 
-     * ***
-     * 
      */
     private @Nullable String location;
     /**
@@ -32,8 +30,6 @@ public final class MirroringEndpointGroupAssociationLocation {
     private MirroringEndpointGroupAssociationLocation() {}
     /**
      * @return The cloud location of the association, currently restricted to `global`.
-     * 
-     * ***
      * 
      */
     public Optional<String> location() {

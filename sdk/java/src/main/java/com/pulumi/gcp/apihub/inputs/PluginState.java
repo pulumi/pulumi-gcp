@@ -230,8 +230,6 @@ public final class PluginState extends com.pulumi.resources.ResourceArgs {
      *   its length is limited to 1000 characters and valid characters are
      *   /a-z[0-9]-_/.
      * 
-     * ***
-     * 
      */
     @Import(name="pluginId")
     private @Nullable Output<String> pluginId;
@@ -248,8 +246,6 @@ public final class PluginState extends com.pulumi.resources.ResourceArgs {
      *   `projects/{project}/locations/{location}/plugins/{plugin}`,
      *   its length is limited to 1000 characters and valid characters are
      *   /a-z[0-9]-_/.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> pluginId() {
@@ -640,8 +636,6 @@ public final class PluginState extends com.pulumi.resources.ResourceArgs {
          *   its length is limited to 1000 characters and valid characters are
          *   /a-z[0-9]-_/.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -662,8 +656,6 @@ public final class PluginState extends com.pulumi.resources.ResourceArgs {
          *   `projects/{project}/locations/{location}/plugins/{plugin}`,
          *   its length is limited to 1000 characters and valid characters are
          *   /a-z[0-9]-_/.
-         * 
-         * ***
          * 
          * @return builder
          * 

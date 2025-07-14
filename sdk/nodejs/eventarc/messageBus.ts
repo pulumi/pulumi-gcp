@@ -151,9 +151,6 @@ export class MessageBus extends pulumi.CustomResource {
     /**
      * Required. The user-provided ID to be assigned to the MessageBus. It should match the
      * format `^a-z?$`.
-     *
-     *
-     * - - -
      */
     public readonly messageBusId!: pulumi.Output<string>;
     /**
@@ -297,9 +294,6 @@ export interface MessageBusState {
     /**
      * Required. The user-provided ID to be assigned to the MessageBus. It should match the
      * format `^a-z?$`.
-     *
-     *
-     * - - -
      */
     messageBusId?: pulumi.Input<string>;
     /**
@@ -368,9 +362,6 @@ export interface MessageBusArgs {
     /**
      * Required. The user-provided ID to be assigned to the MessageBus. It should match the
      * format `^a-z?$`.
-     *
-     *
-     * - - -
      */
     messageBusId: pulumi.Input<string>;
     /**

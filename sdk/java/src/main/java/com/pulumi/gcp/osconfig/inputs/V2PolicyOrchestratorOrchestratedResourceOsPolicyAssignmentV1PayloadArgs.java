@@ -60,16 +60,14 @@ public final class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1P
     }
 
     /**
-     * OS policy assignment description.
-     * Length of the description is limited to 1024 characters.
+     * Optional. Freeform text describing the purpose of the resource.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return OS policy assignment description.
-     * Length of the description is limited to 1024 characters.
+     * @return Optional. Freeform text describing the purpose of the resource.
      * 
      */
     public Optional<Output<String>> description() {
@@ -329,8 +327,7 @@ public final class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1P
         }
 
         /**
-         * @param description OS policy assignment description.
-         * Length of the description is limited to 1024 characters.
+         * @param description Optional. Freeform text describing the purpose of the resource.
          * 
          * @return builder
          * 
@@ -341,8 +338,7 @@ public final class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1P
         }
 
         /**
-         * @param description OS policy assignment description.
-         * Length of the description is limited to 1024 characters.
+         * @param description Optional. Freeform text describing the purpose of the resource.
          * 
          * @return builder
          * 

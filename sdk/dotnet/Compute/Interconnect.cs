@@ -163,9 +163,6 @@ namespace Pulumi.Gcp.Compute
         /// - PARTNER: A partner-managed interconnection shared between customers though a partner.
         /// - DEDICATED: A dedicated physical interconnection with the customer.
         /// Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("interconnectType")]
         public Output<string> InterconnectType { get; private set; } = null!;
@@ -412,9 +409,6 @@ namespace Pulumi.Gcp.Compute
         /// - PARTNER: A partner-managed interconnection shared between customers though a partner.
         /// - DEDICATED: A dedicated physical interconnection with the customer.
         /// Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("interconnectType", required: true)]
         public Input<string> InterconnectType { get; set; } = null!;
@@ -663,9 +657,6 @@ namespace Pulumi.Gcp.Compute
         /// - PARTNER: A partner-managed interconnection shared between customers though a partner.
         /// - DEDICATED: A dedicated physical interconnection with the customer.
         /// Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("interconnectType")]
         public Input<string>? InterconnectType { get; set; }

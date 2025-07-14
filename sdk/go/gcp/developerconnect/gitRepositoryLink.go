@@ -68,8 +68,6 @@ type GitRepositoryLink struct {
 	// Required. The ID to use for the repository, which will become the final component of
 	// the repository's resource name. This ID should be unique in the connection.
 	// Allows alphanumeric characters and any of -._~%!$&'()*+,;=@.
-	//
-	// ***
 	GitRepositoryLinkId pulumi.StringOutput `pulumi:"gitRepositoryLinkId"`
 	// Optional. Labels as key value pairs
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -164,8 +162,6 @@ type gitRepositoryLinkState struct {
 	// Required. The ID to use for the repository, which will become the final component of
 	// the repository's resource name. This ID should be unique in the connection.
 	// Allows alphanumeric characters and any of -._~%!$&'()*+,;=@.
-	//
-	// ***
 	GitRepositoryLinkId *string `pulumi:"gitRepositoryLinkId"`
 	// Optional. Labels as key value pairs
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -214,8 +210,6 @@ type GitRepositoryLinkState struct {
 	// Required. The ID to use for the repository, which will become the final component of
 	// the repository's resource name. This ID should be unique in the connection.
 	// Allows alphanumeric characters and any of -._~%!$&'()*+,;=@.
-	//
-	// ***
 	GitRepositoryLinkId pulumi.StringPtrInput
 	// Optional. Labels as key value pairs
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -261,8 +255,6 @@ type gitRepositoryLinkArgs struct {
 	// Required. The ID to use for the repository, which will become the final component of
 	// the repository's resource name. This ID should be unique in the connection.
 	// Allows alphanumeric characters and any of -._~%!$&'()*+,;=@.
-	//
-	// ***
 	GitRepositoryLinkId string `pulumi:"gitRepositoryLinkId"`
 	// Optional. Labels as key value pairs
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -292,8 +284,6 @@ type GitRepositoryLinkArgs struct {
 	// Required. The ID to use for the repository, which will become the final component of
 	// the repository's resource name. This ID should be unique in the connection.
 	// Allows alphanumeric characters and any of -._~%!$&'()*+,;=@.
-	//
-	// ***
 	GitRepositoryLinkId pulumi.StringInput
 	// Optional. Labels as key value pairs
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -436,8 +426,6 @@ func (o GitRepositoryLinkOutput) Etag() pulumi.StringPtrOutput {
 // Required. The ID to use for the repository, which will become the final component of
 // the repository's resource name. This ID should be unique in the connection.
 // Allows alphanumeric characters and any of -._~%!$&'()*+,;=@.
-//
-// ***
 func (o GitRepositoryLinkOutput) GitRepositoryLinkId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GitRepositoryLink) pulumi.StringOutput { return v.GitRepositoryLinkId }).(pulumi.StringOutput)
 }

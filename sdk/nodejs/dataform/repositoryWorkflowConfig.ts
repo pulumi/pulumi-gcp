@@ -182,9 +182,6 @@ export class RepositoryWorkflowConfig extends pulumi.CustomResource {
     public readonly region!: pulumi.Output<string | undefined>;
     /**
      * The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*&#47;locations/*&#47;repositories/*&#47;releaseConfigs/*.
-     *
-     *
-     * - - -
      */
     public readonly releaseConfig!: pulumi.Output<string>;
     /**
@@ -271,9 +268,6 @@ export interface RepositoryWorkflowConfigState {
     region?: pulumi.Input<string>;
     /**
      * The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*&#47;locations/*&#47;repositories/*&#47;releaseConfigs/*.
-     *
-     *
-     * - - -
      */
     releaseConfig?: pulumi.Input<string>;
     /**
@@ -314,9 +308,6 @@ export interface RepositoryWorkflowConfigArgs {
     region?: pulumi.Input<string>;
     /**
      * The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*&#47;locations/*&#47;repositories/*&#47;releaseConfigs/*.
-     *
-     *
-     * - - -
      */
     releaseConfig: pulumi.Input<string>;
     /**

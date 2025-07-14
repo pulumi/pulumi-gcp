@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.DataPlex.Outputs
     {
         /// <summary>
         /// Cron schedule for running scans periodically. This field is required for Schedule scans.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string Cron;
 

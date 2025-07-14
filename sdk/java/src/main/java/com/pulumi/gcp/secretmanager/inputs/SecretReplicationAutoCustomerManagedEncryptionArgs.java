@@ -17,16 +17,12 @@ public final class SecretReplicationAutoCustomerManagedEncryptionArgs extends co
     /**
      * Describes the Cloud KMS encryption key that will be used to protect destination secret.
      * 
-     * ***
-     * 
      */
     @Import(name="kmsKeyName", required=true)
     private Output<String> kmsKeyName;
 
     /**
      * @return Describes the Cloud KMS encryption key that will be used to protect destination secret.
-     * 
-     * ***
      * 
      */
     public Output<String> kmsKeyName() {
@@ -60,8 +56,6 @@ public final class SecretReplicationAutoCustomerManagedEncryptionArgs extends co
         /**
          * @param kmsKeyName Describes the Cloud KMS encryption key that will be used to protect destination secret.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -72,8 +66,6 @@ public final class SecretReplicationAutoCustomerManagedEncryptionArgs extends co
 
         /**
          * @param kmsKeyName Describes the Cloud KMS encryption key that will be used to protect destination secret.
-         * 
-         * ***
          * 
          * @return builder
          * 

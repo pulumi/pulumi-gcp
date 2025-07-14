@@ -134,7 +134,8 @@ namespace Pulumi.Gcp.Memcache
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The full name of the GCE network to connect the instance to. If not provided, 'default' will be used.
+        /// The full name of the GCE network to connect the instance to.  If not provided,
+        /// 'default' will be used.
         /// </summary>
         [Output("authorizedNetwork")]
         public Output<string> AuthorizedNetwork { get; private set; } = null!;
@@ -164,15 +165,17 @@ namespace Pulumi.Gcp.Memcache
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-        /// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-        /// resource.
+        /// Resource labels to represent user-provided metadata.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
         /// Maintenance policy for an instance.
+        /// Structure is documented below.
         /// </summary>
         [Output("maintenancePolicy")]
         public Output<Outputs.InstanceMaintenancePolicy?> MaintenancePolicy { get; private set; } = null!;
@@ -199,14 +202,17 @@ namespace Pulumi.Gcp.Memcache
 
         /// <summary>
         /// User-specified parameters for this memcache instance.
+        /// Structure is documented below.
         /// </summary>
         [Output("memcacheParameters")]
         public Output<Outputs.InstanceMemcacheParameters?> MemcacheParameters { get; private set; } = null!;
 
         /// <summary>
-        /// The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest
-        /// supported major version is MEMCACHE_1_5. The minor version will be automatically determined by our system based on the
-        /// latest supported minor version. Default value: "MEMCACHE_1_5" Possible values: ["MEMCACHE_1_5", "MEMCACHE_1_6_15"]
+        /// The major version of Memcached software. If not provided, latest supported version will be used.
+        /// Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
+        /// determined by our system based on the latest supported minor version.
+        /// Default value is `MEMCACHE_1_5`.
+        /// Possible values are: `MEMCACHE_1_5`, `MEMCACHE_1_6_15`.
         /// </summary>
         [Output("memcacheVersion")]
         public Output<string?> MemcacheVersion { get; private set; } = null!;
@@ -230,6 +236,10 @@ namespace Pulumi.Gcp.Memcache
         [Output("nodeCount")]
         public Output<int> NodeCount { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -247,14 +257,16 @@ namespace Pulumi.Gcp.Memcache
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// Contains the name of allocated IP address ranges associated with the private service access connection for example,
-        /// "test-default" associated with IP range 10.0.0.0/29.
+        /// Contains the name of allocated IP address ranges associated with
+        /// the private service access connection for example, "test-default"
+        /// associated with IP range 10.0.0.0/29.
         /// </summary>
         [Output("reservedIpRangeIds")]
         public Output<ImmutableArray<string>> ReservedIpRangeIds { get; private set; } = null!;
 
         /// <summary>
-        /// Zones where memcache nodes should be provisioned. If not provided, all zones will be used.
+        /// Zones where memcache nodes should be provisioned.  If not
+        /// provided, all zones will be used.
         /// </summary>
         [Output("zones")]
         public Output<ImmutableArray<string>> Zones { get; private set; } = null!;
@@ -311,7 +323,8 @@ namespace Pulumi.Gcp.Memcache
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The full name of the GCE network to connect the instance to. If not provided, 'default' will be used.
+        /// The full name of the GCE network to connect the instance to.  If not provided,
+        /// 'default' will be used.
         /// </summary>
         [Input("authorizedNetwork")]
         public Input<string>? AuthorizedNetwork { get; set; }
@@ -326,9 +339,10 @@ namespace Pulumi.Gcp.Memcache
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-        /// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-        /// resource.
+        /// Resource labels to represent user-provided metadata.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -338,20 +352,24 @@ namespace Pulumi.Gcp.Memcache
 
         /// <summary>
         /// Maintenance policy for an instance.
+        /// Structure is documented below.
         /// </summary>
         [Input("maintenancePolicy")]
         public Input<Inputs.InstanceMaintenancePolicyArgs>? MaintenancePolicy { get; set; }
 
         /// <summary>
         /// User-specified parameters for this memcache instance.
+        /// Structure is documented below.
         /// </summary>
         [Input("memcacheParameters")]
         public Input<Inputs.InstanceMemcacheParametersArgs>? MemcacheParameters { get; set; }
 
         /// <summary>
-        /// The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest
-        /// supported major version is MEMCACHE_1_5. The minor version will be automatically determined by our system based on the
-        /// latest supported minor version. Default value: "MEMCACHE_1_5" Possible values: ["MEMCACHE_1_5", "MEMCACHE_1_6_15"]
+        /// The major version of Memcached software. If not provided, latest supported version will be used.
+        /// Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
+        /// determined by our system based on the latest supported minor version.
+        /// Default value is `MEMCACHE_1_5`.
+        /// Possible values are: `MEMCACHE_1_5`, `MEMCACHE_1_6_15`.
         /// </summary>
         [Input("memcacheVersion")]
         public Input<string>? MemcacheVersion { get; set; }
@@ -375,6 +393,10 @@ namespace Pulumi.Gcp.Memcache
         [Input("nodeCount", required: true)]
         public Input<int> NodeCount { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -388,8 +410,9 @@ namespace Pulumi.Gcp.Memcache
         private InputList<string>? _reservedIpRangeIds;
 
         /// <summary>
-        /// Contains the name of allocated IP address ranges associated with the private service access connection for example,
-        /// "test-default" associated with IP range 10.0.0.0/29.
+        /// Contains the name of allocated IP address ranges associated with
+        /// the private service access connection for example, "test-default"
+        /// associated with IP range 10.0.0.0/29.
         /// </summary>
         public InputList<string> ReservedIpRangeIds
         {
@@ -401,7 +424,8 @@ namespace Pulumi.Gcp.Memcache
         private InputList<string>? _zones;
 
         /// <summary>
-        /// Zones where memcache nodes should be provisioned. If not provided, all zones will be used.
+        /// Zones where memcache nodes should be provisioned.  If not
+        /// provided, all zones will be used.
         /// </summary>
         public InputList<string> Zones
         {
@@ -418,7 +442,8 @@ namespace Pulumi.Gcp.Memcache
     public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The full name of the GCE network to connect the instance to. If not provided, 'default' will be used.
+        /// The full name of the GCE network to connect the instance to.  If not provided,
+        /// 'default' will be used.
         /// </summary>
         [Input("authorizedNetwork")]
         public Input<string>? AuthorizedNetwork { get; set; }
@@ -461,9 +486,10 @@ namespace Pulumi.Gcp.Memcache
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
-        /// labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the
-        /// resource.
+        /// Resource labels to represent user-provided metadata.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -473,6 +499,7 @@ namespace Pulumi.Gcp.Memcache
 
         /// <summary>
         /// Maintenance policy for an instance.
+        /// Structure is documented below.
         /// </summary>
         [Input("maintenancePolicy")]
         public Input<Inputs.InstanceMaintenancePolicyGetArgs>? MaintenancePolicy { get; set; }
@@ -511,14 +538,17 @@ namespace Pulumi.Gcp.Memcache
 
         /// <summary>
         /// User-specified parameters for this memcache instance.
+        /// Structure is documented below.
         /// </summary>
         [Input("memcacheParameters")]
         public Input<Inputs.InstanceMemcacheParametersGetArgs>? MemcacheParameters { get; set; }
 
         /// <summary>
-        /// The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest
-        /// supported major version is MEMCACHE_1_5. The minor version will be automatically determined by our system based on the
-        /// latest supported minor version. Default value: "MEMCACHE_1_5" Possible values: ["MEMCACHE_1_5", "MEMCACHE_1_6_15"]
+        /// The major version of Memcached software. If not provided, latest supported version will be used.
+        /// Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
+        /// determined by our system based on the latest supported minor version.
+        /// Default value is `MEMCACHE_1_5`.
+        /// Possible values are: `MEMCACHE_1_5`, `MEMCACHE_1_6_15`.
         /// </summary>
         [Input("memcacheVersion")]
         public Input<string>? MemcacheVersion { get; set; }
@@ -542,6 +572,10 @@ namespace Pulumi.Gcp.Memcache
         [Input("nodeCount")]
         public Input<int>? NodeCount { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -572,8 +606,9 @@ namespace Pulumi.Gcp.Memcache
         private InputList<string>? _reservedIpRangeIds;
 
         /// <summary>
-        /// Contains the name of allocated IP address ranges associated with the private service access connection for example,
-        /// "test-default" associated with IP range 10.0.0.0/29.
+        /// Contains the name of allocated IP address ranges associated with
+        /// the private service access connection for example, "test-default"
+        /// associated with IP range 10.0.0.0/29.
         /// </summary>
         public InputList<string> ReservedIpRangeIds
         {
@@ -585,7 +620,8 @@ namespace Pulumi.Gcp.Memcache
         private InputList<string>? _zones;
 
         /// <summary>
-        /// Zones where memcache nodes should be provisioned. If not provided, all zones will be used.
+        /// Zones where memcache nodes should be provisioned.  If not
+        /// provided, all zones will be used.
         /// </summary>
         public InputList<string> Zones
         {

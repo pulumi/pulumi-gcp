@@ -31,9 +31,6 @@ class ManagementServerArgs:
         The set of arguments for constructing a ManagementServer resource.
         :param pulumi.Input[builtins.str] location: The location for the management server (management console)
         :param pulumi.Input[builtins.str] name: The name of management server (management console)
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['ManagementServerNetworkArgs']]] networks: Network details to create management server (management console).
                Structure is documented below.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -69,9 +66,6 @@ class ManagementServerArgs:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The name of management server (management console)
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -136,9 +130,6 @@ class _ManagementServerState:
         :param pulumi.Input[Sequence[pulumi.Input['ManagementServerManagementUriArgs']]] management_uris: The management console URI
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: The name of management server (management console)
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['ManagementServerNetworkArgs']]] networks: Network details to create management server (management console).
                Structure is documented below.
         :param pulumi.Input[builtins.str] oauth2_client_id: The oauth2ClientId of management console.
@@ -193,9 +184,6 @@ class _ManagementServerState:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The name of management server (management console)
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -331,9 +319,6 @@ class ManagementServer(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] location: The location for the management server (management console)
         :param pulumi.Input[builtins.str] name: The name of management server (management console)
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[Union['ManagementServerNetworkArgs', 'ManagementServerNetworkArgsDict']]]] networks: Network details to create management server (management console).
                Structure is documented below.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
@@ -473,9 +458,6 @@ class ManagementServer(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ManagementServerManagementUriArgs', 'ManagementServerManagementUriArgsDict']]]] management_uris: The management console URI
                Structure is documented below.
         :param pulumi.Input[builtins.str] name: The name of management server (management console)
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[Union['ManagementServerNetworkArgs', 'ManagementServerNetworkArgsDict']]]] networks: Network details to create management server (management console).
                Structure is documented below.
         :param pulumi.Input[builtins.str] oauth2_client_id: The oauth2ClientId of management console.
@@ -520,9 +502,6 @@ class ManagementServer(pulumi.CustomResource):
     def name(self) -> pulumi.Output[builtins.str]:
         """
         The name of management server (management console)
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

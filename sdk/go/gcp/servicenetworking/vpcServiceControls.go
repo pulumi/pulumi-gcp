@@ -149,8 +149,6 @@ type VpcServiceControls struct {
 	// The service that is managing peering connectivity for a service
 	// producer's organization. For Google services that support this
 	// functionality, this value is `servicenetworking.googleapis.com`.
-	//
-	// ***
 	Service pulumi.StringOutput `pulumi:"service"`
 }
 
@@ -203,8 +201,6 @@ type vpcServiceControlsState struct {
 	// The service that is managing peering connectivity for a service
 	// producer's organization. For Google services that support this
 	// functionality, this value is `servicenetworking.googleapis.com`.
-	//
-	// ***
 	Service *string `pulumi:"service"`
 }
 
@@ -219,8 +215,6 @@ type VpcServiceControlsState struct {
 	// The service that is managing peering connectivity for a service
 	// producer's organization. For Google services that support this
 	// functionality, this value is `servicenetworking.googleapis.com`.
-	//
-	// ***
 	Service pulumi.StringPtrInput
 }
 
@@ -239,8 +233,6 @@ type vpcServiceControlsArgs struct {
 	// The service that is managing peering connectivity for a service
 	// producer's organization. For Google services that support this
 	// functionality, this value is `servicenetworking.googleapis.com`.
-	//
-	// ***
 	Service string `pulumi:"service"`
 }
 
@@ -256,8 +248,6 @@ type VpcServiceControlsArgs struct {
 	// The service that is managing peering connectivity for a service
 	// producer's organization. For Google services that support this
 	// functionality, this value is `servicenetworking.googleapis.com`.
-	//
-	// ***
 	Service pulumi.StringInput
 }
 
@@ -367,8 +357,6 @@ func (o VpcServiceControlsOutput) Project() pulumi.StringPtrOutput {
 // The service that is managing peering connectivity for a service
 // producer's organization. For Google services that support this
 // functionality, this value is `servicenetworking.googleapis.com`.
-//
-// ***
 func (o VpcServiceControlsOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcServiceControls) pulumi.StringOutput { return v.Service }).(pulumi.StringOutput)
 }

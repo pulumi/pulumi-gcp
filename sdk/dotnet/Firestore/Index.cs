@@ -316,8 +316,9 @@ namespace Pulumi.Gcp.Firestore
     public partial class Index : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The API scope at which a query is run. Default value: "ANY_API" Possible values: ["ANY_API", "DATASTORE_MODE_API",
-        /// "MONGODB_COMPATIBLE_API"]
+        /// The API scope at which a query is run.
+        /// Default value is `ANY_API`.
+        /// Possible values are: `ANY_API`, `DATASTORE_MODE_API`, `MONGODB_COMPATIBLE_API`.
         /// </summary>
         [Output("apiScope")]
         public Output<string?> ApiScope { get; private set; } = null!;
@@ -329,13 +330,14 @@ namespace Pulumi.Gcp.Firestore
         public Output<string> Collection { get; private set; } = null!;
 
         /// <summary>
-        /// The Firestore database id. Defaults to '"(default)"'.
+        /// The Firestore database id. Defaults to `"(default)"`.
         /// </summary>
         [Output("database")]
         public Output<string?> Database { get; private set; } = null!;
 
         /// <summary>
-        /// The density configuration for this index. Possible values: ["SPARSE_ALL", "SPARSE_ANY", "DENSE"]
+        /// The density configuration for this index.
+        /// Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
         /// </summary>
         [Output("density")]
         public Output<string> Density { get; private set; } = null!;
@@ -353,10 +355,7 @@ namespace Pulumi.Gcp.Firestore
         public Output<ImmutableArray<Outputs.IndexField>> Fields { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the
-        /// paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at
-        /// most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations
-        /// will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
+        /// Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
         /// </summary>
         [Output("multikey")]
         public Output<bool?> Multikey { get; private set; } = null!;
@@ -368,12 +367,17 @@ namespace Pulumi.Gcp.Firestore
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The scope at which a query is run. Default value: "COLLECTION" Possible values: ["COLLECTION", "COLLECTION_GROUP",
-        /// "COLLECTION_RECURSIVE"]
+        /// The scope at which a query is run.
+        /// Default value is `COLLECTION`.
+        /// Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
         /// </summary>
         [Output("queryScope")]
         public Output<string?> QueryScope { get; private set; } = null!;
@@ -425,8 +429,9 @@ namespace Pulumi.Gcp.Firestore
     public sealed class IndexArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The API scope at which a query is run. Default value: "ANY_API" Possible values: ["ANY_API", "DATASTORE_MODE_API",
-        /// "MONGODB_COMPATIBLE_API"]
+        /// The API scope at which a query is run.
+        /// Default value is `ANY_API`.
+        /// Possible values are: `ANY_API`, `DATASTORE_MODE_API`, `MONGODB_COMPATIBLE_API`.
         /// </summary>
         [Input("apiScope")]
         public Input<string>? ApiScope { get; set; }
@@ -438,13 +443,14 @@ namespace Pulumi.Gcp.Firestore
         public Input<string> Collection { get; set; } = null!;
 
         /// <summary>
-        /// The Firestore database id. Defaults to '"(default)"'.
+        /// The Firestore database id. Defaults to `"(default)"`.
         /// </summary>
         [Input("database")]
         public Input<string>? Database { get; set; }
 
         /// <summary>
-        /// The density configuration for this index. Possible values: ["SPARSE_ALL", "SPARSE_ANY", "DENSE"]
+        /// The density configuration for this index.
+        /// Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
         /// </summary>
         [Input("density")]
         public Input<string>? Density { get; set; }
@@ -468,20 +474,22 @@ namespace Pulumi.Gcp.Firestore
         }
 
         /// <summary>
-        /// Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the
-        /// paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at
-        /// most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations
-        /// will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
+        /// Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
         /// </summary>
         [Input("multikey")]
         public Input<bool>? Multikey { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The scope at which a query is run. Default value: "COLLECTION" Possible values: ["COLLECTION", "COLLECTION_GROUP",
-        /// "COLLECTION_RECURSIVE"]
+        /// The scope at which a query is run.
+        /// Default value is `COLLECTION`.
+        /// Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
         /// </summary>
         [Input("queryScope")]
         public Input<string>? QueryScope { get; set; }
@@ -495,8 +503,9 @@ namespace Pulumi.Gcp.Firestore
     public sealed class IndexState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The API scope at which a query is run. Default value: "ANY_API" Possible values: ["ANY_API", "DATASTORE_MODE_API",
-        /// "MONGODB_COMPATIBLE_API"]
+        /// The API scope at which a query is run.
+        /// Default value is `ANY_API`.
+        /// Possible values are: `ANY_API`, `DATASTORE_MODE_API`, `MONGODB_COMPATIBLE_API`.
         /// </summary>
         [Input("apiScope")]
         public Input<string>? ApiScope { get; set; }
@@ -508,13 +517,14 @@ namespace Pulumi.Gcp.Firestore
         public Input<string>? Collection { get; set; }
 
         /// <summary>
-        /// The Firestore database id. Defaults to '"(default)"'.
+        /// The Firestore database id. Defaults to `"(default)"`.
         /// </summary>
         [Input("database")]
         public Input<string>? Database { get; set; }
 
         /// <summary>
-        /// The density configuration for this index. Possible values: ["SPARSE_ALL", "SPARSE_ANY", "DENSE"]
+        /// The density configuration for this index.
+        /// Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
         /// </summary>
         [Input("density")]
         public Input<string>? Density { get; set; }
@@ -538,10 +548,7 @@ namespace Pulumi.Gcp.Firestore
         }
 
         /// <summary>
-        /// Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the
-        /// paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at
-        /// most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations
-        /// will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
+        /// Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
         /// </summary>
         [Input("multikey")]
         public Input<bool>? Multikey { get; set; }
@@ -553,12 +560,17 @@ namespace Pulumi.Gcp.Firestore
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The scope at which a query is run. Default value: "COLLECTION" Possible values: ["COLLECTION", "COLLECTION_GROUP",
-        /// "COLLECTION_RECURSIVE"]
+        /// The scope at which a query is run.
+        /// Default value is `COLLECTION`.
+        /// Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
         /// </summary>
         [Input("queryScope")]
         public Input<string>? QueryScope { get; set; }

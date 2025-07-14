@@ -232,16 +232,12 @@ public class Scope extends com.pulumi.resources.CustomResource {
     /**
      * The client-provided identifier of the scope.
      * 
-     * ***
-     * 
      */
     @Export(name="scopeId", refs={String.class}, tree="[0]")
     private Output<String> scopeId;
 
     /**
      * @return The client-provided identifier of the scope.
-     * 
-     * ***
      * 
      */
     public Output<String> scopeId() {

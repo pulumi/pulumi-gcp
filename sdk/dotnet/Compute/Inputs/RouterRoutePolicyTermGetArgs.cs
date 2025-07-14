@@ -26,11 +26,11 @@ namespace Pulumi.Gcp.Compute.Inputs
         }
 
         /// <summary>
-        /// CEL expression evaluated against a route to determine if this term applies (see Policy Language). When not set, the term applies to all routes.
+        /// CEL expression evaluated against a route to determine if this term applies (see Policy Language).
         /// Structure is documented below.
         /// </summary>
-        [Input("match")]
-        public Input<Inputs.RouterRoutePolicyTermMatchGetArgs>? Match { get; set; }
+        [Input("match", required: true)]
+        public Input<Inputs.RouterRoutePolicyTermMatchGetArgs> Match { get; set; } = null!;
 
         /// <summary>
         /// The evaluation priority for this term, which must be between 0 (inclusive) and 231 (exclusive), and unique within the list.

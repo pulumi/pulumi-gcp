@@ -204,6 +204,11 @@ export class Table extends pulumi.CustomResource {
      */
     public readonly friendlyName!: pulumi.Output<string | undefined>;
     /**
+     * A list of fields which should be ignored for each column in schema.
+     * **NOTE:** Right now only `dataPolicies` field is supported. We might support others in the future.
+     */
+    public readonly ignoreSchemaChanges!: pulumi.Output<string[] | undefined>;
+    /**
      * A mapping of labels to assign to the resource.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -348,6 +353,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["externalCatalogTableOptions"] = state ? state.externalCatalogTableOptions : undefined;
             resourceInputs["externalDataConfiguration"] = state ? state.externalDataConfiguration : undefined;
             resourceInputs["friendlyName"] = state ? state.friendlyName : undefined;
+            resourceInputs["ignoreSchemaChanges"] = state ? state.ignoreSchemaChanges : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["lastModifiedTime"] = state ? state.lastModifiedTime : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
@@ -389,6 +395,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["externalCatalogTableOptions"] = args ? args.externalCatalogTableOptions : undefined;
             resourceInputs["externalDataConfiguration"] = args ? args.externalDataConfiguration : undefined;
             resourceInputs["friendlyName"] = args ? args.friendlyName : undefined;
+            resourceInputs["ignoreSchemaChanges"] = args ? args.ignoreSchemaChanges : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["materializedView"] = args ? args.materializedView : undefined;
             resourceInputs["maxStaleness"] = args ? args.maxStaleness : undefined;
@@ -508,6 +515,11 @@ export interface TableState {
      * A descriptive name for the table.
      */
     friendlyName?: pulumi.Input<string>;
+    /**
+     * A list of fields which should be ignored for each column in schema.
+     * **NOTE:** Right now only `dataPolicies` field is supported. We might support others in the future.
+     */
+    ignoreSchemaChanges?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A mapping of labels to assign to the resource.
      *
@@ -685,6 +697,11 @@ export interface TableArgs {
      * A descriptive name for the table.
      */
     friendlyName?: pulumi.Input<string>;
+    /**
+     * A list of fields which should be ignored for each column in schema.
+     * **NOTE:** Right now only `dataPolicies` field is supported. We might support others in the future.
+     */
+    ignoreSchemaChanges?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A mapping of labels to assign to the resource.
      *

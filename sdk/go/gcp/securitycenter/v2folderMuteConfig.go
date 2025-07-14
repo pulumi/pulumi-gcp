@@ -103,8 +103,6 @@ type V2FolderMuteConfig struct {
 	// config creation or update.
 	MostRecentEditor pulumi.StringOutput `pulumi:"mostRecentEditor"`
 	// Unique identifier provided by the client within the parent scope.
-	//
-	// ***
 	MuteConfigId pulumi.StringOutput `pulumi:"muteConfigId"`
 	// Name of the mute config. Its format is
 	// organizations/{organization}/locations/global/muteConfigs/{configId},
@@ -182,8 +180,6 @@ type v2folderMuteConfigState struct {
 	// config creation or update.
 	MostRecentEditor *string `pulumi:"mostRecentEditor"`
 	// Unique identifier provided by the client within the parent scope.
-	//
-	// ***
 	MuteConfigId *string `pulumi:"muteConfigId"`
 	// Name of the mute config. Its format is
 	// organizations/{organization}/locations/global/muteConfigs/{configId},
@@ -220,8 +216,6 @@ type V2FolderMuteConfigState struct {
 	// config creation or update.
 	MostRecentEditor pulumi.StringPtrInput
 	// Unique identifier provided by the client within the parent scope.
-	//
-	// ***
 	MuteConfigId pulumi.StringPtrInput
 	// Name of the mute config. Its format is
 	// organizations/{organization}/locations/global/muteConfigs/{configId},
@@ -255,8 +249,6 @@ type v2folderMuteConfigArgs struct {
 	// location Id is provided by folder. If not provided, Use global as default.
 	Location *string `pulumi:"location"`
 	// Unique identifier provided by the client within the parent scope.
-	//
-	// ***
 	MuteConfigId string `pulumi:"muteConfigId"`
 	// The type of the mute config.
 	Type string `pulumi:"type"`
@@ -278,8 +270,6 @@ type V2FolderMuteConfigArgs struct {
 	// location Id is provided by folder. If not provided, Use global as default.
 	Location pulumi.StringPtrInput
 	// Unique identifier provided by the client within the parent scope.
-	//
-	// ***
 	MuteConfigId pulumi.StringInput
 	// The type of the mute config.
 	Type pulumi.StringInput
@@ -411,8 +401,6 @@ func (o V2FolderMuteConfigOutput) MostRecentEditor() pulumi.StringOutput {
 }
 
 // Unique identifier provided by the client within the parent scope.
-//
-// ***
 func (o V2FolderMuteConfigOutput) MuteConfigId() pulumi.StringOutput {
 	return o.ApplyT(func(v *V2FolderMuteConfig) pulumi.StringOutput { return v.MuteConfigId }).(pulumi.StringOutput)
 }

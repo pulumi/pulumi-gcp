@@ -157,16 +157,12 @@ public final class CustomTargetTypeState extends com.pulumi.resources.ResourceAr
     /**
      * The location of the source.
      * 
-     * ***
-     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
      * @return The location of the source.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> location() {
@@ -480,8 +476,6 @@ public final class CustomTargetTypeState extends com.pulumi.resources.ResourceAr
         /**
          * @param location The location of the source.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -492,8 +486,6 @@ public final class CustomTargetTypeState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param location The location of the source.
-         * 
-         * ***
          * 
          * @return builder
          * 

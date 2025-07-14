@@ -19,20 +19,16 @@ public final class SQuotaPreferenceArgs extends com.pulumi.resources.ResourceArg
     public static final SQuotaPreferenceArgs Empty = new SQuotaPreferenceArgs();
 
     /**
-     * An email address that can be used for quota related communication between the Google Cloud and the user in case the
-     * Google Cloud needs further information to make a decision on whether the user preferred quota can be granted. The Google
-     * account for the email address must have quota update permission for the project, folder or organization this quota
-     * preference is for.
+     * An email address that can be used for quota related communication between the Google Cloud and the user in case the Google Cloud needs further information to make a decision on whether the user preferred quota can be granted.
+     * The Google account for the email address must have quota update permission for the project, folder or organization this quota preference is for.
      * 
      */
     @Import(name="contactEmail")
     private @Nullable Output<String> contactEmail;
 
     /**
-     * @return An email address that can be used for quota related communication between the Google Cloud and the user in case the
-     * Google Cloud needs further information to make a decision on whether the user preferred quota can be granted. The Google
-     * account for the email address must have quota update permission for the project, folder or organization this quota
-     * preference is for.
+     * @return An email address that can be used for quota related communication between the Google Cloud and the user in case the Google Cloud needs further information to make a decision on whether the user preferred quota can be granted.
+     * The Google account for the email address must have quota update permission for the project, folder or organization this quota preference is for.
      * 
      */
     public Optional<Output<String>> contactEmail() {
@@ -40,24 +36,18 @@ public final class SQuotaPreferenceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as
-     * &#34;region&#34;, &#34;zone&#34;, &#34;network_id&#34;, and the value of the map entry is the dimension value. If a dimension is missing from
-     * the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota
-     * preferences configured for the specific value. NOTE: QuotaPreferences can only be applied across all values of &#34;user&#34;
-     * and &#34;resource&#34; dimension. Do not set values for &#34;user&#34; or &#34;resource&#34; in the dimension map. Example: &#39;{&#34;provider&#34;: &#34;Foo
-     * Inc&#34;}&#39; where &#34;provider&#34; is a service specific dimension.
+     * The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as &#34;region&#34;, &#34;zone&#34;, &#34;network_id&#34;, and the value of the map entry is the dimension value. If a dimension is missing from the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota preferences configured for the specific value.
+     * NOTE: QuotaPreferences can only be applied across all values of &#34;user&#34; and &#34;resource&#34; dimension. Do not set values for &#34;user&#34; or &#34;resource&#34; in the dimension map.
+     * Example: `{&#34;provider&#34;: &#34;Foo Inc&#34;}` where &#34;provider&#34; is a service specific dimension.
      * 
      */
     @Import(name="dimensions")
     private @Nullable Output<Map<String,String>> dimensions;
 
     /**
-     * @return The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as
-     * &#34;region&#34;, &#34;zone&#34;, &#34;network_id&#34;, and the value of the map entry is the dimension value. If a dimension is missing from
-     * the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota
-     * preferences configured for the specific value. NOTE: QuotaPreferences can only be applied across all values of &#34;user&#34;
-     * and &#34;resource&#34; dimension. Do not set values for &#34;user&#34; or &#34;resource&#34; in the dimension map. Example: &#39;{&#34;provider&#34;: &#34;Foo
-     * Inc&#34;}&#39; where &#34;provider&#34; is a service specific dimension.
+     * @return The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as &#34;region&#34;, &#34;zone&#34;, &#34;network_id&#34;, and the value of the map entry is the dimension value. If a dimension is missing from the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota preferences configured for the specific value.
+     * NOTE: QuotaPreferences can only be applied across all values of &#34;user&#34; and &#34;resource&#34; dimension. Do not set values for &#34;user&#34; or &#34;resource&#34; in the dimension map.
+     * Example: `{&#34;provider&#34;: &#34;Foo Inc&#34;}` where &#34;provider&#34; is a service specific dimension.
      * 
      */
     public Optional<Output<Map<String,String>>> dimensions() {
@@ -65,16 +55,18 @@ public final class SQuotaPreferenceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The list of quota safety checks to be ignored. Default value: &#34;QUOTA_SAFETY_CHECK_UNSPECIFIED&#34; Possible values:
-     * [&#34;QUOTA_SAFETY_CHECK_UNSPECIFIED&#34;, &#34;QUOTA_DECREASE_BELOW_USAGE&#34;, &#34;QUOTA_DECREASE_PERCENTAGE_TOO_HIGH&#34;]
+     * The list of quota safety checks to be ignored.
+     * Default value is `QUOTA_SAFETY_CHECK_UNSPECIFIED`.
+     * Possible values are: `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE`, `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`.
      * 
      */
     @Import(name="ignoreSafetyChecks")
     private @Nullable Output<String> ignoreSafetyChecks;
 
     /**
-     * @return The list of quota safety checks to be ignored. Default value: &#34;QUOTA_SAFETY_CHECK_UNSPECIFIED&#34; Possible values:
-     * [&#34;QUOTA_SAFETY_CHECK_UNSPECIFIED&#34;, &#34;QUOTA_DECREASE_BELOW_USAGE&#34;, &#34;QUOTA_DECREASE_PERCENTAGE_TOO_HIGH&#34;]
+     * @return The list of quota safety checks to be ignored.
+     * Default value is `QUOTA_SAFETY_CHECK_UNSPECIFIED`.
+     * Possible values are: `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE`, `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`.
      * 
      */
     public Optional<Output<String>> ignoreSafetyChecks() {
@@ -208,10 +200,8 @@ public final class SQuotaPreferenceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param contactEmail An email address that can be used for quota related communication between the Google Cloud and the user in case the
-         * Google Cloud needs further information to make a decision on whether the user preferred quota can be granted. The Google
-         * account for the email address must have quota update permission for the project, folder or organization this quota
-         * preference is for.
+         * @param contactEmail An email address that can be used for quota related communication between the Google Cloud and the user in case the Google Cloud needs further information to make a decision on whether the user preferred quota can be granted.
+         * The Google account for the email address must have quota update permission for the project, folder or organization this quota preference is for.
          * 
          * @return builder
          * 
@@ -222,10 +212,8 @@ public final class SQuotaPreferenceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param contactEmail An email address that can be used for quota related communication between the Google Cloud and the user in case the
-         * Google Cloud needs further information to make a decision on whether the user preferred quota can be granted. The Google
-         * account for the email address must have quota update permission for the project, folder or organization this quota
-         * preference is for.
+         * @param contactEmail An email address that can be used for quota related communication between the Google Cloud and the user in case the Google Cloud needs further information to make a decision on whether the user preferred quota can be granted.
+         * The Google account for the email address must have quota update permission for the project, folder or organization this quota preference is for.
          * 
          * @return builder
          * 
@@ -235,12 +223,9 @@ public final class SQuotaPreferenceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param dimensions The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as
-         * &#34;region&#34;, &#34;zone&#34;, &#34;network_id&#34;, and the value of the map entry is the dimension value. If a dimension is missing from
-         * the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota
-         * preferences configured for the specific value. NOTE: QuotaPreferences can only be applied across all values of &#34;user&#34;
-         * and &#34;resource&#34; dimension. Do not set values for &#34;user&#34; or &#34;resource&#34; in the dimension map. Example: &#39;{&#34;provider&#34;: &#34;Foo
-         * Inc&#34;}&#39; where &#34;provider&#34; is a service specific dimension.
+         * @param dimensions The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as &#34;region&#34;, &#34;zone&#34;, &#34;network_id&#34;, and the value of the map entry is the dimension value. If a dimension is missing from the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota preferences configured for the specific value.
+         * NOTE: QuotaPreferences can only be applied across all values of &#34;user&#34; and &#34;resource&#34; dimension. Do not set values for &#34;user&#34; or &#34;resource&#34; in the dimension map.
+         * Example: `{&#34;provider&#34;: &#34;Foo Inc&#34;}` where &#34;provider&#34; is a service specific dimension.
          * 
          * @return builder
          * 
@@ -251,12 +236,9 @@ public final class SQuotaPreferenceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param dimensions The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as
-         * &#34;region&#34;, &#34;zone&#34;, &#34;network_id&#34;, and the value of the map entry is the dimension value. If a dimension is missing from
-         * the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota
-         * preferences configured for the specific value. NOTE: QuotaPreferences can only be applied across all values of &#34;user&#34;
-         * and &#34;resource&#34; dimension. Do not set values for &#34;user&#34; or &#34;resource&#34; in the dimension map. Example: &#39;{&#34;provider&#34;: &#34;Foo
-         * Inc&#34;}&#39; where &#34;provider&#34; is a service specific dimension.
+         * @param dimensions The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as &#34;region&#34;, &#34;zone&#34;, &#34;network_id&#34;, and the value of the map entry is the dimension value. If a dimension is missing from the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota preferences configured for the specific value.
+         * NOTE: QuotaPreferences can only be applied across all values of &#34;user&#34; and &#34;resource&#34; dimension. Do not set values for &#34;user&#34; or &#34;resource&#34; in the dimension map.
+         * Example: `{&#34;provider&#34;: &#34;Foo Inc&#34;}` where &#34;provider&#34; is a service specific dimension.
          * 
          * @return builder
          * 
@@ -266,8 +248,9 @@ public final class SQuotaPreferenceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ignoreSafetyChecks The list of quota safety checks to be ignored. Default value: &#34;QUOTA_SAFETY_CHECK_UNSPECIFIED&#34; Possible values:
-         * [&#34;QUOTA_SAFETY_CHECK_UNSPECIFIED&#34;, &#34;QUOTA_DECREASE_BELOW_USAGE&#34;, &#34;QUOTA_DECREASE_PERCENTAGE_TOO_HIGH&#34;]
+         * @param ignoreSafetyChecks The list of quota safety checks to be ignored.
+         * Default value is `QUOTA_SAFETY_CHECK_UNSPECIFIED`.
+         * Possible values are: `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE`, `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`.
          * 
          * @return builder
          * 
@@ -278,8 +261,9 @@ public final class SQuotaPreferenceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ignoreSafetyChecks The list of quota safety checks to be ignored. Default value: &#34;QUOTA_SAFETY_CHECK_UNSPECIFIED&#34; Possible values:
-         * [&#34;QUOTA_SAFETY_CHECK_UNSPECIFIED&#34;, &#34;QUOTA_DECREASE_BELOW_USAGE&#34;, &#34;QUOTA_DECREASE_PERCENTAGE_TOO_HIGH&#34;]
+         * @param ignoreSafetyChecks The list of quota safety checks to be ignored.
+         * Default value is `QUOTA_SAFETY_CHECK_UNSPECIFIED`.
+         * Possible values are: `QUOTA_SAFETY_CHECK_UNSPECIFIED`, `QUOTA_DECREASE_BELOW_USAGE`, `QUOTA_DECREASE_PERCENTAGE_TOO_HIGH`.
          * 
          * @return builder
          * 

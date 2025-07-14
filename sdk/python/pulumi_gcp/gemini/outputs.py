@@ -120,8 +120,6 @@ class CodeToolsSettingEnabledToolConfig(dict):
         """
         :param builtins.str key: Key of the configuration item.
         :param builtins.str value: Value of the configuration item.
-               
-               - - -
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
@@ -139,8 +137,6 @@ class CodeToolsSettingEnabledToolConfig(dict):
     def value(self) -> builtins.str:
         """
         Value of the configuration item.
-
-        - - -
         """
         return pulumi.get(self, "value")
 
@@ -224,8 +220,6 @@ class RepositoryGroupRepository(dict):
         """
         :param builtins.str branch_pattern: Required. The Git branch pattern used for indexing in RE2 syntax.
                See https://github.com/google/re2/wiki/syntax for syntax.
-               
-               - - -
         :param builtins.str resource: Required. The DeveloperConnect repository full resource name, relative resource name
                or resource URL to be indexed.
         """
@@ -238,8 +232,6 @@ class RepositoryGroupRepository(dict):
         """
         Required. The Git branch pattern used for indexing in RE2 syntax.
         See https://github.com/google/re2/wiki/syntax for syntax.
-
-        - - -
         """
         return pulumi.get(self, "branch_pattern")
 

@@ -154,16 +154,12 @@ public class View extends com.pulumi.resources.CustomResource {
     /**
      * Location of the resource.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return Location of the resource.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

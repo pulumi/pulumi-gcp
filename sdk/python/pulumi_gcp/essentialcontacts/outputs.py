@@ -336,8 +336,6 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptions(dict):
         """
         :param Sequence[builtins.str] possible_values: List of possible enum values.
         :param builtins.bool validation_check_disabled: Make sure the enum property value provided in the document is in the possile value list during document creation. The validation check runs by default.
-               
-               - - -
         """
         pulumi.set(__self__, "possible_values", possible_values)
         if validation_check_disabled is not None:
@@ -356,8 +354,6 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptions(dict):
     def validation_check_disabled(self) -> Optional[builtins.bool]:
         """
         Make sure the enum property value provided in the document is in the possile value list during document creation. The validation check runs by default.
-
-        - - -
         """
         return pulumi.get(self, "validation_check_disabled")
 
@@ -699,8 +695,6 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
         """
         :param Sequence[builtins.str] possible_values: List of possible enum values.
         :param builtins.bool validation_check_disabled: Make sure the enum property value provided in the document is in the possile value list during document creation. The validation check runs by default.
-               
-               - - -
         """
         pulumi.set(__self__, "possible_values", possible_values)
         if validation_check_disabled is not None:
@@ -719,8 +713,6 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
     def validation_check_disabled(self) -> Optional[builtins.bool]:
         """
         Make sure the enum property value provided in the document is in the possile value list during document creation. The validation check runs by default.
-
-        - - -
         """
         return pulumi.get(self, "validation_check_disabled")
 

@@ -1527,16 +1527,12 @@ public class Function extends com.pulumi.resources.CustomResource {
     /**
      * The location of this cloud function.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return The location of this cloud function.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

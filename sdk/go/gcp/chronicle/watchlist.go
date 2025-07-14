@@ -138,19 +138,26 @@ type Watchlist struct {
 	Instance pulumi.StringOutput `pulumi:"instance"`
 	// The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Optional. Weight applied to the risk score for entities in this watchlist. The default is 1.0 if it is not specified.
+	// Optional. Weight applied to the risk score for entities
+	// in this watchlist.
+	// The default is 1.0 if it is not specified.
 	MultiplyingFactor pulumi.Float64PtrOutput `pulumi:"multiplyingFactor"`
 	// Identifier. Resource name of the watchlist. This unique identifier is generated using values provided for the URL parameters.
 	// Format:
 	// projects/{project}/locations/{location}/instances/{instance}/watchlists/{watchlist}
-	Name    pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Output only. Time the watchlist was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// Optional. The ID to use for the watchlist, which will become the final component of the watchlist's resource name. This
-	// value should be 4-63 characters, and valid characters are /a-z-/.
+	// Optional. The ID to use for the watchlist,
+	// which will become the final component of the watchlist's resource name.
+	// This value should be 4-63 characters, and valid characters
+	// are /a-z-/.
 	WatchlistId pulumi.StringOutput `pulumi:"watchlistId"`
 	// A collection of user preferences for watchlist UI configuration.
+	// Structure is documented below.
 	WatchlistUserPreferences WatchlistWatchlistUserPreferencesOutput `pulumi:"watchlistUserPreferences"`
 }
 
@@ -214,19 +221,26 @@ type watchlistState struct {
 	Instance *string `pulumi:"instance"`
 	// The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
 	Location *string `pulumi:"location"`
-	// Optional. Weight applied to the risk score for entities in this watchlist. The default is 1.0 if it is not specified.
+	// Optional. Weight applied to the risk score for entities
+	// in this watchlist.
+	// The default is 1.0 if it is not specified.
 	MultiplyingFactor *float64 `pulumi:"multiplyingFactor"`
 	// Identifier. Resource name of the watchlist. This unique identifier is generated using values provided for the URL parameters.
 	// Format:
 	// projects/{project}/locations/{location}/instances/{instance}/watchlists/{watchlist}
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Output only. Time the watchlist was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
-	// Optional. The ID to use for the watchlist, which will become the final component of the watchlist's resource name. This
-	// value should be 4-63 characters, and valid characters are /a-z-/.
+	// Optional. The ID to use for the watchlist,
+	// which will become the final component of the watchlist's resource name.
+	// This value should be 4-63 characters, and valid characters
+	// are /a-z-/.
 	WatchlistId *string `pulumi:"watchlistId"`
 	// A collection of user preferences for watchlist UI configuration.
+	// Structure is documented below.
 	WatchlistUserPreferences *WatchlistWatchlistUserPreferences `pulumi:"watchlistUserPreferences"`
 }
 
@@ -249,19 +263,26 @@ type WatchlistState struct {
 	Instance pulumi.StringPtrInput
 	// The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
 	Location pulumi.StringPtrInput
-	// Optional. Weight applied to the risk score for entities in this watchlist. The default is 1.0 if it is not specified.
+	// Optional. Weight applied to the risk score for entities
+	// in this watchlist.
+	// The default is 1.0 if it is not specified.
 	MultiplyingFactor pulumi.Float64PtrInput
 	// Identifier. Resource name of the watchlist. This unique identifier is generated using values provided for the URL parameters.
 	// Format:
 	// projects/{project}/locations/{location}/instances/{instance}/watchlists/{watchlist}
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Output only. Time the watchlist was last updated.
 	UpdateTime pulumi.StringPtrInput
-	// Optional. The ID to use for the watchlist, which will become the final component of the watchlist's resource name. This
-	// value should be 4-63 characters, and valid characters are /a-z-/.
+	// Optional. The ID to use for the watchlist,
+	// which will become the final component of the watchlist's resource name.
+	// This value should be 4-63 characters, and valid characters
+	// are /a-z-/.
 	WatchlistId pulumi.StringPtrInput
 	// A collection of user preferences for watchlist UI configuration.
+	// Structure is documented below.
 	WatchlistUserPreferences WatchlistWatchlistUserPreferencesPtrInput
 }
 
@@ -283,13 +304,20 @@ type watchlistArgs struct {
 	Instance string `pulumi:"instance"`
 	// The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
 	Location string `pulumi:"location"`
-	// Optional. Weight applied to the risk score for entities in this watchlist. The default is 1.0 if it is not specified.
+	// Optional. Weight applied to the risk score for entities
+	// in this watchlist.
+	// The default is 1.0 if it is not specified.
 	MultiplyingFactor *float64 `pulumi:"multiplyingFactor"`
-	Project           *string  `pulumi:"project"`
-	// Optional. The ID to use for the watchlist, which will become the final component of the watchlist's resource name. This
-	// value should be 4-63 characters, and valid characters are /a-z-/.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
+	// Optional. The ID to use for the watchlist,
+	// which will become the final component of the watchlist's resource name.
+	// This value should be 4-63 characters, and valid characters
+	// are /a-z-/.
 	WatchlistId *string `pulumi:"watchlistId"`
 	// A collection of user preferences for watchlist UI configuration.
+	// Structure is documented below.
 	WatchlistUserPreferences *WatchlistWatchlistUserPreferences `pulumi:"watchlistUserPreferences"`
 }
 
@@ -308,13 +336,20 @@ type WatchlistArgs struct {
 	Instance pulumi.StringInput
 	// The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
 	Location pulumi.StringInput
-	// Optional. Weight applied to the risk score for entities in this watchlist. The default is 1.0 if it is not specified.
+	// Optional. Weight applied to the risk score for entities
+	// in this watchlist.
+	// The default is 1.0 if it is not specified.
 	MultiplyingFactor pulumi.Float64PtrInput
-	Project           pulumi.StringPtrInput
-	// Optional. The ID to use for the watchlist, which will become the final component of the watchlist's resource name. This
-	// value should be 4-63 characters, and valid characters are /a-z-/.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
+	// Optional. The ID to use for the watchlist,
+	// which will become the final component of the watchlist's resource name.
+	// This value should be 4-63 characters, and valid characters
+	// are /a-z-/.
 	WatchlistId pulumi.StringPtrInput
 	// A collection of user preferences for watchlist UI configuration.
+	// Structure is documented below.
 	WatchlistUserPreferences WatchlistWatchlistUserPreferencesPtrInput
 }
 
@@ -444,7 +479,9 @@ func (o WatchlistOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Watchlist) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Optional. Weight applied to the risk score for entities in this watchlist. The default is 1.0 if it is not specified.
+// Optional. Weight applied to the risk score for entities
+// in this watchlist.
+// The default is 1.0 if it is not specified.
 func (o WatchlistOutput) MultiplyingFactor() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *Watchlist) pulumi.Float64PtrOutput { return v.MultiplyingFactor }).(pulumi.Float64PtrOutput)
 }
@@ -456,6 +493,8 @@ func (o WatchlistOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Watchlist) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o WatchlistOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Watchlist) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -465,13 +504,16 @@ func (o WatchlistOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Watchlist) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
-// Optional. The ID to use for the watchlist, which will become the final component of the watchlist's resource name. This
-// value should be 4-63 characters, and valid characters are /a-z-/.
+// Optional. The ID to use for the watchlist,
+// which will become the final component of the watchlist's resource name.
+// This value should be 4-63 characters, and valid characters
+// are /a-z-/.
 func (o WatchlistOutput) WatchlistId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Watchlist) pulumi.StringOutput { return v.WatchlistId }).(pulumi.StringOutput)
 }
 
 // A collection of user preferences for watchlist UI configuration.
+// Structure is documented below.
 func (o WatchlistOutput) WatchlistUserPreferences() WatchlistWatchlistUserPreferencesOutput {
 	return o.ApplyT(func(v *Watchlist) WatchlistWatchlistUserPreferencesOutput { return v.WatchlistUserPreferences }).(WatchlistWatchlistUserPreferencesOutput)
 }
