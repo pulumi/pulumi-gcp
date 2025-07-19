@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.FutureReservationArgs;
 import com.pulumi.gcp.compute.inputs.FutureReservationState;
+import com.pulumi.gcp.compute.outputs.FutureReservationAggregateReservation;
 import com.pulumi.gcp.compute.outputs.FutureReservationAutoCreatedReservationsDuration;
 import com.pulumi.gcp.compute.outputs.FutureReservationCommitmentInfo;
 import com.pulumi.gcp.compute.outputs.FutureReservationShareSettings;
@@ -76,6 +77,67 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Future Reservation Aggregate Reservation
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.FutureReservation;
+ * import com.pulumi.gcp.compute.FutureReservationArgs;
+ * import com.pulumi.gcp.compute.inputs.FutureReservationTimeWindowArgs;
+ * import com.pulumi.gcp.compute.inputs.FutureReservationAggregateReservationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var gceFutureReservation = new FutureReservation("gceFutureReservation", FutureReservationArgs.builder()
+ *             .name("gce-future-reservation-aggregate-reservation")
+ *             .project("my-project-name")
+ *             .autoDeleteAutoCreatedReservations(true)
+ *             .planningStatus("DRAFT")
+ *             .namePrefix("fr-basic")
+ *             .timeWindow(FutureReservationTimeWindowArgs.builder()
+ *                 .startTime("2025-11-01T00:00:00Z")
+ *                 .endTime("2025-11-02T00:00:00Z")
+ *                 .build())
+ *             .aggregateReservation(FutureReservationAggregateReservationArgs.builder()
+ *                 .vmFamily("VM_FAMILY_CLOUD_TPU_DEVICE_CT3")
+ *                 .workloadType("UNSPECIFIED")
+ *                 .reservedResources(                
+ *                     FutureReservationAggregateReservationReservedResourceArgs.builder()
+ *                         .accelerator(FutureReservationAggregateReservationReservedResourceAcceleratorArgs.builder()
+ *                             .acceleratorCount(32)
+ *                             .acceleratorType("projects/my-project-name/zones/us-central1-a/acceleratorTypes/ct3")
+ *                             .build())
+ *                         .build(),
+ *                     FutureReservationAggregateReservationReservedResourceArgs.builder()
+ *                         .accelerator(FutureReservationAggregateReservationReservedResourceAcceleratorArgs.builder()
+ *                             .acceleratorCount(2)
+ *                             .acceleratorType("projects/my-project-name/zones/us-central1-a/acceleratorTypes/ct3")
+ *                             .build())
+ *                         .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -110,6 +172,22 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:compute/futureReservation:FutureReservation")
 public class FutureReservation extends com.pulumi.resources.CustomResource {
+    /**
+     * Aggregate reservation details for the future reservation.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="aggregateReservation", refs={FutureReservationAggregateReservation.class}, tree="[0]")
+    private Output</* @Nullable */ FutureReservationAggregateReservation> aggregateReservation;
+
+    /**
+     * @return Aggregate reservation details for the future reservation.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<FutureReservationAggregateReservation>> aggregateReservation() {
+        return Codegen.optional(this.aggregateReservation);
+    }
     /**
      * Future timestamp when the FR auto-created reservations will be deleted by Compute Engine.
      * 

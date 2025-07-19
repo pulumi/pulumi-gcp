@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -223,6 +225,12 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
+     * Access logging configuration enables the access logging feature at the instance.
+     * Apigee customers can enable access logging to ship the access logs to their own project's cloud logging.
+     * Structure is documented below.
+     */
+    public readonly accessLoggingConfig!: pulumi.Output<outputs.apigee.InstanceAccessLoggingConfig | undefined>;
+    /**
      * Optional. Customer accept list represents the list of projects (id/number) on customer
      * side that can privately connect to the service attachment. It is an optional field
      * which the customers can provide during the instance creation. By default, the customer
@@ -298,6 +306,7 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
+            resourceInputs["accessLoggingConfig"] = state ? state.accessLoggingConfig : undefined;
             resourceInputs["consumerAcceptLists"] = state ? state.consumerAcceptLists : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["diskEncryptionKeyName"] = state ? state.diskEncryptionKeyName : undefined;
@@ -318,6 +327,7 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.orgId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
+            resourceInputs["accessLoggingConfig"] = args ? args.accessLoggingConfig : undefined;
             resourceInputs["consumerAcceptLists"] = args ? args.consumerAcceptLists : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["diskEncryptionKeyName"] = args ? args.diskEncryptionKeyName : undefined;
@@ -340,6 +350,12 @@ export class Instance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Instance resources.
  */
 export interface InstanceState {
+    /**
+     * Access logging configuration enables the access logging feature at the instance.
+     * Apigee customers can enable access logging to ship the access logs to their own project's cloud logging.
+     * Structure is documented below.
+     */
+    accessLoggingConfig?: pulumi.Input<inputs.apigee.InstanceAccessLoggingConfig>;
     /**
      * Optional. Customer accept list represents the list of projects (id/number) on customer
      * side that can privately connect to the service attachment. It is an optional field
@@ -408,6 +424,12 @@ export interface InstanceState {
  * The set of arguments for constructing a Instance resource.
  */
 export interface InstanceArgs {
+    /**
+     * Access logging configuration enables the access logging feature at the instance.
+     * Apigee customers can enable access logging to ship the access logs to their own project's cloud logging.
+     * Structure is documented below.
+     */
+    accessLoggingConfig?: pulumi.Input<inputs.apigee.InstanceAccessLoggingConfig>;
     /**
      * Optional. Customer accept list represents the list of projects (id/number) on customer
      * side that can privately connect to the service attachment. It is an optional field

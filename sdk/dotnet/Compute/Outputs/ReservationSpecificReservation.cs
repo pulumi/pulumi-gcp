@@ -26,7 +26,12 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// The instance properties for the reservation.
         /// Structure is documented below.
         /// </summary>
-        public readonly Outputs.ReservationSpecificReservationInstanceProperties InstanceProperties;
+        public readonly Outputs.ReservationSpecificReservationInstanceProperties? InstanceProperties;
+        /// <summary>
+        /// Specifies the instance template to create the reservation. If you use this field, you must exclude the
+        /// instanceProperties field.
+        /// </summary>
+        public readonly string? SourceInstanceTemplate;
 
         [OutputConstructor]
         private ReservationSpecificReservation(
@@ -34,11 +39,14 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             int? inUseCount,
 
-            Outputs.ReservationSpecificReservationInstanceProperties instanceProperties)
+            Outputs.ReservationSpecificReservationInstanceProperties? instanceProperties,
+
+            string? sourceInstanceTemplate)
         {
             Count = count;
             InUseCount = inUseCount;
             InstanceProperties = instanceProperties;
+            SourceInstanceTemplate = sourceInstanceTemplate;
         }
     }
 }

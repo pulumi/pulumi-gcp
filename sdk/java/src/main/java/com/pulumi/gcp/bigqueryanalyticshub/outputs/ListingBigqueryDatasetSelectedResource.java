@@ -12,12 +12,24 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ListingBigqueryDatasetSelectedResource {
     /**
+     * @return Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:&#34;projects/test_project/datasets/test_dataset/routines/test_routine&#34;
+     * 
+     */
+    private @Nullable String routine;
+    /**
      * @return Format: For table: projects/{projectId}/datasets/{datasetId}/tables/{tableId} Example:&#34;projects/test_project/datasets/test_dataset/tables/test_table&#34;
      * 
      */
     private @Nullable String table;
 
     private ListingBigqueryDatasetSelectedResource() {}
+    /**
+     * @return Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:&#34;projects/test_project/datasets/test_dataset/routines/test_routine&#34;
+     * 
+     */
+    public Optional<String> routine() {
+        return Optional.ofNullable(this.routine);
+    }
     /**
      * @return Format: For table: projects/{projectId}/datasets/{datasetId}/tables/{tableId} Example:&#34;projects/test_project/datasets/test_dataset/tables/test_table&#34;
      * 
@@ -35,13 +47,21 @@ public final class ListingBigqueryDatasetSelectedResource {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String routine;
         private @Nullable String table;
         public Builder() {}
         public Builder(ListingBigqueryDatasetSelectedResource defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.routine = defaults.routine;
     	      this.table = defaults.table;
         }
 
+        @CustomType.Setter
+        public Builder routine(@Nullable String routine) {
+
+            this.routine = routine;
+            return this;
+        }
         @CustomType.Setter
         public Builder table(@Nullable String table) {
 
@@ -50,6 +70,7 @@ public final class ListingBigqueryDatasetSelectedResource {
         }
         public ListingBigqueryDatasetSelectedResource build() {
             final var _resultValue = new ListingBigqueryDatasetSelectedResource();
+            _resultValue.routine = routine;
             _resultValue.table = table;
             return _resultValue;
         }

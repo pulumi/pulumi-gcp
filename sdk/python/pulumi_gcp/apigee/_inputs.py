@@ -50,6 +50,8 @@ __all__ = [
     'EnvironmentPropertiesArgsDict',
     'EnvironmentPropertiesPropertyArgs',
     'EnvironmentPropertiesPropertyArgsDict',
+    'InstanceAccessLoggingConfigArgs',
+    'InstanceAccessLoggingConfigArgsDict',
     'KeystoresAliasesKeyCertFileCertsInfoArgs',
     'KeystoresAliasesKeyCertFileCertsInfoArgsDict',
     'KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs',
@@ -997,6 +999,66 @@ class EnvironmentPropertiesPropertyArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class InstanceAccessLoggingConfigArgsDict(TypedDict):
+        enabled: pulumi.Input[builtins.bool]
+        """
+        Boolean flag that specifies whether the customer access log feature is enabled.
+        """
+        filter: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Ship the access log entries that match the statusCode defined in the filter.
+        The statusCode is the only expected/supported filter field. (Ex: statusCode)
+        The filter will parse it to the Common Expression Language semantics for expression
+        evaluation to build the filter condition. (Ex: "filter": statusCode >= 200 && statusCode < 300 )
+        """
+elif False:
+    InstanceAccessLoggingConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceAccessLoggingConfigArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[builtins.bool],
+                 filter: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.bool] enabled: Boolean flag that specifies whether the customer access log feature is enabled.
+        :param pulumi.Input[builtins.str] filter: Ship the access log entries that match the statusCode defined in the filter.
+               The statusCode is the only expected/supported filter field. (Ex: statusCode)
+               The filter will parse it to the Common Expression Language semantics for expression
+               evaluation to build the filter condition. (Ex: "filter": statusCode >= 200 && statusCode < 300 )
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[builtins.bool]:
+        """
+        Boolean flag that specifies whether the customer access log feature is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[builtins.bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Ship the access log entries that match the statusCode defined in the filter.
+        The statusCode is the only expected/supported filter field. (Ex: statusCode)
+        The filter will parse it to the Common Expression Language semantics for expression
+        evaluation to build the filter condition. (Ex: "filter": statusCode >= 200 && statusCode < 300 )
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "filter", value)
 
 
 if not MYPY:

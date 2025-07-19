@@ -25,6 +25,11 @@ export type Field = import("./field").Field;
 export const Field: typeof import("./field").Field = null as any;
 utilities.lazyLoad(exports, ["Field"], () => require("./field"));
 
+export { GetDocumentArgs, GetDocumentResult, GetDocumentOutputArgs } from "./getDocument";
+export const getDocument: typeof import("./getDocument").getDocument = null as any;
+export const getDocumentOutput: typeof import("./getDocument").getDocumentOutput = null as any;
+utilities.lazyLoad(exports, ["getDocument","getDocumentOutput"], () => require("./getDocument"));
+
 export { IndexArgs, IndexState } from "./index_";
 export type Index = import("./index_").Index;
 export const Index: typeof import("./index_").Index = null as any;

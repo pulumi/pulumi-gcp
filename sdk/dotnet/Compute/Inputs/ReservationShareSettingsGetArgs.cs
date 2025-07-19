@@ -25,6 +25,18 @@ namespace Pulumi.Gcp.Compute.Inputs
             set => _projectMaps = value;
         }
 
+        [Input("projects")]
+        private InputList<string>? _projects;
+
+        /// <summary>
+        /// List of project IDs with which the reservation is shared.
+        /// </summary>
+        public InputList<string> Projects
+        {
+            get => _projects ?? (_projects = new InputList<string>());
+            set => _projects = value;
+        }
+
         /// <summary>
         /// Type of sharing for this shared-reservation
         /// Possible values are: `LOCAL`, `SPECIFIC_PROJECTS`.

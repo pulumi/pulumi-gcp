@@ -32,7 +32,8 @@ class DatabaseArgs:
                  deletion_policy: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  point_in_time_recovery_enablement: Optional[pulumi.Input[builtins.str]] = None,
-                 project: Optional[pulumi.Input[builtins.str]] = None):
+                 project: Optional[pulumi.Input[builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None):
         """
         The set of arguments for constructing a Database resource.
         :param pulumi.Input[builtins.str] location_id: The location of the database. Available locations are listed at
@@ -66,6 +67,12 @@ class DatabaseArgs:
                Possible values are: `POINT_IN_TIME_RECOVERY_ENABLED`, `POINT_IN_TIME_RECOVERY_DISABLED`.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: Input only. A map of resource manager tags. Resource manager tag keys
+               and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+               The field is ignored when empty. The field is immutable and causes
+               resource replacement when mutated. To apply tags to an existing resource, see
+               the `tags.TagValue` resource.
         """
         pulumi.set(__self__, "location_id", location_id)
         pulumi.set(__self__, "type", type)
@@ -87,6 +94,8 @@ class DatabaseArgs:
             pulumi.set(__self__, "point_in_time_recovery_enablement", point_in_time_recovery_enablement)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="locationId")
@@ -236,6 +245,23 @@ class DatabaseArgs:
     def project(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
+        """
+        Input only. A map of resource manager tags. Resource manager tag keys
+        and values have the same definition as resource manager tags.
+        Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+        The field is ignored when empty. The field is immutable and causes
+        resource replacement when mutated. To apply tags to an existing resource, see
+        the `tags.TagValue` resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
 
 @pulumi.input_type
 class _DatabaseState:
@@ -254,6 +280,7 @@ class _DatabaseState:
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  point_in_time_recovery_enablement: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  type: Optional[pulumi.Input[builtins.str]] = None,
                  uid: Optional[pulumi.Input[builtins.str]] = None,
                  update_time: Optional[pulumi.Input[builtins.str]] = None,
@@ -298,6 +325,12 @@ class _DatabaseState:
                Possible values are: `POINT_IN_TIME_RECOVERY_ENABLED`, `POINT_IN_TIME_RECOVERY_DISABLED`.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: Input only. A map of resource manager tags. Resource manager tag keys
+               and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+               The field is ignored when empty. The field is immutable and causes
+               resource replacement when mutated. To apply tags to an existing resource, see
+               the `tags.TagValue` resource.
         :param pulumi.Input[builtins.str] type: The type of the database.
                See https://cloud.google.com/datastore/docs/firestore-or-datastore
                for information about how to choose.
@@ -337,6 +370,8 @@ class _DatabaseState:
             pulumi.set(__self__, "point_in_time_recovery_enablement", point_in_time_recovery_enablement)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if uid is not None:
@@ -536,6 +571,23 @@ class _DatabaseState:
 
     @property
     @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
+        """
+        Input only. A map of resource manager tags. Resource manager tag keys
+        and values have the same definition as resource manager tags.
+        Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+        The field is ignored when empty. The field is immutable and causes
+        resource replacement when mutated. To apply tags to an existing resource, see
+        the `tags.TagValue` resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
     def type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The type of the database.
@@ -605,6 +657,7 @@ class Database(pulumi.CustomResource):
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  point_in_time_recovery_enablement: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  type: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
@@ -652,6 +705,23 @@ class Database(pulumi.CustomResource):
             point_in_time_recovery_enablement="POINT_IN_TIME_RECOVERY_ENABLED",
             delete_protection_state="DELETE_PROTECTION_ENABLED",
             deletion_policy="DELETE")
+        ```
+        ### Firestore Database With Tags
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.firestore.Database("database",
+            project="my-project-name",
+            name="database-with-tags-id",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            delete_protection_state="DELETE_PROTECTION_ENABLED",
+            deletion_policy="DELETE",
+            tags={
+                "keyname": "valuename",
+            })
         ```
         ### Firestore Cmek Database
 
@@ -816,6 +886,12 @@ class Database(pulumi.CustomResource):
                Possible values are: `POINT_IN_TIME_RECOVERY_ENABLED`, `POINT_IN_TIME_RECOVERY_DISABLED`.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: Input only. A map of resource manager tags. Resource manager tag keys
+               and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+               The field is ignored when empty. The field is immutable and causes
+               resource replacement when mutated. To apply tags to an existing resource, see
+               the `tags.TagValue` resource.
         :param pulumi.Input[builtins.str] type: The type of the database.
                See https://cloud.google.com/datastore/docs/firestore-or-datastore
                for information about how to choose.
@@ -872,6 +948,23 @@ class Database(pulumi.CustomResource):
             point_in_time_recovery_enablement="POINT_IN_TIME_RECOVERY_ENABLED",
             delete_protection_state="DELETE_PROTECTION_ENABLED",
             deletion_policy="DELETE")
+        ```
+        ### Firestore Database With Tags
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.firestore.Database("database",
+            project="my-project-name",
+            name="database-with-tags-id",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            delete_protection_state="DELETE_PROTECTION_ENABLED",
+            deletion_policy="DELETE",
+            tags={
+                "keyname": "valuename",
+            })
         ```
         ### Firestore Cmek Database
 
@@ -1032,6 +1125,7 @@ class Database(pulumi.CustomResource):
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  point_in_time_recovery_enablement: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  type: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1054,6 +1148,7 @@ class Database(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["point_in_time_recovery_enablement"] = point_in_time_recovery_enablement
             __props__.__dict__["project"] = project
+            __props__.__dict__["tags"] = tags
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
@@ -1088,6 +1183,7 @@ class Database(pulumi.CustomResource):
             name: Optional[pulumi.Input[builtins.str]] = None,
             point_in_time_recovery_enablement: Optional[pulumi.Input[builtins.str]] = None,
             project: Optional[pulumi.Input[builtins.str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             type: Optional[pulumi.Input[builtins.str]] = None,
             uid: Optional[pulumi.Input[builtins.str]] = None,
             update_time: Optional[pulumi.Input[builtins.str]] = None,
@@ -1137,6 +1233,12 @@ class Database(pulumi.CustomResource):
                Possible values are: `POINT_IN_TIME_RECOVERY_ENABLED`, `POINT_IN_TIME_RECOVERY_DISABLED`.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] tags: Input only. A map of resource manager tags. Resource manager tag keys
+               and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+               The field is ignored when empty. The field is immutable and causes
+               resource replacement when mutated. To apply tags to an existing resource, see
+               the `tags.TagValue` resource.
         :param pulumi.Input[builtins.str] type: The type of the database.
                See https://cloud.google.com/datastore/docs/firestore-or-datastore
                for information about how to choose.
@@ -1166,6 +1268,7 @@ class Database(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["point_in_time_recovery_enablement"] = point_in_time_recovery_enablement
         __props__.__dict__["project"] = project
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["type"] = type
         __props__.__dict__["uid"] = uid
         __props__.__dict__["update_time"] = update_time
@@ -1303,6 +1406,19 @@ class Database(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
+        """
+        Input only. A map of resource manager tags. Resource manager tag keys
+        and values have the same definition as resource manager tags.
+        Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+        The field is ignored when empty. The field is immutable and causes
+        resource replacement when mutated. To apply tags to an existing resource, see
+        the `tags.TagValue` resource.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter

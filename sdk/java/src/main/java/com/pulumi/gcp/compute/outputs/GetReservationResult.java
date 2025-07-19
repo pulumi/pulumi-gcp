@@ -5,6 +5,8 @@ package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.compute.outputs.GetReservationDeleteAfterDuration;
+import com.pulumi.gcp.compute.outputs.GetReservationReservationSharingPolicy;
 import com.pulumi.gcp.compute.outputs.GetReservationShareSetting;
 import com.pulumi.gcp.compute.outputs.GetReservationSpecificReservation;
 import java.lang.Boolean;
@@ -18,7 +20,10 @@ import javax.annotation.Nullable;
 public final class GetReservationResult {
     private String commitment;
     private String creationTimestamp;
+    private List<GetReservationDeleteAfterDuration> deleteAfterDurations;
+    private String deleteAtTime;
     private String description;
+    private Boolean enableEmergentMaintenance;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -26,6 +31,7 @@ public final class GetReservationResult {
     private String id;
     private String name;
     private @Nullable String project;
+    private List<GetReservationReservationSharingPolicy> reservationSharingPolicies;
     private String selfLink;
     private List<GetReservationShareSetting> shareSettings;
     private Boolean specificReservationRequired;
@@ -40,8 +46,17 @@ public final class GetReservationResult {
     public String creationTimestamp() {
         return this.creationTimestamp;
     }
+    public List<GetReservationDeleteAfterDuration> deleteAfterDurations() {
+        return this.deleteAfterDurations;
+    }
+    public String deleteAtTime() {
+        return this.deleteAtTime;
+    }
     public String description() {
         return this.description;
+    }
+    public Boolean enableEmergentMaintenance() {
+        return this.enableEmergentMaintenance;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -55,6 +70,9 @@ public final class GetReservationResult {
     }
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
+    }
+    public List<GetReservationReservationSharingPolicy> reservationSharingPolicies() {
+        return this.reservationSharingPolicies;
     }
     public String selfLink() {
         return this.selfLink;
@@ -86,10 +104,14 @@ public final class GetReservationResult {
     public static final class Builder {
         private String commitment;
         private String creationTimestamp;
+        private List<GetReservationDeleteAfterDuration> deleteAfterDurations;
+        private String deleteAtTime;
         private String description;
+        private Boolean enableEmergentMaintenance;
         private String id;
         private String name;
         private @Nullable String project;
+        private List<GetReservationReservationSharingPolicy> reservationSharingPolicies;
         private String selfLink;
         private List<GetReservationShareSetting> shareSettings;
         private Boolean specificReservationRequired;
@@ -101,10 +123,14 @@ public final class GetReservationResult {
     	      Objects.requireNonNull(defaults);
     	      this.commitment = defaults.commitment;
     	      this.creationTimestamp = defaults.creationTimestamp;
+    	      this.deleteAfterDurations = defaults.deleteAfterDurations;
+    	      this.deleteAtTime = defaults.deleteAtTime;
     	      this.description = defaults.description;
+    	      this.enableEmergentMaintenance = defaults.enableEmergentMaintenance;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.project = defaults.project;
+    	      this.reservationSharingPolicies = defaults.reservationSharingPolicies;
     	      this.selfLink = defaults.selfLink;
     	      this.shareSettings = defaults.shareSettings;
     	      this.specificReservationRequired = defaults.specificReservationRequired;
@@ -130,11 +156,38 @@ public final class GetReservationResult {
             return this;
         }
         @CustomType.Setter
+        public Builder deleteAfterDurations(List<GetReservationDeleteAfterDuration> deleteAfterDurations) {
+            if (deleteAfterDurations == null) {
+              throw new MissingRequiredPropertyException("GetReservationResult", "deleteAfterDurations");
+            }
+            this.deleteAfterDurations = deleteAfterDurations;
+            return this;
+        }
+        public Builder deleteAfterDurations(GetReservationDeleteAfterDuration... deleteAfterDurations) {
+            return deleteAfterDurations(List.of(deleteAfterDurations));
+        }
+        @CustomType.Setter
+        public Builder deleteAtTime(String deleteAtTime) {
+            if (deleteAtTime == null) {
+              throw new MissingRequiredPropertyException("GetReservationResult", "deleteAtTime");
+            }
+            this.deleteAtTime = deleteAtTime;
+            return this;
+        }
+        @CustomType.Setter
         public Builder description(String description) {
             if (description == null) {
               throw new MissingRequiredPropertyException("GetReservationResult", "description");
             }
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableEmergentMaintenance(Boolean enableEmergentMaintenance) {
+            if (enableEmergentMaintenance == null) {
+              throw new MissingRequiredPropertyException("GetReservationResult", "enableEmergentMaintenance");
+            }
+            this.enableEmergentMaintenance = enableEmergentMaintenance;
             return this;
         }
         @CustomType.Setter
@@ -158,6 +211,17 @@ public final class GetReservationResult {
 
             this.project = project;
             return this;
+        }
+        @CustomType.Setter
+        public Builder reservationSharingPolicies(List<GetReservationReservationSharingPolicy> reservationSharingPolicies) {
+            if (reservationSharingPolicies == null) {
+              throw new MissingRequiredPropertyException("GetReservationResult", "reservationSharingPolicies");
+            }
+            this.reservationSharingPolicies = reservationSharingPolicies;
+            return this;
+        }
+        public Builder reservationSharingPolicies(GetReservationReservationSharingPolicy... reservationSharingPolicies) {
+            return reservationSharingPolicies(List.of(reservationSharingPolicies));
         }
         @CustomType.Setter
         public Builder selfLink(String selfLink) {
@@ -217,10 +281,14 @@ public final class GetReservationResult {
             final var _resultValue = new GetReservationResult();
             _resultValue.commitment = commitment;
             _resultValue.creationTimestamp = creationTimestamp;
+            _resultValue.deleteAfterDurations = deleteAfterDurations;
+            _resultValue.deleteAtTime = deleteAtTime;
             _resultValue.description = description;
+            _resultValue.enableEmergentMaintenance = enableEmergentMaintenance;
             _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.project = project;
+            _resultValue.reservationSharingPolicies = reservationSharingPolicies;
             _resultValue.selfLink = selfLink;
             _resultValue.shareSettings = shareSettings;
             _resultValue.specificReservationRequired = specificReservationRequired;

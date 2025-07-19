@@ -25,6 +25,11 @@ export type DataExchangeIamPolicy = import("./dataExchangeIamPolicy").DataExchan
 export const DataExchangeIamPolicy: typeof import("./dataExchangeIamPolicy").DataExchangeIamPolicy = null as any;
 utilities.lazyLoad(exports, ["DataExchangeIamPolicy"], () => require("./dataExchangeIamPolicy"));
 
+export { DataExchangeSubscriptionArgs, DataExchangeSubscriptionState } from "./dataExchangeSubscription";
+export type DataExchangeSubscription = import("./dataExchangeSubscription").DataExchangeSubscription;
+export const DataExchangeSubscription: typeof import("./dataExchangeSubscription").DataExchangeSubscription = null as any;
+utilities.lazyLoad(exports, ["DataExchangeSubscription"], () => require("./dataExchangeSubscription"));
+
 export { GetDataExchangeIamPolicyArgs, GetDataExchangeIamPolicyResult, GetDataExchangeIamPolicyOutputArgs } from "./getDataExchangeIamPolicy";
 export const getDataExchangeIamPolicy: typeof import("./getDataExchangeIamPolicy").getDataExchangeIamPolicy = null as any;
 export const getDataExchangeIamPolicyOutput: typeof import("./getDataExchangeIamPolicy").getDataExchangeIamPolicyOutput = null as any;
@@ -73,6 +78,8 @@ const _module = {
                 return new DataExchangeIamMember(name, <any>undefined, { urn })
             case "gcp:bigqueryanalyticshub/dataExchangeIamPolicy:DataExchangeIamPolicy":
                 return new DataExchangeIamPolicy(name, <any>undefined, { urn })
+            case "gcp:bigqueryanalyticshub/dataExchangeSubscription:DataExchangeSubscription":
+                return new DataExchangeSubscription(name, <any>undefined, { urn })
             case "gcp:bigqueryanalyticshub/listing:Listing":
                 return new Listing(name, <any>undefined, { urn })
             case "gcp:bigqueryanalyticshub/listingIamBinding:ListingIamBinding":
@@ -92,6 +99,7 @@ pulumi.runtime.registerResourceModule("gcp", "bigqueryanalyticshub/dataExchange"
 pulumi.runtime.registerResourceModule("gcp", "bigqueryanalyticshub/dataExchangeIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigqueryanalyticshub/dataExchangeIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigqueryanalyticshub/dataExchangeIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "bigqueryanalyticshub/dataExchangeSubscription", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigqueryanalyticshub/listing", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigqueryanalyticshub/listingIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigqueryanalyticshub/listingIamMember", _module)

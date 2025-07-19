@@ -14,6 +14,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['InstanceArgs', 'Instance']
 
@@ -22,6 +24,7 @@ class InstanceArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[builtins.str],
                  org_id: pulumi.Input[builtins.str],
+                 access_logging_config: Optional[pulumi.Input['InstanceAccessLoggingConfigArgs']] = None,
                  consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  disk_encryption_key_name: Optional[pulumi.Input[builtins.str]] = None,
@@ -34,6 +37,9 @@ class InstanceArgs:
         :param pulumi.Input[builtins.str] location: Required. Compute Engine location where the instance resides.
         :param pulumi.Input[builtins.str] org_id: The Apigee Organization associated with the Apigee instance,
                in the format `organizations/{{org_name}}`.
+        :param pulumi.Input['InstanceAccessLoggingConfigArgs'] access_logging_config: Access logging configuration enables the access logging feature at the instance.
+               Apigee customers can enable access logging to ship the access logs to their own project's cloud logging.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] consumer_accept_lists: Optional. Customer accept list represents the list of projects (id/number) on customer
                side that can privately connect to the service attachment. It is an optional field
                which the customers can provide during the instance creation. By default, the customer
@@ -55,6 +61,8 @@ class InstanceArgs:
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "org_id", org_id)
+        if access_logging_config is not None:
+            pulumi.set(__self__, "access_logging_config", access_logging_config)
         if consumer_accept_lists is not None:
             pulumi.set(__self__, "consumer_accept_lists", consumer_accept_lists)
         if description is not None:
@@ -94,6 +102,20 @@ class InstanceArgs:
     @org_id.setter
     def org_id(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "org_id", value)
+
+    @property
+    @pulumi.getter(name="accessLoggingConfig")
+    def access_logging_config(self) -> Optional[pulumi.Input['InstanceAccessLoggingConfigArgs']]:
+        """
+        Access logging configuration enables the access logging feature at the instance.
+        Apigee customers can enable access logging to ship the access logs to their own project's cloud logging.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "access_logging_config")
+
+    @access_logging_config.setter
+    def access_logging_config(self, value: Optional[pulumi.Input['InstanceAccessLoggingConfigArgs']]):
+        pulumi.set(self, "access_logging_config", value)
 
     @property
     @pulumi.getter(name="consumerAcceptLists")
@@ -194,6 +216,7 @@ class InstanceArgs:
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
+                 access_logging_config: Optional[pulumi.Input['InstanceAccessLoggingConfigArgs']] = None,
                  consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  disk_encryption_key_name: Optional[pulumi.Input[builtins.str]] = None,
@@ -208,6 +231,9 @@ class _InstanceState:
                  service_attachment: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+        :param pulumi.Input['InstanceAccessLoggingConfigArgs'] access_logging_config: Access logging configuration enables the access logging feature at the instance.
+               Apigee customers can enable access logging to ship the access logs to their own project's cloud logging.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] consumer_accept_lists: Optional. Customer accept list represents the list of projects (id/number) on customer
                side that can privately connect to the service attachment. It is an optional field
                which the customers can provide during the instance creation. By default, the customer
@@ -235,6 +261,8 @@ class _InstanceState:
                the format: projects/*/regions/*/serviceAttachments/* Apigee customers can privately
                forward traffic to this service attachment using the PSC endpoints.
         """
+        if access_logging_config is not None:
+            pulumi.set(__self__, "access_logging_config", access_logging_config)
         if consumer_accept_lists is not None:
             pulumi.set(__self__, "consumer_accept_lists", consumer_accept_lists)
         if description is not None:
@@ -259,6 +287,20 @@ class _InstanceState:
             pulumi.set(__self__, "port", port)
         if service_attachment is not None:
             pulumi.set(__self__, "service_attachment", service_attachment)
+
+    @property
+    @pulumi.getter(name="accessLoggingConfig")
+    def access_logging_config(self) -> Optional[pulumi.Input['InstanceAccessLoggingConfigArgs']]:
+        """
+        Access logging configuration enables the access logging feature at the instance.
+        Apigee customers can enable access logging to ship the access logs to their own project's cloud logging.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "access_logging_config")
+
+    @access_logging_config.setter
+    def access_logging_config(self, value: Optional[pulumi.Input['InstanceAccessLoggingConfigArgs']]):
+        pulumi.set(self, "access_logging_config", value)
 
     @property
     @pulumi.getter(name="consumerAcceptLists")
@@ -425,6 +467,7 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 access_logging_config: Optional[pulumi.Input[Union['InstanceAccessLoggingConfigArgs', 'InstanceAccessLoggingConfigArgsDict']]] = None,
                  consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  disk_encryption_key_name: Optional[pulumi.Input[builtins.str]] = None,
@@ -603,6 +646,9 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['InstanceAccessLoggingConfigArgs', 'InstanceAccessLoggingConfigArgsDict']] access_logging_config: Access logging configuration enables the access logging feature at the instance.
+               Apigee customers can enable access logging to ship the access logs to their own project's cloud logging.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] consumer_accept_lists: Optional. Customer accept list represents the list of projects (id/number) on customer
                side that can privately connect to the service attachment. It is an optional field
                which the customers can provide during the instance creation. By default, the customer
@@ -812,6 +858,7 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 access_logging_config: Optional[pulumi.Input[Union['InstanceAccessLoggingConfigArgs', 'InstanceAccessLoggingConfigArgsDict']]] = None,
                  consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  disk_encryption_key_name: Optional[pulumi.Input[builtins.str]] = None,
@@ -830,6 +877,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
+            __props__.__dict__["access_logging_config"] = access_logging_config
             __props__.__dict__["consumer_accept_lists"] = consumer_accept_lists
             __props__.__dict__["description"] = description
             __props__.__dict__["disk_encryption_key_name"] = disk_encryption_key_name
@@ -856,6 +904,7 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            access_logging_config: Optional[pulumi.Input[Union['InstanceAccessLoggingConfigArgs', 'InstanceAccessLoggingConfigArgsDict']]] = None,
             consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             description: Optional[pulumi.Input[builtins.str]] = None,
             disk_encryption_key_name: Optional[pulumi.Input[builtins.str]] = None,
@@ -875,6 +924,9 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['InstanceAccessLoggingConfigArgs', 'InstanceAccessLoggingConfigArgsDict']] access_logging_config: Access logging configuration enables the access logging feature at the instance.
+               Apigee customers can enable access logging to ship the access logs to their own project's cloud logging.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] consumer_accept_lists: Optional. Customer accept list represents the list of projects (id/number) on customer
                side that can privately connect to the service attachment. It is an optional field
                which the customers can provide during the instance creation. By default, the customer
@@ -906,6 +958,7 @@ class Instance(pulumi.CustomResource):
 
         __props__ = _InstanceState.__new__(_InstanceState)
 
+        __props__.__dict__["access_logging_config"] = access_logging_config
         __props__.__dict__["consumer_accept_lists"] = consumer_accept_lists
         __props__.__dict__["description"] = description
         __props__.__dict__["disk_encryption_key_name"] = disk_encryption_key_name
@@ -919,6 +972,16 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["port"] = port
         __props__.__dict__["service_attachment"] = service_attachment
         return Instance(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="accessLoggingConfig")
+    def access_logging_config(self) -> pulumi.Output[Optional['outputs.InstanceAccessLoggingConfig']]:
+        """
+        Access logging configuration enables the access logging feature at the instance.
+        Apigee customers can enable access logging to ship the access logs to their own project's cloud logging.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "access_logging_config")
 
     @property
     @pulumi.getter(name="consumerAcceptLists")

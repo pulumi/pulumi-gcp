@@ -53,6 +53,57 @@ import (
 //	}
 //
 // ```
+// ### Future Reservation Aggregate Reservation
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewFutureReservation(ctx, "gce_future_reservation", &compute.FutureReservationArgs{
+//				Name:                              pulumi.String("gce-future-reservation-aggregate-reservation"),
+//				Project:                           pulumi.String("my-project-name"),
+//				AutoDeleteAutoCreatedReservations: pulumi.Bool(true),
+//				PlanningStatus:                    pulumi.String("DRAFT"),
+//				NamePrefix:                        pulumi.String("fr-basic"),
+//				TimeWindow: &compute.FutureReservationTimeWindowArgs{
+//					StartTime: pulumi.String("2025-11-01T00:00:00Z"),
+//					EndTime:   pulumi.String("2025-11-02T00:00:00Z"),
+//				},
+//				AggregateReservation: &compute.FutureReservationAggregateReservationArgs{
+//					VmFamily:     pulumi.String("VM_FAMILY_CLOUD_TPU_DEVICE_CT3"),
+//					WorkloadType: pulumi.String("UNSPECIFIED"),
+//					ReservedResources: compute.FutureReservationAggregateReservationReservedResourceArray{
+//						&compute.FutureReservationAggregateReservationReservedResourceArgs{
+//							Accelerator: &compute.FutureReservationAggregateReservationReservedResourceAcceleratorArgs{
+//								AcceleratorCount: pulumi.Int(32),
+//								AcceleratorType:  pulumi.String("projects/my-project-name/zones/us-central1-a/acceleratorTypes/ct3"),
+//							},
+//						},
+//						&compute.FutureReservationAggregateReservationReservedResourceArgs{
+//							Accelerator: &compute.FutureReservationAggregateReservationReservedResourceAcceleratorArgs{
+//								AcceleratorCount: pulumi.Int(2),
+//								AcceleratorType:  pulumi.String("projects/my-project-name/zones/us-central1-a/acceleratorTypes/ct3"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -86,6 +137,9 @@ import (
 type FutureReservation struct {
 	pulumi.CustomResourceState
 
+	// Aggregate reservation details for the future reservation.
+	// Structure is documented below.
+	AggregateReservation FutureReservationAggregateReservationPtrOutput `pulumi:"aggregateReservation"`
 	// Future timestamp when the FR auto-created reservations will be deleted by Compute Engine.
 	AutoCreatedReservationsDeleteTime pulumi.StringPtrOutput `pulumi:"autoCreatedReservationsDeleteTime"`
 	// Specifies the duration of auto-created reservations. It represents relative time to future reservation startTime when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
@@ -182,6 +236,9 @@ func GetFutureReservation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FutureReservation resources.
 type futureReservationState struct {
+	// Aggregate reservation details for the future reservation.
+	// Structure is documented below.
+	AggregateReservation *FutureReservationAggregateReservation `pulumi:"aggregateReservation"`
 	// Future timestamp when the FR auto-created reservations will be deleted by Compute Engine.
 	AutoCreatedReservationsDeleteTime *string `pulumi:"autoCreatedReservationsDeleteTime"`
 	// Specifies the duration of auto-created reservations. It represents relative time to future reservation startTime when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
@@ -246,6 +303,9 @@ type futureReservationState struct {
 }
 
 type FutureReservationState struct {
+	// Aggregate reservation details for the future reservation.
+	// Structure is documented below.
+	AggregateReservation FutureReservationAggregateReservationPtrInput
 	// Future timestamp when the FR auto-created reservations will be deleted by Compute Engine.
 	AutoCreatedReservationsDeleteTime pulumi.StringPtrInput
 	// Specifies the duration of auto-created reservations. It represents relative time to future reservation startTime when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
@@ -314,6 +374,9 @@ func (FutureReservationState) ElementType() reflect.Type {
 }
 
 type futureReservationArgs struct {
+	// Aggregate reservation details for the future reservation.
+	// Structure is documented below.
+	AggregateReservation *FutureReservationAggregateReservation `pulumi:"aggregateReservation"`
 	// Future timestamp when the FR auto-created reservations will be deleted by Compute Engine.
 	AutoCreatedReservationsDeleteTime *string `pulumi:"autoCreatedReservationsDeleteTime"`
 	// Specifies the duration of auto-created reservations. It represents relative time to future reservation startTime when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
@@ -368,6 +431,9 @@ type futureReservationArgs struct {
 
 // The set of arguments for constructing a FutureReservation resource.
 type FutureReservationArgs struct {
+	// Aggregate reservation details for the future reservation.
+	// Structure is documented below.
+	AggregateReservation FutureReservationAggregateReservationPtrInput
 	// Future timestamp when the FR auto-created reservations will be deleted by Compute Engine.
 	AutoCreatedReservationsDeleteTime pulumi.StringPtrInput
 	// Specifies the duration of auto-created reservations. It represents relative time to future reservation startTime when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
@@ -505,6 +571,14 @@ func (o FutureReservationOutput) ToFutureReservationOutput() FutureReservationOu
 
 func (o FutureReservationOutput) ToFutureReservationOutputWithContext(ctx context.Context) FutureReservationOutput {
 	return o
+}
+
+// Aggregate reservation details for the future reservation.
+// Structure is documented below.
+func (o FutureReservationOutput) AggregateReservation() FutureReservationAggregateReservationPtrOutput {
+	return o.ApplyT(func(v *FutureReservation) FutureReservationAggregateReservationPtrOutput {
+		return v.AggregateReservation
+	}).(FutureReservationAggregateReservationPtrOutput)
 }
 
 // Future timestamp when the FR auto-created reservations will be deleted by Compute Engine.

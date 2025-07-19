@@ -35,6 +35,21 @@ public final class ReservationShareSettingsArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * List of project IDs with which the reservation is shared.
+     * 
+     */
+    @Import(name="projects")
+    private @Nullable Output<List<String>> projects;
+
+    /**
+     * @return List of project IDs with which the reservation is shared.
+     * 
+     */
+    public Optional<Output<List<String>>> projects() {
+        return Optional.ofNullable(this.projects);
+    }
+
+    /**
      * Type of sharing for this shared-reservation
      * Possible values are: `LOCAL`, `SPECIFIC_PROJECTS`.
      * 
@@ -55,6 +70,7 @@ public final class ReservationShareSettingsArgs extends com.pulumi.resources.Res
 
     private ReservationShareSettingsArgs(ReservationShareSettingsArgs $) {
         this.projectMaps = $.projectMaps;
+        this.projects = $.projects;
         this.shareType = $.shareType;
     }
 
@@ -108,6 +124,37 @@ public final class ReservationShareSettingsArgs extends com.pulumi.resources.Res
          */
         public Builder projectMaps(ReservationShareSettingsProjectMapArgs... projectMaps) {
             return projectMaps(List.of(projectMaps));
+        }
+
+        /**
+         * @param projects List of project IDs with which the reservation is shared.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projects(@Nullable Output<List<String>> projects) {
+            $.projects = projects;
+            return this;
+        }
+
+        /**
+         * @param projects List of project IDs with which the reservation is shared.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projects(List<String> projects) {
+            return projects(Output.of(projects));
+        }
+
+        /**
+         * @param projects List of project IDs with which the reservation is shared.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projects(String... projects) {
+            return projects(List.of(projects));
         }
 
         /**

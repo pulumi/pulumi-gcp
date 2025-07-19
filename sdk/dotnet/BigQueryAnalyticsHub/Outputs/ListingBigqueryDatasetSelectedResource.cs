@@ -14,13 +14,21 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub.Outputs
     public sealed class ListingBigqueryDatasetSelectedResource
     {
         /// <summary>
+        /// Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:"projects/test_project/datasets/test_dataset/routines/test_routine"
+        /// </summary>
+        public readonly string? Routine;
+        /// <summary>
         /// Format: For table: projects/{projectId}/datasets/{datasetId}/tables/{tableId} Example:"projects/test_project/datasets/test_dataset/tables/test_table"
         /// </summary>
         public readonly string? Table;
 
         [OutputConstructor]
-        private ListingBigqueryDatasetSelectedResource(string? table)
+        private ListingBigqueryDatasetSelectedResource(
+            string? routine,
+
+            string? table)
         {
+            Routine = routine;
             Table = table;
         }
     }

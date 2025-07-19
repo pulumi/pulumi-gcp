@@ -46,6 +46,56 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Future Reservation Aggregate Reservation
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var gceFutureReservation = new Gcp.Compute.FutureReservation("gce_future_reservation", new()
+    ///     {
+    ///         Name = "gce-future-reservation-aggregate-reservation",
+    ///         Project = "my-project-name",
+    ///         AutoDeleteAutoCreatedReservations = true,
+    ///         PlanningStatus = "DRAFT",
+    ///         NamePrefix = "fr-basic",
+    ///         TimeWindow = new Gcp.Compute.Inputs.FutureReservationTimeWindowArgs
+    ///         {
+    ///             StartTime = "2025-11-01T00:00:00Z",
+    ///             EndTime = "2025-11-02T00:00:00Z",
+    ///         },
+    ///         AggregateReservation = new Gcp.Compute.Inputs.FutureReservationAggregateReservationArgs
+    ///         {
+    ///             VmFamily = "VM_FAMILY_CLOUD_TPU_DEVICE_CT3",
+    ///             WorkloadType = "UNSPECIFIED",
+    ///             ReservedResources = new[]
+    ///             {
+    ///                 new Gcp.Compute.Inputs.FutureReservationAggregateReservationReservedResourceArgs
+    ///                 {
+    ///                     Accelerator = new Gcp.Compute.Inputs.FutureReservationAggregateReservationReservedResourceAcceleratorArgs
+    ///                     {
+    ///                         AcceleratorCount = 32,
+    ///                         AcceleratorType = "projects/my-project-name/zones/us-central1-a/acceleratorTypes/ct3",
+    ///                     },
+    ///                 },
+    ///                 new Gcp.Compute.Inputs.FutureReservationAggregateReservationReservedResourceArgs
+    ///                 {
+    ///                     Accelerator = new Gcp.Compute.Inputs.FutureReservationAggregateReservationReservedResourceAcceleratorArgs
+    ///                     {
+    ///                         AcceleratorCount = 2,
+    ///                         AcceleratorType = "projects/my-project-name/zones/us-central1-a/acceleratorTypes/ct3",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -80,6 +130,13 @@ namespace Pulumi.Gcp.Compute
     [GcpResourceType("gcp:compute/futureReservation:FutureReservation")]
     public partial class FutureReservation : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Aggregate reservation details for the future reservation.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("aggregateReservation")]
+        public Output<Outputs.FutureReservationAggregateReservation?> AggregateReservation { get; private set; } = null!;
+
         /// <summary>
         /// Future timestamp when the FR auto-created reservations will be deleted by Compute Engine.
         /// </summary>
@@ -276,6 +333,13 @@ namespace Pulumi.Gcp.Compute
     public sealed class FutureReservationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Aggregate reservation details for the future reservation.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("aggregateReservation")]
+        public Input<Inputs.FutureReservationAggregateReservationArgs>? AggregateReservation { get; set; }
+
+        /// <summary>
         /// Future timestamp when the FR auto-created reservations will be deleted by Compute Engine.
         /// </summary>
         [Input("autoCreatedReservationsDeleteTime")]
@@ -401,6 +465,13 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class FutureReservationState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Aggregate reservation details for the future reservation.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("aggregateReservation")]
+        public Input<Inputs.FutureReservationAggregateReservationGetArgs>? AggregateReservation { get; set; }
+
         /// <summary>
         /// Future timestamp when the FR auto-created reservations will be deleted by Compute Engine.
         /// </summary>

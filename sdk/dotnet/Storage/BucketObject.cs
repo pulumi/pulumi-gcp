@@ -136,6 +136,12 @@ namespace Pulumi.Gcp.Storage
         public Output<bool?> EventBasedHold { get; private set; } = null!;
 
         /// <summary>
+        /// When set to true, it ensure the object's Content-Type is empty.
+        /// </summary>
+        [Output("forceEmptyContentType")]
+        public Output<bool?> ForceEmptyContentType { get; private set; } = null!;
+
+        /// <summary>
         /// (Computed) The content generation of this object. Used for object [versioning](https://cloud.google.com/storage/docs/object-versioning) and [soft delete](https://cloud.google.com/storage/docs/soft-delete).
         /// </summary>
         [Output("generation")]
@@ -358,6 +364,12 @@ namespace Pulumi.Gcp.Storage
         public Input<bool>? EventBasedHold { get; set; }
 
         /// <summary>
+        /// When set to true, it ensure the object's Content-Type is empty.
+        /// </summary>
+        [Input("forceEmptyContentType")]
+        public Input<bool>? ForceEmptyContentType { get; set; }
+
+        /// <summary>
         /// The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
         /// </summary>
         [Input("kmsKeyName")]
@@ -510,6 +522,12 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         [Input("eventBasedHold")]
         public Input<bool>? EventBasedHold { get; set; }
+
+        /// <summary>
+        /// When set to true, it ensure the object's Content-Type is empty.
+        /// </summary>
+        [Input("forceEmptyContentType")]
+        public Input<bool>? ForceEmptyContentType { get; set; }
 
         /// <summary>
         /// (Computed) The content generation of this object. Used for object [versioning](https://cloud.google.com/storage/docs/object-versioning) and [soft delete](https://cloud.google.com/storage/docs/soft-delete).

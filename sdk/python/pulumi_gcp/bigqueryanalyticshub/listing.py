@@ -816,6 +816,64 @@ class Listing(pulumi.CustomResource):
                 ],
             })
         ```
+        ### Bigquery Analyticshub Listing Dcr Routine
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_gcp as gcp
+
+        dcr_data_exchange_example = gcp.bigqueryanalyticshub.DataExchange("dcr_data_exchange_example",
+            location="us",
+            data_exchange_id="tf_test_data_exchange",
+            display_name="tf_test_data_exchange",
+            description="Example for listing with routine",
+            sharing_environment_config={
+                "dcr_exchange_config": {},
+            })
+        listing = gcp.bigquery.Dataset("listing",
+            dataset_id="tf_test_dataset",
+            friendly_name="tf_test_dataset",
+            description="Example for listing with routine",
+            location="us")
+        listing_routine = gcp.bigquery.Routine("listing",
+            dataset_id=listing.dataset_id,
+            routine_id="tf_test_routine",
+            routine_type="TABLE_VALUED_FUNCTION",
+            language="SQL",
+            description="A DCR routine example.",
+            definition_body="SELECT 1 + value AS value\\n",
+            arguments=[{
+                "name": "value",
+                "argument_kind": "FIXED_TYPE",
+                "data_type": json.dumps({
+                    "typeKind": "INT64",
+                }),
+            }],
+            return_table_type=json.dumps({
+                "columns": [{
+                    "name": "value",
+                    "type": {
+                        "typeKind": "INT64",
+                    },
+                }],
+            }))
+        listing_listing = gcp.bigqueryanalyticshub.Listing("listing",
+            location="US",
+            data_exchange_id=dcr_data_exchange_example.data_exchange_id,
+            listing_id="tf_test_listing_routine",
+            display_name="tf_test_listing_routine",
+            description="Example for listing with routine",
+            bigquery_dataset={
+                "dataset": listing.id,
+                "selected_resources": [{
+                    "routine": listing_routine.id,
+                }],
+            },
+            restricted_export_config={
+                "enabled": True,
+            })
+        ```
 
         ## Import
 
@@ -1048,6 +1106,64 @@ class Listing(pulumi.CustomResource):
                     "us-central1",
                     "europe-west1",
                 ],
+            })
+        ```
+        ### Bigquery Analyticshub Listing Dcr Routine
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_gcp as gcp
+
+        dcr_data_exchange_example = gcp.bigqueryanalyticshub.DataExchange("dcr_data_exchange_example",
+            location="us",
+            data_exchange_id="tf_test_data_exchange",
+            display_name="tf_test_data_exchange",
+            description="Example for listing with routine",
+            sharing_environment_config={
+                "dcr_exchange_config": {},
+            })
+        listing = gcp.bigquery.Dataset("listing",
+            dataset_id="tf_test_dataset",
+            friendly_name="tf_test_dataset",
+            description="Example for listing with routine",
+            location="us")
+        listing_routine = gcp.bigquery.Routine("listing",
+            dataset_id=listing.dataset_id,
+            routine_id="tf_test_routine",
+            routine_type="TABLE_VALUED_FUNCTION",
+            language="SQL",
+            description="A DCR routine example.",
+            definition_body="SELECT 1 + value AS value\\n",
+            arguments=[{
+                "name": "value",
+                "argument_kind": "FIXED_TYPE",
+                "data_type": json.dumps({
+                    "typeKind": "INT64",
+                }),
+            }],
+            return_table_type=json.dumps({
+                "columns": [{
+                    "name": "value",
+                    "type": {
+                        "typeKind": "INT64",
+                    },
+                }],
+            }))
+        listing_listing = gcp.bigqueryanalyticshub.Listing("listing",
+            location="US",
+            data_exchange_id=dcr_data_exchange_example.data_exchange_id,
+            listing_id="tf_test_listing_routine",
+            display_name="tf_test_listing_routine",
+            description="Example for listing with routine",
+            bigquery_dataset={
+                "dataset": listing.id,
+                "selected_resources": [{
+                    "routine": listing_routine.id,
+                }],
+            },
+            restricted_export_config={
+                "enabled": True,
             })
         ```
 

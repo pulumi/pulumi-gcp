@@ -68,6 +68,8 @@ export interface GetRegionDiskResult {
     readonly name: string;
     readonly physicalBlockSizeBytes: number;
     readonly project?: string;
+    readonly provisionedIops: number;
+    readonly provisionedThroughput: number;
     readonly pulumiLabels: {[key: string]: string};
     readonly region?: string;
     readonly replicaZones: string[];

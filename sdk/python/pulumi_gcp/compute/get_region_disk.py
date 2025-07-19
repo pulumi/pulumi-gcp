@@ -28,7 +28,7 @@ class GetRegionDiskResult:
     """
     A collection of values returned by getRegionDisk.
     """
-    def __init__(__self__, access_mode=None, async_primary_disks=None, create_snapshot_before_destroy=None, create_snapshot_before_destroy_prefix=None, creation_timestamp=None, description=None, disk_encryption_keys=None, disk_id=None, effective_labels=None, guest_os_features=None, id=None, interface=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, licenses=None, name=None, physical_block_size_bytes=None, project=None, pulumi_labels=None, region=None, replica_zones=None, self_link=None, size=None, snapshot=None, source_disk=None, source_disk_id=None, source_snapshot_encryption_keys=None, source_snapshot_id=None, type=None, users=None):
+    def __init__(__self__, access_mode=None, async_primary_disks=None, create_snapshot_before_destroy=None, create_snapshot_before_destroy_prefix=None, creation_timestamp=None, description=None, disk_encryption_keys=None, disk_id=None, effective_labels=None, guest_os_features=None, id=None, interface=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, licenses=None, name=None, physical_block_size_bytes=None, project=None, provisioned_iops=None, provisioned_throughput=None, pulumi_labels=None, region=None, replica_zones=None, self_link=None, size=None, snapshot=None, source_disk=None, source_disk_id=None, source_snapshot_encryption_keys=None, source_snapshot_id=None, type=None, users=None):
         if access_mode and not isinstance(access_mode, str):
             raise TypeError("Expected argument 'access_mode' to be a str")
         pulumi.set(__self__, "access_mode", access_mode)
@@ -89,6 +89,12 @@ class GetRegionDiskResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if provisioned_iops and not isinstance(provisioned_iops, int):
+            raise TypeError("Expected argument 'provisioned_iops' to be a int")
+        pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        if provisioned_throughput and not isinstance(provisioned_throughput, int):
+            raise TypeError("Expected argument 'provisioned_throughput' to be a int")
+        pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
         if pulumi_labels and not isinstance(pulumi_labels, dict):
             raise TypeError("Expected argument 'pulumi_labels' to be a dict")
         pulumi.set(__self__, "pulumi_labels", pulumi_labels)
@@ -230,6 +236,16 @@ class GetRegionDiskResult:
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> builtins.int:
+        return pulumi.get(self, "provisioned_iops")
+
+    @property
+    @pulumi.getter(name="provisionedThroughput")
+    def provisioned_throughput(self) -> builtins.int:
+        return pulumi.get(self, "provisioned_throughput")
+
+    @property
     @pulumi.getter(name="pulumiLabels")
     def pulumi_labels(self) -> Mapping[str, builtins.str]:
         return pulumi.get(self, "pulumi_labels")
@@ -316,6 +332,8 @@ class AwaitableGetRegionDiskResult(GetRegionDiskResult):
             name=self.name,
             physical_block_size_bytes=self.physical_block_size_bytes,
             project=self.project,
+            provisioned_iops=self.provisioned_iops,
+            provisioned_throughput=self.provisioned_throughput,
             pulumi_labels=self.pulumi_labels,
             region=self.region,
             replica_zones=self.replica_zones,
@@ -375,6 +393,8 @@ def get_region_disk(name: Optional[builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         physical_block_size_bytes=pulumi.get(__ret__, 'physical_block_size_bytes'),
         project=pulumi.get(__ret__, 'project'),
+        provisioned_iops=pulumi.get(__ret__, 'provisioned_iops'),
+        provisioned_throughput=pulumi.get(__ret__, 'provisioned_throughput'),
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         region=pulumi.get(__ret__, 'region'),
         replica_zones=pulumi.get(__ret__, 'replica_zones'),
@@ -431,6 +451,8 @@ def get_region_disk_output(name: Optional[pulumi.Input[builtins.str]] = None,
         name=pulumi.get(__response__, 'name'),
         physical_block_size_bytes=pulumi.get(__response__, 'physical_block_size_bytes'),
         project=pulumi.get(__response__, 'project'),
+        provisioned_iops=pulumi.get(__response__, 'provisioned_iops'),
+        provisioned_throughput=pulumi.get(__response__, 'provisioned_throughput'),
         pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
         region=pulumi.get(__response__, 'region'),
         replica_zones=pulumi.get(__response__, 'replica_zones'),

@@ -73,6 +73,32 @@ import (
 //	}
 //
 // ```
+// ### Firebasehosting Site Default
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/firebase"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := firebase.NewHostingSite(ctx, "default", &firebase.HostingSiteArgs{
+//				Project: pulumi.String("my-project-name"),
+//				SiteId:  pulumi.String("my-project-name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -126,6 +152,8 @@ type HostingSite struct {
 	// used to construct the Firebase-provisioned subdomains for the site, so it must also be a valid
 	// domain name label.
 	SiteId pulumi.StringPtrOutput `pulumi:"siteId"`
+	// The type of Hosting site, either 'DEFAULT_SITE' or `USER_SITE`
+	Type pulumi.StringOutput `pulumi:"type"`
 }
 
 // NewHostingSite registers a new resource with the given unique name, arguments, and options.
@@ -178,6 +206,8 @@ type hostingSiteState struct {
 	// used to construct the Firebase-provisioned subdomains for the site, so it must also be a valid
 	// domain name label.
 	SiteId *string `pulumi:"siteId"`
+	// The type of Hosting site, either 'DEFAULT_SITE' or `USER_SITE`
+	Type *string `pulumi:"type"`
 }
 
 type HostingSiteState struct {
@@ -201,6 +231,8 @@ type HostingSiteState struct {
 	// used to construct the Firebase-provisioned subdomains for the site, so it must also be a valid
 	// domain name label.
 	SiteId pulumi.StringPtrInput
+	// The type of Hosting site, either 'DEFAULT_SITE' or `USER_SITE`
+	Type pulumi.StringPtrInput
 }
 
 func (HostingSiteState) ElementType() reflect.Type {
@@ -354,6 +386,11 @@ func (o HostingSiteOutput) Project() pulumi.StringOutput {
 // domain name label.
 func (o HostingSiteOutput) SiteId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HostingSite) pulumi.StringPtrOutput { return v.SiteId }).(pulumi.StringPtrOutput)
+}
+
+// The type of Hosting site, either 'DEFAULT_SITE' or `USER_SITE`
+func (o HostingSiteOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *HostingSite) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
 type HostingSiteArrayOutput struct{ *pulumi.OutputState }

@@ -34,6 +34,17 @@ import * as utilities from "../utilities";
  *     appId: _default.appId,
  * });
  * ```
+ * ### Firebasehosting Site Default
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.firebase.HostingSite("default", {
+ *     project: "my-project-name",
+ *     siteId: "my-project-name",
+ * });
+ * ```
  *
  * ## Import
  *
@@ -123,6 +134,10 @@ export class HostingSite extends pulumi.CustomResource {
      * domain name label.
      */
     public readonly siteId!: pulumi.Output<string | undefined>;
+    /**
+     * The type of Hosting site, either 'DEFAULT_SITE' or `USER_SITE`
+     */
+    public /*out*/ readonly type!: pulumi.Output<string>;
 
     /**
      * Create a HostingSite resource with the given unique name, arguments, and options.
@@ -142,6 +157,7 @@ export class HostingSite extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["siteId"] = state ? state.siteId : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as HostingSiteArgs | undefined;
             resourceInputs["appId"] = args ? args.appId : undefined;
@@ -149,6 +165,7 @@ export class HostingSite extends pulumi.CustomResource {
             resourceInputs["siteId"] = args ? args.siteId : undefined;
             resourceInputs["defaultUrl"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(HostingSite.__pulumiType, name, resourceInputs, opts);
@@ -189,6 +206,10 @@ export interface HostingSiteState {
      * domain name label.
      */
     siteId?: pulumi.Input<string>;
+    /**
+     * The type of Hosting site, either 'DEFAULT_SITE' or `USER_SITE`
+     */
+    type?: pulumi.Input<string>;
 }
 
 /**

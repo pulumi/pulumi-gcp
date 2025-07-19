@@ -60,6 +60,8 @@ type LookupRegionDiskResult struct {
 	Name                         string                                     `pulumi:"name"`
 	PhysicalBlockSizeBytes       int                                        `pulumi:"physicalBlockSizeBytes"`
 	Project                      *string                                    `pulumi:"project"`
+	ProvisionedIops              int                                        `pulumi:"provisionedIops"`
+	ProvisionedThroughput        int                                        `pulumi:"provisionedThroughput"`
 	PulumiLabels                 map[string]string                          `pulumi:"pulumiLabels"`
 	Region                       *string                                    `pulumi:"region"`
 	ReplicaZones                 []string                                   `pulumi:"replicaZones"`
@@ -194,6 +196,14 @@ func (o LookupRegionDiskResultOutput) PhysicalBlockSizeBytes() pulumi.IntOutput 
 
 func (o LookupRegionDiskResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRegionDiskResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupRegionDiskResultOutput) ProvisionedIops() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupRegionDiskResult) int { return v.ProvisionedIops }).(pulumi.IntOutput)
+}
+
+func (o LookupRegionDiskResultOutput) ProvisionedThroughput() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupRegionDiskResult) int { return v.ProvisionedThroughput }).(pulumi.IntOutput)
 }
 
 func (o LookupRegionDiskResultOutput) PulumiLabels() pulumi.StringMapOutput {

@@ -60,19 +60,23 @@ type LookupReservationArgs struct {
 
 // A collection of values returned by getReservation.
 type LookupReservationResult struct {
-	Commitment        string `pulumi:"commitment"`
-	CreationTimestamp string `pulumi:"creationTimestamp"`
-	Description       string `pulumi:"description"`
+	Commitment                string                              `pulumi:"commitment"`
+	CreationTimestamp         string                              `pulumi:"creationTimestamp"`
+	DeleteAfterDurations      []GetReservationDeleteAfterDuration `pulumi:"deleteAfterDurations"`
+	DeleteAtTime              string                              `pulumi:"deleteAtTime"`
+	Description               string                              `pulumi:"description"`
+	EnableEmergentMaintenance bool                                `pulumi:"enableEmergentMaintenance"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                          string                              `pulumi:"id"`
-	Name                        string                              `pulumi:"name"`
-	Project                     *string                             `pulumi:"project"`
-	SelfLink                    string                              `pulumi:"selfLink"`
-	ShareSettings               []GetReservationShareSetting        `pulumi:"shareSettings"`
-	SpecificReservationRequired bool                                `pulumi:"specificReservationRequired"`
-	SpecificReservations        []GetReservationSpecificReservation `pulumi:"specificReservations"`
-	Status                      string                              `pulumi:"status"`
-	Zone                        string                              `pulumi:"zone"`
+	Id                          string                                   `pulumi:"id"`
+	Name                        string                                   `pulumi:"name"`
+	Project                     *string                                  `pulumi:"project"`
+	ReservationSharingPolicies  []GetReservationReservationSharingPolicy `pulumi:"reservationSharingPolicies"`
+	SelfLink                    string                                   `pulumi:"selfLink"`
+	ShareSettings               []GetReservationShareSetting             `pulumi:"shareSettings"`
+	SpecificReservationRequired bool                                     `pulumi:"specificReservationRequired"`
+	SpecificReservations        []GetReservationSpecificReservation      `pulumi:"specificReservations"`
+	Status                      string                                   `pulumi:"status"`
+	Zone                        string                                   `pulumi:"zone"`
 }
 
 func LookupReservationOutput(ctx *pulumi.Context, args LookupReservationOutputArgs, opts ...pulumi.InvokeOption) LookupReservationResultOutput {
@@ -121,8 +125,20 @@ func (o LookupReservationResultOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReservationResult) string { return v.CreationTimestamp }).(pulumi.StringOutput)
 }
 
+func (o LookupReservationResultOutput) DeleteAfterDurations() GetReservationDeleteAfterDurationArrayOutput {
+	return o.ApplyT(func(v LookupReservationResult) []GetReservationDeleteAfterDuration { return v.DeleteAfterDurations }).(GetReservationDeleteAfterDurationArrayOutput)
+}
+
+func (o LookupReservationResultOutput) DeleteAtTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReservationResult) string { return v.DeleteAtTime }).(pulumi.StringOutput)
+}
+
 func (o LookupReservationResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReservationResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupReservationResultOutput) EnableEmergentMaintenance() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupReservationResult) bool { return v.EnableEmergentMaintenance }).(pulumi.BoolOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -136,6 +152,12 @@ func (o LookupReservationResultOutput) Name() pulumi.StringOutput {
 
 func (o LookupReservationResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupReservationResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupReservationResultOutput) ReservationSharingPolicies() GetReservationReservationSharingPolicyArrayOutput {
+	return o.ApplyT(func(v LookupReservationResult) []GetReservationReservationSharingPolicy {
+		return v.ReservationSharingPolicies
+	}).(GetReservationReservationSharingPolicyArrayOutput)
 }
 
 func (o LookupReservationResultOutput) SelfLink() pulumi.StringOutput {

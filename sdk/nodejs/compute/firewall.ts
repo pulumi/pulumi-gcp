@@ -200,6 +200,11 @@ export class Firewall extends pulumi.CustomResource {
      */
     public readonly network!: pulumi.Output<string>;
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    public readonly params!: pulumi.Output<outputs.compute.FirewallParams | undefined>;
+    /**
      * Priority for this rule. This is an integer between 0 and 65535, both
      * inclusive. When not specified, the value assumed is 1000. Relative
      * priorities determine precedence of conflicting rules. Lower value of
@@ -298,6 +303,7 @@ export class Firewall extends pulumi.CustomResource {
             resourceInputs["logConfig"] = state ? state.logConfig : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["network"] = state ? state.network : undefined;
+            resourceInputs["params"] = state ? state.params : undefined;
             resourceInputs["priority"] = state ? state.priority : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
@@ -321,6 +327,7 @@ export class Firewall extends pulumi.CustomResource {
             resourceInputs["logConfig"] = args ? args.logConfig : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["params"] = args ? args.params : undefined;
             resourceInputs["priority"] = args ? args.priority : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["sourceRanges"] = args ? args.sourceRanges : undefined;
@@ -409,6 +416,11 @@ export interface FirewallState {
      * The name or selfLink of the network to attach this firewall to.
      */
     network?: pulumi.Input<string>;
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.FirewallParams>;
     /**
      * Priority for this rule. This is an integer between 0 and 65535, both
      * inclusive. When not specified, the value assumed is 1000. Relative
@@ -554,6 +566,11 @@ export interface FirewallArgs {
      * The name or selfLink of the network to attach this firewall to.
      */
     network: pulumi.Input<string>;
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.FirewallParams>;
     /**
      * Priority for this rule. This is an integer between 0 and 65535, both
      * inclusive. When not specified, the value assumed is 1000. Relative

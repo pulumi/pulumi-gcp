@@ -13,6 +13,1735 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetRegionNetworkEndpointGroupCloudRun struct {
+	// Cloud Run service is the main resource of Cloud Run.
+	// The service must be 1-63 characters long, and comply with RFC1035.
+	// Example value: "run-service".
+	Service string `pulumi:"service"`
+	// Cloud Run tag represents the "named-revision" to provide
+	// additional fine-grained traffic routing information.
+	// The tag must be 1-63 characters long, and comply with RFC1035.
+	// Example value: "revision-0010".
+	Tag string `pulumi:"tag"`
+	// A template to parse service and tag fields from a request URL.
+	// URL mask allows for routing to multiple Run services without having
+	// to create multiple network endpoint groups and backend services.
+	//
+	// For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2"
+	// an be backed by the same Serverless Network Endpoint Group (NEG) with
+	// URL mask ".domain.com/". The URL mask will parse them to { service="bar1", tag="foo1" }
+	// and { service="bar2", tag="foo2" } respectively.
+	UrlMask string `pulumi:"urlMask"`
+}
+
+// GetRegionNetworkEndpointGroupCloudRunInput is an input type that accepts GetRegionNetworkEndpointGroupCloudRunArgs and GetRegionNetworkEndpointGroupCloudRunOutput values.
+// You can construct a concrete instance of `GetRegionNetworkEndpointGroupCloudRunInput` via:
+//
+//	GetRegionNetworkEndpointGroupCloudRunArgs{...}
+type GetRegionNetworkEndpointGroupCloudRunInput interface {
+	pulumi.Input
+
+	ToGetRegionNetworkEndpointGroupCloudRunOutput() GetRegionNetworkEndpointGroupCloudRunOutput
+	ToGetRegionNetworkEndpointGroupCloudRunOutputWithContext(context.Context) GetRegionNetworkEndpointGroupCloudRunOutput
+}
+
+type GetRegionNetworkEndpointGroupCloudRunArgs struct {
+	// Cloud Run service is the main resource of Cloud Run.
+	// The service must be 1-63 characters long, and comply with RFC1035.
+	// Example value: "run-service".
+	Service pulumi.StringInput `pulumi:"service"`
+	// Cloud Run tag represents the "named-revision" to provide
+	// additional fine-grained traffic routing information.
+	// The tag must be 1-63 characters long, and comply with RFC1035.
+	// Example value: "revision-0010".
+	Tag pulumi.StringInput `pulumi:"tag"`
+	// A template to parse service and tag fields from a request URL.
+	// URL mask allows for routing to multiple Run services without having
+	// to create multiple network endpoint groups and backend services.
+	//
+	// For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2"
+	// an be backed by the same Serverless Network Endpoint Group (NEG) with
+	// URL mask ".domain.com/". The URL mask will parse them to { service="bar1", tag="foo1" }
+	// and { service="bar2", tag="foo2" } respectively.
+	UrlMask pulumi.StringInput `pulumi:"urlMask"`
+}
+
+func (GetRegionNetworkEndpointGroupCloudRunArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionNetworkEndpointGroupCloudRun)(nil)).Elem()
+}
+
+func (i GetRegionNetworkEndpointGroupCloudRunArgs) ToGetRegionNetworkEndpointGroupCloudRunOutput() GetRegionNetworkEndpointGroupCloudRunOutput {
+	return i.ToGetRegionNetworkEndpointGroupCloudRunOutputWithContext(context.Background())
+}
+
+func (i GetRegionNetworkEndpointGroupCloudRunArgs) ToGetRegionNetworkEndpointGroupCloudRunOutputWithContext(ctx context.Context) GetRegionNetworkEndpointGroupCloudRunOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionNetworkEndpointGroupCloudRunOutput)
+}
+
+// GetRegionNetworkEndpointGroupCloudRunArrayInput is an input type that accepts GetRegionNetworkEndpointGroupCloudRunArray and GetRegionNetworkEndpointGroupCloudRunArrayOutput values.
+// You can construct a concrete instance of `GetRegionNetworkEndpointGroupCloudRunArrayInput` via:
+//
+//	GetRegionNetworkEndpointGroupCloudRunArray{ GetRegionNetworkEndpointGroupCloudRunArgs{...} }
+type GetRegionNetworkEndpointGroupCloudRunArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionNetworkEndpointGroupCloudRunArrayOutput() GetRegionNetworkEndpointGroupCloudRunArrayOutput
+	ToGetRegionNetworkEndpointGroupCloudRunArrayOutputWithContext(context.Context) GetRegionNetworkEndpointGroupCloudRunArrayOutput
+}
+
+type GetRegionNetworkEndpointGroupCloudRunArray []GetRegionNetworkEndpointGroupCloudRunInput
+
+func (GetRegionNetworkEndpointGroupCloudRunArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionNetworkEndpointGroupCloudRun)(nil)).Elem()
+}
+
+func (i GetRegionNetworkEndpointGroupCloudRunArray) ToGetRegionNetworkEndpointGroupCloudRunArrayOutput() GetRegionNetworkEndpointGroupCloudRunArrayOutput {
+	return i.ToGetRegionNetworkEndpointGroupCloudRunArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionNetworkEndpointGroupCloudRunArray) ToGetRegionNetworkEndpointGroupCloudRunArrayOutputWithContext(ctx context.Context) GetRegionNetworkEndpointGroupCloudRunArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionNetworkEndpointGroupCloudRunArrayOutput)
+}
+
+type GetRegionNetworkEndpointGroupCloudRunOutput struct{ *pulumi.OutputState }
+
+func (GetRegionNetworkEndpointGroupCloudRunOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionNetworkEndpointGroupCloudRun)(nil)).Elem()
+}
+
+func (o GetRegionNetworkEndpointGroupCloudRunOutput) ToGetRegionNetworkEndpointGroupCloudRunOutput() GetRegionNetworkEndpointGroupCloudRunOutput {
+	return o
+}
+
+func (o GetRegionNetworkEndpointGroupCloudRunOutput) ToGetRegionNetworkEndpointGroupCloudRunOutputWithContext(ctx context.Context) GetRegionNetworkEndpointGroupCloudRunOutput {
+	return o
+}
+
+// Cloud Run service is the main resource of Cloud Run.
+// The service must be 1-63 characters long, and comply with RFC1035.
+// Example value: "run-service".
+func (o GetRegionNetworkEndpointGroupCloudRunOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionNetworkEndpointGroupCloudRun) string { return v.Service }).(pulumi.StringOutput)
+}
+
+// Cloud Run tag represents the "named-revision" to provide
+// additional fine-grained traffic routing information.
+// The tag must be 1-63 characters long, and comply with RFC1035.
+// Example value: "revision-0010".
+func (o GetRegionNetworkEndpointGroupCloudRunOutput) Tag() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionNetworkEndpointGroupCloudRun) string { return v.Tag }).(pulumi.StringOutput)
+}
+
+// A template to parse service and tag fields from a request URL.
+// URL mask allows for routing to multiple Run services without having
+// to create multiple network endpoint groups and backend services.
+//
+// For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2"
+// an be backed by the same Serverless Network Endpoint Group (NEG) with
+// URL mask ".domain.com/". The URL mask will parse them to { service="bar1", tag="foo1" }
+// and { service="bar2", tag="foo2" } respectively.
+func (o GetRegionNetworkEndpointGroupCloudRunOutput) UrlMask() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionNetworkEndpointGroupCloudRun) string { return v.UrlMask }).(pulumi.StringOutput)
+}
+
+type GetRegionNetworkEndpointGroupCloudRunArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionNetworkEndpointGroupCloudRunArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionNetworkEndpointGroupCloudRun)(nil)).Elem()
+}
+
+func (o GetRegionNetworkEndpointGroupCloudRunArrayOutput) ToGetRegionNetworkEndpointGroupCloudRunArrayOutput() GetRegionNetworkEndpointGroupCloudRunArrayOutput {
+	return o
+}
+
+func (o GetRegionNetworkEndpointGroupCloudRunArrayOutput) ToGetRegionNetworkEndpointGroupCloudRunArrayOutputWithContext(ctx context.Context) GetRegionNetworkEndpointGroupCloudRunArrayOutput {
+	return o
+}
+
+func (o GetRegionNetworkEndpointGroupCloudRunArrayOutput) Index(i pulumi.IntInput) GetRegionNetworkEndpointGroupCloudRunOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionNetworkEndpointGroupCloudRun {
+		return vs[0].([]GetRegionNetworkEndpointGroupCloudRun)[vs[1].(int)]
+	}).(GetRegionNetworkEndpointGroupCloudRunOutput)
+}
+
+type GetRegionNetworkEndpointGroupPscData struct {
+	// The PSC producer port to use when consumer PSC NEG connects to a producer. If
+	// this flag isn't specified for a PSC NEG with endpoint type
+	// private-service-connect, then PSC NEG will be connected to a first port in the
+	// available PSC producer port range.
+	ProducerPort string `pulumi:"producerPort"`
+}
+
+// GetRegionNetworkEndpointGroupPscDataInput is an input type that accepts GetRegionNetworkEndpointGroupPscDataArgs and GetRegionNetworkEndpointGroupPscDataOutput values.
+// You can construct a concrete instance of `GetRegionNetworkEndpointGroupPscDataInput` via:
+//
+//	GetRegionNetworkEndpointGroupPscDataArgs{...}
+type GetRegionNetworkEndpointGroupPscDataInput interface {
+	pulumi.Input
+
+	ToGetRegionNetworkEndpointGroupPscDataOutput() GetRegionNetworkEndpointGroupPscDataOutput
+	ToGetRegionNetworkEndpointGroupPscDataOutputWithContext(context.Context) GetRegionNetworkEndpointGroupPscDataOutput
+}
+
+type GetRegionNetworkEndpointGroupPscDataArgs struct {
+	// The PSC producer port to use when consumer PSC NEG connects to a producer. If
+	// this flag isn't specified for a PSC NEG with endpoint type
+	// private-service-connect, then PSC NEG will be connected to a first port in the
+	// available PSC producer port range.
+	ProducerPort pulumi.StringInput `pulumi:"producerPort"`
+}
+
+func (GetRegionNetworkEndpointGroupPscDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionNetworkEndpointGroupPscData)(nil)).Elem()
+}
+
+func (i GetRegionNetworkEndpointGroupPscDataArgs) ToGetRegionNetworkEndpointGroupPscDataOutput() GetRegionNetworkEndpointGroupPscDataOutput {
+	return i.ToGetRegionNetworkEndpointGroupPscDataOutputWithContext(context.Background())
+}
+
+func (i GetRegionNetworkEndpointGroupPscDataArgs) ToGetRegionNetworkEndpointGroupPscDataOutputWithContext(ctx context.Context) GetRegionNetworkEndpointGroupPscDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionNetworkEndpointGroupPscDataOutput)
+}
+
+// GetRegionNetworkEndpointGroupPscDataArrayInput is an input type that accepts GetRegionNetworkEndpointGroupPscDataArray and GetRegionNetworkEndpointGroupPscDataArrayOutput values.
+// You can construct a concrete instance of `GetRegionNetworkEndpointGroupPscDataArrayInput` via:
+//
+//	GetRegionNetworkEndpointGroupPscDataArray{ GetRegionNetworkEndpointGroupPscDataArgs{...} }
+type GetRegionNetworkEndpointGroupPscDataArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionNetworkEndpointGroupPscDataArrayOutput() GetRegionNetworkEndpointGroupPscDataArrayOutput
+	ToGetRegionNetworkEndpointGroupPscDataArrayOutputWithContext(context.Context) GetRegionNetworkEndpointGroupPscDataArrayOutput
+}
+
+type GetRegionNetworkEndpointGroupPscDataArray []GetRegionNetworkEndpointGroupPscDataInput
+
+func (GetRegionNetworkEndpointGroupPscDataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionNetworkEndpointGroupPscData)(nil)).Elem()
+}
+
+func (i GetRegionNetworkEndpointGroupPscDataArray) ToGetRegionNetworkEndpointGroupPscDataArrayOutput() GetRegionNetworkEndpointGroupPscDataArrayOutput {
+	return i.ToGetRegionNetworkEndpointGroupPscDataArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionNetworkEndpointGroupPscDataArray) ToGetRegionNetworkEndpointGroupPscDataArrayOutputWithContext(ctx context.Context) GetRegionNetworkEndpointGroupPscDataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionNetworkEndpointGroupPscDataArrayOutput)
+}
+
+type GetRegionNetworkEndpointGroupPscDataOutput struct{ *pulumi.OutputState }
+
+func (GetRegionNetworkEndpointGroupPscDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionNetworkEndpointGroupPscData)(nil)).Elem()
+}
+
+func (o GetRegionNetworkEndpointGroupPscDataOutput) ToGetRegionNetworkEndpointGroupPscDataOutput() GetRegionNetworkEndpointGroupPscDataOutput {
+	return o
+}
+
+func (o GetRegionNetworkEndpointGroupPscDataOutput) ToGetRegionNetworkEndpointGroupPscDataOutputWithContext(ctx context.Context) GetRegionNetworkEndpointGroupPscDataOutput {
+	return o
+}
+
+// The PSC producer port to use when consumer PSC NEG connects to a producer. If
+// this flag isn't specified for a PSC NEG with endpoint type
+// private-service-connect, then PSC NEG will be connected to a first port in the
+// available PSC producer port range.
+func (o GetRegionNetworkEndpointGroupPscDataOutput) ProducerPort() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionNetworkEndpointGroupPscData) string { return v.ProducerPort }).(pulumi.StringOutput)
+}
+
+type GetRegionNetworkEndpointGroupPscDataArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionNetworkEndpointGroupPscDataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionNetworkEndpointGroupPscData)(nil)).Elem()
+}
+
+func (o GetRegionNetworkEndpointGroupPscDataArrayOutput) ToGetRegionNetworkEndpointGroupPscDataArrayOutput() GetRegionNetworkEndpointGroupPscDataArrayOutput {
+	return o
+}
+
+func (o GetRegionNetworkEndpointGroupPscDataArrayOutput) ToGetRegionNetworkEndpointGroupPscDataArrayOutputWithContext(ctx context.Context) GetRegionNetworkEndpointGroupPscDataArrayOutput {
+	return o
+}
+
+func (o GetRegionNetworkEndpointGroupPscDataArrayOutput) Index(i pulumi.IntInput) GetRegionNetworkEndpointGroupPscDataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionNetworkEndpointGroupPscData {
+		return vs[0].([]GetRegionNetworkEndpointGroupPscData)[vs[1].(int)]
+	}).(GetRegionNetworkEndpointGroupPscDataOutput)
+}
+
+type GetRegionNetworkEndpointGroupServerlessDeployment struct {
+	// The platform of the NEG backend target(s). Possible values:
+	// API Gateway: apigateway.googleapis.com
+	Platform string `pulumi:"platform"`
+	// The user-defined name of the workload/instance. This value must be provided explicitly or in the urlMask.
+	// The resource identified by this value is platform-specific and is as follows: API Gateway: The gateway ID, App Engine: The service name,
+	// Cloud Functions: The function name, Cloud Run: The service name
+	Resource string `pulumi:"resource"`
+	// A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources
+	// on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources.
+	// The fields parsed by this template are platform-specific and are as follows: API Gateway: The gateway ID,
+	// App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
+	UrlMask string `pulumi:"urlMask"`
+	// The optional resource version. The version identified by this value is platform-specific and is follows:
+	// API Gateway: Unused, App Engine: The service version, Cloud Functions: Unused, Cloud Run: The service tag
+	Version string `pulumi:"version"`
+}
+
+// GetRegionNetworkEndpointGroupServerlessDeploymentInput is an input type that accepts GetRegionNetworkEndpointGroupServerlessDeploymentArgs and GetRegionNetworkEndpointGroupServerlessDeploymentOutput values.
+// You can construct a concrete instance of `GetRegionNetworkEndpointGroupServerlessDeploymentInput` via:
+//
+//	GetRegionNetworkEndpointGroupServerlessDeploymentArgs{...}
+type GetRegionNetworkEndpointGroupServerlessDeploymentInput interface {
+	pulumi.Input
+
+	ToGetRegionNetworkEndpointGroupServerlessDeploymentOutput() GetRegionNetworkEndpointGroupServerlessDeploymentOutput
+	ToGetRegionNetworkEndpointGroupServerlessDeploymentOutputWithContext(context.Context) GetRegionNetworkEndpointGroupServerlessDeploymentOutput
+}
+
+type GetRegionNetworkEndpointGroupServerlessDeploymentArgs struct {
+	// The platform of the NEG backend target(s). Possible values:
+	// API Gateway: apigateway.googleapis.com
+	Platform pulumi.StringInput `pulumi:"platform"`
+	// The user-defined name of the workload/instance. This value must be provided explicitly or in the urlMask.
+	// The resource identified by this value is platform-specific and is as follows: API Gateway: The gateway ID, App Engine: The service name,
+	// Cloud Functions: The function name, Cloud Run: The service name
+	Resource pulumi.StringInput `pulumi:"resource"`
+	// A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources
+	// on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources.
+	// The fields parsed by this template are platform-specific and are as follows: API Gateway: The gateway ID,
+	// App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
+	UrlMask pulumi.StringInput `pulumi:"urlMask"`
+	// The optional resource version. The version identified by this value is platform-specific and is follows:
+	// API Gateway: Unused, App Engine: The service version, Cloud Functions: Unused, Cloud Run: The service tag
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetRegionNetworkEndpointGroupServerlessDeploymentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionNetworkEndpointGroupServerlessDeployment)(nil)).Elem()
+}
+
+func (i GetRegionNetworkEndpointGroupServerlessDeploymentArgs) ToGetRegionNetworkEndpointGroupServerlessDeploymentOutput() GetRegionNetworkEndpointGroupServerlessDeploymentOutput {
+	return i.ToGetRegionNetworkEndpointGroupServerlessDeploymentOutputWithContext(context.Background())
+}
+
+func (i GetRegionNetworkEndpointGroupServerlessDeploymentArgs) ToGetRegionNetworkEndpointGroupServerlessDeploymentOutputWithContext(ctx context.Context) GetRegionNetworkEndpointGroupServerlessDeploymentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionNetworkEndpointGroupServerlessDeploymentOutput)
+}
+
+// GetRegionNetworkEndpointGroupServerlessDeploymentArrayInput is an input type that accepts GetRegionNetworkEndpointGroupServerlessDeploymentArray and GetRegionNetworkEndpointGroupServerlessDeploymentArrayOutput values.
+// You can construct a concrete instance of `GetRegionNetworkEndpointGroupServerlessDeploymentArrayInput` via:
+//
+//	GetRegionNetworkEndpointGroupServerlessDeploymentArray{ GetRegionNetworkEndpointGroupServerlessDeploymentArgs{...} }
+type GetRegionNetworkEndpointGroupServerlessDeploymentArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionNetworkEndpointGroupServerlessDeploymentArrayOutput() GetRegionNetworkEndpointGroupServerlessDeploymentArrayOutput
+	ToGetRegionNetworkEndpointGroupServerlessDeploymentArrayOutputWithContext(context.Context) GetRegionNetworkEndpointGroupServerlessDeploymentArrayOutput
+}
+
+type GetRegionNetworkEndpointGroupServerlessDeploymentArray []GetRegionNetworkEndpointGroupServerlessDeploymentInput
+
+func (GetRegionNetworkEndpointGroupServerlessDeploymentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionNetworkEndpointGroupServerlessDeployment)(nil)).Elem()
+}
+
+func (i GetRegionNetworkEndpointGroupServerlessDeploymentArray) ToGetRegionNetworkEndpointGroupServerlessDeploymentArrayOutput() GetRegionNetworkEndpointGroupServerlessDeploymentArrayOutput {
+	return i.ToGetRegionNetworkEndpointGroupServerlessDeploymentArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionNetworkEndpointGroupServerlessDeploymentArray) ToGetRegionNetworkEndpointGroupServerlessDeploymentArrayOutputWithContext(ctx context.Context) GetRegionNetworkEndpointGroupServerlessDeploymentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionNetworkEndpointGroupServerlessDeploymentArrayOutput)
+}
+
+type GetRegionNetworkEndpointGroupServerlessDeploymentOutput struct{ *pulumi.OutputState }
+
+func (GetRegionNetworkEndpointGroupServerlessDeploymentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionNetworkEndpointGroupServerlessDeployment)(nil)).Elem()
+}
+
+func (o GetRegionNetworkEndpointGroupServerlessDeploymentOutput) ToGetRegionNetworkEndpointGroupServerlessDeploymentOutput() GetRegionNetworkEndpointGroupServerlessDeploymentOutput {
+	return o
+}
+
+func (o GetRegionNetworkEndpointGroupServerlessDeploymentOutput) ToGetRegionNetworkEndpointGroupServerlessDeploymentOutputWithContext(ctx context.Context) GetRegionNetworkEndpointGroupServerlessDeploymentOutput {
+	return o
+}
+
+// The platform of the NEG backend target(s). Possible values:
+// API Gateway: apigateway.googleapis.com
+func (o GetRegionNetworkEndpointGroupServerlessDeploymentOutput) Platform() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionNetworkEndpointGroupServerlessDeployment) string { return v.Platform }).(pulumi.StringOutput)
+}
+
+// The user-defined name of the workload/instance. This value must be provided explicitly or in the urlMask.
+// The resource identified by this value is platform-specific and is as follows: API Gateway: The gateway ID, App Engine: The service name,
+// Cloud Functions: The function name, Cloud Run: The service name
+func (o GetRegionNetworkEndpointGroupServerlessDeploymentOutput) Resource() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionNetworkEndpointGroupServerlessDeployment) string { return v.Resource }).(pulumi.StringOutput)
+}
+
+// A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources
+// on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources.
+// The fields parsed by this template are platform-specific and are as follows: API Gateway: The gateway ID,
+// App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
+func (o GetRegionNetworkEndpointGroupServerlessDeploymentOutput) UrlMask() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionNetworkEndpointGroupServerlessDeployment) string { return v.UrlMask }).(pulumi.StringOutput)
+}
+
+// The optional resource version. The version identified by this value is platform-specific and is follows:
+// API Gateway: Unused, App Engine: The service version, Cloud Functions: Unused, Cloud Run: The service tag
+func (o GetRegionNetworkEndpointGroupServerlessDeploymentOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionNetworkEndpointGroupServerlessDeployment) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetRegionNetworkEndpointGroupServerlessDeploymentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionNetworkEndpointGroupServerlessDeploymentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionNetworkEndpointGroupServerlessDeployment)(nil)).Elem()
+}
+
+func (o GetRegionNetworkEndpointGroupServerlessDeploymentArrayOutput) ToGetRegionNetworkEndpointGroupServerlessDeploymentArrayOutput() GetRegionNetworkEndpointGroupServerlessDeploymentArrayOutput {
+	return o
+}
+
+func (o GetRegionNetworkEndpointGroupServerlessDeploymentArrayOutput) ToGetRegionNetworkEndpointGroupServerlessDeploymentArrayOutputWithContext(ctx context.Context) GetRegionNetworkEndpointGroupServerlessDeploymentArrayOutput {
+	return o
+}
+
+func (o GetRegionNetworkEndpointGroupServerlessDeploymentArrayOutput) Index(i pulumi.IntInput) GetRegionNetworkEndpointGroupServerlessDeploymentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionNetworkEndpointGroupServerlessDeployment {
+		return vs[0].([]GetRegionNetworkEndpointGroupServerlessDeployment)[vs[1].(int)]
+	}).(GetRegionNetworkEndpointGroupServerlessDeploymentOutput)
+}
+
+type GetReservationDeleteAfterDuration struct {
+	// Number of nanoseconds for the auto-delete duration.
+	Nanos int `pulumi:"nanos"`
+	// Number of seconds for the auto-delete duration.
+	Seconds string `pulumi:"seconds"`
+}
+
+// GetReservationDeleteAfterDurationInput is an input type that accepts GetReservationDeleteAfterDurationArgs and GetReservationDeleteAfterDurationOutput values.
+// You can construct a concrete instance of `GetReservationDeleteAfterDurationInput` via:
+//
+//	GetReservationDeleteAfterDurationArgs{...}
+type GetReservationDeleteAfterDurationInput interface {
+	pulumi.Input
+
+	ToGetReservationDeleteAfterDurationOutput() GetReservationDeleteAfterDurationOutput
+	ToGetReservationDeleteAfterDurationOutputWithContext(context.Context) GetReservationDeleteAfterDurationOutput
+}
+
+type GetReservationDeleteAfterDurationArgs struct {
+	// Number of nanoseconds for the auto-delete duration.
+	Nanos pulumi.IntInput `pulumi:"nanos"`
+	// Number of seconds for the auto-delete duration.
+	Seconds pulumi.StringInput `pulumi:"seconds"`
+}
+
+func (GetReservationDeleteAfterDurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationDeleteAfterDuration)(nil)).Elem()
+}
+
+func (i GetReservationDeleteAfterDurationArgs) ToGetReservationDeleteAfterDurationOutput() GetReservationDeleteAfterDurationOutput {
+	return i.ToGetReservationDeleteAfterDurationOutputWithContext(context.Background())
+}
+
+func (i GetReservationDeleteAfterDurationArgs) ToGetReservationDeleteAfterDurationOutputWithContext(ctx context.Context) GetReservationDeleteAfterDurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationDeleteAfterDurationOutput)
+}
+
+// GetReservationDeleteAfterDurationArrayInput is an input type that accepts GetReservationDeleteAfterDurationArray and GetReservationDeleteAfterDurationArrayOutput values.
+// You can construct a concrete instance of `GetReservationDeleteAfterDurationArrayInput` via:
+//
+//	GetReservationDeleteAfterDurationArray{ GetReservationDeleteAfterDurationArgs{...} }
+type GetReservationDeleteAfterDurationArrayInput interface {
+	pulumi.Input
+
+	ToGetReservationDeleteAfterDurationArrayOutput() GetReservationDeleteAfterDurationArrayOutput
+	ToGetReservationDeleteAfterDurationArrayOutputWithContext(context.Context) GetReservationDeleteAfterDurationArrayOutput
+}
+
+type GetReservationDeleteAfterDurationArray []GetReservationDeleteAfterDurationInput
+
+func (GetReservationDeleteAfterDurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationDeleteAfterDuration)(nil)).Elem()
+}
+
+func (i GetReservationDeleteAfterDurationArray) ToGetReservationDeleteAfterDurationArrayOutput() GetReservationDeleteAfterDurationArrayOutput {
+	return i.ToGetReservationDeleteAfterDurationArrayOutputWithContext(context.Background())
+}
+
+func (i GetReservationDeleteAfterDurationArray) ToGetReservationDeleteAfterDurationArrayOutputWithContext(ctx context.Context) GetReservationDeleteAfterDurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationDeleteAfterDurationArrayOutput)
+}
+
+type GetReservationDeleteAfterDurationOutput struct{ *pulumi.OutputState }
+
+func (GetReservationDeleteAfterDurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationDeleteAfterDuration)(nil)).Elem()
+}
+
+func (o GetReservationDeleteAfterDurationOutput) ToGetReservationDeleteAfterDurationOutput() GetReservationDeleteAfterDurationOutput {
+	return o
+}
+
+func (o GetReservationDeleteAfterDurationOutput) ToGetReservationDeleteAfterDurationOutputWithContext(ctx context.Context) GetReservationDeleteAfterDurationOutput {
+	return o
+}
+
+// Number of nanoseconds for the auto-delete duration.
+func (o GetReservationDeleteAfterDurationOutput) Nanos() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReservationDeleteAfterDuration) int { return v.Nanos }).(pulumi.IntOutput)
+}
+
+// Number of seconds for the auto-delete duration.
+func (o GetReservationDeleteAfterDurationOutput) Seconds() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReservationDeleteAfterDuration) string { return v.Seconds }).(pulumi.StringOutput)
+}
+
+type GetReservationDeleteAfterDurationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetReservationDeleteAfterDurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationDeleteAfterDuration)(nil)).Elem()
+}
+
+func (o GetReservationDeleteAfterDurationArrayOutput) ToGetReservationDeleteAfterDurationArrayOutput() GetReservationDeleteAfterDurationArrayOutput {
+	return o
+}
+
+func (o GetReservationDeleteAfterDurationArrayOutput) ToGetReservationDeleteAfterDurationArrayOutputWithContext(ctx context.Context) GetReservationDeleteAfterDurationArrayOutput {
+	return o
+}
+
+func (o GetReservationDeleteAfterDurationArrayOutput) Index(i pulumi.IntInput) GetReservationDeleteAfterDurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReservationDeleteAfterDuration {
+		return vs[0].([]GetReservationDeleteAfterDuration)[vs[1].(int)]
+	}).(GetReservationDeleteAfterDurationOutput)
+}
+
+type GetReservationReservationSharingPolicy struct {
+	// Sharing config for all Google Cloud services. Possible values: ["ALLOW_ALL", "DISALLOW_ALL"]
+	ServiceShareType string `pulumi:"serviceShareType"`
+}
+
+// GetReservationReservationSharingPolicyInput is an input type that accepts GetReservationReservationSharingPolicyArgs and GetReservationReservationSharingPolicyOutput values.
+// You can construct a concrete instance of `GetReservationReservationSharingPolicyInput` via:
+//
+//	GetReservationReservationSharingPolicyArgs{...}
+type GetReservationReservationSharingPolicyInput interface {
+	pulumi.Input
+
+	ToGetReservationReservationSharingPolicyOutput() GetReservationReservationSharingPolicyOutput
+	ToGetReservationReservationSharingPolicyOutputWithContext(context.Context) GetReservationReservationSharingPolicyOutput
+}
+
+type GetReservationReservationSharingPolicyArgs struct {
+	// Sharing config for all Google Cloud services. Possible values: ["ALLOW_ALL", "DISALLOW_ALL"]
+	ServiceShareType pulumi.StringInput `pulumi:"serviceShareType"`
+}
+
+func (GetReservationReservationSharingPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationReservationSharingPolicy)(nil)).Elem()
+}
+
+func (i GetReservationReservationSharingPolicyArgs) ToGetReservationReservationSharingPolicyOutput() GetReservationReservationSharingPolicyOutput {
+	return i.ToGetReservationReservationSharingPolicyOutputWithContext(context.Background())
+}
+
+func (i GetReservationReservationSharingPolicyArgs) ToGetReservationReservationSharingPolicyOutputWithContext(ctx context.Context) GetReservationReservationSharingPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationReservationSharingPolicyOutput)
+}
+
+// GetReservationReservationSharingPolicyArrayInput is an input type that accepts GetReservationReservationSharingPolicyArray and GetReservationReservationSharingPolicyArrayOutput values.
+// You can construct a concrete instance of `GetReservationReservationSharingPolicyArrayInput` via:
+//
+//	GetReservationReservationSharingPolicyArray{ GetReservationReservationSharingPolicyArgs{...} }
+type GetReservationReservationSharingPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetReservationReservationSharingPolicyArrayOutput() GetReservationReservationSharingPolicyArrayOutput
+	ToGetReservationReservationSharingPolicyArrayOutputWithContext(context.Context) GetReservationReservationSharingPolicyArrayOutput
+}
+
+type GetReservationReservationSharingPolicyArray []GetReservationReservationSharingPolicyInput
+
+func (GetReservationReservationSharingPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationReservationSharingPolicy)(nil)).Elem()
+}
+
+func (i GetReservationReservationSharingPolicyArray) ToGetReservationReservationSharingPolicyArrayOutput() GetReservationReservationSharingPolicyArrayOutput {
+	return i.ToGetReservationReservationSharingPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetReservationReservationSharingPolicyArray) ToGetReservationReservationSharingPolicyArrayOutputWithContext(ctx context.Context) GetReservationReservationSharingPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationReservationSharingPolicyArrayOutput)
+}
+
+type GetReservationReservationSharingPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetReservationReservationSharingPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationReservationSharingPolicy)(nil)).Elem()
+}
+
+func (o GetReservationReservationSharingPolicyOutput) ToGetReservationReservationSharingPolicyOutput() GetReservationReservationSharingPolicyOutput {
+	return o
+}
+
+func (o GetReservationReservationSharingPolicyOutput) ToGetReservationReservationSharingPolicyOutputWithContext(ctx context.Context) GetReservationReservationSharingPolicyOutput {
+	return o
+}
+
+// Sharing config for all Google Cloud services. Possible values: ["ALLOW_ALL", "DISALLOW_ALL"]
+func (o GetReservationReservationSharingPolicyOutput) ServiceShareType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReservationReservationSharingPolicy) string { return v.ServiceShareType }).(pulumi.StringOutput)
+}
+
+type GetReservationReservationSharingPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetReservationReservationSharingPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationReservationSharingPolicy)(nil)).Elem()
+}
+
+func (o GetReservationReservationSharingPolicyArrayOutput) ToGetReservationReservationSharingPolicyArrayOutput() GetReservationReservationSharingPolicyArrayOutput {
+	return o
+}
+
+func (o GetReservationReservationSharingPolicyArrayOutput) ToGetReservationReservationSharingPolicyArrayOutputWithContext(ctx context.Context) GetReservationReservationSharingPolicyArrayOutput {
+	return o
+}
+
+func (o GetReservationReservationSharingPolicyArrayOutput) Index(i pulumi.IntInput) GetReservationReservationSharingPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReservationReservationSharingPolicy {
+		return vs[0].([]GetReservationReservationSharingPolicy)[vs[1].(int)]
+	}).(GetReservationReservationSharingPolicyOutput)
+}
+
+type GetReservationShareSetting struct {
+	// A map of project number and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
+	ProjectMaps []GetReservationShareSettingProjectMap `pulumi:"projectMaps"`
+	// List of project IDs with which the reservation is shared.
+	Projects []string `pulumi:"projects"`
+	// Type of sharing for this shared-reservation Possible values: ["LOCAL", "SPECIFIC_PROJECTS"]
+	ShareType string `pulumi:"shareType"`
+}
+
+// GetReservationShareSettingInput is an input type that accepts GetReservationShareSettingArgs and GetReservationShareSettingOutput values.
+// You can construct a concrete instance of `GetReservationShareSettingInput` via:
+//
+//	GetReservationShareSettingArgs{...}
+type GetReservationShareSettingInput interface {
+	pulumi.Input
+
+	ToGetReservationShareSettingOutput() GetReservationShareSettingOutput
+	ToGetReservationShareSettingOutputWithContext(context.Context) GetReservationShareSettingOutput
+}
+
+type GetReservationShareSettingArgs struct {
+	// A map of project number and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
+	ProjectMaps GetReservationShareSettingProjectMapArrayInput `pulumi:"projectMaps"`
+	// List of project IDs with which the reservation is shared.
+	Projects pulumi.StringArrayInput `pulumi:"projects"`
+	// Type of sharing for this shared-reservation Possible values: ["LOCAL", "SPECIFIC_PROJECTS"]
+	ShareType pulumi.StringInput `pulumi:"shareType"`
+}
+
+func (GetReservationShareSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationShareSetting)(nil)).Elem()
+}
+
+func (i GetReservationShareSettingArgs) ToGetReservationShareSettingOutput() GetReservationShareSettingOutput {
+	return i.ToGetReservationShareSettingOutputWithContext(context.Background())
+}
+
+func (i GetReservationShareSettingArgs) ToGetReservationShareSettingOutputWithContext(ctx context.Context) GetReservationShareSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationShareSettingOutput)
+}
+
+// GetReservationShareSettingArrayInput is an input type that accepts GetReservationShareSettingArray and GetReservationShareSettingArrayOutput values.
+// You can construct a concrete instance of `GetReservationShareSettingArrayInput` via:
+//
+//	GetReservationShareSettingArray{ GetReservationShareSettingArgs{...} }
+type GetReservationShareSettingArrayInput interface {
+	pulumi.Input
+
+	ToGetReservationShareSettingArrayOutput() GetReservationShareSettingArrayOutput
+	ToGetReservationShareSettingArrayOutputWithContext(context.Context) GetReservationShareSettingArrayOutput
+}
+
+type GetReservationShareSettingArray []GetReservationShareSettingInput
+
+func (GetReservationShareSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationShareSetting)(nil)).Elem()
+}
+
+func (i GetReservationShareSettingArray) ToGetReservationShareSettingArrayOutput() GetReservationShareSettingArrayOutput {
+	return i.ToGetReservationShareSettingArrayOutputWithContext(context.Background())
+}
+
+func (i GetReservationShareSettingArray) ToGetReservationShareSettingArrayOutputWithContext(ctx context.Context) GetReservationShareSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationShareSettingArrayOutput)
+}
+
+type GetReservationShareSettingOutput struct{ *pulumi.OutputState }
+
+func (GetReservationShareSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationShareSetting)(nil)).Elem()
+}
+
+func (o GetReservationShareSettingOutput) ToGetReservationShareSettingOutput() GetReservationShareSettingOutput {
+	return o
+}
+
+func (o GetReservationShareSettingOutput) ToGetReservationShareSettingOutputWithContext(ctx context.Context) GetReservationShareSettingOutput {
+	return o
+}
+
+// A map of project number and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
+func (o GetReservationShareSettingOutput) ProjectMaps() GetReservationShareSettingProjectMapArrayOutput {
+	return o.ApplyT(func(v GetReservationShareSetting) []GetReservationShareSettingProjectMap { return v.ProjectMaps }).(GetReservationShareSettingProjectMapArrayOutput)
+}
+
+// List of project IDs with which the reservation is shared.
+func (o GetReservationShareSettingOutput) Projects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetReservationShareSetting) []string { return v.Projects }).(pulumi.StringArrayOutput)
+}
+
+// Type of sharing for this shared-reservation Possible values: ["LOCAL", "SPECIFIC_PROJECTS"]
+func (o GetReservationShareSettingOutput) ShareType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReservationShareSetting) string { return v.ShareType }).(pulumi.StringOutput)
+}
+
+type GetReservationShareSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetReservationShareSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationShareSetting)(nil)).Elem()
+}
+
+func (o GetReservationShareSettingArrayOutput) ToGetReservationShareSettingArrayOutput() GetReservationShareSettingArrayOutput {
+	return o
+}
+
+func (o GetReservationShareSettingArrayOutput) ToGetReservationShareSettingArrayOutputWithContext(ctx context.Context) GetReservationShareSettingArrayOutput {
+	return o
+}
+
+func (o GetReservationShareSettingArrayOutput) Index(i pulumi.IntInput) GetReservationShareSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReservationShareSetting {
+		return vs[0].([]GetReservationShareSetting)[vs[1].(int)]
+	}).(GetReservationShareSettingOutput)
+}
+
+type GetReservationShareSettingProjectMap struct {
+	Id string `pulumi:"id"`
+	// The project id/number, should be same as the key of this project config in the project map.
+	ProjectId string `pulumi:"projectId"`
+}
+
+// GetReservationShareSettingProjectMapInput is an input type that accepts GetReservationShareSettingProjectMap and GetReservationShareSettingProjectMapOutput values.
+// You can construct a concrete instance of `GetReservationShareSettingProjectMapInput` via:
+//
+//	GetReservationShareSettingProjectMap{ "key": GetReservationShareSettingProjectArgs{...} }
+type GetReservationShareSettingProjectMapInput interface {
+	pulumi.Input
+
+	ToGetReservationShareSettingProjectMapOutput() GetReservationShareSettingProjectMapOutput
+	ToGetReservationShareSettingProjectMapOutputWithContext(context.Context) GetReservationShareSettingProjectMapOutput
+}
+
+type GetReservationShareSettingProjectMapArgs struct {
+	Id pulumi.StringInput `pulumi:"id"`
+	// The project id/number, should be same as the key of this project config in the project map.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+}
+
+func (GetReservationShareSettingProjectMapArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationShareSettingProjectMap)(nil)).Elem()
+}
+
+func (i GetReservationShareSettingProjectMapArgs) ToGetReservationShareSettingProjectMapOutput() GetReservationShareSettingProjectMapOutput {
+	return i.ToGetReservationShareSettingProjectMapOutputWithContext(context.Background())
+}
+
+func (i GetReservationShareSettingProjectMapArgs) ToGetReservationShareSettingProjectMapOutputWithContext(ctx context.Context) GetReservationShareSettingProjectMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationShareSettingProjectMapOutput)
+}
+
+// GetReservationShareSettingProjectMapArrayInput is an input type that accepts GetReservationShareSettingProjectMapArray and GetReservationShareSettingProjectMapArrayOutput values.
+// You can construct a concrete instance of `GetReservationShareSettingProjectMapArrayInput` via:
+//
+//	GetReservationShareSettingProjectMapArray{ GetReservationShareSettingProjectMapArgs{...} }
+type GetReservationShareSettingProjectMapArrayInput interface {
+	pulumi.Input
+
+	ToGetReservationShareSettingProjectMapArrayOutput() GetReservationShareSettingProjectMapArrayOutput
+	ToGetReservationShareSettingProjectMapArrayOutputWithContext(context.Context) GetReservationShareSettingProjectMapArrayOutput
+}
+
+type GetReservationShareSettingProjectMapArray []GetReservationShareSettingProjectMapInput
+
+func (GetReservationShareSettingProjectMapArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationShareSettingProjectMap)(nil)).Elem()
+}
+
+func (i GetReservationShareSettingProjectMapArray) ToGetReservationShareSettingProjectMapArrayOutput() GetReservationShareSettingProjectMapArrayOutput {
+	return i.ToGetReservationShareSettingProjectMapArrayOutputWithContext(context.Background())
+}
+
+func (i GetReservationShareSettingProjectMapArray) ToGetReservationShareSettingProjectMapArrayOutputWithContext(ctx context.Context) GetReservationShareSettingProjectMapArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationShareSettingProjectMapArrayOutput)
+}
+
+type GetReservationShareSettingProjectMapOutput struct{ *pulumi.OutputState }
+
+func (GetReservationShareSettingProjectMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationShareSettingProjectMap)(nil)).Elem()
+}
+
+func (o GetReservationShareSettingProjectMapOutput) ToGetReservationShareSettingProjectMapOutput() GetReservationShareSettingProjectMapOutput {
+	return o
+}
+
+func (o GetReservationShareSettingProjectMapOutput) ToGetReservationShareSettingProjectMapOutputWithContext(ctx context.Context) GetReservationShareSettingProjectMapOutput {
+	return o
+}
+
+func (o GetReservationShareSettingProjectMapOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReservationShareSettingProjectMap) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The project id/number, should be same as the key of this project config in the project map.
+func (o GetReservationShareSettingProjectMapOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReservationShareSettingProjectMap) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+type GetReservationShareSettingProjectMapArrayOutput struct{ *pulumi.OutputState }
+
+func (GetReservationShareSettingProjectMapArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationShareSettingProjectMap)(nil)).Elem()
+}
+
+func (o GetReservationShareSettingProjectMapArrayOutput) ToGetReservationShareSettingProjectMapArrayOutput() GetReservationShareSettingProjectMapArrayOutput {
+	return o
+}
+
+func (o GetReservationShareSettingProjectMapArrayOutput) ToGetReservationShareSettingProjectMapArrayOutputWithContext(ctx context.Context) GetReservationShareSettingProjectMapArrayOutput {
+	return o
+}
+
+func (o GetReservationShareSettingProjectMapArrayOutput) Index(i pulumi.IntInput) GetReservationShareSettingProjectMapOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReservationShareSettingProjectMap {
+		return vs[0].([]GetReservationShareSettingProjectMap)[vs[1].(int)]
+	}).(GetReservationShareSettingProjectMapOutput)
+}
+
+type GetReservationSpecificReservation struct {
+	// The number of resources that are allocated.
+	Count int `pulumi:"count"`
+	// How many instances are in use.
+	InUseCount int `pulumi:"inUseCount"`
+	// The instance properties for the reservation.
+	InstanceProperties []GetReservationSpecificReservationInstanceProperty `pulumi:"instanceProperties"`
+	// Specifies the instance template to create the reservation. If you use this field, you must exclude the
+	// instanceProperties field.
+	SourceInstanceTemplate string `pulumi:"sourceInstanceTemplate"`
+}
+
+// GetReservationSpecificReservationInput is an input type that accepts GetReservationSpecificReservationArgs and GetReservationSpecificReservationOutput values.
+// You can construct a concrete instance of `GetReservationSpecificReservationInput` via:
+//
+//	GetReservationSpecificReservationArgs{...}
+type GetReservationSpecificReservationInput interface {
+	pulumi.Input
+
+	ToGetReservationSpecificReservationOutput() GetReservationSpecificReservationOutput
+	ToGetReservationSpecificReservationOutputWithContext(context.Context) GetReservationSpecificReservationOutput
+}
+
+type GetReservationSpecificReservationArgs struct {
+	// The number of resources that are allocated.
+	Count pulumi.IntInput `pulumi:"count"`
+	// How many instances are in use.
+	InUseCount pulumi.IntInput `pulumi:"inUseCount"`
+	// The instance properties for the reservation.
+	InstanceProperties GetReservationSpecificReservationInstancePropertyArrayInput `pulumi:"instanceProperties"`
+	// Specifies the instance template to create the reservation. If you use this field, you must exclude the
+	// instanceProperties field.
+	SourceInstanceTemplate pulumi.StringInput `pulumi:"sourceInstanceTemplate"`
+}
+
+func (GetReservationSpecificReservationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationSpecificReservation)(nil)).Elem()
+}
+
+func (i GetReservationSpecificReservationArgs) ToGetReservationSpecificReservationOutput() GetReservationSpecificReservationOutput {
+	return i.ToGetReservationSpecificReservationOutputWithContext(context.Background())
+}
+
+func (i GetReservationSpecificReservationArgs) ToGetReservationSpecificReservationOutputWithContext(ctx context.Context) GetReservationSpecificReservationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationSpecificReservationOutput)
+}
+
+// GetReservationSpecificReservationArrayInput is an input type that accepts GetReservationSpecificReservationArray and GetReservationSpecificReservationArrayOutput values.
+// You can construct a concrete instance of `GetReservationSpecificReservationArrayInput` via:
+//
+//	GetReservationSpecificReservationArray{ GetReservationSpecificReservationArgs{...} }
+type GetReservationSpecificReservationArrayInput interface {
+	pulumi.Input
+
+	ToGetReservationSpecificReservationArrayOutput() GetReservationSpecificReservationArrayOutput
+	ToGetReservationSpecificReservationArrayOutputWithContext(context.Context) GetReservationSpecificReservationArrayOutput
+}
+
+type GetReservationSpecificReservationArray []GetReservationSpecificReservationInput
+
+func (GetReservationSpecificReservationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationSpecificReservation)(nil)).Elem()
+}
+
+func (i GetReservationSpecificReservationArray) ToGetReservationSpecificReservationArrayOutput() GetReservationSpecificReservationArrayOutput {
+	return i.ToGetReservationSpecificReservationArrayOutputWithContext(context.Background())
+}
+
+func (i GetReservationSpecificReservationArray) ToGetReservationSpecificReservationArrayOutputWithContext(ctx context.Context) GetReservationSpecificReservationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationSpecificReservationArrayOutput)
+}
+
+type GetReservationSpecificReservationOutput struct{ *pulumi.OutputState }
+
+func (GetReservationSpecificReservationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationSpecificReservation)(nil)).Elem()
+}
+
+func (o GetReservationSpecificReservationOutput) ToGetReservationSpecificReservationOutput() GetReservationSpecificReservationOutput {
+	return o
+}
+
+func (o GetReservationSpecificReservationOutput) ToGetReservationSpecificReservationOutputWithContext(ctx context.Context) GetReservationSpecificReservationOutput {
+	return o
+}
+
+// The number of resources that are allocated.
+func (o GetReservationSpecificReservationOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReservationSpecificReservation) int { return v.Count }).(pulumi.IntOutput)
+}
+
+// How many instances are in use.
+func (o GetReservationSpecificReservationOutput) InUseCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReservationSpecificReservation) int { return v.InUseCount }).(pulumi.IntOutput)
+}
+
+// The instance properties for the reservation.
+func (o GetReservationSpecificReservationOutput) InstanceProperties() GetReservationSpecificReservationInstancePropertyArrayOutput {
+	return o.ApplyT(func(v GetReservationSpecificReservation) []GetReservationSpecificReservationInstanceProperty {
+		return v.InstanceProperties
+	}).(GetReservationSpecificReservationInstancePropertyArrayOutput)
+}
+
+// Specifies the instance template to create the reservation. If you use this field, you must exclude the
+// instanceProperties field.
+func (o GetReservationSpecificReservationOutput) SourceInstanceTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReservationSpecificReservation) string { return v.SourceInstanceTemplate }).(pulumi.StringOutput)
+}
+
+type GetReservationSpecificReservationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetReservationSpecificReservationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationSpecificReservation)(nil)).Elem()
+}
+
+func (o GetReservationSpecificReservationArrayOutput) ToGetReservationSpecificReservationArrayOutput() GetReservationSpecificReservationArrayOutput {
+	return o
+}
+
+func (o GetReservationSpecificReservationArrayOutput) ToGetReservationSpecificReservationArrayOutputWithContext(ctx context.Context) GetReservationSpecificReservationArrayOutput {
+	return o
+}
+
+func (o GetReservationSpecificReservationArrayOutput) Index(i pulumi.IntInput) GetReservationSpecificReservationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReservationSpecificReservation {
+		return vs[0].([]GetReservationSpecificReservation)[vs[1].(int)]
+	}).(GetReservationSpecificReservationOutput)
+}
+
+type GetReservationSpecificReservationInstanceProperty struct {
+	// Guest accelerator type and count.
+	GuestAccelerators []GetReservationSpecificReservationInstancePropertyGuestAccelerator `pulumi:"guestAccelerators"`
+	// The amount of local ssd to reserve with each instance. This
+	// reserves disks of type 'local-ssd'.
+	LocalSsds []GetReservationSpecificReservationInstancePropertyLocalSsd `pulumi:"localSsds"`
+	// The name of the machine type to reserve.
+	MachineType string `pulumi:"machineType"`
+	// Specifies the frequency of planned maintenance events. Possible values: ["AS_NEEDED", "PERIODIC", "RECURRENT"]
+	MaintenanceInterval string `pulumi:"maintenanceInterval"`
+	// The minimum CPU platform for the reservation. For example,
+	// '"Intel Skylake"'. See
+	// the CPU platform availability reference](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones)
+	// for information on available CPU platforms.
+	MinCpuPlatform string `pulumi:"minCpuPlatform"`
+}
+
+// GetReservationSpecificReservationInstancePropertyInput is an input type that accepts GetReservationSpecificReservationInstancePropertyArgs and GetReservationSpecificReservationInstancePropertyOutput values.
+// You can construct a concrete instance of `GetReservationSpecificReservationInstancePropertyInput` via:
+//
+//	GetReservationSpecificReservationInstancePropertyArgs{...}
+type GetReservationSpecificReservationInstancePropertyInput interface {
+	pulumi.Input
+
+	ToGetReservationSpecificReservationInstancePropertyOutput() GetReservationSpecificReservationInstancePropertyOutput
+	ToGetReservationSpecificReservationInstancePropertyOutputWithContext(context.Context) GetReservationSpecificReservationInstancePropertyOutput
+}
+
+type GetReservationSpecificReservationInstancePropertyArgs struct {
+	// Guest accelerator type and count.
+	GuestAccelerators GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayInput `pulumi:"guestAccelerators"`
+	// The amount of local ssd to reserve with each instance. This
+	// reserves disks of type 'local-ssd'.
+	LocalSsds GetReservationSpecificReservationInstancePropertyLocalSsdArrayInput `pulumi:"localSsds"`
+	// The name of the machine type to reserve.
+	MachineType pulumi.StringInput `pulumi:"machineType"`
+	// Specifies the frequency of planned maintenance events. Possible values: ["AS_NEEDED", "PERIODIC", "RECURRENT"]
+	MaintenanceInterval pulumi.StringInput `pulumi:"maintenanceInterval"`
+	// The minimum CPU platform for the reservation. For example,
+	// '"Intel Skylake"'. See
+	// the CPU platform availability reference](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones)
+	// for information on available CPU platforms.
+	MinCpuPlatform pulumi.StringInput `pulumi:"minCpuPlatform"`
+}
+
+func (GetReservationSpecificReservationInstancePropertyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationSpecificReservationInstanceProperty)(nil)).Elem()
+}
+
+func (i GetReservationSpecificReservationInstancePropertyArgs) ToGetReservationSpecificReservationInstancePropertyOutput() GetReservationSpecificReservationInstancePropertyOutput {
+	return i.ToGetReservationSpecificReservationInstancePropertyOutputWithContext(context.Background())
+}
+
+func (i GetReservationSpecificReservationInstancePropertyArgs) ToGetReservationSpecificReservationInstancePropertyOutputWithContext(ctx context.Context) GetReservationSpecificReservationInstancePropertyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationSpecificReservationInstancePropertyOutput)
+}
+
+// GetReservationSpecificReservationInstancePropertyArrayInput is an input type that accepts GetReservationSpecificReservationInstancePropertyArray and GetReservationSpecificReservationInstancePropertyArrayOutput values.
+// You can construct a concrete instance of `GetReservationSpecificReservationInstancePropertyArrayInput` via:
+//
+//	GetReservationSpecificReservationInstancePropertyArray{ GetReservationSpecificReservationInstancePropertyArgs{...} }
+type GetReservationSpecificReservationInstancePropertyArrayInput interface {
+	pulumi.Input
+
+	ToGetReservationSpecificReservationInstancePropertyArrayOutput() GetReservationSpecificReservationInstancePropertyArrayOutput
+	ToGetReservationSpecificReservationInstancePropertyArrayOutputWithContext(context.Context) GetReservationSpecificReservationInstancePropertyArrayOutput
+}
+
+type GetReservationSpecificReservationInstancePropertyArray []GetReservationSpecificReservationInstancePropertyInput
+
+func (GetReservationSpecificReservationInstancePropertyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationSpecificReservationInstanceProperty)(nil)).Elem()
+}
+
+func (i GetReservationSpecificReservationInstancePropertyArray) ToGetReservationSpecificReservationInstancePropertyArrayOutput() GetReservationSpecificReservationInstancePropertyArrayOutput {
+	return i.ToGetReservationSpecificReservationInstancePropertyArrayOutputWithContext(context.Background())
+}
+
+func (i GetReservationSpecificReservationInstancePropertyArray) ToGetReservationSpecificReservationInstancePropertyArrayOutputWithContext(ctx context.Context) GetReservationSpecificReservationInstancePropertyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationSpecificReservationInstancePropertyArrayOutput)
+}
+
+type GetReservationSpecificReservationInstancePropertyOutput struct{ *pulumi.OutputState }
+
+func (GetReservationSpecificReservationInstancePropertyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationSpecificReservationInstanceProperty)(nil)).Elem()
+}
+
+func (o GetReservationSpecificReservationInstancePropertyOutput) ToGetReservationSpecificReservationInstancePropertyOutput() GetReservationSpecificReservationInstancePropertyOutput {
+	return o
+}
+
+func (o GetReservationSpecificReservationInstancePropertyOutput) ToGetReservationSpecificReservationInstancePropertyOutputWithContext(ctx context.Context) GetReservationSpecificReservationInstancePropertyOutput {
+	return o
+}
+
+// Guest accelerator type and count.
+func (o GetReservationSpecificReservationInstancePropertyOutput) GuestAccelerators() GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutput {
+	return o.ApplyT(func(v GetReservationSpecificReservationInstanceProperty) []GetReservationSpecificReservationInstancePropertyGuestAccelerator {
+		return v.GuestAccelerators
+	}).(GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutput)
+}
+
+// The amount of local ssd to reserve with each instance. This
+// reserves disks of type 'local-ssd'.
+func (o GetReservationSpecificReservationInstancePropertyOutput) LocalSsds() GetReservationSpecificReservationInstancePropertyLocalSsdArrayOutput {
+	return o.ApplyT(func(v GetReservationSpecificReservationInstanceProperty) []GetReservationSpecificReservationInstancePropertyLocalSsd {
+		return v.LocalSsds
+	}).(GetReservationSpecificReservationInstancePropertyLocalSsdArrayOutput)
+}
+
+// The name of the machine type to reserve.
+func (o GetReservationSpecificReservationInstancePropertyOutput) MachineType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReservationSpecificReservationInstanceProperty) string { return v.MachineType }).(pulumi.StringOutput)
+}
+
+// Specifies the frequency of planned maintenance events. Possible values: ["AS_NEEDED", "PERIODIC", "RECURRENT"]
+func (o GetReservationSpecificReservationInstancePropertyOutput) MaintenanceInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReservationSpecificReservationInstanceProperty) string { return v.MaintenanceInterval }).(pulumi.StringOutput)
+}
+
+// The minimum CPU platform for the reservation. For example,
+// '"Intel Skylake"'. See
+// the CPU platform availability reference](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones)
+// for information on available CPU platforms.
+func (o GetReservationSpecificReservationInstancePropertyOutput) MinCpuPlatform() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReservationSpecificReservationInstanceProperty) string { return v.MinCpuPlatform }).(pulumi.StringOutput)
+}
+
+type GetReservationSpecificReservationInstancePropertyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetReservationSpecificReservationInstancePropertyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationSpecificReservationInstanceProperty)(nil)).Elem()
+}
+
+func (o GetReservationSpecificReservationInstancePropertyArrayOutput) ToGetReservationSpecificReservationInstancePropertyArrayOutput() GetReservationSpecificReservationInstancePropertyArrayOutput {
+	return o
+}
+
+func (o GetReservationSpecificReservationInstancePropertyArrayOutput) ToGetReservationSpecificReservationInstancePropertyArrayOutputWithContext(ctx context.Context) GetReservationSpecificReservationInstancePropertyArrayOutput {
+	return o
+}
+
+func (o GetReservationSpecificReservationInstancePropertyArrayOutput) Index(i pulumi.IntInput) GetReservationSpecificReservationInstancePropertyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReservationSpecificReservationInstanceProperty {
+		return vs[0].([]GetReservationSpecificReservationInstanceProperty)[vs[1].(int)]
+	}).(GetReservationSpecificReservationInstancePropertyOutput)
+}
+
+type GetReservationSpecificReservationInstancePropertyGuestAccelerator struct {
+	// The number of the guest accelerator cards exposed to
+	// this instance.
+	AcceleratorCount int `pulumi:"acceleratorCount"`
+	// The full or partial URL of the accelerator type to
+	// attach to this instance. For example:
+	// 'projects/my-project/zones/us-central1-c/acceleratorTypes/nvidia-tesla-p100'
+	//
+	// If you are creating an instance template, specify only the accelerator name.
+	AcceleratorType string `pulumi:"acceleratorType"`
+}
+
+// GetReservationSpecificReservationInstancePropertyGuestAcceleratorInput is an input type that accepts GetReservationSpecificReservationInstancePropertyGuestAcceleratorArgs and GetReservationSpecificReservationInstancePropertyGuestAcceleratorOutput values.
+// You can construct a concrete instance of `GetReservationSpecificReservationInstancePropertyGuestAcceleratorInput` via:
+//
+//	GetReservationSpecificReservationInstancePropertyGuestAcceleratorArgs{...}
+type GetReservationSpecificReservationInstancePropertyGuestAcceleratorInput interface {
+	pulumi.Input
+
+	ToGetReservationSpecificReservationInstancePropertyGuestAcceleratorOutput() GetReservationSpecificReservationInstancePropertyGuestAcceleratorOutput
+	ToGetReservationSpecificReservationInstancePropertyGuestAcceleratorOutputWithContext(context.Context) GetReservationSpecificReservationInstancePropertyGuestAcceleratorOutput
+}
+
+type GetReservationSpecificReservationInstancePropertyGuestAcceleratorArgs struct {
+	// The number of the guest accelerator cards exposed to
+	// this instance.
+	AcceleratorCount pulumi.IntInput `pulumi:"acceleratorCount"`
+	// The full or partial URL of the accelerator type to
+	// attach to this instance. For example:
+	// 'projects/my-project/zones/us-central1-c/acceleratorTypes/nvidia-tesla-p100'
+	//
+	// If you are creating an instance template, specify only the accelerator name.
+	AcceleratorType pulumi.StringInput `pulumi:"acceleratorType"`
+}
+
+func (GetReservationSpecificReservationInstancePropertyGuestAcceleratorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationSpecificReservationInstancePropertyGuestAccelerator)(nil)).Elem()
+}
+
+func (i GetReservationSpecificReservationInstancePropertyGuestAcceleratorArgs) ToGetReservationSpecificReservationInstancePropertyGuestAcceleratorOutput() GetReservationSpecificReservationInstancePropertyGuestAcceleratorOutput {
+	return i.ToGetReservationSpecificReservationInstancePropertyGuestAcceleratorOutputWithContext(context.Background())
+}
+
+func (i GetReservationSpecificReservationInstancePropertyGuestAcceleratorArgs) ToGetReservationSpecificReservationInstancePropertyGuestAcceleratorOutputWithContext(ctx context.Context) GetReservationSpecificReservationInstancePropertyGuestAcceleratorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationSpecificReservationInstancePropertyGuestAcceleratorOutput)
+}
+
+// GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayInput is an input type that accepts GetReservationSpecificReservationInstancePropertyGuestAcceleratorArray and GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutput values.
+// You can construct a concrete instance of `GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayInput` via:
+//
+//	GetReservationSpecificReservationInstancePropertyGuestAcceleratorArray{ GetReservationSpecificReservationInstancePropertyGuestAcceleratorArgs{...} }
+type GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayInput interface {
+	pulumi.Input
+
+	ToGetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutput() GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutput
+	ToGetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutputWithContext(context.Context) GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutput
+}
+
+type GetReservationSpecificReservationInstancePropertyGuestAcceleratorArray []GetReservationSpecificReservationInstancePropertyGuestAcceleratorInput
+
+func (GetReservationSpecificReservationInstancePropertyGuestAcceleratorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationSpecificReservationInstancePropertyGuestAccelerator)(nil)).Elem()
+}
+
+func (i GetReservationSpecificReservationInstancePropertyGuestAcceleratorArray) ToGetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutput() GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutput {
+	return i.ToGetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutputWithContext(context.Background())
+}
+
+func (i GetReservationSpecificReservationInstancePropertyGuestAcceleratorArray) ToGetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutputWithContext(ctx context.Context) GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutput)
+}
+
+type GetReservationSpecificReservationInstancePropertyGuestAcceleratorOutput struct{ *pulumi.OutputState }
+
+func (GetReservationSpecificReservationInstancePropertyGuestAcceleratorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationSpecificReservationInstancePropertyGuestAccelerator)(nil)).Elem()
+}
+
+func (o GetReservationSpecificReservationInstancePropertyGuestAcceleratorOutput) ToGetReservationSpecificReservationInstancePropertyGuestAcceleratorOutput() GetReservationSpecificReservationInstancePropertyGuestAcceleratorOutput {
+	return o
+}
+
+func (o GetReservationSpecificReservationInstancePropertyGuestAcceleratorOutput) ToGetReservationSpecificReservationInstancePropertyGuestAcceleratorOutputWithContext(ctx context.Context) GetReservationSpecificReservationInstancePropertyGuestAcceleratorOutput {
+	return o
+}
+
+// The number of the guest accelerator cards exposed to
+// this instance.
+func (o GetReservationSpecificReservationInstancePropertyGuestAcceleratorOutput) AcceleratorCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReservationSpecificReservationInstancePropertyGuestAccelerator) int {
+		return v.AcceleratorCount
+	}).(pulumi.IntOutput)
+}
+
+// The full or partial URL of the accelerator type to
+// attach to this instance. For example:
+// 'projects/my-project/zones/us-central1-c/acceleratorTypes/nvidia-tesla-p100'
+//
+// If you are creating an instance template, specify only the accelerator name.
+func (o GetReservationSpecificReservationInstancePropertyGuestAcceleratorOutput) AcceleratorType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReservationSpecificReservationInstancePropertyGuestAccelerator) string {
+		return v.AcceleratorType
+	}).(pulumi.StringOutput)
+}
+
+type GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationSpecificReservationInstancePropertyGuestAccelerator)(nil)).Elem()
+}
+
+func (o GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutput) ToGetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutput() GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutput {
+	return o
+}
+
+func (o GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutput) ToGetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutputWithContext(ctx context.Context) GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutput {
+	return o
+}
+
+func (o GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutput) Index(i pulumi.IntInput) GetReservationSpecificReservationInstancePropertyGuestAcceleratorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReservationSpecificReservationInstancePropertyGuestAccelerator {
+		return vs[0].([]GetReservationSpecificReservationInstancePropertyGuestAccelerator)[vs[1].(int)]
+	}).(GetReservationSpecificReservationInstancePropertyGuestAcceleratorOutput)
+}
+
+type GetReservationSpecificReservationInstancePropertyLocalSsd struct {
+	// The size of the disk in base-2 GB.
+	DiskSizeGb int `pulumi:"diskSizeGb"`
+	// The disk interface to use for attaching this disk. Default value: "SCSI" Possible values: ["SCSI", "NVME"]
+	Interface string `pulumi:"interface"`
+}
+
+// GetReservationSpecificReservationInstancePropertyLocalSsdInput is an input type that accepts GetReservationSpecificReservationInstancePropertyLocalSsdArgs and GetReservationSpecificReservationInstancePropertyLocalSsdOutput values.
+// You can construct a concrete instance of `GetReservationSpecificReservationInstancePropertyLocalSsdInput` via:
+//
+//	GetReservationSpecificReservationInstancePropertyLocalSsdArgs{...}
+type GetReservationSpecificReservationInstancePropertyLocalSsdInput interface {
+	pulumi.Input
+
+	ToGetReservationSpecificReservationInstancePropertyLocalSsdOutput() GetReservationSpecificReservationInstancePropertyLocalSsdOutput
+	ToGetReservationSpecificReservationInstancePropertyLocalSsdOutputWithContext(context.Context) GetReservationSpecificReservationInstancePropertyLocalSsdOutput
+}
+
+type GetReservationSpecificReservationInstancePropertyLocalSsdArgs struct {
+	// The size of the disk in base-2 GB.
+	DiskSizeGb pulumi.IntInput `pulumi:"diskSizeGb"`
+	// The disk interface to use for attaching this disk. Default value: "SCSI" Possible values: ["SCSI", "NVME"]
+	Interface pulumi.StringInput `pulumi:"interface"`
+}
+
+func (GetReservationSpecificReservationInstancePropertyLocalSsdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationSpecificReservationInstancePropertyLocalSsd)(nil)).Elem()
+}
+
+func (i GetReservationSpecificReservationInstancePropertyLocalSsdArgs) ToGetReservationSpecificReservationInstancePropertyLocalSsdOutput() GetReservationSpecificReservationInstancePropertyLocalSsdOutput {
+	return i.ToGetReservationSpecificReservationInstancePropertyLocalSsdOutputWithContext(context.Background())
+}
+
+func (i GetReservationSpecificReservationInstancePropertyLocalSsdArgs) ToGetReservationSpecificReservationInstancePropertyLocalSsdOutputWithContext(ctx context.Context) GetReservationSpecificReservationInstancePropertyLocalSsdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationSpecificReservationInstancePropertyLocalSsdOutput)
+}
+
+// GetReservationSpecificReservationInstancePropertyLocalSsdArrayInput is an input type that accepts GetReservationSpecificReservationInstancePropertyLocalSsdArray and GetReservationSpecificReservationInstancePropertyLocalSsdArrayOutput values.
+// You can construct a concrete instance of `GetReservationSpecificReservationInstancePropertyLocalSsdArrayInput` via:
+//
+//	GetReservationSpecificReservationInstancePropertyLocalSsdArray{ GetReservationSpecificReservationInstancePropertyLocalSsdArgs{...} }
+type GetReservationSpecificReservationInstancePropertyLocalSsdArrayInput interface {
+	pulumi.Input
+
+	ToGetReservationSpecificReservationInstancePropertyLocalSsdArrayOutput() GetReservationSpecificReservationInstancePropertyLocalSsdArrayOutput
+	ToGetReservationSpecificReservationInstancePropertyLocalSsdArrayOutputWithContext(context.Context) GetReservationSpecificReservationInstancePropertyLocalSsdArrayOutput
+}
+
+type GetReservationSpecificReservationInstancePropertyLocalSsdArray []GetReservationSpecificReservationInstancePropertyLocalSsdInput
+
+func (GetReservationSpecificReservationInstancePropertyLocalSsdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationSpecificReservationInstancePropertyLocalSsd)(nil)).Elem()
+}
+
+func (i GetReservationSpecificReservationInstancePropertyLocalSsdArray) ToGetReservationSpecificReservationInstancePropertyLocalSsdArrayOutput() GetReservationSpecificReservationInstancePropertyLocalSsdArrayOutput {
+	return i.ToGetReservationSpecificReservationInstancePropertyLocalSsdArrayOutputWithContext(context.Background())
+}
+
+func (i GetReservationSpecificReservationInstancePropertyLocalSsdArray) ToGetReservationSpecificReservationInstancePropertyLocalSsdArrayOutputWithContext(ctx context.Context) GetReservationSpecificReservationInstancePropertyLocalSsdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationSpecificReservationInstancePropertyLocalSsdArrayOutput)
+}
+
+type GetReservationSpecificReservationInstancePropertyLocalSsdOutput struct{ *pulumi.OutputState }
+
+func (GetReservationSpecificReservationInstancePropertyLocalSsdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationSpecificReservationInstancePropertyLocalSsd)(nil)).Elem()
+}
+
+func (o GetReservationSpecificReservationInstancePropertyLocalSsdOutput) ToGetReservationSpecificReservationInstancePropertyLocalSsdOutput() GetReservationSpecificReservationInstancePropertyLocalSsdOutput {
+	return o
+}
+
+func (o GetReservationSpecificReservationInstancePropertyLocalSsdOutput) ToGetReservationSpecificReservationInstancePropertyLocalSsdOutputWithContext(ctx context.Context) GetReservationSpecificReservationInstancePropertyLocalSsdOutput {
+	return o
+}
+
+// The size of the disk in base-2 GB.
+func (o GetReservationSpecificReservationInstancePropertyLocalSsdOutput) DiskSizeGb() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReservationSpecificReservationInstancePropertyLocalSsd) int { return v.DiskSizeGb }).(pulumi.IntOutput)
+}
+
+// The disk interface to use for attaching this disk. Default value: "SCSI" Possible values: ["SCSI", "NVME"]
+func (o GetReservationSpecificReservationInstancePropertyLocalSsdOutput) Interface() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReservationSpecificReservationInstancePropertyLocalSsd) string { return v.Interface }).(pulumi.StringOutput)
+}
+
+type GetReservationSpecificReservationInstancePropertyLocalSsdArrayOutput struct{ *pulumi.OutputState }
+
+func (GetReservationSpecificReservationInstancePropertyLocalSsdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationSpecificReservationInstancePropertyLocalSsd)(nil)).Elem()
+}
+
+func (o GetReservationSpecificReservationInstancePropertyLocalSsdArrayOutput) ToGetReservationSpecificReservationInstancePropertyLocalSsdArrayOutput() GetReservationSpecificReservationInstancePropertyLocalSsdArrayOutput {
+	return o
+}
+
+func (o GetReservationSpecificReservationInstancePropertyLocalSsdArrayOutput) ToGetReservationSpecificReservationInstancePropertyLocalSsdArrayOutputWithContext(ctx context.Context) GetReservationSpecificReservationInstancePropertyLocalSsdArrayOutput {
+	return o
+}
+
+func (o GetReservationSpecificReservationInstancePropertyLocalSsdArrayOutput) Index(i pulumi.IntInput) GetReservationSpecificReservationInstancePropertyLocalSsdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReservationSpecificReservationInstancePropertyLocalSsd {
+		return vs[0].([]GetReservationSpecificReservationInstancePropertyLocalSsd)[vs[1].(int)]
+	}).(GetReservationSpecificReservationInstancePropertyLocalSsdOutput)
+}
+
+type GetResourcePolicyDiskConsistencyGroupPolicy struct {
+	// Enable disk consistency on the resource policy.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetResourcePolicyDiskConsistencyGroupPolicyInput is an input type that accepts GetResourcePolicyDiskConsistencyGroupPolicyArgs and GetResourcePolicyDiskConsistencyGroupPolicyOutput values.
+// You can construct a concrete instance of `GetResourcePolicyDiskConsistencyGroupPolicyInput` via:
+//
+//	GetResourcePolicyDiskConsistencyGroupPolicyArgs{...}
+type GetResourcePolicyDiskConsistencyGroupPolicyInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicyDiskConsistencyGroupPolicyOutput() GetResourcePolicyDiskConsistencyGroupPolicyOutput
+	ToGetResourcePolicyDiskConsistencyGroupPolicyOutputWithContext(context.Context) GetResourcePolicyDiskConsistencyGroupPolicyOutput
+}
+
+type GetResourcePolicyDiskConsistencyGroupPolicyArgs struct {
+	// Enable disk consistency on the resource policy.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetResourcePolicyDiskConsistencyGroupPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicyDiskConsistencyGroupPolicy)(nil)).Elem()
+}
+
+func (i GetResourcePolicyDiskConsistencyGroupPolicyArgs) ToGetResourcePolicyDiskConsistencyGroupPolicyOutput() GetResourcePolicyDiskConsistencyGroupPolicyOutput {
+	return i.ToGetResourcePolicyDiskConsistencyGroupPolicyOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicyDiskConsistencyGroupPolicyArgs) ToGetResourcePolicyDiskConsistencyGroupPolicyOutputWithContext(ctx context.Context) GetResourcePolicyDiskConsistencyGroupPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicyDiskConsistencyGroupPolicyOutput)
+}
+
+// GetResourcePolicyDiskConsistencyGroupPolicyArrayInput is an input type that accepts GetResourcePolicyDiskConsistencyGroupPolicyArray and GetResourcePolicyDiskConsistencyGroupPolicyArrayOutput values.
+// You can construct a concrete instance of `GetResourcePolicyDiskConsistencyGroupPolicyArrayInput` via:
+//
+//	GetResourcePolicyDiskConsistencyGroupPolicyArray{ GetResourcePolicyDiskConsistencyGroupPolicyArgs{...} }
+type GetResourcePolicyDiskConsistencyGroupPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicyDiskConsistencyGroupPolicyArrayOutput() GetResourcePolicyDiskConsistencyGroupPolicyArrayOutput
+	ToGetResourcePolicyDiskConsistencyGroupPolicyArrayOutputWithContext(context.Context) GetResourcePolicyDiskConsistencyGroupPolicyArrayOutput
+}
+
+type GetResourcePolicyDiskConsistencyGroupPolicyArray []GetResourcePolicyDiskConsistencyGroupPolicyInput
+
+func (GetResourcePolicyDiskConsistencyGroupPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicyDiskConsistencyGroupPolicy)(nil)).Elem()
+}
+
+func (i GetResourcePolicyDiskConsistencyGroupPolicyArray) ToGetResourcePolicyDiskConsistencyGroupPolicyArrayOutput() GetResourcePolicyDiskConsistencyGroupPolicyArrayOutput {
+	return i.ToGetResourcePolicyDiskConsistencyGroupPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicyDiskConsistencyGroupPolicyArray) ToGetResourcePolicyDiskConsistencyGroupPolicyArrayOutputWithContext(ctx context.Context) GetResourcePolicyDiskConsistencyGroupPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicyDiskConsistencyGroupPolicyArrayOutput)
+}
+
+type GetResourcePolicyDiskConsistencyGroupPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicyDiskConsistencyGroupPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicyDiskConsistencyGroupPolicy)(nil)).Elem()
+}
+
+func (o GetResourcePolicyDiskConsistencyGroupPolicyOutput) ToGetResourcePolicyDiskConsistencyGroupPolicyOutput() GetResourcePolicyDiskConsistencyGroupPolicyOutput {
+	return o
+}
+
+func (o GetResourcePolicyDiskConsistencyGroupPolicyOutput) ToGetResourcePolicyDiskConsistencyGroupPolicyOutputWithContext(ctx context.Context) GetResourcePolicyDiskConsistencyGroupPolicyOutput {
+	return o
+}
+
+// Enable disk consistency on the resource policy.
+func (o GetResourcePolicyDiskConsistencyGroupPolicyOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetResourcePolicyDiskConsistencyGroupPolicy) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetResourcePolicyDiskConsistencyGroupPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicyDiskConsistencyGroupPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicyDiskConsistencyGroupPolicy)(nil)).Elem()
+}
+
+func (o GetResourcePolicyDiskConsistencyGroupPolicyArrayOutput) ToGetResourcePolicyDiskConsistencyGroupPolicyArrayOutput() GetResourcePolicyDiskConsistencyGroupPolicyArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicyDiskConsistencyGroupPolicyArrayOutput) ToGetResourcePolicyDiskConsistencyGroupPolicyArrayOutputWithContext(ctx context.Context) GetResourcePolicyDiskConsistencyGroupPolicyArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicyDiskConsistencyGroupPolicyArrayOutput) Index(i pulumi.IntInput) GetResourcePolicyDiskConsistencyGroupPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourcePolicyDiskConsistencyGroupPolicy {
+		return vs[0].([]GetResourcePolicyDiskConsistencyGroupPolicy)[vs[1].(int)]
+	}).(GetResourcePolicyDiskConsistencyGroupPolicyOutput)
+}
+
+type GetResourcePolicyGroupPlacementPolicy struct {
+	// The number of availability domains instances will be spread across. If two instances are in different
+	// availability domain, they will not be put in the same low latency network
+	AvailabilityDomainCount int `pulumi:"availabilityDomainCount"`
+	// Collocation specifies whether to place VMs inside the same availability domain on the same low-latency network.
+	// Specify 'COLLOCATED' to enable collocation. Can only be specified with 'vm_count'. If compute instances are created
+	// with a COLLOCATED policy, then exactly 'vm_count' instances must be created at the same time with the resource policy
+	// attached. Possible values: ["COLLOCATED"]
+	Collocation string `pulumi:"collocation"`
+	// Specifies the shape of the GPU slice, in slice based GPU families eg. A4X.
+	GpuTopology string `pulumi:"gpuTopology"`
+	// Specifies the number of max logical switches.
+	MaxDistance int `pulumi:"maxDistance"`
+	// Specifies the shape of the TPU slice.
+	TpuTopology string `pulumi:"tpuTopology"`
+	// Number of VMs in this placement group. Google does not recommend that you use this field
+	// unless you use a compact policy and you want your policy to work only if it contains this
+	// exact number of VMs.
+	VmCount int `pulumi:"vmCount"`
+}
+
+// GetResourcePolicyGroupPlacementPolicyInput is an input type that accepts GetResourcePolicyGroupPlacementPolicyArgs and GetResourcePolicyGroupPlacementPolicyOutput values.
+// You can construct a concrete instance of `GetResourcePolicyGroupPlacementPolicyInput` via:
+//
+//	GetResourcePolicyGroupPlacementPolicyArgs{...}
+type GetResourcePolicyGroupPlacementPolicyInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicyGroupPlacementPolicyOutput() GetResourcePolicyGroupPlacementPolicyOutput
+	ToGetResourcePolicyGroupPlacementPolicyOutputWithContext(context.Context) GetResourcePolicyGroupPlacementPolicyOutput
+}
+
+type GetResourcePolicyGroupPlacementPolicyArgs struct {
+	// The number of availability domains instances will be spread across. If two instances are in different
+	// availability domain, they will not be put in the same low latency network
+	AvailabilityDomainCount pulumi.IntInput `pulumi:"availabilityDomainCount"`
+	// Collocation specifies whether to place VMs inside the same availability domain on the same low-latency network.
+	// Specify 'COLLOCATED' to enable collocation. Can only be specified with 'vm_count'. If compute instances are created
+	// with a COLLOCATED policy, then exactly 'vm_count' instances must be created at the same time with the resource policy
+	// attached. Possible values: ["COLLOCATED"]
+	Collocation pulumi.StringInput `pulumi:"collocation"`
+	// Specifies the shape of the GPU slice, in slice based GPU families eg. A4X.
+	GpuTopology pulumi.StringInput `pulumi:"gpuTopology"`
+	// Specifies the number of max logical switches.
+	MaxDistance pulumi.IntInput `pulumi:"maxDistance"`
+	// Specifies the shape of the TPU slice.
+	TpuTopology pulumi.StringInput `pulumi:"tpuTopology"`
+	// Number of VMs in this placement group. Google does not recommend that you use this field
+	// unless you use a compact policy and you want your policy to work only if it contains this
+	// exact number of VMs.
+	VmCount pulumi.IntInput `pulumi:"vmCount"`
+}
+
+func (GetResourcePolicyGroupPlacementPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicyGroupPlacementPolicy)(nil)).Elem()
+}
+
+func (i GetResourcePolicyGroupPlacementPolicyArgs) ToGetResourcePolicyGroupPlacementPolicyOutput() GetResourcePolicyGroupPlacementPolicyOutput {
+	return i.ToGetResourcePolicyGroupPlacementPolicyOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicyGroupPlacementPolicyArgs) ToGetResourcePolicyGroupPlacementPolicyOutputWithContext(ctx context.Context) GetResourcePolicyGroupPlacementPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicyGroupPlacementPolicyOutput)
+}
+
+// GetResourcePolicyGroupPlacementPolicyArrayInput is an input type that accepts GetResourcePolicyGroupPlacementPolicyArray and GetResourcePolicyGroupPlacementPolicyArrayOutput values.
+// You can construct a concrete instance of `GetResourcePolicyGroupPlacementPolicyArrayInput` via:
+//
+//	GetResourcePolicyGroupPlacementPolicyArray{ GetResourcePolicyGroupPlacementPolicyArgs{...} }
+type GetResourcePolicyGroupPlacementPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicyGroupPlacementPolicyArrayOutput() GetResourcePolicyGroupPlacementPolicyArrayOutput
+	ToGetResourcePolicyGroupPlacementPolicyArrayOutputWithContext(context.Context) GetResourcePolicyGroupPlacementPolicyArrayOutput
+}
+
+type GetResourcePolicyGroupPlacementPolicyArray []GetResourcePolicyGroupPlacementPolicyInput
+
+func (GetResourcePolicyGroupPlacementPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicyGroupPlacementPolicy)(nil)).Elem()
+}
+
+func (i GetResourcePolicyGroupPlacementPolicyArray) ToGetResourcePolicyGroupPlacementPolicyArrayOutput() GetResourcePolicyGroupPlacementPolicyArrayOutput {
+	return i.ToGetResourcePolicyGroupPlacementPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicyGroupPlacementPolicyArray) ToGetResourcePolicyGroupPlacementPolicyArrayOutputWithContext(ctx context.Context) GetResourcePolicyGroupPlacementPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicyGroupPlacementPolicyArrayOutput)
+}
+
+type GetResourcePolicyGroupPlacementPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicyGroupPlacementPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicyGroupPlacementPolicy)(nil)).Elem()
+}
+
+func (o GetResourcePolicyGroupPlacementPolicyOutput) ToGetResourcePolicyGroupPlacementPolicyOutput() GetResourcePolicyGroupPlacementPolicyOutput {
+	return o
+}
+
+func (o GetResourcePolicyGroupPlacementPolicyOutput) ToGetResourcePolicyGroupPlacementPolicyOutputWithContext(ctx context.Context) GetResourcePolicyGroupPlacementPolicyOutput {
+	return o
+}
+
+// The number of availability domains instances will be spread across. If two instances are in different
+// availability domain, they will not be put in the same low latency network
+func (o GetResourcePolicyGroupPlacementPolicyOutput) AvailabilityDomainCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetResourcePolicyGroupPlacementPolicy) int { return v.AvailabilityDomainCount }).(pulumi.IntOutput)
+}
+
+// Collocation specifies whether to place VMs inside the same availability domain on the same low-latency network.
+// Specify 'COLLOCATED' to enable collocation. Can only be specified with 'vm_count'. If compute instances are created
+// with a COLLOCATED policy, then exactly 'vm_count' instances must be created at the same time with the resource policy
+// attached. Possible values: ["COLLOCATED"]
+func (o GetResourcePolicyGroupPlacementPolicyOutput) Collocation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourcePolicyGroupPlacementPolicy) string { return v.Collocation }).(pulumi.StringOutput)
+}
+
+// Specifies the shape of the GPU slice, in slice based GPU families eg. A4X.
+func (o GetResourcePolicyGroupPlacementPolicyOutput) GpuTopology() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourcePolicyGroupPlacementPolicy) string { return v.GpuTopology }).(pulumi.StringOutput)
+}
+
+// Specifies the number of max logical switches.
+func (o GetResourcePolicyGroupPlacementPolicyOutput) MaxDistance() pulumi.IntOutput {
+	return o.ApplyT(func(v GetResourcePolicyGroupPlacementPolicy) int { return v.MaxDistance }).(pulumi.IntOutput)
+}
+
+// Specifies the shape of the TPU slice.
+func (o GetResourcePolicyGroupPlacementPolicyOutput) TpuTopology() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourcePolicyGroupPlacementPolicy) string { return v.TpuTopology }).(pulumi.StringOutput)
+}
+
+// Number of VMs in this placement group. Google does not recommend that you use this field
+// unless you use a compact policy and you want your policy to work only if it contains this
+// exact number of VMs.
+func (o GetResourcePolicyGroupPlacementPolicyOutput) VmCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetResourcePolicyGroupPlacementPolicy) int { return v.VmCount }).(pulumi.IntOutput)
+}
+
+type GetResourcePolicyGroupPlacementPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicyGroupPlacementPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicyGroupPlacementPolicy)(nil)).Elem()
+}
+
+func (o GetResourcePolicyGroupPlacementPolicyArrayOutput) ToGetResourcePolicyGroupPlacementPolicyArrayOutput() GetResourcePolicyGroupPlacementPolicyArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicyGroupPlacementPolicyArrayOutput) ToGetResourcePolicyGroupPlacementPolicyArrayOutputWithContext(ctx context.Context) GetResourcePolicyGroupPlacementPolicyArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicyGroupPlacementPolicyArrayOutput) Index(i pulumi.IntInput) GetResourcePolicyGroupPlacementPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourcePolicyGroupPlacementPolicy {
+		return vs[0].([]GetResourcePolicyGroupPlacementPolicy)[vs[1].(int)]
+	}).(GetResourcePolicyGroupPlacementPolicyOutput)
+}
+
+type GetResourcePolicyInstanceSchedulePolicy struct {
+	// The expiration time of the schedule. The timestamp is an RFC3339 string.
+	ExpirationTime string `pulumi:"expirationTime"`
+	// The start time of the schedule. The timestamp is an RFC3339 string.
+	StartTime string `pulumi:"startTime"`
+	// Specifies the time zone to be used in interpreting the schedule. The value of this field must be a time zone name
+	// from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+	TimeZone string `pulumi:"timeZone"`
+	// Specifies the schedule for starting instances.
+	VmStartSchedules []GetResourcePolicyInstanceSchedulePolicyVmStartSchedule `pulumi:"vmStartSchedules"`
+	// Specifies the schedule for stopping instances.
+	VmStopSchedules []GetResourcePolicyInstanceSchedulePolicyVmStopSchedule `pulumi:"vmStopSchedules"`
+}
+
+// GetResourcePolicyInstanceSchedulePolicyInput is an input type that accepts GetResourcePolicyInstanceSchedulePolicyArgs and GetResourcePolicyInstanceSchedulePolicyOutput values.
+// You can construct a concrete instance of `GetResourcePolicyInstanceSchedulePolicyInput` via:
+//
+//	GetResourcePolicyInstanceSchedulePolicyArgs{...}
+type GetResourcePolicyInstanceSchedulePolicyInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicyInstanceSchedulePolicyOutput() GetResourcePolicyInstanceSchedulePolicyOutput
+	ToGetResourcePolicyInstanceSchedulePolicyOutputWithContext(context.Context) GetResourcePolicyInstanceSchedulePolicyOutput
+}
+
+type GetResourcePolicyInstanceSchedulePolicyArgs struct {
+	// The expiration time of the schedule. The timestamp is an RFC3339 string.
+	ExpirationTime pulumi.StringInput `pulumi:"expirationTime"`
+	// The start time of the schedule. The timestamp is an RFC3339 string.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+	// Specifies the time zone to be used in interpreting the schedule. The value of this field must be a time zone name
+	// from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+	TimeZone pulumi.StringInput `pulumi:"timeZone"`
+	// Specifies the schedule for starting instances.
+	VmStartSchedules GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayInput `pulumi:"vmStartSchedules"`
+	// Specifies the schedule for stopping instances.
+	VmStopSchedules GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayInput `pulumi:"vmStopSchedules"`
+}
+
+func (GetResourcePolicyInstanceSchedulePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicyInstanceSchedulePolicy)(nil)).Elem()
+}
+
+func (i GetResourcePolicyInstanceSchedulePolicyArgs) ToGetResourcePolicyInstanceSchedulePolicyOutput() GetResourcePolicyInstanceSchedulePolicyOutput {
+	return i.ToGetResourcePolicyInstanceSchedulePolicyOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicyInstanceSchedulePolicyArgs) ToGetResourcePolicyInstanceSchedulePolicyOutputWithContext(ctx context.Context) GetResourcePolicyInstanceSchedulePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicyInstanceSchedulePolicyOutput)
+}
+
+// GetResourcePolicyInstanceSchedulePolicyArrayInput is an input type that accepts GetResourcePolicyInstanceSchedulePolicyArray and GetResourcePolicyInstanceSchedulePolicyArrayOutput values.
+// You can construct a concrete instance of `GetResourcePolicyInstanceSchedulePolicyArrayInput` via:
+//
+//	GetResourcePolicyInstanceSchedulePolicyArray{ GetResourcePolicyInstanceSchedulePolicyArgs{...} }
+type GetResourcePolicyInstanceSchedulePolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicyInstanceSchedulePolicyArrayOutput() GetResourcePolicyInstanceSchedulePolicyArrayOutput
+	ToGetResourcePolicyInstanceSchedulePolicyArrayOutputWithContext(context.Context) GetResourcePolicyInstanceSchedulePolicyArrayOutput
+}
+
+type GetResourcePolicyInstanceSchedulePolicyArray []GetResourcePolicyInstanceSchedulePolicyInput
+
+func (GetResourcePolicyInstanceSchedulePolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicyInstanceSchedulePolicy)(nil)).Elem()
+}
+
+func (i GetResourcePolicyInstanceSchedulePolicyArray) ToGetResourcePolicyInstanceSchedulePolicyArrayOutput() GetResourcePolicyInstanceSchedulePolicyArrayOutput {
+	return i.ToGetResourcePolicyInstanceSchedulePolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicyInstanceSchedulePolicyArray) ToGetResourcePolicyInstanceSchedulePolicyArrayOutputWithContext(ctx context.Context) GetResourcePolicyInstanceSchedulePolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicyInstanceSchedulePolicyArrayOutput)
+}
+
+type GetResourcePolicyInstanceSchedulePolicyOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicyInstanceSchedulePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicyInstanceSchedulePolicy)(nil)).Elem()
+}
+
+func (o GetResourcePolicyInstanceSchedulePolicyOutput) ToGetResourcePolicyInstanceSchedulePolicyOutput() GetResourcePolicyInstanceSchedulePolicyOutput {
+	return o
+}
+
+func (o GetResourcePolicyInstanceSchedulePolicyOutput) ToGetResourcePolicyInstanceSchedulePolicyOutputWithContext(ctx context.Context) GetResourcePolicyInstanceSchedulePolicyOutput {
+	return o
+}
+
+// The expiration time of the schedule. The timestamp is an RFC3339 string.
+func (o GetResourcePolicyInstanceSchedulePolicyOutput) ExpirationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourcePolicyInstanceSchedulePolicy) string { return v.ExpirationTime }).(pulumi.StringOutput)
+}
+
+// The start time of the schedule. The timestamp is an RFC3339 string.
+func (o GetResourcePolicyInstanceSchedulePolicyOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourcePolicyInstanceSchedulePolicy) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// Specifies the time zone to be used in interpreting the schedule. The value of this field must be a time zone name
+// from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+func (o GetResourcePolicyInstanceSchedulePolicyOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourcePolicyInstanceSchedulePolicy) string { return v.TimeZone }).(pulumi.StringOutput)
+}
+
+// Specifies the schedule for starting instances.
+func (o GetResourcePolicyInstanceSchedulePolicyOutput) VmStartSchedules() GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutput {
+	return o.ApplyT(func(v GetResourcePolicyInstanceSchedulePolicy) []GetResourcePolicyInstanceSchedulePolicyVmStartSchedule {
+		return v.VmStartSchedules
+	}).(GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutput)
+}
+
+// Specifies the schedule for stopping instances.
+func (o GetResourcePolicyInstanceSchedulePolicyOutput) VmStopSchedules() GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutput {
+	return o.ApplyT(func(v GetResourcePolicyInstanceSchedulePolicy) []GetResourcePolicyInstanceSchedulePolicyVmStopSchedule {
+		return v.VmStopSchedules
+	}).(GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutput)
+}
+
+type GetResourcePolicyInstanceSchedulePolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicyInstanceSchedulePolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicyInstanceSchedulePolicy)(nil)).Elem()
+}
+
+func (o GetResourcePolicyInstanceSchedulePolicyArrayOutput) ToGetResourcePolicyInstanceSchedulePolicyArrayOutput() GetResourcePolicyInstanceSchedulePolicyArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicyInstanceSchedulePolicyArrayOutput) ToGetResourcePolicyInstanceSchedulePolicyArrayOutputWithContext(ctx context.Context) GetResourcePolicyInstanceSchedulePolicyArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicyInstanceSchedulePolicyArrayOutput) Index(i pulumi.IntInput) GetResourcePolicyInstanceSchedulePolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourcePolicyInstanceSchedulePolicy {
+		return vs[0].([]GetResourcePolicyInstanceSchedulePolicy)[vs[1].(int)]
+	}).(GetResourcePolicyInstanceSchedulePolicyOutput)
+}
+
 type GetResourcePolicyInstanceSchedulePolicyVmStartSchedule struct {
 	// Specifies the frequency for the operation, using the unix-cron format.
 	Schedule string `pulumi:"schedule"`
@@ -4786,6 +6515,8 @@ type GetSecurityPolicyAdvancedOptionsConfig struct {
 	JsonParsing string `pulumi:"jsonParsing"`
 	// Logging level. Supported values include: "NORMAL", "VERBOSE".
 	LogLevel string `pulumi:"logLevel"`
+	// The maximum request size chosen by the customer with Waf enabled. Values supported are "8KB", "16KB, "32KB", "48KB" and "64KB". Values are case insensitive.
+	RequestBodyInspectionSize string `pulumi:"requestBodyInspectionSize"`
 	// An optional list of case-insensitive request header names to use for resolving the callers client IP address.
 	UserIpRequestHeaders []string `pulumi:"userIpRequestHeaders"`
 }
@@ -4808,6 +6539,8 @@ type GetSecurityPolicyAdvancedOptionsConfigArgs struct {
 	JsonParsing pulumi.StringInput `pulumi:"jsonParsing"`
 	// Logging level. Supported values include: "NORMAL", "VERBOSE".
 	LogLevel pulumi.StringInput `pulumi:"logLevel"`
+	// The maximum request size chosen by the customer with Waf enabled. Values supported are "8KB", "16KB, "32KB", "48KB" and "64KB". Values are case insensitive.
+	RequestBodyInspectionSize pulumi.StringInput `pulumi:"requestBodyInspectionSize"`
 	// An optional list of case-insensitive request header names to use for resolving the callers client IP address.
 	UserIpRequestHeaders pulumi.StringArrayInput `pulumi:"userIpRequestHeaders"`
 }
@@ -4878,6 +6611,11 @@ func (o GetSecurityPolicyAdvancedOptionsConfigOutput) JsonParsing() pulumi.Strin
 // Logging level. Supported values include: "NORMAL", "VERBOSE".
 func (o GetSecurityPolicyAdvancedOptionsConfigOutput) LogLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecurityPolicyAdvancedOptionsConfig) string { return v.LogLevel }).(pulumi.StringOutput)
+}
+
+// The maximum request size chosen by the customer with Waf enabled. Values supported are "8KB", "16KB, "32KB", "48KB" and "64KB". Values are case insensitive.
+func (o GetSecurityPolicyAdvancedOptionsConfigOutput) RequestBodyInspectionSize() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyAdvancedOptionsConfig) string { return v.RequestBodyInspectionSize }).(pulumi.StringOutput)
 }
 
 // An optional list of case-insensitive request header names to use for resolving the callers client IP address.
@@ -8076,6 +9814,34 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionNetworkEndpointGroupCloudRunInput)(nil)).Elem(), GetRegionNetworkEndpointGroupCloudRunArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionNetworkEndpointGroupCloudRunArrayInput)(nil)).Elem(), GetRegionNetworkEndpointGroupCloudRunArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionNetworkEndpointGroupPscDataInput)(nil)).Elem(), GetRegionNetworkEndpointGroupPscDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionNetworkEndpointGroupPscDataArrayInput)(nil)).Elem(), GetRegionNetworkEndpointGroupPscDataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionNetworkEndpointGroupServerlessDeploymentInput)(nil)).Elem(), GetRegionNetworkEndpointGroupServerlessDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionNetworkEndpointGroupServerlessDeploymentArrayInput)(nil)).Elem(), GetRegionNetworkEndpointGroupServerlessDeploymentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationDeleteAfterDurationInput)(nil)).Elem(), GetReservationDeleteAfterDurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationDeleteAfterDurationArrayInput)(nil)).Elem(), GetReservationDeleteAfterDurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationReservationSharingPolicyInput)(nil)).Elem(), GetReservationReservationSharingPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationReservationSharingPolicyArrayInput)(nil)).Elem(), GetReservationReservationSharingPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationShareSettingInput)(nil)).Elem(), GetReservationShareSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationShareSettingArrayInput)(nil)).Elem(), GetReservationShareSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationShareSettingProjectMapInput)(nil)).Elem(), GetReservationShareSettingProjectMapArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationShareSettingProjectMapArrayInput)(nil)).Elem(), GetReservationShareSettingProjectMapArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationSpecificReservationInput)(nil)).Elem(), GetReservationSpecificReservationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationSpecificReservationArrayInput)(nil)).Elem(), GetReservationSpecificReservationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationSpecificReservationInstancePropertyInput)(nil)).Elem(), GetReservationSpecificReservationInstancePropertyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationSpecificReservationInstancePropertyArrayInput)(nil)).Elem(), GetReservationSpecificReservationInstancePropertyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationSpecificReservationInstancePropertyGuestAcceleratorInput)(nil)).Elem(), GetReservationSpecificReservationInstancePropertyGuestAcceleratorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayInput)(nil)).Elem(), GetReservationSpecificReservationInstancePropertyGuestAcceleratorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationSpecificReservationInstancePropertyLocalSsdInput)(nil)).Elem(), GetReservationSpecificReservationInstancePropertyLocalSsdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationSpecificReservationInstancePropertyLocalSsdArrayInput)(nil)).Elem(), GetReservationSpecificReservationInstancePropertyLocalSsdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicyDiskConsistencyGroupPolicyInput)(nil)).Elem(), GetResourcePolicyDiskConsistencyGroupPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicyDiskConsistencyGroupPolicyArrayInput)(nil)).Elem(), GetResourcePolicyDiskConsistencyGroupPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicyGroupPlacementPolicyInput)(nil)).Elem(), GetResourcePolicyGroupPlacementPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicyGroupPlacementPolicyArrayInput)(nil)).Elem(), GetResourcePolicyGroupPlacementPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicyInstanceSchedulePolicyInput)(nil)).Elem(), GetResourcePolicyInstanceSchedulePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicyInstanceSchedulePolicyArrayInput)(nil)).Elem(), GetResourcePolicyInstanceSchedulePolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicyInstanceSchedulePolicyVmStartScheduleInput)(nil)).Elem(), GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayInput)(nil)).Elem(), GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicyInstanceSchedulePolicyVmStopScheduleInput)(nil)).Elem(), GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs{})
@@ -8200,6 +9966,34 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(GetRegionNetworkEndpointGroupCloudRunOutput{})
+	pulumi.RegisterOutputType(GetRegionNetworkEndpointGroupCloudRunArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionNetworkEndpointGroupPscDataOutput{})
+	pulumi.RegisterOutputType(GetRegionNetworkEndpointGroupPscDataArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionNetworkEndpointGroupServerlessDeploymentOutput{})
+	pulumi.RegisterOutputType(GetRegionNetworkEndpointGroupServerlessDeploymentArrayOutput{})
+	pulumi.RegisterOutputType(GetReservationDeleteAfterDurationOutput{})
+	pulumi.RegisterOutputType(GetReservationDeleteAfterDurationArrayOutput{})
+	pulumi.RegisterOutputType(GetReservationReservationSharingPolicyOutput{})
+	pulumi.RegisterOutputType(GetReservationReservationSharingPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetReservationShareSettingOutput{})
+	pulumi.RegisterOutputType(GetReservationShareSettingArrayOutput{})
+	pulumi.RegisterOutputType(GetReservationShareSettingProjectMapOutput{})
+	pulumi.RegisterOutputType(GetReservationShareSettingProjectMapArrayOutput{})
+	pulumi.RegisterOutputType(GetReservationSpecificReservationOutput{})
+	pulumi.RegisterOutputType(GetReservationSpecificReservationArrayOutput{})
+	pulumi.RegisterOutputType(GetReservationSpecificReservationInstancePropertyOutput{})
+	pulumi.RegisterOutputType(GetReservationSpecificReservationInstancePropertyArrayOutput{})
+	pulumi.RegisterOutputType(GetReservationSpecificReservationInstancePropertyGuestAcceleratorOutput{})
+	pulumi.RegisterOutputType(GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutput{})
+	pulumi.RegisterOutputType(GetReservationSpecificReservationInstancePropertyLocalSsdOutput{})
+	pulumi.RegisterOutputType(GetReservationSpecificReservationInstancePropertyLocalSsdArrayOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicyDiskConsistencyGroupPolicyOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicyDiskConsistencyGroupPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicyGroupPlacementPolicyOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicyGroupPlacementPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicyInstanceSchedulePolicyOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicyInstanceSchedulePolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput{})
 	pulumi.RegisterOutputType(GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutput{})
 	pulumi.RegisterOutputType(GetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput{})

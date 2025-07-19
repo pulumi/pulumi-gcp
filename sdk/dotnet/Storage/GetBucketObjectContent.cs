@@ -204,6 +204,7 @@ namespace Pulumi.Gcp.Storage
         public readonly ImmutableArray<Outputs.GetBucketObjectContentCustomerEncryptionResult> CustomerEncryptions;
         public readonly string DetectMd5hash;
         public readonly bool EventBasedHold;
+        public readonly bool ForceEmptyContentType;
         public readonly int Generation;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -253,6 +254,8 @@ namespace Pulumi.Gcp.Storage
 
             bool eventBasedHold,
 
+            bool forceEmptyContentType,
+
             int generation,
 
             string id,
@@ -297,6 +300,7 @@ namespace Pulumi.Gcp.Storage
             CustomerEncryptions = customerEncryptions;
             DetectMd5hash = detectMd5hash;
             EventBasedHold = eventBasedHold;
+            ForceEmptyContentType = forceEmptyContentType;
             Generation = generation;
             Id = id;
             KmsKeyName = kmsKeyName;

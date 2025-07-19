@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetReservationShareSettingProjectMapResult> ProjectMaps;
         /// <summary>
+        /// List of project IDs with which the reservation is shared.
+        /// </summary>
+        public readonly ImmutableArray<string> Projects;
+        /// <summary>
         /// Type of sharing for this shared-reservation Possible values: ["LOCAL", "SPECIFIC_PROJECTS"]
         /// </summary>
         public readonly string ShareType;
@@ -26,9 +30,12 @@ namespace Pulumi.Gcp.Compute.Outputs
         private GetReservationShareSettingResult(
             ImmutableArray<Outputs.GetReservationShareSettingProjectMapResult> projectMaps,
 
+            ImmutableArray<string> projects,
+
             string shareType)
         {
             ProjectMaps = projectMaps;
+            Projects = projects;
             ShareType = shareType;
         }
     }
