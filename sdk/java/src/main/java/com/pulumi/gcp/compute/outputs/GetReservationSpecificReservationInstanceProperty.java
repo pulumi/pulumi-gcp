@@ -30,6 +30,11 @@ public final class GetReservationSpecificReservationInstanceProperty {
      */
     private String machineType;
     /**
+     * @return Specifies the frequency of planned maintenance events. Possible values: [&#34;AS_NEEDED&#34;, &#34;PERIODIC&#34;, &#34;RECURRENT&#34;]
+     * 
+     */
+    private String maintenanceInterval;
+    /**
      * @return The minimum CPU platform for the reservation. For example,
      * &#39;&#34;Intel Skylake&#34;&#39;. See
      * the CPU platform availability reference](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones)
@@ -62,6 +67,13 @@ public final class GetReservationSpecificReservationInstanceProperty {
         return this.machineType;
     }
     /**
+     * @return Specifies the frequency of planned maintenance events. Possible values: [&#34;AS_NEEDED&#34;, &#34;PERIODIC&#34;, &#34;RECURRENT&#34;]
+     * 
+     */
+    public String maintenanceInterval() {
+        return this.maintenanceInterval;
+    }
+    /**
      * @return The minimum CPU platform for the reservation. For example,
      * &#39;&#34;Intel Skylake&#34;&#39;. See
      * the CPU platform availability reference](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones)
@@ -84,6 +96,7 @@ public final class GetReservationSpecificReservationInstanceProperty {
         private List<GetReservationSpecificReservationInstancePropertyGuestAccelerator> guestAccelerators;
         private List<GetReservationSpecificReservationInstancePropertyLocalSsd> localSsds;
         private String machineType;
+        private String maintenanceInterval;
         private String minCpuPlatform;
         public Builder() {}
         public Builder(GetReservationSpecificReservationInstanceProperty defaults) {
@@ -91,6 +104,7 @@ public final class GetReservationSpecificReservationInstanceProperty {
     	      this.guestAccelerators = defaults.guestAccelerators;
     	      this.localSsds = defaults.localSsds;
     	      this.machineType = defaults.machineType;
+    	      this.maintenanceInterval = defaults.maintenanceInterval;
     	      this.minCpuPlatform = defaults.minCpuPlatform;
         }
 
@@ -125,6 +139,14 @@ public final class GetReservationSpecificReservationInstanceProperty {
             return this;
         }
         @CustomType.Setter
+        public Builder maintenanceInterval(String maintenanceInterval) {
+            if (maintenanceInterval == null) {
+              throw new MissingRequiredPropertyException("GetReservationSpecificReservationInstanceProperty", "maintenanceInterval");
+            }
+            this.maintenanceInterval = maintenanceInterval;
+            return this;
+        }
+        @CustomType.Setter
         public Builder minCpuPlatform(String minCpuPlatform) {
             if (minCpuPlatform == null) {
               throw new MissingRequiredPropertyException("GetReservationSpecificReservationInstanceProperty", "minCpuPlatform");
@@ -137,6 +159,7 @@ public final class GetReservationSpecificReservationInstanceProperty {
             _resultValue.guestAccelerators = guestAccelerators;
             _resultValue.localSsds = localSsds;
             _resultValue.machineType = machineType;
+            _resultValue.maintenanceInterval = maintenanceInterval;
             _resultValue.minCpuPlatform = minCpuPlatform;
             return _resultValue;
         }

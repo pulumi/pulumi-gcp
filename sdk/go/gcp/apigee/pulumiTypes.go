@@ -2541,6 +2541,174 @@ func (o EnvironmentPropertiesPropertyArrayOutput) Index(i pulumi.IntInput) Envir
 	}).(EnvironmentPropertiesPropertyOutput)
 }
 
+type InstanceAccessLoggingConfig struct {
+	// Boolean flag that specifies whether the customer access log feature is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// Ship the access log entries that match the statusCode defined in the filter.
+	// The statusCode is the only expected/supported filter field. (Ex: statusCode)
+	// The filter will parse it to the Common Expression Language semantics for expression
+	// evaluation to build the filter condition. (Ex: "filter": statusCode >= 200 && statusCode < 300 )
+	Filter *string `pulumi:"filter"`
+}
+
+// InstanceAccessLoggingConfigInput is an input type that accepts InstanceAccessLoggingConfigArgs and InstanceAccessLoggingConfigOutput values.
+// You can construct a concrete instance of `InstanceAccessLoggingConfigInput` via:
+//
+//	InstanceAccessLoggingConfigArgs{...}
+type InstanceAccessLoggingConfigInput interface {
+	pulumi.Input
+
+	ToInstanceAccessLoggingConfigOutput() InstanceAccessLoggingConfigOutput
+	ToInstanceAccessLoggingConfigOutputWithContext(context.Context) InstanceAccessLoggingConfigOutput
+}
+
+type InstanceAccessLoggingConfigArgs struct {
+	// Boolean flag that specifies whether the customer access log feature is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Ship the access log entries that match the statusCode defined in the filter.
+	// The statusCode is the only expected/supported filter field. (Ex: statusCode)
+	// The filter will parse it to the Common Expression Language semantics for expression
+	// evaluation to build the filter condition. (Ex: "filter": statusCode >= 200 && statusCode < 300 )
+	Filter pulumi.StringPtrInput `pulumi:"filter"`
+}
+
+func (InstanceAccessLoggingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceAccessLoggingConfig)(nil)).Elem()
+}
+
+func (i InstanceAccessLoggingConfigArgs) ToInstanceAccessLoggingConfigOutput() InstanceAccessLoggingConfigOutput {
+	return i.ToInstanceAccessLoggingConfigOutputWithContext(context.Background())
+}
+
+func (i InstanceAccessLoggingConfigArgs) ToInstanceAccessLoggingConfigOutputWithContext(ctx context.Context) InstanceAccessLoggingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAccessLoggingConfigOutput)
+}
+
+func (i InstanceAccessLoggingConfigArgs) ToInstanceAccessLoggingConfigPtrOutput() InstanceAccessLoggingConfigPtrOutput {
+	return i.ToInstanceAccessLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceAccessLoggingConfigArgs) ToInstanceAccessLoggingConfigPtrOutputWithContext(ctx context.Context) InstanceAccessLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAccessLoggingConfigOutput).ToInstanceAccessLoggingConfigPtrOutputWithContext(ctx)
+}
+
+// InstanceAccessLoggingConfigPtrInput is an input type that accepts InstanceAccessLoggingConfigArgs, InstanceAccessLoggingConfigPtr and InstanceAccessLoggingConfigPtrOutput values.
+// You can construct a concrete instance of `InstanceAccessLoggingConfigPtrInput` via:
+//
+//	        InstanceAccessLoggingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceAccessLoggingConfigPtrInput interface {
+	pulumi.Input
+
+	ToInstanceAccessLoggingConfigPtrOutput() InstanceAccessLoggingConfigPtrOutput
+	ToInstanceAccessLoggingConfigPtrOutputWithContext(context.Context) InstanceAccessLoggingConfigPtrOutput
+}
+
+type instanceAccessLoggingConfigPtrType InstanceAccessLoggingConfigArgs
+
+func InstanceAccessLoggingConfigPtr(v *InstanceAccessLoggingConfigArgs) InstanceAccessLoggingConfigPtrInput {
+	return (*instanceAccessLoggingConfigPtrType)(v)
+}
+
+func (*instanceAccessLoggingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceAccessLoggingConfig)(nil)).Elem()
+}
+
+func (i *instanceAccessLoggingConfigPtrType) ToInstanceAccessLoggingConfigPtrOutput() InstanceAccessLoggingConfigPtrOutput {
+	return i.ToInstanceAccessLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceAccessLoggingConfigPtrType) ToInstanceAccessLoggingConfigPtrOutputWithContext(ctx context.Context) InstanceAccessLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAccessLoggingConfigPtrOutput)
+}
+
+type InstanceAccessLoggingConfigOutput struct{ *pulumi.OutputState }
+
+func (InstanceAccessLoggingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceAccessLoggingConfig)(nil)).Elem()
+}
+
+func (o InstanceAccessLoggingConfigOutput) ToInstanceAccessLoggingConfigOutput() InstanceAccessLoggingConfigOutput {
+	return o
+}
+
+func (o InstanceAccessLoggingConfigOutput) ToInstanceAccessLoggingConfigOutputWithContext(ctx context.Context) InstanceAccessLoggingConfigOutput {
+	return o
+}
+
+func (o InstanceAccessLoggingConfigOutput) ToInstanceAccessLoggingConfigPtrOutput() InstanceAccessLoggingConfigPtrOutput {
+	return o.ToInstanceAccessLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceAccessLoggingConfigOutput) ToInstanceAccessLoggingConfigPtrOutputWithContext(ctx context.Context) InstanceAccessLoggingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceAccessLoggingConfig) *InstanceAccessLoggingConfig {
+		return &v
+	}).(InstanceAccessLoggingConfigPtrOutput)
+}
+
+// Boolean flag that specifies whether the customer access log feature is enabled.
+func (o InstanceAccessLoggingConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v InstanceAccessLoggingConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Ship the access log entries that match the statusCode defined in the filter.
+// The statusCode is the only expected/supported filter field. (Ex: statusCode)
+// The filter will parse it to the Common Expression Language semantics for expression
+// evaluation to build the filter condition. (Ex: "filter": statusCode >= 200 && statusCode < 300 )
+func (o InstanceAccessLoggingConfigOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceAccessLoggingConfig) *string { return v.Filter }).(pulumi.StringPtrOutput)
+}
+
+type InstanceAccessLoggingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceAccessLoggingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceAccessLoggingConfig)(nil)).Elem()
+}
+
+func (o InstanceAccessLoggingConfigPtrOutput) ToInstanceAccessLoggingConfigPtrOutput() InstanceAccessLoggingConfigPtrOutput {
+	return o
+}
+
+func (o InstanceAccessLoggingConfigPtrOutput) ToInstanceAccessLoggingConfigPtrOutputWithContext(ctx context.Context) InstanceAccessLoggingConfigPtrOutput {
+	return o
+}
+
+func (o InstanceAccessLoggingConfigPtrOutput) Elem() InstanceAccessLoggingConfigOutput {
+	return o.ApplyT(func(v *InstanceAccessLoggingConfig) InstanceAccessLoggingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceAccessLoggingConfig
+		return ret
+	}).(InstanceAccessLoggingConfigOutput)
+}
+
+// Boolean flag that specifies whether the customer access log feature is enabled.
+func (o InstanceAccessLoggingConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceAccessLoggingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Ship the access log entries that match the statusCode defined in the filter.
+// The statusCode is the only expected/supported filter field. (Ex: statusCode)
+// The filter will parse it to the Common Expression Language semantics for expression
+// evaluation to build the filter condition. (Ex: "filter": statusCode >= 200 && statusCode < 300 )
+func (o InstanceAccessLoggingConfigPtrOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceAccessLoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Filter
+	}).(pulumi.StringPtrOutput)
+}
+
 type KeystoresAliasesKeyCertFileCertsInfo struct {
 	// (Output)
 	// List of all properties in the object.
@@ -5047,6 +5215,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentPropertiesPtrInput)(nil)).Elem(), EnvironmentPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentPropertiesPropertyInput)(nil)).Elem(), EnvironmentPropertiesPropertyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentPropertiesPropertyArrayInput)(nil)).Elem(), EnvironmentPropertiesPropertyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAccessLoggingConfigInput)(nil)).Elem(), InstanceAccessLoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAccessLoggingConfigPtrInput)(nil)).Elem(), InstanceAccessLoggingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeystoresAliasesKeyCertFileCertsInfoInput)(nil)).Elem(), KeystoresAliasesKeyCertFileCertsInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeystoresAliasesKeyCertFileCertsInfoPtrInput)(nil)).Elem(), KeystoresAliasesKeyCertFileCertsInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeystoresAliasesKeyCertFileCertsInfoCertInfoInput)(nil)).Elem(), KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs{})
@@ -5111,6 +5281,8 @@ func init() {
 	pulumi.RegisterOutputType(EnvironmentPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentPropertiesPropertyOutput{})
 	pulumi.RegisterOutputType(EnvironmentPropertiesPropertyArrayOutput{})
+	pulumi.RegisterOutputType(InstanceAccessLoggingConfigOutput{})
+	pulumi.RegisterOutputType(InstanceAccessLoggingConfigPtrOutput{})
 	pulumi.RegisterOutputType(KeystoresAliasesKeyCertFileCertsInfoOutput{})
 	pulumi.RegisterOutputType(KeystoresAliasesKeyCertFileCertsInfoPtrOutput{})
 	pulumi.RegisterOutputType(KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput{})

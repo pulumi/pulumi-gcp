@@ -322,6 +322,110 @@ import (
 //	}
 //
 // ```
+// ### Bigquery Analyticshub Listing Dcr Routine
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigqueryanalyticshub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			dcrDataExchangeExample, err := bigqueryanalyticshub.NewDataExchange(ctx, "dcr_data_exchange_example", &bigqueryanalyticshub.DataExchangeArgs{
+//				Location:       pulumi.String("us"),
+//				DataExchangeId: pulumi.String("tf_test_data_exchange"),
+//				DisplayName:    pulumi.String("tf_test_data_exchange"),
+//				Description:    pulumi.String("Example for listing with routine"),
+//				SharingEnvironmentConfig: &bigqueryanalyticshub.DataExchangeSharingEnvironmentConfigArgs{
+//					DcrExchangeConfig: &bigqueryanalyticshub.DataExchangeSharingEnvironmentConfigDcrExchangeConfigArgs{},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			listing, err := bigquery.NewDataset(ctx, "listing", &bigquery.DatasetArgs{
+//				DatasetId:    pulumi.String("tf_test_dataset"),
+//				FriendlyName: pulumi.String("tf_test_dataset"),
+//				Description:  pulumi.String("Example for listing with routine"),
+//				Location:     pulumi.String("us"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"typeKind": "INT64",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			tmpJSON1, err := json.Marshal(map[string]interface{}{
+//				"columns": []map[string]interface{}{
+//					map[string]interface{}{
+//						"name": "value",
+//						"type": map[string]interface{}{
+//							"typeKind": "INT64",
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json1 := string(tmpJSON1)
+//			listingRoutine, err := bigquery.NewRoutine(ctx, "listing", &bigquery.RoutineArgs{
+//				DatasetId:      listing.DatasetId,
+//				RoutineId:      pulumi.String("tf_test_routine"),
+//				RoutineType:    pulumi.String("TABLE_VALUED_FUNCTION"),
+//				Language:       pulumi.String("SQL"),
+//				Description:    pulumi.String("A DCR routine example."),
+//				DefinitionBody: pulumi.String("SELECT 1 + value AS value\n"),
+//				Arguments: bigquery.RoutineArgumentArray{
+//					&bigquery.RoutineArgumentArgs{
+//						Name:         pulumi.String("value"),
+//						ArgumentKind: pulumi.String("FIXED_TYPE"),
+//						DataType:     pulumi.String(json0),
+//					},
+//				},
+//				ReturnTableType: pulumi.String(json1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigqueryanalyticshub.NewListing(ctx, "listing", &bigqueryanalyticshub.ListingArgs{
+//				Location:       pulumi.String("US"),
+//				DataExchangeId: dcrDataExchangeExample.DataExchangeId,
+//				ListingId:      pulumi.String("tf_test_listing_routine"),
+//				DisplayName:    pulumi.String("tf_test_listing_routine"),
+//				Description:    pulumi.String("Example for listing with routine"),
+//				BigqueryDataset: &bigqueryanalyticshub.ListingBigqueryDatasetArgs{
+//					Dataset: listing.ID(),
+//					SelectedResources: bigqueryanalyticshub.ListingBigqueryDatasetSelectedResourceArray{
+//						&bigqueryanalyticshub.ListingBigqueryDatasetSelectedResourceArgs{
+//							Routine: listingRoutine.ID(),
+//						},
+//					},
+//				},
+//				RestrictedExportConfig: &bigqueryanalyticshub.ListingRestrictedExportConfigArgs{
+//					Enabled: pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

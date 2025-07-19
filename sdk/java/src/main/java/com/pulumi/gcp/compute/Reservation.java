@@ -10,6 +10,8 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.ReservationArgs;
 import com.pulumi.gcp.compute.inputs.ReservationState;
+import com.pulumi.gcp.compute.outputs.ReservationDeleteAfterDuration;
+import com.pulumi.gcp.compute.outputs.ReservationReservationSharingPolicy;
 import com.pulumi.gcp.compute.outputs.ReservationShareSettings;
 import com.pulumi.gcp.compute.outputs.ReservationSpecificReservation;
 import java.lang.Boolean;
@@ -71,6 +73,220 @@ import javax.annotation.Nullable;
  *                     .minCpuPlatform("Intel Cascade Lake")
  *                     .machineType("n2-standard-2")
  *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Reservation Basic Beta
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Reservation;
+ * import com.pulumi.gcp.compute.ReservationArgs;
+ * import com.pulumi.gcp.compute.inputs.ReservationSpecificReservationArgs;
+ * import com.pulumi.gcp.compute.inputs.ReservationSpecificReservationInstancePropertiesArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var gceReservation = new Reservation("gceReservation", ReservationArgs.builder()
+ *             .name("gce-reservation")
+ *             .zone("us-central1-a")
+ *             .specificReservation(ReservationSpecificReservationArgs.builder()
+ *                 .count(1)
+ *                 .instanceProperties(ReservationSpecificReservationInstancePropertiesArgs.builder()
+ *                     .minCpuPlatform("Intel Cascade Lake")
+ *                     .machineType("n2-standard-2")
+ *                     .maintenanceInterval("PERIODIC")
+ *                     .build())
+ *                 .build())
+ *             .enableEmergentMaintenance(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Reservation Source Instance Template
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.compute.inputs.GetImageArgs;
+ * import com.pulumi.gcp.compute.InstanceTemplate;
+ * import com.pulumi.gcp.compute.InstanceTemplateArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateNetworkInterfaceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateSchedulingArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateServiceAccountArgs;
+ * import com.pulumi.gcp.compute.Reservation;
+ * import com.pulumi.gcp.compute.ReservationArgs;
+ * import com.pulumi.gcp.compute.inputs.ReservationSpecificReservationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
+ *             .family("debian-11")
+ *             .project("debian-cloud")
+ *             .build());
+ * 
+ *         var foobar = new InstanceTemplate("foobar", InstanceTemplateArgs.builder()
+ *             .name("tf-test-instance-template")
+ *             .machineType("n2-standard-2")
+ *             .canIpForward(false)
+ *             .tags(            
+ *                 "foo",
+ *                 "bar")
+ *             .disks(InstanceTemplateDiskArgs.builder()
+ *                 .sourceImage(myImage.selfLink())
+ *                 .autoDelete(true)
+ *                 .boot(true)
+ *                 .build())
+ *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
+ *                 .network("default")
+ *                 .build())
+ *             .scheduling(InstanceTemplateSchedulingArgs.builder()
+ *                 .preemptible(false)
+ *                 .automaticRestart(true)
+ *                 .build())
+ *             .metadata(Map.of("foo", "bar"))
+ *             .serviceAccount(InstanceTemplateServiceAccountArgs.builder()
+ *                 .scopes(                
+ *                     "userinfo-email",
+ *                     "compute-ro",
+ *                     "storage-ro")
+ *                 .build())
+ *             .labels(Map.of("my_label", "foobar"))
+ *             .build());
+ * 
+ *         var gceReservationSourceInstanceTemplate = new Reservation("gceReservationSourceInstanceTemplate", ReservationArgs.builder()
+ *             .name("gce-reservation-source-instance-template")
+ *             .zone("us-central1-a")
+ *             .specificReservation(ReservationSpecificReservationArgs.builder()
+ *                 .count(1)
+ *                 .sourceInstanceTemplate(foobar.selfLink())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Reservation Sharing Policy
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.compute.inputs.GetImageArgs;
+ * import com.pulumi.gcp.compute.InstanceTemplate;
+ * import com.pulumi.gcp.compute.InstanceTemplateArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateNetworkInterfaceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateSchedulingArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateServiceAccountArgs;
+ * import com.pulumi.gcp.compute.Reservation;
+ * import com.pulumi.gcp.compute.ReservationArgs;
+ * import com.pulumi.gcp.compute.inputs.ReservationSpecificReservationArgs;
+ * import com.pulumi.gcp.compute.inputs.ReservationReservationSharingPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
+ *             .family("debian-11")
+ *             .project("debian-cloud")
+ *             .build());
+ * 
+ *         var foobar = new InstanceTemplate("foobar", InstanceTemplateArgs.builder()
+ *             .name("tf-test-instance-template")
+ *             .machineType("g2-standard-4")
+ *             .canIpForward(false)
+ *             .tags(            
+ *                 "foo",
+ *                 "bar")
+ *             .disks(InstanceTemplateDiskArgs.builder()
+ *                 .sourceImage(myImage.selfLink())
+ *                 .autoDelete(true)
+ *                 .boot(true)
+ *                 .build())
+ *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
+ *                 .network("default")
+ *                 .build())
+ *             .scheduling(InstanceTemplateSchedulingArgs.builder()
+ *                 .preemptible(false)
+ *                 .automaticRestart(true)
+ *                 .build())
+ *             .metadata(Map.of("foo", "bar"))
+ *             .serviceAccount(InstanceTemplateServiceAccountArgs.builder()
+ *                 .scopes(                
+ *                     "userinfo-email",
+ *                     "compute-ro",
+ *                     "storage-ro")
+ *                 .build())
+ *             .labels(Map.of("my_label", "foobar"))
+ *             .build());
+ * 
+ *         var gceReservationSharingPolicy = new Reservation("gceReservationSharingPolicy", ReservationArgs.builder()
+ *             .name("gce-reservation-sharing-policy")
+ *             .zone("us-central1-b")
+ *             .specificReservation(ReservationSpecificReservationArgs.builder()
+ *                 .count(2)
+ *                 .sourceInstanceTemplate(foobar.selfLink())
+ *                 .build())
+ *             .reservationSharingPolicy(ReservationReservationSharingPolicyArgs.builder()
+ *                 .serviceShareType("ALLOW_ALL")
  *                 .build())
  *             .build());
  * 
@@ -144,6 +360,38 @@ public class Reservation extends com.pulumi.resources.CustomResource {
         return this.creationTimestamp;
     }
     /**
+     * Duration after which the reservation will be auto-deleted by Compute Engine. Cannot be used with delete_at_time.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="deleteAfterDuration", refs={ReservationDeleteAfterDuration.class}, tree="[0]")
+    private Output</* @Nullable */ ReservationDeleteAfterDuration> deleteAfterDuration;
+
+    /**
+     * @return Duration after which the reservation will be auto-deleted by Compute Engine. Cannot be used with delete_at_time.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ReservationDeleteAfterDuration>> deleteAfterDuration() {
+        return Codegen.optional(this.deleteAfterDuration);
+    }
+    /**
+     * Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
+     * Cannot be used with delete_after_duration.
+     * 
+     */
+    @Export(name="deleteAtTime", refs={String.class}, tree="[0]")
+    private Output<String> deleteAtTime;
+
+    /**
+     * @return Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
+     * Cannot be used with delete_after_duration.
+     * 
+     */
+    public Output<String> deleteAtTime() {
+        return this.deleteAtTime;
+    }
+    /**
      * An optional description of this resource.
      * 
      */
@@ -156,6 +404,20 @@ public class Reservation extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * Indicates if this group of VMs have emergent maintenance enabled.
+     * 
+     */
+    @Export(name="enableEmergentMaintenance", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> enableEmergentMaintenance;
+
+    /**
+     * @return Indicates if this group of VMs have emergent maintenance enabled.
+     * 
+     */
+    public Output<Optional<Boolean>> enableEmergentMaintenance() {
+        return Codegen.optional(this.enableEmergentMaintenance);
     }
     /**
      * Name of the resource. Provided by the client when the resource is
@@ -198,6 +460,22 @@ public class Reservation extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * Sharing policy for reservations with Google Cloud managed services.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="reservationSharingPolicy", refs={ReservationReservationSharingPolicy.class}, tree="[0]")
+    private Output<ReservationReservationSharingPolicy> reservationSharingPolicy;
+
+    /**
+     * @return Sharing policy for reservations with Google Cloud managed services.
+     * Structure is documented below.
+     * 
+     */
+    public Output<ReservationReservationSharingPolicy> reservationSharingPolicy() {
+        return this.reservationSharingPolicy;
     }
     /**
      * The URI of the created resource.

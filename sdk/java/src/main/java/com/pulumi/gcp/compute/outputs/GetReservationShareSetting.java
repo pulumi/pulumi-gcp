@@ -18,6 +18,11 @@ public final class GetReservationShareSetting {
      */
     private List<GetReservationShareSettingProjectMap> projectMaps;
     /**
+     * @return List of project IDs with which the reservation is shared.
+     * 
+     */
+    private List<String> projects;
+    /**
      * @return Type of sharing for this shared-reservation Possible values: [&#34;LOCAL&#34;, &#34;SPECIFIC_PROJECTS&#34;]
      * 
      */
@@ -30,6 +35,13 @@ public final class GetReservationShareSetting {
      */
     public List<GetReservationShareSettingProjectMap> projectMaps() {
         return this.projectMaps;
+    }
+    /**
+     * @return List of project IDs with which the reservation is shared.
+     * 
+     */
+    public List<String> projects() {
+        return this.projects;
     }
     /**
      * @return Type of sharing for this shared-reservation Possible values: [&#34;LOCAL&#34;, &#34;SPECIFIC_PROJECTS&#34;]
@@ -49,11 +61,13 @@ public final class GetReservationShareSetting {
     @CustomType.Builder
     public static final class Builder {
         private List<GetReservationShareSettingProjectMap> projectMaps;
+        private List<String> projects;
         private String shareType;
         public Builder() {}
         public Builder(GetReservationShareSetting defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.projectMaps = defaults.projectMaps;
+    	      this.projects = defaults.projects;
     	      this.shareType = defaults.shareType;
         }
 
@@ -69,6 +83,17 @@ public final class GetReservationShareSetting {
             return projectMaps(List.of(projectMaps));
         }
         @CustomType.Setter
+        public Builder projects(List<String> projects) {
+            if (projects == null) {
+              throw new MissingRequiredPropertyException("GetReservationShareSetting", "projects");
+            }
+            this.projects = projects;
+            return this;
+        }
+        public Builder projects(String... projects) {
+            return projects(List.of(projects));
+        }
+        @CustomType.Setter
         public Builder shareType(String shareType) {
             if (shareType == null) {
               throw new MissingRequiredPropertyException("GetReservationShareSetting", "shareType");
@@ -79,6 +104,7 @@ public final class GetReservationShareSetting {
         public GetReservationShareSetting build() {
             final var _resultValue = new GetReservationShareSetting();
             _resultValue.projectMaps = projectMaps;
+            _resultValue.projects = projects;
             _resultValue.shareType = shareType;
             return _resultValue;
         }

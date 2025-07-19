@@ -44,6 +44,8 @@ public final class GetRegionDiskResult {
     private String name;
     private Integer physicalBlockSizeBytes;
     private @Nullable String project;
+    private Integer provisionedIops;
+    private Integer provisionedThroughput;
     private Map<String,String> pulumiLabels;
     private @Nullable String region;
     private List<String> replicaZones;
@@ -122,6 +124,12 @@ public final class GetRegionDiskResult {
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
+    public Integer provisionedIops() {
+        return this.provisionedIops;
+    }
+    public Integer provisionedThroughput() {
+        return this.provisionedThroughput;
+    }
     public Map<String,String> pulumiLabels() {
         return this.pulumiLabels;
     }
@@ -188,6 +196,8 @@ public final class GetRegionDiskResult {
         private String name;
         private Integer physicalBlockSizeBytes;
         private @Nullable String project;
+        private Integer provisionedIops;
+        private Integer provisionedThroughput;
         private Map<String,String> pulumiLabels;
         private @Nullable String region;
         private List<String> replicaZones;
@@ -223,6 +233,8 @@ public final class GetRegionDiskResult {
     	      this.name = defaults.name;
     	      this.physicalBlockSizeBytes = defaults.physicalBlockSizeBytes;
     	      this.project = defaults.project;
+    	      this.provisionedIops = defaults.provisionedIops;
+    	      this.provisionedThroughput = defaults.provisionedThroughput;
     	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.region = defaults.region;
     	      this.replicaZones = defaults.replicaZones;
@@ -408,6 +420,22 @@ public final class GetRegionDiskResult {
             return this;
         }
         @CustomType.Setter
+        public Builder provisionedIops(Integer provisionedIops) {
+            if (provisionedIops == null) {
+              throw new MissingRequiredPropertyException("GetRegionDiskResult", "provisionedIops");
+            }
+            this.provisionedIops = provisionedIops;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder provisionedThroughput(Integer provisionedThroughput) {
+            if (provisionedThroughput == null) {
+              throw new MissingRequiredPropertyException("GetRegionDiskResult", "provisionedThroughput");
+            }
+            this.provisionedThroughput = provisionedThroughput;
+            return this;
+        }
+        @CustomType.Setter
         public Builder pulumiLabels(Map<String,String> pulumiLabels) {
             if (pulumiLabels == null) {
               throw new MissingRequiredPropertyException("GetRegionDiskResult", "pulumiLabels");
@@ -532,6 +560,8 @@ public final class GetRegionDiskResult {
             _resultValue.name = name;
             _resultValue.physicalBlockSizeBytes = physicalBlockSizeBytes;
             _resultValue.project = project;
+            _resultValue.provisionedIops = provisionedIops;
+            _resultValue.provisionedThroughput = provisionedThroughput;
             _resultValue.pulumiLabels = pulumiLabels;
             _resultValue.region = region;
             _resultValue.replicaZones = replicaZones;

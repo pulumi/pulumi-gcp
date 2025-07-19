@@ -195,6 +195,21 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * When set to true, it ensure the object&#39;s Content-Type is empty.
+     * 
+     */
+    @Import(name="forceEmptyContentType")
+    private @Nullable Output<Boolean> forceEmptyContentType;
+
+    /**
+     * @return When set to true, it ensure the object&#39;s Content-Type is empty.
+     * 
+     */
+    public Optional<Output<Boolean>> forceEmptyContentType() {
+        return Optional.ofNullable(this.forceEmptyContentType);
+    }
+
+    /**
      * (Computed) The content generation of this object. Used for object [versioning](https://cloud.google.com/storage/docs/object-versioning) and [soft delete](https://cloud.google.com/storage/docs/soft-delete).
      * 
      */
@@ -434,6 +449,7 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
         this.customerEncryption = $.customerEncryption;
         this.detectMd5hash = $.detectMd5hash;
         this.eventBasedHold = $.eventBasedHold;
+        this.forceEmptyContentType = $.forceEmptyContentType;
         this.generation = $.generation;
         this.kmsKeyName = $.kmsKeyName;
         this.md5hash = $.md5hash;
@@ -705,6 +721,27 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder eventBasedHold(Boolean eventBasedHold) {
             return eventBasedHold(Output.of(eventBasedHold));
+        }
+
+        /**
+         * @param forceEmptyContentType When set to true, it ensure the object&#39;s Content-Type is empty.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceEmptyContentType(@Nullable Output<Boolean> forceEmptyContentType) {
+            $.forceEmptyContentType = forceEmptyContentType;
+            return this;
+        }
+
+        /**
+         * @param forceEmptyContentType When set to true, it ensure the object&#39;s Content-Type is empty.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceEmptyContentType(Boolean forceEmptyContentType) {
+            return forceEmptyContentType(Output.of(forceEmptyContentType));
         }
 
         /**

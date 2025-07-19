@@ -943,6 +943,12 @@ class VmwareAdminCluster(pulumi.CustomResource):
                  vcenter: Optional[pulumi.Input[Union['VmwareAdminClusterVcenterArgs', 'VmwareAdminClusterVcenterArgsDict']]] = None,
                  __props__=None):
         """
+        A Google VMware Admin Cluster.
+
+        To get more information about VmwareAdminCluster, see:
+
+        * [API documentation](https://cloud.google.com/kubernetes-engine/distributed-cloud/reference/on-prem-api/rest/v1/projects.locations.vmwareAdminClusters)
+
         ## Example Usage
 
         ### Gkeonprem Vmware Admin Cluster Basic
@@ -1215,6 +1221,12 @@ class VmwareAdminCluster(pulumi.CustomResource):
                  args: VmwareAdminClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A Google VMware Admin Cluster.
+
+        To get more information about VmwareAdminCluster, see:
+
+        * [API documentation](https://cloud.google.com/kubernetes-engine/distributed-cloud/reference/on-prem-api/rest/v1/projects.locations.vmwareAdminClusters)
+
         ## Example Usage
 
         ### Gkeonprem Vmware Admin Cluster Basic

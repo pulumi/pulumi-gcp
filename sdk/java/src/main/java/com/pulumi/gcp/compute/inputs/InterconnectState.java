@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.compute.inputs.InterconnectApplicationAwareInterconnectArgs;
 import com.pulumi.gcp.compute.inputs.InterconnectCircuitInfoArgs;
 import com.pulumi.gcp.compute.inputs.InterconnectExpectedOutageArgs;
 import com.pulumi.gcp.compute.inputs.InterconnectMacsecArgs;
@@ -23,6 +24,21 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
     public static final InterconnectState Empty = new InterconnectState();
 
     /**
+     * Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
+     * 
+     */
+    @Import(name="aaiEnabled")
+    private @Nullable Output<Boolean> aaiEnabled;
+
+    /**
+     * @return Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
+     * 
+     */
+    public Optional<Output<Boolean>> aaiEnabled() {
+        return Optional.ofNullable(this.aaiEnabled);
+    }
+
+    /**
      * Administrative status of the interconnect. When this is set to true, the Interconnect is
      * functional and can carry traffic. When set to false, no packets can be carried over the
      * interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
@@ -39,6 +55,25 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> adminEnabled() {
         return Optional.ofNullable(this.adminEnabled);
+    }
+
+    /**
+     * Configuration that enables Media Access Control security (MACsec) on the Cloud
+     * Interconnect connection between Google and your on-premises router.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="applicationAwareInterconnect")
+    private @Nullable Output<InterconnectApplicationAwareInterconnectArgs> applicationAwareInterconnect;
+
+    /**
+     * @return Configuration that enables Media Access Control security (MACsec) on the Cloud
+     * Interconnect connection between Google and your on-premises router.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InterconnectApplicationAwareInterconnectArgs>> applicationAwareInterconnect() {
+        return Optional.ofNullable(this.applicationAwareInterconnect);
     }
 
     /**
@@ -635,7 +670,9 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
     private InterconnectState() {}
 
     private InterconnectState(InterconnectState $) {
+        this.aaiEnabled = $.aaiEnabled;
         this.adminEnabled = $.adminEnabled;
+        this.applicationAwareInterconnect = $.applicationAwareInterconnect;
         this.availableFeatures = $.availableFeatures;
         this.circuitInfos = $.circuitInfos;
         this.creationTimestamp = $.creationTimestamp;
@@ -688,6 +725,27 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param aaiEnabled Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aaiEnabled(@Nullable Output<Boolean> aaiEnabled) {
+            $.aaiEnabled = aaiEnabled;
+            return this;
+        }
+
+        /**
+         * @param aaiEnabled Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aaiEnabled(Boolean aaiEnabled) {
+            return aaiEnabled(Output.of(aaiEnabled));
+        }
+
+        /**
          * @param adminEnabled Administrative status of the interconnect. When this is set to true, the Interconnect is
          * functional and can carry traffic. When set to false, no packets can be carried over the
          * interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
@@ -710,6 +768,31 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder adminEnabled(Boolean adminEnabled) {
             return adminEnabled(Output.of(adminEnabled));
+        }
+
+        /**
+         * @param applicationAwareInterconnect Configuration that enables Media Access Control security (MACsec) on the Cloud
+         * Interconnect connection between Google and your on-premises router.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder applicationAwareInterconnect(@Nullable Output<InterconnectApplicationAwareInterconnectArgs> applicationAwareInterconnect) {
+            $.applicationAwareInterconnect = applicationAwareInterconnect;
+            return this;
+        }
+
+        /**
+         * @param applicationAwareInterconnect Configuration that enables Media Access Control security (MACsec) on the Cloud
+         * Interconnect connection between Google and your on-premises router.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder applicationAwareInterconnect(InterconnectApplicationAwareInterconnectArgs applicationAwareInterconnect) {
+            return applicationAwareInterconnect(Output.of(applicationAwareInterconnect));
         }
 
         /**

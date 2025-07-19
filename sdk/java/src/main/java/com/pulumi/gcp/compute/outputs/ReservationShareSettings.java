@@ -20,6 +20,11 @@ public final class ReservationShareSettings {
      */
     private @Nullable List<ReservationShareSettingsProjectMap> projectMaps;
     /**
+     * @return List of project IDs with which the reservation is shared.
+     * 
+     */
+    private @Nullable List<String> projects;
+    /**
      * @return Type of sharing for this shared-reservation
      * Possible values are: `LOCAL`, `SPECIFIC_PROJECTS`.
      * 
@@ -34,6 +39,13 @@ public final class ReservationShareSettings {
      */
     public List<ReservationShareSettingsProjectMap> projectMaps() {
         return this.projectMaps == null ? List.of() : this.projectMaps;
+    }
+    /**
+     * @return List of project IDs with which the reservation is shared.
+     * 
+     */
+    public List<String> projects() {
+        return this.projects == null ? List.of() : this.projects;
     }
     /**
      * @return Type of sharing for this shared-reservation
@@ -54,11 +66,13 @@ public final class ReservationShareSettings {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<ReservationShareSettingsProjectMap> projectMaps;
+        private @Nullable List<String> projects;
         private @Nullable String shareType;
         public Builder() {}
         public Builder(ReservationShareSettings defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.projectMaps = defaults.projectMaps;
+    	      this.projects = defaults.projects;
     	      this.shareType = defaults.shareType;
         }
 
@@ -72,6 +86,15 @@ public final class ReservationShareSettings {
             return projectMaps(List.of(projectMaps));
         }
         @CustomType.Setter
+        public Builder projects(@Nullable List<String> projects) {
+
+            this.projects = projects;
+            return this;
+        }
+        public Builder projects(String... projects) {
+            return projects(List.of(projects));
+        }
+        @CustomType.Setter
         public Builder shareType(@Nullable String shareType) {
 
             this.shareType = shareType;
@@ -80,6 +103,7 @@ public final class ReservationShareSettings {
         public ReservationShareSettings build() {
             final var _resultValue = new ReservationShareSettings();
             _resultValue.projectMaps = projectMaps;
+            _resultValue.projects = projects;
             _resultValue.shareType = shareType;
             return _resultValue;
         }

@@ -378,6 +378,111 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Bigquery Analyticshub Listing Dcr Routine
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigqueryanalyticshub.DataExchange;
+ * import com.pulumi.gcp.bigqueryanalyticshub.DataExchangeArgs;
+ * import com.pulumi.gcp.bigqueryanalyticshub.inputs.DataExchangeSharingEnvironmentConfigArgs;
+ * import com.pulumi.gcp.bigqueryanalyticshub.inputs.DataExchangeSharingEnvironmentConfigDcrExchangeConfigArgs;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.Routine;
+ * import com.pulumi.gcp.bigquery.RoutineArgs;
+ * import com.pulumi.gcp.bigquery.inputs.RoutineArgumentArgs;
+ * import com.pulumi.gcp.bigqueryanalyticshub.Listing;
+ * import com.pulumi.gcp.bigqueryanalyticshub.ListingArgs;
+ * import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingBigqueryDatasetArgs;
+ * import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingRestrictedExportConfigArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var dcrDataExchangeExample = new DataExchange("dcrDataExchangeExample", DataExchangeArgs.builder()
+ *             .location("us")
+ *             .dataExchangeId("tf_test_data_exchange")
+ *             .displayName("tf_test_data_exchange")
+ *             .description("Example for listing with routine")
+ *             .sharingEnvironmentConfig(DataExchangeSharingEnvironmentConfigArgs.builder()
+ *                 .dcrExchangeConfig(DataExchangeSharingEnvironmentConfigDcrExchangeConfigArgs.builder()
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var listing = new Dataset("listing", DatasetArgs.builder()
+ *             .datasetId("tf_test_dataset")
+ *             .friendlyName("tf_test_dataset")
+ *             .description("Example for listing with routine")
+ *             .location("us")
+ *             .build());
+ * 
+ *         var listingRoutine = new Routine("listingRoutine", RoutineArgs.builder()
+ *             .datasetId(listing.datasetId())
+ *             .routineId("tf_test_routine")
+ *             .routineType("TABLE_VALUED_FUNCTION")
+ *             .language("SQL")
+ *             .description("A DCR routine example.")
+ *             .definitionBody("""
+ * SELECT 1 + value AS value
+ *             """)
+ *             .arguments(RoutineArgumentArgs.builder()
+ *                 .name("value")
+ *                 .argumentKind("FIXED_TYPE")
+ *                 .dataType(serializeJson(
+ *                     jsonObject(
+ *                         jsonProperty("typeKind", "INT64")
+ *                     )))
+ *                 .build())
+ *             .returnTableType(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty("columns", jsonArray(jsonObject(
+ *                         jsonProperty("name", "value"),
+ *                         jsonProperty("type", jsonObject(
+ *                             jsonProperty("typeKind", "INT64")
+ *                         ))
+ *                     )))
+ *                 )))
+ *             .build());
+ * 
+ *         var listingListing = new Listing("listingListing", ListingArgs.builder()
+ *             .location("US")
+ *             .dataExchangeId(dcrDataExchangeExample.dataExchangeId())
+ *             .listingId("tf_test_listing_routine")
+ *             .displayName("tf_test_listing_routine")
+ *             .description("Example for listing with routine")
+ *             .bigqueryDataset(ListingBigqueryDatasetArgs.builder()
+ *                 .dataset(listing.id())
+ *                 .selectedResources(ListingBigqueryDatasetSelectedResourceArgs.builder()
+ *                     .routine(listingRoutine.id())
+ *                     .build())
+ *                 .build())
+ *             .restrictedExportConfig(ListingRestrictedExportConfigArgs.builder()
+ *                 .enabled(true)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

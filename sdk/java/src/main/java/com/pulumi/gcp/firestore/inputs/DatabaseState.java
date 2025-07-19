@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.firestore.inputs.DatabaseCmekConfigArgs;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -263,6 +264,31 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Input only. A map of resource manager tags. Resource manager tag keys
+     * and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+     * The field is ignored when empty. The field is immutable and causes
+     * resource replacement when mutated. To apply tags to an existing resource, see
+     * the `gcp.tags.TagValue` resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return Input only. A map of resource manager tags. Resource manager tag keys
+     * and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+     * The field is ignored when empty. The field is immutable and causes
+     * resource replacement when mutated. To apply tags to an existing resource, see
+     * the `gcp.tags.TagValue` resource.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
      * The type of the database.
      * See https://cloud.google.com/datastore/docs/firestore-or-datastore
      * for information about how to choose.
@@ -351,6 +377,7 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.pointInTimeRecoveryEnablement = $.pointInTimeRecoveryEnablement;
         this.project = $.project;
+        this.tags = $.tags;
         this.type = $.type;
         this.uid = $.uid;
         this.updateTime = $.updateTime;
@@ -695,6 +722,37 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param tags Input only. A map of resource manager tags. Resource manager tag keys
+         * and values have the same definition as resource manager tags.
+         * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+         * The field is ignored when empty. The field is immutable and causes
+         * resource replacement when mutated. To apply tags to an existing resource, see
+         * the `gcp.tags.TagValue` resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags Input only. A map of resource manager tags. Resource manager tag keys
+         * and values have the same definition as resource manager tags.
+         * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+         * The field is ignored when empty. The field is immutable and causes
+         * resource replacement when mutated. To apply tags to an existing resource, see
+         * the `gcp.tags.TagValue` resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
         }
 
         /**

@@ -54,6 +54,24 @@ import * as utilities from "../utilities";
  *     deletionPolicy: "DELETE",
  * });
  * ```
+ * ### Firestore Database With Tags
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const database = new gcp.firestore.Database("database", {
+ *     project: "my-project-name",
+ *     name: "database-with-tags-id",
+ *     locationId: "nam5",
+ *     type: "FIRESTORE_NATIVE",
+ *     deleteProtectionState: "DELETE_PROTECTION_ENABLED",
+ *     deletionPolicy: "DELETE",
+ *     tags: {
+ *         keyname: "valuename",
+ *     },
+ * });
+ * ```
  * ### Firestore Cmek Database
  *
  * ```typescript
@@ -306,6 +324,15 @@ export class Database extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * Input only. A map of resource manager tags. Resource manager tag keys
+     * and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+     * The field is ignored when empty. The field is immutable and causes
+     * resource replacement when mutated. To apply tags to an existing resource, see
+     * the `gcp.tags.TagValue` resource.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * The type of the database.
      * See https://cloud.google.com/datastore/docs/firestore-or-datastore
      * for information about how to choose.
@@ -355,6 +382,7 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["pointInTimeRecoveryEnablement"] = state ? state.pointInTimeRecoveryEnablement : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
@@ -377,6 +405,7 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["pointInTimeRecoveryEnablement"] = args ? args.pointInTimeRecoveryEnablement : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["earliestVersionTime"] = undefined /*out*/;
@@ -472,6 +501,15 @@ export interface DatabaseState {
      */
     project?: pulumi.Input<string>;
     /**
+     * Input only. A map of resource manager tags. Resource manager tag keys
+     * and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+     * The field is ignored when empty. The field is immutable and causes
+     * resource replacement when mutated. To apply tags to an existing resource, see
+     * the `gcp.tags.TagValue` resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The type of the database.
      * See https://cloud.google.com/datastore/docs/firestore-or-datastore
      * for information about how to choose.
@@ -552,6 +590,15 @@ export interface DatabaseArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Input only. A map of resource manager tags. Resource manager tag keys
+     * and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+     * The field is ignored when empty. The field is immutable and causes
+     * resource replacement when mutated. To apply tags to an existing resource, see
+     * the `gcp.tags.TagValue` resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The type of the database.
      * See https://cloud.google.com/datastore/docs/firestore-or-datastore

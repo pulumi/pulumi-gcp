@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.InterconnectArgs;
 import com.pulumi.gcp.compute.inputs.InterconnectState;
+import com.pulumi.gcp.compute.outputs.InterconnectApplicationAwareInterconnect;
 import com.pulumi.gcp.compute.outputs.InterconnectCircuitInfo;
 import com.pulumi.gcp.compute.outputs.InterconnectExpectedOutage;
 import com.pulumi.gcp.compute.outputs.InterconnectMacsec;
@@ -106,6 +107,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:compute/interconnect:Interconnect")
 public class Interconnect extends com.pulumi.resources.CustomResource {
     /**
+     * Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
+     * 
+     */
+    @Export(name="aaiEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> aaiEnabled;
+
+    /**
+     * @return Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
+     * 
+     */
+    public Output<Optional<Boolean>> aaiEnabled() {
+        return Codegen.optional(this.aaiEnabled);
+    }
+    /**
      * Administrative status of the interconnect. When this is set to true, the Interconnect is
      * functional and can carry traffic. When set to false, no packets can be carried over the
      * interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
@@ -122,6 +137,24 @@ public class Interconnect extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> adminEnabled() {
         return Codegen.optional(this.adminEnabled);
+    }
+    /**
+     * Configuration that enables Media Access Control security (MACsec) on the Cloud
+     * Interconnect connection between Google and your on-premises router.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="applicationAwareInterconnect", refs={InterconnectApplicationAwareInterconnect.class}, tree="[0]")
+    private Output</* @Nullable */ InterconnectApplicationAwareInterconnect> applicationAwareInterconnect;
+
+    /**
+     * @return Configuration that enables Media Access Control security (MACsec) on the Cloud
+     * Interconnect connection between Google and your on-premises router.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<InterconnectApplicationAwareInterconnect>> applicationAwareInterconnect() {
+        return Codegen.optional(this.applicationAwareInterconnect);
     }
     /**
      * interconnects.list of features available for this Interconnect connection. Can take the value:

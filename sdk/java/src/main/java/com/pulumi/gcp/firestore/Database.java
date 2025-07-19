@@ -12,6 +12,7 @@ import com.pulumi.gcp.firestore.DatabaseArgs;
 import com.pulumi.gcp.firestore.inputs.DatabaseState;
 import com.pulumi.gcp.firestore.outputs.DatabaseCmekConfig;
 import java.lang.String;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -104,6 +105,46 @@ import javax.annotation.Nullable;
  *             .pointInTimeRecoveryEnablement("POINT_IN_TIME_RECOVERY_ENABLED")
  *             .deleteProtectionState("DELETE_PROTECTION_ENABLED")
  *             .deletionPolicy("DELETE")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Firestore Database With Tags
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.firestore.Database;
+ * import com.pulumi.gcp.firestore.DatabaseArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var database = new Database("database", DatabaseArgs.builder()
+ *             .project("my-project-name")
+ *             .name("database-with-tags-id")
+ *             .locationId("nam5")
+ *             .type("FIRESTORE_NATIVE")
+ *             .deleteProtectionState("DELETE_PROTECTION_ENABLED")
+ *             .deletionPolicy("DELETE")
+ *             .tags(Map.of("keyname", "valuename"))
  *             .build());
  * 
  *     }
@@ -642,6 +683,30 @@ public class Database extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * Input only. A map of resource manager tags. Resource manager tag keys
+     * and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+     * The field is ignored when empty. The field is immutable and causes
+     * resource replacement when mutated. To apply tags to an existing resource, see
+     * the `gcp.tags.TagValue` resource.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return Input only. A map of resource manager tags. Resource manager tag keys
+     * and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+     * The field is ignored when empty. The field is immutable and causes
+     * resource replacement when mutated. To apply tags to an existing resource, see
+     * the `gcp.tags.TagValue` resource.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
     }
     /**
      * The type of the database.

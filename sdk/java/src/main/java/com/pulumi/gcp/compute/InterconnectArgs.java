@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.compute.inputs.InterconnectApplicationAwareInterconnectArgs;
 import com.pulumi.gcp.compute.inputs.InterconnectMacsecArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -20,6 +21,21 @@ import javax.annotation.Nullable;
 public final class InterconnectArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final InterconnectArgs Empty = new InterconnectArgs();
+
+    /**
+     * Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
+     * 
+     */
+    @Import(name="aaiEnabled")
+    private @Nullable Output<Boolean> aaiEnabled;
+
+    /**
+     * @return Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
+     * 
+     */
+    public Optional<Output<Boolean>> aaiEnabled() {
+        return Optional.ofNullable(this.aaiEnabled);
+    }
 
     /**
      * Administrative status of the interconnect. When this is set to true, the Interconnect is
@@ -38,6 +54,25 @@ public final class InterconnectArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> adminEnabled() {
         return Optional.ofNullable(this.adminEnabled);
+    }
+
+    /**
+     * Configuration that enables Media Access Control security (MACsec) on the Cloud
+     * Interconnect connection between Google and your on-premises router.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="applicationAwareInterconnect")
+    private @Nullable Output<InterconnectApplicationAwareInterconnectArgs> applicationAwareInterconnect;
+
+    /**
+     * @return Configuration that enables Media Access Control security (MACsec) on the Cloud
+     * Interconnect connection between Google and your on-premises router.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InterconnectApplicationAwareInterconnectArgs>> applicationAwareInterconnect() {
+        return Optional.ofNullable(this.applicationAwareInterconnect);
     }
 
     /**
@@ -321,7 +356,9 @@ public final class InterconnectArgs extends com.pulumi.resources.ResourceArgs {
     private InterconnectArgs() {}
 
     private InterconnectArgs(InterconnectArgs $) {
+        this.aaiEnabled = $.aaiEnabled;
         this.adminEnabled = $.adminEnabled;
+        this.applicationAwareInterconnect = $.applicationAwareInterconnect;
         this.customerName = $.customerName;
         this.description = $.description;
         this.interconnectType = $.interconnectType;
@@ -357,6 +394,27 @@ public final class InterconnectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param aaiEnabled Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aaiEnabled(@Nullable Output<Boolean> aaiEnabled) {
+            $.aaiEnabled = aaiEnabled;
+            return this;
+        }
+
+        /**
+         * @param aaiEnabled Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aaiEnabled(Boolean aaiEnabled) {
+            return aaiEnabled(Output.of(aaiEnabled));
+        }
+
+        /**
          * @param adminEnabled Administrative status of the interconnect. When this is set to true, the Interconnect is
          * functional and can carry traffic. When set to false, no packets can be carried over the
          * interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
@@ -379,6 +437,31 @@ public final class InterconnectArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder adminEnabled(Boolean adminEnabled) {
             return adminEnabled(Output.of(adminEnabled));
+        }
+
+        /**
+         * @param applicationAwareInterconnect Configuration that enables Media Access Control security (MACsec) on the Cloud
+         * Interconnect connection between Google and your on-premises router.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder applicationAwareInterconnect(@Nullable Output<InterconnectApplicationAwareInterconnectArgs> applicationAwareInterconnect) {
+            $.applicationAwareInterconnect = applicationAwareInterconnect;
+            return this;
+        }
+
+        /**
+         * @param applicationAwareInterconnect Configuration that enables Media Access Control security (MACsec) on the Cloud
+         * Interconnect connection between Google and your on-premises router.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder applicationAwareInterconnect(InterconnectApplicationAwareInterconnectArgs applicationAwareInterconnect) {
+            return applicationAwareInterconnect(Output.of(applicationAwareInterconnect));
         }
 
         /**

@@ -55,6 +55,24 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// });
     /// ```
+    /// ### Firebasehosting Site Default
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Firebase.HostingSite("default", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         SiteId = "my-project-name",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -128,6 +146,12 @@ namespace Pulumi.Gcp.Firebase
         /// </summary>
         [Output("siteId")]
         public Output<string?> SiteId { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of Hosting site, either 'DEFAULT_SITE' or `USER_SITE`
+        /// </summary>
+        [Output("type")]
+        public Output<string> Type { get; private set; } = null!;
 
 
         /// <summary>
@@ -244,6 +268,12 @@ namespace Pulumi.Gcp.Firebase
         /// </summary>
         [Input("siteId")]
         public Input<string>? SiteId { get; set; }
+
+        /// <summary>
+        /// The type of Hosting site, either 'DEFAULT_SITE' or `USER_SITE`
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         public HostingSiteState()
         {

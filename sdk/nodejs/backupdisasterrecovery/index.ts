@@ -55,6 +55,11 @@ export type ManagementServer = import("./managementServer").ManagementServer;
 export const ManagementServer: typeof import("./managementServer").ManagementServer = null as any;
 utilities.lazyLoad(exports, ["ManagementServer"], () => require("./managementServer"));
 
+export { ServiceConfigArgs, ServiceConfigState } from "./serviceConfig";
+export type ServiceConfig = import("./serviceConfig").ServiceConfig;
+export const ServiceConfig: typeof import("./serviceConfig").ServiceConfig = null as any;
+utilities.lazyLoad(exports, ["ServiceConfig"], () => require("./serviceConfig"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -68,6 +73,8 @@ const _module = {
                 return new BackupVault(name, <any>undefined, { urn })
             case "gcp:backupdisasterrecovery/managementServer:ManagementServer":
                 return new ManagementServer(name, <any>undefined, { urn })
+            case "gcp:backupdisasterrecovery/serviceConfig:ServiceConfig":
+                return new ServiceConfig(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -77,3 +84,4 @@ pulumi.runtime.registerResourceModule("gcp", "backupdisasterrecovery/backupPlan"
 pulumi.runtime.registerResourceModule("gcp", "backupdisasterrecovery/backupPlanAssociation", _module)
 pulumi.runtime.registerResourceModule("gcp", "backupdisasterrecovery/backupVault", _module)
 pulumi.runtime.registerResourceModule("gcp", "backupdisasterrecovery/managementServer", _module)
+pulumi.runtime.registerResourceModule("gcp", "backupdisasterrecovery/serviceConfig", _module)

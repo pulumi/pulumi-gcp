@@ -34,6 +34,7 @@ __all__ = [
     'EnvironmentNodeConfig',
     'EnvironmentProperties',
     'EnvironmentPropertiesProperty',
+    'InstanceAccessLoggingConfig',
     'KeystoresAliasesKeyCertFileCertsInfo',
     'KeystoresAliasesKeyCertFileCertsInfoCertInfo',
     'KeystoresAliasesPkcs12CertsInfo',
@@ -750,6 +751,42 @@ class EnvironmentPropertiesProperty(dict):
         The property value.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class InstanceAccessLoggingConfig(dict):
+    def __init__(__self__, *,
+                 enabled: builtins.bool,
+                 filter: Optional[builtins.str] = None):
+        """
+        :param builtins.bool enabled: Boolean flag that specifies whether the customer access log feature is enabled.
+        :param builtins.str filter: Ship the access log entries that match the statusCode defined in the filter.
+               The statusCode is the only expected/supported filter field. (Ex: statusCode)
+               The filter will parse it to the Common Expression Language semantics for expression
+               evaluation to build the filter condition. (Ex: "filter": statusCode >= 200 && statusCode < 300 )
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> builtins.bool:
+        """
+        Boolean flag that specifies whether the customer access log feature is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def filter(self) -> Optional[builtins.str]:
+        """
+        Ship the access log entries that match the statusCode defined in the filter.
+        The statusCode is the only expected/supported filter field. (Ex: statusCode)
+        The filter will parse it to the Common Expression Language semantics for expression
+        evaluation to build the filter condition. (Ex: "filter": statusCode >= 200 && statusCode < 300 )
+        """
+        return pulumi.get(self, "filter")
 
 
 @pulumi.output_type

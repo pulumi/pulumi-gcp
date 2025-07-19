@@ -22,6 +22,10 @@ __all__ = [
     'DataExchangeSharingEnvironmentConfig',
     'DataExchangeSharingEnvironmentConfigDcrExchangeConfig',
     'DataExchangeSharingEnvironmentConfigDefaultExchangeConfig',
+    'DataExchangeSubscriptionDestinationDataset',
+    'DataExchangeSubscriptionDestinationDatasetDatasetReference',
+    'DataExchangeSubscriptionLinkedDatasetMap',
+    'DataExchangeSubscriptionLinkedResource',
     'ListingBigqueryDataset',
     'ListingBigqueryDatasetSelectedResource',
     'ListingDataProvider',
@@ -153,6 +157,277 @@ class DataExchangeSharingEnvironmentConfigDefaultExchangeConfig(dict):
 
 
 @pulumi.output_type
+class DataExchangeSubscriptionDestinationDataset(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datasetReference":
+            suggest = "dataset_reference"
+        elif key == "friendlyName":
+            suggest = "friendly_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataExchangeSubscriptionDestinationDataset. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataExchangeSubscriptionDestinationDataset.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataExchangeSubscriptionDestinationDataset.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dataset_reference: 'outputs.DataExchangeSubscriptionDestinationDatasetDatasetReference',
+                 location: builtins.str,
+                 description: Optional[builtins.str] = None,
+                 friendly_name: Optional[builtins.str] = None,
+                 labels: Optional[Mapping[str, builtins.str]] = None):
+        """
+        :param 'DataExchangeSubscriptionDestinationDatasetDatasetReferenceArgs' dataset_reference: A reference that identifies the destination dataset.
+               Structure is documented below.
+        :param builtins.str location: The geographic location where the dataset should reside.
+               See https://cloud.google.com/bigquery/docs/locations for supported locations.
+        :param builtins.str description: A user-friendly description of the dataset.
+        :param builtins.str friendly_name: A descriptive name for the dataset.
+        :param Mapping[str, builtins.str] labels: The labels associated with this dataset. You can use these to
+               organize and group your datasets.
+        """
+        pulumi.set(__self__, "dataset_reference", dataset_reference)
+        pulumi.set(__self__, "location", location)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if friendly_name is not None:
+            pulumi.set(__self__, "friendly_name", friendly_name)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+
+    @property
+    @pulumi.getter(name="datasetReference")
+    def dataset_reference(self) -> 'outputs.DataExchangeSubscriptionDestinationDatasetDatasetReference':
+        """
+        A reference that identifies the destination dataset.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dataset_reference")
+
+    @property
+    @pulumi.getter
+    def location(self) -> builtins.str:
+        """
+        The geographic location where the dataset should reside.
+        See https://cloud.google.com/bigquery/docs/locations for supported locations.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[builtins.str]:
+        """
+        A user-friendly description of the dataset.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="friendlyName")
+    def friendly_name(self) -> Optional[builtins.str]:
+        """
+        A descriptive name for the dataset.
+        """
+        return pulumi.get(self, "friendly_name")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[Mapping[str, builtins.str]]:
+        """
+        The labels associated with this dataset. You can use these to
+        organize and group your datasets.
+        """
+        return pulumi.get(self, "labels")
+
+
+@pulumi.output_type
+class DataExchangeSubscriptionDestinationDatasetDatasetReference(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datasetId":
+            suggest = "dataset_id"
+        elif key == "projectId":
+            suggest = "project_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataExchangeSubscriptionDestinationDatasetDatasetReference. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataExchangeSubscriptionDestinationDatasetDatasetReference.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataExchangeSubscriptionDestinationDatasetDatasetReference.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dataset_id: builtins.str,
+                 project_id: builtins.str):
+        """
+        :param builtins.str dataset_id: A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
+        :param builtins.str project_id: The ID of the project containing this dataset.
+        """
+        pulumi.set(__self__, "dataset_id", dataset_id)
+        pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> builtins.str:
+        """
+        A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
+        """
+        return pulumi.get(self, "dataset_id")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> builtins.str:
+        """
+        The ID of the project containing this dataset.
+        """
+        return pulumi.get(self, "project_id")
+
+
+@pulumi.output_type
+class DataExchangeSubscriptionLinkedDatasetMap(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceName":
+            suggest = "resource_name"
+        elif key == "linkedDataset":
+            suggest = "linked_dataset"
+        elif key == "linkedPubsubSubscription":
+            suggest = "linked_pubsub_subscription"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataExchangeSubscriptionLinkedDatasetMap. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataExchangeSubscriptionLinkedDatasetMap.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataExchangeSubscriptionLinkedDatasetMap.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resource_name: builtins.str,
+                 linked_dataset: Optional[builtins.str] = None,
+                 linked_pubsub_subscription: Optional[builtins.str] = None,
+                 listing: Optional[builtins.str] = None):
+        """
+        :param builtins.str resource_name: (Required) The identifier for this object. Format specified above.
+        :param builtins.str linked_dataset: (Output)
+               Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
+        :param builtins.str linked_pubsub_subscription: (Output)
+               Output only. Name of the Pub/Sub subscription, e.g. projects/subscriberproject/subscriptions/subscriptions/sub_id
+        :param builtins.str listing: (Output)
+               Output only. Listing for which linked resource is created.
+        """
+        pulumi.set(__self__, "resource_name", resource_name)
+        if linked_dataset is not None:
+            pulumi.set(__self__, "linked_dataset", linked_dataset)
+        if linked_pubsub_subscription is not None:
+            pulumi.set(__self__, "linked_pubsub_subscription", linked_pubsub_subscription)
+        if listing is not None:
+            pulumi.set(__self__, "listing", listing)
+
+    @property
+    @pulumi.getter(name="resourceName")
+    def resource_name(self) -> builtins.str:
+        """
+        (Required) The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "resource_name")
+
+    @property
+    @pulumi.getter(name="linkedDataset")
+    def linked_dataset(self) -> Optional[builtins.str]:
+        """
+        (Output)
+        Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
+        """
+        return pulumi.get(self, "linked_dataset")
+
+    @property
+    @pulumi.getter(name="linkedPubsubSubscription")
+    def linked_pubsub_subscription(self) -> Optional[builtins.str]:
+        """
+        (Output)
+        Output only. Name of the Pub/Sub subscription, e.g. projects/subscriberproject/subscriptions/subscriptions/sub_id
+        """
+        return pulumi.get(self, "linked_pubsub_subscription")
+
+    @property
+    @pulumi.getter
+    def listing(self) -> Optional[builtins.str]:
+        """
+        (Output)
+        Output only. Listing for which linked resource is created.
+        """
+        return pulumi.get(self, "listing")
+
+
+@pulumi.output_type
+class DataExchangeSubscriptionLinkedResource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkedDataset":
+            suggest = "linked_dataset"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataExchangeSubscriptionLinkedResource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataExchangeSubscriptionLinkedResource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataExchangeSubscriptionLinkedResource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 linked_dataset: Optional[builtins.str] = None,
+                 listing: Optional[builtins.str] = None):
+        """
+        :param builtins.str linked_dataset: (Output)
+               Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
+        :param builtins.str listing: (Output)
+               Output only. Listing for which linked resource is created.
+        """
+        if linked_dataset is not None:
+            pulumi.set(__self__, "linked_dataset", linked_dataset)
+        if listing is not None:
+            pulumi.set(__self__, "listing", listing)
+
+    @property
+    @pulumi.getter(name="linkedDataset")
+    def linked_dataset(self) -> Optional[builtins.str]:
+        """
+        (Output)
+        Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
+        """
+        return pulumi.get(self, "linked_dataset")
+
+    @property
+    @pulumi.getter
+    def listing(self) -> Optional[builtins.str]:
+        """
+        (Output)
+        Output only. Listing for which linked resource is created.
+        """
+        return pulumi.get(self, "listing")
+
+
+@pulumi.output_type
 class ListingBigqueryDataset(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -204,12 +479,24 @@ class ListingBigqueryDataset(dict):
 @pulumi.output_type
 class ListingBigqueryDatasetSelectedResource(dict):
     def __init__(__self__, *,
+                 routine: Optional[builtins.str] = None,
                  table: Optional[builtins.str] = None):
         """
+        :param builtins.str routine: Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:"projects/test_project/datasets/test_dataset/routines/test_routine"
         :param builtins.str table: Format: For table: projects/{projectId}/datasets/{datasetId}/tables/{tableId} Example:"projects/test_project/datasets/test_dataset/tables/test_table"
         """
+        if routine is not None:
+            pulumi.set(__self__, "routine", routine)
         if table is not None:
             pulumi.set(__self__, "table", table)
+
+    @property
+    @pulumi.getter
+    def routine(self) -> Optional[builtins.str]:
+        """
+        Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:"projects/test_project/datasets/test_dataset/routines/test_routine"
+        """
+        return pulumi.get(self, "routine")
 
     @property
     @pulumi.getter

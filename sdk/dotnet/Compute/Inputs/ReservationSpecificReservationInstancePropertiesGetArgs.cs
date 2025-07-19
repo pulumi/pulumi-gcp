@@ -46,6 +46,13 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string> MachineType { get; set; } = null!;
 
         /// <summary>
+        /// Specifies the frequency of planned maintenance events.
+        /// Possible values are: `AS_NEEDED`, `PERIODIC`, `RECURRENT`.
+        /// </summary>
+        [Input("maintenanceInterval")]
+        public Input<string>? MaintenanceInterval { get; set; }
+
+        /// <summary>
         /// The minimum CPU platform for the reservation. For example,
         /// `"Intel Skylake"`. See
         /// the CPU platform availability reference](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones)

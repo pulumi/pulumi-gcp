@@ -87,10 +87,16 @@ import (
 type Interconnect struct {
 	pulumi.CustomResourceState
 
+	// Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
+	AaiEnabled pulumi.BoolPtrOutput `pulumi:"aaiEnabled"`
 	// Administrative status of the interconnect. When this is set to true, the Interconnect is
 	// functional and can carry traffic. When set to false, no packets can be carried over the
 	// interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
 	AdminEnabled pulumi.BoolPtrOutput `pulumi:"adminEnabled"`
+	// Configuration that enables Media Access Control security (MACsec) on the Cloud
+	// Interconnect connection between Google and your on-premises router.
+	// Structure is documented below.
+	ApplicationAwareInterconnect InterconnectApplicationAwareInterconnectPtrOutput `pulumi:"applicationAwareInterconnect"`
 	// interconnects.list of features available for this Interconnect connection. Can take the value:
 	// MACSEC. If present then the Interconnect connection is provisioned on MACsec capable hardware
 	// ports. If not present then the Interconnect connection is provisioned on non-MACsec capable
@@ -265,10 +271,16 @@ func GetInterconnect(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Interconnect resources.
 type interconnectState struct {
+	// Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
+	AaiEnabled *bool `pulumi:"aaiEnabled"`
 	// Administrative status of the interconnect. When this is set to true, the Interconnect is
 	// functional and can carry traffic. When set to false, no packets can be carried over the
 	// interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
 	AdminEnabled *bool `pulumi:"adminEnabled"`
+	// Configuration that enables Media Access Control security (MACsec) on the Cloud
+	// Interconnect connection between Google and your on-premises router.
+	// Structure is documented below.
+	ApplicationAwareInterconnect *InterconnectApplicationAwareInterconnect `pulumi:"applicationAwareInterconnect"`
 	// interconnects.list of features available for this Interconnect connection. Can take the value:
 	// MACSEC. If present then the Interconnect connection is provisioned on MACsec capable hardware
 	// ports. If not present then the Interconnect connection is provisioned on non-MACsec capable
@@ -397,10 +409,16 @@ type interconnectState struct {
 }
 
 type InterconnectState struct {
+	// Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
+	AaiEnabled pulumi.BoolPtrInput
 	// Administrative status of the interconnect. When this is set to true, the Interconnect is
 	// functional and can carry traffic. When set to false, no packets can be carried over the
 	// interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
 	AdminEnabled pulumi.BoolPtrInput
+	// Configuration that enables Media Access Control security (MACsec) on the Cloud
+	// Interconnect connection between Google and your on-premises router.
+	// Structure is documented below.
+	ApplicationAwareInterconnect InterconnectApplicationAwareInterconnectPtrInput
 	// interconnects.list of features available for this Interconnect connection. Can take the value:
 	// MACSEC. If present then the Interconnect connection is provisioned on MACsec capable hardware
 	// ports. If not present then the Interconnect connection is provisioned on non-MACsec capable
@@ -533,10 +551,16 @@ func (InterconnectState) ElementType() reflect.Type {
 }
 
 type interconnectArgs struct {
+	// Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
+	AaiEnabled *bool `pulumi:"aaiEnabled"`
 	// Administrative status of the interconnect. When this is set to true, the Interconnect is
 	// functional and can carry traffic. When set to false, no packets can be carried over the
 	// interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
 	AdminEnabled *bool `pulumi:"adminEnabled"`
+	// Configuration that enables Media Access Control security (MACsec) on the Cloud
+	// Interconnect connection between Google and your on-premises router.
+	// Structure is documented below.
+	ApplicationAwareInterconnect *InterconnectApplicationAwareInterconnect `pulumi:"applicationAwareInterconnect"`
 	// Customer name, to put in the Letter of Authorization as the party authorized to request a
 	// crossconnect. This field is required for Dedicated and Partner Interconnect, should not be specified
 	// for cross-cloud interconnect.
@@ -603,10 +627,16 @@ type interconnectArgs struct {
 
 // The set of arguments for constructing a Interconnect resource.
 type InterconnectArgs struct {
+	// Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
+	AaiEnabled pulumi.BoolPtrInput
 	// Administrative status of the interconnect. When this is set to true, the Interconnect is
 	// functional and can carry traffic. When set to false, no packets can be carried over the
 	// interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
 	AdminEnabled pulumi.BoolPtrInput
+	// Configuration that enables Media Access Control security (MACsec) on the Cloud
+	// Interconnect connection between Google and your on-premises router.
+	// Structure is documented below.
+	ApplicationAwareInterconnect InterconnectApplicationAwareInterconnectPtrInput
 	// Customer name, to put in the Letter of Authorization as the party authorized to request a
 	// crossconnect. This field is required for Dedicated and Partner Interconnect, should not be specified
 	// for cross-cloud interconnect.
@@ -758,11 +788,25 @@ func (o InterconnectOutput) ToInterconnectOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
+func (o InterconnectOutput) AaiEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Interconnect) pulumi.BoolPtrOutput { return v.AaiEnabled }).(pulumi.BoolPtrOutput)
+}
+
 // Administrative status of the interconnect. When this is set to true, the Interconnect is
 // functional and can carry traffic. When set to false, no packets can be carried over the
 // interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
 func (o InterconnectOutput) AdminEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Interconnect) pulumi.BoolPtrOutput { return v.AdminEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Configuration that enables Media Access Control security (MACsec) on the Cloud
+// Interconnect connection between Google and your on-premises router.
+// Structure is documented below.
+func (o InterconnectOutput) ApplicationAwareInterconnect() InterconnectApplicationAwareInterconnectPtrOutput {
+	return o.ApplyT(func(v *Interconnect) InterconnectApplicationAwareInterconnectPtrOutput {
+		return v.ApplicationAwareInterconnect
+	}).(InterconnectApplicationAwareInterconnectPtrOutput)
 }
 
 // interconnects.list of features available for this Interconnect connection. Can take the value:

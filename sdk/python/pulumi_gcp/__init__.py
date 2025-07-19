@@ -1206,6 +1206,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "backupdisasterrecovery/serviceConfig",
+  "fqn": "pulumi_gcp.backupdisasterrecovery",
+  "classes": {
+   "gcp:backupdisasterrecovery/serviceConfig:ServiceConfig": "ServiceConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "beyondcorp/appConnection",
   "fqn": "pulumi_gcp.beyondcorp",
   "classes": {
@@ -1554,6 +1562,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.bigqueryanalyticshub",
   "classes": {
    "gcp:bigqueryanalyticshub/dataExchangeIamPolicy:DataExchangeIamPolicy": "DataExchangeIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "bigqueryanalyticshub/dataExchangeSubscription",
+  "fqn": "pulumi_gcp.bigqueryanalyticshub",
+  "classes": {
+   "gcp:bigqueryanalyticshub/dataExchangeSubscription:DataExchangeSubscription": "DataExchangeSubscription"
   }
  },
  {

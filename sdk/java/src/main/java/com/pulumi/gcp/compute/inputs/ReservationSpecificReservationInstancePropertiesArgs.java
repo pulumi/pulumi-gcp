@@ -71,6 +71,23 @@ public final class ReservationSpecificReservationInstancePropertiesArgs extends 
     }
 
     /**
+     * Specifies the frequency of planned maintenance events.
+     * Possible values are: `AS_NEEDED`, `PERIODIC`, `RECURRENT`.
+     * 
+     */
+    @Import(name="maintenanceInterval")
+    private @Nullable Output<String> maintenanceInterval;
+
+    /**
+     * @return Specifies the frequency of planned maintenance events.
+     * Possible values are: `AS_NEEDED`, `PERIODIC`, `RECURRENT`.
+     * 
+     */
+    public Optional<Output<String>> maintenanceInterval() {
+        return Optional.ofNullable(this.maintenanceInterval);
+    }
+
+    /**
      * The minimum CPU platform for the reservation. For example,
      * `&#34;Intel Skylake&#34;`. See
      * the CPU platform availability reference](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones)
@@ -97,6 +114,7 @@ public final class ReservationSpecificReservationInstancePropertiesArgs extends 
         this.guestAccelerators = $.guestAccelerators;
         this.localSsds = $.localSsds;
         this.machineType = $.machineType;
+        this.maintenanceInterval = $.maintenanceInterval;
         this.minCpuPlatform = $.minCpuPlatform;
     }
 
@@ -208,6 +226,29 @@ public final class ReservationSpecificReservationInstancePropertiesArgs extends 
          */
         public Builder machineType(String machineType) {
             return machineType(Output.of(machineType));
+        }
+
+        /**
+         * @param maintenanceInterval Specifies the frequency of planned maintenance events.
+         * Possible values are: `AS_NEEDED`, `PERIODIC`, `RECURRENT`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenanceInterval(@Nullable Output<String> maintenanceInterval) {
+            $.maintenanceInterval = maintenanceInterval;
+            return this;
+        }
+
+        /**
+         * @param maintenanceInterval Specifies the frequency of planned maintenance events.
+         * Possible values are: `AS_NEEDED`, `PERIODIC`, `RECURRENT`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenanceInterval(String maintenanceInterval) {
+            return maintenanceInterval(Output.of(maintenanceInterval));
         }
 
         /**

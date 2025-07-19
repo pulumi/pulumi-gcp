@@ -110,6 +110,21 @@ public final class HostingSiteState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.siteId);
     }
 
+    /**
+     * The type of Hosting site, either &#39;DEFAULT_SITE&#39; or `USER_SITE`
+     * 
+     */
+    @Import(name="type")
+    private @Nullable Output<String> type;
+
+    /**
+     * @return The type of Hosting site, either &#39;DEFAULT_SITE&#39; or `USER_SITE`
+     * 
+     */
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
+    }
+
     private HostingSiteState() {}
 
     private HostingSiteState(HostingSiteState $) {
@@ -118,6 +133,7 @@ public final class HostingSiteState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.project = $.project;
         this.siteId = $.siteId;
+        this.type = $.type;
     }
 
     public static Builder builder() {
@@ -261,6 +277,27 @@ public final class HostingSiteState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder siteId(String siteId) {
             return siteId(Output.of(siteId));
+        }
+
+        /**
+         * @param type The type of Hosting site, either &#39;DEFAULT_SITE&#39; or `USER_SITE`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(@Nullable Output<String> type) {
+            $.type = type;
+            return this;
+        }
+
+        /**
+         * @param type The type of Hosting site, either &#39;DEFAULT_SITE&#39; or `USER_SITE`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(String type) {
+            return type(Output.of(type));
         }
 
         public HostingSiteState build() {

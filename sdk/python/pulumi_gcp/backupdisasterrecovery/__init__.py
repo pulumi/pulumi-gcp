@@ -16,5 +16,6 @@ from .get_backup_vault import *
 from .get_data_source import *
 from .get_management_server import *
 from .management_server import *
+from .service_config import *
 from ._inputs import *
 from . import outputs
