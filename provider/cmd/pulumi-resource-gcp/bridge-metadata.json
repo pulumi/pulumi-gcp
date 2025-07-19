@@ -1523,6 +1523,9 @@
                 "current": "gcp:apigee/instance:Instance",
                 "majorVersion": 8,
                 "fields": {
+                    "access_logging_config": {
+                        "maxItemsOne": true
+                    },
                     "consumer_accept_list": {
                         "maxItemsOne": false
                     }
@@ -2520,6 +2523,10 @@
                     }
                 }
             },
+            "google_backup_dr_service_config": {
+                "current": "gcp:backupdisasterrecovery/serviceConfig:ServiceConfig",
+                "majorVersion": 8
+            },
             "google_beyondcorp_app_connection": {
                 "current": "gcp:beyondcorp/appConnection:AppConnection",
                 "majorVersion": 8,
@@ -2805,6 +2812,28 @@
             "google_bigquery_analytics_hub_data_exchange_iam_policy": {
                 "current": "gcp:bigqueryanalyticshub/dataExchangeIamPolicy:DataExchangeIamPolicy",
                 "majorVersion": 8
+            },
+            "google_bigquery_analytics_hub_data_exchange_subscription": {
+                "current": "gcp:bigqueryanalyticshub/dataExchangeSubscription:DataExchangeSubscription",
+                "majorVersion": 8,
+                "fields": {
+                    "destination_dataset": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "dataset_reference": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "linked_dataset_map": {
+                        "maxItemsOne": false
+                    },
+                    "linked_resources": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "google_bigquery_analytics_hub_listing": {
                 "current": "gcp:bigqueryanalyticshub/listing:Listing",
@@ -6933,6 +6962,9 @@
                     "log_config": {
                         "maxItemsOne": true
                     },
+                    "params": {
+                        "maxItemsOne": true
+                    },
                     "source_ranges": {
                         "maxItemsOne": false
                     },
@@ -7174,6 +7206,23 @@
                 "current": "gcp:compute/futureReservation:FutureReservation",
                 "majorVersion": 8,
                 "fields": {
+                    "aggregate_reservation": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "reserved_resources": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "accelerator": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "auto_created_reservations_duration": {
                         "maxItemsOne": true
                     },
@@ -8206,6 +8255,29 @@
                 "current": "gcp:compute/interconnect:Interconnect",
                 "majorVersion": 8,
                 "fields": {
+                    "application_aware_interconnect": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "bandwidth_percentage_policy": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "bandwidth_percentage": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "shape_average_percentage": {
+                                    "maxItemsOne": false
+                                },
+                                "strict_priority_policy": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
                     "available_features": {
                         "maxItemsOne": false
                     },
@@ -10638,11 +10710,20 @@
                 "current": "gcp:compute/reservation:Reservation",
                 "majorVersion": 8,
                 "fields": {
+                    "delete_after_duration": {
+                        "maxItemsOne": true
+                    },
+                    "reservation_sharing_policy": {
+                        "maxItemsOne": true
+                    },
                     "share_settings": {
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
                                 "project_map": {
+                                    "maxItemsOne": false
+                                },
+                                "projects": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -38123,6 +38204,24 @@
                     }
                 }
             },
+            "google_compute_network_attachment": {
+                "current": "gcp:compute/getNetworkAttachment:getNetworkAttachment",
+                "majorVersion": 8,
+                "fields": {
+                    "connection_endpoints": {
+                        "maxItemsOne": false
+                    },
+                    "producer_accept_lists": {
+                        "maxItemsOne": false
+                    },
+                    "producer_reject_lists": {
+                        "maxItemsOne": false
+                    },
+                    "subnetworks": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "google_compute_network_endpoint_group": {
                 "current": "gcp:compute/getNetworkEndpointGroup:getNetworkEndpointGroup",
                 "majorVersion": 8
@@ -38600,11 +38699,20 @@
                 "current": "gcp:compute/getReservation:getReservation",
                 "majorVersion": 8,
                 "fields": {
+                    "delete_after_duration": {
+                        "maxItemsOne": false
+                    },
+                    "reservation_sharing_policy": {
+                        "maxItemsOne": false
+                    },
                     "share_settings": {
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
                                 "project_map": {
+                                    "maxItemsOne": false
+                                },
+                                "projects": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -40503,6 +40611,10 @@
             },
             "google_firebase_web_app_config": {
                 "current": "gcp:firebase/getWebAppConfig:getWebAppConfig",
+                "majorVersion": 8
+            },
+            "google_firestore_document": {
+                "current": "gcp:firestore/getDocument:getDocument",
                 "majorVersion": 8
             },
             "google_folder": {
@@ -45299,6 +45411,7 @@
             "gcp:backupdisasterrecovery/backupPlanAssociation:BackupPlanAssociation": 0,
             "gcp:backupdisasterrecovery/backupVault:BackupVault": 0,
             "gcp:backupdisasterrecovery/managementServer:ManagementServer": 0,
+            "gcp:backupdisasterrecovery/serviceConfig:ServiceConfig": 0,
             "gcp:beyondcorp/appConnection:AppConnection": 0,
             "gcp:beyondcorp/appConnector:AppConnector": 0,
             "gcp:beyondcorp/appGateway:AppGateway": 0,
@@ -45343,6 +45456,7 @@
             "gcp:bigqueryanalyticshub/dataExchangeIamBinding:DataExchangeIamBinding": 0,
             "gcp:bigqueryanalyticshub/dataExchangeIamMember:DataExchangeIamMember": 0,
             "gcp:bigqueryanalyticshub/dataExchangeIamPolicy:DataExchangeIamPolicy": 0,
+            "gcp:bigqueryanalyticshub/dataExchangeSubscription:DataExchangeSubscription": 0,
             "gcp:bigqueryanalyticshub/listing:Listing": 0,
             "gcp:bigqueryanalyticshub/listingIamBinding:ListingIamBinding": 0,
             "gcp:bigqueryanalyticshub/listingIamMember:ListingIamMember": 0,
@@ -46517,6 +46631,7 @@
             "gcp:compute/getMachineTypes:getMachineTypes": 0,
             "gcp:compute/getNetblockIPRanges:getNetblockIPRanges": 0,
             "gcp:compute/getNetwork:getNetwork": 0,
+            "gcp:compute/getNetworkAttachment:getNetworkAttachment": 0,
             "gcp:compute/getNetworkEndpointGroup:getNetworkEndpointGroup": 0,
             "gcp:compute/getNetworkPeering:getNetworkPeering": 0,
             "gcp:compute/getNetworks:getNetworks": 0,
@@ -46598,6 +46713,7 @@
             "gcp:firebase/getHostingChannel:getHostingChannel": 0,
             "gcp:firebase/getWebApp:getWebApp": 0,
             "gcp:firebase/getWebAppConfig:getWebAppConfig": 1,
+            "gcp:firestore/getDocument:getDocument": 0,
             "gcp:folder/getIamPolicy:getIamPolicy": 0,
             "gcp:folder/getOrganizationPolicy:getOrganizationPolicy": 0,
             "gcp:gemini/getRepositoryGroupIamPolicy:getRepositoryGroupIamPolicy": 0,
