@@ -54,6 +54,197 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Reservation Basic Beta
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var gceReservation = new Gcp.Compute.Reservation("gce_reservation", new()
+    ///     {
+    ///         Name = "gce-reservation",
+    ///         Zone = "us-central1-a",
+    ///         SpecificReservation = new Gcp.Compute.Inputs.ReservationSpecificReservationArgs
+    ///         {
+    ///             Count = 1,
+    ///             InstanceProperties = new Gcp.Compute.Inputs.ReservationSpecificReservationInstancePropertiesArgs
+    ///             {
+    ///                 MinCpuPlatform = "Intel Cascade Lake",
+    ///                 MachineType = "n2-standard-2",
+    ///                 MaintenanceInterval = "PERIODIC",
+    ///             },
+    ///         },
+    ///         EnableEmergentMaintenance = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Reservation Source Instance Template
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myImage = Gcp.Compute.GetImage.Invoke(new()
+    ///     {
+    ///         Family = "debian-11",
+    ///         Project = "debian-cloud",
+    ///     });
+    /// 
+    ///     var foobar = new Gcp.Compute.InstanceTemplate("foobar", new()
+    ///     {
+    ///         Name = "tf-test-instance-template",
+    ///         MachineType = "n2-standard-2",
+    ///         CanIpForward = false,
+    ///         Tags = new[]
+    ///         {
+    ///             "foo",
+    ///             "bar",
+    ///         },
+    ///         Disks = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+    ///             {
+    ///                 SourceImage = myImage.Apply(getImageResult =&gt; getImageResult.SelfLink),
+    ///                 AutoDelete = true,
+    ///                 Boot = true,
+    ///             },
+    ///         },
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceArgs
+    ///             {
+    ///                 Network = "default",
+    ///             },
+    ///         },
+    ///         Scheduling = new Gcp.Compute.Inputs.InstanceTemplateSchedulingArgs
+    ///         {
+    ///             Preemptible = false,
+    ///             AutomaticRestart = true,
+    ///         },
+    ///         Metadata = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         ServiceAccount = new Gcp.Compute.Inputs.InstanceTemplateServiceAccountArgs
+    ///         {
+    ///             Scopes = new[]
+    ///             {
+    ///                 "userinfo-email",
+    ///                 "compute-ro",
+    ///                 "storage-ro",
+    ///             },
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "my_label", "foobar" },
+    ///         },
+    ///     });
+    /// 
+    ///     var gceReservationSourceInstanceTemplate = new Gcp.Compute.Reservation("gce_reservation_source_instance_template", new()
+    ///     {
+    ///         Name = "gce-reservation-source-instance-template",
+    ///         Zone = "us-central1-a",
+    ///         SpecificReservation = new Gcp.Compute.Inputs.ReservationSpecificReservationArgs
+    ///         {
+    ///             Count = 1,
+    ///             SourceInstanceTemplate = foobar.SelfLink,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Reservation Sharing Policy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myImage = Gcp.Compute.GetImage.Invoke(new()
+    ///     {
+    ///         Family = "debian-11",
+    ///         Project = "debian-cloud",
+    ///     });
+    /// 
+    ///     var foobar = new Gcp.Compute.InstanceTemplate("foobar", new()
+    ///     {
+    ///         Name = "tf-test-instance-template",
+    ///         MachineType = "g2-standard-4",
+    ///         CanIpForward = false,
+    ///         Tags = new[]
+    ///         {
+    ///             "foo",
+    ///             "bar",
+    ///         },
+    ///         Disks = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+    ///             {
+    ///                 SourceImage = myImage.Apply(getImageResult =&gt; getImageResult.SelfLink),
+    ///                 AutoDelete = true,
+    ///                 Boot = true,
+    ///             },
+    ///         },
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceArgs
+    ///             {
+    ///                 Network = "default",
+    ///             },
+    ///         },
+    ///         Scheduling = new Gcp.Compute.Inputs.InstanceTemplateSchedulingArgs
+    ///         {
+    ///             Preemptible = false,
+    ///             AutomaticRestart = true,
+    ///         },
+    ///         Metadata = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         ServiceAccount = new Gcp.Compute.Inputs.InstanceTemplateServiceAccountArgs
+    ///         {
+    ///             Scopes = new[]
+    ///             {
+    ///                 "userinfo-email",
+    ///                 "compute-ro",
+    ///                 "storage-ro",
+    ///             },
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "my_label", "foobar" },
+    ///         },
+    ///     });
+    /// 
+    ///     var gceReservationSharingPolicy = new Gcp.Compute.Reservation("gce_reservation_sharing_policy", new()
+    ///     {
+    ///         Name = "gce-reservation-sharing-policy",
+    ///         Zone = "us-central1-b",
+    ///         SpecificReservation = new Gcp.Compute.Inputs.ReservationSpecificReservationArgs
+    ///         {
+    ///             Count = 2,
+    ///             SourceInstanceTemplate = foobar.SelfLink,
+    ///         },
+    ///         ReservationSharingPolicy = new Gcp.Compute.Inputs.ReservationReservationSharingPolicyArgs
+    ///         {
+    ///             ServiceShareType = "ALLOW_ALL",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -102,10 +293,30 @@ namespace Pulumi.Gcp.Compute
         public Output<string> CreationTimestamp { get; private set; } = null!;
 
         /// <summary>
+        /// Duration after which the reservation will be auto-deleted by Compute Engine. Cannot be used with delete_at_time.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("deleteAfterDuration")]
+        public Output<Outputs.ReservationDeleteAfterDuration?> DeleteAfterDuration { get; private set; } = null!;
+
+        /// <summary>
+        /// Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
+        /// Cannot be used with delete_after_duration.
+        /// </summary>
+        [Output("deleteAtTime")]
+        public Output<string> DeleteAtTime { get; private set; } = null!;
+
+        /// <summary>
         /// An optional description of this resource.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates if this group of VMs have emergent maintenance enabled.
+        /// </summary>
+        [Output("enableEmergentMaintenance")]
+        public Output<bool?> EnableEmergentMaintenance { get; private set; } = null!;
 
         /// <summary>
         /// Name of the resource. Provided by the client when the resource is
@@ -125,6 +336,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// Sharing policy for reservations with Google Cloud managed services.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("reservationSharingPolicy")]
+        public Output<Outputs.ReservationReservationSharingPolicy> ReservationSharingPolicy { get; private set; } = null!;
 
         /// <summary>
         /// The URI of the created resource.
@@ -213,10 +431,30 @@ namespace Pulumi.Gcp.Compute
     public sealed class ReservationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Duration after which the reservation will be auto-deleted by Compute Engine. Cannot be used with delete_at_time.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("deleteAfterDuration")]
+        public Input<Inputs.ReservationDeleteAfterDurationArgs>? DeleteAfterDuration { get; set; }
+
+        /// <summary>
+        /// Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
+        /// Cannot be used with delete_after_duration.
+        /// </summary>
+        [Input("deleteAtTime")]
+        public Input<string>? DeleteAtTime { get; set; }
+
+        /// <summary>
         /// An optional description of this resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Indicates if this group of VMs have emergent maintenance enabled.
+        /// </summary>
+        [Input("enableEmergentMaintenance")]
+        public Input<bool>? EnableEmergentMaintenance { get; set; }
 
         /// <summary>
         /// Name of the resource. Provided by the client when the resource is
@@ -236,6 +474,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Sharing policy for reservations with Google Cloud managed services.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("reservationSharingPolicy")]
+        public Input<Inputs.ReservationReservationSharingPolicyArgs>? ReservationSharingPolicy { get; set; }
 
         /// <summary>
         /// The share setting for reservations.
@@ -287,10 +532,30 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? CreationTimestamp { get; set; }
 
         /// <summary>
+        /// Duration after which the reservation will be auto-deleted by Compute Engine. Cannot be used with delete_at_time.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("deleteAfterDuration")]
+        public Input<Inputs.ReservationDeleteAfterDurationGetArgs>? DeleteAfterDuration { get; set; }
+
+        /// <summary>
+        /// Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
+        /// Cannot be used with delete_after_duration.
+        /// </summary>
+        [Input("deleteAtTime")]
+        public Input<string>? DeleteAtTime { get; set; }
+
+        /// <summary>
         /// An optional description of this resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Indicates if this group of VMs have emergent maintenance enabled.
+        /// </summary>
+        [Input("enableEmergentMaintenance")]
+        public Input<bool>? EnableEmergentMaintenance { get; set; }
 
         /// <summary>
         /// Name of the resource. Provided by the client when the resource is
@@ -310,6 +575,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Sharing policy for reservations with Google Cloud managed services.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("reservationSharingPolicy")]
+        public Input<Inputs.ReservationReservationSharingPolicyGetArgs>? ReservationSharingPolicy { get; set; }
 
         /// <summary>
         /// The URI of the created resource.

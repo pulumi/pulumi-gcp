@@ -5,6 +5,8 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.compute.inputs.ReservationDeleteAfterDurationArgs;
+import com.pulumi.gcp.compute.inputs.ReservationReservationSharingPolicyArgs;
 import com.pulumi.gcp.compute.inputs.ReservationShareSettingsArgs;
 import com.pulumi.gcp.compute.inputs.ReservationSpecificReservationArgs;
 import java.lang.Boolean;
@@ -51,6 +53,40 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Duration after which the reservation will be auto-deleted by Compute Engine. Cannot be used with delete_at_time.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="deleteAfterDuration")
+    private @Nullable Output<ReservationDeleteAfterDurationArgs> deleteAfterDuration;
+
+    /**
+     * @return Duration after which the reservation will be auto-deleted by Compute Engine. Cannot be used with delete_at_time.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ReservationDeleteAfterDurationArgs>> deleteAfterDuration() {
+        return Optional.ofNullable(this.deleteAfterDuration);
+    }
+
+    /**
+     * Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
+     * Cannot be used with delete_after_duration.
+     * 
+     */
+    @Import(name="deleteAtTime")
+    private @Nullable Output<String> deleteAtTime;
+
+    /**
+     * @return Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
+     * Cannot be used with delete_after_duration.
+     * 
+     */
+    public Optional<Output<String>> deleteAtTime() {
+        return Optional.ofNullable(this.deleteAtTime);
+    }
+
+    /**
      * An optional description of this resource.
      * 
      */
@@ -63,6 +99,21 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Indicates if this group of VMs have emergent maintenance enabled.
+     * 
+     */
+    @Import(name="enableEmergentMaintenance")
+    private @Nullable Output<Boolean> enableEmergentMaintenance;
+
+    /**
+     * @return Indicates if this group of VMs have emergent maintenance enabled.
+     * 
+     */
+    public Optional<Output<Boolean>> enableEmergentMaintenance() {
+        return Optional.ofNullable(this.enableEmergentMaintenance);
     }
 
     /**
@@ -107,6 +158,23 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
+    }
+
+    /**
+     * Sharing policy for reservations with Google Cloud managed services.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="reservationSharingPolicy")
+    private @Nullable Output<ReservationReservationSharingPolicyArgs> reservationSharingPolicy;
+
+    /**
+     * @return Sharing policy for reservations with Google Cloud managed services.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ReservationReservationSharingPolicyArgs>> reservationSharingPolicy() {
+        return Optional.ofNullable(this.reservationSharingPolicy);
     }
 
     /**
@@ -212,9 +280,13 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
     private ReservationState(ReservationState $) {
         this.commitment = $.commitment;
         this.creationTimestamp = $.creationTimestamp;
+        this.deleteAfterDuration = $.deleteAfterDuration;
+        this.deleteAtTime = $.deleteAtTime;
         this.description = $.description;
+        this.enableEmergentMaintenance = $.enableEmergentMaintenance;
         this.name = $.name;
         this.project = $.project;
+        this.reservationSharingPolicy = $.reservationSharingPolicy;
         this.selfLink = $.selfLink;
         this.shareSettings = $.shareSettings;
         this.specificReservation = $.specificReservation;
@@ -286,6 +358,52 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param deleteAfterDuration Duration after which the reservation will be auto-deleted by Compute Engine. Cannot be used with delete_at_time.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteAfterDuration(@Nullable Output<ReservationDeleteAfterDurationArgs> deleteAfterDuration) {
+            $.deleteAfterDuration = deleteAfterDuration;
+            return this;
+        }
+
+        /**
+         * @param deleteAfterDuration Duration after which the reservation will be auto-deleted by Compute Engine. Cannot be used with delete_at_time.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteAfterDuration(ReservationDeleteAfterDurationArgs deleteAfterDuration) {
+            return deleteAfterDuration(Output.of(deleteAfterDuration));
+        }
+
+        /**
+         * @param deleteAtTime Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
+         * Cannot be used with delete_after_duration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteAtTime(@Nullable Output<String> deleteAtTime) {
+            $.deleteAtTime = deleteAtTime;
+            return this;
+        }
+
+        /**
+         * @param deleteAtTime Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
+         * Cannot be used with delete_after_duration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteAtTime(String deleteAtTime) {
+            return deleteAtTime(Output.of(deleteAtTime));
+        }
+
+        /**
          * @param description An optional description of this resource.
          * 
          * @return builder
@@ -304,6 +422,27 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param enableEmergentMaintenance Indicates if this group of VMs have emergent maintenance enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableEmergentMaintenance(@Nullable Output<Boolean> enableEmergentMaintenance) {
+            $.enableEmergentMaintenance = enableEmergentMaintenance;
+            return this;
+        }
+
+        /**
+         * @param enableEmergentMaintenance Indicates if this group of VMs have emergent maintenance enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableEmergentMaintenance(Boolean enableEmergentMaintenance) {
+            return enableEmergentMaintenance(Output.of(enableEmergentMaintenance));
         }
 
         /**
@@ -360,6 +499,29 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param reservationSharingPolicy Sharing policy for reservations with Google Cloud managed services.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservationSharingPolicy(@Nullable Output<ReservationReservationSharingPolicyArgs> reservationSharingPolicy) {
+            $.reservationSharingPolicy = reservationSharingPolicy;
+            return this;
+        }
+
+        /**
+         * @param reservationSharingPolicy Sharing policy for reservations with Google Cloud managed services.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservationSharingPolicy(ReservationReservationSharingPolicyArgs reservationSharingPolicy) {
+            return reservationSharingPolicy(Output.of(reservationSharingPolicy));
         }
 
         /**

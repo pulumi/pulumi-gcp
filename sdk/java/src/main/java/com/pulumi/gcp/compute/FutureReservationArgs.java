@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.compute.inputs.FutureReservationAggregateReservationArgs;
 import com.pulumi.gcp.compute.inputs.FutureReservationAutoCreatedReservationsDurationArgs;
 import com.pulumi.gcp.compute.inputs.FutureReservationCommitmentInfoArgs;
 import com.pulumi.gcp.compute.inputs.FutureReservationShareSettingsArgs;
@@ -21,6 +22,23 @@ import javax.annotation.Nullable;
 public final class FutureReservationArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final FutureReservationArgs Empty = new FutureReservationArgs();
+
+    /**
+     * Aggregate reservation details for the future reservation.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="aggregateReservation")
+    private @Nullable Output<FutureReservationAggregateReservationArgs> aggregateReservation;
+
+    /**
+     * @return Aggregate reservation details for the future reservation.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<FutureReservationAggregateReservationArgs>> aggregateReservation() {
+        return Optional.ofNullable(this.aggregateReservation);
+    }
 
     /**
      * Future timestamp when the FR auto-created reservations will be deleted by Compute Engine.
@@ -312,6 +330,7 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
     private FutureReservationArgs() {}
 
     private FutureReservationArgs(FutureReservationArgs $) {
+        this.aggregateReservation = $.aggregateReservation;
         this.autoCreatedReservationsDeleteTime = $.autoCreatedReservationsDeleteTime;
         this.autoCreatedReservationsDuration = $.autoCreatedReservationsDuration;
         this.autoDeleteAutoCreatedReservations = $.autoDeleteAutoCreatedReservations;
@@ -347,6 +366,29 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
 
         public Builder(FutureReservationArgs defaults) {
             $ = new FutureReservationArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param aggregateReservation Aggregate reservation details for the future reservation.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aggregateReservation(@Nullable Output<FutureReservationAggregateReservationArgs> aggregateReservation) {
+            $.aggregateReservation = aggregateReservation;
+            return this;
+        }
+
+        /**
+         * @param aggregateReservation Aggregate reservation details for the future reservation.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aggregateReservation(FutureReservationAggregateReservationArgs aggregateReservation) {
+            return aggregateReservation(Output.of(aggregateReservation));
         }
 
         /**

@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.ReservationSpecificReservationInstancePropertiesArgs;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -54,16 +55,33 @@ public final class ReservationSpecificReservationArgs extends com.pulumi.resourc
      * Structure is documented below.
      * 
      */
-    @Import(name="instanceProperties", required=true)
-    private Output<ReservationSpecificReservationInstancePropertiesArgs> instanceProperties;
+    @Import(name="instanceProperties")
+    private @Nullable Output<ReservationSpecificReservationInstancePropertiesArgs> instanceProperties;
 
     /**
      * @return The instance properties for the reservation.
      * Structure is documented below.
      * 
      */
-    public Output<ReservationSpecificReservationInstancePropertiesArgs> instanceProperties() {
-        return this.instanceProperties;
+    public Optional<Output<ReservationSpecificReservationInstancePropertiesArgs>> instanceProperties() {
+        return Optional.ofNullable(this.instanceProperties);
+    }
+
+    /**
+     * Specifies the instance template to create the reservation. If you use this field, you must exclude the
+     * instanceProperties field.
+     * 
+     */
+    @Import(name="sourceInstanceTemplate")
+    private @Nullable Output<String> sourceInstanceTemplate;
+
+    /**
+     * @return Specifies the instance template to create the reservation. If you use this field, you must exclude the
+     * instanceProperties field.
+     * 
+     */
+    public Optional<Output<String>> sourceInstanceTemplate() {
+        return Optional.ofNullable(this.sourceInstanceTemplate);
     }
 
     private ReservationSpecificReservationArgs() {}
@@ -72,6 +90,7 @@ public final class ReservationSpecificReservationArgs extends com.pulumi.resourc
         this.count = $.count;
         this.inUseCount = $.inUseCount;
         this.instanceProperties = $.instanceProperties;
+        this.sourceInstanceTemplate = $.sourceInstanceTemplate;
     }
 
     public static Builder builder() {
@@ -143,7 +162,7 @@ public final class ReservationSpecificReservationArgs extends com.pulumi.resourc
          * @return builder
          * 
          */
-        public Builder instanceProperties(Output<ReservationSpecificReservationInstancePropertiesArgs> instanceProperties) {
+        public Builder instanceProperties(@Nullable Output<ReservationSpecificReservationInstancePropertiesArgs> instanceProperties) {
             $.instanceProperties = instanceProperties;
             return this;
         }
@@ -159,12 +178,32 @@ public final class ReservationSpecificReservationArgs extends com.pulumi.resourc
             return instanceProperties(Output.of(instanceProperties));
         }
 
+        /**
+         * @param sourceInstanceTemplate Specifies the instance template to create the reservation. If you use this field, you must exclude the
+         * instanceProperties field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceInstanceTemplate(@Nullable Output<String> sourceInstanceTemplate) {
+            $.sourceInstanceTemplate = sourceInstanceTemplate;
+            return this;
+        }
+
+        /**
+         * @param sourceInstanceTemplate Specifies the instance template to create the reservation. If you use this field, you must exclude the
+         * instanceProperties field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceInstanceTemplate(String sourceInstanceTemplate) {
+            return sourceInstanceTemplate(Output.of(sourceInstanceTemplate));
+        }
+
         public ReservationSpecificReservationArgs build() {
             if ($.count == null) {
                 throw new MissingRequiredPropertyException("ReservationSpecificReservationArgs", "count");
-            }
-            if ($.instanceProperties == null) {
-                throw new MissingRequiredPropertyException("ReservationSpecificReservationArgs", "instanceProperties");
             }
             return $;
         }

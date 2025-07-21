@@ -376,6 +376,21 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second
+        /// that the disk can handle. Values must be between 10,000 and 120,000.
+        /// For more details, see the Extreme persistent disk [documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+        /// </summary>
+        [Output("provisionedIops")]
+        public Output<int> ProvisionedIops { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates how much throughput to provision for the disk. This sets the number of throughput
+        /// mb per second that the disk can handle. Values must be greater than or equal to 1.
+        /// </summary>
+        [Output("provisionedThroughput")]
+        public Output<int> ProvisionedThroughput { get; private set; } = null!;
+
+        /// <summary>
         /// The combination of labels configured directly on the resource
         /// and default labels configured on the provider.
         /// </summary>
@@ -662,6 +677,21 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second
+        /// that the disk can handle. Values must be between 10,000 and 120,000.
+        /// For more details, see the Extreme persistent disk [documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+        /// </summary>
+        [Input("provisionedIops")]
+        public Input<int>? ProvisionedIops { get; set; }
+
+        /// <summary>
+        /// Indicates how much throughput to provision for the disk. This sets the number of throughput
+        /// mb per second that the disk can handle. Values must be greater than or equal to 1.
+        /// </summary>
+        [Input("provisionedThroughput")]
+        public Input<int>? ProvisionedThroughput { get; set; }
+
+        /// <summary>
         /// A reference to the region where the disk resides.
         /// </summary>
         [Input("region")]
@@ -917,6 +947,21 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second
+        /// that the disk can handle. Values must be between 10,000 and 120,000.
+        /// For more details, see the Extreme persistent disk [documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+        /// </summary>
+        [Input("provisionedIops")]
+        public Input<int>? ProvisionedIops { get; set; }
+
+        /// <summary>
+        /// Indicates how much throughput to provision for the disk. This sets the number of throughput
+        /// mb per second that the disk can handle. Values must be greater than or equal to 1.
+        /// </summary>
+        [Input("provisionedThroughput")]
+        public Input<int>? ProvisionedThroughput { get; set; }
 
         [Input("pulumiLabels")]
         private InputMap<string>? _pulumiLabels;

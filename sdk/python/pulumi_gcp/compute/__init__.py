@@ -68,6 +68,7 @@ from .get_machine_image_iam_policy import *
 from .get_machine_types import *
 from .get_netblock_ip_ranges import *
 from .get_network import *
+from .get_network_attachment import *
 from .get_network_endpoint_group import *
 from .get_network_peering import *
 from .get_networks import *

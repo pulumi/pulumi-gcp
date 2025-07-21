@@ -10,6 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.NetworkSecurity
 {
     /// <summary>
+    /// BackendAuthenticationConfig groups the TrustConfig together with other settings that control how the load balancer authenticates, and expresses its identity to the backend.
+    /// 
+    /// To get more information about BackendAuthenticationConfig, see:
+    /// * How-to Guides
+    ///     * [Backend mTLS](https://cloud.google.com/load-balancing/docs/backend-authenticated-tls-backend-mtls#backend-authentication-config)
+    /// 
     /// ## Example Usage
     /// 
     /// ### Network Security Backend Authentication Config Basic

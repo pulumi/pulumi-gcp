@@ -62,6 +62,200 @@ import (
 //	}
 //
 // ```
+// ### Reservation Basic Beta
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewReservation(ctx, "gce_reservation", &compute.ReservationArgs{
+//				Name: pulumi.String("gce-reservation"),
+//				Zone: pulumi.String("us-central1-a"),
+//				SpecificReservation: &compute.ReservationSpecificReservationArgs{
+//					Count: pulumi.Int(1),
+//					InstanceProperties: &compute.ReservationSpecificReservationInstancePropertiesArgs{
+//						MinCpuPlatform:      pulumi.String("Intel Cascade Lake"),
+//						MachineType:         pulumi.String("n2-standard-2"),
+//						MaintenanceInterval: pulumi.String("PERIODIC"),
+//					},
+//				},
+//				EnableEmergentMaintenance: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Reservation Source Instance Template
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
+//				Family:  pulumi.StringRef("debian-11"),
+//				Project: pulumi.StringRef("debian-cloud"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			foobar, err := compute.NewInstanceTemplate(ctx, "foobar", &compute.InstanceTemplateArgs{
+//				Name:         pulumi.String("tf-test-instance-template"),
+//				MachineType:  pulumi.String("n2-standard-2"),
+//				CanIpForward: pulumi.Bool(false),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo"),
+//					pulumi.String("bar"),
+//				},
+//				Disks: compute.InstanceTemplateDiskArray{
+//					&compute.InstanceTemplateDiskArgs{
+//						SourceImage: pulumi.String(myImage.SelfLink),
+//						AutoDelete:  pulumi.Bool(true),
+//						Boot:        pulumi.Bool(true),
+//					},
+//				},
+//				NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
+//					&compute.InstanceTemplateNetworkInterfaceArgs{
+//						Network: pulumi.String("default"),
+//					},
+//				},
+//				Scheduling: &compute.InstanceTemplateSchedulingArgs{
+//					Preemptible:      pulumi.Bool(false),
+//					AutomaticRestart: pulumi.Bool(true),
+//				},
+//				Metadata: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				ServiceAccount: &compute.InstanceTemplateServiceAccountArgs{
+//					Scopes: pulumi.StringArray{
+//						pulumi.String("userinfo-email"),
+//						pulumi.String("compute-ro"),
+//						pulumi.String("storage-ro"),
+//					},
+//				},
+//				Labels: pulumi.StringMap{
+//					"my_label": pulumi.String("foobar"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewReservation(ctx, "gce_reservation_source_instance_template", &compute.ReservationArgs{
+//				Name: pulumi.String("gce-reservation-source-instance-template"),
+//				Zone: pulumi.String("us-central1-a"),
+//				SpecificReservation: &compute.ReservationSpecificReservationArgs{
+//					Count:                  pulumi.Int(1),
+//					SourceInstanceTemplate: foobar.SelfLink,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Reservation Sharing Policy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
+//				Family:  pulumi.StringRef("debian-11"),
+//				Project: pulumi.StringRef("debian-cloud"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			foobar, err := compute.NewInstanceTemplate(ctx, "foobar", &compute.InstanceTemplateArgs{
+//				Name:         pulumi.String("tf-test-instance-template"),
+//				MachineType:  pulumi.String("g2-standard-4"),
+//				CanIpForward: pulumi.Bool(false),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo"),
+//					pulumi.String("bar"),
+//				},
+//				Disks: compute.InstanceTemplateDiskArray{
+//					&compute.InstanceTemplateDiskArgs{
+//						SourceImage: pulumi.String(myImage.SelfLink),
+//						AutoDelete:  pulumi.Bool(true),
+//						Boot:        pulumi.Bool(true),
+//					},
+//				},
+//				NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
+//					&compute.InstanceTemplateNetworkInterfaceArgs{
+//						Network: pulumi.String("default"),
+//					},
+//				},
+//				Scheduling: &compute.InstanceTemplateSchedulingArgs{
+//					Preemptible:      pulumi.Bool(false),
+//					AutomaticRestart: pulumi.Bool(true),
+//				},
+//				Metadata: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				ServiceAccount: &compute.InstanceTemplateServiceAccountArgs{
+//					Scopes: pulumi.StringArray{
+//						pulumi.String("userinfo-email"),
+//						pulumi.String("compute-ro"),
+//						pulumi.String("storage-ro"),
+//					},
+//				},
+//				Labels: pulumi.StringMap{
+//					"my_label": pulumi.String("foobar"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewReservation(ctx, "gce_reservation_sharing_policy", &compute.ReservationArgs{
+//				Name: pulumi.String("gce-reservation-sharing-policy"),
+//				Zone: pulumi.String("us-central1-b"),
+//				SpecificReservation: &compute.ReservationSpecificReservationArgs{
+//					Count:                  pulumi.Int(2),
+//					SourceInstanceTemplate: foobar.SelfLink,
+//				},
+//				ReservationSharingPolicy: &compute.ReservationReservationSharingPolicyArgs{
+//					ServiceShareType: pulumi.String("ALLOW_ALL"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -100,8 +294,16 @@ type Reservation struct {
 	Commitment pulumi.StringOutput `pulumi:"commitment"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
+	// Duration after which the reservation will be auto-deleted by Compute Engine. Cannot be used with delete_at_time.
+	// Structure is documented below.
+	DeleteAfterDuration ReservationDeleteAfterDurationPtrOutput `pulumi:"deleteAfterDuration"`
+	// Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
+	// Cannot be used with delete_after_duration.
+	DeleteAtTime pulumi.StringOutput `pulumi:"deleteAtTime"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Indicates if this group of VMs have emergent maintenance enabled.
+	EnableEmergentMaintenance pulumi.BoolPtrOutput `pulumi:"enableEmergentMaintenance"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -113,6 +315,9 @@ type Reservation struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Sharing policy for reservations with Google Cloud managed services.
+	// Structure is documented below.
+	ReservationSharingPolicy ReservationReservationSharingPolicyOutput `pulumi:"reservationSharingPolicy"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// The share setting for reservations.
@@ -172,8 +377,16 @@ type reservationState struct {
 	Commitment *string `pulumi:"commitment"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
+	// Duration after which the reservation will be auto-deleted by Compute Engine. Cannot be used with delete_at_time.
+	// Structure is documented below.
+	DeleteAfterDuration *ReservationDeleteAfterDuration `pulumi:"deleteAfterDuration"`
+	// Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
+	// Cannot be used with delete_after_duration.
+	DeleteAtTime *string `pulumi:"deleteAtTime"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
+	// Indicates if this group of VMs have emergent maintenance enabled.
+	EnableEmergentMaintenance *bool `pulumi:"enableEmergentMaintenance"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -185,6 +398,9 @@ type reservationState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Sharing policy for reservations with Google Cloud managed services.
+	// Structure is documented below.
+	ReservationSharingPolicy *ReservationReservationSharingPolicy `pulumi:"reservationSharingPolicy"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// The share setting for reservations.
@@ -209,8 +425,16 @@ type ReservationState struct {
 	Commitment pulumi.StringPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
+	// Duration after which the reservation will be auto-deleted by Compute Engine. Cannot be used with delete_at_time.
+	// Structure is documented below.
+	DeleteAfterDuration ReservationDeleteAfterDurationPtrInput
+	// Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
+	// Cannot be used with delete_after_duration.
+	DeleteAtTime pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
+	// Indicates if this group of VMs have emergent maintenance enabled.
+	EnableEmergentMaintenance pulumi.BoolPtrInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -222,6 +446,9 @@ type ReservationState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Sharing policy for reservations with Google Cloud managed services.
+	// Structure is documented below.
+	ReservationSharingPolicy ReservationReservationSharingPolicyPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
 	// The share setting for reservations.
@@ -245,8 +472,16 @@ func (ReservationState) ElementType() reflect.Type {
 }
 
 type reservationArgs struct {
+	// Duration after which the reservation will be auto-deleted by Compute Engine. Cannot be used with delete_at_time.
+	// Structure is documented below.
+	DeleteAfterDuration *ReservationDeleteAfterDuration `pulumi:"deleteAfterDuration"`
+	// Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
+	// Cannot be used with delete_after_duration.
+	DeleteAtTime *string `pulumi:"deleteAtTime"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
+	// Indicates if this group of VMs have emergent maintenance enabled.
+	EnableEmergentMaintenance *bool `pulumi:"enableEmergentMaintenance"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -258,6 +493,9 @@ type reservationArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Sharing policy for reservations with Google Cloud managed services.
+	// Structure is documented below.
+	ReservationSharingPolicy *ReservationReservationSharingPolicy `pulumi:"reservationSharingPolicy"`
 	// The share setting for reservations.
 	// Structure is documented below.
 	ShareSettings *ReservationShareSettings `pulumi:"shareSettings"`
@@ -274,8 +512,16 @@ type reservationArgs struct {
 
 // The set of arguments for constructing a Reservation resource.
 type ReservationArgs struct {
+	// Duration after which the reservation will be auto-deleted by Compute Engine. Cannot be used with delete_at_time.
+	// Structure is documented below.
+	DeleteAfterDuration ReservationDeleteAfterDurationPtrInput
+	// Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
+	// Cannot be used with delete_after_duration.
+	DeleteAtTime pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
+	// Indicates if this group of VMs have emergent maintenance enabled.
+	EnableEmergentMaintenance pulumi.BoolPtrInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -287,6 +533,9 @@ type ReservationArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Sharing policy for reservations with Google Cloud managed services.
+	// Structure is documented below.
+	ReservationSharingPolicy ReservationReservationSharingPolicyPtrInput
 	// The share setting for reservations.
 	// Structure is documented below.
 	ShareSettings ReservationShareSettingsPtrInput
@@ -399,9 +648,26 @@ func (o ReservationOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
 }
 
+// Duration after which the reservation will be auto-deleted by Compute Engine. Cannot be used with delete_at_time.
+// Structure is documented below.
+func (o ReservationOutput) DeleteAfterDuration() ReservationDeleteAfterDurationPtrOutput {
+	return o.ApplyT(func(v *Reservation) ReservationDeleteAfterDurationPtrOutput { return v.DeleteAfterDuration }).(ReservationDeleteAfterDurationPtrOutput)
+}
+
+// Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
+// Cannot be used with delete_after_duration.
+func (o ReservationOutput) DeleteAtTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.DeleteAtTime }).(pulumi.StringOutput)
+}
+
 // An optional description of this resource.
 func (o ReservationOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Indicates if this group of VMs have emergent maintenance enabled.
+func (o ReservationOutput) EnableEmergentMaintenance() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Reservation) pulumi.BoolPtrOutput { return v.EnableEmergentMaintenance }).(pulumi.BoolPtrOutput)
 }
 
 // Name of the resource. Provided by the client when the resource is
@@ -419,6 +685,12 @@ func (o ReservationOutput) Name() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o ReservationOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Sharing policy for reservations with Google Cloud managed services.
+// Structure is documented below.
+func (o ReservationOutput) ReservationSharingPolicy() ReservationReservationSharingPolicyOutput {
+	return o.ApplyT(func(v *Reservation) ReservationReservationSharingPolicyOutput { return v.ReservationSharingPolicy }).(ReservationReservationSharingPolicyOutput)
 }
 
 // The URI of the created resource.

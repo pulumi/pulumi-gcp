@@ -28,16 +28,25 @@ class GetReservationResult:
     """
     A collection of values returned by getReservation.
     """
-    def __init__(__self__, commitment=None, creation_timestamp=None, description=None, id=None, name=None, project=None, self_link=None, share_settings=None, specific_reservation_required=None, specific_reservations=None, status=None, zone=None):
+    def __init__(__self__, commitment=None, creation_timestamp=None, delete_after_durations=None, delete_at_time=None, description=None, enable_emergent_maintenance=None, id=None, name=None, project=None, reservation_sharing_policies=None, self_link=None, share_settings=None, specific_reservation_required=None, specific_reservations=None, status=None, zone=None):
         if commitment and not isinstance(commitment, str):
             raise TypeError("Expected argument 'commitment' to be a str")
         pulumi.set(__self__, "commitment", commitment)
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if delete_after_durations and not isinstance(delete_after_durations, list):
+            raise TypeError("Expected argument 'delete_after_durations' to be a list")
+        pulumi.set(__self__, "delete_after_durations", delete_after_durations)
+        if delete_at_time and not isinstance(delete_at_time, str):
+            raise TypeError("Expected argument 'delete_at_time' to be a str")
+        pulumi.set(__self__, "delete_at_time", delete_at_time)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if enable_emergent_maintenance and not isinstance(enable_emergent_maintenance, bool):
+            raise TypeError("Expected argument 'enable_emergent_maintenance' to be a bool")
+        pulumi.set(__self__, "enable_emergent_maintenance", enable_emergent_maintenance)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -47,6 +56,9 @@ class GetReservationResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if reservation_sharing_policies and not isinstance(reservation_sharing_policies, list):
+            raise TypeError("Expected argument 'reservation_sharing_policies' to be a list")
+        pulumi.set(__self__, "reservation_sharing_policies", reservation_sharing_policies)
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
@@ -77,9 +89,24 @@ class GetReservationResult:
         return pulumi.get(self, "creation_timestamp")
 
     @property
+    @pulumi.getter(name="deleteAfterDurations")
+    def delete_after_durations(self) -> Sequence['outputs.GetReservationDeleteAfterDurationResult']:
+        return pulumi.get(self, "delete_after_durations")
+
+    @property
+    @pulumi.getter(name="deleteAtTime")
+    def delete_at_time(self) -> builtins.str:
+        return pulumi.get(self, "delete_at_time")
+
+    @property
     @pulumi.getter
     def description(self) -> builtins.str:
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="enableEmergentMaintenance")
+    def enable_emergent_maintenance(self) -> builtins.bool:
+        return pulumi.get(self, "enable_emergent_maintenance")
 
     @property
     @pulumi.getter
@@ -98,6 +125,11 @@ class GetReservationResult:
     @pulumi.getter
     def project(self) -> Optional[builtins.str]:
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="reservationSharingPolicies")
+    def reservation_sharing_policies(self) -> Sequence['outputs.GetReservationReservationSharingPolicyResult']:
+        return pulumi.get(self, "reservation_sharing_policies")
 
     @property
     @pulumi.getter(name="selfLink")
@@ -138,10 +170,14 @@ class AwaitableGetReservationResult(GetReservationResult):
         return GetReservationResult(
             commitment=self.commitment,
             creation_timestamp=self.creation_timestamp,
+            delete_after_durations=self.delete_after_durations,
+            delete_at_time=self.delete_at_time,
             description=self.description,
+            enable_emergent_maintenance=self.enable_emergent_maintenance,
             id=self.id,
             name=self.name,
             project=self.project,
+            reservation_sharing_policies=self.reservation_sharing_policies,
             self_link=self.self_link,
             share_settings=self.share_settings,
             specific_reservation_required=self.specific_reservation_required,
@@ -181,10 +217,14 @@ def get_reservation(name: Optional[builtins.str] = None,
     return AwaitableGetReservationResult(
         commitment=pulumi.get(__ret__, 'commitment'),
         creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        delete_after_durations=pulumi.get(__ret__, 'delete_after_durations'),
+        delete_at_time=pulumi.get(__ret__, 'delete_at_time'),
         description=pulumi.get(__ret__, 'description'),
+        enable_emergent_maintenance=pulumi.get(__ret__, 'enable_emergent_maintenance'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
+        reservation_sharing_policies=pulumi.get(__ret__, 'reservation_sharing_policies'),
         self_link=pulumi.get(__ret__, 'self_link'),
         share_settings=pulumi.get(__ret__, 'share_settings'),
         specific_reservation_required=pulumi.get(__ret__, 'specific_reservation_required'),
@@ -221,10 +261,14 @@ def get_reservation_output(name: Optional[pulumi.Input[builtins.str]] = None,
     return __ret__.apply(lambda __response__: GetReservationResult(
         commitment=pulumi.get(__response__, 'commitment'),
         creation_timestamp=pulumi.get(__response__, 'creation_timestamp'),
+        delete_after_durations=pulumi.get(__response__, 'delete_after_durations'),
+        delete_at_time=pulumi.get(__response__, 'delete_at_time'),
         description=pulumi.get(__response__, 'description'),
+        enable_emergent_maintenance=pulumi.get(__response__, 'enable_emergent_maintenance'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
         project=pulumi.get(__response__, 'project'),
+        reservation_sharing_policies=pulumi.get(__response__, 'reservation_sharing_policies'),
         self_link=pulumi.get(__response__, 'self_link'),
         share_settings=pulumi.get(__response__, 'share_settings'),
         specific_reservation_required=pulumi.get(__response__, 'specific_reservation_required'),

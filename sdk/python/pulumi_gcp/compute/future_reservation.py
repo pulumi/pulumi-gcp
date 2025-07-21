@@ -23,6 +23,7 @@ __all__ = ['FutureReservationArgs', 'FutureReservation']
 class FutureReservationArgs:
     def __init__(__self__, *,
                  time_window: pulumi.Input['FutureReservationTimeWindowArgs'],
+                 aggregate_reservation: Optional[pulumi.Input['FutureReservationAggregateReservationArgs']] = None,
                  auto_created_reservations_delete_time: Optional[pulumi.Input[builtins.str]] = None,
                  auto_created_reservations_duration: Optional[pulumi.Input['FutureReservationAutoCreatedReservationsDurationArgs']] = None,
                  auto_delete_auto_created_reservations: Optional[pulumi.Input[builtins.bool]] = None,
@@ -42,6 +43,8 @@ class FutureReservationArgs:
         """
         The set of arguments for constructing a FutureReservation resource.
         :param pulumi.Input['FutureReservationTimeWindowArgs'] time_window: Time window for this Future Reservation.
+               Structure is documented below.
+        :param pulumi.Input['FutureReservationAggregateReservationArgs'] aggregate_reservation: Aggregate reservation details for the future reservation.
                Structure is documented below.
         :param pulumi.Input[builtins.str] auto_created_reservations_delete_time: Future timestamp when the FR auto-created reservations will be deleted by Compute Engine.
         :param pulumi.Input['FutureReservationAutoCreatedReservationsDurationArgs'] auto_created_reservations_duration: Specifies the duration of auto-created reservations. It represents relative time to future reservation startTime when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
@@ -76,6 +79,8 @@ class FutureReservationArgs:
                Structure is documented below.
         """
         pulumi.set(__self__, "time_window", time_window)
+        if aggregate_reservation is not None:
+            pulumi.set(__self__, "aggregate_reservation", aggregate_reservation)
         if auto_created_reservations_delete_time is not None:
             pulumi.set(__self__, "auto_created_reservations_delete_time", auto_created_reservations_delete_time)
         if auto_created_reservations_duration is not None:
@@ -121,6 +126,19 @@ class FutureReservationArgs:
     @time_window.setter
     def time_window(self, value: pulumi.Input['FutureReservationTimeWindowArgs']):
         pulumi.set(self, "time_window", value)
+
+    @property
+    @pulumi.getter(name="aggregateReservation")
+    def aggregate_reservation(self) -> Optional[pulumi.Input['FutureReservationAggregateReservationArgs']]:
+        """
+        Aggregate reservation details for the future reservation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "aggregate_reservation")
+
+    @aggregate_reservation.setter
+    def aggregate_reservation(self, value: Optional[pulumi.Input['FutureReservationAggregateReservationArgs']]):
+        pulumi.set(self, "aggregate_reservation", value)
 
     @property
     @pulumi.getter(name="autoCreatedReservationsDeleteTime")
@@ -333,6 +351,7 @@ class FutureReservationArgs:
 @pulumi.input_type
 class _FutureReservationState:
     def __init__(__self__, *,
+                 aggregate_reservation: Optional[pulumi.Input['FutureReservationAggregateReservationArgs']] = None,
                  auto_created_reservations_delete_time: Optional[pulumi.Input[builtins.str]] = None,
                  auto_created_reservations_duration: Optional[pulumi.Input['FutureReservationAutoCreatedReservationsDurationArgs']] = None,
                  auto_delete_auto_created_reservations: Optional[pulumi.Input[builtins.bool]] = None,
@@ -357,6 +376,8 @@ class _FutureReservationState:
                  zone: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering FutureReservation resources.
+        :param pulumi.Input['FutureReservationAggregateReservationArgs'] aggregate_reservation: Aggregate reservation details for the future reservation.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] auto_created_reservations_delete_time: Future timestamp when the FR auto-created reservations will be deleted by Compute Engine.
         :param pulumi.Input['FutureReservationAutoCreatedReservationsDurationArgs'] auto_created_reservations_duration: Specifies the duration of auto-created reservations. It represents relative time to future reservation startTime when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
                Structure is documented below.
@@ -397,6 +418,8 @@ class _FutureReservationState:
                Structure is documented below.
         :param pulumi.Input[builtins.str] zone: URL of the Zone where this future reservation resides.
         """
+        if aggregate_reservation is not None:
+            pulumi.set(__self__, "aggregate_reservation", aggregate_reservation)
         if auto_created_reservations_delete_time is not None:
             pulumi.set(__self__, "auto_created_reservations_delete_time", auto_created_reservations_delete_time)
         if auto_created_reservations_duration is not None:
@@ -441,6 +464,19 @@ class _FutureReservationState:
             pulumi.set(__self__, "time_window", time_window)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="aggregateReservation")
+    def aggregate_reservation(self) -> Optional[pulumi.Input['FutureReservationAggregateReservationArgs']]:
+        """
+        Aggregate reservation details for the future reservation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "aggregate_reservation")
+
+    @aggregate_reservation.setter
+    def aggregate_reservation(self, value: Optional[pulumi.Input['FutureReservationAggregateReservationArgs']]):
+        pulumi.set(self, "aggregate_reservation", value)
 
     @property
     @pulumi.getter(name="autoCreatedReservationsDeleteTime")
@@ -730,6 +766,7 @@ class FutureReservation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 aggregate_reservation: Optional[pulumi.Input[Union['FutureReservationAggregateReservationArgs', 'FutureReservationAggregateReservationArgsDict']]] = None,
                  auto_created_reservations_delete_time: Optional[pulumi.Input[builtins.str]] = None,
                  auto_created_reservations_duration: Optional[pulumi.Input[Union['FutureReservationAutoCreatedReservationsDurationArgs', 'FutureReservationAutoCreatedReservationsDurationArgsDict']]] = None,
                  auto_delete_auto_created_reservations: Optional[pulumi.Input[builtins.bool]] = None,
@@ -774,6 +811,41 @@ class FutureReservation(pulumi.CustomResource):
                 },
             })
         ```
+        ### Future Reservation Aggregate Reservation
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        gce_future_reservation = gcp.compute.FutureReservation("gce_future_reservation",
+            name="gce-future-reservation-aggregate-reservation",
+            project="my-project-name",
+            auto_delete_auto_created_reservations=True,
+            planning_status="DRAFT",
+            name_prefix="fr-basic",
+            time_window={
+                "start_time": "2025-11-01T00:00:00Z",
+                "end_time": "2025-11-02T00:00:00Z",
+            },
+            aggregate_reservation={
+                "vm_family": "VM_FAMILY_CLOUD_TPU_DEVICE_CT3",
+                "workload_type": "UNSPECIFIED",
+                "reserved_resources": [
+                    {
+                        "accelerator": {
+                            "accelerator_count": 32,
+                            "accelerator_type": "projects/my-project-name/zones/us-central1-a/acceleratorTypes/ct3",
+                        },
+                    },
+                    {
+                        "accelerator": {
+                            "accelerator_count": 2,
+                            "accelerator_type": "projects/my-project-name/zones/us-central1-a/acceleratorTypes/ct3",
+                        },
+                    },
+                ],
+            })
+        ```
 
         ## Import
 
@@ -807,6 +879,8 @@ class FutureReservation(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['FutureReservationAggregateReservationArgs', 'FutureReservationAggregateReservationArgsDict']] aggregate_reservation: Aggregate reservation details for the future reservation.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] auto_created_reservations_delete_time: Future timestamp when the FR auto-created reservations will be deleted by Compute Engine.
         :param pulumi.Input[Union['FutureReservationAutoCreatedReservationsDurationArgs', 'FutureReservationAutoCreatedReservationsDurationArgsDict']] auto_created_reservations_duration: Specifies the duration of auto-created reservations. It represents relative time to future reservation startTime when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
                Structure is documented below.
@@ -873,6 +947,41 @@ class FutureReservation(pulumi.CustomResource):
                 },
             })
         ```
+        ### Future Reservation Aggregate Reservation
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        gce_future_reservation = gcp.compute.FutureReservation("gce_future_reservation",
+            name="gce-future-reservation-aggregate-reservation",
+            project="my-project-name",
+            auto_delete_auto_created_reservations=True,
+            planning_status="DRAFT",
+            name_prefix="fr-basic",
+            time_window={
+                "start_time": "2025-11-01T00:00:00Z",
+                "end_time": "2025-11-02T00:00:00Z",
+            },
+            aggregate_reservation={
+                "vm_family": "VM_FAMILY_CLOUD_TPU_DEVICE_CT3",
+                "workload_type": "UNSPECIFIED",
+                "reserved_resources": [
+                    {
+                        "accelerator": {
+                            "accelerator_count": 32,
+                            "accelerator_type": "projects/my-project-name/zones/us-central1-a/acceleratorTypes/ct3",
+                        },
+                    },
+                    {
+                        "accelerator": {
+                            "accelerator_count": 2,
+                            "accelerator_type": "projects/my-project-name/zones/us-central1-a/acceleratorTypes/ct3",
+                        },
+                    },
+                ],
+            })
+        ```
 
         ## Import
 
@@ -919,6 +1028,7 @@ class FutureReservation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 aggregate_reservation: Optional[pulumi.Input[Union['FutureReservationAggregateReservationArgs', 'FutureReservationAggregateReservationArgsDict']]] = None,
                  auto_created_reservations_delete_time: Optional[pulumi.Input[builtins.str]] = None,
                  auto_created_reservations_duration: Optional[pulumi.Input[Union['FutureReservationAutoCreatedReservationsDurationArgs', 'FutureReservationAutoCreatedReservationsDurationArgsDict']]] = None,
                  auto_delete_auto_created_reservations: Optional[pulumi.Input[builtins.bool]] = None,
@@ -945,6 +1055,7 @@ class FutureReservation(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = FutureReservationArgs.__new__(FutureReservationArgs)
 
+            __props__.__dict__["aggregate_reservation"] = aggregate_reservation
             __props__.__dict__["auto_created_reservations_delete_time"] = auto_created_reservations_delete_time
             __props__.__dict__["auto_created_reservations_duration"] = auto_created_reservations_duration
             __props__.__dict__["auto_delete_auto_created_reservations"] = auto_delete_auto_created_reservations
@@ -979,6 +1090,7 @@ class FutureReservation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            aggregate_reservation: Optional[pulumi.Input[Union['FutureReservationAggregateReservationArgs', 'FutureReservationAggregateReservationArgsDict']]] = None,
             auto_created_reservations_delete_time: Optional[pulumi.Input[builtins.str]] = None,
             auto_created_reservations_duration: Optional[pulumi.Input[Union['FutureReservationAutoCreatedReservationsDurationArgs', 'FutureReservationAutoCreatedReservationsDurationArgsDict']]] = None,
             auto_delete_auto_created_reservations: Optional[pulumi.Input[builtins.bool]] = None,
@@ -1008,6 +1120,8 @@ class FutureReservation(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['FutureReservationAggregateReservationArgs', 'FutureReservationAggregateReservationArgsDict']] aggregate_reservation: Aggregate reservation details for the future reservation.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] auto_created_reservations_delete_time: Future timestamp when the FR auto-created reservations will be deleted by Compute Engine.
         :param pulumi.Input[Union['FutureReservationAutoCreatedReservationsDurationArgs', 'FutureReservationAutoCreatedReservationsDurationArgsDict']] auto_created_reservations_duration: Specifies the duration of auto-created reservations. It represents relative time to future reservation startTime when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
                Structure is documented below.
@@ -1052,6 +1166,7 @@ class FutureReservation(pulumi.CustomResource):
 
         __props__ = _FutureReservationState.__new__(_FutureReservationState)
 
+        __props__.__dict__["aggregate_reservation"] = aggregate_reservation
         __props__.__dict__["auto_created_reservations_delete_time"] = auto_created_reservations_delete_time
         __props__.__dict__["auto_created_reservations_duration"] = auto_created_reservations_duration
         __props__.__dict__["auto_delete_auto_created_reservations"] = auto_delete_auto_created_reservations
@@ -1075,6 +1190,15 @@ class FutureReservation(pulumi.CustomResource):
         __props__.__dict__["time_window"] = time_window
         __props__.__dict__["zone"] = zone
         return FutureReservation(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="aggregateReservation")
+    def aggregate_reservation(self) -> pulumi.Output[Optional['outputs.FutureReservationAggregateReservation']]:
+        """
+        Aggregate reservation details for the future reservation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "aggregate_reservation")
 
     @property
     @pulumi.getter(name="autoCreatedReservationsDeleteTime")

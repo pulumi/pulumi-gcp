@@ -234,6 +234,13 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Network { get; private set; } = null!;
 
         /// <summary>
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// Structure is documented below.
+        /// </summary>
+        [Output("params")]
+        public Output<Outputs.FirewallParams?> Params { get; private set; } = null!;
+
+        /// <summary>
         /// Priority for this rule. This is an integer between 0 and 65535, both
         /// inclusive. When not specified, the value assumed is 1000. Relative
         /// priorities determine precedence of conflicting rules. Lower value of
@@ -471,6 +478,13 @@ namespace Pulumi.Gcp.Compute
         public Input<string> Network { get; set; } = null!;
 
         /// <summary>
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// Structure is documented below.
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.FirewallParamsArgs>? Params { get; set; }
+
+        /// <summary>
         /// Priority for this rule. This is an integer between 0 and 65535, both
         /// inclusive. When not specified, the value assumed is 1000. Relative
         /// priorities determine precedence of conflicting rules. Lower value of
@@ -698,6 +712,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
+
+        /// <summary>
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// Structure is documented below.
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.FirewallParamsGetArgs>? Params { get; set; }
 
         /// <summary>
         /// Priority for this rule. This is an integer between 0 and 65535, both
