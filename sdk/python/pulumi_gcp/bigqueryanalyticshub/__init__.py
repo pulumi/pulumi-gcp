@@ -10,6 +10,7 @@ from .data_exchange import *
 from .data_exchange_iam_binding import *
 from .data_exchange_iam_member import *
 from .data_exchange_iam_policy import *
+from .data_exchange_subscription import *
 from .get_data_exchange_iam_policy import *
 from .get_listing_iam_policy import *
 from .listing import *

@@ -72,6 +72,8 @@ import com.pulumi.gcp.compute.inputs.GetMachineTypesPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetNetblockIPRangesArgs;
 import com.pulumi.gcp.compute.inputs.GetNetblockIPRangesPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
+import com.pulumi.gcp.compute.inputs.GetNetworkAttachmentArgs;
+import com.pulumi.gcp.compute.inputs.GetNetworkAttachmentPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetNetworkEndpointGroupArgs;
 import com.pulumi.gcp.compute.inputs.GetNetworkEndpointGroupPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetNetworkPeeringArgs;
@@ -169,6 +171,7 @@ import com.pulumi.gcp.compute.outputs.GetLBIPRangesResult;
 import com.pulumi.gcp.compute.outputs.GetMachineImageIamPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetMachineTypesResult;
 import com.pulumi.gcp.compute.outputs.GetNetblockIPRangesResult;
+import com.pulumi.gcp.compute.outputs.GetNetworkAttachmentResult;
 import com.pulumi.gcp.compute.outputs.GetNetworkEndpointGroupResult;
 import com.pulumi.gcp.compute.outputs.GetNetworkPeeringResult;
 import com.pulumi.gcp.compute.outputs.GetNetworkResult;
@@ -9703,6 +9706,236 @@ public final class ComputeFunctions {
      */
     public static CompletableFuture<GetNetworkResult> getNetworkPlain(GetNetworkPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getNetwork:getNetwork", TypeShape.of(GetNetworkResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a specific network attachment within a region. For more information see
+     * the [official documentation](https://cloud.google.com/vpc/docs/about-network-attachments)
+     * and [API](https://cloud.google.com/compute/docs/reference/rest/v1/networkAttachments/get).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworkAttachmentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ComputeFunctions.getNetworkAttachment(GetNetworkAttachmentArgs.builder()
+     *             .project("my-project")
+     *             .name("my-network-attachment")
+     *             .region("europe-west1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetNetworkAttachmentResult> getNetworkAttachment(GetNetworkAttachmentArgs args) {
+        return getNetworkAttachment(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get a specific network attachment within a region. For more information see
+     * the [official documentation](https://cloud.google.com/vpc/docs/about-network-attachments)
+     * and [API](https://cloud.google.com/compute/docs/reference/rest/v1/networkAttachments/get).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworkAttachmentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ComputeFunctions.getNetworkAttachment(GetNetworkAttachmentArgs.builder()
+     *             .project("my-project")
+     *             .name("my-network-attachment")
+     *             .region("europe-west1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetNetworkAttachmentResult> getNetworkAttachmentPlain(GetNetworkAttachmentPlainArgs args) {
+        return getNetworkAttachmentPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get a specific network attachment within a region. For more information see
+     * the [official documentation](https://cloud.google.com/vpc/docs/about-network-attachments)
+     * and [API](https://cloud.google.com/compute/docs/reference/rest/v1/networkAttachments/get).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworkAttachmentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ComputeFunctions.getNetworkAttachment(GetNetworkAttachmentArgs.builder()
+     *             .project("my-project")
+     *             .name("my-network-attachment")
+     *             .region("europe-west1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetNetworkAttachmentResult> getNetworkAttachment(GetNetworkAttachmentArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getNetworkAttachment:getNetworkAttachment", TypeShape.of(GetNetworkAttachmentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a specific network attachment within a region. For more information see
+     * the [official documentation](https://cloud.google.com/vpc/docs/about-network-attachments)
+     * and [API](https://cloud.google.com/compute/docs/reference/rest/v1/networkAttachments/get).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworkAttachmentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ComputeFunctions.getNetworkAttachment(GetNetworkAttachmentArgs.builder()
+     *             .project("my-project")
+     *             .name("my-network-attachment")
+     *             .region("europe-west1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetNetworkAttachmentResult> getNetworkAttachment(GetNetworkAttachmentArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getNetworkAttachment:getNetworkAttachment", TypeShape.of(GetNetworkAttachmentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a specific network attachment within a region. For more information see
+     * the [official documentation](https://cloud.google.com/vpc/docs/about-network-attachments)
+     * and [API](https://cloud.google.com/compute/docs/reference/rest/v1/networkAttachments/get).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworkAttachmentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ComputeFunctions.getNetworkAttachment(GetNetworkAttachmentArgs.builder()
+     *             .project("my-project")
+     *             .name("my-network-attachment")
+     *             .region("europe-west1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetNetworkAttachmentResult> getNetworkAttachmentPlain(GetNetworkAttachmentPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getNetworkAttachment:getNetworkAttachment", TypeShape.of(GetNetworkAttachmentResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to access a Network Endpoint Group&#39;s attributes.

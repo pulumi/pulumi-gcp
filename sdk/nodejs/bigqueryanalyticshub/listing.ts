@@ -198,6 +198,67 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Bigquery Analyticshub Listing Dcr Routine
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const dcrDataExchangeExample = new gcp.bigqueryanalyticshub.DataExchange("dcr_data_exchange_example", {
+ *     location: "us",
+ *     dataExchangeId: "tf_test_data_exchange",
+ *     displayName: "tf_test_data_exchange",
+ *     description: "Example for listing with routine",
+ *     sharingEnvironmentConfig: {
+ *         dcrExchangeConfig: {},
+ *     },
+ * });
+ * const listing = new gcp.bigquery.Dataset("listing", {
+ *     datasetId: "tf_test_dataset",
+ *     friendlyName: "tf_test_dataset",
+ *     description: "Example for listing with routine",
+ *     location: "us",
+ * });
+ * const listingRoutine = new gcp.bigquery.Routine("listing", {
+ *     datasetId: listing.datasetId,
+ *     routineId: "tf_test_routine",
+ *     routineType: "TABLE_VALUED_FUNCTION",
+ *     language: "SQL",
+ *     description: "A DCR routine example.",
+ *     definitionBody: "SELECT 1 + value AS value\n",
+ *     arguments: [{
+ *         name: "value",
+ *         argumentKind: "FIXED_TYPE",
+ *         dataType: JSON.stringify({
+ *             typeKind: "INT64",
+ *         }),
+ *     }],
+ *     returnTableType: JSON.stringify({
+ *         columns: [{
+ *             name: "value",
+ *             type: {
+ *                 typeKind: "INT64",
+ *             },
+ *         }],
+ *     }),
+ * });
+ * const listingListing = new gcp.bigqueryanalyticshub.Listing("listing", {
+ *     location: "US",
+ *     dataExchangeId: dcrDataExchangeExample.dataExchangeId,
+ *     listingId: "tf_test_listing_routine",
+ *     displayName: "tf_test_listing_routine",
+ *     description: "Example for listing with routine",
+ *     bigqueryDataset: {
+ *         dataset: listing.id,
+ *         selectedResources: [{
+ *             routine: listingRoutine.id,
+ *         }],
+ *     },
+ *     restrictedExportConfig: {
+ *         enabled: true,
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

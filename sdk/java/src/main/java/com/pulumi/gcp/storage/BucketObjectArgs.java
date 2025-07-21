@@ -180,6 +180,21 @@ public final class BucketObjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * When set to true, it ensure the object&#39;s Content-Type is empty.
+     * 
+     */
+    @Import(name="forceEmptyContentType")
+    private @Nullable Output<Boolean> forceEmptyContentType;
+
+    /**
+     * @return When set to true, it ensure the object&#39;s Content-Type is empty.
+     * 
+     */
+    public Optional<Output<Boolean>> forceEmptyContentType() {
+        return Optional.ofNullable(this.forceEmptyContentType);
+    }
+
+    /**
      * The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
      * 
      */
@@ -326,6 +341,7 @@ public final class BucketObjectArgs extends com.pulumi.resources.ResourceArgs {
         this.customerEncryption = $.customerEncryption;
         this.detectMd5hash = $.detectMd5hash;
         this.eventBasedHold = $.eventBasedHold;
+        this.forceEmptyContentType = $.forceEmptyContentType;
         this.kmsKeyName = $.kmsKeyName;
         this.metadata = $.metadata;
         this.name = $.name;
@@ -570,6 +586,27 @@ public final class BucketObjectArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder eventBasedHold(Boolean eventBasedHold) {
             return eventBasedHold(Output.of(eventBasedHold));
+        }
+
+        /**
+         * @param forceEmptyContentType When set to true, it ensure the object&#39;s Content-Type is empty.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceEmptyContentType(@Nullable Output<Boolean> forceEmptyContentType) {
+            $.forceEmptyContentType = forceEmptyContentType;
+            return this;
+        }
+
+        /**
+         * @param forceEmptyContentType When set to true, it ensure the object&#39;s Content-Type is empty.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceEmptyContentType(Boolean forceEmptyContentType) {
+            return forceEmptyContentType(Output.of(forceEmptyContentType));
         }
 
         /**

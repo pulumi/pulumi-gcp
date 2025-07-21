@@ -24,9 +24,13 @@ class ReservationArgs:
     def __init__(__self__, *,
                  specific_reservation: pulumi.Input['ReservationSpecificReservationArgs'],
                  zone: pulumi.Input[builtins.str],
+                 delete_after_duration: Optional[pulumi.Input['ReservationDeleteAfterDurationArgs']] = None,
+                 delete_at_time: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
+                 enable_emergent_maintenance: Optional[pulumi.Input[builtins.bool]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
+                 reservation_sharing_policy: Optional[pulumi.Input['ReservationReservationSharingPolicyArgs']] = None,
                  share_settings: Optional[pulumi.Input['ReservationShareSettingsArgs']] = None,
                  specific_reservation_required: Optional[pulumi.Input[builtins.bool]] = None):
         """
@@ -34,7 +38,12 @@ class ReservationArgs:
         :param pulumi.Input['ReservationSpecificReservationArgs'] specific_reservation: Reservation for instances with specific machine shapes.
                Structure is documented below.
         :param pulumi.Input[builtins.str] zone: The zone where the reservation is made.
+        :param pulumi.Input['ReservationDeleteAfterDurationArgs'] delete_after_duration: Duration after which the reservation will be auto-deleted by Compute Engine. Cannot be used with delete_at_time.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] delete_at_time: Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
+               Cannot be used with delete_after_duration.
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
+        :param pulumi.Input[builtins.bool] enable_emergent_maintenance: Indicates if this group of VMs have emergent maintenance enabled.
         :param pulumi.Input[builtins.str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -44,6 +53,8 @@ class ReservationArgs:
                character, which cannot be a dash.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['ReservationReservationSharingPolicyArgs'] reservation_sharing_policy: Sharing policy for reservations with Google Cloud managed services.
+               Structure is documented below.
         :param pulumi.Input['ReservationShareSettingsArgs'] share_settings: The share setting for reservations.
                Structure is documented below.
         :param pulumi.Input[builtins.bool] specific_reservation_required: When set to true, only VMs that target this reservation by name can
@@ -52,12 +63,20 @@ class ReservationArgs:
         """
         pulumi.set(__self__, "specific_reservation", specific_reservation)
         pulumi.set(__self__, "zone", zone)
+        if delete_after_duration is not None:
+            pulumi.set(__self__, "delete_after_duration", delete_after_duration)
+        if delete_at_time is not None:
+            pulumi.set(__self__, "delete_at_time", delete_at_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if enable_emergent_maintenance is not None:
+            pulumi.set(__self__, "enable_emergent_maintenance", enable_emergent_maintenance)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if reservation_sharing_policy is not None:
+            pulumi.set(__self__, "reservation_sharing_policy", reservation_sharing_policy)
         if share_settings is not None:
             pulumi.set(__self__, "share_settings", share_settings)
         if specific_reservation_required is not None:
@@ -89,6 +108,32 @@ class ReservationArgs:
         pulumi.set(self, "zone", value)
 
     @property
+    @pulumi.getter(name="deleteAfterDuration")
+    def delete_after_duration(self) -> Optional[pulumi.Input['ReservationDeleteAfterDurationArgs']]:
+        """
+        Duration after which the reservation will be auto-deleted by Compute Engine. Cannot be used with delete_at_time.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "delete_after_duration")
+
+    @delete_after_duration.setter
+    def delete_after_duration(self, value: Optional[pulumi.Input['ReservationDeleteAfterDurationArgs']]):
+        pulumi.set(self, "delete_after_duration", value)
+
+    @property
+    @pulumi.getter(name="deleteAtTime")
+    def delete_at_time(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
+        Cannot be used with delete_after_duration.
+        """
+        return pulumi.get(self, "delete_at_time")
+
+    @delete_at_time.setter
+    def delete_at_time(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "delete_at_time", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -99,6 +144,18 @@ class ReservationArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="enableEmergentMaintenance")
+    def enable_emergent_maintenance(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Indicates if this group of VMs have emergent maintenance enabled.
+        """
+        return pulumi.get(self, "enable_emergent_maintenance")
+
+    @enable_emergent_maintenance.setter
+    def enable_emergent_maintenance(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "enable_emergent_maintenance", value)
 
     @property
     @pulumi.getter
@@ -130,6 +187,19 @@ class ReservationArgs:
     @project.setter
     def project(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="reservationSharingPolicy")
+    def reservation_sharing_policy(self) -> Optional[pulumi.Input['ReservationReservationSharingPolicyArgs']]:
+        """
+        Sharing policy for reservations with Google Cloud managed services.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "reservation_sharing_policy")
+
+    @reservation_sharing_policy.setter
+    def reservation_sharing_policy(self, value: Optional[pulumi.Input['ReservationReservationSharingPolicyArgs']]):
+        pulumi.set(self, "reservation_sharing_policy", value)
 
     @property
     @pulumi.getter(name="shareSettings")
@@ -164,9 +234,13 @@ class _ReservationState:
     def __init__(__self__, *,
                  commitment: Optional[pulumi.Input[builtins.str]] = None,
                  creation_timestamp: Optional[pulumi.Input[builtins.str]] = None,
+                 delete_after_duration: Optional[pulumi.Input['ReservationDeleteAfterDurationArgs']] = None,
+                 delete_at_time: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
+                 enable_emergent_maintenance: Optional[pulumi.Input[builtins.bool]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
+                 reservation_sharing_policy: Optional[pulumi.Input['ReservationReservationSharingPolicyArgs']] = None,
                  self_link: Optional[pulumi.Input[builtins.str]] = None,
                  share_settings: Optional[pulumi.Input['ReservationShareSettingsArgs']] = None,
                  specific_reservation: Optional[pulumi.Input['ReservationSpecificReservationArgs']] = None,
@@ -178,7 +252,12 @@ class _ReservationState:
         :param pulumi.Input[builtins.str] commitment: Full or partial URL to a parent commitment. This field displays for
                reservations that are tied to a commitment.
         :param pulumi.Input[builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input['ReservationDeleteAfterDurationArgs'] delete_after_duration: Duration after which the reservation will be auto-deleted by Compute Engine. Cannot be used with delete_at_time.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] delete_at_time: Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
+               Cannot be used with delete_after_duration.
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
+        :param pulumi.Input[builtins.bool] enable_emergent_maintenance: Indicates if this group of VMs have emergent maintenance enabled.
         :param pulumi.Input[builtins.str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -188,6 +267,8 @@ class _ReservationState:
                character, which cannot be a dash.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['ReservationReservationSharingPolicyArgs'] reservation_sharing_policy: Sharing policy for reservations with Google Cloud managed services.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] self_link: The URI of the created resource.
         :param pulumi.Input['ReservationShareSettingsArgs'] share_settings: The share setting for reservations.
                Structure is documented below.
@@ -203,12 +284,20 @@ class _ReservationState:
             pulumi.set(__self__, "commitment", commitment)
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if delete_after_duration is not None:
+            pulumi.set(__self__, "delete_after_duration", delete_after_duration)
+        if delete_at_time is not None:
+            pulumi.set(__self__, "delete_at_time", delete_at_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if enable_emergent_maintenance is not None:
+            pulumi.set(__self__, "enable_emergent_maintenance", enable_emergent_maintenance)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if reservation_sharing_policy is not None:
+            pulumi.set(__self__, "reservation_sharing_policy", reservation_sharing_policy)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
         if share_settings is not None:
@@ -248,6 +337,32 @@ class _ReservationState:
         pulumi.set(self, "creation_timestamp", value)
 
     @property
+    @pulumi.getter(name="deleteAfterDuration")
+    def delete_after_duration(self) -> Optional[pulumi.Input['ReservationDeleteAfterDurationArgs']]:
+        """
+        Duration after which the reservation will be auto-deleted by Compute Engine. Cannot be used with delete_at_time.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "delete_after_duration")
+
+    @delete_after_duration.setter
+    def delete_after_duration(self, value: Optional[pulumi.Input['ReservationDeleteAfterDurationArgs']]):
+        pulumi.set(self, "delete_after_duration", value)
+
+    @property
+    @pulumi.getter(name="deleteAtTime")
+    def delete_at_time(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
+        Cannot be used with delete_after_duration.
+        """
+        return pulumi.get(self, "delete_at_time")
+
+    @delete_at_time.setter
+    def delete_at_time(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "delete_at_time", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -258,6 +373,18 @@ class _ReservationState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="enableEmergentMaintenance")
+    def enable_emergent_maintenance(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Indicates if this group of VMs have emergent maintenance enabled.
+        """
+        return pulumi.get(self, "enable_emergent_maintenance")
+
+    @enable_emergent_maintenance.setter
+    def enable_emergent_maintenance(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "enable_emergent_maintenance", value)
 
     @property
     @pulumi.getter
@@ -289,6 +416,19 @@ class _ReservationState:
     @project.setter
     def project(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="reservationSharingPolicy")
+    def reservation_sharing_policy(self) -> Optional[pulumi.Input['ReservationReservationSharingPolicyArgs']]:
+        """
+        Sharing policy for reservations with Google Cloud managed services.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "reservation_sharing_policy")
+
+    @reservation_sharing_policy.setter
+    def reservation_sharing_policy(self, value: Optional[pulumi.Input['ReservationReservationSharingPolicyArgs']]):
+        pulumi.set(self, "reservation_sharing_policy", value)
 
     @property
     @pulumi.getter(name="selfLink")
@@ -373,9 +513,13 @@ class Reservation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 delete_after_duration: Optional[pulumi.Input[Union['ReservationDeleteAfterDurationArgs', 'ReservationDeleteAfterDurationArgsDict']]] = None,
+                 delete_at_time: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
+                 enable_emergent_maintenance: Optional[pulumi.Input[builtins.bool]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
+                 reservation_sharing_policy: Optional[pulumi.Input[Union['ReservationReservationSharingPolicyArgs', 'ReservationReservationSharingPolicyArgsDict']]] = None,
                  share_settings: Optional[pulumi.Input[Union['ReservationShareSettingsArgs', 'ReservationShareSettingsArgsDict']]] = None,
                  specific_reservation: Optional[pulumi.Input[Union['ReservationSpecificReservationArgs', 'ReservationSpecificReservationArgsDict']]] = None,
                  specific_reservation_required: Optional[pulumi.Input[builtins.bool]] = None,
@@ -416,6 +560,126 @@ class Reservation(pulumi.CustomResource):
                 },
             })
         ```
+        ### Reservation Basic Beta
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        gce_reservation = gcp.compute.Reservation("gce_reservation",
+            name="gce-reservation",
+            zone="us-central1-a",
+            specific_reservation={
+                "count": 1,
+                "instance_properties": {
+                    "min_cpu_platform": "Intel Cascade Lake",
+                    "machine_type": "n2-standard-2",
+                    "maintenance_interval": "PERIODIC",
+                },
+            },
+            enable_emergent_maintenance=True)
+        ```
+        ### Reservation Source Instance Template
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_image = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        foobar = gcp.compute.InstanceTemplate("foobar",
+            name="tf-test-instance-template",
+            machine_type="n2-standard-2",
+            can_ip_forward=False,
+            tags=[
+                "foo",
+                "bar",
+            ],
+            disks=[{
+                "source_image": my_image.self_link,
+                "auto_delete": True,
+                "boot": True,
+            }],
+            network_interfaces=[{
+                "network": "default",
+            }],
+            scheduling={
+                "preemptible": False,
+                "automatic_restart": True,
+            },
+            metadata={
+                "foo": "bar",
+            },
+            service_account={
+                "scopes": [
+                    "userinfo-email",
+                    "compute-ro",
+                    "storage-ro",
+                ],
+            },
+            labels={
+                "my_label": "foobar",
+            })
+        gce_reservation_source_instance_template = gcp.compute.Reservation("gce_reservation_source_instance_template",
+            name="gce-reservation-source-instance-template",
+            zone="us-central1-a",
+            specific_reservation={
+                "count": 1,
+                "source_instance_template": foobar.self_link,
+            })
+        ```
+        ### Reservation Sharing Policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_image = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        foobar = gcp.compute.InstanceTemplate("foobar",
+            name="tf-test-instance-template",
+            machine_type="g2-standard-4",
+            can_ip_forward=False,
+            tags=[
+                "foo",
+                "bar",
+            ],
+            disks=[{
+                "source_image": my_image.self_link,
+                "auto_delete": True,
+                "boot": True,
+            }],
+            network_interfaces=[{
+                "network": "default",
+            }],
+            scheduling={
+                "preemptible": False,
+                "automatic_restart": True,
+            },
+            metadata={
+                "foo": "bar",
+            },
+            service_account={
+                "scopes": [
+                    "userinfo-email",
+                    "compute-ro",
+                    "storage-ro",
+                ],
+            },
+            labels={
+                "my_label": "foobar",
+            })
+        gce_reservation_sharing_policy = gcp.compute.Reservation("gce_reservation_sharing_policy",
+            name="gce-reservation-sharing-policy",
+            zone="us-central1-b",
+            specific_reservation={
+                "count": 2,
+                "source_instance_template": foobar.self_link,
+            },
+            reservation_sharing_policy={
+                "service_share_type": "ALLOW_ALL",
+            })
+        ```
 
         ## Import
 
@@ -449,7 +713,12 @@ class Reservation(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['ReservationDeleteAfterDurationArgs', 'ReservationDeleteAfterDurationArgsDict']] delete_after_duration: Duration after which the reservation will be auto-deleted by Compute Engine. Cannot be used with delete_at_time.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] delete_at_time: Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
+               Cannot be used with delete_after_duration.
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
+        :param pulumi.Input[builtins.bool] enable_emergent_maintenance: Indicates if this group of VMs have emergent maintenance enabled.
         :param pulumi.Input[builtins.str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -459,6 +728,8 @@ class Reservation(pulumi.CustomResource):
                character, which cannot be a dash.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Union['ReservationReservationSharingPolicyArgs', 'ReservationReservationSharingPolicyArgsDict']] reservation_sharing_policy: Sharing policy for reservations with Google Cloud managed services.
+               Structure is documented below.
         :param pulumi.Input[Union['ReservationShareSettingsArgs', 'ReservationShareSettingsArgsDict']] share_settings: The share setting for reservations.
                Structure is documented below.
         :param pulumi.Input[Union['ReservationSpecificReservationArgs', 'ReservationSpecificReservationArgsDict']] specific_reservation: Reservation for instances with specific machine shapes.
@@ -509,6 +780,126 @@ class Reservation(pulumi.CustomResource):
                 },
             })
         ```
+        ### Reservation Basic Beta
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        gce_reservation = gcp.compute.Reservation("gce_reservation",
+            name="gce-reservation",
+            zone="us-central1-a",
+            specific_reservation={
+                "count": 1,
+                "instance_properties": {
+                    "min_cpu_platform": "Intel Cascade Lake",
+                    "machine_type": "n2-standard-2",
+                    "maintenance_interval": "PERIODIC",
+                },
+            },
+            enable_emergent_maintenance=True)
+        ```
+        ### Reservation Source Instance Template
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_image = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        foobar = gcp.compute.InstanceTemplate("foobar",
+            name="tf-test-instance-template",
+            machine_type="n2-standard-2",
+            can_ip_forward=False,
+            tags=[
+                "foo",
+                "bar",
+            ],
+            disks=[{
+                "source_image": my_image.self_link,
+                "auto_delete": True,
+                "boot": True,
+            }],
+            network_interfaces=[{
+                "network": "default",
+            }],
+            scheduling={
+                "preemptible": False,
+                "automatic_restart": True,
+            },
+            metadata={
+                "foo": "bar",
+            },
+            service_account={
+                "scopes": [
+                    "userinfo-email",
+                    "compute-ro",
+                    "storage-ro",
+                ],
+            },
+            labels={
+                "my_label": "foobar",
+            })
+        gce_reservation_source_instance_template = gcp.compute.Reservation("gce_reservation_source_instance_template",
+            name="gce-reservation-source-instance-template",
+            zone="us-central1-a",
+            specific_reservation={
+                "count": 1,
+                "source_instance_template": foobar.self_link,
+            })
+        ```
+        ### Reservation Sharing Policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_image = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        foobar = gcp.compute.InstanceTemplate("foobar",
+            name="tf-test-instance-template",
+            machine_type="g2-standard-4",
+            can_ip_forward=False,
+            tags=[
+                "foo",
+                "bar",
+            ],
+            disks=[{
+                "source_image": my_image.self_link,
+                "auto_delete": True,
+                "boot": True,
+            }],
+            network_interfaces=[{
+                "network": "default",
+            }],
+            scheduling={
+                "preemptible": False,
+                "automatic_restart": True,
+            },
+            metadata={
+                "foo": "bar",
+            },
+            service_account={
+                "scopes": [
+                    "userinfo-email",
+                    "compute-ro",
+                    "storage-ro",
+                ],
+            },
+            labels={
+                "my_label": "foobar",
+            })
+        gce_reservation_sharing_policy = gcp.compute.Reservation("gce_reservation_sharing_policy",
+            name="gce-reservation-sharing-policy",
+            zone="us-central1-b",
+            specific_reservation={
+                "count": 2,
+                "source_instance_template": foobar.self_link,
+            },
+            reservation_sharing_policy={
+                "service_share_type": "ALLOW_ALL",
+            })
+        ```
 
         ## Import
 
@@ -555,9 +946,13 @@ class Reservation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 delete_after_duration: Optional[pulumi.Input[Union['ReservationDeleteAfterDurationArgs', 'ReservationDeleteAfterDurationArgsDict']]] = None,
+                 delete_at_time: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
+                 enable_emergent_maintenance: Optional[pulumi.Input[builtins.bool]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
+                 reservation_sharing_policy: Optional[pulumi.Input[Union['ReservationReservationSharingPolicyArgs', 'ReservationReservationSharingPolicyArgsDict']]] = None,
                  share_settings: Optional[pulumi.Input[Union['ReservationShareSettingsArgs', 'ReservationShareSettingsArgsDict']]] = None,
                  specific_reservation: Optional[pulumi.Input[Union['ReservationSpecificReservationArgs', 'ReservationSpecificReservationArgsDict']]] = None,
                  specific_reservation_required: Optional[pulumi.Input[builtins.bool]] = None,
@@ -571,9 +966,13 @@ class Reservation(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ReservationArgs.__new__(ReservationArgs)
 
+            __props__.__dict__["delete_after_duration"] = delete_after_duration
+            __props__.__dict__["delete_at_time"] = delete_at_time
             __props__.__dict__["description"] = description
+            __props__.__dict__["enable_emergent_maintenance"] = enable_emergent_maintenance
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            __props__.__dict__["reservation_sharing_policy"] = reservation_sharing_policy
             __props__.__dict__["share_settings"] = share_settings
             if specific_reservation is None and not opts.urn:
                 raise TypeError("Missing required property 'specific_reservation'")
@@ -598,9 +997,13 @@ class Reservation(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             commitment: Optional[pulumi.Input[builtins.str]] = None,
             creation_timestamp: Optional[pulumi.Input[builtins.str]] = None,
+            delete_after_duration: Optional[pulumi.Input[Union['ReservationDeleteAfterDurationArgs', 'ReservationDeleteAfterDurationArgsDict']]] = None,
+            delete_at_time: Optional[pulumi.Input[builtins.str]] = None,
             description: Optional[pulumi.Input[builtins.str]] = None,
+            enable_emergent_maintenance: Optional[pulumi.Input[builtins.bool]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
             project: Optional[pulumi.Input[builtins.str]] = None,
+            reservation_sharing_policy: Optional[pulumi.Input[Union['ReservationReservationSharingPolicyArgs', 'ReservationReservationSharingPolicyArgsDict']]] = None,
             self_link: Optional[pulumi.Input[builtins.str]] = None,
             share_settings: Optional[pulumi.Input[Union['ReservationShareSettingsArgs', 'ReservationShareSettingsArgsDict']]] = None,
             specific_reservation: Optional[pulumi.Input[Union['ReservationSpecificReservationArgs', 'ReservationSpecificReservationArgsDict']]] = None,
@@ -617,7 +1020,12 @@ class Reservation(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] commitment: Full or partial URL to a parent commitment. This field displays for
                reservations that are tied to a commitment.
         :param pulumi.Input[builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[Union['ReservationDeleteAfterDurationArgs', 'ReservationDeleteAfterDurationArgsDict']] delete_after_duration: Duration after which the reservation will be auto-deleted by Compute Engine. Cannot be used with delete_at_time.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] delete_at_time: Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
+               Cannot be used with delete_after_duration.
         :param pulumi.Input[builtins.str] description: An optional description of this resource.
+        :param pulumi.Input[builtins.bool] enable_emergent_maintenance: Indicates if this group of VMs have emergent maintenance enabled.
         :param pulumi.Input[builtins.str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -627,6 +1035,8 @@ class Reservation(pulumi.CustomResource):
                character, which cannot be a dash.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Union['ReservationReservationSharingPolicyArgs', 'ReservationReservationSharingPolicyArgsDict']] reservation_sharing_policy: Sharing policy for reservations with Google Cloud managed services.
+               Structure is documented below.
         :param pulumi.Input[builtins.str] self_link: The URI of the created resource.
         :param pulumi.Input[Union['ReservationShareSettingsArgs', 'ReservationShareSettingsArgsDict']] share_settings: The share setting for reservations.
                Structure is documented below.
@@ -644,9 +1054,13 @@ class Reservation(pulumi.CustomResource):
 
         __props__.__dict__["commitment"] = commitment
         __props__.__dict__["creation_timestamp"] = creation_timestamp
+        __props__.__dict__["delete_after_duration"] = delete_after_duration
+        __props__.__dict__["delete_at_time"] = delete_at_time
         __props__.__dict__["description"] = description
+        __props__.__dict__["enable_emergent_maintenance"] = enable_emergent_maintenance
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["reservation_sharing_policy"] = reservation_sharing_policy
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["share_settings"] = share_settings
         __props__.__dict__["specific_reservation"] = specific_reservation
@@ -673,12 +1087,38 @@ class Reservation(pulumi.CustomResource):
         return pulumi.get(self, "creation_timestamp")
 
     @property
+    @pulumi.getter(name="deleteAfterDuration")
+    def delete_after_duration(self) -> pulumi.Output[Optional['outputs.ReservationDeleteAfterDuration']]:
+        """
+        Duration after which the reservation will be auto-deleted by Compute Engine. Cannot be used with delete_at_time.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "delete_after_duration")
+
+    @property
+    @pulumi.getter(name="deleteAtTime")
+    def delete_at_time(self) -> pulumi.Output[builtins.str]:
+        """
+        Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
+        Cannot be used with delete_after_duration.
+        """
+        return pulumi.get(self, "delete_at_time")
+
+    @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[builtins.str]]:
         """
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="enableEmergentMaintenance")
+    def enable_emergent_maintenance(self) -> pulumi.Output[Optional[builtins.bool]]:
+        """
+        Indicates if this group of VMs have emergent maintenance enabled.
+        """
+        return pulumi.get(self, "enable_emergent_maintenance")
 
     @property
     @pulumi.getter
@@ -702,6 +1142,15 @@ class Reservation(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="reservationSharingPolicy")
+    def reservation_sharing_policy(self) -> pulumi.Output['outputs.ReservationReservationSharingPolicy']:
+        """
+        Sharing policy for reservations with Google Cloud managed services.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "reservation_sharing_policy")
 
     @property
     @pulumi.getter(name="selfLink")

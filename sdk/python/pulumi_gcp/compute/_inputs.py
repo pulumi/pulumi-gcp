@@ -138,6 +138,8 @@ __all__ = [
     'FirewallDenyArgsDict',
     'FirewallLogConfigArgs',
     'FirewallLogConfigArgsDict',
+    'FirewallParamsArgs',
+    'FirewallParamsArgsDict',
     'FirewallPolicyRuleMatchArgs',
     'FirewallPolicyRuleMatchArgsDict',
     'FirewallPolicyRuleMatchLayer4ConfigArgs',
@@ -160,6 +162,12 @@ __all__ = [
     'FirewallPolicyWithRulesRuleMatchLayer4ConfigArgsDict',
     'ForwardingRuleServiceDirectoryRegistrationsArgs',
     'ForwardingRuleServiceDirectoryRegistrationsArgsDict',
+    'FutureReservationAggregateReservationArgs',
+    'FutureReservationAggregateReservationArgsDict',
+    'FutureReservationAggregateReservationReservedResourceArgs',
+    'FutureReservationAggregateReservationReservedResourceArgsDict',
+    'FutureReservationAggregateReservationReservedResourceAcceleratorArgs',
+    'FutureReservationAggregateReservationReservedResourceAcceleratorArgsDict',
     'FutureReservationAutoCreatedReservationsDurationArgs',
     'FutureReservationAutoCreatedReservationsDurationArgsDict',
     'FutureReservationCommitmentInfoArgs',
@@ -518,6 +526,16 @@ __all__ = [
     'InstantSnapshotIamBindingConditionArgsDict',
     'InstantSnapshotIamMemberConditionArgs',
     'InstantSnapshotIamMemberConditionArgsDict',
+    'InterconnectApplicationAwareInterconnectArgs',
+    'InterconnectApplicationAwareInterconnectArgsDict',
+    'InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyArgs',
+    'InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyArgsDict',
+    'InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentageArgs',
+    'InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentageArgsDict',
+    'InterconnectApplicationAwareInterconnectShapeAveragePercentageArgs',
+    'InterconnectApplicationAwareInterconnectShapeAveragePercentageArgsDict',
+    'InterconnectApplicationAwareInterconnectStrictPriorityPolicyArgs',
+    'InterconnectApplicationAwareInterconnectStrictPriorityPolicyArgsDict',
     'InterconnectAttachmentGroupAttachmentArgs',
     'InterconnectAttachmentGroupAttachmentArgsDict',
     'InterconnectAttachmentGroupConfiguredArgs',
@@ -1128,6 +1146,10 @@ __all__ = [
     'RegionUrlMapPathMatcherRouteRuleUrlRedirectArgsDict',
     'RegionUrlMapTestArgs',
     'RegionUrlMapTestArgsDict',
+    'ReservationDeleteAfterDurationArgs',
+    'ReservationDeleteAfterDurationArgsDict',
+    'ReservationReservationSharingPolicyArgs',
+    'ReservationReservationSharingPolicyArgsDict',
     'ReservationShareSettingsArgs',
     'ReservationShareSettingsArgsDict',
     'ReservationShareSettingsProjectMapArgs',
@@ -7444,6 +7466,53 @@ class FirewallLogConfigArgs:
 
 
 if not MYPY:
+    class FirewallParamsArgsDict(TypedDict):
+        resource_manager_tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]
+        """
+        Resource manager tags to be bound to the firewall. Tag keys and values have the
+        same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456. The field is ignored when empty.
+        The field is immutable and causes resource replacement when mutated. This field is only
+        set at create time and modifying this field after creation will trigger recreation.
+        To apply tags to an existing resource, see the tags.TagBinding resource.
+        """
+elif False:
+    FirewallParamsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FirewallParamsArgs:
+    def __init__(__self__, *,
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] resource_manager_tags: Resource manager tags to be bound to the firewall. Tag keys and values have the
+               same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+               and values are in the format tagValues/456. The field is ignored when empty.
+               The field is immutable and causes resource replacement when mutated. This field is only
+               set at create time and modifying this field after creation will trigger recreation.
+               To apply tags to an existing resource, see the tags.TagBinding resource.
+        """
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
+        """
+        Resource manager tags to be bound to the firewall. Tag keys and values have the
+        same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456. The field is ignored when empty.
+        The field is immutable and causes resource replacement when mutated. This field is only
+        set at create time and modifying this field after creation will trigger recreation.
+        To apply tags to an existing resource, see the tags.TagBinding resource.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+    @resource_manager_tags.setter
+    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "resource_manager_tags", value)
+
+
+if not MYPY:
     class FirewallPolicyRuleMatchArgsDict(TypedDict):
         layer4_configs: pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatchLayer4ConfigArgsDict']]]
         """
@@ -9443,6 +9512,173 @@ class ForwardingRuleServiceDirectoryRegistrationsArgs:
     @service.setter
     def service(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "service", value)
+
+
+if not MYPY:
+    class FutureReservationAggregateReservationArgsDict(TypedDict):
+        reserved_resources: pulumi.Input[Sequence[pulumi.Input['FutureReservationAggregateReservationReservedResourceArgsDict']]]
+        """
+        futureReservations.list of reserved resources (CPUs, memory, accelerators).
+        Structure is documented below.
+        """
+        vm_family: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The VM family that all instances scheduled against this reservation must belong to.
+        Possible values are: `VM_FAMILY_CLOUD_TPU_DEVICE_CT3`, `VM_FAMILY_CLOUD_TPU_LITE_DEVICE_CT5L`, `VM_FAMILY_CLOUD_TPU_LITE_POD_SLICE_CT5LP`, `VM_FAMILY_CLOUD_TPU_LITE_POD_SLICE_CT6E`, `VM_FAMILY_CLOUD_TPU_POD_SLICE_CT3P`, `VM_FAMILY_CLOUD_TPU_POD_SLICE_CT4P`, `VM_FAMILY_CLOUD_TPU_POD_SLICE_CT5P`.
+        """
+        workload_type: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The workload type of the instances that will target this reservation.
+        Possible values are: `BATCH`, `SERVING`, `UNSPECIFIED`.
+        """
+elif False:
+    FutureReservationAggregateReservationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FutureReservationAggregateReservationArgs:
+    def __init__(__self__, *,
+                 reserved_resources: pulumi.Input[Sequence[pulumi.Input['FutureReservationAggregateReservationReservedResourceArgs']]],
+                 vm_family: Optional[pulumi.Input[builtins.str]] = None,
+                 workload_type: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['FutureReservationAggregateReservationReservedResourceArgs']]] reserved_resources: futureReservations.list of reserved resources (CPUs, memory, accelerators).
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] vm_family: The VM family that all instances scheduled against this reservation must belong to.
+               Possible values are: `VM_FAMILY_CLOUD_TPU_DEVICE_CT3`, `VM_FAMILY_CLOUD_TPU_LITE_DEVICE_CT5L`, `VM_FAMILY_CLOUD_TPU_LITE_POD_SLICE_CT5LP`, `VM_FAMILY_CLOUD_TPU_LITE_POD_SLICE_CT6E`, `VM_FAMILY_CLOUD_TPU_POD_SLICE_CT3P`, `VM_FAMILY_CLOUD_TPU_POD_SLICE_CT4P`, `VM_FAMILY_CLOUD_TPU_POD_SLICE_CT5P`.
+        :param pulumi.Input[builtins.str] workload_type: The workload type of the instances that will target this reservation.
+               Possible values are: `BATCH`, `SERVING`, `UNSPECIFIED`.
+        """
+        pulumi.set(__self__, "reserved_resources", reserved_resources)
+        if vm_family is not None:
+            pulumi.set(__self__, "vm_family", vm_family)
+        if workload_type is not None:
+            pulumi.set(__self__, "workload_type", workload_type)
+
+    @property
+    @pulumi.getter(name="reservedResources")
+    def reserved_resources(self) -> pulumi.Input[Sequence[pulumi.Input['FutureReservationAggregateReservationReservedResourceArgs']]]:
+        """
+        futureReservations.list of reserved resources (CPUs, memory, accelerators).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "reserved_resources")
+
+    @reserved_resources.setter
+    def reserved_resources(self, value: pulumi.Input[Sequence[pulumi.Input['FutureReservationAggregateReservationReservedResourceArgs']]]):
+        pulumi.set(self, "reserved_resources", value)
+
+    @property
+    @pulumi.getter(name="vmFamily")
+    def vm_family(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The VM family that all instances scheduled against this reservation must belong to.
+        Possible values are: `VM_FAMILY_CLOUD_TPU_DEVICE_CT3`, `VM_FAMILY_CLOUD_TPU_LITE_DEVICE_CT5L`, `VM_FAMILY_CLOUD_TPU_LITE_POD_SLICE_CT5LP`, `VM_FAMILY_CLOUD_TPU_LITE_POD_SLICE_CT6E`, `VM_FAMILY_CLOUD_TPU_POD_SLICE_CT3P`, `VM_FAMILY_CLOUD_TPU_POD_SLICE_CT4P`, `VM_FAMILY_CLOUD_TPU_POD_SLICE_CT5P`.
+        """
+        return pulumi.get(self, "vm_family")
+
+    @vm_family.setter
+    def vm_family(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "vm_family", value)
+
+    @property
+    @pulumi.getter(name="workloadType")
+    def workload_type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The workload type of the instances that will target this reservation.
+        Possible values are: `BATCH`, `SERVING`, `UNSPECIFIED`.
+        """
+        return pulumi.get(self, "workload_type")
+
+    @workload_type.setter
+    def workload_type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "workload_type", value)
+
+
+if not MYPY:
+    class FutureReservationAggregateReservationReservedResourceArgsDict(TypedDict):
+        accelerator: NotRequired[pulumi.Input['FutureReservationAggregateReservationReservedResourceAcceleratorArgsDict']]
+        """
+        Properties of accelerator resources in this reservation.
+        Structure is documented below.
+        """
+elif False:
+    FutureReservationAggregateReservationReservedResourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FutureReservationAggregateReservationReservedResourceArgs:
+    def __init__(__self__, *,
+                 accelerator: Optional[pulumi.Input['FutureReservationAggregateReservationReservedResourceAcceleratorArgs']] = None):
+        """
+        :param pulumi.Input['FutureReservationAggregateReservationReservedResourceAcceleratorArgs'] accelerator: Properties of accelerator resources in this reservation.
+               Structure is documented below.
+        """
+        if accelerator is not None:
+            pulumi.set(__self__, "accelerator", accelerator)
+
+    @property
+    @pulumi.getter
+    def accelerator(self) -> Optional[pulumi.Input['FutureReservationAggregateReservationReservedResourceAcceleratorArgs']]:
+        """
+        Properties of accelerator resources in this reservation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "accelerator")
+
+    @accelerator.setter
+    def accelerator(self, value: Optional[pulumi.Input['FutureReservationAggregateReservationReservedResourceAcceleratorArgs']]):
+        pulumi.set(self, "accelerator", value)
+
+
+if not MYPY:
+    class FutureReservationAggregateReservationReservedResourceAcceleratorArgsDict(TypedDict):
+        accelerator_count: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Number of accelerators of specified type.
+        """
+        accelerator_type: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Full or partial URL to accelerator type. e.g. "projects/{PROJECT}/zones/{ZONE}/acceleratorTypes/ct4l"
+        """
+elif False:
+    FutureReservationAggregateReservationReservedResourceAcceleratorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FutureReservationAggregateReservationReservedResourceAcceleratorArgs:
+    def __init__(__self__, *,
+                 accelerator_count: Optional[pulumi.Input[builtins.int]] = None,
+                 accelerator_type: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.int] accelerator_count: Number of accelerators of specified type.
+        :param pulumi.Input[builtins.str] accelerator_type: Full or partial URL to accelerator type. e.g. "projects/{PROJECT}/zones/{ZONE}/acceleratorTypes/ct4l"
+        """
+        if accelerator_count is not None:
+            pulumi.set(__self__, "accelerator_count", accelerator_count)
+        if accelerator_type is not None:
+            pulumi.set(__self__, "accelerator_type", accelerator_type)
+
+    @property
+    @pulumi.getter(name="acceleratorCount")
+    def accelerator_count(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Number of accelerators of specified type.
+        """
+        return pulumi.get(self, "accelerator_count")
+
+    @accelerator_count.setter
+    def accelerator_count(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "accelerator_count", value)
+
+    @property
+    @pulumi.getter(name="acceleratorType")
+    def accelerator_type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Full or partial URL to accelerator type. e.g. "projects/{PROJECT}/zones/{ZONE}/acceleratorTypes/ct4l"
+        """
+        return pulumi.get(self, "accelerator_type")
+
+    @accelerator_type.setter
+    def accelerator_type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "accelerator_type", value)
 
 
 if not MYPY:
@@ -27485,6 +27721,276 @@ class InstantSnapshotIamMemberConditionArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class InterconnectApplicationAwareInterconnectArgsDict(TypedDict):
+        bandwidth_percentage_policy: NotRequired[pulumi.Input['InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyArgsDict']]
+        """
+        Bandwidth Percentage policy allows you to have granular control over how your Interconnect
+        bandwidth is utilized among your workloads mapping to different traffic classes.
+        Structure is documented below.
+        """
+        profile_description: NotRequired[pulumi.Input[builtins.str]]
+        """
+        A description for the AAI profile on this interconnect.
+        """
+        shape_average_percentages: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterconnectApplicationAwareInterconnectShapeAveragePercentageArgsDict']]]]
+        """
+        Optional field to specify a list of shape average percentages to be
+        applied in conjunction with StrictPriorityPolicy or BandwidthPercentagePolicy
+        Structure is documented below.
+        """
+        strict_priority_policy: NotRequired[pulumi.Input['InterconnectApplicationAwareInterconnectStrictPriorityPolicyArgsDict']]
+        """
+        Specify configuration for StrictPriorityPolicy.
+        """
+elif False:
+    InterconnectApplicationAwareInterconnectArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterconnectApplicationAwareInterconnectArgs:
+    def __init__(__self__, *,
+                 bandwidth_percentage_policy: Optional[pulumi.Input['InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyArgs']] = None,
+                 profile_description: Optional[pulumi.Input[builtins.str]] = None,
+                 shape_average_percentages: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectApplicationAwareInterconnectShapeAveragePercentageArgs']]]] = None,
+                 strict_priority_policy: Optional[pulumi.Input['InterconnectApplicationAwareInterconnectStrictPriorityPolicyArgs']] = None):
+        """
+        :param pulumi.Input['InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyArgs'] bandwidth_percentage_policy: Bandwidth Percentage policy allows you to have granular control over how your Interconnect
+               bandwidth is utilized among your workloads mapping to different traffic classes.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] profile_description: A description for the AAI profile on this interconnect.
+        :param pulumi.Input[Sequence[pulumi.Input['InterconnectApplicationAwareInterconnectShapeAveragePercentageArgs']]] shape_average_percentages: Optional field to specify a list of shape average percentages to be
+               applied in conjunction with StrictPriorityPolicy or BandwidthPercentagePolicy
+               Structure is documented below.
+        :param pulumi.Input['InterconnectApplicationAwareInterconnectStrictPriorityPolicyArgs'] strict_priority_policy: Specify configuration for StrictPriorityPolicy.
+        """
+        if bandwidth_percentage_policy is not None:
+            pulumi.set(__self__, "bandwidth_percentage_policy", bandwidth_percentage_policy)
+        if profile_description is not None:
+            pulumi.set(__self__, "profile_description", profile_description)
+        if shape_average_percentages is not None:
+            pulumi.set(__self__, "shape_average_percentages", shape_average_percentages)
+        if strict_priority_policy is not None:
+            pulumi.set(__self__, "strict_priority_policy", strict_priority_policy)
+
+    @property
+    @pulumi.getter(name="bandwidthPercentagePolicy")
+    def bandwidth_percentage_policy(self) -> Optional[pulumi.Input['InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyArgs']]:
+        """
+        Bandwidth Percentage policy allows you to have granular control over how your Interconnect
+        bandwidth is utilized among your workloads mapping to different traffic classes.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bandwidth_percentage_policy")
+
+    @bandwidth_percentage_policy.setter
+    def bandwidth_percentage_policy(self, value: Optional[pulumi.Input['InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyArgs']]):
+        pulumi.set(self, "bandwidth_percentage_policy", value)
+
+    @property
+    @pulumi.getter(name="profileDescription")
+    def profile_description(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        A description for the AAI profile on this interconnect.
+        """
+        return pulumi.get(self, "profile_description")
+
+    @profile_description.setter
+    def profile_description(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "profile_description", value)
+
+    @property
+    @pulumi.getter(name="shapeAveragePercentages")
+    def shape_average_percentages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectApplicationAwareInterconnectShapeAveragePercentageArgs']]]]:
+        """
+        Optional field to specify a list of shape average percentages to be
+        applied in conjunction with StrictPriorityPolicy or BandwidthPercentagePolicy
+        Structure is documented below.
+        """
+        return pulumi.get(self, "shape_average_percentages")
+
+    @shape_average_percentages.setter
+    def shape_average_percentages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectApplicationAwareInterconnectShapeAveragePercentageArgs']]]]):
+        pulumi.set(self, "shape_average_percentages", value)
+
+    @property
+    @pulumi.getter(name="strictPriorityPolicy")
+    def strict_priority_policy(self) -> Optional[pulumi.Input['InterconnectApplicationAwareInterconnectStrictPriorityPolicyArgs']]:
+        """
+        Specify configuration for StrictPriorityPolicy.
+        """
+        return pulumi.get(self, "strict_priority_policy")
+
+    @strict_priority_policy.setter
+    def strict_priority_policy(self, value: Optional[pulumi.Input['InterconnectApplicationAwareInterconnectStrictPriorityPolicyArgs']]):
+        pulumi.set(self, "strict_priority_policy", value)
+
+
+if not MYPY:
+    class InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyArgsDict(TypedDict):
+        bandwidth_percentages: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentageArgsDict']]]]
+        """
+        Specify bandwidth percentages for various traffic classes for queuing
+        type Bandwidth Percent.
+        Structure is documented below.
+        """
+elif False:
+    InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyArgs:
+    def __init__(__self__, *,
+                 bandwidth_percentages: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentageArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentageArgs']]] bandwidth_percentages: Specify bandwidth percentages for various traffic classes for queuing
+               type Bandwidth Percent.
+               Structure is documented below.
+        """
+        if bandwidth_percentages is not None:
+            pulumi.set(__self__, "bandwidth_percentages", bandwidth_percentages)
+
+    @property
+    @pulumi.getter(name="bandwidthPercentages")
+    def bandwidth_percentages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentageArgs']]]]:
+        """
+        Specify bandwidth percentages for various traffic classes for queuing
+        type Bandwidth Percent.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bandwidth_percentages")
+
+    @bandwidth_percentages.setter
+    def bandwidth_percentages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentageArgs']]]]):
+        pulumi.set(self, "bandwidth_percentages", value)
+
+
+if not MYPY:
+    class InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentageArgsDict(TypedDict):
+        percentage: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Bandwidth percentage for a specific traffic class.
+        """
+        traffic_class: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Enum representing the various traffic classes offered by AAI.
+        Default value is `TC_UNSPECIFIED`.
+        Possible values are: `TC_UNSPECIFIED`, `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.
+        """
+elif False:
+    InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentageArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentageArgs:
+    def __init__(__self__, *,
+                 percentage: Optional[pulumi.Input[builtins.int]] = None,
+                 traffic_class: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.int] percentage: Bandwidth percentage for a specific traffic class.
+        :param pulumi.Input[builtins.str] traffic_class: Enum representing the various traffic classes offered by AAI.
+               Default value is `TC_UNSPECIFIED`.
+               Possible values are: `TC_UNSPECIFIED`, `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.
+        """
+        if percentage is not None:
+            pulumi.set(__self__, "percentage", percentage)
+        if traffic_class is not None:
+            pulumi.set(__self__, "traffic_class", traffic_class)
+
+    @property
+    @pulumi.getter
+    def percentage(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Bandwidth percentage for a specific traffic class.
+        """
+        return pulumi.get(self, "percentage")
+
+    @percentage.setter
+    def percentage(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "percentage", value)
+
+    @property
+    @pulumi.getter(name="trafficClass")
+    def traffic_class(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Enum representing the various traffic classes offered by AAI.
+        Default value is `TC_UNSPECIFIED`.
+        Possible values are: `TC_UNSPECIFIED`, `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.
+        """
+        return pulumi.get(self, "traffic_class")
+
+    @traffic_class.setter
+    def traffic_class(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "traffic_class", value)
+
+
+if not MYPY:
+    class InterconnectApplicationAwareInterconnectShapeAveragePercentageArgsDict(TypedDict):
+        percentage: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Bandwidth percentage for a specific traffic class.
+        """
+        traffic_class: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Enum representing the various traffic classes offered by AAI.
+        Default value is `TC_UNSPECIFIED`.
+        Possible values are: `TC_UNSPECIFIED`, `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.
+        """
+elif False:
+    InterconnectApplicationAwareInterconnectShapeAveragePercentageArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterconnectApplicationAwareInterconnectShapeAveragePercentageArgs:
+    def __init__(__self__, *,
+                 percentage: Optional[pulumi.Input[builtins.int]] = None,
+                 traffic_class: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.int] percentage: Bandwidth percentage for a specific traffic class.
+        :param pulumi.Input[builtins.str] traffic_class: Enum representing the various traffic classes offered by AAI.
+               Default value is `TC_UNSPECIFIED`.
+               Possible values are: `TC_UNSPECIFIED`, `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.
+        """
+        if percentage is not None:
+            pulumi.set(__self__, "percentage", percentage)
+        if traffic_class is not None:
+            pulumi.set(__self__, "traffic_class", traffic_class)
+
+    @property
+    @pulumi.getter
+    def percentage(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Bandwidth percentage for a specific traffic class.
+        """
+        return pulumi.get(self, "percentage")
+
+    @percentage.setter
+    def percentage(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "percentage", value)
+
+    @property
+    @pulumi.getter(name="trafficClass")
+    def traffic_class(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Enum representing the various traffic classes offered by AAI.
+        Default value is `TC_UNSPECIFIED`.
+        Possible values are: `TC_UNSPECIFIED`, `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.
+        """
+        return pulumi.get(self, "traffic_class")
+
+    @traffic_class.setter
+    def traffic_class(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "traffic_class", value)
+
+
+if not MYPY:
+    class InterconnectApplicationAwareInterconnectStrictPriorityPolicyArgsDict(TypedDict):
+        pass
+elif False:
+    InterconnectApplicationAwareInterconnectStrictPriorityPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterconnectApplicationAwareInterconnectStrictPriorityPolicyArgs:
+    def __init__(__self__):
+        pass
 
 
 if not MYPY:
@@ -57999,11 +58505,102 @@ class RegionUrlMapTestArgs:
 
 
 if not MYPY:
+    class ReservationDeleteAfterDurationArgsDict(TypedDict):
+        nanos: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Number of nanoseconds for the auto-delete duration.
+        """
+        seconds: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Number of seconds for the auto-delete duration.
+        """
+elif False:
+    ReservationDeleteAfterDurationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ReservationDeleteAfterDurationArgs:
+    def __init__(__self__, *,
+                 nanos: Optional[pulumi.Input[builtins.int]] = None,
+                 seconds: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.int] nanos: Number of nanoseconds for the auto-delete duration.
+        :param pulumi.Input[builtins.str] seconds: Number of seconds for the auto-delete duration.
+        """
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+        if seconds is not None:
+            pulumi.set(__self__, "seconds", seconds)
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Number of nanoseconds for the auto-delete duration.
+        """
+        return pulumi.get(self, "nanos")
+
+    @nanos.setter
+    def nanos(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "nanos", value)
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Number of seconds for the auto-delete duration.
+        """
+        return pulumi.get(self, "seconds")
+
+    @seconds.setter
+    def seconds(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "seconds", value)
+
+
+if not MYPY:
+    class ReservationReservationSharingPolicyArgsDict(TypedDict):
+        service_share_type: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Sharing config for all Google Cloud services.
+        Possible values are: `ALLOW_ALL`, `DISALLOW_ALL`.
+        """
+elif False:
+    ReservationReservationSharingPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ReservationReservationSharingPolicyArgs:
+    def __init__(__self__, *,
+                 service_share_type: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] service_share_type: Sharing config for all Google Cloud services.
+               Possible values are: `ALLOW_ALL`, `DISALLOW_ALL`.
+        """
+        if service_share_type is not None:
+            pulumi.set(__self__, "service_share_type", service_share_type)
+
+    @property
+    @pulumi.getter(name="serviceShareType")
+    def service_share_type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Sharing config for all Google Cloud services.
+        Possible values are: `ALLOW_ALL`, `DISALLOW_ALL`.
+        """
+        return pulumi.get(self, "service_share_type")
+
+    @service_share_type.setter
+    def service_share_type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "service_share_type", value)
+
+
+if not MYPY:
     class ReservationShareSettingsArgsDict(TypedDict):
         project_maps: NotRequired[pulumi.Input[Sequence[pulumi.Input['ReservationShareSettingsProjectMapArgsDict']]]]
         """
         A map of project number and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
         Structure is documented below.
+        """
+        projects: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        List of project IDs with which the reservation is shared.
         """
         share_type: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -58017,15 +58614,19 @@ elif False:
 class ReservationShareSettingsArgs:
     def __init__(__self__, *,
                  project_maps: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationShareSettingsProjectMapArgs']]]] = None,
+                 projects: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  share_type: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ReservationShareSettingsProjectMapArgs']]] project_maps: A map of project number and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] projects: List of project IDs with which the reservation is shared.
         :param pulumi.Input[builtins.str] share_type: Type of sharing for this shared-reservation
                Possible values are: `LOCAL`, `SPECIFIC_PROJECTS`.
         """
         if project_maps is not None:
             pulumi.set(__self__, "project_maps", project_maps)
+        if projects is not None:
+            pulumi.set(__self__, "projects", projects)
         if share_type is not None:
             pulumi.set(__self__, "share_type", share_type)
 
@@ -58041,6 +58642,18 @@ class ReservationShareSettingsArgs:
     @project_maps.setter
     def project_maps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationShareSettingsProjectMapArgs']]]]):
         pulumi.set(self, "project_maps", value)
+
+    @property
+    @pulumi.getter
+    def projects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        List of project IDs with which the reservation is shared.
+        """
+        return pulumi.get(self, "projects")
+
+    @projects.setter
+    def projects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "projects", value)
 
     @property
     @pulumi.getter(name="shareType")
@@ -58113,15 +58726,20 @@ if not MYPY:
         """
         The number of resources that are allocated.
         """
-        instance_properties: pulumi.Input['ReservationSpecificReservationInstancePropertiesArgsDict']
-        """
-        The instance properties for the reservation.
-        Structure is documented below.
-        """
         in_use_count: NotRequired[pulumi.Input[builtins.int]]
         """
         (Output)
         How many instances are in use.
+        """
+        instance_properties: NotRequired[pulumi.Input['ReservationSpecificReservationInstancePropertiesArgsDict']]
+        """
+        The instance properties for the reservation.
+        Structure is documented below.
+        """
+        source_instance_template: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Specifies the instance template to create the reservation. If you use this field, you must exclude the
+        instanceProperties field.
         """
 elif False:
     ReservationSpecificReservationArgsDict: TypeAlias = Mapping[str, Any]
@@ -58130,19 +58748,25 @@ elif False:
 class ReservationSpecificReservationArgs:
     def __init__(__self__, *,
                  count: pulumi.Input[builtins.int],
-                 instance_properties: pulumi.Input['ReservationSpecificReservationInstancePropertiesArgs'],
-                 in_use_count: Optional[pulumi.Input[builtins.int]] = None):
+                 in_use_count: Optional[pulumi.Input[builtins.int]] = None,
+                 instance_properties: Optional[pulumi.Input['ReservationSpecificReservationInstancePropertiesArgs']] = None,
+                 source_instance_template: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.int] count: The number of resources that are allocated.
-        :param pulumi.Input['ReservationSpecificReservationInstancePropertiesArgs'] instance_properties: The instance properties for the reservation.
-               Structure is documented below.
         :param pulumi.Input[builtins.int] in_use_count: (Output)
                How many instances are in use.
+        :param pulumi.Input['ReservationSpecificReservationInstancePropertiesArgs'] instance_properties: The instance properties for the reservation.
+               Structure is documented below.
+        :param pulumi.Input[builtins.str] source_instance_template: Specifies the instance template to create the reservation. If you use this field, you must exclude the
+               instanceProperties field.
         """
         pulumi.set(__self__, "count", count)
-        pulumi.set(__self__, "instance_properties", instance_properties)
         if in_use_count is not None:
             pulumi.set(__self__, "in_use_count", in_use_count)
+        if instance_properties is not None:
+            pulumi.set(__self__, "instance_properties", instance_properties)
+        if source_instance_template is not None:
+            pulumi.set(__self__, "source_instance_template", source_instance_template)
 
     @property
     @pulumi.getter
@@ -58157,19 +58781,6 @@ class ReservationSpecificReservationArgs:
         pulumi.set(self, "count", value)
 
     @property
-    @pulumi.getter(name="instanceProperties")
-    def instance_properties(self) -> pulumi.Input['ReservationSpecificReservationInstancePropertiesArgs']:
-        """
-        The instance properties for the reservation.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "instance_properties")
-
-    @instance_properties.setter
-    def instance_properties(self, value: pulumi.Input['ReservationSpecificReservationInstancePropertiesArgs']):
-        pulumi.set(self, "instance_properties", value)
-
-    @property
     @pulumi.getter(name="inUseCount")
     def in_use_count(self) -> Optional[pulumi.Input[builtins.int]]:
         """
@@ -58181,6 +58792,32 @@ class ReservationSpecificReservationArgs:
     @in_use_count.setter
     def in_use_count(self, value: Optional[pulumi.Input[builtins.int]]):
         pulumi.set(self, "in_use_count", value)
+
+    @property
+    @pulumi.getter(name="instanceProperties")
+    def instance_properties(self) -> Optional[pulumi.Input['ReservationSpecificReservationInstancePropertiesArgs']]:
+        """
+        The instance properties for the reservation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "instance_properties")
+
+    @instance_properties.setter
+    def instance_properties(self, value: Optional[pulumi.Input['ReservationSpecificReservationInstancePropertiesArgs']]):
+        pulumi.set(self, "instance_properties", value)
+
+    @property
+    @pulumi.getter(name="sourceInstanceTemplate")
+    def source_instance_template(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Specifies the instance template to create the reservation. If you use this field, you must exclude the
+        instanceProperties field.
+        """
+        return pulumi.get(self, "source_instance_template")
+
+    @source_instance_template.setter
+    def source_instance_template(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "source_instance_template", value)
 
 
 if not MYPY:
@@ -58200,6 +58837,11 @@ if not MYPY:
         reserves disks of type `local-ssd`.
         Structure is documented below.
         """
+        maintenance_interval: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Specifies the frequency of planned maintenance events.
+        Possible values are: `AS_NEEDED`, `PERIODIC`, `RECURRENT`.
+        """
         min_cpu_platform: NotRequired[pulumi.Input[builtins.str]]
         """
         The minimum CPU platform for the reservation. For example,
@@ -58216,6 +58858,7 @@ class ReservationSpecificReservationInstancePropertiesArgs:
                  machine_type: pulumi.Input[builtins.str],
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs']]]] = None,
                  local_ssds: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationSpecificReservationInstancePropertiesLocalSsdArgs']]]] = None,
+                 maintenance_interval: Optional[pulumi.Input[builtins.str]] = None,
                  min_cpu_platform: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.str] machine_type: The name of the machine type to reserve.
@@ -58224,6 +58867,8 @@ class ReservationSpecificReservationInstancePropertiesArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ReservationSpecificReservationInstancePropertiesLocalSsdArgs']]] local_ssds: The amount of local ssd to reserve with each instance. This
                reserves disks of type `local-ssd`.
                Structure is documented below.
+        :param pulumi.Input[builtins.str] maintenance_interval: Specifies the frequency of planned maintenance events.
+               Possible values are: `AS_NEEDED`, `PERIODIC`, `RECURRENT`.
         :param pulumi.Input[builtins.str] min_cpu_platform: The minimum CPU platform for the reservation. For example,
                `"Intel Skylake"`. See
                the CPU platform availability reference](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones)
@@ -58234,6 +58879,8 @@ class ReservationSpecificReservationInstancePropertiesArgs:
             pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         if local_ssds is not None:
             pulumi.set(__self__, "local_ssds", local_ssds)
+        if maintenance_interval is not None:
+            pulumi.set(__self__, "maintenance_interval", maintenance_interval)
         if min_cpu_platform is not None:
             pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
 
@@ -58275,6 +58922,19 @@ class ReservationSpecificReservationInstancePropertiesArgs:
     @local_ssds.setter
     def local_ssds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationSpecificReservationInstancePropertiesLocalSsdArgs']]]]):
         pulumi.set(self, "local_ssds", value)
+
+    @property
+    @pulumi.getter(name="maintenanceInterval")
+    def maintenance_interval(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Specifies the frequency of planned maintenance events.
+        Possible values are: `AS_NEEDED`, `PERIODIC`, `RECURRENT`.
+        """
+        return pulumi.get(self, "maintenance_interval")
+
+    @maintenance_interval.setter
+    def maintenance_interval(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "maintenance_interval", value)
 
     @property
     @pulumi.getter(name="minCpuPlatform")
@@ -62911,6 +63571,10 @@ if not MYPY:
         * `NORMAL` - Normal log level.
         * `VERBOSE` - Verbose log level.
         """
+        request_body_inspection_size: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The maximum request size chosen by the customer with Waf enabled. Values supported are "8KB", "16KB, "32KB", "48KB" and "64KB". Values are case insensitive.
+        """
         user_ip_request_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
         """
         An optional list of case-insensitive request header names to use for resolving the callers client IP address.
@@ -62924,6 +63588,7 @@ class SecurityPolicyAdvancedOptionsConfigArgs:
                  json_custom_config: Optional[pulumi.Input['SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs']] = None,
                  json_parsing: Optional[pulumi.Input[builtins.str]] = None,
                  log_level: Optional[pulumi.Input[builtins.str]] = None,
+                 request_body_inspection_size: Optional[pulumi.Input[builtins.str]] = None,
                  user_ip_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
         """
         :param pulumi.Input['SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs'] json_custom_config: Custom configuration to apply the JSON parsing. Only applicable when
@@ -62935,6 +63600,7 @@ class SecurityPolicyAdvancedOptionsConfigArgs:
         :param pulumi.Input[builtins.str] log_level: Log level to use. Defaults to `NORMAL`.
                * `NORMAL` - Normal log level.
                * `VERBOSE` - Verbose log level.
+        :param pulumi.Input[builtins.str] request_body_inspection_size: The maximum request size chosen by the customer with Waf enabled. Values supported are "8KB", "16KB, "32KB", "48KB" and "64KB". Values are case insensitive.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] user_ip_request_headers: An optional list of case-insensitive request header names to use for resolving the callers client IP address.
         """
         if json_custom_config is not None:
@@ -62943,6 +63609,8 @@ class SecurityPolicyAdvancedOptionsConfigArgs:
             pulumi.set(__self__, "json_parsing", json_parsing)
         if log_level is not None:
             pulumi.set(__self__, "log_level", log_level)
+        if request_body_inspection_size is not None:
+            pulumi.set(__self__, "request_body_inspection_size", request_body_inspection_size)
         if user_ip_request_headers is not None:
             pulumi.set(__self__, "user_ip_request_headers", user_ip_request_headers)
 
@@ -62987,6 +63655,18 @@ class SecurityPolicyAdvancedOptionsConfigArgs:
     @log_level.setter
     def log_level(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "log_level", value)
+
+    @property
+    @pulumi.getter(name="requestBodyInspectionSize")
+    def request_body_inspection_size(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The maximum request size chosen by the customer with Waf enabled. Values supported are "8KB", "16KB, "32KB", "48KB" and "64KB". Values are case insensitive.
+        """
+        return pulumi.get(self, "request_body_inspection_size")
+
+    @request_body_inspection_size.setter
+    def request_body_inspection_size(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "request_body_inspection_size", value)
 
     @property
     @pulumi.getter(name="userIpRequestHeaders")

@@ -125,6 +125,10 @@ export class BucketObject extends pulumi.CustomResource {
      */
     public readonly eventBasedHold!: pulumi.Output<boolean | undefined>;
     /**
+     * When set to true, it ensure the object's Content-Type is empty.
+     */
+    public readonly forceEmptyContentType!: pulumi.Output<boolean | undefined>;
+    /**
      * (Computed) The content generation of this object. Used for object [versioning](https://cloud.google.com/storage/docs/object-versioning) and [soft delete](https://cloud.google.com/storage/docs/soft-delete).
      */
     public /*out*/ readonly generation!: pulumi.Output<number>;
@@ -213,6 +217,7 @@ export class BucketObject extends pulumi.CustomResource {
             resourceInputs["customerEncryption"] = state ? state.customerEncryption : undefined;
             resourceInputs["detectMd5hash"] = state ? state.detectMd5hash : undefined;
             resourceInputs["eventBasedHold"] = state ? state.eventBasedHold : undefined;
+            resourceInputs["forceEmptyContentType"] = state ? state.forceEmptyContentType : undefined;
             resourceInputs["generation"] = state ? state.generation : undefined;
             resourceInputs["kmsKeyName"] = state ? state.kmsKeyName : undefined;
             resourceInputs["md5hash"] = state ? state.md5hash : undefined;
@@ -242,6 +247,7 @@ export class BucketObject extends pulumi.CustomResource {
             resourceInputs["customerEncryption"] = args?.customerEncryption ? pulumi.secret(args.customerEncryption) : undefined;
             resourceInputs["detectMd5hash"] = args ? args.detectMd5hash : undefined;
             resourceInputs["eventBasedHold"] = args ? args.eventBasedHold : undefined;
+            resourceInputs["forceEmptyContentType"] = args ? args.forceEmptyContentType : undefined;
             resourceInputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
             resourceInputs["metadata"] = args ? args.metadata : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -315,6 +321,10 @@ export interface BucketObjectState {
      * Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
      */
     eventBasedHold?: pulumi.Input<boolean>;
+    /**
+     * When set to true, it ensure the object's Content-Type is empty.
+     */
+    forceEmptyContentType?: pulumi.Input<boolean>;
     /**
      * (Computed) The content generation of this object. Used for object [versioning](https://cloud.google.com/storage/docs/object-versioning) and [soft delete](https://cloud.google.com/storage/docs/soft-delete).
      */
@@ -427,6 +437,10 @@ export interface BucketObjectArgs {
      * Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
      */
     eventBasedHold?: pulumi.Input<boolean>;
+    /**
+     * When set to true, it ensure the object's Content-Type is empty.
+     */
+    forceEmptyContentType?: pulumi.Input<boolean>;
     /**
      * The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
      */

@@ -13,6 +13,12 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub.Inputs
     public sealed class ListingBigqueryDatasetSelectedResourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:"projects/test_project/datasets/test_dataset/routines/test_routine"
+        /// </summary>
+        [Input("routine")]
+        public Input<string>? Routine { get; set; }
+
+        /// <summary>
         /// Format: For table: projects/{projectId}/datasets/{datasetId}/tables/{tableId} Example:"projects/test_project/datasets/test_dataset/tables/test_table"
         /// </summary>
         [Input("table")]

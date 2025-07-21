@@ -36,6 +36,8 @@ class RegionDiskArgs:
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  physical_block_size_bytes: Optional[pulumi.Input[builtins.int]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
+                 provisioned_iops: Optional[pulumi.Input[builtins.int]] = None,
+                 provisioned_throughput: Optional[pulumi.Input[builtins.int]] = None,
                  region: Optional[pulumi.Input[builtins.str]] = None,
                  size: Optional[pulumi.Input[builtins.int]] = None,
                  snapshot: Optional[pulumi.Input[builtins.str]] = None,
@@ -94,6 +96,11 @@ class RegionDiskArgs:
                the supported values for the caller's project.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[builtins.int] provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second
+               that the disk can handle. Values must be between 10,000 and 120,000.
+               For more details, see the Extreme persistent disk [documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+        :param pulumi.Input[builtins.int] provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput
+               mb per second that the disk can handle. Values must be greater than or equal to 1.
         :param pulumi.Input[builtins.str] region: A reference to the region where the disk resides.
         :param pulumi.Input[builtins.int] size: Size of the persistent disk, specified in GB. You can specify this
                field when creating a persistent disk using the sourceImage or
@@ -153,6 +160,10 @@ class RegionDiskArgs:
             pulumi.set(__self__, "physical_block_size_bytes", physical_block_size_bytes)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if provisioned_iops is not None:
+            pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        if provisioned_throughput is not None:
+            pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if size is not None:
@@ -372,6 +383,33 @@ class RegionDiskArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second
+        that the disk can handle. Values must be between 10,000 and 120,000.
+        For more details, see the Extreme persistent disk [documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+        """
+        return pulumi.get(self, "provisioned_iops")
+
+    @provisioned_iops.setter
+    def provisioned_iops(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "provisioned_iops", value)
+
+    @property
+    @pulumi.getter(name="provisionedThroughput")
+    def provisioned_throughput(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Indicates how much throughput to provision for the disk. This sets the number of throughput
+        mb per second that the disk can handle. Values must be greater than or equal to 1.
+        """
+        return pulumi.get(self, "provisioned_throughput")
+
+    @provisioned_throughput.setter
+    def provisioned_throughput(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "provisioned_throughput", value)
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -488,6 +526,8 @@ class _RegionDiskState:
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  physical_block_size_bytes: Optional[pulumi.Input[builtins.int]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
+                 provisioned_iops: Optional[pulumi.Input[builtins.int]] = None,
+                 provisioned_throughput: Optional[pulumi.Input[builtins.int]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  region: Optional[pulumi.Input[builtins.str]] = None,
                  replica_zones: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -558,6 +598,11 @@ class _RegionDiskState:
                the supported values for the caller's project.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[builtins.int] provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second
+               that the disk can handle. Values must be between 10,000 and 120,000.
+               For more details, see the Extreme persistent disk [documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+        :param pulumi.Input[builtins.int] provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput
+               mb per second that the disk can handle. Values must be greater than or equal to 1.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[builtins.str] region: A reference to the region where the disk resides.
@@ -643,6 +688,10 @@ class _RegionDiskState:
             pulumi.set(__self__, "physical_block_size_bytes", physical_block_size_bytes)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if provisioned_iops is not None:
+            pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        if provisioned_throughput is not None:
+            pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
         if pulumi_labels is not None:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if region is not None:
@@ -935,6 +984,33 @@ class _RegionDiskState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second
+        that the disk can handle. Values must be between 10,000 and 120,000.
+        For more details, see the Extreme persistent disk [documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+        """
+        return pulumi.get(self, "provisioned_iops")
+
+    @provisioned_iops.setter
+    def provisioned_iops(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "provisioned_iops", value)
+
+    @property
+    @pulumi.getter(name="provisionedThroughput")
+    def provisioned_throughput(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Indicates how much throughput to provision for the disk. This sets the number of throughput
+        mb per second that the disk can handle. Values must be greater than or equal to 1.
+        """
+        return pulumi.get(self, "provisioned_throughput")
+
+    @provisioned_throughput.setter
+    def provisioned_throughput(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "provisioned_throughput", value)
+
+    @property
     @pulumi.getter(name="pulumiLabels")
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
@@ -1129,6 +1205,8 @@ class RegionDisk(pulumi.CustomResource):
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  physical_block_size_bytes: Optional[pulumi.Input[builtins.int]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
+                 provisioned_iops: Optional[pulumi.Input[builtins.int]] = None,
+                 provisioned_throughput: Optional[pulumi.Input[builtins.int]] = None,
                  region: Optional[pulumi.Input[builtins.str]] = None,
                  replica_zones: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  size: Optional[pulumi.Input[builtins.int]] = None,
@@ -1346,6 +1424,11 @@ class RegionDisk(pulumi.CustomResource):
                the supported values for the caller's project.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[builtins.int] provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second
+               that the disk can handle. Values must be between 10,000 and 120,000.
+               For more details, see the Extreme persistent disk [documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+        :param pulumi.Input[builtins.int] provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput
+               mb per second that the disk can handle. Values must be greater than or equal to 1.
         :param pulumi.Input[builtins.str] region: A reference to the region where the disk resides.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] replica_zones: URLs of the zones where the disk should be replicated to.
         :param pulumi.Input[builtins.int] size: Size of the persistent disk, specified in GB. You can specify this
@@ -1568,6 +1651,8 @@ class RegionDisk(pulumi.CustomResource):
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  physical_block_size_bytes: Optional[pulumi.Input[builtins.int]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
+                 provisioned_iops: Optional[pulumi.Input[builtins.int]] = None,
+                 provisioned_throughput: Optional[pulumi.Input[builtins.int]] = None,
                  region: Optional[pulumi.Input[builtins.str]] = None,
                  replica_zones: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  size: Optional[pulumi.Input[builtins.int]] = None,
@@ -1597,6 +1682,8 @@ class RegionDisk(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["physical_block_size_bytes"] = physical_block_size_bytes
             __props__.__dict__["project"] = project
+            __props__.__dict__["provisioned_iops"] = provisioned_iops
+            __props__.__dict__["provisioned_throughput"] = provisioned_throughput
             __props__.__dict__["region"] = region
             if replica_zones is None and not opts.urn:
                 raise TypeError("Missing required property 'replica_zones'")
@@ -1648,6 +1735,8 @@ class RegionDisk(pulumi.CustomResource):
             name: Optional[pulumi.Input[builtins.str]] = None,
             physical_block_size_bytes: Optional[pulumi.Input[builtins.int]] = None,
             project: Optional[pulumi.Input[builtins.str]] = None,
+            provisioned_iops: Optional[pulumi.Input[builtins.int]] = None,
+            provisioned_throughput: Optional[pulumi.Input[builtins.int]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             region: Optional[pulumi.Input[builtins.str]] = None,
             replica_zones: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -1723,6 +1812,11 @@ class RegionDisk(pulumi.CustomResource):
                the supported values for the caller's project.
         :param pulumi.Input[builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[builtins.int] provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second
+               that the disk can handle. Values must be between 10,000 and 120,000.
+               For more details, see the Extreme persistent disk [documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+        :param pulumi.Input[builtins.int] provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput
+               mb per second that the disk can handle. Values must be greater than or equal to 1.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[builtins.str] region: A reference to the region where the disk resides.
@@ -1790,6 +1884,8 @@ class RegionDisk(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["physical_block_size_bytes"] = physical_block_size_bytes
         __props__.__dict__["project"] = project
+        __props__.__dict__["provisioned_iops"] = provisioned_iops
+        __props__.__dict__["provisioned_throughput"] = provisioned_throughput
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["region"] = region
         __props__.__dict__["replica_zones"] = replica_zones
@@ -1993,6 +2089,25 @@ class RegionDisk(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> pulumi.Output[builtins.int]:
+        """
+        Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second
+        that the disk can handle. Values must be between 10,000 and 120,000.
+        For more details, see the Extreme persistent disk [documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+        """
+        return pulumi.get(self, "provisioned_iops")
+
+    @property
+    @pulumi.getter(name="provisionedThroughput")
+    def provisioned_throughput(self) -> pulumi.Output[builtins.int]:
+        """
+        Indicates how much throughput to provision for the disk. This sets the number of throughput
+        mb per second that the disk can handle. Values must be greater than or equal to 1.
+        """
+        return pulumi.get(self, "provisioned_throughput")
 
     @property
     @pulumi.getter(name="pulumiLabels")

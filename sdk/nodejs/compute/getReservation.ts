@@ -53,13 +53,17 @@ export interface GetReservationArgs {
 export interface GetReservationResult {
     readonly commitment: string;
     readonly creationTimestamp: string;
+    readonly deleteAfterDurations: outputs.compute.GetReservationDeleteAfterDuration[];
+    readonly deleteAtTime: string;
     readonly description: string;
+    readonly enableEmergentMaintenance: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly name: string;
     readonly project?: string;
+    readonly reservationSharingPolicies: outputs.compute.GetReservationReservationSharingPolicy[];
     readonly selfLink: string;
     readonly shareSettings: outputs.compute.GetReservationShareSetting[];
     readonly specificReservationRequired: boolean;

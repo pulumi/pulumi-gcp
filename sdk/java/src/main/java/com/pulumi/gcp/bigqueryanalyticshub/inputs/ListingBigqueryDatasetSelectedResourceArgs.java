@@ -16,6 +16,21 @@ public final class ListingBigqueryDatasetSelectedResourceArgs extends com.pulumi
     public static final ListingBigqueryDatasetSelectedResourceArgs Empty = new ListingBigqueryDatasetSelectedResourceArgs();
 
     /**
+     * Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:&#34;projects/test_project/datasets/test_dataset/routines/test_routine&#34;
+     * 
+     */
+    @Import(name="routine")
+    private @Nullable Output<String> routine;
+
+    /**
+     * @return Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:&#34;projects/test_project/datasets/test_dataset/routines/test_routine&#34;
+     * 
+     */
+    public Optional<Output<String>> routine() {
+        return Optional.ofNullable(this.routine);
+    }
+
+    /**
      * Format: For table: projects/{projectId}/datasets/{datasetId}/tables/{tableId} Example:&#34;projects/test_project/datasets/test_dataset/tables/test_table&#34;
      * 
      */
@@ -33,6 +48,7 @@ public final class ListingBigqueryDatasetSelectedResourceArgs extends com.pulumi
     private ListingBigqueryDatasetSelectedResourceArgs() {}
 
     private ListingBigqueryDatasetSelectedResourceArgs(ListingBigqueryDatasetSelectedResourceArgs $) {
+        this.routine = $.routine;
         this.table = $.table;
     }
 
@@ -52,6 +68,27 @@ public final class ListingBigqueryDatasetSelectedResourceArgs extends com.pulumi
 
         public Builder(ListingBigqueryDatasetSelectedResourceArgs defaults) {
             $ = new ListingBigqueryDatasetSelectedResourceArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param routine Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:&#34;projects/test_project/datasets/test_dataset/routines/test_routine&#34;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routine(@Nullable Output<String> routine) {
+            $.routine = routine;
+            return this;
+        }
+
+        /**
+         * @param routine Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:&#34;projects/test_project/datasets/test_dataset/routines/test_routine&#34;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routine(String routine) {
+            return routine(Output.of(routine));
         }
 
         /**

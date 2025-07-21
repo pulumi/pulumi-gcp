@@ -199,6 +199,9 @@ type Firewall struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name or selfLink of the network to attach this firewall to.
 	Network pulumi.StringOutput `pulumi:"network"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params FirewallParamsPtrOutput `pulumi:"params"`
 	// Priority for this rule. This is an integer between 0 and 65535, both
 	// inclusive. When not specified, the value assumed is 1000. Relative
 	// priorities determine precedence of conflicting rules. Lower value of
@@ -339,6 +342,9 @@ type firewallState struct {
 	Name *string `pulumi:"name"`
 	// The name or selfLink of the network to attach this firewall to.
 	Network *string `pulumi:"network"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params *FirewallParams `pulumi:"params"`
 	// Priority for this rule. This is an integer between 0 and 65535, both
 	// inclusive. When not specified, the value assumed is 1000. Relative
 	// priorities determine precedence of conflicting rules. Lower value of
@@ -447,6 +453,9 @@ type FirewallState struct {
 	Name pulumi.StringPtrInput
 	// The name or selfLink of the network to attach this firewall to.
 	Network pulumi.StringPtrInput
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params FirewallParamsPtrInput
 	// Priority for this rule. This is an integer between 0 and 65535, both
 	// inclusive. When not specified, the value assumed is 1000. Relative
 	// priorities determine precedence of conflicting rules. Lower value of
@@ -557,6 +566,9 @@ type firewallArgs struct {
 	Name *string `pulumi:"name"`
 	// The name or selfLink of the network to attach this firewall to.
 	Network string `pulumi:"network"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params *FirewallParams `pulumi:"params"`
 	// Priority for this rule. This is an integer between 0 and 65535, both
 	// inclusive. When not specified, the value assumed is 1000. Relative
 	// priorities determine precedence of conflicting rules. Lower value of
@@ -662,6 +674,9 @@ type FirewallArgs struct {
 	Name pulumi.StringPtrInput
 	// The name or selfLink of the network to attach this firewall to.
 	Network pulumi.StringInput
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params FirewallParamsPtrInput
 	// Priority for this rule. This is an integer between 0 and 65535, both
 	// inclusive. When not specified, the value assumed is 1000. Relative
 	// priorities determine precedence of conflicting rules. Lower value of
@@ -885,6 +900,12 @@ func (o FirewallOutput) Name() pulumi.StringOutput {
 // The name or selfLink of the network to attach this firewall to.
 func (o FirewallOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
+}
+
+// Additional params passed with the request, but not persisted as part of resource payload
+// Structure is documented below.
+func (o FirewallOutput) Params() FirewallParamsPtrOutput {
+	return o.ApplyT(func(v *Firewall) FirewallParamsPtrOutput { return v.Params }).(FirewallParamsPtrOutput)
 }
 
 // Priority for this rule. This is an integer between 0 and 65535, both

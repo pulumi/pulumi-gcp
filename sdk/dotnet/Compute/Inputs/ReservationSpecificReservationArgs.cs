@@ -29,8 +29,15 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// The instance properties for the reservation.
         /// Structure is documented below.
         /// </summary>
-        [Input("instanceProperties", required: true)]
-        public Input<Inputs.ReservationSpecificReservationInstancePropertiesArgs> InstanceProperties { get; set; } = null!;
+        [Input("instanceProperties")]
+        public Input<Inputs.ReservationSpecificReservationInstancePropertiesArgs>? InstanceProperties { get; set; }
+
+        /// <summary>
+        /// Specifies the instance template to create the reservation. If you use this field, you must exclude the
+        /// instanceProperties field.
+        /// </summary>
+        [Input("sourceInstanceTemplate")]
+        public Input<string>? SourceInstanceTemplate { get; set; }
 
         public ReservationSpecificReservationArgs()
         {

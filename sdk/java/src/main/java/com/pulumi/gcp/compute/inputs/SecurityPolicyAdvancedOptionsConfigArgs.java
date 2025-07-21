@@ -75,6 +75,21 @@ public final class SecurityPolicyAdvancedOptionsConfigArgs extends com.pulumi.re
     }
 
     /**
+     * The maximum request size chosen by the customer with Waf enabled. Values supported are &#34;8KB&#34;, &#34;16KB, &#34;32KB&#34;, &#34;48KB&#34; and &#34;64KB&#34;. Values are case insensitive.
+     * 
+     */
+    @Import(name="requestBodyInspectionSize")
+    private @Nullable Output<String> requestBodyInspectionSize;
+
+    /**
+     * @return The maximum request size chosen by the customer with Waf enabled. Values supported are &#34;8KB&#34;, &#34;16KB, &#34;32KB&#34;, &#34;48KB&#34; and &#34;64KB&#34;. Values are case insensitive.
+     * 
+     */
+    public Optional<Output<String>> requestBodyInspectionSize() {
+        return Optional.ofNullable(this.requestBodyInspectionSize);
+    }
+
+    /**
      * An optional list of case-insensitive request header names to use for resolving the callers client IP address.
      * 
      */
@@ -95,6 +110,7 @@ public final class SecurityPolicyAdvancedOptionsConfigArgs extends com.pulumi.re
         this.jsonCustomConfig = $.jsonCustomConfig;
         this.jsonParsing = $.jsonParsing;
         this.logLevel = $.logLevel;
+        this.requestBodyInspectionSize = $.requestBodyInspectionSize;
         this.userIpRequestHeaders = $.userIpRequestHeaders;
     }
 
@@ -189,6 +205,27 @@ public final class SecurityPolicyAdvancedOptionsConfigArgs extends com.pulumi.re
          */
         public Builder logLevel(String logLevel) {
             return logLevel(Output.of(logLevel));
+        }
+
+        /**
+         * @param requestBodyInspectionSize The maximum request size chosen by the customer with Waf enabled. Values supported are &#34;8KB&#34;, &#34;16KB, &#34;32KB&#34;, &#34;48KB&#34; and &#34;64KB&#34;. Values are case insensitive.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requestBodyInspectionSize(@Nullable Output<String> requestBodyInspectionSize) {
+            $.requestBodyInspectionSize = requestBodyInspectionSize;
+            return this;
+        }
+
+        /**
+         * @param requestBodyInspectionSize The maximum request size chosen by the customer with Waf enabled. Values supported are &#34;8KB&#34;, &#34;16KB, &#34;32KB&#34;, &#34;48KB&#34; and &#34;64KB&#34;. Values are case insensitive.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requestBodyInspectionSize(String requestBodyInspectionSize) {
+            return requestBodyInspectionSize(Output.of(requestBodyInspectionSize));
         }
 
         /**

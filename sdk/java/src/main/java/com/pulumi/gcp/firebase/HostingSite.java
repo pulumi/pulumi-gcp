@@ -95,6 +95,41 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Firebasehosting Site Default
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.firebase.HostingSite;
+ * import com.pulumi.gcp.firebase.HostingSiteArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new HostingSite("default", HostingSiteArgs.builder()
+ *             .project("my-project-name")
+ *             .siteId("my-project-name")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -218,6 +253,20 @@ public class HostingSite extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> siteId() {
         return Codegen.optional(this.siteId);
+    }
+    /**
+     * The type of Hosting site, either &#39;DEFAULT_SITE&#39; or `USER_SITE`
+     * 
+     */
+    @Export(name="type", refs={String.class}, tree="[0]")
+    private Output<String> type;
+
+    /**
+     * @return The type of Hosting site, either &#39;DEFAULT_SITE&#39; or `USER_SITE`
+     * 
+     */
+    public Output<String> type() {
+        return this.type;
     }
 
     /**
