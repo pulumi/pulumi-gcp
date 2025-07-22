@@ -88,7 +88,8 @@ class _HostingSiteState:
                  default_url: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[builtins.str]] = None):
+                 site_id: Optional[pulumi.Input[builtins.str]] = None,
+                 type: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering HostingSite resources.
         :param pulumi.Input[builtins.str] app_id: Optional. The [ID of a Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
@@ -106,6 +107,7 @@ class _HostingSiteState:
         :param pulumi.Input[builtins.str] site_id: Required. Immutable. A globally unique identifier for the Hosting site. This identifier is
                used to construct the Firebase-provisioned subdomains for the site, so it must also be a valid
                domain name label.
+        :param pulumi.Input[builtins.str] type: The type of Hosting site, either 'DEFAULT_SITE' or `USER_SITE`
         """
         if app_id is not None:
             pulumi.set(__self__, "app_id", app_id)
@@ -117,6 +119,8 @@ class _HostingSiteState:
             pulumi.set(__self__, "project", project)
         if site_id is not None:
             pulumi.set(__self__, "site_id", site_id)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="appId")
@@ -188,6 +192,18 @@ class _HostingSiteState:
     def site_id(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "site_id", value)
 
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The type of Hosting site, either 'DEFAULT_SITE' or `USER_SITE`
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "type", value)
+
 
 @pulumi.type_token("gcp:firebase/hostingSite:HostingSite")
 class HostingSite(pulumi.CustomResource):
@@ -225,6 +241,16 @@ class HostingSite(pulumi.CustomResource):
             project="my-project-name",
             site_id="site-with-app",
             app_id=default.app_id)
+        ```
+        ### Firebasehosting Site Default
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.firebase.HostingSite("default",
+            project="my-project-name",
+            site_id="my-project-name")
         ```
 
         ## Import
@@ -300,6 +326,16 @@ class HostingSite(pulumi.CustomResource):
             site_id="site-with-app",
             app_id=default.app_id)
         ```
+        ### Firebasehosting Site Default
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.firebase.HostingSite("default",
+            project="my-project-name",
+            site_id="my-project-name")
+        ```
 
         ## Import
 
@@ -363,6 +399,7 @@ class HostingSite(pulumi.CustomResource):
             __props__.__dict__["site_id"] = site_id
             __props__.__dict__["default_url"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["type"] = None
         super(HostingSite, __self__).__init__(
             'gcp:firebase/hostingSite:HostingSite',
             resource_name,
@@ -377,7 +414,8 @@ class HostingSite(pulumi.CustomResource):
             default_url: Optional[pulumi.Input[builtins.str]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
             project: Optional[pulumi.Input[builtins.str]] = None,
-            site_id: Optional[pulumi.Input[builtins.str]] = None) -> 'HostingSite':
+            site_id: Optional[pulumi.Input[builtins.str]] = None,
+            type: Optional[pulumi.Input[builtins.str]] = None) -> 'HostingSite':
         """
         Get an existing HostingSite resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -400,6 +438,7 @@ class HostingSite(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] site_id: Required. Immutable. A globally unique identifier for the Hosting site. This identifier is
                used to construct the Firebase-provisioned subdomains for the site, so it must also be a valid
                domain name label.
+        :param pulumi.Input[builtins.str] type: The type of Hosting site, either 'DEFAULT_SITE' or `USER_SITE`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -410,6 +449,7 @@ class HostingSite(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["site_id"] = site_id
+        __props__.__dict__["type"] = type
         return HostingSite(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -461,4 +501,12 @@ class HostingSite(pulumi.CustomResource):
         domain name label.
         """
         return pulumi.get(self, "site_id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[builtins.str]:
+        """
+        The type of Hosting site, either 'DEFAULT_SITE' or `USER_SITE`
+        """
+        return pulumi.get(self, "type")
 

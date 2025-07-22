@@ -122,6 +122,8 @@ namespace Pulumi.Gcp.Compute
         public readonly string Name;
         public readonly int PhysicalBlockSizeBytes;
         public readonly string? Project;
+        public readonly int ProvisionedIops;
+        public readonly int ProvisionedThroughput;
         public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly string? Region;
         public readonly ImmutableArray<string> ReplicaZones;
@@ -177,6 +179,10 @@ namespace Pulumi.Gcp.Compute
 
             string? project,
 
+            int provisionedIops,
+
+            int provisionedThroughput,
+
             ImmutableDictionary<string, string> pulumiLabels,
 
             string? region,
@@ -221,6 +227,8 @@ namespace Pulumi.Gcp.Compute
             Name = name;
             PhysicalBlockSizeBytes = physicalBlockSizeBytes;
             Project = project;
+            ProvisionedIops = provisionedIops;
+            ProvisionedThroughput = provisionedThroughput;
             PulumiLabels = pulumiLabels;
             Region = region;
             ReplicaZones = replicaZones;

@@ -89,6 +89,39 @@ import (
 //	}
 //
 // ```
+// ### Firestore Database With Tags
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/firestore"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := firestore.NewDatabase(ctx, "database", &firestore.DatabaseArgs{
+//				Project:               pulumi.String("my-project-name"),
+//				Name:                  pulumi.String("database-with-tags-id"),
+//				LocationId:            pulumi.String("nam5"),
+//				Type:                  pulumi.String("FIRESTORE_NATIVE"),
+//				DeleteProtectionState: pulumi.String("DELETE_PROTECTION_ENABLED"),
+//				DeletionPolicy:        pulumi.String("DELETE"),
+//				Tags: pulumi.StringMap{
+//					"keyname": pulumi.String("valuename"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Firestore Cmek Database
 //
 // ```go
@@ -401,6 +434,13 @@ type Database struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Input only. A map of resource manager tags. Resource manager tag keys
+	// and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+	// The field is ignored when empty. The field is immutable and causes
+	// resource replacement when mutated. To apply tags to an existing resource, see
+	// the `tags.TagValue` resource.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the database.
 	// See https://cloud.google.com/datastore/docs/firestore-or-datastore
 	// for information about how to choose.
@@ -505,6 +545,13 @@ type databaseState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Input only. A map of resource manager tags. Resource manager tag keys
+	// and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+	// The field is ignored when empty. The field is immutable and causes
+	// resource replacement when mutated. To apply tags to an existing resource, see
+	// the `tags.TagValue` resource.
+	Tags map[string]string `pulumi:"tags"`
 	// The type of the database.
 	// See https://cloud.google.com/datastore/docs/firestore-or-datastore
 	// for information about how to choose.
@@ -574,6 +621,13 @@ type DatabaseState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Input only. A map of resource manager tags. Resource manager tag keys
+	// and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+	// The field is ignored when empty. The field is immutable and causes
+	// resource replacement when mutated. To apply tags to an existing resource, see
+	// the `tags.TagValue` resource.
+	Tags pulumi.StringMapInput
 	// The type of the database.
 	// See https://cloud.google.com/datastore/docs/firestore-or-datastore
 	// for information about how to choose.
@@ -632,6 +686,13 @@ type databaseArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Input only. A map of resource manager tags. Resource manager tag keys
+	// and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+	// The field is ignored when empty. The field is immutable and causes
+	// resource replacement when mutated. To apply tags to an existing resource, see
+	// the `tags.TagValue` resource.
+	Tags map[string]string `pulumi:"tags"`
 	// The type of the database.
 	// See https://cloud.google.com/datastore/docs/firestore-or-datastore
 	// for information about how to choose.
@@ -678,6 +739,13 @@ type DatabaseArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Input only. A map of resource manager tags. Resource manager tag keys
+	// and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+	// The field is ignored when empty. The field is immutable and causes
+	// resource replacement when mutated. To apply tags to an existing resource, see
+	// the `tags.TagValue` resource.
+	Tags pulumi.StringMapInput
 	// The type of the database.
 	// See https://cloud.google.com/datastore/docs/firestore-or-datastore
 	// for information about how to choose.
@@ -864,6 +932,16 @@ func (o DatabaseOutput) PointInTimeRecoveryEnablement() pulumi.StringPtrOutput {
 // If it is not provided, the provider project is used.
 func (o DatabaseOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Input only. A map of resource manager tags. Resource manager tag keys
+// and values have the same definition as resource manager tags.
+// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+// The field is ignored when empty. The field is immutable and causes
+// resource replacement when mutated. To apply tags to an existing resource, see
+// the `tags.TagValue` resource.
+func (o DatabaseOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The type of the database.

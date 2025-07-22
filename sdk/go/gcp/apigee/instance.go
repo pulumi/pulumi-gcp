@@ -363,6 +363,10 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
+	// Access logging configuration enables the access logging feature at the instance.
+	// Apigee customers can enable access logging to ship the access logs to their own project's cloud logging.
+	// Structure is documented below.
+	AccessLoggingConfig InstanceAccessLoggingConfigPtrOutput `pulumi:"accessLoggingConfig"`
 	// Optional. Customer accept list represents the list of projects (id/number) on customer
 	// side that can privately connect to the service attachment. It is an optional field
 	// which the customers can provide during the instance creation. By default, the customer
@@ -439,6 +443,10 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
+	// Access logging configuration enables the access logging feature at the instance.
+	// Apigee customers can enable access logging to ship the access logs to their own project's cloud logging.
+	// Structure is documented below.
+	AccessLoggingConfig *InstanceAccessLoggingConfig `pulumi:"accessLoggingConfig"`
 	// Optional. Customer accept list represents the list of projects (id/number) on customer
 	// side that can privately connect to the service attachment. It is an optional field
 	// which the customers can provide during the instance creation. By default, the customer
@@ -480,6 +488,10 @@ type instanceState struct {
 }
 
 type InstanceState struct {
+	// Access logging configuration enables the access logging feature at the instance.
+	// Apigee customers can enable access logging to ship the access logs to their own project's cloud logging.
+	// Structure is documented below.
+	AccessLoggingConfig InstanceAccessLoggingConfigPtrInput
 	// Optional. Customer accept list represents the list of projects (id/number) on customer
 	// side that can privately connect to the service attachment. It is an optional field
 	// which the customers can provide during the instance creation. By default, the customer
@@ -525,6 +537,10 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
+	// Access logging configuration enables the access logging feature at the instance.
+	// Apigee customers can enable access logging to ship the access logs to their own project's cloud logging.
+	// Structure is documented below.
+	AccessLoggingConfig *InstanceAccessLoggingConfig `pulumi:"accessLoggingConfig"`
 	// Optional. Customer accept list represents the list of projects (id/number) on customer
 	// side that can privately connect to the service attachment. It is an optional field
 	// which the customers can provide during the instance creation. By default, the customer
@@ -559,6 +575,10 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
+	// Access logging configuration enables the access logging feature at the instance.
+	// Apigee customers can enable access logging to ship the access logs to their own project's cloud logging.
+	// Structure is documented below.
+	AccessLoggingConfig InstanceAccessLoggingConfigPtrInput
 	// Optional. Customer accept list represents the list of projects (id/number) on customer
 	// side that can privately connect to the service attachment. It is an optional field
 	// which the customers can provide during the instance creation. By default, the customer
@@ -676,6 +696,13 @@ func (o InstanceOutput) ToInstanceOutput() InstanceOutput {
 
 func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) InstanceOutput {
 	return o
+}
+
+// Access logging configuration enables the access logging feature at the instance.
+// Apigee customers can enable access logging to ship the access logs to their own project's cloud logging.
+// Structure is documented below.
+func (o InstanceOutput) AccessLoggingConfig() InstanceAccessLoggingConfigPtrOutput {
+	return o.ApplyT(func(v *Instance) InstanceAccessLoggingConfigPtrOutput { return v.AccessLoggingConfig }).(InstanceAccessLoggingConfigPtrOutput)
 }
 
 // Optional. Customer accept list represents the list of projects (id/number) on customer

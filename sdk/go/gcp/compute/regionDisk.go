@@ -326,6 +326,13 @@ type RegionDisk struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second
+	// that the disk can handle. Values must be between 10,000 and 120,000.
+	// For more details, see the Extreme persistent disk [documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+	ProvisionedIops pulumi.IntOutput `pulumi:"provisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput
+	// mb per second that the disk can handle. Values must be greater than or equal to 1.
+	ProvisionedThroughput pulumi.IntOutput `pulumi:"provisionedThroughput"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
@@ -498,6 +505,13 @@ type regionDiskState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second
+	// that the disk can handle. Values must be between 10,000 and 120,000.
+	// For more details, see the Extreme persistent disk [documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+	ProvisionedIops *int `pulumi:"provisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput
+	// mb per second that the disk can handle. Values must be greater than or equal to 1.
+	ProvisionedThroughput *int `pulumi:"provisionedThroughput"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
@@ -633,6 +647,13 @@ type RegionDiskState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second
+	// that the disk can handle. Values must be between 10,000 and 120,000.
+	// For more details, see the Extreme persistent disk [documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+	ProvisionedIops pulumi.IntPtrInput
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput
+	// mb per second that the disk can handle. Values must be greater than or equal to 1.
+	ProvisionedThroughput pulumi.IntPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
@@ -759,6 +780,13 @@ type regionDiskArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second
+	// that the disk can handle. Values must be between 10,000 and 120,000.
+	// For more details, see the Extreme persistent disk [documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+	ProvisionedIops *int `pulumi:"provisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput
+	// mb per second that the disk can handle. Values must be greater than or equal to 1.
+	ProvisionedThroughput *int `pulumi:"provisionedThroughput"`
 	// A reference to the region where the disk resides.
 	Region *string `pulumi:"region"`
 	// URLs of the zones where the disk should be replicated to.
@@ -863,6 +891,13 @@ type RegionDiskArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second
+	// that the disk can handle. Values must be between 10,000 and 120,000.
+	// For more details, see the Extreme persistent disk [documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+	ProvisionedIops pulumi.IntPtrInput
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput
+	// mb per second that the disk can handle. Values must be greater than or equal to 1.
+	ProvisionedThroughput pulumi.IntPtrInput
 	// A reference to the region where the disk resides.
 	Region pulumi.StringPtrInput
 	// URLs of the zones where the disk should be replicated to.
@@ -1120,6 +1155,19 @@ func (o RegionDiskOutput) PhysicalBlockSizeBytes() pulumi.IntOutput {
 // If it is not provided, the provider project is used.
 func (o RegionDiskOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionDisk) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second
+// that the disk can handle. Values must be between 10,000 and 120,000.
+// For more details, see the Extreme persistent disk [documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+func (o RegionDiskOutput) ProvisionedIops() pulumi.IntOutput {
+	return o.ApplyT(func(v *RegionDisk) pulumi.IntOutput { return v.ProvisionedIops }).(pulumi.IntOutput)
+}
+
+// Indicates how much throughput to provision for the disk. This sets the number of throughput
+// mb per second that the disk can handle. Values must be greater than or equal to 1.
+func (o RegionDiskOutput) ProvisionedThroughput() pulumi.IntOutput {
+	return o.ApplyT(func(v *RegionDisk) pulumi.IntOutput { return v.ProvisionedThroughput }).(pulumi.IntOutput)
 }
 
 // The combination of labels configured directly on the resource

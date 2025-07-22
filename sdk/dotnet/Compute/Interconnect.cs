@@ -74,12 +74,26 @@ namespace Pulumi.Gcp.Compute
     public partial class Interconnect : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
+        /// </summary>
+        [Output("aaiEnabled")]
+        public Output<bool?> AaiEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// Administrative status of the interconnect. When this is set to true, the Interconnect is
         /// functional and can carry traffic. When set to false, no packets can be carried over the
         /// interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
         /// </summary>
         [Output("adminEnabled")]
         public Output<bool?> AdminEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration that enables Media Access Control security (MACsec) on the Cloud
+        /// Interconnect connection between Google and your on-premises router.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("applicationAwareInterconnect")]
+        public Output<Outputs.InterconnectApplicationAwareInterconnect?> ApplicationAwareInterconnect { get; private set; } = null!;
 
         /// <summary>
         /// interconnects.list of features available for this Interconnect connection. Can take the value:
@@ -382,12 +396,26 @@ namespace Pulumi.Gcp.Compute
     public sealed class InterconnectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
+        /// </summary>
+        [Input("aaiEnabled")]
+        public Input<bool>? AaiEnabled { get; set; }
+
+        /// <summary>
         /// Administrative status of the interconnect. When this is set to true, the Interconnect is
         /// functional and can carry traffic. When set to false, no packets can be carried over the
         /// interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
         /// </summary>
         [Input("adminEnabled")]
         public Input<bool>? AdminEnabled { get; set; }
+
+        /// <summary>
+        /// Configuration that enables Media Access Control security (MACsec) on the Cloud
+        /// Interconnect connection between Google and your on-premises router.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("applicationAwareInterconnect")]
+        public Input<Inputs.InterconnectApplicationAwareInterconnectArgs>? ApplicationAwareInterconnect { get; set; }
 
         /// <summary>
         /// Customer name, to put in the Letter of Authorization as the party authorized to request a
@@ -528,12 +556,26 @@ namespace Pulumi.Gcp.Compute
     public sealed class InterconnectState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
+        /// </summary>
+        [Input("aaiEnabled")]
+        public Input<bool>? AaiEnabled { get; set; }
+
+        /// <summary>
         /// Administrative status of the interconnect. When this is set to true, the Interconnect is
         /// functional and can carry traffic. When set to false, no packets can be carried over the
         /// interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
         /// </summary>
         [Input("adminEnabled")]
         public Input<bool>? AdminEnabled { get; set; }
+
+        /// <summary>
+        /// Configuration that enables Media Access Control security (MACsec) on the Cloud
+        /// Interconnect connection between Google and your on-premises router.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("applicationAwareInterconnect")]
+        public Input<Inputs.InterconnectApplicationAwareInterconnectGetArgs>? ApplicationAwareInterconnect { get; set; }
 
         [Input("availableFeatures")]
         private InputList<string>? _availableFeatures;

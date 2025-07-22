@@ -274,6 +274,20 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.eventBasedHold);
     }
     /**
+     * When set to true, it ensure the object&#39;s Content-Type is empty.
+     * 
+     */
+    @Export(name="forceEmptyContentType", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> forceEmptyContentType;
+
+    /**
+     * @return When set to true, it ensure the object&#39;s Content-Type is empty.
+     * 
+     */
+    public Output<Optional<Boolean>> forceEmptyContentType() {
+        return Codegen.optional(this.forceEmptyContentType);
+    }
+    /**
      * (Computed) The content generation of this object. Used for object [versioning](https://cloud.google.com/storage/docs/object-versioning) and [soft delete](https://cloud.google.com/storage/docs/soft-delete).
      * 
      */

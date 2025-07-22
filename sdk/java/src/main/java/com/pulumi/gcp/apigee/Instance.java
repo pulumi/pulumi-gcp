@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.apigee.InstanceArgs;
 import com.pulumi.gcp.apigee.inputs.InstanceState;
+import com.pulumi.gcp.apigee.outputs.InstanceAccessLoggingConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -383,6 +384,24 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:apigee/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
+    /**
+     * Access logging configuration enables the access logging feature at the instance.
+     * Apigee customers can enable access logging to ship the access logs to their own project&#39;s cloud logging.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="accessLoggingConfig", refs={InstanceAccessLoggingConfig.class}, tree="[0]")
+    private Output</* @Nullable */ InstanceAccessLoggingConfig> accessLoggingConfig;
+
+    /**
+     * @return Access logging configuration enables the access logging feature at the instance.
+     * Apigee customers can enable access logging to ship the access logs to their own project&#39;s cloud logging.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<InstanceAccessLoggingConfig>> accessLoggingConfig() {
+        return Codegen.optional(this.accessLoggingConfig);
+    }
     /**
      * Optional. Customer accept list represents the list of projects (id/number) on customer
      * side that can privately connect to the service attachment. It is an optional field

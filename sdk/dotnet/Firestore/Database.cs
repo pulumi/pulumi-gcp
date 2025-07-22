@@ -71,6 +71,32 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
+    /// ### Firestore Database With Tags
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var database = new Gcp.Firestore.Database("database", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Name = "database-with-tags-id",
+    ///         LocationId = "nam5",
+    ///         Type = "FIRESTORE_NATIVE",
+    ///         DeleteProtectionState = "DELETE_PROTECTION_ENABLED",
+    ///         DeletionPolicy = "DELETE",
+    ///         Tags = 
+    ///         {
+    ///             { "keyname", "valuename" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Firestore Cmek Database
     /// 
     /// ```csharp
@@ -391,6 +417,17 @@ namespace Pulumi.Gcp.Firestore
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// Input only. A map of resource manager tags. Resource manager tag keys
+        /// and values have the same definition as resource manager tags.
+        /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+        /// The field is ignored when empty. The field is immutable and causes
+        /// resource replacement when mutated. To apply tags to an existing resource, see
+        /// the `gcp.tags.TagValue` resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
+
+        /// <summary>
         /// The type of the database.
         /// See https://cloud.google.com/datastore/docs/firestore-or-datastore
         /// for information about how to choose.
@@ -539,6 +576,23 @@ namespace Pulumi.Gcp.Firestore
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Input only. A map of resource manager tags. Resource manager tag keys
+        /// and values have the same definition as resource manager tags.
+        /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+        /// The field is ignored when empty. The field is immutable and causes
+        /// resource replacement when mutated. To apply tags to an existing resource, see
+        /// the `gcp.tags.TagValue` resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// The type of the database.
         /// See https://cloud.google.com/datastore/docs/firestore-or-datastore
@@ -659,6 +713,23 @@ namespace Pulumi.Gcp.Firestore
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Input only. A map of resource manager tags. Resource manager tag keys
+        /// and values have the same definition as resource manager tags.
+        /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+        /// The field is ignored when empty. The field is immutable and causes
+        /// resource replacement when mutated. To apply tags to an existing resource, see
+        /// the `gcp.tags.TagValue` resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The type of the database.

@@ -42,6 +42,135 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Reservation Basic Beta
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const gceReservation = new gcp.compute.Reservation("gce_reservation", {
+ *     name: "gce-reservation",
+ *     zone: "us-central1-a",
+ *     specificReservation: {
+ *         count: 1,
+ *         instanceProperties: {
+ *             minCpuPlatform: "Intel Cascade Lake",
+ *             machineType: "n2-standard-2",
+ *             maintenanceInterval: "PERIODIC",
+ *         },
+ *     },
+ *     enableEmergentMaintenance: true,
+ * });
+ * ```
+ * ### Reservation Source Instance Template
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myImage = gcp.compute.getImage({
+ *     family: "debian-11",
+ *     project: "debian-cloud",
+ * });
+ * const foobar = new gcp.compute.InstanceTemplate("foobar", {
+ *     name: "tf-test-instance-template",
+ *     machineType: "n2-standard-2",
+ *     canIpForward: false,
+ *     tags: [
+ *         "foo",
+ *         "bar",
+ *     ],
+ *     disks: [{
+ *         sourceImage: myImage.then(myImage => myImage.selfLink),
+ *         autoDelete: true,
+ *         boot: true,
+ *     }],
+ *     networkInterfaces: [{
+ *         network: "default",
+ *     }],
+ *     scheduling: {
+ *         preemptible: false,
+ *         automaticRestart: true,
+ *     },
+ *     metadata: {
+ *         foo: "bar",
+ *     },
+ *     serviceAccount: {
+ *         scopes: [
+ *             "userinfo-email",
+ *             "compute-ro",
+ *             "storage-ro",
+ *         ],
+ *     },
+ *     labels: {
+ *         my_label: "foobar",
+ *     },
+ * });
+ * const gceReservationSourceInstanceTemplate = new gcp.compute.Reservation("gce_reservation_source_instance_template", {
+ *     name: "gce-reservation-source-instance-template",
+ *     zone: "us-central1-a",
+ *     specificReservation: {
+ *         count: 1,
+ *         sourceInstanceTemplate: foobar.selfLink,
+ *     },
+ * });
+ * ```
+ * ### Reservation Sharing Policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myImage = gcp.compute.getImage({
+ *     family: "debian-11",
+ *     project: "debian-cloud",
+ * });
+ * const foobar = new gcp.compute.InstanceTemplate("foobar", {
+ *     name: "tf-test-instance-template",
+ *     machineType: "g2-standard-4",
+ *     canIpForward: false,
+ *     tags: [
+ *         "foo",
+ *         "bar",
+ *     ],
+ *     disks: [{
+ *         sourceImage: myImage.then(myImage => myImage.selfLink),
+ *         autoDelete: true,
+ *         boot: true,
+ *     }],
+ *     networkInterfaces: [{
+ *         network: "default",
+ *     }],
+ *     scheduling: {
+ *         preemptible: false,
+ *         automaticRestart: true,
+ *     },
+ *     metadata: {
+ *         foo: "bar",
+ *     },
+ *     serviceAccount: {
+ *         scopes: [
+ *             "userinfo-email",
+ *             "compute-ro",
+ *             "storage-ro",
+ *         ],
+ *     },
+ *     labels: {
+ *         my_label: "foobar",
+ *     },
+ * });
+ * const gceReservationSharingPolicy = new gcp.compute.Reservation("gce_reservation_sharing_policy", {
+ *     name: "gce-reservation-sharing-policy",
+ *     zone: "us-central1-b",
+ *     specificReservation: {
+ *         count: 2,
+ *         sourceInstanceTemplate: foobar.selfLink,
+ *     },
+ *     reservationSharingPolicy: {
+ *         serviceShareType: "ALLOW_ALL",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -111,9 +240,23 @@ export class Reservation extends pulumi.CustomResource {
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
+     * Duration after which the reservation will be auto-deleted by Compute Engine. Cannot be used with delete_at_time.
+     * Structure is documented below.
+     */
+    public readonly deleteAfterDuration!: pulumi.Output<outputs.compute.ReservationDeleteAfterDuration | undefined>;
+    /**
+     * Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
+     * Cannot be used with delete_after_duration.
+     */
+    public readonly deleteAtTime!: pulumi.Output<string>;
+    /**
      * An optional description of this resource.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * Indicates if this group of VMs have emergent maintenance enabled.
+     */
+    public readonly enableEmergentMaintenance!: pulumi.Output<boolean | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -129,6 +272,11 @@ export class Reservation extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * Sharing policy for reservations with Google Cloud managed services.
+     * Structure is documented below.
+     */
+    public readonly reservationSharingPolicy!: pulumi.Output<outputs.compute.ReservationReservationSharingPolicy>;
     /**
      * The URI of the created resource.
      */
@@ -173,9 +321,13 @@ export class Reservation extends pulumi.CustomResource {
             const state = argsOrState as ReservationState | undefined;
             resourceInputs["commitment"] = state ? state.commitment : undefined;
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
+            resourceInputs["deleteAfterDuration"] = state ? state.deleteAfterDuration : undefined;
+            resourceInputs["deleteAtTime"] = state ? state.deleteAtTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enableEmergentMaintenance"] = state ? state.enableEmergentMaintenance : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["reservationSharingPolicy"] = state ? state.reservationSharingPolicy : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["shareSettings"] = state ? state.shareSettings : undefined;
             resourceInputs["specificReservation"] = state ? state.specificReservation : undefined;
@@ -190,9 +342,13 @@ export class Reservation extends pulumi.CustomResource {
             if ((!args || args.zone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
+            resourceInputs["deleteAfterDuration"] = args ? args.deleteAfterDuration : undefined;
+            resourceInputs["deleteAtTime"] = args ? args.deleteAtTime : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enableEmergentMaintenance"] = args ? args.enableEmergentMaintenance : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["reservationSharingPolicy"] = args ? args.reservationSharingPolicy : undefined;
             resourceInputs["shareSettings"] = args ? args.shareSettings : undefined;
             resourceInputs["specificReservation"] = args ? args.specificReservation : undefined;
             resourceInputs["specificReservationRequired"] = args ? args.specificReservationRequired : undefined;
@@ -221,9 +377,23 @@ export interface ReservationState {
      */
     creationTimestamp?: pulumi.Input<string>;
     /**
+     * Duration after which the reservation will be auto-deleted by Compute Engine. Cannot be used with delete_at_time.
+     * Structure is documented below.
+     */
+    deleteAfterDuration?: pulumi.Input<inputs.compute.ReservationDeleteAfterDuration>;
+    /**
+     * Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
+     * Cannot be used with delete_after_duration.
+     */
+    deleteAtTime?: pulumi.Input<string>;
+    /**
      * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Indicates if this group of VMs have emergent maintenance enabled.
+     */
+    enableEmergentMaintenance?: pulumi.Input<boolean>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -239,6 +409,11 @@ export interface ReservationState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Sharing policy for reservations with Google Cloud managed services.
+     * Structure is documented below.
+     */
+    reservationSharingPolicy?: pulumi.Input<inputs.compute.ReservationReservationSharingPolicy>;
     /**
      * The URI of the created resource.
      */
@@ -274,9 +449,23 @@ export interface ReservationState {
  */
 export interface ReservationArgs {
     /**
+     * Duration after which the reservation will be auto-deleted by Compute Engine. Cannot be used with delete_at_time.
+     * Structure is documented below.
+     */
+    deleteAfterDuration?: pulumi.Input<inputs.compute.ReservationDeleteAfterDuration>;
+    /**
+     * Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
+     * Cannot be used with delete_after_duration.
+     */
+    deleteAtTime?: pulumi.Input<string>;
+    /**
      * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Indicates if this group of VMs have emergent maintenance enabled.
+     */
+    enableEmergentMaintenance?: pulumi.Input<boolean>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -292,6 +481,11 @@ export interface ReservationArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Sharing policy for reservations with Google Cloud managed services.
+     * Structure is documented below.
+     */
+    reservationSharingPolicy?: pulumi.Input<inputs.compute.ReservationReservationSharingPolicy>;
     /**
      * The share setting for reservations.
      * Structure is documented below.

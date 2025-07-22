@@ -35,6 +35,11 @@ public final class SecurityPolicyAdvancedOptionsConfig {
      */
     private @Nullable String logLevel;
     /**
+     * @return The maximum request size chosen by the customer with Waf enabled. Values supported are &#34;8KB&#34;, &#34;16KB, &#34;32KB&#34;, &#34;48KB&#34; and &#34;64KB&#34;. Values are case insensitive.
+     * 
+     */
+    private @Nullable String requestBodyInspectionSize;
+    /**
      * @return An optional list of case-insensitive request header names to use for resolving the callers client IP address.
      * 
      */
@@ -69,6 +74,13 @@ public final class SecurityPolicyAdvancedOptionsConfig {
         return Optional.ofNullable(this.logLevel);
     }
     /**
+     * @return The maximum request size chosen by the customer with Waf enabled. Values supported are &#34;8KB&#34;, &#34;16KB, &#34;32KB&#34;, &#34;48KB&#34; and &#34;64KB&#34;. Values are case insensitive.
+     * 
+     */
+    public Optional<String> requestBodyInspectionSize() {
+        return Optional.ofNullable(this.requestBodyInspectionSize);
+    }
+    /**
      * @return An optional list of case-insensitive request header names to use for resolving the callers client IP address.
      * 
      */
@@ -88,6 +100,7 @@ public final class SecurityPolicyAdvancedOptionsConfig {
         private @Nullable SecurityPolicyAdvancedOptionsConfigJsonCustomConfig jsonCustomConfig;
         private @Nullable String jsonParsing;
         private @Nullable String logLevel;
+        private @Nullable String requestBodyInspectionSize;
         private @Nullable List<String> userIpRequestHeaders;
         public Builder() {}
         public Builder(SecurityPolicyAdvancedOptionsConfig defaults) {
@@ -95,6 +108,7 @@ public final class SecurityPolicyAdvancedOptionsConfig {
     	      this.jsonCustomConfig = defaults.jsonCustomConfig;
     	      this.jsonParsing = defaults.jsonParsing;
     	      this.logLevel = defaults.logLevel;
+    	      this.requestBodyInspectionSize = defaults.requestBodyInspectionSize;
     	      this.userIpRequestHeaders = defaults.userIpRequestHeaders;
         }
 
@@ -117,6 +131,12 @@ public final class SecurityPolicyAdvancedOptionsConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder requestBodyInspectionSize(@Nullable String requestBodyInspectionSize) {
+
+            this.requestBodyInspectionSize = requestBodyInspectionSize;
+            return this;
+        }
+        @CustomType.Setter
         public Builder userIpRequestHeaders(@Nullable List<String> userIpRequestHeaders) {
 
             this.userIpRequestHeaders = userIpRequestHeaders;
@@ -130,6 +150,7 @@ public final class SecurityPolicyAdvancedOptionsConfig {
             _resultValue.jsonCustomConfig = jsonCustomConfig;
             _resultValue.jsonParsing = jsonParsing;
             _resultValue.logLevel = logLevel;
+            _resultValue.requestBodyInspectionSize = requestBodyInspectionSize;
             _resultValue.userIpRequestHeaders = userIpRequestHeaders;
             return _resultValue;
         }

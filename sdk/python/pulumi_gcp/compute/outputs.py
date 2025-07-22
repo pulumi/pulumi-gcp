@@ -78,6 +78,7 @@ __all__ = [
     'FirewallAllow',
     'FirewallDeny',
     'FirewallLogConfig',
+    'FirewallParams',
     'FirewallPolicyRuleMatch',
     'FirewallPolicyRuleMatchLayer4Config',
     'FirewallPolicyRuleMatchSrcSecureTag',
@@ -89,6 +90,9 @@ __all__ = [
     'FirewallPolicyWithRulesRuleMatch',
     'FirewallPolicyWithRulesRuleMatchLayer4Config',
     'ForwardingRuleServiceDirectoryRegistrations',
+    'FutureReservationAggregateReservation',
+    'FutureReservationAggregateReservationReservedResource',
+    'FutureReservationAggregateReservationReservedResourceAccelerator',
     'FutureReservationAutoCreatedReservationsDuration',
     'FutureReservationCommitmentInfo',
     'FutureReservationShareSettings',
@@ -268,6 +272,11 @@ __all__ = [
     'InstanceTemplateShieldedInstanceConfig',
     'InstantSnapshotIamBindingCondition',
     'InstantSnapshotIamMemberCondition',
+    'InterconnectApplicationAwareInterconnect',
+    'InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy',
+    'InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentage',
+    'InterconnectApplicationAwareInterconnectShapeAveragePercentage',
+    'InterconnectApplicationAwareInterconnectStrictPriorityPolicy',
     'InterconnectAttachmentGroupAttachment',
     'InterconnectAttachmentGroupConfigured',
     'InterconnectAttachmentGroupConfiguredAvailabilitySla',
@@ -573,6 +582,8 @@ __all__ = [
     'RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd',
     'RegionUrlMapPathMatcherRouteRuleUrlRedirect',
     'RegionUrlMapTest',
+    'ReservationDeleteAfterDuration',
+    'ReservationReservationSharingPolicy',
     'ReservationShareSettings',
     'ReservationShareSettingsProjectMap',
     'ReservationSpecificReservation',
@@ -932,6 +943,7 @@ __all__ = [
     'GetMachineTypesMachineTypeAcceleratorResult',
     'GetMachineTypesMachineTypeBundledLocalSsdResult',
     'GetMachineTypesMachineTypeDeprecatedResult',
+    'GetNetworkAttachmentConnectionEndpointResult',
     'GetRegionBackendServiceBackendResult',
     'GetRegionBackendServiceBackendCustomMetricResult',
     'GetRegionBackendServiceCdnPolicyResult',
@@ -1008,6 +1020,8 @@ __all__ = [
     'GetRegionNetworkEndpointGroupCloudRunResult',
     'GetRegionNetworkEndpointGroupPscDataResult',
     'GetRegionNetworkEndpointGroupServerlessDeploymentResult',
+    'GetReservationDeleteAfterDurationResult',
+    'GetReservationReservationSharingPolicyResult',
     'GetReservationShareSettingResult',
     'GetReservationShareSettingProjectMapResult',
     'GetReservationSpecificReservationResult',
@@ -5392,6 +5406,52 @@ class FirewallLogConfig(dict):
 
 
 @pulumi.output_type
+class FirewallParams(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceManagerTags":
+            suggest = "resource_manager_tags"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FirewallParams. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FirewallParams.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FirewallParams.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resource_manager_tags: Optional[Mapping[str, builtins.str]] = None):
+        """
+        :param Mapping[str, builtins.str] resource_manager_tags: Resource manager tags to be bound to the firewall. Tag keys and values have the
+               same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+               and values are in the format tagValues/456. The field is ignored when empty.
+               The field is immutable and causes resource replacement when mutated. This field is only
+               set at create time and modifying this field after creation will trigger recreation.
+               To apply tags to an existing resource, see the tags.TagBinding resource.
+        """
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[Mapping[str, builtins.str]]:
+        """
+        Resource manager tags to be bound to the firewall. Tag keys and values have the
+        same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456. The field is ignored when empty.
+        The field is immutable and causes resource replacement when mutated. This field is only
+        set at create time and modifying this field after creation will trigger recreation.
+        To apply tags to an existing resource, see the tags.TagBinding resource.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+
+@pulumi.output_type
 class FirewallPolicyRuleMatch(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -6839,6 +6899,146 @@ class ForwardingRuleServiceDirectoryRegistrations(dict):
         Service Directory service to register the forwarding rule under.
         """
         return pulumi.get(self, "service")
+
+
+@pulumi.output_type
+class FutureReservationAggregateReservation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "reservedResources":
+            suggest = "reserved_resources"
+        elif key == "vmFamily":
+            suggest = "vm_family"
+        elif key == "workloadType":
+            suggest = "workload_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FutureReservationAggregateReservation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FutureReservationAggregateReservation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FutureReservationAggregateReservation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 reserved_resources: Sequence['outputs.FutureReservationAggregateReservationReservedResource'],
+                 vm_family: Optional[builtins.str] = None,
+                 workload_type: Optional[builtins.str] = None):
+        """
+        :param Sequence['FutureReservationAggregateReservationReservedResourceArgs'] reserved_resources: futureReservations.list of reserved resources (CPUs, memory, accelerators).
+               Structure is documented below.
+        :param builtins.str vm_family: The VM family that all instances scheduled against this reservation must belong to.
+               Possible values are: `VM_FAMILY_CLOUD_TPU_DEVICE_CT3`, `VM_FAMILY_CLOUD_TPU_LITE_DEVICE_CT5L`, `VM_FAMILY_CLOUD_TPU_LITE_POD_SLICE_CT5LP`, `VM_FAMILY_CLOUD_TPU_LITE_POD_SLICE_CT6E`, `VM_FAMILY_CLOUD_TPU_POD_SLICE_CT3P`, `VM_FAMILY_CLOUD_TPU_POD_SLICE_CT4P`, `VM_FAMILY_CLOUD_TPU_POD_SLICE_CT5P`.
+        :param builtins.str workload_type: The workload type of the instances that will target this reservation.
+               Possible values are: `BATCH`, `SERVING`, `UNSPECIFIED`.
+        """
+        pulumi.set(__self__, "reserved_resources", reserved_resources)
+        if vm_family is not None:
+            pulumi.set(__self__, "vm_family", vm_family)
+        if workload_type is not None:
+            pulumi.set(__self__, "workload_type", workload_type)
+
+    @property
+    @pulumi.getter(name="reservedResources")
+    def reserved_resources(self) -> Sequence['outputs.FutureReservationAggregateReservationReservedResource']:
+        """
+        futureReservations.list of reserved resources (CPUs, memory, accelerators).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "reserved_resources")
+
+    @property
+    @pulumi.getter(name="vmFamily")
+    def vm_family(self) -> Optional[builtins.str]:
+        """
+        The VM family that all instances scheduled against this reservation must belong to.
+        Possible values are: `VM_FAMILY_CLOUD_TPU_DEVICE_CT3`, `VM_FAMILY_CLOUD_TPU_LITE_DEVICE_CT5L`, `VM_FAMILY_CLOUD_TPU_LITE_POD_SLICE_CT5LP`, `VM_FAMILY_CLOUD_TPU_LITE_POD_SLICE_CT6E`, `VM_FAMILY_CLOUD_TPU_POD_SLICE_CT3P`, `VM_FAMILY_CLOUD_TPU_POD_SLICE_CT4P`, `VM_FAMILY_CLOUD_TPU_POD_SLICE_CT5P`.
+        """
+        return pulumi.get(self, "vm_family")
+
+    @property
+    @pulumi.getter(name="workloadType")
+    def workload_type(self) -> Optional[builtins.str]:
+        """
+        The workload type of the instances that will target this reservation.
+        Possible values are: `BATCH`, `SERVING`, `UNSPECIFIED`.
+        """
+        return pulumi.get(self, "workload_type")
+
+
+@pulumi.output_type
+class FutureReservationAggregateReservationReservedResource(dict):
+    def __init__(__self__, *,
+                 accelerator: Optional['outputs.FutureReservationAggregateReservationReservedResourceAccelerator'] = None):
+        """
+        :param 'FutureReservationAggregateReservationReservedResourceAcceleratorArgs' accelerator: Properties of accelerator resources in this reservation.
+               Structure is documented below.
+        """
+        if accelerator is not None:
+            pulumi.set(__self__, "accelerator", accelerator)
+
+    @property
+    @pulumi.getter
+    def accelerator(self) -> Optional['outputs.FutureReservationAggregateReservationReservedResourceAccelerator']:
+        """
+        Properties of accelerator resources in this reservation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "accelerator")
+
+
+@pulumi.output_type
+class FutureReservationAggregateReservationReservedResourceAccelerator(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acceleratorCount":
+            suggest = "accelerator_count"
+        elif key == "acceleratorType":
+            suggest = "accelerator_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FutureReservationAggregateReservationReservedResourceAccelerator. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FutureReservationAggregateReservationReservedResourceAccelerator.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FutureReservationAggregateReservationReservedResourceAccelerator.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 accelerator_count: Optional[builtins.int] = None,
+                 accelerator_type: Optional[builtins.str] = None):
+        """
+        :param builtins.int accelerator_count: Number of accelerators of specified type.
+        :param builtins.str accelerator_type: Full or partial URL to accelerator type. e.g. "projects/{PROJECT}/zones/{ZONE}/acceleratorTypes/ct4l"
+        """
+        if accelerator_count is not None:
+            pulumi.set(__self__, "accelerator_count", accelerator_count)
+        if accelerator_type is not None:
+            pulumi.set(__self__, "accelerator_type", accelerator_type)
+
+    @property
+    @pulumi.getter(name="acceleratorCount")
+    def accelerator_count(self) -> Optional[builtins.int]:
+        """
+        Number of accelerators of specified type.
+        """
+        return pulumi.get(self, "accelerator_count")
+
+    @property
+    @pulumi.getter(name="acceleratorType")
+    def accelerator_type(self) -> Optional[builtins.str]:
+        """
+        Full or partial URL to accelerator type. e.g. "projects/{PROJECT}/zones/{ZONE}/acceleratorTypes/ct4l"
+        """
+        return pulumi.get(self, "accelerator_type")
 
 
 @pulumi.output_type
@@ -20642,6 +20842,242 @@ class InstantSnapshotIamMemberCondition(dict):
     @pulumi.getter
     def description(self) -> Optional[builtins.str]:
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class InterconnectApplicationAwareInterconnect(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bandwidthPercentagePolicy":
+            suggest = "bandwidth_percentage_policy"
+        elif key == "profileDescription":
+            suggest = "profile_description"
+        elif key == "shapeAveragePercentages":
+            suggest = "shape_average_percentages"
+        elif key == "strictPriorityPolicy":
+            suggest = "strict_priority_policy"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InterconnectApplicationAwareInterconnect. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InterconnectApplicationAwareInterconnect.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InterconnectApplicationAwareInterconnect.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bandwidth_percentage_policy: Optional['outputs.InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy'] = None,
+                 profile_description: Optional[builtins.str] = None,
+                 shape_average_percentages: Optional[Sequence['outputs.InterconnectApplicationAwareInterconnectShapeAveragePercentage']] = None,
+                 strict_priority_policy: Optional['outputs.InterconnectApplicationAwareInterconnectStrictPriorityPolicy'] = None):
+        """
+        :param 'InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyArgs' bandwidth_percentage_policy: Bandwidth Percentage policy allows you to have granular control over how your Interconnect
+               bandwidth is utilized among your workloads mapping to different traffic classes.
+               Structure is documented below.
+        :param builtins.str profile_description: A description for the AAI profile on this interconnect.
+        :param Sequence['InterconnectApplicationAwareInterconnectShapeAveragePercentageArgs'] shape_average_percentages: Optional field to specify a list of shape average percentages to be
+               applied in conjunction with StrictPriorityPolicy or BandwidthPercentagePolicy
+               Structure is documented below.
+        :param 'InterconnectApplicationAwareInterconnectStrictPriorityPolicyArgs' strict_priority_policy: Specify configuration for StrictPriorityPolicy.
+        """
+        if bandwidth_percentage_policy is not None:
+            pulumi.set(__self__, "bandwidth_percentage_policy", bandwidth_percentage_policy)
+        if profile_description is not None:
+            pulumi.set(__self__, "profile_description", profile_description)
+        if shape_average_percentages is not None:
+            pulumi.set(__self__, "shape_average_percentages", shape_average_percentages)
+        if strict_priority_policy is not None:
+            pulumi.set(__self__, "strict_priority_policy", strict_priority_policy)
+
+    @property
+    @pulumi.getter(name="bandwidthPercentagePolicy")
+    def bandwidth_percentage_policy(self) -> Optional['outputs.InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy']:
+        """
+        Bandwidth Percentage policy allows you to have granular control over how your Interconnect
+        bandwidth is utilized among your workloads mapping to different traffic classes.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bandwidth_percentage_policy")
+
+    @property
+    @pulumi.getter(name="profileDescription")
+    def profile_description(self) -> Optional[builtins.str]:
+        """
+        A description for the AAI profile on this interconnect.
+        """
+        return pulumi.get(self, "profile_description")
+
+    @property
+    @pulumi.getter(name="shapeAveragePercentages")
+    def shape_average_percentages(self) -> Optional[Sequence['outputs.InterconnectApplicationAwareInterconnectShapeAveragePercentage']]:
+        """
+        Optional field to specify a list of shape average percentages to be
+        applied in conjunction with StrictPriorityPolicy or BandwidthPercentagePolicy
+        Structure is documented below.
+        """
+        return pulumi.get(self, "shape_average_percentages")
+
+    @property
+    @pulumi.getter(name="strictPriorityPolicy")
+    def strict_priority_policy(self) -> Optional['outputs.InterconnectApplicationAwareInterconnectStrictPriorityPolicy']:
+        """
+        Specify configuration for StrictPriorityPolicy.
+        """
+        return pulumi.get(self, "strict_priority_policy")
+
+
+@pulumi.output_type
+class InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bandwidthPercentages":
+            suggest = "bandwidth_percentages"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bandwidth_percentages: Optional[Sequence['outputs.InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentage']] = None):
+        """
+        :param Sequence['InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentageArgs'] bandwidth_percentages: Specify bandwidth percentages for various traffic classes for queuing
+               type Bandwidth Percent.
+               Structure is documented below.
+        """
+        if bandwidth_percentages is not None:
+            pulumi.set(__self__, "bandwidth_percentages", bandwidth_percentages)
+
+    @property
+    @pulumi.getter(name="bandwidthPercentages")
+    def bandwidth_percentages(self) -> Optional[Sequence['outputs.InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentage']]:
+        """
+        Specify bandwidth percentages for various traffic classes for queuing
+        type Bandwidth Percent.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bandwidth_percentages")
+
+
+@pulumi.output_type
+class InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "trafficClass":
+            suggest = "traffic_class"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 percentage: Optional[builtins.int] = None,
+                 traffic_class: Optional[builtins.str] = None):
+        """
+        :param builtins.int percentage: Bandwidth percentage for a specific traffic class.
+        :param builtins.str traffic_class: Enum representing the various traffic classes offered by AAI.
+               Default value is `TC_UNSPECIFIED`.
+               Possible values are: `TC_UNSPECIFIED`, `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.
+        """
+        if percentage is not None:
+            pulumi.set(__self__, "percentage", percentage)
+        if traffic_class is not None:
+            pulumi.set(__self__, "traffic_class", traffic_class)
+
+    @property
+    @pulumi.getter
+    def percentage(self) -> Optional[builtins.int]:
+        """
+        Bandwidth percentage for a specific traffic class.
+        """
+        return pulumi.get(self, "percentage")
+
+    @property
+    @pulumi.getter(name="trafficClass")
+    def traffic_class(self) -> Optional[builtins.str]:
+        """
+        Enum representing the various traffic classes offered by AAI.
+        Default value is `TC_UNSPECIFIED`.
+        Possible values are: `TC_UNSPECIFIED`, `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.
+        """
+        return pulumi.get(self, "traffic_class")
+
+
+@pulumi.output_type
+class InterconnectApplicationAwareInterconnectShapeAveragePercentage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "trafficClass":
+            suggest = "traffic_class"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InterconnectApplicationAwareInterconnectShapeAveragePercentage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InterconnectApplicationAwareInterconnectShapeAveragePercentage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InterconnectApplicationAwareInterconnectShapeAveragePercentage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 percentage: Optional[builtins.int] = None,
+                 traffic_class: Optional[builtins.str] = None):
+        """
+        :param builtins.int percentage: Bandwidth percentage for a specific traffic class.
+        :param builtins.str traffic_class: Enum representing the various traffic classes offered by AAI.
+               Default value is `TC_UNSPECIFIED`.
+               Possible values are: `TC_UNSPECIFIED`, `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.
+        """
+        if percentage is not None:
+            pulumi.set(__self__, "percentage", percentage)
+        if traffic_class is not None:
+            pulumi.set(__self__, "traffic_class", traffic_class)
+
+    @property
+    @pulumi.getter
+    def percentage(self) -> Optional[builtins.int]:
+        """
+        Bandwidth percentage for a specific traffic class.
+        """
+        return pulumi.get(self, "percentage")
+
+    @property
+    @pulumi.getter(name="trafficClass")
+    def traffic_class(self) -> Optional[builtins.str]:
+        """
+        Enum representing the various traffic classes offered by AAI.
+        Default value is `TC_UNSPECIFIED`.
+        Possible values are: `TC_UNSPECIFIED`, `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.
+        """
+        return pulumi.get(self, "traffic_class")
+
+
+@pulumi.output_type
+class InterconnectApplicationAwareInterconnectStrictPriorityPolicy(dict):
+    def __init__(__self__):
+        pass
 
 
 @pulumi.output_type
@@ -43491,6 +43927,75 @@ class RegionUrlMapTest(dict):
 
 
 @pulumi.output_type
+class ReservationDeleteAfterDuration(dict):
+    def __init__(__self__, *,
+                 nanos: Optional[builtins.int] = None,
+                 seconds: Optional[builtins.str] = None):
+        """
+        :param builtins.int nanos: Number of nanoseconds for the auto-delete duration.
+        :param builtins.str seconds: Number of seconds for the auto-delete duration.
+        """
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+        if seconds is not None:
+            pulumi.set(__self__, "seconds", seconds)
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[builtins.int]:
+        """
+        Number of nanoseconds for the auto-delete duration.
+        """
+        return pulumi.get(self, "nanos")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> Optional[builtins.str]:
+        """
+        Number of seconds for the auto-delete duration.
+        """
+        return pulumi.get(self, "seconds")
+
+
+@pulumi.output_type
+class ReservationReservationSharingPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceShareType":
+            suggest = "service_share_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReservationReservationSharingPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReservationReservationSharingPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReservationReservationSharingPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 service_share_type: Optional[builtins.str] = None):
+        """
+        :param builtins.str service_share_type: Sharing config for all Google Cloud services.
+               Possible values are: `ALLOW_ALL`, `DISALLOW_ALL`.
+        """
+        if service_share_type is not None:
+            pulumi.set(__self__, "service_share_type", service_share_type)
+
+    @property
+    @pulumi.getter(name="serviceShareType")
+    def service_share_type(self) -> Optional[builtins.str]:
+        """
+        Sharing config for all Google Cloud services.
+        Possible values are: `ALLOW_ALL`, `DISALLOW_ALL`.
+        """
+        return pulumi.get(self, "service_share_type")
+
+
+@pulumi.output_type
 class ReservationShareSettings(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -43513,15 +44018,19 @@ class ReservationShareSettings(dict):
 
     def __init__(__self__, *,
                  project_maps: Optional[Sequence['outputs.ReservationShareSettingsProjectMap']] = None,
+                 projects: Optional[Sequence[builtins.str]] = None,
                  share_type: Optional[builtins.str] = None):
         """
         :param Sequence['ReservationShareSettingsProjectMapArgs'] project_maps: A map of project number and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
                Structure is documented below.
+        :param Sequence[builtins.str] projects: List of project IDs with which the reservation is shared.
         :param builtins.str share_type: Type of sharing for this shared-reservation
                Possible values are: `LOCAL`, `SPECIFIC_PROJECTS`.
         """
         if project_maps is not None:
             pulumi.set(__self__, "project_maps", project_maps)
+        if projects is not None:
+            pulumi.set(__self__, "projects", projects)
         if share_type is not None:
             pulumi.set(__self__, "share_type", share_type)
 
@@ -43533,6 +44042,14 @@ class ReservationShareSettings(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "project_maps")
+
+    @property
+    @pulumi.getter
+    def projects(self) -> Optional[Sequence[builtins.str]]:
+        """
+        List of project IDs with which the reservation is shared.
+        """
+        return pulumi.get(self, "projects")
 
     @property
     @pulumi.getter(name="shareType")
@@ -43596,10 +44113,12 @@ class ReservationSpecificReservation(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "instanceProperties":
-            suggest = "instance_properties"
-        elif key == "inUseCount":
+        if key == "inUseCount":
             suggest = "in_use_count"
+        elif key == "instanceProperties":
+            suggest = "instance_properties"
+        elif key == "sourceInstanceTemplate":
+            suggest = "source_instance_template"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ReservationSpecificReservation. Access the value via the '{suggest}' property getter instead.")
@@ -43614,19 +44133,25 @@ class ReservationSpecificReservation(dict):
 
     def __init__(__self__, *,
                  count: builtins.int,
-                 instance_properties: 'outputs.ReservationSpecificReservationInstanceProperties',
-                 in_use_count: Optional[builtins.int] = None):
+                 in_use_count: Optional[builtins.int] = None,
+                 instance_properties: Optional['outputs.ReservationSpecificReservationInstanceProperties'] = None,
+                 source_instance_template: Optional[builtins.str] = None):
         """
         :param builtins.int count: The number of resources that are allocated.
-        :param 'ReservationSpecificReservationInstancePropertiesArgs' instance_properties: The instance properties for the reservation.
-               Structure is documented below.
         :param builtins.int in_use_count: (Output)
                How many instances are in use.
+        :param 'ReservationSpecificReservationInstancePropertiesArgs' instance_properties: The instance properties for the reservation.
+               Structure is documented below.
+        :param builtins.str source_instance_template: Specifies the instance template to create the reservation. If you use this field, you must exclude the
+               instanceProperties field.
         """
         pulumi.set(__self__, "count", count)
-        pulumi.set(__self__, "instance_properties", instance_properties)
         if in_use_count is not None:
             pulumi.set(__self__, "in_use_count", in_use_count)
+        if instance_properties is not None:
+            pulumi.set(__self__, "instance_properties", instance_properties)
+        if source_instance_template is not None:
+            pulumi.set(__self__, "source_instance_template", source_instance_template)
 
     @property
     @pulumi.getter
@@ -43637,15 +44162,6 @@ class ReservationSpecificReservation(dict):
         return pulumi.get(self, "count")
 
     @property
-    @pulumi.getter(name="instanceProperties")
-    def instance_properties(self) -> 'outputs.ReservationSpecificReservationInstanceProperties':
-        """
-        The instance properties for the reservation.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "instance_properties")
-
-    @property
     @pulumi.getter(name="inUseCount")
     def in_use_count(self) -> Optional[builtins.int]:
         """
@@ -43653,6 +44169,24 @@ class ReservationSpecificReservation(dict):
         How many instances are in use.
         """
         return pulumi.get(self, "in_use_count")
+
+    @property
+    @pulumi.getter(name="instanceProperties")
+    def instance_properties(self) -> Optional['outputs.ReservationSpecificReservationInstanceProperties']:
+        """
+        The instance properties for the reservation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "instance_properties")
+
+    @property
+    @pulumi.getter(name="sourceInstanceTemplate")
+    def source_instance_template(self) -> Optional[builtins.str]:
+        """
+        Specifies the instance template to create the reservation. If you use this field, you must exclude the
+        instanceProperties field.
+        """
+        return pulumi.get(self, "source_instance_template")
 
 
 @pulumi.output_type
@@ -43666,6 +44200,8 @@ class ReservationSpecificReservationInstanceProperties(dict):
             suggest = "guest_accelerators"
         elif key == "localSsds":
             suggest = "local_ssds"
+        elif key == "maintenanceInterval":
+            suggest = "maintenance_interval"
         elif key == "minCpuPlatform":
             suggest = "min_cpu_platform"
 
@@ -43684,6 +44220,7 @@ class ReservationSpecificReservationInstanceProperties(dict):
                  machine_type: builtins.str,
                  guest_accelerators: Optional[Sequence['outputs.ReservationSpecificReservationInstancePropertiesGuestAccelerator']] = None,
                  local_ssds: Optional[Sequence['outputs.ReservationSpecificReservationInstancePropertiesLocalSsd']] = None,
+                 maintenance_interval: Optional[builtins.str] = None,
                  min_cpu_platform: Optional[builtins.str] = None):
         """
         :param builtins.str machine_type: The name of the machine type to reserve.
@@ -43692,6 +44229,8 @@ class ReservationSpecificReservationInstanceProperties(dict):
         :param Sequence['ReservationSpecificReservationInstancePropertiesLocalSsdArgs'] local_ssds: The amount of local ssd to reserve with each instance. This
                reserves disks of type `local-ssd`.
                Structure is documented below.
+        :param builtins.str maintenance_interval: Specifies the frequency of planned maintenance events.
+               Possible values are: `AS_NEEDED`, `PERIODIC`, `RECURRENT`.
         :param builtins.str min_cpu_platform: The minimum CPU platform for the reservation. For example,
                `"Intel Skylake"`. See
                the CPU platform availability reference](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones)
@@ -43702,6 +44241,8 @@ class ReservationSpecificReservationInstanceProperties(dict):
             pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         if local_ssds is not None:
             pulumi.set(__self__, "local_ssds", local_ssds)
+        if maintenance_interval is not None:
+            pulumi.set(__self__, "maintenance_interval", maintenance_interval)
         if min_cpu_platform is not None:
             pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
 
@@ -43731,6 +44272,15 @@ class ReservationSpecificReservationInstanceProperties(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "local_ssds")
+
+    @property
+    @pulumi.getter(name="maintenanceInterval")
+    def maintenance_interval(self) -> Optional[builtins.str]:
+        """
+        Specifies the frequency of planned maintenance events.
+        Possible values are: `AS_NEEDED`, `PERIODIC`, `RECURRENT`.
+        """
+        return pulumi.get(self, "maintenance_interval")
 
     @property
     @pulumi.getter(name="minCpuPlatform")
@@ -48190,6 +48740,8 @@ class SecurityPolicyAdvancedOptionsConfig(dict):
             suggest = "json_parsing"
         elif key == "logLevel":
             suggest = "log_level"
+        elif key == "requestBodyInspectionSize":
+            suggest = "request_body_inspection_size"
         elif key == "userIpRequestHeaders":
             suggest = "user_ip_request_headers"
 
@@ -48208,6 +48760,7 @@ class SecurityPolicyAdvancedOptionsConfig(dict):
                  json_custom_config: Optional['outputs.SecurityPolicyAdvancedOptionsConfigJsonCustomConfig'] = None,
                  json_parsing: Optional[builtins.str] = None,
                  log_level: Optional[builtins.str] = None,
+                 request_body_inspection_size: Optional[builtins.str] = None,
                  user_ip_request_headers: Optional[Sequence[builtins.str]] = None):
         """
         :param 'SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs' json_custom_config: Custom configuration to apply the JSON parsing. Only applicable when
@@ -48219,6 +48772,7 @@ class SecurityPolicyAdvancedOptionsConfig(dict):
         :param builtins.str log_level: Log level to use. Defaults to `NORMAL`.
                * `NORMAL` - Normal log level.
                * `VERBOSE` - Verbose log level.
+        :param builtins.str request_body_inspection_size: The maximum request size chosen by the customer with Waf enabled. Values supported are "8KB", "16KB, "32KB", "48KB" and "64KB". Values are case insensitive.
         :param Sequence[builtins.str] user_ip_request_headers: An optional list of case-insensitive request header names to use for resolving the callers client IP address.
         """
         if json_custom_config is not None:
@@ -48227,6 +48781,8 @@ class SecurityPolicyAdvancedOptionsConfig(dict):
             pulumi.set(__self__, "json_parsing", json_parsing)
         if log_level is not None:
             pulumi.set(__self__, "log_level", log_level)
+        if request_body_inspection_size is not None:
+            pulumi.set(__self__, "request_body_inspection_size", request_body_inspection_size)
         if user_ip_request_headers is not None:
             pulumi.set(__self__, "user_ip_request_headers", user_ip_request_headers)
 
@@ -48259,6 +48815,14 @@ class SecurityPolicyAdvancedOptionsConfig(dict):
         * `VERBOSE` - Verbose log level.
         """
         return pulumi.get(self, "log_level")
+
+    @property
+    @pulumi.getter(name="requestBodyInspectionSize")
+    def request_body_inspection_size(self) -> Optional[builtins.str]:
+        """
+        The maximum request size chosen by the customer with Waf enabled. Values supported are "8KB", "16KB, "32KB", "48KB" and "64KB". Values are case insensitive.
+        """
+        return pulumi.get(self, "request_body_inspection_size")
 
     @property
     @pulumi.getter(name="userIpRequestHeaders")
@@ -67705,6 +68269,68 @@ class GetMachineTypesMachineTypeDeprecatedResult(dict):
 
 
 @pulumi.output_type
+class GetNetworkAttachmentConnectionEndpointResult(dict):
+    def __init__(__self__, *,
+                 ip_address: builtins.str,
+                 project_id_or_num: builtins.str,
+                 secondary_ip_cidr_ranges: builtins.str,
+                 status: builtins.str,
+                 subnetwork: builtins.str):
+        """
+        :param builtins.str ip_address: The IPv4 address assigned to the producer instance network interface. This value will be a range in case of Serverless.
+        :param builtins.str project_id_or_num: The project id or number of the interface to which the IP was assigned.
+        :param builtins.str secondary_ip_cidr_ranges: Alias IP ranges from the same subnetwork.
+        :param builtins.str status: The status of a connected endpoint to this network attachment.
+        :param builtins.str subnetwork: The subnetwork used to assign the IP to the producer instance network interface.
+        """
+        pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "project_id_or_num", project_id_or_num)
+        pulumi.set(__self__, "secondary_ip_cidr_ranges", secondary_ip_cidr_ranges)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "subnetwork", subnetwork)
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> builtins.str:
+        """
+        The IPv4 address assigned to the producer instance network interface. This value will be a range in case of Serverless.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @property
+    @pulumi.getter(name="projectIdOrNum")
+    def project_id_or_num(self) -> builtins.str:
+        """
+        The project id or number of the interface to which the IP was assigned.
+        """
+        return pulumi.get(self, "project_id_or_num")
+
+    @property
+    @pulumi.getter(name="secondaryIpCidrRanges")
+    def secondary_ip_cidr_ranges(self) -> builtins.str:
+        """
+        Alias IP ranges from the same subnetwork.
+        """
+        return pulumi.get(self, "secondary_ip_cidr_ranges")
+
+    @property
+    @pulumi.getter
+    def status(self) -> builtins.str:
+        """
+        The status of a connected endpoint to this network attachment.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def subnetwork(self) -> builtins.str:
+        """
+        The subnetwork used to assign the IP to the producer instance network interface.
+        """
+        return pulumi.get(self, "subnetwork")
+
+
+@pulumi.output_type
 class GetRegionBackendServiceBackendResult(dict):
     def __init__(__self__, *,
                  balancing_mode: builtins.str,
@@ -71870,15 +72496,65 @@ class GetRegionNetworkEndpointGroupServerlessDeploymentResult(dict):
 
 
 @pulumi.output_type
+class GetReservationDeleteAfterDurationResult(dict):
+    def __init__(__self__, *,
+                 nanos: builtins.int,
+                 seconds: builtins.str):
+        """
+        :param builtins.int nanos: Number of nanoseconds for the auto-delete duration.
+        :param builtins.str seconds: Number of seconds for the auto-delete duration.
+        """
+        pulumi.set(__self__, "nanos", nanos)
+        pulumi.set(__self__, "seconds", seconds)
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> builtins.int:
+        """
+        Number of nanoseconds for the auto-delete duration.
+        """
+        return pulumi.get(self, "nanos")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> builtins.str:
+        """
+        Number of seconds for the auto-delete duration.
+        """
+        return pulumi.get(self, "seconds")
+
+
+@pulumi.output_type
+class GetReservationReservationSharingPolicyResult(dict):
+    def __init__(__self__, *,
+                 service_share_type: builtins.str):
+        """
+        :param builtins.str service_share_type: Sharing config for all Google Cloud services. Possible values: ["ALLOW_ALL", "DISALLOW_ALL"]
+        """
+        pulumi.set(__self__, "service_share_type", service_share_type)
+
+    @property
+    @pulumi.getter(name="serviceShareType")
+    def service_share_type(self) -> builtins.str:
+        """
+        Sharing config for all Google Cloud services. Possible values: ["ALLOW_ALL", "DISALLOW_ALL"]
+        """
+        return pulumi.get(self, "service_share_type")
+
+
+@pulumi.output_type
 class GetReservationShareSettingResult(dict):
     def __init__(__self__, *,
                  project_maps: Sequence['outputs.GetReservationShareSettingProjectMapResult'],
+                 projects: Sequence[builtins.str],
                  share_type: builtins.str):
         """
         :param Sequence['GetReservationShareSettingProjectMapArgs'] project_maps: A map of project number and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
+        :param Sequence[builtins.str] projects: List of project IDs with which the reservation is shared.
         :param builtins.str share_type: Type of sharing for this shared-reservation Possible values: ["LOCAL", "SPECIFIC_PROJECTS"]
         """
         pulumi.set(__self__, "project_maps", project_maps)
+        pulumi.set(__self__, "projects", projects)
         pulumi.set(__self__, "share_type", share_type)
 
     @property
@@ -71888,6 +72564,14 @@ class GetReservationShareSettingResult(dict):
         A map of project number and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
         """
         return pulumi.get(self, "project_maps")
+
+    @property
+    @pulumi.getter
+    def projects(self) -> Sequence[builtins.str]:
+        """
+        List of project IDs with which the reservation is shared.
+        """
+        return pulumi.get(self, "projects")
 
     @property
     @pulumi.getter(name="shareType")
@@ -71928,15 +72612,19 @@ class GetReservationSpecificReservationResult(dict):
     def __init__(__self__, *,
                  count: builtins.int,
                  in_use_count: builtins.int,
-                 instance_properties: Sequence['outputs.GetReservationSpecificReservationInstancePropertyResult']):
+                 instance_properties: Sequence['outputs.GetReservationSpecificReservationInstancePropertyResult'],
+                 source_instance_template: builtins.str):
         """
         :param builtins.int count: The number of resources that are allocated.
         :param builtins.int in_use_count: How many instances are in use.
         :param Sequence['GetReservationSpecificReservationInstancePropertyArgs'] instance_properties: The instance properties for the reservation.
+        :param builtins.str source_instance_template: Specifies the instance template to create the reservation. If you use this field, you must exclude the
+               instanceProperties field.
         """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "in_use_count", in_use_count)
         pulumi.set(__self__, "instance_properties", instance_properties)
+        pulumi.set(__self__, "source_instance_template", source_instance_template)
 
     @property
     @pulumi.getter
@@ -71962,6 +72650,15 @@ class GetReservationSpecificReservationResult(dict):
         """
         return pulumi.get(self, "instance_properties")
 
+    @property
+    @pulumi.getter(name="sourceInstanceTemplate")
+    def source_instance_template(self) -> builtins.str:
+        """
+        Specifies the instance template to create the reservation. If you use this field, you must exclude the
+        instanceProperties field.
+        """
+        return pulumi.get(self, "source_instance_template")
+
 
 @pulumi.output_type
 class GetReservationSpecificReservationInstancePropertyResult(dict):
@@ -71969,12 +72666,14 @@ class GetReservationSpecificReservationInstancePropertyResult(dict):
                  guest_accelerators: Sequence['outputs.GetReservationSpecificReservationInstancePropertyGuestAcceleratorResult'],
                  local_ssds: Sequence['outputs.GetReservationSpecificReservationInstancePropertyLocalSsdResult'],
                  machine_type: builtins.str,
+                 maintenance_interval: builtins.str,
                  min_cpu_platform: builtins.str):
         """
         :param Sequence['GetReservationSpecificReservationInstancePropertyGuestAcceleratorArgs'] guest_accelerators: Guest accelerator type and count.
         :param Sequence['GetReservationSpecificReservationInstancePropertyLocalSsdArgs'] local_ssds: The amount of local ssd to reserve with each instance. This
                reserves disks of type 'local-ssd'.
         :param builtins.str machine_type: The name of the machine type to reserve.
+        :param builtins.str maintenance_interval: Specifies the frequency of planned maintenance events. Possible values: ["AS_NEEDED", "PERIODIC", "RECURRENT"]
         :param builtins.str min_cpu_platform: The minimum CPU platform for the reservation. For example,
                '"Intel Skylake"'. See
                the CPU platform availability reference](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones)
@@ -71983,6 +72682,7 @@ class GetReservationSpecificReservationInstancePropertyResult(dict):
         pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         pulumi.set(__self__, "local_ssds", local_ssds)
         pulumi.set(__self__, "machine_type", machine_type)
+        pulumi.set(__self__, "maintenance_interval", maintenance_interval)
         pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
 
     @property
@@ -72009,6 +72709,14 @@ class GetReservationSpecificReservationInstancePropertyResult(dict):
         The name of the machine type to reserve.
         """
         return pulumi.get(self, "machine_type")
+
+    @property
+    @pulumi.getter(name="maintenanceInterval")
+    def maintenance_interval(self) -> builtins.str:
+        """
+        Specifies the frequency of planned maintenance events. Possible values: ["AS_NEEDED", "PERIODIC", "RECURRENT"]
+        """
+        return pulumi.get(self, "maintenance_interval")
 
     @property
     @pulumi.getter(name="minCpuPlatform")
@@ -74306,16 +75014,19 @@ class GetSecurityPolicyAdvancedOptionsConfigResult(dict):
                  json_custom_configs: Sequence['outputs.GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigResult'],
                  json_parsing: builtins.str,
                  log_level: builtins.str,
+                 request_body_inspection_size: builtins.str,
                  user_ip_request_headers: Sequence[builtins.str]):
         """
         :param Sequence['GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs'] json_custom_configs: Custom configuration to apply the JSON parsing. Only applicable when JSON parsing is set to STANDARD.
         :param builtins.str json_parsing: JSON body parsing. Supported values include: "DISABLED", "STANDARD".
         :param builtins.str log_level: Logging level. Supported values include: "NORMAL", "VERBOSE".
+        :param builtins.str request_body_inspection_size: The maximum request size chosen by the customer with Waf enabled. Values supported are "8KB", "16KB, "32KB", "48KB" and "64KB". Values are case insensitive.
         :param Sequence[builtins.str] user_ip_request_headers: An optional list of case-insensitive request header names to use for resolving the callers client IP address.
         """
         pulumi.set(__self__, "json_custom_configs", json_custom_configs)
         pulumi.set(__self__, "json_parsing", json_parsing)
         pulumi.set(__self__, "log_level", log_level)
+        pulumi.set(__self__, "request_body_inspection_size", request_body_inspection_size)
         pulumi.set(__self__, "user_ip_request_headers", user_ip_request_headers)
 
     @property
@@ -74341,6 +75052,14 @@ class GetSecurityPolicyAdvancedOptionsConfigResult(dict):
         Logging level. Supported values include: "NORMAL", "VERBOSE".
         """
         return pulumi.get(self, "log_level")
+
+    @property
+    @pulumi.getter(name="requestBodyInspectionSize")
+    def request_body_inspection_size(self) -> builtins.str:
+        """
+        The maximum request size chosen by the customer with Waf enabled. Values supported are "8KB", "16KB, "32KB", "48KB" and "64KB". Values are case insensitive.
+        """
+        return pulumi.get(self, "request_body_inspection_size")
 
     @property
     @pulumi.getter(name="userIpRequestHeaders")

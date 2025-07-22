@@ -315,6 +315,11 @@ export const getNetwork: typeof import("./getNetwork").getNetwork = null as any;
 export const getNetworkOutput: typeof import("./getNetwork").getNetworkOutput = null as any;
 utilities.lazyLoad(exports, ["getNetwork","getNetworkOutput"], () => require("./getNetwork"));
 
+export { GetNetworkAttachmentArgs, GetNetworkAttachmentResult, GetNetworkAttachmentOutputArgs } from "./getNetworkAttachment";
+export const getNetworkAttachment: typeof import("./getNetworkAttachment").getNetworkAttachment = null as any;
+export const getNetworkAttachmentOutput: typeof import("./getNetworkAttachment").getNetworkAttachmentOutput = null as any;
+utilities.lazyLoad(exports, ["getNetworkAttachment","getNetworkAttachmentOutput"], () => require("./getNetworkAttachment"));
+
 export { GetNetworkEndpointGroupArgs, GetNetworkEndpointGroupResult, GetNetworkEndpointGroupOutputArgs } from "./getNetworkEndpointGroup";
 export const getNetworkEndpointGroup: typeof import("./getNetworkEndpointGroup").getNetworkEndpointGroup = null as any;
 export const getNetworkEndpointGroupOutput: typeof import("./getNetworkEndpointGroup").getNetworkEndpointGroupOutput = null as any;

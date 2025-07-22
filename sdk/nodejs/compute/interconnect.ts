@@ -88,11 +88,21 @@ export class Interconnect extends pulumi.CustomResource {
     }
 
     /**
+     * Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
+     */
+    public readonly aaiEnabled!: pulumi.Output<boolean | undefined>;
+    /**
      * Administrative status of the interconnect. When this is set to true, the Interconnect is
      * functional and can carry traffic. When set to false, no packets can be carried over the
      * interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
      */
     public readonly adminEnabled!: pulumi.Output<boolean | undefined>;
+    /**
+     * Configuration that enables Media Access Control security (MACsec) on the Cloud
+     * Interconnect connection between Google and your on-premises router.
+     * Structure is documented below.
+     */
+    public readonly applicationAwareInterconnect!: pulumi.Output<outputs.compute.InterconnectApplicationAwareInterconnect | undefined>;
     /**
      * interconnects.list of features available for this Interconnect connection. Can take the value:
      * MACSEC. If present then the Interconnect connection is provisioned on MACsec capable hardware
@@ -294,7 +304,9 @@ export class Interconnect extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InterconnectState | undefined;
+            resourceInputs["aaiEnabled"] = state ? state.aaiEnabled : undefined;
             resourceInputs["adminEnabled"] = state ? state.adminEnabled : undefined;
+            resourceInputs["applicationAwareInterconnect"] = state ? state.applicationAwareInterconnect : undefined;
             resourceInputs["availableFeatures"] = state ? state.availableFeatures : undefined;
             resourceInputs["circuitInfos"] = state ? state.circuitInfos : undefined;
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
@@ -340,7 +352,9 @@ export class Interconnect extends pulumi.CustomResource {
             if ((!args || args.requestedLinkCount === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'requestedLinkCount'");
             }
+            resourceInputs["aaiEnabled"] = args ? args.aaiEnabled : undefined;
             resourceInputs["adminEnabled"] = args ? args.adminEnabled : undefined;
+            resourceInputs["applicationAwareInterconnect"] = args ? args.applicationAwareInterconnect : undefined;
             resourceInputs["customerName"] = args ? args.customerName : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["interconnectType"] = args ? args.interconnectType : undefined;
@@ -385,11 +399,21 @@ export class Interconnect extends pulumi.CustomResource {
  */
 export interface InterconnectState {
     /**
+     * Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
+     */
+    aaiEnabled?: pulumi.Input<boolean>;
+    /**
      * Administrative status of the interconnect. When this is set to true, the Interconnect is
      * functional and can carry traffic. When set to false, no packets can be carried over the
      * interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
      */
     adminEnabled?: pulumi.Input<boolean>;
+    /**
+     * Configuration that enables Media Access Control security (MACsec) on the Cloud
+     * Interconnect connection between Google and your on-premises router.
+     * Structure is documented below.
+     */
+    applicationAwareInterconnect?: pulumi.Input<inputs.compute.InterconnectApplicationAwareInterconnect>;
     /**
      * interconnects.list of features available for this Interconnect connection. Can take the value:
      * MACSEC. If present then the Interconnect connection is provisioned on MACsec capable hardware
@@ -584,11 +608,21 @@ export interface InterconnectState {
  */
 export interface InterconnectArgs {
     /**
+     * Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
+     */
+    aaiEnabled?: pulumi.Input<boolean>;
+    /**
      * Administrative status of the interconnect. When this is set to true, the Interconnect is
      * functional and can carry traffic. When set to false, no packets can be carried over the
      * interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
      */
     adminEnabled?: pulumi.Input<boolean>;
+    /**
+     * Configuration that enables Media Access Control security (MACsec) on the Cloud
+     * Interconnect connection between Google and your on-premises router.
+     * Structure is documented below.
+     */
+    applicationAwareInterconnect?: pulumi.Input<inputs.compute.InterconnectApplicationAwareInterconnect>;
     /**
      * Customer name, to put in the Letter of Authorization as the party authorized to request a
      * crossconnect. This field is required for Dedicated and Partner Interconnect, should not be specified
