@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetReservationSpecificReservationInstanceProperty;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 
@@ -27,6 +28,12 @@ public final class GetReservationSpecificReservation {
      * 
      */
     private List<GetReservationSpecificReservationInstanceProperty> instanceProperties;
+    /**
+     * @return Specifies the instance template to create the reservation. If you use this field, you must exclude the
+     * instanceProperties field.
+     * 
+     */
+    private String sourceInstanceTemplate;
 
     private GetReservationSpecificReservation() {}
     /**
@@ -50,6 +57,14 @@ public final class GetReservationSpecificReservation {
     public List<GetReservationSpecificReservationInstanceProperty> instanceProperties() {
         return this.instanceProperties;
     }
+    /**
+     * @return Specifies the instance template to create the reservation. If you use this field, you must exclude the
+     * instanceProperties field.
+     * 
+     */
+    public String sourceInstanceTemplate() {
+        return this.sourceInstanceTemplate;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -63,12 +78,14 @@ public final class GetReservationSpecificReservation {
         private Integer count;
         private Integer inUseCount;
         private List<GetReservationSpecificReservationInstanceProperty> instanceProperties;
+        private String sourceInstanceTemplate;
         public Builder() {}
         public Builder(GetReservationSpecificReservation defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.count = defaults.count;
     	      this.inUseCount = defaults.inUseCount;
     	      this.instanceProperties = defaults.instanceProperties;
+    	      this.sourceInstanceTemplate = defaults.sourceInstanceTemplate;
         }
 
         @CustomType.Setter
@@ -98,11 +115,20 @@ public final class GetReservationSpecificReservation {
         public Builder instanceProperties(GetReservationSpecificReservationInstanceProperty... instanceProperties) {
             return instanceProperties(List.of(instanceProperties));
         }
+        @CustomType.Setter
+        public Builder sourceInstanceTemplate(String sourceInstanceTemplate) {
+            if (sourceInstanceTemplate == null) {
+              throw new MissingRequiredPropertyException("GetReservationSpecificReservation", "sourceInstanceTemplate");
+            }
+            this.sourceInstanceTemplate = sourceInstanceTemplate;
+            return this;
+        }
         public GetReservationSpecificReservation build() {
             final var _resultValue = new GetReservationSpecificReservation();
             _resultValue.count = count;
             _resultValue.inUseCount = inUseCount;
             _resultValue.instanceProperties = instanceProperties;
+            _resultValue.sourceInstanceTemplate = sourceInstanceTemplate;
             return _resultValue;
         }
     }

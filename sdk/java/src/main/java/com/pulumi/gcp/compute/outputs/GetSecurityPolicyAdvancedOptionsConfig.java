@@ -28,6 +28,11 @@ public final class GetSecurityPolicyAdvancedOptionsConfig {
      */
     private String logLevel;
     /**
+     * @return The maximum request size chosen by the customer with Waf enabled. Values supported are &#34;8KB&#34;, &#34;16KB, &#34;32KB&#34;, &#34;48KB&#34; and &#34;64KB&#34;. Values are case insensitive.
+     * 
+     */
+    private String requestBodyInspectionSize;
+    /**
      * @return An optional list of case-insensitive request header names to use for resolving the callers client IP address.
      * 
      */
@@ -56,6 +61,13 @@ public final class GetSecurityPolicyAdvancedOptionsConfig {
         return this.logLevel;
     }
     /**
+     * @return The maximum request size chosen by the customer with Waf enabled. Values supported are &#34;8KB&#34;, &#34;16KB, &#34;32KB&#34;, &#34;48KB&#34; and &#34;64KB&#34;. Values are case insensitive.
+     * 
+     */
+    public String requestBodyInspectionSize() {
+        return this.requestBodyInspectionSize;
+    }
+    /**
      * @return An optional list of case-insensitive request header names to use for resolving the callers client IP address.
      * 
      */
@@ -75,6 +87,7 @@ public final class GetSecurityPolicyAdvancedOptionsConfig {
         private List<GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfig> jsonCustomConfigs;
         private String jsonParsing;
         private String logLevel;
+        private String requestBodyInspectionSize;
         private List<String> userIpRequestHeaders;
         public Builder() {}
         public Builder(GetSecurityPolicyAdvancedOptionsConfig defaults) {
@@ -82,6 +95,7 @@ public final class GetSecurityPolicyAdvancedOptionsConfig {
     	      this.jsonCustomConfigs = defaults.jsonCustomConfigs;
     	      this.jsonParsing = defaults.jsonParsing;
     	      this.logLevel = defaults.logLevel;
+    	      this.requestBodyInspectionSize = defaults.requestBodyInspectionSize;
     	      this.userIpRequestHeaders = defaults.userIpRequestHeaders;
         }
 
@@ -113,6 +127,14 @@ public final class GetSecurityPolicyAdvancedOptionsConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder requestBodyInspectionSize(String requestBodyInspectionSize) {
+            if (requestBodyInspectionSize == null) {
+              throw new MissingRequiredPropertyException("GetSecurityPolicyAdvancedOptionsConfig", "requestBodyInspectionSize");
+            }
+            this.requestBodyInspectionSize = requestBodyInspectionSize;
+            return this;
+        }
+        @CustomType.Setter
         public Builder userIpRequestHeaders(List<String> userIpRequestHeaders) {
             if (userIpRequestHeaders == null) {
               throw new MissingRequiredPropertyException("GetSecurityPolicyAdvancedOptionsConfig", "userIpRequestHeaders");
@@ -128,6 +150,7 @@ public final class GetSecurityPolicyAdvancedOptionsConfig {
             _resultValue.jsonCustomConfigs = jsonCustomConfigs;
             _resultValue.jsonParsing = jsonParsing;
             _resultValue.logLevel = logLevel;
+            _resultValue.requestBodyInspectionSize = requestBodyInspectionSize;
             _resultValue.userIpRequestHeaders = userIpRequestHeaders;
             return _resultValue;
         }

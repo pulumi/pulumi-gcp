@@ -143,13 +143,17 @@ namespace Pulumi.Gcp.Compute
     {
         public readonly string Commitment;
         public readonly string CreationTimestamp;
+        public readonly ImmutableArray<Outputs.GetReservationDeleteAfterDurationResult> DeleteAfterDurations;
+        public readonly string DeleteAtTime;
         public readonly string Description;
+        public readonly bool EnableEmergentMaintenance;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly string Name;
         public readonly string? Project;
+        public readonly ImmutableArray<Outputs.GetReservationReservationSharingPolicyResult> ReservationSharingPolicies;
         public readonly string SelfLink;
         public readonly ImmutableArray<Outputs.GetReservationShareSettingResult> ShareSettings;
         public readonly bool SpecificReservationRequired;
@@ -163,13 +167,21 @@ namespace Pulumi.Gcp.Compute
 
             string creationTimestamp,
 
+            ImmutableArray<Outputs.GetReservationDeleteAfterDurationResult> deleteAfterDurations,
+
+            string deleteAtTime,
+
             string description,
+
+            bool enableEmergentMaintenance,
 
             string id,
 
             string name,
 
             string? project,
+
+            ImmutableArray<Outputs.GetReservationReservationSharingPolicyResult> reservationSharingPolicies,
 
             string selfLink,
 
@@ -185,10 +197,14 @@ namespace Pulumi.Gcp.Compute
         {
             Commitment = commitment;
             CreationTimestamp = creationTimestamp;
+            DeleteAfterDurations = deleteAfterDurations;
+            DeleteAtTime = deleteAtTime;
             Description = description;
+            EnableEmergentMaintenance = enableEmergentMaintenance;
             Id = id;
             Name = name;
             Project = project;
+            ReservationSharingPolicies = reservationSharingPolicies;
             SelfLink = selfLink;
             ShareSettings = shareSettings;
             SpecificReservationRequired = specificReservationRequired;

@@ -634,6 +634,40 @@ public class RegionDisk extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
+     * Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second
+     * that the disk can handle. Values must be between 10,000 and 120,000.
+     * For more details, see the Extreme persistent disk [documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+     * 
+     */
+    @Export(name="provisionedIops", refs={Integer.class}, tree="[0]")
+    private Output<Integer> provisionedIops;
+
+    /**
+     * @return Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second
+     * that the disk can handle. Values must be between 10,000 and 120,000.
+     * For more details, see the Extreme persistent disk [documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+     * 
+     */
+    public Output<Integer> provisionedIops() {
+        return this.provisionedIops;
+    }
+    /**
+     * Indicates how much throughput to provision for the disk. This sets the number of throughput
+     * mb per second that the disk can handle. Values must be greater than or equal to 1.
+     * 
+     */
+    @Export(name="provisionedThroughput", refs={Integer.class}, tree="[0]")
+    private Output<Integer> provisionedThroughput;
+
+    /**
+     * @return Indicates how much throughput to provision for the disk. This sets the number of throughput
+     * mb per second that the disk can handle. Values must be greater than or equal to 1.
+     * 
+     */
+    public Output<Integer> provisionedThroughput() {
+        return this.provisionedThroughput;
+    }
+    /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      * 

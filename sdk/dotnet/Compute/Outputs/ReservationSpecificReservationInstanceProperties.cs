@@ -29,6 +29,11 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string MachineType;
         /// <summary>
+        /// Specifies the frequency of planned maintenance events.
+        /// Possible values are: `AS_NEEDED`, `PERIODIC`, `RECURRENT`.
+        /// </summary>
+        public readonly string? MaintenanceInterval;
+        /// <summary>
         /// The minimum CPU platform for the reservation. For example,
         /// `"Intel Skylake"`. See
         /// the CPU platform availability reference](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones)
@@ -44,11 +49,14 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string machineType,
 
+            string? maintenanceInterval,
+
             string? minCpuPlatform)
         {
             GuestAccelerators = guestAccelerators;
             LocalSsds = localSsds;
             MachineType = machineType;
+            MaintenanceInterval = maintenanceInterval;
             MinCpuPlatform = minCpuPlatform;
         }
     }

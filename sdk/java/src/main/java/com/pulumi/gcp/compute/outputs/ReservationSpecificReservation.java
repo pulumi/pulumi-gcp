@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.ReservationSpecificReservationInstanceProperties;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -29,7 +30,13 @@ public final class ReservationSpecificReservation {
      * Structure is documented below.
      * 
      */
-    private ReservationSpecificReservationInstanceProperties instanceProperties;
+    private @Nullable ReservationSpecificReservationInstanceProperties instanceProperties;
+    /**
+     * @return Specifies the instance template to create the reservation. If you use this field, you must exclude the
+     * instanceProperties field.
+     * 
+     */
+    private @Nullable String sourceInstanceTemplate;
 
     private ReservationSpecificReservation() {}
     /**
@@ -52,8 +59,16 @@ public final class ReservationSpecificReservation {
      * Structure is documented below.
      * 
      */
-    public ReservationSpecificReservationInstanceProperties instanceProperties() {
-        return this.instanceProperties;
+    public Optional<ReservationSpecificReservationInstanceProperties> instanceProperties() {
+        return Optional.ofNullable(this.instanceProperties);
+    }
+    /**
+     * @return Specifies the instance template to create the reservation. If you use this field, you must exclude the
+     * instanceProperties field.
+     * 
+     */
+    public Optional<String> sourceInstanceTemplate() {
+        return Optional.ofNullable(this.sourceInstanceTemplate);
     }
 
     public static Builder builder() {
@@ -67,13 +82,15 @@ public final class ReservationSpecificReservation {
     public static final class Builder {
         private Integer count;
         private @Nullable Integer inUseCount;
-        private ReservationSpecificReservationInstanceProperties instanceProperties;
+        private @Nullable ReservationSpecificReservationInstanceProperties instanceProperties;
+        private @Nullable String sourceInstanceTemplate;
         public Builder() {}
         public Builder(ReservationSpecificReservation defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.count = defaults.count;
     	      this.inUseCount = defaults.inUseCount;
     	      this.instanceProperties = defaults.instanceProperties;
+    	      this.sourceInstanceTemplate = defaults.sourceInstanceTemplate;
         }
 
         @CustomType.Setter
@@ -91,11 +108,15 @@ public final class ReservationSpecificReservation {
             return this;
         }
         @CustomType.Setter
-        public Builder instanceProperties(ReservationSpecificReservationInstanceProperties instanceProperties) {
-            if (instanceProperties == null) {
-              throw new MissingRequiredPropertyException("ReservationSpecificReservation", "instanceProperties");
-            }
+        public Builder instanceProperties(@Nullable ReservationSpecificReservationInstanceProperties instanceProperties) {
+
             this.instanceProperties = instanceProperties;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sourceInstanceTemplate(@Nullable String sourceInstanceTemplate) {
+
+            this.sourceInstanceTemplate = sourceInstanceTemplate;
             return this;
         }
         public ReservationSpecificReservation build() {
@@ -103,6 +124,7 @@ public final class ReservationSpecificReservation {
             _resultValue.count = count;
             _resultValue.inUseCount = inUseCount;
             _resultValue.instanceProperties = instanceProperties;
+            _resultValue.sourceInstanceTemplate = sourceInstanceTemplate;
             return _resultValue;
         }
     }

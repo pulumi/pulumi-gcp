@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
 import com.pulumi.gcp.compute.inputs.FirewallDenyArgs;
 import com.pulumi.gcp.compute.inputs.FirewallLogConfigArgs;
+import com.pulumi.gcp.compute.inputs.FirewallParamsArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -227,6 +228,23 @@ public final class FirewallArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="params")
+    private @Nullable Output<FirewallParamsArgs> params;
+
+    /**
+     * @return Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<FirewallParamsArgs>> params() {
+        return Optional.ofNullable(this.params);
+    }
+
+    /**
      * Priority for this rule. This is an integer between 0 and 65535, both
      * inclusive. When not specified, the value assumed is 1000. Relative
      * priorities determine precedence of conflicting rules. Lower value of
@@ -428,6 +446,7 @@ public final class FirewallArgs extends com.pulumi.resources.ResourceArgs {
         this.logConfig = $.logConfig;
         this.name = $.name;
         this.network = $.network;
+        this.params = $.params;
         this.priority = $.priority;
         this.project = $.project;
         this.sourceRanges = $.sourceRanges;
@@ -754,6 +773,29 @@ public final class FirewallArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder network(String network) {
             return network(Output.of(network));
+        }
+
+        /**
+         * @param params Additional params passed with the request, but not persisted as part of resource payload
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(@Nullable Output<FirewallParamsArgs> params) {
+            $.params = params;
+            return this;
+        }
+
+        /**
+         * @param params Additional params passed with the request, but not persisted as part of resource payload
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(FirewallParamsArgs params) {
+            return params(Output.of(params));
         }
 
         /**

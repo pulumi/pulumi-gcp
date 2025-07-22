@@ -273,6 +273,100 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// 
     /// });
     /// ```
+    /// ### Bigquery Analyticshub Listing Dcr Routine
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var dcrDataExchangeExample = new Gcp.BigQueryAnalyticsHub.DataExchange("dcr_data_exchange_example", new()
+    ///     {
+    ///         Location = "us",
+    ///         DataExchangeId = "tf_test_data_exchange",
+    ///         DisplayName = "tf_test_data_exchange",
+    ///         Description = "Example for listing with routine",
+    ///         SharingEnvironmentConfig = new Gcp.BigQueryAnalyticsHub.Inputs.DataExchangeSharingEnvironmentConfigArgs
+    ///         {
+    ///             DcrExchangeConfig = null,
+    ///         },
+    ///     });
+    /// 
+    ///     var listing = new Gcp.BigQuery.Dataset("listing", new()
+    ///     {
+    ///         DatasetId = "tf_test_dataset",
+    ///         FriendlyName = "tf_test_dataset",
+    ///         Description = "Example for listing with routine",
+    ///         Location = "us",
+    ///     });
+    /// 
+    ///     var listingRoutine = new Gcp.BigQuery.Routine("listing", new()
+    ///     {
+    ///         DatasetId = listing.DatasetId,
+    ///         RoutineId = "tf_test_routine",
+    ///         RoutineType = "TABLE_VALUED_FUNCTION",
+    ///         Language = "SQL",
+    ///         Description = "A DCR routine example.",
+    ///         DefinitionBody = @"SELECT 1 + value AS value
+    /// ",
+    ///         Arguments = new[]
+    ///         {
+    ///             new Gcp.BigQuery.Inputs.RoutineArgumentArgs
+    ///             {
+    ///                 Name = "value",
+    ///                 ArgumentKind = "FIXED_TYPE",
+    ///                 DataType = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["typeKind"] = "INT64",
+    ///                 }),
+    ///             },
+    ///         },
+    ///         ReturnTableType = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["columns"] = new[]
+    ///             {
+    ///                 new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["name"] = "value",
+    ///                     ["type"] = new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["typeKind"] = "INT64",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         }),
+    ///     });
+    /// 
+    ///     var listingListing = new Gcp.BigQueryAnalyticsHub.Listing("listing", new()
+    ///     {
+    ///         Location = "US",
+    ///         DataExchangeId = dcrDataExchangeExample.DataExchangeId,
+    ///         ListingId = "tf_test_listing_routine",
+    ///         DisplayName = "tf_test_listing_routine",
+    ///         Description = "Example for listing with routine",
+    ///         BigqueryDataset = new Gcp.BigQueryAnalyticsHub.Inputs.ListingBigqueryDatasetArgs
+    ///         {
+    ///             Dataset = listing.Id,
+    ///             SelectedResources = new[]
+    ///             {
+    ///                 new Gcp.BigQueryAnalyticsHub.Inputs.ListingBigqueryDatasetSelectedResourceArgs
+    ///                 {
+    ///                     Routine = listingRoutine.Id,
+    ///                 },
+    ///             },
+    ///         },
+    ///         RestrictedExportConfig = new Gcp.BigQueryAnalyticsHub.Inputs.ListingRestrictedExportConfigArgs
+    ///         {
+    ///             Enabled = true,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

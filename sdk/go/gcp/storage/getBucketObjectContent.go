@@ -81,14 +81,15 @@ type GetBucketObjectContentResult struct {
 	ContentDisposition  string `pulumi:"contentDisposition"`
 	ContentEncoding     string `pulumi:"contentEncoding"`
 	// (Computed) Hex encoded SHA512 checksum of file content.
-	ContentHexsha512    string                                     `pulumi:"contentHexsha512"`
-	ContentLanguage     string                                     `pulumi:"contentLanguage"`
-	ContentType         string                                     `pulumi:"contentType"`
-	Crc32c              string                                     `pulumi:"crc32c"`
-	CustomerEncryptions []GetBucketObjectContentCustomerEncryption `pulumi:"customerEncryptions"`
-	DetectMd5hash       string                                     `pulumi:"detectMd5hash"`
-	EventBasedHold      bool                                       `pulumi:"eventBasedHold"`
-	Generation          int                                        `pulumi:"generation"`
+	ContentHexsha512      string                                     `pulumi:"contentHexsha512"`
+	ContentLanguage       string                                     `pulumi:"contentLanguage"`
+	ContentType           string                                     `pulumi:"contentType"`
+	Crc32c                string                                     `pulumi:"crc32c"`
+	CustomerEncryptions   []GetBucketObjectContentCustomerEncryption `pulumi:"customerEncryptions"`
+	DetectMd5hash         string                                     `pulumi:"detectMd5hash"`
+	EventBasedHold        bool                                       `pulumi:"eventBasedHold"`
+	ForceEmptyContentType bool                                       `pulumi:"forceEmptyContentType"`
+	Generation            int                                        `pulumi:"generation"`
 	// The provider-assigned unique ID for this managed resource.
 	Id            string                            `pulumi:"id"`
 	KmsKeyName    string                            `pulumi:"kmsKeyName"`
@@ -205,6 +206,10 @@ func (o GetBucketObjectContentResultOutput) DetectMd5hash() pulumi.StringOutput 
 
 func (o GetBucketObjectContentResultOutput) EventBasedHold() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetBucketObjectContentResult) bool { return v.EventBasedHold }).(pulumi.BoolOutput)
+}
+
+func (o GetBucketObjectContentResultOutput) ForceEmptyContentType() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBucketObjectContentResult) bool { return v.ForceEmptyContentType }).(pulumi.BoolOutput)
 }
 
 func (o GetBucketObjectContentResultOutput) Generation() pulumi.IntOutput {

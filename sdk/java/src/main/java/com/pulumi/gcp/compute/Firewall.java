@@ -13,6 +13,7 @@ import com.pulumi.gcp.compute.inputs.FirewallState;
 import com.pulumi.gcp.compute.outputs.FirewallAllow;
 import com.pulumi.gcp.compute.outputs.FirewallDeny;
 import com.pulumi.gcp.compute.outputs.FirewallLogConfig;
+import com.pulumi.gcp.compute.outputs.FirewallParams;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -374,6 +375,22 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      */
     public Output<String> network() {
         return this.network;
+    }
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="params", refs={FirewallParams.class}, tree="[0]")
+    private Output</* @Nullable */ FirewallParams> params;
+
+    /**
+     * @return Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<FirewallParams>> params() {
+        return Codegen.optional(this.params);
     }
     /**
      * Priority for this rule. This is an integer between 0 and 65535, both

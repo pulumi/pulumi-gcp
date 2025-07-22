@@ -391,6 +391,42 @@ public final class RegionDiskState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second
+     * that the disk can handle. Values must be between 10,000 and 120,000.
+     * For more details, see the Extreme persistent disk [documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+     * 
+     */
+    @Import(name="provisionedIops")
+    private @Nullable Output<Integer> provisionedIops;
+
+    /**
+     * @return Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second
+     * that the disk can handle. Values must be between 10,000 and 120,000.
+     * For more details, see the Extreme persistent disk [documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+     * 
+     */
+    public Optional<Output<Integer>> provisionedIops() {
+        return Optional.ofNullable(this.provisionedIops);
+    }
+
+    /**
+     * Indicates how much throughput to provision for the disk. This sets the number of throughput
+     * mb per second that the disk can handle. Values must be greater than or equal to 1.
+     * 
+     */
+    @Import(name="provisionedThroughput")
+    private @Nullable Output<Integer> provisionedThroughput;
+
+    /**
+     * @return Indicates how much throughput to provision for the disk. This sets the number of throughput
+     * mb per second that the disk can handle. Values must be greater than or equal to 1.
+     * 
+     */
+    public Optional<Output<Integer>> provisionedThroughput() {
+        return Optional.ofNullable(this.provisionedThroughput);
+    }
+
+    /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      * 
@@ -654,6 +690,8 @@ public final class RegionDiskState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.physicalBlockSizeBytes = $.physicalBlockSizeBytes;
         this.project = $.project;
+        this.provisionedIops = $.provisionedIops;
+        this.provisionedThroughput = $.provisionedThroughput;
         this.pulumiLabels = $.pulumiLabels;
         this.region = $.region;
         this.replicaZones = $.replicaZones;
@@ -1187,6 +1225,54 @@ public final class RegionDiskState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param provisionedIops Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second
+         * that the disk can handle. Values must be between 10,000 and 120,000.
+         * For more details, see the Extreme persistent disk [documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisionedIops(@Nullable Output<Integer> provisionedIops) {
+            $.provisionedIops = provisionedIops;
+            return this;
+        }
+
+        /**
+         * @param provisionedIops Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second
+         * that the disk can handle. Values must be between 10,000 and 120,000.
+         * For more details, see the Extreme persistent disk [documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisionedIops(Integer provisionedIops) {
+            return provisionedIops(Output.of(provisionedIops));
+        }
+
+        /**
+         * @param provisionedThroughput Indicates how much throughput to provision for the disk. This sets the number of throughput
+         * mb per second that the disk can handle. Values must be greater than or equal to 1.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisionedThroughput(@Nullable Output<Integer> provisionedThroughput) {
+            $.provisionedThroughput = provisionedThroughput;
+            return this;
+        }
+
+        /**
+         * @param provisionedThroughput Indicates how much throughput to provision for the disk. This sets the number of throughput
+         * mb per second that the disk can handle. Values must be greater than or equal to 1.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisionedThroughput(Integer provisionedThroughput) {
+            return provisionedThroughput(Output.of(provisionedThroughput));
         }
 
         /**

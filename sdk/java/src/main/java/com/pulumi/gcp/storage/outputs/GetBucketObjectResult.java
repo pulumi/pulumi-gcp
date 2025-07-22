@@ -58,6 +58,7 @@ public final class GetBucketObjectResult {
      * 
      */
     private Boolean eventBasedHold;
+    private Boolean forceEmptyContentType;
     /**
      * @return (Computed) The content generation of this object. Used for object [versioning](https://cloud.google.com/storage/docs/object-versioning) and [soft delete](https://cloud.google.com/storage/docs/soft-delete).
      * 
@@ -167,6 +168,9 @@ public final class GetBucketObjectResult {
     public Boolean eventBasedHold() {
         return this.eventBasedHold;
     }
+    public Boolean forceEmptyContentType() {
+        return this.forceEmptyContentType;
+    }
     /**
      * @return (Computed) The content generation of this object. Used for object [versioning](https://cloud.google.com/storage/docs/object-versioning) and [soft delete](https://cloud.google.com/storage/docs/soft-delete).
      * 
@@ -263,6 +267,7 @@ public final class GetBucketObjectResult {
         private List<GetBucketObjectCustomerEncryption> customerEncryptions;
         private String detectMd5hash;
         private Boolean eventBasedHold;
+        private Boolean forceEmptyContentType;
         private Integer generation;
         private String id;
         private String kmsKeyName;
@@ -292,6 +297,7 @@ public final class GetBucketObjectResult {
     	      this.customerEncryptions = defaults.customerEncryptions;
     	      this.detectMd5hash = defaults.detectMd5hash;
     	      this.eventBasedHold = defaults.eventBasedHold;
+    	      this.forceEmptyContentType = defaults.forceEmptyContentType;
     	      this.generation = defaults.generation;
     	      this.id = defaults.id;
     	      this.kmsKeyName = defaults.kmsKeyName;
@@ -396,6 +402,14 @@ public final class GetBucketObjectResult {
               throw new MissingRequiredPropertyException("GetBucketObjectResult", "eventBasedHold");
             }
             this.eventBasedHold = eventBasedHold;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder forceEmptyContentType(Boolean forceEmptyContentType) {
+            if (forceEmptyContentType == null) {
+              throw new MissingRequiredPropertyException("GetBucketObjectResult", "forceEmptyContentType");
+            }
+            this.forceEmptyContentType = forceEmptyContentType;
             return this;
         }
         @CustomType.Setter
@@ -532,6 +546,7 @@ public final class GetBucketObjectResult {
             _resultValue.customerEncryptions = customerEncryptions;
             _resultValue.detectMd5hash = detectMd5hash;
             _resultValue.eventBasedHold = eventBasedHold;
+            _resultValue.forceEmptyContentType = forceEmptyContentType;
             _resultValue.generation = generation;
             _resultValue.id = id;
             _resultValue.kmsKeyName = kmsKeyName;

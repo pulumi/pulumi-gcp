@@ -32,6 +32,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? LogLevel;
         /// <summary>
+        /// The maximum request size chosen by the customer with Waf enabled. Values supported are "8KB", "16KB, "32KB", "48KB" and "64KB". Values are case insensitive.
+        /// </summary>
+        public readonly string? RequestBodyInspectionSize;
+        /// <summary>
         /// An optional list of case-insensitive request header names to use for resolving the callers client IP address.
         /// </summary>
         public readonly ImmutableArray<string> UserIpRequestHeaders;
@@ -44,11 +48,14 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? logLevel,
 
+            string? requestBodyInspectionSize,
+
             ImmutableArray<string> userIpRequestHeaders)
         {
             JsonCustomConfig = jsonCustomConfig;
             JsonParsing = jsonParsing;
             LogLevel = logLevel;
+            RequestBodyInspectionSize = requestBodyInspectionSize;
             UserIpRequestHeaders = userIpRequestHeaders;
         }
     }

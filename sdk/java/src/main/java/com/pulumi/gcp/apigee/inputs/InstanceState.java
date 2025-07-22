@@ -5,6 +5,7 @@ package com.pulumi.gcp.apigee.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.apigee.inputs.InstanceAccessLoggingConfigArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -15,6 +16,25 @@ import javax.annotation.Nullable;
 public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     public static final InstanceState Empty = new InstanceState();
+
+    /**
+     * Access logging configuration enables the access logging feature at the instance.
+     * Apigee customers can enable access logging to ship the access logs to their own project&#39;s cloud logging.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="accessLoggingConfig")
+    private @Nullable Output<InstanceAccessLoggingConfigArgs> accessLoggingConfig;
+
+    /**
+     * @return Access logging configuration enables the access logging feature at the instance.
+     * Apigee customers can enable access logging to ship the access logs to their own project&#39;s cloud logging.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstanceAccessLoggingConfigArgs>> accessLoggingConfig() {
+        return Optional.ofNullable(this.accessLoggingConfig);
+    }
 
     /**
      * Optional. Customer accept list represents the list of projects (id/number) on customer
@@ -227,6 +247,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private InstanceState() {}
 
     private InstanceState(InstanceState $) {
+        this.accessLoggingConfig = $.accessLoggingConfig;
         this.consumerAcceptLists = $.consumerAcceptLists;
         this.description = $.description;
         this.diskEncryptionKeyName = $.diskEncryptionKeyName;
@@ -257,6 +278,31 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(InstanceState defaults) {
             $ = new InstanceState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param accessLoggingConfig Access logging configuration enables the access logging feature at the instance.
+         * Apigee customers can enable access logging to ship the access logs to their own project&#39;s cloud logging.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessLoggingConfig(@Nullable Output<InstanceAccessLoggingConfigArgs> accessLoggingConfig) {
+            $.accessLoggingConfig = accessLoggingConfig;
+            return this;
+        }
+
+        /**
+         * @param accessLoggingConfig Access logging configuration enables the access logging feature at the instance.
+         * Apigee customers can enable access logging to ship the access logs to their own project&#39;s cloud logging.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessLoggingConfig(InstanceAccessLoggingConfigArgs accessLoggingConfig) {
+            return accessLoggingConfig(Output.of(accessLoggingConfig));
         }
 
         /**

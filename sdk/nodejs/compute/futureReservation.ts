@@ -33,6 +33,42 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Future Reservation Aggregate Reservation
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const gceFutureReservation = new gcp.compute.FutureReservation("gce_future_reservation", {
+ *     name: "gce-future-reservation-aggregate-reservation",
+ *     project: "my-project-name",
+ *     autoDeleteAutoCreatedReservations: true,
+ *     planningStatus: "DRAFT",
+ *     namePrefix: "fr-basic",
+ *     timeWindow: {
+ *         startTime: "2025-11-01T00:00:00Z",
+ *         endTime: "2025-11-02T00:00:00Z",
+ *     },
+ *     aggregateReservation: {
+ *         vmFamily: "VM_FAMILY_CLOUD_TPU_DEVICE_CT3",
+ *         workloadType: "UNSPECIFIED",
+ *         reservedResources: [
+ *             {
+ *                 accelerator: {
+ *                     acceleratorCount: 32,
+ *                     acceleratorType: "projects/my-project-name/zones/us-central1-a/acceleratorTypes/ct3",
+ *                 },
+ *             },
+ *             {
+ *                 accelerator: {
+ *                     acceleratorCount: 2,
+ *                     acceleratorType: "projects/my-project-name/zones/us-central1-a/acceleratorTypes/ct3",
+ *                 },
+ *             },
+ *         ],
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -92,6 +128,11 @@ export class FutureReservation extends pulumi.CustomResource {
         return obj['__pulumiType'] === FutureReservation.__pulumiType;
     }
 
+    /**
+     * Aggregate reservation details for the future reservation.
+     * Structure is documented below.
+     */
+    public readonly aggregateReservation!: pulumi.Output<outputs.compute.FutureReservationAggregateReservation | undefined>;
     /**
      * Future timestamp when the FR auto-created reservations will be deleted by Compute Engine.
      */
@@ -211,6 +252,7 @@ export class FutureReservation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FutureReservationState | undefined;
+            resourceInputs["aggregateReservation"] = state ? state.aggregateReservation : undefined;
             resourceInputs["autoCreatedReservationsDeleteTime"] = state ? state.autoCreatedReservationsDeleteTime : undefined;
             resourceInputs["autoCreatedReservationsDuration"] = state ? state.autoCreatedReservationsDuration : undefined;
             resourceInputs["autoDeleteAutoCreatedReservations"] = state ? state.autoDeleteAutoCreatedReservations : undefined;
@@ -238,6 +280,7 @@ export class FutureReservation extends pulumi.CustomResource {
             if ((!args || args.timeWindow === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'timeWindow'");
             }
+            resourceInputs["aggregateReservation"] = args ? args.aggregateReservation : undefined;
             resourceInputs["autoCreatedReservationsDeleteTime"] = args ? args.autoCreatedReservationsDeleteTime : undefined;
             resourceInputs["autoCreatedReservationsDuration"] = args ? args.autoCreatedReservationsDuration : undefined;
             resourceInputs["autoDeleteAutoCreatedReservations"] = args ? args.autoDeleteAutoCreatedReservations : undefined;
@@ -270,6 +313,11 @@ export class FutureReservation extends pulumi.CustomResource {
  * Input properties used for looking up and filtering FutureReservation resources.
  */
 export interface FutureReservationState {
+    /**
+     * Aggregate reservation details for the future reservation.
+     * Structure is documented below.
+     */
+    aggregateReservation?: pulumi.Input<inputs.compute.FutureReservationAggregateReservation>;
     /**
      * Future timestamp when the FR auto-created reservations will be deleted by Compute Engine.
      */
@@ -381,6 +429,11 @@ export interface FutureReservationState {
  * The set of arguments for constructing a FutureReservation resource.
  */
 export interface FutureReservationArgs {
+    /**
+     * Aggregate reservation details for the future reservation.
+     * Structure is documented below.
+     */
+    aggregateReservation?: pulumi.Input<inputs.compute.FutureReservationAggregateReservation>;
     /**
      * Future timestamp when the FR auto-created reservations will be deleted by Compute Engine.
      */

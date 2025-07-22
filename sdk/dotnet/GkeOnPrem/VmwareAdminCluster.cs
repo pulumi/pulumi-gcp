@@ -10,6 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.GkeOnPrem
 {
     /// <summary>
+    /// A Google VMware Admin Cluster.
+    /// 
+    /// To get more information about VmwareAdminCluster, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/kubernetes-engine/distributed-cloud/reference/on-prem-api/rest/v1/projects.locations.vmwareAdminClusters)
+    /// 
     /// ## Example Usage
     /// 
     /// ### Gkeonprem Vmware Admin Cluster Basic

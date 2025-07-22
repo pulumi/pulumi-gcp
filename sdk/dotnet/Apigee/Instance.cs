@@ -309,6 +309,14 @@ namespace Pulumi.Gcp.Apigee
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Access logging configuration enables the access logging feature at the instance.
+        /// Apigee customers can enable access logging to ship the access logs to their own project's cloud logging.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("accessLoggingConfig")]
+        public Output<Outputs.InstanceAccessLoggingConfig?> AccessLoggingConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. Customer accept list represents the list of projects (id/number) on customer
         /// side that can privately connect to the service attachment. It is an optional field
         /// which the customers can provide during the instance creation. By default, the customer
@@ -440,6 +448,14 @@ namespace Pulumi.Gcp.Apigee
 
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Access logging configuration enables the access logging feature at the instance.
+        /// Apigee customers can enable access logging to ship the access logs to their own project's cloud logging.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("accessLoggingConfig")]
+        public Input<Inputs.InstanceAccessLoggingConfigArgs>? AccessLoggingConfig { get; set; }
+
         [Input("consumerAcceptLists")]
         private InputList<string>? _consumerAcceptLists;
 
@@ -520,6 +536,14 @@ namespace Pulumi.Gcp.Apigee
 
     public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Access logging configuration enables the access logging feature at the instance.
+        /// Apigee customers can enable access logging to ship the access logs to their own project's cloud logging.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("accessLoggingConfig")]
+        public Input<Inputs.InstanceAccessLoggingConfigGetArgs>? AccessLoggingConfig { get; set; }
+
         [Input("consumerAcceptLists")]
         private InputList<string>? _consumerAcceptLists;
 

@@ -32,6 +32,7 @@ class FirewallArgs:
                  enable_logging: Optional[pulumi.Input[builtins.bool]] = None,
                  log_config: Optional[pulumi.Input['FirewallLogConfigArgs']] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
+                 params: Optional[pulumi.Input['FirewallParamsArgs']] = None,
                  priority: Optional[pulumi.Input[builtins.int]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  source_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -74,6 +75,8 @@ class FirewallArgs:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+        :param pulumi.Input['FirewallParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[builtins.int] priority: Priority for this rule. This is an integer between 0 and 65535, both
                inclusive. When not specified, the value assumed is 1000. Relative
                priorities determine precedence of conflicting rules. Lower value of
@@ -146,6 +149,8 @@ class FirewallArgs:
             pulumi.set(__self__, "log_config", log_config)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
         if project is not None:
@@ -307,6 +312,19 @@ class FirewallArgs:
 
     @property
     @pulumi.getter
+    def params(self) -> Optional[pulumi.Input['FirewallParamsArgs']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input['FirewallParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @property
+    @pulumi.getter
     def priority(self) -> Optional[pulumi.Input[builtins.int]]:
         """
         Priority for this rule. This is an integer between 0 and 65535, both
@@ -446,6 +464,7 @@ class _FirewallState:
                  log_config: Optional[pulumi.Input['FirewallLogConfigArgs']] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  network: Optional[pulumi.Input[builtins.str]] = None,
+                 params: Optional[pulumi.Input['FirewallParamsArgs']] = None,
                  priority: Optional[pulumi.Input[builtins.int]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  self_link: Optional[pulumi.Input[builtins.str]] = None,
@@ -490,6 +509,8 @@ class _FirewallState:
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
         :param pulumi.Input[builtins.str] network: The name or self_link of the network to attach this firewall to.
+        :param pulumi.Input['FirewallParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[builtins.int] priority: Priority for this rule. This is an integer between 0 and 65535, both
                inclusive. When not specified, the value assumed is 1000. Relative
                priorities determine precedence of conflicting rules. Lower value of
@@ -566,6 +587,8 @@ class _FirewallState:
             pulumi.set(__self__, "name", name)
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
         if project is not None:
@@ -741,6 +764,19 @@ class _FirewallState:
 
     @property
     @pulumi.getter
+    def params(self) -> Optional[pulumi.Input['FirewallParamsArgs']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input['FirewallParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @property
+    @pulumi.getter
     def priority(self) -> Optional[pulumi.Input[builtins.int]]:
         """
         Priority for this rule. This is an integer between 0 and 65535, both
@@ -894,6 +930,7 @@ class Firewall(pulumi.CustomResource):
                  log_config: Optional[pulumi.Input[Union['FirewallLogConfigArgs', 'FirewallLogConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  network: Optional[pulumi.Input[builtins.str]] = None,
+                 params: Optional[pulumi.Input[Union['FirewallParamsArgs', 'FirewallParamsArgsDict']]] = None,
                  priority: Optional[pulumi.Input[builtins.int]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  source_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -1031,6 +1068,8 @@ class Firewall(pulumi.CustomResource):
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
         :param pulumi.Input[builtins.str] network: The name or self_link of the network to attach this firewall to.
+        :param pulumi.Input[Union['FirewallParamsArgs', 'FirewallParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[builtins.int] priority: Priority for this rule. This is an integer between 0 and 65535, both
                inclusive. When not specified, the value assumed is 1000. Relative
                priorities determine precedence of conflicting rules. Lower value of
@@ -1206,6 +1245,7 @@ class Firewall(pulumi.CustomResource):
                  log_config: Optional[pulumi.Input[Union['FirewallLogConfigArgs', 'FirewallLogConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  network: Optional[pulumi.Input[builtins.str]] = None,
+                 params: Optional[pulumi.Input[Union['FirewallParamsArgs', 'FirewallParamsArgsDict']]] = None,
                  priority: Optional[pulumi.Input[builtins.int]] = None,
                  project: Optional[pulumi.Input[builtins.str]] = None,
                  source_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -1234,6 +1274,7 @@ class Firewall(pulumi.CustomResource):
             if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")
             __props__.__dict__["network"] = network
+            __props__.__dict__["params"] = params
             __props__.__dict__["priority"] = priority
             __props__.__dict__["project"] = project
             __props__.__dict__["source_ranges"] = source_ranges
@@ -1264,6 +1305,7 @@ class Firewall(pulumi.CustomResource):
             log_config: Optional[pulumi.Input[Union['FirewallLogConfigArgs', 'FirewallLogConfigArgsDict']]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
             network: Optional[pulumi.Input[builtins.str]] = None,
+            params: Optional[pulumi.Input[Union['FirewallParamsArgs', 'FirewallParamsArgsDict']]] = None,
             priority: Optional[pulumi.Input[builtins.int]] = None,
             project: Optional[pulumi.Input[builtins.str]] = None,
             self_link: Optional[pulumi.Input[builtins.str]] = None,
@@ -1313,6 +1355,8 @@ class Firewall(pulumi.CustomResource):
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
         :param pulumi.Input[builtins.str] network: The name or self_link of the network to attach this firewall to.
+        :param pulumi.Input[Union['FirewallParamsArgs', 'FirewallParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[builtins.int] priority: Priority for this rule. This is an integer between 0 and 65535, both
                inclusive. When not specified, the value assumed is 1000. Relative
                priorities determine precedence of conflicting rules. Lower value of
@@ -1379,6 +1423,7 @@ class Firewall(pulumi.CustomResource):
         __props__.__dict__["log_config"] = log_config
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
+        __props__.__dict__["params"] = params
         __props__.__dict__["priority"] = priority
         __props__.__dict__["project"] = project
         __props__.__dict__["self_link"] = self_link
@@ -1500,6 +1545,15 @@ class Firewall(pulumi.CustomResource):
         The name or self_link of the network to attach this firewall to.
         """
         return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter
+    def params(self) -> pulumi.Output[Optional['outputs.FirewallParams']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
 
     @property
     @pulumi.getter

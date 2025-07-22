@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BackupVault{}
 	case "gcp:backupdisasterrecovery/managementServer:ManagementServer":
 		r = &ManagementServer{}
+	case "gcp:backupdisasterrecovery/serviceConfig:ServiceConfig":
+		r = &ServiceConfig{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -60,6 +62,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"backupdisasterrecovery/managementServer",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"backupdisasterrecovery/serviceConfig",
 		&module{version},
 	)
 }

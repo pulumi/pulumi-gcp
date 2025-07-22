@@ -735,6 +735,634 @@ func (o DataExchangeSharingEnvironmentConfigDefaultExchangeConfigPtrOutput) Elem
 	}).(DataExchangeSharingEnvironmentConfigDefaultExchangeConfigOutput)
 }
 
+type DataExchangeSubscriptionDestinationDataset struct {
+	// A reference that identifies the destination dataset.
+	// Structure is documented below.
+	DatasetReference DataExchangeSubscriptionDestinationDatasetDatasetReference `pulumi:"datasetReference"`
+	// A user-friendly description of the dataset.
+	Description *string `pulumi:"description"`
+	// A descriptive name for the dataset.
+	FriendlyName *string `pulumi:"friendlyName"`
+	// The labels associated with this dataset. You can use these to
+	// organize and group your datasets.
+	Labels map[string]string `pulumi:"labels"`
+	// The geographic location where the dataset should reside.
+	// See https://cloud.google.com/bigquery/docs/locations for supported locations.
+	Location string `pulumi:"location"`
+}
+
+// DataExchangeSubscriptionDestinationDatasetInput is an input type that accepts DataExchangeSubscriptionDestinationDatasetArgs and DataExchangeSubscriptionDestinationDatasetOutput values.
+// You can construct a concrete instance of `DataExchangeSubscriptionDestinationDatasetInput` via:
+//
+//	DataExchangeSubscriptionDestinationDatasetArgs{...}
+type DataExchangeSubscriptionDestinationDatasetInput interface {
+	pulumi.Input
+
+	ToDataExchangeSubscriptionDestinationDatasetOutput() DataExchangeSubscriptionDestinationDatasetOutput
+	ToDataExchangeSubscriptionDestinationDatasetOutputWithContext(context.Context) DataExchangeSubscriptionDestinationDatasetOutput
+}
+
+type DataExchangeSubscriptionDestinationDatasetArgs struct {
+	// A reference that identifies the destination dataset.
+	// Structure is documented below.
+	DatasetReference DataExchangeSubscriptionDestinationDatasetDatasetReferenceInput `pulumi:"datasetReference"`
+	// A user-friendly description of the dataset.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// A descriptive name for the dataset.
+	FriendlyName pulumi.StringPtrInput `pulumi:"friendlyName"`
+	// The labels associated with this dataset. You can use these to
+	// organize and group your datasets.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// The geographic location where the dataset should reside.
+	// See https://cloud.google.com/bigquery/docs/locations for supported locations.
+	Location pulumi.StringInput `pulumi:"location"`
+}
+
+func (DataExchangeSubscriptionDestinationDatasetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataExchangeSubscriptionDestinationDataset)(nil)).Elem()
+}
+
+func (i DataExchangeSubscriptionDestinationDatasetArgs) ToDataExchangeSubscriptionDestinationDatasetOutput() DataExchangeSubscriptionDestinationDatasetOutput {
+	return i.ToDataExchangeSubscriptionDestinationDatasetOutputWithContext(context.Background())
+}
+
+func (i DataExchangeSubscriptionDestinationDatasetArgs) ToDataExchangeSubscriptionDestinationDatasetOutputWithContext(ctx context.Context) DataExchangeSubscriptionDestinationDatasetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataExchangeSubscriptionDestinationDatasetOutput)
+}
+
+func (i DataExchangeSubscriptionDestinationDatasetArgs) ToDataExchangeSubscriptionDestinationDatasetPtrOutput() DataExchangeSubscriptionDestinationDatasetPtrOutput {
+	return i.ToDataExchangeSubscriptionDestinationDatasetPtrOutputWithContext(context.Background())
+}
+
+func (i DataExchangeSubscriptionDestinationDatasetArgs) ToDataExchangeSubscriptionDestinationDatasetPtrOutputWithContext(ctx context.Context) DataExchangeSubscriptionDestinationDatasetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataExchangeSubscriptionDestinationDatasetOutput).ToDataExchangeSubscriptionDestinationDatasetPtrOutputWithContext(ctx)
+}
+
+// DataExchangeSubscriptionDestinationDatasetPtrInput is an input type that accepts DataExchangeSubscriptionDestinationDatasetArgs, DataExchangeSubscriptionDestinationDatasetPtr and DataExchangeSubscriptionDestinationDatasetPtrOutput values.
+// You can construct a concrete instance of `DataExchangeSubscriptionDestinationDatasetPtrInput` via:
+//
+//	        DataExchangeSubscriptionDestinationDatasetArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataExchangeSubscriptionDestinationDatasetPtrInput interface {
+	pulumi.Input
+
+	ToDataExchangeSubscriptionDestinationDatasetPtrOutput() DataExchangeSubscriptionDestinationDatasetPtrOutput
+	ToDataExchangeSubscriptionDestinationDatasetPtrOutputWithContext(context.Context) DataExchangeSubscriptionDestinationDatasetPtrOutput
+}
+
+type dataExchangeSubscriptionDestinationDatasetPtrType DataExchangeSubscriptionDestinationDatasetArgs
+
+func DataExchangeSubscriptionDestinationDatasetPtr(v *DataExchangeSubscriptionDestinationDatasetArgs) DataExchangeSubscriptionDestinationDatasetPtrInput {
+	return (*dataExchangeSubscriptionDestinationDatasetPtrType)(v)
+}
+
+func (*dataExchangeSubscriptionDestinationDatasetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataExchangeSubscriptionDestinationDataset)(nil)).Elem()
+}
+
+func (i *dataExchangeSubscriptionDestinationDatasetPtrType) ToDataExchangeSubscriptionDestinationDatasetPtrOutput() DataExchangeSubscriptionDestinationDatasetPtrOutput {
+	return i.ToDataExchangeSubscriptionDestinationDatasetPtrOutputWithContext(context.Background())
+}
+
+func (i *dataExchangeSubscriptionDestinationDatasetPtrType) ToDataExchangeSubscriptionDestinationDatasetPtrOutputWithContext(ctx context.Context) DataExchangeSubscriptionDestinationDatasetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataExchangeSubscriptionDestinationDatasetPtrOutput)
+}
+
+type DataExchangeSubscriptionDestinationDatasetOutput struct{ *pulumi.OutputState }
+
+func (DataExchangeSubscriptionDestinationDatasetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataExchangeSubscriptionDestinationDataset)(nil)).Elem()
+}
+
+func (o DataExchangeSubscriptionDestinationDatasetOutput) ToDataExchangeSubscriptionDestinationDatasetOutput() DataExchangeSubscriptionDestinationDatasetOutput {
+	return o
+}
+
+func (o DataExchangeSubscriptionDestinationDatasetOutput) ToDataExchangeSubscriptionDestinationDatasetOutputWithContext(ctx context.Context) DataExchangeSubscriptionDestinationDatasetOutput {
+	return o
+}
+
+func (o DataExchangeSubscriptionDestinationDatasetOutput) ToDataExchangeSubscriptionDestinationDatasetPtrOutput() DataExchangeSubscriptionDestinationDatasetPtrOutput {
+	return o.ToDataExchangeSubscriptionDestinationDatasetPtrOutputWithContext(context.Background())
+}
+
+func (o DataExchangeSubscriptionDestinationDatasetOutput) ToDataExchangeSubscriptionDestinationDatasetPtrOutputWithContext(ctx context.Context) DataExchangeSubscriptionDestinationDatasetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataExchangeSubscriptionDestinationDataset) *DataExchangeSubscriptionDestinationDataset {
+		return &v
+	}).(DataExchangeSubscriptionDestinationDatasetPtrOutput)
+}
+
+// A reference that identifies the destination dataset.
+// Structure is documented below.
+func (o DataExchangeSubscriptionDestinationDatasetOutput) DatasetReference() DataExchangeSubscriptionDestinationDatasetDatasetReferenceOutput {
+	return o.ApplyT(func(v DataExchangeSubscriptionDestinationDataset) DataExchangeSubscriptionDestinationDatasetDatasetReference {
+		return v.DatasetReference
+	}).(DataExchangeSubscriptionDestinationDatasetDatasetReferenceOutput)
+}
+
+// A user-friendly description of the dataset.
+func (o DataExchangeSubscriptionDestinationDatasetOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataExchangeSubscriptionDestinationDataset) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// A descriptive name for the dataset.
+func (o DataExchangeSubscriptionDestinationDatasetOutput) FriendlyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataExchangeSubscriptionDestinationDataset) *string { return v.FriendlyName }).(pulumi.StringPtrOutput)
+}
+
+// The labels associated with this dataset. You can use these to
+// organize and group your datasets.
+func (o DataExchangeSubscriptionDestinationDatasetOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DataExchangeSubscriptionDestinationDataset) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The geographic location where the dataset should reside.
+// See https://cloud.google.com/bigquery/docs/locations for supported locations.
+func (o DataExchangeSubscriptionDestinationDatasetOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v DataExchangeSubscriptionDestinationDataset) string { return v.Location }).(pulumi.StringOutput)
+}
+
+type DataExchangeSubscriptionDestinationDatasetPtrOutput struct{ *pulumi.OutputState }
+
+func (DataExchangeSubscriptionDestinationDatasetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataExchangeSubscriptionDestinationDataset)(nil)).Elem()
+}
+
+func (o DataExchangeSubscriptionDestinationDatasetPtrOutput) ToDataExchangeSubscriptionDestinationDatasetPtrOutput() DataExchangeSubscriptionDestinationDatasetPtrOutput {
+	return o
+}
+
+func (o DataExchangeSubscriptionDestinationDatasetPtrOutput) ToDataExchangeSubscriptionDestinationDatasetPtrOutputWithContext(ctx context.Context) DataExchangeSubscriptionDestinationDatasetPtrOutput {
+	return o
+}
+
+func (o DataExchangeSubscriptionDestinationDatasetPtrOutput) Elem() DataExchangeSubscriptionDestinationDatasetOutput {
+	return o.ApplyT(func(v *DataExchangeSubscriptionDestinationDataset) DataExchangeSubscriptionDestinationDataset {
+		if v != nil {
+			return *v
+		}
+		var ret DataExchangeSubscriptionDestinationDataset
+		return ret
+	}).(DataExchangeSubscriptionDestinationDatasetOutput)
+}
+
+// A reference that identifies the destination dataset.
+// Structure is documented below.
+func (o DataExchangeSubscriptionDestinationDatasetPtrOutput) DatasetReference() DataExchangeSubscriptionDestinationDatasetDatasetReferencePtrOutput {
+	return o.ApplyT(func(v *DataExchangeSubscriptionDestinationDataset) *DataExchangeSubscriptionDestinationDatasetDatasetReference {
+		if v == nil {
+			return nil
+		}
+		return &v.DatasetReference
+	}).(DataExchangeSubscriptionDestinationDatasetDatasetReferencePtrOutput)
+}
+
+// A user-friendly description of the dataset.
+func (o DataExchangeSubscriptionDestinationDatasetPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataExchangeSubscriptionDestinationDataset) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// A descriptive name for the dataset.
+func (o DataExchangeSubscriptionDestinationDatasetPtrOutput) FriendlyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataExchangeSubscriptionDestinationDataset) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FriendlyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The labels associated with this dataset. You can use these to
+// organize and group your datasets.
+func (o DataExchangeSubscriptionDestinationDatasetPtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DataExchangeSubscriptionDestinationDataset) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+// The geographic location where the dataset should reside.
+// See https://cloud.google.com/bigquery/docs/locations for supported locations.
+func (o DataExchangeSubscriptionDestinationDatasetPtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataExchangeSubscriptionDestinationDataset) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+type DataExchangeSubscriptionDestinationDatasetDatasetReference struct {
+	// A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
+	DatasetId string `pulumi:"datasetId"`
+	// The ID of the project containing this dataset.
+	ProjectId string `pulumi:"projectId"`
+}
+
+// DataExchangeSubscriptionDestinationDatasetDatasetReferenceInput is an input type that accepts DataExchangeSubscriptionDestinationDatasetDatasetReferenceArgs and DataExchangeSubscriptionDestinationDatasetDatasetReferenceOutput values.
+// You can construct a concrete instance of `DataExchangeSubscriptionDestinationDatasetDatasetReferenceInput` via:
+//
+//	DataExchangeSubscriptionDestinationDatasetDatasetReferenceArgs{...}
+type DataExchangeSubscriptionDestinationDatasetDatasetReferenceInput interface {
+	pulumi.Input
+
+	ToDataExchangeSubscriptionDestinationDatasetDatasetReferenceOutput() DataExchangeSubscriptionDestinationDatasetDatasetReferenceOutput
+	ToDataExchangeSubscriptionDestinationDatasetDatasetReferenceOutputWithContext(context.Context) DataExchangeSubscriptionDestinationDatasetDatasetReferenceOutput
+}
+
+type DataExchangeSubscriptionDestinationDatasetDatasetReferenceArgs struct {
+	// A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
+	DatasetId pulumi.StringInput `pulumi:"datasetId"`
+	// The ID of the project containing this dataset.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+}
+
+func (DataExchangeSubscriptionDestinationDatasetDatasetReferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataExchangeSubscriptionDestinationDatasetDatasetReference)(nil)).Elem()
+}
+
+func (i DataExchangeSubscriptionDestinationDatasetDatasetReferenceArgs) ToDataExchangeSubscriptionDestinationDatasetDatasetReferenceOutput() DataExchangeSubscriptionDestinationDatasetDatasetReferenceOutput {
+	return i.ToDataExchangeSubscriptionDestinationDatasetDatasetReferenceOutputWithContext(context.Background())
+}
+
+func (i DataExchangeSubscriptionDestinationDatasetDatasetReferenceArgs) ToDataExchangeSubscriptionDestinationDatasetDatasetReferenceOutputWithContext(ctx context.Context) DataExchangeSubscriptionDestinationDatasetDatasetReferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataExchangeSubscriptionDestinationDatasetDatasetReferenceOutput)
+}
+
+func (i DataExchangeSubscriptionDestinationDatasetDatasetReferenceArgs) ToDataExchangeSubscriptionDestinationDatasetDatasetReferencePtrOutput() DataExchangeSubscriptionDestinationDatasetDatasetReferencePtrOutput {
+	return i.ToDataExchangeSubscriptionDestinationDatasetDatasetReferencePtrOutputWithContext(context.Background())
+}
+
+func (i DataExchangeSubscriptionDestinationDatasetDatasetReferenceArgs) ToDataExchangeSubscriptionDestinationDatasetDatasetReferencePtrOutputWithContext(ctx context.Context) DataExchangeSubscriptionDestinationDatasetDatasetReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataExchangeSubscriptionDestinationDatasetDatasetReferenceOutput).ToDataExchangeSubscriptionDestinationDatasetDatasetReferencePtrOutputWithContext(ctx)
+}
+
+// DataExchangeSubscriptionDestinationDatasetDatasetReferencePtrInput is an input type that accepts DataExchangeSubscriptionDestinationDatasetDatasetReferenceArgs, DataExchangeSubscriptionDestinationDatasetDatasetReferencePtr and DataExchangeSubscriptionDestinationDatasetDatasetReferencePtrOutput values.
+// You can construct a concrete instance of `DataExchangeSubscriptionDestinationDatasetDatasetReferencePtrInput` via:
+//
+//	        DataExchangeSubscriptionDestinationDatasetDatasetReferenceArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataExchangeSubscriptionDestinationDatasetDatasetReferencePtrInput interface {
+	pulumi.Input
+
+	ToDataExchangeSubscriptionDestinationDatasetDatasetReferencePtrOutput() DataExchangeSubscriptionDestinationDatasetDatasetReferencePtrOutput
+	ToDataExchangeSubscriptionDestinationDatasetDatasetReferencePtrOutputWithContext(context.Context) DataExchangeSubscriptionDestinationDatasetDatasetReferencePtrOutput
+}
+
+type dataExchangeSubscriptionDestinationDatasetDatasetReferencePtrType DataExchangeSubscriptionDestinationDatasetDatasetReferenceArgs
+
+func DataExchangeSubscriptionDestinationDatasetDatasetReferencePtr(v *DataExchangeSubscriptionDestinationDatasetDatasetReferenceArgs) DataExchangeSubscriptionDestinationDatasetDatasetReferencePtrInput {
+	return (*dataExchangeSubscriptionDestinationDatasetDatasetReferencePtrType)(v)
+}
+
+func (*dataExchangeSubscriptionDestinationDatasetDatasetReferencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataExchangeSubscriptionDestinationDatasetDatasetReference)(nil)).Elem()
+}
+
+func (i *dataExchangeSubscriptionDestinationDatasetDatasetReferencePtrType) ToDataExchangeSubscriptionDestinationDatasetDatasetReferencePtrOutput() DataExchangeSubscriptionDestinationDatasetDatasetReferencePtrOutput {
+	return i.ToDataExchangeSubscriptionDestinationDatasetDatasetReferencePtrOutputWithContext(context.Background())
+}
+
+func (i *dataExchangeSubscriptionDestinationDatasetDatasetReferencePtrType) ToDataExchangeSubscriptionDestinationDatasetDatasetReferencePtrOutputWithContext(ctx context.Context) DataExchangeSubscriptionDestinationDatasetDatasetReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataExchangeSubscriptionDestinationDatasetDatasetReferencePtrOutput)
+}
+
+type DataExchangeSubscriptionDestinationDatasetDatasetReferenceOutput struct{ *pulumi.OutputState }
+
+func (DataExchangeSubscriptionDestinationDatasetDatasetReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataExchangeSubscriptionDestinationDatasetDatasetReference)(nil)).Elem()
+}
+
+func (o DataExchangeSubscriptionDestinationDatasetDatasetReferenceOutput) ToDataExchangeSubscriptionDestinationDatasetDatasetReferenceOutput() DataExchangeSubscriptionDestinationDatasetDatasetReferenceOutput {
+	return o
+}
+
+func (o DataExchangeSubscriptionDestinationDatasetDatasetReferenceOutput) ToDataExchangeSubscriptionDestinationDatasetDatasetReferenceOutputWithContext(ctx context.Context) DataExchangeSubscriptionDestinationDatasetDatasetReferenceOutput {
+	return o
+}
+
+func (o DataExchangeSubscriptionDestinationDatasetDatasetReferenceOutput) ToDataExchangeSubscriptionDestinationDatasetDatasetReferencePtrOutput() DataExchangeSubscriptionDestinationDatasetDatasetReferencePtrOutput {
+	return o.ToDataExchangeSubscriptionDestinationDatasetDatasetReferencePtrOutputWithContext(context.Background())
+}
+
+func (o DataExchangeSubscriptionDestinationDatasetDatasetReferenceOutput) ToDataExchangeSubscriptionDestinationDatasetDatasetReferencePtrOutputWithContext(ctx context.Context) DataExchangeSubscriptionDestinationDatasetDatasetReferencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataExchangeSubscriptionDestinationDatasetDatasetReference) *DataExchangeSubscriptionDestinationDatasetDatasetReference {
+		return &v
+	}).(DataExchangeSubscriptionDestinationDatasetDatasetReferencePtrOutput)
+}
+
+// A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
+func (o DataExchangeSubscriptionDestinationDatasetDatasetReferenceOutput) DatasetId() pulumi.StringOutput {
+	return o.ApplyT(func(v DataExchangeSubscriptionDestinationDatasetDatasetReference) string { return v.DatasetId }).(pulumi.StringOutput)
+}
+
+// The ID of the project containing this dataset.
+func (o DataExchangeSubscriptionDestinationDatasetDatasetReferenceOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v DataExchangeSubscriptionDestinationDatasetDatasetReference) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+type DataExchangeSubscriptionDestinationDatasetDatasetReferencePtrOutput struct{ *pulumi.OutputState }
+
+func (DataExchangeSubscriptionDestinationDatasetDatasetReferencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataExchangeSubscriptionDestinationDatasetDatasetReference)(nil)).Elem()
+}
+
+func (o DataExchangeSubscriptionDestinationDatasetDatasetReferencePtrOutput) ToDataExchangeSubscriptionDestinationDatasetDatasetReferencePtrOutput() DataExchangeSubscriptionDestinationDatasetDatasetReferencePtrOutput {
+	return o
+}
+
+func (o DataExchangeSubscriptionDestinationDatasetDatasetReferencePtrOutput) ToDataExchangeSubscriptionDestinationDatasetDatasetReferencePtrOutputWithContext(ctx context.Context) DataExchangeSubscriptionDestinationDatasetDatasetReferencePtrOutput {
+	return o
+}
+
+func (o DataExchangeSubscriptionDestinationDatasetDatasetReferencePtrOutput) Elem() DataExchangeSubscriptionDestinationDatasetDatasetReferenceOutput {
+	return o.ApplyT(func(v *DataExchangeSubscriptionDestinationDatasetDatasetReference) DataExchangeSubscriptionDestinationDatasetDatasetReference {
+		if v != nil {
+			return *v
+		}
+		var ret DataExchangeSubscriptionDestinationDatasetDatasetReference
+		return ret
+	}).(DataExchangeSubscriptionDestinationDatasetDatasetReferenceOutput)
+}
+
+// A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
+func (o DataExchangeSubscriptionDestinationDatasetDatasetReferencePtrOutput) DatasetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataExchangeSubscriptionDestinationDatasetDatasetReference) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DatasetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the project containing this dataset.
+func (o DataExchangeSubscriptionDestinationDatasetDatasetReferencePtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataExchangeSubscriptionDestinationDatasetDatasetReference) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+type DataExchangeSubscriptionLinkedDatasetMap struct {
+	// (Output)
+	// Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
+	LinkedDataset *string `pulumi:"linkedDataset"`
+	// (Output)
+	// Output only. Name of the Pub/Sub subscription, e.g. projects/subscriberproject/subscriptions/subscriptions/sub_id
+	LinkedPubsubSubscription *string `pulumi:"linkedPubsubSubscription"`
+	// (Output)
+	// Output only. Listing for which linked resource is created.
+	Listing *string `pulumi:"listing"`
+	// (Required) The identifier for this object. Format specified above.
+	ResourceName string `pulumi:"resourceName"`
+}
+
+// DataExchangeSubscriptionLinkedDatasetMapInput is an input type that accepts DataExchangeSubscriptionLinkedDatasetMap and DataExchangeSubscriptionLinkedDatasetMapOutput values.
+// You can construct a concrete instance of `DataExchangeSubscriptionLinkedDatasetMapInput` via:
+//
+//	DataExchangeSubscriptionLinkedDatasetMap{ "key": DataExchangeSubscriptionLinkedDatasetArgs{...} }
+type DataExchangeSubscriptionLinkedDatasetMapInput interface {
+	pulumi.Input
+
+	ToDataExchangeSubscriptionLinkedDatasetMapOutput() DataExchangeSubscriptionLinkedDatasetMapOutput
+	ToDataExchangeSubscriptionLinkedDatasetMapOutputWithContext(context.Context) DataExchangeSubscriptionLinkedDatasetMapOutput
+}
+
+type DataExchangeSubscriptionLinkedDatasetMapArgs struct {
+	// (Output)
+	// Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
+	LinkedDataset pulumi.StringPtrInput `pulumi:"linkedDataset"`
+	// (Output)
+	// Output only. Name of the Pub/Sub subscription, e.g. projects/subscriberproject/subscriptions/subscriptions/sub_id
+	LinkedPubsubSubscription pulumi.StringPtrInput `pulumi:"linkedPubsubSubscription"`
+	// (Output)
+	// Output only. Listing for which linked resource is created.
+	Listing pulumi.StringPtrInput `pulumi:"listing"`
+	// (Required) The identifier for this object. Format specified above.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
+}
+
+func (DataExchangeSubscriptionLinkedDatasetMapArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataExchangeSubscriptionLinkedDatasetMap)(nil)).Elem()
+}
+
+func (i DataExchangeSubscriptionLinkedDatasetMapArgs) ToDataExchangeSubscriptionLinkedDatasetMapOutput() DataExchangeSubscriptionLinkedDatasetMapOutput {
+	return i.ToDataExchangeSubscriptionLinkedDatasetMapOutputWithContext(context.Background())
+}
+
+func (i DataExchangeSubscriptionLinkedDatasetMapArgs) ToDataExchangeSubscriptionLinkedDatasetMapOutputWithContext(ctx context.Context) DataExchangeSubscriptionLinkedDatasetMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataExchangeSubscriptionLinkedDatasetMapOutput)
+}
+
+// DataExchangeSubscriptionLinkedDatasetMapArrayInput is an input type that accepts DataExchangeSubscriptionLinkedDatasetMapArray and DataExchangeSubscriptionLinkedDatasetMapArrayOutput values.
+// You can construct a concrete instance of `DataExchangeSubscriptionLinkedDatasetMapArrayInput` via:
+//
+//	DataExchangeSubscriptionLinkedDatasetMapArray{ DataExchangeSubscriptionLinkedDatasetMapArgs{...} }
+type DataExchangeSubscriptionLinkedDatasetMapArrayInput interface {
+	pulumi.Input
+
+	ToDataExchangeSubscriptionLinkedDatasetMapArrayOutput() DataExchangeSubscriptionLinkedDatasetMapArrayOutput
+	ToDataExchangeSubscriptionLinkedDatasetMapArrayOutputWithContext(context.Context) DataExchangeSubscriptionLinkedDatasetMapArrayOutput
+}
+
+type DataExchangeSubscriptionLinkedDatasetMapArray []DataExchangeSubscriptionLinkedDatasetMapInput
+
+func (DataExchangeSubscriptionLinkedDatasetMapArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataExchangeSubscriptionLinkedDatasetMap)(nil)).Elem()
+}
+
+func (i DataExchangeSubscriptionLinkedDatasetMapArray) ToDataExchangeSubscriptionLinkedDatasetMapArrayOutput() DataExchangeSubscriptionLinkedDatasetMapArrayOutput {
+	return i.ToDataExchangeSubscriptionLinkedDatasetMapArrayOutputWithContext(context.Background())
+}
+
+func (i DataExchangeSubscriptionLinkedDatasetMapArray) ToDataExchangeSubscriptionLinkedDatasetMapArrayOutputWithContext(ctx context.Context) DataExchangeSubscriptionLinkedDatasetMapArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataExchangeSubscriptionLinkedDatasetMapArrayOutput)
+}
+
+type DataExchangeSubscriptionLinkedDatasetMapOutput struct{ *pulumi.OutputState }
+
+func (DataExchangeSubscriptionLinkedDatasetMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataExchangeSubscriptionLinkedDatasetMap)(nil)).Elem()
+}
+
+func (o DataExchangeSubscriptionLinkedDatasetMapOutput) ToDataExchangeSubscriptionLinkedDatasetMapOutput() DataExchangeSubscriptionLinkedDatasetMapOutput {
+	return o
+}
+
+func (o DataExchangeSubscriptionLinkedDatasetMapOutput) ToDataExchangeSubscriptionLinkedDatasetMapOutputWithContext(ctx context.Context) DataExchangeSubscriptionLinkedDatasetMapOutput {
+	return o
+}
+
+// (Output)
+// Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
+func (o DataExchangeSubscriptionLinkedDatasetMapOutput) LinkedDataset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataExchangeSubscriptionLinkedDatasetMap) *string { return v.LinkedDataset }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. Name of the Pub/Sub subscription, e.g. projects/subscriberproject/subscriptions/subscriptions/sub_id
+func (o DataExchangeSubscriptionLinkedDatasetMapOutput) LinkedPubsubSubscription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataExchangeSubscriptionLinkedDatasetMap) *string { return v.LinkedPubsubSubscription }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. Listing for which linked resource is created.
+func (o DataExchangeSubscriptionLinkedDatasetMapOutput) Listing() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataExchangeSubscriptionLinkedDatasetMap) *string { return v.Listing }).(pulumi.StringPtrOutput)
+}
+
+// (Required) The identifier for this object. Format specified above.
+func (o DataExchangeSubscriptionLinkedDatasetMapOutput) ResourceName() pulumi.StringOutput {
+	return o.ApplyT(func(v DataExchangeSubscriptionLinkedDatasetMap) string { return v.ResourceName }).(pulumi.StringOutput)
+}
+
+type DataExchangeSubscriptionLinkedDatasetMapArrayOutput struct{ *pulumi.OutputState }
+
+func (DataExchangeSubscriptionLinkedDatasetMapArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataExchangeSubscriptionLinkedDatasetMap)(nil)).Elem()
+}
+
+func (o DataExchangeSubscriptionLinkedDatasetMapArrayOutput) ToDataExchangeSubscriptionLinkedDatasetMapArrayOutput() DataExchangeSubscriptionLinkedDatasetMapArrayOutput {
+	return o
+}
+
+func (o DataExchangeSubscriptionLinkedDatasetMapArrayOutput) ToDataExchangeSubscriptionLinkedDatasetMapArrayOutputWithContext(ctx context.Context) DataExchangeSubscriptionLinkedDatasetMapArrayOutput {
+	return o
+}
+
+func (o DataExchangeSubscriptionLinkedDatasetMapArrayOutput) Index(i pulumi.IntInput) DataExchangeSubscriptionLinkedDatasetMapOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataExchangeSubscriptionLinkedDatasetMap {
+		return vs[0].([]DataExchangeSubscriptionLinkedDatasetMap)[vs[1].(int)]
+	}).(DataExchangeSubscriptionLinkedDatasetMapOutput)
+}
+
+type DataExchangeSubscriptionLinkedResource struct {
+	// (Output)
+	// Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
+	LinkedDataset *string `pulumi:"linkedDataset"`
+	// (Output)
+	// Output only. Listing for which linked resource is created.
+	Listing *string `pulumi:"listing"`
+}
+
+// DataExchangeSubscriptionLinkedResourceInput is an input type that accepts DataExchangeSubscriptionLinkedResourceArgs and DataExchangeSubscriptionLinkedResourceOutput values.
+// You can construct a concrete instance of `DataExchangeSubscriptionLinkedResourceInput` via:
+//
+//	DataExchangeSubscriptionLinkedResourceArgs{...}
+type DataExchangeSubscriptionLinkedResourceInput interface {
+	pulumi.Input
+
+	ToDataExchangeSubscriptionLinkedResourceOutput() DataExchangeSubscriptionLinkedResourceOutput
+	ToDataExchangeSubscriptionLinkedResourceOutputWithContext(context.Context) DataExchangeSubscriptionLinkedResourceOutput
+}
+
+type DataExchangeSubscriptionLinkedResourceArgs struct {
+	// (Output)
+	// Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
+	LinkedDataset pulumi.StringPtrInput `pulumi:"linkedDataset"`
+	// (Output)
+	// Output only. Listing for which linked resource is created.
+	Listing pulumi.StringPtrInput `pulumi:"listing"`
+}
+
+func (DataExchangeSubscriptionLinkedResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataExchangeSubscriptionLinkedResource)(nil)).Elem()
+}
+
+func (i DataExchangeSubscriptionLinkedResourceArgs) ToDataExchangeSubscriptionLinkedResourceOutput() DataExchangeSubscriptionLinkedResourceOutput {
+	return i.ToDataExchangeSubscriptionLinkedResourceOutputWithContext(context.Background())
+}
+
+func (i DataExchangeSubscriptionLinkedResourceArgs) ToDataExchangeSubscriptionLinkedResourceOutputWithContext(ctx context.Context) DataExchangeSubscriptionLinkedResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataExchangeSubscriptionLinkedResourceOutput)
+}
+
+// DataExchangeSubscriptionLinkedResourceArrayInput is an input type that accepts DataExchangeSubscriptionLinkedResourceArray and DataExchangeSubscriptionLinkedResourceArrayOutput values.
+// You can construct a concrete instance of `DataExchangeSubscriptionLinkedResourceArrayInput` via:
+//
+//	DataExchangeSubscriptionLinkedResourceArray{ DataExchangeSubscriptionLinkedResourceArgs{...} }
+type DataExchangeSubscriptionLinkedResourceArrayInput interface {
+	pulumi.Input
+
+	ToDataExchangeSubscriptionLinkedResourceArrayOutput() DataExchangeSubscriptionLinkedResourceArrayOutput
+	ToDataExchangeSubscriptionLinkedResourceArrayOutputWithContext(context.Context) DataExchangeSubscriptionLinkedResourceArrayOutput
+}
+
+type DataExchangeSubscriptionLinkedResourceArray []DataExchangeSubscriptionLinkedResourceInput
+
+func (DataExchangeSubscriptionLinkedResourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataExchangeSubscriptionLinkedResource)(nil)).Elem()
+}
+
+func (i DataExchangeSubscriptionLinkedResourceArray) ToDataExchangeSubscriptionLinkedResourceArrayOutput() DataExchangeSubscriptionLinkedResourceArrayOutput {
+	return i.ToDataExchangeSubscriptionLinkedResourceArrayOutputWithContext(context.Background())
+}
+
+func (i DataExchangeSubscriptionLinkedResourceArray) ToDataExchangeSubscriptionLinkedResourceArrayOutputWithContext(ctx context.Context) DataExchangeSubscriptionLinkedResourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataExchangeSubscriptionLinkedResourceArrayOutput)
+}
+
+type DataExchangeSubscriptionLinkedResourceOutput struct{ *pulumi.OutputState }
+
+func (DataExchangeSubscriptionLinkedResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataExchangeSubscriptionLinkedResource)(nil)).Elem()
+}
+
+func (o DataExchangeSubscriptionLinkedResourceOutput) ToDataExchangeSubscriptionLinkedResourceOutput() DataExchangeSubscriptionLinkedResourceOutput {
+	return o
+}
+
+func (o DataExchangeSubscriptionLinkedResourceOutput) ToDataExchangeSubscriptionLinkedResourceOutputWithContext(ctx context.Context) DataExchangeSubscriptionLinkedResourceOutput {
+	return o
+}
+
+// (Output)
+// Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linkedDataset
+func (o DataExchangeSubscriptionLinkedResourceOutput) LinkedDataset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataExchangeSubscriptionLinkedResource) *string { return v.LinkedDataset }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. Listing for which linked resource is created.
+func (o DataExchangeSubscriptionLinkedResourceOutput) Listing() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataExchangeSubscriptionLinkedResource) *string { return v.Listing }).(pulumi.StringPtrOutput)
+}
+
+type DataExchangeSubscriptionLinkedResourceArrayOutput struct{ *pulumi.OutputState }
+
+func (DataExchangeSubscriptionLinkedResourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataExchangeSubscriptionLinkedResource)(nil)).Elem()
+}
+
+func (o DataExchangeSubscriptionLinkedResourceArrayOutput) ToDataExchangeSubscriptionLinkedResourceArrayOutput() DataExchangeSubscriptionLinkedResourceArrayOutput {
+	return o
+}
+
+func (o DataExchangeSubscriptionLinkedResourceArrayOutput) ToDataExchangeSubscriptionLinkedResourceArrayOutputWithContext(ctx context.Context) DataExchangeSubscriptionLinkedResourceArrayOutput {
+	return o
+}
+
+func (o DataExchangeSubscriptionLinkedResourceArrayOutput) Index(i pulumi.IntInput) DataExchangeSubscriptionLinkedResourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataExchangeSubscriptionLinkedResource {
+		return vs[0].([]DataExchangeSubscriptionLinkedResource)[vs[1].(int)]
+	}).(DataExchangeSubscriptionLinkedResourceOutput)
+}
+
 type ListingBigqueryDataset struct {
 	// Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
 	Dataset string `pulumi:"dataset"`
@@ -896,6 +1524,8 @@ func (o ListingBigqueryDatasetPtrOutput) SelectedResources() ListingBigqueryData
 }
 
 type ListingBigqueryDatasetSelectedResource struct {
+	// Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:"projects/test_project/datasets/test_dataset/routines/test_routine"
+	Routine *string `pulumi:"routine"`
 	// Format: For table: projects/{projectId}/datasets/{datasetId}/tables/{tableId} Example:"projects/test_project/datasets/test_dataset/tables/test_table"
 	Table *string `pulumi:"table"`
 }
@@ -912,6 +1542,8 @@ type ListingBigqueryDatasetSelectedResourceInput interface {
 }
 
 type ListingBigqueryDatasetSelectedResourceArgs struct {
+	// Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:"projects/test_project/datasets/test_dataset/routines/test_routine"
+	Routine pulumi.StringPtrInput `pulumi:"routine"`
 	// Format: For table: projects/{projectId}/datasets/{datasetId}/tables/{tableId} Example:"projects/test_project/datasets/test_dataset/tables/test_table"
 	Table pulumi.StringPtrInput `pulumi:"table"`
 }
@@ -965,6 +1597,11 @@ func (o ListingBigqueryDatasetSelectedResourceOutput) ToListingBigqueryDatasetSe
 
 func (o ListingBigqueryDatasetSelectedResourceOutput) ToListingBigqueryDatasetSelectedResourceOutputWithContext(ctx context.Context) ListingBigqueryDatasetSelectedResourceOutput {
 	return o
+}
+
+// Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:"projects/test_project/datasets/test_dataset/routines/test_routine"
+func (o ListingBigqueryDatasetSelectedResourceOutput) Routine() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListingBigqueryDatasetSelectedResource) *string { return v.Routine }).(pulumi.StringPtrOutput)
 }
 
 // Format: For table: projects/{projectId}/datasets/{datasetId}/tables/{tableId} Example:"projects/test_project/datasets/test_dataset/tables/test_table"
@@ -2596,6 +3233,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DataExchangeSharingEnvironmentConfigDcrExchangeConfigPtrInput)(nil)).Elem(), DataExchangeSharingEnvironmentConfigDcrExchangeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataExchangeSharingEnvironmentConfigDefaultExchangeConfigInput)(nil)).Elem(), DataExchangeSharingEnvironmentConfigDefaultExchangeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataExchangeSharingEnvironmentConfigDefaultExchangeConfigPtrInput)(nil)).Elem(), DataExchangeSharingEnvironmentConfigDefaultExchangeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataExchangeSubscriptionDestinationDatasetInput)(nil)).Elem(), DataExchangeSubscriptionDestinationDatasetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataExchangeSubscriptionDestinationDatasetPtrInput)(nil)).Elem(), DataExchangeSubscriptionDestinationDatasetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataExchangeSubscriptionDestinationDatasetDatasetReferenceInput)(nil)).Elem(), DataExchangeSubscriptionDestinationDatasetDatasetReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataExchangeSubscriptionDestinationDatasetDatasetReferencePtrInput)(nil)).Elem(), DataExchangeSubscriptionDestinationDatasetDatasetReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataExchangeSubscriptionLinkedDatasetMapInput)(nil)).Elem(), DataExchangeSubscriptionLinkedDatasetMapArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataExchangeSubscriptionLinkedDatasetMapArrayInput)(nil)).Elem(), DataExchangeSubscriptionLinkedDatasetMapArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataExchangeSubscriptionLinkedResourceInput)(nil)).Elem(), DataExchangeSubscriptionLinkedResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataExchangeSubscriptionLinkedResourceArrayInput)(nil)).Elem(), DataExchangeSubscriptionLinkedResourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListingBigqueryDatasetInput)(nil)).Elem(), ListingBigqueryDatasetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListingBigqueryDatasetPtrInput)(nil)).Elem(), ListingBigqueryDatasetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListingBigqueryDatasetSelectedResourceInput)(nil)).Elem(), ListingBigqueryDatasetSelectedResourceArgs{})
@@ -2630,6 +3275,14 @@ func init() {
 	pulumi.RegisterOutputType(DataExchangeSharingEnvironmentConfigDcrExchangeConfigPtrOutput{})
 	pulumi.RegisterOutputType(DataExchangeSharingEnvironmentConfigDefaultExchangeConfigOutput{})
 	pulumi.RegisterOutputType(DataExchangeSharingEnvironmentConfigDefaultExchangeConfigPtrOutput{})
+	pulumi.RegisterOutputType(DataExchangeSubscriptionDestinationDatasetOutput{})
+	pulumi.RegisterOutputType(DataExchangeSubscriptionDestinationDatasetPtrOutput{})
+	pulumi.RegisterOutputType(DataExchangeSubscriptionDestinationDatasetDatasetReferenceOutput{})
+	pulumi.RegisterOutputType(DataExchangeSubscriptionDestinationDatasetDatasetReferencePtrOutput{})
+	pulumi.RegisterOutputType(DataExchangeSubscriptionLinkedDatasetMapOutput{})
+	pulumi.RegisterOutputType(DataExchangeSubscriptionLinkedDatasetMapArrayOutput{})
+	pulumi.RegisterOutputType(DataExchangeSubscriptionLinkedResourceOutput{})
+	pulumi.RegisterOutputType(DataExchangeSubscriptionLinkedResourceArrayOutput{})
 	pulumi.RegisterOutputType(ListingBigqueryDatasetOutput{})
 	pulumi.RegisterOutputType(ListingBigqueryDatasetPtrOutput{})
 	pulumi.RegisterOutputType(ListingBigqueryDatasetSelectedResourceOutput{})
