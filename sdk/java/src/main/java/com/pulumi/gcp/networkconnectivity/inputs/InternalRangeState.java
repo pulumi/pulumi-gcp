@@ -5,6 +5,7 @@ package com.pulumi.gcp.networkconnectivity.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.networkconnectivity.inputs.InternalRangeAllocationOptionsArgs;
 import com.pulumi.gcp.networkconnectivity.inputs.InternalRangeMigrationArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -19,6 +20,23 @@ import javax.annotation.Nullable;
 public final class InternalRangeState extends com.pulumi.resources.ResourceArgs {
 
     public static final InternalRangeState Empty = new InternalRangeState();
+
+    /**
+     * Options for automatically allocating a free range with a size given by prefixLength.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="allocationOptions")
+    private @Nullable Output<InternalRangeAllocationOptionsArgs> allocationOptions;
+
+    /**
+     * @return Options for automatically allocating a free range with a size given by prefixLength.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InternalRangeAllocationOptionsArgs>> allocationOptions() {
+        return Optional.ofNullable(this.allocationOptions);
+    }
 
     /**
      * An optional description of this resource.
@@ -314,6 +332,7 @@ public final class InternalRangeState extends com.pulumi.resources.ResourceArgs 
     private InternalRangeState() {}
 
     private InternalRangeState(InternalRangeState $) {
+        this.allocationOptions = $.allocationOptions;
         this.description = $.description;
         this.effectiveLabels = $.effectiveLabels;
         this.excludeCidrRanges = $.excludeCidrRanges;
@@ -349,6 +368,29 @@ public final class InternalRangeState extends com.pulumi.resources.ResourceArgs 
 
         public Builder(InternalRangeState defaults) {
             $ = new InternalRangeState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param allocationOptions Options for automatically allocating a free range with a size given by prefixLength.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allocationOptions(@Nullable Output<InternalRangeAllocationOptionsArgs> allocationOptions) {
+            $.allocationOptions = allocationOptions;
+            return this;
+        }
+
+        /**
+         * @param allocationOptions Options for automatically allocating a free range with a size given by prefixLength.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allocationOptions(InternalRangeAllocationOptionsArgs allocationOptions) {
+            return allocationOptions(Output.of(allocationOptions));
         }
 
         /**

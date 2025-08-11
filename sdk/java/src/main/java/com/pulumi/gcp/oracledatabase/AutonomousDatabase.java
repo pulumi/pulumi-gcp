@@ -157,6 +157,103 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Oracledatabase Autonomous Database Odbnetwork
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.oracledatabase.AutonomousDatabase;
+ * import com.pulumi.gcp.oracledatabase.AutonomousDatabaseArgs;
+ * import com.pulumi.gcp.oracledatabase.inputs.AutonomousDatabasePropertiesArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var myADB = new AutonomousDatabase("myADB", AutonomousDatabaseArgs.builder()
+ *             .autonomousDatabaseId("my-instance")
+ *             .location("europe-west2")
+ *             .project("my-project")
+ *             .database("mydatabase")
+ *             .adminPassword("123Abpassword")
+ *             .odbNetwork("projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork")
+ *             .odbSubnet("projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet")
+ *             .properties(AutonomousDatabasePropertiesArgs.builder()
+ *                 .computeCount(2.0)
+ *                 .dataStorageSizeTb(1)
+ *                 .dbVersion("19c")
+ *                 .dbWorkload("OLTP")
+ *                 .licenseType("LICENSE_INCLUDED")
+ *                 .build())
+ *             .deletionProtection(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Oracledatabase Autonomous Database Publicip
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.oracledatabase.AutonomousDatabase;
+ * import com.pulumi.gcp.oracledatabase.AutonomousDatabaseArgs;
+ * import com.pulumi.gcp.oracledatabase.inputs.AutonomousDatabasePropertiesArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var myADB = new AutonomousDatabase("myADB", AutonomousDatabaseArgs.builder()
+ *             .autonomousDatabaseId("my-instance")
+ *             .location("europe-west2")
+ *             .project("my-project")
+ *             .database("mydatabase")
+ *             .adminPassword("123Abpassword")
+ *             .properties(AutonomousDatabasePropertiesArgs.builder()
+ *                 .computeCount(2.0)
+ *                 .dataStorageSizeTb(1)
+ *                 .dbVersion("19c")
+ *                 .dbWorkload("OLTP")
+ *                 .licenseType("LICENSE_INCLUDED")
+ *                 .mtlsConnectionRequired(true)
+ *                 .build())
+ *             .deletionProtection(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -224,14 +321,14 @@ public class AutonomousDatabase extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="cidr", refs={String.class}, tree="[0]")
-    private Output<String> cidr;
+    private Output</* @Nullable */ String> cidr;
 
     /**
      * @return The subnet CIDR range for the Autonmous Database.
      * 
      */
-    public Output<String> cidr() {
-        return this.cidr;
+    public Output<Optional<String>> cidr() {
+        return Codegen.optional(this.cidr);
     }
     /**
      * The date and time that the Autonomous Database was created.
@@ -371,15 +468,55 @@ public class AutonomousDatabase extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="network", refs={String.class}, tree="[0]")
-    private Output<String> network;
+    private Output</* @Nullable */ String> network;
 
     /**
      * @return The name of the VPC network used by the Autonomous Database.
      * Format: projects/{project}/global/networks/{network}
      * 
      */
-    public Output<String> network() {
-        return this.network;
+    public Output<Optional<String>> network() {
+        return Codegen.optional(this.network);
+    }
+    /**
+     * The name of the OdbNetwork associated with the Autonomous Database.
+     * Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}
+     * It is optional but if specified, this should match the parent ODBNetwork of
+     * the odb_subnet and backup_odb_subnet.
+     * 
+     */
+    @Export(name="odbNetwork", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> odbNetwork;
+
+    /**
+     * @return The name of the OdbNetwork associated with the Autonomous Database.
+     * Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}
+     * It is optional but if specified, this should match the parent ODBNetwork of
+     * the odb_subnet and backup_odb_subnet.
+     * 
+     */
+    public Output<Optional<String>> odbNetwork() {
+        return Codegen.optional(this.odbNetwork);
+    }
+    /**
+     * The name of the OdbSubnet associated with the Autonomous Database for
+     * IP allocation. Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+     * 
+     */
+    @Export(name="odbSubnet", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> odbSubnet;
+
+    /**
+     * @return The name of the OdbSubnet associated with the Autonomous Database for
+     * IP allocation. Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+     * 
+     */
+    public Output<Optional<String>> odbSubnet() {
+        return Codegen.optional(this.odbSubnet);
     }
     /**
      * The ID of the project in which the resource belongs.

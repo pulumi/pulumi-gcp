@@ -16,7 +16,7 @@ public final class GcpUserAccessBindingScopedAccessSettingScopeClientScopeArgs e
     public static final GcpUserAccessBindingScopedAccessSettingScopeClientScopeArgs Empty = new GcpUserAccessBindingScopedAccessSettingScopeClientScopeArgs();
 
     /**
-     * Optional. The application that is subject to this binding&#39;s scope.
+     * Optional. The application that is subject to this binding&#39;s scope. Only one of clientId or name should be specified.
      * Structure is documented below.
      * 
      */
@@ -24,7 +24,7 @@ public final class GcpUserAccessBindingScopedAccessSettingScopeClientScopeArgs e
     private @Nullable Output<GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgs> restrictedClientApplication;
 
     /**
-     * @return Optional. The application that is subject to this binding&#39;s scope.
+     * @return Optional. The application that is subject to this binding&#39;s scope. Only one of clientId or name should be specified.
      * Structure is documented below.
      * 
      */
@@ -57,7 +57,7 @@ public final class GcpUserAccessBindingScopedAccessSettingScopeClientScopeArgs e
         }
 
         /**
-         * @param restrictedClientApplication Optional. The application that is subject to this binding&#39;s scope.
+         * @param restrictedClientApplication Optional. The application that is subject to this binding&#39;s scope. Only one of clientId or name should be specified.
          * Structure is documented below.
          * 
          * @return builder
@@ -69,7 +69,7 @@ public final class GcpUserAccessBindingScopedAccessSettingScopeClientScopeArgs e
         }
 
         /**
-         * @param restrictedClientApplication Optional. The application that is subject to this binding&#39;s scope.
+         * @param restrictedClientApplication Optional. The application that is subject to this binding&#39;s scope. Only one of clientId or name should be specified.
          * Structure is documented below.
          * 
          * @return builder

@@ -141,6 +141,23 @@ public final class ClusterNodePoolNetworkConfigArgs extends com.pulumi.resources
         return Optional.ofNullable(this.podRange);
     }
 
+    /**
+     * The name or self_link of the Google Compute Engine
+     * subnetwork in which the cluster&#39;s instances are launched.
+     * 
+     */
+    @Import(name="subnetwork")
+    private @Nullable Output<String> subnetwork;
+
+    /**
+     * @return The name or self_link of the Google Compute Engine
+     * subnetwork in which the cluster&#39;s instances are launched.
+     * 
+     */
+    public Optional<Output<String>> subnetwork() {
+        return Optional.ofNullable(this.subnetwork);
+    }
+
     private ClusterNodePoolNetworkConfigArgs() {}
 
     private ClusterNodePoolNetworkConfigArgs(ClusterNodePoolNetworkConfigArgs $) {
@@ -152,6 +169,7 @@ public final class ClusterNodePoolNetworkConfigArgs extends com.pulumi.resources
         this.podCidrOverprovisionConfig = $.podCidrOverprovisionConfig;
         this.podIpv4CidrBlock = $.podIpv4CidrBlock;
         this.podRange = $.podRange;
+        this.subnetwork = $.subnetwork;
     }
 
     public static Builder builder() {
@@ -358,6 +376,29 @@ public final class ClusterNodePoolNetworkConfigArgs extends com.pulumi.resources
          */
         public Builder podRange(String podRange) {
             return podRange(Output.of(podRange));
+        }
+
+        /**
+         * @param subnetwork The name or self_link of the Google Compute Engine
+         * subnetwork in which the cluster&#39;s instances are launched.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnetwork(@Nullable Output<String> subnetwork) {
+            $.subnetwork = subnetwork;
+            return this;
+        }
+
+        /**
+         * @param subnetwork The name or self_link of the Google Compute Engine
+         * subnetwork in which the cluster&#39;s instances are launched.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnetwork(String subnetwork) {
+            return subnetwork(Output.of(subnetwork));
         }
 
         public ClusterNodePoolNetworkConfigArgs build() {

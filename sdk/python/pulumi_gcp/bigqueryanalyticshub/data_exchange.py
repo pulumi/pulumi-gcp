@@ -25,6 +25,7 @@ class DataExchangeArgs:
                  display_name: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 discovery_type: Optional[pulumi.Input[_builtins.str]] = None,
                  documentation: Optional[pulumi.Input[_builtins.str]] = None,
                  icon: Optional[pulumi.Input[_builtins.str]] = None,
                  log_linked_dataset_query_user_email: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -37,6 +38,8 @@ class DataExchangeArgs:
         :param pulumi.Input[_builtins.str] display_name: Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
         :param pulumi.Input[_builtins.str] location: The name of the location this data exchange.
         :param pulumi.Input[_builtins.str] description: Description of the data exchange.
+        :param pulumi.Input[_builtins.str] discovery_type: Type of discovery on the discovery page for all the listings under this exchange. Cannot be set for a Data Clean Room. Updating this field also updates (overwrites) the discoveryType field for all the listings under this exchange.
+               Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
         :param pulumi.Input[_builtins.str] documentation: Documentation describing the data exchange.
         :param pulumi.Input[_builtins.str] icon: Base64 encoded image representing the data exchange.
         :param pulumi.Input[_builtins.bool] log_linked_dataset_query_user_email: If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user. Once enabled, this setting cannot be turned off.
@@ -52,6 +55,8 @@ class DataExchangeArgs:
         pulumi.set(__self__, "location", location)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if discovery_type is not None:
+            pulumi.set(__self__, "discovery_type", discovery_type)
         if documentation is not None:
             pulumi.set(__self__, "documentation", documentation)
         if icon is not None:
@@ -112,6 +117,19 @@ class DataExchangeArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="discoveryType")
+    def discovery_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Type of discovery on the discovery page for all the listings under this exchange. Cannot be set for a Data Clean Room. Updating this field also updates (overwrites) the discoveryType field for all the listings under this exchange.
+        Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
+        """
+        return pulumi.get(self, "discovery_type")
+
+    @discovery_type.setter
+    def discovery_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "discovery_type", value)
 
     @_builtins.property
     @pulumi.getter
@@ -194,6 +212,7 @@ class _DataExchangeState:
     def __init__(__self__, *,
                  data_exchange_id: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 discovery_type: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  documentation: Optional[pulumi.Input[_builtins.str]] = None,
                  icon: Optional[pulumi.Input[_builtins.str]] = None,
@@ -208,6 +227,8 @@ class _DataExchangeState:
         Input properties used for looking up and filtering DataExchange resources.
         :param pulumi.Input[_builtins.str] data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input[_builtins.str] description: Description of the data exchange.
+        :param pulumi.Input[_builtins.str] discovery_type: Type of discovery on the discovery page for all the listings under this exchange. Cannot be set for a Data Clean Room. Updating this field also updates (overwrites) the discoveryType field for all the listings under this exchange.
+               Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
         :param pulumi.Input[_builtins.str] display_name: Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
         :param pulumi.Input[_builtins.str] documentation: Documentation describing the data exchange.
         :param pulumi.Input[_builtins.str] icon: Base64 encoded image representing the data exchange.
@@ -227,6 +248,8 @@ class _DataExchangeState:
             pulumi.set(__self__, "data_exchange_id", data_exchange_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if discovery_type is not None:
+            pulumi.set(__self__, "discovery_type", discovery_type)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if documentation is not None:
@@ -271,6 +294,19 @@ class _DataExchangeState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="discoveryType")
+    def discovery_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Type of discovery on the discovery page for all the listings under this exchange. Cannot be set for a Data Clean Room. Updating this field also updates (overwrites) the discoveryType field for all the listings under this exchange.
+        Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
+        """
+        return pulumi.get(self, "discovery_type")
+
+    @discovery_type.setter
+    def discovery_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "discovery_type", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -405,6 +441,7 @@ class DataExchange(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  data_exchange_id: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 discovery_type: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  documentation: Optional[pulumi.Input[_builtins.str]] = None,
                  icon: Optional[pulumi.Input[_builtins.str]] = None,
@@ -465,6 +502,19 @@ class DataExchange(pulumi.CustomResource):
             description="Example for log email test for data exchange",
             log_linked_dataset_query_user_email=True)
         ```
+        ### Bigquery Analyticshub Public Data Exchange
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        data_exchange = gcp.bigqueryanalyticshub.DataExchange("data_exchange",
+            location="US",
+            data_exchange_id="public_data_exchange",
+            display_name="public_data_exchange",
+            description="Example for public data exchange",
+            discovery_type="DISCOVERY_TYPE_PUBLIC")
+        ```
 
         ## Import
 
@@ -500,6 +550,8 @@ class DataExchange(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input[_builtins.str] description: Description of the data exchange.
+        :param pulumi.Input[_builtins.str] discovery_type: Type of discovery on the discovery page for all the listings under this exchange. Cannot be set for a Data Clean Room. Updating this field also updates (overwrites) the discoveryType field for all the listings under this exchange.
+               Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
         :param pulumi.Input[_builtins.str] display_name: Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
         :param pulumi.Input[_builtins.str] documentation: Documentation describing the data exchange.
         :param pulumi.Input[_builtins.str] icon: Base64 encoded image representing the data exchange.
@@ -569,6 +621,19 @@ class DataExchange(pulumi.CustomResource):
             description="Example for log email test for data exchange",
             log_linked_dataset_query_user_email=True)
         ```
+        ### Bigquery Analyticshub Public Data Exchange
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        data_exchange = gcp.bigqueryanalyticshub.DataExchange("data_exchange",
+            location="US",
+            data_exchange_id="public_data_exchange",
+            display_name="public_data_exchange",
+            description="Example for public data exchange",
+            discovery_type="DISCOVERY_TYPE_PUBLIC")
+        ```
 
         ## Import
 
@@ -617,6 +682,7 @@ class DataExchange(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  data_exchange_id: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 discovery_type: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  documentation: Optional[pulumi.Input[_builtins.str]] = None,
                  icon: Optional[pulumi.Input[_builtins.str]] = None,
@@ -638,6 +704,7 @@ class DataExchange(pulumi.CustomResource):
                 raise TypeError("Missing required property 'data_exchange_id'")
             __props__.__dict__["data_exchange_id"] = data_exchange_id
             __props__.__dict__["description"] = description
+            __props__.__dict__["discovery_type"] = discovery_type
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
@@ -664,6 +731,7 @@ class DataExchange(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             data_exchange_id: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
+            discovery_type: Optional[pulumi.Input[_builtins.str]] = None,
             display_name: Optional[pulumi.Input[_builtins.str]] = None,
             documentation: Optional[pulumi.Input[_builtins.str]] = None,
             icon: Optional[pulumi.Input[_builtins.str]] = None,
@@ -683,6 +751,8 @@ class DataExchange(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input[_builtins.str] description: Description of the data exchange.
+        :param pulumi.Input[_builtins.str] discovery_type: Type of discovery on the discovery page for all the listings under this exchange. Cannot be set for a Data Clean Room. Updating this field also updates (overwrites) the discoveryType field for all the listings under this exchange.
+               Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
         :param pulumi.Input[_builtins.str] display_name: Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
         :param pulumi.Input[_builtins.str] documentation: Documentation describing the data exchange.
         :param pulumi.Input[_builtins.str] icon: Base64 encoded image representing the data exchange.
@@ -704,6 +774,7 @@ class DataExchange(pulumi.CustomResource):
 
         __props__.__dict__["data_exchange_id"] = data_exchange_id
         __props__.__dict__["description"] = description
+        __props__.__dict__["discovery_type"] = discovery_type
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["documentation"] = documentation
         __props__.__dict__["icon"] = icon
@@ -731,6 +802,15 @@ class DataExchange(pulumi.CustomResource):
         Description of the data exchange.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="discoveryType")
+    def discovery_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        Type of discovery on the discovery page for all the listings under this exchange. Cannot be set for a Data Clean Room. Updating this field also updates (overwrites) the discoveryType field for all the listings under this exchange.
+        Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
+        """
+        return pulumi.get(self, "discovery_type")
 
     @_builtins.property
     @pulumi.getter(name="displayName")

@@ -317,7 +317,7 @@ namespace Pulumi.Gcp.Storage
         public Output<Outputs.BucketLogging?> Logging { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the bucket.
+        /// The name of the bucket. Bucket names must be in lowercase and no more than 63 characters long. You can find the complete list of bucket naming rules [here](https://cloud.google.com/storage/docs/buckets#naming).
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -572,7 +572,7 @@ namespace Pulumi.Gcp.Storage
         public Input<Inputs.BucketLoggingArgs>? Logging { get; set; }
 
         /// <summary>
-        /// The name of the bucket.
+        /// The name of the bucket. Bucket names must be in lowercase and no more than 63 characters long. You can find the complete list of bucket naming rules [here](https://cloud.google.com/storage/docs/buckets#naming).
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -760,7 +760,7 @@ namespace Pulumi.Gcp.Storage
         public Input<Inputs.BucketLoggingGetArgs>? Logging { get; set; }
 
         /// <summary>
-        /// The name of the bucket.
+        /// The name of the bucket. Bucket names must be in lowercase and no more than 63 characters long. You can find the complete list of bucket naming rules [here](https://cloud.google.com/storage/docs/buckets#naming).
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

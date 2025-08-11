@@ -268,16 +268,16 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := artifactregistry.NewRepository(ctx, "my-repo", &artifactregistry.RepositoryArgs{
 //				Location:     pulumi.String("us-central1"),
-//				RepositoryId: pulumi.String("debian-buster"),
+//				RepositoryId: pulumi.String("debian-stable"),
 //				Description:  pulumi.String("example remote apt repository"),
 //				Format:       pulumi.String("APT"),
 //				Mode:         pulumi.String("REMOTE_REPOSITORY"),
 //				RemoteRepositoryConfig: &artifactregistry.RepositoryRemoteRepositoryConfigArgs{
-//					Description: pulumi.String("Debian buster remote repository"),
+//					Description: pulumi.String("Debian stable remote repository"),
 //					AptRepository: &artifactregistry.RepositoryRemoteRepositoryConfigAptRepositoryArgs{
 //						PublicRepository: &artifactregistry.RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs{
 //							RepositoryBase: pulumi.String("DEBIAN"),
-//							RepositoryPath: pulumi.String("debian/dists/buster"),
+//							RepositoryPath: pulumi.String("debian/dists/stable"),
 //						},
 //					},
 //				},

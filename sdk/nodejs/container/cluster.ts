@@ -175,9 +175,6 @@ export class Cluster extends pulumi.CustomResource {
     public readonly allowNetAdmin!: pulumi.Output<boolean | undefined>;
     /**
      * Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
-     *
-     *
-     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
      */
     public readonly anonymousAuthenticationConfig!: pulumi.Output<outputs.container.ClusterAnonymousAuthenticationConfig>;
     /**
@@ -567,6 +564,12 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
+     * RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
+     *
+     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+     */
+    public readonly rbacBindingConfig!: pulumi.Output<outputs.container.ClusterRbacBindingConfig>;
+    /**
      * Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
      * feature, which provide more control over automatic upgrades of your GKE clusters.
      * When updating this field, GKE imposes specific version requirements. See
@@ -743,6 +746,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["protectConfig"] = state ? state.protectConfig : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
+            resourceInputs["rbacBindingConfig"] = state ? state.rbacBindingConfig : undefined;
             resourceInputs["releaseChannel"] = state ? state.releaseChannel : undefined;
             resourceInputs["removeDefaultNodePool"] = state ? state.removeDefaultNodePool : undefined;
             resourceInputs["resourceLabels"] = state ? state.resourceLabels : undefined;
@@ -827,6 +831,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["privateIpv6GoogleAccess"] = args ? args.privateIpv6GoogleAccess : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["protectConfig"] = args ? args.protectConfig : undefined;
+            resourceInputs["rbacBindingConfig"] = args ? args.rbacBindingConfig : undefined;
             resourceInputs["releaseChannel"] = args ? args.releaseChannel : undefined;
             resourceInputs["removeDefaultNodePool"] = args ? args.removeDefaultNodePool : undefined;
             resourceInputs["resourceLabels"] = args ? args.resourceLabels : undefined;
@@ -874,9 +879,6 @@ export interface ClusterState {
     allowNetAdmin?: pulumi.Input<boolean>;
     /**
      * Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
-     *
-     *
-     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
      */
     anonymousAuthenticationConfig?: pulumi.Input<inputs.container.ClusterAnonymousAuthenticationConfig>;
     /**
@@ -1266,6 +1268,12 @@ export interface ClusterState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
+     *
+     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+     */
+    rbacBindingConfig?: pulumi.Input<inputs.container.ClusterRbacBindingConfig>;
+    /**
      * Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
      * feature, which provide more control over automatic upgrades of your GKE clusters.
      * When updating this field, GKE imposes specific version requirements. See
@@ -1375,9 +1383,6 @@ export interface ClusterArgs {
     allowNetAdmin?: pulumi.Input<boolean>;
     /**
      * Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
-     *
-     *
-     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
      */
     anonymousAuthenticationConfig?: pulumi.Input<inputs.container.ClusterAnonymousAuthenticationConfig>;
     /**
@@ -1743,6 +1748,12 @@ export interface ClusterArgs {
      * Enable/Disable Protect API features for the cluster. Structure is documented below.
      */
     protectConfig?: pulumi.Input<inputs.container.ClusterProtectConfig>;
+    /**
+     * RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
+     *
+     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+     */
+    rbacBindingConfig?: pulumi.Input<inputs.container.ClusterRbacBindingConfig>;
     /**
      * Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
      * feature, which provide more control over automatic upgrades of your GKE clusters.

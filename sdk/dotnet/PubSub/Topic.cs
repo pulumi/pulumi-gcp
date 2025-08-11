@@ -295,7 +295,38 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// });
     /// ```
+    /// ### Pubsub Topic Single Smt
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Gcp.PubSub.Topic("example", new()
+    ///     {
+    ///         Name = "example-topic",
+    ///         MessageTransforms = new[]
+    ///         {
+    ///             new Gcp.PubSub.Inputs.TopicMessageTransformArgs
+    ///             {
+    ///                 JavascriptUdf = new Gcp.PubSub.Inputs.TopicMessageTransformJavascriptUdfArgs
+    ///                 {
+    ///                     FunctionName = "isYearEven",
+    ///                     Code = @"function isYearEven(message, metadata) {
+    ///   const data = JSON.parse(message.data);
+    ///   return message.year %2 === 0;
+    /// }
+    /// ",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ## Import
     /// 
     /// Topic can be imported using any of these accepted formats:

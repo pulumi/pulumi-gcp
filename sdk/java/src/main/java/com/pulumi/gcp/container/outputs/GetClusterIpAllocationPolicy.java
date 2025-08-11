@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.container.outputs.GetClusterIpAllocationPolicyAdditionalIpRangesConfig;
 import com.pulumi.gcp.container.outputs.GetClusterIpAllocationPolicyAdditionalPodRangesConfig;
 import com.pulumi.gcp.container.outputs.GetClusterIpAllocationPolicyPodCidrOverprovisionConfig;
 import java.lang.String;
@@ -13,6 +14,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterIpAllocationPolicy {
+    /**
+     * @return AdditionalIPRangesConfig is the configuration for individual additional subnetworks attached to the cluster
+     * 
+     */
+    private List<GetClusterIpAllocationPolicyAdditionalIpRangesConfig> additionalIpRangesConfigs;
     /**
      * @return AdditionalPodRangesConfig is the configuration for additional pod secondary ranges supporting the ClusterUpdate message.
      * 
@@ -50,6 +56,13 @@ public final class GetClusterIpAllocationPolicy {
     private String stackType;
 
     private GetClusterIpAllocationPolicy() {}
+    /**
+     * @return AdditionalIPRangesConfig is the configuration for individual additional subnetworks attached to the cluster
+     * 
+     */
+    public List<GetClusterIpAllocationPolicyAdditionalIpRangesConfig> additionalIpRangesConfigs() {
+        return this.additionalIpRangesConfigs;
+    }
     /**
      * @return AdditionalPodRangesConfig is the configuration for additional pod secondary ranges supporting the ClusterUpdate message.
      * 
@@ -109,6 +122,7 @@ public final class GetClusterIpAllocationPolicy {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetClusterIpAllocationPolicyAdditionalIpRangesConfig> additionalIpRangesConfigs;
         private List<GetClusterIpAllocationPolicyAdditionalPodRangesConfig> additionalPodRangesConfigs;
         private String clusterIpv4CidrBlock;
         private String clusterSecondaryRangeName;
@@ -119,6 +133,7 @@ public final class GetClusterIpAllocationPolicy {
         public Builder() {}
         public Builder(GetClusterIpAllocationPolicy defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.additionalIpRangesConfigs = defaults.additionalIpRangesConfigs;
     	      this.additionalPodRangesConfigs = defaults.additionalPodRangesConfigs;
     	      this.clusterIpv4CidrBlock = defaults.clusterIpv4CidrBlock;
     	      this.clusterSecondaryRangeName = defaults.clusterSecondaryRangeName;
@@ -128,6 +143,17 @@ public final class GetClusterIpAllocationPolicy {
     	      this.stackType = defaults.stackType;
         }
 
+        @CustomType.Setter
+        public Builder additionalIpRangesConfigs(List<GetClusterIpAllocationPolicyAdditionalIpRangesConfig> additionalIpRangesConfigs) {
+            if (additionalIpRangesConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterIpAllocationPolicy", "additionalIpRangesConfigs");
+            }
+            this.additionalIpRangesConfigs = additionalIpRangesConfigs;
+            return this;
+        }
+        public Builder additionalIpRangesConfigs(GetClusterIpAllocationPolicyAdditionalIpRangesConfig... additionalIpRangesConfigs) {
+            return additionalIpRangesConfigs(List.of(additionalIpRangesConfigs));
+        }
         @CustomType.Setter
         public Builder additionalPodRangesConfigs(List<GetClusterIpAllocationPolicyAdditionalPodRangesConfig> additionalPodRangesConfigs) {
             if (additionalPodRangesConfigs == null) {
@@ -192,6 +218,7 @@ public final class GetClusterIpAllocationPolicy {
         }
         public GetClusterIpAllocationPolicy build() {
             final var _resultValue = new GetClusterIpAllocationPolicy();
+            _resultValue.additionalIpRangesConfigs = additionalIpRangesConfigs;
             _resultValue.additionalPodRangesConfigs = additionalPodRangesConfigs;
             _resultValue.clusterIpv4CidrBlock = clusterIpv4CidrBlock;
             _resultValue.clusterSecondaryRangeName = clusterSecondaryRangeName;

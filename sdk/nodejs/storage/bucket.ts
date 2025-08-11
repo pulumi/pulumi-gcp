@@ -250,7 +250,7 @@ export class Bucket extends pulumi.CustomResource {
      */
     public readonly logging!: pulumi.Output<outputs.storage.BucketLogging | undefined>;
     /**
-     * The name of the bucket.
+     * The name of the bucket. Bucket names must be in lowercase and no more than 63 characters long. You can find the complete list of bucket naming rules [here](https://cloud.google.com/storage/docs/buckets#naming).
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -470,7 +470,7 @@ export interface BucketState {
      */
     logging?: pulumi.Input<inputs.storage.BucketLogging>;
     /**
-     * The name of the bucket.
+     * The name of the bucket. Bucket names must be in lowercase and no more than 63 characters long. You can find the complete list of bucket naming rules [here](https://cloud.google.com/storage/docs/buckets#naming).
      */
     name?: pulumi.Input<string>;
     /**
@@ -602,7 +602,7 @@ export interface BucketArgs {
      */
     logging?: pulumi.Input<inputs.storage.BucketLogging>;
     /**
-     * The name of the bucket.
+     * The name of the bucket. Bucket names must be in lowercase and no more than 63 characters long. You can find the complete list of bucket naming rules [here](https://cloud.google.com/storage/docs/buckets#naming).
      */
     name?: pulumi.Input<string>;
     /**

@@ -34,6 +34,8 @@ public final class GetAutonomousDatabaseResult {
     private String location;
     private String name;
     private String network;
+    private String odbNetwork;
+    private String odbSubnet;
     private @Nullable String project;
     private List<GetAutonomousDatabaseProperty> properties;
     private Map<String,String> pulumiLabels;
@@ -85,6 +87,12 @@ public final class GetAutonomousDatabaseResult {
     public String network() {
         return this.network;
     }
+    public String odbNetwork() {
+        return this.odbNetwork;
+    }
+    public String odbSubnet() {
+        return this.odbSubnet;
+    }
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
@@ -118,6 +126,8 @@ public final class GetAutonomousDatabaseResult {
         private String location;
         private String name;
         private String network;
+        private String odbNetwork;
+        private String odbSubnet;
         private @Nullable String project;
         private List<GetAutonomousDatabaseProperty> properties;
         private Map<String,String> pulumiLabels;
@@ -138,6 +148,8 @@ public final class GetAutonomousDatabaseResult {
     	      this.location = defaults.location;
     	      this.name = defaults.name;
     	      this.network = defaults.network;
+    	      this.odbNetwork = defaults.odbNetwork;
+    	      this.odbSubnet = defaults.odbSubnet;
     	      this.project = defaults.project;
     	      this.properties = defaults.properties;
     	      this.pulumiLabels = defaults.pulumiLabels;
@@ -256,6 +268,22 @@ public final class GetAutonomousDatabaseResult {
             return this;
         }
         @CustomType.Setter
+        public Builder odbNetwork(String odbNetwork) {
+            if (odbNetwork == null) {
+              throw new MissingRequiredPropertyException("GetAutonomousDatabaseResult", "odbNetwork");
+            }
+            this.odbNetwork = odbNetwork;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder odbSubnet(String odbSubnet) {
+            if (odbSubnet == null) {
+              throw new MissingRequiredPropertyException("GetAutonomousDatabaseResult", "odbSubnet");
+            }
+            this.odbSubnet = odbSubnet;
+            return this;
+        }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
 
             this.project = project;
@@ -296,6 +324,8 @@ public final class GetAutonomousDatabaseResult {
             _resultValue.location = location;
             _resultValue.name = name;
             _resultValue.network = network;
+            _resultValue.odbNetwork = odbNetwork;
+            _resultValue.odbSubnet = odbSubnet;
             _resultValue.project = project;
             _resultValue.properties = properties;
             _resultValue.pulumiLabels = pulumiLabels;

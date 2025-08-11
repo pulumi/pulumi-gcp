@@ -27,6 +27,7 @@ class StoragePoolArgs:
                  capacity_provisioning_type: Optional[pulumi.Input[_builtins.str]] = None,
                  deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  performance_provisioning_type: Optional[pulumi.Input[_builtins.str]] = None,
                  pool_provisioned_iops: Optional[pulumi.Input[_builtins.str]] = None,
@@ -45,6 +46,10 @@ class StoragePoolArgs:
         :param pulumi.Input[_builtins.str] capacity_provisioning_type: Provisioning type of the byte capacity of the pool.
                Possible values are: `STANDARD`, `ADVANCED`.
         :param pulumi.Input[_builtins.str] description: A description of this resource. Provide this property when you create the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels to apply to this storage pool. These can be later modified by the setLabels method.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is created.
                The name must be 1-63 characters long, and comply with RFC1035.
                Specifically, the name must be 1-63 characters long and match
@@ -69,6 +74,8 @@ class StoragePoolArgs:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if performance_provisioning_type is not None:
@@ -157,6 +164,21 @@ class StoragePoolArgs:
 
     @_builtins.property
     @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Labels to apply to this storage pool. These can be later modified by the setLabels method.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @_builtins.property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Name of the resource. Provided by the client when the resource is created.
@@ -232,14 +254,17 @@ class _StoragePoolState:
                  creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
                  deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  kind: Optional[pulumi.Input[_builtins.str]] = None,
                  label_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  performance_provisioning_type: Optional[pulumi.Input[_builtins.str]] = None,
                  pool_provisioned_capacity_gb: Optional[pulumi.Input[_builtins.str]] = None,
                  pool_provisioned_iops: Optional[pulumi.Input[_builtins.str]] = None,
                  pool_provisioned_throughput: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  resource_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['StoragePoolResourceStatusArgs']]]] = None,
                  statuses: Optional[pulumi.Input[Sequence[pulumi.Input['StoragePoolStatusArgs']]]] = None,
                  storage_pool_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -250,9 +275,14 @@ class _StoragePoolState:
                Possible values are: `STANDARD`, `ADVANCED`.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] description: A description of this resource. Provide this property when you create the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] kind: Type of the resource.
         :param pulumi.Input[_builtins.str] label_fingerprint: The fingerprint used for optimistic locking of this resource.
                Used internally during updates.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels to apply to this storage pool. These can be later modified by the setLabels method.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is created.
                The name must be 1-63 characters long, and comply with RFC1035.
                Specifically, the name must be 1-63 characters long and match
@@ -270,6 +300,8 @@ class _StoragePoolState:
                Only relevant if the storage pool type is `hyperdisk-balanced` or `hyperdisk-throughput`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input['StoragePoolResourceStatusArgs']]] resource_statuses: Status information for the storage pool resource.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['StoragePoolStatusArgs']]] statuses: Status information for the storage pool resource.
@@ -288,10 +320,14 @@ class _StoragePoolState:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
         if label_fingerprint is not None:
             pulumi.set(__self__, "label_fingerprint", label_fingerprint)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if performance_provisioning_type is not None:
@@ -304,6 +340,8 @@ class _StoragePoolState:
             pulumi.set(__self__, "pool_provisioned_throughput", pool_provisioned_throughput)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if pulumi_labels is not None:
+            pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if resource_statuses is not None:
             pulumi.set(__self__, "resource_statuses", resource_statuses)
         if statuses is not None:
@@ -360,6 +398,18 @@ class _StoragePoolState:
         pulumi.set(self, "description", value)
 
     @_builtins.property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @_builtins.property
     @pulumi.getter
     def kind(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -383,6 +433,21 @@ class _StoragePoolState:
     @label_fingerprint.setter
     def label_fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "label_fingerprint", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Labels to apply to this storage pool. These can be later modified by the setLabels method.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
@@ -468,6 +533,19 @@ class _StoragePoolState:
         pulumi.set(self, "project", value)
 
     @_builtins.property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @_builtins.property
     @pulumi.getter(name="resourceStatuses")
     def resource_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StoragePoolResourceStatusArgs']]]]:
         """
@@ -530,6 +608,7 @@ class StoragePool(pulumi.CustomResource):
                  capacity_provisioning_type: Optional[pulumi.Input[_builtins.str]] = None,
                  deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  performance_provisioning_type: Optional[pulumi.Input[_builtins.str]] = None,
                  pool_provisioned_capacity_gb: Optional[pulumi.Input[_builtins.str]] = None,
@@ -564,6 +643,12 @@ class StoragePool(pulumi.CustomResource):
             pool_provisioned_throughput="100",
             storage_pool_type="hyperdisk-throughput",
             zone="us-central1-a",
+            labels={
+                "environment": "test",
+                "purpose": "storage-pool-testing",
+                "team": "infrastructure",
+                "cost_center": "engineering",
+            },
             deletion_protection=False)
         project = gcp.organizations.get_project()
         ```
@@ -584,6 +669,12 @@ class StoragePool(pulumi.CustomResource):
             pool_provisioned_iops="10000",
             pool_provisioned_throughput="1024",
             storage_pool_type=balanced.self_link,
+            labels={
+                "environment": "test",
+                "purpose": "storage-pool-testing",
+                "team": "infrastructure",
+                "cost_center": "engineering",
+            },
             deletion_protection=False,
             zone="us-central1-a")
         project = gcp.organizations.get_project()
@@ -624,6 +715,10 @@ class StoragePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] capacity_provisioning_type: Provisioning type of the byte capacity of the pool.
                Possible values are: `STANDARD`, `ADVANCED`.
         :param pulumi.Input[_builtins.str] description: A description of this resource. Provide this property when you create the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels to apply to this storage pool. These can be later modified by the setLabels method.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is created.
                The name must be 1-63 characters long, and comply with RFC1035.
                Specifically, the name must be 1-63 characters long and match
@@ -678,6 +773,12 @@ class StoragePool(pulumi.CustomResource):
             pool_provisioned_throughput="100",
             storage_pool_type="hyperdisk-throughput",
             zone="us-central1-a",
+            labels={
+                "environment": "test",
+                "purpose": "storage-pool-testing",
+                "team": "infrastructure",
+                "cost_center": "engineering",
+            },
             deletion_protection=False)
         project = gcp.organizations.get_project()
         ```
@@ -698,6 +799,12 @@ class StoragePool(pulumi.CustomResource):
             pool_provisioned_iops="10000",
             pool_provisioned_throughput="1024",
             storage_pool_type=balanced.self_link,
+            labels={
+                "environment": "test",
+                "purpose": "storage-pool-testing",
+                "team": "infrastructure",
+                "cost_center": "engineering",
+            },
             deletion_protection=False,
             zone="us-central1-a")
         project = gcp.organizations.get_project()
@@ -751,6 +858,7 @@ class StoragePool(pulumi.CustomResource):
                  capacity_provisioning_type: Optional[pulumi.Input[_builtins.str]] = None,
                  deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  performance_provisioning_type: Optional[pulumi.Input[_builtins.str]] = None,
                  pool_provisioned_capacity_gb: Optional[pulumi.Input[_builtins.str]] = None,
@@ -771,6 +879,7 @@ class StoragePool(pulumi.CustomResource):
             __props__.__dict__["capacity_provisioning_type"] = capacity_provisioning_type
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["description"] = description
+            __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["performance_provisioning_type"] = performance_provisioning_type
             if pool_provisioned_capacity_gb is None and not opts.urn:
@@ -786,10 +895,14 @@ class StoragePool(pulumi.CustomResource):
             __props__.__dict__["storage_pool_type"] = storage_pool_type
             __props__.__dict__["zone"] = zone
             __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["label_fingerprint"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["resource_statuses"] = None
             __props__.__dict__["statuses"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(StoragePool, __self__).__init__(
             'gcp:compute/storagePool:StoragePool',
             resource_name,
@@ -804,14 +917,17 @@ class StoragePool(pulumi.CustomResource):
             creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
             deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             kind: Optional[pulumi.Input[_builtins.str]] = None,
             label_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             performance_provisioning_type: Optional[pulumi.Input[_builtins.str]] = None,
             pool_provisioned_capacity_gb: Optional[pulumi.Input[_builtins.str]] = None,
             pool_provisioned_iops: Optional[pulumi.Input[_builtins.str]] = None,
             pool_provisioned_throughput: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             resource_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StoragePoolResourceStatusArgs', 'StoragePoolResourceStatusArgsDict']]]]] = None,
             statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StoragePoolStatusArgs', 'StoragePoolStatusArgsDict']]]]] = None,
             storage_pool_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -827,9 +943,14 @@ class StoragePool(pulumi.CustomResource):
                Possible values are: `STANDARD`, `ADVANCED`.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] description: A description of this resource. Provide this property when you create the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] kind: Type of the resource.
         :param pulumi.Input[_builtins.str] label_fingerprint: The fingerprint used for optimistic locking of this resource.
                Used internally during updates.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels to apply to this storage pool. These can be later modified by the setLabels method.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is created.
                The name must be 1-63 characters long, and comply with RFC1035.
                Specifically, the name must be 1-63 characters long and match
@@ -847,6 +968,8 @@ class StoragePool(pulumi.CustomResource):
                Only relevant if the storage pool type is `hyperdisk-balanced` or `hyperdisk-throughput`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[Union['StoragePoolResourceStatusArgs', 'StoragePoolResourceStatusArgsDict']]]] resource_statuses: Status information for the storage pool resource.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['StoragePoolStatusArgs', 'StoragePoolStatusArgsDict']]]] statuses: Status information for the storage pool resource.
@@ -865,14 +988,17 @@ class StoragePool(pulumi.CustomResource):
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["description"] = description
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["kind"] = kind
         __props__.__dict__["label_fingerprint"] = label_fingerprint
+        __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["performance_provisioning_type"] = performance_provisioning_type
         __props__.__dict__["pool_provisioned_capacity_gb"] = pool_provisioned_capacity_gb
         __props__.__dict__["pool_provisioned_iops"] = pool_provisioned_iops
         __props__.__dict__["pool_provisioned_throughput"] = pool_provisioned_throughput
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["resource_statuses"] = resource_statuses
         __props__.__dict__["statuses"] = statuses
         __props__.__dict__["storage_pool_type"] = storage_pool_type
@@ -910,6 +1036,14 @@ class StoragePool(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @_builtins.property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @_builtins.property
     @pulumi.getter
     def kind(self) -> pulumi.Output[_builtins.str]:
         """
@@ -925,6 +1059,17 @@ class StoragePool(pulumi.CustomResource):
         Used internally during updates.
         """
         return pulumi.get(self, "label_fingerprint")
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        Labels to apply to this storage pool. These can be later modified by the setLabels method.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        """
+        return pulumi.get(self, "labels")
 
     @_builtins.property
     @pulumi.getter
@@ -984,6 +1129,15 @@ class StoragePool(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @_builtins.property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
 
     @_builtins.property
     @pulumi.getter(name="resourceStatuses")

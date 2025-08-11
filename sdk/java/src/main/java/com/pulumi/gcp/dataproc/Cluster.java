@@ -114,6 +114,7 @@ import javax.annotation.Nullable;
  *             .labels(Map.of("foo", "bar"))
  *             .clusterConfig(ClusterClusterConfigArgs.builder()
  *                 .stagingBucket("dataproc-staging-bucket")
+ *                 .clusterTier("CLUSTER_TIER_STANDARD")
  *                 .masterConfig(ClusterClusterConfigMasterConfigArgs.builder()
  *                     .numInstances(1)
  *                     .machineType("e2-medium")

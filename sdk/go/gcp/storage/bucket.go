@@ -285,7 +285,7 @@ type Bucket struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
 	Logging BucketLoggingPtrOutput `pulumi:"logging"`
-	// The name of the bucket.
+	// The name of the bucket. Bucket names must be in lowercase and no more than 63 characters long. You can find the complete list of bucket naming rules [here](https://cloud.google.com/storage/docs/buckets#naming).
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -392,7 +392,7 @@ type bucketState struct {
 	Location *string `pulumi:"location"`
 	// The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
 	Logging *BucketLogging `pulumi:"logging"`
-	// The name of the bucket.
+	// The name of the bucket. Bucket names must be in lowercase and no more than 63 characters long. You can find the complete list of bucket naming rules [here](https://cloud.google.com/storage/docs/buckets#naming).
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -462,7 +462,7 @@ type BucketState struct {
 	Location pulumi.StringPtrInput
 	// The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
 	Logging BucketLoggingPtrInput
-	// The name of the bucket.
+	// The name of the bucket. Bucket names must be in lowercase and no more than 63 characters long. You can find the complete list of bucket naming rules [here](https://cloud.google.com/storage/docs/buckets#naming).
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -535,7 +535,7 @@ type bucketArgs struct {
 	Location string `pulumi:"location"`
 	// The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
 	Logging *BucketLogging `pulumi:"logging"`
-	// The name of the bucket.
+	// The name of the bucket. Bucket names must be in lowercase and no more than 63 characters long. You can find the complete list of bucket naming rules [here](https://cloud.google.com/storage/docs/buckets#naming).
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -593,7 +593,7 @@ type BucketArgs struct {
 	Location pulumi.StringInput
 	// The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
 	Logging BucketLoggingPtrInput
-	// The name of the bucket.
+	// The name of the bucket. Bucket names must be in lowercase and no more than 63 characters long. You can find the complete list of bucket naming rules [here](https://cloud.google.com/storage/docs/buckets#naming).
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -779,7 +779,7 @@ func (o BucketOutput) Logging() BucketLoggingPtrOutput {
 	return o.ApplyT(func(v *Bucket) BucketLoggingPtrOutput { return v.Logging }).(BucketLoggingPtrOutput)
 }
 
-// The name of the bucket.
+// The name of the bucket. Bucket names must be in lowercase and no more than 63 characters long. You can find the complete list of bucket naming rules [here](https://cloud.google.com/storage/docs/buckets#naming).
 func (o BucketOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Bucket) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

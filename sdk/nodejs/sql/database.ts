@@ -66,8 +66,6 @@ import * as utilities from "../utilities";
  *
  * * `{{instance}}/{{name}}`
  *
- * * `{{name}}`
- *
  * When using the `pulumi import` command, Database can be imported using one of the formats above. For example:
  *
  * ```sh
@@ -84,10 +82,6 @@ import * as utilities from "../utilities";
  *
  * ```sh
  * $ pulumi import gcp:sql/database:Database default {{instance}}/{{name}}
- * ```
- *
- * ```sh
- * $ pulumi import gcp:sql/database:Database default {{name}}
  * ```
  */
 export class Database extends pulumi.CustomResource {

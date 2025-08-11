@@ -26,11 +26,13 @@ import * as utilities from "../utilities";
  * const instance = new gcp.securesourcemanager.Instance("instance", {
  *     location: "us-central1",
  *     instanceId: "my-instance",
+ *     deletionPolicy: "PREVENT",
  * });
  * const _default = new gcp.securesourcemanager.Repository("default", {
  *     location: "us-central1",
  *     repositoryId: "my-repository",
  *     instance: instance.name,
+ *     deletionPolicy: "PREVENT",
  * });
  * ```
  * ### Secure Source Manager Repository Initial Config
@@ -42,6 +44,7 @@ import * as utilities from "../utilities";
  * const instance = new gcp.securesourcemanager.Instance("instance", {
  *     location: "us-central1",
  *     instanceId: "my-instance",
+ *     deletionPolicy: "PREVENT",
  * });
  * const _default = new gcp.securesourcemanager.Repository("default", {
  *     location: "us-central1",
@@ -54,6 +57,7 @@ import * as utilities from "../utilities";
  *         license: "mit",
  *         readme: "default",
  *     },
+ *     deletionPolicy: "PREVENT",
  * });
  * ```
  *
@@ -120,6 +124,17 @@ export class Repository extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * The deletion policy for the repository. Setting `ABANDON` allows the resource
+     * to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+     * and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
+     * by erroring out during plan.
+     * Default is `DELETE`.  Possible values are:
+     * * DELETE
+     * * PREVENT
+     * * ABANDON
+     */
+    public readonly deletionPolicy!: pulumi.Output<string | undefined>;
+    /**
      * Description of the repository, which cannot exceed 500 characters.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -177,6 +192,7 @@ export class Repository extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as RepositoryState | undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["initialConfig"] = state ? state.initialConfig : undefined;
             resourceInputs["instance"] = state ? state.instance : undefined;
@@ -198,6 +214,7 @@ export class Repository extends pulumi.CustomResource {
             if ((!args || args.repositoryId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'repositoryId'");
             }
+            resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["initialConfig"] = args ? args.initialConfig : undefined;
             resourceInputs["instance"] = args ? args.instance : undefined;
@@ -223,6 +240,17 @@ export interface RepositoryState {
      * Time the repository was created in UTC.
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * The deletion policy for the repository. Setting `ABANDON` allows the resource
+     * to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+     * and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
+     * by erroring out during plan.
+     * Default is `DELETE`.  Possible values are:
+     * * DELETE
+     * * PREVENT
+     * * ABANDON
+     */
+    deletionPolicy?: pulumi.Input<string>;
     /**
      * Description of the repository, which cannot exceed 500 characters.
      */
@@ -272,6 +300,17 @@ export interface RepositoryState {
  * The set of arguments for constructing a Repository resource.
  */
 export interface RepositoryArgs {
+    /**
+     * The deletion policy for the repository. Setting `ABANDON` allows the resource
+     * to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+     * and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
+     * by erroring out during plan.
+     * Default is `DELETE`.  Possible values are:
+     * * DELETE
+     * * PREVENT
+     * * ABANDON
+     */
+    deletionPolicy?: pulumi.Input<string>;
     /**
      * Description of the repository, which cannot exceed 500 characters.
      */

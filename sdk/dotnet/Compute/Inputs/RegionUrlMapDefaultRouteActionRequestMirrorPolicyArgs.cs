@@ -20,6 +20,13 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("backendService")]
         public Input<string>? BackendService { get; set; }
 
+        /// <summary>
+        /// The percentage of requests to be mirrored to backendService.
+        /// The value must be between 0.0 and 100.0 inclusive.
+        /// </summary>
+        [Input("mirrorPercent")]
+        public Input<double>? MirrorPercent { get; set; }
+
         public RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgs()
         {
         }

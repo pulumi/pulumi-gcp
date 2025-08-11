@@ -41,6 +41,7 @@ import com.pulumi.gcp.container.inputs.ClusterPodAutoscalingArgs;
 import com.pulumi.gcp.container.inputs.ClusterPodSecurityPolicyConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterPrivateClusterConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterProtectConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterRbacBindingConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterReleaseChannelArgs;
 import com.pulumi.gcp.container.inputs.ClusterResourceUsageExportConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterSecretManagerConfigArgs;
@@ -104,16 +105,12 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     /**
      * Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
-     * 
      */
     @Import(name="anonymousAuthenticationConfig")
     private @Nullable Output<ClusterAnonymousAuthenticationConfigArgs> anonymousAuthenticationConfig;
 
     /**
      * @return Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
-     * 
-     * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
      * 
      */
     public Optional<Output<ClusterAnonymousAuthenticationConfigArgs>> anonymousAuthenticationConfig() {
@@ -1372,6 +1369,25 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
+     * 
+     * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
+     * 
+     */
+    @Import(name="rbacBindingConfig")
+    private @Nullable Output<ClusterRbacBindingConfigArgs> rbacBindingConfig;
+
+    /**
+     * @return RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
+     * 
+     * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
+     * 
+     */
+    public Optional<Output<ClusterRbacBindingConfigArgs>> rbacBindingConfig() {
+        return Optional.ofNullable(this.rbacBindingConfig);
+    }
+
+    /**
      * Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
      * feature, which provide more control over automatic upgrades of your GKE clusters.
      * When updating this field, GKE imposes specific version requirements. See
@@ -1740,6 +1756,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.project = $.project;
         this.protectConfig = $.protectConfig;
         this.pulumiLabels = $.pulumiLabels;
+        this.rbacBindingConfig = $.rbacBindingConfig;
         this.releaseChannel = $.releaseChannel;
         this.removeDefaultNodePool = $.removeDefaultNodePool;
         this.resourceLabels = $.resourceLabels;
@@ -1827,8 +1844,6 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param anonymousAuthenticationConfig Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
          * 
-         * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
-         * 
          * @return builder
          * 
          */
@@ -1839,8 +1854,6 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param anonymousAuthenticationConfig Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
-         * 
-         * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
          * 
          * @return builder
          * 
@@ -3539,6 +3552,31 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder pulumiLabels(Map<String,String> pulumiLabels) {
             return pulumiLabels(Output.of(pulumiLabels));
+        }
+
+        /**
+         * @param rbacBindingConfig RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
+         * 
+         * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rbacBindingConfig(@Nullable Output<ClusterRbacBindingConfigArgs> rbacBindingConfig) {
+            $.rbacBindingConfig = rbacBindingConfig;
+            return this;
+        }
+
+        /**
+         * @param rbacBindingConfig RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
+         * 
+         * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rbacBindingConfig(ClusterRbacBindingConfigArgs rbacBindingConfig) {
+            return rbacBindingConfig(Output.of(rbacBindingConfig));
         }
 
         /**

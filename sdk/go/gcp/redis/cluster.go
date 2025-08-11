@@ -528,6 +528,7 @@ import (
 //					"maxmemory-policy": pulumi.String("volatile-ttl"),
 //				},
 //				DeletionProtectionEnabled: pulumi.Bool(true),
+//				AllowFewerZonesDeployment: pulumi.Bool(true),
 //				ZoneDistributionConfig: &redis.ClusterZoneDistributionConfigArgs{
 //					Mode: pulumi.String("MULTI_ZONE"),
 //				},
@@ -668,6 +669,11 @@ import (
 type Cluster struct {
 	pulumi.CustomResourceState
 
+	// Allows customers to specify if they are okay with deploying a multi-zone
+	// cluster in less than 3 zones. Once set, if there is a zonal outage during
+	// the cluster creation, the cluster will only be deployed in 2 zones, and
+	// stay within the 2 zones for its lifecycle.
+	AllowFewerZonesDeployment pulumi.BoolPtrOutput `pulumi:"allowFewerZonesDeployment"`
 	// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
 	// Default value is `AUTH_MODE_DISABLED`.
 	// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
@@ -799,6 +805,11 @@ func GetCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Cluster resources.
 type clusterState struct {
+	// Allows customers to specify if they are okay with deploying a multi-zone
+	// cluster in less than 3 zones. Once set, if there is a zonal outage during
+	// the cluster creation, the cluster will only be deployed in 2 zones, and
+	// stay within the 2 zones for its lifecycle.
+	AllowFewerZonesDeployment *bool `pulumi:"allowFewerZonesDeployment"`
 	// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
 	// Default value is `AUTH_MODE_DISABLED`.
 	// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
@@ -898,6 +909,11 @@ type clusterState struct {
 }
 
 type ClusterState struct {
+	// Allows customers to specify if they are okay with deploying a multi-zone
+	// cluster in less than 3 zones. Once set, if there is a zonal outage during
+	// the cluster creation, the cluster will only be deployed in 2 zones, and
+	// stay within the 2 zones for its lifecycle.
+	AllowFewerZonesDeployment pulumi.BoolPtrInput
 	// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
 	// Default value is `AUTH_MODE_DISABLED`.
 	// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
@@ -1001,6 +1017,11 @@ func (ClusterState) ElementType() reflect.Type {
 }
 
 type clusterArgs struct {
+	// Allows customers to specify if they are okay with deploying a multi-zone
+	// cluster in less than 3 zones. Once set, if there is a zonal outage during
+	// the cluster creation, the cluster will only be deployed in 2 zones, and
+	// stay within the 2 zones for its lifecycle.
+	AllowFewerZonesDeployment *bool `pulumi:"allowFewerZonesDeployment"`
 	// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
 	// Default value is `AUTH_MODE_DISABLED`.
 	// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
@@ -1066,6 +1087,11 @@ type clusterArgs struct {
 
 // The set of arguments for constructing a Cluster resource.
 type ClusterArgs struct {
+	// Allows customers to specify if they are okay with deploying a multi-zone
+	// cluster in less than 3 zones. Once set, if there is a zonal outage during
+	// the cluster creation, the cluster will only be deployed in 2 zones, and
+	// stay within the 2 zones for its lifecycle.
+	AllowFewerZonesDeployment pulumi.BoolPtrInput
 	// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
 	// Default value is `AUTH_MODE_DISABLED`.
 	// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
@@ -1214,6 +1240,14 @@ func (o ClusterOutput) ToClusterOutput() ClusterOutput {
 
 func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOutput {
 	return o
+}
+
+// Allows customers to specify if they are okay with deploying a multi-zone
+// cluster in less than 3 zones. Once set, if there is a zonal outage during
+// the cluster creation, the cluster will only be deployed in 2 zones, and
+// stay within the 2 zones for its lifecycle.
+func (o ClusterOutput) AllowFewerZonesDeployment() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.AllowFewerZonesDeployment }).(pulumi.BoolPtrOutput)
 }
 
 // Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.

@@ -44,6 +44,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networksecurity.SecurityProfileGroupArgs;
  * import com.pulumi.gcp.compute.Network;
  * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.tags.TagKey;
+ * import com.pulumi.gcp.tags.TagKeyArgs;
+ * import com.pulumi.gcp.tags.TagValue;
+ * import com.pulumi.gcp.tags.TagValueArgs;
  * import com.pulumi.gcp.compute.FirewallPolicyWithRules;
  * import com.pulumi.gcp.compute.FirewallPolicyWithRulesArgs;
  * import com.pulumi.gcp.compute.inputs.FirewallPolicyWithRulesRuleArgs;
@@ -91,6 +95,20 @@ import javax.annotation.Nullable;
  *         var network = new Network("network", NetworkArgs.builder()
  *             .name("network")
  *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var basicKey = new TagKey("basicKey", TagKeyArgs.builder()
+ *             .description("For keyname resources.")
+ *             .parent("organizations/123456789")
+ *             .purpose("GCE_FIREWALL")
+ *             .shortName("tag-key")
+ *             .purposeData(Map.of("organization", "auto"))
+ *             .build());
+ * 
+ *         var basicValue = new TagValue("basicValue", TagValueArgs.builder()
+ *             .description("For valuename resources.")
+ *             .parent(basicKey.id())
+ *             .shortName("tag-value")
  *             .build());
  * 
  *         var primary = new FirewallPolicyWithRules("primary", FirewallPolicyWithRulesArgs.builder()
@@ -163,6 +181,27 @@ import javax.annotation.Nullable;
  *                         .srcIpRanges("0.0.0.0/0")
  *                         .layer4Configs(FirewallPolicyWithRulesRuleMatchLayer4ConfigArgs.builder()
  *                             .ipProtocol("tcp")
+ *                             .build())
+ *                         .build())
+ *                     .build(),
+ *                 FirewallPolicyWithRulesRuleArgs.builder()
+ *                     .description("secure tags")
+ *                     .ruleName("secure tags rule")
+ *                     .priority(4000)
+ *                     .enableLogging(false)
+ *                     .action("allow")
+ *                     .direction("INGRESS")
+ *                     .targetSecureTags(FirewallPolicyWithRulesRuleTargetSecureTagArgs.builder()
+ *                         .name(basicValue.id())
+ *                         .build())
+ *                     .match(FirewallPolicyWithRulesRuleMatchArgs.builder()
+ *                         .srcIpRanges("11.100.0.1/32")
+ *                         .srcSecureTags(FirewallPolicyWithRulesRuleMatchSrcSecureTagArgs.builder()
+ *                             .name(basicValue.id())
+ *                             .build())
+ *                         .layer4Configs(FirewallPolicyWithRulesRuleMatchLayer4ConfigArgs.builder()
+ *                             .ipProtocol("tcp")
+ *                             .ports("8080")
  *                             .build())
  *                         .build())
  *                     .build())

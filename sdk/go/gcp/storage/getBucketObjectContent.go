@@ -86,6 +86,7 @@ type GetBucketObjectContentResult struct {
 	ContentType           string                                     `pulumi:"contentType"`
 	Crc32c                string                                     `pulumi:"crc32c"`
 	CustomerEncryptions   []GetBucketObjectContentCustomerEncryption `pulumi:"customerEncryptions"`
+	DeletionPolicy        string                                     `pulumi:"deletionPolicy"`
 	DetectMd5hash         string                                     `pulumi:"detectMd5hash"`
 	EventBasedHold        bool                                       `pulumi:"eventBasedHold"`
 	ForceEmptyContentType bool                                       `pulumi:"forceEmptyContentType"`
@@ -198,6 +199,10 @@ func (o GetBucketObjectContentResultOutput) CustomerEncryptions() GetBucketObjec
 	return o.ApplyT(func(v GetBucketObjectContentResult) []GetBucketObjectContentCustomerEncryption {
 		return v.CustomerEncryptions
 	}).(GetBucketObjectContentCustomerEncryptionArrayOutput)
+}
+
+func (o GetBucketObjectContentResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketObjectContentResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o GetBucketObjectContentResultOutput) DetectMd5hash() pulumi.StringOutput {

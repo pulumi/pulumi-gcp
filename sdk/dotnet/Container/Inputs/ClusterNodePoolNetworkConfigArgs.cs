@@ -72,6 +72,13 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("podRange")]
         public Input<string>? PodRange { get; set; }
 
+        /// <summary>
+        /// The name or self_link of the Google Compute Engine
+        /// subnetwork in which the cluster's instances are launched.
+        /// </summary>
+        [Input("subnetwork")]
+        public Input<string>? Subnetwork { get; set; }
+
         public ClusterNodePoolNetworkConfigArgs()
         {
         }

@@ -16,21 +16,31 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'FunctionAutomaticUpdatePolicy',
     'FunctionEventTrigger',
     'FunctionEventTriggerFailurePolicy',
     'FunctionIamBindingCondition',
     'FunctionIamMemberCondition',
+    'FunctionOnDeployUpdatePolicy',
     'FunctionSecretEnvironmentVariable',
     'FunctionSecretVolume',
     'FunctionSecretVolumeVersion',
     'FunctionSourceRepository',
+    'GetFunctionAutomaticUpdatePolicyResult',
     'GetFunctionEventTriggerResult',
     'GetFunctionEventTriggerFailurePolicyResult',
+    'GetFunctionOnDeployUpdatePolicyResult',
     'GetFunctionSecretEnvironmentVariableResult',
     'GetFunctionSecretVolumeResult',
     'GetFunctionSecretVolumeVersionResult',
     'GetFunctionSourceRepositoryResult',
 ]
+
+@pulumi.output_type
+class FunctionAutomaticUpdatePolicy(dict):
+    def __init__(__self__):
+        pass
+
 
 @pulumi.output_type
 class FunctionEventTrigger(dict):
@@ -168,6 +178,42 @@ class FunctionIamMemberCondition(dict):
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class FunctionOnDeployUpdatePolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "runtimeVersion":
+            suggest = "runtime_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FunctionOnDeployUpdatePolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FunctionOnDeployUpdatePolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FunctionOnDeployUpdatePolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 runtime_version: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str runtime_version: The runtime version which was used during latest function deployment.
+        """
+        if runtime_version is not None:
+            pulumi.set(__self__, "runtime_version", runtime_version)
+
+    @_builtins.property
+    @pulumi.getter(name="runtimeVersion")
+    def runtime_version(self) -> Optional[_builtins.str]:
+        """
+        The runtime version which was used during latest function deployment.
+        """
+        return pulumi.get(self, "runtime_version")
 
 
 @pulumi.output_type
@@ -396,6 +442,12 @@ class FunctionSourceRepository(dict):
 
 
 @pulumi.output_type
+class GetFunctionAutomaticUpdatePolicyResult(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
 class GetFunctionEventTriggerResult(dict):
     def __init__(__self__, *,
                  event_type: _builtins.str,
@@ -455,6 +507,24 @@ class GetFunctionEventTriggerFailurePolicyResult(dict):
         Whether the function should be retried on failure.
         """
         return pulumi.get(self, "retry")
+
+
+@pulumi.output_type
+class GetFunctionOnDeployUpdatePolicyResult(dict):
+    def __init__(__self__, *,
+                 runtime_version: _builtins.str):
+        """
+        :param _builtins.str runtime_version: The runtime version which was used during latest function deployment.
+        """
+        pulumi.set(__self__, "runtime_version", runtime_version)
+
+    @_builtins.property
+    @pulumi.getter(name="runtimeVersion")
+    def runtime_version(self) -> _builtins.str:
+        """
+        The runtime version which was used during latest function deployment.
+        """
+        return pulumi.get(self, "runtime_version")
 
 
 @pulumi.output_type

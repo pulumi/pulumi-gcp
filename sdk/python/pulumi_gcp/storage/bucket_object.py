@@ -29,6 +29,7 @@ class BucketObjectArgs:
                  content_language: Optional[pulumi.Input[_builtins.str]] = None,
                  content_type: Optional[pulumi.Input[_builtins.str]] = None,
                  customer_encryption: Optional[pulumi.Input['BucketObjectCustomerEncryptionArgs']] = None,
+                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  detect_md5hash: Optional[pulumi.Input[_builtins.str]] = None,
                  event_based_hold: Optional[pulumi.Input[_builtins.bool]] = None,
                  force_empty_content_type: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -85,6 +86,8 @@ class BucketObjectArgs:
             pulumi.set(__self__, "content_type", content_type)
         if customer_encryption is not None:
             pulumi.set(__self__, "customer_encryption", customer_encryption)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if detect_md5hash is not None:
             warnings.warn("""`detect_md5hash` is deprecated and will be removed in future release. Start using `source_md5hash` instead""", DeprecationWarning)
             pulumi.log.warn("""detect_md5hash is deprecated: `detect_md5hash` is deprecated and will be removed in future release. Start using `source_md5hash` instead""")
@@ -208,6 +211,15 @@ class BucketObjectArgs:
     @customer_encryption.setter
     def customer_encryption(self, value: Optional[pulumi.Input['BucketObjectCustomerEncryptionArgs']]):
         pulumi.set(self, "customer_encryption", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="detectMd5hash")
@@ -359,6 +371,7 @@ class _BucketObjectState:
                  content_type: Optional[pulumi.Input[_builtins.str]] = None,
                  crc32c: Optional[pulumi.Input[_builtins.str]] = None,
                  customer_encryption: Optional[pulumi.Input['BucketObjectCustomerEncryptionArgs']] = None,
+                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  detect_md5hash: Optional[pulumi.Input[_builtins.str]] = None,
                  event_based_hold: Optional[pulumi.Input[_builtins.bool]] = None,
                  force_empty_content_type: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -432,6 +445,8 @@ class _BucketObjectState:
             pulumi.set(__self__, "crc32c", crc32c)
         if customer_encryption is not None:
             pulumi.set(__self__, "customer_encryption", customer_encryption)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if detect_md5hash is not None:
             warnings.warn("""`detect_md5hash` is deprecated and will be removed in future release. Start using `source_md5hash` instead""", DeprecationWarning)
             pulumi.log.warn("""detect_md5hash is deprecated: `detect_md5hash` is deprecated and will be removed in future release. Start using `source_md5hash` instead""")
@@ -579,6 +594,15 @@ class _BucketObjectState:
     @customer_encryption.setter
     def customer_encryption(self, value: Optional[pulumi.Input['BucketObjectCustomerEncryptionArgs']]):
         pulumi.set(self, "customer_encryption", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="detectMd5hash")
@@ -805,6 +829,7 @@ class BucketObject(pulumi.CustomResource):
                  content_language: Optional[pulumi.Input[_builtins.str]] = None,
                  content_type: Optional[pulumi.Input[_builtins.str]] = None,
                  customer_encryption: Optional[pulumi.Input[Union['BucketObjectCustomerEncryptionArgs', 'BucketObjectCustomerEncryptionArgsDict']]] = None,
+                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  detect_md5hash: Optional[pulumi.Input[_builtins.str]] = None,
                  event_based_hold: Optional[pulumi.Input[_builtins.bool]] = None,
                  force_empty_content_type: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -960,6 +985,7 @@ class BucketObject(pulumi.CustomResource):
                  content_language: Optional[pulumi.Input[_builtins.str]] = None,
                  content_type: Optional[pulumi.Input[_builtins.str]] = None,
                  customer_encryption: Optional[pulumi.Input[Union['BucketObjectCustomerEncryptionArgs', 'BucketObjectCustomerEncryptionArgsDict']]] = None,
+                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  detect_md5hash: Optional[pulumi.Input[_builtins.str]] = None,
                  event_based_hold: Optional[pulumi.Input[_builtins.bool]] = None,
                  force_empty_content_type: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -990,6 +1016,7 @@ class BucketObject(pulumi.CustomResource):
             __props__.__dict__["content_language"] = content_language
             __props__.__dict__["content_type"] = content_type
             __props__.__dict__["customer_encryption"] = None if customer_encryption is None else pulumi.Output.secret(customer_encryption)
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["detect_md5hash"] = detect_md5hash
             __props__.__dict__["event_based_hold"] = event_based_hold
             __props__.__dict__["force_empty_content_type"] = force_empty_content_type
@@ -1029,6 +1056,7 @@ class BucketObject(pulumi.CustomResource):
             content_type: Optional[pulumi.Input[_builtins.str]] = None,
             crc32c: Optional[pulumi.Input[_builtins.str]] = None,
             customer_encryption: Optional[pulumi.Input[Union['BucketObjectCustomerEncryptionArgs', 'BucketObjectCustomerEncryptionArgsDict']]] = None,
+            deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
             detect_md5hash: Optional[pulumi.Input[_builtins.str]] = None,
             event_based_hold: Optional[pulumi.Input[_builtins.bool]] = None,
             force_empty_content_type: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1102,6 +1130,7 @@ class BucketObject(pulumi.CustomResource):
         __props__.__dict__["content_type"] = content_type
         __props__.__dict__["crc32c"] = crc32c
         __props__.__dict__["customer_encryption"] = customer_encryption
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["detect_md5hash"] = detect_md5hash
         __props__.__dict__["event_based_hold"] = event_based_hold
         __props__.__dict__["force_empty_content_type"] = force_empty_content_type
@@ -1194,6 +1223,11 @@ class BucketObject(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "customer_encryption")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="detectMd5hash")

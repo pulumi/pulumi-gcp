@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.Gemini
     ///             { "my_key", "my_value" },
     ///         },
     ///         EnableCustomerDataSharing = true,
-    ///         DisableWebGrounding = true,
+    ///         WebGroundingType = "WEB_GROUNDING_FOR_ENTERPRISE",
     ///     });
     /// 
     /// });
@@ -73,7 +73,10 @@ namespace Pulumi.Gcp.Gemini
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// Whether web grounding should be disabled.
+        /// 
+        /// &gt; **Warning:** `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.
         /// </summary>
         [Output("disableWebGrounding")]
         public Output<bool?> DisableWebGrounding { get; private set; } = null!;
@@ -137,6 +140,15 @@ namespace Pulumi.Gcp.Gemini
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// Web grounding type.
+        /// Possible values:
+        /// GROUNDING_WITH_GOOGLE_SEARCH
+        /// WEB_GROUNDING_FOR_ENTERPRISE
+        /// </summary>
+        [Output("webGroundingType")]
+        public Output<string?> WebGroundingType { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a GeminiGcpEnablementSetting resource with the given unique name, arguments, and options.
@@ -189,7 +201,10 @@ namespace Pulumi.Gcp.Gemini
     public sealed class GeminiGcpEnablementSettingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Optional, Deprecated)
         /// Whether web grounding should be disabled.
+        /// 
+        /// &gt; **Warning:** `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.
         /// </summary>
         [Input("disableWebGrounding")]
         public Input<bool>? DisableWebGrounding { get; set; }
@@ -233,6 +248,15 @@ namespace Pulumi.Gcp.Gemini
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Web grounding type.
+        /// Possible values:
+        /// GROUNDING_WITH_GOOGLE_SEARCH
+        /// WEB_GROUNDING_FOR_ENTERPRISE
+        /// </summary>
+        [Input("webGroundingType")]
+        public Input<string>? WebGroundingType { get; set; }
+
         public GeminiGcpEnablementSettingArgs()
         {
         }
@@ -248,7 +272,10 @@ namespace Pulumi.Gcp.Gemini
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// Whether web grounding should be disabled.
+        /// 
+        /// &gt; **Warning:** `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.
         /// </summary>
         [Input("disableWebGrounding")]
         public Input<bool>? DisableWebGrounding { get; set; }
@@ -337,6 +364,15 @@ namespace Pulumi.Gcp.Gemini
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }
+
+        /// <summary>
+        /// Web grounding type.
+        /// Possible values:
+        /// GROUNDING_WITH_GOOGLE_SEARCH
+        /// WEB_GROUNDING_FOR_ENTERPRISE
+        /// </summary>
+        [Input("webGroundingType")]
+        public Input<string>? WebGroundingType { get; set; }
 
         public GeminiGcpEnablementSettingState()
         {

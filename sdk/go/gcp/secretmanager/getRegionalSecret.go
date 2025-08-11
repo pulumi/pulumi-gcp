@@ -77,6 +77,7 @@ type LookupRegionalSecretResult struct {
 	PulumiLabels      map[string]string           `pulumi:"pulumiLabels"`
 	Rotations         []GetRegionalSecretRotation `pulumi:"rotations"`
 	SecretId          string                      `pulumi:"secretId"`
+	Tags              map[string]string           `pulumi:"tags"`
 	Topics            []GetRegionalSecretTopic    `pulumi:"topics"`
 	Ttl               string                      `pulumi:"ttl"`
 	VersionAliases    map[string]string           `pulumi:"versionAliases"`
@@ -182,6 +183,10 @@ func (o LookupRegionalSecretResultOutput) Rotations() GetRegionalSecretRotationA
 
 func (o LookupRegionalSecretResultOutput) SecretId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionalSecretResult) string { return v.SecretId }).(pulumi.StringOutput)
+}
+
+func (o LookupRegionalSecretResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupRegionalSecretResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o LookupRegionalSecretResultOutput) Topics() GetRegionalSecretTopicArrayOutput {

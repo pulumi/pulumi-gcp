@@ -149,16 +149,16 @@ import * as utilities from "../utilities";
  *
  * const my_repo = new gcp.artifactregistry.Repository("my-repo", {
  *     location: "us-central1",
- *     repositoryId: "debian-buster",
+ *     repositoryId: "debian-stable",
  *     description: "example remote apt repository",
  *     format: "APT",
  *     mode: "REMOTE_REPOSITORY",
  *     remoteRepositoryConfig: {
- *         description: "Debian buster remote repository",
+ *         description: "Debian stable remote repository",
  *         aptRepository: {
  *             publicRepository: {
  *                 repositoryBase: "DEBIAN",
- *                 repositoryPath: "debian/dists/buster",
+ *                 repositoryPath: "debian/dists/stable",
  *             },
  *         },
  *     },

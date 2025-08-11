@@ -89,6 +89,23 @@ public final class BackupVaultArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * How a backup&#39;s enforced retention end time is inherited. Default value is `INHERIT_VAULT_RETENTION` if not provided during creation.
+     * Possible values are: `BACKUP_RETENTION_INHERITANCE_UNSPECIFIED`, `INHERIT_VAULT_RETENTION`, `MATCH_BACKUP_EXPIRE_TIME`.
+     * 
+     */
+    @Import(name="backupRetentionInheritance")
+    private @Nullable Output<String> backupRetentionInheritance;
+
+    /**
+     * @return How a backup&#39;s enforced retention end time is inherited. Default value is `INHERIT_VAULT_RETENTION` if not provided during creation.
+     * Possible values are: `BACKUP_RETENTION_INHERITANCE_UNSPECIFIED`, `INHERIT_VAULT_RETENTION`, `MATCH_BACKUP_EXPIRE_TIME`.
+     * 
+     */
+    public Optional<Output<String>> backupRetentionInheritance() {
+        return Optional.ofNullable(this.backupRetentionInheritance);
+    }
+
+    /**
      * Required. ID of the requesting object.
      * 
      */
@@ -279,6 +296,7 @@ public final class BackupVaultArgs extends com.pulumi.resources.ResourceArgs {
         this.allowMissing = $.allowMissing;
         this.annotations = $.annotations;
         this.backupMinimumEnforcedRetentionDuration = $.backupMinimumEnforcedRetentionDuration;
+        this.backupRetentionInheritance = $.backupRetentionInheritance;
         this.backupVaultId = $.backupVaultId;
         this.description = $.description;
         this.effectiveTime = $.effectiveTime;
@@ -401,6 +419,29 @@ public final class BackupVaultArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder backupMinimumEnforcedRetentionDuration(String backupMinimumEnforcedRetentionDuration) {
             return backupMinimumEnforcedRetentionDuration(Output.of(backupMinimumEnforcedRetentionDuration));
+        }
+
+        /**
+         * @param backupRetentionInheritance How a backup&#39;s enforced retention end time is inherited. Default value is `INHERIT_VAULT_RETENTION` if not provided during creation.
+         * Possible values are: `BACKUP_RETENTION_INHERITANCE_UNSPECIFIED`, `INHERIT_VAULT_RETENTION`, `MATCH_BACKUP_EXPIRE_TIME`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupRetentionInheritance(@Nullable Output<String> backupRetentionInheritance) {
+            $.backupRetentionInheritance = backupRetentionInheritance;
+            return this;
+        }
+
+        /**
+         * @param backupRetentionInheritance How a backup&#39;s enforced retention end time is inherited. Default value is `INHERIT_VAULT_RETENTION` if not provided during creation.
+         * Possible values are: `BACKUP_RETENTION_INHERITANCE_UNSPECIFIED`, `INHERIT_VAULT_RETENTION`, `MATCH_BACKUP_EXPIRE_TIME`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupRetentionInheritance(String backupRetentionInheritance) {
+            return backupRetentionInheritance(Output.of(backupRetentionInheritance));
         }
 
         /**

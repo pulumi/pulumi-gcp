@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.dataproc.inputs.SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -15,6 +16,46 @@ import javax.annotation.Nullable;
 public final class SessionTemplateEnvironmentConfigExecutionConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final SessionTemplateEnvironmentConfigExecutionConfigArgs Empty = new SessionTemplateEnvironmentConfigExecutionConfigArgs();
+
+    /**
+     * Authentication configuration for a workload is used to set the default identity for the workload execution.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="authenticationConfig")
+    private @Nullable Output<SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgs> authenticationConfig;
+
+    /**
+     * @return Authentication configuration for a workload is used to set the default identity for the workload execution.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgs>> authenticationConfig() {
+        return Optional.ofNullable(this.authenticationConfig);
+    }
+
+    /**
+     * The duration to keep the session alive while it&#39;s idling.
+     * Exceeding this threshold causes the session to terminate. Minimum value is 10 minutes; maximum value is 14 day.
+     * Defaults to 1 hour if not set. If both ttl and idleTtl are specified for an interactive session, the conditions
+     * are treated as OR conditions: the workload will be terminated when it has been idle for idleTtl or when ttl has
+     * been exceeded, whichever occurs first.
+     * 
+     */
+    @Import(name="idleTtl")
+    private @Nullable Output<String> idleTtl;
+
+    /**
+     * @return The duration to keep the session alive while it&#39;s idling.
+     * Exceeding this threshold causes the session to terminate. Minimum value is 10 minutes; maximum value is 14 day.
+     * Defaults to 1 hour if not set. If both ttl and idleTtl are specified for an interactive session, the conditions
+     * are treated as OR conditions: the workload will be terminated when it has been idle for idleTtl or when ttl has
+     * been exceeded, whichever occurs first.
+     * 
+     */
+    public Optional<Output<String>> idleTtl() {
+        return Optional.ofNullable(this.idleTtl);
+    }
 
     /**
      * The Cloud KMS key to use for encryption.
@@ -131,6 +172,8 @@ public final class SessionTemplateEnvironmentConfigExecutionConfigArgs extends c
     private SessionTemplateEnvironmentConfigExecutionConfigArgs() {}
 
     private SessionTemplateEnvironmentConfigExecutionConfigArgs(SessionTemplateEnvironmentConfigExecutionConfigArgs $) {
+        this.authenticationConfig = $.authenticationConfig;
+        this.idleTtl = $.idleTtl;
         this.kmsKey = $.kmsKey;
         this.networkTags = $.networkTags;
         this.serviceAccount = $.serviceAccount;
@@ -155,6 +198,58 @@ public final class SessionTemplateEnvironmentConfigExecutionConfigArgs extends c
 
         public Builder(SessionTemplateEnvironmentConfigExecutionConfigArgs defaults) {
             $ = new SessionTemplateEnvironmentConfigExecutionConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param authenticationConfig Authentication configuration for a workload is used to set the default identity for the workload execution.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authenticationConfig(@Nullable Output<SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgs> authenticationConfig) {
+            $.authenticationConfig = authenticationConfig;
+            return this;
+        }
+
+        /**
+         * @param authenticationConfig Authentication configuration for a workload is used to set the default identity for the workload execution.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authenticationConfig(SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgs authenticationConfig) {
+            return authenticationConfig(Output.of(authenticationConfig));
+        }
+
+        /**
+         * @param idleTtl The duration to keep the session alive while it&#39;s idling.
+         * Exceeding this threshold causes the session to terminate. Minimum value is 10 minutes; maximum value is 14 day.
+         * Defaults to 1 hour if not set. If both ttl and idleTtl are specified for an interactive session, the conditions
+         * are treated as OR conditions: the workload will be terminated when it has been idle for idleTtl or when ttl has
+         * been exceeded, whichever occurs first.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder idleTtl(@Nullable Output<String> idleTtl) {
+            $.idleTtl = idleTtl;
+            return this;
+        }
+
+        /**
+         * @param idleTtl The duration to keep the session alive while it&#39;s idling.
+         * Exceeding this threshold causes the session to terminate. Minimum value is 10 minutes; maximum value is 14 day.
+         * Defaults to 1 hour if not set. If both ttl and idleTtl are specified for an interactive session, the conditions
+         * are treated as OR conditions: the workload will be terminated when it has been idle for idleTtl or when ttl has
+         * been exceeded, whichever occurs first.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder idleTtl(String idleTtl) {
+            return idleTtl(Output.of(idleTtl));
         }
 
         /**

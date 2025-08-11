@@ -88,6 +88,21 @@ public final class ClusterClusterConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * The tier of the cluster.
+     * 
+     */
+    @Import(name="clusterTier")
+    private @Nullable Output<String> clusterTier;
+
+    /**
+     * @return The tier of the cluster.
+     * 
+     */
+    public Optional<Output<String>> clusterTier() {
+        return Optional.ofNullable(this.clusterTier);
+    }
+
+    /**
      * The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
      * Structure defined below.
      * 
@@ -349,6 +364,7 @@ public final class ClusterClusterConfigArgs extends com.pulumi.resources.Resourc
         this.autoscalingConfig = $.autoscalingConfig;
         this.auxiliaryNodeGroups = $.auxiliaryNodeGroups;
         this.bucket = $.bucket;
+        this.clusterTier = $.clusterTier;
         this.dataprocMetricConfig = $.dataprocMetricConfig;
         this.encryptionConfig = $.encryptionConfig;
         this.endpointConfig = $.endpointConfig;
@@ -467,6 +483,27 @@ public final class ClusterClusterConfigArgs extends com.pulumi.resources.Resourc
          */
         public Builder bucket(String bucket) {
             return bucket(Output.of(bucket));
+        }
+
+        /**
+         * @param clusterTier The tier of the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterTier(@Nullable Output<String> clusterTier) {
+            $.clusterTier = clusterTier;
+            return this;
+        }
+
+        /**
+         * @param clusterTier The tier of the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterTier(String clusterTier) {
+            return clusterTier(Output.of(clusterTier));
         }
 
         /**

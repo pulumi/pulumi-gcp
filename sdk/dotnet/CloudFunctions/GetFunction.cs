@@ -155,6 +155,7 @@ namespace Pulumi.Gcp.CloudFunctions
     [OutputType]
     public sealed class GetFunctionResult
     {
+        public readonly ImmutableArray<Outputs.GetFunctionAutomaticUpdatePolicyResult> AutomaticUpdatePolicies;
         /// <summary>
         /// Available memory (in MB) to the function.
         /// </summary>
@@ -205,6 +206,7 @@ namespace Pulumi.Gcp.CloudFunctions
         /// The name of the Cloud Function.
         /// </summary>
         public readonly string Name;
+        public readonly ImmutableArray<Outputs.GetFunctionOnDeployUpdatePolicyResult> OnDeployUpdatePolicies;
         public readonly string? Project;
         public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly string? Region;
@@ -251,6 +253,8 @@ namespace Pulumi.Gcp.CloudFunctions
 
         [OutputConstructor]
         private GetFunctionResult(
+            ImmutableArray<Outputs.GetFunctionAutomaticUpdatePolicyResult> automaticUpdatePolicies,
+
             int availableMemoryMb,
 
             ImmutableDictionary<string, string> buildEnvironmentVariables,
@@ -291,6 +295,8 @@ namespace Pulumi.Gcp.CloudFunctions
 
             string name,
 
+            ImmutableArray<Outputs.GetFunctionOnDeployUpdatePolicyResult> onDeployUpdatePolicies,
+
             string? project,
 
             ImmutableDictionary<string, string> pulumiLabels,
@@ -323,6 +329,7 @@ namespace Pulumi.Gcp.CloudFunctions
 
             string vpcConnectorEgressSettings)
         {
+            AutomaticUpdatePolicies = automaticUpdatePolicies;
             AvailableMemoryMb = availableMemoryMb;
             BuildEnvironmentVariables = buildEnvironmentVariables;
             BuildServiceAccount = buildServiceAccount;
@@ -343,6 +350,7 @@ namespace Pulumi.Gcp.CloudFunctions
             MaxInstances = maxInstances;
             MinInstances = minInstances;
             Name = name;
+            OnDeployUpdatePolicies = onDeployUpdatePolicies;
             Project = project;
             PulumiLabels = pulumiLabels;
             Region = region;

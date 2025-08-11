@@ -58,6 +58,7 @@ export interface GetCloudVmClusterArgs {
  * A collection of values returned by getCloudVmCluster.
  */
 export interface GetCloudVmClusterResult {
+    readonly backupOdbSubnet: string;
     readonly backupSubnetCidr: string;
     readonly cidr: string;
     readonly cloudVmClusterId: string;
@@ -75,6 +76,8 @@ export interface GetCloudVmClusterResult {
     readonly location: string;
     readonly name: string;
     readonly network: string;
+    readonly odbNetwork: string;
+    readonly odbSubnet: string;
     readonly project?: string;
     readonly properties: outputs.oracledatabase.GetCloudVmClusterProperty[];
     readonly pulumiLabels: {[key: string]: string};

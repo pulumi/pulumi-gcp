@@ -161,6 +161,7 @@ from .organization_security_policy_association import *
 from .organization_security_policy_rule import *
 from .packet_mirroring import *
 from .per_instance_config import *
+from .preview_feature import *
 from .project_cloud_armor_tier import *
 from .project_default_network_tier import *
 from .project_metadata import *

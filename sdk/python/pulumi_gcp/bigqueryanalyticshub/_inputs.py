@@ -37,6 +37,10 @@ __all__ = [
     'ListingBigqueryDatasetArgsDict',
     'ListingBigqueryDatasetSelectedResourceArgs',
     'ListingBigqueryDatasetSelectedResourceArgsDict',
+    'ListingCommercialInfoArgs',
+    'ListingCommercialInfoArgsDict',
+    'ListingCommercialInfoCloudMarketplaceArgs',
+    'ListingCommercialInfoCloudMarketplaceArgsDict',
     'ListingDataProviderArgs',
     'ListingDataProviderArgsDict',
     'ListingIamBindingConditionArgs',
@@ -49,6 +53,10 @@ __all__ = [
     'ListingPubsubTopicArgsDict',
     'ListingRestrictedExportConfigArgs',
     'ListingRestrictedExportConfigArgsDict',
+    'ListingSubscriptionCommercialInfoArgs',
+    'ListingSubscriptionCommercialInfoArgsDict',
+    'ListingSubscriptionCommercialInfoCloudMarketplaceArgs',
+    'ListingSubscriptionCommercialInfoCloudMarketplaceArgsDict',
     'ListingSubscriptionDestinationDatasetArgs',
     'ListingSubscriptionDestinationDatasetArgsDict',
     'ListingSubscriptionDestinationDatasetDatasetReferenceArgs',
@@ -665,6 +673,105 @@ class ListingBigqueryDatasetSelectedResourceArgs:
 
 
 if not MYPY:
+    class ListingCommercialInfoArgsDict(TypedDict):
+        cloud_marketplaces: NotRequired[pulumi.Input[Sequence[pulumi.Input['ListingCommercialInfoCloudMarketplaceArgsDict']]]]
+        """
+        (Output)
+        Details of the Marketplace Data Product associated with the Listing.
+        Structure is documented below.
+        """
+elif False:
+    ListingCommercialInfoArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ListingCommercialInfoArgs:
+    def __init__(__self__, *,
+                 cloud_marketplaces: Optional[pulumi.Input[Sequence[pulumi.Input['ListingCommercialInfoCloudMarketplaceArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ListingCommercialInfoCloudMarketplaceArgs']]] cloud_marketplaces: (Output)
+               Details of the Marketplace Data Product associated with the Listing.
+               Structure is documented below.
+        """
+        if cloud_marketplaces is not None:
+            pulumi.set(__self__, "cloud_marketplaces", cloud_marketplaces)
+
+    @_builtins.property
+    @pulumi.getter(name="cloudMarketplaces")
+    def cloud_marketplaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ListingCommercialInfoCloudMarketplaceArgs']]]]:
+        """
+        (Output)
+        Details of the Marketplace Data Product associated with the Listing.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cloud_marketplaces")
+
+    @cloud_marketplaces.setter
+    def cloud_marketplaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ListingCommercialInfoCloudMarketplaceArgs']]]]):
+        pulumi.set(self, "cloud_marketplaces", value)
+
+
+if not MYPY:
+    class ListingCommercialInfoCloudMarketplaceArgsDict(TypedDict):
+        commercial_state: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        Commercial state of the Marketplace Data Product.
+        Possible values: COMMERCIAL_STATE_UNSPECIFIED, ONBOARDING, ACTIVE
+        """
+        service: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        Resource name of the commercial service associated with the Marketplace Data Product. e.g. example.com
+        """
+elif False:
+    ListingCommercialInfoCloudMarketplaceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ListingCommercialInfoCloudMarketplaceArgs:
+    def __init__(__self__, *,
+                 commercial_state: Optional[pulumi.Input[_builtins.str]] = None,
+                 service: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] commercial_state: (Output)
+               Commercial state of the Marketplace Data Product.
+               Possible values: COMMERCIAL_STATE_UNSPECIFIED, ONBOARDING, ACTIVE
+        :param pulumi.Input[_builtins.str] service: (Output)
+               Resource name of the commercial service associated with the Marketplace Data Product. e.g. example.com
+        """
+        if commercial_state is not None:
+            pulumi.set(__self__, "commercial_state", commercial_state)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+
+    @_builtins.property
+    @pulumi.getter(name="commercialState")
+    def commercial_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        Commercial state of the Marketplace Data Product.
+        Possible values: COMMERCIAL_STATE_UNSPECIFIED, ONBOARDING, ACTIVE
+        """
+        return pulumi.get(self, "commercial_state")
+
+    @commercial_state.setter
+    def commercial_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "commercial_state", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def service(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        Resource name of the commercial service associated with the Marketplace Data Product. e.g. example.com
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "service", value)
+
+
+if not MYPY:
     class ListingDataProviderArgsDict(TypedDict):
         name: pulumi.Input[_builtins.str]
         """
@@ -987,6 +1094,79 @@ class ListingRestrictedExportConfigArgs:
     @restrict_query_result.setter
     def restrict_query_result(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "restrict_query_result", value)
+
+
+if not MYPY:
+    class ListingSubscriptionCommercialInfoArgsDict(TypedDict):
+        cloud_marketplaces: NotRequired[pulumi.Input[Sequence[pulumi.Input['ListingSubscriptionCommercialInfoCloudMarketplaceArgsDict']]]]
+        """
+        (Output)
+        Cloud Marketplace commercial metadata for this subscription.
+        Structure is documented below.
+        """
+elif False:
+    ListingSubscriptionCommercialInfoArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ListingSubscriptionCommercialInfoArgs:
+    def __init__(__self__, *,
+                 cloud_marketplaces: Optional[pulumi.Input[Sequence[pulumi.Input['ListingSubscriptionCommercialInfoCloudMarketplaceArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ListingSubscriptionCommercialInfoCloudMarketplaceArgs']]] cloud_marketplaces: (Output)
+               Cloud Marketplace commercial metadata for this subscription.
+               Structure is documented below.
+        """
+        if cloud_marketplaces is not None:
+            pulumi.set(__self__, "cloud_marketplaces", cloud_marketplaces)
+
+    @_builtins.property
+    @pulumi.getter(name="cloudMarketplaces")
+    def cloud_marketplaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ListingSubscriptionCommercialInfoCloudMarketplaceArgs']]]]:
+        """
+        (Output)
+        Cloud Marketplace commercial metadata for this subscription.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cloud_marketplaces")
+
+    @cloud_marketplaces.setter
+    def cloud_marketplaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ListingSubscriptionCommercialInfoCloudMarketplaceArgs']]]]):
+        pulumi.set(self, "cloud_marketplaces", value)
+
+
+if not MYPY:
+    class ListingSubscriptionCommercialInfoCloudMarketplaceArgsDict(TypedDict):
+        order: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        Resource name of the Marketplace Order.
+        """
+elif False:
+    ListingSubscriptionCommercialInfoCloudMarketplaceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ListingSubscriptionCommercialInfoCloudMarketplaceArgs:
+    def __init__(__self__, *,
+                 order: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] order: (Output)
+               Resource name of the Marketplace Order.
+        """
+        if order is not None:
+            pulumi.set(__self__, "order", order)
+
+    @_builtins.property
+    @pulumi.getter
+    def order(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        Resource name of the Marketplace Order.
+        """
+        return pulumi.get(self, "order")
+
+    @order.setter
+    def order(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "order", value)
 
 
 if not MYPY:

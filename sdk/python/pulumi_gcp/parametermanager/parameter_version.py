@@ -294,6 +294,37 @@ class ParameterVersion(pulumi.CustomResource):
             parameter_version_id="parameter_version",
             parameter_data="app-parameter-version-data")
         ```
+        ### Parameter Version With Json Format With File
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        parameter_basic = gcp.parametermanager.Parameter("parameter-basic",
+            parameter_id="parameter",
+            format="JSON")
+        parameter_version_with_json_format_with_file = gcp.parametermanager.ParameterVersion("parameter-version-with-json-format-with-file",
+            parameter=parameter_basic.id,
+            parameter_version_id="parameter_version",
+            parameter_data=std.file(input="parameter-json-data.json").result)
+        ```
+        ### Parameter Version With Yaml Format With File
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        parameter_basic = gcp.parametermanager.Parameter("parameter-basic",
+            parameter_id="parameter",
+            format="YAML")
+        parameter_version_with_yaml_format_with_file = gcp.parametermanager.ParameterVersion("parameter-version-with-yaml-format-with-file",
+            parameter=parameter_basic.id,
+            parameter_version_id="parameter_version",
+            parameter_data=std.file(input="parameter-yaml-data.yaml").result)
+        ```
+
         ## Import
 
         ParameterVersion can be imported using any of these accepted formats:
@@ -374,6 +405,37 @@ class ParameterVersion(pulumi.CustomResource):
             parameter_version_id="parameter_version",
             parameter_data="app-parameter-version-data")
         ```
+        ### Parameter Version With Json Format With File
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        parameter_basic = gcp.parametermanager.Parameter("parameter-basic",
+            parameter_id="parameter",
+            format="JSON")
+        parameter_version_with_json_format_with_file = gcp.parametermanager.ParameterVersion("parameter-version-with-json-format-with-file",
+            parameter=parameter_basic.id,
+            parameter_version_id="parameter_version",
+            parameter_data=std.file(input="parameter-json-data.json").result)
+        ```
+        ### Parameter Version With Yaml Format With File
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        parameter_basic = gcp.parametermanager.Parameter("parameter-basic",
+            parameter_id="parameter",
+            format="YAML")
+        parameter_version_with_yaml_format_with_file = gcp.parametermanager.ParameterVersion("parameter-version-with-yaml-format-with-file",
+            parameter=parameter_basic.id,
+            parameter_version_id="parameter_version",
+            parameter_data=std.file(input="parameter-yaml-data.yaml").result)
+        ```
+
         ## Import
 
         ParameterVersion can be imported using any of these accepted formats:

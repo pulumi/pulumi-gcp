@@ -552,8 +552,7 @@ namespace Pulumi.Gcp.MemoryStore
 
         /// <summary>
         /// (Deprecated)
-        /// Output only. Endpoints clients can connect to the instance through. Currently only one
-        /// discovery endpoint is supported.
+        /// Deprecated. Output only. Endpoints clients can connect to the instance through.
         /// Structure is documented below.
         /// </summary>
         [Output("discoveryEndpoints")]
@@ -1105,11 +1104,10 @@ namespace Pulumi.Gcp.MemoryStore
 
         /// <summary>
         /// (Deprecated)
-        /// Output only. Endpoints clients can connect to the instance through. Currently only one
-        /// discovery endpoint is supported.
+        /// Deprecated. Output only. Endpoints clients can connect to the instance through.
         /// Structure is documented below.
         /// </summary>
-        [Obsolete(@"`discovery_endpoints` is deprecated  Use `endpoints` instead.")]
+        [Obsolete(@"This field is deprecated. As a result it will not be populated if the connections are created using `desired_auto_created_endpoints` parameter or `gcp.memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY.")]
         public InputList<Inputs.InstanceDiscoveryEndpointGetArgs> DiscoveryEndpoints
         {
             get => _discoveryEndpoints ?? (_discoveryEndpoints = new InputList<Inputs.InstanceDiscoveryEndpointGetArgs>());

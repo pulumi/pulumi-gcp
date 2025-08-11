@@ -74,6 +74,12 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("podRange")]
         public Input<string>? PodRange { get; set; }
 
+        /// <summary>
+        /// The subnetwork path for the node pool. Format: `projects/{project}/regions/{region}/subnetworks/{subnetwork}`. If the cluster is associated with multiple subnetworks, the subnetwork for the node pool is picked based on the IP utilization during node pool creation and is immutable
+        /// </summary>
+        [Input("subnetwork")]
+        public Input<string>? Subnetwork { get; set; }
+
         public NodePoolNetworkConfigArgs()
         {
         }

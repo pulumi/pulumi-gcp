@@ -34,6 +34,7 @@ namespace Pulumi.Gcp.SecureSourceManager
     ///     {
     ///         Location = "us-central1",
     ///         InstanceId = "my-instance",
+    ///         DeletionPolicy = "PREVENT",
     ///     });
     /// 
     ///     var @default = new Gcp.SecureSourceManager.Repository("default", new()
@@ -41,6 +42,7 @@ namespace Pulumi.Gcp.SecureSourceManager
     ///         Location = "us-central1",
     ///         RepositoryId = "my-repository",
     ///         Instance = instance.Name,
+    ///         DeletionPolicy = "PREVENT",
     ///     });
     /// 
     /// });
@@ -59,6 +61,7 @@ namespace Pulumi.Gcp.SecureSourceManager
     ///     {
     ///         Location = "us-central1",
     ///         InstanceId = "my-instance",
+    ///         DeletionPolicy = "PREVENT",
     ///     });
     /// 
     ///     var @default = new Gcp.SecureSourceManager.Repository("default", new()
@@ -77,6 +80,7 @@ namespace Pulumi.Gcp.SecureSourceManager
     ///             License = "mit",
     ///             Readme = "default",
     ///         },
+    ///         DeletionPolicy = "PREVENT",
     ///     });
     /// 
     /// });
@@ -120,6 +124,19 @@ namespace Pulumi.Gcp.SecureSourceManager
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The deletion policy for the repository. Setting `ABANDON` allows the resource
+        /// to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+        /// and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
+        /// by erroring out during plan.
+        /// Default is `DELETE`.  Possible values are:
+        /// * DELETE
+        /// * PREVENT
+        /// * ABANDON
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string?> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
         /// Description of the repository, which cannot exceed 500 characters.
@@ -231,6 +248,19 @@ namespace Pulumi.Gcp.SecureSourceManager
     public sealed class RepositoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The deletion policy for the repository. Setting `ABANDON` allows the resource
+        /// to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+        /// and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
+        /// by erroring out during plan.
+        /// Default is `DELETE`.  Possible values are:
+        /// * DELETE
+        /// * PREVENT
+        /// * ABANDON
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// Description of the repository, which cannot exceed 500 characters.
         /// </summary>
         [Input("description")]
@@ -281,6 +311,19 @@ namespace Pulumi.Gcp.SecureSourceManager
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The deletion policy for the repository. Setting `ABANDON` allows the resource
+        /// to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+        /// and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
+        /// by erroring out during plan.
+        /// Default is `DELETE`.  Possible values are:
+        /// * DELETE
+        /// * PREVENT
+        /// * ABANDON
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// Description of the repository, which cannot exceed 500 characters.

@@ -27,7 +27,7 @@ class GetRegionalSecretResult:
     """
     A collection of values returned by getRegionalSecret.
     """
-    def __init__(__self__, annotations=None, create_time=None, customer_managed_encryptions=None, deletion_protection=None, effective_annotations=None, effective_labels=None, expire_time=None, id=None, labels=None, location=None, name=None, project=None, pulumi_labels=None, rotations=None, secret_id=None, topics=None, ttl=None, version_aliases=None, version_destroy_ttl=None):
+    def __init__(__self__, annotations=None, create_time=None, customer_managed_encryptions=None, deletion_protection=None, effective_annotations=None, effective_labels=None, expire_time=None, id=None, labels=None, location=None, name=None, project=None, pulumi_labels=None, rotations=None, secret_id=None, tags=None, topics=None, ttl=None, version_aliases=None, version_destroy_ttl=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -73,6 +73,9 @@ class GetRegionalSecretResult:
         if secret_id and not isinstance(secret_id, str):
             raise TypeError("Expected argument 'secret_id' to be a str")
         pulumi.set(__self__, "secret_id", secret_id)
+        if tags and not isinstance(tags, dict):
+            raise TypeError("Expected argument 'tags' to be a dict")
+        pulumi.set(__self__, "tags", tags)
         if topics and not isinstance(topics, list):
             raise TypeError("Expected argument 'topics' to be a list")
         pulumi.set(__self__, "topics", topics)
@@ -166,6 +169,11 @@ class GetRegionalSecretResult:
 
     @_builtins.property
     @pulumi.getter
+    def tags(self) -> Mapping[str, _builtins.str]:
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter
     def topics(self) -> Sequence['outputs.GetRegionalSecretTopicResult']:
         return pulumi.get(self, "topics")
 
@@ -206,6 +214,7 @@ class AwaitableGetRegionalSecretResult(GetRegionalSecretResult):
             pulumi_labels=self.pulumi_labels,
             rotations=self.rotations,
             secret_id=self.secret_id,
+            tags=self.tags,
             topics=self.topics,
             ttl=self.ttl,
             version_aliases=self.version_aliases,
@@ -257,6 +266,7 @@ def get_regional_secret(location: Optional[_builtins.str] = None,
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         rotations=pulumi.get(__ret__, 'rotations'),
         secret_id=pulumi.get(__ret__, 'secret_id'),
+        tags=pulumi.get(__ret__, 'tags'),
         topics=pulumi.get(__ret__, 'topics'),
         ttl=pulumi.get(__ret__, 'ttl'),
         version_aliases=pulumi.get(__ret__, 'version_aliases'),
@@ -305,6 +315,7 @@ def get_regional_secret_output(location: Optional[pulumi.Input[_builtins.str]] =
         pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
         rotations=pulumi.get(__response__, 'rotations'),
         secret_id=pulumi.get(__response__, 'secret_id'),
+        tags=pulumi.get(__response__, 'tags'),
         topics=pulumi.get(__response__, 'topics'),
         ttl=pulumi.get(__response__, 'ttl'),
         version_aliases=pulumi.get(__response__, 'version_aliases'),

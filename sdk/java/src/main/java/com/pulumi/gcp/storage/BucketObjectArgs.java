@@ -145,6 +145,13 @@ public final class BucketObjectArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.customerEncryption);
     }
 
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
+    }
+
     /**
      * @deprecated
      * `detect_md5hash` is deprecated and will be removed in future release. Start using `source_md5hash` instead
@@ -339,6 +346,7 @@ public final class BucketObjectArgs extends com.pulumi.resources.ResourceArgs {
         this.contentLanguage = $.contentLanguage;
         this.contentType = $.contentType;
         this.customerEncryption = $.customerEncryption;
+        this.deletionPolicy = $.deletionPolicy;
         this.detectMd5hash = $.detectMd5hash;
         this.eventBasedHold = $.eventBasedHold;
         this.forceEmptyContentType = $.forceEmptyContentType;
@@ -540,6 +548,15 @@ public final class BucketObjectArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder customerEncryption(BucketObjectCustomerEncryptionArgs customerEncryption) {
             return customerEncryption(Output.of(customerEncryption));
+        }
+
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
         }
 
         /**

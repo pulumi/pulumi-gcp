@@ -27,7 +27,7 @@ class GetAutonomousDatabaseResult:
     """
     A collection of values returned by getAutonomousDatabase.
     """
-    def __init__(__self__, admin_password=None, autonomous_database_id=None, cidr=None, create_time=None, database=None, deletion_protection=None, display_name=None, effective_labels=None, entitlement_id=None, id=None, labels=None, location=None, name=None, network=None, project=None, properties=None, pulumi_labels=None):
+    def __init__(__self__, admin_password=None, autonomous_database_id=None, cidr=None, create_time=None, database=None, deletion_protection=None, display_name=None, effective_labels=None, entitlement_id=None, id=None, labels=None, location=None, name=None, network=None, odb_network=None, odb_subnet=None, project=None, properties=None, pulumi_labels=None):
         if admin_password and not isinstance(admin_password, str):
             raise TypeError("Expected argument 'admin_password' to be a str")
         pulumi.set(__self__, "admin_password", admin_password)
@@ -70,6 +70,12 @@ class GetAutonomousDatabaseResult:
         if network and not isinstance(network, str):
             raise TypeError("Expected argument 'network' to be a str")
         pulumi.set(__self__, "network", network)
+        if odb_network and not isinstance(odb_network, str):
+            raise TypeError("Expected argument 'odb_network' to be a str")
+        pulumi.set(__self__, "odb_network", odb_network)
+        if odb_subnet and not isinstance(odb_subnet, str):
+            raise TypeError("Expected argument 'odb_subnet' to be a str")
+        pulumi.set(__self__, "odb_subnet", odb_subnet)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
@@ -154,6 +160,16 @@ class GetAutonomousDatabaseResult:
         return pulumi.get(self, "network")
 
     @_builtins.property
+    @pulumi.getter(name="odbNetwork")
+    def odb_network(self) -> _builtins.str:
+        return pulumi.get(self, "odb_network")
+
+    @_builtins.property
+    @pulumi.getter(name="odbSubnet")
+    def odb_subnet(self) -> _builtins.str:
+        return pulumi.get(self, "odb_subnet")
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "project")
@@ -189,6 +205,8 @@ class AwaitableGetAutonomousDatabaseResult(GetAutonomousDatabaseResult):
             location=self.location,
             name=self.name,
             network=self.network,
+            odb_network=self.odb_network,
+            odb_subnet=self.odb_subnet,
             project=self.project,
             properties=self.properties,
             pulumi_labels=self.pulumi_labels)
@@ -244,6 +262,8 @@ def get_autonomous_database(autonomous_database_id: Optional[_builtins.str] = No
         location=pulumi.get(__ret__, 'location'),
         name=pulumi.get(__ret__, 'name'),
         network=pulumi.get(__ret__, 'network'),
+        odb_network=pulumi.get(__ret__, 'odb_network'),
+        odb_subnet=pulumi.get(__ret__, 'odb_subnet'),
         project=pulumi.get(__ret__, 'project'),
         properties=pulumi.get(__ret__, 'properties'),
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'))
@@ -296,6 +316,8 @@ def get_autonomous_database_output(autonomous_database_id: Optional[pulumi.Input
         location=pulumi.get(__response__, 'location'),
         name=pulumi.get(__response__, 'name'),
         network=pulumi.get(__response__, 'network'),
+        odb_network=pulumi.get(__response__, 'odb_network'),
+        odb_subnet=pulumi.get(__response__, 'odb_subnet'),
         project=pulumi.get(__response__, 'project'),
         properties=pulumi.get(__response__, 'properties'),
         pulumi_labels=pulumi.get(__response__, 'pulumi_labels')))

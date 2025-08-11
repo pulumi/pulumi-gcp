@@ -87,6 +87,7 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/workbench"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -94,7 +95,27 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := workbench.NewInstance(ctx, "instance", &workbench.InstanceArgs{
+//			gpuReservation, err := compute.NewReservation(ctx, "gpu_reservation", &compute.ReservationArgs{
+//				Name: pulumi.String("wbi-reservation"),
+//				Zone: pulumi.String("us-central1-a"),
+//				SpecificReservation: &compute.ReservationSpecificReservationArgs{
+//					Count: pulumi.Int(1),
+//					InstanceProperties: &compute.ReservationSpecificReservationInstancePropertiesArgs{
+//						MachineType: pulumi.String("n1-standard-1"),
+//						GuestAccelerators: compute.ReservationSpecificReservationInstancePropertiesGuestAcceleratorArray{
+//							&compute.ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs{
+//								AcceleratorType:  pulumi.String("nvidia-tesla-t4"),
+//								AcceleratorCount: pulumi.Int(1),
+//							},
+//						},
+//					},
+//				},
+//				SpecificReservationRequired: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = workbench.NewInstance(ctx, "instance", &workbench.InstanceArgs{
 //				Name:     pulumi.String("workbench-instance"),
 //				Location: pulumi.String("us-central1-a"),
 //				GceSetup: &workbench.InstanceGceSetupArgs{
@@ -109,8 +130,13 @@ import (
 //						Project: pulumi.String("cloud-notebooks-managed"),
 //						Family:  pulumi.String("workbench-instances"),
 //					},
+//					ReservationAffinity: &workbench.InstanceGceSetupReservationAffinityArgs{
+//						ConsumeReservationType: pulumi.String("RESERVATION_ANY"),
+//					},
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				gpuReservation,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -213,6 +239,26 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			gpuReservation, err := compute.NewReservation(ctx, "gpu_reservation", &compute.ReservationArgs{
+//				Name: pulumi.String("wbi-reservation"),
+//				Zone: pulumi.String("us-central1-a"),
+//				SpecificReservation: &compute.ReservationSpecificReservationArgs{
+//					Count: pulumi.Int(1),
+//					InstanceProperties: &compute.ReservationSpecificReservationInstancePropertiesArgs{
+//						MachineType: pulumi.String("n1-standard-4"),
+//						GuestAccelerators: compute.ReservationSpecificReservationInstancePropertiesGuestAcceleratorArray{
+//							&compute.ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs{
+//								AcceleratorType:  pulumi.String("nvidia-tesla-t4"),
+//								AcceleratorCount: pulumi.Int(1),
+//							},
+//						},
+//					},
+//				},
+//				SpecificReservationRequired: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			_, err = workbench.NewInstance(ctx, "instance", &workbench.InstanceArgs{
 //				Name:     pulumi.String("workbench-instance"),
 //				Location: pulumi.String("us-central1-a"),
@@ -263,6 +309,13 @@ import (
 //						"terraform":                  pulumi.String("true"),
 //						"serial-port-logging-enable": pulumi.String("false"),
 //					},
+//					ReservationAffinity: &workbench.InstanceGceSetupReservationAffinityArgs{
+//						ConsumeReservationType: pulumi.String("RESERVATION_SPECIFIC"),
+//						Key:                    pulumi.String("compute.googleapis.com/reservation-name"),
+//						Values: pulumi.StringArray{
+//							gpuReservation.Name,
+//						},
+//					},
 //					EnableIpForwarding: pulumi.Bool(true),
 //					Tags: pulumi.StringArray{
 //						pulumi.String("abc"),
@@ -283,6 +336,7 @@ import (
 //				mySubnetwork,
 //				static,
 //				actAsPermission,
+//				gpuReservation,
 //			}))
 //			if err != nil {
 //				return err
@@ -332,6 +386,55 @@ import (
 //	}
 //
 // ```
+// ### Workbench Instance Euc
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/workbench"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			actAsPermission, err := serviceaccount.NewIAMBinding(ctx, "act_as_permission", &serviceaccount.IAMBindingArgs{
+//				ServiceAccountId: pulumi.String("projects/my-project-name/serviceAccounts/1111111111111-compute@developer.gserviceaccount.com"),
+//				Role:             pulumi.String("roles/iam.serviceAccountUser"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:example@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = workbench.NewInstance(ctx, "instance", &workbench.InstanceArgs{
+//				Name:     pulumi.String("workbench-instance"),
+//				Location: pulumi.String("us-central1-a"),
+//				GceSetup: &workbench.InstanceGceSetupArgs{
+//					MachineType: pulumi.String("e2-standard-4"),
+//					Metadata: pulumi.StringMap{
+//						"terraform": pulumi.String("true"),
+//					},
+//				},
+//				InstanceOwners: pulumi.StringArray{
+//					pulumi.String("example@example.com"),
+//				},
+//				EnableManagedEuc: pulumi.Bool(true),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				actAsPermission,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -370,6 +473,8 @@ type Instance struct {
 	DisableProxyAccess pulumi.BoolPtrOutput `pulumi:"disableProxyAccess"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	// Flag to enable managed end user credentials for the instance.
+	EnableManagedEuc pulumi.BoolPtrOutput `pulumi:"enableManagedEuc"`
 	// Flag that specifies that a notebook can be accessed with third party
 	// identity provider.
 	EnableThirdPartyIdentity pulumi.BoolPtrOutput `pulumi:"enableThirdPartyIdentity"`
@@ -468,6 +573,8 @@ type instanceState struct {
 	DisableProxyAccess *bool `pulumi:"disableProxyAccess"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// Flag to enable managed end user credentials for the instance.
+	EnableManagedEuc *bool `pulumi:"enableManagedEuc"`
 	// Flag that specifies that a notebook can be accessed with third party
 	// identity provider.
 	EnableThirdPartyIdentity *bool `pulumi:"enableThirdPartyIdentity"`
@@ -529,6 +636,8 @@ type InstanceState struct {
 	DisableProxyAccess pulumi.BoolPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
+	// Flag to enable managed end user credentials for the instance.
+	EnableManagedEuc pulumi.BoolPtrInput
 	// Flag that specifies that a notebook can be accessed with third party
 	// identity provider.
 	EnableThirdPartyIdentity pulumi.BoolPtrInput
@@ -587,6 +696,8 @@ type instanceArgs struct {
 	DesiredState *string `pulumi:"desiredState"`
 	// Optional. If true, the workbench instance will not register with the proxy.
 	DisableProxyAccess *bool `pulumi:"disableProxyAccess"`
+	// Flag to enable managed end user credentials for the instance.
+	EnableManagedEuc *bool `pulumi:"enableManagedEuc"`
 	// Flag that specifies that a notebook can be accessed with third party
 	// identity provider.
 	EnableThirdPartyIdentity *bool `pulumi:"enableThirdPartyIdentity"`
@@ -622,6 +733,8 @@ type InstanceArgs struct {
 	DesiredState pulumi.StringPtrInput
 	// Optional. If true, the workbench instance will not register with the proxy.
 	DisableProxyAccess pulumi.BoolPtrInput
+	// Flag to enable managed end user credentials for the instance.
+	EnableManagedEuc pulumi.BoolPtrInput
 	// Flag that specifies that a notebook can be accessed with third party
 	// identity provider.
 	EnableThirdPartyIdentity pulumi.BoolPtrInput
@@ -762,6 +875,11 @@ func (o InstanceOutput) DisableProxyAccess() pulumi.BoolPtrOutput {
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o InstanceOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+// Flag to enable managed end user credentials for the instance.
+func (o InstanceOutput) EnableManagedEuc() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.EnableManagedEuc }).(pulumi.BoolPtrOutput)
 }
 
 // Flag that specifies that a notebook can be accessed with third party

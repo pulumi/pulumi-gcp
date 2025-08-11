@@ -15,6 +15,8 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'FunctionAutomaticUpdatePolicyArgs',
+    'FunctionAutomaticUpdatePolicyArgsDict',
     'FunctionEventTriggerArgs',
     'FunctionEventTriggerArgsDict',
     'FunctionEventTriggerFailurePolicyArgs',
@@ -23,6 +25,8 @@ __all__ = [
     'FunctionIamBindingConditionArgsDict',
     'FunctionIamMemberConditionArgs',
     'FunctionIamMemberConditionArgsDict',
+    'FunctionOnDeployUpdatePolicyArgs',
+    'FunctionOnDeployUpdatePolicyArgsDict',
     'FunctionSecretEnvironmentVariableArgs',
     'FunctionSecretEnvironmentVariableArgsDict',
     'FunctionSecretVolumeArgs',
@@ -34,6 +38,18 @@ __all__ = [
 ]
 
 MYPY = False
+
+if not MYPY:
+    class FunctionAutomaticUpdatePolicyArgsDict(TypedDict):
+        pass
+elif False:
+    FunctionAutomaticUpdatePolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FunctionAutomaticUpdatePolicyArgs:
+    def __init__(__self__):
+        pass
+
 
 if not MYPY:
     class FunctionEventTriggerArgsDict(TypedDict):
@@ -237,6 +253,38 @@ class FunctionIamMemberConditionArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class FunctionOnDeployUpdatePolicyArgsDict(TypedDict):
+        runtime_version: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The runtime version which was used during latest function deployment.
+        """
+elif False:
+    FunctionOnDeployUpdatePolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FunctionOnDeployUpdatePolicyArgs:
+    def __init__(__self__, *,
+                 runtime_version: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] runtime_version: The runtime version which was used during latest function deployment.
+        """
+        if runtime_version is not None:
+            pulumi.set(__self__, "runtime_version", runtime_version)
+
+    @_builtins.property
+    @pulumi.getter(name="runtimeVersion")
+    def runtime_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The runtime version which was used during latest function deployment.
+        """
+        return pulumi.get(self, "runtime_version")
+
+    @runtime_version.setter
+    def runtime_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "runtime_version", value)
 
 
 if not MYPY:

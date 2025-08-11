@@ -136,6 +136,89 @@ import (
 //	}
 //
 // ```
+// ### Parameter Version With Json Format With File
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/parametermanager"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			parameter_basic, err := parametermanager.NewParameter(ctx, "parameter-basic", &parametermanager.ParameterArgs{
+//				ParameterId: pulumi.String("parameter"),
+//				Format:      pulumi.String("JSON"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "parameter-json-data.json",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = parametermanager.NewParameterVersion(ctx, "parameter-version-with-json-format-with-file", &parametermanager.ParameterVersionArgs{
+//				Parameter:          parameter_basic.ID(),
+//				ParameterVersionId: pulumi.String("parameter_version"),
+//				ParameterData:      pulumi.String(invokeFile.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Parameter Version With Yaml Format With File
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/parametermanager"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			parameter_basic, err := parametermanager.NewParameter(ctx, "parameter-basic", &parametermanager.ParameterArgs{
+//				ParameterId: pulumi.String("parameter"),
+//				Format:      pulumi.String("YAML"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "parameter-yaml-data.yaml",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = parametermanager.NewParameterVersion(ctx, "parameter-version-with-yaml-format-with-file", &parametermanager.ParameterVersionArgs{
+//				Parameter:          parameter_basic.ID(),
+//				ParameterVersionId: pulumi.String("parameter_version"),
+//				ParameterData:      pulumi.String(invokeFile.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ParameterVersion can be imported using any of these accepted formats:

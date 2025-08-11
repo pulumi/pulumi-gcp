@@ -145,6 +145,21 @@ public final class NodePoolNetworkConfigArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.podRange);
     }
 
+    /**
+     * The subnetwork path for the node pool. Format: `projects/{project}/regions/{region}/subnetworks/{subnetwork}`. If the cluster is associated with multiple subnetworks, the subnetwork for the node pool is picked based on the IP utilization during node pool creation and is immutable
+     * 
+     */
+    @Import(name="subnetwork")
+    private @Nullable Output<String> subnetwork;
+
+    /**
+     * @return The subnetwork path for the node pool. Format: `projects/{project}/regions/{region}/subnetworks/{subnetwork}`. If the cluster is associated with multiple subnetworks, the subnetwork for the node pool is picked based on the IP utilization during node pool creation and is immutable
+     * 
+     */
+    public Optional<Output<String>> subnetwork() {
+        return Optional.ofNullable(this.subnetwork);
+    }
+
     private NodePoolNetworkConfigArgs() {}
 
     private NodePoolNetworkConfigArgs(NodePoolNetworkConfigArgs $) {
@@ -156,6 +171,7 @@ public final class NodePoolNetworkConfigArgs extends com.pulumi.resources.Resour
         this.podCidrOverprovisionConfig = $.podCidrOverprovisionConfig;
         this.podIpv4CidrBlock = $.podIpv4CidrBlock;
         this.podRange = $.podRange;
+        this.subnetwork = $.subnetwork;
     }
 
     public static Builder builder() {
@@ -368,6 +384,27 @@ public final class NodePoolNetworkConfigArgs extends com.pulumi.resources.Resour
          */
         public Builder podRange(String podRange) {
             return podRange(Output.of(podRange));
+        }
+
+        /**
+         * @param subnetwork The subnetwork path for the node pool. Format: `projects/{project}/regions/{region}/subnetworks/{subnetwork}`. If the cluster is associated with multiple subnetworks, the subnetwork for the node pool is picked based on the IP utilization during node pool creation and is immutable
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnetwork(@Nullable Output<String> subnetwork) {
+            $.subnetwork = subnetwork;
+            return this;
+        }
+
+        /**
+         * @param subnetwork The subnetwork path for the node pool. Format: `projects/{project}/regions/{region}/subnetworks/{subnetwork}`. If the cluster is associated with multiple subnetworks, the subnetwork for the node pool is picked based on the IP utilization during node pool creation and is immutable
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnetwork(String subnetwork) {
+            return subnetwork(Output.of(subnetwork));
         }
 
         public NodePoolNetworkConfigArgs build() {

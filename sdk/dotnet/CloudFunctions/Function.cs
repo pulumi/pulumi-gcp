@@ -152,6 +152,12 @@ namespace Pulumi.Gcp.CloudFunctions
     public partial class Function : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `on_deploy_update_policy`.
+        /// </summary>
+        [Output("automaticUpdatePolicy")]
+        public Output<Outputs.FunctionAutomaticUpdatePolicy> AutomaticUpdatePolicy { get; private set; } = null!;
+
+        /// <summary>
         /// Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
         /// </summary>
         [Output("availableMemoryMb")]
@@ -271,6 +277,12 @@ namespace Pulumi.Gcp.CloudFunctions
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside `automatic_update_policy`. Structure is documented below.
+        /// </summary>
+        [Output("onDeployUpdatePolicy")]
+        public Output<Outputs.FunctionOnDeployUpdatePolicy?> OnDeployUpdatePolicy { get; private set; } = null!;
 
         /// <summary>
         /// Project of the function. If it is not provided, the provider project is used.
@@ -425,6 +437,12 @@ namespace Pulumi.Gcp.CloudFunctions
     public sealed class FunctionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `on_deploy_update_policy`.
+        /// </summary>
+        [Input("automaticUpdatePolicy")]
+        public Input<Inputs.FunctionAutomaticUpdatePolicyArgs>? AutomaticUpdatePolicy { get; set; }
+
+        /// <summary>
         /// Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
         /// </summary>
         [Input("availableMemoryMb")]
@@ -558,6 +576,12 @@ namespace Pulumi.Gcp.CloudFunctions
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside `automatic_update_policy`. Structure is documented below.
+        /// </summary>
+        [Input("onDeployUpdatePolicy")]
+        public Input<Inputs.FunctionOnDeployUpdatePolicyArgs>? OnDeployUpdatePolicy { get; set; }
+
+        /// <summary>
         /// Project of the function. If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
@@ -659,6 +683,12 @@ namespace Pulumi.Gcp.CloudFunctions
 
     public sealed class FunctionState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `on_deploy_update_policy`.
+        /// </summary>
+        [Input("automaticUpdatePolicy")]
+        public Input<Inputs.FunctionAutomaticUpdatePolicyGetArgs>? AutomaticUpdatePolicy { get; set; }
+
         /// <summary>
         /// Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
         /// </summary>
@@ -807,6 +837,12 @@ namespace Pulumi.Gcp.CloudFunctions
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside `automatic_update_policy`. Structure is documented below.
+        /// </summary>
+        [Input("onDeployUpdatePolicy")]
+        public Input<Inputs.FunctionOnDeployUpdatePolicyGetArgs>? OnDeployUpdatePolicy { get; set; }
 
         /// <summary>
         /// Project of the function. If it is not provided, the provider project is used.

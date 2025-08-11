@@ -2565,7 +2565,7 @@ if not MYPY:
     class GcpUserAccessBindingScopedAccessSettingScopeClientScopeArgsDict(TypedDict):
         restricted_client_application: NotRequired[pulumi.Input['GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgsDict']]
         """
-        Optional. The application that is subject to this binding's scope.
+        Optional. The application that is subject to this binding's scope. Only one of clientId or name should be specified.
         Structure is documented below.
         """
 elif False:
@@ -2576,7 +2576,7 @@ class GcpUserAccessBindingScopedAccessSettingScopeClientScopeArgs:
     def __init__(__self__, *,
                  restricted_client_application: Optional[pulumi.Input['GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgs']] = None):
         """
-        :param pulumi.Input['GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgs'] restricted_client_application: Optional. The application that is subject to this binding's scope.
+        :param pulumi.Input['GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgs'] restricted_client_application: Optional. The application that is subject to this binding's scope. Only one of clientId or name should be specified.
                Structure is documented below.
         """
         if restricted_client_application is not None:
@@ -2586,7 +2586,7 @@ class GcpUserAccessBindingScopedAccessSettingScopeClientScopeArgs:
     @pulumi.getter(name="restrictedClientApplication")
     def restricted_client_application(self) -> Optional[pulumi.Input['GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgs']]:
         """
-        Optional. The application that is subject to this binding's scope.
+        Optional. The application that is subject to this binding's scope. Only one of clientId or name should be specified.
         Structure is documented below.
         """
         return pulumi.get(self, "restricted_client_application")
@@ -2602,18 +2602,26 @@ if not MYPY:
         """
         The OAuth client ID of the application.
         """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The name of the application. Example: "Cloud Console"
+        """
 elif False:
     GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgs:
     def __init__(__self__, *,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] client_id: The OAuth client ID of the application.
+        :param pulumi.Input[_builtins.str] name: The name of the application. Example: "Cloud Console"
         """
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
 
     @_builtins.property
     @pulumi.getter(name="clientId")
@@ -2626,6 +2634,18 @@ class GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApp
     @client_id.setter
     def client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "client_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the application. Example: "Cloud Console"
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
 
 
 if not MYPY:

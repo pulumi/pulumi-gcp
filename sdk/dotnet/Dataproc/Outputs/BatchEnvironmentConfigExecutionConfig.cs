@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     public sealed class BatchEnvironmentConfigExecutionConfig
     {
         /// <summary>
+        /// Authentication configuration for a workload is used to set the default identity for the workload execution.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.BatchEnvironmentConfigExecutionConfigAuthenticationConfig? AuthenticationConfig;
+        /// <summary>
         /// The Cloud KMS key to use for encryption.
         /// </summary>
         public readonly string? KmsKey;
@@ -55,6 +60,8 @@ namespace Pulumi.Gcp.Dataproc.Outputs
 
         [OutputConstructor]
         private BatchEnvironmentConfigExecutionConfig(
+            Outputs.BatchEnvironmentConfigExecutionConfigAuthenticationConfig? authenticationConfig,
+
             string? kmsKey,
 
             ImmutableArray<string> networkTags,
@@ -69,6 +76,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
 
             string? ttl)
         {
+            AuthenticationConfig = authenticationConfig;
             KmsKey = kmsKey;
             NetworkTags = networkTags;
             NetworkUri = networkUri;

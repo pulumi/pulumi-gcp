@@ -16,6 +16,7 @@ import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigHorizontalPodAutos
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigHttpLoadBalancing;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigIstioConfig;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigKalmConfig;
+import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigLustreCsiDriverConfig;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigNetworkPolicyConfig;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigParallelstoreCsiDriverConfig;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigRayOperatorConfig;
@@ -80,6 +81,11 @@ public final class GetClusterAddonsConfig {
      * 
      */
     private List<GetClusterAddonsConfigKalmConfig> kalmConfigs;
+    /**
+     * @return Configuration for the Lustre CSI driver. Defaults to disabled; set enabled = true to enable.
+     * 
+     */
+    private List<GetClusterAddonsConfigLustreCsiDriverConfig> lustreCsiDriverConfigs;
     /**
      * @return Whether we should enable the network policy addon for the master. This must be enabled in order to enable network policy for the nodes. To enable this, you must also define a network_policy block, otherwise nothing will happen. It can only be disabled if the nodes already do not have network policies enabled. Defaults to disabled; set disabled = false to enable.
      * 
@@ -180,6 +186,13 @@ public final class GetClusterAddonsConfig {
         return this.kalmConfigs;
     }
     /**
+     * @return Configuration for the Lustre CSI driver. Defaults to disabled; set enabled = true to enable.
+     * 
+     */
+    public List<GetClusterAddonsConfigLustreCsiDriverConfig> lustreCsiDriverConfigs() {
+        return this.lustreCsiDriverConfigs;
+    }
+    /**
      * @return Whether we should enable the network policy addon for the master. This must be enabled in order to enable network policy for the nodes. To enable this, you must also define a network_policy block, otherwise nothing will happen. It can only be disabled if the nodes already do not have network policies enabled. Defaults to disabled; set disabled = false to enable.
      * 
      */
@@ -228,6 +241,7 @@ public final class GetClusterAddonsConfig {
         private List<GetClusterAddonsConfigHttpLoadBalancing> httpLoadBalancings;
         private List<GetClusterAddonsConfigIstioConfig> istioConfigs;
         private List<GetClusterAddonsConfigKalmConfig> kalmConfigs;
+        private List<GetClusterAddonsConfigLustreCsiDriverConfig> lustreCsiDriverConfigs;
         private List<GetClusterAddonsConfigNetworkPolicyConfig> networkPolicyConfigs;
         private List<GetClusterAddonsConfigParallelstoreCsiDriverConfig> parallelstoreCsiDriverConfigs;
         private List<GetClusterAddonsConfigRayOperatorConfig> rayOperatorConfigs;
@@ -246,6 +260,7 @@ public final class GetClusterAddonsConfig {
     	      this.httpLoadBalancings = defaults.httpLoadBalancings;
     	      this.istioConfigs = defaults.istioConfigs;
     	      this.kalmConfigs = defaults.kalmConfigs;
+    	      this.lustreCsiDriverConfigs = defaults.lustreCsiDriverConfigs;
     	      this.networkPolicyConfigs = defaults.networkPolicyConfigs;
     	      this.parallelstoreCsiDriverConfigs = defaults.parallelstoreCsiDriverConfigs;
     	      this.rayOperatorConfigs = defaults.rayOperatorConfigs;
@@ -374,6 +389,17 @@ public final class GetClusterAddonsConfig {
             return kalmConfigs(List.of(kalmConfigs));
         }
         @CustomType.Setter
+        public Builder lustreCsiDriverConfigs(List<GetClusterAddonsConfigLustreCsiDriverConfig> lustreCsiDriverConfigs) {
+            if (lustreCsiDriverConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterAddonsConfig", "lustreCsiDriverConfigs");
+            }
+            this.lustreCsiDriverConfigs = lustreCsiDriverConfigs;
+            return this;
+        }
+        public Builder lustreCsiDriverConfigs(GetClusterAddonsConfigLustreCsiDriverConfig... lustreCsiDriverConfigs) {
+            return lustreCsiDriverConfigs(List.of(lustreCsiDriverConfigs));
+        }
+        @CustomType.Setter
         public Builder networkPolicyConfigs(List<GetClusterAddonsConfigNetworkPolicyConfig> networkPolicyConfigs) {
             if (networkPolicyConfigs == null) {
               throw new MissingRequiredPropertyException("GetClusterAddonsConfig", "networkPolicyConfigs");
@@ -430,6 +456,7 @@ public final class GetClusterAddonsConfig {
             _resultValue.httpLoadBalancings = httpLoadBalancings;
             _resultValue.istioConfigs = istioConfigs;
             _resultValue.kalmConfigs = kalmConfigs;
+            _resultValue.lustreCsiDriverConfigs = lustreCsiDriverConfigs;
             _resultValue.networkPolicyConfigs = networkPolicyConfigs;
             _resultValue.parallelstoreCsiDriverConfigs = parallelstoreCsiDriverConfigs;
             _resultValue.rayOperatorConfigs = rayOperatorConfigs;

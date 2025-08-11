@@ -519,6 +519,13 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Network { get; private set; } = null!;
 
         /// <summary>
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// Structure is documented below.
+        /// </summary>
+        [Output("params")]
+        public Output<Outputs.SubnetworkParams?> Params { get; private set; } = null!;
+
+        /// <summary>
         /// When enabled, VMs in this subnetwork without external IP addresses can
         /// access Google APIs and services by using Private Google Access.
         /// </summary>
@@ -769,6 +776,13 @@ namespace Pulumi.Gcp.Compute
         public Input<string> Network { get; set; } = null!;
 
         /// <summary>
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// Structure is documented below.
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.SubnetworkParamsArgs>? Params { get; set; }
+
+        /// <summary>
         /// When enabled, VMs in this subnetwork without external IP addresses can
         /// access Google APIs and services by using Private Google Access.
         /// </summary>
@@ -1005,6 +1019,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
+
+        /// <summary>
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// Structure is documented below.
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.SubnetworkParamsGetArgs>? Params { get; set; }
 
         /// <summary>
         /// When enabled, VMs in this subnetwork without external IP addresses can

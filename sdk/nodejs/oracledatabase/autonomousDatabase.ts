@@ -91,6 +91,53 @@ import * as utilities from "../utilities";
  *     deletionProtection: true,
  * });
  * ```
+ * ### Oracledatabase Autonomous Database Odbnetwork
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myADB = new gcp.oracledatabase.AutonomousDatabase("myADB", {
+ *     autonomousDatabaseId: "my-instance",
+ *     location: "europe-west2",
+ *     project: "my-project",
+ *     database: "mydatabase",
+ *     adminPassword: "123Abpassword",
+ *     odbNetwork: "projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork",
+ *     odbSubnet: "projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet",
+ *     properties: {
+ *         computeCount: 2,
+ *         dataStorageSizeTb: 1,
+ *         dbVersion: "19c",
+ *         dbWorkload: "OLTP",
+ *         licenseType: "LICENSE_INCLUDED",
+ *     },
+ *     deletionProtection: true,
+ * });
+ * ```
+ * ### Oracledatabase Autonomous Database Publicip
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myADB = new gcp.oracledatabase.AutonomousDatabase("myADB", {
+ *     autonomousDatabaseId: "my-instance",
+ *     location: "europe-west2",
+ *     project: "my-project",
+ *     database: "mydatabase",
+ *     adminPassword: "123Abpassword",
+ *     properties: {
+ *         computeCount: 2,
+ *         dataStorageSizeTb: 1,
+ *         dbVersion: "19c",
+ *         dbWorkload: "OLTP",
+ *         licenseType: "LICENSE_INCLUDED",
+ *         mtlsConnectionRequired: true,
+ *     },
+ *     deletionProtection: true,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -158,7 +205,7 @@ export class AutonomousDatabase extends pulumi.CustomResource {
     /**
      * The subnet CIDR range for the Autonmous Database.
      */
-    public readonly cidr!: pulumi.Output<string>;
+    public readonly cidr!: pulumi.Output<string | undefined>;
     /**
      * The date and time that the Autonomous Database was created.
      */
@@ -203,7 +250,21 @@ export class AutonomousDatabase extends pulumi.CustomResource {
      * The name of the VPC network used by the Autonomous Database.
      * Format: projects/{project}/global/networks/{network}
      */
-    public readonly network!: pulumi.Output<string>;
+    public readonly network!: pulumi.Output<string | undefined>;
+    /**
+     * The name of the OdbNetwork associated with the Autonomous Database.
+     * Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}
+     * It is optional but if specified, this should match the parent ODBNetwork of
+     * the odbSubnet and backup_odb_subnet.
+     */
+    public readonly odbNetwork!: pulumi.Output<string | undefined>;
+    /**
+     * The name of the OdbSubnet associated with the Autonomous Database for
+     * IP allocation. Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+     */
+    public readonly odbSubnet!: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -246,6 +307,8 @@ export class AutonomousDatabase extends pulumi.CustomResource {
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["network"] = state ? state.network : undefined;
+            resourceInputs["odbNetwork"] = state ? state.odbNetwork : undefined;
+            resourceInputs["odbSubnet"] = state ? state.odbSubnet : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["properties"] = state ? state.properties : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
@@ -254,17 +317,11 @@ export class AutonomousDatabase extends pulumi.CustomResource {
             if ((!args || args.autonomousDatabaseId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'autonomousDatabaseId'");
             }
-            if ((!args || args.cidr === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'cidr'");
-            }
             if ((!args || args.database === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'database'");
             }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
-            }
-            if ((!args || args.network === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'network'");
             }
             if ((!args || args.properties === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'properties'");
@@ -278,6 +335,8 @@ export class AutonomousDatabase extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["odbNetwork"] = args ? args.odbNetwork : undefined;
+            resourceInputs["odbSubnet"] = args ? args.odbSubnet : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["properties"] = args ? args.properties : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -358,6 +417,20 @@ export interface AutonomousDatabaseState {
      */
     network?: pulumi.Input<string>;
     /**
+     * The name of the OdbNetwork associated with the Autonomous Database.
+     * Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}
+     * It is optional but if specified, this should match the parent ODBNetwork of
+     * the odbSubnet and backup_odb_subnet.
+     */
+    odbNetwork?: pulumi.Input<string>;
+    /**
+     * The name of the OdbSubnet associated with the Autonomous Database for
+     * IP allocation. Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+     */
+    odbSubnet?: pulumi.Input<string>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -392,7 +465,7 @@ export interface AutonomousDatabaseArgs {
     /**
      * The subnet CIDR range for the Autonmous Database.
      */
-    cidr: pulumi.Input<string>;
+    cidr?: pulumi.Input<string>;
     /**
      * The name of the Autonomous Database. The database name must be unique in
      * the project. The name must begin with a letter and can
@@ -419,7 +492,21 @@ export interface AutonomousDatabaseArgs {
      * The name of the VPC network used by the Autonomous Database.
      * Format: projects/{project}/global/networks/{network}
      */
-    network: pulumi.Input<string>;
+    network?: pulumi.Input<string>;
+    /**
+     * The name of the OdbNetwork associated with the Autonomous Database.
+     * Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}
+     * It is optional but if specified, this should match the parent ODBNetwork of
+     * the odbSubnet and backup_odb_subnet.
+     */
+    odbNetwork?: pulumi.Input<string>;
+    /**
+     * The name of the OdbSubnet associated with the Autonomous Database for
+     * IP allocation. Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+     */
+    odbSubnet?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

@@ -11,6 +11,7 @@ import com.pulumi.gcp.workbench.inputs.InstanceGceSetupConfidentialInstanceConfi
 import com.pulumi.gcp.workbench.inputs.InstanceGceSetupContainerImageArgs;
 import com.pulumi.gcp.workbench.inputs.InstanceGceSetupDataDisksArgs;
 import com.pulumi.gcp.workbench.inputs.InstanceGceSetupNetworkInterfaceArgs;
+import com.pulumi.gcp.workbench.inputs.InstanceGceSetupReservationAffinityArgs;
 import com.pulumi.gcp.workbench.inputs.InstanceGceSetupServiceAccountArgs;
 import com.pulumi.gcp.workbench.inputs.InstanceGceSetupShieldedInstanceConfigArgs;
 import com.pulumi.gcp.workbench.inputs.InstanceGceSetupVmImageArgs;
@@ -196,6 +197,23 @@ public final class InstanceGceSetupArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Reservations that this instance can consume from.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="reservationAffinity")
+    private @Nullable Output<InstanceGceSetupReservationAffinityArgs> reservationAffinity;
+
+    /**
+     * @return Reservations that this instance can consume from.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstanceGceSetupReservationAffinityArgs>> reservationAffinity() {
+        return Optional.ofNullable(this.reservationAffinity);
+    }
+
+    /**
      * The service account that serves as an identity for the VM instance. Currently supports only one service account.
      * Structure is documented below.
      * 
@@ -282,6 +300,7 @@ public final class InstanceGceSetupArgs extends com.pulumi.resources.ResourceArg
         this.machineType = $.machineType;
         this.metadata = $.metadata;
         this.networkInterfaces = $.networkInterfaces;
+        this.reservationAffinity = $.reservationAffinity;
         this.serviceAccounts = $.serviceAccounts;
         this.shieldedInstanceConfig = $.shieldedInstanceConfig;
         this.tags = $.tags;
@@ -556,6 +575,29 @@ public final class InstanceGceSetupArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder networkInterfaces(InstanceGceSetupNetworkInterfaceArgs... networkInterfaces) {
             return networkInterfaces(List.of(networkInterfaces));
+        }
+
+        /**
+         * @param reservationAffinity Reservations that this instance can consume from.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservationAffinity(@Nullable Output<InstanceGceSetupReservationAffinityArgs> reservationAffinity) {
+            $.reservationAffinity = reservationAffinity;
+            return this;
+        }
+
+        /**
+         * @param reservationAffinity Reservations that this instance can consume from.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservationAffinity(InstanceGceSetupReservationAffinityArgs reservationAffinity) {
+            return reservationAffinity(Output.of(reservationAffinity));
         }
 
         /**

@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GcpUserAccessBindingScopedAccessSettingScopeClientScope {
     /**
-     * @return Optional. The application that is subject to this binding&#39;s scope.
+     * @return Optional. The application that is subject to this binding&#39;s scope. Only one of clientId or name should be specified.
      * Structure is documented below.
      * 
      */
@@ -20,7 +20,7 @@ public final class GcpUserAccessBindingScopedAccessSettingScopeClientScope {
 
     private GcpUserAccessBindingScopedAccessSettingScopeClientScope() {}
     /**
-     * @return Optional. The application that is subject to this binding&#39;s scope.
+     * @return Optional. The application that is subject to this binding&#39;s scope. Only one of clientId or name should be specified.
      * Structure is documented below.
      * 
      */

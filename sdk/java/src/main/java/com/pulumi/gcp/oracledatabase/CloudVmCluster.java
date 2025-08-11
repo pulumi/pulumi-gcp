@@ -102,6 +102,72 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Oracledatabase Cloud Vmcluster Odbnetwork
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.oracledatabase.CloudExadataInfrastructure;
+ * import com.pulumi.gcp.oracledatabase.CloudExadataInfrastructureArgs;
+ * import com.pulumi.gcp.oracledatabase.inputs.CloudExadataInfrastructurePropertiesArgs;
+ * import com.pulumi.gcp.oracledatabase.CloudVmCluster;
+ * import com.pulumi.gcp.oracledatabase.CloudVmClusterArgs;
+ * import com.pulumi.gcp.oracledatabase.inputs.CloudVmClusterPropertiesArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var cloudExadataInfrastructures = new CloudExadataInfrastructure("cloudExadataInfrastructures", CloudExadataInfrastructureArgs.builder()
+ *             .cloudExadataInfrastructureId("my-exadata")
+ *             .displayName("my-exadata displayname")
+ *             .location("europe-west2")
+ *             .project("my-project")
+ *             .properties(CloudExadataInfrastructurePropertiesArgs.builder()
+ *                 .shape("Exadata.X9M")
+ *                 .computeCount(2)
+ *                 .storageCount(3)
+ *                 .build())
+ *             .deletionProtection(true)
+ *             .build());
+ * 
+ *         var myVmcluster = new CloudVmCluster("myVmcluster", CloudVmClusterArgs.builder()
+ *             .cloudVmClusterId("my-instance")
+ *             .displayName("my-instance displayname")
+ *             .location("europe-west2")
+ *             .project("my-project")
+ *             .exadataInfrastructure(cloudExadataInfrastructures.id())
+ *             .odbNetwork("projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork")
+ *             .odbSubnet("projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet")
+ *             .backupOdbSubnet("projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork/odbSubnets/my-backup-odbsubnet")
+ *             .properties(CloudVmClusterPropertiesArgs.builder()
+ *                 .licenseType("LICENSE_INCLUDED")
+ *                 .sshPublicKeys("ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCz1X2744t+6vRLmE5u6nHi6/QWh8bQDgHmd+OIxRQIGA/IWUtCs2FnaCNZcqvZkaeyjk5v0lTA/n+9jvO42Ipib53athrfVG8gRt8fzPL66C6ZqHq+6zZophhrCdfJh/0G4x9xJh5gdMprlaCR1P8yAaVvhBQSKGc4SiIkyMNBcHJ5YTtMQMTfxaB4G1sHZ6SDAY9a6Cq/zNjDwfPapWLsiP4mRhE5SSjJX6l6EYbkm0JeLQg+AbJiNEPvrvDp1wtTxzlPJtIivthmLMThFxK7+DkrYFuLvN5AHUdo9KTDLvHtDCvV70r8v0gafsrKkM/OE9Jtzoo0e1N/5K/ZdyFRbAkFT4QSF3nwpbmBWLf2Evg//YyEuxnz4CwPqFST2mucnrCCGCVWp1vnHZ0y30nM35njLOmWdRDFy5l27pKUTwLp02y3UYiiZyP7d3/u5pKiN4vC27VuvzprSdJxWoAvluOiDeRh+/oeQDowxoT/Oop8DzB9uJmjktXw8jyMW2+Rpg+ENQqeNgF1OGlEzypaWiRskEFlkpLb4v/s3ZDYkL1oW0Nv/J8LTjTOTEaYt2Udjoe9x2xWiGnQixhdChWuG+MaoWffzUgx1tsVj/DBXijR5DjkPkrA1GA98zd3q8GKEaAdcDenJjHhNYSd4+rE9pIsnYn7fo5X/tFfcQH1XQ== nobody}{@literal @}{@code google.com")
+ *                 .cpuCoreCount(4)
+ *                 .giVersion("19.0.0.0")
+ *                 .hostnamePrefix("hostname1")
+ *                 .build())
+ *             .deletionProtection(true)
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Oracledatabase Cloud Vmcluster Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -235,32 +301,50 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:oracledatabase/cloudVmCluster:CloudVmCluster")
 public class CloudVmCluster extends com.pulumi.resources.CustomResource {
     /**
+     * The name of the backup OdbSubnet associated with the VM Cluster.
+     * Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+     * 
+     */
+    @Export(name="backupOdbSubnet", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> backupOdbSubnet;
+
+    /**
+     * @return The name of the backup OdbSubnet associated with the VM Cluster.
+     * Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+     * 
+     */
+    public Output<Optional<String>> backupOdbSubnet() {
+        return Codegen.optional(this.backupOdbSubnet);
+    }
+    /**
      * CIDR range of the backup subnet.
      * 
      */
     @Export(name="backupSubnetCidr", refs={String.class}, tree="[0]")
-    private Output<String> backupSubnetCidr;
+    private Output</* @Nullable */ String> backupSubnetCidr;
 
     /**
      * @return CIDR range of the backup subnet.
      * 
      */
-    public Output<String> backupSubnetCidr() {
-        return this.backupSubnetCidr;
+    public Output<Optional<String>> backupSubnetCidr() {
+        return Codegen.optional(this.backupSubnetCidr);
     }
     /**
      * Network settings. CIDR to use for cluster IP allocation.
      * 
      */
     @Export(name="cidr", refs={String.class}, tree="[0]")
-    private Output<String> cidr;
+    private Output</* @Nullable */ String> cidr;
 
     /**
      * @return Network settings. CIDR to use for cluster IP allocation.
      * 
      */
-    public Output<String> cidr() {
-        return this.cidr;
+    public Output<Optional<String>> cidr() {
+        return Codegen.optional(this.cidr);
     }
     /**
      * The ID of the VM Cluster to create. This value is restricted
@@ -418,15 +502,55 @@ public class CloudVmCluster extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="network", refs={String.class}, tree="[0]")
-    private Output<String> network;
+    private Output</* @Nullable */ String> network;
 
     /**
      * @return The name of the VPC network.
      * Format: projects/{project}/global/networks/{network}
      * 
      */
-    public Output<String> network() {
-        return this.network;
+    public Output<Optional<String>> network() {
+        return Codegen.optional(this.network);
+    }
+    /**
+     * The name of the OdbNetwork associated with the VM Cluster.
+     * Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}
+     * It is optional but if specified, this should match the parent ODBNetwork of
+     * the odb_subnet and backup_odb_subnet.
+     * 
+     */
+    @Export(name="odbNetwork", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> odbNetwork;
+
+    /**
+     * @return The name of the OdbNetwork associated with the VM Cluster.
+     * Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}
+     * It is optional but if specified, this should match the parent ODBNetwork of
+     * the odb_subnet and backup_odb_subnet.
+     * 
+     */
+    public Output<Optional<String>> odbNetwork() {
+        return Codegen.optional(this.odbNetwork);
+    }
+    /**
+     * The name of the OdbSubnet associated with the VM Cluster for
+     * IP allocation. Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+     * 
+     */
+    @Export(name="odbSubnet", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> odbSubnet;
+
+    /**
+     * @return The name of the OdbSubnet associated with the VM Cluster for
+     * IP allocation. Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+     * 
+     */
+    public Output<Optional<String>> odbSubnet() {
+        return Codegen.optional(this.odbSubnet);
     }
     /**
      * The ID of the project in which the resource belongs.

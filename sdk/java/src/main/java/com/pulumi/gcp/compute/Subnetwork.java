@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.SubnetworkArgs;
 import com.pulumi.gcp.compute.inputs.SubnetworkState;
 import com.pulumi.gcp.compute.outputs.SubnetworkLogConfig;
+import com.pulumi.gcp.compute.outputs.SubnetworkParams;
 import com.pulumi.gcp.compute.outputs.SubnetworkSecondaryIpRange;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -853,6 +854,22 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
      */
     public Output<String> network() {
         return this.network;
+    }
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="params", refs={SubnetworkParams.class}, tree="[0]")
+    private Output</* @Nullable */ SubnetworkParams> params;
+
+    /**
+     * @return Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<SubnetworkParams>> params() {
+        return Codegen.optional(this.params);
     }
     /**
      * When enabled, VMs in this subnetwork without external IP addresses can

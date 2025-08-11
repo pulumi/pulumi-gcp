@@ -43,6 +43,9 @@ type InstanceGceSetup struct {
 	// The network interfaces for the VM. Supports only one interface.
 	// Structure is documented below.
 	NetworkInterfaces []InstanceGceSetupNetworkInterface `pulumi:"networkInterfaces"`
+	// Reservations that this instance can consume from.
+	// Structure is documented below.
+	ReservationAffinity *InstanceGceSetupReservationAffinity `pulumi:"reservationAffinity"`
 	// The service account that serves as an identity for the VM instance. Currently supports only one service account.
 	// Structure is documented below.
 	ServiceAccounts []InstanceGceSetupServiceAccount `pulumi:"serviceAccounts"`
@@ -101,6 +104,9 @@ type InstanceGceSetupArgs struct {
 	// The network interfaces for the VM. Supports only one interface.
 	// Structure is documented below.
 	NetworkInterfaces InstanceGceSetupNetworkInterfaceArrayInput `pulumi:"networkInterfaces"`
+	// Reservations that this instance can consume from.
+	// Structure is documented below.
+	ReservationAffinity InstanceGceSetupReservationAffinityPtrInput `pulumi:"reservationAffinity"`
 	// The service account that serves as an identity for the VM instance. Currently supports only one service account.
 	// Structure is documented below.
 	ServiceAccounts InstanceGceSetupServiceAccountArrayInput `pulumi:"serviceAccounts"`
@@ -254,6 +260,12 @@ func (o InstanceGceSetupOutput) Metadata() pulumi.StringMapOutput {
 // Structure is documented below.
 func (o InstanceGceSetupOutput) NetworkInterfaces() InstanceGceSetupNetworkInterfaceArrayOutput {
 	return o.ApplyT(func(v InstanceGceSetup) []InstanceGceSetupNetworkInterface { return v.NetworkInterfaces }).(InstanceGceSetupNetworkInterfaceArrayOutput)
+}
+
+// Reservations that this instance can consume from.
+// Structure is documented below.
+func (o InstanceGceSetupOutput) ReservationAffinity() InstanceGceSetupReservationAffinityPtrOutput {
+	return o.ApplyT(func(v InstanceGceSetup) *InstanceGceSetupReservationAffinity { return v.ReservationAffinity }).(InstanceGceSetupReservationAffinityPtrOutput)
 }
 
 // The service account that serves as an identity for the VM instance. Currently supports only one service account.
@@ -414,6 +426,17 @@ func (o InstanceGceSetupPtrOutput) NetworkInterfaces() InstanceGceSetupNetworkIn
 		}
 		return v.NetworkInterfaces
 	}).(InstanceGceSetupNetworkInterfaceArrayOutput)
+}
+
+// Reservations that this instance can consume from.
+// Structure is documented below.
+func (o InstanceGceSetupPtrOutput) ReservationAffinity() InstanceGceSetupReservationAffinityPtrOutput {
+	return o.ApplyT(func(v *InstanceGceSetup) *InstanceGceSetupReservationAffinity {
+		if v == nil {
+			return nil
+		}
+		return v.ReservationAffinity
+	}).(InstanceGceSetupReservationAffinityPtrOutput)
 }
 
 // The service account that serves as an identity for the VM instance. Currently supports only one service account.
@@ -1570,6 +1593,209 @@ func (o InstanceGceSetupNetworkInterfaceAccessConfigArrayOutput) Index(i pulumi.
 	}).(InstanceGceSetupNetworkInterfaceAccessConfigOutput)
 }
 
+type InstanceGceSetupReservationAffinity struct {
+	// Specifies the type of reservation from which this instance can consume resources:
+	// RESERVATION_ANY (default), RESERVATION_SPECIFIC, or RESERVATION_NONE.
+	// Possible values are: `RESERVATION_NONE`, `RESERVATION_ANY`, `RESERVATION_SPECIFIC`.
+	ConsumeReservationType *string `pulumi:"consumeReservationType"`
+	// Corresponds to the label key of a reservation resource. To target a
+	// RESERVATION_SPECIFIC by name, use compute.googleapis.com/reservation-name
+	// as the key and specify the name of your reservation as its value.
+	Key *string `pulumi:"key"`
+	// Corresponds to the label values of a reservation resource. This can be
+	// either a name to a reservation in the same project or
+	// "projects/different-project/reservations/some-reservation-name"
+	// to target a shared reservation in the same zone but in a different project.
+	Values []string `pulumi:"values"`
+}
+
+// InstanceGceSetupReservationAffinityInput is an input type that accepts InstanceGceSetupReservationAffinityArgs and InstanceGceSetupReservationAffinityOutput values.
+// You can construct a concrete instance of `InstanceGceSetupReservationAffinityInput` via:
+//
+//	InstanceGceSetupReservationAffinityArgs{...}
+type InstanceGceSetupReservationAffinityInput interface {
+	pulumi.Input
+
+	ToInstanceGceSetupReservationAffinityOutput() InstanceGceSetupReservationAffinityOutput
+	ToInstanceGceSetupReservationAffinityOutputWithContext(context.Context) InstanceGceSetupReservationAffinityOutput
+}
+
+type InstanceGceSetupReservationAffinityArgs struct {
+	// Specifies the type of reservation from which this instance can consume resources:
+	// RESERVATION_ANY (default), RESERVATION_SPECIFIC, or RESERVATION_NONE.
+	// Possible values are: `RESERVATION_NONE`, `RESERVATION_ANY`, `RESERVATION_SPECIFIC`.
+	ConsumeReservationType pulumi.StringPtrInput `pulumi:"consumeReservationType"`
+	// Corresponds to the label key of a reservation resource. To target a
+	// RESERVATION_SPECIFIC by name, use compute.googleapis.com/reservation-name
+	// as the key and specify the name of your reservation as its value.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Corresponds to the label values of a reservation resource. This can be
+	// either a name to a reservation in the same project or
+	// "projects/different-project/reservations/some-reservation-name"
+	// to target a shared reservation in the same zone but in a different project.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (InstanceGceSetupReservationAffinityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGceSetupReservationAffinity)(nil)).Elem()
+}
+
+func (i InstanceGceSetupReservationAffinityArgs) ToInstanceGceSetupReservationAffinityOutput() InstanceGceSetupReservationAffinityOutput {
+	return i.ToInstanceGceSetupReservationAffinityOutputWithContext(context.Background())
+}
+
+func (i InstanceGceSetupReservationAffinityArgs) ToInstanceGceSetupReservationAffinityOutputWithContext(ctx context.Context) InstanceGceSetupReservationAffinityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGceSetupReservationAffinityOutput)
+}
+
+func (i InstanceGceSetupReservationAffinityArgs) ToInstanceGceSetupReservationAffinityPtrOutput() InstanceGceSetupReservationAffinityPtrOutput {
+	return i.ToInstanceGceSetupReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceGceSetupReservationAffinityArgs) ToInstanceGceSetupReservationAffinityPtrOutputWithContext(ctx context.Context) InstanceGceSetupReservationAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGceSetupReservationAffinityOutput).ToInstanceGceSetupReservationAffinityPtrOutputWithContext(ctx)
+}
+
+// InstanceGceSetupReservationAffinityPtrInput is an input type that accepts InstanceGceSetupReservationAffinityArgs, InstanceGceSetupReservationAffinityPtr and InstanceGceSetupReservationAffinityPtrOutput values.
+// You can construct a concrete instance of `InstanceGceSetupReservationAffinityPtrInput` via:
+//
+//	        InstanceGceSetupReservationAffinityArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceGceSetupReservationAffinityPtrInput interface {
+	pulumi.Input
+
+	ToInstanceGceSetupReservationAffinityPtrOutput() InstanceGceSetupReservationAffinityPtrOutput
+	ToInstanceGceSetupReservationAffinityPtrOutputWithContext(context.Context) InstanceGceSetupReservationAffinityPtrOutput
+}
+
+type instanceGceSetupReservationAffinityPtrType InstanceGceSetupReservationAffinityArgs
+
+func InstanceGceSetupReservationAffinityPtr(v *InstanceGceSetupReservationAffinityArgs) InstanceGceSetupReservationAffinityPtrInput {
+	return (*instanceGceSetupReservationAffinityPtrType)(v)
+}
+
+func (*instanceGceSetupReservationAffinityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceGceSetupReservationAffinity)(nil)).Elem()
+}
+
+func (i *instanceGceSetupReservationAffinityPtrType) ToInstanceGceSetupReservationAffinityPtrOutput() InstanceGceSetupReservationAffinityPtrOutput {
+	return i.ToInstanceGceSetupReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceGceSetupReservationAffinityPtrType) ToInstanceGceSetupReservationAffinityPtrOutputWithContext(ctx context.Context) InstanceGceSetupReservationAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGceSetupReservationAffinityPtrOutput)
+}
+
+type InstanceGceSetupReservationAffinityOutput struct{ *pulumi.OutputState }
+
+func (InstanceGceSetupReservationAffinityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGceSetupReservationAffinity)(nil)).Elem()
+}
+
+func (o InstanceGceSetupReservationAffinityOutput) ToInstanceGceSetupReservationAffinityOutput() InstanceGceSetupReservationAffinityOutput {
+	return o
+}
+
+func (o InstanceGceSetupReservationAffinityOutput) ToInstanceGceSetupReservationAffinityOutputWithContext(ctx context.Context) InstanceGceSetupReservationAffinityOutput {
+	return o
+}
+
+func (o InstanceGceSetupReservationAffinityOutput) ToInstanceGceSetupReservationAffinityPtrOutput() InstanceGceSetupReservationAffinityPtrOutput {
+	return o.ToInstanceGceSetupReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceGceSetupReservationAffinityOutput) ToInstanceGceSetupReservationAffinityPtrOutputWithContext(ctx context.Context) InstanceGceSetupReservationAffinityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceGceSetupReservationAffinity) *InstanceGceSetupReservationAffinity {
+		return &v
+	}).(InstanceGceSetupReservationAffinityPtrOutput)
+}
+
+// Specifies the type of reservation from which this instance can consume resources:
+// RESERVATION_ANY (default), RESERVATION_SPECIFIC, or RESERVATION_NONE.
+// Possible values are: `RESERVATION_NONE`, `RESERVATION_ANY`, `RESERVATION_SPECIFIC`.
+func (o InstanceGceSetupReservationAffinityOutput) ConsumeReservationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceGceSetupReservationAffinity) *string { return v.ConsumeReservationType }).(pulumi.StringPtrOutput)
+}
+
+// Corresponds to the label key of a reservation resource. To target a
+// RESERVATION_SPECIFIC by name, use compute.googleapis.com/reservation-name
+// as the key and specify the name of your reservation as its value.
+func (o InstanceGceSetupReservationAffinityOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceGceSetupReservationAffinity) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Corresponds to the label values of a reservation resource. This can be
+// either a name to a reservation in the same project or
+// "projects/different-project/reservations/some-reservation-name"
+// to target a shared reservation in the same zone but in a different project.
+func (o InstanceGceSetupReservationAffinityOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstanceGceSetupReservationAffinity) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type InstanceGceSetupReservationAffinityPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceGceSetupReservationAffinityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceGceSetupReservationAffinity)(nil)).Elem()
+}
+
+func (o InstanceGceSetupReservationAffinityPtrOutput) ToInstanceGceSetupReservationAffinityPtrOutput() InstanceGceSetupReservationAffinityPtrOutput {
+	return o
+}
+
+func (o InstanceGceSetupReservationAffinityPtrOutput) ToInstanceGceSetupReservationAffinityPtrOutputWithContext(ctx context.Context) InstanceGceSetupReservationAffinityPtrOutput {
+	return o
+}
+
+func (o InstanceGceSetupReservationAffinityPtrOutput) Elem() InstanceGceSetupReservationAffinityOutput {
+	return o.ApplyT(func(v *InstanceGceSetupReservationAffinity) InstanceGceSetupReservationAffinity {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceGceSetupReservationAffinity
+		return ret
+	}).(InstanceGceSetupReservationAffinityOutput)
+}
+
+// Specifies the type of reservation from which this instance can consume resources:
+// RESERVATION_ANY (default), RESERVATION_SPECIFIC, or RESERVATION_NONE.
+// Possible values are: `RESERVATION_NONE`, `RESERVATION_ANY`, `RESERVATION_SPECIFIC`.
+func (o InstanceGceSetupReservationAffinityPtrOutput) ConsumeReservationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceGceSetupReservationAffinity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumeReservationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Corresponds to the label key of a reservation resource. To target a
+// RESERVATION_SPECIFIC by name, use compute.googleapis.com/reservation-name
+// as the key and specify the name of your reservation as its value.
+func (o InstanceGceSetupReservationAffinityPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceGceSetupReservationAffinity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// Corresponds to the label values of a reservation resource. This can be
+// either a name to a reservation in the same project or
+// "projects/different-project/reservations/some-reservation-name"
+// to target a shared reservation in the same zone but in a different project.
+func (o InstanceGceSetupReservationAffinityPtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *InstanceGceSetupReservationAffinity) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
 type InstanceGceSetupServiceAccount struct {
 	// Optional. Email address of the service account.
 	Email *string `pulumi:"email"`
@@ -2678,6 +2904,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGceSetupNetworkInterfaceArrayInput)(nil)).Elem(), InstanceGceSetupNetworkInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGceSetupNetworkInterfaceAccessConfigInput)(nil)).Elem(), InstanceGceSetupNetworkInterfaceAccessConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGceSetupNetworkInterfaceAccessConfigArrayInput)(nil)).Elem(), InstanceGceSetupNetworkInterfaceAccessConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGceSetupReservationAffinityInput)(nil)).Elem(), InstanceGceSetupReservationAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGceSetupReservationAffinityPtrInput)(nil)).Elem(), InstanceGceSetupReservationAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGceSetupServiceAccountInput)(nil)).Elem(), InstanceGceSetupServiceAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGceSetupServiceAccountArrayInput)(nil)).Elem(), InstanceGceSetupServiceAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGceSetupShieldedInstanceConfigInput)(nil)).Elem(), InstanceGceSetupShieldedInstanceConfigArgs{})
@@ -2708,6 +2936,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceGceSetupNetworkInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(InstanceGceSetupNetworkInterfaceAccessConfigOutput{})
 	pulumi.RegisterOutputType(InstanceGceSetupNetworkInterfaceAccessConfigArrayOutput{})
+	pulumi.RegisterOutputType(InstanceGceSetupReservationAffinityOutput{})
+	pulumi.RegisterOutputType(InstanceGceSetupReservationAffinityPtrOutput{})
 	pulumi.RegisterOutputType(InstanceGceSetupServiceAccountOutput{})
 	pulumi.RegisterOutputType(InstanceGceSetupServiceAccountArrayOutput{})
 	pulumi.RegisterOutputType(InstanceGceSetupShieldedInstanceConfigOutput{})

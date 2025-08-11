@@ -678,6 +678,7 @@ import javax.annotation.Nullable;
  *                     .nodeSelector(JobTemplateTemplateNodeSelectorArgs.builder()
  *                         .accelerator("nvidia-l4")
  *                         .build())
+ *                     .gpuZonalRedundancyDisabled(true)
  *                     .build())
  *                 .build())
  *             .build());

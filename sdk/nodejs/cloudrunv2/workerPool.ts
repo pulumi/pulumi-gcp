@@ -189,6 +189,7 @@ import * as utilities from "../utilities";
  *         nodeSelector: {
  *             accelerator: "nvidia-l4",
  *         },
+ *         gpuZonalRedundancyDisabled: true,
  *     },
  * });
  * ```

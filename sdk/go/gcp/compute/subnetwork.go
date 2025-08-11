@@ -547,6 +547,9 @@ type Subnetwork struct {
 	// The network this subnet belongs to.
 	// Only networks that are in the distributed mode can have subnetworks.
 	Network pulumi.StringOutput `pulumi:"network"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params SubnetworkParamsPtrOutput `pulumi:"params"`
 	// When enabled, VMs in this subnetwork without external IP addresses can
 	// access Google APIs and services by using Private Google Access.
 	PrivateIpGoogleAccess pulumi.BoolOutput `pulumi:"privateIpGoogleAccess"`
@@ -715,6 +718,9 @@ type subnetworkState struct {
 	// The network this subnet belongs to.
 	// Only networks that are in the distributed mode can have subnetworks.
 	Network *string `pulumi:"network"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params *SubnetworkParams `pulumi:"params"`
 	// When enabled, VMs in this subnetwork without external IP addresses can
 	// access Google APIs and services by using Private Google Access.
 	PrivateIpGoogleAccess *bool `pulumi:"privateIpGoogleAccess"`
@@ -851,6 +857,9 @@ type SubnetworkState struct {
 	// The network this subnet belongs to.
 	// Only networks that are in the distributed mode can have subnetworks.
 	Network pulumi.StringPtrInput
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params SubnetworkParamsPtrInput
 	// When enabled, VMs in this subnetwork without external IP addresses can
 	// access Google APIs and services by using Private Google Access.
 	PrivateIpGoogleAccess pulumi.BoolPtrInput
@@ -972,6 +981,9 @@ type subnetworkArgs struct {
 	// The network this subnet belongs to.
 	// Only networks that are in the distributed mode can have subnetworks.
 	Network string `pulumi:"network"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params *SubnetworkParams `pulumi:"params"`
 	// When enabled, VMs in this subnetwork without external IP addresses can
 	// access Google APIs and services by using Private Google Access.
 	PrivateIpGoogleAccess *bool `pulumi:"privateIpGoogleAccess"`
@@ -1081,6 +1093,9 @@ type SubnetworkArgs struct {
 	// The network this subnet belongs to.
 	// Only networks that are in the distributed mode can have subnetworks.
 	Network pulumi.StringInput
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params SubnetworkParamsPtrInput
 	// When enabled, VMs in this subnetwork without external IP addresses can
 	// access Google APIs and services by using Private Google Access.
 	PrivateIpGoogleAccess pulumi.BoolPtrInput
@@ -1340,6 +1355,12 @@ func (o SubnetworkOutput) Name() pulumi.StringOutput {
 // Only networks that are in the distributed mode can have subnetworks.
 func (o SubnetworkOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
+}
+
+// Additional params passed with the request, but not persisted as part of resource payload
+// Structure is documented below.
+func (o SubnetworkOutput) Params() SubnetworkParamsPtrOutput {
+	return o.ApplyT(func(v *Subnetwork) SubnetworkParamsPtrOutput { return v.Params }).(SubnetworkParamsPtrOutput)
 }
 
 // When enabled, VMs in this subnetwork without external IP addresses can

@@ -149,6 +149,14 @@ __all__ = [
     'CxGenerativeSettingsKnowledgeConnectorSettingsArgsDict',
     'CxGenerativeSettingsLlmModelSettingsArgs',
     'CxGenerativeSettingsLlmModelSettingsArgsDict',
+    'CxGeneratorLlmModelSettingsArgs',
+    'CxGeneratorLlmModelSettingsArgsDict',
+    'CxGeneratorModelParameterArgs',
+    'CxGeneratorModelParameterArgsDict',
+    'CxGeneratorPlaceholderArgs',
+    'CxGeneratorPlaceholderArgsDict',
+    'CxGeneratorPromptTextArgs',
+    'CxGeneratorPromptTextArgsDict',
     'CxIntentParameterArgs',
     'CxIntentParameterArgsDict',
     'CxIntentTrainingPhraseArgs',
@@ -397,10 +405,18 @@ __all__ = [
     'CxVersionNluSettingArgsDict',
     'CxWebhookGenericWebServiceArgs',
     'CxWebhookGenericWebServiceArgsDict',
+    'CxWebhookGenericWebServiceOauthConfigArgs',
+    'CxWebhookGenericWebServiceOauthConfigArgsDict',
+    'CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArgs',
+    'CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArgsDict',
     'CxWebhookServiceDirectoryArgs',
     'CxWebhookServiceDirectoryArgsDict',
     'CxWebhookServiceDirectoryGenericWebServiceArgs',
     'CxWebhookServiceDirectoryGenericWebServiceArgsDict',
+    'CxWebhookServiceDirectoryGenericWebServiceOauthConfigArgs',
+    'CxWebhookServiceDirectoryGenericWebServiceOauthConfigArgsDict',
+    'CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArgs',
+    'CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArgsDict',
     'EncryptionSpecEncryptionSpecArgs',
     'EncryptionSpecEncryptionSpecArgsDict',
     'EntityTypeEntityArgs',
@@ -5594,6 +5610,246 @@ class CxGenerativeSettingsLlmModelSettingsArgs:
     @prompt_text.setter
     def prompt_text(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "prompt_text", value)
+
+
+if not MYPY:
+    class CxGeneratorLlmModelSettingsArgsDict(TypedDict):
+        model: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The selected LLM model.
+        """
+        prompt_text: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The custom prompt to use.
+        """
+elif False:
+    CxGeneratorLlmModelSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CxGeneratorLlmModelSettingsArgs:
+    def __init__(__self__, *,
+                 model: Optional[pulumi.Input[_builtins.str]] = None,
+                 prompt_text: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] model: The selected LLM model.
+        :param pulumi.Input[_builtins.str] prompt_text: The custom prompt to use.
+        """
+        if model is not None:
+            pulumi.set(__self__, "model", model)
+        if prompt_text is not None:
+            pulumi.set(__self__, "prompt_text", prompt_text)
+
+    @_builtins.property
+    @pulumi.getter
+    def model(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The selected LLM model.
+        """
+        return pulumi.get(self, "model")
+
+    @model.setter
+    def model(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "model", value)
+
+    @_builtins.property
+    @pulumi.getter(name="promptText")
+    def prompt_text(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The custom prompt to use.
+        """
+        return pulumi.get(self, "prompt_text")
+
+    @prompt_text.setter
+    def prompt_text(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "prompt_text", value)
+
+
+if not MYPY:
+    class CxGeneratorModelParameterArgsDict(TypedDict):
+        max_decode_steps: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The maximum number of tokens to generate.
+        """
+        temperature: NotRequired[pulumi.Input[_builtins.float]]
+        """
+        The temperature used for sampling. Temperature sampling occurs after both topP and topK have been applied.
+        Valid range: [0.0, 1.0] Low temperature = less random. High temperature = more random.
+        """
+        top_k: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        If set, the sampling process in each step is limited to the topK tokens with highest probabilities.
+        Valid range: [1, 40] or 1000+. Small topK = less random. Large topK = more random.
+        """
+        top_p: NotRequired[pulumi.Input[_builtins.float]]
+        """
+        If set, only the tokens comprising the top topP probability mass are considered.
+        If both topP and topK are set, topP will be used for further refining candidates selected with topK.
+        Valid range: (0.0, 1.0]. Small topP = less random. Large topP = more random.
+        """
+elif False:
+    CxGeneratorModelParameterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CxGeneratorModelParameterArgs:
+    def __init__(__self__, *,
+                 max_decode_steps: Optional[pulumi.Input[_builtins.int]] = None,
+                 temperature: Optional[pulumi.Input[_builtins.float]] = None,
+                 top_k: Optional[pulumi.Input[_builtins.int]] = None,
+                 top_p: Optional[pulumi.Input[_builtins.float]] = None):
+        """
+        :param pulumi.Input[_builtins.int] max_decode_steps: The maximum number of tokens to generate.
+        :param pulumi.Input[_builtins.float] temperature: The temperature used for sampling. Temperature sampling occurs after both topP and topK have been applied.
+               Valid range: [0.0, 1.0] Low temperature = less random. High temperature = more random.
+        :param pulumi.Input[_builtins.int] top_k: If set, the sampling process in each step is limited to the topK tokens with highest probabilities.
+               Valid range: [1, 40] or 1000+. Small topK = less random. Large topK = more random.
+        :param pulumi.Input[_builtins.float] top_p: If set, only the tokens comprising the top topP probability mass are considered.
+               If both topP and topK are set, topP will be used for further refining candidates selected with topK.
+               Valid range: (0.0, 1.0]. Small topP = less random. Large topP = more random.
+        """
+        if max_decode_steps is not None:
+            pulumi.set(__self__, "max_decode_steps", max_decode_steps)
+        if temperature is not None:
+            pulumi.set(__self__, "temperature", temperature)
+        if top_k is not None:
+            pulumi.set(__self__, "top_k", top_k)
+        if top_p is not None:
+            pulumi.set(__self__, "top_p", top_p)
+
+    @_builtins.property
+    @pulumi.getter(name="maxDecodeSteps")
+    def max_decode_steps(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The maximum number of tokens to generate.
+        """
+        return pulumi.get(self, "max_decode_steps")
+
+    @max_decode_steps.setter
+    def max_decode_steps(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_decode_steps", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def temperature(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        The temperature used for sampling. Temperature sampling occurs after both topP and topK have been applied.
+        Valid range: [0.0, 1.0] Low temperature = less random. High temperature = more random.
+        """
+        return pulumi.get(self, "temperature")
+
+    @temperature.setter
+    def temperature(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "temperature", value)
+
+    @_builtins.property
+    @pulumi.getter(name="topK")
+    def top_k(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        If set, the sampling process in each step is limited to the topK tokens with highest probabilities.
+        Valid range: [1, 40] or 1000+. Small topK = less random. Large topK = more random.
+        """
+        return pulumi.get(self, "top_k")
+
+    @top_k.setter
+    def top_k(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "top_k", value)
+
+    @_builtins.property
+    @pulumi.getter(name="topP")
+    def top_p(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        If set, only the tokens comprising the top topP probability mass are considered.
+        If both topP and topK are set, topP will be used for further refining candidates selected with topK.
+        Valid range: (0.0, 1.0]. Small topP = less random. Large topP = more random.
+        """
+        return pulumi.get(self, "top_p")
+
+    @top_p.setter
+    def top_p(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "top_p", value)
+
+
+if not MYPY:
+    class CxGeneratorPlaceholderArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Unique ID used to map custom placeholder to parameters in fulfillment.
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Custom placeholder value in the prompt text.
+        """
+elif False:
+    CxGeneratorPlaceholderArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CxGeneratorPlaceholderArgs:
+    def __init__(__self__, *,
+                 id: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] id: Unique ID used to map custom placeholder to parameters in fulfillment.
+        :param pulumi.Input[_builtins.str] name: Custom placeholder value in the prompt text.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Unique ID used to map custom placeholder to parameters in fulfillment.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Custom placeholder value in the prompt text.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+
+if not MYPY:
+    class CxGeneratorPromptTextArgsDict(TypedDict):
+        text: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Text input which can be used for prompt or banned phrases.
+        """
+elif False:
+    CxGeneratorPromptTextArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CxGeneratorPromptTextArgs:
+    def __init__(__self__, *,
+                 text: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] text: Text input which can be used for prompt or banned phrases.
+        """
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+
+    @_builtins.property
+    @pulumi.getter
+    def text(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Text input which can be used for prompt or banned phrases.
+        """
+        return pulumi.get(self, "text")
+
+    @text.setter
+    def text(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "text", value)
 
 
 if not MYPY:
@@ -15008,15 +15264,75 @@ if not MYPY:
     class CxWebhookGenericWebServiceArgsDict(TypedDict):
         uri: pulumi.Input[_builtins.str]
         """
-        Whether to use speech adaptation for speech recognition.
+        The webhook URI for receiving POST requests. It must use https protocol.
         """
         allowed_ca_certs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
-        Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification.
+        Specifies a list of allowed custom CA certificates (in DER format) for
+        HTTPS verification. This overrides the default SSL trust store. If this
+        is empty or unspecified, Dialogflow will use Google's default trust store
+        to verify certificates.
+        N.B. Make sure the HTTPS server certificates are signed with "subject alt
+        name". For instance a certificate can be self-signed using the following
+        command,
+        openssl x509 -req -days 200 -in example.com.csr \\
+        -signkey example.com.key \\
+        -out example.com.crt \\
+        -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
+        """
+        http_method: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        HTTP method for the flexible webhook calls. Standard webhook always uses
+        POST.
+        Possible values are: `POST`, `GET`, `HEAD`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`.
+        """
+        oauth_config: NotRequired[pulumi.Input['CxWebhookGenericWebServiceOauthConfigArgsDict']]
+        """
+        Represents configuration of OAuth client credential flow for 3rd party
+        API authentication.
+        Structure is documented below.
+        """
+        parameter_mapping: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+        """
+        Maps the values extracted from specific fields of the flexible webhook
+        response into session parameters.
+        - Key: session parameter name
+        - Value: field path in the webhook response
+        """
+        request_body: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Defines a custom JSON object as request body to send to flexible webhook.
         """
         request_headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
         The HTTP request headers to send together with webhook requests.
+        """
+        secret_version_for_username_password: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The SecretManager secret version resource storing the username:password
+        pair for HTTP Basic authentication.
+        Format: `projects/{project}/secrets/{secret}/versions/{version}`
+        """
+        secret_versions_for_request_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArgsDict']]]]
+        """
+        The HTTP request headers to send together with webhook requests. Header
+        values are stored in SecretManager secret versions.
+        When the same header name is specified in both `request_headers` and
+        `secret_versions_for_request_headers`, the value in
+        `secret_versions_for_request_headers` will be used.
+        Structure is documented below.
+        """
+        service_agent_auth: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Indicate the auth token type generated from the [Diglogflow service
+        agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
+        The generated token is sent in the Authorization header.
+        Possible values are: `NONE`, `ID_TOKEN`, `ACCESS_TOKEN`.
+        """
+        webhook_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Type of the webhook.
+        Possible values are: `STANDARD`, `FLEXIBLE`.
         """
 elif False:
     CxWebhookGenericWebServiceArgsDict: TypeAlias = Mapping[str, Any]
@@ -15026,23 +15342,83 @@ class CxWebhookGenericWebServiceArgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[_builtins.str],
                  allowed_ca_certs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 request_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 http_method: Optional[pulumi.Input[_builtins.str]] = None,
+                 oauth_config: Optional[pulumi.Input['CxWebhookGenericWebServiceOauthConfigArgs']] = None,
+                 parameter_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 request_body: Optional[pulumi.Input[_builtins.str]] = None,
+                 request_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 secret_version_for_username_password: Optional[pulumi.Input[_builtins.str]] = None,
+                 secret_versions_for_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input['CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArgs']]]] = None,
+                 service_agent_auth: Optional[pulumi.Input[_builtins.str]] = None,
+                 webhook_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] uri: Whether to use speech adaptation for speech recognition.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_ca_certs: Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification.
+        :param pulumi.Input[_builtins.str] uri: The webhook URI for receiving POST requests. It must use https protocol.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_ca_certs: Specifies a list of allowed custom CA certificates (in DER format) for
+               HTTPS verification. This overrides the default SSL trust store. If this
+               is empty or unspecified, Dialogflow will use Google's default trust store
+               to verify certificates.
+               N.B. Make sure the HTTPS server certificates are signed with "subject alt
+               name". For instance a certificate can be self-signed using the following
+               command,
+               openssl x509 -req -days 200 -in example.com.csr \\
+               -signkey example.com.key \\
+               -out example.com.crt \\
+               -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
+        :param pulumi.Input[_builtins.str] http_method: HTTP method for the flexible webhook calls. Standard webhook always uses
+               POST.
+               Possible values are: `POST`, `GET`, `HEAD`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`.
+        :param pulumi.Input['CxWebhookGenericWebServiceOauthConfigArgs'] oauth_config: Represents configuration of OAuth client credential flow for 3rd party
+               API authentication.
+               Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] parameter_mapping: Maps the values extracted from specific fields of the flexible webhook
+               response into session parameters.
+               - Key: session parameter name
+               - Value: field path in the webhook response
+        :param pulumi.Input[_builtins.str] request_body: Defines a custom JSON object as request body to send to flexible webhook.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] request_headers: The HTTP request headers to send together with webhook requests.
+        :param pulumi.Input[_builtins.str] secret_version_for_username_password: The SecretManager secret version resource storing the username:password
+               pair for HTTP Basic authentication.
+               Format: `projects/{project}/secrets/{secret}/versions/{version}`
+        :param pulumi.Input[Sequence[pulumi.Input['CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArgs']]] secret_versions_for_request_headers: The HTTP request headers to send together with webhook requests. Header
+               values are stored in SecretManager secret versions.
+               When the same header name is specified in both `request_headers` and
+               `secret_versions_for_request_headers`, the value in
+               `secret_versions_for_request_headers` will be used.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] service_agent_auth: Indicate the auth token type generated from the [Diglogflow service
+               agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
+               The generated token is sent in the Authorization header.
+               Possible values are: `NONE`, `ID_TOKEN`, `ACCESS_TOKEN`.
+        :param pulumi.Input[_builtins.str] webhook_type: Type of the webhook.
+               Possible values are: `STANDARD`, `FLEXIBLE`.
         """
         pulumi.set(__self__, "uri", uri)
         if allowed_ca_certs is not None:
             pulumi.set(__self__, "allowed_ca_certs", allowed_ca_certs)
+        if http_method is not None:
+            pulumi.set(__self__, "http_method", http_method)
+        if oauth_config is not None:
+            pulumi.set(__self__, "oauth_config", oauth_config)
+        if parameter_mapping is not None:
+            pulumi.set(__self__, "parameter_mapping", parameter_mapping)
+        if request_body is not None:
+            pulumi.set(__self__, "request_body", request_body)
         if request_headers is not None:
             pulumi.set(__self__, "request_headers", request_headers)
+        if secret_version_for_username_password is not None:
+            pulumi.set(__self__, "secret_version_for_username_password", secret_version_for_username_password)
+        if secret_versions_for_request_headers is not None:
+            pulumi.set(__self__, "secret_versions_for_request_headers", secret_versions_for_request_headers)
+        if service_agent_auth is not None:
+            pulumi.set(__self__, "service_agent_auth", service_agent_auth)
+        if webhook_type is not None:
+            pulumi.set(__self__, "webhook_type", webhook_type)
 
     @_builtins.property
     @pulumi.getter
     def uri(self) -> pulumi.Input[_builtins.str]:
         """
-        Whether to use speech adaptation for speech recognition.
+        The webhook URI for receiving POST requests. It must use https protocol.
         """
         return pulumi.get(self, "uri")
 
@@ -15054,13 +15430,78 @@ class CxWebhookGenericWebServiceArgs:
     @pulumi.getter(name="allowedCaCerts")
     def allowed_ca_certs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification.
+        Specifies a list of allowed custom CA certificates (in DER format) for
+        HTTPS verification. This overrides the default SSL trust store. If this
+        is empty or unspecified, Dialogflow will use Google's default trust store
+        to verify certificates.
+        N.B. Make sure the HTTPS server certificates are signed with "subject alt
+        name". For instance a certificate can be self-signed using the following
+        command,
+        openssl x509 -req -days 200 -in example.com.csr \\
+        -signkey example.com.key \\
+        -out example.com.crt \\
+        -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
         """
         return pulumi.get(self, "allowed_ca_certs")
 
     @allowed_ca_certs.setter
     def allowed_ca_certs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_ca_certs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="httpMethod")
+    def http_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        HTTP method for the flexible webhook calls. Standard webhook always uses
+        POST.
+        Possible values are: `POST`, `GET`, `HEAD`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`.
+        """
+        return pulumi.get(self, "http_method")
+
+    @http_method.setter
+    def http_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "http_method", value)
+
+    @_builtins.property
+    @pulumi.getter(name="oauthConfig")
+    def oauth_config(self) -> Optional[pulumi.Input['CxWebhookGenericWebServiceOauthConfigArgs']]:
+        """
+        Represents configuration of OAuth client credential flow for 3rd party
+        API authentication.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oauth_config")
+
+    @oauth_config.setter
+    def oauth_config(self, value: Optional[pulumi.Input['CxWebhookGenericWebServiceOauthConfigArgs']]):
+        pulumi.set(self, "oauth_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="parameterMapping")
+    def parameter_mapping(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Maps the values extracted from specific fields of the flexible webhook
+        response into session parameters.
+        - Key: session parameter name
+        - Value: field path in the webhook response
+        """
+        return pulumi.get(self, "parameter_mapping")
+
+    @parameter_mapping.setter
+    def parameter_mapping(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "parameter_mapping", value)
+
+    @_builtins.property
+    @pulumi.getter(name="requestBody")
+    def request_body(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Defines a custom JSON object as request body to send to flexible webhook.
+        """
+        return pulumi.get(self, "request_body")
+
+    @request_body.setter
+    def request_body(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "request_body", value)
 
     @_builtins.property
     @pulumi.getter(name="requestHeaders")
@@ -15074,17 +15515,257 @@ class CxWebhookGenericWebServiceArgs:
     def request_headers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "request_headers", value)
 
+    @_builtins.property
+    @pulumi.getter(name="secretVersionForUsernamePassword")
+    def secret_version_for_username_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The SecretManager secret version resource storing the username:password
+        pair for HTTP Basic authentication.
+        Format: `projects/{project}/secrets/{secret}/versions/{version}`
+        """
+        return pulumi.get(self, "secret_version_for_username_password")
+
+    @secret_version_for_username_password.setter
+    def secret_version_for_username_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "secret_version_for_username_password", value)
+
+    @_builtins.property
+    @pulumi.getter(name="secretVersionsForRequestHeaders")
+    def secret_versions_for_request_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArgs']]]]:
+        """
+        The HTTP request headers to send together with webhook requests. Header
+        values are stored in SecretManager secret versions.
+        When the same header name is specified in both `request_headers` and
+        `secret_versions_for_request_headers`, the value in
+        `secret_versions_for_request_headers` will be used.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "secret_versions_for_request_headers")
+
+    @secret_versions_for_request_headers.setter
+    def secret_versions_for_request_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArgs']]]]):
+        pulumi.set(self, "secret_versions_for_request_headers", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAgentAuth")
+    def service_agent_auth(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Indicate the auth token type generated from the [Diglogflow service
+        agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
+        The generated token is sent in the Authorization header.
+        Possible values are: `NONE`, `ID_TOKEN`, `ACCESS_TOKEN`.
+        """
+        return pulumi.get(self, "service_agent_auth")
+
+    @service_agent_auth.setter
+    def service_agent_auth(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "service_agent_auth", value)
+
+    @_builtins.property
+    @pulumi.getter(name="webhookType")
+    def webhook_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Type of the webhook.
+        Possible values are: `STANDARD`, `FLEXIBLE`.
+        """
+        return pulumi.get(self, "webhook_type")
+
+    @webhook_type.setter
+    def webhook_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "webhook_type", value)
+
+
+if not MYPY:
+    class CxWebhookGenericWebServiceOauthConfigArgsDict(TypedDict):
+        client_id: pulumi.Input[_builtins.str]
+        """
+        The client ID provided by the 3rd party platform.
+        """
+        token_endpoint: pulumi.Input[_builtins.str]
+        """
+        The token endpoint provided by the 3rd party platform to exchange an
+        access token.
+        """
+        client_secret: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The client secret provided by the 3rd party platform.  If the
+        `secret_version_for_client_secret` field is set, this field will be
+        ignored.
+        """
+        scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        The OAuth scopes to grant.
+        """
+        secret_version_for_client_secret: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The name of the SecretManager secret version resource storing the
+        client secret. If this field is set, the `client_secret` field will be
+        ignored.
+        Format: `projects/{project}/secrets/{secret}/versions/{version}`
+        """
+elif False:
+    CxWebhookGenericWebServiceOauthConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CxWebhookGenericWebServiceOauthConfigArgs:
+    def __init__(__self__, *,
+                 client_id: pulumi.Input[_builtins.str],
+                 token_endpoint: pulumi.Input[_builtins.str],
+                 client_secret: Optional[pulumi.Input[_builtins.str]] = None,
+                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 secret_version_for_client_secret: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] client_id: The client ID provided by the 3rd party platform.
+        :param pulumi.Input[_builtins.str] token_endpoint: The token endpoint provided by the 3rd party platform to exchange an
+               access token.
+        :param pulumi.Input[_builtins.str] client_secret: The client secret provided by the 3rd party platform.  If the
+               `secret_version_for_client_secret` field is set, this field will be
+               ignored.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The OAuth scopes to grant.
+        :param pulumi.Input[_builtins.str] secret_version_for_client_secret: The name of the SecretManager secret version resource storing the
+               client secret. If this field is set, the `client_secret` field will be
+               ignored.
+               Format: `projects/{project}/secrets/{secret}/versions/{version}`
+        """
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "token_endpoint", token_endpoint)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
+        if secret_version_for_client_secret is not None:
+            pulumi.set(__self__, "secret_version_for_client_secret", secret_version_for_client_secret)
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The client ID provided by the 3rd party platform.
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "client_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tokenEndpoint")
+    def token_endpoint(self) -> pulumi.Input[_builtins.str]:
+        """
+        The token endpoint provided by the 3rd party platform to exchange an
+        access token.
+        """
+        return pulumi.get(self, "token_endpoint")
+
+    @token_endpoint.setter
+    def token_endpoint(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "token_endpoint", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The client secret provided by the 3rd party platform.  If the
+        `secret_version_for_client_secret` field is set, this field will be
+        ignored.
+        """
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "client_secret", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The OAuth scopes to grant.
+        """
+        return pulumi.get(self, "scopes")
+
+    @scopes.setter
+    def scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "scopes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="secretVersionForClientSecret")
+    def secret_version_for_client_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the SecretManager secret version resource storing the
+        client secret. If this field is set, the `client_secret` field will be
+        ignored.
+        Format: `projects/{project}/secrets/{secret}/versions/{version}`
+        """
+        return pulumi.get(self, "secret_version_for_client_secret")
+
+    @secret_version_for_client_secret.setter
+    def secret_version_for_client_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "secret_version_for_client_secret", value)
+
+
+if not MYPY:
+    class CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArgsDict(TypedDict):
+        key: pulumi.Input[_builtins.str]
+        """
+        The identifier for this object. Format specified above.
+        """
+        secret_version: pulumi.Input[_builtins.str]
+        """
+        The SecretManager secret version resource storing the header value.
+        Format: `projects/{project}/secrets/{secret}/versions/{version}`
+        """
+elif False:
+    CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[_builtins.str],
+                 secret_version: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] key: The identifier for this object. Format specified above.
+        :param pulumi.Input[_builtins.str] secret_version: The SecretManager secret version resource storing the header value.
+               Format: `projects/{project}/secrets/{secret}/versions/{version}`
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "secret_version", secret_version)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[_builtins.str]:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="secretVersion")
+    def secret_version(self) -> pulumi.Input[_builtins.str]:
+        """
+        The SecretManager secret version resource storing the header value.
+        Format: `projects/{project}/secrets/{secret}/versions/{version}`
+        """
+        return pulumi.get(self, "secret_version")
+
+    @secret_version.setter
+    def secret_version(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "secret_version", value)
+
 
 if not MYPY:
     class CxWebhookServiceDirectoryArgsDict(TypedDict):
-        generic_web_service: pulumi.Input['CxWebhookServiceDirectoryGenericWebServiceArgsDict']
-        """
-        The name of Service Directory service.
-        Structure is documented below.
-        """
         service: pulumi.Input[_builtins.str]
         """
         The name of Service Directory service.
+        """
+        generic_web_service: NotRequired[pulumi.Input['CxWebhookServiceDirectoryGenericWebServiceArgsDict']]
+        """
+        Represents configuration for a generic web service.
+        Structure is documented below.
         """
 elif False:
     CxWebhookServiceDirectoryArgsDict: TypeAlias = Mapping[str, Any]
@@ -15092,28 +15773,16 @@ elif False:
 @pulumi.input_type
 class CxWebhookServiceDirectoryArgs:
     def __init__(__self__, *,
-                 generic_web_service: pulumi.Input['CxWebhookServiceDirectoryGenericWebServiceArgs'],
-                 service: pulumi.Input[_builtins.str]):
+                 service: pulumi.Input[_builtins.str],
+                 generic_web_service: Optional[pulumi.Input['CxWebhookServiceDirectoryGenericWebServiceArgs']] = None):
         """
-        :param pulumi.Input['CxWebhookServiceDirectoryGenericWebServiceArgs'] generic_web_service: The name of Service Directory service.
-               Structure is documented below.
         :param pulumi.Input[_builtins.str] service: The name of Service Directory service.
+        :param pulumi.Input['CxWebhookServiceDirectoryGenericWebServiceArgs'] generic_web_service: Represents configuration for a generic web service.
+               Structure is documented below.
         """
-        pulumi.set(__self__, "generic_web_service", generic_web_service)
         pulumi.set(__self__, "service", service)
-
-    @_builtins.property
-    @pulumi.getter(name="genericWebService")
-    def generic_web_service(self) -> pulumi.Input['CxWebhookServiceDirectoryGenericWebServiceArgs']:
-        """
-        The name of Service Directory service.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "generic_web_service")
-
-    @generic_web_service.setter
-    def generic_web_service(self, value: pulumi.Input['CxWebhookServiceDirectoryGenericWebServiceArgs']):
-        pulumi.set(self, "generic_web_service", value)
+        if generic_web_service is not None:
+            pulumi.set(__self__, "generic_web_service", generic_web_service)
 
     @_builtins.property
     @pulumi.getter
@@ -15127,20 +15796,93 @@ class CxWebhookServiceDirectoryArgs:
     def service(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "service", value)
 
+    @_builtins.property
+    @pulumi.getter(name="genericWebService")
+    def generic_web_service(self) -> Optional[pulumi.Input['CxWebhookServiceDirectoryGenericWebServiceArgs']]:
+        """
+        Represents configuration for a generic web service.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "generic_web_service")
+
+    @generic_web_service.setter
+    def generic_web_service(self, value: Optional[pulumi.Input['CxWebhookServiceDirectoryGenericWebServiceArgs']]):
+        pulumi.set(self, "generic_web_service", value)
+
 
 if not MYPY:
     class CxWebhookServiceDirectoryGenericWebServiceArgsDict(TypedDict):
         uri: pulumi.Input[_builtins.str]
         """
-        Whether to use speech adaptation for speech recognition.
+        The webhook URI for receiving POST requests. It must use https protocol.
         """
         allowed_ca_certs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
-        Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification.
+        Specifies a list of allowed custom CA certificates (in DER format) for
+        HTTPS verification. This overrides the default SSL trust store. If this
+        is empty or unspecified, Dialogflow will use Google's default trust store
+        to verify certificates.
+        N.B. Make sure the HTTPS server certificates are signed with "subject alt
+        name". For instance a certificate can be self-signed using the following
+        command,
+        openssl x509 -req -days 200 -in example.com.csr \\
+        -signkey example.com.key \\
+        -out example.com.crt \\
+        -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
+        """
+        http_method: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        HTTP method for the flexible webhook calls. Standard webhook always uses
+        POST.
+        Possible values are: `POST`, `GET`, `HEAD`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`.
+        """
+        oauth_config: NotRequired[pulumi.Input['CxWebhookServiceDirectoryGenericWebServiceOauthConfigArgsDict']]
+        """
+        Represents configuration of OAuth client credential flow for 3rd party
+        API authentication.
+        Structure is documented below.
+        """
+        parameter_mapping: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+        """
+        Maps the values extracted from specific fields of the flexible webhook
+        response into session parameters.
+        - Key: session parameter name
+        - Value: field path in the webhook response
+        """
+        request_body: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Defines a custom JSON object as request body to send to flexible webhook.
         """
         request_headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
         The HTTP request headers to send together with webhook requests.
+        """
+        secret_version_for_username_password: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The SecretManager secret version resource storing the username:password
+        pair for HTTP Basic authentication.
+        Format: `projects/{project}/secrets/{secret}/versions/{version}`
+        """
+        secret_versions_for_request_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArgsDict']]]]
+        """
+        The HTTP request headers to send together with webhook requests. Header
+        values are stored in SecretManager secret versions.
+        When the same header name is specified in both `request_headers` and
+        `secret_versions_for_request_headers`, the value in
+        `secret_versions_for_request_headers` will be used.
+        Structure is documented below.
+        """
+        service_agent_auth: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Indicate the auth token type generated from the [Diglogflow service
+        agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
+        The generated token is sent in the Authorization header.
+        Possible values are: `NONE`, `ID_TOKEN`, `ACCESS_TOKEN`.
+        """
+        webhook_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Type of the webhook.
+        Possible values are: `STANDARD`, `FLEXIBLE`.
         """
 elif False:
     CxWebhookServiceDirectoryGenericWebServiceArgsDict: TypeAlias = Mapping[str, Any]
@@ -15150,23 +15892,83 @@ class CxWebhookServiceDirectoryGenericWebServiceArgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[_builtins.str],
                  allowed_ca_certs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 request_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 http_method: Optional[pulumi.Input[_builtins.str]] = None,
+                 oauth_config: Optional[pulumi.Input['CxWebhookServiceDirectoryGenericWebServiceOauthConfigArgs']] = None,
+                 parameter_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 request_body: Optional[pulumi.Input[_builtins.str]] = None,
+                 request_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 secret_version_for_username_password: Optional[pulumi.Input[_builtins.str]] = None,
+                 secret_versions_for_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input['CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArgs']]]] = None,
+                 service_agent_auth: Optional[pulumi.Input[_builtins.str]] = None,
+                 webhook_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] uri: Whether to use speech adaptation for speech recognition.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_ca_certs: Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification.
+        :param pulumi.Input[_builtins.str] uri: The webhook URI for receiving POST requests. It must use https protocol.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_ca_certs: Specifies a list of allowed custom CA certificates (in DER format) for
+               HTTPS verification. This overrides the default SSL trust store. If this
+               is empty or unspecified, Dialogflow will use Google's default trust store
+               to verify certificates.
+               N.B. Make sure the HTTPS server certificates are signed with "subject alt
+               name". For instance a certificate can be self-signed using the following
+               command,
+               openssl x509 -req -days 200 -in example.com.csr \\
+               -signkey example.com.key \\
+               -out example.com.crt \\
+               -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
+        :param pulumi.Input[_builtins.str] http_method: HTTP method for the flexible webhook calls. Standard webhook always uses
+               POST.
+               Possible values are: `POST`, `GET`, `HEAD`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`.
+        :param pulumi.Input['CxWebhookServiceDirectoryGenericWebServiceOauthConfigArgs'] oauth_config: Represents configuration of OAuth client credential flow for 3rd party
+               API authentication.
+               Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] parameter_mapping: Maps the values extracted from specific fields of the flexible webhook
+               response into session parameters.
+               - Key: session parameter name
+               - Value: field path in the webhook response
+        :param pulumi.Input[_builtins.str] request_body: Defines a custom JSON object as request body to send to flexible webhook.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] request_headers: The HTTP request headers to send together with webhook requests.
+        :param pulumi.Input[_builtins.str] secret_version_for_username_password: The SecretManager secret version resource storing the username:password
+               pair for HTTP Basic authentication.
+               Format: `projects/{project}/secrets/{secret}/versions/{version}`
+        :param pulumi.Input[Sequence[pulumi.Input['CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArgs']]] secret_versions_for_request_headers: The HTTP request headers to send together with webhook requests. Header
+               values are stored in SecretManager secret versions.
+               When the same header name is specified in both `request_headers` and
+               `secret_versions_for_request_headers`, the value in
+               `secret_versions_for_request_headers` will be used.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] service_agent_auth: Indicate the auth token type generated from the [Diglogflow service
+               agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
+               The generated token is sent in the Authorization header.
+               Possible values are: `NONE`, `ID_TOKEN`, `ACCESS_TOKEN`.
+        :param pulumi.Input[_builtins.str] webhook_type: Type of the webhook.
+               Possible values are: `STANDARD`, `FLEXIBLE`.
         """
         pulumi.set(__self__, "uri", uri)
         if allowed_ca_certs is not None:
             pulumi.set(__self__, "allowed_ca_certs", allowed_ca_certs)
+        if http_method is not None:
+            pulumi.set(__self__, "http_method", http_method)
+        if oauth_config is not None:
+            pulumi.set(__self__, "oauth_config", oauth_config)
+        if parameter_mapping is not None:
+            pulumi.set(__self__, "parameter_mapping", parameter_mapping)
+        if request_body is not None:
+            pulumi.set(__self__, "request_body", request_body)
         if request_headers is not None:
             pulumi.set(__self__, "request_headers", request_headers)
+        if secret_version_for_username_password is not None:
+            pulumi.set(__self__, "secret_version_for_username_password", secret_version_for_username_password)
+        if secret_versions_for_request_headers is not None:
+            pulumi.set(__self__, "secret_versions_for_request_headers", secret_versions_for_request_headers)
+        if service_agent_auth is not None:
+            pulumi.set(__self__, "service_agent_auth", service_agent_auth)
+        if webhook_type is not None:
+            pulumi.set(__self__, "webhook_type", webhook_type)
 
     @_builtins.property
     @pulumi.getter
     def uri(self) -> pulumi.Input[_builtins.str]:
         """
-        Whether to use speech adaptation for speech recognition.
+        The webhook URI for receiving POST requests. It must use https protocol.
         """
         return pulumi.get(self, "uri")
 
@@ -15178,13 +15980,78 @@ class CxWebhookServiceDirectoryGenericWebServiceArgs:
     @pulumi.getter(name="allowedCaCerts")
     def allowed_ca_certs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification.
+        Specifies a list of allowed custom CA certificates (in DER format) for
+        HTTPS verification. This overrides the default SSL trust store. If this
+        is empty or unspecified, Dialogflow will use Google's default trust store
+        to verify certificates.
+        N.B. Make sure the HTTPS server certificates are signed with "subject alt
+        name". For instance a certificate can be self-signed using the following
+        command,
+        openssl x509 -req -days 200 -in example.com.csr \\
+        -signkey example.com.key \\
+        -out example.com.crt \\
+        -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
         """
         return pulumi.get(self, "allowed_ca_certs")
 
     @allowed_ca_certs.setter
     def allowed_ca_certs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_ca_certs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="httpMethod")
+    def http_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        HTTP method for the flexible webhook calls. Standard webhook always uses
+        POST.
+        Possible values are: `POST`, `GET`, `HEAD`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`.
+        """
+        return pulumi.get(self, "http_method")
+
+    @http_method.setter
+    def http_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "http_method", value)
+
+    @_builtins.property
+    @pulumi.getter(name="oauthConfig")
+    def oauth_config(self) -> Optional[pulumi.Input['CxWebhookServiceDirectoryGenericWebServiceOauthConfigArgs']]:
+        """
+        Represents configuration of OAuth client credential flow for 3rd party
+        API authentication.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oauth_config")
+
+    @oauth_config.setter
+    def oauth_config(self, value: Optional[pulumi.Input['CxWebhookServiceDirectoryGenericWebServiceOauthConfigArgs']]):
+        pulumi.set(self, "oauth_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="parameterMapping")
+    def parameter_mapping(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Maps the values extracted from specific fields of the flexible webhook
+        response into session parameters.
+        - Key: session parameter name
+        - Value: field path in the webhook response
+        """
+        return pulumi.get(self, "parameter_mapping")
+
+    @parameter_mapping.setter
+    def parameter_mapping(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "parameter_mapping", value)
+
+    @_builtins.property
+    @pulumi.getter(name="requestBody")
+    def request_body(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Defines a custom JSON object as request body to send to flexible webhook.
+        """
+        return pulumi.get(self, "request_body")
+
+    @request_body.setter
+    def request_body(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "request_body", value)
 
     @_builtins.property
     @pulumi.getter(name="requestHeaders")
@@ -15197,6 +16064,246 @@ class CxWebhookServiceDirectoryGenericWebServiceArgs:
     @request_headers.setter
     def request_headers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "request_headers", value)
+
+    @_builtins.property
+    @pulumi.getter(name="secretVersionForUsernamePassword")
+    def secret_version_for_username_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The SecretManager secret version resource storing the username:password
+        pair for HTTP Basic authentication.
+        Format: `projects/{project}/secrets/{secret}/versions/{version}`
+        """
+        return pulumi.get(self, "secret_version_for_username_password")
+
+    @secret_version_for_username_password.setter
+    def secret_version_for_username_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "secret_version_for_username_password", value)
+
+    @_builtins.property
+    @pulumi.getter(name="secretVersionsForRequestHeaders")
+    def secret_versions_for_request_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArgs']]]]:
+        """
+        The HTTP request headers to send together with webhook requests. Header
+        values are stored in SecretManager secret versions.
+        When the same header name is specified in both `request_headers` and
+        `secret_versions_for_request_headers`, the value in
+        `secret_versions_for_request_headers` will be used.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "secret_versions_for_request_headers")
+
+    @secret_versions_for_request_headers.setter
+    def secret_versions_for_request_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArgs']]]]):
+        pulumi.set(self, "secret_versions_for_request_headers", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAgentAuth")
+    def service_agent_auth(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Indicate the auth token type generated from the [Diglogflow service
+        agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
+        The generated token is sent in the Authorization header.
+        Possible values are: `NONE`, `ID_TOKEN`, `ACCESS_TOKEN`.
+        """
+        return pulumi.get(self, "service_agent_auth")
+
+    @service_agent_auth.setter
+    def service_agent_auth(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "service_agent_auth", value)
+
+    @_builtins.property
+    @pulumi.getter(name="webhookType")
+    def webhook_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Type of the webhook.
+        Possible values are: `STANDARD`, `FLEXIBLE`.
+        """
+        return pulumi.get(self, "webhook_type")
+
+    @webhook_type.setter
+    def webhook_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "webhook_type", value)
+
+
+if not MYPY:
+    class CxWebhookServiceDirectoryGenericWebServiceOauthConfigArgsDict(TypedDict):
+        client_id: pulumi.Input[_builtins.str]
+        """
+        The client ID provided by the 3rd party platform.
+        """
+        token_endpoint: pulumi.Input[_builtins.str]
+        """
+        The token endpoint provided by the 3rd party platform to exchange an
+        access token.
+        """
+        client_secret: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The client secret provided by the 3rd party platform.  If the
+        `secret_version_for_client_secret` field is set, this field will be
+        ignored.
+        """
+        scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        The OAuth scopes to grant.
+        """
+        secret_version_for_client_secret: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The name of the SecretManager secret version resource storing the
+        client secret. If this field is set, the `client_secret` field will be
+        ignored.
+        Format: `projects/{project}/secrets/{secret}/versions/{version}`
+        """
+elif False:
+    CxWebhookServiceDirectoryGenericWebServiceOauthConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CxWebhookServiceDirectoryGenericWebServiceOauthConfigArgs:
+    def __init__(__self__, *,
+                 client_id: pulumi.Input[_builtins.str],
+                 token_endpoint: pulumi.Input[_builtins.str],
+                 client_secret: Optional[pulumi.Input[_builtins.str]] = None,
+                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 secret_version_for_client_secret: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] client_id: The client ID provided by the 3rd party platform.
+        :param pulumi.Input[_builtins.str] token_endpoint: The token endpoint provided by the 3rd party platform to exchange an
+               access token.
+        :param pulumi.Input[_builtins.str] client_secret: The client secret provided by the 3rd party platform.  If the
+               `secret_version_for_client_secret` field is set, this field will be
+               ignored.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The OAuth scopes to grant.
+        :param pulumi.Input[_builtins.str] secret_version_for_client_secret: The name of the SecretManager secret version resource storing the
+               client secret. If this field is set, the `client_secret` field will be
+               ignored.
+               Format: `projects/{project}/secrets/{secret}/versions/{version}`
+        """
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "token_endpoint", token_endpoint)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
+        if secret_version_for_client_secret is not None:
+            pulumi.set(__self__, "secret_version_for_client_secret", secret_version_for_client_secret)
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The client ID provided by the 3rd party platform.
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "client_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tokenEndpoint")
+    def token_endpoint(self) -> pulumi.Input[_builtins.str]:
+        """
+        The token endpoint provided by the 3rd party platform to exchange an
+        access token.
+        """
+        return pulumi.get(self, "token_endpoint")
+
+    @token_endpoint.setter
+    def token_endpoint(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "token_endpoint", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The client secret provided by the 3rd party platform.  If the
+        `secret_version_for_client_secret` field is set, this field will be
+        ignored.
+        """
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "client_secret", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The OAuth scopes to grant.
+        """
+        return pulumi.get(self, "scopes")
+
+    @scopes.setter
+    def scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "scopes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="secretVersionForClientSecret")
+    def secret_version_for_client_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the SecretManager secret version resource storing the
+        client secret. If this field is set, the `client_secret` field will be
+        ignored.
+        Format: `projects/{project}/secrets/{secret}/versions/{version}`
+        """
+        return pulumi.get(self, "secret_version_for_client_secret")
+
+    @secret_version_for_client_secret.setter
+    def secret_version_for_client_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "secret_version_for_client_secret", value)
+
+
+if not MYPY:
+    class CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArgsDict(TypedDict):
+        key: pulumi.Input[_builtins.str]
+        """
+        The identifier for this object. Format specified above.
+        """
+        secret_version: pulumi.Input[_builtins.str]
+        """
+        The SecretManager secret version resource storing the header value.
+        Format: `projects/{project}/secrets/{secret}/versions/{version}`
+        """
+elif False:
+    CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[_builtins.str],
+                 secret_version: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] key: The identifier for this object. Format specified above.
+        :param pulumi.Input[_builtins.str] secret_version: The SecretManager secret version resource storing the header value.
+               Format: `projects/{project}/secrets/{secret}/versions/{version}`
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "secret_version", secret_version)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[_builtins.str]:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="secretVersion")
+    def secret_version(self) -> pulumi.Input[_builtins.str]:
+        """
+        The SecretManager secret version resource storing the header value.
+        Format: `projects/{project}/secrets/{secret}/versions/{version}`
+        """
+        return pulumi.get(self, "secret_version")
+
+    @secret_version.setter
+    def secret_version(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "secret_version", value)
 
 
 if not MYPY:

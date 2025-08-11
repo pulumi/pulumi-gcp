@@ -27,6 +27,7 @@ class RouterArgs:
                  encrypted_interconnect_router: Optional[pulumi.Input[_builtins.bool]] = None,
                  md5_authentication_keys: Optional[pulumi.Input['RouterMd5AuthenticationKeysArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input['RouterParamsArgs']] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -45,6 +46,8 @@ class RouterArgs:
                which means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
+        :param pulumi.Input['RouterParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: Region where the router resides.
@@ -60,6 +63,8 @@ class RouterArgs:
             pulumi.set(__self__, "md5_authentication_keys", md5_authentication_keys)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if region is not None:
@@ -147,6 +152,19 @@ class RouterArgs:
 
     @_builtins.property
     @pulumi.getter
+    def params(self) -> Optional[pulumi.Input['RouterParamsArgs']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input['RouterParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @_builtins.property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
@@ -181,6 +199,7 @@ class _RouterState:
                  md5_authentication_keys: Optional[pulumi.Input['RouterMd5AuthenticationKeysArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  network: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input['RouterParamsArgs']] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  self_link: Optional[pulumi.Input[_builtins.str]] = None):
@@ -201,6 +220,8 @@ class _RouterState:
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] network: A reference to the network to which this router belongs.
+        :param pulumi.Input['RouterParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: Region where the router resides.
@@ -220,6 +241,8 @@ class _RouterState:
             pulumi.set(__self__, "name", name)
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if region is not None:
@@ -321,6 +344,19 @@ class _RouterState:
 
     @_builtins.property
     @pulumi.getter
+    def params(self) -> Optional[pulumi.Input['RouterParamsArgs']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input['RouterParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @_builtins.property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
@@ -369,6 +405,7 @@ class Router(pulumi.CustomResource):
                  md5_authentication_keys: Optional[pulumi.Input[Union['RouterMd5AuthenticationKeysArgs', 'RouterMd5AuthenticationKeysArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  network: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input[Union['RouterParamsArgs', 'RouterParamsArgsDict']]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -473,6 +510,8 @@ class Router(pulumi.CustomResource):
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] network: A reference to the network to which this router belongs.
+        :param pulumi.Input[Union['RouterParamsArgs', 'RouterParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: Region where the router resides.
@@ -589,6 +628,7 @@ class Router(pulumi.CustomResource):
                  md5_authentication_keys: Optional[pulumi.Input[Union['RouterMd5AuthenticationKeysArgs', 'RouterMd5AuthenticationKeysArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  network: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input[Union['RouterParamsArgs', 'RouterParamsArgsDict']]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -608,6 +648,7 @@ class Router(pulumi.CustomResource):
             if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")
             __props__.__dict__["network"] = network
+            __props__.__dict__["params"] = params
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
             __props__.__dict__["creation_timestamp"] = None
@@ -629,6 +670,7 @@ class Router(pulumi.CustomResource):
             md5_authentication_keys: Optional[pulumi.Input[Union['RouterMd5AuthenticationKeysArgs', 'RouterMd5AuthenticationKeysArgsDict']]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             network: Optional[pulumi.Input[_builtins.str]] = None,
+            params: Optional[pulumi.Input[Union['RouterParamsArgs', 'RouterParamsArgsDict']]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             region: Optional[pulumi.Input[_builtins.str]] = None,
             self_link: Optional[pulumi.Input[_builtins.str]] = None) -> 'Router':
@@ -654,6 +696,8 @@ class Router(pulumi.CustomResource):
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] network: A reference to the network to which this router belongs.
+        :param pulumi.Input[Union['RouterParamsArgs', 'RouterParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: Region where the router resides.
@@ -670,6 +714,7 @@ class Router(pulumi.CustomResource):
         __props__.__dict__["md5_authentication_keys"] = md5_authentication_keys
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
+        __props__.__dict__["params"] = params
         __props__.__dict__["project"] = project
         __props__.__dict__["region"] = region
         __props__.__dict__["self_link"] = self_link
@@ -738,6 +783,15 @@ class Router(pulumi.CustomResource):
         A reference to the network to which this router belongs.
         """
         return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter
+    def params(self) -> pulumi.Output[Optional['outputs.RouterParams']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
 
     @_builtins.property
     @pulumi.getter

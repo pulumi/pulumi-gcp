@@ -46,6 +46,7 @@ import com.pulumi.gcp.container.outputs.ClusterPodAutoscaling;
 import com.pulumi.gcp.container.outputs.ClusterPodSecurityPolicyConfig;
 import com.pulumi.gcp.container.outputs.ClusterPrivateClusterConfig;
 import com.pulumi.gcp.container.outputs.ClusterProtectConfig;
+import com.pulumi.gcp.container.outputs.ClusterRbacBindingConfig;
 import com.pulumi.gcp.container.outputs.ClusterReleaseChannel;
 import com.pulumi.gcp.container.outputs.ClusterResourceUsageExportConfig;
 import com.pulumi.gcp.container.outputs.ClusterSecretManagerConfig;
@@ -315,16 +316,12 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
-     * 
      */
     @Export(name="anonymousAuthenticationConfig", refs={ClusterAnonymousAuthenticationConfig.class}, tree="[0]")
     private Output<ClusterAnonymousAuthenticationConfig> anonymousAuthenticationConfig;
 
     /**
      * @return Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
-     * 
-     * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
      * 
      */
     public Output<ClusterAnonymousAuthenticationConfig> anonymousAuthenticationConfig() {
@@ -1511,6 +1508,24 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> pulumiLabels() {
         return this.pulumiLabels;
+    }
+    /**
+     * RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
+     * 
+     * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
+     * 
+     */
+    @Export(name="rbacBindingConfig", refs={ClusterRbacBindingConfig.class}, tree="[0]")
+    private Output<ClusterRbacBindingConfig> rbacBindingConfig;
+
+    /**
+     * @return RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
+     * 
+     * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
+     * 
+     */
+    public Output<ClusterRbacBindingConfig> rbacBindingConfig() {
+        return this.rbacBindingConfig;
     }
     /**
      * Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)

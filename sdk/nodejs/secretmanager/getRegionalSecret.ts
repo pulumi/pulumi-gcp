@@ -70,6 +70,7 @@ export interface GetRegionalSecretResult {
     readonly pulumiLabels: {[key: string]: string};
     readonly rotations: outputs.secretmanager.GetRegionalSecretRotation[];
     readonly secretId: string;
+    readonly tags: {[key: string]: string};
     readonly topics: outputs.secretmanager.GetRegionalSecretTopic[];
     readonly ttl: string;
     readonly versionAliases: {[key: string]: string};

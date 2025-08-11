@@ -176,6 +176,8 @@ namespace Pulumi.Gcp.OracleDatabase
         public readonly string Location;
         public readonly string Name;
         public readonly string Network;
+        public readonly string OdbNetwork;
+        public readonly string OdbSubnet;
         public readonly string? Project;
         public readonly ImmutableArray<Outputs.GetAutonomousDatabasePropertyResult> Properties;
         public readonly ImmutableDictionary<string, string> PulumiLabels;
@@ -210,6 +212,10 @@ namespace Pulumi.Gcp.OracleDatabase
 
             string network,
 
+            string odbNetwork,
+
+            string odbSubnet,
+
             string? project,
 
             ImmutableArray<Outputs.GetAutonomousDatabasePropertyResult> properties,
@@ -230,6 +236,8 @@ namespace Pulumi.Gcp.OracleDatabase
             Location = location;
             Name = name;
             Network = network;
+            OdbNetwork = odbNetwork;
+            OdbSubnet = odbSubnet;
             Project = project;
             Properties = properties;
             PulumiLabels = pulumiLabels;

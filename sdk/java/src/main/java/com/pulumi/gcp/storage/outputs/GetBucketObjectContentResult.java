@@ -45,6 +45,7 @@ public final class GetBucketObjectContentResult {
     private String contentType;
     private String crc32c;
     private List<GetBucketObjectContentCustomerEncryption> customerEncryptions;
+    private String deletionPolicy;
     private String detectMd5hash;
     private Boolean eventBasedHold;
     private Boolean forceEmptyContentType;
@@ -121,6 +122,9 @@ public final class GetBucketObjectContentResult {
     }
     public List<GetBucketObjectContentCustomerEncryption> customerEncryptions() {
         return this.customerEncryptions;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public String detectMd5hash() {
         return this.detectMd5hash;
@@ -202,6 +206,7 @@ public final class GetBucketObjectContentResult {
         private String contentType;
         private String crc32c;
         private List<GetBucketObjectContentCustomerEncryption> customerEncryptions;
+        private String deletionPolicy;
         private String detectMd5hash;
         private Boolean eventBasedHold;
         private Boolean forceEmptyContentType;
@@ -235,6 +240,7 @@ public final class GetBucketObjectContentResult {
     	      this.contentType = defaults.contentType;
     	      this.crc32c = defaults.crc32c;
     	      this.customerEncryptions = defaults.customerEncryptions;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.detectMd5hash = defaults.detectMd5hash;
     	      this.eventBasedHold = defaults.eventBasedHold;
     	      this.forceEmptyContentType = defaults.forceEmptyContentType;
@@ -353,6 +359,14 @@ public final class GetBucketObjectContentResult {
         }
         public Builder customerEncryptions(GetBucketObjectContentCustomerEncryption... customerEncryptions) {
             return customerEncryptions(List.of(customerEncryptions));
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetBucketObjectContentResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
+            return this;
         }
         @CustomType.Setter
         public Builder detectMd5hash(String detectMd5hash) {
@@ -515,6 +529,7 @@ public final class GetBucketObjectContentResult {
             _resultValue.contentType = contentType;
             _resultValue.crc32c = crc32c;
             _resultValue.customerEncryptions = customerEncryptions;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.detectMd5hash = detectMd5hash;
             _resultValue.eventBasedHold = eventBasedHold;
             _resultValue.forceEmptyContentType = forceEmptyContentType;

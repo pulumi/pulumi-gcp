@@ -38,6 +38,7 @@ namespace Pulumi.Gcp.SecureSourceManager
     ///         {
     ///             { "foo", "bar" },
     ///         },
+    ///         DeletionPolicy = "PREVENT",
     ///     });
     /// 
     /// });
@@ -66,6 +67,7 @@ namespace Pulumi.Gcp.SecureSourceManager
     ///         Location = "us-central1",
     ///         InstanceId = "my-instance",
     ///         KmsKey = "my-key",
+    ///         DeletionPolicy = "PREVENT",
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =
@@ -176,6 +178,7 @@ namespace Pulumi.Gcp.SecureSourceManager
     ///             IsPrivate = true,
     ///             CaPool = caPool.Id,
     ///         },
+    ///         DeletionPolicy = "PREVENT",
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =
@@ -288,6 +291,7 @@ namespace Pulumi.Gcp.SecureSourceManager
     ///             IsPrivate = true,
     ///             CaPool = caPool.Id,
     ///         },
+    ///         DeletionPolicy = "PREVENT",
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =
@@ -532,6 +536,7 @@ namespace Pulumi.Gcp.SecureSourceManager
     ///             IsPrivate = true,
     ///             CaPool = caPool.Id,
     ///         },
+    ///         DeletionPolicy = "PREVENT",
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =
@@ -649,6 +654,7 @@ namespace Pulumi.Gcp.SecureSourceManager
     ///         {
     ///             Enabled = true,
     ///         },
+    ///         DeletionPolicy = "PREVENT",
     ///     });
     /// 
     /// });
@@ -692,6 +698,19 @@ namespace Pulumi.Gcp.SecureSourceManager
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The deletion policy for the instance. Setting `ABANDON` allows the resource
+        /// to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+        /// and all its contents. Setting `PREVENT` prevents the resource from accidental
+        /// deletion by erroring out during plan.
+        /// Default is `DELETE`.  Possible values are:
+        /// * DELETE
+        /// * PREVENT
+        /// * ABANDON
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string?> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
         /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -838,6 +857,19 @@ namespace Pulumi.Gcp.SecureSourceManager
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The deletion policy for the instance. Setting `ABANDON` allows the resource
+        /// to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+        /// and all its contents. Setting `PREVENT` prevents the resource from accidental
+        /// deletion by erroring out during plan.
+        /// Default is `DELETE`.  Possible values are:
+        /// * DELETE
+        /// * PREVENT
+        /// * ABANDON
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// The name for the Instance.
         /// </summary>
         [Input("instanceId", required: true)]
@@ -905,6 +937,19 @@ namespace Pulumi.Gcp.SecureSourceManager
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The deletion policy for the instance. Setting `ABANDON` allows the resource
+        /// to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+        /// and all its contents. Setting `PREVENT` prevents the resource from accidental
+        /// deletion by erroring out during plan.
+        /// Default is `DELETE`.  Possible values are:
+        /// * DELETE
+        /// * PREVENT
+        /// * ABANDON
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         [Input("effectiveLabels")]
         private InputMap<string>? _effectiveLabels;

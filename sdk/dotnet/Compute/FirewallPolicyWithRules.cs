@@ -63,6 +63,25 @@ namespace Pulumi.Gcp.Compute
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
+    ///     var basicKey = new Gcp.Tags.TagKey("basic_key", new()
+    ///     {
+    ///         Description = "For keyname resources.",
+    ///         Parent = "organizations/123456789",
+    ///         Purpose = "GCE_FIREWALL",
+    ///         ShortName = "tag-key",
+    ///         PurposeData = 
+    ///         {
+    ///             { "organization", "auto" },
+    ///         },
+    ///     });
+    /// 
+    ///     var basicValue = new Gcp.Tags.TagValue("basic_value", new()
+    ///     {
+    ///         Description = "For valuename resources.",
+    ///         Parent = basicKey.Id,
+    ///         ShortName = "tag-value",
+    ///     });
+    /// 
     ///     var primary = new Gcp.Compute.FirewallPolicyWithRules("primary", new()
     ///     {
     ///         ShortName = "fw-policy",
@@ -187,6 +206,47 @@ namespace Pulumi.Gcp.Compute
     ///                         new Gcp.Compute.Inputs.FirewallPolicyWithRulesRuleMatchLayer4ConfigArgs
     ///                         {
     ///                             IpProtocol = "tcp",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new Gcp.Compute.Inputs.FirewallPolicyWithRulesRuleArgs
+    ///             {
+    ///                 Description = "secure tags",
+    ///                 RuleName = "secure tags rule",
+    ///                 Priority = 4000,
+    ///                 EnableLogging = false,
+    ///                 Action = "allow",
+    ///                 Direction = "INGRESS",
+    ///                 TargetSecureTags = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.FirewallPolicyWithRulesRuleTargetSecureTagArgs
+    ///                     {
+    ///                         Name = basicValue.Id,
+    ///                     },
+    ///                 },
+    ///                 Match = new Gcp.Compute.Inputs.FirewallPolicyWithRulesRuleMatchArgs
+    ///                 {
+    ///                     SrcIpRanges = new[]
+    ///                     {
+    ///                         "11.100.0.1/32",
+    ///                     },
+    ///                     SrcSecureTags = new[]
+    ///                     {
+    ///                         new Gcp.Compute.Inputs.FirewallPolicyWithRulesRuleMatchSrcSecureTagArgs
+    ///                         {
+    ///                             Name = basicValue.Id,
+    ///                         },
+    ///                     },
+    ///                     Layer4Configs = new[]
+    ///                     {
+    ///                         new Gcp.Compute.Inputs.FirewallPolicyWithRulesRuleMatchLayer4ConfigArgs
+    ///                         {
+    ///                             IpProtocol = "tcp",
+    ///                             Ports = new[]
+    ///                             {
+    ///                                 "8080",
+    ///                             },
     ///                         },
     ///                     },
     ///                 },

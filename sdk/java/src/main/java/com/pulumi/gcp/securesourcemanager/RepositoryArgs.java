@@ -18,6 +18,35 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
     public static final RepositoryArgs Empty = new RepositoryArgs();
 
     /**
+     * The deletion policy for the repository. Setting `ABANDON` allows the resource
+     * to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+     * and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
+     * by erroring out during plan.
+     * Default is `DELETE`.  Possible values are:
+     * * DELETE
+     * * PREVENT
+     * * ABANDON
+     * 
+     */
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    /**
+     * @return The deletion policy for the repository. Setting `ABANDON` allows the resource
+     * to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+     * and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
+     * by erroring out during plan.
+     * Default is `DELETE`.  Possible values are:
+     * * DELETE
+     * * PREVENT
+     * * ABANDON
+     * 
+     */
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
+    }
+
+    /**
      * Description of the repository, which cannot exceed 500 characters.
      * 
      */
@@ -114,6 +143,7 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
     private RepositoryArgs() {}
 
     private RepositoryArgs(RepositoryArgs $) {
+        this.deletionPolicy = $.deletionPolicy;
         this.description = $.description;
         this.initialConfig = $.initialConfig;
         this.instance = $.instance;
@@ -138,6 +168,41 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(RepositoryArgs defaults) {
             $ = new RepositoryArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param deletionPolicy The deletion policy for the repository. Setting `ABANDON` allows the resource
+         * to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+         * and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
+         * by erroring out during plan.
+         * Default is `DELETE`.  Possible values are:
+         * * DELETE
+         * * PREVENT
+         * * ABANDON
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        /**
+         * @param deletionPolicy The deletion policy for the repository. Setting `ABANDON` allows the resource
+         * to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+         * and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
+         * by erroring out during plan.
+         * Default is `DELETE`.  Possible values are:
+         * * DELETE
+         * * PREVENT
+         * * ABANDON
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
         }
 
         /**

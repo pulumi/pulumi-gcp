@@ -73,6 +73,7 @@ type LookupSecretResult struct {
 	Replications      []GetSecretReplication `pulumi:"replications"`
 	Rotations         []GetSecretRotation    `pulumi:"rotations"`
 	SecretId          string                 `pulumi:"secretId"`
+	Tags              map[string]string      `pulumi:"tags"`
 	Topics            []GetSecretTopic       `pulumi:"topics"`
 	Ttl               string                 `pulumi:"ttl"`
 	VersionAliases    map[string]string      `pulumi:"versionAliases"`
@@ -170,6 +171,10 @@ func (o LookupSecretResultOutput) Rotations() GetSecretRotationArrayOutput {
 
 func (o LookupSecretResultOutput) SecretId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretResult) string { return v.SecretId }).(pulumi.StringOutput)
+}
+
+func (o LookupSecretResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupSecretResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o LookupSecretResultOutput) Topics() GetSecretTopicArrayOutput {

@@ -42,6 +42,7 @@ __all__ = [
     'RepositoryVirtualRepositoryConfig',
     'RepositoryVirtualRepositoryConfigUpstreamPolicy',
     'RepositoryVulnerabilityScanningConfig',
+    'GetDockerImagesDockerImageResult',
     'GetRepositoryCleanupPolicyResult',
     'GetRepositoryCleanupPolicyConditionResult',
     'GetRepositoryCleanupPolicyMostRecentVersionResult',
@@ -1377,6 +1378,112 @@ class RepositoryVulnerabilityScanningConfig(dict):
 
 
 @pulumi.output_type
+class GetDockerImagesDockerImageResult(dict):
+    def __init__(__self__, *,
+                 build_time: _builtins.str,
+                 image_name: _builtins.str,
+                 image_size_bytes: _builtins.str,
+                 media_type: _builtins.str,
+                 name: _builtins.str,
+                 self_link: _builtins.str,
+                 tags: Sequence[_builtins.str],
+                 update_time: _builtins.str,
+                 upload_time: _builtins.str):
+        """
+        :param _builtins.str build_time: The time, as a RFC 3339 string, this image was built.
+        :param _builtins.str image_name: Extracted short name of the image (last part of `name`, without tag or digest). For example, from `.../nginx@sha256:...` → `nginx`.
+        :param _builtins.str image_size_bytes: Calculated size of the image in bytes.
+        :param _builtins.str media_type: Media type of this image, e.g. `application/vnd.docker.distribution.manifest.v2+json`.
+        :param _builtins.str name: The fully qualified name of the fetched image.  This name has the form: `projects/{{project}}/locations/{{location}}/repository/{{repository_id}}/dockerImages/{{docker_image}}`. For example, `projects/test-project/locations/us-west4/repositories/test-repo/dockerImages/nginx@sha256:e9954c1fc875017be1c3e36eca16be2d9e9bccc4bf072163515467d6a823c7cf`
+        :param _builtins.str self_link: The URI to access the image.  For example, `us-west4-docker.pkg.dev/test-project/test-repo/nginx@sha256:e9954c1fc875017be1c3e36eca16be2d9e9bccc4bf072163515467d6a823c7cf`
+        :param Sequence[_builtins.str] tags: A list of all tags associated with the image.
+        :param _builtins.str update_time: The time, as a RFC 3339 string, this image was updated.
+        :param _builtins.str upload_time: The time, as a RFC 3339 string, the image was uploaded. For example, `2014-10-02T15:01:23.045123456Z`.
+        """
+        pulumi.set(__self__, "build_time", build_time)
+        pulumi.set(__self__, "image_name", image_name)
+        pulumi.set(__self__, "image_size_bytes", image_size_bytes)
+        pulumi.set(__self__, "media_type", media_type)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "self_link", self_link)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "update_time", update_time)
+        pulumi.set(__self__, "upload_time", upload_time)
+
+    @_builtins.property
+    @pulumi.getter(name="buildTime")
+    def build_time(self) -> _builtins.str:
+        """
+        The time, as a RFC 3339 string, this image was built.
+        """
+        return pulumi.get(self, "build_time")
+
+    @_builtins.property
+    @pulumi.getter(name="imageName")
+    def image_name(self) -> _builtins.str:
+        """
+        Extracted short name of the image (last part of `name`, without tag or digest). For example, from `.../nginx@sha256:...` → `nginx`.
+        """
+        return pulumi.get(self, "image_name")
+
+    @_builtins.property
+    @pulumi.getter(name="imageSizeBytes")
+    def image_size_bytes(self) -> _builtins.str:
+        """
+        Calculated size of the image in bytes.
+        """
+        return pulumi.get(self, "image_size_bytes")
+
+    @_builtins.property
+    @pulumi.getter(name="mediaType")
+    def media_type(self) -> _builtins.str:
+        """
+        Media type of this image, e.g. `application/vnd.docker.distribution.manifest.v2+json`.
+        """
+        return pulumi.get(self, "media_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The fully qualified name of the fetched image.  This name has the form: `projects/{{project}}/locations/{{location}}/repository/{{repository_id}}/dockerImages/{{docker_image}}`. For example, `projects/test-project/locations/us-west4/repositories/test-repo/dockerImages/nginx@sha256:e9954c1fc875017be1c3e36eca16be2d9e9bccc4bf072163515467d6a823c7cf`
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> _builtins.str:
+        """
+        The URI to access the image.  For example, `us-west4-docker.pkg.dev/test-project/test-repo/nginx@sha256:e9954c1fc875017be1c3e36eca16be2d9e9bccc4bf072163515467d6a823c7cf`
+        """
+        return pulumi.get(self, "self_link")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Sequence[_builtins.str]:
+        """
+        A list of all tags associated with the image.
+        """
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> _builtins.str:
+        """
+        The time, as a RFC 3339 string, this image was updated.
+        """
+        return pulumi.get(self, "update_time")
+
+    @_builtins.property
+    @pulumi.getter(name="uploadTime")
+    def upload_time(self) -> _builtins.str:
+        """
+        The time, as a RFC 3339 string, the image was uploaded. For example, `2014-10-02T15:01:23.045123456Z`.
+        """
+        return pulumi.get(self, "upload_time")
+
+
+@pulumi.output_type
 class GetRepositoryCleanupPolicyResult(dict):
     def __init__(__self__, *,
                  action: _builtins.str,
@@ -1719,7 +1826,7 @@ class GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryResult(dic
                  repository_base: _builtins.str,
                  repository_path: _builtins.str):
         """
-        :param _builtins.str repository_base: A common public repository base for Apt, e.g. '"debian/dists/buster"' Possible values: ["DEBIAN", "UBUNTU", "DEBIAN_SNAPSHOT"]
+        :param _builtins.str repository_base: A common public repository base for Apt, e.g. '"debian/dists/stable"' Possible values: ["DEBIAN", "UBUNTU", "DEBIAN_SNAPSHOT"]
         :param _builtins.str repository_path: Specific repository from the base.
         """
         pulumi.set(__self__, "repository_base", repository_base)
@@ -1729,7 +1836,7 @@ class GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryResult(dic
     @pulumi.getter(name="repositoryBase")
     def repository_base(self) -> _builtins.str:
         """
-        A common public repository base for Apt, e.g. '"debian/dists/buster"' Possible values: ["DEBIAN", "UBUNTU", "DEBIAN_SNAPSHOT"]
+        A common public repository base for Apt, e.g. '"debian/dists/stable"' Possible values: ["DEBIAN", "UBUNTU", "DEBIAN_SNAPSHOT"]
         """
         return pulumi.get(self, "repository_base")
 

@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.RouterBgpArgs;
 import com.pulumi.gcp.compute.inputs.RouterMd5AuthenticationKeysArgs;
+import com.pulumi.gcp.compute.inputs.RouterParamsArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -126,6 +127,23 @@ public final class RouterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="params")
+    private @Nullable Output<RouterParamsArgs> params;
+
+    /**
+     * @return Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<RouterParamsArgs>> params() {
+        return Optional.ofNullable(this.params);
+    }
+
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -166,6 +184,7 @@ public final class RouterArgs extends com.pulumi.resources.ResourceArgs {
         this.md5AuthenticationKeys = $.md5AuthenticationKeys;
         this.name = $.name;
         this.network = $.network;
+        this.params = $.params;
         this.project = $.project;
         this.region = $.region;
     }
@@ -328,6 +347,29 @@ public final class RouterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder network(String network) {
             return network(Output.of(network));
+        }
+
+        /**
+         * @param params Additional params passed with the request, but not persisted as part of resource payload
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(@Nullable Output<RouterParamsArgs> params) {
+            $.params = params;
+            return this;
+        }
+
+        /**
+         * @param params Additional params passed with the request, but not persisted as part of resource payload
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(RouterParamsArgs params) {
+            return params(Output.of(params));
         }
 
         /**

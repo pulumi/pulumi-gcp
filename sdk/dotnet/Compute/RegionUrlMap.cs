@@ -1307,6 +1307,333 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Region Url Map Default Mirror Percent
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.RegionHealthCheck("default", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "health-check",
+    ///         HttpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckHttpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var home = new Gcp.Compute.RegionBackendService("home", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "home",
+    ///         PortName = "http",
+    ///         Protocol = "HTTP",
+    ///         TimeoutSec = 10,
+    ///         LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///         HealthChecks = @default.Id,
+    ///     });
+    /// 
+    ///     var mirror = new Gcp.Compute.RegionBackendService("mirror", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "mirror",
+    ///         PortName = "http",
+    ///         Protocol = "HTTP",
+    ///         TimeoutSec = 10,
+    ///         LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///         HealthChecks = @default.Id,
+    ///     });
+    /// 
+    ///     var regionurlmap = new Gcp.Compute.RegionUrlMap("regionurlmap", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "regionurlmap",
+    ///         Description = "Test for default route action mirror percent",
+    ///         DefaultService = home.Id,
+    ///         DefaultRouteAction = new Gcp.Compute.Inputs.RegionUrlMapDefaultRouteActionArgs
+    ///         {
+    ///             RequestMirrorPolicy = new Gcp.Compute.Inputs.RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgs
+    ///             {
+    ///                 BackendService = mirror.Id,
+    ///                 MirrorPercent = 50,
+    ///             },
+    ///         },
+    ///         HostRules = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionUrlMapHostRuleArgs
+    ///             {
+    ///                 Hosts = new[]
+    ///                 {
+    ///                     "mysite.com",
+    ///                 },
+    ///                 PathMatcher = "allpaths",
+    ///             },
+    ///         },
+    ///         PathMatchers = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionUrlMapPathMatcherArgs
+    ///             {
+    ///                 Name = "allpaths",
+    ///                 DefaultService = home.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Region Url Map Path Matcher Default Mirror Percent
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.RegionHealthCheck("default", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "health-check",
+    ///         HttpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckHttpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var home = new Gcp.Compute.RegionBackendService("home", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "home",
+    ///         PortName = "http",
+    ///         Protocol = "HTTP",
+    ///         TimeoutSec = 10,
+    ///         LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///         HealthChecks = @default.Id,
+    ///     });
+    /// 
+    ///     var mirror = new Gcp.Compute.RegionBackendService("mirror", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "mirror",
+    ///         PortName = "http",
+    ///         Protocol = "HTTP",
+    ///         TimeoutSec = 10,
+    ///         LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///         HealthChecks = @default.Id,
+    ///     });
+    /// 
+    ///     var regionurlmap = new Gcp.Compute.RegionUrlMap("regionurlmap", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "regionurlmap",
+    ///         Description = "Test for default route action mirror percent",
+    ///         DefaultService = home.Id,
+    ///         DefaultRouteAction = new Gcp.Compute.Inputs.RegionUrlMapDefaultRouteActionArgs
+    ///         {
+    ///             RequestMirrorPolicy = new Gcp.Compute.Inputs.RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgs
+    ///             {
+    ///                 BackendService = mirror.Id,
+    ///                 MirrorPercent = 50,
+    ///             },
+    ///         },
+    ///         HostRules = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionUrlMapHostRuleArgs
+    ///             {
+    ///                 Hosts = new[]
+    ///                 {
+    ///                     "mysite.com",
+    ///                 },
+    ///                 PathMatcher = "allpaths",
+    ///             },
+    ///         },
+    ///         PathMatchers = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionUrlMapPathMatcherArgs
+    ///             {
+    ///                 Name = "allpaths",
+    ///                 DefaultService = home.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Region Url Map Path Rule Mirror Percent
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.RegionHealthCheck("default", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "health-check",
+    ///         HttpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckHttpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var home = new Gcp.Compute.RegionBackendService("home", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "home",
+    ///         PortName = "http",
+    ///         Protocol = "HTTP",
+    ///         TimeoutSec = 10,
+    ///         LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///         HealthChecks = @default.Id,
+    ///     });
+    /// 
+    ///     var mirror = new Gcp.Compute.RegionBackendService("mirror", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "mirror",
+    ///         PortName = "http",
+    ///         Protocol = "HTTP",
+    ///         TimeoutSec = 10,
+    ///         LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///         HealthChecks = @default.Id,
+    ///     });
+    /// 
+    ///     var regionurlmap = new Gcp.Compute.RegionUrlMap("regionurlmap", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "regionurlmap",
+    ///         Description = "Test for path matcher default route action mirror percent",
+    ///         DefaultService = home.Id,
+    ///         HostRules = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionUrlMapHostRuleArgs
+    ///             {
+    ///                 Hosts = new[]
+    ///                 {
+    ///                     "mysite.com",
+    ///                 },
+    ///                 PathMatcher = "allpaths",
+    ///             },
+    ///         },
+    ///         PathMatchers = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionUrlMapPathMatcherArgs
+    ///             {
+    ///                 Name = "allpaths",
+    ///                 DefaultService = home.Id,
+    ///                 DefaultRouteAction = new Gcp.Compute.Inputs.RegionUrlMapPathMatcherDefaultRouteActionArgs
+    ///                 {
+    ///                     RequestMirrorPolicy = new Gcp.Compute.Inputs.RegionUrlMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs
+    ///                     {
+    ///                         BackendService = mirror.Id,
+    ///                         MirrorPercent = 75,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Region Url Map Route Rule Mirror Percent
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.RegionHealthCheck("default", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "health-check",
+    ///         HttpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckHttpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var home = new Gcp.Compute.RegionBackendService("home", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "home",
+    ///         PortName = "http",
+    ///         Protocol = "HTTP",
+    ///         TimeoutSec = 10,
+    ///         LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///         HealthChecks = @default.Id,
+    ///     });
+    /// 
+    ///     var mirror = new Gcp.Compute.RegionBackendService("mirror", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "mirror",
+    ///         PortName = "http",
+    ///         Protocol = "HTTP",
+    ///         TimeoutSec = 10,
+    ///         LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///         HealthChecks = @default.Id,
+    ///     });
+    /// 
+    ///     var regionurlmap = new Gcp.Compute.RegionUrlMap("regionurlmap", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "regionurlmap",
+    ///         Description = "Test for path rule route action mirror percent",
+    ///         DefaultService = home.Id,
+    ///         HostRules = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionUrlMapHostRuleArgs
+    ///             {
+    ///                 Hosts = new[]
+    ///                 {
+    ///                     "mysite.com",
+    ///                 },
+    ///                 PathMatcher = "allpaths",
+    ///             },
+    ///         },
+    ///         PathMatchers = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionUrlMapPathMatcherArgs
+    ///             {
+    ///                 Name = "allpaths",
+    ///                 DefaultService = home.Id,
+    ///                 PathRules = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.RegionUrlMapPathMatcherPathRuleArgs
+    ///                     {
+    ///                         Paths = new[]
+    ///                         {
+    ///                             "/home",
+    ///                         },
+    ///                         Service = home.Id,
+    ///                         RouteAction = new Gcp.Compute.Inputs.RegionUrlMapPathMatcherPathRuleRouteActionArgs
+    ///                         {
+    ///                             RequestMirrorPolicy = new Gcp.Compute.Inputs.RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs
+    ///                             {
+    ///                                 BackendService = mirror.Id,
+    ///                                 MirrorPercent = 25,
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

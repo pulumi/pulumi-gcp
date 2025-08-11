@@ -74,6 +74,29 @@ namespace Pulumi.Gcp.Workbench
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var gpuReservation = new Gcp.Compute.Reservation("gpu_reservation", new()
+    ///     {
+    ///         Name = "wbi-reservation",
+    ///         Zone = "us-central1-a",
+    ///         SpecificReservation = new Gcp.Compute.Inputs.ReservationSpecificReservationArgs
+    ///         {
+    ///             Count = 1,
+    ///             InstanceProperties = new Gcp.Compute.Inputs.ReservationSpecificReservationInstancePropertiesArgs
+    ///             {
+    ///                 MachineType = "n1-standard-1",
+    ///                 GuestAccelerators = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs
+    ///                     {
+    ///                         AcceleratorType = "nvidia-tesla-t4",
+    ///                         AcceleratorCount = 1,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         SpecificReservationRequired = false,
+    ///     });
+    /// 
     ///     var instance = new Gcp.Workbench.Instance("instance", new()
     ///     {
     ///         Name = "workbench-instance",
@@ -94,6 +117,16 @@ namespace Pulumi.Gcp.Workbench
     ///                 Project = "cloud-notebooks-managed",
     ///                 Family = "workbench-instances",
     ///             },
+    ///             ReservationAffinity = new Gcp.Workbench.Inputs.InstanceGceSetupReservationAffinityArgs
+    ///             {
+    ///                 ConsumeReservationType = "RESERVATION_ANY",
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             gpuReservation,
     ///         },
     ///     });
     /// 
@@ -182,6 +215,29 @@ namespace Pulumi.Gcp.Workbench
     ///         },
     ///     });
     /// 
+    ///     var gpuReservation = new Gcp.Compute.Reservation("gpu_reservation", new()
+    ///     {
+    ///         Name = "wbi-reservation",
+    ///         Zone = "us-central1-a",
+    ///         SpecificReservation = new Gcp.Compute.Inputs.ReservationSpecificReservationArgs
+    ///         {
+    ///             Count = 1,
+    ///             InstanceProperties = new Gcp.Compute.Inputs.ReservationSpecificReservationInstancePropertiesArgs
+    ///             {
+    ///                 MachineType = "n1-standard-4",
+    ///                 GuestAccelerators = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs
+    ///                     {
+    ///                         AcceleratorType = "nvidia-tesla-t4",
+    ///                         AcceleratorCount = 1,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         SpecificReservationRequired = true,
+    ///     });
+    /// 
     ///     var instance = new Gcp.Workbench.Instance("instance", new()
     ///     {
     ///         Name = "workbench-instance",
@@ -246,6 +302,15 @@ namespace Pulumi.Gcp.Workbench
     ///                 { "terraform", "true" },
     ///                 { "serial-port-logging-enable", "false" },
     ///             },
+    ///             ReservationAffinity = new Gcp.Workbench.Inputs.InstanceGceSetupReservationAffinityArgs
+    ///             {
+    ///                 ConsumeReservationType = "RESERVATION_SPECIFIC",
+    ///                 Key = "compute.googleapis.com/reservation-name",
+    ///                 Values = new[]
+    ///                 {
+    ///                     gpuReservation.Name,
+    ///                 },
+    ///             },
     ///             EnableIpForwarding = true,
     ///             Tags = new[]
     ///             {
@@ -272,6 +337,7 @@ namespace Pulumi.Gcp.Workbench
     ///             mySubnetwork,
     ///             @static,
     ///             actAsPermission,
+    ///             gpuReservation,
     ///         },
     ///     });
     /// 
@@ -308,6 +374,53 @@ namespace Pulumi.Gcp.Workbench
     ///             {
     ///                 ConfidentialInstanceType = "SEV",
     ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Workbench Instance Euc
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var actAsPermission = new Gcp.ServiceAccount.IAMBinding("act_as_permission", new()
+    ///     {
+    ///         ServiceAccountId = "projects/my-project-name/serviceAccounts/1111111111111-compute@developer.gserviceaccount.com",
+    ///         Role = "roles/iam.serviceAccountUser",
+    ///         Members = new[]
+    ///         {
+    ///             "user:example@example.com",
+    ///         },
+    ///     });
+    /// 
+    ///     var instance = new Gcp.Workbench.Instance("instance", new()
+    ///     {
+    ///         Name = "workbench-instance",
+    ///         Location = "us-central1-a",
+    ///         GceSetup = new Gcp.Workbench.Inputs.InstanceGceSetupArgs
+    ///         {
+    ///             MachineType = "e2-standard-4",
+    ///             Metadata = 
+    ///             {
+    ///                 { "terraform", "true" },
+    ///             },
+    ///         },
+    ///         InstanceOwners = new[]
+    ///         {
+    ///             "example@example.com",
+    ///         },
+    ///         EnableManagedEuc = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             actAsPermission,
     ///         },
     ///     });
     /// 
@@ -371,6 +484,12 @@ namespace Pulumi.Gcp.Workbench
         /// </summary>
         [Output("effectiveLabels")]
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
+        /// Flag to enable managed end user credentials for the instance.
+        /// </summary>
+        [Output("enableManagedEuc")]
+        public Output<bool?> EnableManagedEuc { get; private set; } = null!;
 
         /// <summary>
         /// Flag that specifies that a notebook can be accessed with third party
@@ -543,6 +662,12 @@ namespace Pulumi.Gcp.Workbench
         public Input<bool>? DisableProxyAccess { get; set; }
 
         /// <summary>
+        /// Flag to enable managed end user credentials for the instance.
+        /// </summary>
+        [Input("enableManagedEuc")]
+        public Input<bool>? EnableManagedEuc { get; set; }
+
+        /// <summary>
         /// Flag that specifies that a notebook can be accessed with third party
         /// identity provider.
         /// </summary>
@@ -661,6 +786,12 @@ namespace Pulumi.Gcp.Workbench
                 _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// Flag to enable managed end user credentials for the instance.
+        /// </summary>
+        [Input("enableManagedEuc")]
+        public Input<bool>? EnableManagedEuc { get; set; }
 
         /// <summary>
         /// Flag that specifies that a notebook can be accessed with third party

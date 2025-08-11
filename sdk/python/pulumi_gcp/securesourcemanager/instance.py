@@ -23,6 +23,7 @@ class InstanceArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
+                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_key: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  private_config: Optional[pulumi.Input['InstancePrivateConfigArgs']] = None,
@@ -32,6 +33,14 @@ class InstanceArgs:
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[_builtins.str] instance_id: The name for the Instance.
         :param pulumi.Input[_builtins.str] location: The location for the Instance.
+        :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the instance. Setting `ABANDON` allows the resource
+               to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+               and all its contents. Setting `PREVENT` prevents the resource from accidental
+               deletion by erroring out during plan.
+               Default is `DELETE`.  Possible values are:
+               * DELETE
+               * PREVENT
+               * ABANDON
         :param pulumi.Input[_builtins.str] kms_key: Customer-managed encryption key name, in the format projects/*/locations/*/keyRings/*/cryptoKeys/*.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs.
                
@@ -47,6 +56,8 @@ class InstanceArgs:
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "location", location)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if kms_key is not None:
             pulumi.set(__self__, "kms_key", kms_key)
         if labels is not None:
@@ -81,6 +92,25 @@ class InstanceArgs:
     @location.setter
     def location(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "location", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The deletion policy for the instance. Setting `ABANDON` allows the resource
+        to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+        and all its contents. Setting `PREVENT` prevents the resource from accidental
+        deletion by erroring out during plan.
+        Default is `DELETE`.  Possible values are:
+        * DELETE
+        * PREVENT
+        * ABANDON
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKey")
@@ -154,6 +184,7 @@ class InstanceArgs:
 class _InstanceState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  host_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceHostConfigArgs']]]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -171,6 +202,14 @@ class _InstanceState:
         """
         Input properties used for looking up and filtering Instance resources.
         :param pulumi.Input[_builtins.str] create_time: Time the Instance was created in UTC.
+        :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the instance. Setting `ABANDON` allows the resource
+               to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+               and all its contents. Setting `PREVENT` prevents the resource from accidental
+               deletion by erroring out during plan.
+               Default is `DELETE`.  Possible values are:
+               * DELETE
+               * PREVENT
+               * ABANDON
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceHostConfigArgs']]] host_configs: A list of hostnames for this instance.
                Structure is documented below.
@@ -197,6 +236,8 @@ class _InstanceState:
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if host_configs is not None:
@@ -237,6 +278,25 @@ class _InstanceState:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The deletion policy for the instance. Setting `ABANDON` allows the resource
+        to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+        and all its contents. Setting `PREVENT` prevents the resource from accidental
+        deletion by erroring out during plan.
+        Default is `DELETE`.  Possible values are:
+        * DELETE
+        * PREVENT
+        * ABANDON
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
@@ -422,6 +482,7 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_key: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -452,7 +513,8 @@ class Instance(pulumi.CustomResource):
             instance_id="my-instance",
             labels={
                 "foo": "bar",
-            })
+            },
+            deletion_policy="PREVENT")
         ```
         ### Secure Source Manager Instance Cmek
 
@@ -469,6 +531,7 @@ class Instance(pulumi.CustomResource):
             location="us-central1",
             instance_id="my-instance",
             kms_key="my-key",
+            deletion_policy="PREVENT",
             opts = pulumi.ResourceOptions(depends_on=[crypto_key_binding]))
         ```
         ### Secure Source Manager Instance Private
@@ -533,6 +596,7 @@ class Instance(pulumi.CustomResource):
                 "is_private": True,
                 "ca_pool": ca_pool.id,
             },
+            deletion_policy="PREVENT",
             opts = pulumi.ResourceOptions(depends_on=[
                     root_ca,
                     wait120_seconds,
@@ -601,6 +665,7 @@ class Instance(pulumi.CustomResource):
                 "is_private": True,
                 "ca_pool": ca_pool.id,
             },
+            deletion_policy="PREVENT",
             opts = pulumi.ResourceOptions(depends_on=[
                     root_ca,
                     wait120_seconds,
@@ -745,6 +810,7 @@ class Instance(pulumi.CustomResource):
                 "is_private": True,
                 "ca_pool": ca_pool.id,
             },
+            deletion_policy="PREVENT",
             opts = pulumi.ResourceOptions(depends_on=[
                     root_ca,
                     wait120_seconds,
@@ -811,7 +877,8 @@ class Instance(pulumi.CustomResource):
             instance_id="my-instance",
             workforce_identity_federation_config={
                 "enabled": True,
-            })
+            },
+            deletion_policy="PREVENT")
         ```
 
         ## Import
@@ -846,6 +913,14 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the instance. Setting `ABANDON` allows the resource
+               to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+               and all its contents. Setting `PREVENT` prevents the resource from accidental
+               deletion by erroring out during plan.
+               Default is `DELETE`.  Possible values are:
+               * DELETE
+               * PREVENT
+               * ABANDON
         :param pulumi.Input[_builtins.str] instance_id: The name for the Instance.
         :param pulumi.Input[_builtins.str] kms_key: Customer-managed encryption key name, in the format projects/*/locations/*/keyRings/*/cryptoKeys/*.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs.
@@ -889,7 +964,8 @@ class Instance(pulumi.CustomResource):
             instance_id="my-instance",
             labels={
                 "foo": "bar",
-            })
+            },
+            deletion_policy="PREVENT")
         ```
         ### Secure Source Manager Instance Cmek
 
@@ -906,6 +982,7 @@ class Instance(pulumi.CustomResource):
             location="us-central1",
             instance_id="my-instance",
             kms_key="my-key",
+            deletion_policy="PREVENT",
             opts = pulumi.ResourceOptions(depends_on=[crypto_key_binding]))
         ```
         ### Secure Source Manager Instance Private
@@ -970,6 +1047,7 @@ class Instance(pulumi.CustomResource):
                 "is_private": True,
                 "ca_pool": ca_pool.id,
             },
+            deletion_policy="PREVENT",
             opts = pulumi.ResourceOptions(depends_on=[
                     root_ca,
                     wait120_seconds,
@@ -1038,6 +1116,7 @@ class Instance(pulumi.CustomResource):
                 "is_private": True,
                 "ca_pool": ca_pool.id,
             },
+            deletion_policy="PREVENT",
             opts = pulumi.ResourceOptions(depends_on=[
                     root_ca,
                     wait120_seconds,
@@ -1182,6 +1261,7 @@ class Instance(pulumi.CustomResource):
                 "is_private": True,
                 "ca_pool": ca_pool.id,
             },
+            deletion_policy="PREVENT",
             opts = pulumi.ResourceOptions(depends_on=[
                     root_ca,
                     wait120_seconds,
@@ -1248,7 +1328,8 @@ class Instance(pulumi.CustomResource):
             instance_id="my-instance",
             workforce_identity_federation_config={
                 "enabled": True,
-            })
+            },
+            deletion_policy="PREVENT")
         ```
 
         ## Import
@@ -1296,6 +1377,7 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_key: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1312,6 +1394,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
@@ -1344,6 +1427,7 @@ class Instance(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
+            deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             host_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceHostConfigArgs', 'InstanceHostConfigArgsDict']]]]] = None,
             instance_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1366,6 +1450,14 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: Time the Instance was created in UTC.
+        :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the instance. Setting `ABANDON` allows the resource
+               to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+               and all its contents. Setting `PREVENT` prevents the resource from accidental
+               deletion by erroring out during plan.
+               Default is `DELETE`.  Possible values are:
+               * DELETE
+               * PREVENT
+               * ABANDON
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceHostConfigArgs', 'InstanceHostConfigArgsDict']]]] host_configs: A list of hostnames for this instance.
                Structure is documented below.
@@ -1395,6 +1487,7 @@ class Instance(pulumi.CustomResource):
         __props__ = _InstanceState.__new__(_InstanceState)
 
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["host_configs"] = host_configs
         __props__.__dict__["instance_id"] = instance_id
@@ -1418,6 +1511,21 @@ class Instance(pulumi.CustomResource):
         Time the Instance was created in UTC.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The deletion policy for the instance. Setting `ABANDON` allows the resource
+        to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+        and all its contents. Setting `PREVENT` prevents the resource from accidental
+        deletion by erroring out during plan.
+        Default is `DELETE`.  Possible values are:
+        * DELETE
+        * PREVENT
+        * ABANDON
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")

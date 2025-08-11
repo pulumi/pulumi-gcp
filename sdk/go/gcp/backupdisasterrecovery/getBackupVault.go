@@ -69,6 +69,7 @@ type LookupBackupVaultResult struct {
 	Annotations                            map[string]string `pulumi:"annotations"`
 	BackupCount                            string            `pulumi:"backupCount"`
 	BackupMinimumEnforcedRetentionDuration string            `pulumi:"backupMinimumEnforcedRetentionDuration"`
+	BackupRetentionInheritance             string            `pulumi:"backupRetentionInheritance"`
 	BackupVaultId                          string            `pulumi:"backupVaultId"`
 	CreateTime                             string            `pulumi:"createTime"`
 	Deletable                              bool              `pulumi:"deletable"`
@@ -154,6 +155,10 @@ func (o LookupBackupVaultResultOutput) BackupCount() pulumi.StringOutput {
 
 func (o LookupBackupVaultResultOutput) BackupMinimumEnforcedRetentionDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupVaultResult) string { return v.BackupMinimumEnforcedRetentionDuration }).(pulumi.StringOutput)
+}
+
+func (o LookupBackupVaultResultOutput) BackupRetentionInheritance() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackupVaultResult) string { return v.BackupRetentionInheritance }).(pulumi.StringOutput)
 }
 
 func (o LookupBackupVaultResultOutput) BackupVaultId() pulumi.StringOutput {

@@ -302,6 +302,7 @@ import (
 //					NodeSelector: &cloudrunv2.WorkerPoolTemplateNodeSelectorArgs{
 //						Accelerator: pulumi.String("nvidia-l4"),
 //					},
+//					GpuZonalRedundancyDisabled: pulumi.Bool(true),
 //				},
 //			})
 //			if err != nil {

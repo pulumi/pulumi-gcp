@@ -27,6 +27,7 @@ __all__ = [
     'InstanceClusterAutoscalingConfig',
     'InstanceIamBindingCondition',
     'InstanceIamMemberCondition',
+    'SchemaBundleProtoSchema',
     'TableAutomatedBackupPolicy',
     'TableColumnFamily',
     'TableIamBindingCondition',
@@ -640,6 +641,41 @@ class InstanceIamMemberCondition(dict):
         For `bigtable.InstanceIamPolicy` only:
         """
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class SchemaBundleProtoSchema(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "protoDescriptors":
+            suggest = "proto_descriptors"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SchemaBundleProtoSchema. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SchemaBundleProtoSchema.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SchemaBundleProtoSchema.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 proto_descriptors: _builtins.str):
+        """
+        :param _builtins.str proto_descriptors: Base64 encoded content of the file.
+        """
+        pulumi.set(__self__, "proto_descriptors", proto_descriptors)
+
+    @_builtins.property
+    @pulumi.getter(name="protoDescriptors")
+    def proto_descriptors(self) -> _builtins.str:
+        """
+        Base64 encoded content of the file.
+        """
+        return pulumi.get(self, "proto_descriptors")
 
 
 @pulumi.output_type

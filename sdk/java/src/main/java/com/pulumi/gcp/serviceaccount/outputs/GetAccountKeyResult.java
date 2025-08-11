@@ -19,6 +19,12 @@ public final class GetAccountKeyResult {
     private String id;
     private String keyAlgorithm;
     private String name;
+    /**
+     * @deprecated
+     * `project` is deprecated and will be removed in a future major release. This field is non-functional and can be removed from your configuration safely.
+     * 
+     */
+    @Deprecated /* `project` is deprecated and will be removed in a future major release. This field is non-functional and can be removed from your configuration safely. */
     private @Nullable String project;
     /**
      * @return The public key, base64 encoded
@@ -41,6 +47,12 @@ public final class GetAccountKeyResult {
     public String name() {
         return this.name;
     }
+    /**
+     * @deprecated
+     * `project` is deprecated and will be removed in a future major release. This field is non-functional and can be removed from your configuration safely.
+     * 
+     */
+    @Deprecated /* `project` is deprecated and will be removed in a future major release. This field is non-functional and can be removed from your configuration safely. */
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }

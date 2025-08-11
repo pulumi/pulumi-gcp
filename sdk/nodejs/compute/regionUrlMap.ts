@@ -806,6 +806,218 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * ### Region Url Map Default Mirror Percent
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.RegionHealthCheck("default", {
+ *     region: "us-central1",
+ *     name: "health-check",
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const home = new gcp.compute.RegionBackendService("home", {
+ *     region: "us-central1",
+ *     name: "home",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ *     healthChecks: _default.id,
+ * });
+ * const mirror = new gcp.compute.RegionBackendService("mirror", {
+ *     region: "us-central1",
+ *     name: "mirror",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ *     healthChecks: _default.id,
+ * });
+ * const regionurlmap = new gcp.compute.RegionUrlMap("regionurlmap", {
+ *     region: "us-central1",
+ *     name: "regionurlmap",
+ *     description: "Test for default route action mirror percent",
+ *     defaultService: home.id,
+ *     defaultRouteAction: {
+ *         requestMirrorPolicy: {
+ *             backendService: mirror.id,
+ *             mirrorPercent: 50,
+ *         },
+ *     },
+ *     hostRules: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     pathMatchers: [{
+ *         name: "allpaths",
+ *         defaultService: home.id,
+ *     }],
+ * });
+ * ```
+ * ### Region Url Map Path Matcher Default Mirror Percent
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.RegionHealthCheck("default", {
+ *     region: "us-central1",
+ *     name: "health-check",
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const home = new gcp.compute.RegionBackendService("home", {
+ *     region: "us-central1",
+ *     name: "home",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ *     healthChecks: _default.id,
+ * });
+ * const mirror = new gcp.compute.RegionBackendService("mirror", {
+ *     region: "us-central1",
+ *     name: "mirror",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ *     healthChecks: _default.id,
+ * });
+ * const regionurlmap = new gcp.compute.RegionUrlMap("regionurlmap", {
+ *     region: "us-central1",
+ *     name: "regionurlmap",
+ *     description: "Test for default route action mirror percent",
+ *     defaultService: home.id,
+ *     defaultRouteAction: {
+ *         requestMirrorPolicy: {
+ *             backendService: mirror.id,
+ *             mirrorPercent: 50,
+ *         },
+ *     },
+ *     hostRules: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     pathMatchers: [{
+ *         name: "allpaths",
+ *         defaultService: home.id,
+ *     }],
+ * });
+ * ```
+ * ### Region Url Map Path Rule Mirror Percent
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.RegionHealthCheck("default", {
+ *     region: "us-central1",
+ *     name: "health-check",
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const home = new gcp.compute.RegionBackendService("home", {
+ *     region: "us-central1",
+ *     name: "home",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ *     healthChecks: _default.id,
+ * });
+ * const mirror = new gcp.compute.RegionBackendService("mirror", {
+ *     region: "us-central1",
+ *     name: "mirror",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ *     healthChecks: _default.id,
+ * });
+ * const regionurlmap = new gcp.compute.RegionUrlMap("regionurlmap", {
+ *     region: "us-central1",
+ *     name: "regionurlmap",
+ *     description: "Test for path matcher default route action mirror percent",
+ *     defaultService: home.id,
+ *     hostRules: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     pathMatchers: [{
+ *         name: "allpaths",
+ *         defaultService: home.id,
+ *         defaultRouteAction: {
+ *             requestMirrorPolicy: {
+ *                 backendService: mirror.id,
+ *                 mirrorPercent: 75,
+ *             },
+ *         },
+ *     }],
+ * });
+ * ```
+ * ### Region Url Map Route Rule Mirror Percent
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.RegionHealthCheck("default", {
+ *     region: "us-central1",
+ *     name: "health-check",
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const home = new gcp.compute.RegionBackendService("home", {
+ *     region: "us-central1",
+ *     name: "home",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ *     healthChecks: _default.id,
+ * });
+ * const mirror = new gcp.compute.RegionBackendService("mirror", {
+ *     region: "us-central1",
+ *     name: "mirror",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ *     healthChecks: _default.id,
+ * });
+ * const regionurlmap = new gcp.compute.RegionUrlMap("regionurlmap", {
+ *     region: "us-central1",
+ *     name: "regionurlmap",
+ *     description: "Test for path rule route action mirror percent",
+ *     defaultService: home.id,
+ *     hostRules: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     pathMatchers: [{
+ *         name: "allpaths",
+ *         defaultService: home.id,
+ *         pathRules: [{
+ *             paths: ["/home"],
+ *             service: home.id,
+ *             routeAction: {
+ *                 requestMirrorPolicy: {
+ *                     backendService: mirror.id,
+ *                     mirrorPercent: 25,
+ *                 },
+ *             },
+ *         }],
+ *     }],
+ * });
+ * ```
  *
  * ## Import
  *

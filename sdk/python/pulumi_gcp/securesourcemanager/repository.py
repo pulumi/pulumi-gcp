@@ -24,6 +24,7 @@ class RepositoryArgs:
                  instance: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  repository_id: pulumi.Input[_builtins.str],
+                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  initial_config: Optional[pulumi.Input['RepositoryInitialConfigArgs']] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None):
@@ -32,6 +33,14 @@ class RepositoryArgs:
         :param pulumi.Input[_builtins.str] instance: The name of the instance in which the repository is hosted.
         :param pulumi.Input[_builtins.str] location: The location for the Repository.
         :param pulumi.Input[_builtins.str] repository_id: The ID for the Repository.
+        :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the repository. Setting `ABANDON` allows the resource
+               to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+               and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
+               by erroring out during plan.
+               Default is `DELETE`.  Possible values are:
+               * DELETE
+               * PREVENT
+               * ABANDON
         :param pulumi.Input[_builtins.str] description: Description of the repository, which cannot exceed 500 characters.
         :param pulumi.Input['RepositoryInitialConfigArgs'] initial_config: Initial configurations for the repository.
                Structure is documented below.
@@ -41,6 +50,8 @@ class RepositoryArgs:
         pulumi.set(__self__, "instance", instance)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "repository_id", repository_id)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if initial_config is not None:
@@ -85,6 +96,25 @@ class RepositoryArgs:
         pulumi.set(self, "repository_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The deletion policy for the repository. Setting `ABANDON` allows the resource
+        to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+        and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
+        by erroring out during plan.
+        Default is `DELETE`.  Possible values are:
+        * DELETE
+        * PREVENT
+        * ABANDON
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -127,6 +157,7 @@ class RepositoryArgs:
 class _RepositoryState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  initial_config: Optional[pulumi.Input['RepositoryInitialConfigArgs']] = None,
                  instance: Optional[pulumi.Input[_builtins.str]] = None,
@@ -140,6 +171,14 @@ class _RepositoryState:
         """
         Input properties used for looking up and filtering Repository resources.
         :param pulumi.Input[_builtins.str] create_time: Time the repository was created in UTC.
+        :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the repository. Setting `ABANDON` allows the resource
+               to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+               and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
+               by erroring out during plan.
+               Default is `DELETE`.  Possible values are:
+               * DELETE
+               * PREVENT
+               * ABANDON
         :param pulumi.Input[_builtins.str] description: Description of the repository, which cannot exceed 500 characters.
         :param pulumi.Input['RepositoryInitialConfigArgs'] initial_config: Initial configurations for the repository.
                Structure is documented below.
@@ -156,6 +195,8 @@ class _RepositoryState:
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if initial_config is not None:
@@ -188,6 +229,25 @@ class _RepositoryState:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The deletion policy for the repository. Setting `ABANDON` allows the resource
+        to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+        and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
+        by erroring out during plan.
+        Default is `DELETE`.  Possible values are:
+        * DELETE
+        * PREVENT
+        * ABANDON
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -319,6 +379,7 @@ class Repository(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  initial_config: Optional[pulumi.Input[Union['RepositoryInitialConfigArgs', 'RepositoryInitialConfigArgsDict']]] = None,
                  instance: Optional[pulumi.Input[_builtins.str]] = None,
@@ -345,11 +406,13 @@ class Repository(pulumi.CustomResource):
 
         instance = gcp.securesourcemanager.Instance("instance",
             location="us-central1",
-            instance_id="my-instance")
+            instance_id="my-instance",
+            deletion_policy="PREVENT")
         default = gcp.securesourcemanager.Repository("default",
             location="us-central1",
             repository_id="my-repository",
-            instance=instance.name)
+            instance=instance.name,
+            deletion_policy="PREVENT")
         ```
         ### Secure Source Manager Repository Initial Config
 
@@ -359,7 +422,8 @@ class Repository(pulumi.CustomResource):
 
         instance = gcp.securesourcemanager.Instance("instance",
             location="us-central1",
-            instance_id="my-instance")
+            instance_id="my-instance",
+            deletion_policy="PREVENT")
         default = gcp.securesourcemanager.Repository("default",
             location="us-central1",
             repository_id="my-repository",
@@ -370,7 +434,8 @@ class Repository(pulumi.CustomResource):
                 "gitignores": ["python"],
                 "license": "mit",
                 "readme": "default",
-            })
+            },
+            deletion_policy="PREVENT")
         ```
 
         ## Import
@@ -405,6 +470,14 @@ class Repository(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the repository. Setting `ABANDON` allows the resource
+               to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+               and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
+               by erroring out during plan.
+               Default is `DELETE`.  Possible values are:
+               * DELETE
+               * PREVENT
+               * ABANDON
         :param pulumi.Input[_builtins.str] description: Description of the repository, which cannot exceed 500 characters.
         :param pulumi.Input[Union['RepositoryInitialConfigArgs', 'RepositoryInitialConfigArgsDict']] initial_config: Initial configurations for the repository.
                Structure is documented below.
@@ -439,11 +512,13 @@ class Repository(pulumi.CustomResource):
 
         instance = gcp.securesourcemanager.Instance("instance",
             location="us-central1",
-            instance_id="my-instance")
+            instance_id="my-instance",
+            deletion_policy="PREVENT")
         default = gcp.securesourcemanager.Repository("default",
             location="us-central1",
             repository_id="my-repository",
-            instance=instance.name)
+            instance=instance.name,
+            deletion_policy="PREVENT")
         ```
         ### Secure Source Manager Repository Initial Config
 
@@ -453,7 +528,8 @@ class Repository(pulumi.CustomResource):
 
         instance = gcp.securesourcemanager.Instance("instance",
             location="us-central1",
-            instance_id="my-instance")
+            instance_id="my-instance",
+            deletion_policy="PREVENT")
         default = gcp.securesourcemanager.Repository("default",
             location="us-central1",
             repository_id="my-repository",
@@ -464,7 +540,8 @@ class Repository(pulumi.CustomResource):
                 "gitignores": ["python"],
                 "license": "mit",
                 "readme": "default",
-            })
+            },
+            deletion_policy="PREVENT")
         ```
 
         ## Import
@@ -512,6 +589,7 @@ class Repository(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  initial_config: Optional[pulumi.Input[Union['RepositoryInitialConfigArgs', 'RepositoryInitialConfigArgsDict']]] = None,
                  instance: Optional[pulumi.Input[_builtins.str]] = None,
@@ -527,6 +605,7 @@ class Repository(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RepositoryArgs.__new__(RepositoryArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["initial_config"] = initial_config
             if instance is None and not opts.urn:
@@ -555,6 +634,7 @@ class Repository(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
+            deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             initial_config: Optional[pulumi.Input[Union['RepositoryInitialConfigArgs', 'RepositoryInitialConfigArgsDict']]] = None,
             instance: Optional[pulumi.Input[_builtins.str]] = None,
@@ -573,6 +653,14 @@ class Repository(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: Time the repository was created in UTC.
+        :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the repository. Setting `ABANDON` allows the resource
+               to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+               and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
+               by erroring out during plan.
+               Default is `DELETE`.  Possible values are:
+               * DELETE
+               * PREVENT
+               * ABANDON
         :param pulumi.Input[_builtins.str] description: Description of the repository, which cannot exceed 500 characters.
         :param pulumi.Input[Union['RepositoryInitialConfigArgs', 'RepositoryInitialConfigArgsDict']] initial_config: Initial configurations for the repository.
                Structure is documented below.
@@ -592,6 +680,7 @@ class Repository(pulumi.CustomResource):
         __props__ = _RepositoryState.__new__(_RepositoryState)
 
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["initial_config"] = initial_config
         __props__.__dict__["instance"] = instance
@@ -611,6 +700,21 @@ class Repository(pulumi.CustomResource):
         Time the repository was created in UTC.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The deletion policy for the repository. Setting `ABANDON` allows the resource
+        to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
+        and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
+        by erroring out during plan.
+        Default is `DELETE`.  Possible values are:
+        * DELETE
+        * PREVENT
+        * ABANDON
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

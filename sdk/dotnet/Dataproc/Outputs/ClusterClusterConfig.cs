@@ -32,6 +32,10 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly string? Bucket;
         /// <summary>
+        /// The tier of the cluster.
+        /// </summary>
+        public readonly string? ClusterTier;
+        /// <summary>
         /// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
         /// Structure defined below.
         /// </summary>
@@ -119,6 +123,8 @@ namespace Pulumi.Gcp.Dataproc.Outputs
 
             string? bucket,
 
+            string? clusterTier,
+
             Outputs.ClusterClusterConfigDataprocMetricConfig? dataprocMetricConfig,
 
             Outputs.ClusterClusterConfigEncryptionConfig? encryptionConfig,
@@ -150,6 +156,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
             AutoscalingConfig = autoscalingConfig;
             AuxiliaryNodeGroups = auxiliaryNodeGroups;
             Bucket = bucket;
+            ClusterTier = clusterTier;
             DataprocMetricConfig = dataprocMetricConfig;
             EncryptionConfig = encryptionConfig;
             EndpointConfig = endpointConfig;

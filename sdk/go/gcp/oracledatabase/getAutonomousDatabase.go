@@ -82,6 +82,8 @@ type LookupAutonomousDatabaseResult struct {
 	Location     string                          `pulumi:"location"`
 	Name         string                          `pulumi:"name"`
 	Network      string                          `pulumi:"network"`
+	OdbNetwork   string                          `pulumi:"odbNetwork"`
+	OdbSubnet    string                          `pulumi:"odbSubnet"`
 	Project      *string                         `pulumi:"project"`
 	Properties   []GetAutonomousDatabaseProperty `pulumi:"properties"`
 	PulumiLabels map[string]string               `pulumi:"pulumiLabels"`
@@ -183,6 +185,14 @@ func (o LookupAutonomousDatabaseResultOutput) Name() pulumi.StringOutput {
 
 func (o LookupAutonomousDatabaseResultOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAutonomousDatabaseResult) string { return v.Network }).(pulumi.StringOutput)
+}
+
+func (o LookupAutonomousDatabaseResultOutput) OdbNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAutonomousDatabaseResult) string { return v.OdbNetwork }).(pulumi.StringOutput)
+}
+
+func (o LookupAutonomousDatabaseResultOutput) OdbSubnet() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAutonomousDatabaseResult) string { return v.OdbSubnet }).(pulumi.StringOutput)
 }
 
 func (o LookupAutonomousDatabaseResultOutput) Project() pulumi.StringPtrOutput {

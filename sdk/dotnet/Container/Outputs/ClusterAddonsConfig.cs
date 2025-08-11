@@ -82,6 +82,19 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.ClusterAddonsConfigKalmConfig? KalmConfig;
         /// <summary>
+        /// The status of the Lustre CSI driver addon,
+        /// which allows the usage of a Lustre instances as volumes.
+        /// It is disabled by default for Standard clusters; set `enabled = true` to enable.
+        /// It is disabled by default for Autopilot clusters; set `enabled = true` to enable.
+        /// Lustre CSI Driver Config has optional subfield
+        /// `enable_legacy_lustre_port` which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988.
+        /// This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
+        /// See [Enable Lustre CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/lustre-csi-driver-new-volume) for more information.
+        /// 
+        /// This example `addons_config` disables two addons:
+        /// </summary>
+        public readonly Outputs.ClusterAddonsConfigLustreCsiDriverConfig? LustreCsiDriverConfig;
+        /// <summary>
         /// Whether we should enable the network policy addon
         /// for the master.  This must be enabled in order to enable network policy for the nodes.
         /// To enable this, you must also define a `network_policy` block,
@@ -96,8 +109,6 @@ namespace Pulumi.Gcp.Container.Outputs
         /// It is disabled by default for Standard clusters; set `enabled = true` to enable.
         /// It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
         /// See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
-        /// 
-        /// This example `addons_config` disables two addons:
         /// </summary>
         public readonly Outputs.ClusterAddonsConfigParallelstoreCsiDriverConfig? ParallelstoreCsiDriverConfig;
         /// <summary>
@@ -146,6 +157,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             Outputs.ClusterAddonsConfigKalmConfig? kalmConfig,
 
+            Outputs.ClusterAddonsConfigLustreCsiDriverConfig? lustreCsiDriverConfig,
+
             Outputs.ClusterAddonsConfigNetworkPolicyConfig? networkPolicyConfig,
 
             Outputs.ClusterAddonsConfigParallelstoreCsiDriverConfig? parallelstoreCsiDriverConfig,
@@ -165,6 +178,7 @@ namespace Pulumi.Gcp.Container.Outputs
             HttpLoadBalancing = httpLoadBalancing;
             IstioConfig = istioConfig;
             KalmConfig = kalmConfig;
+            LustreCsiDriverConfig = lustreCsiDriverConfig;
             NetworkPolicyConfig = networkPolicyConfig;
             ParallelstoreCsiDriverConfig = parallelstoreCsiDriverConfig;
             RayOperatorConfigs = rayOperatorConfigs;

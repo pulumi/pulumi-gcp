@@ -16,6 +16,11 @@ public final class GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestri
      * 
      */
     private @Nullable String clientId;
+    /**
+     * @return The name of the application. Example: &#34;Cloud Console&#34;
+     * 
+     */
+    private @Nullable String name;
 
     private GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication() {}
     /**
@@ -24,6 +29,13 @@ public final class GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestri
      */
     public Optional<String> clientId() {
         return Optional.ofNullable(this.clientId);
+    }
+    /**
+     * @return The name of the application. Example: &#34;Cloud Console&#34;
+     * 
+     */
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
 
     public static Builder builder() {
@@ -36,10 +48,12 @@ public final class GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestri
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String clientId;
+        private @Nullable String name;
         public Builder() {}
         public Builder(GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clientId = defaults.clientId;
+    	      this.name = defaults.name;
         }
 
         @CustomType.Setter
@@ -48,9 +62,16 @@ public final class GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestri
             this.clientId = clientId;
             return this;
         }
+        @CustomType.Setter
+        public Builder name(@Nullable String name) {
+
+            this.name = name;
+            return this;
+        }
         public GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication build() {
             final var _resultValue = new GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication();
             _resultValue.clientId = clientId;
+            _resultValue.name = name;
             return _resultValue;
         }
     }

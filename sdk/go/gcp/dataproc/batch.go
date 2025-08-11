@@ -188,6 +188,9 @@ import (
 //						NetworkUri:     pulumi.String("default"),
 //						ServiceAccount: pulumi.Sprintf("%v-compute@developer.gserviceaccount.com", project.Number),
 //						StagingBucket:  bucket.Name,
+//						AuthenticationConfig: &dataproc.BatchEnvironmentConfigExecutionConfigAuthenticationConfigArgs{
+//							UserWorkloadAuthenticationType: pulumi.String("SERVICE_ACCOUNT"),
+//						},
 //					},
 //					PeripheralsConfig: &dataproc.BatchEnvironmentConfigPeripheralsConfigArgs{
 //						MetastoreService: ms.Name,

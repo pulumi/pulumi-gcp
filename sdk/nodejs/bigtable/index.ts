@@ -60,6 +60,11 @@ export type MaterializedView = import("./materializedView").MaterializedView;
 export const MaterializedView: typeof import("./materializedView").MaterializedView = null as any;
 utilities.lazyLoad(exports, ["MaterializedView"], () => require("./materializedView"));
 
+export { SchemaBundleArgs, SchemaBundleState } from "./schemaBundle";
+export type SchemaBundle = import("./schemaBundle").SchemaBundle;
+export const SchemaBundle: typeof import("./schemaBundle").SchemaBundle = null as any;
+utilities.lazyLoad(exports, ["SchemaBundle"], () => require("./schemaBundle"));
+
 export { TableArgs, TableState } from "./table";
 export type Table = import("./table").Table;
 export const Table: typeof import("./table").Table = null as any;
@@ -103,6 +108,8 @@ const _module = {
                 return new LogicalView(name, <any>undefined, { urn })
             case "gcp:bigtable/materializedView:MaterializedView":
                 return new MaterializedView(name, <any>undefined, { urn })
+            case "gcp:bigtable/schemaBundle:SchemaBundle":
+                return new SchemaBundle(name, <any>undefined, { urn })
             case "gcp:bigtable/table:Table":
                 return new Table(name, <any>undefined, { urn })
             case "gcp:bigtable/tableIamBinding:TableIamBinding":
@@ -125,6 +132,7 @@ pulumi.runtime.registerResourceModule("gcp", "bigtable/instanceIamMember", _modu
 pulumi.runtime.registerResourceModule("gcp", "bigtable/instanceIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigtable/logicalView", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigtable/materializedView", _module)
+pulumi.runtime.registerResourceModule("gcp", "bigtable/schemaBundle", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigtable/table", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigtable/tableIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigtable/tableIamMember", _module)

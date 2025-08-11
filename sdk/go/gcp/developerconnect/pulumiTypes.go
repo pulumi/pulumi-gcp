@@ -4038,6 +4038,1193 @@ func (o ConnectionInstallationStateArrayOutput) Index(i pulumi.IntInput) Connect
 	}).(ConnectionInstallationStateOutput)
 }
 
+type InsightsConfigArtifactConfig struct {
+	// Google Artifact Analysis configurations.
+	// Structure is documented below.
+	GoogleArtifactAnalysis *InsightsConfigArtifactConfigGoogleArtifactAnalysis `pulumi:"googleArtifactAnalysis"`
+	// Google Artifact Registry configurations.
+	// Structure is documented below.
+	GoogleArtifactRegistry *InsightsConfigArtifactConfigGoogleArtifactRegistry `pulumi:"googleArtifactRegistry"`
+	// The URI of the artifact that is deployed.
+	// e.g. `us-docker.pkg.dev/my-project/my-repo/image`.
+	// The URI does not include the tag / digest because it captures a lineage of
+	// artifacts.
+	Uri *string `pulumi:"uri"`
+}
+
+// InsightsConfigArtifactConfigInput is an input type that accepts InsightsConfigArtifactConfigArgs and InsightsConfigArtifactConfigOutput values.
+// You can construct a concrete instance of `InsightsConfigArtifactConfigInput` via:
+//
+//	InsightsConfigArtifactConfigArgs{...}
+type InsightsConfigArtifactConfigInput interface {
+	pulumi.Input
+
+	ToInsightsConfigArtifactConfigOutput() InsightsConfigArtifactConfigOutput
+	ToInsightsConfigArtifactConfigOutputWithContext(context.Context) InsightsConfigArtifactConfigOutput
+}
+
+type InsightsConfigArtifactConfigArgs struct {
+	// Google Artifact Analysis configurations.
+	// Structure is documented below.
+	GoogleArtifactAnalysis InsightsConfigArtifactConfigGoogleArtifactAnalysisPtrInput `pulumi:"googleArtifactAnalysis"`
+	// Google Artifact Registry configurations.
+	// Structure is documented below.
+	GoogleArtifactRegistry InsightsConfigArtifactConfigGoogleArtifactRegistryPtrInput `pulumi:"googleArtifactRegistry"`
+	// The URI of the artifact that is deployed.
+	// e.g. `us-docker.pkg.dev/my-project/my-repo/image`.
+	// The URI does not include the tag / digest because it captures a lineage of
+	// artifacts.
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+func (InsightsConfigArtifactConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsConfigArtifactConfig)(nil)).Elem()
+}
+
+func (i InsightsConfigArtifactConfigArgs) ToInsightsConfigArtifactConfigOutput() InsightsConfigArtifactConfigOutput {
+	return i.ToInsightsConfigArtifactConfigOutputWithContext(context.Background())
+}
+
+func (i InsightsConfigArtifactConfigArgs) ToInsightsConfigArtifactConfigOutputWithContext(ctx context.Context) InsightsConfigArtifactConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsConfigArtifactConfigOutput)
+}
+
+// InsightsConfigArtifactConfigArrayInput is an input type that accepts InsightsConfigArtifactConfigArray and InsightsConfigArtifactConfigArrayOutput values.
+// You can construct a concrete instance of `InsightsConfigArtifactConfigArrayInput` via:
+//
+//	InsightsConfigArtifactConfigArray{ InsightsConfigArtifactConfigArgs{...} }
+type InsightsConfigArtifactConfigArrayInput interface {
+	pulumi.Input
+
+	ToInsightsConfigArtifactConfigArrayOutput() InsightsConfigArtifactConfigArrayOutput
+	ToInsightsConfigArtifactConfigArrayOutputWithContext(context.Context) InsightsConfigArtifactConfigArrayOutput
+}
+
+type InsightsConfigArtifactConfigArray []InsightsConfigArtifactConfigInput
+
+func (InsightsConfigArtifactConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InsightsConfigArtifactConfig)(nil)).Elem()
+}
+
+func (i InsightsConfigArtifactConfigArray) ToInsightsConfigArtifactConfigArrayOutput() InsightsConfigArtifactConfigArrayOutput {
+	return i.ToInsightsConfigArtifactConfigArrayOutputWithContext(context.Background())
+}
+
+func (i InsightsConfigArtifactConfigArray) ToInsightsConfigArtifactConfigArrayOutputWithContext(ctx context.Context) InsightsConfigArtifactConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsConfigArtifactConfigArrayOutput)
+}
+
+type InsightsConfigArtifactConfigOutput struct{ *pulumi.OutputState }
+
+func (InsightsConfigArtifactConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsConfigArtifactConfig)(nil)).Elem()
+}
+
+func (o InsightsConfigArtifactConfigOutput) ToInsightsConfigArtifactConfigOutput() InsightsConfigArtifactConfigOutput {
+	return o
+}
+
+func (o InsightsConfigArtifactConfigOutput) ToInsightsConfigArtifactConfigOutputWithContext(ctx context.Context) InsightsConfigArtifactConfigOutput {
+	return o
+}
+
+// Google Artifact Analysis configurations.
+// Structure is documented below.
+func (o InsightsConfigArtifactConfigOutput) GoogleArtifactAnalysis() InsightsConfigArtifactConfigGoogleArtifactAnalysisPtrOutput {
+	return o.ApplyT(func(v InsightsConfigArtifactConfig) *InsightsConfigArtifactConfigGoogleArtifactAnalysis {
+		return v.GoogleArtifactAnalysis
+	}).(InsightsConfigArtifactConfigGoogleArtifactAnalysisPtrOutput)
+}
+
+// Google Artifact Registry configurations.
+// Structure is documented below.
+func (o InsightsConfigArtifactConfigOutput) GoogleArtifactRegistry() InsightsConfigArtifactConfigGoogleArtifactRegistryPtrOutput {
+	return o.ApplyT(func(v InsightsConfigArtifactConfig) *InsightsConfigArtifactConfigGoogleArtifactRegistry {
+		return v.GoogleArtifactRegistry
+	}).(InsightsConfigArtifactConfigGoogleArtifactRegistryPtrOutput)
+}
+
+// The URI of the artifact that is deployed.
+// e.g. `us-docker.pkg.dev/my-project/my-repo/image`.
+// The URI does not include the tag / digest because it captures a lineage of
+// artifacts.
+func (o InsightsConfigArtifactConfigOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InsightsConfigArtifactConfig) *string { return v.Uri }).(pulumi.StringPtrOutput)
+}
+
+type InsightsConfigArtifactConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (InsightsConfigArtifactConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InsightsConfigArtifactConfig)(nil)).Elem()
+}
+
+func (o InsightsConfigArtifactConfigArrayOutput) ToInsightsConfigArtifactConfigArrayOutput() InsightsConfigArtifactConfigArrayOutput {
+	return o
+}
+
+func (o InsightsConfigArtifactConfigArrayOutput) ToInsightsConfigArtifactConfigArrayOutputWithContext(ctx context.Context) InsightsConfigArtifactConfigArrayOutput {
+	return o
+}
+
+func (o InsightsConfigArtifactConfigArrayOutput) Index(i pulumi.IntInput) InsightsConfigArtifactConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InsightsConfigArtifactConfig {
+		return vs[0].([]InsightsConfigArtifactConfig)[vs[1].(int)]
+	}).(InsightsConfigArtifactConfigOutput)
+}
+
+type InsightsConfigArtifactConfigGoogleArtifactAnalysis struct {
+	// The project id of the project where the provenance is stored.
+	ProjectId string `pulumi:"projectId"`
+}
+
+// InsightsConfigArtifactConfigGoogleArtifactAnalysisInput is an input type that accepts InsightsConfigArtifactConfigGoogleArtifactAnalysisArgs and InsightsConfigArtifactConfigGoogleArtifactAnalysisOutput values.
+// You can construct a concrete instance of `InsightsConfigArtifactConfigGoogleArtifactAnalysisInput` via:
+//
+//	InsightsConfigArtifactConfigGoogleArtifactAnalysisArgs{...}
+type InsightsConfigArtifactConfigGoogleArtifactAnalysisInput interface {
+	pulumi.Input
+
+	ToInsightsConfigArtifactConfigGoogleArtifactAnalysisOutput() InsightsConfigArtifactConfigGoogleArtifactAnalysisOutput
+	ToInsightsConfigArtifactConfigGoogleArtifactAnalysisOutputWithContext(context.Context) InsightsConfigArtifactConfigGoogleArtifactAnalysisOutput
+}
+
+type InsightsConfigArtifactConfigGoogleArtifactAnalysisArgs struct {
+	// The project id of the project where the provenance is stored.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+}
+
+func (InsightsConfigArtifactConfigGoogleArtifactAnalysisArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsConfigArtifactConfigGoogleArtifactAnalysis)(nil)).Elem()
+}
+
+func (i InsightsConfigArtifactConfigGoogleArtifactAnalysisArgs) ToInsightsConfigArtifactConfigGoogleArtifactAnalysisOutput() InsightsConfigArtifactConfigGoogleArtifactAnalysisOutput {
+	return i.ToInsightsConfigArtifactConfigGoogleArtifactAnalysisOutputWithContext(context.Background())
+}
+
+func (i InsightsConfigArtifactConfigGoogleArtifactAnalysisArgs) ToInsightsConfigArtifactConfigGoogleArtifactAnalysisOutputWithContext(ctx context.Context) InsightsConfigArtifactConfigGoogleArtifactAnalysisOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsConfigArtifactConfigGoogleArtifactAnalysisOutput)
+}
+
+func (i InsightsConfigArtifactConfigGoogleArtifactAnalysisArgs) ToInsightsConfigArtifactConfigGoogleArtifactAnalysisPtrOutput() InsightsConfigArtifactConfigGoogleArtifactAnalysisPtrOutput {
+	return i.ToInsightsConfigArtifactConfigGoogleArtifactAnalysisPtrOutputWithContext(context.Background())
+}
+
+func (i InsightsConfigArtifactConfigGoogleArtifactAnalysisArgs) ToInsightsConfigArtifactConfigGoogleArtifactAnalysisPtrOutputWithContext(ctx context.Context) InsightsConfigArtifactConfigGoogleArtifactAnalysisPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsConfigArtifactConfigGoogleArtifactAnalysisOutput).ToInsightsConfigArtifactConfigGoogleArtifactAnalysisPtrOutputWithContext(ctx)
+}
+
+// InsightsConfigArtifactConfigGoogleArtifactAnalysisPtrInput is an input type that accepts InsightsConfigArtifactConfigGoogleArtifactAnalysisArgs, InsightsConfigArtifactConfigGoogleArtifactAnalysisPtr and InsightsConfigArtifactConfigGoogleArtifactAnalysisPtrOutput values.
+// You can construct a concrete instance of `InsightsConfigArtifactConfigGoogleArtifactAnalysisPtrInput` via:
+//
+//	        InsightsConfigArtifactConfigGoogleArtifactAnalysisArgs{...}
+//
+//	or:
+//
+//	        nil
+type InsightsConfigArtifactConfigGoogleArtifactAnalysisPtrInput interface {
+	pulumi.Input
+
+	ToInsightsConfigArtifactConfigGoogleArtifactAnalysisPtrOutput() InsightsConfigArtifactConfigGoogleArtifactAnalysisPtrOutput
+	ToInsightsConfigArtifactConfigGoogleArtifactAnalysisPtrOutputWithContext(context.Context) InsightsConfigArtifactConfigGoogleArtifactAnalysisPtrOutput
+}
+
+type insightsConfigArtifactConfigGoogleArtifactAnalysisPtrType InsightsConfigArtifactConfigGoogleArtifactAnalysisArgs
+
+func InsightsConfigArtifactConfigGoogleArtifactAnalysisPtr(v *InsightsConfigArtifactConfigGoogleArtifactAnalysisArgs) InsightsConfigArtifactConfigGoogleArtifactAnalysisPtrInput {
+	return (*insightsConfigArtifactConfigGoogleArtifactAnalysisPtrType)(v)
+}
+
+func (*insightsConfigArtifactConfigGoogleArtifactAnalysisPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InsightsConfigArtifactConfigGoogleArtifactAnalysis)(nil)).Elem()
+}
+
+func (i *insightsConfigArtifactConfigGoogleArtifactAnalysisPtrType) ToInsightsConfigArtifactConfigGoogleArtifactAnalysisPtrOutput() InsightsConfigArtifactConfigGoogleArtifactAnalysisPtrOutput {
+	return i.ToInsightsConfigArtifactConfigGoogleArtifactAnalysisPtrOutputWithContext(context.Background())
+}
+
+func (i *insightsConfigArtifactConfigGoogleArtifactAnalysisPtrType) ToInsightsConfigArtifactConfigGoogleArtifactAnalysisPtrOutputWithContext(ctx context.Context) InsightsConfigArtifactConfigGoogleArtifactAnalysisPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsConfigArtifactConfigGoogleArtifactAnalysisPtrOutput)
+}
+
+type InsightsConfigArtifactConfigGoogleArtifactAnalysisOutput struct{ *pulumi.OutputState }
+
+func (InsightsConfigArtifactConfigGoogleArtifactAnalysisOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsConfigArtifactConfigGoogleArtifactAnalysis)(nil)).Elem()
+}
+
+func (o InsightsConfigArtifactConfigGoogleArtifactAnalysisOutput) ToInsightsConfigArtifactConfigGoogleArtifactAnalysisOutput() InsightsConfigArtifactConfigGoogleArtifactAnalysisOutput {
+	return o
+}
+
+func (o InsightsConfigArtifactConfigGoogleArtifactAnalysisOutput) ToInsightsConfigArtifactConfigGoogleArtifactAnalysisOutputWithContext(ctx context.Context) InsightsConfigArtifactConfigGoogleArtifactAnalysisOutput {
+	return o
+}
+
+func (o InsightsConfigArtifactConfigGoogleArtifactAnalysisOutput) ToInsightsConfigArtifactConfigGoogleArtifactAnalysisPtrOutput() InsightsConfigArtifactConfigGoogleArtifactAnalysisPtrOutput {
+	return o.ToInsightsConfigArtifactConfigGoogleArtifactAnalysisPtrOutputWithContext(context.Background())
+}
+
+func (o InsightsConfigArtifactConfigGoogleArtifactAnalysisOutput) ToInsightsConfigArtifactConfigGoogleArtifactAnalysisPtrOutputWithContext(ctx context.Context) InsightsConfigArtifactConfigGoogleArtifactAnalysisPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InsightsConfigArtifactConfigGoogleArtifactAnalysis) *InsightsConfigArtifactConfigGoogleArtifactAnalysis {
+		return &v
+	}).(InsightsConfigArtifactConfigGoogleArtifactAnalysisPtrOutput)
+}
+
+// The project id of the project where the provenance is stored.
+func (o InsightsConfigArtifactConfigGoogleArtifactAnalysisOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v InsightsConfigArtifactConfigGoogleArtifactAnalysis) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+type InsightsConfigArtifactConfigGoogleArtifactAnalysisPtrOutput struct{ *pulumi.OutputState }
+
+func (InsightsConfigArtifactConfigGoogleArtifactAnalysisPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InsightsConfigArtifactConfigGoogleArtifactAnalysis)(nil)).Elem()
+}
+
+func (o InsightsConfigArtifactConfigGoogleArtifactAnalysisPtrOutput) ToInsightsConfigArtifactConfigGoogleArtifactAnalysisPtrOutput() InsightsConfigArtifactConfigGoogleArtifactAnalysisPtrOutput {
+	return o
+}
+
+func (o InsightsConfigArtifactConfigGoogleArtifactAnalysisPtrOutput) ToInsightsConfigArtifactConfigGoogleArtifactAnalysisPtrOutputWithContext(ctx context.Context) InsightsConfigArtifactConfigGoogleArtifactAnalysisPtrOutput {
+	return o
+}
+
+func (o InsightsConfigArtifactConfigGoogleArtifactAnalysisPtrOutput) Elem() InsightsConfigArtifactConfigGoogleArtifactAnalysisOutput {
+	return o.ApplyT(func(v *InsightsConfigArtifactConfigGoogleArtifactAnalysis) InsightsConfigArtifactConfigGoogleArtifactAnalysis {
+		if v != nil {
+			return *v
+		}
+		var ret InsightsConfigArtifactConfigGoogleArtifactAnalysis
+		return ret
+	}).(InsightsConfigArtifactConfigGoogleArtifactAnalysisOutput)
+}
+
+// The project id of the project where the provenance is stored.
+func (o InsightsConfigArtifactConfigGoogleArtifactAnalysisPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InsightsConfigArtifactConfigGoogleArtifactAnalysis) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+type InsightsConfigArtifactConfigGoogleArtifactRegistry struct {
+	// The name of the artifact registry package.
+	ArtifactRegistryPackage string `pulumi:"artifactRegistryPackage"`
+	// The host project of Artifact Registry.
+	ProjectId string `pulumi:"projectId"`
+}
+
+// InsightsConfigArtifactConfigGoogleArtifactRegistryInput is an input type that accepts InsightsConfigArtifactConfigGoogleArtifactRegistryArgs and InsightsConfigArtifactConfigGoogleArtifactRegistryOutput values.
+// You can construct a concrete instance of `InsightsConfigArtifactConfigGoogleArtifactRegistryInput` via:
+//
+//	InsightsConfigArtifactConfigGoogleArtifactRegistryArgs{...}
+type InsightsConfigArtifactConfigGoogleArtifactRegistryInput interface {
+	pulumi.Input
+
+	ToInsightsConfigArtifactConfigGoogleArtifactRegistryOutput() InsightsConfigArtifactConfigGoogleArtifactRegistryOutput
+	ToInsightsConfigArtifactConfigGoogleArtifactRegistryOutputWithContext(context.Context) InsightsConfigArtifactConfigGoogleArtifactRegistryOutput
+}
+
+type InsightsConfigArtifactConfigGoogleArtifactRegistryArgs struct {
+	// The name of the artifact registry package.
+	ArtifactRegistryPackage pulumi.StringInput `pulumi:"artifactRegistryPackage"`
+	// The host project of Artifact Registry.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+}
+
+func (InsightsConfigArtifactConfigGoogleArtifactRegistryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsConfigArtifactConfigGoogleArtifactRegistry)(nil)).Elem()
+}
+
+func (i InsightsConfigArtifactConfigGoogleArtifactRegistryArgs) ToInsightsConfigArtifactConfigGoogleArtifactRegistryOutput() InsightsConfigArtifactConfigGoogleArtifactRegistryOutput {
+	return i.ToInsightsConfigArtifactConfigGoogleArtifactRegistryOutputWithContext(context.Background())
+}
+
+func (i InsightsConfigArtifactConfigGoogleArtifactRegistryArgs) ToInsightsConfigArtifactConfigGoogleArtifactRegistryOutputWithContext(ctx context.Context) InsightsConfigArtifactConfigGoogleArtifactRegistryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsConfigArtifactConfigGoogleArtifactRegistryOutput)
+}
+
+func (i InsightsConfigArtifactConfigGoogleArtifactRegistryArgs) ToInsightsConfigArtifactConfigGoogleArtifactRegistryPtrOutput() InsightsConfigArtifactConfigGoogleArtifactRegistryPtrOutput {
+	return i.ToInsightsConfigArtifactConfigGoogleArtifactRegistryPtrOutputWithContext(context.Background())
+}
+
+func (i InsightsConfigArtifactConfigGoogleArtifactRegistryArgs) ToInsightsConfigArtifactConfigGoogleArtifactRegistryPtrOutputWithContext(ctx context.Context) InsightsConfigArtifactConfigGoogleArtifactRegistryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsConfigArtifactConfigGoogleArtifactRegistryOutput).ToInsightsConfigArtifactConfigGoogleArtifactRegistryPtrOutputWithContext(ctx)
+}
+
+// InsightsConfigArtifactConfigGoogleArtifactRegistryPtrInput is an input type that accepts InsightsConfigArtifactConfigGoogleArtifactRegistryArgs, InsightsConfigArtifactConfigGoogleArtifactRegistryPtr and InsightsConfigArtifactConfigGoogleArtifactRegistryPtrOutput values.
+// You can construct a concrete instance of `InsightsConfigArtifactConfigGoogleArtifactRegistryPtrInput` via:
+//
+//	        InsightsConfigArtifactConfigGoogleArtifactRegistryArgs{...}
+//
+//	or:
+//
+//	        nil
+type InsightsConfigArtifactConfigGoogleArtifactRegistryPtrInput interface {
+	pulumi.Input
+
+	ToInsightsConfigArtifactConfigGoogleArtifactRegistryPtrOutput() InsightsConfigArtifactConfigGoogleArtifactRegistryPtrOutput
+	ToInsightsConfigArtifactConfigGoogleArtifactRegistryPtrOutputWithContext(context.Context) InsightsConfigArtifactConfigGoogleArtifactRegistryPtrOutput
+}
+
+type insightsConfigArtifactConfigGoogleArtifactRegistryPtrType InsightsConfigArtifactConfigGoogleArtifactRegistryArgs
+
+func InsightsConfigArtifactConfigGoogleArtifactRegistryPtr(v *InsightsConfigArtifactConfigGoogleArtifactRegistryArgs) InsightsConfigArtifactConfigGoogleArtifactRegistryPtrInput {
+	return (*insightsConfigArtifactConfigGoogleArtifactRegistryPtrType)(v)
+}
+
+func (*insightsConfigArtifactConfigGoogleArtifactRegistryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InsightsConfigArtifactConfigGoogleArtifactRegistry)(nil)).Elem()
+}
+
+func (i *insightsConfigArtifactConfigGoogleArtifactRegistryPtrType) ToInsightsConfigArtifactConfigGoogleArtifactRegistryPtrOutput() InsightsConfigArtifactConfigGoogleArtifactRegistryPtrOutput {
+	return i.ToInsightsConfigArtifactConfigGoogleArtifactRegistryPtrOutputWithContext(context.Background())
+}
+
+func (i *insightsConfigArtifactConfigGoogleArtifactRegistryPtrType) ToInsightsConfigArtifactConfigGoogleArtifactRegistryPtrOutputWithContext(ctx context.Context) InsightsConfigArtifactConfigGoogleArtifactRegistryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsConfigArtifactConfigGoogleArtifactRegistryPtrOutput)
+}
+
+type InsightsConfigArtifactConfigGoogleArtifactRegistryOutput struct{ *pulumi.OutputState }
+
+func (InsightsConfigArtifactConfigGoogleArtifactRegistryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsConfigArtifactConfigGoogleArtifactRegistry)(nil)).Elem()
+}
+
+func (o InsightsConfigArtifactConfigGoogleArtifactRegistryOutput) ToInsightsConfigArtifactConfigGoogleArtifactRegistryOutput() InsightsConfigArtifactConfigGoogleArtifactRegistryOutput {
+	return o
+}
+
+func (o InsightsConfigArtifactConfigGoogleArtifactRegistryOutput) ToInsightsConfigArtifactConfigGoogleArtifactRegistryOutputWithContext(ctx context.Context) InsightsConfigArtifactConfigGoogleArtifactRegistryOutput {
+	return o
+}
+
+func (o InsightsConfigArtifactConfigGoogleArtifactRegistryOutput) ToInsightsConfigArtifactConfigGoogleArtifactRegistryPtrOutput() InsightsConfigArtifactConfigGoogleArtifactRegistryPtrOutput {
+	return o.ToInsightsConfigArtifactConfigGoogleArtifactRegistryPtrOutputWithContext(context.Background())
+}
+
+func (o InsightsConfigArtifactConfigGoogleArtifactRegistryOutput) ToInsightsConfigArtifactConfigGoogleArtifactRegistryPtrOutputWithContext(ctx context.Context) InsightsConfigArtifactConfigGoogleArtifactRegistryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InsightsConfigArtifactConfigGoogleArtifactRegistry) *InsightsConfigArtifactConfigGoogleArtifactRegistry {
+		return &v
+	}).(InsightsConfigArtifactConfigGoogleArtifactRegistryPtrOutput)
+}
+
+// The name of the artifact registry package.
+func (o InsightsConfigArtifactConfigGoogleArtifactRegistryOutput) ArtifactRegistryPackage() pulumi.StringOutput {
+	return o.ApplyT(func(v InsightsConfigArtifactConfigGoogleArtifactRegistry) string { return v.ArtifactRegistryPackage }).(pulumi.StringOutput)
+}
+
+// The host project of Artifact Registry.
+func (o InsightsConfigArtifactConfigGoogleArtifactRegistryOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v InsightsConfigArtifactConfigGoogleArtifactRegistry) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+type InsightsConfigArtifactConfigGoogleArtifactRegistryPtrOutput struct{ *pulumi.OutputState }
+
+func (InsightsConfigArtifactConfigGoogleArtifactRegistryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InsightsConfigArtifactConfigGoogleArtifactRegistry)(nil)).Elem()
+}
+
+func (o InsightsConfigArtifactConfigGoogleArtifactRegistryPtrOutput) ToInsightsConfigArtifactConfigGoogleArtifactRegistryPtrOutput() InsightsConfigArtifactConfigGoogleArtifactRegistryPtrOutput {
+	return o
+}
+
+func (o InsightsConfigArtifactConfigGoogleArtifactRegistryPtrOutput) ToInsightsConfigArtifactConfigGoogleArtifactRegistryPtrOutputWithContext(ctx context.Context) InsightsConfigArtifactConfigGoogleArtifactRegistryPtrOutput {
+	return o
+}
+
+func (o InsightsConfigArtifactConfigGoogleArtifactRegistryPtrOutput) Elem() InsightsConfigArtifactConfigGoogleArtifactRegistryOutput {
+	return o.ApplyT(func(v *InsightsConfigArtifactConfigGoogleArtifactRegistry) InsightsConfigArtifactConfigGoogleArtifactRegistry {
+		if v != nil {
+			return *v
+		}
+		var ret InsightsConfigArtifactConfigGoogleArtifactRegistry
+		return ret
+	}).(InsightsConfigArtifactConfigGoogleArtifactRegistryOutput)
+}
+
+// The name of the artifact registry package.
+func (o InsightsConfigArtifactConfigGoogleArtifactRegistryPtrOutput) ArtifactRegistryPackage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InsightsConfigArtifactConfigGoogleArtifactRegistry) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ArtifactRegistryPackage
+	}).(pulumi.StringPtrOutput)
+}
+
+// The host project of Artifact Registry.
+func (o InsightsConfigArtifactConfigGoogleArtifactRegistryPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InsightsConfigArtifactConfigGoogleArtifactRegistry) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+type InsightsConfigError struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code *int `pulumi:"code"`
+	// (Output)
+	// A list of messages that carry the error details.  There is a common set of
+	// message types for APIs to use.
+	// Structure is documented below.
+	Details []InsightsConfigErrorDetail `pulumi:"details"`
+	// (Output)
+	// A developer-facing error message, which should be in English. Any
+	// user-facing error message should be localized and sent in the
+	// google.rpc.Status.details field, or localized by the client.
+	Message *string `pulumi:"message"`
+}
+
+// InsightsConfigErrorInput is an input type that accepts InsightsConfigErrorArgs and InsightsConfigErrorOutput values.
+// You can construct a concrete instance of `InsightsConfigErrorInput` via:
+//
+//	InsightsConfigErrorArgs{...}
+type InsightsConfigErrorInput interface {
+	pulumi.Input
+
+	ToInsightsConfigErrorOutput() InsightsConfigErrorOutput
+	ToInsightsConfigErrorOutputWithContext(context.Context) InsightsConfigErrorOutput
+}
+
+type InsightsConfigErrorArgs struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// (Output)
+	// A list of messages that carry the error details.  There is a common set of
+	// message types for APIs to use.
+	// Structure is documented below.
+	Details InsightsConfigErrorDetailArrayInput `pulumi:"details"`
+	// (Output)
+	// A developer-facing error message, which should be in English. Any
+	// user-facing error message should be localized and sent in the
+	// google.rpc.Status.details field, or localized by the client.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (InsightsConfigErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsConfigError)(nil)).Elem()
+}
+
+func (i InsightsConfigErrorArgs) ToInsightsConfigErrorOutput() InsightsConfigErrorOutput {
+	return i.ToInsightsConfigErrorOutputWithContext(context.Background())
+}
+
+func (i InsightsConfigErrorArgs) ToInsightsConfigErrorOutputWithContext(ctx context.Context) InsightsConfigErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsConfigErrorOutput)
+}
+
+// InsightsConfigErrorArrayInput is an input type that accepts InsightsConfigErrorArray and InsightsConfigErrorArrayOutput values.
+// You can construct a concrete instance of `InsightsConfigErrorArrayInput` via:
+//
+//	InsightsConfigErrorArray{ InsightsConfigErrorArgs{...} }
+type InsightsConfigErrorArrayInput interface {
+	pulumi.Input
+
+	ToInsightsConfigErrorArrayOutput() InsightsConfigErrorArrayOutput
+	ToInsightsConfigErrorArrayOutputWithContext(context.Context) InsightsConfigErrorArrayOutput
+}
+
+type InsightsConfigErrorArray []InsightsConfigErrorInput
+
+func (InsightsConfigErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InsightsConfigError)(nil)).Elem()
+}
+
+func (i InsightsConfigErrorArray) ToInsightsConfigErrorArrayOutput() InsightsConfigErrorArrayOutput {
+	return i.ToInsightsConfigErrorArrayOutputWithContext(context.Background())
+}
+
+func (i InsightsConfigErrorArray) ToInsightsConfigErrorArrayOutputWithContext(ctx context.Context) InsightsConfigErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsConfigErrorArrayOutput)
+}
+
+type InsightsConfigErrorOutput struct{ *pulumi.OutputState }
+
+func (InsightsConfigErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsConfigError)(nil)).Elem()
+}
+
+func (o InsightsConfigErrorOutput) ToInsightsConfigErrorOutput() InsightsConfigErrorOutput {
+	return o
+}
+
+func (o InsightsConfigErrorOutput) ToInsightsConfigErrorOutputWithContext(ctx context.Context) InsightsConfigErrorOutput {
+	return o
+}
+
+// (Output)
+// The status code, which should be an enum value of google.rpc.Code.
+func (o InsightsConfigErrorOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InsightsConfigError) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// A list of messages that carry the error details.  There is a common set of
+// message types for APIs to use.
+// Structure is documented below.
+func (o InsightsConfigErrorOutput) Details() InsightsConfigErrorDetailArrayOutput {
+	return o.ApplyT(func(v InsightsConfigError) []InsightsConfigErrorDetail { return v.Details }).(InsightsConfigErrorDetailArrayOutput)
+}
+
+// (Output)
+// A developer-facing error message, which should be in English. Any
+// user-facing error message should be localized and sent in the
+// google.rpc.Status.details field, or localized by the client.
+func (o InsightsConfigErrorOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InsightsConfigError) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type InsightsConfigErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (InsightsConfigErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InsightsConfigError)(nil)).Elem()
+}
+
+func (o InsightsConfigErrorArrayOutput) ToInsightsConfigErrorArrayOutput() InsightsConfigErrorArrayOutput {
+	return o
+}
+
+func (o InsightsConfigErrorArrayOutput) ToInsightsConfigErrorArrayOutputWithContext(ctx context.Context) InsightsConfigErrorArrayOutput {
+	return o
+}
+
+func (o InsightsConfigErrorArrayOutput) Index(i pulumi.IntInput) InsightsConfigErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InsightsConfigError {
+		return vs[0].([]InsightsConfigError)[vs[1].(int)]
+	}).(InsightsConfigErrorOutput)
+}
+
+type InsightsConfigErrorDetail struct {
+	// (Output)
+	// A message with details about the error.
+	DetailMessage *string `pulumi:"detailMessage"`
+}
+
+// InsightsConfigErrorDetailInput is an input type that accepts InsightsConfigErrorDetailArgs and InsightsConfigErrorDetailOutput values.
+// You can construct a concrete instance of `InsightsConfigErrorDetailInput` via:
+//
+//	InsightsConfigErrorDetailArgs{...}
+type InsightsConfigErrorDetailInput interface {
+	pulumi.Input
+
+	ToInsightsConfigErrorDetailOutput() InsightsConfigErrorDetailOutput
+	ToInsightsConfigErrorDetailOutputWithContext(context.Context) InsightsConfigErrorDetailOutput
+}
+
+type InsightsConfigErrorDetailArgs struct {
+	// (Output)
+	// A message with details about the error.
+	DetailMessage pulumi.StringPtrInput `pulumi:"detailMessage"`
+}
+
+func (InsightsConfigErrorDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsConfigErrorDetail)(nil)).Elem()
+}
+
+func (i InsightsConfigErrorDetailArgs) ToInsightsConfigErrorDetailOutput() InsightsConfigErrorDetailOutput {
+	return i.ToInsightsConfigErrorDetailOutputWithContext(context.Background())
+}
+
+func (i InsightsConfigErrorDetailArgs) ToInsightsConfigErrorDetailOutputWithContext(ctx context.Context) InsightsConfigErrorDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsConfigErrorDetailOutput)
+}
+
+// InsightsConfigErrorDetailArrayInput is an input type that accepts InsightsConfigErrorDetailArray and InsightsConfigErrorDetailArrayOutput values.
+// You can construct a concrete instance of `InsightsConfigErrorDetailArrayInput` via:
+//
+//	InsightsConfigErrorDetailArray{ InsightsConfigErrorDetailArgs{...} }
+type InsightsConfigErrorDetailArrayInput interface {
+	pulumi.Input
+
+	ToInsightsConfigErrorDetailArrayOutput() InsightsConfigErrorDetailArrayOutput
+	ToInsightsConfigErrorDetailArrayOutputWithContext(context.Context) InsightsConfigErrorDetailArrayOutput
+}
+
+type InsightsConfigErrorDetailArray []InsightsConfigErrorDetailInput
+
+func (InsightsConfigErrorDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InsightsConfigErrorDetail)(nil)).Elem()
+}
+
+func (i InsightsConfigErrorDetailArray) ToInsightsConfigErrorDetailArrayOutput() InsightsConfigErrorDetailArrayOutput {
+	return i.ToInsightsConfigErrorDetailArrayOutputWithContext(context.Background())
+}
+
+func (i InsightsConfigErrorDetailArray) ToInsightsConfigErrorDetailArrayOutputWithContext(ctx context.Context) InsightsConfigErrorDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsConfigErrorDetailArrayOutput)
+}
+
+type InsightsConfigErrorDetailOutput struct{ *pulumi.OutputState }
+
+func (InsightsConfigErrorDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsConfigErrorDetail)(nil)).Elem()
+}
+
+func (o InsightsConfigErrorDetailOutput) ToInsightsConfigErrorDetailOutput() InsightsConfigErrorDetailOutput {
+	return o
+}
+
+func (o InsightsConfigErrorDetailOutput) ToInsightsConfigErrorDetailOutputWithContext(ctx context.Context) InsightsConfigErrorDetailOutput {
+	return o
+}
+
+// (Output)
+// A message with details about the error.
+func (o InsightsConfigErrorDetailOutput) DetailMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InsightsConfigErrorDetail) *string { return v.DetailMessage }).(pulumi.StringPtrOutput)
+}
+
+type InsightsConfigErrorDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (InsightsConfigErrorDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InsightsConfigErrorDetail)(nil)).Elem()
+}
+
+func (o InsightsConfigErrorDetailArrayOutput) ToInsightsConfigErrorDetailArrayOutput() InsightsConfigErrorDetailArrayOutput {
+	return o
+}
+
+func (o InsightsConfigErrorDetailArrayOutput) ToInsightsConfigErrorDetailArrayOutputWithContext(ctx context.Context) InsightsConfigErrorDetailArrayOutput {
+	return o
+}
+
+func (o InsightsConfigErrorDetailArrayOutput) Index(i pulumi.IntInput) InsightsConfigErrorDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InsightsConfigErrorDetail {
+		return vs[0].([]InsightsConfigErrorDetail)[vs[1].(int)]
+	}).(InsightsConfigErrorDetailOutput)
+}
+
+type InsightsConfigRuntimeConfig struct {
+	// AppHubWorkload represents the App Hub Workload.
+	// Structure is documented below.
+	AppHubWorkload *InsightsConfigRuntimeConfigAppHubWorkload `pulumi:"appHubWorkload"`
+	// GKEWorkload represents the Google Kubernetes Engine runtime.
+	// Structure is documented below.
+	GkeWorkload *InsightsConfigRuntimeConfigGkeWorkload `pulumi:"gkeWorkload"`
+	// (Output)
+	// The state of the Runtime.
+	// Possible values:
+	// STATE_UNSPECIFIED
+	// LINKED
+	// UNLINKED
+	State *string `pulumi:"state"`
+	// The URI of the runtime configuration.
+	// For GKE, this is the cluster name.
+	// For Cloud Run, this is the service name.
+	Uri string `pulumi:"uri"`
+}
+
+// InsightsConfigRuntimeConfigInput is an input type that accepts InsightsConfigRuntimeConfigArgs and InsightsConfigRuntimeConfigOutput values.
+// You can construct a concrete instance of `InsightsConfigRuntimeConfigInput` via:
+//
+//	InsightsConfigRuntimeConfigArgs{...}
+type InsightsConfigRuntimeConfigInput interface {
+	pulumi.Input
+
+	ToInsightsConfigRuntimeConfigOutput() InsightsConfigRuntimeConfigOutput
+	ToInsightsConfigRuntimeConfigOutputWithContext(context.Context) InsightsConfigRuntimeConfigOutput
+}
+
+type InsightsConfigRuntimeConfigArgs struct {
+	// AppHubWorkload represents the App Hub Workload.
+	// Structure is documented below.
+	AppHubWorkload InsightsConfigRuntimeConfigAppHubWorkloadPtrInput `pulumi:"appHubWorkload"`
+	// GKEWorkload represents the Google Kubernetes Engine runtime.
+	// Structure is documented below.
+	GkeWorkload InsightsConfigRuntimeConfigGkeWorkloadPtrInput `pulumi:"gkeWorkload"`
+	// (Output)
+	// The state of the Runtime.
+	// Possible values:
+	// STATE_UNSPECIFIED
+	// LINKED
+	// UNLINKED
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// The URI of the runtime configuration.
+	// For GKE, this is the cluster name.
+	// For Cloud Run, this is the service name.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (InsightsConfigRuntimeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsConfigRuntimeConfig)(nil)).Elem()
+}
+
+func (i InsightsConfigRuntimeConfigArgs) ToInsightsConfigRuntimeConfigOutput() InsightsConfigRuntimeConfigOutput {
+	return i.ToInsightsConfigRuntimeConfigOutputWithContext(context.Background())
+}
+
+func (i InsightsConfigRuntimeConfigArgs) ToInsightsConfigRuntimeConfigOutputWithContext(ctx context.Context) InsightsConfigRuntimeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsConfigRuntimeConfigOutput)
+}
+
+// InsightsConfigRuntimeConfigArrayInput is an input type that accepts InsightsConfigRuntimeConfigArray and InsightsConfigRuntimeConfigArrayOutput values.
+// You can construct a concrete instance of `InsightsConfigRuntimeConfigArrayInput` via:
+//
+//	InsightsConfigRuntimeConfigArray{ InsightsConfigRuntimeConfigArgs{...} }
+type InsightsConfigRuntimeConfigArrayInput interface {
+	pulumi.Input
+
+	ToInsightsConfigRuntimeConfigArrayOutput() InsightsConfigRuntimeConfigArrayOutput
+	ToInsightsConfigRuntimeConfigArrayOutputWithContext(context.Context) InsightsConfigRuntimeConfigArrayOutput
+}
+
+type InsightsConfigRuntimeConfigArray []InsightsConfigRuntimeConfigInput
+
+func (InsightsConfigRuntimeConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InsightsConfigRuntimeConfig)(nil)).Elem()
+}
+
+func (i InsightsConfigRuntimeConfigArray) ToInsightsConfigRuntimeConfigArrayOutput() InsightsConfigRuntimeConfigArrayOutput {
+	return i.ToInsightsConfigRuntimeConfigArrayOutputWithContext(context.Background())
+}
+
+func (i InsightsConfigRuntimeConfigArray) ToInsightsConfigRuntimeConfigArrayOutputWithContext(ctx context.Context) InsightsConfigRuntimeConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsConfigRuntimeConfigArrayOutput)
+}
+
+type InsightsConfigRuntimeConfigOutput struct{ *pulumi.OutputState }
+
+func (InsightsConfigRuntimeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsConfigRuntimeConfig)(nil)).Elem()
+}
+
+func (o InsightsConfigRuntimeConfigOutput) ToInsightsConfigRuntimeConfigOutput() InsightsConfigRuntimeConfigOutput {
+	return o
+}
+
+func (o InsightsConfigRuntimeConfigOutput) ToInsightsConfigRuntimeConfigOutputWithContext(ctx context.Context) InsightsConfigRuntimeConfigOutput {
+	return o
+}
+
+// AppHubWorkload represents the App Hub Workload.
+// Structure is documented below.
+func (o InsightsConfigRuntimeConfigOutput) AppHubWorkload() InsightsConfigRuntimeConfigAppHubWorkloadPtrOutput {
+	return o.ApplyT(func(v InsightsConfigRuntimeConfig) *InsightsConfigRuntimeConfigAppHubWorkload {
+		return v.AppHubWorkload
+	}).(InsightsConfigRuntimeConfigAppHubWorkloadPtrOutput)
+}
+
+// GKEWorkload represents the Google Kubernetes Engine runtime.
+// Structure is documented below.
+func (o InsightsConfigRuntimeConfigOutput) GkeWorkload() InsightsConfigRuntimeConfigGkeWorkloadPtrOutput {
+	return o.ApplyT(func(v InsightsConfigRuntimeConfig) *InsightsConfigRuntimeConfigGkeWorkload { return v.GkeWorkload }).(InsightsConfigRuntimeConfigGkeWorkloadPtrOutput)
+}
+
+// (Output)
+// The state of the Runtime.
+// Possible values:
+// STATE_UNSPECIFIED
+// LINKED
+// UNLINKED
+func (o InsightsConfigRuntimeConfigOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InsightsConfigRuntimeConfig) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// The URI of the runtime configuration.
+// For GKE, this is the cluster name.
+// For Cloud Run, this is the service name.
+func (o InsightsConfigRuntimeConfigOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v InsightsConfigRuntimeConfig) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type InsightsConfigRuntimeConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (InsightsConfigRuntimeConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InsightsConfigRuntimeConfig)(nil)).Elem()
+}
+
+func (o InsightsConfigRuntimeConfigArrayOutput) ToInsightsConfigRuntimeConfigArrayOutput() InsightsConfigRuntimeConfigArrayOutput {
+	return o
+}
+
+func (o InsightsConfigRuntimeConfigArrayOutput) ToInsightsConfigRuntimeConfigArrayOutputWithContext(ctx context.Context) InsightsConfigRuntimeConfigArrayOutput {
+	return o
+}
+
+func (o InsightsConfigRuntimeConfigArrayOutput) Index(i pulumi.IntInput) InsightsConfigRuntimeConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InsightsConfigRuntimeConfig {
+		return vs[0].([]InsightsConfigRuntimeConfig)[vs[1].(int)]
+	}).(InsightsConfigRuntimeConfigOutput)
+}
+
+type InsightsConfigRuntimeConfigAppHubWorkload struct {
+	// (Output)
+	// The criticality of the App Hub Workload.
+	Criticality *string `pulumi:"criticality"`
+	// (Output)
+	// The environment of the App Hub Workload.
+	Environment *string `pulumi:"environment"`
+	// (Output)
+	// Output only. The name of the App Hub Workload.
+	// Format:
+	// `projects/{project}/locations/{location}/applications/{application}/workloads/{workload}`.
+	Workload *string `pulumi:"workload"`
+}
+
+// InsightsConfigRuntimeConfigAppHubWorkloadInput is an input type that accepts InsightsConfigRuntimeConfigAppHubWorkloadArgs and InsightsConfigRuntimeConfigAppHubWorkloadOutput values.
+// You can construct a concrete instance of `InsightsConfigRuntimeConfigAppHubWorkloadInput` via:
+//
+//	InsightsConfigRuntimeConfigAppHubWorkloadArgs{...}
+type InsightsConfigRuntimeConfigAppHubWorkloadInput interface {
+	pulumi.Input
+
+	ToInsightsConfigRuntimeConfigAppHubWorkloadOutput() InsightsConfigRuntimeConfigAppHubWorkloadOutput
+	ToInsightsConfigRuntimeConfigAppHubWorkloadOutputWithContext(context.Context) InsightsConfigRuntimeConfigAppHubWorkloadOutput
+}
+
+type InsightsConfigRuntimeConfigAppHubWorkloadArgs struct {
+	// (Output)
+	// The criticality of the App Hub Workload.
+	Criticality pulumi.StringPtrInput `pulumi:"criticality"`
+	// (Output)
+	// The environment of the App Hub Workload.
+	Environment pulumi.StringPtrInput `pulumi:"environment"`
+	// (Output)
+	// Output only. The name of the App Hub Workload.
+	// Format:
+	// `projects/{project}/locations/{location}/applications/{application}/workloads/{workload}`.
+	Workload pulumi.StringPtrInput `pulumi:"workload"`
+}
+
+func (InsightsConfigRuntimeConfigAppHubWorkloadArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsConfigRuntimeConfigAppHubWorkload)(nil)).Elem()
+}
+
+func (i InsightsConfigRuntimeConfigAppHubWorkloadArgs) ToInsightsConfigRuntimeConfigAppHubWorkloadOutput() InsightsConfigRuntimeConfigAppHubWorkloadOutput {
+	return i.ToInsightsConfigRuntimeConfigAppHubWorkloadOutputWithContext(context.Background())
+}
+
+func (i InsightsConfigRuntimeConfigAppHubWorkloadArgs) ToInsightsConfigRuntimeConfigAppHubWorkloadOutputWithContext(ctx context.Context) InsightsConfigRuntimeConfigAppHubWorkloadOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsConfigRuntimeConfigAppHubWorkloadOutput)
+}
+
+func (i InsightsConfigRuntimeConfigAppHubWorkloadArgs) ToInsightsConfigRuntimeConfigAppHubWorkloadPtrOutput() InsightsConfigRuntimeConfigAppHubWorkloadPtrOutput {
+	return i.ToInsightsConfigRuntimeConfigAppHubWorkloadPtrOutputWithContext(context.Background())
+}
+
+func (i InsightsConfigRuntimeConfigAppHubWorkloadArgs) ToInsightsConfigRuntimeConfigAppHubWorkloadPtrOutputWithContext(ctx context.Context) InsightsConfigRuntimeConfigAppHubWorkloadPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsConfigRuntimeConfigAppHubWorkloadOutput).ToInsightsConfigRuntimeConfigAppHubWorkloadPtrOutputWithContext(ctx)
+}
+
+// InsightsConfigRuntimeConfigAppHubWorkloadPtrInput is an input type that accepts InsightsConfigRuntimeConfigAppHubWorkloadArgs, InsightsConfigRuntimeConfigAppHubWorkloadPtr and InsightsConfigRuntimeConfigAppHubWorkloadPtrOutput values.
+// You can construct a concrete instance of `InsightsConfigRuntimeConfigAppHubWorkloadPtrInput` via:
+//
+//	        InsightsConfigRuntimeConfigAppHubWorkloadArgs{...}
+//
+//	or:
+//
+//	        nil
+type InsightsConfigRuntimeConfigAppHubWorkloadPtrInput interface {
+	pulumi.Input
+
+	ToInsightsConfigRuntimeConfigAppHubWorkloadPtrOutput() InsightsConfigRuntimeConfigAppHubWorkloadPtrOutput
+	ToInsightsConfigRuntimeConfigAppHubWorkloadPtrOutputWithContext(context.Context) InsightsConfigRuntimeConfigAppHubWorkloadPtrOutput
+}
+
+type insightsConfigRuntimeConfigAppHubWorkloadPtrType InsightsConfigRuntimeConfigAppHubWorkloadArgs
+
+func InsightsConfigRuntimeConfigAppHubWorkloadPtr(v *InsightsConfigRuntimeConfigAppHubWorkloadArgs) InsightsConfigRuntimeConfigAppHubWorkloadPtrInput {
+	return (*insightsConfigRuntimeConfigAppHubWorkloadPtrType)(v)
+}
+
+func (*insightsConfigRuntimeConfigAppHubWorkloadPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InsightsConfigRuntimeConfigAppHubWorkload)(nil)).Elem()
+}
+
+func (i *insightsConfigRuntimeConfigAppHubWorkloadPtrType) ToInsightsConfigRuntimeConfigAppHubWorkloadPtrOutput() InsightsConfigRuntimeConfigAppHubWorkloadPtrOutput {
+	return i.ToInsightsConfigRuntimeConfigAppHubWorkloadPtrOutputWithContext(context.Background())
+}
+
+func (i *insightsConfigRuntimeConfigAppHubWorkloadPtrType) ToInsightsConfigRuntimeConfigAppHubWorkloadPtrOutputWithContext(ctx context.Context) InsightsConfigRuntimeConfigAppHubWorkloadPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsConfigRuntimeConfigAppHubWorkloadPtrOutput)
+}
+
+type InsightsConfigRuntimeConfigAppHubWorkloadOutput struct{ *pulumi.OutputState }
+
+func (InsightsConfigRuntimeConfigAppHubWorkloadOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsConfigRuntimeConfigAppHubWorkload)(nil)).Elem()
+}
+
+func (o InsightsConfigRuntimeConfigAppHubWorkloadOutput) ToInsightsConfigRuntimeConfigAppHubWorkloadOutput() InsightsConfigRuntimeConfigAppHubWorkloadOutput {
+	return o
+}
+
+func (o InsightsConfigRuntimeConfigAppHubWorkloadOutput) ToInsightsConfigRuntimeConfigAppHubWorkloadOutputWithContext(ctx context.Context) InsightsConfigRuntimeConfigAppHubWorkloadOutput {
+	return o
+}
+
+func (o InsightsConfigRuntimeConfigAppHubWorkloadOutput) ToInsightsConfigRuntimeConfigAppHubWorkloadPtrOutput() InsightsConfigRuntimeConfigAppHubWorkloadPtrOutput {
+	return o.ToInsightsConfigRuntimeConfigAppHubWorkloadPtrOutputWithContext(context.Background())
+}
+
+func (o InsightsConfigRuntimeConfigAppHubWorkloadOutput) ToInsightsConfigRuntimeConfigAppHubWorkloadPtrOutputWithContext(ctx context.Context) InsightsConfigRuntimeConfigAppHubWorkloadPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InsightsConfigRuntimeConfigAppHubWorkload) *InsightsConfigRuntimeConfigAppHubWorkload {
+		return &v
+	}).(InsightsConfigRuntimeConfigAppHubWorkloadPtrOutput)
+}
+
+// (Output)
+// The criticality of the App Hub Workload.
+func (o InsightsConfigRuntimeConfigAppHubWorkloadOutput) Criticality() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InsightsConfigRuntimeConfigAppHubWorkload) *string { return v.Criticality }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The environment of the App Hub Workload.
+func (o InsightsConfigRuntimeConfigAppHubWorkloadOutput) Environment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InsightsConfigRuntimeConfigAppHubWorkload) *string { return v.Environment }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. The name of the App Hub Workload.
+// Format:
+// `projects/{project}/locations/{location}/applications/{application}/workloads/{workload}`.
+func (o InsightsConfigRuntimeConfigAppHubWorkloadOutput) Workload() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InsightsConfigRuntimeConfigAppHubWorkload) *string { return v.Workload }).(pulumi.StringPtrOutput)
+}
+
+type InsightsConfigRuntimeConfigAppHubWorkloadPtrOutput struct{ *pulumi.OutputState }
+
+func (InsightsConfigRuntimeConfigAppHubWorkloadPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InsightsConfigRuntimeConfigAppHubWorkload)(nil)).Elem()
+}
+
+func (o InsightsConfigRuntimeConfigAppHubWorkloadPtrOutput) ToInsightsConfigRuntimeConfigAppHubWorkloadPtrOutput() InsightsConfigRuntimeConfigAppHubWorkloadPtrOutput {
+	return o
+}
+
+func (o InsightsConfigRuntimeConfigAppHubWorkloadPtrOutput) ToInsightsConfigRuntimeConfigAppHubWorkloadPtrOutputWithContext(ctx context.Context) InsightsConfigRuntimeConfigAppHubWorkloadPtrOutput {
+	return o
+}
+
+func (o InsightsConfigRuntimeConfigAppHubWorkloadPtrOutput) Elem() InsightsConfigRuntimeConfigAppHubWorkloadOutput {
+	return o.ApplyT(func(v *InsightsConfigRuntimeConfigAppHubWorkload) InsightsConfigRuntimeConfigAppHubWorkload {
+		if v != nil {
+			return *v
+		}
+		var ret InsightsConfigRuntimeConfigAppHubWorkload
+		return ret
+	}).(InsightsConfigRuntimeConfigAppHubWorkloadOutput)
+}
+
+// (Output)
+// The criticality of the App Hub Workload.
+func (o InsightsConfigRuntimeConfigAppHubWorkloadPtrOutput) Criticality() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InsightsConfigRuntimeConfigAppHubWorkload) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Criticality
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The environment of the App Hub Workload.
+func (o InsightsConfigRuntimeConfigAppHubWorkloadPtrOutput) Environment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InsightsConfigRuntimeConfigAppHubWorkload) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Environment
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. The name of the App Hub Workload.
+// Format:
+// `projects/{project}/locations/{location}/applications/{application}/workloads/{workload}`.
+func (o InsightsConfigRuntimeConfigAppHubWorkloadPtrOutput) Workload() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InsightsConfigRuntimeConfigAppHubWorkload) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Workload
+	}).(pulumi.StringPtrOutput)
+}
+
+type InsightsConfigRuntimeConfigGkeWorkload struct {
+	// The name of the GKE cluster.
+	// Format:
+	// `projects/{project}/locations/{location}/clusters/{cluster}`.
+	Cluster string `pulumi:"cluster"`
+	// (Output)
+	// The name of the GKE deployment.
+	// Format:
+	// `projects/{project}/locations/{location}/clusters/{cluster}/namespaces/{namespace}/deployments/{deployment}`.
+	Deployment *string `pulumi:"deployment"`
+}
+
+// InsightsConfigRuntimeConfigGkeWorkloadInput is an input type that accepts InsightsConfigRuntimeConfigGkeWorkloadArgs and InsightsConfigRuntimeConfigGkeWorkloadOutput values.
+// You can construct a concrete instance of `InsightsConfigRuntimeConfigGkeWorkloadInput` via:
+//
+//	InsightsConfigRuntimeConfigGkeWorkloadArgs{...}
+type InsightsConfigRuntimeConfigGkeWorkloadInput interface {
+	pulumi.Input
+
+	ToInsightsConfigRuntimeConfigGkeWorkloadOutput() InsightsConfigRuntimeConfigGkeWorkloadOutput
+	ToInsightsConfigRuntimeConfigGkeWorkloadOutputWithContext(context.Context) InsightsConfigRuntimeConfigGkeWorkloadOutput
+}
+
+type InsightsConfigRuntimeConfigGkeWorkloadArgs struct {
+	// The name of the GKE cluster.
+	// Format:
+	// `projects/{project}/locations/{location}/clusters/{cluster}`.
+	Cluster pulumi.StringInput `pulumi:"cluster"`
+	// (Output)
+	// The name of the GKE deployment.
+	// Format:
+	// `projects/{project}/locations/{location}/clusters/{cluster}/namespaces/{namespace}/deployments/{deployment}`.
+	Deployment pulumi.StringPtrInput `pulumi:"deployment"`
+}
+
+func (InsightsConfigRuntimeConfigGkeWorkloadArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsConfigRuntimeConfigGkeWorkload)(nil)).Elem()
+}
+
+func (i InsightsConfigRuntimeConfigGkeWorkloadArgs) ToInsightsConfigRuntimeConfigGkeWorkloadOutput() InsightsConfigRuntimeConfigGkeWorkloadOutput {
+	return i.ToInsightsConfigRuntimeConfigGkeWorkloadOutputWithContext(context.Background())
+}
+
+func (i InsightsConfigRuntimeConfigGkeWorkloadArgs) ToInsightsConfigRuntimeConfigGkeWorkloadOutputWithContext(ctx context.Context) InsightsConfigRuntimeConfigGkeWorkloadOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsConfigRuntimeConfigGkeWorkloadOutput)
+}
+
+func (i InsightsConfigRuntimeConfigGkeWorkloadArgs) ToInsightsConfigRuntimeConfigGkeWorkloadPtrOutput() InsightsConfigRuntimeConfigGkeWorkloadPtrOutput {
+	return i.ToInsightsConfigRuntimeConfigGkeWorkloadPtrOutputWithContext(context.Background())
+}
+
+func (i InsightsConfigRuntimeConfigGkeWorkloadArgs) ToInsightsConfigRuntimeConfigGkeWorkloadPtrOutputWithContext(ctx context.Context) InsightsConfigRuntimeConfigGkeWorkloadPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsConfigRuntimeConfigGkeWorkloadOutput).ToInsightsConfigRuntimeConfigGkeWorkloadPtrOutputWithContext(ctx)
+}
+
+// InsightsConfigRuntimeConfigGkeWorkloadPtrInput is an input type that accepts InsightsConfigRuntimeConfigGkeWorkloadArgs, InsightsConfigRuntimeConfigGkeWorkloadPtr and InsightsConfigRuntimeConfigGkeWorkloadPtrOutput values.
+// You can construct a concrete instance of `InsightsConfigRuntimeConfigGkeWorkloadPtrInput` via:
+//
+//	        InsightsConfigRuntimeConfigGkeWorkloadArgs{...}
+//
+//	or:
+//
+//	        nil
+type InsightsConfigRuntimeConfigGkeWorkloadPtrInput interface {
+	pulumi.Input
+
+	ToInsightsConfigRuntimeConfigGkeWorkloadPtrOutput() InsightsConfigRuntimeConfigGkeWorkloadPtrOutput
+	ToInsightsConfigRuntimeConfigGkeWorkloadPtrOutputWithContext(context.Context) InsightsConfigRuntimeConfigGkeWorkloadPtrOutput
+}
+
+type insightsConfigRuntimeConfigGkeWorkloadPtrType InsightsConfigRuntimeConfigGkeWorkloadArgs
+
+func InsightsConfigRuntimeConfigGkeWorkloadPtr(v *InsightsConfigRuntimeConfigGkeWorkloadArgs) InsightsConfigRuntimeConfigGkeWorkloadPtrInput {
+	return (*insightsConfigRuntimeConfigGkeWorkloadPtrType)(v)
+}
+
+func (*insightsConfigRuntimeConfigGkeWorkloadPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InsightsConfigRuntimeConfigGkeWorkload)(nil)).Elem()
+}
+
+func (i *insightsConfigRuntimeConfigGkeWorkloadPtrType) ToInsightsConfigRuntimeConfigGkeWorkloadPtrOutput() InsightsConfigRuntimeConfigGkeWorkloadPtrOutput {
+	return i.ToInsightsConfigRuntimeConfigGkeWorkloadPtrOutputWithContext(context.Background())
+}
+
+func (i *insightsConfigRuntimeConfigGkeWorkloadPtrType) ToInsightsConfigRuntimeConfigGkeWorkloadPtrOutputWithContext(ctx context.Context) InsightsConfigRuntimeConfigGkeWorkloadPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsConfigRuntimeConfigGkeWorkloadPtrOutput)
+}
+
+type InsightsConfigRuntimeConfigGkeWorkloadOutput struct{ *pulumi.OutputState }
+
+func (InsightsConfigRuntimeConfigGkeWorkloadOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsConfigRuntimeConfigGkeWorkload)(nil)).Elem()
+}
+
+func (o InsightsConfigRuntimeConfigGkeWorkloadOutput) ToInsightsConfigRuntimeConfigGkeWorkloadOutput() InsightsConfigRuntimeConfigGkeWorkloadOutput {
+	return o
+}
+
+func (o InsightsConfigRuntimeConfigGkeWorkloadOutput) ToInsightsConfigRuntimeConfigGkeWorkloadOutputWithContext(ctx context.Context) InsightsConfigRuntimeConfigGkeWorkloadOutput {
+	return o
+}
+
+func (o InsightsConfigRuntimeConfigGkeWorkloadOutput) ToInsightsConfigRuntimeConfigGkeWorkloadPtrOutput() InsightsConfigRuntimeConfigGkeWorkloadPtrOutput {
+	return o.ToInsightsConfigRuntimeConfigGkeWorkloadPtrOutputWithContext(context.Background())
+}
+
+func (o InsightsConfigRuntimeConfigGkeWorkloadOutput) ToInsightsConfigRuntimeConfigGkeWorkloadPtrOutputWithContext(ctx context.Context) InsightsConfigRuntimeConfigGkeWorkloadPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InsightsConfigRuntimeConfigGkeWorkload) *InsightsConfigRuntimeConfigGkeWorkload {
+		return &v
+	}).(InsightsConfigRuntimeConfigGkeWorkloadPtrOutput)
+}
+
+// The name of the GKE cluster.
+// Format:
+// `projects/{project}/locations/{location}/clusters/{cluster}`.
+func (o InsightsConfigRuntimeConfigGkeWorkloadOutput) Cluster() pulumi.StringOutput {
+	return o.ApplyT(func(v InsightsConfigRuntimeConfigGkeWorkload) string { return v.Cluster }).(pulumi.StringOutput)
+}
+
+// (Output)
+// The name of the GKE deployment.
+// Format:
+// `projects/{project}/locations/{location}/clusters/{cluster}/namespaces/{namespace}/deployments/{deployment}`.
+func (o InsightsConfigRuntimeConfigGkeWorkloadOutput) Deployment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InsightsConfigRuntimeConfigGkeWorkload) *string { return v.Deployment }).(pulumi.StringPtrOutput)
+}
+
+type InsightsConfigRuntimeConfigGkeWorkloadPtrOutput struct{ *pulumi.OutputState }
+
+func (InsightsConfigRuntimeConfigGkeWorkloadPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InsightsConfigRuntimeConfigGkeWorkload)(nil)).Elem()
+}
+
+func (o InsightsConfigRuntimeConfigGkeWorkloadPtrOutput) ToInsightsConfigRuntimeConfigGkeWorkloadPtrOutput() InsightsConfigRuntimeConfigGkeWorkloadPtrOutput {
+	return o
+}
+
+func (o InsightsConfigRuntimeConfigGkeWorkloadPtrOutput) ToInsightsConfigRuntimeConfigGkeWorkloadPtrOutputWithContext(ctx context.Context) InsightsConfigRuntimeConfigGkeWorkloadPtrOutput {
+	return o
+}
+
+func (o InsightsConfigRuntimeConfigGkeWorkloadPtrOutput) Elem() InsightsConfigRuntimeConfigGkeWorkloadOutput {
+	return o.ApplyT(func(v *InsightsConfigRuntimeConfigGkeWorkload) InsightsConfigRuntimeConfigGkeWorkload {
+		if v != nil {
+			return *v
+		}
+		var ret InsightsConfigRuntimeConfigGkeWorkload
+		return ret
+	}).(InsightsConfigRuntimeConfigGkeWorkloadOutput)
+}
+
+// The name of the GKE cluster.
+// Format:
+// `projects/{project}/locations/{location}/clusters/{cluster}`.
+func (o InsightsConfigRuntimeConfigGkeWorkloadPtrOutput) Cluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InsightsConfigRuntimeConfigGkeWorkload) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Cluster
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The name of the GKE deployment.
+// Format:
+// `projects/{project}/locations/{location}/clusters/{cluster}/namespaces/{namespace}/deployments/{deployment}`.
+func (o InsightsConfigRuntimeConfigGkeWorkloadPtrOutput) Deployment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InsightsConfigRuntimeConfigGkeWorkload) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Deployment
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccountConnectorProviderOauthConfigInput)(nil)).Elem(), AccountConnectorProviderOauthConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccountConnectorProviderOauthConfigPtrInput)(nil)).Elem(), AccountConnectorProviderOauthConfigArgs{})
@@ -4081,6 +5268,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionGitlabEnterpriseConfigServiceDirectoryConfigPtrInput)(nil)).Elem(), ConnectionGitlabEnterpriseConfigServiceDirectoryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionInstallationStateInput)(nil)).Elem(), ConnectionInstallationStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionInstallationStateArrayInput)(nil)).Elem(), ConnectionInstallationStateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsConfigArtifactConfigInput)(nil)).Elem(), InsightsConfigArtifactConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsConfigArtifactConfigArrayInput)(nil)).Elem(), InsightsConfigArtifactConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsConfigArtifactConfigGoogleArtifactAnalysisInput)(nil)).Elem(), InsightsConfigArtifactConfigGoogleArtifactAnalysisArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsConfigArtifactConfigGoogleArtifactAnalysisPtrInput)(nil)).Elem(), InsightsConfigArtifactConfigGoogleArtifactAnalysisArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsConfigArtifactConfigGoogleArtifactRegistryInput)(nil)).Elem(), InsightsConfigArtifactConfigGoogleArtifactRegistryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsConfigArtifactConfigGoogleArtifactRegistryPtrInput)(nil)).Elem(), InsightsConfigArtifactConfigGoogleArtifactRegistryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsConfigErrorInput)(nil)).Elem(), InsightsConfigErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsConfigErrorArrayInput)(nil)).Elem(), InsightsConfigErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsConfigErrorDetailInput)(nil)).Elem(), InsightsConfigErrorDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsConfigErrorDetailArrayInput)(nil)).Elem(), InsightsConfigErrorDetailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsConfigRuntimeConfigInput)(nil)).Elem(), InsightsConfigRuntimeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsConfigRuntimeConfigArrayInput)(nil)).Elem(), InsightsConfigRuntimeConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsConfigRuntimeConfigAppHubWorkloadInput)(nil)).Elem(), InsightsConfigRuntimeConfigAppHubWorkloadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsConfigRuntimeConfigAppHubWorkloadPtrInput)(nil)).Elem(), InsightsConfigRuntimeConfigAppHubWorkloadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsConfigRuntimeConfigGkeWorkloadInput)(nil)).Elem(), InsightsConfigRuntimeConfigGkeWorkloadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsConfigRuntimeConfigGkeWorkloadPtrInput)(nil)).Elem(), InsightsConfigRuntimeConfigGkeWorkloadArgs{})
 	pulumi.RegisterOutputType(AccountConnectorProviderOauthConfigOutput{})
 	pulumi.RegisterOutputType(AccountConnectorProviderOauthConfigPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionBitbucketCloudConfigOutput{})
@@ -4123,4 +5326,20 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionGitlabEnterpriseConfigServiceDirectoryConfigPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionInstallationStateOutput{})
 	pulumi.RegisterOutputType(ConnectionInstallationStateArrayOutput{})
+	pulumi.RegisterOutputType(InsightsConfigArtifactConfigOutput{})
+	pulumi.RegisterOutputType(InsightsConfigArtifactConfigArrayOutput{})
+	pulumi.RegisterOutputType(InsightsConfigArtifactConfigGoogleArtifactAnalysisOutput{})
+	pulumi.RegisterOutputType(InsightsConfigArtifactConfigGoogleArtifactAnalysisPtrOutput{})
+	pulumi.RegisterOutputType(InsightsConfigArtifactConfigGoogleArtifactRegistryOutput{})
+	pulumi.RegisterOutputType(InsightsConfigArtifactConfigGoogleArtifactRegistryPtrOutput{})
+	pulumi.RegisterOutputType(InsightsConfigErrorOutput{})
+	pulumi.RegisterOutputType(InsightsConfigErrorArrayOutput{})
+	pulumi.RegisterOutputType(InsightsConfigErrorDetailOutput{})
+	pulumi.RegisterOutputType(InsightsConfigErrorDetailArrayOutput{})
+	pulumi.RegisterOutputType(InsightsConfigRuntimeConfigOutput{})
+	pulumi.RegisterOutputType(InsightsConfigRuntimeConfigArrayOutput{})
+	pulumi.RegisterOutputType(InsightsConfigRuntimeConfigAppHubWorkloadOutput{})
+	pulumi.RegisterOutputType(InsightsConfigRuntimeConfigAppHubWorkloadPtrOutput{})
+	pulumi.RegisterOutputType(InsightsConfigRuntimeConfigGkeWorkloadOutput{})
+	pulumi.RegisterOutputType(InsightsConfigRuntimeConfigGkeWorkloadPtrOutput{})
 }

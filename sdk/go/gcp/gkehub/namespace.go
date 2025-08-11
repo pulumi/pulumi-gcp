@@ -37,13 +37,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			scope, err := gkehub.NewScope(ctx, "scope", &gkehub.ScopeArgs{
-//				ScopeId: pulumi.String("tf-test-scope_40289"),
+//				ScopeId: pulumi.String("tf-test-scope_76044"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = gkehub.NewNamespace(ctx, "namespace", &gkehub.NamespaceArgs{
-//				ScopeNamespaceId: pulumi.String("tf-test-namespace_33395"),
+//				ScopeNamespaceId: pulumi.String("tf-test-namespace_69391"),
 //				ScopeId:          scope.ScopeId,
 //				Scope:            scope.Name,
 //				NamespaceLabels: pulumi.StringMap{

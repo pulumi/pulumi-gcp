@@ -132,8 +132,6 @@ import javax.annotation.Nullable;
  * 
  * * `{{instance}}/{{name}}`
  * 
- * * `{{name}}`
- * 
  * When using the `pulumi import` command, Database can be imported using one of the formats above. For example:
  * 
  * ```sh
@@ -150,10 +148,6 @@ import javax.annotation.Nullable;
  * 
  * ```sh
  * $ pulumi import gcp:sql/database:Database default {{instance}}/{{name}}
- * ```
- * 
- * ```sh
- * $ pulumi import gcp:sql/database:Database default {{name}}
  * ```
  * 
  */

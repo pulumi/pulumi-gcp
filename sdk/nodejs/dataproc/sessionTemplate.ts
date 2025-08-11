@@ -39,8 +39,11 @@ import * as utilities from "../utilities";
  *     environmentConfig: {
  *         executionConfig: {
  *             subnetworkUri: "default",
- *             ttl: "3600s",
+ *             idleTtl: "3600s",
  *             networkTags: ["tag1"],
+ *             authenticationConfig: {
+ *                 userWorkloadAuthenticationType: "END_USER_CREDENTIALS",
+ *             },
  *         },
  *     },
  *     jupyterSession: {
@@ -136,6 +139,9 @@ import * as utilities from "../utilities";
  *             subnetworkUri: "default",
  *             serviceAccount: project.then(project => `${project.number}-compute@developer.gserviceaccount.com`),
  *             stagingBucket: bucket.name,
+ *             authenticationConfig: {
+ *                 userWorkloadAuthenticationType: "SERVICE_ACCOUNT",
+ *             },
  *         },
  *         peripheralsConfig: {
  *             metastoreService: ms.name,

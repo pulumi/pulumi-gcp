@@ -534,6 +534,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('modelArmorCustomEndpoint')
 
     @_builtins.property
+    def model_armor_global_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('modelArmorGlobalCustomEndpoint')
+
+    @_builtins.property
     def monitoring_custom_endpoint(self) -> Optional[str]:
         return __config__.get('monitoringCustomEndpoint')
 

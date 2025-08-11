@@ -15,6 +15,7 @@ import com.pulumi.gcp.compute.outputs.StoragePoolStatus;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -64,6 +65,12 @@ import javax.annotation.Nullable;
  *             .poolProvisionedThroughput("100")
  *             .storagePoolType("hyperdisk-throughput")
  *             .zone("us-central1-a")
+ *             .labels(Map.ofEntries(
+ *                 Map.entry("environment", "test"),
+ *                 Map.entry("purpose", "storage-pool-testing"),
+ *                 Map.entry("team", "infrastructure"),
+ *                 Map.entry("cost_center", "engineering")
+ *             ))
  *             .deletionProtection(false)
  *             .build());
  * 
@@ -118,6 +125,12 @@ import javax.annotation.Nullable;
  *             .poolProvisionedIops("10000")
  *             .poolProvisionedThroughput("1024")
  *             .storagePoolType(balanced.selfLink())
+ *             .labels(Map.ofEntries(
+ *                 Map.entry("environment", "test"),
+ *                 Map.entry("purpose", "storage-pool-testing"),
+ *                 Map.entry("team", "infrastructure"),
+ *                 Map.entry("cost_center", "engineering")
+ *             ))
  *             .deletionProtection(false)
  *             .zone("us-central1-a")
  *             .build());
@@ -215,6 +228,20 @@ public class StoragePool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * 
+     */
+    @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * 
+     */
+    public Output<Map<String,String>> effectiveLabels() {
+        return this.effectiveLabels;
+    }
+    /**
      * Type of the resource.
      * 
      */
@@ -243,6 +270,26 @@ public class StoragePool extends com.pulumi.resources.CustomResource {
      */
     public Output<String> labelFingerprint() {
         return this.labelFingerprint;
+    }
+    /**
+     * Labels to apply to this storage pool. These can be later modified by the setLabels method.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
+     */
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> labels;
+
+    /**
+     * @return Labels to apply to this storage pool. These can be later modified by the setLabels method.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> labels() {
+        return Codegen.optional(this.labels);
     }
     /**
      * Name of the resource. Provided by the client when the resource is created.
@@ -351,6 +398,22 @@ public class StoragePool extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,String>> pulumiLabels() {
+        return this.pulumiLabels;
+    }
+    /**
      * Status information for the storage pool resource.
      * Structure is documented below.
      * 
@@ -456,6 +519,10 @@ public class StoragePool extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "effectiveLabels",
+                "pulumiLabels"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

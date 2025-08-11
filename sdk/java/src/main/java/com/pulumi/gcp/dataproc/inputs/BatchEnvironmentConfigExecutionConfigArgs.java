@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.dataproc.inputs.BatchEnvironmentConfigExecutionConfigAuthenticationConfigArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -15,6 +16,23 @@ import javax.annotation.Nullable;
 public final class BatchEnvironmentConfigExecutionConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final BatchEnvironmentConfigExecutionConfigArgs Empty = new BatchEnvironmentConfigExecutionConfigArgs();
+
+    /**
+     * Authentication configuration for a workload is used to set the default identity for the workload execution.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="authenticationConfig")
+    private @Nullable Output<BatchEnvironmentConfigExecutionConfigAuthenticationConfigArgs> authenticationConfig;
+
+    /**
+     * @return Authentication configuration for a workload is used to set the default identity for the workload execution.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<BatchEnvironmentConfigExecutionConfigAuthenticationConfigArgs>> authenticationConfig() {
+        return Optional.ofNullable(this.authenticationConfig);
+    }
 
     /**
      * The Cloud KMS key to use for encryption.
@@ -146,6 +164,7 @@ public final class BatchEnvironmentConfigExecutionConfigArgs extends com.pulumi.
     private BatchEnvironmentConfigExecutionConfigArgs() {}
 
     private BatchEnvironmentConfigExecutionConfigArgs(BatchEnvironmentConfigExecutionConfigArgs $) {
+        this.authenticationConfig = $.authenticationConfig;
         this.kmsKey = $.kmsKey;
         this.networkTags = $.networkTags;
         this.networkUri = $.networkUri;
@@ -171,6 +190,29 @@ public final class BatchEnvironmentConfigExecutionConfigArgs extends com.pulumi.
 
         public Builder(BatchEnvironmentConfigExecutionConfigArgs defaults) {
             $ = new BatchEnvironmentConfigExecutionConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param authenticationConfig Authentication configuration for a workload is used to set the default identity for the workload execution.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authenticationConfig(@Nullable Output<BatchEnvironmentConfigExecutionConfigAuthenticationConfigArgs> authenticationConfig) {
+            $.authenticationConfig = authenticationConfig;
+            return this;
+        }
+
+        /**
+         * @param authenticationConfig Authentication configuration for a workload is used to set the default identity for the workload execution.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authenticationConfig(BatchEnvironmentConfigExecutionConfigAuthenticationConfigArgs authenticationConfig) {
+            return authenticationConfig(Output.of(authenticationConfig));
         }
 
         /**

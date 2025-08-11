@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class GetClusterIpAllocationPolicyResult
     {
         /// <summary>
+        /// AdditionalIPRangesConfig is the configuration for individual additional subnetworks attached to the cluster
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClusterIpAllocationPolicyAdditionalIpRangesConfigResult> AdditionalIpRangesConfigs;
+        /// <summary>
         /// AdditionalPodRangesConfig is the configuration for additional pod secondary ranges supporting the ClusterUpdate message.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterIpAllocationPolicyAdditionalPodRangesConfigResult> AdditionalPodRangesConfigs;
@@ -44,6 +48,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
         [OutputConstructor]
         private GetClusterIpAllocationPolicyResult(
+            ImmutableArray<Outputs.GetClusterIpAllocationPolicyAdditionalIpRangesConfigResult> additionalIpRangesConfigs,
+
             ImmutableArray<Outputs.GetClusterIpAllocationPolicyAdditionalPodRangesConfigResult> additionalPodRangesConfigs,
 
             string clusterIpv4CidrBlock,
@@ -58,6 +64,7 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string stackType)
         {
+            AdditionalIpRangesConfigs = additionalIpRangesConfigs;
             AdditionalPodRangesConfigs = additionalPodRangesConfigs;
             ClusterIpv4CidrBlock = clusterIpv4CidrBlock;
             ClusterSecondaryRangeName = clusterSecondaryRangeName;

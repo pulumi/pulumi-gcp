@@ -40,6 +40,46 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Managedkafka Cluster Mtls
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const caPool = new gcp.certificateauthority.CaPool("ca_pool", {
+ *     name: "my-ca-pool",
+ *     location: "us-central1",
+ *     tier: "ENTERPRISE",
+ *     publishingOptions: {
+ *         publishCaCert: true,
+ *         publishCrl: true,
+ *     },
+ * });
+ * const project = gcp.organizations.getProject({});
+ * const example = new gcp.managedkafka.Cluster("example", {
+ *     clusterId: "my-cluster",
+ *     location: "us-central1",
+ *     capacityConfig: {
+ *         vcpuCount: "3",
+ *         memoryBytes: "3221225472",
+ *     },
+ *     gcpConfig: {
+ *         accessConfig: {
+ *             networkConfigs: [{
+ *                 subnet: project.then(project => `projects/${project.number}/regions/us-central1/subnetworks/default`),
+ *             }],
+ *         },
+ *     },
+ *     tlsConfig: {
+ *         trustConfig: {
+ *             casConfigs: [{
+ *                 caPool: caPool.id,
+ *             }],
+ *         },
+ *         sslPrincipalMappingRules: "RULE:pattern/replacement/L,DEFAULT",
+ *     },
+ * });
+ * ```
  * ### Managedkafka Cluster Cmek
  *
  * ```typescript
@@ -190,6 +230,11 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
+     * TLS configuration for the Kafka cluster. This is used to configure mTLS authentication. To clear our a TLS configuration that has been previously set, please explicitly add an empty `tlsConfig` block.
+     * Structure is documented below.
+     */
+    public readonly tlsConfig!: pulumi.Output<outputs.managedkafka.ClusterTlsConfig>;
+    /**
      * The time when the cluster was last updated.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
@@ -219,6 +264,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["rebalanceConfig"] = state ? state.rebalanceConfig : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["tlsConfig"] = state ? state.tlsConfig : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
@@ -241,6 +287,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["rebalanceConfig"] = args ? args.rebalanceConfig : undefined;
+            resourceInputs["tlsConfig"] = args ? args.tlsConfig : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -315,6 +362,11 @@ export interface ClusterState {
      */
     state?: pulumi.Input<string>;
     /**
+     * TLS configuration for the Kafka cluster. This is used to configure mTLS authentication. To clear our a TLS configuration that has been previously set, please explicitly add an empty `tlsConfig` block.
+     * Structure is documented below.
+     */
+    tlsConfig?: pulumi.Input<inputs.managedkafka.ClusterTlsConfig>;
+    /**
      * The time when the cluster was last updated.
      */
     updateTime?: pulumi.Input<string>;
@@ -358,4 +410,9 @@ export interface ClusterArgs {
      * Structure is documented below.
      */
     rebalanceConfig?: pulumi.Input<inputs.managedkafka.ClusterRebalanceConfig>;
+    /**
+     * TLS configuration for the Kafka cluster. This is used to configure mTLS authentication. To clear our a TLS configuration that has been previously set, please explicitly add an empty `tlsConfig` block.
+     * Structure is documented below.
+     */
+    tlsConfig?: pulumi.Input<inputs.managedkafka.ClusterTlsConfig>;
 }

@@ -129,6 +129,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dataproc.inputs.BatchRuntimeConfigArgs;
  * import com.pulumi.gcp.dataproc.inputs.BatchEnvironmentConfigArgs;
  * import com.pulumi.gcp.dataproc.inputs.BatchEnvironmentConfigExecutionConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.BatchEnvironmentConfigExecutionConfigAuthenticationConfigArgs;
  * import com.pulumi.gcp.dataproc.inputs.BatchEnvironmentConfigPeripheralsConfigArgs;
  * import com.pulumi.gcp.dataproc.inputs.BatchEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgs;
  * import com.pulumi.gcp.dataproc.inputs.BatchSparkBatchArgs;
@@ -224,6 +225,9 @@ import javax.annotation.Nullable;
  *                     .networkUri("default")
  *                     .serviceAccount(String.format("%s-compute}{@literal @}{@code developer.gserviceaccount.com", project.number()))
  *                     .stagingBucket(bucket.name())
+ *                     .authenticationConfig(BatchEnvironmentConfigExecutionConfigAuthenticationConfigArgs.builder()
+ *                         .userWorkloadAuthenticationType("SERVICE_ACCOUNT")
+ *                         .build())
  *                     .build())
  *                 .peripheralsConfig(BatchEnvironmentConfigPeripheralsConfigArgs.builder()
  *                     .metastoreService(ms.name())

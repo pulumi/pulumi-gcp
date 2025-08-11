@@ -57,6 +57,7 @@ export interface GetFunctionArgs {
  * A collection of values returned by getFunction.
  */
 export interface GetFunctionResult {
+    readonly automaticUpdatePolicies: outputs.cloudfunctions.GetFunctionAutomaticUpdatePolicy[];
     /**
      * Available memory (in MB) to the function.
      */
@@ -107,6 +108,7 @@ export interface GetFunctionResult {
      * The name of the Cloud Function.
      */
     readonly name: string;
+    readonly onDeployUpdatePolicies: outputs.cloudfunctions.GetFunctionOnDeployUpdatePolicy[];
     readonly project?: string;
     readonly pulumiLabels: {[key: string]: string};
     readonly region?: string;

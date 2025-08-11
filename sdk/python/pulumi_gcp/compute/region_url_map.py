@@ -1312,6 +1312,202 @@ class RegionUrlMap(pulumi.CustomResource):
                 "path": "/home",
             }])
         ```
+        ### Region Url Map Default Mirror Percent
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.RegionHealthCheck("default",
+            region="us-central1",
+            name="health-check",
+            http_health_check={
+                "port": 80,
+            })
+        home = gcp.compute.RegionBackendService("home",
+            region="us-central1",
+            name="home",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="INTERNAL_MANAGED",
+            health_checks=default.id)
+        mirror = gcp.compute.RegionBackendService("mirror",
+            region="us-central1",
+            name="mirror",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="INTERNAL_MANAGED",
+            health_checks=default.id)
+        regionurlmap = gcp.compute.RegionUrlMap("regionurlmap",
+            region="us-central1",
+            name="regionurlmap",
+            description="Test for default route action mirror percent",
+            default_service=home.id,
+            default_route_action={
+                "request_mirror_policy": {
+                    "backend_service": mirror.id,
+                    "mirror_percent": 50,
+                },
+            },
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "path_matcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "default_service": home.id,
+            }])
+        ```
+        ### Region Url Map Path Matcher Default Mirror Percent
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.RegionHealthCheck("default",
+            region="us-central1",
+            name="health-check",
+            http_health_check={
+                "port": 80,
+            })
+        home = gcp.compute.RegionBackendService("home",
+            region="us-central1",
+            name="home",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="INTERNAL_MANAGED",
+            health_checks=default.id)
+        mirror = gcp.compute.RegionBackendService("mirror",
+            region="us-central1",
+            name="mirror",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="INTERNAL_MANAGED",
+            health_checks=default.id)
+        regionurlmap = gcp.compute.RegionUrlMap("regionurlmap",
+            region="us-central1",
+            name="regionurlmap",
+            description="Test for default route action mirror percent",
+            default_service=home.id,
+            default_route_action={
+                "request_mirror_policy": {
+                    "backend_service": mirror.id,
+                    "mirror_percent": 50,
+                },
+            },
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "path_matcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "default_service": home.id,
+            }])
+        ```
+        ### Region Url Map Path Rule Mirror Percent
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.RegionHealthCheck("default",
+            region="us-central1",
+            name="health-check",
+            http_health_check={
+                "port": 80,
+            })
+        home = gcp.compute.RegionBackendService("home",
+            region="us-central1",
+            name="home",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="INTERNAL_MANAGED",
+            health_checks=default.id)
+        mirror = gcp.compute.RegionBackendService("mirror",
+            region="us-central1",
+            name="mirror",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="INTERNAL_MANAGED",
+            health_checks=default.id)
+        regionurlmap = gcp.compute.RegionUrlMap("regionurlmap",
+            region="us-central1",
+            name="regionurlmap",
+            description="Test for path matcher default route action mirror percent",
+            default_service=home.id,
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "path_matcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "default_service": home.id,
+                "default_route_action": {
+                    "request_mirror_policy": {
+                        "backend_service": mirror.id,
+                        "mirror_percent": 75,
+                    },
+                },
+            }])
+        ```
+        ### Region Url Map Route Rule Mirror Percent
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.RegionHealthCheck("default",
+            region="us-central1",
+            name="health-check",
+            http_health_check={
+                "port": 80,
+            })
+        home = gcp.compute.RegionBackendService("home",
+            region="us-central1",
+            name="home",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="INTERNAL_MANAGED",
+            health_checks=default.id)
+        mirror = gcp.compute.RegionBackendService("mirror",
+            region="us-central1",
+            name="mirror",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="INTERNAL_MANAGED",
+            health_checks=default.id)
+        regionurlmap = gcp.compute.RegionUrlMap("regionurlmap",
+            region="us-central1",
+            name="regionurlmap",
+            description="Test for path rule route action mirror percent",
+            default_service=home.id,
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "path_matcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "default_service": home.id,
+                "path_rules": [{
+                    "paths": ["/home"],
+                    "service": home.id,
+                    "route_action": {
+                        "request_mirror_policy": {
+                            "backend_service": mirror.id,
+                            "mirror_percent": 25,
+                        },
+                    },
+                }],
+            }])
+        ```
 
         ## Import
 
@@ -2157,6 +2353,202 @@ class RegionUrlMap(pulumi.CustomResource):
                 "service": home.id,
                 "host": "hi.com",
                 "path": "/home",
+            }])
+        ```
+        ### Region Url Map Default Mirror Percent
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.RegionHealthCheck("default",
+            region="us-central1",
+            name="health-check",
+            http_health_check={
+                "port": 80,
+            })
+        home = gcp.compute.RegionBackendService("home",
+            region="us-central1",
+            name="home",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="INTERNAL_MANAGED",
+            health_checks=default.id)
+        mirror = gcp.compute.RegionBackendService("mirror",
+            region="us-central1",
+            name="mirror",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="INTERNAL_MANAGED",
+            health_checks=default.id)
+        regionurlmap = gcp.compute.RegionUrlMap("regionurlmap",
+            region="us-central1",
+            name="regionurlmap",
+            description="Test for default route action mirror percent",
+            default_service=home.id,
+            default_route_action={
+                "request_mirror_policy": {
+                    "backend_service": mirror.id,
+                    "mirror_percent": 50,
+                },
+            },
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "path_matcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "default_service": home.id,
+            }])
+        ```
+        ### Region Url Map Path Matcher Default Mirror Percent
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.RegionHealthCheck("default",
+            region="us-central1",
+            name="health-check",
+            http_health_check={
+                "port": 80,
+            })
+        home = gcp.compute.RegionBackendService("home",
+            region="us-central1",
+            name="home",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="INTERNAL_MANAGED",
+            health_checks=default.id)
+        mirror = gcp.compute.RegionBackendService("mirror",
+            region="us-central1",
+            name="mirror",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="INTERNAL_MANAGED",
+            health_checks=default.id)
+        regionurlmap = gcp.compute.RegionUrlMap("regionurlmap",
+            region="us-central1",
+            name="regionurlmap",
+            description="Test for default route action mirror percent",
+            default_service=home.id,
+            default_route_action={
+                "request_mirror_policy": {
+                    "backend_service": mirror.id,
+                    "mirror_percent": 50,
+                },
+            },
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "path_matcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "default_service": home.id,
+            }])
+        ```
+        ### Region Url Map Path Rule Mirror Percent
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.RegionHealthCheck("default",
+            region="us-central1",
+            name="health-check",
+            http_health_check={
+                "port": 80,
+            })
+        home = gcp.compute.RegionBackendService("home",
+            region="us-central1",
+            name="home",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="INTERNAL_MANAGED",
+            health_checks=default.id)
+        mirror = gcp.compute.RegionBackendService("mirror",
+            region="us-central1",
+            name="mirror",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="INTERNAL_MANAGED",
+            health_checks=default.id)
+        regionurlmap = gcp.compute.RegionUrlMap("regionurlmap",
+            region="us-central1",
+            name="regionurlmap",
+            description="Test for path matcher default route action mirror percent",
+            default_service=home.id,
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "path_matcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "default_service": home.id,
+                "default_route_action": {
+                    "request_mirror_policy": {
+                        "backend_service": mirror.id,
+                        "mirror_percent": 75,
+                    },
+                },
+            }])
+        ```
+        ### Region Url Map Route Rule Mirror Percent
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.RegionHealthCheck("default",
+            region="us-central1",
+            name="health-check",
+            http_health_check={
+                "port": 80,
+            })
+        home = gcp.compute.RegionBackendService("home",
+            region="us-central1",
+            name="home",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="INTERNAL_MANAGED",
+            health_checks=default.id)
+        mirror = gcp.compute.RegionBackendService("mirror",
+            region="us-central1",
+            name="mirror",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="INTERNAL_MANAGED",
+            health_checks=default.id)
+        regionurlmap = gcp.compute.RegionUrlMap("regionurlmap",
+            region="us-central1",
+            name="regionurlmap",
+            description="Test for path rule route action mirror percent",
+            default_service=home.id,
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "path_matcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "default_service": home.id,
+                "path_rules": [{
+                    "paths": ["/home"],
+                    "service": home.id,
+                    "route_action": {
+                        "request_mirror_policy": {
+                            "backend_service": mirror.id,
+                            "mirror_percent": 25,
+                        },
+                    },
+                }],
             }])
         ```
 

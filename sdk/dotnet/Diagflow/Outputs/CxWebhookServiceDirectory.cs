@@ -14,10 +14,10 @@ namespace Pulumi.Gcp.Diagflow.Outputs
     public sealed class CxWebhookServiceDirectory
     {
         /// <summary>
-        /// The name of Service Directory service.
+        /// Represents configuration for a generic web service.
         /// Structure is documented below.
         /// </summary>
-        public readonly Outputs.CxWebhookServiceDirectoryGenericWebService GenericWebService;
+        public readonly Outputs.CxWebhookServiceDirectoryGenericWebService? GenericWebService;
         /// <summary>
         /// The name of Service Directory service.
         /// </summary>
@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.Diagflow.Outputs
 
         [OutputConstructor]
         private CxWebhookServiceDirectory(
-            Outputs.CxWebhookServiceDirectoryGenericWebService genericWebService,
+            Outputs.CxWebhookServiceDirectoryGenericWebService? genericWebService,
 
             string service)
         {

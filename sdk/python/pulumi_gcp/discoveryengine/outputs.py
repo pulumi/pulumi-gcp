@@ -20,6 +20,7 @@ __all__ = [
     'ChatEngineChatEngineConfigAgentCreationConfig',
     'ChatEngineChatEngineMetadata',
     'ChatEngineCommonConfig',
+    'CmekConfigSingleRegionKey',
     'DataStoreAdvancedSiteSearchConfig',
     'DataStoreDocumentProcessingConfig',
     'DataStoreDocumentProcessingConfigChunkingConfig',
@@ -32,6 +33,12 @@ __all__ = [
     'DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfig',
     'DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig',
     'DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig',
+    'RecommendationEngineCommonConfig',
+    'RecommendationEngineMediaRecommendationEngineConfig',
+    'RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfig',
+    'RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfig',
+    'RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfig',
+    'RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig',
     'SearchEngineCommonConfig',
     'SearchEngineSearchEngineConfig',
     'TargetSiteFailureReason',
@@ -265,6 +272,45 @@ class ChatEngineCommonConfig(dict):
         The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.
         """
         return pulumi.get(self, "company_name")
+
+
+@pulumi.output_type
+class CmekConfigSingleRegionKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKey":
+            suggest = "kms_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CmekConfigSingleRegionKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CmekConfigSingleRegionKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CmekConfigSingleRegionKey.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key: _builtins.str):
+        """
+        :param _builtins.str kms_key: Single-regional kms key resource name which will be used to encrypt
+               resources
+               `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`.
+        """
+        pulumi.set(__self__, "kms_key", kms_key)
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> _builtins.str:
+        """
+        Single-regional kms key resource name which will be used to encrypt
+        resources
+        `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`.
+        """
+        return pulumi.get(self, "kms_key")
 
 
 @pulumi.output_type
@@ -940,6 +986,372 @@ class DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig(dic
         If true, will use native text instead of OCR text on pages containing native text.
         """
         return pulumi.get(self, "use_native_text")
+
+
+@pulumi.output_type
+class RecommendationEngineCommonConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "companyName":
+            suggest = "company_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RecommendationEngineCommonConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RecommendationEngineCommonConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RecommendationEngineCommonConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 company_name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str company_name: The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.cd
+        """
+        if company_name is not None:
+            pulumi.set(__self__, "company_name", company_name)
+
+    @_builtins.property
+    @pulumi.getter(name="companyName")
+    def company_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.cd
+        """
+        return pulumi.get(self, "company_name")
+
+
+@pulumi.output_type
+class RecommendationEngineMediaRecommendationEngineConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "engineFeaturesConfig":
+            suggest = "engine_features_config"
+        elif key == "optimizationObjective":
+            suggest = "optimization_objective"
+        elif key == "optimizationObjectiveConfig":
+            suggest = "optimization_objective_config"
+        elif key == "trainingState":
+            suggest = "training_state"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RecommendationEngineMediaRecommendationEngineConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RecommendationEngineMediaRecommendationEngineConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RecommendationEngineMediaRecommendationEngineConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 engine_features_config: Optional['outputs.RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfig'] = None,
+                 optimization_objective: Optional[_builtins.str] = None,
+                 optimization_objective_config: Optional['outputs.RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig'] = None,
+                 training_state: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param 'RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigArgs' engine_features_config: More feature configs of the selected engine type.
+               Structure is documented below.
+        :param _builtins.str optimization_objective: The optimization objective. e.g., `cvr`.
+               This field together with MediaRecommendationEngineConfig.type describes
+               engine metadata to use to control engine training and serving.
+               Currently supported values: `ctr`, `cvr`.
+               If not specified, we choose default based on engine type. Default depends on type of recommendation:
+               `recommended-for-you` => `ctr`
+               `others-you-may-like` => `ctr`
+        :param 'RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigArgs' optimization_objective_config: Name and value of the custom threshold for cvr optimization_objective.
+               For target_field `watch-time`, target_field_value must be an integer
+               value indicating the media progress time in seconds between (0, 86400]
+               (excludes 0, includes 86400) (e.g., 90).
+               For target_field `watch-percentage`, the target_field_value must be a
+               valid float value between (0, 1.0] (excludes 0, includes 1.0) (e.g., 0.5).
+               Structure is documented below.
+        :param _builtins.str training_state: The training state that the engine is in (e.g. `TRAINING` or `PAUSED`).
+               Since part of the cost of running the service
+               is frequency of training - this can be used to determine when to train
+               engine in order to control cost. If not specified: the default value for
+               `CreateEngine` method is `TRAINING`. The default value for
+               `UpdateEngine` method is to keep the state the same as before.
+               Possible values are: `PAUSED`, `TRAINING`.
+        :param _builtins.str type: The type of engine. e.g., `recommended-for-you`.
+               This field together with MediaRecommendationEngineConfig.optimizationObjective describes
+               engine metadata to use to control engine training and serving.
+               Currently supported values: `recommended-for-you`, `others-you-may-like`,
+               `more-like-this`, `most-popular-items`.
+        """
+        if engine_features_config is not None:
+            pulumi.set(__self__, "engine_features_config", engine_features_config)
+        if optimization_objective is not None:
+            pulumi.set(__self__, "optimization_objective", optimization_objective)
+        if optimization_objective_config is not None:
+            pulumi.set(__self__, "optimization_objective_config", optimization_objective_config)
+        if training_state is not None:
+            pulumi.set(__self__, "training_state", training_state)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="engineFeaturesConfig")
+    def engine_features_config(self) -> Optional['outputs.RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfig']:
+        """
+        More feature configs of the selected engine type.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "engine_features_config")
+
+    @_builtins.property
+    @pulumi.getter(name="optimizationObjective")
+    def optimization_objective(self) -> Optional[_builtins.str]:
+        """
+        The optimization objective. e.g., `cvr`.
+        This field together with MediaRecommendationEngineConfig.type describes
+        engine metadata to use to control engine training and serving.
+        Currently supported values: `ctr`, `cvr`.
+        If not specified, we choose default based on engine type. Default depends on type of recommendation:
+        `recommended-for-you` => `ctr`
+        `others-you-may-like` => `ctr`
+        """
+        return pulumi.get(self, "optimization_objective")
+
+    @_builtins.property
+    @pulumi.getter(name="optimizationObjectiveConfig")
+    def optimization_objective_config(self) -> Optional['outputs.RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig']:
+        """
+        Name and value of the custom threshold for cvr optimization_objective.
+        For target_field `watch-time`, target_field_value must be an integer
+        value indicating the media progress time in seconds between (0, 86400]
+        (excludes 0, includes 86400) (e.g., 90).
+        For target_field `watch-percentage`, the target_field_value must be a
+        valid float value between (0, 1.0] (excludes 0, includes 1.0) (e.g., 0.5).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "optimization_objective_config")
+
+    @_builtins.property
+    @pulumi.getter(name="trainingState")
+    def training_state(self) -> Optional[_builtins.str]:
+        """
+        The training state that the engine is in (e.g. `TRAINING` or `PAUSED`).
+        Since part of the cost of running the service
+        is frequency of training - this can be used to determine when to train
+        engine in order to control cost. If not specified: the default value for
+        `CreateEngine` method is `TRAINING`. The default value for
+        `UpdateEngine` method is to keep the state the same as before.
+        Possible values are: `PAUSED`, `TRAINING`.
+        """
+        return pulumi.get(self, "training_state")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        The type of engine. e.g., `recommended-for-you`.
+        This field together with MediaRecommendationEngineConfig.optimizationObjective describes
+        engine metadata to use to control engine training and serving.
+        Currently supported values: `recommended-for-you`, `others-you-may-like`,
+        `more-like-this`, `most-popular-items`.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mostPopularConfig":
+            suggest = "most_popular_config"
+        elif key == "recommendedForYouConfig":
+            suggest = "recommended_for_you_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 most_popular_config: Optional['outputs.RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfig'] = None,
+                 recommended_for_you_config: Optional['outputs.RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfig'] = None):
+        """
+        :param 'RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigArgs' most_popular_config: Feature configurations that are required for creating a Most Popular engine.
+               Structure is documented below.
+        :param 'RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigArgs' recommended_for_you_config: Additional feature configurations for creating a `recommended-for-you` engine.
+               Structure is documented below.
+        """
+        if most_popular_config is not None:
+            pulumi.set(__self__, "most_popular_config", most_popular_config)
+        if recommended_for_you_config is not None:
+            pulumi.set(__self__, "recommended_for_you_config", recommended_for_you_config)
+
+    @_builtins.property
+    @pulumi.getter(name="mostPopularConfig")
+    def most_popular_config(self) -> Optional['outputs.RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfig']:
+        """
+        Feature configurations that are required for creating a Most Popular engine.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "most_popular_config")
+
+    @_builtins.property
+    @pulumi.getter(name="recommendedForYouConfig")
+    def recommended_for_you_config(self) -> Optional['outputs.RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfig']:
+        """
+        Additional feature configurations for creating a `recommended-for-you` engine.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "recommended_for_you_config")
+
+
+@pulumi.output_type
+class RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "timeWindowDays":
+            suggest = "time_window_days"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 time_window_days: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int time_window_days: The time window of which the engine is queried at training and
+               prediction time. Positive integers only. The value translates to the
+               last X days of events. Currently required for the `most-popular-items`
+               engine.
+        """
+        if time_window_days is not None:
+            pulumi.set(__self__, "time_window_days", time_window_days)
+
+    @_builtins.property
+    @pulumi.getter(name="timeWindowDays")
+    def time_window_days(self) -> Optional[_builtins.int]:
+        """
+        The time window of which the engine is queried at training and
+        prediction time. Positive integers only. The value translates to the
+        last X days of events. Currently required for the `most-popular-items`
+        engine.
+        """
+        return pulumi.get(self, "time_window_days")
+
+
+@pulumi.output_type
+class RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "contextEventType":
+            suggest = "context_event_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 context_event_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str context_event_type: The type of event with which the engine is queried at prediction time.
+               If set to `generic`, only `view-item`, `media-play`,and
+               `media-complete` will be used as `context-event` in engine training. If
+               set to `view-home-page`, `view-home-page` will also be used as
+               `context-events` in addition to `view-item`, `media-play`, and
+               `media-complete`. Currently supported for the `recommended-for-you`
+               engine. Currently supported values: `view-home-page`, `generic`.
+        """
+        if context_event_type is not None:
+            pulumi.set(__self__, "context_event_type", context_event_type)
+
+    @_builtins.property
+    @pulumi.getter(name="contextEventType")
+    def context_event_type(self) -> Optional[_builtins.str]:
+        """
+        The type of event with which the engine is queried at prediction time.
+        If set to `generic`, only `view-item`, `media-play`,and
+        `media-complete` will be used as `context-event` in engine training. If
+        set to `view-home-page`, `view-home-page` will also be used as
+        `context-events` in addition to `view-item`, `media-play`, and
+        `media-complete`. Currently supported for the `recommended-for-you`
+        engine. Currently supported values: `view-home-page`, `generic`.
+        """
+        return pulumi.get(self, "context_event_type")
+
+
+@pulumi.output_type
+class RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetField":
+            suggest = "target_field"
+        elif key == "targetFieldValueFloat":
+            suggest = "target_field_value_float"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 target_field: Optional[_builtins.str] = None,
+                 target_field_value_float: Optional[_builtins.float] = None):
+        """
+        :param _builtins.str target_field: The name of the field to target. Currently supported values: `watch-percentage`, `watch-time`.
+        :param _builtins.float target_field_value_float: The threshold to be applied to the target (e.g., 0.5).
+        """
+        if target_field is not None:
+            pulumi.set(__self__, "target_field", target_field)
+        if target_field_value_float is not None:
+            pulumi.set(__self__, "target_field_value_float", target_field_value_float)
+
+    @_builtins.property
+    @pulumi.getter(name="targetField")
+    def target_field(self) -> Optional[_builtins.str]:
+        """
+        The name of the field to target. Currently supported values: `watch-percentage`, `watch-time`.
+        """
+        return pulumi.get(self, "target_field")
+
+    @_builtins.property
+    @pulumi.getter(name="targetFieldValueFloat")
+    def target_field_value_float(self) -> Optional[_builtins.float]:
+        """
+        The threshold to be applied to the target (e.g., 0.5).
+        """
+        return pulumi.get(self, "target_field_value_float")
 
 
 @pulumi.output_type

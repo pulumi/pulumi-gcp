@@ -24,21 +24,32 @@ class GeminiGcpEnablementSettingArgs:
                  disable_web_grounding: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_customer_data_sharing: Optional[pulumi.Input[_builtins.bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 web_grounding_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GeminiGcpEnablementSetting resource.
         :param pulumi.Input[_builtins.str] gemini_gcp_enablement_setting_id: Id of the Gemini Gcp Enablement setting.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-        :param pulumi.Input[_builtins.bool] disable_web_grounding: Whether web grounding should be disabled.
+        :param pulumi.Input[_builtins.bool] disable_web_grounding: (Optional, Deprecated)
+               Whether web grounding should be disabled.
+               
+               > **Warning:** `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.
         :param pulumi.Input[_builtins.bool] enable_customer_data_sharing: Whether customer data sharing should be enabled.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.str] web_grounding_type: Web grounding type.
+               Possible values:
+               GROUNDING_WITH_GOOGLE_SEARCH
+               WEB_GROUNDING_FOR_ENTERPRISE
         """
         pulumi.set(__self__, "gemini_gcp_enablement_setting_id", gemini_gcp_enablement_setting_id)
         pulumi.set(__self__, "location", location)
+        if disable_web_grounding is not None:
+            warnings.warn("""`disable_web_grounding` is deprecated. Use `web_grounding_type` instead.""", DeprecationWarning)
+            pulumi.log.warn("""disable_web_grounding is deprecated: `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.""")
         if disable_web_grounding is not None:
             pulumi.set(__self__, "disable_web_grounding", disable_web_grounding)
         if enable_customer_data_sharing is not None:
@@ -47,6 +58,8 @@ class GeminiGcpEnablementSettingArgs:
             pulumi.set(__self__, "labels", labels)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if web_grounding_type is not None:
+            pulumi.set(__self__, "web_grounding_type", web_grounding_type)
 
     @_builtins.property
     @pulumi.getter(name="geminiGcpEnablementSettingId")
@@ -74,9 +87,13 @@ class GeminiGcpEnablementSettingArgs:
 
     @_builtins.property
     @pulumi.getter(name="disableWebGrounding")
+    @_utilities.deprecated("""`disable_web_grounding` is deprecated. Use `web_grounding_type` instead.""")
     def disable_web_grounding(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
+        (Optional, Deprecated)
         Whether web grounding should be disabled.
+
+        > **Warning:** `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.
         """
         return pulumi.get(self, "disable_web_grounding")
 
@@ -123,6 +140,21 @@ class GeminiGcpEnablementSettingArgs:
     def project(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "project", value)
 
+    @_builtins.property
+    @pulumi.getter(name="webGroundingType")
+    def web_grounding_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Web grounding type.
+        Possible values:
+        GROUNDING_WITH_GOOGLE_SEARCH
+        WEB_GROUNDING_FOR_ENTERPRISE
+        """
+        return pulumi.get(self, "web_grounding_type")
+
+    @web_grounding_type.setter
+    def web_grounding_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "web_grounding_type", value)
+
 
 @pulumi.input_type
 class _GeminiGcpEnablementSettingState:
@@ -137,11 +169,15 @@ class _GeminiGcpEnablementSettingState:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 web_grounding_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GeminiGcpEnablementSetting resources.
         :param pulumi.Input[_builtins.str] create_time: Create time stamp.
-        :param pulumi.Input[_builtins.bool] disable_web_grounding: Whether web grounding should be disabled.
+        :param pulumi.Input[_builtins.bool] disable_web_grounding: (Optional, Deprecated)
+               Whether web grounding should be disabled.
+               
+               > **Warning:** `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.bool] enable_customer_data_sharing: Whether customer data sharing should be enabled.
         :param pulumi.Input[_builtins.str] gemini_gcp_enablement_setting_id: Id of the Gemini Gcp Enablement setting.
@@ -156,9 +192,16 @@ class _GeminiGcpEnablementSettingState:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] update_time: Update time stamp.
+        :param pulumi.Input[_builtins.str] web_grounding_type: Web grounding type.
+               Possible values:
+               GROUNDING_WITH_GOOGLE_SEARCH
+               WEB_GROUNDING_FOR_ENTERPRISE
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if disable_web_grounding is not None:
+            warnings.warn("""`disable_web_grounding` is deprecated. Use `web_grounding_type` instead.""", DeprecationWarning)
+            pulumi.log.warn("""disable_web_grounding is deprecated: `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.""")
         if disable_web_grounding is not None:
             pulumi.set(__self__, "disable_web_grounding", disable_web_grounding)
         if effective_labels is not None:
@@ -179,6 +222,8 @@ class _GeminiGcpEnablementSettingState:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
+        if web_grounding_type is not None:
+            pulumi.set(__self__, "web_grounding_type", web_grounding_type)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -194,9 +239,13 @@ class _GeminiGcpEnablementSettingState:
 
     @_builtins.property
     @pulumi.getter(name="disableWebGrounding")
+    @_utilities.deprecated("""`disable_web_grounding` is deprecated. Use `web_grounding_type` instead.""")
     def disable_web_grounding(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
+        (Optional, Deprecated)
         Whether web grounding should be disabled.
+
+        > **Warning:** `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.
         """
         return pulumi.get(self, "disable_web_grounding")
 
@@ -317,6 +366,21 @@ class _GeminiGcpEnablementSettingState:
     def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
+    @_builtins.property
+    @pulumi.getter(name="webGroundingType")
+    def web_grounding_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Web grounding type.
+        Possible values:
+        GROUNDING_WITH_GOOGLE_SEARCH
+        WEB_GROUNDING_FOR_ENTERPRISE
+        """
+        return pulumi.get(self, "web_grounding_type")
+
+    @web_grounding_type.setter
+    def web_grounding_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "web_grounding_type", value)
+
 
 @pulumi.type_token("gcp:gemini/geminiGcpEnablementSetting:GeminiGcpEnablementSetting")
 class GeminiGcpEnablementSetting(pulumi.CustomResource):
@@ -330,6 +394,7 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 web_grounding_type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
         The resource for managing GeminiGcpEnablement settings for Admin Control.
@@ -349,7 +414,7 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
                 "my_key": "my_value",
             },
             enable_customer_data_sharing=True,
-            disable_web_grounding=True)
+            web_grounding_type="WEB_GROUNDING_FOR_ENTERPRISE")
         ```
 
         ## Import
@@ -378,7 +443,10 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] disable_web_grounding: Whether web grounding should be disabled.
+        :param pulumi.Input[_builtins.bool] disable_web_grounding: (Optional, Deprecated)
+               Whether web grounding should be disabled.
+               
+               > **Warning:** `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.
         :param pulumi.Input[_builtins.bool] enable_customer_data_sharing: Whether customer data sharing should be enabled.
         :param pulumi.Input[_builtins.str] gemini_gcp_enablement_setting_id: Id of the Gemini Gcp Enablement setting.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs.
@@ -387,6 +455,10 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.str] web_grounding_type: Web grounding type.
+               Possible values:
+               GROUNDING_WITH_GOOGLE_SEARCH
+               WEB_GROUNDING_FOR_ENTERPRISE
         """
         ...
     @overload
@@ -412,7 +484,7 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
                 "my_key": "my_value",
             },
             enable_customer_data_sharing=True,
-            disable_web_grounding=True)
+            web_grounding_type="WEB_GROUNDING_FOR_ENTERPRISE")
         ```
 
         ## Import
@@ -460,6 +532,7 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 web_grounding_type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -479,6 +552,7 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
+            __props__.__dict__["web_grounding_type"] = web_grounding_type
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
@@ -506,7 +580,8 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
             name: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'GeminiGcpEnablementSetting':
+            update_time: Optional[pulumi.Input[_builtins.str]] = None,
+            web_grounding_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'GeminiGcpEnablementSetting':
         """
         Get an existing GeminiGcpEnablementSetting resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -515,7 +590,10 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: Create time stamp.
-        :param pulumi.Input[_builtins.bool] disable_web_grounding: Whether web grounding should be disabled.
+        :param pulumi.Input[_builtins.bool] disable_web_grounding: (Optional, Deprecated)
+               Whether web grounding should be disabled.
+               
+               > **Warning:** `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.bool] enable_customer_data_sharing: Whether customer data sharing should be enabled.
         :param pulumi.Input[_builtins.str] gemini_gcp_enablement_setting_id: Id of the Gemini Gcp Enablement setting.
@@ -530,6 +608,10 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] update_time: Update time stamp.
+        :param pulumi.Input[_builtins.str] web_grounding_type: Web grounding type.
+               Possible values:
+               GROUNDING_WITH_GOOGLE_SEARCH
+               WEB_GROUNDING_FOR_ENTERPRISE
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -546,6 +628,7 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["update_time"] = update_time
+        __props__.__dict__["web_grounding_type"] = web_grounding_type
         return GeminiGcpEnablementSetting(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -558,9 +641,13 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="disableWebGrounding")
+    @_utilities.deprecated("""`disable_web_grounding` is deprecated. Use `web_grounding_type` instead.""")
     def disable_web_grounding(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
+        (Optional, Deprecated)
         Whether web grounding should be disabled.
+
+        > **Warning:** `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.
         """
         return pulumi.get(self, "disable_web_grounding")
 
@@ -640,4 +727,15 @@ class GeminiGcpEnablementSetting(pulumi.CustomResource):
         Update time stamp.
         """
         return pulumi.get(self, "update_time")
+
+    @_builtins.property
+    @pulumi.getter(name="webGroundingType")
+    def web_grounding_type(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Web grounding type.
+        Possible values:
+        GROUNDING_WITH_GOOGLE_SEARCH
+        WEB_GROUNDING_FOR_ENTERPRISE
+        """
+        return pulumi.get(self, "web_grounding_type")
 

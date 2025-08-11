@@ -16,6 +16,17 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'FloorsettingAiPlatformFloorSetting',
+    'FloorsettingFilterConfig',
+    'FloorsettingFilterConfigMaliciousUriFilterSettings',
+    'FloorsettingFilterConfigPiAndJailbreakFilterSettings',
+    'FloorsettingFilterConfigRaiSettings',
+    'FloorsettingFilterConfigRaiSettingsRaiFilter',
+    'FloorsettingFilterConfigSdpSettings',
+    'FloorsettingFilterConfigSdpSettingsAdvancedConfig',
+    'FloorsettingFilterConfigSdpSettingsBasicConfig',
+    'FloorsettingFloorSettingMetadata',
+    'FloorsettingFloorSettingMetadataMultiLanguageDetection',
     'TemplateFilterConfig',
     'TemplateFilterConfigMaliciousUriFilterSettings',
     'TemplateFilterConfigPiAndJailbreakFilterSettings',
@@ -27,6 +38,613 @@ __all__ = [
     'TemplateTemplateMetadata',
     'TemplateTemplateMetadataMultiLanguageDetection',
 ]
+
+@pulumi.output_type
+class FloorsettingAiPlatformFloorSetting(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableCloudLogging":
+            suggest = "enable_cloud_logging"
+        elif key == "inspectAndBlock":
+            suggest = "inspect_and_block"
+        elif key == "inspectOnly":
+            suggest = "inspect_only"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FloorsettingAiPlatformFloorSetting. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FloorsettingAiPlatformFloorSetting.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FloorsettingAiPlatformFloorSetting.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_cloud_logging: Optional[_builtins.bool] = None,
+                 inspect_and_block: Optional[_builtins.bool] = None,
+                 inspect_only: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool enable_cloud_logging: If true, log Model Armor filter results to Cloud Logging.
+        :param _builtins.bool inspect_and_block: If true, Model Armor filters will be run in inspect and block mode.
+               Requests that trip Model Armor filters will be blocked.
+        :param _builtins.bool inspect_only: If true, Model Armor filters will be run in inspect only mode. No action
+               will be taken on the request.
+        """
+        if enable_cloud_logging is not None:
+            pulumi.set(__self__, "enable_cloud_logging", enable_cloud_logging)
+        if inspect_and_block is not None:
+            pulumi.set(__self__, "inspect_and_block", inspect_and_block)
+        if inspect_only is not None:
+            pulumi.set(__self__, "inspect_only", inspect_only)
+
+    @_builtins.property
+    @pulumi.getter(name="enableCloudLogging")
+    def enable_cloud_logging(self) -> Optional[_builtins.bool]:
+        """
+        If true, log Model Armor filter results to Cloud Logging.
+        """
+        return pulumi.get(self, "enable_cloud_logging")
+
+    @_builtins.property
+    @pulumi.getter(name="inspectAndBlock")
+    def inspect_and_block(self) -> Optional[_builtins.bool]:
+        """
+        If true, Model Armor filters will be run in inspect and block mode.
+        Requests that trip Model Armor filters will be blocked.
+        """
+        return pulumi.get(self, "inspect_and_block")
+
+    @_builtins.property
+    @pulumi.getter(name="inspectOnly")
+    def inspect_only(self) -> Optional[_builtins.bool]:
+        """
+        If true, Model Armor filters will be run in inspect only mode. No action
+        will be taken on the request.
+        """
+        return pulumi.get(self, "inspect_only")
+
+
+@pulumi.output_type
+class FloorsettingFilterConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maliciousUriFilterSettings":
+            suggest = "malicious_uri_filter_settings"
+        elif key == "piAndJailbreakFilterSettings":
+            suggest = "pi_and_jailbreak_filter_settings"
+        elif key == "raiSettings":
+            suggest = "rai_settings"
+        elif key == "sdpSettings":
+            suggest = "sdp_settings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FloorsettingFilterConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FloorsettingFilterConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FloorsettingFilterConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 malicious_uri_filter_settings: Optional['outputs.FloorsettingFilterConfigMaliciousUriFilterSettings'] = None,
+                 pi_and_jailbreak_filter_settings: Optional['outputs.FloorsettingFilterConfigPiAndJailbreakFilterSettings'] = None,
+                 rai_settings: Optional['outputs.FloorsettingFilterConfigRaiSettings'] = None,
+                 sdp_settings: Optional['outputs.FloorsettingFilterConfigSdpSettings'] = None):
+        """
+        :param 'FloorsettingFilterConfigMaliciousUriFilterSettingsArgs' malicious_uri_filter_settings: Malicious URI filter settings.
+               Structure is documented below.
+        :param 'FloorsettingFilterConfigPiAndJailbreakFilterSettingsArgs' pi_and_jailbreak_filter_settings: Prompt injection and Jailbreak Filter settings.
+               Structure is documented below.
+        :param 'FloorsettingFilterConfigRaiSettingsArgs' rai_settings: Responsible AI Filter settings.
+               Structure is documented below.
+        :param 'FloorsettingFilterConfigSdpSettingsArgs' sdp_settings: Sensitive Data Protection settings.
+               Structure is documented below.
+        """
+        if malicious_uri_filter_settings is not None:
+            pulumi.set(__self__, "malicious_uri_filter_settings", malicious_uri_filter_settings)
+        if pi_and_jailbreak_filter_settings is not None:
+            pulumi.set(__self__, "pi_and_jailbreak_filter_settings", pi_and_jailbreak_filter_settings)
+        if rai_settings is not None:
+            pulumi.set(__self__, "rai_settings", rai_settings)
+        if sdp_settings is not None:
+            pulumi.set(__self__, "sdp_settings", sdp_settings)
+
+    @_builtins.property
+    @pulumi.getter(name="maliciousUriFilterSettings")
+    def malicious_uri_filter_settings(self) -> Optional['outputs.FloorsettingFilterConfigMaliciousUriFilterSettings']:
+        """
+        Malicious URI filter settings.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "malicious_uri_filter_settings")
+
+    @_builtins.property
+    @pulumi.getter(name="piAndJailbreakFilterSettings")
+    def pi_and_jailbreak_filter_settings(self) -> Optional['outputs.FloorsettingFilterConfigPiAndJailbreakFilterSettings']:
+        """
+        Prompt injection and Jailbreak Filter settings.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "pi_and_jailbreak_filter_settings")
+
+    @_builtins.property
+    @pulumi.getter(name="raiSettings")
+    def rai_settings(self) -> Optional['outputs.FloorsettingFilterConfigRaiSettings']:
+        """
+        Responsible AI Filter settings.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rai_settings")
+
+    @_builtins.property
+    @pulumi.getter(name="sdpSettings")
+    def sdp_settings(self) -> Optional['outputs.FloorsettingFilterConfigSdpSettings']:
+        """
+        Sensitive Data Protection settings.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sdp_settings")
+
+
+@pulumi.output_type
+class FloorsettingFilterConfigMaliciousUriFilterSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "filterEnforcement":
+            suggest = "filter_enforcement"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FloorsettingFilterConfigMaliciousUriFilterSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FloorsettingFilterConfigMaliciousUriFilterSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FloorsettingFilterConfigMaliciousUriFilterSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 filter_enforcement: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str filter_enforcement: Tells whether the Malicious URI filter is enabled or disabled.
+               Possible values:
+               ENABLED
+               DISABLED
+        """
+        if filter_enforcement is not None:
+            pulumi.set(__self__, "filter_enforcement", filter_enforcement)
+
+    @_builtins.property
+    @pulumi.getter(name="filterEnforcement")
+    def filter_enforcement(self) -> Optional[_builtins.str]:
+        """
+        Tells whether the Malicious URI filter is enabled or disabled.
+        Possible values:
+        ENABLED
+        DISABLED
+        """
+        return pulumi.get(self, "filter_enforcement")
+
+
+@pulumi.output_type
+class FloorsettingFilterConfigPiAndJailbreakFilterSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "confidenceLevel":
+            suggest = "confidence_level"
+        elif key == "filterEnforcement":
+            suggest = "filter_enforcement"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FloorsettingFilterConfigPiAndJailbreakFilterSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FloorsettingFilterConfigPiAndJailbreakFilterSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FloorsettingFilterConfigPiAndJailbreakFilterSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 confidence_level: Optional[_builtins.str] = None,
+                 filter_enforcement: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str confidence_level: Possible values:
+               LOW_AND_ABOVE
+               MEDIUM_AND_ABOVE
+               HIGH
+        :param _builtins.str filter_enforcement: Tells whether Prompt injection and Jailbreak filter is enabled or
+               disabled.
+               Possible values:
+               ENABLED
+               DISABLED
+        """
+        if confidence_level is not None:
+            pulumi.set(__self__, "confidence_level", confidence_level)
+        if filter_enforcement is not None:
+            pulumi.set(__self__, "filter_enforcement", filter_enforcement)
+
+    @_builtins.property
+    @pulumi.getter(name="confidenceLevel")
+    def confidence_level(self) -> Optional[_builtins.str]:
+        """
+        Possible values:
+        LOW_AND_ABOVE
+        MEDIUM_AND_ABOVE
+        HIGH
+        """
+        return pulumi.get(self, "confidence_level")
+
+    @_builtins.property
+    @pulumi.getter(name="filterEnforcement")
+    def filter_enforcement(self) -> Optional[_builtins.str]:
+        """
+        Tells whether Prompt injection and Jailbreak filter is enabled or
+        disabled.
+        Possible values:
+        ENABLED
+        DISABLED
+        """
+        return pulumi.get(self, "filter_enforcement")
+
+
+@pulumi.output_type
+class FloorsettingFilterConfigRaiSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "raiFilters":
+            suggest = "rai_filters"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FloorsettingFilterConfigRaiSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FloorsettingFilterConfigRaiSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FloorsettingFilterConfigRaiSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 rai_filters: Sequence['outputs.FloorsettingFilterConfigRaiSettingsRaiFilter']):
+        """
+        :param Sequence['FloorsettingFilterConfigRaiSettingsRaiFilterArgs'] rai_filters: List of Responsible AI filters enabled for template.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "rai_filters", rai_filters)
+
+    @_builtins.property
+    @pulumi.getter(name="raiFilters")
+    def rai_filters(self) -> Sequence['outputs.FloorsettingFilterConfigRaiSettingsRaiFilter']:
+        """
+        List of Responsible AI filters enabled for template.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rai_filters")
+
+
+@pulumi.output_type
+class FloorsettingFilterConfigRaiSettingsRaiFilter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "filterType":
+            suggest = "filter_type"
+        elif key == "confidenceLevel":
+            suggest = "confidence_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FloorsettingFilterConfigRaiSettingsRaiFilter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FloorsettingFilterConfigRaiSettingsRaiFilter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FloorsettingFilterConfigRaiSettingsRaiFilter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 filter_type: _builtins.str,
+                 confidence_level: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str filter_type: Possible values:
+               SEXUALLY_EXPLICIT
+               HATE_SPEECH
+               HARASSMENT
+               DANGEROUS
+        :param _builtins.str confidence_level: Possible values:
+               LOW_AND_ABOVE
+               MEDIUM_AND_ABOVE
+               HIGH
+        """
+        pulumi.set(__self__, "filter_type", filter_type)
+        if confidence_level is not None:
+            pulumi.set(__self__, "confidence_level", confidence_level)
+
+    @_builtins.property
+    @pulumi.getter(name="filterType")
+    def filter_type(self) -> _builtins.str:
+        """
+        Possible values:
+        SEXUALLY_EXPLICIT
+        HATE_SPEECH
+        HARASSMENT
+        DANGEROUS
+        """
+        return pulumi.get(self, "filter_type")
+
+    @_builtins.property
+    @pulumi.getter(name="confidenceLevel")
+    def confidence_level(self) -> Optional[_builtins.str]:
+        """
+        Possible values:
+        LOW_AND_ABOVE
+        MEDIUM_AND_ABOVE
+        HIGH
+        """
+        return pulumi.get(self, "confidence_level")
+
+
+@pulumi.output_type
+class FloorsettingFilterConfigSdpSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "advancedConfig":
+            suggest = "advanced_config"
+        elif key == "basicConfig":
+            suggest = "basic_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FloorsettingFilterConfigSdpSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FloorsettingFilterConfigSdpSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FloorsettingFilterConfigSdpSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 advanced_config: Optional['outputs.FloorsettingFilterConfigSdpSettingsAdvancedConfig'] = None,
+                 basic_config: Optional['outputs.FloorsettingFilterConfigSdpSettingsBasicConfig'] = None):
+        """
+        :param 'FloorsettingFilterConfigSdpSettingsAdvancedConfigArgs' advanced_config: Sensitive Data Protection Advanced configuration.
+               Structure is documented below.
+        :param 'FloorsettingFilterConfigSdpSettingsBasicConfigArgs' basic_config: Sensitive Data Protection basic configuration.
+               Structure is documented below.
+        """
+        if advanced_config is not None:
+            pulumi.set(__self__, "advanced_config", advanced_config)
+        if basic_config is not None:
+            pulumi.set(__self__, "basic_config", basic_config)
+
+    @_builtins.property
+    @pulumi.getter(name="advancedConfig")
+    def advanced_config(self) -> Optional['outputs.FloorsettingFilterConfigSdpSettingsAdvancedConfig']:
+        """
+        Sensitive Data Protection Advanced configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "advanced_config")
+
+    @_builtins.property
+    @pulumi.getter(name="basicConfig")
+    def basic_config(self) -> Optional['outputs.FloorsettingFilterConfigSdpSettingsBasicConfig']:
+        """
+        Sensitive Data Protection basic configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "basic_config")
+
+
+@pulumi.output_type
+class FloorsettingFilterConfigSdpSettingsAdvancedConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deidentifyTemplate":
+            suggest = "deidentify_template"
+        elif key == "inspectTemplate":
+            suggest = "inspect_template"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FloorsettingFilterConfigSdpSettingsAdvancedConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FloorsettingFilterConfigSdpSettingsAdvancedConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FloorsettingFilterConfigSdpSettingsAdvancedConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 deidentify_template: Optional[_builtins.str] = None,
+                 inspect_template: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str deidentify_template: Optional Sensitive Data Protection Deidentify template resource name.
+               If provided then DeidentifyContent action is performed during Sanitization
+               using this template and inspect template. The De-identified data will
+               be returned in SdpDeidentifyResult.
+               Note that all info-types present in the deidentify template must be present
+               in inspect template.
+               e.g.
+               `projects/{project}/locations/{location}/deidentifyTemplates/{deidentify_template}`
+        :param _builtins.str inspect_template: Sensitive Data Protection inspect template resource name
+               If only inspect template is provided (de-identify template not provided),
+               then Sensitive Data Protection InspectContent action is performed during
+               Sanitization. All Sensitive Data Protection findings identified during
+               inspection will be returned as SdpFinding in SdpInsepctionResult.
+               e.g:-
+               `projects/{project}/locations/{location}/inspectTemplates/{inspect_template}`
+        """
+        if deidentify_template is not None:
+            pulumi.set(__self__, "deidentify_template", deidentify_template)
+        if inspect_template is not None:
+            pulumi.set(__self__, "inspect_template", inspect_template)
+
+    @_builtins.property
+    @pulumi.getter(name="deidentifyTemplate")
+    def deidentify_template(self) -> Optional[_builtins.str]:
+        """
+        Optional Sensitive Data Protection Deidentify template resource name.
+        If provided then DeidentifyContent action is performed during Sanitization
+        using this template and inspect template. The De-identified data will
+        be returned in SdpDeidentifyResult.
+        Note that all info-types present in the deidentify template must be present
+        in inspect template.
+        e.g.
+        `projects/{project}/locations/{location}/deidentifyTemplates/{deidentify_template}`
+        """
+        return pulumi.get(self, "deidentify_template")
+
+    @_builtins.property
+    @pulumi.getter(name="inspectTemplate")
+    def inspect_template(self) -> Optional[_builtins.str]:
+        """
+        Sensitive Data Protection inspect template resource name
+        If only inspect template is provided (de-identify template not provided),
+        then Sensitive Data Protection InspectContent action is performed during
+        Sanitization. All Sensitive Data Protection findings identified during
+        inspection will be returned as SdpFinding in SdpInsepctionResult.
+        e.g:-
+        `projects/{project}/locations/{location}/inspectTemplates/{inspect_template}`
+        """
+        return pulumi.get(self, "inspect_template")
+
+
+@pulumi.output_type
+class FloorsettingFilterConfigSdpSettingsBasicConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "filterEnforcement":
+            suggest = "filter_enforcement"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FloorsettingFilterConfigSdpSettingsBasicConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FloorsettingFilterConfigSdpSettingsBasicConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FloorsettingFilterConfigSdpSettingsBasicConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 filter_enforcement: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str filter_enforcement: Tells whether the Sensitive Data Protection basic config is enabled or
+               disabled.
+               Possible values:
+               ENABLED
+               DISABLED
+        """
+        if filter_enforcement is not None:
+            pulumi.set(__self__, "filter_enforcement", filter_enforcement)
+
+    @_builtins.property
+    @pulumi.getter(name="filterEnforcement")
+    def filter_enforcement(self) -> Optional[_builtins.str]:
+        """
+        Tells whether the Sensitive Data Protection basic config is enabled or
+        disabled.
+        Possible values:
+        ENABLED
+        DISABLED
+        """
+        return pulumi.get(self, "filter_enforcement")
+
+
+@pulumi.output_type
+class FloorsettingFloorSettingMetadata(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "multiLanguageDetection":
+            suggest = "multi_language_detection"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FloorsettingFloorSettingMetadata. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FloorsettingFloorSettingMetadata.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FloorsettingFloorSettingMetadata.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 multi_language_detection: Optional['outputs.FloorsettingFloorSettingMetadataMultiLanguageDetection'] = None):
+        """
+        :param 'FloorsettingFloorSettingMetadataMultiLanguageDetectionArgs' multi_language_detection: Metadata for multi language detection.
+               Structure is documented below.
+        """
+        if multi_language_detection is not None:
+            pulumi.set(__self__, "multi_language_detection", multi_language_detection)
+
+    @_builtins.property
+    @pulumi.getter(name="multiLanguageDetection")
+    def multi_language_detection(self) -> Optional['outputs.FloorsettingFloorSettingMetadataMultiLanguageDetection']:
+        """
+        Metadata for multi language detection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "multi_language_detection")
+
+
+@pulumi.output_type
+class FloorsettingFloorSettingMetadataMultiLanguageDetection(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableMultiLanguageDetection":
+            suggest = "enable_multi_language_detection"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FloorsettingFloorSettingMetadataMultiLanguageDetection. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FloorsettingFloorSettingMetadataMultiLanguageDetection.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FloorsettingFloorSettingMetadataMultiLanguageDetection.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_multi_language_detection: _builtins.bool):
+        """
+        :param _builtins.bool enable_multi_language_detection: If true, multi language detection will be enabled.
+        """
+        pulumi.set(__self__, "enable_multi_language_detection", enable_multi_language_detection)
+
+    @_builtins.property
+    @pulumi.getter(name="enableMultiLanguageDetection")
+    def enable_multi_language_detection(self) -> _builtins.bool:
+        """
+        If true, multi language detection will be enabled.
+        """
+        return pulumi.get(self, "enable_multi_language_detection")
+
 
 @pulumi.output_type
 class TemplateFilterConfig(dict):

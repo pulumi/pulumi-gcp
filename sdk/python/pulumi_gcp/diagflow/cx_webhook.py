@@ -34,13 +34,13 @@ class CxWebhookArgs:
         The set of arguments for constructing a CxWebhook resource.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the webhook, unique within the agent.
         :param pulumi.Input[_builtins.bool] disabled: Indicates whether the webhook is disabled.
-        :param pulumi.Input[_builtins.bool] enable_spell_correction: Indicates if automatic spell correction is enabled in detect intent requests.
-        :param pulumi.Input[_builtins.bool] enable_stackdriver_logging: Determines whether this agent should log conversation queries.
-        :param pulumi.Input['CxWebhookGenericWebServiceArgs'] generic_web_service: Configuration for a generic web service.
+        :param pulumi.Input[_builtins.bool] enable_spell_correction: Deprecated. Indicates if automatic spell correction is enabled in detect intent requests.
+        :param pulumi.Input[_builtins.bool] enable_stackdriver_logging: Deprecated. Determines whether this agent should log conversation queries.
+        :param pulumi.Input['CxWebhookGenericWebServiceArgs'] generic_web_service: Represents configuration for a generic web service.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] parent: The agent to create a webhook for.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
-        :param pulumi.Input[_builtins.str] security_settings: Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
+        :param pulumi.Input[_builtins.str] security_settings: Deprecated. Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
         :param pulumi.Input['CxWebhookServiceDirectoryArgs'] service_directory: Configuration for a Service Directory service.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] timeout: Webhook execution timeout.
@@ -91,7 +91,7 @@ class CxWebhookArgs:
     @pulumi.getter(name="enableSpellCorrection")
     def enable_spell_correction(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Indicates if automatic spell correction is enabled in detect intent requests.
+        Deprecated. Indicates if automatic spell correction is enabled in detect intent requests.
         """
         return pulumi.get(self, "enable_spell_correction")
 
@@ -103,7 +103,7 @@ class CxWebhookArgs:
     @pulumi.getter(name="enableStackdriverLogging")
     def enable_stackdriver_logging(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Determines whether this agent should log conversation queries.
+        Deprecated. Determines whether this agent should log conversation queries.
         """
         return pulumi.get(self, "enable_stackdriver_logging")
 
@@ -115,7 +115,7 @@ class CxWebhookArgs:
     @pulumi.getter(name="genericWebService")
     def generic_web_service(self) -> Optional[pulumi.Input['CxWebhookGenericWebServiceArgs']]:
         """
-        Configuration for a generic web service.
+        Represents configuration for a generic web service.
         Structure is documented below.
         """
         return pulumi.get(self, "generic_web_service")
@@ -141,7 +141,7 @@ class CxWebhookArgs:
     @pulumi.getter(name="securitySettings")
     def security_settings(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
+        Deprecated. Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
         """
         return pulumi.get(self, "security_settings")
 
@@ -193,18 +193,18 @@ class _CxWebhookState:
         Input properties used for looking up and filtering CxWebhook resources.
         :param pulumi.Input[_builtins.bool] disabled: Indicates whether the webhook is disabled.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the webhook, unique within the agent.
-        :param pulumi.Input[_builtins.bool] enable_spell_correction: Indicates if automatic spell correction is enabled in detect intent requests.
-        :param pulumi.Input[_builtins.bool] enable_stackdriver_logging: Determines whether this agent should log conversation queries.
-        :param pulumi.Input['CxWebhookGenericWebServiceArgs'] generic_web_service: Configuration for a generic web service.
+        :param pulumi.Input[_builtins.bool] enable_spell_correction: Deprecated. Indicates if automatic spell correction is enabled in detect intent requests.
+        :param pulumi.Input[_builtins.bool] enable_stackdriver_logging: Deprecated. Determines whether this agent should log conversation queries.
+        :param pulumi.Input['CxWebhookGenericWebServiceArgs'] generic_web_service: Represents configuration for a generic web service.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The unique identifier of the webhook.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
         :param pulumi.Input[_builtins.str] parent: The agent to create a webhook for.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
-        :param pulumi.Input[_builtins.str] security_settings: Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
+        :param pulumi.Input[_builtins.str] security_settings: Deprecated. Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
         :param pulumi.Input['CxWebhookServiceDirectoryArgs'] service_directory: Configuration for a Service Directory service.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] start_flow: Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+        :param pulumi.Input[_builtins.str] start_flow: Deprecated. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
         :param pulumi.Input[_builtins.str] timeout: Webhook execution timeout.
         """
         if disabled is not None:
@@ -258,7 +258,7 @@ class _CxWebhookState:
     @pulumi.getter(name="enableSpellCorrection")
     def enable_spell_correction(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Indicates if automatic spell correction is enabled in detect intent requests.
+        Deprecated. Indicates if automatic spell correction is enabled in detect intent requests.
         """
         return pulumi.get(self, "enable_spell_correction")
 
@@ -270,7 +270,7 @@ class _CxWebhookState:
     @pulumi.getter(name="enableStackdriverLogging")
     def enable_stackdriver_logging(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Determines whether this agent should log conversation queries.
+        Deprecated. Determines whether this agent should log conversation queries.
         """
         return pulumi.get(self, "enable_stackdriver_logging")
 
@@ -282,7 +282,7 @@ class _CxWebhookState:
     @pulumi.getter(name="genericWebService")
     def generic_web_service(self) -> Optional[pulumi.Input['CxWebhookGenericWebServiceArgs']]:
         """
-        Configuration for a generic web service.
+        Represents configuration for a generic web service.
         Structure is documented below.
         """
         return pulumi.get(self, "generic_web_service")
@@ -321,7 +321,7 @@ class _CxWebhookState:
     @pulumi.getter(name="securitySettings")
     def security_settings(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
+        Deprecated. Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
         """
         return pulumi.get(self, "security_settings")
 
@@ -346,7 +346,7 @@ class _CxWebhookState:
     @pulumi.getter(name="startFlow")
     def start_flow(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+        Deprecated. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
         """
         return pulumi.get(self, "start_flow")
 
@@ -394,7 +394,7 @@ class CxWebhook(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Dialogflowcx Webhook Full
+        ### Dialogflowcx Webhook Standard
 
         ```python
         import pulumi
@@ -417,11 +417,183 @@ class CxWebhook(pulumi.CustomResource):
             speech_to_text_settings={
                 "enable_speech_adaptation": True,
             })
-        basic_webhook = gcp.diagflow.CxWebhook("basic_webhook",
+        standard_webhook = gcp.diagflow.CxWebhook("standard_webhook",
+            parent=agent.id,
+            display_name="MyFlow",
+            generic_web_service={
+                "allowed_ca_certs": ["BQA="],
+                "uri": "https://example.com",
+                "request_headers": {
+                    "example-key": "example-value",
+                },
+                "webhook_type": "STANDARD",
+                "oauth_config": {
+                    "client_id": "example-client-id",
+                    "secret_version_for_client_secret": "projects/example-proj/secrets/example-secret/versions/example-version",
+                    "token_endpoint": "https://example.com",
+                    "scopes": ["example-scope"],
+                },
+                "service_agent_auth": "NONE",
+                "secret_version_for_username_password": "projects/example-proj/secrets/example-secret/versions/example-version",
+                "secret_versions_for_request_headers": [
+                    {
+                        "key": "example-key-1",
+                        "secret_version": "projects/example-proj/secrets/example-secret/versions/example-version",
+                    },
+                    {
+                        "key": "example-key-2",
+                        "secret_version": "projects/example-proj/secrets/example-secret/versions/example-version-2",
+                    },
+                ],
+            })
+        ```
+        ### Dialogflowcx Webhook Flexible
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        agent = gcp.diagflow.CxAgent("agent",
+            display_name="dialogflowcx-agent",
+            location="global",
+            default_language_code="en",
+            supported_language_codes=[
+                "it",
+                "de",
+                "es",
+            ],
+            time_zone="America/New_York",
+            description="Example description.",
+            avatar_uri="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+            enable_stackdriver_logging=True,
+            enable_spell_correction=True,
+            speech_to_text_settings={
+                "enable_speech_adaptation": True,
+            })
+        flexible_webhook = gcp.diagflow.CxWebhook("flexible_webhook",
             parent=agent.id,
             display_name="MyFlow",
             generic_web_service={
                 "uri": "https://example.com",
+                "request_headers": {
+                    "example-key": "example-value",
+                },
+                "webhook_type": "FLEXIBLE",
+                "oauth_config": {
+                    "client_id": "example-client-id",
+                    "client_secret": "projects/example-proj/secrets/example-secret/versions/example-version",
+                    "token_endpoint": "https://example.com",
+                },
+                "service_agent_auth": "NONE",
+                "http_method": "POST",
+                "request_body": "{\\"example-key\\": \\"example-value\\"}",
+                "parameter_mapping": {
+                    "example-parameter": "examplePath",
+                },
+            })
+        ```
+        ### Dialogflowcx Webhook Service Directory Standard
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        agent = gcp.diagflow.CxAgent("agent",
+            display_name="dialogflowcx-agent",
+            location="us-central1",
+            default_language_code="en",
+            supported_language_codes=[
+                "it",
+                "de",
+                "es",
+            ],
+            time_zone="America/New_York",
+            description="Example description.",
+            avatar_uri="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+            enable_stackdriver_logging=True,
+            enable_spell_correction=True,
+            speech_to_text_settings={
+                "enable_speech_adaptation": True,
+            })
+        standard_webhook = gcp.diagflow.CxWebhook("standard_webhook",
+            parent=agent.id,
+            display_name="MyFlow",
+            service_directory={
+                "service": "projects/example-proj/locations/us-central1/namespaces/example-namespace/services/example-service",
+                "generic_web_service": {
+                    "allowed_ca_certs": ["BQA="],
+                    "uri": "https://example.com",
+                    "request_headers": {
+                        "example-key": "example-value",
+                    },
+                    "webhook_type": "STANDARD",
+                    "oauth_config": {
+                        "client_id": "example-client-id",
+                        "secret_version_for_client_secret": "projects/example-proj/secrets/example-secret/versions/example-version",
+                        "token_endpoint": "https://example.com",
+                        "scopes": ["example-scope"],
+                    },
+                    "service_agent_auth": "NONE",
+                    "secret_version_for_username_password": "projects/example-proj/secrets/example-secret/versions/example-version",
+                    "secret_versions_for_request_headers": [
+                        {
+                            "key": "example-key-1",
+                            "secret_version": "projects/example-proj/secrets/example-secret/versions/example-version",
+                        },
+                        {
+                            "key": "example-key-2",
+                            "secret_version": "projects/example-proj/secrets/example-secret/versions/example-version-2",
+                        },
+                    ],
+                },
+            })
+        ```
+        ### Dialogflowcx Webhook Service Directory Flexible
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        agent = gcp.diagflow.CxAgent("agent",
+            display_name="dialogflowcx-agent",
+            location="us-central1",
+            default_language_code="en",
+            supported_language_codes=[
+                "it",
+                "de",
+                "es",
+            ],
+            time_zone="America/New_York",
+            description="Example description.",
+            avatar_uri="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+            enable_stackdriver_logging=True,
+            enable_spell_correction=True,
+            speech_to_text_settings={
+                "enable_speech_adaptation": True,
+            })
+        flexible_webhook = gcp.diagflow.CxWebhook("flexible_webhook",
+            parent=agent.id,
+            display_name="MyFlow",
+            service_directory={
+                "service": "projects/example-proj/locations/us-central1/namespaces/example-namespace/services/example-service",
+                "generic_web_service": {
+                    "uri": "https://example.com",
+                    "request_headers": {
+                        "example-key": "example-value",
+                    },
+                    "webhook_type": "FLEXIBLE",
+                    "oauth_config": {
+                        "client_id": "example-client-id",
+                        "client_secret": "projects/example-proj/secrets/example-secret/versions/example-version",
+                        "token_endpoint": "https://example.com",
+                    },
+                    "service_agent_auth": "NONE",
+                    "http_method": "POST",
+                    "request_body": "{\\"example-key\\": \\"example-value\\"}",
+                    "parameter_mapping": {
+                        "example-parameter": "examplePath",
+                    },
+                },
             })
         ```
 
@@ -447,13 +619,13 @@ class CxWebhook(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] disabled: Indicates whether the webhook is disabled.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the webhook, unique within the agent.
-        :param pulumi.Input[_builtins.bool] enable_spell_correction: Indicates if automatic spell correction is enabled in detect intent requests.
-        :param pulumi.Input[_builtins.bool] enable_stackdriver_logging: Determines whether this agent should log conversation queries.
-        :param pulumi.Input[Union['CxWebhookGenericWebServiceArgs', 'CxWebhookGenericWebServiceArgsDict']] generic_web_service: Configuration for a generic web service.
+        :param pulumi.Input[_builtins.bool] enable_spell_correction: Deprecated. Indicates if automatic spell correction is enabled in detect intent requests.
+        :param pulumi.Input[_builtins.bool] enable_stackdriver_logging: Deprecated. Determines whether this agent should log conversation queries.
+        :param pulumi.Input[Union['CxWebhookGenericWebServiceArgs', 'CxWebhookGenericWebServiceArgsDict']] generic_web_service: Represents configuration for a generic web service.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] parent: The agent to create a webhook for.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
-        :param pulumi.Input[_builtins.str] security_settings: Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
+        :param pulumi.Input[_builtins.str] security_settings: Deprecated. Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
         :param pulumi.Input[Union['CxWebhookServiceDirectoryArgs', 'CxWebhookServiceDirectoryArgsDict']] service_directory: Configuration for a Service Directory service.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] timeout: Webhook execution timeout.
@@ -475,7 +647,7 @@ class CxWebhook(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Dialogflowcx Webhook Full
+        ### Dialogflowcx Webhook Standard
 
         ```python
         import pulumi
@@ -498,11 +670,183 @@ class CxWebhook(pulumi.CustomResource):
             speech_to_text_settings={
                 "enable_speech_adaptation": True,
             })
-        basic_webhook = gcp.diagflow.CxWebhook("basic_webhook",
+        standard_webhook = gcp.diagflow.CxWebhook("standard_webhook",
+            parent=agent.id,
+            display_name="MyFlow",
+            generic_web_service={
+                "allowed_ca_certs": ["BQA="],
+                "uri": "https://example.com",
+                "request_headers": {
+                    "example-key": "example-value",
+                },
+                "webhook_type": "STANDARD",
+                "oauth_config": {
+                    "client_id": "example-client-id",
+                    "secret_version_for_client_secret": "projects/example-proj/secrets/example-secret/versions/example-version",
+                    "token_endpoint": "https://example.com",
+                    "scopes": ["example-scope"],
+                },
+                "service_agent_auth": "NONE",
+                "secret_version_for_username_password": "projects/example-proj/secrets/example-secret/versions/example-version",
+                "secret_versions_for_request_headers": [
+                    {
+                        "key": "example-key-1",
+                        "secret_version": "projects/example-proj/secrets/example-secret/versions/example-version",
+                    },
+                    {
+                        "key": "example-key-2",
+                        "secret_version": "projects/example-proj/secrets/example-secret/versions/example-version-2",
+                    },
+                ],
+            })
+        ```
+        ### Dialogflowcx Webhook Flexible
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        agent = gcp.diagflow.CxAgent("agent",
+            display_name="dialogflowcx-agent",
+            location="global",
+            default_language_code="en",
+            supported_language_codes=[
+                "it",
+                "de",
+                "es",
+            ],
+            time_zone="America/New_York",
+            description="Example description.",
+            avatar_uri="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+            enable_stackdriver_logging=True,
+            enable_spell_correction=True,
+            speech_to_text_settings={
+                "enable_speech_adaptation": True,
+            })
+        flexible_webhook = gcp.diagflow.CxWebhook("flexible_webhook",
             parent=agent.id,
             display_name="MyFlow",
             generic_web_service={
                 "uri": "https://example.com",
+                "request_headers": {
+                    "example-key": "example-value",
+                },
+                "webhook_type": "FLEXIBLE",
+                "oauth_config": {
+                    "client_id": "example-client-id",
+                    "client_secret": "projects/example-proj/secrets/example-secret/versions/example-version",
+                    "token_endpoint": "https://example.com",
+                },
+                "service_agent_auth": "NONE",
+                "http_method": "POST",
+                "request_body": "{\\"example-key\\": \\"example-value\\"}",
+                "parameter_mapping": {
+                    "example-parameter": "examplePath",
+                },
+            })
+        ```
+        ### Dialogflowcx Webhook Service Directory Standard
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        agent = gcp.diagflow.CxAgent("agent",
+            display_name="dialogflowcx-agent",
+            location="us-central1",
+            default_language_code="en",
+            supported_language_codes=[
+                "it",
+                "de",
+                "es",
+            ],
+            time_zone="America/New_York",
+            description="Example description.",
+            avatar_uri="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+            enable_stackdriver_logging=True,
+            enable_spell_correction=True,
+            speech_to_text_settings={
+                "enable_speech_adaptation": True,
+            })
+        standard_webhook = gcp.diagflow.CxWebhook("standard_webhook",
+            parent=agent.id,
+            display_name="MyFlow",
+            service_directory={
+                "service": "projects/example-proj/locations/us-central1/namespaces/example-namespace/services/example-service",
+                "generic_web_service": {
+                    "allowed_ca_certs": ["BQA="],
+                    "uri": "https://example.com",
+                    "request_headers": {
+                        "example-key": "example-value",
+                    },
+                    "webhook_type": "STANDARD",
+                    "oauth_config": {
+                        "client_id": "example-client-id",
+                        "secret_version_for_client_secret": "projects/example-proj/secrets/example-secret/versions/example-version",
+                        "token_endpoint": "https://example.com",
+                        "scopes": ["example-scope"],
+                    },
+                    "service_agent_auth": "NONE",
+                    "secret_version_for_username_password": "projects/example-proj/secrets/example-secret/versions/example-version",
+                    "secret_versions_for_request_headers": [
+                        {
+                            "key": "example-key-1",
+                            "secret_version": "projects/example-proj/secrets/example-secret/versions/example-version",
+                        },
+                        {
+                            "key": "example-key-2",
+                            "secret_version": "projects/example-proj/secrets/example-secret/versions/example-version-2",
+                        },
+                    ],
+                },
+            })
+        ```
+        ### Dialogflowcx Webhook Service Directory Flexible
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        agent = gcp.diagflow.CxAgent("agent",
+            display_name="dialogflowcx-agent",
+            location="us-central1",
+            default_language_code="en",
+            supported_language_codes=[
+                "it",
+                "de",
+                "es",
+            ],
+            time_zone="America/New_York",
+            description="Example description.",
+            avatar_uri="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+            enable_stackdriver_logging=True,
+            enable_spell_correction=True,
+            speech_to_text_settings={
+                "enable_speech_adaptation": True,
+            })
+        flexible_webhook = gcp.diagflow.CxWebhook("flexible_webhook",
+            parent=agent.id,
+            display_name="MyFlow",
+            service_directory={
+                "service": "projects/example-proj/locations/us-central1/namespaces/example-namespace/services/example-service",
+                "generic_web_service": {
+                    "uri": "https://example.com",
+                    "request_headers": {
+                        "example-key": "example-value",
+                    },
+                    "webhook_type": "FLEXIBLE",
+                    "oauth_config": {
+                        "client_id": "example-client-id",
+                        "client_secret": "projects/example-proj/secrets/example-secret/versions/example-version",
+                        "token_endpoint": "https://example.com",
+                    },
+                    "service_agent_auth": "NONE",
+                    "http_method": "POST",
+                    "request_body": "{\\"example-key\\": \\"example-value\\"}",
+                    "parameter_mapping": {
+                        "example-parameter": "examplePath",
+                    },
+                },
             })
         ```
 
@@ -600,18 +944,18 @@ class CxWebhook(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] disabled: Indicates whether the webhook is disabled.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the webhook, unique within the agent.
-        :param pulumi.Input[_builtins.bool] enable_spell_correction: Indicates if automatic spell correction is enabled in detect intent requests.
-        :param pulumi.Input[_builtins.bool] enable_stackdriver_logging: Determines whether this agent should log conversation queries.
-        :param pulumi.Input[Union['CxWebhookGenericWebServiceArgs', 'CxWebhookGenericWebServiceArgsDict']] generic_web_service: Configuration for a generic web service.
+        :param pulumi.Input[_builtins.bool] enable_spell_correction: Deprecated. Indicates if automatic spell correction is enabled in detect intent requests.
+        :param pulumi.Input[_builtins.bool] enable_stackdriver_logging: Deprecated. Determines whether this agent should log conversation queries.
+        :param pulumi.Input[Union['CxWebhookGenericWebServiceArgs', 'CxWebhookGenericWebServiceArgsDict']] generic_web_service: Represents configuration for a generic web service.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The unique identifier of the webhook.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
         :param pulumi.Input[_builtins.str] parent: The agent to create a webhook for.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
-        :param pulumi.Input[_builtins.str] security_settings: Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
+        :param pulumi.Input[_builtins.str] security_settings: Deprecated. Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
         :param pulumi.Input[Union['CxWebhookServiceDirectoryArgs', 'CxWebhookServiceDirectoryArgsDict']] service_directory: Configuration for a Service Directory service.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] start_flow: Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+        :param pulumi.Input[_builtins.str] start_flow: Deprecated. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
         :param pulumi.Input[_builtins.str] timeout: Webhook execution timeout.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -651,7 +995,7 @@ class CxWebhook(pulumi.CustomResource):
     @pulumi.getter(name="enableSpellCorrection")
     def enable_spell_correction(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Indicates if automatic spell correction is enabled in detect intent requests.
+        Deprecated. Indicates if automatic spell correction is enabled in detect intent requests.
         """
         return pulumi.get(self, "enable_spell_correction")
 
@@ -659,7 +1003,7 @@ class CxWebhook(pulumi.CustomResource):
     @pulumi.getter(name="enableStackdriverLogging")
     def enable_stackdriver_logging(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Determines whether this agent should log conversation queries.
+        Deprecated. Determines whether this agent should log conversation queries.
         """
         return pulumi.get(self, "enable_stackdriver_logging")
 
@@ -667,7 +1011,7 @@ class CxWebhook(pulumi.CustomResource):
     @pulumi.getter(name="genericWebService")
     def generic_web_service(self) -> pulumi.Output[Optional['outputs.CxWebhookGenericWebService']]:
         """
-        Configuration for a generic web service.
+        Represents configuration for a generic web service.
         Structure is documented below.
         """
         return pulumi.get(self, "generic_web_service")
@@ -694,7 +1038,7 @@ class CxWebhook(pulumi.CustomResource):
     @pulumi.getter(name="securitySettings")
     def security_settings(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
+        Deprecated. Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
         """
         return pulumi.get(self, "security_settings")
 
@@ -711,7 +1055,7 @@ class CxWebhook(pulumi.CustomResource):
     @pulumi.getter(name="startFlow")
     def start_flow(self) -> pulumi.Output[_builtins.str]:
         """
-        Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+        Deprecated. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
         """
         return pulumi.get(self, "start_flow")
 

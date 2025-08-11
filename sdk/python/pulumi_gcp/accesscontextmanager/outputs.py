@@ -1973,7 +1973,7 @@ class GcpUserAccessBindingScopedAccessSettingScopeClientScope(dict):
     def __init__(__self__, *,
                  restricted_client_application: Optional['outputs.GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication'] = None):
         """
-        :param 'GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgs' restricted_client_application: Optional. The application that is subject to this binding's scope.
+        :param 'GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgs' restricted_client_application: Optional. The application that is subject to this binding's scope. Only one of clientId or name should be specified.
                Structure is documented below.
         """
         if restricted_client_application is not None:
@@ -1983,7 +1983,7 @@ class GcpUserAccessBindingScopedAccessSettingScopeClientScope(dict):
     @pulumi.getter(name="restrictedClientApplication")
     def restricted_client_application(self) -> Optional['outputs.GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication']:
         """
-        Optional. The application that is subject to this binding's scope.
+        Optional. The application that is subject to this binding's scope. Only one of clientId or name should be specified.
         Structure is documented below.
         """
         return pulumi.get(self, "restricted_client_application")
@@ -2009,12 +2009,16 @@ class GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApp
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 client_id: Optional[_builtins.str] = None):
+                 client_id: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None):
         """
         :param _builtins.str client_id: The OAuth client ID of the application.
+        :param _builtins.str name: The name of the application. Example: "Cloud Console"
         """
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
 
     @_builtins.property
     @pulumi.getter(name="clientId")
@@ -2023,6 +2027,14 @@ class GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApp
         The OAuth client ID of the application.
         """
         return pulumi.get(self, "client_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        The name of the application. Example: "Cloud Console"
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type

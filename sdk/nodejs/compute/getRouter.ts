@@ -70,6 +70,7 @@ export interface GetRouterResult {
     readonly md5AuthenticationKeys: outputs.compute.GetRouterMd5AuthenticationKey[];
     readonly name: string;
     readonly network: string;
+    readonly params: outputs.compute.GetRouterParam[];
     readonly project?: string;
     readonly region?: string;
     readonly selfLink: string;

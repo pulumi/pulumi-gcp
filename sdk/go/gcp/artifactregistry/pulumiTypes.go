@@ -4284,6 +4284,175 @@ func (o RepositoryVulnerabilityScanningConfigPtrOutput) EnablementStateReason() 
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetDockerImagesDockerImage struct {
+	// The time, as a RFC 3339 string, this image was built.
+	BuildTime string `pulumi:"buildTime"`
+	// Extracted short name of the image (last part of `name`, without tag or digest). For example, from `.../nginx@sha256:...` → `nginx`.
+	ImageName string `pulumi:"imageName"`
+	// Calculated size of the image in bytes.
+	ImageSizeBytes string `pulumi:"imageSizeBytes"`
+	// Media type of this image, e.g. `application/vnd.docker.distribution.manifest.v2+json`.
+	MediaType string `pulumi:"mediaType"`
+	// The fully qualified name of the fetched image.  This name has the form: `projects/{{project}}/locations/{{location}}/repository/{{repository_id}}/dockerImages/{{docker_image}}`. For example, `projects/test-project/locations/us-west4/repositories/test-repo/dockerImages/nginx@sha256:e9954c1fc875017be1c3e36eca16be2d9e9bccc4bf072163515467d6a823c7cf`
+	Name string `pulumi:"name"`
+	// The URI to access the image.  For example, `us-west4-docker.pkg.dev/test-project/test-repo/nginx@sha256:e9954c1fc875017be1c3e36eca16be2d9e9bccc4bf072163515467d6a823c7cf`
+	SelfLink string `pulumi:"selfLink"`
+	// A list of all tags associated with the image.
+	Tags []string `pulumi:"tags"`
+	// The time, as a RFC 3339 string, this image was updated.
+	UpdateTime string `pulumi:"updateTime"`
+	// The time, as a RFC 3339 string, the image was uploaded. For example, `2014-10-02T15:01:23.045123456Z`.
+	UploadTime string `pulumi:"uploadTime"`
+}
+
+// GetDockerImagesDockerImageInput is an input type that accepts GetDockerImagesDockerImageArgs and GetDockerImagesDockerImageOutput values.
+// You can construct a concrete instance of `GetDockerImagesDockerImageInput` via:
+//
+//	GetDockerImagesDockerImageArgs{...}
+type GetDockerImagesDockerImageInput interface {
+	pulumi.Input
+
+	ToGetDockerImagesDockerImageOutput() GetDockerImagesDockerImageOutput
+	ToGetDockerImagesDockerImageOutputWithContext(context.Context) GetDockerImagesDockerImageOutput
+}
+
+type GetDockerImagesDockerImageArgs struct {
+	// The time, as a RFC 3339 string, this image was built.
+	BuildTime pulumi.StringInput `pulumi:"buildTime"`
+	// Extracted short name of the image (last part of `name`, without tag or digest). For example, from `.../nginx@sha256:...` → `nginx`.
+	ImageName pulumi.StringInput `pulumi:"imageName"`
+	// Calculated size of the image in bytes.
+	ImageSizeBytes pulumi.StringInput `pulumi:"imageSizeBytes"`
+	// Media type of this image, e.g. `application/vnd.docker.distribution.manifest.v2+json`.
+	MediaType pulumi.StringInput `pulumi:"mediaType"`
+	// The fully qualified name of the fetched image.  This name has the form: `projects/{{project}}/locations/{{location}}/repository/{{repository_id}}/dockerImages/{{docker_image}}`. For example, `projects/test-project/locations/us-west4/repositories/test-repo/dockerImages/nginx@sha256:e9954c1fc875017be1c3e36eca16be2d9e9bccc4bf072163515467d6a823c7cf`
+	Name pulumi.StringInput `pulumi:"name"`
+	// The URI to access the image.  For example, `us-west4-docker.pkg.dev/test-project/test-repo/nginx@sha256:e9954c1fc875017be1c3e36eca16be2d9e9bccc4bf072163515467d6a823c7cf`
+	SelfLink pulumi.StringInput `pulumi:"selfLink"`
+	// A list of all tags associated with the image.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// The time, as a RFC 3339 string, this image was updated.
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+	// The time, as a RFC 3339 string, the image was uploaded. For example, `2014-10-02T15:01:23.045123456Z`.
+	UploadTime pulumi.StringInput `pulumi:"uploadTime"`
+}
+
+func (GetDockerImagesDockerImageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDockerImagesDockerImage)(nil)).Elem()
+}
+
+func (i GetDockerImagesDockerImageArgs) ToGetDockerImagesDockerImageOutput() GetDockerImagesDockerImageOutput {
+	return i.ToGetDockerImagesDockerImageOutputWithContext(context.Background())
+}
+
+func (i GetDockerImagesDockerImageArgs) ToGetDockerImagesDockerImageOutputWithContext(ctx context.Context) GetDockerImagesDockerImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDockerImagesDockerImageOutput)
+}
+
+// GetDockerImagesDockerImageArrayInput is an input type that accepts GetDockerImagesDockerImageArray and GetDockerImagesDockerImageArrayOutput values.
+// You can construct a concrete instance of `GetDockerImagesDockerImageArrayInput` via:
+//
+//	GetDockerImagesDockerImageArray{ GetDockerImagesDockerImageArgs{...} }
+type GetDockerImagesDockerImageArrayInput interface {
+	pulumi.Input
+
+	ToGetDockerImagesDockerImageArrayOutput() GetDockerImagesDockerImageArrayOutput
+	ToGetDockerImagesDockerImageArrayOutputWithContext(context.Context) GetDockerImagesDockerImageArrayOutput
+}
+
+type GetDockerImagesDockerImageArray []GetDockerImagesDockerImageInput
+
+func (GetDockerImagesDockerImageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDockerImagesDockerImage)(nil)).Elem()
+}
+
+func (i GetDockerImagesDockerImageArray) ToGetDockerImagesDockerImageArrayOutput() GetDockerImagesDockerImageArrayOutput {
+	return i.ToGetDockerImagesDockerImageArrayOutputWithContext(context.Background())
+}
+
+func (i GetDockerImagesDockerImageArray) ToGetDockerImagesDockerImageArrayOutputWithContext(ctx context.Context) GetDockerImagesDockerImageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDockerImagesDockerImageArrayOutput)
+}
+
+type GetDockerImagesDockerImageOutput struct{ *pulumi.OutputState }
+
+func (GetDockerImagesDockerImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDockerImagesDockerImage)(nil)).Elem()
+}
+
+func (o GetDockerImagesDockerImageOutput) ToGetDockerImagesDockerImageOutput() GetDockerImagesDockerImageOutput {
+	return o
+}
+
+func (o GetDockerImagesDockerImageOutput) ToGetDockerImagesDockerImageOutputWithContext(ctx context.Context) GetDockerImagesDockerImageOutput {
+	return o
+}
+
+// The time, as a RFC 3339 string, this image was built.
+func (o GetDockerImagesDockerImageOutput) BuildTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDockerImagesDockerImage) string { return v.BuildTime }).(pulumi.StringOutput)
+}
+
+// Extracted short name of the image (last part of `name`, without tag or digest). For example, from `.../nginx@sha256:...` → `nginx`.
+func (o GetDockerImagesDockerImageOutput) ImageName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDockerImagesDockerImage) string { return v.ImageName }).(pulumi.StringOutput)
+}
+
+// Calculated size of the image in bytes.
+func (o GetDockerImagesDockerImageOutput) ImageSizeBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDockerImagesDockerImage) string { return v.ImageSizeBytes }).(pulumi.StringOutput)
+}
+
+// Media type of this image, e.g. `application/vnd.docker.distribution.manifest.v2+json`.
+func (o GetDockerImagesDockerImageOutput) MediaType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDockerImagesDockerImage) string { return v.MediaType }).(pulumi.StringOutput)
+}
+
+// The fully qualified name of the fetched image.  This name has the form: `projects/{{project}}/locations/{{location}}/repository/{{repository_id}}/dockerImages/{{docker_image}}`. For example, `projects/test-project/locations/us-west4/repositories/test-repo/dockerImages/nginx@sha256:e9954c1fc875017be1c3e36eca16be2d9e9bccc4bf072163515467d6a823c7cf`
+func (o GetDockerImagesDockerImageOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDockerImagesDockerImage) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The URI to access the image.  For example, `us-west4-docker.pkg.dev/test-project/test-repo/nginx@sha256:e9954c1fc875017be1c3e36eca16be2d9e9bccc4bf072163515467d6a823c7cf`
+func (o GetDockerImagesDockerImageOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDockerImagesDockerImage) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// A list of all tags associated with the image.
+func (o GetDockerImagesDockerImageOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDockerImagesDockerImage) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// The time, as a RFC 3339 string, this image was updated.
+func (o GetDockerImagesDockerImageOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDockerImagesDockerImage) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// The time, as a RFC 3339 string, the image was uploaded. For example, `2014-10-02T15:01:23.045123456Z`.
+func (o GetDockerImagesDockerImageOutput) UploadTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDockerImagesDockerImage) string { return v.UploadTime }).(pulumi.StringOutput)
+}
+
+type GetDockerImagesDockerImageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDockerImagesDockerImageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDockerImagesDockerImage)(nil)).Elem()
+}
+
+func (o GetDockerImagesDockerImageArrayOutput) ToGetDockerImagesDockerImageArrayOutput() GetDockerImagesDockerImageArrayOutput {
+	return o
+}
+
+func (o GetDockerImagesDockerImageArrayOutput) ToGetDockerImagesDockerImageArrayOutputWithContext(ctx context.Context) GetDockerImagesDockerImageArrayOutput {
+	return o
+}
+
+func (o GetDockerImagesDockerImageArrayOutput) Index(i pulumi.IntInput) GetDockerImagesDockerImageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDockerImagesDockerImage {
+		return vs[0].([]GetDockerImagesDockerImage)[vs[1].(int)]
+	}).(GetDockerImagesDockerImageOutput)
+}
+
 type GetRepositoryCleanupPolicy struct {
 	// Policy action. Possible values: ["DELETE", "KEEP"]
 	Action string `pulumi:"action"`
@@ -5161,7 +5330,7 @@ func (o GetRepositoryRemoteRepositoryConfigAptRepositoryArrayOutput) Index(i pul
 }
 
 type GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository struct {
-	// A common public repository base for Apt, e.g. '"debian/dists/buster"' Possible values: ["DEBIAN", "UBUNTU", "DEBIAN_SNAPSHOT"]
+	// A common public repository base for Apt, e.g. '"debian/dists/stable"' Possible values: ["DEBIAN", "UBUNTU", "DEBIAN_SNAPSHOT"]
 	RepositoryBase string `pulumi:"repositoryBase"`
 	// Specific repository from the base.
 	RepositoryPath string `pulumi:"repositoryPath"`
@@ -5179,7 +5348,7 @@ type GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryInput inter
 }
 
 type GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs struct {
-	// A common public repository base for Apt, e.g. '"debian/dists/buster"' Possible values: ["DEBIAN", "UBUNTU", "DEBIAN_SNAPSHOT"]
+	// A common public repository base for Apt, e.g. '"debian/dists/stable"' Possible values: ["DEBIAN", "UBUNTU", "DEBIAN_SNAPSHOT"]
 	RepositoryBase pulumi.StringInput `pulumi:"repositoryBase"`
 	// Specific repository from the base.
 	RepositoryPath pulumi.StringInput `pulumi:"repositoryPath"`
@@ -5236,7 +5405,7 @@ func (o GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryOutput) 
 	return o
 }
 
-// A common public repository base for Apt, e.g. '"debian/dists/buster"' Possible values: ["DEBIAN", "UBUNTU", "DEBIAN_SNAPSHOT"]
+// A common public repository base for Apt, e.g. '"debian/dists/stable"' Possible values: ["DEBIAN", "UBUNTU", "DEBIAN_SNAPSHOT"]
 func (o GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryOutput) RepositoryBase() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository) string {
 		return v.RepositoryBase
@@ -7008,6 +7177,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryVirtualRepositoryConfigUpstreamPolicyArrayInput)(nil)).Elem(), RepositoryVirtualRepositoryConfigUpstreamPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryVulnerabilityScanningConfigInput)(nil)).Elem(), RepositoryVulnerabilityScanningConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryVulnerabilityScanningConfigPtrInput)(nil)).Elem(), RepositoryVulnerabilityScanningConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDockerImagesDockerImageInput)(nil)).Elem(), GetDockerImagesDockerImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDockerImagesDockerImageArrayInput)(nil)).Elem(), GetDockerImagesDockerImageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryCleanupPolicyInput)(nil)).Elem(), GetRepositoryCleanupPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryCleanupPolicyArrayInput)(nil)).Elem(), GetRepositoryCleanupPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryCleanupPolicyConditionInput)(nil)).Elem(), GetRepositoryCleanupPolicyConditionArgs{})
@@ -7108,6 +7279,8 @@ func init() {
 	pulumi.RegisterOutputType(RepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput{})
 	pulumi.RegisterOutputType(RepositoryVulnerabilityScanningConfigOutput{})
 	pulumi.RegisterOutputType(RepositoryVulnerabilityScanningConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetDockerImagesDockerImageOutput{})
+	pulumi.RegisterOutputType(GetDockerImagesDockerImageArrayOutput{})
 	pulumi.RegisterOutputType(GetRepositoryCleanupPolicyOutput{})
 	pulumi.RegisterOutputType(GetRepositoryCleanupPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetRepositoryCleanupPolicyConditionOutput{})

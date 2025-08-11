@@ -29,6 +29,7 @@ import (
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/networksecurity"
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/tags"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -74,6 +75,26 @@ import (
 //			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
 //				Name:                  pulumi.String("network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			basicKey, err := tags.NewTagKey(ctx, "basic_key", &tags.TagKeyArgs{
+//				Description: pulumi.String("For keyname resources."),
+//				Parent:      pulumi.String("organizations/123456789"),
+//				Purpose:     pulumi.String("GCE_FIREWALL"),
+//				ShortName:   pulumi.String("tag-key"),
+//				PurposeData: pulumi.StringMap{
+//					"organization": pulumi.String("auto"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			basicValue, err := tags.NewTagValue(ctx, "basic_value", &tags.TagValueArgs{
+//				Description: pulumi.String("For valuename resources."),
+//				Parent:      basicKey.ID(),
+//				ShortName:   pulumi.String("tag-value"),
 //			})
 //			if err != nil {
 //				return err
@@ -176,6 +197,37 @@ import (
 //							Layer4Configs: compute.FirewallPolicyWithRulesRuleMatchLayer4ConfigArray{
 //								&compute.FirewallPolicyWithRulesRuleMatchLayer4ConfigArgs{
 //									IpProtocol: pulumi.String("tcp"),
+//								},
+//							},
+//						},
+//					},
+//					&compute.FirewallPolicyWithRulesRuleArgs{
+//						Description:   pulumi.String("secure tags"),
+//						RuleName:      pulumi.String("secure tags rule"),
+//						Priority:      pulumi.Int(4000),
+//						EnableLogging: pulumi.Bool(false),
+//						Action:        pulumi.String("allow"),
+//						Direction:     pulumi.String("INGRESS"),
+//						TargetSecureTags: compute.FirewallPolicyWithRulesRuleTargetSecureTagArray{
+//							&compute.FirewallPolicyWithRulesRuleTargetSecureTagArgs{
+//								Name: basicValue.ID(),
+//							},
+//						},
+//						Match: &compute.FirewallPolicyWithRulesRuleMatchArgs{
+//							SrcIpRanges: pulumi.StringArray{
+//								pulumi.String("11.100.0.1/32"),
+//							},
+//							SrcSecureTags: compute.FirewallPolicyWithRulesRuleMatchSrcSecureTagArray{
+//								&compute.FirewallPolicyWithRulesRuleMatchSrcSecureTagArgs{
+//									Name: basicValue.ID(),
+//								},
+//							},
+//							Layer4Configs: compute.FirewallPolicyWithRulesRuleMatchLayer4ConfigArray{
+//								&compute.FirewallPolicyWithRulesRuleMatchLayer4ConfigArgs{
+//									IpProtocol: pulumi.String("tcp"),
+//									Ports: pulumi.StringArray{
+//										pulumi.String("8080"),
+//									},
 //								},
 //							},
 //						},

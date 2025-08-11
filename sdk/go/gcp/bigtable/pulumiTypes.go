@@ -1782,6 +1782,143 @@ func (o InstanceIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type SchemaBundleProtoSchema struct {
+	// Base64 encoded content of the file.
+	ProtoDescriptors string `pulumi:"protoDescriptors"`
+}
+
+// SchemaBundleProtoSchemaInput is an input type that accepts SchemaBundleProtoSchemaArgs and SchemaBundleProtoSchemaOutput values.
+// You can construct a concrete instance of `SchemaBundleProtoSchemaInput` via:
+//
+//	SchemaBundleProtoSchemaArgs{...}
+type SchemaBundleProtoSchemaInput interface {
+	pulumi.Input
+
+	ToSchemaBundleProtoSchemaOutput() SchemaBundleProtoSchemaOutput
+	ToSchemaBundleProtoSchemaOutputWithContext(context.Context) SchemaBundleProtoSchemaOutput
+}
+
+type SchemaBundleProtoSchemaArgs struct {
+	// Base64 encoded content of the file.
+	ProtoDescriptors pulumi.StringInput `pulumi:"protoDescriptors"`
+}
+
+func (SchemaBundleProtoSchemaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchemaBundleProtoSchema)(nil)).Elem()
+}
+
+func (i SchemaBundleProtoSchemaArgs) ToSchemaBundleProtoSchemaOutput() SchemaBundleProtoSchemaOutput {
+	return i.ToSchemaBundleProtoSchemaOutputWithContext(context.Background())
+}
+
+func (i SchemaBundleProtoSchemaArgs) ToSchemaBundleProtoSchemaOutputWithContext(ctx context.Context) SchemaBundleProtoSchemaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchemaBundleProtoSchemaOutput)
+}
+
+func (i SchemaBundleProtoSchemaArgs) ToSchemaBundleProtoSchemaPtrOutput() SchemaBundleProtoSchemaPtrOutput {
+	return i.ToSchemaBundleProtoSchemaPtrOutputWithContext(context.Background())
+}
+
+func (i SchemaBundleProtoSchemaArgs) ToSchemaBundleProtoSchemaPtrOutputWithContext(ctx context.Context) SchemaBundleProtoSchemaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchemaBundleProtoSchemaOutput).ToSchemaBundleProtoSchemaPtrOutputWithContext(ctx)
+}
+
+// SchemaBundleProtoSchemaPtrInput is an input type that accepts SchemaBundleProtoSchemaArgs, SchemaBundleProtoSchemaPtr and SchemaBundleProtoSchemaPtrOutput values.
+// You can construct a concrete instance of `SchemaBundleProtoSchemaPtrInput` via:
+//
+//	        SchemaBundleProtoSchemaArgs{...}
+//
+//	or:
+//
+//	        nil
+type SchemaBundleProtoSchemaPtrInput interface {
+	pulumi.Input
+
+	ToSchemaBundleProtoSchemaPtrOutput() SchemaBundleProtoSchemaPtrOutput
+	ToSchemaBundleProtoSchemaPtrOutputWithContext(context.Context) SchemaBundleProtoSchemaPtrOutput
+}
+
+type schemaBundleProtoSchemaPtrType SchemaBundleProtoSchemaArgs
+
+func SchemaBundleProtoSchemaPtr(v *SchemaBundleProtoSchemaArgs) SchemaBundleProtoSchemaPtrInput {
+	return (*schemaBundleProtoSchemaPtrType)(v)
+}
+
+func (*schemaBundleProtoSchemaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SchemaBundleProtoSchema)(nil)).Elem()
+}
+
+func (i *schemaBundleProtoSchemaPtrType) ToSchemaBundleProtoSchemaPtrOutput() SchemaBundleProtoSchemaPtrOutput {
+	return i.ToSchemaBundleProtoSchemaPtrOutputWithContext(context.Background())
+}
+
+func (i *schemaBundleProtoSchemaPtrType) ToSchemaBundleProtoSchemaPtrOutputWithContext(ctx context.Context) SchemaBundleProtoSchemaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchemaBundleProtoSchemaPtrOutput)
+}
+
+type SchemaBundleProtoSchemaOutput struct{ *pulumi.OutputState }
+
+func (SchemaBundleProtoSchemaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchemaBundleProtoSchema)(nil)).Elem()
+}
+
+func (o SchemaBundleProtoSchemaOutput) ToSchemaBundleProtoSchemaOutput() SchemaBundleProtoSchemaOutput {
+	return o
+}
+
+func (o SchemaBundleProtoSchemaOutput) ToSchemaBundleProtoSchemaOutputWithContext(ctx context.Context) SchemaBundleProtoSchemaOutput {
+	return o
+}
+
+func (o SchemaBundleProtoSchemaOutput) ToSchemaBundleProtoSchemaPtrOutput() SchemaBundleProtoSchemaPtrOutput {
+	return o.ToSchemaBundleProtoSchemaPtrOutputWithContext(context.Background())
+}
+
+func (o SchemaBundleProtoSchemaOutput) ToSchemaBundleProtoSchemaPtrOutputWithContext(ctx context.Context) SchemaBundleProtoSchemaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SchemaBundleProtoSchema) *SchemaBundleProtoSchema {
+		return &v
+	}).(SchemaBundleProtoSchemaPtrOutput)
+}
+
+// Base64 encoded content of the file.
+func (o SchemaBundleProtoSchemaOutput) ProtoDescriptors() pulumi.StringOutput {
+	return o.ApplyT(func(v SchemaBundleProtoSchema) string { return v.ProtoDescriptors }).(pulumi.StringOutput)
+}
+
+type SchemaBundleProtoSchemaPtrOutput struct{ *pulumi.OutputState }
+
+func (SchemaBundleProtoSchemaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SchemaBundleProtoSchema)(nil)).Elem()
+}
+
+func (o SchemaBundleProtoSchemaPtrOutput) ToSchemaBundleProtoSchemaPtrOutput() SchemaBundleProtoSchemaPtrOutput {
+	return o
+}
+
+func (o SchemaBundleProtoSchemaPtrOutput) ToSchemaBundleProtoSchemaPtrOutputWithContext(ctx context.Context) SchemaBundleProtoSchemaPtrOutput {
+	return o
+}
+
+func (o SchemaBundleProtoSchemaPtrOutput) Elem() SchemaBundleProtoSchemaOutput {
+	return o.ApplyT(func(v *SchemaBundleProtoSchema) SchemaBundleProtoSchema {
+		if v != nil {
+			return *v
+		}
+		var ret SchemaBundleProtoSchema
+		return ret
+	}).(SchemaBundleProtoSchemaOutput)
+}
+
+// Base64 encoded content of the file.
+func (o SchemaBundleProtoSchemaPtrOutput) ProtoDescriptors() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SchemaBundleProtoSchema) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProtoDescriptors
+	}).(pulumi.StringPtrOutput)
+}
+
 type TableAutomatedBackupPolicy struct {
 	// How frequently automated backups should occur.
 	Frequency *string `pulumi:"frequency"`
@@ -2393,6 +2530,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIamBindingConditionPtrInput)(nil)).Elem(), InstanceIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIamMemberConditionInput)(nil)).Elem(), InstanceIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIamMemberConditionPtrInput)(nil)).Elem(), InstanceIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchemaBundleProtoSchemaInput)(nil)).Elem(), SchemaBundleProtoSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchemaBundleProtoSchemaPtrInput)(nil)).Elem(), SchemaBundleProtoSchemaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableAutomatedBackupPolicyInput)(nil)).Elem(), TableAutomatedBackupPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableAutomatedBackupPolicyPtrInput)(nil)).Elem(), TableAutomatedBackupPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableColumnFamilyInput)(nil)).Elem(), TableColumnFamilyArgs{})
@@ -2423,6 +2562,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(InstanceIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(InstanceIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(SchemaBundleProtoSchemaOutput{})
+	pulumi.RegisterOutputType(SchemaBundleProtoSchemaPtrOutput{})
 	pulumi.RegisterOutputType(TableAutomatedBackupPolicyOutput{})
 	pulumi.RegisterOutputType(TableAutomatedBackupPolicyPtrOutput{})
 	pulumi.RegisterOutputType(TableColumnFamilyOutput{})

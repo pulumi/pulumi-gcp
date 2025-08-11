@@ -13,6 +13,7 @@ import com.pulumi.gcp.managedkafka.inputs.ClusterState;
 import com.pulumi.gcp.managedkafka.outputs.ClusterCapacityConfig;
 import com.pulumi.gcp.managedkafka.outputs.ClusterGcpConfig;
 import com.pulumi.gcp.managedkafka.outputs.ClusterRebalanceConfig;
+import com.pulumi.gcp.managedkafka.outputs.ClusterTlsConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -76,6 +77,83 @@ import javax.annotation.Nullable;
  *                 .mode("AUTO_REBALANCE_ON_SCALE_UP")
  *                 .build())
  *             .labels(Map.of("key", "value"))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Managedkafka Cluster Mtls
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.certificateauthority.CaPool;
+ * import com.pulumi.gcp.certificateauthority.CaPoolArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CaPoolPublishingOptionsArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.managedkafka.Cluster;
+ * import com.pulumi.gcp.managedkafka.ClusterArgs;
+ * import com.pulumi.gcp.managedkafka.inputs.ClusterCapacityConfigArgs;
+ * import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigArgs;
+ * import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigAccessConfigArgs;
+ * import com.pulumi.gcp.managedkafka.inputs.ClusterTlsConfigArgs;
+ * import com.pulumi.gcp.managedkafka.inputs.ClusterTlsConfigTrustConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var caPool = new CaPool("caPool", CaPoolArgs.builder()
+ *             .name("my-ca-pool")
+ *             .location("us-central1")
+ *             .tier("ENTERPRISE")
+ *             .publishingOptions(CaPoolPublishingOptionsArgs.builder()
+ *                 .publishCaCert(true)
+ *                 .publishCrl(true)
+ *                 .build())
+ *             .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
+ * 
+ *         var example = new Cluster("example", ClusterArgs.builder()
+ *             .clusterId("my-cluster")
+ *             .location("us-central1")
+ *             .capacityConfig(ClusterCapacityConfigArgs.builder()
+ *                 .vcpuCount("3")
+ *                 .memoryBytes("3221225472")
+ *                 .build())
+ *             .gcpConfig(ClusterGcpConfigArgs.builder()
+ *                 .accessConfig(ClusterGcpConfigAccessConfigArgs.builder()
+ *                     .networkConfigs(ClusterGcpConfigAccessConfigNetworkConfigArgs.builder()
+ *                         .subnet(String.format("projects/%s/regions/us-central1/subnetworks/default", project.number()))
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .tlsConfig(ClusterTlsConfigArgs.builder()
+ *                 .trustConfig(ClusterTlsConfigTrustConfigArgs.builder()
+ *                     .casConfigs(ClusterTlsConfigTrustConfigCasConfigArgs.builder()
+ *                         .caPool(caPool.id())
+ *                         .build())
+ *                     .build())
+ *                 .sslPrincipalMappingRules("RULE:pattern/replacement/L,DEFAULT")
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -376,6 +454,22 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> state() {
         return this.state;
+    }
+    /**
+     * TLS configuration for the Kafka cluster. This is used to configure mTLS authentication. To clear our a TLS configuration that has been previously set, please explicitly add an empty `tls_config` block.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="tlsConfig", refs={ClusterTlsConfig.class}, tree="[0]")
+    private Output<ClusterTlsConfig> tlsConfig;
+
+    /**
+     * @return TLS configuration for the Kafka cluster. This is used to configure mTLS authentication. To clear our a TLS configuration that has been previously set, please explicitly add an empty `tls_config` block.
+     * Structure is documented below.
+     * 
+     */
+    public Output<ClusterTlsConfig> tlsConfig() {
+        return this.tlsConfig;
     }
     /**
      * The time when the cluster was last updated.

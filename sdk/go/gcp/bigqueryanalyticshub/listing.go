@@ -426,6 +426,112 @@ import (
 //	}
 //
 // ```
+// ### Bigquery Analyticshub Public Listing
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigqueryanalyticshub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			listing, err := bigqueryanalyticshub.NewDataExchange(ctx, "listing", &bigqueryanalyticshub.DataExchangeArgs{
+//				Location:       pulumi.String("US"),
+//				DataExchangeId: pulumi.String("my_data_exchange"),
+//				DisplayName:    pulumi.String("my_data_exchange"),
+//				Description:    pulumi.String("example public listing"),
+//				DiscoveryType:  pulumi.String("DISCOVERY_TYPE_PUBLIC"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			listingDataset, err := bigquery.NewDataset(ctx, "listing", &bigquery.DatasetArgs{
+//				DatasetId:    pulumi.String("my_listing"),
+//				FriendlyName: pulumi.String("my_listing"),
+//				Description:  pulumi.String("example public listing"),
+//				Location:     pulumi.String("US"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigqueryanalyticshub.NewListing(ctx, "listing", &bigqueryanalyticshub.ListingArgs{
+//				Location:                 pulumi.String("US"),
+//				DataExchangeId:           listing.DataExchangeId,
+//				ListingId:                pulumi.String("my_listing"),
+//				DisplayName:              pulumi.String("my_listing"),
+//				Description:              pulumi.String("example public listing"),
+//				DiscoveryType:            pulumi.String("DISCOVERY_TYPE_PUBLIC"),
+//				AllowOnlyMetadataSharing: pulumi.Bool(false),
+//				BigqueryDataset: &bigqueryanalyticshub.ListingBigqueryDatasetArgs{
+//					Dataset: listingDataset.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Bigquery Analyticshub Listing Marketplace
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigqueryanalyticshub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			listing, err := bigqueryanalyticshub.NewDataExchange(ctx, "listing", &bigqueryanalyticshub.DataExchangeArgs{
+//				Location:       pulumi.String("US"),
+//				DataExchangeId: pulumi.String("my_data_exchange"),
+//				DisplayName:    pulumi.String("my_data_exchange"),
+//				Description:    pulumi.String("example data exchange"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			listingDataset, err := bigquery.NewDataset(ctx, "listing", &bigquery.DatasetArgs{
+//				DatasetId:    pulumi.String("my_listing"),
+//				FriendlyName: pulumi.String("my_listing"),
+//				Description:  pulumi.String("example data exchange"),
+//				Location:     pulumi.String("US"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigqueryanalyticshub.NewListing(ctx, "listing", &bigqueryanalyticshub.ListingArgs{
+//				Location:         pulumi.String("US"),
+//				DataExchangeId:   listing.DataExchangeId,
+//				ListingId:        pulumi.String("my_listing"),
+//				DisplayName:      pulumi.String("my_listing"),
+//				Description:      pulumi.String("example data exchange"),
+//				DeleteCommercial: pulumi.Bool(true),
+//				BigqueryDataset: &bigqueryanalyticshub.ListingBigqueryDatasetArgs{
+//					Dataset: listingDataset.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -453,18 +559,28 @@ import (
 type Listing struct {
 	pulumi.CustomResourceState
 
+	// If true, the listing is only available to get the resource metadata. Listing is non subscribable.
+	AllowOnlyMetadataSharing pulumi.BoolPtrOutput `pulumi:"allowOnlyMetadataSharing"`
 	// Shared dataset i.e. BigQuery dataset source.
 	// Structure is documented below.
 	BigqueryDataset ListingBigqueryDatasetPtrOutput `pulumi:"bigqueryDataset"`
 	// Categories of the listing. Up to two categories are allowed.
 	Categories pulumi.StringArrayOutput `pulumi:"categories"`
+	// Commercial info contains the information about the commercial data products associated with the listing.
+	// Structure is documented below.
+	CommercialInfos ListingCommercialInfoArrayOutput `pulumi:"commercialInfos"`
 	// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
 	DataExchangeId pulumi.StringOutput `pulumi:"dataExchangeId"`
 	// Details of the data provider who owns the source data.
 	// Structure is documented below.
 	DataProvider ListingDataProviderPtrOutput `pulumi:"dataProvider"`
+	// If the listing is commercial then this field must be set to true, otherwise a failure is thrown. This acts as a safety guard to avoid deleting commercial listings accidentally.
+	DeleteCommercial pulumi.BoolPtrOutput `pulumi:"deleteCommercial"`
 	// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Specifies the type of discovery on the discovery page. Cannot be set for a restricted listing. Note that this does not control the visibility of the exchange/listing which is defined by IAM permission.
+	// Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
+	DiscoveryType pulumi.StringOutput `pulumi:"discoveryType"`
 	// Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Documentation describing the listing.
@@ -495,6 +611,8 @@ type Listing struct {
 	// If set, restricted export configuration will be propagated and enforced on the linked dataset.
 	// Structure is documented below.
 	RestrictedExportConfig ListingRestrictedExportConfigPtrOutput `pulumi:"restrictedExportConfig"`
+	// Current state of the listing.
+	State pulumi.StringOutput `pulumi:"state"`
 }
 
 // NewListing registers a new resource with the given unique name, arguments, and options.
@@ -539,18 +657,28 @@ func GetListing(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Listing resources.
 type listingState struct {
+	// If true, the listing is only available to get the resource metadata. Listing is non subscribable.
+	AllowOnlyMetadataSharing *bool `pulumi:"allowOnlyMetadataSharing"`
 	// Shared dataset i.e. BigQuery dataset source.
 	// Structure is documented below.
 	BigqueryDataset *ListingBigqueryDataset `pulumi:"bigqueryDataset"`
 	// Categories of the listing. Up to two categories are allowed.
 	Categories []string `pulumi:"categories"`
+	// Commercial info contains the information about the commercial data products associated with the listing.
+	// Structure is documented below.
+	CommercialInfos []ListingCommercialInfo `pulumi:"commercialInfos"`
 	// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
 	DataExchangeId *string `pulumi:"dataExchangeId"`
 	// Details of the data provider who owns the source data.
 	// Structure is documented below.
 	DataProvider *ListingDataProvider `pulumi:"dataProvider"`
+	// If the listing is commercial then this field must be set to true, otherwise a failure is thrown. This acts as a safety guard to avoid deleting commercial listings accidentally.
+	DeleteCommercial *bool `pulumi:"deleteCommercial"`
 	// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
 	Description *string `pulumi:"description"`
+	// Specifies the type of discovery on the discovery page. Cannot be set for a restricted listing. Note that this does not control the visibility of the exchange/listing which is defined by IAM permission.
+	// Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
+	DiscoveryType *string `pulumi:"discoveryType"`
 	// Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
 	DisplayName *string `pulumi:"displayName"`
 	// Documentation describing the listing.
@@ -581,21 +709,33 @@ type listingState struct {
 	// If set, restricted export configuration will be propagated and enforced on the linked dataset.
 	// Structure is documented below.
 	RestrictedExportConfig *ListingRestrictedExportConfig `pulumi:"restrictedExportConfig"`
+	// Current state of the listing.
+	State *string `pulumi:"state"`
 }
 
 type ListingState struct {
+	// If true, the listing is only available to get the resource metadata. Listing is non subscribable.
+	AllowOnlyMetadataSharing pulumi.BoolPtrInput
 	// Shared dataset i.e. BigQuery dataset source.
 	// Structure is documented below.
 	BigqueryDataset ListingBigqueryDatasetPtrInput
 	// Categories of the listing. Up to two categories are allowed.
 	Categories pulumi.StringArrayInput
+	// Commercial info contains the information about the commercial data products associated with the listing.
+	// Structure is documented below.
+	CommercialInfos ListingCommercialInfoArrayInput
 	// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
 	DataExchangeId pulumi.StringPtrInput
 	// Details of the data provider who owns the source data.
 	// Structure is documented below.
 	DataProvider ListingDataProviderPtrInput
+	// If the listing is commercial then this field must be set to true, otherwise a failure is thrown. This acts as a safety guard to avoid deleting commercial listings accidentally.
+	DeleteCommercial pulumi.BoolPtrInput
 	// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
 	Description pulumi.StringPtrInput
+	// Specifies the type of discovery on the discovery page. Cannot be set for a restricted listing. Note that this does not control the visibility of the exchange/listing which is defined by IAM permission.
+	// Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
+	DiscoveryType pulumi.StringPtrInput
 	// Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
 	DisplayName pulumi.StringPtrInput
 	// Documentation describing the listing.
@@ -626,6 +766,8 @@ type ListingState struct {
 	// If set, restricted export configuration will be propagated and enforced on the linked dataset.
 	// Structure is documented below.
 	RestrictedExportConfig ListingRestrictedExportConfigPtrInput
+	// Current state of the listing.
+	State pulumi.StringPtrInput
 }
 
 func (ListingState) ElementType() reflect.Type {
@@ -633,6 +775,8 @@ func (ListingState) ElementType() reflect.Type {
 }
 
 type listingArgs struct {
+	// If true, the listing is only available to get the resource metadata. Listing is non subscribable.
+	AllowOnlyMetadataSharing *bool `pulumi:"allowOnlyMetadataSharing"`
 	// Shared dataset i.e. BigQuery dataset source.
 	// Structure is documented below.
 	BigqueryDataset *ListingBigqueryDataset `pulumi:"bigqueryDataset"`
@@ -643,8 +787,13 @@ type listingArgs struct {
 	// Details of the data provider who owns the source data.
 	// Structure is documented below.
 	DataProvider *ListingDataProvider `pulumi:"dataProvider"`
+	// If the listing is commercial then this field must be set to true, otherwise a failure is thrown. This acts as a safety guard to avoid deleting commercial listings accidentally.
+	DeleteCommercial *bool `pulumi:"deleteCommercial"`
 	// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
 	Description *string `pulumi:"description"`
+	// Specifies the type of discovery on the discovery page. Cannot be set for a restricted listing. Note that this does not control the visibility of the exchange/listing which is defined by IAM permission.
+	// Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
+	DiscoveryType *string `pulumi:"discoveryType"`
 	// Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
 	DisplayName string `pulumi:"displayName"`
 	// Documentation describing the listing.
@@ -677,6 +826,8 @@ type listingArgs struct {
 
 // The set of arguments for constructing a Listing resource.
 type ListingArgs struct {
+	// If true, the listing is only available to get the resource metadata. Listing is non subscribable.
+	AllowOnlyMetadataSharing pulumi.BoolPtrInput
 	// Shared dataset i.e. BigQuery dataset source.
 	// Structure is documented below.
 	BigqueryDataset ListingBigqueryDatasetPtrInput
@@ -687,8 +838,13 @@ type ListingArgs struct {
 	// Details of the data provider who owns the source data.
 	// Structure is documented below.
 	DataProvider ListingDataProviderPtrInput
+	// If the listing is commercial then this field must be set to true, otherwise a failure is thrown. This acts as a safety guard to avoid deleting commercial listings accidentally.
+	DeleteCommercial pulumi.BoolPtrInput
 	// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
 	Description pulumi.StringPtrInput
+	// Specifies the type of discovery on the discovery page. Cannot be set for a restricted listing. Note that this does not control the visibility of the exchange/listing which is defined by IAM permission.
+	// Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
+	DiscoveryType pulumi.StringPtrInput
 	// Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
 	DisplayName pulumi.StringInput
 	// Documentation describing the listing.
@@ -806,6 +962,11 @@ func (o ListingOutput) ToListingOutputWithContext(ctx context.Context) ListingOu
 	return o
 }
 
+// If true, the listing is only available to get the resource metadata. Listing is non subscribable.
+func (o ListingOutput) AllowOnlyMetadataSharing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Listing) pulumi.BoolPtrOutput { return v.AllowOnlyMetadataSharing }).(pulumi.BoolPtrOutput)
+}
+
 // Shared dataset i.e. BigQuery dataset source.
 // Structure is documented below.
 func (o ListingOutput) BigqueryDataset() ListingBigqueryDatasetPtrOutput {
@@ -815,6 +976,12 @@ func (o ListingOutput) BigqueryDataset() ListingBigqueryDatasetPtrOutput {
 // Categories of the listing. Up to two categories are allowed.
 func (o ListingOutput) Categories() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Listing) pulumi.StringArrayOutput { return v.Categories }).(pulumi.StringArrayOutput)
+}
+
+// Commercial info contains the information about the commercial data products associated with the listing.
+// Structure is documented below.
+func (o ListingOutput) CommercialInfos() ListingCommercialInfoArrayOutput {
+	return o.ApplyT(func(v *Listing) ListingCommercialInfoArrayOutput { return v.CommercialInfos }).(ListingCommercialInfoArrayOutput)
 }
 
 // The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
@@ -828,9 +995,20 @@ func (o ListingOutput) DataProvider() ListingDataProviderPtrOutput {
 	return o.ApplyT(func(v *Listing) ListingDataProviderPtrOutput { return v.DataProvider }).(ListingDataProviderPtrOutput)
 }
 
+// If the listing is commercial then this field must be set to true, otherwise a failure is thrown. This acts as a safety guard to avoid deleting commercial listings accidentally.
+func (o ListingOutput) DeleteCommercial() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Listing) pulumi.BoolPtrOutput { return v.DeleteCommercial }).(pulumi.BoolPtrOutput)
+}
+
 // Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
 func (o ListingOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Listing) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the type of discovery on the discovery page. Cannot be set for a restricted listing. Note that this does not control the visibility of the exchange/listing which is defined by IAM permission.
+// Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
+func (o ListingOutput) DiscoveryType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Listing) pulumi.StringOutput { return v.DiscoveryType }).(pulumi.StringOutput)
 }
 
 // Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
@@ -900,6 +1078,11 @@ func (o ListingOutput) RequestAccess() pulumi.StringPtrOutput {
 // Structure is documented below.
 func (o ListingOutput) RestrictedExportConfig() ListingRestrictedExportConfigPtrOutput {
 	return o.ApplyT(func(v *Listing) ListingRestrictedExportConfigPtrOutput { return v.RestrictedExportConfig }).(ListingRestrictedExportConfigPtrOutput)
+}
+
+// Current state of the listing.
+func (o ListingOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Listing) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
 type ListingArrayOutput struct{ *pulumi.OutputState }

@@ -400,6 +400,9 @@ public final class Config {
     public Optional<String> modelArmorCustomEndpoint() {
         return Codegen.stringProp("modelArmorCustomEndpoint").config(config).get();
     }
+    public Optional<String> modelArmorGlobalCustomEndpoint() {
+        return Codegen.stringProp("modelArmorGlobalCustomEndpoint").config(config).get();
+    }
     public Optional<String> monitoringCustomEndpoint() {
         return Codegen.stringProp("monitoringCustomEndpoint").config(config).get();
     }

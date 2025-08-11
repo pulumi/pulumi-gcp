@@ -385,7 +385,7 @@ class GeminiGcpEnablementSettingBinding(pulumi.CustomResource):
                 "my_key": "my_value",
             },
             enable_customer_data_sharing=True,
-            disable_web_grounding=True)
+            web_grounding_type="WEB_GROUNDING_FOR_ENTERPRISE")
         example = gcp.gemini.GeminiGcpEnablementSettingBinding("example",
             gemini_gcp_enablement_setting_id=basic.gemini_gcp_enablement_setting_id,
             setting_binding_id="ls-tf1b1",
@@ -458,7 +458,7 @@ class GeminiGcpEnablementSettingBinding(pulumi.CustomResource):
                 "my_key": "my_value",
             },
             enable_customer_data_sharing=True,
-            disable_web_grounding=True)
+            web_grounding_type="WEB_GROUNDING_FOR_ENTERPRISE")
         example = gcp.gemini.GeminiGcpEnablementSettingBinding("example",
             gemini_gcp_enablement_setting_id=basic.gemini_gcp_enablement_setting_id,
             setting_binding_id="ls-tf1b1",

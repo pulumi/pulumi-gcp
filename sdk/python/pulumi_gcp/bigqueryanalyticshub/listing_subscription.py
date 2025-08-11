@@ -109,6 +109,7 @@ class ListingSubscriptionArgs:
 @pulumi.input_type
 class _ListingSubscriptionState:
     def __init__(__self__, *,
+                 commercial_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ListingSubscriptionCommercialInfoArgs']]]] = None,
                  creation_time: Optional[pulumi.Input[_builtins.str]] = None,
                  data_exchange_id: Optional[pulumi.Input[_builtins.str]] = None,
                  destination_dataset: Optional[pulumi.Input['ListingSubscriptionDestinationDatasetArgs']] = None,
@@ -128,6 +129,8 @@ class _ListingSubscriptionState:
                  subscription_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ListingSubscription resources.
+        :param pulumi.Input[Sequence[pulumi.Input['ListingSubscriptionCommercialInfoArgs']]] commercial_infos: Commercial info metadata for this subscription. This is set if this is a commercial subscription i.e. if this subscription was created from subscribing to a commercial listing.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] creation_time: Timestamp when the subscription was created.
         :param pulumi.Input[_builtins.str] data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input['ListingSubscriptionDestinationDatasetArgs'] destination_dataset: The destination dataset for this subscription.
@@ -151,6 +154,8 @@ class _ListingSubscriptionState:
         :param pulumi.Input[_builtins.str] subscriber_contact: Email of the subscriber.
         :param pulumi.Input[_builtins.str] subscription_id: The subscription id used to reference the subscription.
         """
+        if commercial_infos is not None:
+            pulumi.set(__self__, "commercial_infos", commercial_infos)
         if creation_time is not None:
             pulumi.set(__self__, "creation_time", creation_time)
         if data_exchange_id is not None:
@@ -185,6 +190,19 @@ class _ListingSubscriptionState:
             pulumi.set(__self__, "subscriber_contact", subscriber_contact)
         if subscription_id is not None:
             pulumi.set(__self__, "subscription_id", subscription_id)
+
+    @_builtins.property
+    @pulumi.getter(name="commercialInfos")
+    def commercial_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ListingSubscriptionCommercialInfoArgs']]]]:
+        """
+        Commercial info metadata for this subscription. This is set if this is a commercial subscription i.e. if this subscription was created from subscribing to a commercial listing.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "commercial_infos")
+
+    @commercial_infos.setter
+    def commercial_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ListingSubscriptionCommercialInfoArgs']]]]):
+        pulumi.set(self, "commercial_infos", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTime")
@@ -626,6 +644,7 @@ class ListingSubscription(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
+            __props__.__dict__["commercial_infos"] = None
             __props__.__dict__["creation_time"] = None
             __props__.__dict__["last_modify_time"] = None
             __props__.__dict__["linked_dataset_maps"] = None
@@ -648,6 +667,7 @@ class ListingSubscription(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            commercial_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ListingSubscriptionCommercialInfoArgs', 'ListingSubscriptionCommercialInfoArgsDict']]]]] = None,
             creation_time: Optional[pulumi.Input[_builtins.str]] = None,
             data_exchange_id: Optional[pulumi.Input[_builtins.str]] = None,
             destination_dataset: Optional[pulumi.Input[Union['ListingSubscriptionDestinationDatasetArgs', 'ListingSubscriptionDestinationDatasetArgsDict']]] = None,
@@ -672,6 +692,8 @@ class ListingSubscription(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ListingSubscriptionCommercialInfoArgs', 'ListingSubscriptionCommercialInfoArgsDict']]]] commercial_infos: Commercial info metadata for this subscription. This is set if this is a commercial subscription i.e. if this subscription was created from subscribing to a commercial listing.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] creation_time: Timestamp when the subscription was created.
         :param pulumi.Input[_builtins.str] data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input[Union['ListingSubscriptionDestinationDatasetArgs', 'ListingSubscriptionDestinationDatasetArgsDict']] destination_dataset: The destination dataset for this subscription.
@@ -699,6 +721,7 @@ class ListingSubscription(pulumi.CustomResource):
 
         __props__ = _ListingSubscriptionState.__new__(_ListingSubscriptionState)
 
+        __props__.__dict__["commercial_infos"] = commercial_infos
         __props__.__dict__["creation_time"] = creation_time
         __props__.__dict__["data_exchange_id"] = data_exchange_id
         __props__.__dict__["destination_dataset"] = destination_dataset
@@ -717,6 +740,15 @@ class ListingSubscription(pulumi.CustomResource):
         __props__.__dict__["subscriber_contact"] = subscriber_contact
         __props__.__dict__["subscription_id"] = subscription_id
         return ListingSubscription(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="commercialInfos")
+    def commercial_infos(self) -> pulumi.Output[Sequence['outputs.ListingSubscriptionCommercialInfo']]:
+        """
+        Commercial info metadata for this subscription. This is set if this is a commercial subscription i.e. if this subscription was created from subscribing to a commercial listing.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "commercial_infos")
 
     @_builtins.property
     @pulumi.getter(name="creationTime")

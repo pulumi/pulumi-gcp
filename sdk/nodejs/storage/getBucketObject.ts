@@ -81,6 +81,7 @@ export interface GetBucketObjectResult {
      */
     readonly crc32c: string;
     readonly customerEncryptions: outputs.storage.GetBucketObjectCustomerEncryption[];
+    readonly deletionPolicy: string;
     readonly detectMd5hash: string;
     /**
      * (Computed) Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).

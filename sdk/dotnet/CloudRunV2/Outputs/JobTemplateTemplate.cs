@@ -28,6 +28,10 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly string? ExecutionEnvironment;
         /// <summary>
+        /// True if GPU zonal redundancy is disabled on this execution.
+        /// </summary>
+        public readonly bool? GpuZonalRedundancyDisabled;
+        /// <summary>
         /// Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
         /// </summary>
         public readonly int? MaxRetries;
@@ -64,6 +68,8 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
 
             string? executionEnvironment,
 
+            bool? gpuZonalRedundancyDisabled,
+
             int? maxRetries,
 
             Outputs.JobTemplateTemplateNodeSelector? nodeSelector,
@@ -79,6 +85,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
             Containers = containers;
             EncryptionKey = encryptionKey;
             ExecutionEnvironment = executionEnvironment;
+            GpuZonalRedundancyDisabled = gpuZonalRedundancyDisabled;
             MaxRetries = maxRetries;
             NodeSelector = nodeSelector;
             ServiceAccount = serviceAccount;

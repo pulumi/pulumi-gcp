@@ -12,6 +12,7 @@ import com.pulumi.gcp.compute.RouterArgs;
 import com.pulumi.gcp.compute.inputs.RouterState;
 import com.pulumi.gcp.compute.outputs.RouterBgp;
 import com.pulumi.gcp.compute.outputs.RouterMd5AuthenticationKeys;
+import com.pulumi.gcp.compute.outputs.RouterParams;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
@@ -277,6 +278,22 @@ public class Router extends com.pulumi.resources.CustomResource {
      */
     public Output<String> network() {
         return this.network;
+    }
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="params", refs={RouterParams.class}, tree="[0]")
+    private Output</* @Nullable */ RouterParams> params;
+
+    /**
+     * @return Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<RouterParams>> params() {
+        return Codegen.optional(this.params);
     }
     /**
      * The ID of the project in which the resource belongs.

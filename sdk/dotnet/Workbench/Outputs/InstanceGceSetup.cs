@@ -63,6 +63,11 @@ namespace Pulumi.Gcp.Workbench.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.InstanceGceSetupNetworkInterface> NetworkInterfaces;
         /// <summary>
+        /// Reservations that this instance can consume from.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.InstanceGceSetupReservationAffinity? ReservationAffinity;
+        /// <summary>
         /// The service account that serves as an identity for the VM instance. Currently supports only one service account.
         /// Structure is documented below.
         /// </summary>
@@ -108,6 +113,8 @@ namespace Pulumi.Gcp.Workbench.Outputs
 
             ImmutableArray<Outputs.InstanceGceSetupNetworkInterface> networkInterfaces,
 
+            Outputs.InstanceGceSetupReservationAffinity? reservationAffinity,
+
             ImmutableArray<Outputs.InstanceGceSetupServiceAccount> serviceAccounts,
 
             Outputs.InstanceGceSetupShieldedInstanceConfig? shieldedInstanceConfig,
@@ -126,6 +133,7 @@ namespace Pulumi.Gcp.Workbench.Outputs
             MachineType = machineType;
             Metadata = metadata;
             NetworkInterfaces = networkInterfaces;
+            ReservationAffinity = reservationAffinity;
             ServiceAccounts = serviceAccounts;
             ShieldedInstanceConfig = shieldedInstanceConfig;
             Tags = tags;

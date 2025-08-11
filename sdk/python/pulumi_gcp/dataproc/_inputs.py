@@ -31,6 +31,8 @@ __all__ = [
     'BatchEnvironmentConfigArgsDict',
     'BatchEnvironmentConfigExecutionConfigArgs',
     'BatchEnvironmentConfigExecutionConfigArgsDict',
+    'BatchEnvironmentConfigExecutionConfigAuthenticationConfigArgs',
+    'BatchEnvironmentConfigExecutionConfigAuthenticationConfigArgsDict',
     'BatchEnvironmentConfigPeripheralsConfigArgs',
     'BatchEnvironmentConfigPeripheralsConfigArgsDict',
     'BatchEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgs',
@@ -113,6 +115,8 @@ __all__ = [
     'ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgsDict',
     'ClusterClusterConfigSecurityConfigArgs',
     'ClusterClusterConfigSecurityConfigArgsDict',
+    'ClusterClusterConfigSecurityConfigIdentityConfigArgs',
+    'ClusterClusterConfigSecurityConfigIdentityConfigArgsDict',
     'ClusterClusterConfigSecurityConfigKerberosConfigArgs',
     'ClusterClusterConfigSecurityConfigKerberosConfigArgsDict',
     'ClusterClusterConfigSoftwareConfigArgs',
@@ -255,6 +259,8 @@ __all__ = [
     'SessionTemplateEnvironmentConfigArgsDict',
     'SessionTemplateEnvironmentConfigExecutionConfigArgs',
     'SessionTemplateEnvironmentConfigExecutionConfigArgsDict',
+    'SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgs',
+    'SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgsDict',
     'SessionTemplateEnvironmentConfigPeripheralsConfigArgs',
     'SessionTemplateEnvironmentConfigPeripheralsConfigArgsDict',
     'SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgs',
@@ -984,6 +990,11 @@ class BatchEnvironmentConfigArgs:
 
 if not MYPY:
     class BatchEnvironmentConfigExecutionConfigArgsDict(TypedDict):
+        authentication_config: NotRequired[pulumi.Input['BatchEnvironmentConfigExecutionConfigAuthenticationConfigArgsDict']]
+        """
+        Authentication configuration for a workload is used to set the default identity for the workload execution.
+        Structure is documented below.
+        """
         kms_key: NotRequired[pulumi.Input[_builtins.str]]
         """
         The Cloud KMS key to use for encryption.
@@ -1029,6 +1040,7 @@ elif False:
 @pulumi.input_type
 class BatchEnvironmentConfigExecutionConfigArgs:
     def __init__(__self__, *,
+                 authentication_config: Optional[pulumi.Input['BatchEnvironmentConfigExecutionConfigAuthenticationConfigArgs']] = None,
                  kms_key: Optional[pulumi.Input[_builtins.str]] = None,
                  network_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  network_uri: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1037,6 +1049,8 @@ class BatchEnvironmentConfigExecutionConfigArgs:
                  subnetwork_uri: Optional[pulumi.Input[_builtins.str]] = None,
                  ttl: Optional[pulumi.Input[_builtins.str]] = None):
         """
+        :param pulumi.Input['BatchEnvironmentConfigExecutionConfigAuthenticationConfigArgs'] authentication_config: Authentication configuration for a workload is used to set the default identity for the workload execution.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] kms_key: The Cloud KMS key to use for encryption.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] network_tags: Tags used for network traffic control.
         :param pulumi.Input[_builtins.str] network_uri: Network configuration for workload execution.
@@ -1056,6 +1070,8 @@ class BatchEnvironmentConfigExecutionConfigArgs:
                the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idleTtl or
                when ttl has been exceeded, whichever occurs first.
         """
+        if authentication_config is not None:
+            pulumi.set(__self__, "authentication_config", authentication_config)
         if kms_key is not None:
             pulumi.set(__self__, "kms_key", kms_key)
         if network_tags is not None:
@@ -1070,6 +1086,19 @@ class BatchEnvironmentConfigExecutionConfigArgs:
             pulumi.set(__self__, "subnetwork_uri", subnetwork_uri)
         if ttl is not None:
             pulumi.set(__self__, "ttl", ttl)
+
+    @_builtins.property
+    @pulumi.getter(name="authenticationConfig")
+    def authentication_config(self) -> Optional[pulumi.Input['BatchEnvironmentConfigExecutionConfigAuthenticationConfigArgs']]:
+        """
+        Authentication configuration for a workload is used to set the default identity for the workload execution.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "authentication_config")
+
+    @authentication_config.setter
+    def authentication_config(self, value: Optional[pulumi.Input['BatchEnvironmentConfigExecutionConfigAuthenticationConfigArgs']]):
+        pulumi.set(self, "authentication_config", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKey")
@@ -1165,6 +1194,41 @@ class BatchEnvironmentConfigExecutionConfigArgs:
     @ttl.setter
     def ttl(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "ttl", value)
+
+
+if not MYPY:
+    class BatchEnvironmentConfigExecutionConfigAuthenticationConfigArgsDict(TypedDict):
+        user_workload_authentication_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Authentication type for the user workload running in containers.
+        Possible values are: `SERVICE_ACCOUNT`, `END_USER_CREDENTIALS`.
+        """
+elif False:
+    BatchEnvironmentConfigExecutionConfigAuthenticationConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BatchEnvironmentConfigExecutionConfigAuthenticationConfigArgs:
+    def __init__(__self__, *,
+                 user_workload_authentication_type: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] user_workload_authentication_type: Authentication type for the user workload running in containers.
+               Possible values are: `SERVICE_ACCOUNT`, `END_USER_CREDENTIALS`.
+        """
+        if user_workload_authentication_type is not None:
+            pulumi.set(__self__, "user_workload_authentication_type", user_workload_authentication_type)
+
+    @_builtins.property
+    @pulumi.getter(name="userWorkloadAuthenticationType")
+    def user_workload_authentication_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Authentication type for the user workload running in containers.
+        Possible values are: `SERVICE_ACCOUNT`, `END_USER_CREDENTIALS`.
+        """
+        return pulumi.get(self, "user_workload_authentication_type")
+
+    @user_workload_authentication_type.setter
+    def user_workload_authentication_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "user_workload_authentication_type", value)
 
 
 if not MYPY:
@@ -2390,6 +2454,10 @@ if not MYPY:
         for the cluster. If `staging_bucket` is specified, it will contain this value, otherwise
         it will be the auto generated name.
         """
+        cluster_tier: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The tier of the cluster.
+        """
         dataproc_metric_config: NotRequired[pulumi.Input['ClusterClusterConfigDataprocMetricConfigArgsDict']]
         """
         The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
@@ -2478,6 +2546,7 @@ class ClusterClusterConfigArgs:
                  autoscaling_config: Optional[pulumi.Input['ClusterClusterConfigAutoscalingConfigArgs']] = None,
                  auxiliary_node_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigAuxiliaryNodeGroupArgs']]]] = None,
                  bucket: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster_tier: Optional[pulumi.Input[_builtins.str]] = None,
                  dataproc_metric_config: Optional[pulumi.Input['ClusterClusterConfigDataprocMetricConfigArgs']] = None,
                  encryption_config: Optional[pulumi.Input['ClusterClusterConfigEncryptionConfigArgs']] = None,
                  endpoint_config: Optional[pulumi.Input['ClusterClusterConfigEndpointConfigArgs']] = None,
@@ -2502,6 +2571,7 @@ class ClusterClusterConfigArgs:
         :param pulumi.Input[_builtins.str] bucket: The name of the cloud storage bucket ultimately used to house the staging data
                for the cluster. If `staging_bucket` is specified, it will contain this value, otherwise
                it will be the auto generated name.
+        :param pulumi.Input[_builtins.str] cluster_tier: The tier of the cluster.
         :param pulumi.Input['ClusterClusterConfigDataprocMetricConfigArgs'] dataproc_metric_config: The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
                Structure defined below.
         :param pulumi.Input['ClusterClusterConfigEncryptionConfigArgs'] encryption_config: The Customer managed encryption keys settings for the cluster.
@@ -2546,6 +2616,8 @@ class ClusterClusterConfigArgs:
             pulumi.set(__self__, "auxiliary_node_groups", auxiliary_node_groups)
         if bucket is not None:
             pulumi.set(__self__, "bucket", bucket)
+        if cluster_tier is not None:
+            pulumi.set(__self__, "cluster_tier", cluster_tier)
         if dataproc_metric_config is not None:
             pulumi.set(__self__, "dataproc_metric_config", dataproc_metric_config)
         if encryption_config is not None:
@@ -2616,6 +2688,18 @@ class ClusterClusterConfigArgs:
     @bucket.setter
     def bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "bucket", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clusterTier")
+    def cluster_tier(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The tier of the cluster.
+        """
+        return pulumi.get(self, "cluster_tier")
+
+    @cluster_tier.setter
+    def cluster_tier(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "cluster_tier", value)
 
     @_builtins.property
     @pulumi.getter(name="dataprocMetricConfig")
@@ -5059,9 +5143,15 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvis
 
 if not MYPY:
     class ClusterClusterConfigSecurityConfigArgsDict(TypedDict):
-        kerberos_config: pulumi.Input['ClusterClusterConfigSecurityConfigKerberosConfigArgsDict']
+        identity_config: NotRequired[pulumi.Input['ClusterClusterConfigSecurityConfigIdentityConfigArgsDict']]
         """
-        Kerberos Configuration
+        Identity Configuration. At least one of `identity_config`
+        or `kerberos_config` is required.
+        """
+        kerberos_config: NotRequired[pulumi.Input['ClusterClusterConfigSecurityConfigKerberosConfigArgsDict']]
+        """
+        Kerberos Configuration. At least one of `identity_config`
+        or `kerberos_config` is required.
         """
 elif False:
     ClusterClusterConfigSecurityConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -5069,23 +5159,84 @@ elif False:
 @pulumi.input_type
 class ClusterClusterConfigSecurityConfigArgs:
     def __init__(__self__, *,
-                 kerberos_config: pulumi.Input['ClusterClusterConfigSecurityConfigKerberosConfigArgs']):
+                 identity_config: Optional[pulumi.Input['ClusterClusterConfigSecurityConfigIdentityConfigArgs']] = None,
+                 kerberos_config: Optional[pulumi.Input['ClusterClusterConfigSecurityConfigKerberosConfigArgs']] = None):
         """
-        :param pulumi.Input['ClusterClusterConfigSecurityConfigKerberosConfigArgs'] kerberos_config: Kerberos Configuration
+        :param pulumi.Input['ClusterClusterConfigSecurityConfigIdentityConfigArgs'] identity_config: Identity Configuration. At least one of `identity_config`
+               or `kerberos_config` is required.
+        :param pulumi.Input['ClusterClusterConfigSecurityConfigKerberosConfigArgs'] kerberos_config: Kerberos Configuration. At least one of `identity_config`
+               or `kerberos_config` is required.
         """
-        pulumi.set(__self__, "kerberos_config", kerberos_config)
+        if identity_config is not None:
+            pulumi.set(__self__, "identity_config", identity_config)
+        if kerberos_config is not None:
+            pulumi.set(__self__, "kerberos_config", kerberos_config)
+
+    @_builtins.property
+    @pulumi.getter(name="identityConfig")
+    def identity_config(self) -> Optional[pulumi.Input['ClusterClusterConfigSecurityConfigIdentityConfigArgs']]:
+        """
+        Identity Configuration. At least one of `identity_config`
+        or `kerberos_config` is required.
+        """
+        return pulumi.get(self, "identity_config")
+
+    @identity_config.setter
+    def identity_config(self, value: Optional[pulumi.Input['ClusterClusterConfigSecurityConfigIdentityConfigArgs']]):
+        pulumi.set(self, "identity_config", value)
 
     @_builtins.property
     @pulumi.getter(name="kerberosConfig")
-    def kerberos_config(self) -> pulumi.Input['ClusterClusterConfigSecurityConfigKerberosConfigArgs']:
+    def kerberos_config(self) -> Optional[pulumi.Input['ClusterClusterConfigSecurityConfigKerberosConfigArgs']]:
         """
-        Kerberos Configuration
+        Kerberos Configuration. At least one of `identity_config`
+        or `kerberos_config` is required.
         """
         return pulumi.get(self, "kerberos_config")
 
     @kerberos_config.setter
-    def kerberos_config(self, value: pulumi.Input['ClusterClusterConfigSecurityConfigKerberosConfigArgs']):
+    def kerberos_config(self, value: Optional[pulumi.Input['ClusterClusterConfigSecurityConfigKerberosConfigArgs']]):
         pulumi.set(self, "kerberos_config", value)
+
+
+if not MYPY:
+    class ClusterClusterConfigSecurityConfigIdentityConfigArgsDict(TypedDict):
+        user_service_account_mapping: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]
+        """
+        The end user to service account mappings
+        in a service account based multi-tenant cluster
+
+        - - -
+        """
+elif False:
+    ClusterClusterConfigSecurityConfigIdentityConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterClusterConfigSecurityConfigIdentityConfigArgs:
+    def __init__(__self__, *,
+                 user_service_account_mapping: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] user_service_account_mapping: The end user to service account mappings
+               in a service account based multi-tenant cluster
+               
+               - - -
+        """
+        pulumi.set(__self__, "user_service_account_mapping", user_service_account_mapping)
+
+    @_builtins.property
+    @pulumi.getter(name="userServiceAccountMapping")
+    def user_service_account_mapping(self) -> pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]:
+        """
+        The end user to service account mappings
+        in a service account based multi-tenant cluster
+
+        - - -
+        """
+        return pulumi.get(self, "user_service_account_mapping")
+
+    @user_service_account_mapping.setter
+    def user_service_account_mapping(self, value: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "user_service_account_mapping", value)
 
 
 if not MYPY:
@@ -5165,8 +5316,6 @@ if not MYPY:
         """
         The Cloud Storage URI of the truststore file used for
         SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
-
-        - - -
         """
 elif False:
     ClusterClusterConfigSecurityConfigKerberosConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -5221,8 +5370,6 @@ class ClusterClusterConfigSecurityConfigKerberosConfigArgs:
                certificate, this password is generated by Dataproc.
         :param pulumi.Input[_builtins.str] truststore_uri: The Cloud Storage URI of the truststore file used for
                SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
-               
-               - - -
         """
         pulumi.set(__self__, "kms_key_uri", kms_key_uri)
         pulumi.set(__self__, "root_principal_password_uri", root_principal_password_uri)
@@ -5442,8 +5589,6 @@ class ClusterClusterConfigSecurityConfigKerberosConfigArgs:
         """
         The Cloud Storage URI of the truststore file used for
         SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
-
-        - - -
         """
         return pulumi.get(self, "truststore_uri")
 
@@ -10473,6 +10618,19 @@ class SessionTemplateEnvironmentConfigArgs:
 
 if not MYPY:
     class SessionTemplateEnvironmentConfigExecutionConfigArgsDict(TypedDict):
+        authentication_config: NotRequired[pulumi.Input['SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgsDict']]
+        """
+        Authentication configuration for a workload is used to set the default identity for the workload execution.
+        Structure is documented below.
+        """
+        idle_ttl: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The duration to keep the session alive while it's idling.
+        Exceeding this threshold causes the session to terminate. Minimum value is 10 minutes; maximum value is 14 day.
+        Defaults to 1 hour if not set. If both ttl and idleTtl are specified for an interactive session, the conditions
+        are treated as OR conditions: the workload will be terminated when it has been idle for idleTtl or when ttl has
+        been exceeded, whichever occurs first.
+        """
         kms_key: NotRequired[pulumi.Input[_builtins.str]]
         """
         The Cloud KMS key to use for encryption.
@@ -10514,6 +10672,8 @@ elif False:
 @pulumi.input_type
 class SessionTemplateEnvironmentConfigExecutionConfigArgs:
     def __init__(__self__, *,
+                 authentication_config: Optional[pulumi.Input['SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgs']] = None,
+                 idle_ttl: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_key: Optional[pulumi.Input[_builtins.str]] = None,
                  network_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  service_account: Optional[pulumi.Input[_builtins.str]] = None,
@@ -10521,6 +10681,13 @@ class SessionTemplateEnvironmentConfigExecutionConfigArgs:
                  subnetwork_uri: Optional[pulumi.Input[_builtins.str]] = None,
                  ttl: Optional[pulumi.Input[_builtins.str]] = None):
         """
+        :param pulumi.Input['SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgs'] authentication_config: Authentication configuration for a workload is used to set the default identity for the workload execution.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] idle_ttl: The duration to keep the session alive while it's idling.
+               Exceeding this threshold causes the session to terminate. Minimum value is 10 minutes; maximum value is 14 day.
+               Defaults to 1 hour if not set. If both ttl and idleTtl are specified for an interactive session, the conditions
+               are treated as OR conditions: the workload will be terminated when it has been idle for idleTtl or when ttl has
+               been exceeded, whichever occurs first.
         :param pulumi.Input[_builtins.str] kms_key: The Cloud KMS key to use for encryption.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] network_tags: Tags used for network traffic control.
         :param pulumi.Input[_builtins.str] service_account: Service account that used to execute workload.
@@ -10539,6 +10706,10 @@ class SessionTemplateEnvironmentConfigExecutionConfigArgs:
                the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idleTtl or
                when ttl has been exceeded, whichever occurs first.
         """
+        if authentication_config is not None:
+            pulumi.set(__self__, "authentication_config", authentication_config)
+        if idle_ttl is not None:
+            pulumi.set(__self__, "idle_ttl", idle_ttl)
         if kms_key is not None:
             pulumi.set(__self__, "kms_key", kms_key)
         if network_tags is not None:
@@ -10551,6 +10722,35 @@ class SessionTemplateEnvironmentConfigExecutionConfigArgs:
             pulumi.set(__self__, "subnetwork_uri", subnetwork_uri)
         if ttl is not None:
             pulumi.set(__self__, "ttl", ttl)
+
+    @_builtins.property
+    @pulumi.getter(name="authenticationConfig")
+    def authentication_config(self) -> Optional[pulumi.Input['SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgs']]:
+        """
+        Authentication configuration for a workload is used to set the default identity for the workload execution.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "authentication_config")
+
+    @authentication_config.setter
+    def authentication_config(self, value: Optional[pulumi.Input['SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgs']]):
+        pulumi.set(self, "authentication_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="idleTtl")
+    def idle_ttl(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The duration to keep the session alive while it's idling.
+        Exceeding this threshold causes the session to terminate. Minimum value is 10 minutes; maximum value is 14 day.
+        Defaults to 1 hour if not set. If both ttl and idleTtl are specified for an interactive session, the conditions
+        are treated as OR conditions: the workload will be terminated when it has been idle for idleTtl or when ttl has
+        been exceeded, whichever occurs first.
+        """
+        return pulumi.get(self, "idle_ttl")
+
+    @idle_ttl.setter
+    def idle_ttl(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "idle_ttl", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKey")
@@ -10634,6 +10834,41 @@ class SessionTemplateEnvironmentConfigExecutionConfigArgs:
     @ttl.setter
     def ttl(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "ttl", value)
+
+
+if not MYPY:
+    class SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgsDict(TypedDict):
+        user_workload_authentication_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Authentication type for the user workload running in containers.
+        Possible values are: `SERVICE_ACCOUNT`, `END_USER_CREDENTIALS`.
+        """
+elif False:
+    SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgs:
+    def __init__(__self__, *,
+                 user_workload_authentication_type: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] user_workload_authentication_type: Authentication type for the user workload running in containers.
+               Possible values are: `SERVICE_ACCOUNT`, `END_USER_CREDENTIALS`.
+        """
+        if user_workload_authentication_type is not None:
+            pulumi.set(__self__, "user_workload_authentication_type", user_workload_authentication_type)
+
+    @_builtins.property
+    @pulumi.getter(name="userWorkloadAuthenticationType")
+    def user_workload_authentication_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Authentication type for the user workload running in containers.
+        Possible values are: `SERVICE_ACCOUNT`, `END_USER_CREDENTIALS`.
+        """
+        return pulumi.get(self, "user_workload_authentication_type")
+
+    @user_workload_authentication_type.setter
+    def user_workload_authentication_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "user_workload_authentication_type", value)
 
 
 if not MYPY:

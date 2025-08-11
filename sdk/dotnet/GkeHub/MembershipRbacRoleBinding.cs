@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     ///     var membership = new Gcp.GkeHub.Membership("membership", new()
     ///     {
-    ///         MembershipId = "tf-test-membership_80332",
+    ///         MembershipId = "tf-test-membership_40289",
     ///         Endpoint = new Gcp.GkeHub.Inputs.MembershipEndpointArgs
     ///         {
     ///             GkeCluster = new Gcp.GkeHub.Inputs.MembershipEndpointGkeClusterArgs
@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     ///     var membershipRbacRoleBinding = new Gcp.GkeHub.MembershipRbacRoleBinding("membership_rbac_role_binding", new()
     ///     {
-    ///         MembershipRbacRoleBindingId = "tf-test-membership-rbac-role-binding_13293",
+    ///         MembershipRbacRoleBindingId = "tf-test-membership-rbac-role-binding_33395",
     ///         MembershipId = membership.MembershipId,
     ///         User = $"service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-anthossupport.iam.gserviceaccount.com",
     ///         Role = new Gcp.GkeHub.Inputs.MembershipRbacRoleBindingRoleArgs

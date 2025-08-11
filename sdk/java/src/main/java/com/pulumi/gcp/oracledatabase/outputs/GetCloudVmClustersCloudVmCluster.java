@@ -15,6 +15,13 @@ import java.util.Objects;
 @CustomType
 public final class GetCloudVmClustersCloudVmCluster {
     /**
+     * @return The name of the backup OdbSubnet associated with the VM Cluster.
+     * Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+     * 
+     */
+    private String backupOdbSubnet;
+    /**
      * @return CIDR range of the backup subnet.
      * 
      */
@@ -85,6 +92,22 @@ public final class GetCloudVmClustersCloudVmCluster {
      */
     private String network;
     /**
+     * @return The name of the OdbNetwork associated with the VM Cluster.
+     * Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}
+     * It is optional but if specified, this should match the parent ODBNetwork of
+     * the odb_subnet and backup_odb_subnet.
+     * 
+     */
+    private String odbNetwork;
+    /**
+     * @return The name of the OdbSubnet associated with the VM Cluster for
+     * IP allocation. Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+     * 
+     */
+    private String odbSubnet;
+    /**
      * @return The project to which the resource belongs. If it
      * is not provided, the provider project is used.
      * 
@@ -103,6 +126,15 @@ public final class GetCloudVmClustersCloudVmCluster {
     private Map<String,String> pulumiLabels;
 
     private GetCloudVmClustersCloudVmCluster() {}
+    /**
+     * @return The name of the backup OdbSubnet associated with the VM Cluster.
+     * Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+     * 
+     */
+    public String backupOdbSubnet() {
+        return this.backupOdbSubnet;
+    }
     /**
      * @return CIDR range of the backup subnet.
      * 
@@ -200,6 +232,26 @@ public final class GetCloudVmClustersCloudVmCluster {
         return this.network;
     }
     /**
+     * @return The name of the OdbNetwork associated with the VM Cluster.
+     * Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}
+     * It is optional but if specified, this should match the parent ODBNetwork of
+     * the odb_subnet and backup_odb_subnet.
+     * 
+     */
+    public String odbNetwork() {
+        return this.odbNetwork;
+    }
+    /**
+     * @return The name of the OdbSubnet associated with the VM Cluster for
+     * IP allocation. Format:
+     * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+     * 
+     */
+    public String odbSubnet() {
+        return this.odbSubnet;
+    }
+    /**
      * @return The project to which the resource belongs. If it
      * is not provided, the provider project is used.
      * 
@@ -232,6 +284,7 @@ public final class GetCloudVmClustersCloudVmCluster {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String backupOdbSubnet;
         private String backupSubnetCidr;
         private String cidr;
         private String cloudVmClusterId;
@@ -245,12 +298,15 @@ public final class GetCloudVmClustersCloudVmCluster {
         private String location;
         private String name;
         private String network;
+        private String odbNetwork;
+        private String odbSubnet;
         private String project;
         private List<GetCloudVmClustersCloudVmClusterProperty> properties;
         private Map<String,String> pulumiLabels;
         public Builder() {}
         public Builder(GetCloudVmClustersCloudVmCluster defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.backupOdbSubnet = defaults.backupOdbSubnet;
     	      this.backupSubnetCidr = defaults.backupSubnetCidr;
     	      this.cidr = defaults.cidr;
     	      this.cloudVmClusterId = defaults.cloudVmClusterId;
@@ -264,11 +320,21 @@ public final class GetCloudVmClustersCloudVmCluster {
     	      this.location = defaults.location;
     	      this.name = defaults.name;
     	      this.network = defaults.network;
+    	      this.odbNetwork = defaults.odbNetwork;
+    	      this.odbSubnet = defaults.odbSubnet;
     	      this.project = defaults.project;
     	      this.properties = defaults.properties;
     	      this.pulumiLabels = defaults.pulumiLabels;
         }
 
+        @CustomType.Setter
+        public Builder backupOdbSubnet(String backupOdbSubnet) {
+            if (backupOdbSubnet == null) {
+              throw new MissingRequiredPropertyException("GetCloudVmClustersCloudVmCluster", "backupOdbSubnet");
+            }
+            this.backupOdbSubnet = backupOdbSubnet;
+            return this;
+        }
         @CustomType.Setter
         public Builder backupSubnetCidr(String backupSubnetCidr) {
             if (backupSubnetCidr == null) {
@@ -374,6 +440,22 @@ public final class GetCloudVmClustersCloudVmCluster {
             return this;
         }
         @CustomType.Setter
+        public Builder odbNetwork(String odbNetwork) {
+            if (odbNetwork == null) {
+              throw new MissingRequiredPropertyException("GetCloudVmClustersCloudVmCluster", "odbNetwork");
+            }
+            this.odbNetwork = odbNetwork;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder odbSubnet(String odbSubnet) {
+            if (odbSubnet == null) {
+              throw new MissingRequiredPropertyException("GetCloudVmClustersCloudVmCluster", "odbSubnet");
+            }
+            this.odbSubnet = odbSubnet;
+            return this;
+        }
+        @CustomType.Setter
         public Builder project(String project) {
             if (project == null) {
               throw new MissingRequiredPropertyException("GetCloudVmClustersCloudVmCluster", "project");
@@ -402,6 +484,7 @@ public final class GetCloudVmClustersCloudVmCluster {
         }
         public GetCloudVmClustersCloudVmCluster build() {
             final var _resultValue = new GetCloudVmClustersCloudVmCluster();
+            _resultValue.backupOdbSubnet = backupOdbSubnet;
             _resultValue.backupSubnetCidr = backupSubnetCidr;
             _resultValue.cidr = cidr;
             _resultValue.cloudVmClusterId = cloudVmClusterId;
@@ -415,6 +498,8 @@ public final class GetCloudVmClustersCloudVmCluster {
             _resultValue.location = location;
             _resultValue.name = name;
             _resultValue.network = network;
+            _resultValue.odbNetwork = odbNetwork;
+            _resultValue.odbSubnet = odbSubnet;
             _resultValue.project = project;
             _resultValue.properties = properties;
             _resultValue.pulumiLabels = pulumiLabels;

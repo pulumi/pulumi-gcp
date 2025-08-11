@@ -110,6 +110,35 @@ import (
 //	}
 //
 // ```
+// ### Bigquery Analyticshub Public Data Exchange
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigqueryanalyticshub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := bigqueryanalyticshub.NewDataExchange(ctx, "data_exchange", &bigqueryanalyticshub.DataExchangeArgs{
+//				Location:       pulumi.String("US"),
+//				DataExchangeId: pulumi.String("public_data_exchange"),
+//				DisplayName:    pulumi.String("public_data_exchange"),
+//				Description:    pulumi.String("Example for public data exchange"),
+//				DiscoveryType:  pulumi.String("DISCOVERY_TYPE_PUBLIC"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -147,6 +176,9 @@ type DataExchange struct {
 	DataExchangeId pulumi.StringOutput `pulumi:"dataExchangeId"`
 	// Description of the data exchange.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Type of discovery on the discovery page for all the listings under this exchange. Cannot be set for a Data Clean Room. Updating this field also updates (overwrites) the discoveryType field for all the listings under this exchange.
+	// Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
+	DiscoveryType pulumi.StringOutput `pulumi:"discoveryType"`
 	// Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Documentation describing the data exchange.
@@ -216,6 +248,9 @@ type dataExchangeState struct {
 	DataExchangeId *string `pulumi:"dataExchangeId"`
 	// Description of the data exchange.
 	Description *string `pulumi:"description"`
+	// Type of discovery on the discovery page for all the listings under this exchange. Cannot be set for a Data Clean Room. Updating this field also updates (overwrites) the discoveryType field for all the listings under this exchange.
+	// Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
+	DiscoveryType *string `pulumi:"discoveryType"`
 	// Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
 	DisplayName *string `pulumi:"displayName"`
 	// Documentation describing the data exchange.
@@ -247,6 +282,9 @@ type DataExchangeState struct {
 	DataExchangeId pulumi.StringPtrInput
 	// Description of the data exchange.
 	Description pulumi.StringPtrInput
+	// Type of discovery on the discovery page for all the listings under this exchange. Cannot be set for a Data Clean Room. Updating this field also updates (overwrites) the discoveryType field for all the listings under this exchange.
+	// Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
+	DiscoveryType pulumi.StringPtrInput
 	// Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
 	DisplayName pulumi.StringPtrInput
 	// Documentation describing the data exchange.
@@ -282,6 +320,9 @@ type dataExchangeArgs struct {
 	DataExchangeId string `pulumi:"dataExchangeId"`
 	// Description of the data exchange.
 	Description *string `pulumi:"description"`
+	// Type of discovery on the discovery page for all the listings under this exchange. Cannot be set for a Data Clean Room. Updating this field also updates (overwrites) the discoveryType field for all the listings under this exchange.
+	// Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
+	DiscoveryType *string `pulumi:"discoveryType"`
 	// Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
 	DisplayName string `pulumi:"displayName"`
 	// Documentation describing the data exchange.
@@ -309,6 +350,9 @@ type DataExchangeArgs struct {
 	DataExchangeId pulumi.StringInput
 	// Description of the data exchange.
 	Description pulumi.StringPtrInput
+	// Type of discovery on the discovery page for all the listings under this exchange. Cannot be set for a Data Clean Room. Updating this field also updates (overwrites) the discoveryType field for all the listings under this exchange.
+	// Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
+	DiscoveryType pulumi.StringPtrInput
 	// Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
 	DisplayName pulumi.StringInput
 	// Documentation describing the data exchange.
@@ -425,6 +469,12 @@ func (o DataExchangeOutput) DataExchangeId() pulumi.StringOutput {
 // Description of the data exchange.
 func (o DataExchangeOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataExchange) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Type of discovery on the discovery page for all the listings under this exchange. Cannot be set for a Data Clean Room. Updating this field also updates (overwrites) the discoveryType field for all the listings under this exchange.
+// Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
+func (o DataExchangeOutput) DiscoveryType() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataExchange) pulumi.StringOutput { return v.DiscoveryType }).(pulumi.StringOutput)
 }
 
 // Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
